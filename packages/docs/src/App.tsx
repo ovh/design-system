@@ -3,7 +3,7 @@ import * as ButtonStories from '../../storybook/stories/components/button/button
 import * as CommandStories from '../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../storybook/stories/components/datepicker/datepicker.stories';
 import { Input } from '../../ods-react/src/components/input/src';
-import { Spinner } from '../../ods-react/src/components/spinner/src';
+import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '../../ods-react/src/components/tabs/src';
 import { TEXT_PRESET, Text } from '../../ods-react/src/components/text/src';
 import { Toggle } from '../../ods-react/src/components/toggle/src';
@@ -75,7 +75,12 @@ const App = () => {
 
       { current === 'sandbox'
         ? (
-          <Suspense fallback={ <p style={{ alignItems: 'center', display: 'flex', gap: '8px' }}><Spinner /> Chargement de la sandbox…</p> }>
+          <Suspense fallback={
+            <div style={{ display: 'grid', gap: '16px' }}>
+              <Skeleton style={{ height: '280px', width: '100%' }} />
+              <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} />
+            </div>
+          }>
             <Sandbox dark={ false } tokens={ tokens } />
           </Suspense>
         )

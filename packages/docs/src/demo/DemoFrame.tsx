@@ -1,6 +1,7 @@
 import { EnvironmentProvider } from '@ark-ui/react/environment';
-import { type ReactNode, useContext, useEffect } from 'react';
+import { type ReactNode, useContext, useEffect, useState } from 'react';
 import Frame, { FrameContext } from 'react-frame-component';
+import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 // Vite inlines the css text; url() references are rebased at import time.
 import normalizeCss from '@ovhcloud/ods-react/normalize-css?inline';
 import themeCss from '@ovhcloud/ods-themes/default/css?inline';
@@ -161,20 +162,49 @@ const FrameRealm = ({ children }: { children: ReactNode }) => {
 
 const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${window.location.origin}/"></head><body><div id="mount"></div></body></html>`;
 
-const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
-  return (
-    <Frame
-      head={
-        <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nbody { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); }` }</style>
+/* Flips ready once the frame content has painted with its fonts, so the
+   parent can swap the skeleton for the real frame without layout jumps. */
+const FrameReady = ({ onReady }: { onReady: () => void }) => {
+  const { document: frameDocument } = useContext(FrameContext);
+
+  useEffect(() => {
+    if (!frameDocument) {
+      return;
+    }
+    let cancelled = false;
+    frameDocument.fonts.ready.then(() => {
+      if (!cancelled) {
+        requestAnimationFrame(onReady);
       }
-      initialContent={ INITIAL_CONTENT }
-      mountTarget="#mount"
-      style={{ border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', height: '60px', colorScheme: 'auto', display: 'block' }}>
-      <StyleSync />
-      <FrameAutoSize />
-      <FrameEnv dark={ dark } tokens={ tokens } />
-      <FrameRealm>{ children }</FrameRealm>
-    </Frame>
+    });
+    return () => { cancelled = true; };
+  }, [frameDocument, onReady]);
+
+  return null;
+};
+
+const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
+  const [ready, setReady] = useState(false);
+
+  return (
+    <>
+      { !ready && <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} /> }
+      <Frame
+        head={
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nbody { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); }` }</style>
+        }
+        initialContent={ INITIAL_CONTENT }
+        mountTarget="#mount"
+        style={ ready
+          ? { border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', height: '60px', colorScheme: 'auto', display: 'block' }
+          : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
+        <StyleSync />
+        <FrameAutoSize />
+        <FrameEnv dark={ dark } tokens={ tokens } />
+        <FrameReady onReady={ () => setReady(true) } />
+        <FrameRealm>{ children }</FrameRealm>
+      </Frame>
+    </>
   );
 };
 

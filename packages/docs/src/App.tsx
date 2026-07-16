@@ -1,8 +1,15 @@
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import * as ButtonStories from '../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../storybook/stories/components/datepicker/datepicker.stories';
+import { Input } from '../../ods-react/src/components/input/src';
+import { Spinner } from '../../ods-react/src/components/spinner/src';
+import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '../../ods-react/src/components/tabs/src';
+import { TEXT_PRESET, Text } from '../../ods-react/src/components/text/src';
+import { Toggle } from '../../ods-react/src/components/toggle/src';
 import { ComponentPage } from './pages/ComponentPage';
+import './shell/dark.css';
+
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 
 const COBAYES = [
@@ -16,33 +23,63 @@ const App = () => {
   const [dark, setDark] = useState(false);
   const [primary, setPrimary] = useState('');
 
+  /* The sandbox chunk (Monaco + the ODS type graph, ~9 MB) is fetched during
+     browser idle time so opening the tab is instant instead of a cold load. */
+  useEffect(() => {
+    const idle = window.setTimeout(() => {
+      import('./sandbox/Sandbox');
+    }, 1500);
+    return () => window.clearTimeout(idle);
+  }, []);
+
+  /* Dark skins the docs shell only — exactly what the current Storybook docs
+     do. The demo frames keep rendering light (ODS ships no dark theme). */
+  useEffect(() => {
+    if (dark) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.removeAttribute('data-theme');
+    }
+  }, [dark]);
+
   const cobaye = COBAYES.find((c) => c.key === current) ?? COBAYES[0];
   const tokens = primary ? { '--ods-color-primary-500': primary } : {};
 
   return (
-    <main style={{ fontFamily: 'sans-serif', margin: '0 auto', maxWidth: '860px', padding: '24px' }}>
-      <h1>ODS Docs — POC portable-stories</h1>
+    <main style={{ margin: '0 auto', maxWidth: '860px', padding: '24px' }}>
+      <Text preset={ TEXT_PRESET.heading2 }>ODS Docs — POC</Text>
 
-      <nav style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
-        { COBAYES.map(({ key, title }) => (
-          <button data-testid={ `nav-${key}` } key={ key } onClick={ () => setCurrent(key) } style={{ fontWeight: current === key ? 700 : 400 }}>
-            { title }
-          </button>
-        )) }
-        <label style={{ marginLeft: 'auto' }}>
-          <input checked={ dark } data-testid="dark-toggle" onChange={ (e) => setDark(e.target.checked) } type="checkbox" /> dark
+      <nav style={{ alignItems: 'center', display: 'flex', gap: '16px', margin: '16px 0' }}>
+        <Tabs onValueChange={ ({ value }: TabsValueChangeEvent) => setCurrent(value) } value={ current }>
+          <TabList>
+            { COBAYES.map(({ key, title }) => (
+              <Tab data-testid={ `nav-${key}` } key={ key } value={ key }>{ title }</Tab>
+            )) }
+            <Tab data-testid="nav-sandbox" value="sandbox">Sandbox</Tab>
+          </TabList>
+        </Tabs>
+
+        <label style={{ alignItems: 'center', display: 'flex', gap: '8px', marginLeft: 'auto' }}>
+          <Toggle checked={ dark } data-testid="dark-toggle" onCheckedChange={ ({ checked }) => setDark(checked) } />
+          <Text preset={ TEXT_PRESET.caption }>dark</Text>
         </label>
-        <label>
-          primary <input data-testid="token-input" onChange={ (e) => setPrimary(e.target.value) } placeholder="#ff0000" size={ 8 } value={ primary } />
-        </label>
-        <button data-testid="nav-sandbox" onClick={ () => setCurrent('sandbox') } style={{ fontWeight: current === 'sandbox' ? 700 : 400 }}>
-          Sandbox
-        </button>
+
+        <Input
+          data-testid="token-input"
+          onChange={ (e) => setPrimary(e.target.value) }
+          placeholder="--ods-color-primary-500"
+          style={{ maxWidth: '210px' }}
+          value={ primary }
+        />
       </nav>
 
       { current === 'sandbox'
-        ? <Suspense fallback={ <p>Chargement de la sandbox…</p> }><Sandbox dark={ dark } tokens={ tokens } /></Suspense>
-        : <ComponentPage dark={ dark } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
+        ? (
+          <Suspense fallback={ <p style={{ alignItems: 'center', display: 'flex', gap: '8px' }}><Spinner /> Chargement de la sandbox…</p> }>
+            <Sandbox dark={ false } tokens={ tokens } />
+          </Suspense>
+        )
+        : <ComponentPage dark={ false } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
     </main>
   );
 };

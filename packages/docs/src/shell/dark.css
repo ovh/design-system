@@ -1,0 +1,21 @@
+/* Base shell: ODS ships tokens but no body-level application. */
+body {
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+  font-family: var(--ods-theme-font-family);
+  margin: 0;
+}
+
+/* Shell-only dark skin, mirroring what the current docs do (preview.css):
+   the demos inside their frames stay light — ODS ships no dark theme yet. */
+[data-theme="dark"] {
+  --ods-theme-background-color: #1b1c1d;
+  --ods-theme-heading-text-color: #e0e2f7;
+  --ods-theme-text-color: #e0e2f7;
+}
+
+[data-theme="dark"] body,
+body[data-theme="dark"] {
+  background-color: #1b1c1d;
+  color: #e0e2f7;
+}

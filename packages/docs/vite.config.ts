@@ -7,7 +7,8 @@ import { defineConfig, searchForWorkspaceRoot } from 'vite';
 // from their sibling packages (same model as the current Storybook), so the
 // dev server must be allowed to read across the workspace.
 export default defineConfig({
-  plugins: [{ enforce: 'pre', ...mdx({ providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit()],
+  // include .mdx only: plain .md files (CHANGELOG.md?raw) must stay raw text.
+  plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit()],
   resolve: {
     // ods-react sources pull @ark-ui/react, whose peer react resolves to
     // ods-react's own copy (18.x on master): dedupe forces every bare

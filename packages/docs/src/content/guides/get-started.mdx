@@ -1,0 +1,110 @@
+<Heading label="Get Started" level={ 1 } />
+
+OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+
+All OVHcloud Design System packages are available on <ExternalLink href="https://www.npmjs.com">NPM</ExternalLink>.
+
+<Heading label="Installation" level={ 2 } />
+
+Include **ODS** in your projects like any other npm/pnpm module:
+
+```bash
+npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+or
+
+```bash
+pnpm add --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+<Heading label="Usage" level={ 2 } />
+
+All components can be imported from the root path:
+
+```tsx
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
+
+const App = () => {
+  return (
+    <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+```
+
+Each component is also available as compound component from its subpath:
+
+```tsx
+import { Accordion } from '@ovhcloud/ods-react/accordion';
+
+const App = () => {
+  return (
+    <Accordion>
+      <Accordion.Item value="0">
+        <Accordion.Trigger>
+          Hello World!
+        </Accordion.Trigger>
+        <Accordion.Content>
+          Lorem ipsum dolor sit amet.
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
+  );
+};
+```
+
+Components are compatible with React `v18.2+`, `v19+`.
+
+<Heading label="Import components constants" level={ 2 } />
+
+All enums, interfaces, events are available directly from the `ods-react` lib
+
+```typescript
+import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
+```
+
+<Heading label="Import theme & fonts" level={ 2 } />
+
+You need to import a theme to display all the components correctly.
+It defines all the colors, typographies, etc...
+
+via ES import:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+via Sass import:
+
+```css
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
+<Message dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
+    Though this will increase the bundle size and prevent browser resources loading optimization.
+  </MessageBody>
+</Message>
+
+<Heading label="Typescript" level={ 2 } />
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.
+
+```typescript
+"moduleResolution": "bundler"
+```
+

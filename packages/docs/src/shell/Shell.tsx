@@ -87,7 +87,7 @@ const Shell = () => {
           <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
         </header>
 
-        <main className="shell__content">
+        <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' }>
           <Outlet context={ { tokens } satisfies ShellContext } />
         </main>
       </div>

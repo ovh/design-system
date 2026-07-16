@@ -5,11 +5,14 @@ import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams } from 'react-router-dom';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
+import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
+import { GuideDoc } from './pages/GuideDoc';
 import { Shell, type ShellContext } from './shell/Shell';
 
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
+const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 
 const ComponentRoute = () => {
   const { key } = useParams();
@@ -36,11 +39,29 @@ const SandboxRoute = () => {
   );
 };
 
+const GuideRoute = () => {
+  const { key } = useParams();
+  const page = flattenPages().find((p) => p.id === `guides/${key}`);
+
+  if (!page) {
+    return <Navigate replace to="/" />;
+  }
+  return <GuideDoc key={ page.id } page={ page } />;
+};
+
+const ChangelogRoute = () => (
+  <Suspense fallback={ <Skeleton style={{ height: '320px', width: '100%' }} /> }>
+    <ChangelogPage />
+  </Suspense>
+);
+
 const router = createBrowserRouter([
   {
     element: <Shell />,
     children: [
-      { element: <Navigate replace to="/components/button" />, path: '/' },
+      { element: <Homepage />, path: '/' },
+      { element: <ChangelogRoute />, path: '/guides/changelog' },
+      { element: <GuideRoute />, path: '/guides/:key' },
       { element: <ComponentRoute />, path: '/components/:key' },
       { element: <SandboxRoute />, path: '/tools/sandbox' },
       { element: <Navigate replace to="/" />, path: '*' },

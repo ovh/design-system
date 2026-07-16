@@ -29,8 +29,13 @@ const SearchCommand = () => {
   return (
     <Command onOpenChange={ ({ open: value }) => setOpen(value) } open={ open }>
       <CommandContent aria-label="Search the documentation">
-        <CommandFilter aria-label="Search" placeholder="Search components, tools…" />
+        <CommandFilter aria-label="Search" placeholder="Search guides, components, tools…" />
         <CommandList aria-label="Results">
+          <CommandGroup heading="Guides">
+            { pages.filter((page) => page.kind === 'guide').map((page) => (
+              <CommandOption key={ page.id } onSelect={ () => go(page.path) }>{ page.title }</CommandOption>
+            )) }
+          </CommandGroup>
           <CommandGroup heading="Components">
             { pages.filter((page) => page.kind === 'component').map((page) => (
               <CommandOption key={ page.id } onSelect={ () => go(page.path) }>{ page.title }</CommandOption>

@@ -1,0 +1,25 @@
+<Heading label="OVHcloud Design System Documentation for LLMs" level={1} />
+
+> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+This page provides AI/LLM-optimized documentation following the <ExternalLink href="https://llmstxt.org/">llmstxt.org</ExternalLink> specification.
+
+<Heading label="Entry Point" level={2} />
+
+The single entry point for AI agents is the <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> file. It is automatically generated from the official documentation and always lists the available documentation sets, including:
+
+- the complete documentation and per-category files (components, generic);
+- per-file indexes for targeted context (one file per component or page);
+- a machine-readable <ExternalLink href="/llms/llms-index.json" rel="noopener noreferrer">JSON index</ExternalLink> exposing, for every file, its type, a token estimate and its canonical URL.
+
+Always refer to <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> for the current, authoritative list: it is kept in sync with every release, so this page intentionally does not duplicate it.
+
+<Heading label="How to Use" level={2} />
+
+<Heading label="For AI Assistants" level={3} />
+
+Start from <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> and download the documentation set that fits your need, then provide it to your AI assistant (ChatGPT, Claude, etc.) for better context about ODS. For a specific component or page, use the per-file indexes to fetch only the file you need; the JSON index exposes a token estimate so you can budget context and save tokens.
+
+<Heading label="For Developers" level={3} />
+
+Use the category-specific files for focused documentation, or the complete file for full context when training custom AI models on your design system.

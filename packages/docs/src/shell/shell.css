@@ -111,9 +111,25 @@ body {
   gap: 8px;
 }
 
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .shell__content {
   padding: 24px 32px;
   width: 100%;
+}
+
+/* The home route is full-bleed (its background reaches the edges). */
+.shell__content--flush {
+  padding: 0;
 }
 
 /* Shell-only dark skin, mirroring what the current docs do: the demos inside

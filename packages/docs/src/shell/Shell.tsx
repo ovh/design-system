@@ -65,11 +65,25 @@ const Shell = () => {
           } }
           value={ currentPage ? [currentPage.id] : [] }>
           <TreeViewNodes>
-            { toTreeItems().map((item) => <TreeViewNode item={ item } key={ item.id } />) }
+            { toTreeItems().map((item) => (
+              <TreeViewNode item={ item } key={ item.id }>
+                { ({ customData, item: node }) => (
+                  <span className="shell__tree-label">
+                    { (customData as { icon?: Parameters<typeof Icon>[0]['name'] })?.icon && <Icon name={ (customData as { icon: Parameters<typeof Icon>[0]['name'] }).icon } /> }
+                    <span>{ node.name }</span>
+                  </span>
+                ) }
+              </TreeViewNode>
+            )) }
           </TreeViewNodes>
         </TreeView>
 
         <div className="shell__sidebar-footer">
+          <label className="shell__dark">
+            <Toggle checked={ dark } data-testid="dark-toggle" onCheckedChange={ ({ checked }) => setDark(checked) }><ToggleControl /></Toggle>
+            <Icon name={ dark ? ICON_NAME.moon : ICON_NAME.sun } />
+            <Text preset={ TEXT_PRESET.caption }>Dark mode</Text>
+          </label>
           <a aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
             <Icon name={ ICON_NAME.github } /> GitHub
           </a>
@@ -80,10 +94,6 @@ const Shell = () => {
         <header className="shell__topbar">
           <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'ODS Docs' }</Text>
           <div className="shell__topbar-actions">
-            <label className="shell__dark">
-              <Toggle checked={ dark } data-testid="dark-toggle" onCheckedChange={ ({ checked }) => setDark(checked) }><ToggleControl /></Toggle>
-              <Text preset={ TEXT_PRESET.caption }>dark</Text>
-            </label>
             <Input
               data-testid="token-input"
               onChange={ (e) => setPrimary(e.target.value) }

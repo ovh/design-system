@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@ark-ui/react": "5.37.2",
+    "@shikijs/langs": "3.23.0",
+    "@shikijs/themes": "3.23.0",
     "@ovhcloud/ods-react": "workspace:*",
     "@ovhcloud/ods-themes": "workspace:*",
     "@storybook/react": "8.6.12",

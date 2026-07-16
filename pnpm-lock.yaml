@@ -122,6 +122,12 @@ importers:
       '@ovhcloud/ods-themes':
         specifier: workspace:*
         version: link:../themes
+      '@shikijs/langs':
+        specifier: 3.23.0
+        version: 3.23.0
+      '@shikijs/themes':
+        specifier: 3.23.0
+        version: 3.23.0
       '@storybook/react':
         specifier: 8.6.12
         version: 8.6.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.12(prettier@3.6.2))(typescript@6.0.3)

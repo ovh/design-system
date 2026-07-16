@@ -88,7 +88,7 @@ const StyleSync = () => {
    scrollHeight (normal flow) and the bottom edge of Ark positioners/backdrops
    — overlays are position:fixed and would otherwise be clipped since they do
    not contribute to scrollHeight. rAF coalesces observer bursts. */
-const FrameAutoSize = () => {
+const FrameAutoSize = ({ active }: { active: boolean }) => {
   const { document: frameDocument, window: frameWindow } = useContext(FrameContext);
 
   useEffect(() => {
@@ -109,7 +109,10 @@ const FrameAutoSize = () => {
       raf = 0;
       // body, not documentElement: the html element stretches to the iframe
       // viewport, so measuring it ratchets the height up and never shrinks.
-      let height = frameDocument.body.offsetHeight;
+      // scrollHeight catches overflowing children that offsetHeight misses
+      // (sub-pixel rounding and late layout were producing inner scrollbars).
+      const body = frameDocument.body;
+      let height = Math.max(body.offsetHeight, body.scrollHeight) + 1;
       let hasOpenOverlay = false;
       // Ark flags every open floating part with data-state="open"; the
       // positioner itself is always mounted (fixed, viewport-sized), so
@@ -141,7 +144,7 @@ const FrameAutoSize = () => {
       resizeObserver.disconnect();
       mutationObserver.disconnect();
     };
-  }, [frameDocument, frameWindow]);
+  }, [active, frameDocument, frameWindow]);
 
   return null;
 };
@@ -191,15 +194,17 @@ const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
       { !ready && <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} /> }
       <Frame
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nbody { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"
         style={ ready
-          ? { border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', height: '60px', colorScheme: 'auto', display: 'block' }
+          // no height here: FrameAutoSize owns it imperatively — a height in
+          // the React style prop would clobber it on every parent re-render.
+          ? { border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', colorScheme: 'auto', display: 'block' }
           : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
         <StyleSync />
-        <FrameAutoSize />
+        <FrameAutoSize active={ ready } />
         <FrameEnv dark={ dark } tokens={ tokens } />
         <FrameReady onReady={ () => setReady(true) } />
         <FrameRealm>{ children }</FrameRealm>

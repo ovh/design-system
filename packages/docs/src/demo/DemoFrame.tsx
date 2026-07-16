@@ -83,6 +83,68 @@ const StyleSync = () => {
 
 /* The <base> makes relative url() references (fonts of the inlined theme css)
    resolve against the app origin instead of the frame's null base. */
+/* Sizes the iframe to its content. Two measures are combined: the document
+   scrollHeight (normal flow) and the bottom edge of Ark positioners/backdrops
+   — overlays are position:fixed and would otherwise be clipped since they do
+   not contribute to scrollHeight. rAF coalesces observer bursts. */
+const FrameAutoSize = () => {
+  const { document: frameDocument, window: frameWindow } = useContext(FrameContext);
+
+  useEffect(() => {
+    if (!frameDocument || !frameWindow) {
+      return;
+    }
+    const iframe = frameWindow.frameElement as HTMLIFrameElement | null;
+    if (!iframe) {
+      return;
+    }
+    let raf = 0;
+    // Overlays size themselves to the frame viewport: measuring them in a
+    // 100px-tall frame yields a squashed modal (chicken-and-egg). When an
+    // open overlay is detected, jump to a comfortable stage height first —
+    // the overlay then lays itself out inside it.
+    const OVERLAY_STAGE = 420;
+    const measure = () => {
+      raf = 0;
+      // body, not documentElement: the html element stretches to the iframe
+      // viewport, so measuring it ratchets the height up and never shrinks.
+      let height = frameDocument.body.offsetHeight;
+      let hasOpenOverlay = false;
+      // Ark flags every open floating part with data-state="open"; the
+      // positioner itself is always mounted (fixed, viewport-sized), so
+      // presence alone is a false positive.
+      frameDocument.querySelectorAll('[data-part][data-state="open"]').forEach((el) => {
+        const rect = (el as HTMLElement).getBoundingClientRect();
+        if (rect.height > 0) {
+          hasOpenOverlay = true;
+          height = Math.max(height, rect.bottom + 16);
+        }
+      });
+      if (hasOpenOverlay) {
+        height = Math.max(height, OVERLAY_STAGE);
+      }
+      iframe.style.height = `${Math.max(Math.ceil(height), 60)}px`;
+    };
+    const schedule = () => {
+      if (!raf) {
+        raf = frameWindow.requestAnimationFrame(measure);
+      }
+    };
+    measure();
+    const resizeObserver = new frameWindow.ResizeObserver(schedule);
+    resizeObserver.observe(frameDocument.body);
+    const mutationObserver = new MutationObserver(schedule);
+    mutationObserver.observe(frameDocument.body, { attributes: true, childList: true, subtree: true });
+    return () => {
+      frameWindow.cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [frameDocument, frameWindow]);
+
+  return null;
+};
+
 /* react-frame-component shares the parent JS realm: without this, Ark's
    portals (modals, popovers, tooltips) target the PARENT document.body and
    escape the frame — losing its theme and token overrides. Ark ships
@@ -107,8 +169,9 @@ const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
       }
       initialContent={ INITIAL_CONTENT }
       mountTarget="#mount"
-      style={{ border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', minHeight: '140px', colorScheme: 'auto' }}>
+      style={{ border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', height: '60px', colorScheme: 'auto', display: 'block' }}>
       <StyleSync />
+      <FrameAutoSize />
       <FrameEnv dark={ dark } tokens={ tokens } />
       <FrameRealm>{ children }</FrameRealm>
     </Frame>

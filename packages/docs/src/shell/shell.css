@@ -1,3 +1,10 @@
+/* The ODS normalize does not opt into border-box; the shell layout relies
+   on padded full-height columns, so it does. Demo frames are separate
+   documents and are not affected. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Base shell: ODS ships tokens but no body-level application. */
 body {
   background-color: var(--ods-theme-background-color);
@@ -9,7 +16,8 @@ body {
 .shell {
   display: grid;
   grid-template-columns: 280px 1fr;
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 .shell__sidebar {
@@ -17,11 +25,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px;
-  position: sticky;
-  top: 0;
-  height: 100dvh;
+  height: 100%;
   overflow-y: auto;
+  padding: 16px;
 }
 
 .shell__brand {
@@ -75,6 +81,7 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  overflow-y: auto;
 }
 
 .shell__topbar {

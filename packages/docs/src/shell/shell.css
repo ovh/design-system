@@ -105,9 +105,7 @@ body {
 }
 
 .shell__content {
-  margin: 0 auto;
-  max-width: 860px;
-  padding: 24px;
+  padding: 24px 32px;
   width: 100%;
 }
 

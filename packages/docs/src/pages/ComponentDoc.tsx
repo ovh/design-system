@@ -1,7 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { type ComponentType, Suspense, lazy, useMemo, useState } from 'react';
 import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
-import { Tab, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
+import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { PageStoriesProvider } from '../doc/PageStories';
 import { type NavPage } from '../nav/model';
@@ -27,7 +27,7 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   return (
     <PageStoriesProvider raw={ page.raw } storiesModule={ page.storiesModule }>
       { Doc && (
-        <Tabs onValueChange={ ({ value }) => setTab(value) } value={ currentTab }>
+        <Tabs onValueChange={ ({ value }) => setTab(value) } value={ currentTab } variant={ TABS_VARIANT.switch }>
           <TabList>
             <Tab value="documentation">Documentation</Tab>
             <Tab value="examples">Examples</Tab>

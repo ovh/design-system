@@ -3,6 +3,7 @@ import * as ButtonStories from '../../storybook/stories/components/button/button
 import * as CommandStories from '../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../storybook/stories/components/datepicker/datepicker.stories';
 import { ComponentPage } from './pages/ComponentPage';
+import { Sandbox } from './sandbox/Sandbox';
 
 const COBAYES = [
   { key: 'button', module: ButtonStories, title: 'Button' },
@@ -34,9 +35,14 @@ const App = () => {
         <label>
           primary <input data-testid="token-input" onChange={ (e) => setPrimary(e.target.value) } placeholder="#ff0000" size={ 8 } value={ primary } />
         </label>
+        <button data-testid="nav-sandbox" onClick={ () => setCurrent('sandbox') } style={{ fontWeight: current === 'sandbox' ? 700 : 400 }}>
+          Sandbox
+        </button>
       </nav>
 
-      <ComponentPage dark={ dark } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } />
+      { current === 'sandbox'
+        ? <Sandbox dark={ dark } tokens={ tokens } />
+        : <ComponentPage dark={ dark } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
     </main>
   );
 };

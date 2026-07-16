@@ -1,0 +1,104 @@
+/* Base shell: ODS ships tokens but no body-level application. */
+body {
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+  font-family: var(--ods-theme-font-family);
+  margin: 0;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100dvh;
+}
+
+.shell__sidebar {
+  border-right: 1px solid var(--ods-color-neutral-200);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+.shell__brand {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shell__search-hint {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ods-color-neutral-200);
+  border-radius: 4px;
+  color: var(--ods-color-neutral-500);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: .85rem;
+  gap: 8px;
+  padding: 6px 10px;
+}
+
+.shell__search-kbds {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.shell__sidebar-footer {
+  margin-top: auto;
+}
+
+.shell__github {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  font-size: .9rem;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.shell__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.shell__topbar {
+  align-items: center;
+  border-bottom: 1px solid var(--ods-color-neutral-200);
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+
+.shell__topbar-actions {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.shell__dark {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.shell__content {
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 24px;
+  width: 100%;
+}
+
+/* Shell-only dark skin, mirroring what the current docs do: the demos inside
+   their frames stay light — ODS ships no dark theme yet. */
+[data-theme="dark"] {
+  --ods-theme-background-color: #1b1c1d;
+  --ods-theme-heading-text-color: #e0e2f7;
+  --ods-theme-text-color: #e0e2f7;
+}

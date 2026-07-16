@@ -48,7 +48,6 @@ const ThemeSelect = () => {
       data-testid="theme-select"
       items={ THEME_ITEMS }
       onValueChange={ ({ value }) => setChoice((value[0] as ThemeChoice) ?? 'system') }
-      style={{ minWidth: '120px' }}
       value={ [choice] }>
       <SelectControl />
       <SelectContent />
@@ -69,7 +68,6 @@ const VersionSelect = () => {
           window.location.href = `https://ovh.github.io/design-system/v${target}/`;
         }
       } }
-      style={{ minWidth: '110px' }}
       value={ [currentVersion] }>
       <SelectControl />
       <SelectContent />

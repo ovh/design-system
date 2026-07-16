@@ -5,6 +5,7 @@ import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { flattenPages, toTreeItems } from '../nav/model';
+import { BrandLogo } from './BrandLogo';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
 import { SearchCommand } from './SearchCommand';
 import './shell.css';
@@ -37,9 +38,14 @@ const Shell = () => {
       <SearchCommand />
 
       <aside className="shell__sidebar">
-        <RouterLink className="shell__brand" to="/">
-          <Text preset={ TEXT_PRESET.heading5 }>ODS Docs</Text>
+        <RouterLink aria-label="OVHcloud Design System — home" className="shell__brand" to="/">
+          <BrandLogo />
         </RouterLink>
+
+        <div className="shell__sidebar-selects">
+          <ThemeSelect />
+          <VersionSelect />
+        </div>
 
         <button className="shell__search-hint" onClick={ () => document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true })) } type="button">
           <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
@@ -78,11 +84,7 @@ const Shell = () => {
 
       <div className="shell__main">
         <header className="shell__topbar">
-          <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'ODS Docs' }</Text>
-          <div className="shell__topbar-actions">
-            <ThemeSelect />
-            <VersionSelect />
-          </div>
+          <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
         </header>
 
         <main className="shell__content">

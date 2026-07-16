@@ -32,7 +32,20 @@ body {
 
 .shell__brand {
   color: inherit;
+  display: block;
+  padding: 4px 8px 0;
   text-decoration: none;
+}
+
+.shell__brand-logo {
+  display: block;
+  width: 170px;
+}
+
+.shell__sidebar-selects {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .shell__search-hint {
@@ -90,12 +103,6 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 12px 24px;
-}
-
-.shell__topbar-actions {
-  align-items: center;
-  display: flex;
-  gap: 16px;
 }
 
 .shell__dark {

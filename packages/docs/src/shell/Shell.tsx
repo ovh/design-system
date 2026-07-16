@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
-import { Input } from '../../../ods-react/src/components/input/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Toggle, ToggleControl } from '../../../ods-react/src/components/toggle/src';
@@ -16,7 +15,6 @@ interface ShellContext {
 
 const Shell = () => {
   const [dark, setDark] = useState(false);
-  const [primary, setPrimary] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   const pages = flattenPages();
@@ -39,7 +37,9 @@ const Shell = () => {
   }, [dark]);
 
   const currentPage = pages.find((page) => page.path === location.pathname);
-  const tokens = primary ? { '--ods-color-primary-500': primary } : {};
+  // Kept as the outlet contract: the future theme generator will feed live
+  // token overrides through here — the frame plumbing is already proven.
+  const tokens = {};
 
   return (
     <div className="shell">
@@ -93,15 +93,7 @@ const Shell = () => {
       <div className="shell__main">
         <header className="shell__topbar">
           <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'ODS Docs' }</Text>
-          <div className="shell__topbar-actions">
-            <Input
-              data-testid="token-input"
-              onChange={ (e) => setPrimary(e.target.value) }
-              placeholder="--ods-color-primary-500"
-              style={{ maxWidth: '210px' }}
-              value={ primary }
-            />
-          </div>
+
         </header>
 
         <main className="shell__content">

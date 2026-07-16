@@ -76,6 +76,7 @@ function transformProse(out) {
   // Enum expressions become plain strings.
   out = out.replace(/name=\{\s*ICON_NAME\.(\w+)\s*\}/g, (_m, key) => `name="${kebab(key)}"`);
   out = out.replace(/type:\s*TOKEN_TYPE\.(\w+)/g, (_m, key) => `type: '${key}'`);
+  out = out.replace(/color=\{\s*MESSAGE_COLOR\.(\w+)\s*\}/g, (_m, key) => `color="${key}"`);
 
   // Markdown images resolve through the provider's img (assets-relative path).
   out = out.replace(/!\[([^\]]*)\]\(([^) "]+)(?:\s+"[^"]*")?\)/g, (_m, alt, src) => `![${alt}](${src})`);
@@ -112,7 +113,7 @@ function migrate(source) {
   // Anything Storybook-flavoured left is a migration gap: report it.
   // Fenced blocks AND inline code spans are data, not JSX: both are skipped.
   const scanned = out.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '');
-  for (const pattern of [/@storybook/, /\bof=\{/, /StorybookLink/, /ICON_NAME\./, /TOKEN_TYPE\./, /REACT_COMPONENTS_TITLE/, /HOME_TITLE/, /RECIPES_TITLE/, /STORY\./, /^import /m]) {
+  for (const pattern of [/@storybook/, /\bof=\{/, /StorybookLink/, /ICON_NAME\./, /TOKEN_TYPE\./, /MESSAGE_COLOR\./, /REACT_COMPONENTS_TITLE/, /HOME_TITLE/, /RECIPES_TITLE/, /STORY\./, /^import /m]) {
     const match = scanned.match(pattern);
     if (match) {
       const line = scanned.slice(0, match.index).split('\n').length;

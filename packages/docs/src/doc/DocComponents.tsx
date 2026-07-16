@@ -14,6 +14,11 @@ import { DemoFrame } from '../demo/DemoFrame';
 import { DemoSource } from '../demo/DemoSource';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
+import { ChartColorCards } from './ports/chartColorCards/ChartColorCards';
+import { DesignTokens } from './ports/designTokens/DesignTokens';
+import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
+import { OdsLocaleList } from './ports/OdsLocaleList';
+import { Roadmap } from './ports/roadmap/Roadmap';
 import './doc.css';
 
 /* The neutral-format component contract: every component available inside a
@@ -24,11 +29,11 @@ const anatomyImages = import.meta.glob('../../../storybook/assets/components/*/a
 
 const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-const Heading = ({ label, level }: { label: string, level: 2 | 3 | 4 }) => {
+const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
   const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
   return (
     <Text as={ `h${level}` } className="doc__heading" id={ slugify(label) } preset={ presets[level] }>
-      { label }
+      { label }{ children }
     </Text>
   );
 };
@@ -92,6 +97,15 @@ const Anatomy = ({ src }: { src: string }) => {
   return url ? <img alt="" className="doc__anatomy" src={ url } /> : null;
 };
 
+/* Markdown images use assets-relative paths (![alt](components/x/foo.png));
+   the glob resolves them to hashed build URLs. */
+const docImages = import.meta.glob('../../../storybook/assets/components/**/*.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
+
+const DocImage = ({ alt, src }: { alt?: string, src?: string }) => {
+  const url = (src && docImages[`../../../storybook/assets/${src}`]) ?? src;
+  return <img alt={ alt ?? '' } className="doc__anatomy" src={ url } />;
+};
+
 const DocLink = ({ children, to }: { children: ReactNode, to: string }) => (
   <RouterLink className="doc__link" to={ to }>{ children }</RouterLink>
 );
@@ -115,17 +129,24 @@ const MDX_COMPONENTS = {
   Anatomy,
   BestPractices,
   Canvas,
+  ChartColorCards,
+  DesignTokens,
   DocLink,
   ExternalLink,
   Heading,
   Icon,
   IdentityCard,
   Kbd,
+  Link,
   Message,
   MessageBody,
   MessageIcon,
+  OdsLocaleList,
+  Roadmap,
   Table,
+  TokenPreview,
+  img: DocImage,
   pre: CodeFence,
 };
 
-export { MDX_COMPONENTS };
+export { ExternalLink, Heading, MDX_COMPONENTS };

@@ -1,0 +1,92 @@
+.token-preview {
+  --preview-background-color: var(--ods-color-primary-100);
+  --preview-border-color: var(--ods-color-neutral-200);  /* Need an --ods-theme-border-color */
+  --preview-size: 24px;
+  --preview-spacing-background-color: var(--ods-color-success-200);
+
+  display: flex;
+  justify-content: center;
+}
+
+.preview {
+  box-sizing: border-box;
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-gap {
+  display: inline-flex;
+  background-color: var(--preview-spacing-background-color);
+}
+
+.preview-margin {
+  background-color: var(--preview-spacing-background-color);
+}
+
+.preview-margin__child {
+  box-sizing: border-box;
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-outline {
+  box-sizing: border-box;
+  outline: solid;
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-size {
+  box-sizing: border-box;
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-size--extra-large {
+/* TODO find a way to show that size is not entirely rendered */
+}
+
+.preview-padding {
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-spacing-background-color);
+}
+
+.preview-padding__child {
+  box-sizing: border-box;
+  background-color: var(--preview-background-color);
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-z-index {
+  position: relative;
+  width: var(--preview-size);
+  height: var(--preview-size);
+}
+
+.preview-z-index__back {
+  border: 1px solid var(--preview-border-color);
+  border-radius: calc(var(--ods-theme-border-radius) / 2);
+  background-color: var(--ods-theme-backdrop-background-color);
+  width: 18px;
+  height: 18px;
+}
+
+.preview-z-index__front {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--preview-border-color);
+  border-radius: calc(var(--ods-theme-border-radius) / 2);
+  background-color: var(--preview-background-color);
+  width: 18px;
+  height: 18px;
+}

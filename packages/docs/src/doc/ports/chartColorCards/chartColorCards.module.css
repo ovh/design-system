@@ -1,0 +1,57 @@
+.chart-color-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--ods-theme-column-gap) * 2);
+  margin-top: calc(var(--ods-theme-padding-vertical) * 2);
+}
+
+.chart-color-cards__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  width: 100px;
+  overflow: hidden;
+}
+
+.chart-color-cards__card :global([data-ods="clipboard"]) {
+  display: block;
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+  min-width: unset;
+  height: auto;
+}
+
+.chart-color-cards__card :global([data-ods="clipboard-trigger"]) {
+  display: block;
+  border: none;
+  border-bottom: var(--ods-theme-border-width) solid var(--ods-color-neutral-100);
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  min-width: unset;
+  height: 75px;
+  min-height: 75px;
+}
+
+.chart-color-cards__card :global([data-ods="clipboard-trigger"]) :global([data-ods="icon"]) {
+  display: none;
+}
+
+.chart-color-cards__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.chart-color-cards__bottom__order {
+  color: var(--ods-theme-heading-text-color);
+}
+
+.chart-color-cards__bottom__hex {
+  color: var(--ods-theme-text-color);
+}

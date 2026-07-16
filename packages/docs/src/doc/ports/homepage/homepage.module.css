@@ -1,0 +1,63 @@
+/* Full-bleed inside the shell: the home route removes the content padding
+   (shell__content--flush). */
+.homepage {
+  background-attachment: fixed;
+  background-position: 65% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-block-size: 100%;
+}
+
+.homepage__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 4rem 3rem;
+  max-inline-size: 54rem;
+}
+
+.homepage__heading {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+}
+
+.homepage__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style-type: "";
+}
+
+.homepage__divider {
+  inline-size: 100%;
+}
+
+.homepage__tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1rem;
+  max-inline-size: 60rem;
+}
+
+.homepage__content__links {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1.25rem 2rem;
+  padding: 0;
+  list-style-type: "";
+  font-size: 1rem;
+}
+
+@media screen and (width < 600px) {
+  .homepage {
+    background-position: 75% center;
+  }
+
+  .homepage__content {
+    padding: 2.5rem;
+  }
+}

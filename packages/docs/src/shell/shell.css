@@ -81,13 +81,12 @@ body {
   gap: 6px;
 }
 
+/* Layout only — the look is the ODS Link's own. */
 .shell__github {
   align-items: center;
-  color: inherit;
-  display: flex;
+  display: inline-flex;
   font-size: .9rem;
   gap: 8px;
-  text-decoration: none;
 }
 
 .shell__main {

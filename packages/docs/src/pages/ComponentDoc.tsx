@@ -2,6 +2,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { type ComponentType, Suspense, lazy, useMemo, useState } from 'react';
 import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
+import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { PageStoriesProvider } from '../doc/PageStories';
 import { type NavPage } from '../nav/model';
@@ -37,11 +38,11 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
 
       { currentTab === 'documentation' && Doc && (
         <Suspense fallback={ <Skeleton style={{ height: '320px', marginTop: '16px', width: '100%' }} /> }>
-          <article className="doc">
+          <DocArticle>
             <MDXProvider components={ MDX_COMPONENTS }>
               <Doc />
             </MDXProvider>
-          </article>
+          </DocArticle>
         </Suspense>
       ) }
 

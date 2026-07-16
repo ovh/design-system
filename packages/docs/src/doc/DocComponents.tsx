@@ -2,7 +2,7 @@ import tsxLang from '@shikijs/langs/tsx';
 import oneDarkPro from '@shikijs/themes/one-dark-pro';
 import { composeStory } from '@storybook/react';
 import { type ComponentType, type ReactElement, type ReactNode, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -106,9 +106,20 @@ const DocImage = ({ alt, src }: { alt?: string, src?: string }) => {
   return <img alt={ alt ?? '' } className="doc__anatomy" src={ url } />;
 };
 
-const DocLink = ({ children, to }: { children: ReactNode, to: string }) => (
-  <RouterLink className="doc__link" to={ to }>{ children }</RouterLink>
-);
+/* Internal navigation with the ODS Link look: SPA routing, no reload. */
+const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
+  const navigate = useNavigate();
+  return (
+    <Link
+      href={ to }
+      onClick={ (event) => {
+        event.preventDefault();
+        navigate(to);
+      } }>
+      { children }
+    </Link>
+  );
+};
 
 const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
   <Link href={ href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>

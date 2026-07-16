@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
+import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { flattenPages, toTreeItems } from '../nav/model';
@@ -48,11 +49,11 @@ const Shell = () => {
         </div>
 
         <button className="shell__search-hint" onClick={ () => document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true })) } type="button">
-          <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
+          <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>cmd</Kbd>+<Kbd>k</Kbd></span>
         </button>
 
         <TreeView
-          defaultExpandedValue={ ['ods', 'tools', 'components'] }
+          defaultExpandedValue={ ['tools', 'components'] }
           items={ toTreeItems() }
           onValueChange={ ({ value }) => {
             const page = pages.find((p) => p.id === value[0]);
@@ -76,9 +77,9 @@ const Shell = () => {
         </TreeView>
 
         <div className="shell__sidebar-footer">
-          <a aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
+          <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
             <Icon name={ ICON_NAME.github } /> GitHub
-          </a>
+          </Link>
         </div>
       </aside>
 

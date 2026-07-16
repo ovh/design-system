@@ -1,4 +1,5 @@
 packages:
+  - "packages/docs"
   - "packages/examples/*"
   - "packages/ods-react"
   - "packages/ods-react/src/components/*"

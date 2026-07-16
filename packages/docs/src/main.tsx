@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams } from 'react-router-dom';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import { flattenPages } from './nav/model';
-import { ComponentPage } from './pages/ComponentPage';
+import { ComponentDoc } from './pages/ComponentDoc';
 import { Shell, type ShellContext } from './shell/Shell';
 
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
@@ -19,7 +19,7 @@ const ComponentRoute = () => {
   if (!page || !page.storiesModule || !page.raw) {
     return <Navigate replace to="/" />;
   }
-  return <ComponentPage dark={ false } key={ page.id } rawSource={ page.raw } storiesModule={ page.storiesModule } title={ page.title } tokens={ tokens } />;
+  return <ComponentDoc key={ page.id } page={ page } tokens={ tokens } />;
 };
 
 const SandboxRoute = () => {

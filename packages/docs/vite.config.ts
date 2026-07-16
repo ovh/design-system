@@ -1,11 +1,12 @@
 import react from '@vitejs/plugin-react';
+import { llmsEmit } from './vite-plugin-llms';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 
 // The docs app compiles ods-react sources and the public CSF stories directly
 // from their sibling packages (same model as the current Storybook), so the
 // dev server must be allowed to read across the workspace.
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), llmsEmit()],
   resolve: {
     // ods-react sources pull @ark-ui/react, whose peer react resolves to
     // ods-react's own copy (18.x on master): dedupe forces every bare

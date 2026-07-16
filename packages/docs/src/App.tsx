@@ -2,6 +2,9 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import * as ButtonStories from '../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../storybook/stories/components/datepicker/datepicker.stories';
+import ButtonRaw from '../../storybook/stories/components/button/button.stories.tsx?raw';
+import CommandRaw from '../../storybook/stories/components/command/command.stories.tsx?raw';
+import DatepickerRaw from '../../storybook/stories/components/datepicker/datepicker.stories.tsx?raw';
 import { Input } from '../../ods-react/src/components/input/src';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '../../ods-react/src/components/tabs/src';
@@ -13,9 +16,9 @@ import './shell/dark.css';
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 
 const COBAYES = [
-  { key: 'button', module: ButtonStories, title: 'Button' },
-  { key: 'command', module: CommandStories, title: 'Command' },
-  { key: 'datepicker', module: DatepickerStories, title: 'Datepicker' },
+  { key: 'button', module: ButtonStories, raw: ButtonRaw, title: 'Button' },
+  { key: 'command', module: CommandStories, raw: CommandRaw, title: 'Command' },
+  { key: 'datepicker', module: DatepickerStories, raw: DatepickerRaw, title: 'Datepicker' },
 ] as const;
 
 const App = () => {
@@ -84,7 +87,7 @@ const App = () => {
             <Sandbox dark={ false } tokens={ tokens } />
           </Suspense>
         )
-        : <ComponentPage dark={ false } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
+        : <ComponentPage dark={ false } rawSource={ cobaye.raw } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
     </main>
   );
 };

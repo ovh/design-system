@@ -50,7 +50,16 @@ body {
 }
 
 .shell__sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: auto;
+}
+
+.shell__tree-label {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
 }
 
 .shell__github {

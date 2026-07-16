@@ -1,12 +1,10 @@
-import tsxLang from '@shikijs/langs/tsx';
-import oneDarkPro from '@shikijs/themes/one-dark-pro';
 import { composeStory } from '@storybook/react';
 import { type ComponentType, type ReactElement, type ReactNode, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
-import { Code } from '../../../ods-react/src/components/code/src';
+import { CodeBlock } from './CodeBlock';
 import { Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
@@ -129,11 +127,7 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
 const CodeFence = ({ children }: { children?: ReactNode }) => {
   const codeEl = children as ReactElement<{ children: string }> | undefined;
   const source = typeof codeEl?.props?.children === 'string' ? codeEl.props.children.trim() : '';
-  return (
-    <Code highlighter={{ language: tsxLang, theme: oneDarkPro }} style={{ display: 'block', margin: '1rem 0' }}>
-      { source }
-    </Code>
-  );
+  return <CodeBlock style={{ display: 'block', margin: '1rem 0' }}>{ source }</CodeBlock>;
 };
 
 const MDX_COMPONENTS = {

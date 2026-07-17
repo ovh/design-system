@@ -135,6 +135,14 @@
   }
 }
 
+/* MDX wraps message text in <p> (browser default margin: 1em): inside a
+   message body they are plain lines — the component top-aligns its icon on
+   the first one, and the paragraph margins were pushing the text away and
+   inflating the block. */
+[data-ods="message-body"] p {
+  margin: 0;
+}
+
 /* The shiki pre paints its own inline background; the ODS Code root owns the
    surface instead, so padding area and code stay one single block. */
 [data-ods="code"] .shiki {

@@ -68,8 +68,8 @@ const Shell = () => {
           <TreeViewNodes>
             { toTreeItems().map((item) => (
               <TreeViewNode item={ item } key={ item.id }>
-                { ({ customData, item: node }) => (
-                  <span className="shell__tree-label">
+                { ({ customData, isBranch, item: node }) => (
+                  <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
                     { (customData as { icon?: Parameters<typeof Icon>[0]['name'] })?.icon && <Icon name={ (customData as { icon: Parameters<typeof Icon>[0]['name'] }).icon } /> }
                     <span>{ node.name }</span>
                   </span>

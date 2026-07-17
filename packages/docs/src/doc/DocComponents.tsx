@@ -127,7 +127,7 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
 const CodeFence = ({ children }: { children?: ReactNode }) => {
   const codeEl = children as ReactElement<{ children: string }> | undefined;
   const source = typeof codeEl?.props?.children === 'string' ? codeEl.props.children.trim() : '';
-  return <CodeBlock style={{ display: 'block', margin: '1rem 0' }}>{ source }</CodeBlock>;
+  return <CodeBlock style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
 };
 
 const MDX_COMPONENTS = {

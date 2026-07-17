@@ -119,12 +119,12 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV): NavPage[] {
 }
 
 /* TreeView items derived from the model; leaf ids = page ids so a tree
-   selection maps straight to a route. Icons show on the top level only —
-   an icon per row drowns the labels. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, depth = 0): { children?: unknown[], customRendererData?: { icon?: ICON_NAME }, id: string, name: string }[] {
+   selection maps straight to a route. Icons mark the pages (leaves); the
+   sections are already marked by their chevron. */
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknown[], customRendererData?: { icon?: ICON_NAME }, id: string, name: string }[] {
   return nodes.map((node) => (isPage(node)
-    ? { customRendererData: { icon: depth === 0 ? node.icon : undefined }, id: node.id, name: node.title }
-    : { children: toTreeItems(node.children, depth + 1), customRendererData: { icon: depth === 0 ? node.icon : undefined }, id: node.id, name: node.title }));
+    ? { customRendererData: { icon: node.icon }, id: node.id, name: node.title }
+    : { children: toTreeItems(node.children), customRendererData: {}, id: node.id, name: node.title }));
 }
 
 export { NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection };

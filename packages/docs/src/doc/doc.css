@@ -134,3 +134,15 @@
     display: none;
   }
 }
+
+/* The shiki pre paints its own inline background; the ODS Code root owns the
+   surface instead, so padding area and code stay one single block. */
+[data-ods="code"] .shiki {
+  background-color: transparent !important;
+}
+
+/* Light mode: a border marks the block boundary on the light surface (the
+   background itself comes from the shiki theme — see CodeBlock.tsx). */
+body:not([data-theme="dark"]) [data-ods="code"] {
+  border: 1px solid var(--ods-color-neutral-200);
+}

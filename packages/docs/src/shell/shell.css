@@ -15,7 +15,7 @@ body {
 
 .shell {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 296px 1fr;
   height: 100dvh;
   overflow: hidden;
 }
@@ -52,9 +52,9 @@ body {
 .shell__sidebar-selects {
   display: grid;
   gap: 8px;
-  /* minmax(0): a long version label must shrink its cell, not overflow it.
-     The version cell is wider — "latest (19.7.3)" beats "System". */
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  /* The theme cell hugs its content, the version cell takes the rest;
+     minmax(0) so neither ever overflows the sidebar. */
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
 }
 
 .shell__sidebar-selects [data-ods="select-control"] {
@@ -96,6 +96,10 @@ body {
   align-items: center;
   display: inline-flex;
   gap: 6px;
+}
+
+.shell__tree-label--section {
+  font-weight: 600;
 }
 
 /* Layout only — the look is the ODS Link's own. */

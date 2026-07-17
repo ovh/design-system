@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       { element: <Homepage />, path: '/' },
       { element: <ChangelogRoute />, path: '/guides/changelog' },
       { element: <GuideRoute />, path: '/guides/:key' },
-      { element: <ComponentRoute />, path: '/components/:key' },
+      { element: <ComponentRoute />, path: '/components/:key/:tab?' },
       { element: <SandboxRoute />, path: '/tools/sandbox' },
       { element: <Navigate replace to="/" />, path: '*' },
     ],

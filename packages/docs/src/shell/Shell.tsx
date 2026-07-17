@@ -29,7 +29,10 @@ const Shell = () => {
     return () => window.clearTimeout(idle);
   }, []);
 
-  const currentPage = pages.find((page) => page.path === location.pathname);
+  // Exact match first; then prefix match so sub-views (/components/x/examples)
+  // still highlight their page in the tree.
+  const currentPage = pages.find((page) => page.path === location.pathname)
+    ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};

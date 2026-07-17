@@ -88,7 +88,7 @@ function detectCurrentChannel(): string {
 }
 
 const VERSION_ITEMS = [
-  { label: 'latest', value: 'latest' },
+  { label: `latest (${(versions as string[])[0]})`, value: 'latest' },
   ...(versions as string[]).map((v) => ({ label: `v${v}`, value: v })),
 ];
 

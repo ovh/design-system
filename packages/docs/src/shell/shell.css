@@ -52,7 +52,17 @@ body {
 .shell__sidebar-selects {
   display: grid;
   gap: 8px;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0): a long version label must shrink its cell, not overflow it.
+     The version cell is wider — "latest (19.7.3)" beats "System". */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+
+.shell__sidebar-selects [data-ods="select-control"] {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .shell__search-hint {

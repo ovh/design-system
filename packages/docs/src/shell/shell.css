@@ -38,8 +38,15 @@ body {
 }
 
 .shell__brand-logo {
-  display: block;
-  width: 170px;
+  display: flex;
+  margin: auto;
+  width: 150px;
+}
+
+.shell__select-item {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
 }
 
 .shell__sidebar-selects {

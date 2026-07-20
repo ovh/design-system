@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
-import { Link } from '../ods';
+import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 
 interface TocEntry {
   id: string;
@@ -7,23 +7,48 @@ interface TocEntry {
   level: number;
 }
 
-/* "On this page" — the clickable list of the page's own section titles.
-   Headings render with slugified ids (Heading contract); the MDX content
-   mounts lazily, so the list is (re)collected through a MutationObserver
-   instead of a one-shot scan. */
+interface TocItem {
+  children?: TocItem[];
+  id: string;
+  name: string;
+}
+
+/* h2 headings become branches, the h3 below them their leaves. */
+function toTocItems(entries: TocEntry[]): TocItem[] {
+  const items: TocItem[] = [];
+  for (const entry of entries) {
+    const item = { id: entry.id, name: entry.label };
+    const last = items[items.length - 1];
+    if (entry.level === 3 && last) {
+      last.children = [...(last.children ?? []), item];
+    } else {
+      items.push(item);
+    }
+  }
+  return items;
+}
+
+/* "On this page" — the page's own section titles, in the same TreeView as
+   the sidebar. Headings render with slugified ids (Heading contract); the
+   MDX content mounts lazily, so the list is (re)collected through a
+   MutationObserver instead of a one-shot scan. */
 const PageToc = ({ container }: { container: HTMLElement | null }) => {
   const [entries, setEntries] = useState<TocEntry[]>([]);
+  const [expanded, setExpanded] = useState<string[]>([]);
+  const [active, setActive] = useState<string>('');
 
   useEffect(() => {
     if (!container) {
       return;
     }
     const collect = () => {
-      setEntries([...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
+      const found = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
         id: el.id,
         label: el.textContent ?? '',
         level: el.tagName === 'H2' ? 2 : 3,
-      })));
+      }));
+      setEntries((previous) => (JSON.stringify(previous) === JSON.stringify(found) ? previous : found));
+      setExpanded(found.filter((entry) => entry.level === 2).map((entry) => entry.id));
     };
     collect();
     const observer = new MutationObserver(collect);
@@ -34,22 +59,42 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   if (entries.length < 2) {
     return null;
   }
+
+  const goTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, '', `#${id}`);
+    setActive(id);
+  };
+
+  const items = toTocItems(entries);
+
   return (
     <nav aria-label="On this page" className="doc-layout__toc">
       <span className="doc-layout__toc-title">On this page</span>
-      { entries.map((entry) => (
-        <Link
-          className={ entry.level === 3 ? 'doc-layout__toc-link doc-layout__toc-link--sub' : 'doc-layout__toc-link' }
-          href={ `#${entry.id}` }
-          key={ entry.id }
-          onClick={ (event) => {
-            event.preventDefault();
-            document.getElementById(entry.id)?.scrollIntoView({ behavior: 'smooth' });
-            history.replaceState(null, '', `#${entry.id}`);
-          } }>
-          { entry.label }
-        </Link>
-      )) }
+      <TreeView
+        expandedValue={ expanded }
+        items={ items }
+        onExpandedChange={ ({ expandedValue }) => setExpanded(expandedValue) }
+        onValueChange={ ({ value }) => value[0] && goTo(value[0]) }
+        value={ active ? [active] : [] }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode item={ item } key={ item.id }>
+              { ({ item: node }) => (
+                <span
+                  className="doc-layout__toc-node"
+                  onClick={ (event) => {
+                    // The label scrolls; only the chevron collapses a branch.
+                    event.stopPropagation();
+                    goTo(node.id);
+                  } }>
+                  { node.name }
+                </span>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
     </nav>
   );
 };

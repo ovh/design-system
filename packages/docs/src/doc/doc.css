@@ -121,8 +121,11 @@
   text-transform: uppercase;
 }
 
-.doc-layout__toc-link--sub {
-  margin-left: 12px;
+.doc-layout__toc-node {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 1100px) {

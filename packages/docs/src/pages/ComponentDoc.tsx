@@ -6,36 +6,46 @@ import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/compone
 import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { PageStoriesProvider } from '../doc/PageStories';
+import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
+import { hasTechData } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
 import { ComponentPage } from './ComponentPage';
 
-/* Component page = Documentation (neutral-format MDX rendered through the
-   provider) + Examples (every public story composed). The MDX modules load
-   lazily per component. */
+/* Component page = Documentation (neutral-format MDX) + Technical information
+   (props/enums/css from the typedoc JSON) + Examples (every public story
+   composed). The active tab lives in the URL so every view is deep-linkable. */
 
 const DOC_MODULES = import.meta.glob('../content/components/*/documentation.mdx');
 
 const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, string> }) => {
-  // The active tab lives in the URL (/components/:key/examples) so views are
-  // deep-linkable.
   const { tab } = useParams();
   const navigate = useNavigate();
 
-  const docKey = `../content/components/${page.id.replace('components/', '')}/documentation.mdx`;
-  const loader = DOC_MODULES[docKey];
+  const componentKey = page.id.replace('components/', '');
+  const loader = DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`];
   const Doc = useMemo(
     () => (loader ? lazy(loader as () => Promise<{ default: ComponentType }>) : null),
     [loader],
   );
-  const currentTab = !Doc || tab === 'examples' ? 'examples' : 'documentation';
+  const hasTech = hasTechData(componentKey);
+
+  const tabs = [
+    Doc && { label: 'Documentation', value: 'documentation' },
+    hasTech && { label: 'Technical information', value: 'technical' },
+    { label: 'Examples', value: 'examples' },
+  ].filter(Boolean) as { label: string, value: string }[];
+
+  // Fall back to the first available tab when the URL segment isn't valid here.
+  const requested = tab ?? 'documentation';
+  const currentTab = tabs.some((entry) => entry.value === requested) ? requested : tabs[0].value;
+  const toPath = (value: string) => (value === 'documentation' ? page.path : `${page.path}/${value}`);
 
   return (
     <PageStoriesProvider raw={ page.raw } storiesModule={ page.storiesModule }>
-      { Doc && (
-        <Tabs onValueChange={ ({ value }) => navigate(value === 'examples' ? `${page.path}/examples` : page.path) } value={ currentTab } variant={ TABS_VARIANT.switch }>
+      { tabs.length > 1 && (
+        <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
           <TabList>
-            <Tab value="documentation">Documentation</Tab>
-            <Tab value="examples">Examples</Tab>
+            { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
           </TabList>
         </Tabs>
       ) }
@@ -48,6 +58,12 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
             </MDXProvider>
           </DocArticle>
         </Suspense>
+      ) }
+
+      { currentTab === 'technical' && (
+        <DocArticle>
+          <TechnicalSpecification component={ componentKey } />
+        </DocArticle>
       ) }
 
       { currentTab === 'examples' && (

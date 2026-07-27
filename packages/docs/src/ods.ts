@@ -10,7 +10,7 @@ export { ICON_NAME, Icon } from '../../ods-react/src/components/icon/src';
 export { Link } from '../../ods-react/src/components/link/src';
 export { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../ods-react/src/components/message/src';
 export { Spinner } from '../../ods-react/src/components/spinner/src';
-export { TABLE_SIZE, Table } from '../../ods-react/src/components/table/src';
+export { TABLE_SIZE, TABLE_VARIANT, Table } from '../../ods-react/src/components/table/src';
 export { TEXT_PRESET, Text } from '../../ods-react/src/components/text/src';
 export { Tooltip, TooltipContent, TooltipTrigger } from '../../ods-react/src/components/tooltip/src';
 export { LOCALES } from '../../ods-react/src/utils/locales';

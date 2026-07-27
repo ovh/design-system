@@ -57,6 +57,11 @@
   gap: 6px;
 }
 
+/* The anatomy tree never collapses, so its expand chevron is just noise. */
+.anatomy [data-part="branch-indicator"] {
+  display: none;
+}
+
 .anatomy__tree-icon {
   color: var(--ods-theme-neutral-color);
 }

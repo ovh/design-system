@@ -56,6 +56,45 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
     return () => observer.disconnect();
   }, [container]);
 
+  /* Scroll-spy: select the heading the reader is currently on. Reads the
+     scroll container (the shell main pane) and picks the last heading that
+     crossed the trigger line near the top. */
+  useEffect(() => {
+    if (!container || entries.length < 2) {
+      return;
+    }
+    const scroller = container.closest<HTMLElement>('.shell__main') ?? document.documentElement;
+    const TRIGGER = 120;
+    let frame = 0;
+
+    const spy = () => {
+      frame = 0;
+      const top = scroller.getBoundingClientRect().top + TRIGGER;
+      let current = entries[0].id;
+      for (const entry of entries) {
+        const el = document.getElementById(entry.id);
+        if (el && el.getBoundingClientRect().top <= top) {
+          current = entry.id;
+        }
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) {
+        frame = requestAnimationFrame(spy);
+      }
+    };
+
+    spy();
+    scroller.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      scroller.removeEventListener('scroll', onScroll);
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+    };
+  }, [container, entries]);
+
   if (entries.length < 2) {
     return null;
   }

@@ -10,6 +10,9 @@ import fontsCss from '@ovhcloud/ods-themes/default/fonts?inline';
 interface DemoFrameProp {
   children: ReactNode;
   dark?: boolean;
+  /* Fires with the frame document once it has painted — for callers that
+     measure the rendered DOM (the anatomy highlighter). */
+  onReady?: (frameDocument: Document) => void;
   /* Hot token overrides (theme generator use case), e.g. { '--ods-color-primary-500': '#ff0000' } */
   tokens?: Record<string, string>;
 }
@@ -166,8 +169,9 @@ const FrameRealm = ({ children }: { children: ReactNode }) => {
 const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${window.location.origin}/"></head><body><div id="mount"></div></body></html>`;
 
 /* Flips ready once the frame content has painted with its fonts, so the
-   parent can swap the skeleton for the real frame without layout jumps. */
-const FrameReady = ({ onReady }: { onReady: () => void }) => {
+   parent can swap the skeleton for the real frame without layout jumps.
+   Hands the frame document back so callers can measure inside it. */
+const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void }) => {
   const { document: frameDocument } = useContext(FrameContext);
 
   useEffect(() => {
@@ -177,7 +181,7 @@ const FrameReady = ({ onReady }: { onReady: () => void }) => {
     let cancelled = false;
     frameDocument.fonts.ready.then(() => {
       if (!cancelled) {
-        requestAnimationFrame(onReady);
+        requestAnimationFrame(() => onReady(frameDocument));
       }
     });
     return () => { cancelled = true; };
@@ -186,7 +190,7 @@ const FrameReady = ({ onReady }: { onReady: () => void }) => {
   return null;
 };
 
-const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ children, dark, onReady, tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -206,7 +210,7 @@ const DemoFrame = ({ children, dark, tokens }: DemoFrameProp) => {
         <StyleSync />
         <FrameAutoSize active={ ready } />
         <FrameEnv dark={ dark } tokens={ tokens } />
-        <FrameReady onReady={ () => setReady(true) } />
+        <FrameReady onReady={ (frameDocument) => { setReady(true); onReady?.(frameDocument); } } />
         <FrameRealm>{ children }</FrameRealm>
       </Frame>
     </>

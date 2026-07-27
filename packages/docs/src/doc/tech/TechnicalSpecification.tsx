@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
+import { AnatomyBrowser } from './AnatomyBrowser';
 import { getTechData } from './techData';
 import './tech.css';
 
@@ -33,8 +34,15 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
     .map(([name, value]) => ({ name, type: guessTokenType(name), value }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const componentNames = spec.components.map((entry) => entry.name);
+
   return (
     <div className="tech">
+      <section>
+        <SectionHeading label="Anatomy" />
+        <AnatomyBrowser names={ componentNames } />
+      </section>
+
       { spec.components.map((entry) => (
         <section key={ entry.name }>
           <SectionHeading label={ entry.name } />

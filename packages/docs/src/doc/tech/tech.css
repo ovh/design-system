@@ -38,3 +38,37 @@
   color: var(--ods-color-neutral-600);
   margin: 8px 0 12px;
 }
+
+.anatomy {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 200px auto 1fr;
+  margin-bottom: 24px;
+}
+
+.anatomy__tree {
+  padding: 8px;
+}
+
+.anatomy__tree-item {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.anatomy__stage {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+
+.anatomy__highlight {
+  border: 2px solid var(--ods-color-primary-500);
+  background-color: color-mix(in srgb, var(--ods-color-primary-500) 12%, transparent);
+  border-radius: 2px;
+  pointer-events: none;
+  position: absolute;
+  transition: all .15s ease;
+}

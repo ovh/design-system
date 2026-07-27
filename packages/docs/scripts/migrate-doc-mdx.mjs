@@ -70,6 +70,10 @@ function transformProse(out, aliases) {
   out = out.replace(/<Banner[^>]*\/>\n?/g, '');
   out = out.replace(/<NoToC[^>]*\/>\n?/g, '');
 
+  // The page title lives in the shell topbar now, so a level-1 doc heading
+  // just repeats it — drop it (headings start at level 2).
+  out = out.replace(/<Heading[^>]*\blevel=\{\s*1\s*\}[^>]*\/>\n?/g, '');
+
   // Story references by name; cross-component refs keep a from="<component>"
   // so the page can resolve the right module.
   out = out.replace(/<Canvas of=\{\s*(\w+)\.(\w+)\s*\}([^>]*?)\/>/g, (_m, alias, story, rest) => {

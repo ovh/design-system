@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
@@ -24,7 +24,10 @@ const SectionHeading = ({ children, label }: { children?: React.ReactNode, label
 );
 
 const TechnicalSpecification = ({ component }: { component: string }) => {
-  const data = getTechData(component);
+  // Memoized so the parsed spec (and the names array handed to the anatomy)
+  // keep a stable identity across renders.
+  const data = useMemo(() => getTechData(component), [component]);
+  const componentNames = useMemo(() => data?.spec.components.map((entry) => entry.name) ?? [], [data]);
   if (!data) {
     return null;
   }
@@ -33,8 +36,6 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
   const tokens = Object.entries(cssVariables)
     .map(([name, value]) => ({ name, type: guessTokenType(name), value }))
     .sort((a, b) => a.name.localeCompare(b.name));
-
-  const componentNames = spec.components.map((entry) => entry.name);
 
   return (
     <div className="tech">

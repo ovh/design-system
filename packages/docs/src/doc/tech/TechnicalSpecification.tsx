@@ -1,11 +1,20 @@
 import { Fragment } from 'react';
-import { BADGE_COLOR, Badge, ICON_NAME, Icon, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
+import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
 import { getTechData } from './techData';
 import './tech.css';
 
 const PROP_COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
+
+const NativeAttributesNote = ({ element }: { element: string }) => (
+  <p className="tech__extends">
+    This component extends all the native{' '}
+    <Link href={ `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${element}#attributes` } target="_blank">
+      &lt;{ element }&gt; attributes <Icon name={ ICON_NAME.externalLink } />
+    </Link>.
+  </p>
+);
 
 const SectionHeading = ({ children, label }: { children?: React.ReactNode, label: string }) => (
   <Text as="h2" className="doc__heading tech__heading" id={ label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') } preset={ TEXT_PRESET.heading4 }>
@@ -29,8 +38,9 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
       { spec.components.map((entry) => (
         <section key={ entry.name }>
           <SectionHeading label={ entry.name } />
+          { entry.nativeElement && <NativeAttributesNote element={ entry.nativeElement } /> }
           { entry.props.length === 0
-            ? <p className="tech__empty">This component has no specific properties.</p>
+            ? !entry.nativeElement && <p className="tech__empty">This component has no specific properties.</p>
             : (
               <Table variant={ TABLE_VARIANT.striped }>
                 <thead>

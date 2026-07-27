@@ -21,6 +21,7 @@ type Node = {
   flags?: { isConst?: boolean; isOptional?: boolean };
   children?: Node[];
   type?: RawType;
+  extendedTypes?: RawType[];
   comment?: { summary?: Part[]; blockTags?: BlockTag[] };
   typeParameters?: { name: string; kind?: number }[];
 };
@@ -50,6 +51,7 @@ interface PropRow {
 
 interface ComponentSpec {
   name: string;
+  nativeElement?: string;
   props: PropRow[];
 }
 
@@ -153,6 +155,25 @@ function declarationName(node: Node): string {
   return param ? `${node.name}<${param.name}>` : node.name ?? '';
 }
 
+/* When a *Prop interface extends React.ComponentPropsWith(out)Ref<'x'>, that
+   'x' is the native element whose attributes the component also accepts —
+   find it, even wrapped in an Omit<…>. */
+function findNativeElement(types?: RawType[]): string | undefined {
+  for (const type of types ?? []) {
+    if ((type.name === 'ComponentPropsWithRef' || type.name === 'ComponentPropsWithoutRef')) {
+      const element = type.typeArguments?.find((arg) => arg.type === 'literal')?.value;
+      if (typeof element === 'string') {
+        return element;
+      }
+    }
+    const nested = findNativeElement(type.typeArguments);
+    if (nested) {
+      return nested;
+    }
+  }
+  return undefined;
+}
+
 /* The *Prop interfaces become the component prop tables. */
 function getComponentProps(root: Node): ComponentSpec[] {
   const specs = (root.children ?? [])
@@ -171,7 +192,11 @@ function getComponentProps(root: Node): ComponentSpec[] {
           type: tags.get(TAG.type) ?? typeToString(child.type) ?? '',
         };
       });
-      return { name: (node.name ?? '').replace(/Props?$/, ''), props: sortByName(props) };
+      return {
+        name: (node.name ?? '').replace(/Props?$/, ''),
+        nativeElement: findNativeElement(node.extendedTypes),
+        props: sortByName(props),
+      };
     });
   return specs;
 }

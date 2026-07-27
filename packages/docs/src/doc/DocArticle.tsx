@@ -110,10 +110,11 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   return (
     <nav aria-label="On this page" className="doc-layout__toc">
       <span className="doc-layout__toc-title">On this page</span>
+      { /* Sections stay open: expandedValue is held at every branch and no
+           onExpandedChange is wired, so the tree can't be collapsed. */ }
       <TreeView
         expandedValue={ expanded }
         items={ items }
-        onExpandedChange={ ({ expandedValue }) => setExpanded(expandedValue) }
         onValueChange={ ({ value }) => value[0] && goTo(value[0]) }
         value={ active ? [active] : [] }>
         <TreeViewNodes>

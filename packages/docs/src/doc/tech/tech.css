@@ -1,0 +1,35 @@
+.tech section {
+  margin-bottom: 32px;
+}
+
+.tech table {
+  width: 100%;
+}
+
+.tech__heading {
+  margin-top: 8px;
+}
+
+.tech__prop-name {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.tech__type {
+  font-family: var(--ods-theme-font-family-code, monospace);
+  font-size: .85em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.tech__enum {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+}
+
+.tech__empty {
+  color: var(--ods-color-neutral-500);
+}

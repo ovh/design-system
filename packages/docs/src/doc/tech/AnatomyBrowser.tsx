@@ -124,8 +124,9 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
   return (
     <div className="anatomy">
       <Card className="anatomy__tree" color={ CARD_COLOR.neutral }>
+        { /* expandedValue held (no onExpandedChange) so the tree never collapses. */ }
         <TreeView
-          defaultExpandedValue={ [root] }
+          expandedValue={ [root] }
           items={ items }
           onValueChange={ ({ value }) => value[0] && setSelected(value[0]) }
           value={ [selected] }>

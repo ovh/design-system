@@ -33,3 +33,8 @@
 .tech__empty {
   color: var(--ods-color-neutral-500);
 }
+
+.tech__extends {
+  color: var(--ods-color-neutral-600);
+  margin: 8px 0 12px;
+}

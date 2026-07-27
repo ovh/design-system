@@ -44,49 +44,67 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
     setFrameDocument(doc);
   }, []);
 
+  /* Start on the first part that actually renders (some roots — the Command
+     modal — own no data-ods element of their own). Once per frame. */
   useEffect(() => {
-    if (!frameDocument) {
+    if (!frameDocument || autoSelected.current) {
       return;
     }
-    const iframe = frameDocument.defaultView?.frameElement;
-    if (!iframe) {
-      return;
-    }
-    const compute = () => {
-      // Start on the first part that actually renders (some roots — the
-      // Command modal — own no data-ods element of their own).
-      if (!autoSelected.current) {
-        const available = names.find((name) => frameDocument.querySelector(`[data-ods="${kebab(name)}"]`));
-        if (available && available !== selected) {
-          autoSelected.current = true;
-          setSelected(available);
-          return;
-        }
+    const pick = () => {
+      const available = names.find((name) => frameDocument.querySelector(`[data-ods="${kebab(name)}"]`));
+      if (available) {
         autoSelected.current = true;
+        setSelected(available);
       }
-      const frameRect = iframe.getBoundingClientRect();
-      const els = [...frameDocument.querySelectorAll<HTMLElement>(`[data-ods="${kebab(selected)}"]`)]
-        .filter((el) => el.offsetParent !== null);
-      setTargets(els.map((el) => {
-        const rect = el.getBoundingClientRect();
-        return { height: rect.height, left: frameRect.left + rect.left, top: frameRect.top + rect.top, width: rect.width };
-      }));
     };
-    const frame = requestAnimationFrame(compute);
-    const timer = window.setTimeout(compute, 150);
-    const observer = new ResizeObserver(compute);
-    observer.observe(frameDocument.body);
-    const scroller = iframe.closest<HTMLElement>('.shell__main') ?? window;
-    scroller.addEventListener('scroll', compute, { passive: true });
-    window.addEventListener('resize', compute);
+    const frame = requestAnimationFrame(pick);
+    const timer = window.setTimeout(pick, 150);
     return () => {
       cancelAnimationFrame(frame);
       window.clearTimeout(timer);
-      observer.disconnect();
-      scroller.removeEventListener('scroll', compute);
-      window.removeEventListener('resize', compute);
     };
-  }, [frameDocument, selected, names]);
+  }, [frameDocument, names]);
+
+  useEffect(() => {
+    const iframe = frameDocument?.defaultView?.frameElement;
+    if (!frameDocument || !iframe || !selected) {
+      return;
+    }
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
+      const frameRect = iframe.getBoundingClientRect();
+      const next = [...frameDocument.querySelectorAll<HTMLElement>(`[data-ods="${kebab(selected)}"]`)]
+        .filter((el) => el.offsetParent !== null)
+        .map((el) => {
+          const rect = el.getBoundingClientRect();
+          return { height: rect.height, left: frameRect.left + rect.left, top: frameRect.top + rect.top, width: rect.width };
+        });
+      // Skip no-op updates so measurement never feeds a render loop.
+      setTargets((prev) => (JSON.stringify(prev) === JSON.stringify(next) ? prev : next));
+    };
+    const schedule = () => {
+      if (!raf) {
+        raf = requestAnimationFrame(measure);
+      }
+    };
+    schedule();
+    const timer = window.setTimeout(schedule, 150);
+    const observer = new ResizeObserver(schedule);
+    observer.observe(frameDocument.body);
+    const scroller = iframe.closest<HTMLElement>('.shell__main') ?? window;
+    scroller.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      if (raf) {
+        cancelAnimationFrame(raf);
+      }
+      window.clearTimeout(timer);
+      observer.disconnect();
+      scroller.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
+  }, [frameDocument, selected]);
 
   if (!Composed) {
     return null;

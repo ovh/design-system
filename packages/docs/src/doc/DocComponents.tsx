@@ -36,8 +36,13 @@ const Heading = ({ children, label, level }: { children?: ReactNode, label: stri
   );
 };
 
-const Canvas = ({ source = 'shown', story }: { source?: 'shown' | 'none', story: string }) => {
-  const { raw, storiesModule } = usePageStories();
+const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'shown' | 'none', story: string }) => {
+  const page = usePageStories();
+  // A guide's <Canvas from="button" /> pulls that component's module; a
+  // component page uses its single storiesModule.
+  const resolved = from ? page.storyModules?.[from] : { module: page.storiesModule, raw: page.raw };
+  const storiesModule = resolved?.module;
+  const raw = resolved?.raw;
   const Composed = useMemo(() => {
     const storyExport = storiesModule?.[story];
     if (!storyExport) {

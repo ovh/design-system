@@ -57,18 +57,32 @@
   gap: 6px;
 }
 
+.anatomy__tree-icon {
+  color: var(--ods-theme-neutral-color);
+}
+
+.anatomy__tree-icon--active {
+  color: var(--ods-theme-primary-color);
+}
+
+/* The story renders in a DemoFrame (iframe) so overlay parts lay out exactly
+   as in real usage; the frame fills this column. */
 .anatomy__stage {
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-  position: relative;
+  min-width: 0;
+}
+
+/* Highlights ride a fixed layer in viewport coordinates: they sit over the
+   iframe, offset by its position (measured inside the frame). */
+.anatomy__overlay {
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 40;
 }
 
 .anatomy__highlight {
-  border: 2px solid var(--ods-color-primary-500);
-  background-color: color-mix(in srgb, var(--ods-color-primary-500) 12%, transparent);
   border-radius: 2px;
-  pointer-events: none;
+  outline: 2px dashed #c54600;
   position: absolute;
-  transition: all .15s ease;
+  transition: all .12s ease;
 }

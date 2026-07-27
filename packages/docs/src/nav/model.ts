@@ -2,11 +2,9 @@ import { ICON_NAME } from '../../../ods-react/src/components/icon/src';
 import * as ButtonStories from '../../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../../storybook/stories/components/datepicker/datepicker.stories';
-import * as FormFieldStories from '../../../storybook/stories/components/form-field/form-field.stories';
 import ButtonRaw from '../../../storybook/stories/components/button/button.stories.tsx?raw';
 import CommandRaw from '../../../storybook/stories/components/command/command.stories.tsx?raw';
 import DatepickerRaw from '../../../storybook/stories/components/datepicker/datepicker.stories.tsx?raw';
-import FormFieldRaw from '../../../storybook/stories/components/form-field/form-field.stories.tsx?raw';
 
 /* Navigation model of the docs app — the single source the sidebar tree, the
    router and the ⌘K search are all derived from. Mirrors the editorial
@@ -42,7 +40,7 @@ const NAV: (NavSection | NavPage)[] = [
     children: [
       { icon: ICON_NAME.file, id: 'guides/accessibility', kind: 'guide', path: '/guides/accessibility', title: 'Accessibility' },
       { icon: ICON_NAME.file, id: 'guides/internationalization', kind: 'guide', path: '/guides/internationalization', title: 'Internationalization' },
-      { icon: ICON_NAME.file, id: 'guides/forms', kind: 'guide', path: '/guides/forms', raw: FormFieldRaw, storiesModule: FormFieldStories, title: 'Forms' },
+      { icon: ICON_NAME.file, id: 'guides/forms', kind: 'guide', path: '/guides/forms', title: 'Forms' },
       { icon: ICON_NAME.file, id: 'guides/charts', kind: 'guide', path: '/guides/charts', title: 'Charts' },
     ],
   },

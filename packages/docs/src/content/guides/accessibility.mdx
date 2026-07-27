@@ -33,12 +33,12 @@ In addition to the predefined accessibility features of our components, you can 
 
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> when an element needs a descriptive name but has no visible text.
 
-<Canvas story="AccessibilityBadPracticeIconOnly" />
+<Canvas story="AccessibilityBadPracticeIconOnly" from="button" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce a button.
 
-<Canvas story="AccessibilityIconOnly" />
+<Canvas story="AccessibilityIconOnly" from="button" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a button and the aria-label.
@@ -56,12 +56,12 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
 
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to associate an element with an existing label (instead of duplicating text).
 
-<Canvas story="AccessibilityBadPracticeLabelledBy" />
+<Canvas story="AccessibilityBadPracticeLabelledBy" from="button" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce a button.
 
-<Canvas story="AccessibilityLabelledBy" />
+<Canvas story="AccessibilityLabelledBy" from="button" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> When the **Button** is focused, the screen reader should announce the linked label.
@@ -189,12 +189,12 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
   </tbody>
 </Table>
 
-<Canvas story="AccessibilityBadPracticesAria" />
+<Canvas story="AccessibilityBadPracticesAria" from="modal" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers won't announce the **Modal** content.
 
-<Canvas story="AccessibilityAriaLabelledBy" />
+<Canvas story="AccessibilityAriaLabelledBy" from="modal" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the **Modal** content.
@@ -209,7 +209,7 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
 
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">aria-hidden</ExternalLink> set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
 
-<Canvas story="AccessibilityBadPracticeDecorative" />
+<Canvas story="AccessibilityBadPracticeDecorative" from="icon" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Some screen readers will announce the icon and detect the presence of the image.
@@ -222,7 +222,7 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
   </MessageBody>
 </Message>
 
-<Canvas story="Decorative" />
+<Canvas story="Decorative" from="icon" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce nothing, the icon is ignored.
@@ -238,12 +238,12 @@ When a section of the UI is loading, users should be informed that the content i
 
 <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> set to `"true"` signals that an element is currently in a loading state. Once loading is complete, `aria-busy` should be set to `"false"`.
 
-<Canvas story="AccessibilityBadPracticeLoading" />
+<Canvas story="AccessibilityBadPracticeLoading" from="skeleton" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will give no indication that the content is loading. The screen reader may start reading the page without knowing that this section is waiting to be updated.
 
-<Canvas story="AccessibilityLoading" />
+<Canvas story="AccessibilityLoading" from="skeleton" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers understand that the content is not yet ready, so they delay announcing or interacting with it.
@@ -257,12 +257,12 @@ When a section of the UI is loading, users should be informed that the content i
 
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role">status role</ExternalLink> to ensure that important updates are announced by screen readers without disrupting focus.
 
-<Canvas story="AccessibilityBadPracticesRoleStatus" />
+<Canvas story="AccessibilityBadPracticesRoleStatus" from="button" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce the button and its label.
 
-<Canvas story="AccessibilityRoleStatus" />
+<Canvas story="AccessibilityRoleStatus" from="button" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the button and its label, and the message on click or press.
@@ -284,12 +284,12 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
 
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role">alert role</ExternalLink> for critical, time-sensitive messages that require immediate attention. Unlike `status role`, `alert role` is announced by screen readers, even if the user is focused elsewhere.
 
-<Canvas story="AccessibilityBadPracticesRoleAlert" />
+<Canvas story="AccessibilityBadPracticesRoleAlert" from="button" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers won’t immediately announce the error message when it appears, unless the user manually navigates to it.
 
-<Canvas story="AccessibilityRoleAlert" />
+<Canvas story="AccessibilityRoleAlert" from="button" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the error message, even when the user is focused elsewhere.
@@ -303,12 +303,12 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
 
 <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role">radiogroup</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role">radio</ExternalLink> roles ensure that screen readers correctly interpret and announce the selection.
 
-<Canvas story="AccessibilityBadPracticeRating" />
+<Canvas story="AccessibilityBadPracticeRating" from="icon" />
 
 <Icon name="circle-xmark"
       style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will read each star individually with no context of selection group.
 
-<Canvas story="AccessibilityRating" />
+<Canvas story="AccessibilityRating" from="icon" />
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a radio button, its label and aria-label, which item is focused on out of the total amount of items and that it is a radio group.

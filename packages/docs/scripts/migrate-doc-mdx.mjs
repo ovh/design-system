@@ -47,9 +47,21 @@ const dedent = (code) => {
   return lines.map((l) => l.slice(min)).join('\n');
 };
 
+/* import * as ButtonStories from '.../components/button/button.stories' →
+ * { ButtonStories: 'button' }. Only cross-component refs (path contains
+ * components/<name>/) — a component doc's own './x.stories' is resolved
+ * through the page context, no qualifier needed. */
+function storyAliases(source) {
+  const map = {};
+  for (const match of source.matchAll(/import \* as (\w+) from ['"][^'"]*components\/([a-z0-9-]+)\/[a-z0-9-]+\.stories['"]/g)) {
+    map[match[1]] = match[2];
+  }
+  return map;
+}
+
 /* Transforms applied OUTSIDE fenced code — example code must survive intact
  * (an import line inside a snippet is content, not plumbing). */
-function transformProse(out) {
+function transformProse(out, aliases) {
   // Every import goes away — the provider supplies the components.
   out = out.replace(/^import[\s\S]*?;\s*$/gm, '');
 
@@ -58,10 +70,12 @@ function transformProse(out) {
   out = out.replace(/<Banner[^>]*\/>\n?/g, '');
   out = out.replace(/<NoToC[^>]*\/>\n?/g, '');
 
-  // Story references by name.
-  out = out.replace(/<Canvas of=\{\s*\w+\.(\w+)\s*\}([^>]*?)\/>/g, (_m, story, rest) => {
+  // Story references by name; cross-component refs keep a from="<component>"
+  // so the page can resolve the right module.
+  out = out.replace(/<Canvas of=\{\s*(\w+)\.(\w+)\s*\}([^>]*?)\/>/g, (_m, alias, story, rest) => {
     const state = rest.match(/sourceState=["'](\w+)["']/)?.[1];
-    return `<Canvas story="${story}"${state && state !== 'shown' ? ` source="${state}"` : ''} />`;
+    const component = aliases[alias];
+    return `<Canvas story="${story}"${component ? ` from="${component}"` : ''}${state && state !== 'shown' ? ` source="${state}"` : ''} />`;
   });
 
   // Internal links (the story={ STORY.x } attribute is swallowed by [^>]*:
@@ -86,6 +100,7 @@ function transformProse(out) {
 
 function migrate(source) {
   const warnings = [];
+  const aliases = storyAliases(source);
   let out = source;
 
   // 1. Code-bearing blocks become plain MDX fences FIRST, so the prose
@@ -106,7 +121,7 @@ function migrate(source) {
   // 2. Everything else transforms per prose segment, fences pass through.
   out = out
     .split(/(```[\s\S]*?```)/)
-    .map((part, index) => (index % 2 === 1 ? part : transformProse(part).replace(/\n{3,}/g, '\n\n')))
+    .map((part, index) => (index % 2 === 1 ? part : transformProse(part, aliases).replace(/\n{3,}/g, '\n\n')))
     .join('')
     .trimStart();
 

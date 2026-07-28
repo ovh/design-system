@@ -2,8 +2,13 @@ import * as JsxRuntime from 'react/jsx-runtime';
 import * as React from 'react';
 import * as ODS from '../../../ods-react/src/components/index';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
+import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
+import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
+import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { DemoFrame } from '../demo/DemoFrame';
 import { monaco, setupMonaco } from './setupMonaco';
+import './sandbox.css';
 
 const DEFAULT_SNIPPET = `import { Button, BUTTON_VARIANT } from '@ovhcloud/ods-react';
 
@@ -131,19 +136,41 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const Component = Demo?.Component;
 
   return (
-    <section>
-      <h2>Sandbox — spike Monaco (R7)</h2>
-      <p>
-        <span data-testid="ts-errors">{ tsErrors }</span> erreur(s) TypeScript
-        { runtimeError && <span data-testid="runtime-error" style={{ color: '#B45309' }}> · { runtimeError }</span> }
-      </p>
-      <div ref={ hostRef } style={{ border: '1px solid #C4D9E6', height: '280px', marginBottom: '16px' }} />
-      <DemoFrame dark={ dark } tokens={ tokens }>
-        { Component
-          ? <DemoBoundary onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
-          : null }
-      </DemoFrame>
-    </section>
+    <div className="sandbox">
+      <section className="sandbox__pane">
+        <header className="sandbox__pane-header">
+          <Text preset={ TEXT_PRESET.heading6 }>Editor</Text>
+          { tsErrors === 0 ? (
+            <Badge color={ BADGE_COLOR.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
+          ) : tsErrors > 0 ? (
+            <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">{ tsErrors } error{ tsErrors > 1 ? 's' : '' }</Badge>
+          ) : (
+            <Badge color={ BADGE_COLOR.neutral } size="sm">Compiling…</Badge>
+          ) }
+          <span data-testid="ts-errors" hidden>{ tsErrors }</span>
+        </header>
+        <div className="sandbox__editor" ref={ hostRef } />
+      </section>
+
+      <section className="sandbox__pane">
+        <header className="sandbox__pane-header">
+          <Text preset={ TEXT_PRESET.heading6 }>Preview</Text>
+        </header>
+        <div className="sandbox__preview">
+          { runtimeError && (
+            <Message className="sandbox__error" color={ MESSAGE_COLOR.critical } data-testid="runtime-error" dismissible={ false }>
+              <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+              <MessageBody>{ runtimeError }</MessageBody>
+            </Message>
+          ) }
+          <DemoFrame dark={ dark } tokens={ tokens }>
+            { Component
+              ? <DemoBoundary onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
+              : null }
+          </DemoFrame>
+        </div>
+      </section>
+    </div>
   );
 };
 

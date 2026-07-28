@@ -66,9 +66,12 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
   );
 };
 
+/* Description reads as plain prose; only the metadata (name/aliases/links)
+   sits in the bordered card. */
 const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name }: { aliases?: string[], children?: ReactNode, figmaLink?: string, githubUrl: string, name: string }) => (
-  <div className="doc__identity">
-    <dl>
+  <>
+    <div className="doc__identity-desc">{ children }</div>
+    <dl className="doc__identity">
       <div><dt>Name</dt><dd>{ name }</dd></div>
       { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
       <div>
@@ -79,8 +82,7 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name }: { 
         </dd>
       </div>
     </dl>
-    <div className="doc__identity-desc">{ children }</div>
-  </div>
+  </>
 );
 
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (

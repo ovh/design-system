@@ -77,8 +77,14 @@ const Shell = () => {
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
 
+  // Keep the browser tab title in sync with the active page.
+  useEffect(() => {
+    document.title = currentPage ? `${currentPage.title} — OVHcloud Design System` : 'OVHcloud Design System';
+  }, [currentPage]);
+
   return (
     <div className="shell">
+      <a className="shell__skip" href="#main-content">Skip to content</a>
       <SearchCommand />
 
       <aside className="shell__sidebar">
@@ -103,13 +109,13 @@ const Shell = () => {
             }
           };
           return (
-            <>
+            <nav aria-label="Documentation" className="shell__nav">
               <NavTree currentId={ currentPage?.id } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
               <div className="shell__tree-divider">
                 <Text preset={ TEXT_PRESET.caption }>Reference</Text>
               </div>
               <NavTree currentId={ currentPage?.id } expanded={ ['components', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
-            </>
+            </nav>
           );
         })() }
 
@@ -122,10 +128,10 @@ const Shell = () => {
 
       <div className="shell__main">
         <header className="shell__topbar">
-          <Text preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
+          <Text as="h1" preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
         </header>
 
-        <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' }>
+        <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />
         </main>
       </div>

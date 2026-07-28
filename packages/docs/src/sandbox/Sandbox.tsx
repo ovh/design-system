@@ -4,6 +4,7 @@ import * as ODS from '../../../ods-react/src/components/index';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
+import { BUTTON_COLOR, Button } from '../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
@@ -69,6 +70,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const [resizing, setResizing] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [shared, setShared] = useState(false);
+  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
   const wrapRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<ReturnType<typeof monaco.editor.createModel> | null>(null);
 
@@ -195,6 +197,13 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         <span data-testid="ts-errors" hidden>{ tsErrors }</span>
 
         <div className="sandbox-toolbar__actions">
+          <button
+            className="sandbox-toolbar__action"
+            onClick={ () => setOrientation((o) => (o === 'horizontal' ? 'vertical' : 'horizontal')) }
+            title={ orientation === 'horizontal' ? 'Split vertically' : 'Split horizontally' }
+            type="button">
+            <Icon name={ orientation === 'horizontal' ? ICON_NAME.splitVertical : ICON_NAME.splitHorizontal } /> Layout
+          </button>
           <button className="sandbox-toolbar__action" onClick={ share } type="button">
             <Icon name={ ICON_NAME.shareNodes } /> { shared ? 'Link copied' : 'Share' }
           </button>
@@ -209,7 +218,8 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         defaultSize={ [50, 50] }
         onResizeEnd={ () => setResizing(false) }
         onResizeStart={ () => setResizing(true) }
-        panels={ [{ id: 'editor' }, { id: 'preview' }] }
+        orientation={ orientation }
+        panels={ [{ id: 'editor', minSize: 15 }, { id: 'preview', minSize: 15 }] }
         style={{ height: '100%' }}>
         <Splitter.Panel className="sandbox__pane" id="editor">
           <header className="sandbox__pane-header">
@@ -218,7 +228,9 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
           <div className="sandbox__editor" ref={ hostRef } />
         </Splitter.Panel>
 
-        <Splitter.ResizeTrigger aria-label="Resize panels" className="sandbox__resizer" id="editor:preview" />
+        <Splitter.ResizeTrigger aria-label="Resize panels" asChild id="editor:preview">
+          <Button className={ `sandbox__resizer sandbox__resizer--${orientation}` } color={ BUTTON_COLOR.neutral } />
+        </Splitter.ResizeTrigger>
 
         <Splitter.Panel className="sandbox__pane" id="preview">
           <header className="sandbox__pane-header">

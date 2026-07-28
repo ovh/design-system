@@ -8,6 +8,7 @@ import { CodeBlock } from './CodeBlock';
 import { Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { HelperSpecification } from './HelperSpecification';
 import { DemoFrame } from '../demo/DemoFrame';
 import { DemoSource } from '../demo/DemoSource';
 import { extractStorySources } from '../demo/extractSource';
@@ -144,6 +145,7 @@ const MDX_COMPONENTS = {
   DocLink,
   ExternalLink,
   Heading,
+  HelperSpecification,
   Icon,
   IdentityCard,
   Kbd,

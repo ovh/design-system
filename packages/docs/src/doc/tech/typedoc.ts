@@ -23,9 +23,11 @@ type Node = {
   type?: RawType;
   extendedTypes?: RawType[];
   comment?: { summary?: Part[]; blockTags?: BlockTag[] };
+  defaultValue?: string;
+  signatures?: Signature[];
   typeParameters?: { name: string; kind?: number }[];
 };
-type Part = { text?: string };
+type Part = { text?: string; target?: string };
 type BlockTag = { tag: string; content?: Part[] };
 type RawType = {
   type?: string;
@@ -38,7 +40,7 @@ type RawType = {
   operator?: string;
   target?: RawType;
 };
-type Signature = { parameters?: Node[]; typeParameters?: { name: string }[]; type?: RawType };
+type Signature = { comment?: Node['comment']; parameters?: Node[]; typeParameters?: { name: string }[]; type?: RawType };
 
 interface PropRow {
   default: string;
@@ -267,4 +269,32 @@ function parseTechnicalSpec(root: Node, mainComponent: string): TechnicalSpec {
   return { components, enums: getEnums(root), interfaces: getInterfaces(root), unions: getUnions(root) };
 }
 
-export { parseTechnicalSpec, type ComponentSpec, type PropRow, type TechnicalSpec };
+interface HelperSpec {
+  args: { default?: string; description: string; name: string; type: string }[];
+  description: string;
+  links: { href: string; label: string }[];
+}
+
+/* A single utility function (formatPrice…) from ods-react/documentation/
+   utils.json — its description, arguments and @see links. */
+function parseHelper(root: Node, name: string): HelperSpec | null {
+  const fn = (root.children ?? []).find((child) => child.name === name && child.signatures?.length);
+  const signature = fn?.signatures?.[0];
+  if (!signature) {
+    return null;
+  }
+  return {
+    args: (signature.parameters ?? []).map((param) => ({
+      default: param.defaultValue,
+      description: stripTags(summaryText(param.comment)) || '-',
+      name: param.name ?? '',
+      type: typeToString(param.type),
+    })),
+    description: summaryText(signature.comment),
+    links: (signature.comment?.blockTags ?? [])
+      .filter((block) => block.tag === '@see')
+      .map((block) => ({ href: block.content?.[0]?.target ?? '#', label: block.content?.[0]?.text ?? '' })),
+  };
+}
+
+export { parseHelper, parseTechnicalSpec, type ComponentSpec, type HelperSpec, type PropRow, type TechnicalSpec };

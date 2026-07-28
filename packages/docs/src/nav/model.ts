@@ -48,9 +48,11 @@ interface NavSection {
   title: string;
 }
 
-/* Section order mirrors the old Storybook storySort; the single "OVHcloud
-   Design System" root was dropped (the brand logo already says it). */
-const NAV: (NavSection | NavPage)[] = [
+/* The nav is split into two trees: the editorial guides, then the API
+   reference (components + helpers) as its own tree. Section order mirrors the
+   old Storybook storySort; the single "OVHcloud Design System" root was
+   dropped (the brand logo already says it). */
+const GUIDES_NAV: (NavSection | NavPage)[] = [
   { icon: ICON_NAME.home, id: 'guides/welcome', kind: 'guide', path: '/', title: 'Welcome' },
   { icon: ICON_NAME.arrowRight, id: 'guides/get-started', kind: 'guide', path: '/guides/get-started', title: 'Get Started' },
   {
@@ -116,6 +118,10 @@ const NAV: (NavSection | NavPage)[] = [
   },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
   { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
+];
+
+/* API reference — its own tree; Components and Helpers sit at the top level. */
+const REFERENCE_NAV: (NavSection | NavPage)[] = [
   {
     icon: ICON_NAME.grid,
     id: 'components',
@@ -137,6 +143,9 @@ const NAV: (NavSection | NavPage)[] = [
   },
 ];
 
+/* Everything, for routing / search / flatten. */
+const NAV: (NavSection | NavPage)[] = [...GUIDES_NAV, ...REFERENCE_NAV];
+
 function isPage(node: NavSection | NavPage): node is NavPage {
   return 'path' in node;
 }
@@ -154,4 +163,4 @@ function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknow
     : { children: toTreeItems(node.children), customRendererData: {}, id: node.id, name: node.title }));
 }
 
-export { NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection };
+export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection };

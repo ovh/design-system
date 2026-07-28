@@ -6,7 +6,7 @@ import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
-import { flattenPages, toTreeItems } from '../nav/model';
+import { GUIDES_NAV, REFERENCE_NAV, flattenPages, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
 import { SearchCommand } from './SearchCommand';
@@ -15,6 +15,45 @@ import './shell.css';
 interface ShellContext {
   tokens: Record<string, string>;
 }
+
+/* One sidebar tree. Selection is bound to the active page id; a tree that
+   doesn't contain it simply shows nothing selected. */
+const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
+  currentId?: string;
+  expanded: string[];
+  nodes: (NavSection | NavPage)[];
+  onNavigate: (id: string) => void;
+}) => {
+  const items = toTreeItems(nodes);
+  return (
+    <TreeView
+      defaultExpandedValue={ expanded }
+      items={ items }
+      onValueChange={ ({ value }) => value[0] && onNavigate(value[0]) }
+      value={ currentId ? [currentId] : [] }>
+      <TreeViewNodes>
+        { items.map((item) => (
+          <TreeViewNode item={ item } key={ item.id }>
+            { ({ customData, isBranch, item: node }) => {
+              const data = customData as { badge?: 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
+              return (
+                <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
+                  { data?.icon && <Icon name={ data.icon } /> }
+                  <span>{ node.name }</span>
+                  { data?.badge && (
+                    <Badge className="shell__tree-badge" color={ data.badge === 'new' ? BADGE_COLOR.new : BADGE_COLOR.warning } size={ BADGE_SIZE.sm }>
+                      { data.badge === 'new' ? 'New' : 'Deprecated' }
+                    </Badge>
+                  ) }
+                </span>
+              );
+            } }
+          </TreeViewNode>
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
 
 const Shell = () => {
   const location = useLocation();
@@ -56,37 +95,23 @@ const Shell = () => {
           <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>cmd</Kbd>+<Kbd>k</Kbd></span>
         </button>
 
-        <TreeView
-          defaultExpandedValue={ ['tools', 'components', 'helpers'] }
-          items={ toTreeItems() }
-          onValueChange={ ({ value }) => {
-            const page = pages.find((p) => p.id === value[0]);
+        { (() => {
+          const onNavigate = (id: string) => {
+            const page = pages.find((p) => p.id === id);
             if (page) {
               navigate(page.path);
             }
-          } }
-          value={ currentPage ? [currentPage.id] : [] }>
-          <TreeViewNodes>
-            { toTreeItems().map((item) => (
-              <TreeViewNode item={ item } key={ item.id }>
-                { ({ customData, isBranch, item: node }) => {
-                  const data = customData as { badge?: 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
-                  return (
-                    <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
-                      { data?.icon && <Icon name={ data.icon } /> }
-                      <span>{ node.name }</span>
-                      { data?.badge && (
-                        <Badge className="shell__tree-badge" color={ data.badge === 'new' ? BADGE_COLOR.new : BADGE_COLOR.warning } size={ BADGE_SIZE.sm }>
-                          { data.badge === 'new' ? 'New' : 'Deprecated' }
-                        </Badge>
-                      ) }
-                    </span>
-                  );
-                } }
-              </TreeViewNode>
-            )) }
-          </TreeViewNodes>
-        </TreeView>
+          };
+          return (
+            <>
+              <NavTree currentId={ currentPage?.id } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
+              <div className="shell__tree-divider">
+                <Text preset={ TEXT_PRESET.caption }>Reference</Text>
+              </div>
+              <NavTree currentId={ currentPage?.id } expanded={ ['components', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
+            </>
+          );
+        })() }
 
         <div className="shell__sidebar-footer">
           <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">

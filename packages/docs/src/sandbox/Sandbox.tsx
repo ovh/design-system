@@ -2,10 +2,12 @@ import * as JsxRuntime from 'react/jsx-runtime';
 import * as React from 'react';
 import * as ODS from '../../../ods-react/src/components/index';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
+import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { DemoFrame } from '../demo/DemoFrame';
 import { monaco, setupMonaco } from './setupMonaco';
 import './sandbox.css';
@@ -64,6 +66,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const [Demo, setDemo] = useState<{ Component: ComponentType } | null>(null);
   const [runtimeError, setRuntimeError] = useState<string>('');
   const [tsErrors, setTsErrors] = useState<number>(-1);
+  const [tsMessages, setTsMessages] = useState<string[]>([]);
 
   useEffect(() => {
     const m = setupMonaco();
@@ -100,7 +103,12 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
           client.getEmitOutput(uri),
         ]), 15000);
         trace('done');
-        setTsErrors(semantic.length + syntactic.length);
+        const diagnostics = [...semantic, ...syntactic];
+        setTsErrors(diagnostics.length);
+        setTsMessages(diagnostics.map((d) => {
+          const mt = (d as { messageText: string | { messageText: string } }).messageText;
+          return typeof mt === 'string' ? mt : mt.messageText;
+        }));
         const js = emit.outputFiles[0]?.text ?? '';
         setRuntimeError('');
         setDemo({ Component: evaluate(js) });
@@ -136,23 +144,38 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const Component = Demo?.Component;
 
   return (
-    <div className="sandbox">
-      <section className="sandbox__pane">
+    <Splitter.Root className="sandbox" defaultSize={ [50, 50] } panels={ [{ id: 'editor' }, { id: 'preview' }] } style={{ height: 'calc(100dvh - 130px)' }}>
+      <Splitter.Panel className="sandbox__pane" id="editor">
         <header className="sandbox__pane-header">
           <Text preset={ TEXT_PRESET.heading6 }>Editor</Text>
           { tsErrors === 0 ? (
             <Badge color={ BADGE_COLOR.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
           ) : tsErrors > 0 ? (
-            <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">{ tsErrors } error{ tsErrors > 1 ? 's' : '' }</Badge>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="sandbox__error-trigger" tabIndex={ 0 }>
+                  <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">
+                    { tsErrors } error{ tsErrors > 1 ? 's' : '' }
+                  </Badge>
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <ul className="sandbox__error-list">
+                  { tsMessages.map((message, index) => <li key={ index }>{ message }</li>) }
+                </ul>
+              </TooltipContent>
+            </Tooltip>
           ) : (
             <Badge color={ BADGE_COLOR.neutral } size="sm">Compiling…</Badge>
           ) }
           <span data-testid="ts-errors" hidden>{ tsErrors }</span>
         </header>
         <div className="sandbox__editor" ref={ hostRef } />
-      </section>
+      </Splitter.Panel>
 
-      <section className="sandbox__pane">
+      <Splitter.ResizeTrigger aria-label="Resize panels" className="sandbox__resizer" id="editor:preview" />
+
+      <Splitter.Panel className="sandbox__pane" id="preview">
         <header className="sandbox__pane-header">
           <Text preset={ TEXT_PRESET.heading6 }>Preview</Text>
         </header>
@@ -169,8 +192,8 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
               : null }
           </DemoFrame>
         </div>
-      </section>
-    </div>
+      </Splitter.Panel>
+    </Splitter.Root>
   );
 };
 

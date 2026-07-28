@@ -1,0 +1,64 @@
+.sandbox {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100dvh - 130px);
+}
+
+.sandbox__pane {
+  border: 1px solid var(--ods-color-neutral-200);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sandbox__pane-header {
+  align-items: center;
+  background-color: var(--ods-color-neutral-025);
+  border-bottom: 1px solid var(--ods-color-neutral-200);
+  display: flex;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 12px;
+}
+
+.sandbox__pane-header [data-ods="badge"] {
+  margin-left: auto;
+}
+
+/* Monaco fills the pane; automaticLayout handles resizes. */
+.sandbox__editor {
+  flex: 1;
+  min-height: 0;
+}
+
+.sandbox__preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+}
+
+.sandbox__error {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .sandbox {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .sandbox__editor {
+    min-height: 360px;
+  }
+
+  .sandbox__preview {
+    min-height: 280px;
+  }
+}

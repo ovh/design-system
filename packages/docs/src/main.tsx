@@ -3,7 +3,7 @@ import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
 import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
@@ -30,6 +30,8 @@ const ComponentRoute = () => {
 
 const SandboxRoute = () => {
   const { tokens } = useOutletContext<ShellContext>();
+  const [params] = useSearchParams();
+  const initialCode = params.get('code') ?? undefined;
   return (
     <Suspense fallback={
       <div style={{ display: 'grid', gap: '16px' }}>
@@ -37,7 +39,7 @@ const SandboxRoute = () => {
         <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} />
       </div>
     }>
-      <Sandbox dark={ false } tokens={ tokens } />
+      <Sandbox dark={ false } initialCode={ initialCode } tokens={ tokens } />
     </Suspense>
   );
 };

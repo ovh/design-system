@@ -66,10 +66,9 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
   );
 };
 
-/* Description reads as plain prose; only the metadata (name/aliases/links)
-   sits in the bordered card. */
+/* Description (plain prose, unboxed) and the metadata card sit side by side. */
 const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name }: { aliases?: string[], children?: ReactNode, figmaLink?: string, githubUrl: string, name: string }) => (
-  <>
+  <div className="doc__overview">
     <div className="doc__identity-desc">{ children }</div>
     <dl className="doc__identity">
       <div><dt>Name</dt><dd>{ name }</dd></div>
@@ -82,7 +81,7 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name }: { 
         </dd>
       </div>
     </dl>
-  </>
+  </div>
 );
 
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (

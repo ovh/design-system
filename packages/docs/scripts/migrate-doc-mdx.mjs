@@ -147,7 +147,7 @@ function migrate(source) {
   const CONTRACT = new Set([
     'Anatomy', 'BestPractices', 'Canvas', 'ChartColorCards', 'DesignTokens', 'DocLink', 'ExternalLink',
     'Heading', 'HelperSpecification', 'Icon', 'IdentityCard', 'Kbd', 'Link', 'Message', 'MessageBody',
-    'MessageIcon', 'OdsLocaleList', 'Roadmap', 'Table', 'TokenPreview',
+    'MessageIcon', 'OdsLocaleList', 'Recipes', 'Roadmap', 'Table', 'TokenPreview',
   ]);
   for (const tag of scanned.matchAll(/<([A-Z]\w+)[\s/>]/g)) {
     if (!CONTRACT.has(tag[1])) {

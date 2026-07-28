@@ -22,7 +22,8 @@
     "react-dom": "19.1.0",
     "react-frame-component": "5.3.2",
     "react-router-dom": "7.18.0",
-    "storybook": "8.6.12"
+    "storybook": "8.6.12",
+    "@ovhcloud/ods-recipes": "workspace:*"
   },
   "devDependencies": {
     "@mdx-js/rollup": "3.1.1",

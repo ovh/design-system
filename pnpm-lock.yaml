@@ -122,6 +122,9 @@ importers:
       '@ovhcloud/ods-react':
         specifier: workspace:*
         version: link:../ods-react
+      '@ovhcloud/ods-recipes':
+        specifier: workspace:*
+        version: link:../ods-recipes
       '@ovhcloud/ods-themes':
         specifier: workspace:*
         version: link:../themes

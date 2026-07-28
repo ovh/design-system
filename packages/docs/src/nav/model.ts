@@ -15,13 +15,13 @@ import FormatRelativeTimeRaw from '../../../storybook/stories/helpers/formatRela
    structure decided in the CDC (two roots); populated with the PoC scope for
    now, grows as content is migrated. */
 
-type Badge = 'deprecated' | 'new';
+type Badge = 'beta' | 'deprecated' | 'new';
 
 interface NavPage {
   badge?: Badge;
   icon?: ICON_NAME;
   id: string;
-  kind: 'component' | 'guide' | 'helper' | 'tool';
+  kind: 'component' | 'guide' | 'helper' | 'recipe' | 'tool';
   path: string;
   raw?: string;
   storiesModule?: Record<string, unknown>;
@@ -130,6 +130,14 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
       { badge: badgeOf(ButtonStories), icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
       { badge: badgeOf(CommandStories), icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
       { badge: badgeOf(DatepickerStories), icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
+    ],
+  },
+  {
+    icon: ICON_NAME.lightbulb,
+    id: 'recipes',
+    title: 'Recipes',
+    children: [
+      { badge: 'beta', icon: ICON_NAME.file, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Components' },
     ],
   },
   {

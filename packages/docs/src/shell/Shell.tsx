@@ -35,14 +35,16 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
         { items.map((item) => (
           <TreeViewNode item={ item } key={ item.id }>
             { ({ customData, isBranch, item: node }) => {
-              const data = customData as { badge?: 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
+              const data = customData as { badge?: 'beta' | 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
+              const badgeColor = data?.badge === 'new' ? BADGE_COLOR.new : data?.badge === 'beta' ? BADGE_COLOR.beta : BADGE_COLOR.warning;
+              const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
                 <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
-                    <Badge className="shell__tree-badge" color={ data.badge === 'new' ? BADGE_COLOR.new : BADGE_COLOR.warning } size={ BADGE_SIZE.sm }>
-                      { data.badge === 'new' ? 'New' : 'Deprecated' }
+                    <Badge className="shell__tree-badge" color={ badgeColor } size={ BADGE_SIZE.sm }>
+                      { badgeLabel }
                     </Badge>
                   ) }
                 </span>
@@ -114,7 +116,7 @@ const Shell = () => {
               <div className="shell__tree-divider">
                 <Text preset={ TEXT_PRESET.caption }>Reference</Text>
               </div>
-              <NavTree currentId={ currentPage?.id } expanded={ ['components', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
+              <NavTree currentId={ currentPage?.id } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
             </nav>
           );
         })() }

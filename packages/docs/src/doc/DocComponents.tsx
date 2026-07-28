@@ -9,8 +9,7 @@ import { Message, MessageBody, MessageIcon } from '../../../ods-react/src/compon
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { HelperSpecification } from './HelperSpecification';
-import { DemoFrame } from '../demo/DemoFrame';
-import { DemoSource } from '../demo/DemoSource';
+import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
 import { ChartColorCards } from './ports/chartColorCards/ChartColorCards';
@@ -53,17 +52,16 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
     return composeStory(storyExport as Parameters<typeof composeStory>[0], (storiesModule as { default: Parameters<typeof composeStory>[1] }).default) as ComponentType;
   }, [storiesModule, story]);
   const storySource = useMemo(() => (raw ? extractStorySources(raw)[story] : undefined), [raw, story]);
+  const imports = (storiesModule?.[story] as { globals?: { imports?: string } } | undefined)?.globals?.imports;
 
   if (!Composed) {
     return <p className="doc__missing">Story « { story } » introuvable.</p>;
   }
+  const shown = source === 'shown' ? storySource : undefined;
   return (
-    <div className="doc__canvas">
-      <DemoFrame>
-        <Composed />
-      </DemoFrame>
-      { source === 'shown' && storySource && <DemoSource source={ storySource } /> }
-    </div>
+    <DemoCanvas sandboxCode={ shown ? buildSandboxSnippet(shown, imports) : undefined } source={ shown }>
+      <Composed />
+    </DemoCanvas>
   );
 };
 

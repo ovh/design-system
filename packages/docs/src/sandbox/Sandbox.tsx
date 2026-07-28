@@ -54,7 +54,7 @@ class DemoBoundary extends React.Component<{ children: React.ReactNode, onError:
   }
 }
 
-const Sandbox = ({ dark, tokens }: { dark: boolean, tokens: Record<string, string> }) => {
+const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: string, tokens: Record<string, string> }) => {
   const hostRef = useRef<HTMLDivElement>(null);
   const [Demo, setDemo] = useState<{ Component: ComponentType } | null>(null);
   const [runtimeError, setRuntimeError] = useState<string>('');
@@ -62,7 +62,8 @@ const Sandbox = ({ dark, tokens }: { dark: boolean, tokens: Record<string, strin
 
   useEffect(() => {
     const m = setupMonaco();
-    const model = m.editor.createModel(DEFAULT_SNIPPET, 'typescript', m.Uri.parse('file:///sandbox.tsx'));
+    // Seeded from ?code when opened from a demo's "Sandbox" action.
+    const model = m.editor.createModel(initialCode || DEFAULT_SNIPPET, 'typescript', m.Uri.parse('file:///sandbox.tsx'));
     const editor = m.editor.create(hostRef.current!, {
       automaticLayout: true,
       fontSize: 13,

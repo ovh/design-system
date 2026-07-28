@@ -8,6 +8,8 @@ import themeCss from '@ovhcloud/ods-themes/default/css?inline';
 import fontsCss from '@ovhcloud/ods-themes/default/fonts?inline';
 
 interface DemoFrameProp {
+  /* No own border/radius — the parent (DemoCanvas) frames it. */
+  bare?: boolean;
   children: ReactNode;
   dark?: boolean;
   /* Fires with the frame document once it has painted — for callers that
@@ -190,7 +192,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ children, dark, onReady, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -205,7 +207,7 @@ const DemoFrame = ({ children, dark, onReady, tokens }: DemoFrameProp) => {
         style={ ready
           // no height here: FrameAutoSize owns it imperatively — a height in
           // the React style prop would clobber it on every parent re-render.
-          ? { border: '1px solid #C4D9E6', borderRadius: '4px', width: '100%', colorScheme: 'auto', display: 'block' }
+          ? { ...(bare ? { border: 'none' } : { border: '1px solid #C4D9E6', borderRadius: '4px' }), width: '100%', colorScheme: 'auto', display: 'block' }
           : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
         <StyleSync />
         <FrameAutoSize active={ ready } />

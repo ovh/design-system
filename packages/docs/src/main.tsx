@@ -9,6 +9,7 @@ import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
 import { GuideDoc } from './pages/GuideDoc';
+import { HelperDoc } from './pages/HelperDoc';
 import { Shell, type ShellContext } from './shell/Shell';
 
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
@@ -49,6 +50,16 @@ const GuideRoute = () => {
   return <GuideDoc key={ page.id } page={ page } />;
 };
 
+const HelperRoute = () => {
+  const { key } = useParams();
+  const page = flattenPages().find((p) => p.id === `helpers/${key}`);
+
+  if (!page) {
+    return <Navigate replace to="/" />;
+  }
+  return <HelperDoc key={ page.id } page={ page } />;
+};
+
 const ChangelogRoute = () => (
   <Suspense fallback={ <Skeleton style={{ height: '320px', width: '100%' }} /> }>
     <ChangelogPage />
@@ -62,6 +73,7 @@ const router = createBrowserRouter([
       { element: <Homepage />, path: '/' },
       { element: <ChangelogRoute />, path: '/guides/changelog' },
       { element: <GuideRoute />, path: '/guides/:key' },
+      { element: <HelperRoute />, path: '/helpers/:key' },
       { element: <ComponentRoute />, path: '/components/:key/:tab?' },
       { element: <SandboxRoute />, path: '/tools/sandbox' },
       { element: <Navigate replace to="/" />, path: '*' },

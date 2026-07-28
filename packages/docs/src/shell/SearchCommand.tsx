@@ -41,6 +41,11 @@ const SearchCommand = () => {
               <CommandOption key={ page.id } onSelect={ () => go(page.path) }>{ page.title }</CommandOption>
             )) }
           </CommandGroup>
+          <CommandGroup heading="Helpers">
+            { pages.filter((page) => page.kind === 'helper').map((page) => (
+              <CommandOption key={ page.id } onSelect={ () => go(page.path) }>{ page.title }</CommandOption>
+            )) }
+          </CommandGroup>
           <CommandGroup heading="Tools">
             { pages.filter((page) => page.kind === 'tool').map((page) => (
               <CommandOption key={ page.id } onSelect={ () => go(page.path) }>{ page.title }</CommandOption>

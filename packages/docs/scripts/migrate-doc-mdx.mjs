@@ -91,6 +91,9 @@ function transformProse(out, aliases) {
   out = out.replace(/<StorybookLink title=\{\s*RECIPES_TITLE\.(\w+)\s*\}[^>]*>([\s\S]*?)<\/StorybookLink>/g,
     (_m, key, label) => `<DocLink to="/recipes/${kebab(key)}">${label}</DocLink>`);
 
+  // HelperSpecification loads utils.json itself now — drop the data prop.
+  out = out.replace(/<HelperSpecification\s+data=\{[^}]*\}\s+/g, '<HelperSpecification ');
+
   // Enum expressions become plain strings.
   out = out.replace(/name=\{\s*ICON_NAME\.(\w+)\s*\}/g, (_m, key) => `name="${kebab(key)}"`);
   out = out.replace(/type:\s*TOKEN_TYPE\.(\w+)/g, (_m, key) => `type: '${key}'`);
@@ -143,8 +146,8 @@ function migrate(source) {
   // data, not JSX: it is skipped).
   const CONTRACT = new Set([
     'Anatomy', 'BestPractices', 'Canvas', 'ChartColorCards', 'DesignTokens', 'DocLink', 'ExternalLink',
-    'Heading', 'Icon', 'IdentityCard', 'Kbd', 'Link', 'Message', 'MessageBody', 'MessageIcon',
-    'OdsLocaleList', 'Roadmap', 'Table', 'TokenPreview',
+    'Heading', 'HelperSpecification', 'Icon', 'IdentityCard', 'Kbd', 'Link', 'Message', 'MessageBody',
+    'MessageIcon', 'OdsLocaleList', 'Roadmap', 'Table', 'TokenPreview',
   ]);
   for (const tag of scanned.matchAll(/<([A-Z]\w+)[\s/>]/g)) {
     if (!CONTRACT.has(tag[1])) {

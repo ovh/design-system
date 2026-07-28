@@ -2,9 +2,13 @@ import { ICON_NAME } from '../../../ods-react/src/components/icon/src';
 import * as ButtonStories from '../../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../../storybook/stories/components/datepicker/datepicker.stories';
+import * as FormatPriceStories from '../../../storybook/stories/helpers/formatPrice/formatPrice.stories';
+import * as FormatRelativeTimeStories from '../../../storybook/stories/helpers/formatRelativeTime/formatRelativeTime.stories';
 import ButtonRaw from '../../../storybook/stories/components/button/button.stories.tsx?raw';
 import CommandRaw from '../../../storybook/stories/components/command/command.stories.tsx?raw';
 import DatepickerRaw from '../../../storybook/stories/components/datepicker/datepicker.stories.tsx?raw';
+import FormatPriceRaw from '../../../storybook/stories/helpers/formatPrice/formatPrice.stories.tsx?raw';
+import FormatRelativeTimeRaw from '../../../storybook/stories/helpers/formatRelativeTime/formatRelativeTime.stories.tsx?raw';
 
 /* Navigation model of the docs app — the single source the sidebar tree, the
    router and the ⌘K search are all derived from. Mirrors the editorial
@@ -17,7 +21,7 @@ interface NavPage {
   badge?: Badge;
   icon?: ICON_NAME;
   id: string;
-  kind: 'component' | 'guide' | 'tool';
+  kind: 'component' | 'guide' | 'helper' | 'tool';
   path: string;
   raw?: string;
   storiesModule?: Record<string, unknown>;
@@ -112,6 +116,15 @@ const NAV: (NavSection | NavPage)[] = [
   },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
   { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
+  {
+    icon: ICON_NAME.calculator,
+    id: 'helpers',
+    title: 'Helpers',
+    children: [
+      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', raw: FormatPriceRaw, storiesModule: FormatPriceStories, title: 'formatPrice' },
+      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', raw: FormatRelativeTimeRaw, storiesModule: FormatRelativeTimeStories, title: 'formatRelativeTime' },
+    ],
+  },
   {
     icon: ICON_NAME.grid,
     id: 'components',

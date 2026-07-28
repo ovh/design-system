@@ -10,6 +10,7 @@ import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
 import { GuideDoc } from './pages/GuideDoc';
 import { HelperDoc } from './pages/HelperDoc';
+import { ErrorPage } from './shell/ErrorPage';
 import { Shell, type ShellContext } from './shell/Shell';
 
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
@@ -69,6 +70,7 @@ const ChangelogRoute = () => (
 const router = createBrowserRouter([
   {
     element: <Shell />,
+    errorElement: <ErrorPage />,
     children: [
       { element: <Homepage />, path: '/' },
       { element: <ChangelogRoute />, path: '/guides/changelog' },

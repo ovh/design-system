@@ -5,6 +5,35 @@
   box-sizing: border-box;
 }
 
+/* Honor reduced-motion globally: no smooth scroll, no long transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Skip link: off-screen until focused. */
+.shell__skip {
+  background: var(--ods-theme-background-color);
+  border: 1px solid var(--ods-color-primary-500);
+  border-radius: 4px;
+  color: var(--ods-color-primary-500);
+  left: 8px;
+  padding: 8px 12px;
+  position: fixed;
+  top: 8px;
+  transform: translateY(-150%);
+  transition: transform .15s ease;
+  z-index: 1000;
+}
+
+.shell__skip:focus {
+  transform: translateY(0);
+}
+
 /* Base shell: ODS ships tokens but no body-level application. */
 body {
   background-color: var(--ods-theme-background-color);
@@ -172,4 +201,31 @@ body {
   --ods-theme-background-color: #1b1c1d;
   --ods-theme-heading-text-color: #e0e2f7;
   --ods-theme-text-color: #e0e2f7;
+}
+
+.shell__error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 32px;
+  text-align: center;
+}
+
+.shell__error .shell__brand-logo {
+  margin-bottom: 16px;
+  width: 180px;
+}
+
+.shell__error-detail {
+  color: var(--ods-color-neutral-500);
+  font-family: var(--ods-theme-font-family-code, monospace);
+  max-width: 640px;
+}
+
+.shell__error-home {
+  color: var(--ods-color-primary-500);
+  margin-top: 8px;
 }

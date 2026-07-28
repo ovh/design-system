@@ -100,7 +100,8 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   }
 
   const goTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById(id)?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
     history.replaceState(null, '', `#${id}`);
     setActive(id);
   };

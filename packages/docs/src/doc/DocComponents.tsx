@@ -17,6 +17,7 @@ import { ChartColorCards } from './ports/chartColorCards/ChartColorCards';
 import { DesignTokens } from './ports/designTokens/DesignTokens';
 import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
+import { Recipes } from './ports/recipes/Recipes';
 import { Roadmap } from './ports/roadmap/Roadmap';
 import './doc.css';
 
@@ -155,6 +156,7 @@ const MDX_COMPONENTS = {
   MessageBody,
   MessageIcon,
   OdsLocaleList,
+  Recipes,
   Roadmap,
   Table,
   TokenPreview,

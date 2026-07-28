@@ -10,6 +10,7 @@ import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
 import { GuideDoc } from './pages/GuideDoc';
 import { HelperDoc } from './pages/HelperDoc';
+import { RecipesDoc } from './pages/RecipesDoc';
 import { ErrorPage } from './shell/ErrorPage';
 import { Shell, type ShellContext } from './shell/Shell';
 
@@ -61,6 +62,16 @@ const HelperRoute = () => {
   return <HelperDoc key={ page.id } page={ page } />;
 };
 
+const RecipesRoute = () => {
+  const { key } = useParams();
+  const page = flattenPages().find((p) => p.id === `recipes/${key}`);
+
+  if (!page) {
+    return <Navigate replace to="/" />;
+  }
+  return <RecipesDoc key={ page.id } page={ page } />;
+};
+
 const ChangelogRoute = () => (
   <Suspense fallback={ <Skeleton style={{ height: '320px', width: '100%' }} /> }>
     <ChangelogPage />
@@ -76,6 +87,7 @@ const router = createBrowserRouter([
       { element: <ChangelogRoute />, path: '/guides/changelog' },
       { element: <GuideRoute />, path: '/guides/:key' },
       { element: <HelperRoute />, path: '/helpers/:key' },
+      { element: <RecipesRoute />, path: '/recipes/:key' },
       { element: <ComponentRoute />, path: '/components/:key/:tab?' },
       { element: <SandboxRoute />, path: '/tools/sandbox' },
       { element: <Navigate replace to="/" />, path: '*' },

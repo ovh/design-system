@@ -22,6 +22,9 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   const navigate = useNavigate();
 
   const componentKey = page.id.replace('components/', '');
+  // kebab folder → PascalCase React name (button-group → ButtonGroup), matching
+  // the recipe odsComponents tags.
+  const componentName = componentKey.replace(/(^|-)([a-z])/g, (_m, _s, c: string) => c.toUpperCase());
   const loader = DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`];
   const Doc = useMemo(
     () => (loader ? lazy(loader as () => Promise<{ default: ComponentType }>) : null),
@@ -67,7 +70,7 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
       ) }
 
       { currentTab === 'examples' && (
-        <ComponentPage dark={ false } rawSource={ page.raw! } storiesModule={ page.storiesModule! } title={ page.title } tokens={ tokens } />
+        <ComponentPage component={ componentName } dark={ false } rawSource={ page.raw! } storiesModule={ page.storiesModule! } title={ page.title } tokens={ tokens } />
       ) }
     </PageStoriesProvider>
   );

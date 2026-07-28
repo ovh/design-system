@@ -7,8 +7,8 @@ import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src'
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { DemoFrame } from '../demo/DemoFrame';
+import { encodeSnippet } from './shareCode';
 import { monaco, setupMonaco } from './setupMonaco';
 import './sandbox.css';
 
@@ -66,12 +66,17 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const [Demo, setDemo] = useState<{ Component: ComponentType } | null>(null);
   const [runtimeError, setRuntimeError] = useState<string>('');
   const [tsErrors, setTsErrors] = useState<number>(-1);
-  const [tsMessages, setTsMessages] = useState<string[]>([]);
+  const [resizing, setResizing] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [shared, setShared] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const modelRef = useRef<ReturnType<typeof monaco.editor.createModel> | null>(null);
 
   useEffect(() => {
     const m = setupMonaco();
     // Seeded from ?code when opened from a demo's "Sandbox" action.
     const model = m.editor.createModel(initialCode || DEFAULT_SNIPPET, 'typescript', m.Uri.parse('file:///sandbox.tsx'));
+    modelRef.current = model;
     const editor = m.editor.create(hostRef.current!, {
       automaticLayout: true,
       fontSize: 13,
@@ -105,9 +110,21 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         trace('done');
         const diagnostics = [...semantic, ...syntactic];
         setTsErrors(diagnostics.length);
-        setTsMessages(diagnostics.map((d) => {
+        // Inline squiggles at the exact line/column, with Monaco's native hover.
+        m.editor.setModelMarkers(model, 'ts', diagnostics.map((d) => {
+          const from = (d as { start?: number }).start ?? 0;
+          const length = (d as { length?: number }).length ?? 0;
+          const start = model.getPositionAt(from);
+          const end = model.getPositionAt(from + length);
           const mt = (d as { messageText: string | { messageText: string } }).messageText;
-          return typeof mt === 'string' ? mt : mt.messageText;
+          return {
+            endColumn: end.column,
+            endLineNumber: end.lineNumber,
+            message: typeof mt === 'string' ? mt : mt.messageText,
+            severity: m.MarkerSeverity.Error,
+            startColumn: start.column,
+            startLineNumber: start.lineNumber,
+          };
         }));
         const js = emit.outputFiles[0]?.text ?? '';
         setRuntimeError('');
@@ -141,59 +158,88 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
     };
   }, []);
 
+  useEffect(() => {
+    const onChange = () => setFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', onChange);
+    return () => document.removeEventListener('fullscreenchange', onChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      wrapRef.current?.requestFullscreen();
+    }
+  };
+
+  const share = async () => {
+    const code = modelRef.current?.getValue() ?? '';
+    const url = `${window.location.origin}/tools/sandbox?code=${encodeSnippet(code)}`;
+    await navigator.clipboard.writeText(url);
+    setShared(true);
+    window.setTimeout(() => setShared(false), 1500);
+  };
+
   const Component = Demo?.Component;
 
   return (
-    <Splitter.Root className="sandbox" defaultSize={ [50, 50] } panels={ [{ id: 'editor' }, { id: 'preview' }] } style={{ height: 'calc(100dvh - 130px)' }}>
-      <Splitter.Panel className="sandbox__pane" id="editor">
-        <header className="sandbox__pane-header">
-          <Text preset={ TEXT_PRESET.heading6 }>Editor</Text>
-          { tsErrors === 0 ? (
-            <Badge color={ BADGE_COLOR.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
-          ) : tsErrors > 0 ? (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <span className="sandbox__error-trigger" tabIndex={ 0 }>
-                  <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">
-                    { tsErrors } error{ tsErrors > 1 ? 's' : '' }
-                  </Badge>
-                </span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <ul className="sandbox__error-list">
-                  { tsMessages.map((message, index) => <li key={ index }>{ message }</li>) }
-                </ul>
-              </TooltipContent>
-            </Tooltip>
-          ) : (
-            <Badge color={ BADGE_COLOR.neutral } size="sm">Compiling…</Badge>
-          ) }
-          <span data-testid="ts-errors" hidden>{ tsErrors }</span>
-        </header>
-        <div className="sandbox__editor" ref={ hostRef } />
-      </Splitter.Panel>
+    <div className="sandbox-wrap" ref={ wrapRef }>
+      <div className="sandbox-toolbar">
+        { tsErrors === 0 ? (
+          <Badge color={ BADGE_COLOR.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
+        ) : tsErrors > 0 ? (
+          <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">{ tsErrors } error{ tsErrors > 1 ? 's' : '' }</Badge>
+        ) : (
+          <Badge color={ BADGE_COLOR.neutral } size="sm">Compiling…</Badge>
+        ) }
+        <span data-testid="ts-errors" hidden>{ tsErrors }</span>
 
-      <Splitter.ResizeTrigger aria-label="Resize panels" className="sandbox__resizer" id="editor:preview" />
-
-      <Splitter.Panel className="sandbox__pane" id="preview">
-        <header className="sandbox__pane-header">
-          <Text preset={ TEXT_PRESET.heading6 }>Preview</Text>
-        </header>
-        <div className="sandbox__preview">
-          { runtimeError && (
-            <Message className="sandbox__error" color={ MESSAGE_COLOR.critical } data-testid="runtime-error" dismissible={ false }>
-              <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-              <MessageBody>{ runtimeError }</MessageBody>
-            </Message>
-          ) }
-          <DemoFrame dark={ dark } tokens={ tokens }>
-            { Component
-              ? <DemoBoundary onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
-              : null }
-          </DemoFrame>
+        <div className="sandbox-toolbar__actions">
+          <button className="sandbox-toolbar__action" onClick={ share } type="button">
+            <Icon name={ ICON_NAME.shareNodes } /> { shared ? 'Link copied' : 'Share' }
+          </button>
+          <button className="sandbox-toolbar__action" onClick={ toggleFullscreen } type="button">
+            <Icon name={ fullscreen ? ICON_NAME.shrink : ICON_NAME.resize } /> { fullscreen ? 'Exit' : 'Fullscreen' }
+          </button>
         </div>
-      </Splitter.Panel>
-    </Splitter.Root>
+      </div>
+
+      <Splitter.Root
+        className={ resizing ? 'sandbox sandbox--resizing' : 'sandbox' }
+        defaultSize={ [50, 50] }
+        onResizeEnd={ () => setResizing(false) }
+        onResizeStart={ () => setResizing(true) }
+        panels={ [{ id: 'editor' }, { id: 'preview' }] }
+        style={{ height: '100%' }}>
+        <Splitter.Panel className="sandbox__pane" id="editor">
+          <header className="sandbox__pane-header">
+            <Text preset={ TEXT_PRESET.heading6 }>Editor</Text>
+          </header>
+          <div className="sandbox__editor" ref={ hostRef } />
+        </Splitter.Panel>
+
+        <Splitter.ResizeTrigger aria-label="Resize panels" className="sandbox__resizer" id="editor:preview" />
+
+        <Splitter.Panel className="sandbox__pane" id="preview">
+          <header className="sandbox__pane-header">
+            <Text preset={ TEXT_PRESET.heading6 }>Preview</Text>
+          </header>
+          <div className="sandbox__preview">
+            { runtimeError && (
+              <Message className="sandbox__error" color={ MESSAGE_COLOR.critical } data-testid="runtime-error" dismissible={ false }>
+                <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+                <MessageBody>{ runtimeError }</MessageBody>
+              </Message>
+            ) }
+            <DemoFrame dark={ dark } tokens={ tokens }>
+              { Component
+                ? <DemoBoundary onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
+                : null }
+            </DemoFrame>
+          </div>
+        </Splitter.Panel>
+      </Splitter.Root>
+    </div>
   );
 };
 

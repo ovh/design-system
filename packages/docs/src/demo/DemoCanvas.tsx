@@ -1,6 +1,7 @@
 import { type ReactNode, useState } from 'react';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { CodeBlock } from '../doc/CodeBlock';
+import { encodeSnippet } from '../sandbox/shareCode';
 import { DemoFrame } from './DemoFrame';
 import './demoCanvas.css';
 
@@ -37,7 +38,7 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
             <a
               aria-label="Open this example in the sandbox (new tab)"
               className="canvas__action"
-              href={ `/tools/sandbox?code=${encodeURIComponent(sandboxCode)}` }
+              href={ `/tools/sandbox?code=${encodeSnippet(sandboxCode)}` }
               rel="noreferrer"
               target="_blank"
               title="Open in sandbox">

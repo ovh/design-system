@@ -11,6 +11,7 @@ import { ComponentDoc } from './pages/ComponentDoc';
 import { GuideDoc } from './pages/GuideDoc';
 import { HelperDoc } from './pages/HelperDoc';
 import { RecipesDoc } from './pages/RecipesDoc';
+import { decodeSnippet } from './sandbox/shareCode';
 import { ErrorPage } from './shell/ErrorPage';
 import { Shell, type ShellContext } from './shell/Shell';
 
@@ -31,7 +32,7 @@ const ComponentRoute = () => {
 const SandboxRoute = () => {
   const { tokens } = useOutletContext<ShellContext>();
   const [params] = useSearchParams();
-  const initialCode = params.get('code') ?? undefined;
+  const initialCode = decodeSnippet(params.get('code'));
   return (
     <Suspense fallback={
       <div style={{ display: 'grid', gap: '16px' }}>

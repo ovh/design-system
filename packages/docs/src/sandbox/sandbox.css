@@ -1,7 +1,62 @@
-/* Ark Splitter lays the panels out (flex + inline sizes); we only give the
-   root a height and style the panes and the drag handle. */
-.sandbox {
+.sandbox-wrap {
+  display: flex;
+  flex-direction: column;
   height: calc(100dvh - 130px);
+}
+
+/* Fullscreen: fill the screen and give the chrome a background + padding. */
+.sandbox-wrap:fullscreen {
+  background-color: var(--ods-theme-background-color);
+  height: 100vh;
+  padding: 12px;
+}
+
+.sandbox-toolbar {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.sandbox-toolbar__actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.sandbox-toolbar__action {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ods-color-neutral-200);
+  border-radius: 4px;
+  color: var(--ods-color-neutral-600);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: .85rem;
+  gap: 6px;
+  padding: 5px 10px;
+}
+
+.sandbox-toolbar__action:hover {
+  background-color: var(--ods-color-neutral-100);
+  color: var(--ods-color-primary-500);
+}
+
+/* Ark Splitter lays the panels out; we give it the remaining height. */
+.sandbox {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Dragging the divider over the preview iframe would let the iframe swallow
+   the pointer and drop the drag — neutralise iframes while resizing. */
+.sandbox--resizing {
+  user-select: none;
+}
+
+.sandbox--resizing iframe {
+  pointer-events: none;
 }
 
 .sandbox__pane {
@@ -20,6 +75,7 @@
   flex: 0 0 14px;
   padding: 0;
   position: relative;
+  touch-action: none;
 }
 
 .sandbox__resizer::before {
@@ -45,24 +101,6 @@
   gap: 12px;
   min-height: 44px;
   padding: 6px 12px;
-}
-
-.sandbox__pane-header [data-ods="badge"] {
-  margin-left: auto;
-}
-
-.sandbox__error-trigger {
-  cursor: help;
-  margin-left: auto;
-}
-
-.sandbox__error-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin: 0;
-  max-width: 420px;
-  padding-left: 16px;
 }
 
 /* Monaco fills the pane; automaticLayout handles resizes. */

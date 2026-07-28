@@ -11,7 +11,10 @@ import DatepickerRaw from '../../../storybook/stories/components/datepicker/date
    structure decided in the CDC (two roots); populated with the PoC scope for
    now, grows as content is migrated. */
 
+type Badge = 'deprecated' | 'new';
+
 interface NavPage {
+  badge?: Badge;
   icon?: ICON_NAME;
   id: string;
   kind: 'component' | 'guide' | 'tool';
@@ -19,6 +22,19 @@ interface NavPage {
   raw?: string;
   storiesModule?: Record<string, unknown>;
   title: string;
+}
+
+/* Component status badge, read from the story meta tags — the same source
+   Storybook used ('new' / 'deprecated'). */
+function badgeOf(storiesModule: Record<string, unknown>): Badge | undefined {
+  const tags = (storiesModule.default as { tags?: string[] } | undefined)?.tags ?? [];
+  if (tags.includes('deprecated')) {
+    return 'deprecated';
+  }
+  if (tags.includes('new')) {
+    return 'new';
+  }
+  return undefined;
 }
 
 interface NavSection {
@@ -101,9 +117,9 @@ const NAV: (NavSection | NavPage)[] = [
     id: 'components',
     title: 'Components',
     children: [
-      { icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
-      { icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
-      { icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
+      { badge: badgeOf(ButtonStories), icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
+      { badge: badgeOf(CommandStories), icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
+      { badge: badgeOf(DatepickerStories), icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
     ],
   },
 ];
@@ -119,9 +135,9 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV): NavPage[] {
 /* TreeView items derived from the model; leaf ids = page ids so a tree
    selection maps straight to a route. Icons mark the pages (leaves); the
    sections are already marked by their chevron. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknown[], customRendererData?: { icon?: ICON_NAME }, id: string, name: string }[] {
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
   return nodes.map((node) => (isPage(node)
-    ? { customRendererData: { icon: node.icon }, id: node.id, name: node.title }
+    ? { customRendererData: { badge: node.badge, icon: node.icon }, id: node.id, name: node.title }
     : { children: toTreeItems(node.children), customRendererData: {}, id: node.id, name: node.title }));
 }
 

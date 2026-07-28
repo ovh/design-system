@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/components/badge/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
@@ -68,12 +69,20 @@ const Shell = () => {
           <TreeViewNodes>
             { toTreeItems().map((item) => (
               <TreeViewNode item={ item } key={ item.id }>
-                { ({ customData, isBranch, item: node }) => (
-                  <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
-                    { (customData as { icon?: Parameters<typeof Icon>[0]['name'] })?.icon && <Icon name={ (customData as { icon: Parameters<typeof Icon>[0]['name'] }).icon } /> }
-                    <span>{ node.name }</span>
-                  </span>
-                ) }
+                { ({ customData, isBranch, item: node }) => {
+                  const data = customData as { badge?: 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
+                  return (
+                    <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
+                      { data?.icon && <Icon name={ data.icon } /> }
+                      <span>{ node.name }</span>
+                      { data?.badge && (
+                        <Badge className="shell__tree-badge" color={ data.badge === 'new' ? BADGE_COLOR.new : BADGE_COLOR.warning } size={ BADGE_SIZE.sm }>
+                          { data.badge === 'new' ? 'New' : 'Deprecated' }
+                        </Badge>
+                      ) }
+                    </span>
+                  );
+                } }
               </TreeViewNode>
             )) }
           </TreeViewNodes>

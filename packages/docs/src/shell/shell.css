@@ -98,6 +98,10 @@ body {
   gap: 6px;
 }
 
+.shell__tree-badge {
+  margin-left: 4px;
+}
+
 .shell__tree-label--section {
   font-weight: 600;
 }

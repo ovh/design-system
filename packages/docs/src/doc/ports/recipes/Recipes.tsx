@@ -70,4 +70,12 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
   );
 };
 
-export { Recipes };
+/* Whether any recipe uses this component (PascalCase React name) — lets a
+   caller hide an empty "Recipes" section. */
+function hasRecipesFor(component: string): boolean {
+  const map = odsRecipeJson.component as Record<string, Recipe>;
+  const keys = (odsRecipeJson.list?.components ?? []) as string[];
+  return keys.some((key) => (map[key]?.odsComponents ?? []).includes(component));
+}
+
+export { Recipes, hasRecipesFor };

@@ -3,8 +3,10 @@ import { DemoFrame } from '../demo/DemoFrame';
 import { DemoSource } from '../demo/DemoSource';
 import { composeModule } from '../demo/composeModule';
 import { extractStorySources } from '../demo/extractSource';
+import { Recipes, hasRecipesFor } from '../doc/ports/recipes/Recipes';
 
 interface ComponentPageProp {
+  component: string;
   dark: boolean;
   rawSource: string;
   storiesModule: Record<string, unknown>;
@@ -12,9 +14,12 @@ interface ComponentPageProp {
   tokens: Record<string, string>;
 }
 
-const ComponentPage = ({ dark, rawSource, storiesModule, title, tokens }: ComponentPageProp) => {
+const ComponentPage = ({ component, dark, rawSource, storiesModule, title, tokens }: ComponentPageProp) => {
   const demos = useMemo(() => composeModule(storiesModule), [storiesModule]);
   const sources = useMemo(() => extractStorySources(rawSource), [rawSource]);
+  // A component's recipes, shown at the bottom like the old examples.mdx did —
+  // only when there are any (derived from the recipe data, no per-component config).
+  const showRecipes = useMemo(() => hasRecipesFor(component), [component]);
 
   return (
     <section>
@@ -29,6 +34,13 @@ const ComponentPage = ({ dark, rawSource, storiesModule, title, tokens }: Compon
           { sources[name] && <DemoSource source={ sources[name] } /> }
         </article>
       )) }
+
+      { showRecipes && (
+        <>
+          <h2>Recipes</h2>
+          <Recipes component={ component } />
+        </>
+      ) }
     </section>
   );
 };

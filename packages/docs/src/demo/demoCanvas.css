@@ -5,10 +5,11 @@
   overflow: hidden;
 }
 
+/* Toolbar (grey) sits above the demo (background surface); the colour change
+   separates them, so no border is needed between the two. */
 .canvas__toolbar {
   align-items: center;
   background-color: var(--ods-color-neutral-025);
-  border-bottom: 1px solid var(--ods-color-neutral-200);
   display: flex;
   gap: 12px;
   justify-content: space-between;
@@ -47,9 +48,8 @@
   color: var(--ods-color-primary-500);
 }
 
-/* Tinted surface so the demo reads apart from the page. */
 .canvas__demo {
-  background-color: var(--ods-color-neutral-025);
+  background-color: var(--ods-theme-background-color);
   padding: 24px;
 }
 
@@ -57,9 +57,10 @@
   border-top: 1px solid var(--ods-color-neutral-200);
 }
 
-/* The code block fills the panel edge-to-edge (the card already frames it). */
+/* The code block fills the panel edge-to-edge (the card + border-top already
+   frame it) — override the standalone code surface/border from doc.css. */
 .canvas__code [data-ods="code"] {
-  border: 0;
-  border-radius: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
   margin: 0 !important;
 }

@@ -1,5 +1,4 @@
 import { type ReactNode, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { CodeBlock } from '../doc/CodeBlock';
 import { DemoFrame } from './DemoFrame';
@@ -35,13 +34,15 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
         { title && <span className="canvas__title">{ title }</span> }
         <div className="canvas__actions">
           { sandboxCode && (
-            <RouterLink
-              aria-label="Open this example in the sandbox"
+            <a
+              aria-label="Open this example in the sandbox (new tab)"
               className="canvas__action"
-              title="Open in sandbox"
-              to={ `/tools/sandbox?code=${encodeURIComponent(sandboxCode)}` }>
+              href={ `/tools/sandbox?code=${encodeURIComponent(sandboxCode)}` }
+              rel="noreferrer"
+              target="_blank"
+              title="Open in sandbox">
               <Icon name={ ICON_NAME.chevronLeftUnderscore } /> Sandbox
-            </RouterLink>
+            </a>
           ) }
           { source && (
             <button

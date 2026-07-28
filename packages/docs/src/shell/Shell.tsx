@@ -57,7 +57,7 @@ const Shell = () => {
         </button>
 
         <TreeView
-          defaultExpandedValue={ ['tools', 'components'] }
+          defaultExpandedValue={ ['tools', 'components', 'helpers'] }
           items={ toTreeItems() }
           onValueChange={ ({ value }) => {
             const page = pages.find((p) => p.id === value[0]);

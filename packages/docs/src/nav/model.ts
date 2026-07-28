@@ -117,15 +117,6 @@ const NAV: (NavSection | NavPage)[] = [
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
   { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
   {
-    icon: ICON_NAME.calculator,
-    id: 'helpers',
-    title: 'Helpers',
-    children: [
-      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', raw: FormatPriceRaw, storiesModule: FormatPriceStories, title: 'formatPrice' },
-      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', raw: FormatRelativeTimeRaw, storiesModule: FormatRelativeTimeStories, title: 'formatRelativeTime' },
-    ],
-  },
-  {
     icon: ICON_NAME.grid,
     id: 'components',
     title: 'Components',
@@ -133,6 +124,15 @@ const NAV: (NavSection | NavPage)[] = [
       { badge: badgeOf(ButtonStories), icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
       { badge: badgeOf(CommandStories), icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
       { badge: badgeOf(DatepickerStories), icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
+    ],
+  },
+  {
+    icon: ICON_NAME.calculator,
+    id: 'helpers',
+    title: 'Helpers',
+    children: [
+      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', raw: FormatPriceRaw, storiesModule: FormatPriceStories, title: 'formatPrice' },
+      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', raw: FormatRelativeTimeRaw, storiesModule: FormatRelativeTimeStories, title: 'formatRelativeTime' },
     ],
   },
 ];

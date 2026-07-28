@@ -12,13 +12,21 @@
   font-family: monospace;
 }
 
+/* Description and metadata card, same row. */
+.doc__overview {
+  align-items: flex-start;
+  display: flex;
+  gap: 32px;
+  margin: 1rem 0;
+}
+
 .doc__identity {
   border: 1px solid var(--ods-color-neutral-200);
   border-radius: 4px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 48px;
-  margin: 1rem 0;
+  display: grid;
+  flex: 0 0 220px;
+  gap: 12px;
+  margin: 0;
   padding: 16px;
 }
 
@@ -35,11 +43,17 @@
 
 .doc__identity-links {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .doc__identity-desc {
-  margin: 1rem 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.doc__identity-desc > :first-child {
+  margin-top: 0;
 }
 
 .doc__best-practices {
@@ -85,9 +99,17 @@
 }
 
 @media (max-width: 720px) {
-  .doc__identity,
   .doc__best-practices {
     grid-template-columns: 1fr;
+  }
+
+  .doc__overview {
+    flex-direction: column;
+  }
+
+  .doc__identity {
+    flex-basis: auto;
+    width: 100%;
   }
 }
 

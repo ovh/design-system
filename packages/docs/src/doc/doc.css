@@ -15,17 +15,11 @@
 .doc__identity {
   border: 1px solid var(--ods-color-neutral-200);
   border-radius: 4px;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 240px 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 48px;
   margin: 1rem 0;
   padding: 16px;
-}
-
-.doc__identity dl {
-  display: grid;
-  gap: 8px;
-  margin: 0;
 }
 
 .doc__identity dt {
@@ -41,8 +35,11 @@
 
 .doc__identity-links {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 16px;
+}
+
+.doc__identity-desc {
+  margin: 1rem 0;
 }
 
 .doc__best-practices {

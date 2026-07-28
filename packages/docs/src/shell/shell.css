@@ -102,6 +102,16 @@ body {
   margin-left: 4px;
 }
 
+/* Separator between the guides tree and the reference tree. */
+.shell__tree-divider {
+  border-top: 1px solid var(--ods-color-neutral-200);
+  color: var(--ods-color-neutral-500);
+  margin: 8px 0 4px;
+  padding-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
 .shell__tree-label--section {
   font-weight: 600;
 }

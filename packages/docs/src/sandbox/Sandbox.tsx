@@ -8,8 +8,9 @@ import { BUTTON_COLOR, Button } from '../../../ods-react/src/components/button/s
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
-import { Modal, ModalBody, ModalContent } from '../../../ods-react/src/components/modal/src';
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '../../../ods-react/src/components/modal/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { useDocTheme } from '../doc/useDocTheme';
 import { DemoFrame } from '../demo/DemoFrame';
 import { encodeSnippet } from './shareCode';
@@ -235,13 +236,27 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
       </div>
 
       <Modal onOpenChange={ ({ open }) => setShareOpen(open) } open={ shareOpen }>
-        <ModalContent>
+        <ModalContent color={ MODAL_COLOR.information }>
           <ModalBody>
-            <Text preset={ TEXT_PRESET.paragraph }>Share this sandbox with the link below:</Text>
-            <Clipboard className="sandbox__share" value={ shareUrl }>
-              <ClipboardControl />
-              <ClipboardTrigger />
-            </Clipboard>
+            <p>You can use the following link to share your current sandbox sample:</p>
+            <div className="sandbox__share">
+              <Clipboard value={ shareUrl }>
+                <ClipboardControl />
+                <ClipboardTrigger />
+              </Clipboard>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Icon aria-label="See limitations" className="sandbox__share-warning" name={ ICON_NAME.triangleExclamation } role="img" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  The maximum length of a URL varies significantly depending on the browser being used.
+                  <br />
+                  While the HTTP specification does not define a maximum URL length, each browser imposes its own limits.
+                  <br />
+                  Depending on the length of the code sample you try to share, it may not work properly on some browsers.
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </ModalBody>
         </ModalContent>
       </Modal>

@@ -124,10 +124,20 @@
 .sandbox__share {
   align-items: center;
   display: flex;
-  gap: 8px;
+  gap: 12px;
   margin-top: 12px;
 }
 
-.sandbox__share [data-ods="clipboard-control"] {
+.sandbox__share [data-ods="clipboard"] {
   flex: 1;
+}
+
+.sandbox__share [data-ods="clipboard-control"] {
+  width: 100%;
+}
+
+.sandbox__share-warning {
+  color: var(--ods-color-warning-500);
+  cursor: help;
+  flex-shrink: 0;
 }

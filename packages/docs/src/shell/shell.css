@@ -238,6 +238,13 @@ body {
   --ods-color-primary-500: #3d8bfd;
   --ods-color-primary-600: #2f7bef;
   --ods-color-primary-700: #2a6fd8;
+
+  /* Link (ODS anchor) colours are derived tokens resolved at :root — like the
+     input text, re-declare them so they pick up the brightened primaries
+     above instead of the frozen #0050d7. */
+  --ods-theme-anchor-text-color: var(--ods-color-primary-500);
+  --ods-theme-anchor-text-color-hover: var(--ods-color-primary-600);
+  --ods-theme-anchor-text-color-visited: var(--ods-color-primary-700);
 }
 
 .shell__error {

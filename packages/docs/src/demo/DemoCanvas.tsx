@@ -1,4 +1,5 @@
 import { type ReactNode, useState } from 'react';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { CodeBlock } from '../doc/CodeBlock';
 import { encodeSnippet } from '../sandbox/shareCode';
@@ -35,24 +36,23 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
         { title && <span className="canvas__title">{ title }</span> }
         <div className="canvas__actions">
           { sandboxCode && (
-            <a
+            <Button
               aria-label="Open this example in the sandbox (new tab)"
-              className="canvas__action"
-              href={ `/tools/sandbox?code=${encodeSnippet(sandboxCode)}` }
-              rel="noreferrer"
-              target="_blank"
-              title="Open in sandbox">
+              onClick={ () => window.open(`/tools/sandbox?code=${encodeSnippet(sandboxCode)}`, '_blank', 'noreferrer') }
+              size={ BUTTON_SIZE.sm }
+              title="Open in sandbox"
+              variant={ BUTTON_VARIANT.ghost }>
               <Icon name={ ICON_NAME.chevronLeftUnderscore } /> Sandbox
-            </a>
+            </Button>
           ) }
           { source && (
-            <button
+            <Button
               aria-expanded={ codeOpen }
-              className="canvas__action"
               onClick={ () => setCodeOpen((open) => !open) }
-              type="button">
+              size={ BUTTON_SIZE.sm }
+              variant={ BUTTON_VARIANT.ghost }>
               <Icon name={ ICON_NAME.chevronLeftSlash } /> { codeOpen ? 'Hide code' : 'Show code' }
-            </button>
+            </Button>
           ) }
         </div>
       </div>

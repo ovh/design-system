@@ -9,9 +9,11 @@ function useDocTheme(): DocTheme {
   const [theme, setTheme] = useState<DocTheme>(() => (document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'));
 
   useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-    });
+    const read = (): DocTheme => (document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    // Re-sync on attach: data-theme may have been set between the first render
+    // and this effect, and that change would be missed by the observer.
+    setTheme(read());
+    const observer = new MutationObserver(() => setTheme(read()));
     observer.observe(document.body, { attributeFilter: ['data-theme'], attributes: true });
     return () => observer.disconnect();
   }, []);

@@ -195,12 +195,31 @@ body {
   padding: 0;
 }
 
-/* Shell-only dark skin, mirroring what the current docs do: the demos inside
-   their frames stay light — ODS ships no dark theme yet. */
+/* ODS ships no dark theme, so we build one for the parent document: flip the
+   background/text tokens AND the whole neutral ramp (light → dark). That way
+   every ODS surface rendered in the docs chrome — table stripes and headers,
+   inactive tabs, tree selection, cards, borders, muted text — inverts and
+   stays legible. Demos live in their own frames (which don't carry
+   data-theme, so this rule never reaches them) and recipe previews force the
+   light tokens via ResetTheme, so both stay light on purpose. */
 [data-theme="dark"] {
   --ods-theme-background-color: #1b1c1d;
-  --ods-theme-heading-text-color: #e0e2f7;
-  --ods-theme-text-color: #e0e2f7;
+  --ods-theme-heading-text-color: #e6e8f5;
+  --ods-theme-text-color: #e6e8f5;
+
+  --ods-color-neutral-000: #1b1c1d;
+  --ods-color-neutral-025: #202224;
+  --ods-color-neutral-050: #26282a;
+  --ods-color-neutral-075: #2b2d30;
+  --ods-color-neutral-100: #313437;
+  --ods-color-neutral-200: #3c3f43;
+  --ods-color-neutral-300: #4c5054;
+  --ods-color-neutral-400: #6c7176;
+  --ods-color-neutral-500: #9298a0;
+  --ods-color-neutral-600: #aeb4bc;
+  --ods-color-neutral-700: #c9ced4;
+  --ods-color-neutral-800: #e0e3ea;
+  --ods-color-neutral-900: #f0f2f7;
 }
 
 .shell__error {

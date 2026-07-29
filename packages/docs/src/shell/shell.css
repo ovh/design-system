@@ -226,6 +226,18 @@ body {
   --ods-theme-input-option-background-color-hover: #2b2e31;
   --ods-theme-input-option-background-color-selected: #1f3a52;
   --ods-theme-input-option-background-color-selected-hover: #274a68;
+
+  /* Derived tokens resolve their var() at :root (light) and inherit frozen —
+     re-declare them here so they pick up the dark text/background. */
+  --ods-theme-input-text-color: var(--ods-theme-text-color);
+  --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
+
+  /* Brighten primary for dark: ghost-button text and links derive from
+     primary-500, and #0050d7 is too dim on the dark surface. Demos keep the
+     original primary (they render in frames, outside this rule). */
+  --ods-color-primary-500: #3d8bfd;
+  --ods-color-primary-600: #2f7bef;
+  --ods-color-primary-700: #2a6fd8;
 }
 
 .shell__error {

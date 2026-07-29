@@ -220,6 +220,12 @@ body {
   --ods-color-neutral-700: #c9ced4;
   --ods-color-neutral-800: #e0e3ea;
   --ods-color-neutral-900: #f0f2f7;
+
+  /* Option hover/selected surfaces (TreeView, Select…) are light cyan by
+     default — dark tints so the light text stays legible on them. */
+  --ods-theme-input-option-background-color-hover: #2b2e31;
+  --ods-theme-input-option-background-color-selected: #1f3a52;
+  --ods-theme-input-option-background-color-selected-hover: #274a68;
 }
 
 .shell__error {

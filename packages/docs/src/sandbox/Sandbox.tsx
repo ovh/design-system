@@ -8,7 +8,7 @@ import { BUTTON_COLOR, Button } from '../../../ods-react/src/components/button/s
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
-import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '../../../ods-react/src/components/modal/src';
+import { MODAL_COLOR, Modal, ModalBody, ModalContent, ModalHeader } from '../../../ods-react/src/components/modal/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { useDocTheme } from '../doc/useDocTheme';
@@ -237,8 +237,9 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
 
       <Modal onOpenChange={ ({ open }) => setShareOpen(open) } open={ shareOpen }>
         <ModalContent color={ MODAL_COLOR.information }>
+          <ModalHeader>Share your sandbox</ModalHeader>
           <ModalBody>
-            <p>You can use the following link to share your current sandbox sample:</p>
+            <p className="sandbox__share-hint">You can use the following link to share your current sandbox sample:</p>
             <div className="sandbox__share">
               <Clipboard value={ shareUrl }>
                 <ClipboardControl />

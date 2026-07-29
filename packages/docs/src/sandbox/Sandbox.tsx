@@ -4,7 +4,7 @@ import * as ODS from '../../../ods-react/src/components/index';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_COLOR, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
@@ -216,22 +216,22 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         <span data-testid="ts-errors" hidden>{ tsErrors }</span>
 
         <div className="sandbox-toolbar__actions">
-          <button
-            className="sandbox-toolbar__action"
+          <Button
             onClick={ () => setOrientation((o) => (o === 'horizontal' ? 'vertical' : 'horizontal')) }
+            size={ BUTTON_SIZE.sm }
             title={ orientation === 'horizontal' ? 'Split vertically' : 'Split horizontally' }
-            type="button">
+            variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ orientation === 'horizontal' ? ICON_NAME.splitVertical : ICON_NAME.splitHorizontal } /> Layout
-          </button>
-          <button className="sandbox-toolbar__action" onClick={ reset } type="button">
+          </Button>
+          <Button onClick={ reset } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.refresh } /> Reset
-          </button>
-          <button className="sandbox-toolbar__action" onClick={ share } type="button">
+          </Button>
+          <Button onClick={ share } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.shareNodes } /> Share
-          </button>
-          <button className="sandbox-toolbar__action" onClick={ toggleFullscreen } type="button">
+          </Button>
+          <Button onClick={ toggleFullscreen } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ fullscreen ? ICON_NAME.shrink : ICON_NAME.resize } /> { fullscreen ? 'Exit' : 'Fullscreen' }
-          </button>
+          </Button>
         </div>
       </div>
 

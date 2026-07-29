@@ -28,26 +28,6 @@
   margin-left: auto;
 }
 
-.canvas__action {
-  align-items: center;
-  background: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: var(--ods-color-neutral-600);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: .8rem;
-  gap: 4px;
-  padding: 4px 8px;
-  text-decoration: none;
-}
-
-.canvas__action:hover {
-  background-color: var(--ods-color-neutral-100);
-  color: var(--ods-color-primary-500);
-}
-
 .canvas__demo {
   background-color: var(--ods-theme-background-color);
   padding: 24px;

@@ -24,25 +24,6 @@
   margin-left: auto;
 }
 
-.sandbox-toolbar__action {
-  align-items: center;
-  background: none;
-  border: 1px solid var(--ods-color-neutral-200);
-  border-radius: 4px;
-  color: var(--ods-color-neutral-600);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: .85rem;
-  gap: 6px;
-  padding: 5px 10px;
-}
-
-.sandbox-toolbar__action:hover {
-  background-color: var(--ods-color-neutral-100);
-  color: var(--ods-color-primary-500);
-}
-
 /* Ark Splitter lays the panels out; we give it the remaining height. */
 .sandbox {
   flex: 1;

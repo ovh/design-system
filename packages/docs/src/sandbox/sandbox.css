@@ -121,6 +121,10 @@
   flex-shrink: 0;
 }
 
+.sandbox__share-hint {
+  margin: 0;
+}
+
 .sandbox__share {
   align-items: center;
   display: flex;

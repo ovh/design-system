@@ -5,9 +5,12 @@ import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_COLOR, Button } from '../../../ods-react/src/components/button/src';
+import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { Modal, ModalBody, ModalContent } from '../../../ods-react/src/components/modal/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { useDocTheme } from '../doc/useDocTheme';
 import { DemoFrame } from '../demo/DemoFrame';
 import { encodeSnippet } from './shareCode';
 import { monaco, setupMonaco } from './setupMonaco';
@@ -69,15 +72,24 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const [tsErrors, setTsErrors] = useState<number>(-1);
   const [resizing, setResizing] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
-  const [shared, setShared] = useState(false);
   const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+  const [shareUrl, setShareUrl] = useState('');
+  const [shareOpen, setShareOpen] = useState(false);
+  const docTheme = useDocTheme();
   const wrapRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<ReturnType<typeof monaco.editor.createModel> | null>(null);
+  const initialRef = useRef<string>('');
 
   useEffect(() => {
     const m = setupMonaco();
+    // Editor themes matched to the code snippets' surfaces (CodeBlock): light
+    // = github-light clone (#f2f2f2), dark = one-dark-pro (#282c34).
+    m.editor.defineTheme('ods-light', { base: 'vs', inherit: true, rules: [], colors: { 'editor.background': '#f2f2f2' } });
+    m.editor.defineTheme('ods-dark', { base: 'vs-dark', inherit: true, rules: [], colors: { 'editor.background': '#282c34' } });
     // Seeded from ?code when opened from a demo's "Sandbox" action.
-    const model = m.editor.createModel(initialCode || DEFAULT_SNIPPET, 'typescript', m.Uri.parse('file:///sandbox.tsx'));
+    const source = initialCode || DEFAULT_SNIPPET;
+    initialRef.current = source;
+    const model = m.editor.createModel(source, 'typescript', m.Uri.parse('file:///sandbox.tsx'));
     modelRef.current = model;
     const editor = m.editor.create(hostRef.current!, {
       automaticLayout: true,
@@ -85,6 +97,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
       minimap: { enabled: false },
       model,
       scrollBeyondLastLine: false,
+      theme: document.body.getAttribute('data-theme') === 'dark' ? 'ods-dark' : 'ods-light',
     });
     (window as Record<string, unknown> & Window).__sandbox = { editor, model, monaco: m };
 
@@ -166,6 +179,11 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
     return () => document.removeEventListener('fullscreenchange', onChange);
   }, []);
 
+  // Keep the editor theme in sync with the docs theme, like the snippets.
+  useEffect(() => {
+    monaco.editor.setTheme(docTheme === 'dark' ? 'ods-dark' : 'ods-light');
+  }, [docTheme]);
+
   const toggleFullscreen = () => {
     if (document.fullscreenElement) {
       document.exitFullscreen();
@@ -174,12 +192,12 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
     }
   };
 
-  const share = async () => {
+  const reset = () => modelRef.current?.setValue(initialRef.current);
+
+  const share = () => {
     const code = modelRef.current?.getValue() ?? '';
-    const url = `${window.location.origin}/tools/sandbox?code=${encodeSnippet(code)}`;
-    await navigator.clipboard.writeText(url);
-    setShared(true);
-    window.setTimeout(() => setShared(false), 1500);
+    setShareUrl(`${window.location.origin}/tools/sandbox?code=${encodeSnippet(code)}`);
+    setShareOpen(true);
   };
 
   const Component = Demo?.Component;
@@ -204,14 +222,29 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
             type="button">
             <Icon name={ orientation === 'horizontal' ? ICON_NAME.splitVertical : ICON_NAME.splitHorizontal } /> Layout
           </button>
+          <button className="sandbox-toolbar__action" onClick={ reset } type="button">
+            <Icon name={ ICON_NAME.refresh } /> Reset
+          </button>
           <button className="sandbox-toolbar__action" onClick={ share } type="button">
-            <Icon name={ ICON_NAME.shareNodes } /> { shared ? 'Link copied' : 'Share' }
+            <Icon name={ ICON_NAME.shareNodes } /> Share
           </button>
           <button className="sandbox-toolbar__action" onClick={ toggleFullscreen } type="button">
             <Icon name={ fullscreen ? ICON_NAME.shrink : ICON_NAME.resize } /> { fullscreen ? 'Exit' : 'Fullscreen' }
           </button>
         </div>
       </div>
+
+      <Modal onOpenChange={ ({ open }) => setShareOpen(open) } open={ shareOpen }>
+        <ModalContent>
+          <ModalBody>
+            <Text preset={ TEXT_PRESET.paragraph }>Share this sandbox with the link below:</Text>
+            <Clipboard className="sandbox__share" value={ shareUrl }>
+              <ClipboardControl />
+              <ClipboardTrigger />
+            </Clipboard>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
 
       <Splitter.Root
         className={ resizing ? 'sandbox sandbox--resizing' : 'sandbox' }

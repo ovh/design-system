@@ -120,3 +120,14 @@
 .sandbox__error {
   flex-shrink: 0;
 }
+
+.sandbox__share {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sandbox__share [data-ods="clipboard-control"] {
+  flex: 1;
+}

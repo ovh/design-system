@@ -98,6 +98,19 @@
   color: var(--ods-color-primary-500);
 }
 
+/* Raw markdown links (the changelog renders through markdown-to-jsx as bare
+   <a> tags) have no ODS Link styling and fall back to the UA default #0000ee —
+   unreadable on the dark surface. Theme only these class-less anchors with the
+   anchor token so they stay legible in both modes; ODS Link instances carry a
+   class and are left untouched. */
+.doc a:not([class]) {
+  color: var(--ods-theme-anchor-text-color);
+}
+
+.doc a:not([class]):hover {
+  color: var(--ods-theme-anchor-text-color-hover);
+}
+
 @media (max-width: 720px) {
   .doc__best-practices {
     grid-template-columns: 1fr;

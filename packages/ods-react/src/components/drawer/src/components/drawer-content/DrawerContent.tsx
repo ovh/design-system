@@ -57,9 +57,13 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
           data-ods="drawer-content"
           ref={ ref }
           { ...props }
+          /* pointerEvents counters zag's inline 'pointer-events: auto' (set on any
+             non-modal dialog content, open or closed, i.e. any drawer without backdrop):
+             left in place, a closed drawer is an invisible panel swallowing every click
+             on its area. User style wins in Ark's mergeProps. */
           style={{
             ...props.style,
-            ...(!open ? { opacity: 0 } : {}),
+            ...(!open ? { opacity: 0, pointerEvents: 'none' } : {}),
           }}>
           { children }
         </Dialog.Content>

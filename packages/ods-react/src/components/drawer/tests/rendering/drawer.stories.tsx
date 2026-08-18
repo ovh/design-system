@@ -1,4 +1,4 @@
-import { Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '../../src';
+import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '../../src';
 
 export default {
   component: Drawer,
@@ -42,4 +42,46 @@ export const withoutBackdrop = () => (
       </DrawerBody>
     </DrawerContent>
   </Drawer>
+);
+
+// The three non-modal variants: closed, they used to intercept clicks on their area.
+export const closedInert = () => (
+  <>
+    <Drawer>
+      <DrawerTrigger data-testid="trigger-portal">
+        Portal
+      </DrawerTrigger>
+      <DrawerContent position={ DRAWER_POSITION.left }>
+        <DrawerBody>
+          Portaled, no backdrop
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+
+    <Drawer backdrop={ false }>
+      <DrawerTrigger data-testid="trigger-backdrop-false">
+        Backdrop false
+      </DrawerTrigger>
+      <DrawerContent position={ DRAWER_POSITION.left }>
+        <DrawerBody>
+          Portaled, backdrop false
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+
+    <Drawer>
+      <DrawerTrigger data-testid="trigger-inline">
+        Inline
+      </DrawerTrigger>
+      <DrawerContent createPortal={ false } position={ DRAWER_POSITION.left }>
+        <DrawerBody>
+          Not portaled, no backdrop
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+
+    <button data-testid="under-drawer" type="button">
+      Sits inside the closed drawers area
+    </button>
+  </>
 );

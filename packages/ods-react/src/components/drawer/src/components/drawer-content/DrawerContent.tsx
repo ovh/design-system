@@ -46,6 +46,8 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
         ...(backdrop ? { zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)' } : {}),
         ...(positionerStyle || {}),
       }}>
+        { /* zag inlines pointer-events:auto on non-modal dialog content even when
+             closed: without the override below, closed drawers swallow clicks. */ }
         <Dialog.Content
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }
@@ -59,7 +61,7 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
           { ...props }
           style={{
             ...props.style,
-            ...(!open ? { opacity: 0 } : {}),
+            ...(!open ? { opacity: 0, pointerEvents: 'none' } : {}),
           }}>
           { children }
         </Dialog.Content>

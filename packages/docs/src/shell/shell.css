@@ -108,10 +108,38 @@ body {
   padding: 6px 10px;
 }
 
-.shell__search-kbds {
+.shell__search-option {
+  align-items: center;
   display: flex;
-  gap: 2px;
+  gap: 8px;
+  width: 100%;
+}
+
+.shell__search-option-icon {
+  color: var(--ods-color-neutral-500);
+  font-size: 0.8rem;
+}
+
+.shell__search-option-hint {
+  color: var(--ods-color-neutral-500);
+  font-size: 0.78rem;
   margin-left: auto;
+  padding-left: 12px;
+  white-space: nowrap;
+}
+
+.shell__search-kbds {
+  /* baseline, not center: the Kbd caps have a doubled bottom border (keycap
+     effect) that optically raises their glyphs — box-centering leaves the
+     chip text and the + on visibly different lines. */
+  align-items: baseline;
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+}
+
+.shell__search-plus {
+  font-size: 0.75rem;
 }
 
 .shell__sidebar-footer {
@@ -203,6 +231,22 @@ body {
    data-theme, so this rule never reaches them) and recipe previews force the
    light tokens via ResetTheme, so both stay light on purpose. */
 [data-theme="dark"] {
+  /* Token values alone don't flip the UA's native widget painting: without
+     this, borderless ODS inputs keep their native LIGHT field (white box)
+     in the dark chrome. Also darkens scrollbars. */
+  color-scheme: dark;
+}
+
+/* Chromium paints an opaque LIGHT backplate behind borderless ODS text
+   fields in the dark chrome — observed even with appearance: none and a
+   transparent computed background. Only an explicit background wins. */
+[data-theme="dark"] input[data-ods="input"],
+[data-theme="dark"] [data-ods="textarea"] {
+  background-color: var(--ods-theme-background-color);
+}
+
+[data-theme="dark"] {
+
   --ods-theme-background-color: #1b1c1d;
   --ods-theme-heading-text-color: #e6e8f5;
   --ods-theme-text-color: #e6e8f5;

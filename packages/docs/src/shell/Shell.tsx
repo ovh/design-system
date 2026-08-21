@@ -100,7 +100,7 @@ const Shell = () => {
         </div>
 
         <button className="shell__search-hint" onClick={ () => document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true })) } type="button">
-          <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>cmd</Kbd>+<Kbd>k</Kbd></span>
+          <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>cmd</Kbd><span className="shell__search-plus">+</span><Kbd>k</Kbd></span>
         </button>
 
         { (() => {

@@ -24,4 +24,21 @@ describe('Drawer rendering', () => {
 
     expect(await page.$('[data-scope="dialog"][data-part="backdrop"]')).toBeNull();
   });
+
+  it('should not intercept pointer events while closed', async() => {
+    await gotoStory(page, 'rendering/closed-inert');
+    await page.waitForSelector('[data-ods="drawer-content"]');
+
+    const probe = await page.evaluate(() => {
+      const contents = document.querySelectorAll('[data-ods="drawer-content"][data-state="closed"]');
+      const target = document.querySelector('[data-testid="under-drawer"]') as HTMLElement;
+      const rect = target.getBoundingClientRect();
+      const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+      return { closedCount: contents.length, isHit: hit === target };
+    });
+
+    // All three non-modal variants are mounted closed over the button area.
+    expect(probe.closedCount).toBe(3);
+    expect(probe.isHit).toBe(true);
+  });
 });

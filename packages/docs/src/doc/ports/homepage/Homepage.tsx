@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import imageFile from '../../../../../storybook/assets/ods_bg.png';
+import { BASENAME } from '../../../appBase';
 import { ExternalLink } from '../../DocComponents';
 import { BADGE_COLOR, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
 import { Brand } from './Brand';
@@ -72,7 +73,7 @@ const Homepage = () => {
         <ul className={ styles['homepage__content__links'] }>
           <li>
             <Link
-              href="/guides/get-started"
+              href={ `${BASENAME}/guides/get-started` }
               onClick={ (event) => {
                 event.preventDefault();
                 navigate('/guides/get-started');

@@ -2,6 +2,7 @@ import * as JsxRuntime from 'react/jsx-runtime';
 import * as React from 'react';
 import * as ODS from '../../../ods-react/src/components/index';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
+import { APP_ROOT } from '../appBase';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
@@ -197,7 +198,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
 
   const share = () => {
     const code = modelRef.current?.getValue() ?? '';
-    setShareUrl(`${window.location.origin}/tools/sandbox?code=${encodeSnippet(code)}`);
+    setShareUrl(`${APP_ROOT.href}?p=/tools/sandbox&code=${encodeSnippet(code)}`);
     setShareOpen(true);
   };
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OVHcloud Design System</title>
+    <script>
+      // GitHub Pages has no server rewrites: any deep link into a docs
+      // version (a SPA) lands here. Bounce to that version's root with the
+      // path carried in ?p=, which the app restores before mounting its
+      // router. Deployed at the gh-pages root by generate-gh-pages.mjs.
+      (function () {
+        var l = window.location;
+        var m = l.pathname.match(/^(.*?\/(?:v\d[^/]*|latest)\/)(.*)$/);
+        if (m) {
+          l.replace(m[1] + '?p=/' + m[2] + (l.search ? '&' + l.search.slice(1) : '') + l.hash);
+        } else {
+          l.replace('/design-system/latest/');
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

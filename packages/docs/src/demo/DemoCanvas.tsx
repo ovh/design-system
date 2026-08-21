@@ -1,6 +1,7 @@
 import { type ReactNode, useState } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
+import { APP_ROOT } from '../appBase';
 import { CodeBlock } from '../doc/CodeBlock';
 import { encodeSnippet } from '../sandbox/shareCode';
 import { DemoFrame } from './DemoFrame';
@@ -38,7 +39,7 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
           { sandboxCode && (
             <Button
               aria-label="Open this example in the sandbox (new tab)"
-              onClick={ () => window.open(`/tools/sandbox?code=${encodeSnippet(sandboxCode)}`, '_blank', 'noreferrer') }
+              onClick={ () => window.open(`${APP_ROOT.href}?p=/tools/sandbox&code=${encodeSnippet(sandboxCode)}`, '_blank', 'noreferrer') }
               size={ BUTTON_SIZE.sm }
               title="Open in sandbox"
               variant={ BUTTON_VARIANT.ghost }>

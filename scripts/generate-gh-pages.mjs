@@ -66,4 +66,47 @@ const outDirName = 'docs';
   } catch (e) {
     console.error(`cannot move files into outDir.`, e);
   }
+  try {
+    // SPA deep links: GitHub Pages serves 404.html for unknown paths; it
+    // bounces /vX/route to /vX/?p=/route, restored client-side by the app.
+    await $`cp scripts/gh-pages-404.html ${outDirName}/404.html`;
+  } catch (e) {
+    console.error(`cannot install the 404 redirect page.`, e);
+  }
+  try {
+    // Root llms.txt (llmstxt.org convention): agents probe <site-root>/llms.txt.
+    // Regenerated at each deploy from what is actually on disk, so only the
+    // versions that really ship an llms set are listed.
+    const { existsSync, readdirSync, writeFileSync } = require('node:fs');
+    const num = (name) => name.slice(1).split('.').map((part) => parseInt(part, 10));
+    const llmsVersions = readdirSync(outDirName)
+      .filter((name) => /^v\d/.test(name) && existsSync(`${outDirName}/${name}/llms/llms.txt`))
+      .sort((a, b) => num(b)[0] - num(a)[0] || num(b)[1] - num(a)[1] || num(b)[2] - num(a)[2]);
+    writeFileSync(`${outDirName}/llms.txt`, [
+      '# OVHcloud Design System Documentation for LLMs',
+      '',
+      '> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.',
+      '',
+      `Current version: ${currentVersion}`,
+      '',
+      '## Documentation Sets (latest release)',
+      '',
+      '- [Entry point](./latest/llms/llms.txt): summary of the latest documentation set',
+      '- [Complete documentation](./latest/llms/llms-full.txt): the full documentation in one file',
+      '- [Machine-readable index](./latest/llms/llms-index.json): every file with type, token estimate and canonical URL',
+      '',
+      '## Versions',
+      '',
+      'Each release ships an immutable copy of its documentation set. Match the documentation to the @ovhcloud/ods-react version you use:',
+      '',
+      '1. Prefer the local copy shipped in the npm package: node_modules/@ovhcloud/ods-react/dist/llms/ (always the installed version, works offline)',
+      '2. Otherwise use the pinned set matching your package.json version below',
+      '3. Fall back to [latest](./latest/llms/llms.txt) only when the version is unknown',
+      '',
+      ...llmsVersions.map((name) => `- [${name}](./${name}/llms/llms.txt)`),
+      '',
+    ].join('\n'));
+  } catch (e) {
+    console.error(`cannot write the root llms.txt.`, e);
+  }
 })();

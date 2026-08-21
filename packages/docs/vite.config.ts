@@ -7,6 +7,10 @@ import { defineConfig, searchForWorkspaceRoot } from 'vite';
 // from their sibling packages (same model as the current Storybook), so the
 // dev server must be allowed to read across the workspace.
 export default defineConfig({
+  // The app is deployed under a version subpath on gh-pages and under a
+  // branch prefix on the CI preview: only relative asset URLs work in both.
+  // The runtime counterpart (router basename, frame <base>) is src/appBase.ts.
+  base: './',
   // include .mdx only: plain .md files (CHANGELOG.md?raw) must stay raw text.
   plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit()],
   resolve: {

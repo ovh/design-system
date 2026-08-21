@@ -4,6 +4,7 @@ import '@ovhcloud/ods-themes/default/fonts';
 import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
+import { BASENAME } from './appBase';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
@@ -17,6 +18,7 @@ import { Shell, type ShellContext } from './shell/Shell';
 
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
+const ThemeGenerator = lazy(() => import('./themeGenerator/ThemeGenerator').then((m) => ({ default: m.ThemeGenerator })));
 
 const ComponentRoute = () => {
   const { key } = useParams();
@@ -81,6 +83,18 @@ const ChangelogRoute = () => (
   </Suspense>
 );
 
+/* Static hosts (gh-pages, the CI preview) have no server rewrites: deep links
+   bounce off the root 404.html (or are emitted directly by the app for
+   new-tab opens) as <root>/?p=/route&other=params. Restore the real URL
+   before the router mounts so the route resolves and stays shareable. */
+const bounced = new URLSearchParams(window.location.search);
+const deepLink = bounced.get('p');
+if (deepLink && deepLink.startsWith('/')) {
+  bounced.delete('p');
+  const rest = bounced.toString();
+  history.replaceState(null, '', `${BASENAME}${deepLink}${rest ? `?${rest}` : ''}${window.location.hash}`);
+}
+
 const router = createBrowserRouter([
   {
     element: <Shell />,
@@ -93,9 +107,17 @@ const router = createBrowserRouter([
       { element: <RecipesRoute />, path: '/recipes/:key' },
       { element: <ComponentRoute />, path: '/components/:key/:tab?' },
       { element: <SandboxRoute />, path: '/tools/sandbox' },
+      {
+        element: (
+          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
+            <ThemeGenerator />
+          </Suspense>
+        ),
+        path: '/tools/theme-generator',
+      },
       { element: <Navigate replace to="/" />, path: '*' },
     ],
   },
-]);
+], { basename: BASENAME });
 
 createRoot(document.getElementById('root')!).render(<RouterProvider router={ router } />);

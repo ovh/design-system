@@ -15,14 +15,25 @@ const lightTheme = {
 };
 
 /* Every code snippet of the docs goes through here: ODS Code, copy button
-   always on, shiki theme following the docs light/dark mode. */
-const CodeBlock = ({ children, style }: { children: string, style?: CSSProperties }) => {
+   always on, shiki theme following the docs light/dark mode.
+   positionerStyle is forwarded for snippets living inside an overlay (drawer,
+   modal), where the copy tooltip needs to sit above it. */
+interface CodeBlockProp {
+  children: string;
+  label?: string;
+  positionerStyle?: CSSProperties;
+  style?: CSSProperties;
+}
+
+const CodeBlock = ({ children, label, positionerStyle, style }: CodeBlockProp) => {
   const theme = useDocTheme();
 
   return (
     <Code
+      aria-label={ label }
       canCopy
       highlighter={{ language: tsxLang, theme: theme === 'dark' ? oneDarkPro : lightTheme }}
+      positionerStyle={ positionerStyle }
       style={ style }>
       { children }
     </Code>

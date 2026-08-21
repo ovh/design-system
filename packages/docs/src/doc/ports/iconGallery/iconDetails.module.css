@@ -1,0 +1,52 @@
+.icon-details {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) * 4);
+}
+
+.icon-details__header {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  column-gap: var(--ods-theme-column-gap);
+  align-items: start;
+  justify-content: space-between;
+}
+
+.icon-details__header__aliases {
+  display: flex;
+  flex-flow: row;
+  grid-column: span 2;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+}
+
+/* Surfaces read from the neutral ramp, which the shell remaps in dark — the
+   Storybook original hardcoded #fff / #000 and was unreadable there. */
+.icon-details__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ods-color-neutral-000);
+  height: 120px;
+  font-size: 42px;
+}
+
+.icon-details__colors {
+  display: flex;
+  flex-flow: row;
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+  justify-content: center;
+}
+
+.icon-details__colors__color {
+  appearance: none;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+
+.icon-details__colors__color--selected {
+  border: solid 2px var(--ods-color-neutral-900);
+}

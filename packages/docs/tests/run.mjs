@@ -6,7 +6,10 @@ import { setupSim } from './setup-sim.mjs';
 
 const PORT = Number(process.env.DOCS_TEST_PORT ?? 8124);
 const wanted = process.argv.slice(2);
-const SUITES = ['smoke', 'sweep', 'themegen', 'gallery'].filter((s) => wanted.length === 0 || wanted.includes(s));
+// 'sandbox' replays every open-in-sandbox snippet through Monaco (minutes):
+// opt-in only — `node tests/run.mjs sandbox`.
+const DEFAULT_SUITES = ['snippets', 'smoke', 'sweep', 'themegen', 'gallery'];
+const SUITES = wanted.length ? wanted : DEFAULT_SUITES;
 
 const { simRoot, version } = setupSim();
 const server = await serveSite(simRoot, PORT);

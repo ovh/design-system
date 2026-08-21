@@ -74,7 +74,7 @@ export const AccessibilityFormField: Story = {
 
 export const CustomRenderer: Story = {
   globals: {
-    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+    imports: `import { Select, SelectContent, SelectControl, type SelectItem } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {

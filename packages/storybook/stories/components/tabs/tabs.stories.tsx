@@ -56,7 +56,7 @@ export const Overview: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';
+    imports: `import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -296,7 +296,7 @@ export const ProductDetail: Story = {
 
 export const ControlledWithNavigation: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';
+    imports: `import { Tab, TabContent, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

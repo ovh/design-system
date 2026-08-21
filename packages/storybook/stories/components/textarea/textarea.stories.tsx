@@ -80,7 +80,7 @@ export const Disabled: Story = {
 export const InFormField: Story = {
   globals: {
     imports: `import { TEXT_PRESET, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Text, Textarea } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
+import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
   parameters: {

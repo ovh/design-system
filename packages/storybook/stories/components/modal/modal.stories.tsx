@@ -196,7 +196,7 @@ export const AccessibilityBadPracticesAria: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader } from '@ovhcloud/ods-react';
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

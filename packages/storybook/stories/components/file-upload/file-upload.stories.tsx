@@ -18,7 +18,7 @@ export default meta;
 
 export const Accept: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -64,7 +64,7 @@ import { useState } from 'react';`,
 
 export const AccessibilityFileButton: Story = {
   globals: {
-    imports: `import { FILE_UPLOAD_I18N, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -159,7 +159,7 @@ import { useState } from 'react';`,
 
 export const CustomLabels: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -230,7 +230,7 @@ import { useState } from 'react';`,
 
 export const Disabled: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`,
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadList } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -244,7 +244,7 @@ export const Disabled: Story = {
 
 export const MaxFile: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -290,7 +290,7 @@ import { useState } from 'react';`,
 
 export const MaxSize: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -362,7 +362,7 @@ export const Overview: Story = {
 
 export const Upload: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
 import { useEffect, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -424,7 +424,7 @@ import { useEffect, useState } from 'react';`,
 
 export const InFormField: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -462,7 +462,7 @@ import { useState } from 'react';`,
 
 export const AccessibilityFormField: Story = {
   globals: {
-    imports: `import { FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

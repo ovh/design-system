@@ -6,6 +6,7 @@ import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/compone
 import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { PageStoriesProvider } from '../doc/PageStories';
+import { IconGallery } from '../doc/ports/iconGallery/IconGallery';
 import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
 import { hasTechData } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
@@ -16,6 +17,11 @@ import { ComponentPage } from './ComponentPage';
    composed). The active tab lives in the URL so every view is deep-linkable. */
 
 const DOC_MODULES = import.meta.glob('../content/components/*/documentation.mdx');
+
+/* A few components carry an extra browsing tab of their own (Storybook had
+   them as sibling doc pages) — keyed by component so the tab only shows up
+   where there is something to browse. */
+const GALLERIES: Record<string, ComponentType> = { icon: IconGallery };
 
 const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, string> }) => {
   const { tab } = useParams();
@@ -31,9 +37,11 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
     [loader],
   );
   const hasTech = hasTechData(componentKey);
+  const Gallery = GALLERIES[componentKey];
 
   const tabs = [
     Doc && { label: 'Documentation', value: 'documentation' },
+    Gallery && { label: 'Gallery', value: 'gallery' },
     hasTech && { label: 'Technical information', value: 'technical' },
     { label: 'Examples', value: 'examples' },
   ].filter(Boolean) as { label: string, value: string }[];
@@ -62,6 +70,8 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
           </DocArticle>
         </Suspense>
       ) }
+
+      { currentTab === 'gallery' && Gallery && <Gallery /> }
 
       { currentTab === 'technical' && (
         <DocArticle>

@@ -6,7 +6,7 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
 import { CodeBlock } from './CodeBlock';
-import { Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { HelperSpecification } from './HelperSpecification';
@@ -139,11 +139,47 @@ const CodeFence = ({ children }: { children?: ReactNode }) => {
   return <CodeBlock style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
 };
 
+/* Static comparison block shared by the table and data-table docs. */
+const TableVsDataTable = () => (
+  <>
+    <Heading label="Data Table vs Table" level={ 3 } />
+    <p><code>Table</code>:</p>
+    <ul>
+      <li>Static data display.</li>
+      <li>Limited or no interaction.</li>
+      <li>Often used for simple layouts or read-only content.</li>
+    </ul>
+    <p><code>Data Table</code>:</p>
+    <ul>
+      <li>Interactive and stateful component.</li>
+      <li>Supports sorting, selection, and actions.</li>
+      <li>Integrated with application logic through composition.</li>
+    </ul>
+  </>
+);
+
+/* Deprecation banner (switch doc): replacement path per use-case. */
+const Deprecated = () => (
+  <Message color={ MESSAGE_COLOR.warning } dismissible={ false } style={{ width: '100%' }}>
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+    <MessageBody>
+      Component is now deprecated and will be removed in a future major release.
+      You can use different components instead depending on your use-case:
+      <ul>
+        <li>managing navigation: move to <DocLink to="/components/tabs">Tabs</DocLink> using the switch variant.</li>
+        <li>managing option activation: move to a <DocLink to="/components/button-group">Button Group</DocLink>.</li>
+        <li>as a form element: move to a <DocLink to="/components/radio-group">Radio Group</DocLink>.</li>
+      </ul>
+    </MessageBody>
+  </Message>
+);
+
 const MDX_COMPONENTS = {
   Anatomy,
   BestPractices,
   Canvas,
   ChartColorCards,
+  Deprecated,
   DesignTokens,
   DocLink,
   ExternalLink,
@@ -158,6 +194,7 @@ const MDX_COMPONENTS = {
   MessageIcon,
   OdsLocaleList,
   Recipes,
+  TableVsDataTable,
   Roadmap,
   Table,
   TokenPreview,

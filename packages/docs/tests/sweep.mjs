@@ -6,7 +6,14 @@ const GUIDES = ['get-started', 'accessibility', 'internationalization', 'forms',
   'whats-new', 'changelog', 'migration-to-v19', 'migration-12-to-13', 'migration-13-to-14',
   'migration-14-to-15', 'migration-15-to-16', 'migration-16-to-17', 'migration-17-to-18',
   'faq', 'roadmap', 'llm-documentation'];
-const COMPONENTS = ['button', 'command', 'datepicker', 'icon'];
+// derived from the migrated content: grows with every imported component
+import { readdirSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const COMPONENTS = readdirSync(resolve(dirname(fileURLToPath(import.meta.url)), '../src/content/components'), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
 
 async function suite(browser, { base, version }) {
   const routes = [

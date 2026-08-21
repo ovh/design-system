@@ -1,6 +1,9 @@
 import * as JsxRuntime from 'react/jsx-runtime';
 import * as React from 'react';
-import * as ODS from '../../../ods-react/src/components/index';
+import * as OdsComponents from '../../../ods-react/src/components/index';
+import * as ShikiTypescript from '@shikijs/langs/typescript';
+import * as ShikiNord from '@shikijs/themes/nord';
+import { formatPrice, formatRelativeTime } from '../../../ods-react/src/utils/format';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { APP_ROOT } from '../appBase';
 import { Splitter } from '@ark-ui/react/splitter';
@@ -18,6 +21,10 @@ import { encodeSnippet } from './shareCode';
 import { monaco, setupMonaco } from './setupMonaco';
 import './sandbox.css';
 
+// The components barrel has no helpers: snippets import them from the same
+// '@ovhcloud/ods-react' specifier, so the sandbox module carries both.
+const ODS = { ...OdsComponents, formatPrice, formatRelativeTime };
+
 const DEFAULT_SNIPPET = `import { Button, BUTTON_VARIANT } from '@ovhcloud/ods-react';
 
 export default function Demo() {
@@ -32,6 +39,13 @@ export default function Demo() {
 /* Executes the CommonJS emit of the TS worker with a require shim scoped to
    the libs the docs expose — the strategy react-live/addon-code-editor use,
    without their dependency. */
+/* Beyond react and the ODS barrel, the stories only pull these — exposed so
+   their open-in-sandbox snippets run as-is. */
+const EXTRA_MODULES: Record<string, unknown> = {
+  '@shikijs/langs/typescript': ShikiTypescript,
+  '@shikijs/themes/nord': ShikiNord,
+};
+
 function evaluate(js: string): ComponentType {
   const moduleObject: { exports: Record<string, unknown> } = { exports: {} };
   const requireShim = (name: string): unknown => {
@@ -43,6 +57,9 @@ function evaluate(js: string): ComponentType {
     }
     if (name === '@ovhcloud/ods-react') {
       return ODS;
+    }
+    if (name in EXTRA_MODULES) {
+      return EXTRA_MODULES[name];
     }
     throw new Error(`Module non exposé dans la sandbox : ${name}`);
   };
@@ -125,7 +142,10 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
           client.getEmitOutput(uri),
         ]), 15000);
         trace('done');
-        const diagnostics = [...semantic, ...syntactic];
+        const all = [...semantic, ...syntactic];
+        // TS flags unused (reportsUnnecessary) and deprecated usages as
+        // semantic diagnostics: real feedback, but not compile errors.
+        const diagnostics = all.filter((d) => !(d as { reportsUnnecessary?: unknown }).reportsUnnecessary && !(d as { reportsDeprecated?: unknown }).reportsDeprecated);
         setTsErrors(diagnostics.length);
         // Inline squiggles at the exact line/column, with Monaco's native hover.
         m.editor.setModelMarkers(model, 'ts', diagnostics.map((d) => {

@@ -53,6 +53,10 @@ function setupMonaco(): typeof monaco {
     { content: reactJsxRuntimeTypes, filePath: 'file:///node_modules/@types/react/jsx-runtime.d.ts' },
     { content: cssTypes, filePath: 'file:///node_modules/csstype/index.d.ts' },
     { content: propTypesTypes, filePath: 'file:///node_modules/@types/prop-types/index.d.ts' },
+    // Stubs for the shiki modules the code/markdown stories import — the
+    // runtime shim exposes them (Sandbox EXTRA_MODULES); default export only.
+    { content: "declare module '@shikijs/langs/typescript' { const lang: any; export default lang; }", filePath: 'file:///node_modules/@shikijs/langs/typescript.d.ts' },
+    { content: "declare module '@shikijs/themes/nord' { const theme: any; export default theme; }", filePath: 'file:///node_modules/@shikijs/themes/nord.d.ts' },
   ];
   // dist/src/index.d.ts lands at node_modules/@ovhcloud/ods-react/index.d.ts,
   // which is exactly where NodeJs resolution looks the bare specifier up.

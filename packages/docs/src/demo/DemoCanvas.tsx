@@ -5,16 +5,8 @@ import { APP_ROOT } from '../appBase';
 import { CodeBlock } from '../doc/CodeBlock';
 import { encodeSnippet } from '../sandbox/shareCode';
 import { DemoFrame } from './DemoFrame';
+import { buildSandboxSnippet } from './sandboxSnippet';
 import './demoCanvas.css';
-
-/* Wraps a story's render body into a runnable sandbox snippet. Best-effort:
-   the story imports when known, else a placeholder, plus an export default. */
-function buildSandboxSnippet(source: string, imports?: string): string {
-  const header = imports?.trim() || `import { } from '@ovhcloud/ods-react';`;
-  const body = source.trim();
-  const returned = body.startsWith('<') ? `(\n${body}\n)` : body;
-  return `${header}\n\nexport default function Demo() {\n  return ${returned};\n}\n`;
-}
 
 /* One unified card: a demo on a tinted surface, a toolbar, and the source
    below (collapsible, shown by default). Used by both the doc <Canvas> and

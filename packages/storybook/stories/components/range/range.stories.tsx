@@ -26,7 +26,7 @@ export const AnatomyTech: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Range } from '@ovhcloud/ods-react';
+    imports: `import { Range, type RangeValueChangeDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

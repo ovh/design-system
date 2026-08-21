@@ -329,7 +329,7 @@ export const Highlight: Story = {
 
 export const CustomOptions: Story = {
   globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+    imports: `import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {

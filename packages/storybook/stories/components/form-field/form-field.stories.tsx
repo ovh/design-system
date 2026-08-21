@@ -83,7 +83,8 @@ export const Error: Story = {
 
 export const GuideFormCritical: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -138,7 +139,7 @@ export const GuideFormCritical: Story = {
 
 export const GuideFormError: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_COLOR, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],

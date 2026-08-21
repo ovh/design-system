@@ -91,7 +91,7 @@ export const AnatomyTech: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead } from '@ovhcloud/ods-react';
 import { useMemo } from 'react';`,
   },
   parameters: {
@@ -159,7 +159,7 @@ import { useMemo } from 'react';`,
 
 export const Empty: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableEmpty, DataTableHead } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead } from '@ovhcloud/ods-react';
 import { useMemo } from 'react';`,
   },
   parameters: {
@@ -222,7 +222,7 @@ export const Overview: Story = {
 
 export const PaginationExample: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, PAGINATION_PER_PAGE, Pagination, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, PAGINATION_PER_PAGE, Pagination, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';`,
   },
   parameters: {
@@ -293,7 +293,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';`,
 
 export const PinnedColumns: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableEmpty, DataTableHead } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead } from '@ovhcloud/ods-react';
 import { useMemo } from 'react';`,
   },
   parameters: {
@@ -375,7 +375,7 @@ import { useMemo } from 'react';`,
 
 export const StateControlled: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useMemo, useState } from 'react';`,
   },
   parameters: {
@@ -454,7 +454,7 @@ import { useMemo, useState } from 'react';`,
 
 export const SortingCustomFunction: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useMemo } from 'react';`,
   },
   parameters: {
@@ -534,7 +534,7 @@ import { useMemo } from 'react';`,
 
 export const SortingDisabledColumns: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useMemo } from 'react';`,
   },
   parameters: {
@@ -604,7 +604,7 @@ import { useMemo } from 'react';`,
 
 export const SortingControlled: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, type DataTableSortingState, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useMemo, useState } from 'react';`,
   },
   parameters: {
@@ -702,7 +702,7 @@ export const ThemeGenerator: Story = {
 
 export const VisibilityExample: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useMemo, useState } from 'react';`,
   },
   parameters: {

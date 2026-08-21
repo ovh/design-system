@@ -42,7 +42,7 @@ export const AnatomyTech: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';
+    imports: `import { Pagination, type PaginationPageChangeDetail, PaginationPages } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

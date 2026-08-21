@@ -78,7 +78,7 @@ export const Backdrop: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent } from '@ovhcloud/ods-react';
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],

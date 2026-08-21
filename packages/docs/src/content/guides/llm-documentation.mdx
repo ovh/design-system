@@ -12,6 +12,14 @@ The single entry point for AI agents is the <ExternalLink href="/llms/llms.txt" 
 
 Always refer to <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> for the current, authoritative list: it is kept in sync with every release, so this page intentionally does not duplicate it.
 
+<Heading label="Choosing the Right Version" level={2} />
+
+Every release publishes an immutable copy of its documentation set. Match the documentation to the code you actually use:
+
+1. **Prefer the local copy**: the `@ovhcloud/ods-react` npm package ships the full set in `node_modules/@ovhcloud/ods-react/dist/llms/` — always the installed version, available offline, no URL to resolve.
+2. **Otherwise pin the version**: fetch `https://ovh.github.io/design-system/vX.Y.Z/llms/llms.txt` where `X.Y.Z` matches your `package.json`.
+3. **Fall back to latest** only when the version is unknown: `https://ovh.github.io/design-system/latest/llms/llms.txt`. The site root <ExternalLink href="https://ovh.github.io/design-system/llms.txt">llms.txt</ExternalLink> lists every available version.
+
 <Heading label="How to Use" level={2} />
 
 <Heading label="For AI Assistants" level={3} />

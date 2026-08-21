@@ -26,6 +26,11 @@ function dedent(code: string): string {
   return lines.map((l) => l.slice(min)).join('\n').trim();
 }
 
+/* Layout-only stories used by the old docs (AnatomyTech, Overview grids,
+   ThemeGenerator fixtures) are not demos: both the Examples tab and the llms
+   emission skip them, from this single list. */
+const EXCLUDED_STORIES = new Set(['AnatomyTech', 'Overview', 'ThemeGenerator', 'Demo']);
+
 function extractStorySources(fileSource: string): Record<string, string> {
   const sources: Record<string, string> = {};
   const storyRe = /export const (\w+)(?::[^=]+)?=\s*(?:{|\()/g;
@@ -54,4 +59,4 @@ function extractStorySources(fileSource: string): Record<string, string> {
   return sources;
 }
 
-export { extractStorySources };
+export { EXCLUDED_STORIES, extractStorySources };

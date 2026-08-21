@@ -6,9 +6,11 @@
   "scripts": {
     "start": "vite --port 6100",
     "build": "vite build",
-    "preview": "vite preview --port 6100"
+    "preview": "vite preview --port 6100",
+    "test:smoke": "node tests/run.mjs"
   },
   "dependencies": {
+    "@ant-design/colors": "7.1.0",
     "@ark-ui/react": "5.37.2",
     "@mdx-js/react": "3.1.1",
     "@ovhcloud/ods-react": "workspace:*",
@@ -33,6 +35,7 @@
     "@types/react-dom": "19.1.1",
     "@vitejs/plugin-react": "6.0.3",
     "csstype": "3.1.3",
+    "playwright": "1.61.1",
     "sass": "1.101.0",
     "typescript": "6.0.3",
     "vite": "8.1.0"

@@ -1,6 +1,7 @@
 import { EnvironmentProvider } from '@ark-ui/react/environment';
 import { type ReactNode, useContext, useEffect, useState } from 'react';
 import Frame, { FrameContext } from 'react-frame-component';
+import { APP_ROOT } from '../appBase';
 import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 // Vite inlines the css text; url() references are rebased at import time.
 import normalizeCss from '@ovhcloud/ods-react/normalize-css?inline';
@@ -46,7 +47,10 @@ const FrameEnv = ({ dark, tokens }: Omit<DemoFrameProp, 'children'>) => {
       frameDocument.head.appendChild(styleEl);
     }
     const rules = Object.entries(tokens || {}).map(([name, value]) => `${name}: ${value};`).join(' ');
-    styleEl.textContent = rules ? `:root { ${rules} }` : '';
+    // :root:root — StyleSync may mirror the theme sheet AFTER this style tag,
+    // and at equal specificity the later :root would win: doubling the
+    // selector beats it regardless of injection order.
+    styleEl.textContent = rules ? `:root:root { ${rules} }` : '';
   }, [tokens, frameDocument]);
 
   return null;
@@ -168,7 +172,7 @@ const FrameRealm = ({ children }: { children: ReactNode }) => {
   return <EnvironmentProvider value={ frameDocument }>{ children }</EnvironmentProvider>;
 };
 
-const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${window.location.origin}/"></head><body><div id="mount"></div></body></html>`;
+const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${APP_ROOT.href}"></head><body><div id="mount"></div></body></html>`;
 
 /* Flips ready once the frame content has painted with its fonts, so the
    parent can swap the skeleton for the real frame without layout jumps.
@@ -199,8 +203,15 @@ const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => 
     <>
       { !ready && <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} /> }
       <Frame
+        // The dialog rule patches an ods-react Drawer regression (backdrop
+        // feature, 2026-07-10): backdrop defaults to undefined so the Dialog
+        // is non-modal, and zag then puts pointer-events:auto INLINE on the
+        // content — beating the component's own closed-state pe:none CSS fix.
+        // Closed drawers become invisible click-swallowing panels; only
+        // visibility:hidden (immune to inline styles, removes hit-testing)
+        // neutralizes them here. Real fix belongs upstream.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

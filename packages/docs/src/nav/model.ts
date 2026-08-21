@@ -2,11 +2,13 @@ import { ICON_NAME } from '../../../ods-react/src/components/icon/src';
 import * as ButtonStories from '../../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../../storybook/stories/components/datepicker/datepicker.stories';
+import * as IconStories from '../../../storybook/stories/components/icon/icon.stories';
 import * as FormatPriceStories from '../../../storybook/stories/helpers/formatPrice/formatPrice.stories';
 import * as FormatRelativeTimeStories from '../../../storybook/stories/helpers/formatRelativeTime/formatRelativeTime.stories';
 import ButtonRaw from '../../../storybook/stories/components/button/button.stories.tsx?raw';
 import CommandRaw from '../../../storybook/stories/components/command/command.stories.tsx?raw';
 import DatepickerRaw from '../../../storybook/stories/components/datepicker/datepicker.stories.tsx?raw';
+import IconRaw from '../../../storybook/stories/components/icon/icon.stories.tsx?raw';
 import FormatPriceRaw from '../../../storybook/stories/helpers/formatPrice/formatPrice.stories.tsx?raw';
 import FormatRelativeTimeRaw from '../../../storybook/stories/helpers/formatRelativeTime/formatRelativeTime.stories.tsx?raw';
 
@@ -106,6 +108,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     title: 'Tools',
     children: [
       { icon: ICON_NAME.chevronLeftUnderscore, id: 'tools/sandbox', kind: 'tool', path: '/tools/sandbox', title: 'Code Sandbox' },
+      { badge: 'beta', icon: ICON_NAME.magicWand, id: 'tools/theme-generator', kind: 'tool', path: '/tools/theme-generator', title: 'Theme Generator' },
     ],
   },
   {
@@ -130,6 +133,7 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
       { badge: badgeOf(ButtonStories), icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
       { badge: badgeOf(CommandStories), icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
       { badge: badgeOf(DatepickerStories), icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
+      { badge: badgeOf(IconStories), icon: ICON_NAME.box, id: 'components/icon', kind: 'component', path: '/components/icon', raw: IconRaw, storiesModule: IconStories, title: 'Icon' },
     ],
   },
   {
@@ -158,8 +162,13 @@ function isPage(node: NavSection | NavPage): node is NavPage {
   return 'path' in node;
 }
 
-function flattenPages(nodes: (NavSection | NavPage)[] = NAV): NavPage[] {
-  return nodes.flatMap((node) => (isPage(node) ? [node] : flattenPages(node.children)));
+/* Flat page list; each page carries the section trail it lives under
+   (e.g. "Upgrade / Previous Migrations") — shown as context in the search
+   palette. */
+function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = []): (NavPage & { section?: string })[] {
+  return nodes.flatMap((node) => (isPage(node)
+    ? [{ ...node, section: trail.length ? trail.join(' / ') : undefined }]
+    : flattenPages(node.children, [...trail, node.title])));
 }
 
 /* TreeView items derived from the model; leaf ids = page ids so a tree

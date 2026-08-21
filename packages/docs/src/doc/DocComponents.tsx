@@ -1,6 +1,7 @@
 import { composeStory } from '@storybook/react';
 import { type ComponentType, type ReactElement, type ReactNode, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { APP_ROOT } from '../appBase';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -125,8 +126,10 @@ const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
   );
 };
 
+/* Site-root-relative hrefs (e.g. "/llms/llms.txt") must resolve against the
+   deploy root, not the origin: the app lives under a version subpath. */
 const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
-  <Link href={ href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
+  <Link href={ href?.startsWith('/') ? new URL(href.slice(1), APP_ROOT).href : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
 );
 
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */

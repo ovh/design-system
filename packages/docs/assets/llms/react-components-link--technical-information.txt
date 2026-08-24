@@ -1,0 +1,26 @@
+---
+title: "Link"
+slug: link
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 126
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
+---
+
+# Link
+
+## Link
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `as` | `T` | No | 'a' | Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-link-column-gap` | `var(--ods-theme-column-gap)` |
+| `--ods-link-row-gap` | `var(--ods-theme-row-gap)` |

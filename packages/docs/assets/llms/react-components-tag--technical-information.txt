@@ -1,0 +1,103 @@
+---
+title: "Tag"
+slug: tag
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2155
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
+---
+
+# Tag
+
+## Tag
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
+| `icon` | `null | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | undefined | The icon to display on the right side. |
+| `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
+
+## Enums
+
+### TAG_COLOR
+
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `primary` = `primary`
+- `success` = `success`
+- `warning` = `warning`
+
+### TAG_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-tag-border-width` | `calc(var(--ods-theme-border-width) * 2)` |
+| `--ods-tag-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
+| `--ods-tag-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
+| `--ods-tag-padding-horizontal-md` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-tag-padding-vertical-md` | `calc(var(--ods-theme-padding-vertical) / 8)` |
+| `--ods-tag-padding-horizontal-lg` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-tag-padding-vertical-lg` | `calc(var(--ods-theme-padding-vertical) / 4)` |
+| `--ods-tag-border-color-critical` | `var(--ods-color-critical-100)` |
+| `--ods-tag-border-color-critical-active` | `var(--ods-color-critical-300)` |
+| `--ods-tag-border-color-critical-hover` | `var(--ods-color-critical-200)` |
+| `--ods-tag-background-color-critical` | `var(--ods-color-critical-000)` |
+| `--ods-tag-background-color-critical-active` | `var(--ods-color-critical-100)` |
+| `--ods-tag-background-color-critical-hover` | `var(--ods-color-critical-050)` |
+| `--ods-tag-text-color-critical` | `var(--ods-color-critical-900)` |
+| `--ods-tag-text-color-critical-active` | `var(--ods-color-critical-900)` |
+| `--ods-tag-text-color-critical-hover` | `var(--ods-color-critical-900)` |
+| `--ods-tag-border-color-information` | `var(--ods-color-information-100)` |
+| `--ods-tag-border-color-information-active` | `var(--ods-color-information-300)` |
+| `--ods-tag-border-color-information-hover` | `var(--ods-color-information-200)` |
+| `--ods-tag-background-color-information` | `var(--ods-color-information-000)` |
+| `--ods-tag-background-color-information-active` | `var(--ods-color-information-200)` |
+| `--ods-tag-background-color-information-hover` | `var(--ods-color-information-100)` |
+| `--ods-tag-text-color-information` | `var(--ods-color-information-900)` |
+| `--ods-tag-text-color-information-active` | `var(--ods-color-information-900)` |
+| `--ods-tag-text-color-information-hover` | `var(--ods-color-information-900)` |
+| `--ods-tag-border-color-neutral` | `var(--ods-color-neutral-100)` |
+| `--ods-tag-border-color-neutral-active` | `var(--ods-color-neutral-300)` |
+| `--ods-tag-border-color-neutral-hover` | `var(--ods-color-neutral-200)` |
+| `--ods-tag-background-color-neutral` | `var(--ods-color-neutral-000)` |
+| `--ods-tag-background-color-neutral-active` | `var(--ods-color-neutral-200)` |
+| `--ods-tag-background-color-neutral-hover` | `var(--ods-color-neutral-100)` |
+| `--ods-tag-text-color-neutral` | `var(--ods-color-neutral-700)` |
+| `--ods-tag-text-color-neutral-active` | `var(--ods-color-neutral-700)` |
+| `--ods-tag-text-color-neutral-hover` | `var(--ods-color-neutral-700)` |
+| `--ods-tag-border-color-primary` | `var(--ods-color-primary-500)` |
+| `--ods-tag-border-color-primary-active` | `var(--ods-color-primary-700)` |
+| `--ods-tag-border-color-primary-hover` | `var(--ods-color-primary-600)` |
+| `--ods-tag-background-color-primary` | `var(--ods-color-primary-000)` |
+| `--ods-tag-background-color-primary-active` | `var(--ods-color-primary-200)` |
+| `--ods-tag-background-color-primary-hover` | `var(--ods-color-primary-100)` |
+| `--ods-tag-text-color-primary` | `var(--ods-color-primary-900)` |
+| `--ods-tag-text-color-primary-active` | `var(--ods-color-primary-900)` |
+| `--ods-tag-text-color-primary-hover` | `var(--ods-color-primary-900)` |
+| `--ods-tag-border-color-success` | `var(--ods-color-success-100)` |
+| `--ods-tag-border-color-success-active` | `var(--ods-color-success-300)` |
+| `--ods-tag-border-color-success-hover` | `var(--ods-color-success-200)` |
+| `--ods-tag-background-color-success` | `var(--ods-color-success-000)` |
+| `--ods-tag-background-color-success-active` | `var(--ods-color-success-100)` |
+| `--ods-tag-background-color-success-hover` | `var(--ods-color-success-050)` |
+| `--ods-tag-text-color-success` | `var(--ods-color-success-900)` |
+| `--ods-tag-text-color-success-active` | `var(--ods-color-success-900)` |
+| `--ods-tag-text-color-success-hover` | `var(--ods-color-success-900)` |
+| `--ods-tag-border-color-warning` | `var(--ods-color-warning-100)` |
+| `--ods-tag-border-color-warning-active` | `var(--ods-color-warning-300)` |
+| `--ods-tag-border-color-warning-hover` | `var(--ods-color-warning-200)` |
+| `--ods-tag-background-color-warning` | `var(--ods-color-warning-000)` |
+| `--ods-tag-background-color-warning-active` | `var(--ods-color-warning-100)` |
+| `--ods-tag-background-color-warning-hover` | `var(--ods-color-warning-050)` |
+| `--ods-tag-text-color-warning` | `var(--ods-color-warning-900)` |
+| `--ods-tag-text-color-warning-active` | `var(--ods-color-warning-900)` |
+| `--ods-tag-text-color-warning-hover` | `var(--ods-color-warning-900)` |

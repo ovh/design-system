@@ -1,0 +1,40 @@
+---
+title: "Tooltip"
+slug: tooltip
+category: component
+type: overview
+version: 19.7.3
+tokens: 349
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip.txt
+---
+
+# Tooltip
+
+_**Tooltip** component is used to display contextual information when the user hovers or focuses a UI element in a page._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `closeDelay` | `number` | No | undefined | Number of milliseconds before closing the tooltip. |
+| `onOpenChange` | `(detail: TooltipOpenChangeDetail) => void` | No | undefined | Callback fired when the tooltip open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
+| `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'left' | 'left-end' | 'left-start' | 'right' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## Examples
+
+- Controlled
+- Custom Trigger
+- Default
+- Grid
+- Accessibility Tooltip
+- ZIndex
+
+## Documentation pages
+
+- [Documentation](./react-components-tooltip--documentation.txt)
+- [Technical Information](./react-components-tooltip--technical-information.txt)
+- [Examples](./react-components-tooltip--examples.txt)

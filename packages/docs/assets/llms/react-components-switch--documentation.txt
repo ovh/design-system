@@ -1,0 +1,126 @@
+---
+title: "Switch"
+slug: switch
+category: component
+type: documentation
+version: 19.7.3
+tokens: 975
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--documentation.txt
+---
+
+# Switch
+
+_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
+
+## Overview
+
+A **Switch** allows users to quickly and easily switch between several states, actions or options in a row.
+
+| | |
+|---|---|
+| Name | Switch |
+| Also known as | Button group, Segmented control, Toggle group |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10578 |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/switch |
+
+## Usage
+
+A **Switch** is used to switch between multiple states, actions or options (up-to 4).
+
+It can be used for many use cases such as selecting a state within a group of states or filtering.
+
+### Dos & Don'ts
+
+**Do**
+
+- Use a Switch when the user must choose one active option among 2 to 4 closely related states or actions
+- Ensure each Switch item has a clear, descriptive label
+- Use a Switch when immediate feedback or real-time filtering is expected upon selection
+
+**Don't**
+
+- Don't use a Switch for more than 4 options. Prefer Radio Group, Checkbox, or Select instead depending on your use case
+- Don't use a Switch for unrelated options, they should belong to a common category or context
+- Don't use a Switch if selecting an option does not produce an immediate effect. Use a Checkbox or another control instead
+- Don't rely solely on icons, add text for clarity
+
+### Best Practices in Context
+
+1. **Switch**
+2. **Active toggle button**
+3. **Toggle button**
+4. **Label**
+
+## Placement
+
+A **Switch** can be used in a page when the user needs to select a choice from multiple states or items.
+It may replace two radio buttons or a single checkbox to allow users to choose between several states.
+
+By default, the width of a **Switch** item is defined by the length of content.
+A custom width can be set so all items on the track will have the same size regardless of content length.
+
+## Behavior
+
+The user can switch between states by clicking the **Switch** items, and it has an immediate effect.
+
+## Navigation
+
+### Focus Management
+
+When the **Switch** receives focus, it is set on the currently selected item, or on the first item if none is selected.
+
+Each individual **Switch** item is focusable unless disabled. A disabled item cannot receive focus or be activated.
+
+Focus remains within the group when navigating between items using arrow keys.
+
+### General Keyboard Shortcuts
+
+Pressing `Tab` moves focus to the selected item or the first item in the group.
+
+Pressing `Shift` + `Tab` moves focus to the previous focusable element outside the **Switch** group.
+
+Pressing `Arrow Right` or `Arrow Down` moves focus to the next item in the group.
+
+Pressing `Arrow Left` or `Arrow Up` moves focus to the previous item in the group.
+
+Pressing `Home` (or `fn` + `Arrow Left`) moves focus to the first item.
+
+Pressing `End` (or `fn` + `Arrow Right`) moves focus to the last item.
+
+Pressing `Space` or `Enter` activates or deactivates the focused item, updating the selection immediately.
+
+## Accessibility
+
+To ensure proper accessibility, **Switch** must be correctly labeled.
+
+### Always provide an explicit label
+
+Every **Switch** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
+or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
+
+```tsx
+
+  Item 1
+  Item 2
+  Item 3
+
+```
+
+ Screen readers will announce the label and the option information (text, position, selection state).
+
+```tsx
+<>
+  
+    Select an item:
+  
+
+  
+    Item 1
+    Item 2
+    Item 3
+  
+</>
+```
+
+ Screen readers will announce the label and the option information (text, position, selection state).

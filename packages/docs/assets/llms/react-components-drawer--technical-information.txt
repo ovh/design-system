@@ -1,0 +1,63 @@
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 512
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
+---
+
+# Drawer
+
+## Drawer
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
+| `onOpenChange` | `(detail: DrawerOpenChangeDetail) => void` | No | undefined | Callback fired when the drawer open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the drawer. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. |
+
+## DrawerBody
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## DrawerContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+| `position` | `DRAWER_POSITION` | No | undefined | The drawer position in the screen. |
+
+## DrawerTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+### DRAWER_POSITION
+
+- `bottom` = `bottom`
+- `left` = `left`
+- `right` = `right`
+- `top` = `top`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-drawer-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
+| `--ods-drawer-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-drawer-z-index` | `calc(calc(var(--ods-theme-overlay-z-index) + 1) + 1)` |

@@ -1,0 +1,107 @@
+---
+title: "Tag"
+slug: tag
+category: component
+type: examples
+version: 19.7.3
+tokens: 298
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--examples.txt
+---
+
+# Tag
+
+## Color
+
+```tsx
+<>
+  <Tag color={ TAG_COLOR.critical }>Critical</Tag>
+  <Tag color={ TAG_COLOR.information }>Information</Tag>
+  <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
+  <Tag color={ TAG_COLOR.primary }>Primary</Tag>
+  <Tag color={ TAG_COLOR.success }>Success</Tag>
+  <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+</>
+```
+
+## Custom Icon
+
+```tsx
+<>
+  <Tag icon={ null }>
+    No Icon
+  </Tag>
+
+  <Tag icon={ ICON_NAME.star }>
+    Custom Icon
+  </Tag>
+</>
+```
+
+## Default
+
+```tsx
+<Tag>
+  My tag
+</Tag>
+```
+
+## Disabled
+
+```tsx
+<Tag disabled>
+  My tag
+</Tag>
+```
+
+## Size
+
+```tsx
+<>
+  <Tag size={ TAG_SIZE.md }>MD tag</Tag>
+  <Tag size={ TAG_SIZE.lg }>LG tag</Tag>
+</>
+```
+
+## Accessibility List
+
+```tsx
+<ul>
+  <li>
+    <Tag>Design</Tag>
+  </li>
+
+  <li>
+    <Tag>Development</Tag>
+  </li>
+
+  <li>
+    <Tag>Accessibility</Tag>
+  </li>
+</ul>
+```
+
+## Accessibility Aria Roles
+
+```tsx
+<div role="list">
+  <div role="listitem">
+    <Tag>Design</Tag>
+  </div>
+
+  <div role="listitem">
+    <Tag>Development</Tag>
+  </div>
+
+  <div role="listitem">
+    <Tag>Accessibility</Tag>
+  </div>
+</div>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Tag aria-label="Remove my tag">
+  My tag
+</Tag>
+```

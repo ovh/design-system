@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import imageFile from '../../../../../storybook/assets/ods_bg.png';
+import imageFile from '../../../../assets/ods_bg.png';
 import { BASENAME } from '../../../appBase';
 import { ExternalLink } from '../../DocComponents';
 import { BADGE_COLOR, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';

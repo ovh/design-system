@@ -1,0 +1,47 @@
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: overview
+version: 19.7.3
+tokens: 448
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination.txt
+---
+
+# Pagination
+
+_A **Pagination** component allows users to navigate through large sets of data by dividing the content into multiple pages._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `labelTooltipNext` | `string` | No | undefined | The tooltip label on the "next page" button. |
+| `labelTooltipPrev` | `string` | No | undefined | The tooltip label on the "previous page" button. |
+| `onPageChange` | `(detail: PaginationPageChangeDetail) => void` | No | undefined | Callback fired when the active page changes. |
+| `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
+| `page` | `number` | No | undefined | The controlled active page |
+| `pageSize` | `number` | No | undefined | The number of items per page. |
+| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | undefined | - (deprecated) |
+| `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
+| `totalItems` | `number` | Yes | undefined | The total number of items. |
+| `withPageSizeSelector` | `boolean` | No | undefined | - (deprecated) |
+
+## Examples
+
+- Accessibility Label
+- Controlled
+- Default
+- Disabled
+- Items Per Page
+- Page Size Selection
+- Sibling Count
+- With Tooltip Labels
+
+## Documentation pages
+
+- [Documentation](./react-components-pagination--documentation.txt)
+- [Technical Information](./react-components-pagination--technical-information.txt)
+- [Examples](./react-components-pagination--examples.txt)

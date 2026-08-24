@@ -1,0 +1,49 @@
+---
+title: "Data Table"
+slug: data-table
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 547
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--technical-information.txt
+---
+
+# Data Table
+
+## DataTable
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `columns` | `DataTableColumnDef<T>[]` | Yes | undefined | The columns definitions. |
+| `data` | `T[]` | Yes | undefined | The table data to display. |
+| `enableMultiRowSelection` | `boolean` | No | undefined | Whether the multi row selection is enabled. |
+| `enableRowSelection` | `boolean | (row: DataTableRow<T>) => boolean` | No | undefined | Whether the row selection is enabled. |
+| `enableSorting` | `boolean` | No | undefined | Whether the column sorting is enabled. |
+| `getRowId` | `(originalRow: T, index: number, parent: DataTableRow<T>) => string` | No | undefined | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
+| `loading` | `boolean` | No | undefined | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
+| `manualSorting` | `boolean` | No | undefined | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
+| `onColumnPinningChange` | `OnChangeFn<DataTableColumnPinningState>` | No | undefined | Callback fired when the pinned columns changes. |
+| `onColumnVisibilityChange` | `OnChangeFn<DataTableColumnVisibilityState>` | No | undefined | Callback fired when the column visibility changes. |
+| `onRowSelectionChange` | `OnChangeFn<DataTableRowSelectionState>` | No | undefined | Callback fired when the selected rows changes. |
+| `onSortingChange` | `OnChangeFn<DataTableSortingState>` | No | undefined | Callback fired when the columns sorting changes. |
+| `state` | `DataTableState` | No | undefined | The controlled table values. |
+| `stickyHeader` | `boolean` | No | undefined | Whether the header should be sticky. |
+
+## DataTableBody
+
+This component extends all the native `<tbody>` attributes.
+
+_No specific property._
+
+## DataTableEmpty
+
+This component extends all the native `<tbody>` attributes.
+
+_No specific property._
+
+## DataTableHead
+
+This component extends all the native `<thead>` attributes.
+
+_No specific property._

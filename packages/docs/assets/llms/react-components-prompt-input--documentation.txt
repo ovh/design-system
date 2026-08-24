@@ -1,0 +1,141 @@
+---
+title: "Prompt Input"
+slug: prompt-input
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1115
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--documentation.txt
+---
+
+# Prompt Input
+
+_The **Prompt Input** component is a composable text input with a submit button, designed for conversational and AI-driven interfaces._
+
+## Overview
+
+The **Prompt Input** component is a multi-line textarea with an integrated submit button, designed to handle user input and submission.
+
+| | |
+|---|---|
+| Name | Prompt Input |
+| Also known as | Prompt textarea, Chat input, Submissible text |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/mwZtfuQ9nzv6fY0dfez4NZ/ODS---UI-Kit?node-id=18830-7160&p=f&t=321I8hUuyf5gg2uQ-0  |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/prompt-input |
+
+## Usage
+
+The **Prompt Input** component is commonly used for user input and submission in chat interfaces, messaging applications, and other interactive systems.
+
+It is commonly used for:
+
+- Chat interfaces to allow users to send messages to each other
+- Virtual assistants to allow users to input queries or commands
+- Content creation tools to allow users to input text or upload files for content creation
+- AI-powered writing tools to allow users to input prompts and receive generated text
+- Customer support platforms to allow users to input questions or issues and receive support
+
+### Dos & Don'ts
+
+**Do**
+
+- Provide a placeholder text to guide users on what to input
+- Use the attachment upload feature to allow users to add files to their messages
+
+**Don't**
+
+- Disable the submit button without a clear reason (e.g., empty input, max length exceeded)
+- Allow submission while a file is still uploading
+- Use the component as a replacement for a standard textarea without considering the implications of the integrated submit button
+- Forget to handle errors and exceptions properly, such as when a user attempts to upload a file that exceeds the maximum allowed size
+
+### Best Practices in Context
+
+1. **Prompt Input**
+2. **File attachments (if attached)** - optional
+3. **File upload button** - optional
+4. **Input text area**
+5. **Send button**
+
+## Placement
+
+The **Prompt Input** is typically anchored at the bottom of a conversational view, spanning the full width of the content area.
+
+It should remain visible and accessible at all times during an active conversation, without being obscured by the message list above it.
+
+## Behavior
+
+### Submission
+
+The submit button is enabled when the input is not empty and file stack is empty and the max length has not been exceeded. When the submit button is clicked, the component submits the user's input.
+
+After submission, input is being cleared.
+
+### Processing State
+
+When the component is in a processing or generating state, the input can be locked (configurable), and the submit button is replaced with a "stop" button.
+
+### Attachments
+
+The component allows users to upload attachments, which are displayed in a preview area with a clear/remove button. The attachment upload feature can be triggered by a file upload trigger.
+
+## Navigation
+
+### Focus Management
+
+When the component receives focus, it should focus on the textarea. When the user interacts with the attachment upload feature, focus should be moved to the file upload trigger.
+
+### General Keyboard Shortcuts
+
+Pressing `Tab`moves focus forward to the next interactive element.
+
+Pressing `Shift` + `Tab` moves focus backward to the previous interactive element.
+
+Pressing `Enter` submits the user's input when the submit button or the textarea is focused.
+
+Pressing `Shift` + `Enter` creates a new line in the user's input.
+
+Pressing `Escape` cancels the submission and closes any open attachment upload triggers.
+
+## Accessibility
+
+### Textarea labelling
+
+Because the **Prompt Input** does not render a visible label by default, you must supply an accessible name for the textarea.
+
+Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a meaningful description of the field.
+
+```tsx
+
+  
+    
+    
+  
+
+```
+
+### Button labelling
+
+- The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
+
+```tsx
+
+  
+    
+    
+    
+  
+
+```
+
+- As the send button displays a loading spinner when the component is in the `loading` state, ensure the button's `aria-label` is updated to convey the loading state to users who can't rely on visual cues.
+
+```tsx
+
+  
+    
+    
+    
+  
+
+```

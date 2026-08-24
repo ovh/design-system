@@ -1,0 +1,39 @@
+---
+title: "Code"
+slug: code
+category: component
+type: overview
+version: 19.7.3
+tokens: 306
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code.txt
+---
+
+# Code
+
+_**Code** component highlights strings or small blocks of **Code** so it makes them easier to read and understand_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `canCopy` | `boolean` | No | undefined | Whether the copy button is displayed. |
+| `children` | `string` | Yes | undefined | The code to display. |
+| `highlighter` | `object` | No | undefined | Configuration of a specific code highlighter (see beneath for more details). |
+| `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `onCopy` | `() => void` | No | undefined | Callback fired when the text is copied. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## Examples
+
+- Default
+- Can Copy
+- Custom Labels
+- Highlighter
+- Multiline
+
+## Documentation pages
+
+- [Documentation](./react-components-code--documentation.txt)
+- [Technical Information](./react-components-code--technical-information.txt)
+- [Examples](./react-components-code--examples.txt)

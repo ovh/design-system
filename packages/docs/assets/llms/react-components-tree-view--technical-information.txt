@@ -1,0 +1,52 @@
+---
+title: "Tree View"
+slug: tree-view
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 525
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--technical-information.txt
+---
+
+# Tree View
+
+## TreeView
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultExpandedValue` | `string[]` | No | undefined | The initial expanded value(s). Use when you don't need to control the expanded value(s) of the tree view. |
+| `defaultValue` | `string[]` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the tree view. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `expandedValue` | `string[]` | No | undefined | The controlled expanded value(s). |
+| `items` | `TreeViewItem<CustomData>[]` | Yes | undefined | The list of items |
+| `multiple` | `boolean` | No | undefined | Whether the multiple selection is allowed. |
+| `onExpandedChange` | `(details: TreeViewExpandedChangeDetail) => void` | No | undefined | Callback fired when the expanded value(s) changes. |
+| `onValueChange` | `(details: TreeViewValueChangeDetail) => void` | No | undefined | Callback fired when the value(s) changes. |
+| `value` | `string[]` | No | undefined | The controlled selected value(s). |
+
+## TreeViewNode
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `children` | `ReactNode | (arg: TreeViewCustomRendererArg) => ReactNode` | No | undefined | Label content or custom render function. |
+| `item` | `TreeViewItem` | Yes | undefined | The tree node to render. |
+
+## TreeViewNodes
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-tree-view-node-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-tree-view-node-column-gap` | `var(--ods-theme-column-gap)` |
+| `--ods-tree-view-node-row-gap` | `var(--ods-theme-row-gap)` |
+| `--ods-tree-view-node-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-tree-view-node-padding-vertical` | `calc(var(--ods-theme-padding-horizontal) / 2)` |

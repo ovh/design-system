@@ -1,0 +1,105 @@
+---
+title: "Quantity"
+slug: quantity
+category: component
+type: examples
+version: 19.7.3
+tokens: 293
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--examples.txt
+---
+
+# Quantity
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Number of CPUs:
+  </FormFieldLabel>
+
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Default
+
+```tsx
+<Quantity>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Disabled
+
+```tsx
+<Quantity disabled>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:
+  </FormFieldLabel>
+
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Max
+
+```tsx
+<Quantity max={ 10 }>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Min
+
+```tsx
+<Quantity min={ 0 }>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Readonly
+
+```tsx
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Step
+
+```tsx
+<Quantity step={ 10 }>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```

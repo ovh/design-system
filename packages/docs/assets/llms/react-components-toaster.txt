@@ -1,0 +1,39 @@
+---
+title: "Toaster"
+slug: toaster
+category: component
+type: overview
+version: 19.7.3
+tokens: 273
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster.txt
+---
+
+# Toaster
+
+_**Toaster** component provides a section on the page where you'll be able to display **Toast** to notify the user._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+| `dismissible` | `boolean` | No | undefined | Whether toasts can be manually removed. |
+| `duration` | `number` | No | undefined | Toast duration before being removed. |
+| `max` | `number` | No | undefined | The maximum number of toast displayed at the same time. |
+| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | The position on screen where the toasts will appear. |
+
+## Examples
+
+- Colors
+- Custom Content
+- Default
+- Dismissible
+- Duration
+- Icon
+- Position
+
+## Documentation pages
+
+- [Documentation](./react-components-toaster--documentation.txt)
+- [Technical Information](./react-components-toaster--technical-information.txt)
+- [Examples](./react-components-toaster--examples.txt)

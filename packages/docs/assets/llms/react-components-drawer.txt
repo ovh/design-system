@@ -1,0 +1,38 @@
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: overview
+version: 19.7.3
+tokens: 291
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
+---
+
+# Drawer
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
+| `onOpenChange` | `(detail: DrawerOpenChangeDetail) => void` | No | undefined | Callback fired when the drawer open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the drawer. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. |
+
+## Examples
+
+- Backdrop
+- Controlled
+- Default
+- Overlay Elements
+- Position
+- Accessibility Aria Labelled By
+- Accessibility Aria Label
+
+## Documentation pages
+
+- [Documentation](./react-components-drawer--documentation.txt)
+- [Technical Information](./react-components-drawer--technical-information.txt)
+- [Examples](./react-components-drawer--examples.txt)

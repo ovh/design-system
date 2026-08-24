@@ -1,0 +1,46 @@
+---
+title: "Modal"
+slug: modal
+category: component
+type: overview
+version: 19.7.3
+tokens: 480
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal.txt
+---
+
+# Modal
+
+_A **Modal** component is used to overlay with important content the main view of a site and block interactions with it._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index. |
+| `closeOnEscape` | `boolean` | No | undefined | Whether to close the modal when the escape key is pressed. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the modal when the outside is clicked. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the modal. Use when you don't need to control the open state of the modal. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `initialFocusedElement` | `() => null | HTMLElement` | No | undefined | Element that receive the focus when the dialog is opened. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onOpenChange` | `(detail: ModalOpenChangeDetail) => void` | No | undefined | Callback fired when the modal open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the modal. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## Examples
+
+- Accessibility Actions
+- Accessibility Aria Labelled By
+- Accessibility Aria Label
+- Accessibility Bad Practices Aria
+- Controlled
+- Default
+- Non Dismissible
+- Non Escapable
+- Overlay Elements
+
+## Documentation pages
+
+- [Documentation](./react-components-modal--documentation.txt)
+- [Technical Information](./react-components-modal--technical-information.txt)
+- [Examples](./react-components-modal--examples.txt)

@@ -1,0 +1,23 @@
+---
+title: "13.x to 14.x"
+slug: ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x
+category: generic
+type: overview
+version: 19.7.3
+tokens: 142
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x.txt
+---
+
+# 13.x to 14.x
+
+# [13.0.1](https://ovh.github.io/design-system/v13.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [14.0.0](https://ovh.github.io/design-system/v14.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/13.0...release/14.0))
+
+## Tile interactive attribute
+
+The Tile component `interactive` attribute has been removed.
+
+```typescript
+interactive?: boolean;
+```
+
+If you are using `interactive` attribute on a Tile in your project, you should remove it.

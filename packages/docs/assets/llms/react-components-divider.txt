@@ -1,0 +1,34 @@
+---
+title: "Divider"
+slug: divider
+category: component
+type: overview
+version: 19.7.3
+tokens: 197
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider.txt
+---
+
+# Divider
+
+_A **Divider** component is a spacer used to add white space between two elements on a page._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `'neutral' | 'primary'` | No | undefined | - (deprecated) |
+| `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
+| `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
+
+## Examples
+
+- Default
+- Color
+- Orientation
+- Spacing
+
+## Documentation pages
+
+- [Documentation](./react-components-divider--documentation.txt)
+- [Technical Information](./react-components-divider--technical-information.txt)
+- [Examples](./react-components-divider--examples.txt)

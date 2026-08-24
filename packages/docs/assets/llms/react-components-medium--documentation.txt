@@ -1,0 +1,72 @@
+---
+title: "Medium"
+slug: medium
+category: component
+type: documentation
+version: 19.7.3
+tokens: 494
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--documentation.txt
+---
+
+# Medium
+
+## Overview
+
+The **Medium** component is a versatile UI element designed to handle different types of media content.
+
+  It ensures that media is displayed correctly and consistently within the application.
+
+| | |
+|---|---|
+| Name | Medium |
+| Also known as | Media, Image |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=237-13496 |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/medium |
+
+## Usage
+
+**Medium** is used to display assets with an alternative text description.
+
+When the asset is an image, it should be mostly presentation to draw user's attention visually.
+
+### Dos & Don'ts
+
+**Do**
+
+- Use the Medium component to display images and media consistently across the application
+- Provide alt text, captions, or descriptions where appropriate, to ensure accessibility and context
+- Ensure responsive behavior so medium adapts well to different screen sizes
+
+**Don't**
+
+- Don't use Medium with embedded text that cannot be read by screen readers
+- Don't overload pages with high-resolution medium that may slow down load times
+- Don't stretch or distort Medium to fit containers, maintain proportions and visual quality
+- Don't rely on Medium alone to convey essential information. Always provide a textual equivalent when needed
+
+## Placement
+
+The width and height dimensions of the image can be set to fixed sizes.
+
+## Navigation
+
+The **Medium** component is non-interactive and does not receive keyboard focus. It is used solely for displaying media content and does not impact keyboard navigation.
+
+## Accessibility
+
+### Use caption text to add information about an image
+
+Caption is useful to add information about the image itself (ex: copyright),
+whereas the alternative text always describe what the image actually conveys.
+
+```tsx
+<figure>
+  
+
+  <figcaption>
+    
+      © Copyright National Aeronautics and Space Administration
+    
+  </figcaption>
+</figure>
+```

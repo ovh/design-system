@@ -1,0 +1,399 @@
+import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, type BreadcrumbProp } from '../../../../ods-react/src/components/breadcrumb/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { excludeFromDemoControls } from '../../support/controls';
+
+type Story = StoryObj<BreadcrumbProp>;
+
+const meta: Meta<BreadcrumbProp> = {
+  argTypes: excludeFromDemoControls(['i18n', 'id', 'locale', 'noCollapse', 'onExpand']),
+  component: Breadcrumb,
+  subcomponents: { BreadcrumbItem, BreadcrumbLink },
+  title: 'React Components/Breadcrumb',
+};
+
+export default meta;
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink
+          aria-label="Home"
+          href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const Collapsed: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Homepage" href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const CustomAfterBeforeCollapse: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb
+      nbItemsBeforeEllipsis={ 1 }
+      nbItemsAfterEllipsis={ 4 }>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const CustomCollapseThreshold: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb collapseThreshold={ 7 }>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const NoCollapse: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb noCollapse>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
+export const AccessibilityWithAriaLabel: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Breadcrumb aria-label="Breadcrumb">
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Category
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Subcategory
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current page
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+}
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Homepage" href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};

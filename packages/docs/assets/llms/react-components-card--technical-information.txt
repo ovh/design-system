@@ -1,0 +1,43 @@
+---
+title: "Card"
+slug: card
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 257
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
+---
+
+# Card
+
+## Card
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `CARD_COLOR` | No | undefined | The color preset to use. |
+
+## Enums
+
+### CARD_COLOR
+
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `primary` = `primary`
+- `success` = `success`
+- `warning` = `warning`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-card-border-radius` | `var(--ods-theme-border-radius)` |
+| `--ods-card-border-width` | `var(--ods-theme-border-width)` |
+| `--ods-card-border-color-critical` | `var(--ods-color-critical-200)` |
+| `--ods-card-border-color-information` | `var(--ods-color-information-200)` |
+| `--ods-card-border-color-neutral` | `var(--ods-color-neutral-200)` |
+| `--ods-card-border-color-primary` | `var(--ods-color-primary-500)` |
+| `--ods-card-border-color-success` | `var(--ods-color-success-200)` |
+| `--ods-card-border-color-warning` | `var(--ods-color-warning-200)` |

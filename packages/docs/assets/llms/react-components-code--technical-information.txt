@@ -1,0 +1,39 @@
+---
+title: "Code"
+slug: code
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 381
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
+---
+
+# Code
+
+## Code
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `canCopy` | `boolean` | No | undefined | Whether the copy button is displayed. |
+| `children` | `string` | Yes | undefined | The code to display. |
+| `highlighter` | `object` | No | undefined | Configuration of a specific code highlighter (see beneath for more details). |
+| `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `onCopy` | `() => void` | No | undefined | Callback fired when the text is copied. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-code-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-code-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 1.5)` |
+| `--ods-code-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 1.5)` |
+| `--ods-code-primary-color` | `#fff` |
+| `--ods-code-secondary-color` | `#000` |
+| `--ods-code-trigger-background-color` | `#fff` |
+| `--ods-code-trigger-background-color-active` | `var(--ods-color-neutral-700)` |
+| `--ods-code-trigger-background-color-hover` | `var(--ods-color-neutral-600)` |
+| `--ods-code-trigger-outline-color` | `#fff` |

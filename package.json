@@ -32,7 +32,7 @@
     "ods:prerelease": "pnpm ods:release:prepare && pnpm version:prerelease",
     "ods:release:prepare": "npx zx scripts/ods-release-prepare.mjs",
     "ods:publish": "lerna publish --concurrency 1 from-package --yes",
-    "storybook": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-storybook run start",
+    "storybook": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-docs run start",
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
     "test:spec:ci": "lerna run --stream --concurrency 2 test:spec:ci",
     "version": "pnpm install && git add pnpm-lock.yaml && echo \"more info, see: https://github.com/lerna/lerna/issues/2891#issuecomment-953823502\"",

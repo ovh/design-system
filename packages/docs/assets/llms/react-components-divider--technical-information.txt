@@ -1,0 +1,48 @@
+---
+title: "Divider"
+slug: divider
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 209
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--technical-information.txt
+---
+
+# Divider
+
+## Divider
+
+This component extends all the native `<hr>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `'neutral' | 'primary'` | No | undefined | - (deprecated) |
+| `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
+| `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
+
+## Enums
+
+### DIVIDER_COLOR (deprecated)
+
+- `neutral` = `neutral`
+- `primary` = `primary`
+
+### DIVIDER_ORIENTATION
+
+- `horizontal` = `horizontal`
+- `vertical` = `vertical`
+
+### DIVIDER_SPACING
+
+- `_0` = `0`
+- `_12` = `12`
+- `_16` = `16`
+- `_2` = `2`
+- `_24` = `24`
+- `_32` = `32`
+- `_4` = `4`
+- `_40` = `40`
+- `_48` = `48`
+- `_6` = `6`
+- `_64` = `64`
+- `_8` = `8`

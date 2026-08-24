@@ -1,0 +1,24 @@
+---
+title: "Medium"
+slug: medium
+category: component
+type: overview
+version: 19.7.3
+tokens: 71
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium.txt
+---
+
+# Medium
+
+## Examples
+
+- Caption
+- Default
+- Height
+- Width
+
+## Documentation pages
+
+- [Documentation](./react-components-medium--documentation.txt)
+- [Technical Information](./react-components-medium--technical-information.txt)
+- [Examples](./react-components-medium--examples.txt)

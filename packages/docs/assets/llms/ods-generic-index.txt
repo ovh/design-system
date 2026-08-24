@@ -1,0 +1,30 @@
+# OVHcloud Design System - Generic Documentation Index
+
+> Individual documentation files (design tokens, styling, guides, FAQ, ...) for targeted LLM context.
+> Use these files to provide only the documentation you need, instead of the full documentation.
+
+- [12.x to 13.x](./ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x.txt) (~138 tokens)
+- [13.x to 14.x](./ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x.txt) (~142 tokens)
+- [14.x to 15.x](./ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x.txt) (~838 tokens)
+- [15.x to 16.x](./ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x.txt) (~561 tokens)
+- [16.x to 17.x](./ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt) (~555 tokens)
+- [17.x to 18.x](./ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt) (~390 tokens)
+- [Accessibility](./ovhcloud-design-system-build-accessibility.txt) (~4076 tokens)
+- [Apply ODS Style](./ovhcloud-design-system-customize-apply-ods-style.txt) (~323 tokens)
+- [Charts](./ovhcloud-design-system-build-charts.txt) (~1030 tokens)
+- [Components](./recipes-components.txt) (~676 tokens)
+- [Design Tokens](./ovhcloud-design-system-customize-design-tokens.txt) (~2713 tokens)
+- [FAQ](./ovhcloud-design-system-f-a-q.txt) (~1517 tokens)
+- [formatPrice](./helpers-formatprice.txt) (~109 tokens)
+- [formatPrice](./helpers-formatprice--documentation.txt) (~253 tokens)
+- [formatRelativeTime](./helpers-formatrelativetime.txt) (~113 tokens)
+- [formatRelativeTime](./helpers-formatrelativetime--documentation.txt) (~283 tokens)
+- [Forms](./ovhcloud-design-system-build-forms.txt) (~5761 tokens)
+- [Get Started](./ovhcloud-design-system-get-started.txt) (~658 tokens)
+- [Internationalization](./ovhcloud-design-system-build-internationalization.txt) (~608 tokens)
+- [Migration to v19](./ovhcloud-design-system-upgrade-migration-to-v19.txt) (~443 tokens)
+- [Roadmap](./ovhcloud-design-system-roadmap.txt) (~25 tokens)
+- [Style Customization](./ovhcloud-design-system-customize-style-customization.txt) (~627 tokens)
+- [Tailwind CSS Integration](./ovhcloud-design-system-customize-tailwind-css-integration.txt) (~1262 tokens)
+- [Welcome](./ovhcloud-design-system-welcome.txt) (~254 tokens)
+- [What's new](./ovhcloud-design-system-upgrade-what-s-new.txt) (~18446 tokens)

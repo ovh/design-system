@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import versions from '../../../storybook/assets/ods-versions.json';
+import versions from '../../assets/ods-versions.json';
 import { version as currentVersion } from '../../../../lerna.json';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Select, SelectContent, SelectControl } from '../../../ods-react/src/components/select/src';

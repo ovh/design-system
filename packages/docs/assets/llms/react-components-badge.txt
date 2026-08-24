@@ -1,0 +1,36 @@
+---
+title: "Badge"
+slug: badge
+category: component
+type: overview
+version: 19.7.3
+tokens: 204
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
+---
+
+# Badge
+
+_**Badge** show concise metadata or the current status for an item, in a compact format._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `'critical' | 'information' | 'neutral' | 'primary' | 'success' | 'warning' | 'alpha' | 'beta' | 'new' | 'promotion'` | No | undefined | The color preset to use. |
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+
+## Examples
+
+- Color
+- Default
+- Size
+- Accessibility Aria Label
+- Accessibility With Tooltip
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+
+## Documentation pages
+
+- [Documentation](./react-components-badge--documentation.txt)
+- [Technical Information](./react-components-badge--technical-information.txt)
+- [Examples](./react-components-badge--examples.txt)

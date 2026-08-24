@@ -1,0 +1,52 @@
+---
+title: "Range"
+slug: range
+category: component
+type: overview
+version: 19.7.3
+tokens: 562
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range.txt
+---
+
+# Range
+
+_**Range** component is used to allow users to visually select one or more values from a range of values by moving the handle along a bar_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `aria-label` | `string[]` | No | undefined | The aria-label of each slider thumb. Useful for providing an accessible name to the slider. |
+| `aria-labelledby` | `string[]` | No | undefined | The id of the elements that labels each slider thumb. Useful for providing an accessible name to the slider. |
+| `defaultValue` | `number[]` | No | undefined | The initial selected value(s). Use when you don't need to control the value(s) of the range. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `displayBounds` | `boolean` | No | undefined | Whether the range bounds are displayed under the track. |
+| `displayTooltip` | `boolean` | No | undefined | Whether a tooltip with the current thumb value is displayed on drag. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `max` | `number` | No | undefined | The maximum value that can be selected. |
+| `min` | `number` | No | undefined | The minimum value that can be selected. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onDragging` | `(detail: RangeValueChangeDetail) => void` | No | undefined | Callback fired when the thumb moves. |
+| `onValueChange` | `(detail: RangeValueChangeDetail) => void` | No | undefined | Callback fired when the thumb is released. |
+| `step` | `number` | No | undefined | The amount to increment or decrement the value by. |
+| `ticks` | `RangeTickItem[]` | No | undefined | List of tick indicators to display alongside the range. |
+| `value` | `number[]` | No | undefined | The controlled selected value(s). |
+
+## Examples
+
+- Controlled
+- Default
+- Disabled
+- In Form Field
+- Max Min
+- Step
+- Ticks
+- Ticks Labels
+- Accessibility Form Field
+- Accessibility Descriptive Sub Label
+
+## Documentation pages
+
+- [Documentation](./react-components-range--documentation.txt)
+- [Technical Information](./react-components-range--technical-information.txt)
+- [Examples](./react-components-range--examples.txt)

@@ -1,0 +1,41 @@
+---
+title: "Quantity"
+slug: quantity
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 348
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--technical-information.txt
+---
+
+# Quantity
+
+## Quantity
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial quantity value. Use when you don't need to control the value of the quantity. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `max` | `number` | No | undefined | The maximum quantity that can be selected. |
+| `min` | `number` | No | undefined | The minimum quantity that can be selected. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onValueChange` | `(detail: QuantityValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `step` | `number` | No | undefined | The amount to increment or decrement the value by. |
+| `value` | `string` | No | undefined | The controlled quantity value. |
+
+## QuantityControl
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## QuantityInput
+
+This component extends all the native `<input>` attributes.
+
+_No specific property._

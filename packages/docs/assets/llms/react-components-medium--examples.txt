@@ -1,0 +1,53 @@
+---
+title: "Medium"
+slug: medium
+category: component
+type: examples
+version: 19.7.3
+tokens: 205
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--examples.txt
+---
+
+# Medium
+
+## Caption
+
+```tsx
+<figure>
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      © Copyright National Aeronautics and Space Administration
+    </Text>
+  </figcaption>
+</figure>
+```
+
+## Default
+
+```tsx
+<Medium
+  alt="NASA Computer room"
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+```
+
+## Height
+
+```tsx
+<Medium
+  alt="NASA Computer room"
+  height={ 40 }
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+```
+
+## Width
+
+```tsx
+<Medium
+  alt="NASA Computer room"
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
+  width={ 300 } />
+```

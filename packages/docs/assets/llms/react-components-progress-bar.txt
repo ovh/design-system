@@ -1,0 +1,34 @@
+---
+title: "Progress Bar"
+slug: progress-bar
+category: component
+type: overview
+version: 19.7.3
+tokens: 191
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar.txt
+---
+
+# Progress Bar
+
+_A horizontal bar indicating the current completion status of a long-running task, usually updated continuously as the task progresses, instead of in discrete steps._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `max` | `string | number` | No | undefined | The maximum value of the progress bar. |
+| `value` | `string | number` | No | undefined | The current value of the progress bar |
+
+## Examples
+
+- Default
+- Indeterminate
+- Max
+- Value
+- Accessibility Label
+
+## Documentation pages
+
+- [Documentation](./react-components-progress-bar--documentation.txt)
+- [Technical Information](./react-components-progress-bar--technical-information.txt)
+- [Examples](./react-components-progress-bar--examples.txt)

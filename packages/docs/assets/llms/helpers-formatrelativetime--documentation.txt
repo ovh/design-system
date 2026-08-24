@@ -1,0 +1,52 @@
+---
+title: "formatRelativeTime"
+slug: helpers-formatrelativetime
+category: generic
+type: documentation
+version: 19.7.3
+tokens: 283
+source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime--documentation.txt
+---
+
+# formatRelativeTime
+
+## Specifications
+
+Format a date to a human readable relative time (like 'a month ago').
+
+| Argument | Type | Default | Description |
+|---|---|---|---|
+| `date` | `Date` | - | The date to format. |
+| `locale` | `string` | 'en-GB' | The locale to use. |
+| `option` | `RelativeTimeFormatOptions` | - | Language-sensitive formatting options. |
+
+- [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)
+
+## Examples
+
+### Default
+
+```tsx
+<>{ formatRelativeTime(new Date()) }</>
+```
+
+### Locales
+
+```tsx
+<>
+  <p>France: { formatRelativeTime(new Date(), 'fr-FR') }</p>
+  <p>Germany: { formatRelativeTime(new Date(), 'de-DE') }</p>
+  <p>Arabic: { formatRelativeTime(new Date(), 'ar-EG') }</p>
+  <p>India: { formatRelativeTime(new Date(), 'en-IN') }</p>
+</>
+```
+
+### Format option
+
+```tsx
+<>
+  <p>Long: { formatRelativeTime(new Date(), 'en-US', { style: 'long'}) }</p>
+  <p>Short: { formatRelativeTime(new Date(), 'en-US', { style: 'short'}) }</p>
+  <p>Narrow: { formatRelativeTime(new Date(), 'en-US', { style: 'narrow'}) }</p>
+</>
+```

@@ -1,0 +1,46 @@
+---
+title: "Message Bubble"
+slug: message-bubble
+category: component
+type: examples
+version: 19.7.3
+tokens: 125
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--examples.txt
+---
+
+# Message Bubble
+
+## Default
+
+```tsx
+<MessageBubble>
+  Hello, how can I help you?
+</MessageBubble>
+```
+
+## Variant
+
+```tsx
+<>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human }>
+    This is a human message
+  </MessageBubble>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai }>
+    This is an AI message
+  </MessageBubble>
+</>
+```
+
+## Error
+
+```tsx
+<MessageBubble error>
+  An error occurred while generating the response.
+</MessageBubble>
+```
+
+## Typing
+
+```tsx
+<MessageBubble typing />
+```

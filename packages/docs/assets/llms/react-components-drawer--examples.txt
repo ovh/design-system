@@ -1,0 +1,230 @@
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: examples
+version: 19.7.3
+tokens: 980
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--examples.txt
+---
+
+# Drawer
+
+## Backdrop
+
+```tsx
+<Drawer backdrop>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: DrawerOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openDrawer() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button onClick={ openDrawer }>
+          Trigger Drawer
+        </Button>
+
+        <Drawer
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <DrawerContent>
+            <DrawerBody>
+              Content
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    );
+  }
+```
+
+## Default
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Overlay Elements
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Position
+
+```tsx
+<>
+ <Drawer>
+   <DrawerTrigger asChild>
+     <Button>
+       Top drawer
+     </Button>
+   </DrawerTrigger>
+
+   <DrawerContent position={ DRAWER_POSITION.top }>
+     <DrawerBody>
+       Top drawer content
+     </DrawerBody>
+   </DrawerContent>
+ </Drawer>
+
+<Drawer>
+   <DrawerTrigger asChild>
+     <Button>
+       Left drawer
+     </Button>
+   </DrawerTrigger>
+
+   <DrawerContent position={ DRAWER_POSITION.left }>
+     <DrawerBody>
+       Left drawer content
+     </DrawerBody>
+   </DrawerContent>
+ </Drawer>
+
+<Drawer>
+   <DrawerTrigger asChild>
+     <Button>
+       Right Drawer
+     </Button>
+   </DrawerTrigger>
+
+   <DrawerContent position={ DRAWER_POSITION.right }>
+     <DrawerBody>
+       Right drawer content
+     </DrawerBody>
+   </DrawerContent>
+ </Drawer>
+
+<Drawer>
+   <DrawerTrigger asChild>
+     <Button>
+       Bottom Drawer
+     </Button>
+   </DrawerTrigger>
+
+   <DrawerContent position={ DRAWER_POSITION.bottom }>
+     <DrawerBody>
+       Bottom drawer content
+     </DrawerBody>
+   </DrawerContent>
+ </Drawer>
+ </>
+```
+
+## Accessibility Aria Labelled By
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-labelledby="drawer-title">
+    <DrawerBody>
+      <h2 id="drawer-title">
+        My drawer
+      </h2>
+
+      <p id="drawer-content">
+        The drawer content
+      </p>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-label="My drawer">
+    <DrawerBody id="drawer-content">
+      The drawer content
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```

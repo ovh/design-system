@@ -1,0 +1,38 @@
+---
+title: "Accordion"
+slug: accordion
+category: component
+type: overview
+version: 19.7.3
+tokens: 287
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion.txt
+---
+
+# Accordion
+
+_An **Accordion** is a vertical header that reveals or hides an associated section of content._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string[]` | No | undefined | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `multiple` | `boolean` | No | undefined | Whether multiple accordion items can be expanded at the same time. |
+| `onChange` | `(detail: AccordionChangeDetail) => void` | No | undefined | Callback fired when the state of expanded/collapsed accordion items changes. |
+| `value` | `string[]` | No | undefined | The controlled value of the expanded accordion items. |
+
+## Examples
+
+- Default
+- Multiple
+- Disabled
+- Item Disabled
+- Controlled
+- Expand Icon Position Example
+
+## Documentation pages
+
+- [Documentation](./react-components-accordion--documentation.txt)
+- [Technical Information](./react-components-accordion--technical-information.txt)
+- [Examples](./react-components-accordion--examples.txt)

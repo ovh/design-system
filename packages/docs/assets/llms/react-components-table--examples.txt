@@ -1,0 +1,278 @@
+---
+title: "Table"
+slug: table
+category: component
+type: examples
+version: 19.7.3
+tokens: 1234
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--examples.txt
+---
+
+# Table
+
+## Custom Caption
+
+```tsx
+<Table>
+  <caption>
+    <Text preset={ TEXT_PRESET.caption }>
+      Front-end web developer course 2021
+    </Text>
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Most interest in</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>HTML tables</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <th scope="row">Dennis</th>
+    <td>Web accessibility</td>
+    <td>45</td>
+  </tr>
+  <tr>
+    <th scope="row">Sarah</th>
+    <td>JavaScript frameworks</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <th scope="row">Karen</th>
+    <td>Web performance</td>
+    <td>36</td>
+  </tr>
+  </tbody>
+</Table>
+```
+
+## Default
+
+```tsx
+<Table>
+  <caption>
+    Front-end web developer course 2021
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Most interest in</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>HTML tables</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <th scope="row">Dennis</th>
+    <td>Web accessibility</td>
+    <td>45</td>
+  </tr>
+  <tr>
+    <th scope="row">Sarah</th>
+    <td>JavaScript frameworks</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <th scope="row">Karen</th>
+    <td>Web performance</td>
+    <td>36</td>
+  </tr>
+  </tbody>
+</Table>
+```
+
+## Size
+
+```tsx
+<>
+  <Table size={ TABLE_SIZE.sm }>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+    </tbody>
+  </Table>
+
+  <Table size={ TABLE_SIZE.md }>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+    </tbody>
+  </Table>
+
+  <Table size={ TABLE_SIZE.lg }>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+    </tbody>
+  </Table>
+</>
+```
+
+## Variant
+
+```tsx
+<>
+  <Table variant={ TABLE_VARIANT.default }>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+    </tbody>
+  </Table>
+
+  <Table variant={ TABLE_VARIANT.striped }>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+    </tbody>
+  </Table>
+</>
+```

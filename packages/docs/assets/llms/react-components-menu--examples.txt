@@ -1,0 +1,123 @@
+---
+title: "Menu"
+slug: menu
+category: component
+type: examples
+version: 19.7.3
+tokens: 566
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--examples.txt
+---
+
+# Menu
+
+## Default
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem value="settings">Settings</MenuItem>
+    <MenuItem value='logout'>Logout</MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleMenu() {
+      setIsOpen((isOpen) => !isOpen);
+    }
+
+    return (
+      <>
+        <Button onClick={ toggleMenu }>
+          Toggle menu
+        </Button>
+
+        <Menu open={ isOpen }>
+          <MenuTrigger asChild>
+            <Icon name={ ICON_NAME.ellipsisVertical } />
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem value='profile'>Profile</MenuItem>
+            <MenuItem value='settings'>Settings</MenuItem>
+            <MenuItem value='logout'>Logout</MenuItem>
+          </MenuContent>
+        </Menu>
+      </>
+    );
+  }
+```
+
+## Nested
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value='new'>New</MenuItem>
+    <MenuItem value='open'>Open</MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>Share</MenuTrigger>
+      <MenuContent>
+        <MenuItem value='email'>Email</MenuItem>
+        <MenuItem value='message'>Message</MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
+  </MenuContent>
+</Menu>
+```
+
+## Group
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>Account</MenuGroupLabel>
+      <MenuItem value='profile'>Profile</MenuItem>
+      <MenuItem value='billing'>Billing</MenuItem>
+    </MenuGroup>
+    <MenuGroup>
+      <MenuGroupLabel>Support</MenuGroupLabel>
+      <MenuItem value='help'>Help center</MenuItem>
+      <MenuItem value='contact'>Contact support</MenuItem>
+    </MenuGroup>
+  </MenuContent>
+</Menu>
+```
+
+## Disabled
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem disabled value="settings">Settings</MenuItem>
+    <MenuItem value="logout">Logout</MenuItem>
+  </MenuContent>
+</Menu>
+```

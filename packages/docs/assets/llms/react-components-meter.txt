@@ -1,0 +1,37 @@
+---
+title: "Meter"
+slug: meter
+category: component
+type: overview
+version: 19.7.3
+tokens: 261
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.txt
+---
+
+# Meter
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `high` | `number` | No | undefined | The lower numeric bound of the high end of the measured range. |
+| `low` | `number` | No | undefined | The upper numeric bound of the low end of the measured range. |
+| `max` | `number` | No | undefined | The upper numeric bound of the measured range. |
+| `min` | `number` | No | undefined | The lower numeric bound of the measured range. |
+| `optimum` | `number` | No | undefined | The optimal numeric value. Combined with low and high, it will changes the coloring behaviour. |
+| `value` | `number` | No | undefined | The current value of the meter |
+
+## Examples
+
+- Accessibility Aria Label
+- Accessibility Aria Labelledby
+- Accessibility Aria Valuetext
+- Default
+- Optimum
+- Thresholds
+
+## Documentation pages
+
+- [Documentation](./react-components-meter--documentation.txt)
+- [Technical Information](./react-components-meter--technical-information.txt)
+- [Examples](./react-components-meter--examples.txt)

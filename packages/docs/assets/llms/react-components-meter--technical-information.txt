@@ -1,0 +1,36 @@
+---
+title: "Meter"
+slug: meter
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 276
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--technical-information.txt
+---
+
+# Meter
+
+## Meter
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `high` | `number` | No | undefined | The lower numeric bound of the high end of the measured range. |
+| `low` | `number` | No | undefined | The upper numeric bound of the low end of the measured range. |
+| `max` | `number` | No | undefined | The upper numeric bound of the measured range. |
+| `min` | `number` | No | undefined | The lower numeric bound of the measured range. |
+| `optimum` | `number` | No | undefined | The optimal numeric value. Combined with low and high, it will changes the coloring behaviour. |
+| `value` | `number` | No | undefined | The current value of the meter |
+
+## Types
+
+- `MeterState`: `"critical" | "normal" | "warning"`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-meter-background-color-critical` | `var(--ods-theme-critical-color)` |
+| `--ods-meter-background-color-normal` | `var(--ods-theme-primary-color)` |
+| `--ods-meter-background-color-warning` | `var(--ods-theme-warning-color)` |

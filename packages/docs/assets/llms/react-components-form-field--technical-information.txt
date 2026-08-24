@@ -1,0 +1,52 @@
+---
+title: "Form Field"
+slug: form-field
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 254
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
+---
+
+# Form Field
+
+## FormField
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `id` | `string` | No | undefined | The field id. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+
+## FormFieldError
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+## FormFieldHelper
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+## FormFieldLabel
+
+This component extends all the native `<label>` attributes.
+
+_No specific property._
+
+## FormFieldLabelSubLabel
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-form-field-label-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
+| `--ods-form-field-label-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
+| `--ods-form-field-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |

@@ -1,0 +1,47 @@
+---
+title: "Table"
+slug: table
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 312
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
+---
+
+# Table
+
+## Table
+
+This component extends all the native `<table>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `variant` | `'default' | 'striped'` | No | undefined | The variant preset to use. |
+
+## Enums
+
+### TABLE_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+- `sm` = `sm`
+
+### TABLE_VARIANT
+
+- `default` = `default`
+- `striped` = `striped`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-table-striped-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-table-border-color` | `var(--ods-color-neutral-100)` |
+| `--ods-table-cell-padding-horizontal-sm` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-table-cell-padding-vertical-sm` | `var(--ods-theme-padding-vertical)` |
+| `--ods-table-cell-padding-horizontal-md` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-table-cell-padding-horizontal-lg` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-theme-padding-vertical) * 3)` |
+| `--ods-table-head-background-color` | `var(--ods-color-neutral-050)` |

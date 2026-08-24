@@ -46,5 +46,3 @@ overrides:
   # REMOVE WHEN: stylelint-config-concentric-order ships a release pinning stylelint-order@^8.
   "stylelint-order": "8.1.1"
 
-patchedDependencies:
-  '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch

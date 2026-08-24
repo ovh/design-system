@@ -1,0 +1,87 @@
+---
+title: "Switch"
+slug: switch
+category: component
+type: examples
+version: 19.7.3
+tokens: 408
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--examples.txt
+---
+
+# Switch
+
+## Accessibility Aria Label
+
+```tsx
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Accessibility Aria Labelledby
+
+```tsx
+<>
+  <Text
+    id="switch-label"
+    preset={ TEXT_PRESET.label }>
+    Select an item:
+  </Text>
+
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+</>
+```
+
+## Checked
+
+```tsx
+<Switch defaultValue="item-1">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Default
+
+```tsx
+<Switch>
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Disabled
+
+```tsx
+<Switch disabled>
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Sizes
+
+```tsx
+<>
+  <Switch size={ SWITCH_SIZE.sm }>
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+
+  <Switch size={ SWITCH_SIZE.md }>
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+</>
+```

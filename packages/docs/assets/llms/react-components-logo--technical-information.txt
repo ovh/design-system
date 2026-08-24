@@ -1,0 +1,33 @@
+---
+title: "Logo"
+slug: logo
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 112
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--technical-information.txt
+---
+
+# Logo
+
+## Logo
+
+This component extends all the native `<svg>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `variant` | `'default' | 'emblem'` | No | undefined | The variant preset to use. |
+
+## Enums
+
+### LOGO_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+- `sm` = `sm`
+
+### LOGO_VARIANT
+
+- `default` = `default`
+- `emblem` = `emblem`

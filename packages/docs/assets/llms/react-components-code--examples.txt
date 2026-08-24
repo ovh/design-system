@@ -1,0 +1,64 @@
+---
+title: "Code"
+slug: code
+category: component
+type: examples
+version: 19.7.3
+tokens: 170
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--examples.txt
+---
+
+# Code
+
+## Default
+
+```tsx
+<Code>
+  console.log('Hello world');
+</Code>
+```
+
+## Can Copy
+
+```tsx
+<Code canCopy>
+  { `import { Text } from '@ovhcloud/ods-react';` }
+</Code>
+```
+
+## Custom Labels
+
+```tsx
+<Code
+  canCopy
+  labelCopy="Click to copy"
+  labelCopySuccess="Successfully copied">
+  console.log('Hello world');
+</Code>
+```
+
+## Highlighter
+
+```tsx
+<Code
+  highlighter={{
+    language: lang,
+    theme: theme,
+  }}>
+  console.log('Hello World');
+</Code>
+```
+
+## Multiline
+
+```tsx
+<Code>
+    { `function isTargetInElement(event, element) {
+if (!element) {
+  return false;
+}
+
+  return element.contains(event.target) || event.composedPath().includes(element);
+}` }
+  </Code>
+```

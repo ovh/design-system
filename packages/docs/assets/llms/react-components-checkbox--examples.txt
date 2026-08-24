@@ -1,0 +1,127 @@
+---
+title: "Checkbox"
+slug: checkbox
+category: component
+type: examples
+version: 19.7.3
+tokens: 415
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--examples.txt
+---
+
+# Checkbox
+
+## Default
+
+```tsx
+<Checkbox>
+  <CheckboxControl />
+</Checkbox>
+```
+
+## Disabled
+
+```tsx
+<Checkbox disabled>
+  <CheckboxControl />
+
+  <CheckboxLabel>
+    Checkbox
+  </CheckboxLabel>
+</Checkbox>
+```
+
+## In Form Field
+
+```tsx
+<>
+  <Text preset={ TEXT_PRESET.label }>
+    Legal considerations:
+  </Text>
+
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        I agree to the terms and conditions.
+      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        I agree to receive marketing communications.
+      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+</>
+```
+
+## Group
+
+```tsx
+<CheckboxGroup
+  defaultValue={ ['marketing'] }
+  name="acknowledgments">
+  <Checkbox value="term">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to the terms and conditions.
+    </CheckboxLabel>
+  </Checkbox>
+
+  <Checkbox value="marketing">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to receive marketing communications.
+    </CheckboxLabel>
+  </Checkbox>
+</CheckboxGroup>
+```
+
+## Invalid
+
+```tsx
+<Checkbox invalid>
+  <CheckboxControl />
+
+  <CheckboxLabel>
+    Checkbox
+  </CheckboxLabel>
+</Checkbox>
+```
+
+## States
+
+```tsx
+<>
+  <Checkbox checked={ false }>
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      Unchecked
+    </CheckboxLabel>
+  </Checkbox>
+
+  <Checkbox checked={ true }>
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      Checked
+    </CheckboxLabel>
+  </Checkbox>
+
+  <Checkbox checked="indeterminate">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      Indeterminate
+    </CheckboxLabel>
+  </Checkbox>
+</>
+```

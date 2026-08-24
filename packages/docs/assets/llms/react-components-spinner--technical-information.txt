@@ -1,0 +1,34 @@
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 120
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--technical-information.txt
+---
+
+# Spinner
+
+## Spinner
+
+This component extends all the native `<span>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `'neutral' | 'primary'` | No | undefined | The color preset to use. |
+| `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
+
+## Enums
+
+### SPINNER_COLOR
+
+- `neutral` = `neutral`
+- `primary` = `primary`
+
+### SPINNER_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+- `sm` = `sm`
+- `xs` = `xs`

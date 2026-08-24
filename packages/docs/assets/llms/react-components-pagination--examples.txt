@@ -1,0 +1,102 @@
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: examples
+version: 19.7.3
+tokens: 319
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--examples.txt
+---
+
+# Pagination
+
+## Accessibility Label
+
+```tsx
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Controlled
+
+```tsx
+{
+    const [page, setPage] = useState(1);
+
+    function handlePageChange({ page }: PaginationPageChangeDetail){
+      setPage(page);
+    }
+
+    return (
+      <Pagination
+        onPageChange={ handlePageChange }
+        page={ page }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    );
+  }
+```
+
+## Default
+
+```tsx
+<Pagination totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Disabled
+
+```tsx
+<Pagination
+  disabled
+  totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Items Per Page
+
+```tsx
+<Pagination
+  pageSize={ 25 }
+  totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Page Size Selection
+
+```tsx
+<Pagination totalItems={ 500 }>
+  <PaginationPageSizeSelector />
+
+  <PaginationPages />
+</Pagination>
+```
+
+## Sibling Count
+
+```tsx
+<Pagination
+  defaultPage={ 5 }
+  siblingCount={ 2 }
+  totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## With Tooltip Labels
+
+```tsx
+<Pagination
+  labelTooltipPrev="Go to previous page"
+  labelTooltipNext="Go to next page"
+  totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```

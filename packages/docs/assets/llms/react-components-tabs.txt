@@ -1,0 +1,43 @@
+---
+title: "Tabs"
+slug: tabs
+category: component
+type: overview
+version: 19.7.3
+tokens: 305
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs.txt
+---
+
+# Tabs
+
+_**Tabs** are a way of navigating between multiple panels, reducing clutter and fitting more into a smaller space_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| `onValueChange` | `(event: TabsValueChangeEvent) => void` | No | undefined | Callback fired when the state of selected tab changes. |
+| `size` | `'md' | 'sm' | 'xs'` | No | undefined | The size preset to use. |
+| `value` | `string` | No | undefined | The controlled value of the selected tab. |
+| `variant` | `'default' | 'switch'` | No | undefined | The variant preset to use. |
+| `withArrows` | `boolean` | No | undefined | Whether the component displays navigation arrows around the tabs. |
+
+## Examples
+
+- Controlled
+- Default
+- Disabled
+- Overflow
+- Size
+- Variant
+- With Arrows
+- With Content
+- Product Detail
+- Controlled With Navigation
+
+## Documentation pages
+
+- [Documentation](./react-components-tabs--documentation.txt)
+- [Technical Information](./react-components-tabs--technical-information.txt)
+- [Examples](./react-components-tabs--examples.txt)

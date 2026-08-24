@@ -1,0 +1,207 @@
+---
+title: "Button"
+slug: button
+category: component
+type: examples
+version: 19.7.3
+tokens: 824
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
+---
+
+# Button
+
+## Color
+
+```tsx
+<>
+  <Button color={ BUTTON_COLOR.critical }>Critical</Button>
+  <Button color={ BUTTON_COLOR.information }>Information</Button>
+  <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
+  <Button color={ BUTTON_COLOR.primary }>Primary</Button>
+  <Button color={ BUTTON_COLOR.success }>Success</Button>
+  <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+</>
+```
+
+## Default
+
+```tsx
+<Button>
+  My button
+</Button>
+```
+
+## Loading
+
+```tsx
+<Button loading={ true }>
+  Loading button
+</Button>
+```
+
+## Size
+
+```tsx
+<>
+  <Button size={ BUTTON_SIZE.md }>MD button</Button>
+  <Button size={ BUTTON_SIZE.sm }>SM button</Button>
+  <Button size={ BUTTON_SIZE.xs }>XS button</Button>
+</>
+```
+
+## Variant
+
+```tsx
+<>
+  <Button variant={ BUTTON_VARIANT.default }>Default button</Button>
+  <Button variant={ BUTTON_VARIANT.outline }>Outline button</Button>
+  <Button variant={ BUTTON_VARIANT.ghost }>Ghost button</Button>
+</>
+```
+
+## Accessibility Explicit Text Content
+
+```tsx
+<Button>
+  Clear
+</Button>
+```
+
+## Accessibility Icon Only
+
+```tsx
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
+```
+
+## Accessibility Bad Practice Icon Only
+
+```tsx
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
+```
+
+## Accessibility Labelled By
+
+```tsx
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
+  <span id="filter-btn">Filter your search results</span>
+</>
+```
+
+## Accessibility Bad Practice Labelled By
+
+```tsx
+<>
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
+  <span>Filter your search results</span>
+</>
+```
+
+## Accessibility Bad Practices Role Status
+
+```tsx
+{
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span style={{ marginLeft: '1rem' }}>
+          { message }
+        </span>
+      </>
+    );
+  }
+```
+
+## Accessibility Role Status
+
+```tsx
+{
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span
+          aria-live="polite"
+          role="status"
+          style={{ marginLeft: '1rem' }}>
+          { message }
+        </span>
+      </>
+    );
+  }
+```
+
+## Accessibility Bad Practices Role Alert
+
+```tsx
+{
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
+        </span>
+      </>
+    );
+  }
+```
+
+## Accessibility Role Alert
+
+```tsx
+{
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving!');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span
+          role="alert"
+          style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
+        </span>
+      </>
+    );
+  }
+```

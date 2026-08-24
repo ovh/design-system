@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
@@ -81,7 +81,7 @@ const humanize = (storyName: string): string => storyName.replace(/([a-z0-9])([A
 
 function readStories(ref: string): Record<string, string> {
   const name = ref.split('/')[1];
-  const path = resolve(here, `../storybook/stories/${ref}/${name}.stories.tsx`);
+  const path = resolve(here, `./stories/${ref}/${name}.stories.tsx`);
   return existsSync(path) ? extractStorySources(readFileSync(path, 'utf8')) : {};
 }
 
@@ -545,7 +545,7 @@ function summary(): string {
 
 /* ------------------------------------------------------------------ */
 
-function generate(outDir: string): number {
+function generate(outDir: string, withRootSummary = true): number {
   mkdirSync(outDir, { recursive: true });
 
   const componentKeys = readdirSync(resolve(here, 'src', 'content', 'components'), { withFileTypes: true })
@@ -616,8 +616,10 @@ function generate(outDir: string): number {
   writeFileSync(resolve(outDir, 'ods-components-index.txt'), componentsIndex(components), 'utf8');
   writeFileSync(resolve(outDir, 'ods-generic-index.txt'), genericIndex(genericFiles), 'utf8');
   writeFileSync(resolve(outDir, 'llms-index.json'), `${JSON.stringify(index, null, 2)}\n`, 'utf8');
-  // The summary is also served at the site root, as before.
-  writeFileSync(resolve(outDir, '..', 'llms.txt'), summary(), 'utf8');
+  if (withRootSummary) {
+    // The summary is also served at the site root, as before.
+    writeFileSync(resolve(outDir, '..', 'llms.txt'), summary(), 'utf8');
+  }
 
   return componentFiles.length + genericFiles.length + 7;
 }
@@ -628,7 +630,12 @@ function llmsEmit(): Plugin {
     apply: 'build',
     closeBundle() {
       const count = generate(resolve(here, 'dist', 'llms'));
-      this.info(`llms: ${count} files emitted natively`);
+      // Committed copy: the source ods-react's copy:llms ships in its npm
+      // package (dist/llms) — its build runs BEFORE the docs build in a
+      // release, so the files must live in git, not only in dist.
+      rmSync(resolve(here, 'assets', 'llms'), { force: true, recursive: true });
+      generate(resolve(here, 'assets', 'llms'), false);
+      this.info(`llms: ${count} files emitted natively (dist + committed assets)`);
     },
   };
 }

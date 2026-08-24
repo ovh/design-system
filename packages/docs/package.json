@@ -1,12 +1,13 @@
 {
   "name": "@ovhcloud/ods-docs",
-  "version": "0.0.0",
-  "private": true,
+  "version": "19.7.3",
   "type": "module",
   "scripts": {
-    "start": "vite --port 6100",
     "build": "vite build",
+    "build:storybook": "pnpm generate:versions && pnpm build && rm -rf ../storybook/dist && mkdir -p ../storybook && cp -r dist ../storybook/dist",
+    "generate:versions": "node scripts/generate-version-list.cjs 'assets/ods-versions.json'",
     "preview": "vite preview --port 6100",
+    "start": "vite --port 6100",
     "test:smoke": "node tests/run.mjs"
   },
   "dependencies": {
@@ -39,5 +40,16 @@
     "sass": "1.101.0",
     "typescript": "6.0.3",
     "vite": "8.1.0"
-  }
+  },
+  "description": "ODS documentation platform",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git",
+    "directory": "packages/docs"
+  },
+  "files": [
+    "dist"
+  ]
 }

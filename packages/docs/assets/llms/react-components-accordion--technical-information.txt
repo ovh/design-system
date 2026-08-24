@@ -1,0 +1,63 @@
+---
+title: "Accordion"
+slug: accordion
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 494
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
+---
+
+# Accordion
+
+## Accordion
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string[]` | No | undefined | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `multiple` | `boolean` | No | undefined | Whether multiple accordion items can be expanded at the same time. |
+| `onChange` | `(detail: AccordionChangeDetail) => void` | No | undefined | Callback fired when the state of expanded/collapsed accordion items changes. |
+| `value` | `string[]` | No | undefined | The controlled value of the expanded accordion items. |
+
+## AccordionContent
+
+
+_No specific property._
+
+## AccordionItem
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the accordion item is disabled. |
+| `value` | `string` | Yes | undefined | The value of the accordion item. |
+
+## AccordionTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `expandIconPosition` | `'left' | 'right'` | No | undefined | The position of the expand icon. |
+
+## Enums
+
+### EXPAND_ICON_POSITION
+
+- `left` = `left`
+- `right` = `right`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-accordion-border-color` | `var(--ods-color-neutral-200)` |
+| `--ods-accordion-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-accordion-border-width` | `1px` |
+| `--ods-accordion-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 3)` |
+| `--ods-accordion-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 3)` |
+| `--ods-accordion-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |

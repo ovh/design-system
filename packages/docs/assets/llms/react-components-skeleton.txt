@@ -1,0 +1,25 @@
+---
+title: "Skeleton"
+slug: skeleton
+category: component
+type: overview
+version: 19.7.3
+tokens: 109
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton.txt
+---
+
+# Skeleton
+
+_**Skeleton** component indicates that data is loading. It improves the perceived loading time for the user._
+
+## Examples
+
+- Default
+- Accessibility Loading
+- Accessibility Bad Practice Loading
+
+## Documentation pages
+
+- [Documentation](./react-components-skeleton--documentation.txt)
+- [Technical Information](./react-components-skeleton--technical-information.txt)
+- [Examples](./react-components-skeleton--examples.txt)

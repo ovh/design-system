@@ -1,0 +1,25 @@
+---
+title: "formatPrice"
+slug: helpers-formatprice
+category: generic
+type: overview
+version: 19.7.3
+tokens: 109
+source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice.txt
+---
+
+# formatPrice
+
+Format a numeric value to a price matching given locale format with expected currency.
+
+## Arguments
+
+| Argument | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | - | The numeric value to format. |
+| `locale` | `string` | 'fr-FR' | The locale to use. |
+| `currency` | `string` | 'EUR' | The currency expected. |
+
+## Documentation pages
+
+- [Documentation](./helpers-formatprice--documentation.txt)

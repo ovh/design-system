@@ -1,0 +1,47 @@
+---
+title: "Markdown"
+slug: markdown
+category: component
+type: documentation
+version: 19.7.3
+tokens: 386
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--documentation.txt
+---
+
+# Markdown
+
+## Overview
+
+**Markdown** component is a versatile tool for rendering Markdown syntax into a visually appealing and user-friendly
+  format. It transforms Markdown elements into corresponding ODS components, ensuring consistency and accessibility.
+
+| | |
+|---|---|
+| Name | Markdown |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=0-1&p=f&t=kwInPIiCg5eOsgBa-0 |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/markdown |
+
+## Usage
+
+**Markdown** component is used to parse Markdown content and convert it in a readable and engaging way.
+It is ideal for rendering user-generated content, documentation, and other types of text that require formatting
+and styling.
+
+## Placement
+
+**Markdown** component can be used in various contexts, such as articles, blogs, forums, and documentation pages.
+It can be placed in a container or used as a standalone element, depending on the desired layout and design.
+
+## Behavior
+
+**Markdown** component automatically parses and renders Markdown syntax, including headings, text formatting, links,
+code blocks, and other elements. It also supports customization and overrides for individual Markdown elements,
+allowing developers to adapt the rendering to specific use cases.
+
+## Navigation
+
+**Markdown** component does not have any navigational elements, as it is primarily used for rendering static content.
+
+## Accessibility
+
+**Markdown** accessibility follows what components they are formatting the text into.

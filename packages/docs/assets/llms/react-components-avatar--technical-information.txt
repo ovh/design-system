@@ -1,0 +1,30 @@
+---
+title: "Avatar"
+slug: avatar
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 164
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--technical-information.txt
+---
+
+# Avatar
+
+## Avatar
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fallback` | `ReactNode` | No | undefined | Fallback content to display when the image fails to load. Defaults to a user icon. |
+| `src` | `string` | No | undefined | The image source URL. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-avatar-background-color` | `var( --ods-color-primary-500 )` |
+| `--ods-avatar-text-color` | `var(--ods-color-neutral-000)` |
+| `--ods-avatar-border-radius` | `50%` |
+| `--ods-avatar-size` | `24px` |
+| `--ods-avatar-object-fit` | `cover` |

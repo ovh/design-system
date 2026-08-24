@@ -1,0 +1,25 @@
+---
+title: "formatRelativeTime"
+slug: helpers-formatrelativetime
+category: generic
+type: overview
+version: 19.7.3
+tokens: 113
+source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime.txt
+---
+
+# formatRelativeTime
+
+Format a date to a human readable relative time (like 'a month ago').
+
+## Arguments
+
+| Argument | Type | Default | Description |
+|---|---|---|---|
+| `date` | `Date` | - | The date to format. |
+| `locale` | `string` | 'en-GB' | The locale to use. |
+| `option` | `RelativeTimeFormatOptions` | - | Language-sensitive formatting options. |
+
+## Documentation pages
+
+- [Documentation](./helpers-formatrelativetime--documentation.txt)

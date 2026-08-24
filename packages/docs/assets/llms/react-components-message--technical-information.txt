@@ -1,0 +1,88 @@
+---
+title: "Message"
+slug: message
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1687
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
+---
+
+# Message
+
+## Message
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. |
+| `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
+| `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
+
+## MessageBody
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## MessageIcon
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `name` | `'meter' | 'filter' | 'stop' | 'key' | 'grid' | 'list' | 'timer' | 'email' | 'location' | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | Yes | undefined | The icon name. |
+
+## Enums
+
+### MESSAGE_COLOR
+
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `primary` = `primary`
+- `success` = `success`
+- `warning` = `warning`
+
+### MESSAGE_I18N
+
+- `closeButton` = `message.close.button`
+
+### MESSAGE_VARIANT
+
+- `default` = `default`
+- `light` = `light`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-message-close-button-text-color-primary` | `var(--ods-color-neutral-000)` |
+| `--ods-message-background-color-critical` | `var(--ods-color-critical-075)` |
+| `--ods-message-background-color-critical-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-background-color-information` | `var(--ods-color-information-075)` |
+| `--ods-message-background-color-information-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-background-color-neutral` | `var(--ods-color-neutral-075)` |
+| `--ods-message-background-color-neutral-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-background-color-primary` | `var(--ods-color-primary-500)` |
+| `--ods-message-background-color-primary-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-background-color-success` | `var(--ods-color-success-075)` |
+| `--ods-message-background-color-success-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-background-color-warning` | `var(--ods-color-warning-075)` |
+| `--ods-message-background-color-warning-light` | `var(--ods-theme-background-color)` |
+| `--ods-message-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-message-text-color-critical` | `var(--ods-color-critical-700)` |
+| `--ods-message-text-color-critical-light` | `var(--ods-color-critical-600)` |
+| `--ods-message-text-color-information` | `var(--ods-color-information-700)` |
+| `--ods-message-text-color-information-light` | `var(--ods-color-information-600)` |
+| `--ods-message-text-color-neutral` | `var(--ods-color-neutral-700)` |
+| `--ods-message-text-color-neutral-light` | `var(--ods-color-neutral-600)` |
+| `--ods-message-text-color-primary` | `var(--ods-color-primary-000)` |
+| `--ods-message-text-color-primary-light` | `var(--ods-color-primary-600)` |
+| `--ods-message-text-color-success` | `var(--ods-color-success-700)` |
+| `--ods-message-text-color-success-light` | `var(--ods-color-success-600)` |
+| `--ods-message-text-color-warning` | `var(--ods-color-warning-700)` |
+| `--ods-message-text-color-warning-light` | `var(--ods-color-warning-600)` |

@@ -1,0 +1,228 @@
+---
+title: "Tooltip"
+slug: tooltip
+category: component
+type: examples
+version: 19.7.3
+tokens: 1056
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--examples.txt
+---
+
+# Tooltip
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleTooltip() {
+      setIsOpen((isOpen) => !isOpen);
+    }
+
+    return (
+      <>
+        <Button onClick={ toggleTooltip }>
+          Toggle tooltip
+        </Button>
+
+        <Tooltip open={ isOpen }>
+          <TooltipTrigger asChild>
+            <Icon
+              name={ ICON_NAME.circleQuestion }
+              style={{ fontSize: '24px' }} />
+          </TooltipTrigger>
+
+          <TooltipContent withArrow>
+            This is the tooltip content
+          </TooltipContent>
+        </Tooltip>
+      </>
+    );
+  }
+```
+
+## Custom Trigger
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      name={ ICON_NAME.circleQuestion }
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
+## Default
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
+## Grid
+
+```tsx
+<>
+  <Tooltip overlayConfig={{ position: 'top-start' }}>
+    <TooltipTrigger>
+      Top Left
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top Left tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'top' }}>
+    <TooltipTrigger>
+      Top
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'top-end' }}>
+    <TooltipTrigger>
+      Top Right
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top Right tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'left' }}>
+    <TooltipTrigger>
+      Middle Left
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Middle Left tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <div />
+
+  <Tooltip overlayConfig={{ position: 'right' }}>
+    <TooltipTrigger>
+      Middle Right
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Middle Right tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'bottom-start' }}>
+    <TooltipTrigger>
+      Bottom Left
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom Left tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'bottom' }}>
+    <TooltipTrigger>
+      Bottom
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom tooltip
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip overlayConfig={{ position: 'bottom-end' }}>
+    <TooltipTrigger>
+      Bottom Right
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom Right tooltip
+    </TooltipContent>
+  </Tooltip>
+</>
+```
+
+## Accessibility Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    Some additional context.
+  </TooltipContent>
+</Tooltip>
+```
+
+## ZIndex
+
+```tsx
+<>
+  <span>Default Z-axis order:</span>
+
+  <Tooltip open>
+    <TooltipTrigger asChild>
+      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+    </TooltipTrigger>
+
+    <TooltipContent withArrow>
+      Back
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip open>
+    <TooltipTrigger asChild>
+      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+    </TooltipTrigger>
+
+    <TooltipContent withArrow>
+      Front
+    </TooltipContent>
+  </Tooltip>
+
+  <br />
+
+  <span>Custom Z-axis order:</span>
+
+  <Tooltip
+    open
+    overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
+    positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+    <TooltipTrigger asChild>
+      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+    </TooltipTrigger>
+
+    <TooltipContent withArrow>
+      Front
+    </TooltipContent>
+  </Tooltip>
+
+  <Tooltip
+    open
+    overlayConfig={{ position: TOOLTIP_POSITION.bottom }}>
+    <TooltipTrigger asChild>
+      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+    </TooltipTrigger>
+
+    <TooltipContent withArrow>
+      Back
+    </TooltipContent>
+  </Tooltip>
+</>
+```

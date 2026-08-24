@@ -1,0 +1,33 @@
+---
+title: "Skeleton"
+slug: skeleton
+category: component
+type: examples
+version: 19.7.3
+tokens: 53
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--examples.txt
+---
+
+# Skeleton
+
+## Default
+
+```tsx
+<Skeleton />
+```
+
+## Accessibility Loading
+
+```tsx
+<div aria-busy="true">
+  <Skeleton />
+</div>
+```
+
+## Accessibility Bad Practice Loading
+
+```tsx
+<div>
+  <Skeleton />
+</div>
+```

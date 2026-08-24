@@ -1,0 +1,88 @@
+---
+title: "Icon"
+slug: icon
+category: component
+type: examples
+version: 19.7.3
+tokens: 437
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--examples.txt
+---
+
+# Icon
+
+## Accessibility Informative
+
+```tsx
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
+  role="img" />
+```
+
+## Decorative
+
+```tsx
+<Icon name={ ICON_NAME.home } />
+```
+
+## Default
+
+```tsx
+<Icon name={ ICON_NAME.home } />
+```
+
+## Informative
+
+```tsx
+<Icon
+  aria-label="Help"
+  name={ ICON_NAME.circleQuestion }
+  role="img" />
+```
+
+## Accessibility Bad Practice Decorative
+
+```tsx
+<Icon name={ ICON_NAME.home } />
+```
+
+## Accessibility Bad Practice Rating
+
+```tsx
+<>
+  <label htmlFor="rating">
+    Rating
+  </label>
+
+  <div id="rating">
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
+  </div>
+</>
+```
+
+## Accessibility Rating
+
+```tsx
+<>
+  <label
+    htmlFor="rating"
+    id="rating-label">
+    Rating
+  </label>
+
+  <div
+    aria-labelledby="rating-label"
+    id="rating"
+    role="radiogroup">
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
+  </div>
+</>
+```

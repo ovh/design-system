@@ -1,0 +1,91 @@
+---
+title: "Components"
+slug: recipes-components
+category: generic
+type: overview
+version: 19.7.3
+tokens: 676
+source: https://ovh.github.io/design-system/v19.7.3/llms/recipes-components.txt
+---
+
+# Components
+
+Proven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: https://ovh.github.io/design-system/v19.7.3/recipes/components
+
+## Chat
+
+Tags: ai, interactive
+
+ODS components used: Avatar, Button, Clipboard, ClipboardTrigger, FileThumbnail, Icon, MessageBubble, Text, PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputFiles, PromptInputSendButton, PromptInputTextControl
+
+## Config Tile
+
+Tags: interactive
+
+ODS components used: Badge, Icon, Quantity, QuantityControl, QuantityInput, Radio, RadioControl, RadioGroup, RadioLabel, Select, SelectContent, SelectControl, Text, Tile, formatPrice
+
+## Dashboard Card
+
+Tags: interactive, presentation
+
+ODS components used: Badge, Button, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, Text, Tooltip, TooltipContent, TooltipTrigger
+
+## Data Grid
+
+Tags: interactive, presentation
+
+ODS components used: Button, Clipboard, ClipboardControl, ClipboardTrigger, DataTable, DataTableBody, DataTableEmpty, DataTableHead, Icon, Input, Menu, MenuContent, MenuGroup, MenuItem, MenuTrigger, Pagination, PaginationPageSizeSelector, PaginationPages, Popover, PopoverContent, PopoverTrigger, TreeView, TreeViewNode, TreeViewNodes, 
+
+## Data Grid With Query Filter
+
+Tags: interactive, presentation
+
+ODS components used: DataTable, DataTableBody, DataTableEmpty, DataTableHead, Pagination, QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags, formatRelativeTime, 
+
+## Email Field
+
+Tags: form, interactive
+
+ODS components used: FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, Select, SelectContent, SelectControl, Text
+
+## Feature List
+
+Tags: presentation
+
+ODS components used: Icon, Text, Tooltip, TooltipContent, TooltipTrigger
+
+## Feature List Product Card
+
+Tags: cart, interactive, presentation, product
+
+ODS components used: Badge, Card, Icon, Link, Select, SelectContent, SelectControl, Text, Tooltip, TooltipContent, TooltipTrigger, formatPrice
+
+## Media Product Card
+
+Tags: product, presentation
+
+ODS components used: Card, Icon, Link, Medium, Text
+
+## Order Button
+
+Tags: cart, interactive
+
+ODS components used: Icon
+
+## Range Input
+
+Tags: form, interactive
+
+ODS components used: Input, Range
+
+## Status Message
+
+Tags: interactive, status
+
+ODS components used: Button, Message, MessageBody, MessageIcon
+
+## Status Modal
+
+Tags: dialog, interactive, status
+
+ODS components used: Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Text

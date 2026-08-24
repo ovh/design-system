@@ -1,0 +1,72 @@
+---
+title: "Menu"
+slug: menu
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 733
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
+---
+
+# Menu
+
+## Menu
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `onOpenChange` | `(detail: MenuOpenChangeDetail) => void` | No | undefined | Callback fired when the menu open state changes. |
+| `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the menu. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `position` | `'left' | 'right' | 'bottom' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
+
+## MenuContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. This only works on the root menu and not in submenus. |
+| `withArrow` | `boolean` | No | undefined | Whether the component displays an arrow pointing to the trigger. |
+
+## MenuGroup
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## MenuGroupLabel
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## MenuItem
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the item is disabled. |
+| `onSelect` | `() => void` | No | undefined | Callback fired when the selection changes. |
+| `value` | `string` | Yes | undefined | The value of the item. |
+
+## MenuSubmenu
+
+
+_No specific property._
+
+## MenuTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |

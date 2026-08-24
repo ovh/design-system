@@ -1,0 +1,34 @@
+---
+title: "Message Bubble"
+slug: message-bubble
+category: component
+type: overview
+version: 19.7.3
+tokens: 181
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble.txt
+---
+
+# Message Bubble
+
+_The **Message Bubble** component is designed to display messages in a conversational interface._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `error` | `boolean` | No | undefined | Indicates an error state |
+| `typing` | `boolean` | No | undefined | When typing a message |
+| `variant` | `'ai' | 'human'` | No | undefined | Visual variant of the message bubble |
+
+## Examples
+
+- Default
+- Variant
+- Error
+- Typing
+
+## Documentation pages
+
+- [Documentation](./react-components-message-bubble--documentation.txt)
+- [Technical Information](./react-components-message-bubble--technical-information.txt)
+- [Examples](./react-components-message-bubble--examples.txt)

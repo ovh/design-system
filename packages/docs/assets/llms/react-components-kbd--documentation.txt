@@ -1,0 +1,57 @@
+---
+title: "Kbd"
+slug: kbd
+category: component
+type: documentation
+version: 19.7.3
+tokens: 334
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--documentation.txt
+---
+
+# Kbd
+
+The **Kbd** component is used to display keyboard keys or key combinations, typically for shortcuts or user instructions. It visually distinguishes key inputs from regular text.
+
+## Overview
+
+**Kbd** is a non-interactive component designed to represent keyboard keys or combinations. The purpose of the **Kbd** is to provide a standardized way to format and present key inputs.
+
+| | |
+|---|---|
+| Name | Kbd |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/kbd |
+
+## Usage
+
+**Kbd** is commonly used to display single keys (e.g., `Esc`) and keyboard shortcuts (e.g., `⌘` + `S`, `Ctrl` + `Shift` + `P`) in:
+
+- Documentation
+- Interactive guides
+- Accessibility section
+
+This component is not interactive and should not be used to trigger any action.
+
+### Dos & Don'ts
+
+**Do**
+
+**Don't**
+
+### Best Practices in Context
+
+1. **Kbd**
+
+## Behavior
+
+**Kbd** has no interactive behavior. It is a purely visual component.
+
+The **Kbd** component adapts to its parent font size.
+
+## Navigation
+
+The **Kbd** component is not focusable by default, as it is non-interactive.
+
+## Accessibility
+
+This component complies with the [Kbd HTML element](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/kbd).

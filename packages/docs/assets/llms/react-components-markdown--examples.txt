@@ -1,0 +1,69 @@
+---
+title: "Markdown"
+slug: markdown
+category: component
+type: examples
+version: 19.7.3
+tokens: 247
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--examples.txt
+---
+
+# Markdown
+
+## Code Highlighter
+
+```tsx
+<Markdown
+    component={{
+      code: ({ children }) => {
+        return (
+          <Code
+            highlighter={{
+              language: lang,
+              theme: theme,
+            }}>
+            { children as string }
+          </Code>
+        );
+      }
+    }}
+    content={`# Highlighted Code
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+`} />
+```
+
+## Custom Component
+
+```tsx
+<Markdown
+  component={{
+    a: ({ children, href }) => <Link href={ href } target="_blank">{ children }</Link>,
+  }}
+  content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
+```
+
+## Default
+
+```tsx
+<Markdown content={`# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+> Blockquotes
+
+\`Inline code\`
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+
+| Column 1 | Column 2 |
+| --- | --- |
+| Value 1 | Value 2 |
+`} />
+```

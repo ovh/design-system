@@ -1,0 +1,36 @@
+---
+title: "Editable"
+slug: editable
+category: component
+type: overview
+version: 19.7.3
+tokens: 309
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable.txt
+---
+
+# Editable
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultEditing` | `boolean` | No | undefined | The initial editing state of the editable. Use when you don't need to control the editing state of the editable. |
+| `editing` | `boolean` | No | undefined | The controlled editing state of the editable. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onCancel` | `() => void` | No | undefined | Callback fired when the cancel trigger is activated. |
+| `onEditChange` | `(detail: EditableEditingChangeDetail) => void` | No | undefined | Callback fired when the editing state changes. |
+| `onSubmit` | `() => void` | No | undefined | Callback fired when the submit trigger is activated. |
+
+## Examples
+
+- Complex Form Element
+- Controlled
+- Custom Actions
+- Default
+
+## Documentation pages
+
+- [Documentation](./react-components-editable--documentation.txt)
+- [Technical Information](./react-components-editable--technical-information.txt)
+- [Examples](./react-components-editable--examples.txt)

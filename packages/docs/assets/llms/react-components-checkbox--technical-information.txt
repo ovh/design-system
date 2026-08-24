@@ -1,0 +1,56 @@
+---
+title: "Checkbox"
+slug: checkbox
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 517
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
+---
+
+# Checkbox
+
+## Checkbox
+
+This component extends all the native `<label>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `checked` | `CheckboxCheckedState` | No | undefined | The controlled checked state of the checkbox. |
+| `defaultChecked` | `boolean` | No | undefined | The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onCheckedChange` | `(detail: CheckboxCheckedChangeDetail) => void` | No | undefined | Callback fired when the checked state changes. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `value` | `string` | No | undefined | The value of form element. Useful for form submission. |
+
+## CheckboxControl
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CheckboxGroup
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string[]` | No | undefined | The initial value of `value` when uncontrolled. |
+| `disabled` | `boolean` | No | undefined | Whether the group is disabled. |
+| `invalid` | `boolean` | No | undefined | Whether the group is in error. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onValueChange` | `(value: string[]) => void` | No | undefined | Callback fired when the value changes. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `value` | `string[]` | No | undefined | The controlled value of the checkbox group. |
+
+## CheckboxLabel
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+## Types
+
+- `CheckboxCheckedState`: `boolean | "indeterminate"`

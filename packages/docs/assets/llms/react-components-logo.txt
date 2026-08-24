@@ -1,0 +1,31 @@
+---
+title: "Logo"
+slug: logo
+category: component
+type: overview
+version: 19.7.3
+tokens: 134
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo.txt
+---
+
+# Logo
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `variant` | `'default' | 'emblem'` | No | undefined | The variant preset to use. |
+
+## Examples
+
+- Accessibility Link
+- Default
+- Size
+- Variant
+
+## Documentation pages
+
+- [Documentation](./react-components-logo--documentation.txt)
+- [Technical Information](./react-components-logo--technical-information.txt)
+- [Examples](./react-components-logo--examples.txt)

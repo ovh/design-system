@@ -1,0 +1,47 @@
+---
+title: "Input"
+slug: input
+category: component
+type: overview
+version: 19.7.3
+tokens: 337
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
+---
+
+# Input
+
+_**Input** component is an **Input** field where users can type into_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `maskOption` | `object` | No | undefined | Masked display options. |
+| `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
+
+## Examples
+
+- Clearable
+- Datalist
+- Default
+- Disabled
+- Floating Number
+- In Form Field
+- Loading
+- Masked
+- Read Only
+- Types
+- Accessibility Form Field
+- Accessibility I18n
+
+## Documentation pages
+
+- [Documentation](./react-components-input--documentation.txt)
+- [Technical Information](./react-components-input--technical-information.txt)
+- [Examples](./react-components-input--examples.txt)

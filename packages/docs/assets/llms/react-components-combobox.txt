@@ -1,0 +1,65 @@
+---
+title: "Combobox"
+slug: combobox
+category: component
+type: overview
+version: 19.7.3
+tokens: 800
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox.txt
+---
+
+# Combobox
+
+_**Combobox** allows users to search, select, and add items from a dynamic or predefined list._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `allowCustomValue` | `boolean` | No | undefined | Whether to allow adding a value which is not part of the items. |
+| `customFilter` | `(label: string, query: string) => boolean` | No | undefined | Custom filter logic to apply to each item. |
+| `customOptionRenderer` | `(item: ComboboxItem) => Element` | No | undefined | Custom render for each option item. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the combobox. Use when you don't need to control the open state of the combobox. |
+| `defaultValue` | `string[]` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `highlightResults` | `boolean` | No | undefined | Whether to highlight the matching part of filtered items. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `items` | `ComboboxItem<CustomData>[]` | Yes | undefined | The list of items |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `multiple` | `boolean` | No | undefined | Whether the multiple selection is allowed. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `newElementLabel` | `string` | No | undefined | Label displayed in front of a custom new value to add. |
+| `noResultLabel` | `string` | No | undefined | Label displayed when no values match the current input value. |
+| `onInputValueChange` | `(value: ComboboxInputValueChangeDetails) => void` | No | undefined | Callback fired when the input value changes. |
+| `onOpenChange` | `(detail: ComboboxOpenChangeDetail) => void` | No | undefined | Callback fired when the select open state changes. |
+| `onValueChange` | `(value: ComboboxValueChangeDetails) => void` | No | undefined | Callback fired when the value(s) changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the combobox. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. /!\ Only work for single selection mode for now. |
+| `value` | `string[]` | No | undefined | The controlled selected value(s). |
+
+## Examples
+
+- Default
+- Clearable
+- Custom Filter
+- Disabled
+- Readonly
+- Group
+- In Form Field
+- Invalid
+- Controlled
+- Highlight
+- Custom Options
+- Empty
+- Multiple
+- Accessibility Form Field
+- Accessibility I18n
+
+## Documentation pages
+
+- [Documentation](./react-components-combobox--documentation.txt)
+- [Technical Information](./react-components-combobox--technical-information.txt)
+- [Examples](./react-components-combobox--examples.txt)

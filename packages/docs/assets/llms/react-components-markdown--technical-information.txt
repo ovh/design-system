@@ -1,0 +1,19 @@
+---
+title: "Markdown"
+slug: markdown
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 78
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--technical-information.txt
+---
+
+# Markdown
+
+## Markdown
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `component` | `Record\<keyof JSX.IntrinsicElements, ReactNode\>` | No | undefined | Override of default component rendering |
+| `content` | `string` | Yes | undefined | The Markdown content to transform. |

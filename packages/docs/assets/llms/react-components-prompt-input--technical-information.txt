@@ -1,0 +1,101 @@
+---
+title: "Prompt Input"
+slug: prompt-input
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1224
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
+---
+
+# Prompt Input
+
+## PromptInput
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial textarea value. Use when you don't need to control the value of the textarea. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `fileCollection` | `File[]` | No | undefined | Array of the files associated with the prompt input. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `name` | `string` | No | undefined | The name of the textarea form element. Useful for form submission. |
+| `onFileChange` | `(detail: PromptInputFileChangeDetails) => void` | No | undefined | Callback fired when a file change is triggered on the file-upload button. |
+| `onInputSubmit` | `(detail: PromptInputInputSubmitDetails) => void` | No | undefined | Callback fired when the prompt input is submitted. |
+| `onValueChange` | `(detail: PromptInputValueChangeDetails) => void` | No | undefined | Callback fired when the prompt input text value changes. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `value` | `string` | No | undefined | The controlled textarea value. |
+
+## PromptInputControls
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## PromptInputFiles
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## PromptInputFileUploadButton
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accept` | `string` | No | undefined | Expected file type in file upload controls |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
+| `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
+| `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
+
+## PromptInputRoot
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial textarea value. Use when you don't need to control the value of the textarea. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `fileCollection` | `File[]` | No | undefined | Array of the files associated with the prompt input. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `name` | `string` | No | undefined | The name of the textarea form element. Useful for form submission. |
+| `onFileChange` | `(detail: PromptInputFileChangeDetails) => void` | No | undefined | Callback fired when a file change is triggered on the file-upload button. |
+| `onInputSubmit` | `(detail: PromptInputInputSubmitDetails) => void` | No | undefined | Callback fired when the prompt input is submitted. |
+| `onValueChange` | `(detail: PromptInputValueChangeDetails) => void` | No | undefined | Callback fired when the prompt input text value changes. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `value` | `string` | No | undefined | The controlled textarea value. |
+
+## PromptInputSendButton
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
+| `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
+
+## PromptInputTextControl
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `placeholder` | `string` | No | undefined | - |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-prompt-input-border-color` | `var(--ods-color-form-element-border-default)` |
+| `--ods-prompt-input-border-color-focus` | `var(--ods-color-form-element-border-focus-default)` |
+| `--ods-prompt-input-border-color-hover` | `var(--ods-color-form-element-border-hover-default)` |
+| `--ods-prompt-input-border-radius` | `var(--ods-theme-border-radius)` |
+| `--ods-prompt-input-control-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 2)` |
+| `--ods-prompt-input-control-padding-horizontal` | `var(--ods-theme-input-padding-horizontal)` |
+| `--ods-prompt-input-control-border-color` | `transparent` |
+| `--ods-prompt-input-control-line-height` | `1.375em` |
+| `--ods-prompt-input-control-min-lines` | `1` |
+| `--ods-prompt-input-control-max-lines` | `5` |

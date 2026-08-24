@@ -1,0 +1,39 @@
+---
+title: "Radio Group"
+slug: radio-group
+category: component
+type: overview
+version: 19.7.3
+tokens: 292
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group.txt
+---
+
+# Radio Group
+
+_A **Radio** button allows users to select only one option from a number of choices._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial value of the checked radio. Use when you don't need to control the value of the radio group. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onValueChange` | `(detail: RadioValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
+| `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the radio group. |
+| `value` | `string` | No | undefined | The controlled value of the radio group. |
+
+## Examples
+
+- Default
+- Disabled Group
+- Disabled Item
+- In Form Field
+- Invalid
+- Orientation
+
+## Documentation pages
+
+- [Documentation](./react-components-radio-group--documentation.txt)
+- [Technical Information](./react-components-radio-group--technical-information.txt)
+- [Examples](./react-components-radio-group--examples.txt)

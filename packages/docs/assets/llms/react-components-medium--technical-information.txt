@@ -1,0 +1,17 @@
+---
+title: "Medium"
+slug: medium
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 26
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--technical-information.txt
+---
+
+# Medium
+
+## Medium
+
+This component extends all the native `<img>` attributes.
+
+_No specific property._

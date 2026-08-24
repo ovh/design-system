@@ -1,0 +1,35 @@
+---
+title: "Textarea"
+slug: textarea
+category: component
+type: overview
+version: 19.7.3
+tokens: 157
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea.txt
+---
+
+# Textarea
+
+_A **Textarea** component allows users to input and edit multiple lines of text._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+
+## Examples
+
+- Accessibility Described By
+- Accessibility Form Field
+- Default
+- Disabled
+- In Form Field
+- Read Only
+- Resizable
+
+## Documentation pages
+
+- [Documentation](./react-components-textarea--documentation.txt)
+- [Technical Information](./react-components-textarea--technical-information.txt)
+- [Examples](./react-components-textarea--examples.txt)

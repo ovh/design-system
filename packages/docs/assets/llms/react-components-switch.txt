@@ -1,0 +1,38 @@
+---
+title: "Switch"
+slug: switch
+category: component
+type: overview
+version: 19.7.3
+tokens: 263
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch.txt
+---
+
+# Switch
+
+_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial value of the selected item. Use when you don't need to control the value of the switch. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `onValueChange` | `(detail: SwitchValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
+| `size` | `'md' | 'sm'` | No | undefined | The size preset to use. |
+| `value` | `string` | No | undefined | The controlled value of the selected item. |
+
+## Examples
+
+- Accessibility Aria Label
+- Accessibility Aria Labelledby
+- Checked
+- Default
+- Disabled
+- Sizes
+
+## Documentation pages
+
+- [Documentation](./react-components-switch--documentation.txt)
+- [Technical Information](./react-components-switch--technical-information.txt)
+- [Examples](./react-components-switch--examples.txt)

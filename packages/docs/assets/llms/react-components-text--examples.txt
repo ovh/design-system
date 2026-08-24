@@ -1,0 +1,101 @@
+---
+title: "Text"
+slug: text
+category: component
+type: examples
+version: 19.7.3
+tokens: 473
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--examples.txt
+---
+
+# Text
+
+## Default
+
+```tsx
+<Text>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Text>
+```
+
+## Disabled
+
+```tsx
+<Text disabled>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Text>
+```
+
+## Fig Caption
+
+```tsx
+<figure>
+  <img alt="OVHcloud logo"
+       src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+       style={{ height: '100px' }} />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      My picture title
+    </Text>
+  </figcaption>
+</figure>
+```
+
+## Preset
+
+```tsx
+<>
+  <Text preset={ TEXT_PRESET.blockquote }>Blockquote</Text>
+  <Text preset={ TEXT_PRESET.caption }>Caption</Text><br />
+  <Text preset={ TEXT_PRESET.code }>Code</Text><br />
+  <Text preset={ TEXT_PRESET.label }>Label</Text>
+  <Text preset={ TEXT_PRESET.paragraph }>Paragraph</Text>
+  <Text preset={ TEXT_PRESET.small }>Small</Text><br />
+  <Text preset={ TEXT_PRESET.span }>Span</Text><br />
+  <Text preset={ TEXT_PRESET.heading1 }>Heading-1</Text>
+  <Text preset={ TEXT_PRESET.heading2 }>Heading-2</Text>
+  <Text preset={ TEXT_PRESET.heading3 }>Heading-3</Text>
+  <Text preset={ TEXT_PRESET.heading4 }>Heading-4</Text>
+  <Text preset={ TEXT_PRESET.heading5 }>Heading-5</Text>
+  <Text preset={ TEXT_PRESET.heading6 }>Heading-6</Text>
+</>
+```
+
+## Reuse Style
+
+```tsx
+<Text
+  as="span"
+  preset={ TEXT_PRESET.heading5 }>
+  I am a &lt;span&gt; using the heading5 preset style.
+</Text>
+```
+
+## Table Caption
+
+```tsx
+<table style={{
+  border: '2px solid rgb(140 140 140)',
+  borderCollapse: 'collapse',
+}}>
+  <caption style={{ captionSide: 'bottom' }}>
+    <Text preset="caption">
+      My table title
+    </Text>
+  </caption>
+
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>22</td>
+  </tr>
+  </tbody>
+</table>
+```

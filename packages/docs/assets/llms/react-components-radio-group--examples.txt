@@ -1,0 +1,167 @@
+---
+title: "Radio Group"
+slug: radio-group
+category: component
+type: examples
+version: 19.7.3
+tokens: 552
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--examples.txt
+---
+
+# Radio Group
+
+## Default
+
+```tsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+
+    <RadioLabel>HTML</RadioLabel>
+  </Radio>
+
+  <Radio value="css">
+    <RadioControl />
+
+    <RadioLabel>CSS</RadioLabel>
+  </Radio>
+
+  <Radio value="js">
+    <RadioControl />
+
+    <RadioLabel>JavaScript</RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Disabled Group
+
+```tsx
+<RadioGroup disabled>
+  <Radio value="html">
+    <RadioControl />
+
+    <RadioLabel>HTML</RadioLabel>
+  </Radio>
+
+  <Radio value="css">
+    <RadioControl />
+
+    <RadioLabel>CSS</RadioLabel>
+  </Radio>
+
+  <Radio value="js">
+    <RadioControl />
+
+    <RadioLabel>JavaScript</RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Disabled Item
+
+```tsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+
+    <RadioLabel>HTML</RadioLabel>
+  </Radio>
+
+  <Radio
+    disabled
+    value="css">
+    <RadioControl />
+
+    <RadioLabel>CSS</RadioLabel>
+  </Radio>
+
+  <Radio value="js">
+    <RadioControl />
+
+    <RadioLabel>JavaScript</RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Pick a language:
+  </FormFieldLabel>
+
+  <RadioGroup>
+    <Radio value="html">
+      <RadioControl />
+
+      <RadioLabel>HTML</RadioLabel>
+    </Radio>
+
+    <Radio value="css">
+      <RadioControl />
+
+      <RadioLabel>CSS</RadioLabel>
+    </Radio>
+
+    <Radio value="js">
+      <RadioControl />
+
+      <RadioLabel>JavaScript</RadioLabel>
+    </Radio>
+  </RadioGroup>
+</FormField>
+```
+
+## Invalid
+
+```tsx
+<RadioGroup
+  defaultValue="html">
+  <Radio value="html"
+         invalid>
+    <RadioControl />
+
+    <RadioLabel>HTML</RadioLabel>
+  </Radio>
+
+  <Radio
+    invalid
+    value="css">
+    <RadioControl />
+
+    <RadioLabel>CSS</RadioLabel>
+  </Radio>
+
+  <Radio value="js">
+    <RadioControl />
+
+    <RadioLabel>JavaScript</RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Orientation
+
+```tsx
+<RadioGroup orientation="horizontal">
+  <Radio value="html">
+    <RadioControl />
+
+    <RadioLabel>HTML</RadioLabel>
+  </Radio>
+
+  <Radio value="css">
+    <RadioControl />
+
+    <RadioLabel>CSS</RadioLabel>
+  </Radio>
+
+  <Radio value="js">
+    <RadioControl />
+
+    <RadioLabel>JavaScript</RadioLabel>
+  </Radio>
+</RadioGroup>
+```

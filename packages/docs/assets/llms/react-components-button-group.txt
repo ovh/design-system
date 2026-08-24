@@ -1,0 +1,37 @@
+---
+title: "Button Group"
+slug: button-group
+category: component
+type: overview
+version: 19.7.3
+tokens: 276
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group.txt
+---
+
+# Button Group
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `(string | number | readonly string[]) & string[]` | No | undefined | The initial value of the selected items. Use when you don't need to control the value of the component. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `multiple` | `boolean` | No | undefined | Whether multiple items can be selected at the same time. |
+| `onValueChange` | `(detail: ButtonGroupValueChangeDetail) => void` | No | undefined | Callback fired when the selection changes. |
+| `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `value` | `string[]` | No | undefined | The controlled value of the selected items. |
+
+## Examples
+
+- Controlled
+- Default
+- Disabled
+- Disabled Item
+- Multiple
+- Size
+
+## Documentation pages
+
+- [Documentation](./react-components-button-group--documentation.txt)
+- [Technical Information](./react-components-button-group--technical-information.txt)
+- [Examples](./react-components-button-group--examples.txt)

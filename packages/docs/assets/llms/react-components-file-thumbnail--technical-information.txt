@@ -1,0 +1,42 @@
+---
+title: "File Thumbnail"
+slug: file-thumbnail
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 342
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
+---
+
+# File Thumbnail
+
+## FileThumbnail
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `dismissible` | `boolean` | No | undefined | Whether the component holds a dismiss button. |
+| `error` | `string` | No | undefined | The file error message to display. |
+| `file` | `File` | Yes | undefined | The current File object. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for size formatting and the translation of the internal elements. |
+| `onFileRemove` | `(detail: FileThumbnailRemoveDetail) => void` | No | undefined | Callback fired when the file is removed. |
+| `progress` | `number` | No | undefined | The file upload progress. |
+
+## Enums
+
+### FILE_THUMBNAIL_I18N
+
+- `cancelButton` = `fileThumbnail.file.cancel.button`
+- `deleteButton` = `fileThumbnail.file.delete.button`
+- `progressBar` = `fileThumbnail.file.progressBar`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-file-thumbnail-border-color` | `var(--ods-color-neutral-300)` |
+| `--ods-file-thumbnail-object-fit` | `contain` |
+| `--ods-file-thumbnail-preview-size` | `32px` |

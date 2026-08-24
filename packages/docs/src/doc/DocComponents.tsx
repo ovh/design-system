@@ -25,7 +25,7 @@ import './doc.css';
    content MDX file, provided through the MDX provider — content files import
    NOTHING. */
 
-const anatomyImages = import.meta.glob('../../../storybook/assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
+const anatomyImages = import.meta.glob('../../assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
 
 const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
@@ -98,16 +98,16 @@ const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: strin
 );
 
 const Anatomy = ({ src }: { src: string }) => {
-  const url = anatomyImages[`../../../storybook/assets/${src}`];
+  const url = anatomyImages[`../../assets/${src}`];
   return url ? <img alt="" className="doc__anatomy" src={ url } /> : null;
 };
 
 /* Markdown images use assets-relative paths (![alt](components/x/foo.png));
    the glob resolves them to hashed build URLs. */
-const docImages = import.meta.glob('../../../storybook/assets/components/**/*.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
+const docImages = import.meta.glob('../../assets/components/**/*.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
 
 const DocImage = ({ alt, src }: { alt?: string, src?: string }) => {
-  const url = (src && docImages[`../../../storybook/assets/${src}`]) ?? src;
+  const url = (src && docImages[`../../assets/${src}`]) ?? src;
   return <img alt={ alt ?? '' } className="doc__anatomy" src={ url } />;
 };
 

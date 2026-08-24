@@ -1,0 +1,32 @@
+---
+title: "Tile"
+slug: tile
+category: component
+type: overview
+version: 19.7.3
+tokens: 139
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile.txt
+---
+
+# Tile
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `selected` | `boolean` | No | undefined | Whether the component is selected. |
+
+## Examples
+
+- Default
+- Disabled
+- Selected
+- With Checkbox
+- With Radio Group
+
+## Documentation pages
+
+- [Documentation](./react-components-tile--documentation.txt)
+- [Technical Information](./react-components-tile--technical-information.txt)
+- [Examples](./react-components-tile--examples.txt)

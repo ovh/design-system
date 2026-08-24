@@ -1,0 +1,32 @@
+---
+title: "Card"
+slug: card
+category: component
+type: overview
+version: 19.7.3
+tokens: 159
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.txt
+---
+
+# Card
+
+_A **Card** is a versatile component designed to act as a container for various types of content, providing structure and context in a visually distinct box._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `color` | `CARD_COLOR` | No | undefined | The color preset to use. |
+
+## Examples
+
+- Color
+- Default
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+
+## Documentation pages
+
+- [Documentation](./react-components-card--documentation.txt)
+- [Technical Information](./react-components-card--technical-information.txt)
+- [Examples](./react-components-card--examples.txt)

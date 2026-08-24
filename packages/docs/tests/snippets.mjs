@@ -20,7 +20,7 @@ async function loadTsModule(path) {
 async function suite() {
   const { EXCLUDED_STORIES, extractStorySources } = await loadTsModule(resolve(here, '../src/demo/extractSource.ts'));
   const { buildSandboxSnippet } = await loadTsModule(resolve(here, '../src/demo/sandboxSnippet.ts'));
-  const storiesRoot = resolve(here, '../../storybook/stories/components');
+  const storiesRoot = resolve(here, '../stories/components');
   const dirs = readdirSync(storiesRoot, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort();
 
   let total = 0;

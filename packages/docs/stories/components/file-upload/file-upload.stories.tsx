@@ -1,0 +1,544 @@
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { type Meta, type StoryObj } from '@storybook/react';
+import React, { useEffect, useState } from 'react';
+import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
+import { excludeFromDemoControls } from '../../support/controls';
+import { staticSourceRenderConfig } from '../../support/source';
+
+type Story = StoryObj<FileUploadProp>;
+
+const meta: Meta<FileUploadProp> = {
+  argTypes: excludeFromDemoControls(['accept', 'locale', 'name', 'onFileAccept', 'onFileReject', 'required']),
+  component: FileUpload,
+  subcomponents: { FileUploadItem, FileUploadList },
+  title: 'React Components/File Upload',
+};
+
+export default meta;
+
+export const Accept: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [error, setError] = useState<string>('');
+    const [files, setFiles] = useState<File[]>([]);
+
+    function onAccept({ files }: FileUploadAcceptDetail): void {
+      setFiles(files);
+      setError('');
+    }
+
+    function onReject({ files }: FileUploadRejectDetail): void {
+      setError(files.length ? 'File(s) not of the expected format' : '');
+    }
+
+    return (
+      <FileUpload
+        accept="image/png"
+        acceptedFileLabel="Png files only"
+        error={ error }
+        onFileAccept={ onAccept }
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const AccessibilityFileButton: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([
+      new File(['foo'], 'foo.txt', { type: 'text/plain' }),
+      new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+    ]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Compact: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const CustomLabels: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        acceptedFileLabel="Formats acceptés : images"
+        dropzoneLabel="Glisser-déposer des fichiers"
+        maxFile={ 3 }
+        maxFileLabel="Nombre maximal de fichiers :"
+        maxSize={ 524288000 }
+        maxSizeLabel="Taille de fichier max :"
+        onFileAccept={ ({ files }) => setFiles(files) }
+        triggerLabel="Parcourir les fichiers"
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx }
+                progress={ 100 }
+                uploadSuccessLabel="Fichier uploadé" />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Default: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Disabled: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FileUpload
+      disabled
+      variant={ FILE_UPLOAD_VARIANT.compact }>
+      <FileUploadList />
+    </FileUpload>
+  ),
+};
+
+export const MaxFile: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [error, setError] = useState<string>('');
+    const [files, setFiles] = useState<File[]>([]);
+
+    function onAccept({ files }: FileUploadAcceptDetail): void {
+      setFiles(files);
+      setError('');
+    }
+
+    function onReject({ files }: FileUploadRejectDetail): void {
+      setError(files.length ? 'Too many files' : '');
+    }
+
+    return (
+      <FileUpload
+        error={ error }
+        maxFile={ 3 }
+        maxFileLabel="Maximum file allowed:"
+        onFileAccept={ onAccept }
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const MaxSize: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadRejectDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [error, setError] = useState<string>('');
+    const [files, setFiles] = useState<File[]>([]);
+
+    function onAccept({ files }: FileUploadAcceptDetail): void {
+      setFiles(files);
+      setError('');
+    }
+
+    function onReject({ files }: FileUploadRejectDetail): void {
+      setError(files.length ? 'File(s) too large' : '');
+    }
+
+    return (
+      <FileUpload
+        error={ error }
+        maxSize={ 1000000 }
+        maxSizeLabel="No file larger than:"
+        onFileAccept={ onAccept }
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Upload: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useEffect, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    type MyFile = File & {
+      error?: string,
+      progress?: number,
+    }
+
+    const [files, setFiles] = useState<MyFile[]>([]);
+
+    useEffect(() => {
+      files.forEach((file) => {
+        if (!file.progress) {
+          uploadFile(file);
+        }
+      });
+    }, [files]);
+
+    function uploadFile(file: MyFile): void {
+      const intervalId = setInterval(() => {
+        setFiles((files) => files.map((f) => {
+          if (f.name === file.name) {
+            f.progress = (f.progress || 0) + Math.floor(Math.random() * 10 + 1);
+
+            if (f.progress >= 100) {
+              clearInterval(intervalId);
+            }
+          }
+          return f;
+        }));
+      }, 100);
+    }
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file, idx) => (
+              <FileUploadItem
+                error={ file.error }
+                file={ file }
+                key={ idx }
+                progress={ file.progress } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+        <FormField>
+          <FormFieldLabel>
+            Files:
+          </FormFieldLabel>
+
+          <FileUpload
+            onFileAccept={ ({ files }) => setFiles(files) }
+            variant={ FILE_UPLOAD_VARIANT.compact }>
+            <FileUploadList>
+              {
+                files.map((file: File, idx) => (
+                  <FileUploadItem
+                    file={ file }
+                    key={ idx } />
+                ))
+              }
+            </FileUploadList>
+          </FileUpload>
+        </FormField>
+    );
+  },
+};
+
+export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Files:
+        </FormFieldLabel>
+
+        <FileUpload
+          onFileAccept={ ({ files }) => setFiles(files) }
+          variant={ FILE_UPLOAD_VARIANT.compact }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
+    );
+  },
+};
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+
+        <FileUpload disabled>
+          <FileUploadList />
+        </FileUpload>
+
+        <FileUpload
+          invalid
+          onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+      </div>
+    );
+  },
+};

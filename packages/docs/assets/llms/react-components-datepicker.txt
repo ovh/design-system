@@ -1,0 +1,63 @@
+---
+title: "Datepicker"
+slug: datepicker
+category: component
+type: overview
+version: 19.7.3
+tokens: 827
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker.txt
+---
+
+# Datepicker
+
+_A **Datepicker** component is used to allow users to select a date. They can navigate through days, months and years._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `dateFormatter` | `(arg: DatepickerFormatterArg) => string` | No | undefined | Format the date to display in the input. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker. |
+| `defaultValue` | `string | Date` | No | undefined | The initial selected date. Use when you don't need to control the selected date of the datepicker. |
+| `defaultView` | `'month' | 'day' | 'year'` | No | undefined | The default view of the calendar (day, month, year). |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `disabledDates` | `Date[]` | No | undefined | List of dates that cannot be selected. |
+| `disabledWeekDays` | `DATEPICKER_DAY[]` | No | undefined | List of week days that cannot be selected. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `locale` | `string` | No | undefined | The locale to use when formatting the date. |
+| `max` | `string | Date` | No | undefined | The maximum date that can be selected. |
+| `maxView` | `'month' | 'day' | 'year'` | No | undefined | The maximum view of the calendar (day, month, year). |
+| `min` | `string | Date` | No | undefined | The minimum date that can be selected. |
+| `minView` | `'month' | 'day' | 'year'` | No | undefined | The minimum view of the calendar (day, month, year). |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onOpenChange` | `(detail: DatepickerOpenChangeDetail) => void` | No | undefined | Callback fired when the datepicker open state changes. |
+| `onValueChange` | `(detail: DatepickerValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the datepicker. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `placeholder` | `string` | No | undefined | The placeholder text to display in the input. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `value` | `string | null | Date` | No | undefined | The controlled selected date. |
+| `view` | `'month' | 'day' | 'year'` | No | undefined | The controlled view of the calendar (day, month, year). |
+
+## Examples
+
+- Date Formatter
+- Default
+- Disabled
+- In Form Field
+- Max View
+- Min Max
+- Min View
+- Readonly
+- Accessibility Form Field
+- Accessibility Date Format
+- Accessibility I18n
+
+## Documentation pages
+
+- [Documentation](./react-components-datepicker--documentation.txt)
+- [Technical Information](./react-components-datepicker--technical-information.txt)
+- [Examples](./react-components-datepicker--examples.txt)

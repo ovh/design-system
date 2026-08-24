@@ -1,0 +1,74 @@
+---
+title: "Editable"
+slug: editable
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 484
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable--technical-information.txt
+---
+
+# Editable
+
+## Editable
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultEditing` | `boolean` | No | undefined | The initial editing state of the editable. Use when you don't need to control the editing state of the editable. |
+| `editing` | `boolean` | No | undefined | The controlled editing state of the editable. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onCancel` | `() => void` | No | undefined | Callback fired when the cancel trigger is activated. |
+| `onEditChange` | `(detail: EditableEditingChangeDetail) => void` | No | undefined | Callback fired when the editing state changes. |
+| `onSubmit` | `() => void` | No | undefined | Callback fired when the submit trigger is activated. |
+
+## EditableActions
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `children` | `(props: object) => ReactNode` | No | undefined | Custom actions render function, that provides Editable current state. |
+
+## EditableCancelTrigger
+
+
+_No specific property._
+
+## EditableDisplay
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## EditableDisplayEmpty
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+## EditableEditTrigger
+
+
+_No specific property._
+
+## EditableInput
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## EditableSubmitTrigger
+
+
+_No specific property._
+
+## Enums
+
+### EDITABLE_I18N
+
+- `cancelButton` = `editable.actions.cancel.button`
+- `editButton` = `editable.actions.edit.button`
+- `submitButton` = `editable.actions.submit.button`

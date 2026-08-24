@@ -1,0 +1,83 @@
+---
+title: "File Upload"
+slug: file-upload
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 822
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
+---
+
+# File Upload
+
+## FileUpload
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accept` | `string` | No | undefined | The accepted file types. |
+| `acceptedFileLabel` | `string` | No | undefined | Label describing the accepted file types. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `dropzoneLabel` | `string` | No | undefined | The dropzone label. |
+| `error` | `string` | No | undefined | The global error message to display. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `maxFile` | `number` | No | undefined | The maximum number of files that can be selected. |
+| `maxFileLabel` | `string` | No | undefined | Label describing the maximum number of files that can be selected. |
+| `maxSize` | `number` | No | undefined | The maximum size of selectable files. |
+| `maxSizeLabel` | `string` | No | undefined | Label describing the maximum size of selectable files. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onFileAccept` | `(detail: FileUploadAcceptDetail) => void` | No | undefined | Callback fired when a some files have been successfully added. |
+| `onFileReject` | `(detail: FileUploadRejectDetail) => void` | No | undefined | Callback fired when a some files have been rejected. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `triggerLabel` | `string` | No | undefined | Upload button label. |
+| `variant` | `'default' | 'compact'` | No | undefined | The variant preset to use. |
+
+## FileUploadItem
+
+This component extends all the native `<li>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `error` | `string` | No | undefined | The file error message to display. |
+| `file` | `File` | Yes | undefined | The current File object. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `progress` | `number` | No | undefined | The file upload progress. |
+| `uploadSuccessLabel` | `string` | No | undefined | - (deprecated) |
+
+## FileUploadList
+
+This component extends all the native `<ul>` attributes.
+
+_No specific property._
+
+## Enums
+
+### FILE_REJECTION_CAUSE
+
+- `invalidFile` = `invalid-file`
+- `maxFileReached` = `max-file-reached`
+- `sizeTooLarge` = `size-too-large`
+- `unknownError` = `unknown-error`
+- `wrongFormat` = `wrong-format`
+
+### FILE_UPLOAD_I18N
+
+- `cancelButton` = `fileUpload.file.cancel.button`
+- `deleteButton` = `fileUpload.file.delete.button`
+- `progressBar` = `fileUpload.file.progressBar`
+
+### FILE_UPLOAD_VARIANT
+
+- `compact` = `compact`
+- `default` = `default`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-file-upload-item-background-color-hover` | `var(--ods-color-primary-050)` |
+| `--ods-file-upload-item-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-file-upload-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
+| `--ods-file-upload-padding-vertical` | `var(--ods-theme-padding-vertical)` |

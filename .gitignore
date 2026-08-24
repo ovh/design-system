@@ -149,3 +149,5 @@ stylelint-report.html
 
 # Eslint
 eslint-report.html
+packages/storybook/
+packages/docs/assets/ods-versions.json

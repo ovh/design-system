@@ -1,0 +1,44 @@
+---
+title: "Popover"
+slug: popover
+category: component
+type: overview
+version: 19.7.3
+tokens: 446
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover.txt
+---
+
+# Popover
+
+_**Popover** component is triggered by click and is used to provide additional information to the user in a new temporary surface that overlays the page_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `autoFocus` | `boolean` | No | undefined | Whether to automatically set focus on the first focusable content within the popover when opened. |
+| `gutter` | `number` | No | undefined | - (deprecated) |
+| `onOpenChange` | `(detail: PopoverOpenChangeDetail) => void` | No | undefined | Callback fired when the popover open state changes. |
+| `onPositionChange` | `(detail: PopoverPositionChangeDetail) => void` | No | undefined | Callback fired when the popover position changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the popover. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `position` | `'left' | 'right' | 'bottom' | 'top' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| `sameWidth` | `boolean` | No | undefined | - (deprecated) |
+| `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the PopoverTrigger component. |
+
+## Examples
+
+- Controlled
+- Custom Trigger
+- Default
+- Grid
+- Accessibility With Menu
+- Same Width
+- ZIndex
+
+## Documentation pages
+
+- [Documentation](./react-components-popover--documentation.txt)
+- [Technical Information](./react-components-popover--technical-information.txt)
+- [Examples](./react-components-popover--examples.txt)

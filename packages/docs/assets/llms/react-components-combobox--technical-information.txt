@@ -1,0 +1,72 @@
+---
+title: "Combobox"
+slug: combobox
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 987
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
+---
+
+# Combobox
+
+## Combobox
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `allowCustomValue` | `boolean` | No | undefined | Whether to allow adding a value which is not part of the items. |
+| `customFilter` | `(label: string, query: string) => boolean` | No | undefined | Custom filter logic to apply to each item. |
+| `customOptionRenderer` | `(item: ComboboxItem) => Element` | No | undefined | Custom render for each option item. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the combobox. Use when you don't need to control the open state of the combobox. |
+| `defaultValue` | `string[]` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `highlightResults` | `boolean` | No | undefined | Whether to highlight the matching part of filtered items. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `items` | `ComboboxItem<CustomData>[]` | Yes | undefined | The list of items |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `multiple` | `boolean` | No | undefined | Whether the multiple selection is allowed. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `newElementLabel` | `string` | No | undefined | Label displayed in front of a custom new value to add. |
+| `noResultLabel` | `string` | No | undefined | Label displayed when no values match the current input value. |
+| `onInputValueChange` | `(value: ComboboxInputValueChangeDetails) => void` | No | undefined | Callback fired when the input value changes. |
+| `onOpenChange` | `(detail: ComboboxOpenChangeDetail) => void` | No | undefined | Callback fired when the select open state changes. |
+| `onValueChange` | `(value: ComboboxValueChangeDetails) => void` | No | undefined | Callback fired when the value(s) changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the combobox. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. /!\ Only work for single selection mode for now. |
+| `value` | `string[]` | No | undefined | The controlled selected value(s). |
+
+## ComboboxContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+
+## ComboboxControl
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `placeholder` | `string` | No | undefined | The placeholder text to display in the input. |
+
+## Types
+
+- `ComboboxItem<T>`: `ComboboxGroupItem | ComboboxOptionItem`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-combobox-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
+| `--ods-combobox-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
+| `--ods-combobox-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
+| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
+| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |

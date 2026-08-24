@@ -1,0 +1,309 @@
+import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
+import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
+import { excludeFromDemoControls } from '../../support/controls';
+import { staticSourceRenderConfig } from '../../support/source';
+
+type Story = StoryObj<PhoneNumberProp>;
+
+const meta: Meta<PhoneNumberProp> = {
+  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'i18n', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
+  component: PhoneNumber,
+  subcomponents: { PhoneNumberControl, PhoneNumberCountryList },
+  title: 'React Components/Phone Number',
+};
+
+export default meta;
+
+export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <PhoneNumber>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+  ),
+};
+
+export const Clearable: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <PhoneNumber>
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const CountryList: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <span>All countries</span>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <span>Subset of countries</span>
+
+      <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const Default: Story = {
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <PhoneNumber>
+      <PhoneNumberControl />
+    </PhoneNumber>
+  ),
+};
+
+export const Disabled: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <PhoneNumber disabled>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
+export const Loading: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const Locale: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <span>Locale "fr"</span>
+      <PhoneNumber locale="fr">
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <span>Locale "de"</span>
+      <PhoneNumber locale="de">
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <PhoneNumber>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+  ),
+};
+
+export const Readonly: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <PhoneNumber readOnly>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber readOnly>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+  ),
+};
+
+export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { INPUT_I18N, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber
+        country="fr"
+        defaultValue="06 01 02 03 04"
+        i18n={{
+          [INPUT_I18N.clearButton]: 'Clear phone number',
+        }}>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </div>
+  ),
+};

@@ -1,0 +1,301 @@
+---
+title: "Command"
+slug: command
+category: component
+type: examples
+version: 19.7.3
+tokens: 1962
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--examples.txt
+---
+
+# Command
+
+## Default
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content>
+    <Command.Filter />
+    <Command.List>
+      <Command.Group>
+        <Command.Option>item 1</Command.Option>
+        <Command.Option>item 2</Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: { open: boolean }) {
+      setIsOpen(open);
+    }
+
+    function openCommand() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button onClick={ openCommand }>
+          Open command
+        </Button>
+
+        <Command
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <Command.Content>
+            <Command.Filter placeholder="Search..." />
+            <Command.List>
+              <Command.Group heading="Actions">
+                <Command.Option>New file</Command.Option>
+                <Command.Option>Open file</Command.Option>
+                <Command.Option>Save file</Command.Option>
+              </Command.Group>
+              <Command.Empty>No results found.</Command.Empty>
+            </Command.List>
+          </Command.Content>
+        </Command>
+      </>
+    );
+  }
+```
+
+## Controlled Filtering
+
+```tsx
+{
+    const [query, setQuery] = useState('');
+
+    const actions = ['New file', 'Open file', 'Save file'];
+    const visibleActions = actions.filter((action) => !query || action.toLowerCase().includes(query.toLowerCase()));
+
+    return (
+      <Command>
+        <Command.Trigger asChild>
+          <Button>Open command</Button>
+        </Command.Trigger>
+        <Command.Content>
+          <Command.Filter
+            onChange={ (e) => setQuery(e.target.value) }
+            placeholder="Search..."
+            value={ query }
+          />
+          <Command.List>
+            <Command.Group heading="Actions">
+              { visibleActions.map((action) => (
+                <Command.Option key={ action }>{ action }</Command.Option>
+              )) }
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+    );
+  }
+```
+
+## With Shortcuts
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content>
+    <Command.Filter placeholder="Search..." />
+    <Command.List>
+      <Command.Group heading="File">
+        <Command.Option>
+          New file
+          <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
+            <Kbd>⌘</Kbd>+<Kbd>n</Kbd>
+          </kbd>
+        </Command.Option>
+        <Command.Option>
+          Open file
+        </Command.Option>
+        <Command.Option>
+          Save file
+        </Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## With On Select
+
+```tsx
+<>
+  <Command>
+    <Command.Trigger asChild>
+      <Button>Open command</Button>
+    </Command.Trigger>
+    <Command.Content>
+      <Command.Filter placeholder="Search..." />
+      <Command.List>
+        <Command.Group heading="Actions">
+          <Command.Option onSelect={ () => toast('New file', { toasterId: 'command-on-select' }) }>New file</Command.Option>
+          <Command.Option onSelect={ () => toast('Open file', { toasterId: 'command-on-select' }) }>Open file</Command.Option>
+          <Command.Option onSelect={ () => toast('Save file', { toasterId: 'command-on-select' }) }>Save file</Command.Option>
+        </Command.Group>
+        <Command.Empty>No results found.</Command.Empty>
+      </Command.List>
+    </Command.Content>
+  </Command>
+
+  <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} />
+</>
+```
+
+## Without Filter
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content>
+    <Command.List aria-label="Actions">
+      <Command.Group heading="File">
+        <Command.Option>
+          New file
+        </Command.Option>
+        <Command.Option>
+          Open file
+        </Command.Option>
+        <Command.Option>
+          Save file
+        </Command.Option>
+      </Command.Group>
+      <Command.Group heading="Edit">
+        <Command.Option>
+          Undo
+        </Command.Option>
+        <Command.Option>
+          Redo
+        </Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Empty State
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content>
+    <Command.Filter placeholder="Search..." />
+    <Command.List>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Accessibility Labels
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content aria-label="Command palette">
+    <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+    <Command.List aria-label="Command palette">
+      <Command.Group heading="Actions">
+        <Command.Option>New file</Command.Option>
+        <Command.Option>Open file</Command.Option>
+        <Command.Option>Save file</Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Accessibility Filter Label
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content aria-label="Command palette">
+    <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+    <Command.List>
+      <Command.Group heading="Actions">
+        <Command.Option>New file</Command.Option>
+        <Command.Option>Open file</Command.Option>
+        <Command.Option>Save file</Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Accessibility Group Names
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content aria-label="Command palette">
+    <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+    <Command.List aria-label="Command palette">
+      <Command.Group heading="Visible group name">
+        <Command.Option>New file</Command.Option>
+        <Command.Option>Open file</Command.Option>
+      </Command.Group>
+      <Command.Group aria-label="Hidden group name">
+        <Command.Option>Some help</Command.Option>
+        <Command.Option>Some more help</Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Accessibility Disabled Option
+
+```tsx
+<Command>
+  <Command.Trigger asChild>
+    <Button>Open command</Button>
+  </Command.Trigger>
+  <Command.Content aria-label="Command palette">
+    <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+    <Command.List>
+      <Command.Group heading="Actions">
+        <Command.Option>New file</Command.Option>
+        <Command.Option>Open file</Command.Option>
+        <Command.Option aria-disabled="true">Save file</Command.Option>
+      </Command.Group>
+      <Command.Group heading="Help">
+        <Command.Option>Some help</Command.Option>
+        <Command.Option>Some more help</Command.Option>
+      </Command.Group>
+      <Command.Empty>No results found.</Command.Empty>
+    </Command.List>
+  </Command.Content>
+</Command>
+```

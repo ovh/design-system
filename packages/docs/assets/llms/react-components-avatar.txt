@@ -1,0 +1,34 @@
+---
+title: "Avatar"
+slug: avatar
+category: component
+type: overview
+version: 19.7.3
+tokens: 183
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar.txt
+---
+
+# Avatar
+
+_**Avatar** is a visual representation of a user or entity, supporting multiple content types such as user images, icons, and user initials._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fallback` | `ReactNode` | No | undefined | Fallback content to display when the image fails to load. Defaults to a user icon. |
+| `src` | `string` | No | undefined | The image source URL. |
+
+## Examples
+
+- Default
+- Initials
+- With Image
+- With Fallback
+- With Icon
+
+## Documentation pages
+
+- [Documentation](./react-components-avatar--documentation.txt)
+- [Technical Information](./react-components-avatar--technical-information.txt)
+- [Examples](./react-components-avatar--examples.txt)

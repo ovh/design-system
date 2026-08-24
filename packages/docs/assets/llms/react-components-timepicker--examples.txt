@@ -1,0 +1,119 @@
+---
+title: "Timepicker"
+slug: timepicker
+category: component
+type: examples
+version: 19.7.3
+tokens: 351
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker--examples.txt
+---
+
+# Timepicker
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Starting time:
+  </FormFieldLabel>
+
+  <Timepicker withSeconds>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</FormField>
+```
+
+## Default
+
+```tsx
+<Timepicker>
+  <TimepickerControl />
+</Timepicker>
+```
+
+## Disabled
+
+```tsx
+<>
+  <Timepicker disabled>
+    <TimepickerControl />
+  </Timepicker>
+
+  <Timepicker disabled>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Timepicker:
+  </FormFieldLabel>
+
+  <Timepicker>
+    <TimepickerControl />
+  </Timepicker>
+</FormField>
+```
+
+## Readonly
+
+```tsx
+<>
+  <Timepicker readOnly>
+    <TimepickerControl />
+  </Timepicker>
+
+  <Timepicker readOnly>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+## Timezone List
+
+```tsx
+<>
+  <span>All timezones</span>
+
+  <Timepicker>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+
+  <span>Subset of timezone</span>
+
+  <Timepicker timezones={ ['UTC-10', 'UTC+0', 'UTC+10'] }>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+## With Seconds
+
+```tsx
+<>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+  </Timepicker>
+
+  <Timepicker withSeconds>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```

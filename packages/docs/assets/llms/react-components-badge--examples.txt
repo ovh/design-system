@@ -1,0 +1,107 @@
+---
+title: "Badge"
+slug: badge
+category: component
+type: examples
+version: 19.7.3
+tokens: 452
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--examples.txt
+---
+
+# Badge
+
+## Color
+
+```tsx
+<>
+  <Badge color={ BADGE_COLOR.alpha }>Alpha</Badge>
+  <Badge color={ BADGE_COLOR.beta }>Beta</Badge>
+  <Badge color={ BADGE_COLOR.critical }>Critical</Badge>
+  <Badge color={ BADGE_COLOR.information }>Information</Badge>
+  <Badge color={ BADGE_COLOR.neutral }>Neutral</Badge>
+  <Badge color={ BADGE_COLOR.new }>New</Badge>
+  <Badge color={ BADGE_COLOR.primary }>Primary</Badge>
+  <Badge color={ BADGE_COLOR.promotion }>Promotion</Badge>
+  <Badge color={ BADGE_COLOR.success }>Success</Badge>
+  <Badge color={ BADGE_COLOR.warning }>Warning</Badge>
+</>
+```
+
+## Default
+
+```tsx
+<Badge>
+  My badge
+</Badge>
+```
+
+## Size
+
+```tsx
+<>
+  <Badge size={ BADGE_SIZE.sm }>SM badge</Badge>
+  <Badge size={ BADGE_SIZE.md }>MD badge</Badge>
+  <Badge size={ BADGE_SIZE.lg }>LG badge</Badge>
+</>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Badge>
+  <Icon
+    aria-label="Promotion"
+    name={ ICON_NAME.tag }
+    role="img" />
+</Badge>
+```
+
+## Accessibility With Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      color={ BADGE_COLOR.promotion }>
+      <Icon name={ ICON_NAME.tag } />
+    </Badge>
+  </TooltipTrigger>
+
+  <TooltipContent id="tooltip-a11y">
+    Promotion valid from November 22 to 26
+  </TooltipContent>
+</Tooltip>
+```
+
+## Accessibility Grouping
+
+```tsx
+<ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
+  <li>
+    <Badge>
+      Item 1
+    </Badge>
+  </li>
+  <li>
+    <Badge>
+      Item 2
+    </Badge>
+  </li>
+</ul>
+```
+
+## Accessibility Alternative Grouping
+
+```tsx
+<div
+  role="list"
+  style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+  <Badge role="listitem">
+    Item 1
+  </Badge>
+  <Badge role="listitem">
+    Item 2
+  </Badge>
+</div>
+```

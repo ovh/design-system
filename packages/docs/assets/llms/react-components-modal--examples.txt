@@ -1,0 +1,240 @@
+---
+title: "Modal"
+slug: modal
+category: component
+type: examples
+version: 19.7.3
+tokens: 1156
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--examples.txt
+---
+
+# Modal
+
+## Accessibility Actions
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item?
+      </p>
+
+      <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
+        <Button variant={ BUTTON_VARIANT.ghost }>
+          Cancel
+        </Button>
+
+        <Button color={ BUTTON_COLOR.critical }>
+          Delete
+        </Button>
+      </div>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility Aria Labelled By
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.
+      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-label="Modal Content">
+    <ModalHeader>Modal header</ModalHeader>
+    <ModalBody id="modal-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility Bad Practices Aria
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.
+      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: ModalOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openModal() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button onClick={ openModal }>
+          Trigger Modal
+        </Button>
+
+        <Modal
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <ModalContent>
+            <ModalHeader>Controlled modal</ModalHeader>
+            <ModalBody>
+              Content
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+```
+
+## Default
+
+```tsx
+<Modal>
+  <ModalTrigger>
+    Trigger Modal
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>My modal header</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Non Dismissible
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent dismissible={ false }>
+    <ModalHeader>Non dismissible</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Non Escapable
+
+```tsx
+<Modal
+  closeOnEscape={ false }
+  closeOnInteractOutside={ false }>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Non escapable</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Overlay Elements
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Overlay elements</ModalHeader>
+    <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```

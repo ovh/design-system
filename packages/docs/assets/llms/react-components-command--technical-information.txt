@@ -1,0 +1,94 @@
+---
+title: "Command"
+slug: command
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1021
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
+---
+
+# Command
+
+## Command
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index. |
+| `closeOnEscape` | `boolean` | No | undefined | Whether to close the modal when the escape key is pressed. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the modal when the outside is clicked. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the modal. Use when you don't need to control the open state of the modal. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `initialFocusedElement` | `() => null | HTMLElement` | No | undefined | Element that receive the focus when the dialog is opened. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onOpenChange` | `(detail: ModalOpenChangeDetail) => void` | No | undefined | Callback fired when the modal open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the modal. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## CommandContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+
+## CommandEmpty
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CommandFilter
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `maskOption` | `object` | No | undefined | Masked display options. |
+| `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `type` | `'number' | 'email' | 'search' | 'time' | 'text' | 'url' | 'password'` | No | undefined | The input type. |
+| `value` | `string | number | readonly string[]` | No | undefined | The controlled filter query. When set, the built-in option filtering is fully disabled: the consumer owns the query state (via `onChange`) and is responsible for rendering only the matching options. |
+
+## CommandGroup
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `heading` | `string` | No | undefined | - |
+
+## CommandList
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CommandOption
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `onSelect` | `() => void` | No | undefined | Called when the option is selected via click or Enter. |
+
+## CommandTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-command-width` | `380px` |
+| `--ods-command-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-command-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |

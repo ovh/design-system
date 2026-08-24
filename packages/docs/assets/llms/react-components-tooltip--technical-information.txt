@@ -1,0 +1,58 @@
+---
+title: "Tooltip"
+slug: tooltip
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 510
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--technical-information.txt
+---
+
+# Tooltip
+
+## Tooltip
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `closeDelay` | `number` | No | undefined | Number of milliseconds before closing the tooltip. |
+| `onOpenChange` | `(detail: TooltipOpenChangeDetail) => void` | No | undefined | Callback fired when the tooltip open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
+| `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'left' | 'left-end' | 'left-start' | 'right' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## TooltipContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+| `withArrow` | `boolean` | No | undefined | Whether the component displays an arrow pointing to the trigger. |
+
+## TooltipTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+### TOOLTIP_POSITION
+
+- `bottom` = `bottom`
+- `bottomEnd` = `bottom-end`
+- `bottomStart` = `bottom-start`
+- `left` = `left`
+- `leftEnd` = `left-end`
+- `leftStart` = `left-start`
+- `right` = `right`
+- `rightEnd` = `right-end`
+- `rightStart` = `right-start`
+- `top` = `top`
+- `topEnd` = `top-end`
+- `topStart` = `top-start`

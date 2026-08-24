@@ -1,0 +1,41 @@
+---
+title: "Tile"
+slug: tile
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 304
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
+---
+
+# Tile
+
+## Tile
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `selected` | `boolean` | No | undefined | Whether the component is selected. |
+
+## TileAltContainer
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
+| `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
+| `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
+| `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
+| `--ods-tile-background-color` | `var(--ods-theme-background-color)` |
+| `--ods-tile-background-color-selected` | `var(--ods-color-primary-025)` |
+| `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
+| `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |

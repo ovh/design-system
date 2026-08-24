@@ -1,13 +1,13 @@
-import * as ButtonStories from '../../../../storybook/stories/components/button/button.stories';
-import ButtonRaw from '../../../../storybook/stories/components/button/button.stories.tsx?raw';
-import * as FormFieldStories from '../../../../storybook/stories/components/form-field/form-field.stories';
-import FormFieldRaw from '../../../../storybook/stories/components/form-field/form-field.stories.tsx?raw';
-import * as IconStories from '../../../../storybook/stories/components/icon/icon.stories';
-import IconRaw from '../../../../storybook/stories/components/icon/icon.stories.tsx?raw';
-import * as ModalStories from '../../../../storybook/stories/components/modal/modal.stories';
-import ModalRaw from '../../../../storybook/stories/components/modal/modal.stories.tsx?raw';
-import * as SkeletonStories from '../../../../storybook/stories/components/skeleton/skeleton.stories';
-import SkeletonRaw from '../../../../storybook/stories/components/skeleton/skeleton.stories.tsx?raw';
+import * as ButtonStories from '../../../stories/components/button/button.stories';
+import ButtonRaw from '../../../stories/components/button/button.stories.tsx?raw';
+import * as FormFieldStories from '../../../stories/components/form-field/form-field.stories';
+import FormFieldRaw from '../../../stories/components/form-field/form-field.stories.tsx?raw';
+import * as IconStories from '../../../stories/components/icon/icon.stories';
+import IconRaw from '../../../stories/components/icon/icon.stories.tsx?raw';
+import * as ModalStories from '../../../stories/components/modal/modal.stories';
+import ModalRaw from '../../../stories/components/modal/modal.stories.tsx?raw';
+import * as SkeletonStories from '../../../stories/components/skeleton/skeleton.stories';
+import SkeletonRaw from '../../../stories/components/skeleton/skeleton.stories.tsx?raw';
 import { type StoryModule } from '../../doc/PageStories';
 
 /* Story modules embedded by guide pages via <Canvas from="<component>" />.

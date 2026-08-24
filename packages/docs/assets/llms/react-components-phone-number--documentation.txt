@@ -1,0 +1,165 @@
+---
+title: "Phone Number"
+slug: phone-number
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1434
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--documentation.txt
+---
+
+# Phone Number
+
+_**Phone Number** component is a combo of a selection of country phone indicator and an [Input](https://ovh.github.io/design-system/v19.7.3/components/input) field for entering a phone number_
+
+## Overview
+
+Form Guidelines] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-6130"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/phone-number"
+              name="Phone Number">
+  **Phone Number** component is used to let users enter their phone number in the correct format for the selected
+  country.
+
+| | |
+|---|---|
+| Name | undefined |
+| Also known as | Phone Number Field |
+
+## Usage
+
+**Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
+- An user profile
+- A contact/appointment form
+- For telecom configuration
+
+### Dos & Don'ts
+
+**Do**
+
+- Use the country indicator Select when your application supports international phone numbers
+- Display helper text or error messaging to guide users if the input format is incorrect (e.g., expected digit count or formatting rules)
+- If phone numbers are only accepted in the user's locale, use the component without the country code Select
+
+**Don't**
+
+- Don't enforce a rigid format (e.g., requiring users to enter parentheses or dashes), prioritize forgiving input
+- Don't make the field required without context. Explain clearly why the phone number is needed (e.g., for account recovery or verification)
+- Don't assume all users have mobile numbers. Allow landline formats where applicable
+- Don't display country codes or formats that aren't relevant to your supported markets
+
+### Best Practices in Context
+
+1. **Phone Number**
+2. **Country selector** - optional
+3. **Input field**
+4. **Clearable button** - optional
+
+## Placement
+
+**Phone Number** is a group of [Select](https://ovh.github.io/design-system/v19.7.3/components/select) and [Input](https://ovh.github.io/design-system/v19.7.3/components/input), and should act as their specific placements.
+
+## Behavior
+
+When the user selects a country, it determines the format used to validate their phone number. If selected country has been modified, expected format and placeholder will be updated.
+
+If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
+
+The country selector allows users to navigate to the desired country option by typing letters while focused on the country selector.
+
+The search is based on the start of the word and functions one letter at a time.
+
+For example:
+- Typing "f" focus the first country that starts with "f".
+- Typing "r" immediately after focus the first country that starts with "r".
+
+### Locale
+
+The locale (i.e. country list translation in [Select](https://ovh.github.io/design-system/v19.7.3/components/select)) is first set to the value provided as a property.
+
+If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
+
+If the browser's locale is also not recognized, the component defaults to English (EN).
+
+### ISO code
+
+The ISO code is initially set to the value provided as a property.
+
+If the given property is not defined or recognized, the component attempts to determine the ISO code based on the browser's locale.
+
+If the browser's locale is not recognized, the component defaults to the first ISO code in the predefined country list.
+
+## Navigation
+
+### Focus Management
+
+When the **Phone Number** component is focused, focus is first set to the country selector dropdown, if present, or directly to the Input field.
+
+Each subcomponent (Select and Input) can be focused independently using keyboard navigation.
+
+If the country selector is disabled or not rendered, focus starts directly on the Input field.
+
+### General Keyboard Shortcuts
+
+Pressing `Tab` moves focus forward:
+* First to the country selector (if present and enabled)
+* Then to the Phone Number Input field
+
+Pressing `Shift` + `Tab` moves focus backward through these elements.
+
+While focused on the country selector, keyboard shortcuts are similar to the Select component:
+* Pressing `Space` or `Arrow Down` opens the dropdown
+* Pressing `Arrow` keys navigates through the list of countries
+* Pressing `Home`/`fn`+ `Arrow Up` or `End`/`fn` + `Arrow Down` jumps to the first or last option
+* Typing letters focuses the first country whose name starts with the typed character
+* Pressing `Enter` or `Tab` selects the focused country and closes the dropdown
+* Pressing `Escape` closes the dropdown without selection
+
+While focused on the Input field:
+* Typing numeric characters enters the phone number
+* Pressing `Backspace` deletes the last character
+* Pressing `Arrow Left` or `Arrow Right` moves the cursor within the input
+
+## Accessibility
+
+To ensure proper accessibility, the **Phone Number** component must be correctly labeled and provide meaningful context when interactive elements (such as icon buttons) are used.
+
+### Always provide an explicit label
+
+Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+```tsx
+
+  
+    Phone number:
+  
+
+  
+    
+
+    
+  
+
+```
+
+ Screen readers will announce the label, the field and its content.
+
+### Override action context
+
+To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+```tsx
+
+  
+    Phone number:
+  
+
+  
+    
+
+    
+  
+
+```
+
+ Screen readers will announce the label, the field, its content and custom label of focused action.

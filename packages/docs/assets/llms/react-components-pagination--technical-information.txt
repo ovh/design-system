@@ -1,0 +1,68 @@
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 573
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
+---
+
+# Pagination
+
+## Pagination
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `labelTooltipNext` | `string` | No | undefined | The tooltip label on the "next page" button. |
+| `labelTooltipPrev` | `string` | No | undefined | The tooltip label on the "previous page" button. |
+| `onPageChange` | `(detail: PaginationPageChangeDetail) => void` | No | undefined | Callback fired when the active page changes. |
+| `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
+| `page` | `number` | No | undefined | The controlled active page |
+| `pageSize` | `number` | No | undefined | The number of items per page. |
+| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | undefined | - (deprecated) |
+| `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
+| `totalItems` | `number` | Yes | undefined | The total number of items. |
+| `withPageSizeSelector` | `boolean` | No | undefined | - (deprecated) |
+
+## PaginationPages
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## PaginationPageSelector
+
+This component extends all the native `<form>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `label` | `ReactNode` | No | undefined | The label displayed near the go-to-page input. |
+| `submitLabel` | `ReactNode` | No | undefined | The label displayed in the go-to-page submit button. |
+
+## PaginationPageSizeSelector
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `label` | `ReactNode` | No | 'of ${totalItems} results' | The label displayed near the per-page selector. |
+
+## Enums
+
+### PAGINATION_PER_PAGE
+
+- `option_10` = `10`
+- `option_100` = `100`
+- `option_25` = `25`
+- `option_300` = `300`
+- `option_50` = `50`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-pagination-page-selector-input-width` | `45px` |

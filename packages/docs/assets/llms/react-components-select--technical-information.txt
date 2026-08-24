@@ -1,0 +1,64 @@
+---
+title: "Select"
+slug: select
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 774
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--technical-information.txt
+---
+
+# Select
+
+## Select
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
+| `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `fitControlWidth` | `boolean` | No | undefined | - (deprecated) |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
+| `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onOpenChange` | `(detail: SelectOpenChangeDetail) => void` | No | undefined | Callback fired when the select open state changes. |
+| `onValueChange` | `(detail: SelectValueChangeDetail) => void` | No | undefined | Callback fired when the value(s) changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the select. |
+| `overlayConfig` | `object` | No | undefined | The overlay configuration. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `value` | `string[]` | No | undefined | The controlled selected value(s). |
+
+## SelectContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+| `customGroupRenderer` | `(arg: SelectCustomGroupRendererArg) => Element` | No | undefined | Custom render for each group item. |
+| `customOptionRenderer` | `(arg: SelectCustomOptionRendererArg) => Element` | No | undefined | Custom render for each option item. |
+
+## SelectControl
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `customItemRenderer` | `(arg: SelectCustomItemRendererArg) => Element` | No | undefined | Custom render for the selected item(s). |
+| `multipleSelectionLabel` | `string` | No | undefined | Label displayed on multiple selection when in "merge" mode. |
+| `placeholder` | `string` | No | undefined | The placeholder text to display in the select. |
+
+## Types
+
+- `SelectItem<T>`: `SelectGroupItem | SelectOptionItem`
+- `SelectMultipleMode`: `boolean | "merge"`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |

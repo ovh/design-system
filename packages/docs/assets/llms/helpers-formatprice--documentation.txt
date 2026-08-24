@@ -1,0 +1,52 @@
+---
+title: "formatPrice"
+slug: helpers-formatprice
+category: generic
+type: documentation
+version: 19.7.3
+tokens: 253
+source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice--documentation.txt
+---
+
+# formatPrice
+
+## Specifications
+
+Format a numeric value to a price matching given locale format with expected currency.
+
+| Argument | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | - | The numeric value to format. |
+| `locale` | `string` | 'fr-FR' | The locale to use. |
+| `currency` | `string` | 'EUR' | The currency expected. |
+
+- [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+## Examples
+
+### Default
+
+```tsx
+<>{ formatPrice(123456.789) }</>
+```
+
+### Locales
+
+```tsx
+<>
+  <p>France: { formatPrice(123456.789, 'fr-FR') }</p>
+  <p>Germany: { formatPrice(123456.789, 'de-DE') }</p>
+  <p>Arabic: { formatPrice(123456.789, 'ar-EG') }</p>
+  <p>India: { formatPrice(123456.789, 'en-IN') }</p>
+</>
+```
+
+### Currencies
+
+```tsx
+<>
+  <p>Euro: { formatPrice(123456.789, 'fr-FR', 'EUR') }</p>
+  <p>Dollar: { formatPrice(123456.789, 'fr-FR', 'USD') }</p>
+  <p>Yen: { formatPrice(123456.789, 'fr-FR', 'JPY') }</p>
+</>
+```

@@ -1,0 +1,177 @@
+---
+title: "Datepicker"
+slug: datepicker
+category: component
+type: examples
+version: 19.7.3
+tokens: 590
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--examples.txt
+---
+
+# Datepicker
+
+## Date Formatter
+
+```tsx
+<Datepicker
+  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+  placeholder="yyyy">
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Default
+
+```tsx
+<Datepicker>
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Disabled
+
+```tsx
+<>
+  <p>Disabled:</p>
+
+  <Datepicker disabled>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+
+  <p>Disabled Dates:</p>
+
+  <Datepicker disabledDates={ [new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)] }>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+
+  <p>Disabled Week Days:</p>
+
+  <Datepicker disabledWeekDays={ [0, 3] }>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Label:
+  </FormFieldLabel>
+
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```
+
+## Max View
+
+```tsx
+<Datepicker maxView="day">
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Min Max
+
+```tsx
+<Datepicker
+  max={ new Date(Date.now() + (86400000 * 10)) }
+  min={ new Date(Date.now() - (86400000 * 10)) }>
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Min View
+
+```tsx
+<Datepicker minView="month">
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Readonly
+
+```tsx
+<Datepicker readOnly>
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Accessibility Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Start date:
+  </FormFieldLabel>
+
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```
+
+## Accessibility Date Format
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Start date:
+  </FormFieldLabel>
+
+  <Datepicker>
+    <DatepickerControl placeholder="DD-MM-YYYY" />
+
+    <DatepickerContent />
+  </Datepicker>
+
+  <FormFieldHelper>
+    <Text preset={ TEXT_PRESET.caption }>
+      Expected format: DD-MM-YYYY
+    </Text>
+  </FormFieldHelper>
+</FormField>
+```
+
+## Accessibility I18n
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Start date:
+  </FormFieldLabel>
+
+  <Datepicker i18n={{
+    [INPUT_I18N.clearButton]: 'Clear date'
+  }}>
+    <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```

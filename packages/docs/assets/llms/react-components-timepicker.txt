@@ -1,0 +1,48 @@
+---
+title: "Timepicker"
+slug: timepicker
+category: component
+type: overview
+version: 19.7.3
+tokens: 622
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker.txt
+---
+
+# Timepicker
+
+_A **Timepicker** is a component that allows users to select a time from a list or set a specific time._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial time value. Use when you don't need to control the value of the timepicker. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onTimezoneChange` | `(detail: TimepickerTimezoneChangeDetail) => void` | No | undefined | Callback fired when the timezone changes. |
+| `onValueChange` | `(detail: TimepickerValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
+| `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `timezone` | `'UTC-12' | 'UTC-11' | 'UTC-10' | 'UTC-9' | 'UTC-8' | 'UTC-7' | 'UTC-6' | 'UTC-5' | 'UTC-4' | 'UTC-3' | 'UTC-2' | 'UTC-1' | 'UTC+0' | 'UTC+1' | 'UTC+2' | 'UTC+3' | 'UTC+4' | 'UTC+5' | 'UTC+6' | 'UTC+7' | 'UTC+8' | 'UTC+9' | 'UTC+10' | 'UTC+11' | 'UTC+12'` | No | undefined | The controlled selected timezone. |
+| `timezones` | `'UTC-12' | 'UTC-11' | 'UTC-10' | 'UTC-9' | 'UTC-8' | 'UTC-7' | 'UTC-6' | 'UTC-5' | 'UTC-4' | 'UTC-3' | 'UTC-2' | 'UTC-1' | 'UTC+0' | 'UTC+1' | 'UTC+2' | 'UTC+3' | 'UTC+4' | 'UTC+5' | 'UTC+6' | 'UTC+7' | 'UTC+8' | 'UTC+9' | 'UTC+10' | 'UTC+11' | 'UTC+12'[] | 'all'` | No | undefined | A specific or preset list of timezone to display in the selector. |
+| `value` | `string` | No | undefined | The controlled timepicker value. |
+| `withSeconds` | `boolean` | No | undefined | Whether the time input allows seconds selection. |
+
+## Examples
+
+- Accessibility Label
+- Default
+- Disabled
+- In Form Field
+- Readonly
+- Timezone List
+- With Seconds
+
+## Documentation pages
+
+- [Documentation](./react-components-timepicker--documentation.txt)
+- [Technical Information](./react-components-timepicker--technical-information.txt)
+- [Examples](./react-components-timepicker--examples.txt)

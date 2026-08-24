@@ -12,7 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const SRC = path.join(dirname, '..', '..', 'storybook', 'assets', 'llms');
+const SRC = path.join(dirname, '..', '..', 'docs', 'assets', 'llms');
 const DEST = path.join(dirname, '..', 'dist', 'llms');
 
 if (!fs.existsSync(SRC)) {

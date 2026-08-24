@@ -69,7 +69,10 @@ const outDirName = 'docs';
     }
   }
   try {
-    // add the current build (released just done)
+    // add the current build (released just done). The npm loop may already
+    // have deployed this same version (manual re-deploy on a released
+    // master): replace it, or cp would nest into the existing dir.
+    await $`rm -rf dist/v${currentVersion}`;
     await $`cp -r packages/docs/dist dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;
   } catch (e) {

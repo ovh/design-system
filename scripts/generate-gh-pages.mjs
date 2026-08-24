@@ -8,7 +8,9 @@ import { tmpdir } from 'os';
 
 const currentVersion = require('../lerna.json').version;
 
-const packageName = '@ovhcloud/ods-storybook';
+// Dual lineage: versions <= 19.7.x are frozen Storybook builds published as
+// @ovhcloud/ods-storybook; newer versions are the docs platform.
+const packageNames = ['@ovhcloud/ods-storybook', '@ovhcloud/ods-docs'];
 const tmpDirName = 'ods-gh-pages';
 const outDirName = 'docs';
 
@@ -22,16 +24,24 @@ const outDirName = 'docs';
   const tmpOdsDir = resolve(tmpdir(), `${tmpDirName}`);
   await $`rm -rf ${tmpOdsDir}/*`;
 
-  let versions = await $`npm view ${packageName} versions --json`;
-  versions = JSON.parse(versions);
+  const lineages = [];
+  for (const packageName of packageNames) {
+    try {
+      const list = JSON.parse(await $`npm view ${packageName} versions --json`);
+      for (const version of list) {
+        lineages.push({ packageName, version });
+      }
+    } catch (e) {
+      console.error(`no published versions for ${packageName}, skipping`, e);
+    }
+  }
 
-  for (let versionsKey in versions) {
-    const version = versions[versionsKey];
+  for (const { packageName, version } of lineages) {
     // create a dir for this version
     const dir = resolve(tmpOdsDir, `${version}`);
     await $`mkdir -p ${dir}`;
-    await $`ls -l ${dir}`;
 
+    try {
     if (process.env.CDS_INTEGRATION_ARTIFACT_MANAGER_TOKEN) {
       // npm pack respects the configured registry + auth (Artifactory)
       await $`npm pack ${packageName}@${version} --pack-destination ${dir}`;
@@ -46,6 +56,12 @@ const outDirName = 'docs';
       await $([command]);
     }
 
+    } catch (e) {
+      // One unfetchable version (unpublished, auth) must not sink the deploy.
+      console.error(`cannot fetch ${packageName}@${version}, skipping`, e);
+      continue;
+    }
+
     try {
       await $`mv ${dir}/dist dist/v${version}`;
     } catch (e) {
@@ -54,10 +70,10 @@ const outDirName = 'docs';
   }
   try {
     // add the current build (released just done)
-    await $`cp -r packages/storybook/dist dist/v${currentVersion}`;
+    await $`cp -r packages/docs/dist dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;
   } catch (e) {
-    console.error(`cannot add the current storybook build. ignore it`, e);
+    console.error(`cannot add the current docs build. ignore it`, e);
   }
   try {
     // move all into out dir

@@ -25,16 +25,12 @@ minimumReleaseAgeExclude:
   - webpack@5.108.2
 
 overrides:
-  # @types/react@18 depends on @types/scheduler@*, and @types/scheduler >=0.23.0 ships type
-  # changes incompatible with the React 18 types. Cap it below 0.23.0. (Yarn-era resolution,
-  # migrated to pnpm in 77c914e78.)
-  # REMOVE WHEN: upgrading to React 19 — @types/react@19 no longer depends on @types/scheduler.
-  "@types/scheduler": "< 0.23.0"
   # Pin a single @types/react version tree-wide: pnpm's strict node_modules exposed duplicate
   # copies that yarn's hoisting had masked (added in the pnpm migration, 69f19f1ac).
-  # REMOVE/RE-PIN WHEN: upgrading to React 19 (re-pin to the matching 19.x), or once the tree
-  # resolves to a single @types/react version on its own.
-  "@types/react": "18.2.56"
+  # Re-pinned to 19.x with the React 19 upgrade; remove once the tree resolves to a single
+  # @types/react version on its own.
+  "@types/react": "19.2.17"
+  "@types/react-dom": "19.1.1"
   # jest-puppeteer (incl. latest v11) still pins jest-environment-node@^29, whose
   # jest-mock@29 is incompatible with the jest@30 runtime (clearMocksOnScope).
   # Force the jest-30 environment so the e2e puppeteer suite runs under jest 30.

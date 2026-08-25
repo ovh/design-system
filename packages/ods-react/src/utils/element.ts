@@ -54,7 +54,7 @@ function getValidChildren(element: ReactNode): ReactElement[] {
 }
 
 function hasChildren(element: ReactNode): boolean {
-  return isValidElement(element) && !!element.props.children;
+  return isValidElement(element) && !!(element.props as { children?: ReactNode }).children;
 }
 
 function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper): ReactNode {
@@ -63,8 +63,9 @@ function highlightNode(node: ReactNode | string, searchText: string, markWrapper
   }
 
   if (isValidElement(node)) {
-    const children = Children.map(node.props.children, (n) => highlightNode(n, searchText, markWrapper));
-    return cloneElement(node, node.props, children);
+    const element = node as ReactElement<{ children?: ReactNode }>;
+    const children = Children.map(element.props.children, (n) => highlightNode(n, searchText, markWrapper));
+    return cloneElement(element, element.props, children);
   }
 
   return node;

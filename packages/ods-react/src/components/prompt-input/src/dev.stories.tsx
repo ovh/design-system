@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type JSX, useState } from 'react';
 import { PromptInputControls } from './components/prompt-input-controls/PromptInputControls';
 import { PromptInputFileUploadButton } from './components/prompt-input-file-upload-button/PromptInputFileUploadButton';
 import { PromptInputFiles } from './components/prompt-input-files/PromptInputFiles';

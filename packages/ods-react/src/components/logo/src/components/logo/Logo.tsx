@@ -17,7 +17,7 @@ interface LogoProp extends ComponentPropsWithRef<'svg'> {
   variant?: LogoVariant,
 }
 
-const Logo: FC<LogoProp> = forwardRef(({
+const Logo: FC<LogoProp> = forwardRef<SVGSVGElement, LogoProp>(({
   className,
   size = LOGO_SIZE.md,
   variant = LOGO_VARIANT.default,

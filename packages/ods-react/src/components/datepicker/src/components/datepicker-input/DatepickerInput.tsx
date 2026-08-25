@@ -1,5 +1,5 @@
 import { useDatePickerContext } from '@ark-ui/react/date-picker';
-import { type ComponentPropsWithRef, type FC, type FormEvent, type JSX, forwardRef, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, type FC, type InputEvent, type JSX, forwardRef, useEffect, useState } from 'react';
 import { type Locale } from '../../../../../utils/locales';
 import { useFormField } from '../../../../form-field/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
@@ -26,7 +26,7 @@ const DatepickerInput: FC<DatepickerInputProp> = forwardRef(({
     setInputValue(defaultValue ?? '');
   }, [defaultValue]);
 
-  const handleInput = (e: FormEvent<HTMLInputElement>): void => {
+  const handleInput = (e: InputEvent<HTMLInputElement>): void => {
     setInputValue(e.currentTarget.value);
     arkProp.onInput?.(e);
     props.onInput?.(e);

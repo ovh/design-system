@@ -41,12 +41,12 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
+| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-switch-item-background-color` | `inherit` |
 | `--ods-switch-item-background-color-checked` | `var(--ods-color-primary-600)` |
 | `--ods-switch-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
 | `--ods-switch-item-background-color-hover` | `var(--ods-color-primary-100)` |
 | `--ods-switch-item-text-color` | `var(--ods-color-primary-500)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-theme-input-text-color-checked)` |
-| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |

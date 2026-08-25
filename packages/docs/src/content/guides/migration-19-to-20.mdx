@@ -1,21 +1,13 @@
-import { Meta, Source } from '@storybook/blocks';
-import { ExternalLink } from '../../../../src/components/externalLink/ExternalLink';
-import { Heading } from '../../../../src/components/heading/Heading';
-
-<Meta title="OVHcloud Design System/What's new?/Migration guide/19.x to 20.x" />
-
-<Heading label="Migrate to v20 — React 19 support" level={ 1 } />
-
 Version 20 adds support for <ExternalLink href="https://react.dev/blog/2024/12/05/react-19">React 19</ExternalLink> **while keeping support for React 18**.
 
 The peer dependency range is unchanged:
 
-<Source code={ `"peerDependencies": {
+```json
+"peerDependencies": {
   "react": ">=18.2.0",
   "react-dom": ">=18.2.0"
-}` }
-        dark="true"
-        language="json" />
+}
+```
 
 The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
 
@@ -27,25 +19,26 @@ Nothing to do. Installation, types and runtime keep working exactly as before.
 
 **1. Bump React and its types** to a matching major:
 
-<Source code={ `react@^19
+```shell
+react@^19
 react-dom@^19
 @types/react@^19
-@types/react-dom@^19` }
-        dark="true"
-        language="shell" />
+@types/react-dom@^19
+```
 
 `@types/react` and `@types/react-dom` **must share the same major** (both `19`).
 
 **2. Make sure you have a single `@types/react` version.** This is the one real pitfall — and it is **not** specific to ODS. If a transitive dependency still pulls `@types/react@18` while your app is on `19`, TypeScript reports errors such as:
 
-<Source code={ `Type 'bigint' is not assignable to type 'ReactNode'.
-'Xxx' cannot be used as a JSX component.` }
-        dark="true"
-        language="text" />
+```text
+Type 'bigint' is not assignable to type 'ReactNode'.
+'Xxx' cannot be used as a JSX component.
+```
 
 This is the classic "two copies of `@types/react`" conflict. Deduplicate to a single version:
 
-<Source code={ `// npm — package.json
+```json
+// npm — package.json
 "overrides": {
   "@types/react": "^19",
   "@types/react-dom": "^19"
@@ -63,16 +56,15 @@ This is the classic "two copies of `@types/react`" conflict. Deduplicate to a si
     "@types/react": "^19",
     "@types/react-dom": "^19"
   }
-}` }
-        dark="true"
-        language="json" />
+}
+```
 
 Then reinstall and verify a single version is resolved:
 
-<Source code={ `npm ls @types/react
-# or: pnpm why @types/react` }
-        dark="true"
-        language="shell" />
+```shell
+npm ls @types/react
+# or: pnpm why @types/react
+```
 
 <Heading label="Bundler & framework notes" level={ 2 } />
 

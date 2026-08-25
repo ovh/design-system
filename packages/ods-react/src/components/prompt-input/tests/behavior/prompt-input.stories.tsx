@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type JSX, useState } from 'react';
 import { FileThumbnail } from '../../../file-thumbnail/src';
 import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputFiles, PromptInputSendButton, PromptInputTextControl } from '../../src';
 

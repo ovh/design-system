@@ -1,0 +1,87 @@
+import { Meta, Source } from '@storybook/blocks';
+import { ExternalLink } from '../../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../../src/components/heading/Heading';
+
+<Meta title="OVHcloud Design System/What's new?/Migration guide/19.x to 20.x" />
+
+<Heading label="Migrate to v20 — React 19 support" level={ 1 } />
+
+Version 20 adds support for <ExternalLink href="https://react.dev/blog/2024/12/05/react-19">React 19</ExternalLink> **while keeping support for React 18**.
+
+The peer dependency range is unchanged:
+
+<Source code={ `"peerDependencies": {
+  "react": ">=18.2.0",
+  "react-dom": ">=18.2.0"
+}` }
+        dark="true"
+        language="json" />
+
+The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+
+<Heading label="If you stay on React 18" level={ 2 } />
+
+Nothing to do. Installation, types and runtime keep working exactly as before.
+
+<Heading label="If you move to React 19" level={ 2 } />
+
+**1. Bump React and its types** to a matching major:
+
+<Source code={ `react@^19
+react-dom@^19
+@types/react@^19
+@types/react-dom@^19` }
+        dark="true"
+        language="shell" />
+
+`@types/react` and `@types/react-dom` **must share the same major** (both `19`).
+
+**2. Make sure you have a single `@types/react` version.** This is the one real pitfall — and it is **not** specific to ODS. If a transitive dependency still pulls `@types/react@18` while your app is on `19`, TypeScript reports errors such as:
+
+<Source code={ `Type 'bigint' is not assignable to type 'ReactNode'.
+'Xxx' cannot be used as a JSX component.` }
+        dark="true"
+        language="text" />
+
+This is the classic "two copies of `@types/react`" conflict. Deduplicate to a single version:
+
+<Source code={ `// npm — package.json
+"overrides": {
+  "@types/react": "^19",
+  "@types/react-dom": "^19"
+}
+
+// yarn — package.json
+"resolutions": {
+  "@types/react": "^19",
+  "@types/react-dom": "^19"
+}
+
+// pnpm — package.json or pnpm-workspace.yaml
+"pnpm": {
+  "overrides": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}` }
+        dark="true"
+        language="json" />
+
+Then reinstall and verify a single version is resolved:
+
+<Source code={ `npm ls @types/react
+# or: pnpm why @types/react` }
+        dark="true"
+        language="shell" />
+
+<Heading label="Bundler & framework notes" level={ 2 } />
+
+These are unchanged by the React version — they apply the same way on React 18 and 19:
+
+- **Vite**: works out of the box, CSS is handled natively.
+- **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
+- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+<Heading label="Need help?" level={ 2 } />
+
+If you hit an issue while upgrading, reach out to us directly — especially if you see a type error that the `@types/react` deduplication above does not solve.

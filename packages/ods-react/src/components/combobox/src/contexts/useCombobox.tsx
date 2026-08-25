@@ -158,7 +158,7 @@ type ComboboxContextType = Omit<ComboboxProviderProp, 'children'> & {
   highlightNextOption: () => void,
   highlightOption: (item: ComboboxOptionItem) => void,
   highlightPreviousOption: () => void,
-  inputRef: RefObject<HTMLInputElement>,
+  inputRef: RefObject<HTMLInputElement | null>,
   inputValue: string,
   isOpen: boolean,
   selection: ComboboxOptionItem[],

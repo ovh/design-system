@@ -15449,10 +15449,10 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
 | `--ods-query-filter-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-query-filter-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
 | `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
-| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
 
 ## Query Filter
 
@@ -17442,15 +17442,15 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
+| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-switch-item-background-color` | `inherit` |
 | `--ods-switch-item-background-color-checked` | `var(--ods-color-primary-600)` |
 | `--ods-switch-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
 | `--ods-switch-item-background-color-hover` | `var(--ods-color-primary-100)` |
 | `--ods-switch-item-text-color` | `var(--ods-color-primary-500)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-theme-input-text-color-checked)` |
-| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 
 ## Switch
 
@@ -26549,6 +26549,90 @@ The V1 **Design System** graphical charter is finalized. This charter contains :
 * **Chips & Badges**
 * **Cards**
 * **Cart**
+
+## Migration 19.x to 20.x
+
+# Migration 19.x to 20.x
+
+Version 20 adds support for [React 19](https://react.dev/blog/2024/12/05/react-19) **while keeping support for React 18**.
+
+The peer dependency range is unchanged:
+
+```json
+"peerDependencies": {
+  "react": ">=18.2.0",
+  "react-dom": ">=18.2.0"
+}
+```
+
+The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+
+## If you stay on React 18
+
+Nothing to do. Installation, types and runtime keep working exactly as before.
+
+## If you move to React 19
+
+**1. Bump React and its types** to a matching major:
+
+```shell
+react@^19
+react-dom@^19
+@types/react@^19
+@types/react-dom@^19
+```
+
+`@types/react` and `@types/react-dom` **must share the same major** (both `19`).
+
+**2. Make sure you have a single `@types/react` version.** This is the one real pitfall — and it is **not** specific to ODS. If a transitive dependency still pulls `@types/react@18` while your app is on `19`, TypeScript reports errors such as:
+
+```text
+Type 'bigint' is not assignable to type 'ReactNode'.
+'Xxx' cannot be used as a JSX component.
+```
+
+This is the classic "two copies of `@types/react`" conflict. Deduplicate to a single version:
+
+```json
+// npm — package.json
+"overrides": {
+  "@types/react": "^19",
+  "@types/react-dom": "^19"
+}
+
+// yarn — package.json
+"resolutions": {
+  "@types/react": "^19",
+  "@types/react-dom": "^19"
+}
+
+// pnpm — package.json or pnpm-workspace.yaml
+"pnpm": {
+  "overrides": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}
+```
+
+Then reinstall and verify a single version is resolved:
+
+```shell
+npm ls @types/react
+# or: pnpm why @types/react
+```
+
+## Bundler & framework notes
+
+These are unchanged by the React version — they apply the same way on React 18 and 19:
+
+- **Vite**: works out of the box, CSS is handled natively.
+- **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
+- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Need help?
+
+If you hit an issue while upgrading, reach out to us directly — especially if you see a type error that the `@types/react` deduplication above does not solve.
 
 ## Migration to v19
 

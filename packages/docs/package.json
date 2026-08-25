@@ -3,8 +3,8 @@
   "version": "19.7.3",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "build:storybook": "pnpm generate:versions && pnpm build && rm -rf ../storybook/dist && mkdir -p ../storybook && cp -r dist ../storybook/dist",
+    "build": "pnpm generate:versions && vite build",
+    "build:storybook": "pnpm build && rm -rf ../storybook/dist && mkdir -p ../storybook && cp -r dist ../storybook/dist",
     "generate:versions": "node scripts/generate-version-list.cjs 'assets/ods-versions.json'",
     "preview": "vite preview --port 6100",
     "start": "vite --port 6100",

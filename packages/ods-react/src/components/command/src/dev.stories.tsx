@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, type JSX, useState } from 'react';
 import style from './dev.module.css';
 import { Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';

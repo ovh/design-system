@@ -96,6 +96,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     children: [
       { icon: ICON_NAME.file, id: 'guides/whats-new', kind: 'guide', path: '/guides/whats-new', title: "What's new" },
       { icon: ICON_NAME.list, id: 'guides/changelog', kind: 'guide', path: '/guides/changelog', title: 'Changelog' },
+      { icon: ICON_NAME.file, id: 'guides/migration-19-to-20', kind: 'guide', path: '/guides/migration-19-to-20', title: 'Migration 19.x to 20.x' },
       { icon: ICON_NAME.file, id: 'guides/migration-to-v19', kind: 'guide', path: '/guides/migration-to-v19', title: 'Migration to v19' },
       {
         icon: ICON_NAME.refresh,

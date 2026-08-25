@@ -10,12 +10,14 @@ interface SelectMergedSelectionProp {
 
 const SelectMergedSelection: FC<SelectMergedSelectionProp> = ({
   disabled,
-  multipleSelectionLabel = 'Selected item',
+  multipleSelectionLabel,
   total,
 }): JSX.Element => {
+  const label = multipleSelectionLabel || `Selected item${total > 1 ? 's' : ''}`;
+
   return (
     <span>
-      { multipleSelectionLabel }&nbsp;
+      { label }&nbsp;
       <span
         className={ classNames(
           style['select-merged-selection__total'],

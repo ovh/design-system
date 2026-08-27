@@ -192,3 +192,25 @@ export const GeometrySlotTextClearable = () => (
     endContent="kg"
     locale="en" />
 );
+
+// Mirrors GeometrySlotButton / GeometrySlotText on the leading side.
+export const GeometrySlotStartButton = () => (
+  <Input
+    data-testid="geometry-slot-start-button"
+    defaultValue="42"
+    startContent={ (
+      <Button
+        aria-label="Search"
+        size={ BUTTON_SIZE.xs }
+        variant={ BUTTON_VARIANT.ghost }>
+        S
+      </Button>
+    ) } />
+);
+
+export const GeometrySlotStartText = () => (
+  <Input
+    data-testid="geometry-slot-start-text"
+    defaultValue="42"
+    startContent="https://" />
+);

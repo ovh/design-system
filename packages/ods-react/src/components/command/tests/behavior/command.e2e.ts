@@ -338,6 +338,9 @@ describe('Command behaviour', () => {
 
     it('should hide a group when all its options are filtered out', async() => {
       await typeInFilter(page, 'copy');
+      // The highlight lands in an effect, one render after the list is filtered: asserting it
+      // straight after typing reads the in-between frame. Same wait as the sibling test above.
+      await page.waitForSelector('[data-ods="command-option"][aria-selected="true"]');
 
       const options = await getOptions(page);
 

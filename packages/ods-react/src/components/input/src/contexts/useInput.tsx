@@ -11,6 +11,11 @@ interface InputRootProp {
    */
   clearable?: boolean,
   /**
+   * Decorative content displayed inside the field, after the value and before the action buttons
+   * (a unit, an icon, a ghost button). Never part of the input value.
+   */
+  endContent?: ReactNode,
+  /**
    * Whether the component is in error state.
    */
   invalid?: boolean,
@@ -44,6 +49,11 @@ interface InputRootProp {
    * Callback fired when the input value is cleared.
    */
   onClear?: () => void,
+  /**
+   * Decorative content displayed inside the field, before the value (a currency symbol, an icon,
+   * a fixed scheme such as `https://`). Never part of the input value.
+   */
+  startContent?: ReactNode,
   /**
    * The input type.
    */

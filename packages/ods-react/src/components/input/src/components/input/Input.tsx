@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { INPUT_MASK_STATE } from '../../constants/input-mask-state';
 import { INPUT_TYPE } from '../../constants/input-type';
 import { InputProvider, type InputRootProp } from '../../contexts/useInput';
-import { isValueDefined } from '../../controller/input';
+import { isSlotDefined, isValueDefined } from '../../controller/input';
 import { InputActions } from '../input-actions/InputActions';
 import style from './input.module.scss';
 
@@ -14,6 +14,7 @@ const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
   defaultValue,
+  endContent,
   i18n,
   id,
   invalid,
@@ -21,6 +22,7 @@ const Input: FC<InputProp> = forwardRef(({
   locale,
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
   onClear,
+  startContent,
   type = INPUT_TYPE.text,
   value,
   ...props
@@ -85,6 +87,16 @@ const Input: FC<InputProp> = forwardRef(({
     setIsMaskOpen((isOpen) => !isOpen);
   }
 
+  function renderSlot(content: ReactNode, position: 'end' | 'start'): ReactNode {
+    return isSlotDefined(content) && (
+      <span
+        className={ position === 'start' ? style['input__start'] : style['input__end'] }
+        data-ods={ `input-${position}` }>
+        { content }
+      </span>
+    );
+  }
+
   return (
     <InputProvider
       i18n={ i18n }
@@ -92,13 +104,15 @@ const Input: FC<InputProp> = forwardRef(({
       <div
         className={ classNames(
           style['input'],
-          { [style['input--with-actions']]: hasActions },
           className,
         )}
         data-disabled={ props.disabled ? true : undefined }
         data-invalid={ isInvalid ? true : undefined }
         data-readonly={ props.readOnly ? true: undefined }
         role={ hasActions ? 'group' : undefined }>
+
+        { renderSlot(startContent, 'start') }
+
         <input
           aria-busy={ loading }
           aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
@@ -113,6 +127,8 @@ const Input: FC<InputProp> = forwardRef(({
           value={ value }
           { ...props }
           onChange={ onChange } />
+
+        { renderSlot(endContent, 'end') }
 
         {
           hasActions &&

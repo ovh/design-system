@@ -104,6 +104,7 @@ const Input: FC<InputProp> = forwardRef(({
       <div
         className={ classNames(
           style['input'],
+          { [style['input--with-actions']]: hasActions },
           className,
         )}
         data-disabled={ props.disabled ? true : undefined }

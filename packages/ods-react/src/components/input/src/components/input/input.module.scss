@@ -12,11 +12,6 @@
     display: inline-flex;
     flex-flow: row;
     column-gap: calc(var(--ods-theme-column-gap) / 2);
-    // The container keeps its block inset but gives up its inline one: each in-field part owns
-    // the side it is flush with, so a start / end adornment can sit as close to the border as
-    // the action buttons do. `--ods-theme-input-padding-*` keep their exact meaning and values,
-    // they are just applied to the inner boxes instead of the container.
-    padding-inline: 0;
 
     &:focus-within {
       // Widened from `button` so a focusable adornment (a Link, a [role="button"]) shows its own
@@ -38,6 +33,22 @@
       @include state.ods-is-readonly();
     }
 
+    // The container owns its inset, and narrows it to the action inset when something is flush
+    // with that edge - an adornment holding a control, or the built-in action buttons. Keeping
+    // it here rather than on the inner parts preserves the only override point consumers have:
+    // `className` lands on this element, and Combobox / Query Filter neutralise the padding
+    // through it.
+    // Matched on `data-ods` rather than on the class because CSS Modules hashes the latter, and
+    // written as a single `:has()` with a descendant combinator - `:has()` cannot be nested
+    // inside another `:has()`, which makes the whole rule invalid and silently dropped.
+    &:has(> [data-ods="input-start"] :is(a, button, [role="button"])) {
+      padding-inline-start: input.$ods-input-actions-padding-right;
+    }
+
+    &:has(> [data-ods="input-end"] :is(a, button, [role="button"])) {
+      padding-inline-end: input.$ods-input-actions-padding-right;
+    }
+
     &[data-disabled] {
       @include state.ods-is-disabled();
 
@@ -54,6 +65,10 @@
       @include input.ods-input-error();
     }
 
+    &--with-actions {
+      padding-inline-end: input.$ods-input-actions-padding-right;
+    }
+
     &__start,
     &__end {
       display: inline-flex;
@@ -64,26 +79,6 @@
       align-items: center;
       white-space: nowrap;
       color: input.$ods-input-placeholder-color;
-    }
-
-    &__start {
-      padding-inline-start: var(--ods-theme-input-padding-horizontal);
-
-      // An interactive adornment lines up with the built-in action buttons rather than with the
-      // text inset, so its glyph sits the same distance from the border as the clear button's.
-      &:has(:is(a, button, [role="button"])) {
-        padding-inline-start: input.$ods-input-actions-padding-right;
-      }
-    }
-
-    // Only the last part on a side pays for that side's inset; otherwise the column-gap alone
-    // separates the adornment from the action buttons that follow it.
-    &__end:last-child {
-      padding-inline-end: var(--ods-theme-input-padding-horizontal);
-
-      &:has(:is(a, button, [role="button"])) {
-        padding-inline-end: input.$ods-input-actions-padding-right;
-      }
     }
 
     &__field {
@@ -110,15 +105,6 @@
         @include font.ellipsis();
 
         color: input.$ods-input-placeholder-color;
-      }
-
-      // The field only pays for a side's inset when no adornment is flush with it.
-      &:first-child {
-        padding-inline-start: var(--ods-theme-input-padding-horizontal);
-      }
-
-      &:last-child {
-        padding-inline-end: var(--ods-theme-input-padding-horizontal);
       }
 
       &:focus {

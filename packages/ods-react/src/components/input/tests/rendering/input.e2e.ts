@@ -21,6 +21,12 @@ type EndSlotGeometry = {
   contentEndToNextPart: number | null,
 };
 
+type StartSlotGeometry = {
+  childStartToBorder: number | null,
+  containerHeight: number,
+  contentStartToBorder: number,
+};
+
 async function getClearButton(page: Page): Promise<ElementHandle | null> {
   return page.$(`[data-ods="button"][aria-label="${TRANSLATION[INPUT_I18N.clearButton][LOCALE.en]}"]`);
 }
@@ -88,6 +94,32 @@ async function getGeometry(page: Page, testId: string): Promise<Geometry> {
       lastActionEndToBorder: lastActionRect ? innerEnd - lastActionRect.right : null,
       textEndToActionsStart: actionsRect ? actionsRect.left - textEnd : null,
       textEndToBorder: innerEnd - textEnd,
+    };
+  }, testId);
+}
+
+/**
+ * Mirror of `getEndSlotGeometry` for the leading adornment: how close it sits to the field's
+ * starting border. Content edges again, so the numbers hold whichever box pays the inset.
+ */
+async function getStartSlotGeometry(page: Page, testId: string): Promise<StartSlotGeometry> {
+  return page.evaluate((id: string) => {
+    const field = document.querySelector(`[data-testid="${id}"]`)!;
+    const container = field.parentElement!;
+    const slot = container.querySelector('[data-ods="input-start"]')!;
+    const containerStyle = getComputedStyle(container);
+    const slotStyle = getComputedStyle(slot);
+    const containerRect = container.getBoundingClientRect();
+    const slotRect = slot.getBoundingClientRect();
+
+    const innerStart = containerRect.left + parseFloat(containerStyle.borderLeftWidth);
+    const contentStart = slotRect.left + parseFloat(slotStyle.paddingLeft);
+    const firstChild = slot.firstElementChild;
+
+    return {
+      childStartToBorder: firstChild ? firstChild.getBoundingClientRect().left - innerStart : null,
+      containerHeight: containerRect.height,
+      contentStartToBorder: contentStart - innerStart,
     };
   }, testId);
 }
@@ -326,6 +358,28 @@ describe('Input rendering', () => {
         // Only the column-gap separates the adornment from the clear button, so the two are
         // 4px apart instead of 4px + the adornment's own 8px inset.
         expect(geometry.contentEndToNextPart).toBe(4);
+        expect(geometry.containerHeight).toBe(32);
+      });
+
+      it('should inset a leading text adornment by the horizontal padding', async() => {
+        await gotoStory(page, 'rendering/geometry-slot-start-text');
+        await page.waitForSelector('[data-testid="geometry-slot-start-text"]');
+
+        const geometry = await getStartSlotGeometry(page, 'geometry-slot-start-text');
+
+        expect(geometry.contentStartToBorder).toBe(8);
+        expect(geometry.containerHeight).toBe(32);
+      });
+
+      it('should align a leading adornment control with the built-in action buttons', async() => {
+        await gotoStory(page, 'rendering/geometry-slot-start-button');
+        await page.waitForSelector('[data-testid="geometry-slot-start-button"]');
+
+        const geometry = await getStartSlotGeometry(page, 'geometry-slot-start-button');
+
+        // Same 4px the clear button keeps on the other side.
+        expect(geometry.contentStartToBorder).toBe(4);
+        expect(geometry.childStartToBorder).toBe(4);
         expect(geometry.containerHeight).toBe(32);
       });
     });

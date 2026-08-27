@@ -14,8 +14,6 @@
     column-gap: calc(var(--ods-theme-column-gap) / 2);
 
     &:focus-within {
-      // Widened from `button` so a focusable adornment (a Link, a [role="button"]) shows its own
-      // focus ring without the container drawing a second one around the whole field.
       &:not(:has(:is(a, button, [role="button"]):focus-within)) {
         @include focus.ods-focus();
 
@@ -33,14 +31,6 @@
       @include state.ods-is-readonly();
     }
 
-    // The container owns its inset, and narrows it to the action inset when something is flush
-    // with that edge - an adornment holding a control, or the built-in action buttons. Keeping
-    // it here rather than on the inner parts preserves the only override point consumers have:
-    // `className` lands on this element, and Combobox / Query Filter neutralise the padding
-    // through it.
-    // Matched on `data-ods` rather than on the class because CSS Modules hashes the latter, and
-    // written as a single `:has()` with a descendant combinator - `:has()` cannot be nested
-    // inside another `:has()`, which makes the whole rule invalid and silently dropped.
     &:has(> [data-ods="input-start"] :is(a, button, [role="button"])) {
       padding-inline-start: input.$ods-input-actions-padding-right;
     }
@@ -52,9 +42,7 @@
     &[data-disabled] {
       @include state.ods-is-disabled();
 
-      // Opt the adornments out of their muted default so they pick up the disabled text colour
-      // set just above. Deliberately not a descendant selector: content inside an adornment
-      // (a Button, an Icon) keeps its own colour.
+      // Content inside an adornment keeps its own colour.
       #{$input}__start,
       #{$input}__end {
         color: inherit;
@@ -72,8 +60,6 @@
     &__start,
     &__end {
       display: inline-flex;
-      // Adornments never shrink: truncating a unit or squashing a button is worse than letting
-      // the editable field give up the space.
       flex: none;
       column-gap: calc(var(--ods-theme-column-gap) / 2);
       align-items: center;
@@ -87,8 +73,6 @@
       background-color: inherit;
       padding: 0;
       inline-size: 100%;
-      // Lets the field yield space to an adornment when the container's width is constrained,
-      // instead of relying on the flex automatic minimum size of an <input>.
       min-inline-size: 0;
       color: inherit;
       font-family: inherit;
@@ -120,9 +104,7 @@
         appearance: none;
       }
 
-      // `maskOption` renders the field as a password input while the mask is closed, and Edge
-      // adds its own reveal control there - which would double the mask toggle button, and sit
-      // exactly where an end adornment goes.
+      // Handle Edge behavior (it adds a reveal control at the end of password inputs)
       &[type="password"]::-ms-reveal {
         display: none;
       }

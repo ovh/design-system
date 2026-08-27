@@ -1,15 +1,21 @@
 @use '../../../../../style/button';
+@use '../../../../../style/input';
 
-@layer atoms {
+@layer ods-atoms {
   .input-actions {
     display: inline-flex;
+    flex: none;
     flex-flow: row;
     align-items: center;
+    // Was carried by the container as `.input--with-actions { padding-right }`. Owning it here
+    // keeps the buttons the same distance from the border whether or not an end adornment
+    // sits between them and the value.
+    padding-inline-end: input.$ods-input-actions-padding-right;
 
     &__loading {
       display: flex;
       justify-content: center;
-      width: button.$ods-button-size-xs;
+      inline-size: button.$ods-button-size-xs;
     }
   }
 }

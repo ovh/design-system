@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { type ChangeEvent, useEffect, useRef, useState } from 'react';
 import style from './dev.module.css';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { Link } from '../../link/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { INPUT_TYPE, Input } from '.';
 
@@ -264,18 +267,75 @@ export const Default = () => (
 );
 
 export const Disabled = () => (
-  <Input
-    defaultValue="Disabled"
-    disabled />
+  <>
+    <div>
+      <label>Plain: </label>
+      <Input
+        defaultValue="Disabled"
+        disabled />
+    </div>
+
+    <div>
+      <label>Text adornments: </label>
+      <Input
+        defaultValue="Disabled"
+        disabled
+        endContent="kg"
+        startContent="~" />
+    </div>
+
+    {/*
+      The component never disables the content it is given. The first field's button stays
+      enabled on purpose - the consumer owns that; the second shows the correct usage.
+    */}
+    <div>
+      <label>Button adornment, not disabled by the consumer: </label>
+      <Input
+        defaultValue="Disabled"
+        disabled
+        endContent={ (
+          <Button
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.fileCopy } />
+          </Button>
+        ) } />
+    </div>
+
+    <div>
+      <label>Button adornment, disabled by the consumer: </label>
+      <Input
+        defaultValue="Disabled"
+        disabled
+        endContent={ (
+          <Button
+            disabled
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.fileCopy } />
+          </Button>
+        ) } />
+    </div>
+  </>
 );
 
 export const DisabledActions = () => (
-  <Input
-    clearable
-    defaultValue="value"
-    disabled
-    maskOption={{ enable: true, initialState: 'open' }}
-    type={ INPUT_TYPE.search } />
+  <>
+    <Input
+      clearable
+      defaultValue="value"
+      disabled
+      maskOption={{ enable: true, initialState: 'open' }}
+      type={ INPUT_TYPE.search } />
+
+    <Input
+      clearable
+      defaultValue="value"
+      disabled
+      endContent="kg"
+      maskOption={{ enable: true, initialState: 'open' }}
+      type={ INPUT_TYPE.search } />
+  </>
 );
 
 export const InFormField = () => {
@@ -333,23 +393,221 @@ export const States = () => (
     <Input
       defaultValue="Disabled & Readonly"
       disabled
+      endContent="kg"
       readOnly />
 
     <Input
       defaultValue="Disabled & Invalid"
       disabled
+      endContent="kg"
       invalid />
 
     <Input
       defaultValue="Readonly & Invalid"
+      endContent="kg"
       invalid
       readOnly />
 
     <Input
       defaultValue="Disabled & Readonly & Invalid"
       disabled
+      endContent="kg"
       invalid
       readOnly />
+  </>
+);
+
+export const StartAndEndSlots = () => (
+  <>
+    <div>
+      <label>Start only: </label>
+      <Input startContent="https://" />
+    </div>
+
+    <div>
+      <label>End only: </label>
+      <Input endContent="kg" />
+    </div>
+
+    <div>
+      <label>Both: </label>
+      <Input
+        endContent=".com"
+        startContent="https://" />
+    </div>
+
+    <div>
+      <label>Icon: </label>
+      <Input
+        placeholder="Amount"
+        startContent={ <Icon name={ ICON_NAME.moneyBagEuro } /> } />
+    </div>
+
+    <div>
+      <label>Several children in one adornment: </label>
+      <Input
+        defaultValue="42"
+        endContent={ (
+          <>
+            <Icon name={ ICON_NAME.circleInfo } />
+            <span>kg</span>
+          </>
+        ) } />
+    </div>
+
+    <div>
+      <label>Falsy but renderable content: </label>
+      <Input endContent={ 0 } />
+    </div>
+
+    <div>
+      <label>With every action: </label>
+      <Input
+        clearable
+        defaultValue="42"
+        endContent="kg"
+        maskOption={{ enable: true }}
+        startContent="~" />
+    </div>
+
+    <div>
+      <label>Search type with a start adornment: </label>
+      <Input
+        defaultValue="query"
+        startContent={ <Icon name={ ICON_NAME.filter } /> }
+        type={ INPUT_TYPE.search } />
+    </div>
+
+    <div>
+      <label>Ghost button, aligned with the built-in actions: </label>
+      <Input
+        defaultValue="42"
+        endContent={ (
+          <Button
+            aria-label="Copy value"
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.fileCopy } />
+          </Button>
+        ) } />
+    </div>
+
+    <div>
+      <label>Text and a button, plus the clear action: </label>
+      <Input
+        clearable
+        defaultValue="42"
+        endContent={ (
+          <>
+            <span>kg</span>
+
+            <Button
+              aria-label="Copy value"
+              size={ BUTTON_SIZE.xs }
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ ICON_NAME.fileCopy } />
+            </Button>
+          </>
+        ) } />
+    </div>
+
+    {/*
+      A focusable adornment that is not a <button>: the container must not draw its focus ring
+      on top of the link's own one.
+    */}
+    <div>
+      <label>Link adornment: </label>
+      <Input
+        defaultValue="42"
+        endContent={ <Link href="#">Help</Link> } />
+    </div>
+
+    {/*
+      Adornments never shrink, so the editable field gives up the space instead of the unit
+      being truncated. Past a point the field becomes unusable - that is the consumer's call.
+    */}
+    <div style={{ inlineSize: '180px' }}>
+      <label>Long adornment in a constrained container: </label>
+      <Input
+        defaultValue="42"
+        endContent="kilograms (± 5%)"
+        style={{ inlineSize: '100%' }}
+      />
+    </div>
+
+    {/*
+      Content taller than the field's 26px content box grows the field and breaks alignment
+      with sibling form controls. `xs` is the size the built-in actions use.
+    */}
+    <div>
+      <label>Oversized adornments (xs fits, sm and md grow the field): </label>
+
+      <Input
+        defaultValue="42"
+        endContent={ <Button size={ BUTTON_SIZE.xs }>xs</Button> } />
+
+      <Input
+        defaultValue="42"
+        endContent={ <Button size={ BUTTON_SIZE.sm }>sm</Button> } />
+
+      <Input
+        defaultValue="42"
+        endContent={ <Button size={ BUTTON_SIZE.md }>md</Button> } />
+    </div>
+
+    {/*
+      The adornments are placed with logical properties, so they swap sides with the writing
+      direction. There is no other RTL coverage in the repo, so this is where it gets looked at.
+    */}
+    <div dir="rtl">
+      <label>Right-to-left: </label>
+      <Input
+        clearable
+        defaultValue="42"
+        endContent="kg"
+        startContent="~" />
+    </div>
+
+    <div>
+      <label>In a form - the adornment is never submitted: </label>
+
+      <form onSubmit={ (e) => {
+        e.preventDefault();
+        console.log(Object.fromEntries(new FormData(e.currentTarget).entries()));
+      } }>
+        <Input
+          defaultValue="42"
+          endContent="kg"
+          name="weight"
+          startContent="~" />
+
+        <button type="submit">
+          Log the submitted value
+        </button>
+      </form>
+    </div>
+
+    <div>
+      <label>In a form field, with a helper and an error: </label>
+
+      <FormField invalid>
+        <FormFieldLabel>
+          Weight
+        </FormFieldLabel>
+
+        <Input
+          defaultValue="42"
+          endContent="kg" />
+
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error message
+        </FormFieldError>
+      </FormField>
+    </div>
   </>
 );
 

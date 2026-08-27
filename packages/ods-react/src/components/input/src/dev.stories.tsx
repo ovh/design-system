@@ -285,8 +285,9 @@ export const Disabled = () => (
     </div>
 
     {/*
-      The component never disables the content it is given. The first field's button stays
-      enabled on purpose - the consumer owns that; the second shows the correct usage.
+      The component never disables the content it is given.
+      The first field's button stays enabled on purpose (the consumer owns that)
+      The second shows the correct usage if we want the button to be disabled.
     */}
     <div>
       <label>Button adornment, not disabled by the consumer: </label>
@@ -511,10 +512,6 @@ export const StartAndEndSlots = () => (
         ) } />
     </div>
 
-    {/*
-      A focusable adornment that is not a <button>: the container must not draw its focus ring
-      on top of the link's own one.
-    */}
     <div>
       <label>Link adornment: </label>
       <Input
@@ -522,10 +519,6 @@ export const StartAndEndSlots = () => (
         endContent={ <Link href="#">Help</Link> } />
     </div>
 
-    {/*
-      Adornments never shrink, so the editable field gives up the space instead of the unit
-      being truncated. Past a point the field becomes unusable - that is the consumer's call.
-    */}
     <div style={{ inlineSize: '180px' }}>
       <label>Long adornment in a constrained container: </label>
       <Input
@@ -535,10 +528,6 @@ export const StartAndEndSlots = () => (
       />
     </div>
 
-    {/*
-      Content taller than the field's 26px content box grows the field and breaks alignment
-      with sibling form controls. `xs` is the size the built-in actions use.
-    */}
     <div>
       <label>Oversized adornments (xs fits, sm and md grow the field): </label>
 
@@ -555,10 +544,6 @@ export const StartAndEndSlots = () => (
         endContent={ <Button size={ BUTTON_SIZE.md }>md</Button> } />
     </div>
 
-    {/*
-      The adornments are placed with logical properties, so they swap sides with the writing
-      direction. There is no other RTL coverage in the repo, so this is where it gets looked at.
-    */}
     <div dir="rtl">
       <label>Right-to-left: </label>
       <Input

@@ -145,7 +145,7 @@ describe('Input rendering', () => {
 
   // These numbers are the in-field spacing contract, resolved from the default theme:
   // --ods-theme-input-padding-horizontal 8px, --ods-theme-input-padding-vertical 2px,
-  // column-gap 4px, $ods-input-actions-padding-right 4px, min-height 32px, xs button 24px.
+  // column-gap 4px, $ods-input-actions-padding-right 2px, min-height 32px, xs button 24px.
   // They must hold regardless of whether the container or the individual parts pay the inset.
   describe('geometry', () => {
     it('should inset the text by the horizontal padding on both sides', async() => {
@@ -160,7 +160,7 @@ describe('Input rendering', () => {
       expect(geometry.containerHeight).toBe(32);
     });
 
-    it('should keep the action button 4px from the border and 4px from the text', async() => {
+    it('should keep the action button as far from the border as from the top and bottom', async() => {
       await gotoStory(page, 'rendering/geometry-clearable');
       await page.waitForSelector('[data-testid="geometry-clearable"]');
 
@@ -168,7 +168,8 @@ describe('Input rendering', () => {
 
       expect(geometry.borderToTextStart).toBe(8);
       expect(geometry.textEndToActionsStart).toBe(4);
-      expect(geometry.lastActionEndToBorder).toBe(4);
+      // Same value as the block inset below, so the gap around the button reads evenly.
+      expect(geometry.lastActionEndToBorder).toBe(2);
       expect(geometry.fieldTopToInnerBorder).toBe(2);
       expect(geometry.containerHeight).toBe(32);
     });
@@ -181,7 +182,7 @@ describe('Input rendering', () => {
 
       expect(geometry.borderToTextStart).toBe(8);
       expect(geometry.textEndToActionsStart).toBe(4);
-      expect(geometry.lastActionEndToBorder).toBe(4);
+      expect(geometry.lastActionEndToBorder).toBe(2);
       expect(geometry.containerHeight).toBe(32);
     });
 
@@ -193,7 +194,7 @@ describe('Input rendering', () => {
 
       expect(geometry.containerWidth).toBe(100);
       // A negative value means the button is painted outside the field's border.
-      expect(geometry.lastActionEndToBorder).toBe(4);
+      expect(geometry.lastActionEndToBorder).toBe(2);
     });
   });
 
@@ -343,9 +344,9 @@ describe('Input rendering', () => {
 
         const geometry = await getEndSlotGeometry(page, 'geometry-slot-button');
 
-        // 4px is what `lastActionEndToBorder` measures for the built-in clear button.
-        expect(geometry.contentEndToBorder).toBe(4);
-        expect(geometry.childEndToBorder).toBe(4);
+        // Same value `lastActionEndToBorder` measures for the built-in clear button.
+        expect(geometry.contentEndToBorder).toBe(2);
+        expect(geometry.childEndToBorder).toBe(2);
         expect(geometry.containerHeight).toBe(32);
       });
 
@@ -356,7 +357,7 @@ describe('Input rendering', () => {
         const geometry = await getEndSlotGeometry(page, 'geometry-slot-text-clearable');
 
         // Only the column-gap separates the adornment from the clear button, so the two are
-        // 4px apart instead of 4px + the adornment's own 8px inset.
+        // 4px apart rather than that gap plus a trailing inset of the adornment's own.
         expect(geometry.contentEndToNextPart).toBe(4);
         expect(geometry.containerHeight).toBe(32);
       });
@@ -377,10 +378,33 @@ describe('Input rendering', () => {
 
         const geometry = await getStartSlotGeometry(page, 'geometry-slot-start-button');
 
-        // Same 4px the clear button keeps on the other side.
-        expect(geometry.contentStartToBorder).toBe(4);
-        expect(geometry.childStartToBorder).toBe(4);
+        // Same inset the clear button keeps on the other side.
+        expect(geometry.contentStartToBorder).toBe(2);
+        expect(geometry.childStartToBorder).toBe(2);
         expect(geometry.containerHeight).toBe(32);
+      });
+
+      it('should decide each side on its own when the adornments differ', async() => {
+        await gotoStory(page, 'rendering/geometry-slot-mixed');
+        await page.waitForSelector('[data-testid="geometry-slot-mixed"]');
+
+        const start = await getStartSlotGeometry(page, 'geometry-slot-mixed');
+        const end = await getEndSlotGeometry(page, 'geometry-slot-mixed');
+
+        // A control at the start pulls that edge in; the text at the end keeps the text inset.
+        expect(start.contentStartToBorder).toBe(2);
+        expect(end.contentEndToBorder).toBe(8);
+      });
+
+      it('should hand the end inset to the action buttons when the adornments differ', async() => {
+        await gotoStory(page, 'rendering/geometry-slot-mixed-clearable');
+        await page.waitForSelector('[data-testid="geometry-slot-mixed-clearable"]');
+
+        const geometry = await getGeometry(page, 'geometry-slot-mixed-clearable');
+        const start = await getStartSlotGeometry(page, 'geometry-slot-mixed-clearable');
+
+        expect(start.contentStartToBorder).toBe(2);
+        expect(geometry.lastActionEndToBorder).toBe(2);
       });
     });
   });

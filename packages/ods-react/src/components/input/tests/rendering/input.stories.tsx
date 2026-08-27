@@ -214,3 +214,39 @@ export const GeometrySlotStartText = () => (
     defaultValue="42"
     startContent="https://" />
 );
+
+// Each side is decided on its own: a control at the start pulls that edge in, while a text
+// adornment at the end keeps the text inset. Without a fixture the two sides could silently
+// share a single decision.
+export const GeometrySlotMixed = () => (
+  <Input
+    data-testid="geometry-slot-mixed"
+    defaultValue="42"
+    endContent="kg"
+    startContent={ (
+      <Button
+        aria-label="Search"
+        size={ BUTTON_SIZE.xs }
+        variant={ BUTTON_VARIANT.ghost }>
+        S
+      </Button>
+    ) } />
+);
+
+// Same mix, but with the clear button in play: the end inset is then owned by the actions.
+export const GeometrySlotMixedClearable = () => (
+  <Input
+    clearable
+    data-testid="geometry-slot-mixed-clearable"
+    defaultValue="42"
+    endContent="kg"
+    locale="en"
+    startContent={ (
+      <Button
+        aria-label="Search"
+        size={ BUTTON_SIZE.xs }
+        variant={ BUTTON_VARIANT.ghost }>
+        S
+      </Button>
+    ) } />
+);

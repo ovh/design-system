@@ -8,9 +8,19 @@ import { tmpdir } from 'os';
 
 const currentVersion = require('../lerna.json').version;
 
-// Dual lineage: versions <= 19.7.x are frozen Storybook builds published as
-// @ovhcloud/ods-storybook; newer versions are the docs platform.
+// Dual lineage: 19.7.3 is the last version released as the Storybook site
+// (@ovhcloud/ods-storybook); everything above it is the docs platform
+// (@ovhcloud/ods-docs). The boundary is explicit rather than implied by the
+// order of packageNames, so a version that ends up published in both
+// lineages still deploys the build that actually shipped for it.
 const packageNames = ['@ovhcloud/ods-storybook', '@ovhcloud/ods-docs'];
+
+// Sortable key from major.minor.patch. Enough to place a version relative to
+// the boundary: a prerelease never straddles it (19.7.3-alpha.0 ranks with
+// 19.7.3, 20.0.0-alpha.0 ranks with 20.0.0).
+const rank = (version) => version.split('-')[0].split('.')
+  .reduce((acc, part) => acc * 1000 + Number(part), 0);
+const STORYBOOK_LINEAGE_MAX = rank('19.7.3');
 const tmpDirName = 'ods-gh-pages';
 const outDirName = 'docs';
 
@@ -24,19 +34,36 @@ const outDirName = 'docs';
   const tmpOdsDir = resolve(tmpdir(), `${tmpDirName}`);
   await $`rm -rf ${tmpOdsDir}/*`;
 
-  const lineages = [];
+  // Keyed by version: a version is deployed once, by the lineage that owns it.
+  const lineages = new Map();
   for (const packageName of packageNames) {
     try {
-      const list = JSON.parse(await $`npm view ${packageName} versions --json`);
+      // npm prints a bare string (not an array) when exactly one version is
+      // published, hence the [].concat normalization.
+      const list = [].concat(JSON.parse(await $`npm view ${packageName} versions --json`));
       for (const version of list) {
-        lineages.push({ packageName, version });
+        const owner = rank(version) <= STORYBOOK_LINEAGE_MAX ? packageNames[0] : packageNames[1];
+        if (packageName !== owner) {
+          console.error(`skipping ${packageName}@${version}: ${owner} owns this version`);
+          continue;
+        }
+        lineages.set(version, { packageName, version });
       }
     } catch (e) {
-      console.error(`no published versions for ${packageName}, skipping`, e);
+      // E404 = never published (ods-docs before its first release): a
+      // legitimately empty lineage. Any other failure (network, registry
+      // outage, auth) must abort here: continuing would reach the
+      // `rm -rf ${outDirName}/v*` below with a partial lineage and wipe the
+      // archived versions from the deployed site.
+      if (`${e.stderr ?? e}`.includes('E404')) {
+        console.error(`no published versions for ${packageName}, skipping`);
+      } else {
+        throw e;
+      }
     }
   }
 
-  for (const { packageName, version } of lineages) {
+  for (const { packageName, version } of lineages.values()) {
     // create a dir for this version
     const dir = resolve(tmpOdsDir, `${version}`);
     await $`mkdir -p ${dir}`;
@@ -63,6 +90,8 @@ const outDirName = 'docs';
     }
 
     try {
+      // Replace, never nest: same reason as the current-build block below.
+      await $`rm -rf dist/v${version}`;
       await $`mv ${dir}/dist dist/v${version}`;
     } catch (e) {
       console.error(`No dist dir found, ignoring the version`, e);
@@ -97,10 +126,11 @@ const outDirName = 'docs';
     // Regenerated at each deploy from what is actually on disk, so only the
     // versions that really ship an llms set are listed.
     const { existsSync, readdirSync, writeFileSync } = require('node:fs');
-    const num = (name) => name.slice(1).split('.').map((part) => parseInt(part, 10));
+    // Prereleases are excluded from the listing (agents should not be pointed
+    // at an alpha), which also spares rank() its release/prerelease tie.
     const llmsVersions = readdirSync(outDirName)
-      .filter((name) => /^v\d/.test(name) && existsSync(`${outDirName}/${name}/llms/llms.txt`))
-      .sort((a, b) => num(b)[0] - num(a)[0] || num(b)[1] - num(a)[1] || num(b)[2] - num(a)[2]);
+      .filter((name) => /^v\d/.test(name) && !name.includes('-') && existsSync(`${outDirName}/${name}/llms/llms.txt`))
+      .sort((a, b) => rank(b.slice(1)) - rank(a.slice(1)));
     writeFileSync(`${outDirName}/llms.txt`, [
       '# OVHcloud Design System Documentation for LLMs',
       '',

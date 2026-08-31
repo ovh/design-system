@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1738
+tokens: 1908
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--documentation.txt
 ---
 
@@ -162,22 +162,25 @@ Every **File Upload** must have a clear and explicit label to ensure that users 
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-      
-        
+      <FormField>
+        <FormFieldLabel>
           Files:
-        
+        </FormFieldLabel>
 
-         setFiles(files) }
+        <FileUpload
+          onFileAccept={ ({ files }) => setFiles(files) }
           variant={ FILE_UPLOAD_VARIANT.compact }>
-          
+          <FileUploadList>
             {
               files.map((file: File, idx) => (
-                
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
               ))
             }
-          
-        
-      
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
     );
   }
 ```
@@ -193,16 +196,24 @@ The `Cancel` and `Delete` file buttons have to be explicit by adding context abo
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-       setFiles(files) }
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
         variant={ FILE_UPLOAD_VARIANT.compact }>
-        
+        <FileUploadList>
           {
             files.map((file: File, idx) => (
-              
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
+                key={ idx } />
             ))
           }
-        
-      
+        </FileUploadList>
+      </FileUpload>
     );
   }
 ```

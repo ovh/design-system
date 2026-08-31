@@ -672,9 +672,12 @@ Their grouping should be made clear to assistive technologies and proper ARIA at
 If a **Badge** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```tsx
-
-  
-
+<Badge>
+  <Icon
+    aria-label="Promotion"
+    name={ ICON_NAME.tag }
+    role="img" />
+</Badge>
 ```
 
  Screen readers will announce the aria-label instead of ignoring the **Badge**.
@@ -682,17 +685,19 @@ If a **Badge** contains only an icon, it must include an [aria-label](https://de
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when extra context is needed:
 
 ```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      color={ BADGE_COLOR.promotion }>
+      <Icon name={ ICON_NAME.tag } />
+    </Badge>
+  </TooltipTrigger>
 
-  
-    
-      
-    
-  
-
-  
+  <TooltipContent id="tooltip-a11y">
     Promotion valid from November 22 to 26
-  
-
+  </TooltipContent>
+</Tooltip>
 ```
 
  Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
@@ -704,14 +709,14 @@ When displaying multiple **Badges** together, they should be wrapped within an u
 ```tsx
 <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
   <li>
-    
+    <Badge>
       Item 1
-    
+    </Badge>
   </li>
   <li>
-    
+    <Badge>
       Item 2
-    
+    </Badge>
   </li>
 </ul>
 ```
@@ -727,12 +732,12 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
 <div
   role="list"
   style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
-  
+  <Badge role="listitem">
     Item 1
-  
-  
+  </Badge>
+  <Badge role="listitem">
     Item 2
-  
+  </Badge>
 </div>
 ```
 
@@ -1028,31 +1033,31 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 **Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v19.7.3/components/link).
 
 ```tsx
+<Breadcrumb aria-label="Breadcrumb">
+  <BreadcrumbItem>
+    <BreadcrumbLink aria-label="Home" href="#">
+      <Icon name={ ICON_NAME.home } />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
 
-  
-    
-      
-    
-  
-
-  
-    
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
       Category
-    
-  
+    </BreadcrumbLink>
+  </BreadcrumbItem>
 
-  
-    
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
       Subcategory
-    
-  
+    </BreadcrumbLink>
+  </BreadcrumbItem>
 
-  
-    
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
       Current page
-    
-  
-
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
 ```
 
   Screen readers will announce the link, the label of the first link, the list and the number of item.
@@ -1512,9 +1517,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```tsx
-
+<Button>
   Clear
-
+</Button>
 ```
 
  Screen readers will announce the text content.
@@ -1524,9 +1529,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 If a **Button** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```tsx
-
-    
-
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce the label.
@@ -1537,9 +1542,9 @@ When a **Button** is associated with an existing label, content is read by scree
 
 ```tsx
 <>
-  
-    
-  
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span id="filter-btn">Filter your search results</span>
 </>
 ```
@@ -2357,16 +2362,16 @@ If multiple **Cards** are displayed together (e.g., a collection of products, ar
 ```tsx
 <ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
   <li>
-    
+    <Card style={{ padding: '8px' }}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
       Interdum et malesuada fames ac ante ipsum primis in faucibus.
-    
+    </Card>
   </li>
   <li>
-    
+    <Card style={{ padding: '8px' }}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
       Interdum et malesuada fames ac ante ipsum primis in faucibus.
-    
+    </Card>
   </li>
 </ul>
 ```
@@ -2380,14 +2385,14 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
 
 ```tsx
 <div role="list" style={{ display: 'flex', gap: '16px' }}>
-  
+  <Card role="listitem" style={{ padding: '8px' }}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
     Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  
-  
+  </Card>
+  <Card role="listitem" style={{ padding: '8px' }}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
     Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  
+  </Card>
 </div>
 ```
 
@@ -3372,17 +3377,17 @@ To ensure proper accessibility, the **Clipboard** component must be correctly la
 Every **Clipboard** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     API key:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Clipboard value="loremipsum">
+    <ClipboardControl />
 
-    
-  
-
+    <ClipboardTrigger />
+  </Clipboard>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -3421,6 +3426,7 @@ This component extends all the native `<button>` attributes.
 |---|---|---|---|---|
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
 | `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `value` | `string` | No | undefined | - |
 
 ## Clipboard
 
@@ -3727,7 +3733,7 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 | `open` | `boolean` | No | undefined | The controlled open state of the combobox. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
 | `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
-| `required` | `boolean` | No | undefined | Whether the component is required. /!\ Only work for single selection mode for now. |
+| `required` | `boolean` | No | undefined | Whether the component is required. Warning! - Only work for single selection mode for now. |
 | `value` | `string[]` | No | undefined | The controlled selected value(s). |
 
 ## Examples
@@ -3905,17 +3911,25 @@ This component complies with the [Combobox WAI-ARIA design pattern](https://www.
 Every **Combobox** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Favorite pet:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+      { label: 'Hamster', value: 'hamster' },
+      { label: 'Parrot', value: 'parrot' },
+      { label: 'Spider', value: 'spider' },
+      { label: 'Goldfish', value: 'goldfish' },
+    ]}>
+    <ComboboxControl />
 
-    
-  
-
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -3925,17 +3939,28 @@ Every **Combobox** must have a clear and explicit label to ensure that users (es
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Favorite pet:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Combobox
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
+    }}
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+      { label: 'Hamster', value: 'hamster' },
+      { label: 'Parrot', value: 'parrot' },
+      { label: 'Spider', value: 'spider' },
+      { label: 'Goldfish', value: 'goldfish' },
+    ]}>
+    <ComboboxControl clearable />
 
-    
-  
-
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
@@ -3970,7 +3995,7 @@ To provide more context on the interactive elements, you can provide your own cu
 | `open` | `boolean` | No | undefined | The controlled open state of the combobox. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
 | `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
-| `required` | `boolean` | No | undefined | Whether the component is required. /!\ Only work for single selection mode for now. |
+| `required` | `boolean` | No | undefined | Whether the component is required. Warning! - Only work for single selection mode for now. |
 | `value` | `string[]` | No | undefined | The controlled selected value(s). |
 
 ## ComboboxContent
@@ -4534,9 +4559,9 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
 - A `listbox` must always have an accessible name, (**CommandContent** and **CommandList** can share the same label).
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4549,7 +4574,7 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```
 
 ### CommandGroup naming
@@ -4561,9 +4586,9 @@ In the case of several groups, it is recommended to provide an accessible name f
 `aria-label` takes precedence.
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4579,7 +4604,7 @@ In the case of several groups, it is recommended to provide an accessible name f
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```
 
 ### Disabled options
@@ -4587,9 +4612,9 @@ In the case of several groups, it is recommended to provide an accessible name f
 To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` instead of the native `disabled` attribute. This is required because **CommandOption** renders a **div** with `role="option"`, which does not support the native `disabled` attribute.
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4606,7 +4631,7 @@ To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` inste
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```
 
 ## Command
@@ -4682,11 +4707,11 @@ This component extends all the native `<div>` attributes.
 
 ## CommandTrigger
 
-This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## CSS Variables
 
@@ -6182,17 +6207,17 @@ Every **Datepicker** must have a clear and explicit label to ensure that users (
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Start date:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Datepicker>
+    <DatepickerControl />
 
-    
-  
-
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
   Screen readers will announce the label, the field and its content.
@@ -6202,39 +6227,41 @@ using either **FormField** or a native label tag.
 Since screen readers can only interact with the **Datepicker** input field, it’s important to provide guidance on the expected date format to ensure correct input.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Start date:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Datepicker>
+    <DatepickerControl placeholder="DD-MM-YYYY" />
 
-    
-  
+    <DatepickerContent />
+  </Datepicker>
 
-  
-    
+  <FormFieldHelper>
+    <Text preset={ TEXT_PRESET.caption }>
       Expected format: DD-MM-YYYY
-    
-  
-
+    </Text>
+  </FormFieldHelper>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and the helper.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Start date:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Datepicker i18n={{
+    [INPUT_I18N.clearButton]: 'Clear date'
+  }}>
+    <DatepickerControl clearable />
 
-    
-  
-
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
@@ -6687,6 +6714,8 @@ This component extends all the native `<hr>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `backdrop` | `boolean` | No | undefined | Whether a backdrop is displayed. |
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the drawer backdrop. Useful if you want to override the backdrop z-index. |
 | `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
 | `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
@@ -6809,31 +6838,35 @@ To ensure the **Drawer** is fully accessible, correct ARIA attributes must be im
 Ensure that assistive technologies announce the **Drawer** correctly using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label), and [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby).
 
 ```tsx
-
-  
-    
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
       Trigger Drawer
-    
-  
+    </Button>
+  </DrawerTrigger>
 
-  
-    
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-label="My drawer">
+    <DrawerBody id="drawer-content">
       The drawer content
-    
-  
-
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
 ```tsx
-
-  
-    
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
       Trigger Drawer
-    
-  
+    </Button>
+  </DrawerTrigger>
 
-  
-    
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-labelledby="drawer-title">
+    <DrawerBody>
       <h2 id="drawer-title">
         My drawer
       </h2>
@@ -6841,9 +6874,9 @@ Ensure that assistive technologies announce the **Drawer** correctly using [aria
       <p id="drawer-content">
         The drawer content
       </p>
-    
-  
-
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
  Screen readers will announce the sections referenced by the aria attributes.
@@ -6857,6 +6890,8 @@ Ensure that assistive technologies announce the **Drawer** correctly using [aria
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `backdrop` | `boolean` | No | undefined | Whether a backdrop is displayed. |
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the drawer backdrop. Useful if you want to override the backdrop z-index. |
 | `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
 | `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
@@ -6886,6 +6921,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Enums
 
@@ -7913,22 +7949,25 @@ Every **File Upload** must have a clear and explicit label to ensure that users 
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-      
-        
+      <FormField>
+        <FormFieldLabel>
           Files:
-        
+        </FormFieldLabel>
 
-         setFiles(files) }
+        <FileUpload
+          onFileAccept={ ({ files }) => setFiles(files) }
           variant={ FILE_UPLOAD_VARIANT.compact }>
-          
+          <FileUploadList>
             {
               files.map((file: File, idx) => (
-                
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
               ))
             }
-          
-        
-      
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
     );
   }
 ```
@@ -7944,16 +7983,24 @@ The `Cancel` and `Delete` file buttons have to be explicit by adding context abo
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-       setFiles(files) }
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
         variant={ FILE_UPLOAD_VARIANT.compact }>
-        
+        <FileUploadList>
           {
             files.map((file: File, idx) => (
-              
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
+                key={ idx } />
             ))
           }
-        
-      
+        </FileUploadList>
+      </FileUpload>
     );
   }
 ```
@@ -8494,17 +8541,17 @@ Focus behavior and keyboard navigation are determined by the specific form eleme
 The **Form Field** component handles by itself the accessibility requirements by using its internal components.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Login:
-  
+  </FormFieldLabel>
 
-  
+  <Input name="input" />
 
-  
+  <FormFieldHelper>
     Username or email address
-  
-
+  </FormFieldHelper>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and the helper text.
@@ -9119,7 +9166,10 @@ Proper attributes should be used to ensure that **Icons** are either perceivable
 If the **Icon** conveys essential information, it must be accompanied by an accessible label using [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) and [role="img"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role).
 
 ```tsx
-
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
+  role="img" />
 ```
 
  Screen readers will announce the label, ensuring users understand the **Icon**'s meaning.
@@ -9597,13 +9647,13 @@ Every **Input** must have a clear and explicit label to ensure that users (espec
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Name:
-  
+  </FormFieldLabel>
 
-  
-
+  <Input />
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -9613,13 +9663,20 @@ using either **FormField** or a native label tag.
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Search:
-  
+  </FormFieldLabel>
 
-  
-
+  <Input
+    clearable
+    defaultValue="my search"
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear current search',
+      [INPUT_I18N.searchButton]: 'Search in database',
+    }}
+    type='search' />
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
@@ -10016,9 +10073,11 @@ This component complies with the [Link WAI-ARIA design pattern](https://www.w3.o
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
 ```tsx
-
-  
-
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com">
+  <Icon name={ ICON_NAME.home } />
+</Link>
 ```
 
  Screen readers will announce the link and its label.
@@ -10028,9 +10087,12 @@ If a **Link** is represented only by an **Icon**, it must have an explicit acces
 When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
 
 ```tsx
-
-  
-
+<Link
+  aria-label="Visit Example (opens in a new tab)"
+  href="https://www.ovhcloud.com"
+  target="_blank">
+  <Icon name={ ICON_NAME.externalLink } />
+</Link>
 ```
 
  The screen reader will announce the link, the opening in a new tab behavior and the link label.
@@ -10041,15 +10103,17 @@ If a **Link** points to a file download, it should include the file type and siz
 
 ```tsx
 <>
-  
-    
-  
+  <Link
+    aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name={ ICON_NAME.download } />
+  </Link>
 
-  
-    
+  <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name={ ICON_NAME.download } />
 
     <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-  
+  </Link>
 </>
 ```
 
@@ -10262,7 +10326,7 @@ When the logo is used within a navigational element (for example, as a link in a
 <a
   aria-label="Return to the OVHcloud home page"
   href="https://www.ovhcloud.com">
-  
+  <Logo />
 </a>
 ```
 
@@ -10542,12 +10606,14 @@ whereas the alternative text always describe what the image actually conveys.
 
 ```tsx
 <figure>
-  
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
 
   <figcaption>
-    
+    <Text preset={ TEXT_PRESET.caption }>
       © Copyright National Aeronautics and Space Administration
-    
+    </Text>
   </figcaption>
 </figure>
 ```
@@ -10815,6 +10881,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Menu
 
@@ -11087,23 +11154,23 @@ When displaying multiple **Messages** together, they should be wrapped within an
 ```tsx
 <ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
   <li>
-    
-      
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleCheck } />
 
       
 > Your changes have been saved.
 
-    
+    </Message>
   </li>
 
   <li>
-    
-      
+    <Message color={ MESSAGE_COLOR.warning }>
+      <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
       
 > Some fields need your attention.
 
-    
+    </Message>
   </li>
 </ul>
 ```
@@ -11120,21 +11187,23 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
 <div
   role="list"
   style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-  
-    
+  <Message role="listitem">
+    <MessageIcon name={ ICON_NAME.circleCheck } />
 
     
 > Your changes have been saved.
 
-  
+  </Message>
 
-  
-    
+  <Message
+    color={ MESSAGE_COLOR.warning }
+    role="listitem">
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
     
 > Some fields need your attention.
 
-  
+  </Message>
 </div>
 ```
 
@@ -11154,25 +11223,29 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
     return (
       <>
         <div>
-           setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
-          
+          </Button>
 
-           setAlerts((a) => a.concat([new Date().toString()])) }>
+          <Button
+            color={ BUTTON_COLOR.critical }
+            onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
-          
+          </Button>
         </div>
 
         <div role="alert">
           {
             alerts.map((alert) => (
-              
-                
+              <Message
+                color={ MESSAGE_COLOR.critical }
+                key={ alert }>
+                <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
                 
 > Alert: { alert }
 
-              
+              </Message>
             ))
           }
         </div>
@@ -11180,13 +11253,13 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
         <div role="status">
           {
             statuses.map((status) => (
-              
-                
+              <Message key={ status }>
+                <MessageIcon name={ ICON_NAME.circleInfo } />
 
                 
 > Status: { status }
 
-              
+              </Message>
             ))
           }
         </div>
@@ -11754,18 +11827,26 @@ using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Access
 or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```tsx
-
+<Meter
+  aria-label="Gauge"
+  low={ 40 }
+  value={ 35 } />
 ```
 
  Screen readers will announce the label and the meter information.
 
 ```tsx
 <>
-  
+  <Text
+    id="meter-label"
+    preset={ TEXT_PRESET.label }>
     Gauge:
-  
+  </Text>
 
-  
+  <Meter
+    aria-labelledby="meter-label"
+    low={ 40 }
+    value={ 35 } />
 </>
 ```
 
@@ -11778,7 +11859,11 @@ You can use the [aria-valuetext](https://developer.mozilla.org/en-US/docs/Web/Ac
 attribute to present the current value in a more user-friendly, human-understandable way.
 
 ```tsx
-
+<Meter
+  aria-label="Gauge"
+  aria-valuetext="35 files uploaded"
+  low={ 40 }
+  value={ 35 } />
 ```
 
  Screen readers will announce the label and the meter information in a more user-friendly, human-understandable way.
@@ -12063,39 +12148,43 @@ Ensure that assistive technologies announce the **Modal** correctly using
 [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label), and [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby).
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    Modal header
-    
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-label="Modal Content">
+    <ModalHeader>Modal header</ModalHeader>
+    <ModalBody id="modal-content">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers will announce the sections referenced by the aria attributes.
@@ -12105,32 +12194,32 @@ Ensure that assistive technologies announce the **Modal** correctly using
 For **Modals** that require user decisions (e.g., confirmation dialogs), place the least critical **Button** first in the **Modal** actions section.
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item?
       </p>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        
+        <Button variant={ BUTTON_VARIANT.ghost }>
           Cancel
-        
+        </Button>
 
-        
+        <Button color={ BUTTON_COLOR.critical }>
           Delete
-        
+        </Button>
       </div>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.
@@ -12184,6 +12273,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Enums
 
@@ -12214,6 +12304,8 @@ This component extends all the native `<button>` attributes.
 | `--ods-modal-header-background-color-warning` | `var(--ods-color-warning-075)` |
 | `--ods-modal-header-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
 | `--ods-modal-header-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
 | `--ods-modal-margin-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
 | `--ods-modal-margin-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
 | `--ods-modal-mobile-max-height` | `512px` |
@@ -12621,9 +12713,11 @@ The "items per page" Select uses the same keyboard shortcuts as the standard Sel
 To ensure it is correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify it.
 
 ```tsx
-
-  
-
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
 ```
 
  Screen readers will announce the pagination element correctly.
@@ -12920,13 +13014,13 @@ To ensure proper accessibility, the **Password** component must be correctly lab
 Every **Password** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Password:
-  
+  </FormFieldLabel>
 
-  
-
+  <Password />
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -12936,13 +13030,16 @@ Every **Password** must have a clear and explicit label to ensure that users (es
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Password:
-  
+  </FormFieldLabel>
 
-  
-
+  <Password i18n={{
+    [INPUT_I18N.maskButtonHide]: 'Hide the password',
+    [INPUT_I18N.maskButtonShow]: 'Show the password',
+  }} />
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
@@ -13064,8 +13161,8 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `countries` | `'id' | 'at' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'[] | 'all'` | No | undefined | A specific or preset list of country to display in the selector. |
-| `country` | `'id' | 'at' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'` | No | undefined | The controlled selected country. |
+| `countries` | `'id' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'at' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'[] | 'all'` | No | undefined | A specific or preset list of country to display in the selector. |
+| `country` | `'id' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'at' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'` | No | undefined | The controlled selected country. |
 | `defaultValue` | `string` | No | undefined | The initial phone number value. Use when you don't need to control the value of the phone number. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -13222,17 +13319,17 @@ To ensure proper accessibility, the **Phone Number** component must be correctly
 Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Phone number:
-  
+  </FormFieldLabel>
 
-  
-    
+  <PhoneNumber>
+    <PhoneNumberCountryList />
 
-    
-  
-
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -13242,17 +13339,22 @@ Every **Phone Number** must have a clear and explicit label to ensure that users
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Phone number:
-  
+  </FormFieldLabel>
 
-  
-    
+  <PhoneNumber
+    country="fr"
+    defaultValue="06 01 02 03 04"
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear phone number',
+    }}>
+    <PhoneNumberCountryList />
 
-    
-  
-
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
@@ -13267,8 +13369,8 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `countries` | `'id' | 'at' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'[] | 'all'` | No | undefined | A specific or preset list of country to display in the selector. |
-| `country` | `'id' | 'at' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'` | No | undefined | The controlled selected country. |
+| `countries` | `'id' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'at' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'[] | 'all'` | No | undefined | A specific or preset list of country to display in the selector. |
+| `country` | `'id' | 'br' | 'hr' | 'li' | 'td' | 'th' | 'tr' | 'is' | 'no' | 'as' | 'by' | 'cx' | 'cy' | 'fr' | 'in' | 'to' | 'de' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sm' | 'md' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al' | 'am' | 'ao' | 'ar' | 'at' | 'au' | 'aw' | 'ax' | 'az' | 'ba' | 'bb' | 'bd' | 'be' | 'bf' | 'bg' | 'bh' | 'bi' | 'bj' | 'bl' | 'bm' | 'bn' | 'bo' | 'bq' | 'bs' | 'bt' | 'bw' | 'bz' | 'ca' | 'cc' | 'cd' | 'cf' | 'cg' | 'ch' | 'ci' | 'ck' | 'cl' | 'cm' | 'cn' | 'co' | 'cr' | 'cu' | 'cv' | 'cw' | 'cz' | 'dj' | 'dk' | 'dm' | 'do' | 'dz' | 'ec' | 'ee' | 'eg' | 'eh' | 'er' | 'et' | 'fi' | 'fj' | 'fk' | 'fm' | 'fo' | 'ga' | 'gb' | 'gd' | 'ge' | 'gf' | 'gg' | 'gh' | 'gi' | 'gl' | 'gm' | 'gn' | 'gp' | 'gq' | 'gr' | 'gt' | 'gu' | 'gw' | 'gy' | 'hk' | 'hn' | 'ht' | 'hu' | 'ie' | 'il' | 'im' | 'io' | 'iq' | 'ir' | 'je' | 'jm' | 'jo' | 'jp' | 'ke' | 'kg' | 'kh' | 'ki' | 'km' | 'kn' | 'kp' | 'kr' | 'kw' | 'ky' | 'kz' | 'la' | 'lb' | 'lc' | 'lk' | 'lr' | 'ls' | 'lt' | 'lu' | 'lv' | 'ly' | 'ma' | 'mc' | 'me' | 'mf' | 'mg' | 'mh' | 'mk' | 'ml' | 'mm' | 'mn' | 'mo' | 'mp' | 'mq' | 'mr' | 'ms' | 'mt' | 'mu' | 'mv' | 'mw' | 'mx' | 'my' | 'mz' | 'na' | 'nc' | 'ne' | 'nf' | 'ng' | 'ni' | 'np' | 'nr' | 'nu' | 'nz' | 'om' | 'pa' | 'pe' | 'pf' | 'pg' | 'ph' | 'pk' | 'pm' | 'pr' | 'ps' | 'pw' | 'py' | 'qa' | 're' | 'ro' | 'rs' | 'ru' | 'rw' | 'sa' | 'sb' | 'sc' | 'sd' | 'se' | 'sg' | 'sh' | 'si' | 'sj' | 'sk' | 'sl' | 'sn' | 'so' | 'sr' | 'ss' | 'st' | 'sv' | 'sx' | 'sy' | 'sz' | 'tc' | 'tg' | 'tj' | 'tk' | 'tl' | 'tm' | 'tn' | 'tt' | 'tv' | 'tw' | 'tz' | 'ua' | 'ug' | 'us' | 'uy' | 'uz' | 'va' | 'vc' | 've' | 'vg' | 'vi' | 'vn' | 'vu' | 'wf' | 'ws' | 'ye' | 'yt' | 'za' | 'zm' | 'zw'` | No | undefined | The controlled selected country. |
 | `defaultValue` | `string` | No | undefined | The initial phone number value. Use when you don't need to control the value of the phone number. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -13934,33 +14036,44 @@ Update the content type on the **Popover Trigger**, which is set by default to `
 ### Using aria-popup for a Popover containing a Menu
 
 ```tsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild>
+    <Button>
+      <Icon name={ ICON_NAME.ellipsisVertical } />
+    </Button>
+  </PopoverTrigger>
 
-  
-    
-      
-    
-  
-
-  
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow>
     <div
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
-      
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Information
-      
+      </Button>
 
-      
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Notifications
-      
+      </Button>
 
-      
+      <Divider style={{ width: '100%' }} />
 
-      
+      <Button
+        color={ BUTTON_COLOR.critical }
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Sign out
-      
+      </Button>
     </div>
-  
-
+  </PopoverContent>
+</Popover>
 ```
 
  Screen readers will recognize that **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.
@@ -14001,6 +14114,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Enums
 
@@ -14370,7 +14484,7 @@ The **Progress Bar** component is non-interactive and does not receive keyboard 
 To ensure the **Progress Bar** is correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify it.
 
 ```tsx
-
+<ProgressBar aria-label="Converting" />
 ```
 
  Screen readers will announce the label, the value and the progress bar.
@@ -14569,12 +14683,12 @@ Because the **Prompt Input** does not render a visible label by default, you mus
 Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a meaningful description of the field.
 
 ```tsx
-
-  
-    
-    
-  
-
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### Button labelling
@@ -14582,25 +14696,25 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 - The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
 
 ```tsx
-
-  
-    
-    
-    
-  
-
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send request" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 - As the send button displays a loading spinner when the component is in the `loading` state, ensure the button's `aria-label` is updated to convey the loading state to users who can't rely on visual cues.
 
 ```tsx
-
-  
-    
-    
-    
-  
-
+<PromptInput loading>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Request is processing" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ## Prompt Input
@@ -14973,17 +15087,19 @@ Every **Quantity** must have a clear and explicit label to ensure that users (es
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Number of CPUs:
-  
+  </FormFieldLabel>
 
-  
-    
-      
-    
-  
-
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```
 
  Screen readers will announce the label and the quantity field.
@@ -15898,13 +16014,13 @@ Every **Range** must have a clear and explicit label to ensure that users (espec
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Volume
-  
+  </FormFieldLabel>
 
-  
-
+  <Range defaultValue={ [50] } />
+</FormField>
 ```
 
  Screen readers will announce the value, the slider and its label.
@@ -15919,18 +16035,23 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
     const [values, setValues] = useState([30, 70]);
 
     return (
-      
-        
+      <FormField>
+        <FormFieldLabel id="range-label">
           Price range
-        
+        </FormFieldLabel>
 
-        
+        <Text
+          aria-live="polite"
+          id="range-sublabel"
+          preset={ TEXT_PRESET.caption }>
           Selected values: { values[0] } - { values[1] }€
-        
+        </Text>
 
-         setValues(value) }
+        <Range
+          aria-labelledby={ ['range-label', 'range-sublabel'] }
+          onDragging={ ({ value }) => setValues(value) }
           value={ values } />
-      
+      </FormField>
     );
   }
 ```
@@ -16323,17 +16444,22 @@ Every **Select** must have a clear and explicit label to ensure that users (espe
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Select a Web hosting
-  
+  </FormFieldLabel>
 
-  
-    
+  <Select
+    items={[
+      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+    ]}>
+    <SelectControl />
 
-    
-  
-
+    <SelectContent />
+  </Select>
+</FormField>
 ```
 
  Screen readers will announce the label as well as the select.
@@ -16850,7 +16976,7 @@ To ensure screen reader users are aware that content is being loaded, you should
 
 ```tsx
 <div aria-busy="true">
-  
+  <Skeleton />
 </div>
 ```
 
@@ -17008,7 +17134,7 @@ The **Spinner** itself does not convey the loading state. This responsibility fa
 <div
   aria-busy="true"
   aria-live="polite">
-  
+  <Spinner />
 </div>
 ```
 
@@ -17027,7 +17153,7 @@ Explanations:
 If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label).
 
 ```tsx
-
+<Spinner aria-label="Loading user profile" />
 ```
 
  Screen readers will announce the label, the spinner and its current state.
@@ -17038,7 +17164,7 @@ If the **Spinner** is associated with a specific loading action, it should be ex
     Loading user profile
   </span>
 
-  
+  <Spinner aria-labelledby="loading-text" />
 </div>
 ```
 
@@ -17254,26 +17380,28 @@ using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Access
 or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```tsx
-
-  Item 1
-  Item 2
-  Item 3
-
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
 ```
 
  Screen readers will announce the label and the option information (text, position, selection state).
 
 ```tsx
 <>
-  
+  <Text
+    id="switch-label"
+    preset={ TEXT_PRESET.label }>
     Select an item:
-  
+  </Text>
 
-  
-    Item 1
-    Item 2
-    Item 3
-  
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
 </>
 ```
 
@@ -18320,7 +18448,7 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `null | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | undefined | The icon to display on the right side. |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 
 ## Examples
@@ -18453,15 +18581,15 @@ they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensu
 ```tsx
 <ul>
   <li>
-    Design
+    <Tag>Design</Tag>
   </li>
 
   <li>
-    Development
+    <Tag>Development</Tag>
   </li>
 
   <li>
-    Accessibility
+    <Tag>Accessibility</Tag>
   </li>
 </ul>
 ```
@@ -18476,15 +18604,15 @@ use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 ```tsx
 <div role="list">
   <div role="listitem">
-    Design
+    <Tag>Design</Tag>
   </div>
 
   <div role="listitem">
-    Development
+    <Tag>Development</Tag>
   </div>
 
   <div role="listitem">
-    Accessibility
+    <Tag>Accessibility</Tag>
   </div>
 </div>
 ```
@@ -18496,9 +18624,9 @@ use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
 ```tsx
-
+<Tag aria-label="Remove my tag">
   My tag
-
+</Tag>
 ```
 
  This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.
@@ -18514,7 +18642,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `null | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | undefined | The icon to display on the right side. |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 
 ## Enums
@@ -19037,13 +19165,13 @@ Every **Textarea** must have a clear and explicit label to ensure that users (es
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Description:
-  
+  </FormFieldLabel>
 
-  
-
+  <Textarea />
+</FormField>
 ```
 
  Screen readers will announce the label and the field.
@@ -19051,17 +19179,17 @@ using either **FormField** or a native label tag.
 ### Linking helper text
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Description:
-  
+  </FormFieldLabel>
 
-  
+  <Textarea />
 
-  
+  <FormFieldHelper>
     Enter a brief description
-  
-
+  </FormFieldHelper>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and the helper text.
@@ -19289,8 +19417,6 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 | `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
 | `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
 | `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
@@ -19299,6 +19425,8 @@ _No specific property._
 | `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
 | `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
 | `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 
 ## Tile
 
@@ -19544,17 +19672,17 @@ Every **Timepicker** must have a clear and explicit label to ensure that users (
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Starting time:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Timepicker withSeconds>
+    <TimepickerControl />
 
-    
-  
-
+    <TimepickerTimezoneList />
+  </Timepicker>
+</FormField>
 ```
 
  Screen readers will announce the label, the input time and the select field.
@@ -20255,25 +20383,25 @@ Every **Toggle** must have a clear and explicit label to ensure that users (espe
 using either a **ToggleLabel** or an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) for context.
 
 ```tsx
+<Toggle>
+  <ToggleControl />
 
-  
-
-  
+  <ToggleLabel>
     Enable dark mode
-  
-
+  </ToggleLabel>
+</Toggle>
 ```
 
  Screen readers will announce a checkbox, its state and the label.
 
 ```tsx
+<Toggle aria-label="Enable dark mode">
+  <ToggleControl />
 
-  
-
-  
+  <ToggleLabel>
     Dark mode
-  
-
+  </ToggleLabel>
+</Toggle>
 ```
 
  Screen readers will announce a checkbox, its state and the label.
@@ -20565,15 +20693,19 @@ You should set a minimal **Tooltip Trigger** height to at least `24px` to provid
 If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its purpose.
 
 ```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
 
-  
-    
-  
-
-  
+  <TooltipContent>
     Some additional context.
-  
-
+  </TooltipContent>
+</Tooltip>
 ```
 
  Screens will announce the tooltip information.
@@ -20611,6 +20743,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Enums
 
@@ -21678,17 +21811,17 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```tsx
-
-  
-
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button.
 
 ```tsx
-
-    
-
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button and the aria-label.
@@ -21708,9 +21841,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span>Filter your search results</span>
 </>
 ```
@@ -21719,9 +21852,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span id="filter-btn">Filter your search results</span>
 </>
 ```
@@ -21821,43 +21954,45 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
   </tbody>
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers won't announce the **Modal** content.
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers will announce the **Modal** content.
@@ -21873,7 +22008,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden) set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Some screen readers will announce the icon and detect the presence of the image.
@@ -21884,7 +22019,7 @@ Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 > Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Screen readers will announce nothing, the icon is ignored.
@@ -21902,7 +22037,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div>
-  
+  <Skeleton />
 </div>
 ```
 
@@ -21910,7 +22045,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div aria-busy="true">
-  
+  <Skeleton />
 </div>
 ```
 
@@ -21935,9 +22070,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem' }}>
           { message }
@@ -21959,9 +22094,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span
           aria-live="polite"
@@ -22000,9 +22135,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem', color: 'red' }}>
           { error }
@@ -22024,9 +22159,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span
           role="alert"
@@ -22056,11 +22191,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
   </label>
 
   <div id="rating">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
   </div>
 </>
 ```
@@ -22079,11 +22214,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
     aria-labelledby="rating-label"
     id="rating"
     role="radiogroup">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
   </div>
 </>
 ```
@@ -22256,68 +22391,87 @@ Optional fields do not need to be labeled "Optional" and can remain unmarked if 
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="Company" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Phone
-          
+          </FormFieldLabel>
 
-          
-            
-          
+          <PhoneNumber name="phonenumber">
+            <PhoneNumberControl />
+          </PhoneNumber>
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Include country code (e.g. +33 6 00 00 00 00)
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Your email"
+            required
+            type="email" />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Format: name@example.com
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
       </form>
     );
   }
@@ -22492,53 +22646,73 @@ When using a critical **Message**:
       <form
         onSubmit={ handleSubmit }
         style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField invalid={ !!localError.firstname }>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            placeholder="Type your first name"
+            required />
 
-          
+          <FormFieldError>
             { localError.firstname }
-          
-        
+          </FormFieldError>
+        </FormField>
 
-        
-          
+        <FormField invalid={ !!localError.email }>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Type your email"
+            required />
 
-          
+          <FormFieldError>
             { localError.email }
-          
-        
+          </FormFieldError>
+        </FormField>
 
         {
           !!globalError &&
-           setGlobalError('') }>
+          <Message
+            color={ MESSAGE_COLOR.critical }
+            onRemove={ () => setGlobalError('') }>
             
 > { globalError }
 
-          
+          </Message>
         }
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button
+            disabled={ isSubmitting }
+            variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button
+            color={ BUTTON_COLOR.critical }
+            loading={ isSubmitting }
+            type="submit">
             Delete account
-          
+          </Button>
         </div>
       </form>
     );
@@ -22567,25 +22741,25 @@ Use when:
 
 ```tsx
 <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-  
-    
+  <FormField>
+    <FormFieldLabel>
       Phone number
-    
+    </FormFieldLabel>
 
-    
-      
-      
-    
-  
+    <PhoneNumber name="phonenumber">
+      <PhoneNumberCountryList />
+      <PhoneNumberControl />
+    </PhoneNumber>
+  </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    
+    <Button variant={ BUTTON_VARIANT.outline }>
       Back
-    
+    </Button>
 
-    
+    <Button>
       Update profile
-    
+    </Button>
   </div>
 </form>
 ```
@@ -22606,56 +22780,70 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Personal Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Company Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company name
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="OVHcloud" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             VAT number
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="vat"
+            placeholder="vat" />
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          
+          <Button>
             Save
-          
+          </Button>
         </div>
       </form>
     );
@@ -22678,31 +22866,37 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Please type DELETE to confirm
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.confirmation }
+            name="confirmation"
+            onBlur={ onBlur }
+            pattern="^DELETE$"
+            placeholder="DELETE"
+            required />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               This action is irreversible.
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button color={ BUTTON_COLOR.critical }>
             Delete account
-          
+          </Button>
         </div>
       </form>
     );
@@ -24690,7 +24884,7 @@ See the related storybook [Internationalization guide](https://ovh.github.io/des
 **Toggle**
 - New component `ToggleControl` has been added.
 - New component `ToggleLabel` has been added.
-- [DEPRECATED] Using `` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
+- [DEPRECATED] Using `<Toggle />` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
 
 ### Bug fixes:
 

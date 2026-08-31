@@ -4,7 +4,7 @@ slug: input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1184
+tokens: 1264
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
 ---
 
@@ -114,13 +114,13 @@ Every **Input** must have a clear and explicit label to ensure that users (espec
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Name:
-  
+  </FormFieldLabel>
 
-  
-
+  <Input />
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -130,13 +130,20 @@ using either **FormField** or a native label tag.
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Search:
-  
+  </FormFieldLabel>
 
-  
-
+  <Input
+    clearable
+    defaultValue="my search"
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear current search',
+      [INPUT_I18N.searchButton]: 'Search in database',
+    }}
+    type='search' />
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.

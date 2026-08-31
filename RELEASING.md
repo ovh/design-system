@@ -23,7 +23,7 @@ For a major or minor version, create a new `release/X.Y` branch. For a patch, us
 
 ### 2. Add a "What's New" entry
 
-Edit `packages/storybook/stories/ovhcloud-design-system/whatsnew/whatsnew.mdx`, add a short description of the release, and commit it. Your working tree must be clean before the next step.
+Edit `packages/docs/src/content/guides/whats-new.mdx`, add a short description of the release, and commit it. Your working tree must be clean before the next step.
 
 ### 3. Bump the version
 
@@ -73,19 +73,12 @@ Once the support for the version has ended, the branch will be un-referenced.
 You added breaking changes:
 
 Create a release branch from up-to-date `master` that corresponds to the version you are going to release like `release/X.Y`.
-In `docs/migration`, rename the migration guide previously created according to the version like `MIGRATION-x.y-to-next.mdx` to `MIGRATION-x.y-to-z.y.mdx`.
-Create a new empty migration guide for future release: `MIGRATION-x.y-to-next.mdx`.
 
-Then, in `packages/tools/storybook/stories/code/migration`, create a stories for the version you are going to release.
-And add the following imports and Meta title:
-```typescript
-import { Meta, Description } from '@storybook/addon-docs';
-import MigrationXxToYx from '../../../../../../packages/doc/src/migration/MIGRATION-X.x-to-Y.x.mdx';
+Then add a migration guide for the version you are going to release:
 
-<Meta title="Code/Migration guide/X.x to Y.x" />
-
-<MigrationXxToYx />
-```
+1. Write the guide in `packages/docs/src/content/guides/migration-X-to-Y.mdx` (plain MDX, no imports or Meta needed — guide files are picked up automatically).
+2. Register the page in the navigation model, `packages/docs/src/nav/model.ts` (Upgrade section, like the existing `guides/migration-*` entries).
+3. Add a `GUIDE_META` entry for it in `packages/docs/vite-plugin-llms.ts` so it lands in the generated LLM documentation (the build fails with a "guide inventory drift" error until the entry exists).
 
 Then, you have to generate a major version from your branch.
 

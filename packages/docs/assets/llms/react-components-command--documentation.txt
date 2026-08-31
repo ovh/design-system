@@ -4,7 +4,7 @@ slug: command
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1909
+tokens: 1936
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--documentation.txt
 ---
 
@@ -159,9 +159,9 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
 - A `listbox` must always have an accessible name, (**CommandContent** and **CommandList** can share the same label).
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -174,7 +174,7 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```
 
 ### CommandGroup naming
@@ -186,9 +186,9 @@ In the case of several groups, it is recommended to provide an accessible name f
 `aria-label` takes precedence.
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -204,7 +204,7 @@ In the case of several groups, it is recommended to provide an accessible name f
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```
 
 ### Disabled options
@@ -212,9 +212,9 @@ In the case of several groups, it is recommended to provide an accessible name f
 To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` instead of the native `disabled` attribute. This is required because **CommandOption** renders a **div** with `role="option"`, which does not support the native `disabled` attribute.
 
 ```tsx
-
+<Command>
   <Command.Trigger asChild>
-    Open command
+    <Button>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -231,5 +231,5 @@ To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` inste
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
-
+</Command>
 ```

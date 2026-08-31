@@ -4,7 +4,7 @@ slug: meter
 category: component
 type: documentation
 version: 19.7.3
-tokens: 945
+tokens: 1019
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--documentation.txt
 ---
 
@@ -86,18 +86,26 @@ using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Access
 or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```tsx
-
+<Meter
+  aria-label="Gauge"
+  low={ 40 }
+  value={ 35 } />
 ```
 
  Screen readers will announce the label and the meter information.
 
 ```tsx
 <>
-  
+  <Text
+    id="meter-label"
+    preset={ TEXT_PRESET.label }>
     Gauge:
-  
+  </Text>
 
-  
+  <Meter
+    aria-labelledby="meter-label"
+    low={ 40 }
+    value={ 35 } />
 </>
 ```
 
@@ -110,7 +118,11 @@ You can use the [aria-valuetext](https://developer.mozilla.org/en-US/docs/Web/Ac
 attribute to present the current value in a more user-friendly, human-understandable way.
 
 ```tsx
-
+<Meter
+  aria-label="Gauge"
+  aria-valuetext="35 files uploaded"
+  low={ 40 }
+  value={ 35 } />
 ```
 
  Screen readers will announce the label and the meter information in a more user-friendly, human-understandable way.

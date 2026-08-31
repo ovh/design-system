@@ -33,15 +33,15 @@
 ## Quick links
 
 * [**Documentation**](https://ovh.github.io/design-system/latest/)
-* [**What's new**](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-what-s-new--docs)
-* [**Changelog**](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
-* [**FAQ**](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-f-a-q--docs)
+* [**What's new**](https://ovh.github.io/design-system/latest/guides/whats-new)
+* [**Changelog**](https://ovh.github.io/design-system/latest/guides/changelog)
+* [**FAQ**](https://ovh.github.io/design-system/latest/guides/faq)
 
 ## Installation & Usage
-Feel free to check out the [Get Started](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-get-started--docs) guide which describes everything you need to use ODS in your project.
+Feel free to check out the [Get Started](https://ovh.github.io/design-system/latest/guides/get-started) guide which describes everything you need to use ODS in your project.
 
 ## Migration
-Please read [Migration pages](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-to-19-x--docs) to help you to manage the migration guides between each version of ODS.
+Please read [Migration pages](https://ovh.github.io/design-system/latest/guides/migration-to-v19) to help you to manage the migration guides between each version of ODS.
 
 # License
 Copyright 2024 OVH SAS

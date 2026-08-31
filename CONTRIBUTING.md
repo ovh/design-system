@@ -39,17 +39,17 @@ At the root of the repository, run the following commands:
 # Generate all the needed documentation files.
 pnpm doc
 
-# Start the storybook local server.
-pnpm storybook
+# Start the documentation local server.
+pnpm docs
 ```
 
 ## Project architecture
 
 ODS is a monorepo project split into multiple sub-projects under the `/packages` directory:
+- `docs` is the public documentation.
 - `examples` regroups example projects to test some specific behavior (a11y, SSR, bundlers, ...).
 - `ods-react` contains the React implementation of the component library.
 - `ods-recipes` contains ODS recipe implementations (see [how to contribute](https://github.com/ovh/design-system/blob/master/packages/ods-recipes/README.md)).
-- `storybook` is the public documentation.
 - `themes` regroups all the existing ODS themes and the design assets (fonts, design tokens, ...).
 
 ## Creating a new component
@@ -60,7 +60,8 @@ To create a new component, run the following command at the root of the reposito
 pnpm new:component
 ```
 
-This will generate all the component resources and the documentation files in the storybook package.
+This will generate all the component resources and the documentation files in the docs package
+(stories in `packages/docs/stories/components/<component-name>/`, documentation page in `packages/docs/src/content/components/<component-name>/documentation.mdx`), and registers the page in the docs navigation (`packages/docs/src/nav/model.ts`).
 
 ## Working on an existing component
 
@@ -152,29 +153,32 @@ you can include common mixins defined in the `style` directory.
 When you're done with the component and all the above pre-requisites, you may have to
 update the documentation accordingly, depending on the changes.
 
-### Storybook directory overview
+### Docs directory overview
 
 All files/directory not detailed underneath should **NOT** be updated and can be ignored.
 
 ```text
 src/
-  <contains custom React components used internally by our storybook>
+  content/
+    components/
+      <component-name>/
+        documentation.mdx
+    guides/
+      <contains more generic information about the whole library>
 stories/
   components/
     <component-name>/
       <component-name>.stories.tsx
-      documentation.mdx
-      technical-information.mdx
-      examples.mdx
-  ovhcloud-design-system/
-    <contains more generic information about the whole library>
 ```
+
+Each component page has three tabs: the Documentation tab renders the `documentation.mdx` file,
+while the Examples and Technical Information tabs are generated from the story module and the typedoc data respectively.
 
 If some of your changes impacts how the component behave (in a functional way), please update its `documentation.mdx` file accordingly.
 
 If some of your changes impacts the technical side of the component:
 - check that the generated interfaces/definitions are correct (run `pnpm doc` at the root to get the latest data).
-- if relevant, add some stories in the `<component-name>.stories.tsx` file, then reference them in the `examples.mdx` file.
+- if relevant, add some stories in the `<component-name>.stories.tsx` file; they show up in the Examples tab.
 
 # Code submission
 

@@ -11,6 +11,7 @@ import styles from './iconGallery.module.css';
 interface CurrentIcon {
   aliases: string[];
   name: ICON_NAME;
+  nameKey?: IconNameKey;
 }
 
 const IconGallery = () => {
@@ -30,6 +31,7 @@ const IconGallery = () => {
     setCurrentIcon({
       aliases: entry ? ODS_ICON_TAG[entry[0] as IconNameKey] : [],
       name,
+      nameKey: entry?.[0] as IconNameKey | undefined,
     });
   }
 
@@ -69,7 +71,7 @@ const IconGallery = () => {
       <Drawer closeOnInteractOutside onOpenChange={ onDrawerOpenChange } open={ !!currentIcon }>
         <DrawerContent>
           <DrawerBody>
-            <IconDetails aliases={ currentIcon?.aliases } name={ currentIcon?.name } onClose={ onDrawerClose } />
+            <IconDetails aliases={ currentIcon?.aliases } name={ currentIcon?.name } nameKey={ currentIcon?.nameKey } onClose={ onDrawerClose } />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

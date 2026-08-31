@@ -4,7 +4,7 @@ slug: progress-bar
 category: component
 type: documentation
 version: 19.7.3
-tokens: 709
+tokens: 718
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--documentation.txt
 ---
 
@@ -72,7 +72,7 @@ The **Progress Bar** component is non-interactive and does not receive keyboard 
 To ensure the **Progress Bar** is correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify it.
 
 ```tsx
-
+<ProgressBar aria-label="Converting" />
 ```
 
  Screen readers will announce the label, the value and the progress bar.

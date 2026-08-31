@@ -4,7 +4,7 @@ slug: link
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1164
+tokens: 1299
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--documentation.txt
 ---
 
@@ -104,9 +104,11 @@ This component complies with the [Link WAI-ARIA design pattern](https://www.w3.o
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
 ```tsx
-
-  
-
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com">
+  <Icon name={ ICON_NAME.home } />
+</Link>
 ```
 
  Screen readers will announce the link and its label.
@@ -116,9 +118,12 @@ If a **Link** is represented only by an **Icon**, it must have an explicit acces
 When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
 
 ```tsx
-
-  
-
+<Link
+  aria-label="Visit Example (opens in a new tab)"
+  href="https://www.ovhcloud.com"
+  target="_blank">
+  <Icon name={ ICON_NAME.externalLink } />
+</Link>
 ```
 
  The screen reader will announce the link, the opening in a new tab behavior and the link label.
@@ -129,15 +134,17 @@ If a **Link** points to a file download, it should include the file type and siz
 
 ```tsx
 <>
-  
-    
-  
+  <Link
+    aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name={ ICON_NAME.download } />
+  </Link>
 
-  
-    
+  <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name={ ICON_NAME.download } />
 
     <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-  
+  </Link>
 </>
 ```
 

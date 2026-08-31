@@ -16,6 +16,7 @@ export { MODAL_COLOR, Modal, ModalBody, ModalContent } from '../../ods-react/src
 export { Quantity, QuantityControl, QuantityInput } from '../../ods-react/src/components/quantity/src';
 export { Range, type RangeValueChangeDetail } from '../../ods-react/src/components/range/src';
 export { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../ods-react/src/components/select/src';
+export { Skeleton } from '../../ods-react/src/components/skeleton/src';
 export { SPINNER_SIZE, Spinner } from '../../ods-react/src/components/spinner/src';
 export { Switch, SwitchItem, type SwitchValueChangeDetail } from '../../ods-react/src/components/switch/src';
 export { TABLE_SIZE, TABLE_VARIANT, Table } from '../../ods-react/src/components/table/src';

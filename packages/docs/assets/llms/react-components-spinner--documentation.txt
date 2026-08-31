@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1191
+tokens: 1215
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--documentation.txt
 ---
 
@@ -86,7 +86,7 @@ The **Spinner** itself does not convey the loading state. This responsibility fa
 <div
   aria-busy="true"
   aria-live="polite">
-  
+  <Spinner />
 </div>
 ```
 
@@ -105,7 +105,7 @@ Explanations:
 If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label).
 
 ```tsx
-
+<Spinner aria-label="Loading user profile" />
 ```
 
  Screen readers will announce the label, the spinner and its current state.
@@ -116,7 +116,7 @@ If the **Spinner** is associated with a specific loading action, it should be ex
     Loading user profile
   </span>
 
-  
+  <Spinner aria-labelledby="loading-text" />
 </div>
 ```
 

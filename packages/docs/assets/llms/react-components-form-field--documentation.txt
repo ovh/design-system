@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: documentation
 version: 19.7.3
-tokens: 792
+tokens: 820
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--documentation.txt
 ---
 
@@ -81,17 +81,17 @@ Focus behavior and keyboard navigation are determined by the specific form eleme
 The **Form Field** component handles by itself the accessibility requirements by using its internal components.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Login:
-  
+  </FormFieldLabel>
 
-  
+  <Input name="input" />
 
-  
+  <FormFieldHelper>
     Username or email address
-  
-
+  </FormFieldHelper>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and the helper text.

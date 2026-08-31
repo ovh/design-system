@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1324
+tokens: 1350
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--documentation.txt
 ---
 
@@ -119,15 +119,15 @@ they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensu
 ```tsx
 <ul>
   <li>
-    Design
+    <Tag>Design</Tag>
   </li>
 
   <li>
-    Development
+    <Tag>Development</Tag>
   </li>
 
   <li>
-    Accessibility
+    <Tag>Accessibility</Tag>
   </li>
 </ul>
 ```
@@ -142,15 +142,15 @@ use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 ```tsx
 <div role="list">
   <div role="listitem">
-    Design
+    <Tag>Design</Tag>
   </div>
 
   <div role="listitem">
-    Development
+    <Tag>Development</Tag>
   </div>
 
   <div role="listitem">
-    Accessibility
+    <Tag>Accessibility</Tag>
   </div>
 </div>
 ```
@@ -162,9 +162,9 @@ use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
 ```tsx
-
+<Tag aria-label="Remove my tag">
   My tag
-
+</Tag>
 ```
 
  This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.

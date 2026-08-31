@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1324
+tokens: 1462
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--documentation.txt
 ---
 
@@ -158,33 +158,44 @@ Update the content type on the **Popover Trigger**, which is set by default to `
 ### Using aria-popup for a Popover containing a Menu
 
 ```tsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild>
+    <Button>
+      <Icon name={ ICON_NAME.ellipsisVertical } />
+    </Button>
+  </PopoverTrigger>
 
-  
-    
-      
-    
-  
-
-  
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow>
     <div
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
-      
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Information
-      
+      </Button>
 
-      
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Notifications
-      
+      </Button>
 
-      
+      <Divider style={{ width: '100%' }} />
 
-      
+      <Button
+        color={ BUTTON_COLOR.critical }
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
         Sign out
-      
+      </Button>
     </div>
-  
-
+  </PopoverContent>
+</Popover>
 ```
 
  Screen readers will recognize that **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.

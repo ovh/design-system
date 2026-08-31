@@ -4,7 +4,7 @@ slug: range
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1269
+tokens: 1364
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--documentation.txt
 ---
 
@@ -116,13 +116,13 @@ Every **Range** must have a clear and explicit label to ensure that users (espec
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Volume
-  
+  </FormFieldLabel>
 
-  
-
+  <Range defaultValue={ [50] } />
+</FormField>
 ```
 
  Screen readers will announce the value, the slider and its label.
@@ -137,18 +137,23 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
     const [values, setValues] = useState([30, 70]);
 
     return (
-      
-        
+      <FormField>
+        <FormFieldLabel id="range-label">
           Price range
-        
+        </FormFieldLabel>
 
-        
+        <Text
+          aria-live="polite"
+          id="range-sublabel"
+          preset={ TEXT_PRESET.caption }>
           Selected values: { values[0] } - { values[1] }€
-        
+        </Text>
 
-         setValues(value) }
+        <Range
+          aria-labelledby={ ['range-label', 'range-sublabel'] }
+          onDragging={ ({ value }) => setValues(value) }
           value={ values } />
-      
+      </FormField>
     );
   }
 ```

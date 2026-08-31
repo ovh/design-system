@@ -4,7 +4,7 @@ slug: tooltip
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1091
+tokens: 1146
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--documentation.txt
 ---
 
@@ -115,15 +115,19 @@ You should set a minimal **Tooltip Trigger** height to at least `24px` to provid
 If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its purpose.
 
 ```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
 
-  
-    
-  
-
-  
+  <TooltipContent>
     Some additional context.
-  
-
+  </TooltipContent>
+</Tooltip>
 ```
 
  Screens will announce the tooltip information.

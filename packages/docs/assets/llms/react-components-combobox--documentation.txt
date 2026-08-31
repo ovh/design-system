@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1586
+tokens: 1805
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--documentation.txt
 ---
 
@@ -157,17 +157,25 @@ This component complies with the [Combobox WAI-ARIA design pattern](https://www.
 Every **Combobox** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Favorite pet:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+      { label: 'Hamster', value: 'hamster' },
+      { label: 'Parrot', value: 'parrot' },
+      { label: 'Spider', value: 'spider' },
+      { label: 'Goldfish', value: 'goldfish' },
+    ]}>
+    <ComboboxControl />
 
-    
-  
-
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -177,17 +185,28 @@ Every **Combobox** must have a clear and explicit label to ensure that users (es
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Favorite pet:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Combobox
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
+    }}
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+      { label: 'Hamster', value: 'hamster' },
+      { label: 'Parrot', value: 'parrot' },
+      { label: 'Spider', value: 'spider' },
+      { label: 'Goldfish', value: 'goldfish' },
+    ]}>
+    <ComboboxControl clearable />
 
-    
-  
-
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.

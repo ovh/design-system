@@ -1,124 +1,4 @@
 import { ICON_NAME } from '../../../ods-react/src/components/icon/src';
-import * as AccordionStories from '../../stories/components/accordion/accordion.stories';
-import * as AvatarStories from '../../stories/components/avatar/avatar.stories';
-import * as BadgeStories from '../../stories/components/badge/badge.stories';
-import * as BreadcrumbStories from '../../stories/components/breadcrumb/breadcrumb.stories';
-import * as ButtonStories from '../../stories/components/button/button.stories';
-import * as ButtonGroupStories from '../../stories/components/button-group/button-group.stories';
-import * as CardStories from '../../stories/components/card/card.stories';
-import * as CartStories from '../../stories/components/cart/cart.stories';
-import * as CheckboxStories from '../../stories/components/checkbox/checkbox.stories';
-import * as ClipboardStories from '../../stories/components/clipboard/clipboard.stories';
-import * as CodeStories from '../../stories/components/code/code.stories';
-import * as ComboboxStories from '../../stories/components/combobox/combobox.stories';
-import * as CommandStories from '../../stories/components/command/command.stories';
-import * as DataTableStories from '../../stories/components/data-table/data-table.stories';
-import * as DatepickerStories from '../../stories/components/datepicker/datepicker.stories';
-import * as DividerStories from '../../stories/components/divider/divider.stories';
-import * as DrawerStories from '../../stories/components/drawer/drawer.stories';
-import * as EditableStories from '../../stories/components/editable/editable.stories';
-import * as FileThumbnailStories from '../../stories/components/file-thumbnail/file-thumbnail.stories';
-import * as FileUploadStories from '../../stories/components/file-upload/file-upload.stories';
-import * as FormFieldStories from '../../stories/components/form-field/form-field.stories';
-import * as IconStories from '../../stories/components/icon/icon.stories';
-import * as InputStories from '../../stories/components/input/input.stories';
-import * as KbdStories from '../../stories/components/kbd/kbd.stories';
-import * as LinkStories from '../../stories/components/link/link.stories';
-import * as LogoStories from '../../stories/components/logo/logo.stories';
-import * as MarkdownStories from '../../stories/components/markdown/markdown.stories';
-import * as MediumStories from '../../stories/components/medium/medium.stories';
-import * as MenuStories from '../../stories/components/menu/menu.stories';
-import * as MessageStories from '../../stories/components/message/message.stories';
-import * as MessageBubbleStories from '../../stories/components/message-bubble/message-bubble.stories';
-import * as MeterStories from '../../stories/components/meter/meter.stories';
-import * as ModalStories from '../../stories/components/modal/modal.stories';
-import * as PaginationStories from '../../stories/components/pagination/pagination.stories';
-import * as PasswordStories from '../../stories/components/password/password.stories';
-import * as PhoneNumberStories from '../../stories/components/phone-number/phone-number.stories';
-import * as PopoverStories from '../../stories/components/popover/popover.stories';
-import * as ProgressBarStories from '../../stories/components/progress-bar/progress-bar.stories';
-import * as PromptInputStories from '../../stories/components/prompt-input/prompt-input.stories';
-import * as QuantityStories from '../../stories/components/quantity/quantity.stories';
-import * as QueryFilterStories from '../../stories/components/query-filter/query-filter.stories';
-import * as RadioGroupStories from '../../stories/components/radio-group/radio-group.stories';
-import * as RangeStories from '../../stories/components/range/range.stories';
-import * as SelectStories from '../../stories/components/select/select.stories';
-import * as SkeletonStories from '../../stories/components/skeleton/skeleton.stories';
-import * as SpinnerStories from '../../stories/components/spinner/spinner.stories';
-import * as SwitchStories from '../../stories/components/switch/switch.stories';
-import * as TableStories from '../../stories/components/table/table.stories';
-import * as TabsStories from '../../stories/components/tabs/tabs.stories';
-import * as TagStories from '../../stories/components/tag/tag.stories';
-import * as TextStories from '../../stories/components/text/text.stories';
-import * as TextareaStories from '../../stories/components/textarea/textarea.stories';
-import * as TileStories from '../../stories/components/tile/tile.stories';
-import * as TimepickerStories from '../../stories/components/timepicker/timepicker.stories';
-import * as ToasterStories from '../../stories/components/toaster/toaster.stories';
-import * as ToggleStories from '../../stories/components/toggle/toggle.stories';
-import * as TooltipStories from '../../stories/components/tooltip/tooltip.stories';
-import * as TreeViewStories from '../../stories/components/tree-view/tree-view.stories';
-import * as FormatPriceStories from '../../stories/helpers/formatPrice/formatPrice.stories';
-import * as FormatRelativeTimeStories from '../../stories/helpers/formatRelativeTime/formatRelativeTime.stories';
-import AccordionRaw from '../../stories/components/accordion/accordion.stories.tsx?raw';
-import AvatarRaw from '../../stories/components/avatar/avatar.stories.tsx?raw';
-import BadgeRaw from '../../stories/components/badge/badge.stories.tsx?raw';
-import BreadcrumbRaw from '../../stories/components/breadcrumb/breadcrumb.stories.tsx?raw';
-import ButtonRaw from '../../stories/components/button/button.stories.tsx?raw';
-import ButtonGroupRaw from '../../stories/components/button-group/button-group.stories.tsx?raw';
-import CardRaw from '../../stories/components/card/card.stories.tsx?raw';
-import CartRaw from '../../stories/components/cart/cart.stories.tsx?raw';
-import CheckboxRaw from '../../stories/components/checkbox/checkbox.stories.tsx?raw';
-import ClipboardRaw from '../../stories/components/clipboard/clipboard.stories.tsx?raw';
-import CodeRaw from '../../stories/components/code/code.stories.tsx?raw';
-import ComboboxRaw from '../../stories/components/combobox/combobox.stories.tsx?raw';
-import CommandRaw from '../../stories/components/command/command.stories.tsx?raw';
-import DataTableRaw from '../../stories/components/data-table/data-table.stories.tsx?raw';
-import DatepickerRaw from '../../stories/components/datepicker/datepicker.stories.tsx?raw';
-import DividerRaw from '../../stories/components/divider/divider.stories.tsx?raw';
-import DrawerRaw from '../../stories/components/drawer/drawer.stories.tsx?raw';
-import EditableRaw from '../../stories/components/editable/editable.stories.tsx?raw';
-import FileThumbnailRaw from '../../stories/components/file-thumbnail/file-thumbnail.stories.tsx?raw';
-import FileUploadRaw from '../../stories/components/file-upload/file-upload.stories.tsx?raw';
-import FormFieldRaw from '../../stories/components/form-field/form-field.stories.tsx?raw';
-import IconRaw from '../../stories/components/icon/icon.stories.tsx?raw';
-import InputRaw from '../../stories/components/input/input.stories.tsx?raw';
-import KbdRaw from '../../stories/components/kbd/kbd.stories.tsx?raw';
-import LinkRaw from '../../stories/components/link/link.stories.tsx?raw';
-import LogoRaw from '../../stories/components/logo/logo.stories.tsx?raw';
-import MarkdownRaw from '../../stories/components/markdown/markdown.stories.tsx?raw';
-import MediumRaw from '../../stories/components/medium/medium.stories.tsx?raw';
-import MenuRaw from '../../stories/components/menu/menu.stories.tsx?raw';
-import MessageRaw from '../../stories/components/message/message.stories.tsx?raw';
-import MessageBubbleRaw from '../../stories/components/message-bubble/message-bubble.stories.tsx?raw';
-import MeterRaw from '../../stories/components/meter/meter.stories.tsx?raw';
-import ModalRaw from '../../stories/components/modal/modal.stories.tsx?raw';
-import PaginationRaw from '../../stories/components/pagination/pagination.stories.tsx?raw';
-import PasswordRaw from '../../stories/components/password/password.stories.tsx?raw';
-import PhoneNumberRaw from '../../stories/components/phone-number/phone-number.stories.tsx?raw';
-import PopoverRaw from '../../stories/components/popover/popover.stories.tsx?raw';
-import ProgressBarRaw from '../../stories/components/progress-bar/progress-bar.stories.tsx?raw';
-import PromptInputRaw from '../../stories/components/prompt-input/prompt-input.stories.tsx?raw';
-import QuantityRaw from '../../stories/components/quantity/quantity.stories.tsx?raw';
-import QueryFilterRaw from '../../stories/components/query-filter/query-filter.stories.tsx?raw';
-import RadioGroupRaw from '../../stories/components/radio-group/radio-group.stories.tsx?raw';
-import RangeRaw from '../../stories/components/range/range.stories.tsx?raw';
-import SelectRaw from '../../stories/components/select/select.stories.tsx?raw';
-import SkeletonRaw from '../../stories/components/skeleton/skeleton.stories.tsx?raw';
-import SpinnerRaw from '../../stories/components/spinner/spinner.stories.tsx?raw';
-import SwitchRaw from '../../stories/components/switch/switch.stories.tsx?raw';
-import TableRaw from '../../stories/components/table/table.stories.tsx?raw';
-import TabsRaw from '../../stories/components/tabs/tabs.stories.tsx?raw';
-import TagRaw from '../../stories/components/tag/tag.stories.tsx?raw';
-import TextRaw from '../../stories/components/text/text.stories.tsx?raw';
-import TextareaRaw from '../../stories/components/textarea/textarea.stories.tsx?raw';
-import TileRaw from '../../stories/components/tile/tile.stories.tsx?raw';
-import TimepickerRaw from '../../stories/components/timepicker/timepicker.stories.tsx?raw';
-import ToasterRaw from '../../stories/components/toaster/toaster.stories.tsx?raw';
-import ToggleRaw from '../../stories/components/toggle/toggle.stories.tsx?raw';
-import TooltipRaw from '../../stories/components/tooltip/tooltip.stories.tsx?raw';
-import TreeViewRaw from '../../stories/components/tree-view/tree-view.stories.tsx?raw';
-import FormatPriceRaw from '../../stories/helpers/formatPrice/formatPrice.stories.tsx?raw';
-import FormatRelativeTimeRaw from '../../stories/helpers/formatRelativeTime/formatRelativeTime.stories.tsx?raw';
 
 /* Navigation model of the docs app — the single source the sidebar tree, the
    router and the ⌘K search are all derived from. Mirrors the editorial
@@ -127,28 +7,50 @@ import FormatRelativeTimeRaw from '../../stories/helpers/formatRelativeTime/form
 
 type Badge = 'beta' | 'deprecated' | 'new';
 
+/* Story modules and their raw sources (shown as code blocks) are resolved
+   lazily, per page: the entry chunk only ships the nav metadata, a page pulls
+   its own stories chunk on navigation. A new story file is picked up by the
+   globs without touching any import list. */
+const STORY_MODULES = import.meta.glob('../../stories/*/*/*.stories.tsx');
+const STORY_RAWS = import.meta.glob('../../stories/*/*/*.stories.tsx', { import: 'default', query: '?raw' });
+
+interface PageStoriesData {
+  module: Record<string, unknown>;
+  raw: string;
+}
+
+type StoriesLoader = () => Promise<PageStoriesData>;
+
+/* Nav id → lazy stories loader ('components/accordion' →
+   stories/components/accordion/accordion.stories.tsx). Helper folders are
+   camelCase where their nav ids are kebab-case (format-price → formatPrice). */
+function storiesOf(id: string): StoriesLoader | undefined {
+  const [group, key] = id.split('/');
+  const folder = group === 'helpers' ? key.replace(/-([a-z])/g, (_match, letter: string) => letter.toUpperCase()) : key;
+  const path = `../../stories/${group}/${folder}/${folder}.stories.tsx`;
+  const loadModule = STORY_MODULES[path];
+  const loadRaw = STORY_RAWS[path];
+
+  if (!loadModule || !loadRaw) {
+    // A nav id without its story file is a wiring bug: say it loudly, since
+    // the router silently falls back to the homepage for such pages.
+    console.error(`nav: no story file for '${id}' (expected ${path})`);
+    return undefined;
+  }
+  return async () => {
+    const [module, raw] = await Promise.all([loadModule(), loadRaw()]);
+    return { module: module as Record<string, unknown>, raw: raw as string };
+  };
+}
+
 interface NavPage {
   badge?: Badge;
   icon?: ICON_NAME;
   id: string;
   kind: 'component' | 'guide' | 'helper' | 'recipe' | 'tool';
   path: string;
-  raw?: string;
-  storiesModule?: Record<string, unknown>;
+  stories?: StoriesLoader;
   title: string;
-}
-
-/* Component status badge, read from the story meta tags — the same source
-   Storybook used ('new' / 'deprecated'). */
-function badgeOf(storiesModule: Record<string, unknown>): Badge | undefined {
-  const tags = (storiesModule.default as { tags?: string[] } | undefined)?.tags ?? [];
-  if (tags.includes('deprecated')) {
-    return 'deprecated';
-  }
-  if (tags.includes('new')) {
-    return 'new';
-  }
-  return undefined;
 }
 
 interface NavSection {
@@ -231,72 +133,87 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
   { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
 ];
 
+/* Component pages, one line per component: [folder key, title, status badge].
+   The badges are mirrored statically from the story meta tags
+   (module.default.tags, 'new' / 'deprecated' — the same source Storybook
+   used) so the sidebar and the search render them without loading a single
+   story module. Keep in sync when (un)tagging a story file. */
+const COMPONENT_PAGES: [key: string, title: string, badge?: Badge][] = [
+  ['accordion', 'Accordion'],
+  ['avatar', 'Avatar', 'new'],
+  ['badge', 'Badge'],
+  ['breadcrumb', 'Breadcrumb'],
+  ['button', 'Button'],
+  ['button-group', 'Button Group'],
+  ['card', 'Card'],
+  ['cart', 'Cart', 'new'],
+  ['checkbox', 'Checkbox'],
+  ['clipboard', 'Clipboard'],
+  ['code', 'Code'],
+  ['combobox', 'Combobox'],
+  ['command', 'Command', 'new'],
+  ['data-table', 'Data Table', 'new'],
+  ['datepicker', 'Datepicker'],
+  ['divider', 'Divider'],
+  ['drawer', 'Drawer'],
+  ['editable', 'Editable'],
+  ['file-thumbnail', 'File Thumbnail', 'new'],
+  ['file-upload', 'File Upload'],
+  ['form-field', 'Form Field'],
+  ['icon', 'Icon'],
+  ['input', 'Input'],
+  ['kbd', 'Kbd'],
+  ['link', 'Link'],
+  ['logo', 'Logo'],
+  ['markdown', 'Markdown', 'new'],
+  ['medium', 'Medium'],
+  ['menu', 'Menu', 'new'],
+  ['message', 'Message'],
+  ['message-bubble', 'Message Bubble', 'new'],
+  ['meter', 'Meter'],
+  ['modal', 'Modal'],
+  ['pagination', 'Pagination'],
+  ['password', 'Password'],
+  ['phone-number', 'Phone Number'],
+  ['popover', 'Popover'],
+  ['progress-bar', 'Progress Bar'],
+  ['prompt-input', 'Prompt Input', 'new'],
+  ['quantity', 'Quantity'],
+  ['query-filter', 'Query Filter', 'new'],
+  ['radio-group', 'Radio Group'],
+  ['range', 'Range'],
+  ['select', 'Select'],
+  ['skeleton', 'Skeleton'],
+  ['spinner', 'Spinner'],
+  ['switch', 'Switch', 'deprecated'],
+  ['table', 'Table'],
+  ['tabs', 'Tabs'],
+  ['tag', 'Tag'],
+  ['text', 'Text'],
+  ['textarea', 'Textarea'],
+  ['tile', 'Tile'],
+  ['timepicker', 'Timepicker'],
+  ['toaster', 'Toaster'],
+  ['toggle', 'Toggle'],
+  ['tooltip', 'Tooltip'],
+  ['tree-view', 'Tree View'],
+];
+
 /* API reference — its own tree; Components and Helpers sit at the top level. */
 const REFERENCE_NAV: (NavSection | NavPage)[] = [
   {
     icon: ICON_NAME.grid,
     id: 'components',
     title: 'Components',
-    children: [
-      { badge: badgeOf(AccordionStories), icon: ICON_NAME.box, id: 'components/accordion', kind: 'component', path: '/components/accordion', raw: AccordionRaw, storiesModule: AccordionStories, title: 'Accordion' },
-      { badge: badgeOf(AvatarStories), icon: ICON_NAME.box, id: 'components/avatar', kind: 'component', path: '/components/avatar', raw: AvatarRaw, storiesModule: AvatarStories, title: 'Avatar' },
-      { badge: badgeOf(BadgeStories), icon: ICON_NAME.box, id: 'components/badge', kind: 'component', path: '/components/badge', raw: BadgeRaw, storiesModule: BadgeStories, title: 'Badge' },
-      { badge: badgeOf(BreadcrumbStories), icon: ICON_NAME.box, id: 'components/breadcrumb', kind: 'component', path: '/components/breadcrumb', raw: BreadcrumbRaw, storiesModule: BreadcrumbStories, title: 'Breadcrumb' },
-      { badge: badgeOf(ButtonStories), icon: ICON_NAME.box, id: 'components/button', kind: 'component', path: '/components/button', raw: ButtonRaw, storiesModule: ButtonStories, title: 'Button' },
-      { badge: badgeOf(ButtonGroupStories), icon: ICON_NAME.box, id: 'components/button-group', kind: 'component', path: '/components/button-group', raw: ButtonGroupRaw, storiesModule: ButtonGroupStories, title: 'Button Group' },
-      { badge: badgeOf(CardStories), icon: ICON_NAME.box, id: 'components/card', kind: 'component', path: '/components/card', raw: CardRaw, storiesModule: CardStories, title: 'Card' },
-      { badge: badgeOf(CartStories), icon: ICON_NAME.box, id: 'components/cart', kind: 'component', path: '/components/cart', raw: CartRaw, storiesModule: CartStories, title: 'Cart' },
-      { badge: badgeOf(CheckboxStories), icon: ICON_NAME.box, id: 'components/checkbox', kind: 'component', path: '/components/checkbox', raw: CheckboxRaw, storiesModule: CheckboxStories, title: 'Checkbox' },
-      { badge: badgeOf(ClipboardStories), icon: ICON_NAME.box, id: 'components/clipboard', kind: 'component', path: '/components/clipboard', raw: ClipboardRaw, storiesModule: ClipboardStories, title: 'Clipboard' },
-      { badge: badgeOf(CodeStories), icon: ICON_NAME.box, id: 'components/code', kind: 'component', path: '/components/code', raw: CodeRaw, storiesModule: CodeStories, title: 'Code' },
-      { badge: badgeOf(ComboboxStories), icon: ICON_NAME.box, id: 'components/combobox', kind: 'component', path: '/components/combobox', raw: ComboboxRaw, storiesModule: ComboboxStories, title: 'Combobox' },
-      { badge: badgeOf(CommandStories), icon: ICON_NAME.box, id: 'components/command', kind: 'component', path: '/components/command', raw: CommandRaw, storiesModule: CommandStories, title: 'Command' },
-      { badge: badgeOf(DataTableStories), icon: ICON_NAME.box, id: 'components/data-table', kind: 'component', path: '/components/data-table', raw: DataTableRaw, storiesModule: DataTableStories, title: 'Data Table' },
-      { badge: badgeOf(DatepickerStories), icon: ICON_NAME.box, id: 'components/datepicker', kind: 'component', path: '/components/datepicker', raw: DatepickerRaw, storiesModule: DatepickerStories, title: 'Datepicker' },
-      { badge: badgeOf(DividerStories), icon: ICON_NAME.box, id: 'components/divider', kind: 'component', path: '/components/divider', raw: DividerRaw, storiesModule: DividerStories, title: 'Divider' },
-      { badge: badgeOf(DrawerStories), icon: ICON_NAME.box, id: 'components/drawer', kind: 'component', path: '/components/drawer', raw: DrawerRaw, storiesModule: DrawerStories, title: 'Drawer' },
-      { badge: badgeOf(EditableStories), icon: ICON_NAME.box, id: 'components/editable', kind: 'component', path: '/components/editable', raw: EditableRaw, storiesModule: EditableStories, title: 'Editable' },
-      { badge: badgeOf(FileThumbnailStories), icon: ICON_NAME.box, id: 'components/file-thumbnail', kind: 'component', path: '/components/file-thumbnail', raw: FileThumbnailRaw, storiesModule: FileThumbnailStories, title: 'File Thumbnail' },
-      { badge: badgeOf(FileUploadStories), icon: ICON_NAME.box, id: 'components/file-upload', kind: 'component', path: '/components/file-upload', raw: FileUploadRaw, storiesModule: FileUploadStories, title: 'File Upload' },
-      { badge: badgeOf(FormFieldStories), icon: ICON_NAME.box, id: 'components/form-field', kind: 'component', path: '/components/form-field', raw: FormFieldRaw, storiesModule: FormFieldStories, title: 'Form Field' },
-      { badge: badgeOf(IconStories), icon: ICON_NAME.box, id: 'components/icon', kind: 'component', path: '/components/icon', raw: IconRaw, storiesModule: IconStories, title: 'Icon' },
-      { badge: badgeOf(InputStories), icon: ICON_NAME.box, id: 'components/input', kind: 'component', path: '/components/input', raw: InputRaw, storiesModule: InputStories, title: 'Input' },
-      { badge: badgeOf(KbdStories), icon: ICON_NAME.box, id: 'components/kbd', kind: 'component', path: '/components/kbd', raw: KbdRaw, storiesModule: KbdStories, title: 'Kbd' },
-      { badge: badgeOf(LinkStories), icon: ICON_NAME.box, id: 'components/link', kind: 'component', path: '/components/link', raw: LinkRaw, storiesModule: LinkStories, title: 'Link' },
-      { badge: badgeOf(LogoStories), icon: ICON_NAME.box, id: 'components/logo', kind: 'component', path: '/components/logo', raw: LogoRaw, storiesModule: LogoStories, title: 'Logo' },
-      { badge: badgeOf(MarkdownStories), icon: ICON_NAME.box, id: 'components/markdown', kind: 'component', path: '/components/markdown', raw: MarkdownRaw, storiesModule: MarkdownStories, title: 'Markdown' },
-      { badge: badgeOf(MediumStories), icon: ICON_NAME.box, id: 'components/medium', kind: 'component', path: '/components/medium', raw: MediumRaw, storiesModule: MediumStories, title: 'Medium' },
-      { badge: badgeOf(MenuStories), icon: ICON_NAME.box, id: 'components/menu', kind: 'component', path: '/components/menu', raw: MenuRaw, storiesModule: MenuStories, title: 'Menu' },
-      { badge: badgeOf(MessageStories), icon: ICON_NAME.box, id: 'components/message', kind: 'component', path: '/components/message', raw: MessageRaw, storiesModule: MessageStories, title: 'Message' },
-      { badge: badgeOf(MessageBubbleStories), icon: ICON_NAME.box, id: 'components/message-bubble', kind: 'component', path: '/components/message-bubble', raw: MessageBubbleRaw, storiesModule: MessageBubbleStories, title: 'Message Bubble' },
-      { badge: badgeOf(MeterStories), icon: ICON_NAME.box, id: 'components/meter', kind: 'component', path: '/components/meter', raw: MeterRaw, storiesModule: MeterStories, title: 'Meter' },
-      { badge: badgeOf(ModalStories), icon: ICON_NAME.box, id: 'components/modal', kind: 'component', path: '/components/modal', raw: ModalRaw, storiesModule: ModalStories, title: 'Modal' },
-      { badge: badgeOf(PaginationStories), icon: ICON_NAME.box, id: 'components/pagination', kind: 'component', path: '/components/pagination', raw: PaginationRaw, storiesModule: PaginationStories, title: 'Pagination' },
-      { badge: badgeOf(PasswordStories), icon: ICON_NAME.box, id: 'components/password', kind: 'component', path: '/components/password', raw: PasswordRaw, storiesModule: PasswordStories, title: 'Password' },
-      { badge: badgeOf(PhoneNumberStories), icon: ICON_NAME.box, id: 'components/phone-number', kind: 'component', path: '/components/phone-number', raw: PhoneNumberRaw, storiesModule: PhoneNumberStories, title: 'Phone Number' },
-      { badge: badgeOf(PopoverStories), icon: ICON_NAME.box, id: 'components/popover', kind: 'component', path: '/components/popover', raw: PopoverRaw, storiesModule: PopoverStories, title: 'Popover' },
-      { badge: badgeOf(ProgressBarStories), icon: ICON_NAME.box, id: 'components/progress-bar', kind: 'component', path: '/components/progress-bar', raw: ProgressBarRaw, storiesModule: ProgressBarStories, title: 'Progress Bar' },
-      { badge: badgeOf(PromptInputStories), icon: ICON_NAME.box, id: 'components/prompt-input', kind: 'component', path: '/components/prompt-input', raw: PromptInputRaw, storiesModule: PromptInputStories, title: 'Prompt Input' },
-      { badge: badgeOf(QuantityStories), icon: ICON_NAME.box, id: 'components/quantity', kind: 'component', path: '/components/quantity', raw: QuantityRaw, storiesModule: QuantityStories, title: 'Quantity' },
-      { badge: badgeOf(QueryFilterStories), icon: ICON_NAME.box, id: 'components/query-filter', kind: 'component', path: '/components/query-filter', raw: QueryFilterRaw, storiesModule: QueryFilterStories, title: 'Query Filter' },
-      { badge: badgeOf(RadioGroupStories), icon: ICON_NAME.box, id: 'components/radio-group', kind: 'component', path: '/components/radio-group', raw: RadioGroupRaw, storiesModule: RadioGroupStories, title: 'Radio Group' },
-      { badge: badgeOf(RangeStories), icon: ICON_NAME.box, id: 'components/range', kind: 'component', path: '/components/range', raw: RangeRaw, storiesModule: RangeStories, title: 'Range' },
-      { badge: badgeOf(SelectStories), icon: ICON_NAME.box, id: 'components/select', kind: 'component', path: '/components/select', raw: SelectRaw, storiesModule: SelectStories, title: 'Select' },
-      { badge: badgeOf(SkeletonStories), icon: ICON_NAME.box, id: 'components/skeleton', kind: 'component', path: '/components/skeleton', raw: SkeletonRaw, storiesModule: SkeletonStories, title: 'Skeleton' },
-      { badge: badgeOf(SpinnerStories), icon: ICON_NAME.box, id: 'components/spinner', kind: 'component', path: '/components/spinner', raw: SpinnerRaw, storiesModule: SpinnerStories, title: 'Spinner' },
-      { badge: badgeOf(SwitchStories), icon: ICON_NAME.box, id: 'components/switch', kind: 'component', path: '/components/switch', raw: SwitchRaw, storiesModule: SwitchStories, title: 'Switch' },
-      { badge: badgeOf(TableStories), icon: ICON_NAME.box, id: 'components/table', kind: 'component', path: '/components/table', raw: TableRaw, storiesModule: TableStories, title: 'Table' },
-      { badge: badgeOf(TabsStories), icon: ICON_NAME.box, id: 'components/tabs', kind: 'component', path: '/components/tabs', raw: TabsRaw, storiesModule: TabsStories, title: 'Tabs' },
-      { badge: badgeOf(TagStories), icon: ICON_NAME.box, id: 'components/tag', kind: 'component', path: '/components/tag', raw: TagRaw, storiesModule: TagStories, title: 'Tag' },
-      { badge: badgeOf(TextStories), icon: ICON_NAME.box, id: 'components/text', kind: 'component', path: '/components/text', raw: TextRaw, storiesModule: TextStories, title: 'Text' },
-      { badge: badgeOf(TextareaStories), icon: ICON_NAME.box, id: 'components/textarea', kind: 'component', path: '/components/textarea', raw: TextareaRaw, storiesModule: TextareaStories, title: 'Textarea' },
-      { badge: badgeOf(TileStories), icon: ICON_NAME.box, id: 'components/tile', kind: 'component', path: '/components/tile', raw: TileRaw, storiesModule: TileStories, title: 'Tile' },
-      { badge: badgeOf(TimepickerStories), icon: ICON_NAME.box, id: 'components/timepicker', kind: 'component', path: '/components/timepicker', raw: TimepickerRaw, storiesModule: TimepickerStories, title: 'Timepicker' },
-      { badge: badgeOf(ToasterStories), icon: ICON_NAME.box, id: 'components/toaster', kind: 'component', path: '/components/toaster', raw: ToasterRaw, storiesModule: ToasterStories, title: 'Toaster' },
-      { badge: badgeOf(ToggleStories), icon: ICON_NAME.box, id: 'components/toggle', kind: 'component', path: '/components/toggle', raw: ToggleRaw, storiesModule: ToggleStories, title: 'Toggle' },
-      { badge: badgeOf(TooltipStories), icon: ICON_NAME.box, id: 'components/tooltip', kind: 'component', path: '/components/tooltip', raw: TooltipRaw, storiesModule: TooltipStories, title: 'Tooltip' },
-      { badge: badgeOf(TreeViewStories), icon: ICON_NAME.box, id: 'components/tree-view', kind: 'component', path: '/components/tree-view', raw: TreeViewRaw, storiesModule: TreeViewStories, title: 'Tree View' },
-    ],
+    children: COMPONENT_PAGES.map(([key, title, badge]): NavPage => ({
+      badge,
+      icon: ICON_NAME.box,
+      id: `components/${key}`,
+      kind: 'component',
+      path: `/components/${key}`,
+      stories: storiesOf(`components/${key}`),
+      title,
+    })),
   },
   {
     icon: ICON_NAME.lightbulb,
@@ -311,8 +228,8 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     id: 'helpers',
     title: 'Helpers',
     children: [
-      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', raw: FormatPriceRaw, storiesModule: FormatPriceStories, title: 'formatPrice' },
-      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', raw: FormatRelativeTimeRaw, storiesModule: FormatRelativeTimeStories, title: 'formatRelativeTime' },
+      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', stories: storiesOf('helpers/format-price'), title: 'formatPrice' },
+      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', stories: storiesOf('helpers/format-relative-time'), title: 'formatRelativeTime' },
     ],
   },
 ];
@@ -342,4 +259,4 @@ function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknow
     : { children: toTreeItems(node.children), customRendererData: {}, id: node.id, name: node.title }));
 }
 
-export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection };
+export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type PageStoriesData, type StoriesLoader };

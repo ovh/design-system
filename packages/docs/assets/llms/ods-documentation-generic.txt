@@ -155,7 +155,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4076
+tokens: 4524
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -195,17 +195,17 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```tsx
-
-  
-
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button.
 
 ```tsx
-
-    
-
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button and the aria-label.
@@ -225,9 +225,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span>Filter your search results</span>
 </>
 ```
@@ -236,9 +236,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span id="filter-btn">Filter your search results</span>
 </>
 ```
@@ -338,43 +338,45 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
   </tbody>
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers won't announce the **Modal** content.
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers will announce the **Modal** content.
@@ -390,7 +392,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden) set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Some screen readers will announce the icon and detect the presence of the image.
@@ -401,7 +403,7 @@ Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 > Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Screen readers will announce nothing, the icon is ignored.
@@ -419,7 +421,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div>
-  
+  <Skeleton />
 </div>
 ```
 
@@ -427,7 +429,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div aria-busy="true">
-  
+  <Skeleton />
 </div>
 ```
 
@@ -452,9 +454,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem' }}>
           { message }
@@ -476,9 +478,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span
           aria-live="polite"
@@ -517,9 +519,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem', color: 'red' }}>
           { error }
@@ -541,9 +543,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span
           role="alert"
@@ -573,11 +575,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
   </label>
 
   <div id="rating">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
   </div>
 </>
 ```
@@ -596,11 +598,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
     aria-labelledby="rating-label"
     id="rating"
     role="radiogroup">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
   </div>
 </>
 ```
@@ -758,7 +760,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 5761
+tokens: 6797
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -795,68 +797,87 @@ Optional fields do not need to be labeled "Optional" and can remain unmarked if 
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="Company" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Phone
-          
+          </FormFieldLabel>
 
-          
-            
-          
+          <PhoneNumber name="phonenumber">
+            <PhoneNumberControl />
+          </PhoneNumber>
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Include country code (e.g. +33 6 00 00 00 00)
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Your email"
+            required
+            type="email" />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Format: name@example.com
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
       </form>
     );
   }
@@ -1031,53 +1052,73 @@ When using a critical **Message**:
       <form
         onSubmit={ handleSubmit }
         style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField invalid={ !!localError.firstname }>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            placeholder="Type your first name"
+            required />
 
-          
+          <FormFieldError>
             { localError.firstname }
-          
-        
+          </FormFieldError>
+        </FormField>
 
-        
-          
+        <FormField invalid={ !!localError.email }>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Type your email"
+            required />
 
-          
+          <FormFieldError>
             { localError.email }
-          
-        
+          </FormFieldError>
+        </FormField>
 
         {
           !!globalError &&
-           setGlobalError('') }>
+          <Message
+            color={ MESSAGE_COLOR.critical }
+            onRemove={ () => setGlobalError('') }>
             
 > { globalError }
 
-          
+          </Message>
         }
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button
+            disabled={ isSubmitting }
+            variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button
+            color={ BUTTON_COLOR.critical }
+            loading={ isSubmitting }
+            type="submit">
             Delete account
-          
+          </Button>
         </div>
       </form>
     );
@@ -1106,25 +1147,25 @@ Use when:
 
 ```tsx
 <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-  
-    
+  <FormField>
+    <FormFieldLabel>
       Phone number
-    
+    </FormFieldLabel>
 
-    
-      
-      
-    
-  
+    <PhoneNumber name="phonenumber">
+      <PhoneNumberCountryList />
+      <PhoneNumberControl />
+    </PhoneNumber>
+  </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    
+    <Button variant={ BUTTON_VARIANT.outline }>
       Back
-    
+    </Button>
 
-    
+    <Button>
       Update profile
-    
+    </Button>
   </div>
 </form>
 ```
@@ -1145,56 +1186,70 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Personal Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Company Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company name
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="OVHcloud" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             VAT number
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="vat"
+            placeholder="vat" />
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          
+          <Button>
             Save
-          
+          </Button>
         </div>
       </form>
     );
@@ -1217,31 +1272,37 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Please type DELETE to confirm
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.confirmation }
+            name="confirmation"
+            onBlur={ onBlur }
+            pattern="^DELETE$"
+            placeholder="DELETE"
+            required />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               This action is irreversible.
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button color={ BUTTON_COLOR.critical }>
             Delete account
-          
+          </Button>
         </div>
       </form>
     );
@@ -2469,7 +2530,7 @@ slug: ovhcloud-design-system-upgrade-what-s-new
 category: generic
 type: overview
 version: 19.7.3
-tokens: 18446
+tokens: 18449
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new.txt
 ---
 
@@ -3295,7 +3356,7 @@ See the related storybook [Internationalization guide](https://ovh.github.io/des
 **Toggle**
 - New component `ToggleControl` has been added.
 - New component `ToggleLabel` has been added.
-- [DEPRECATED] Using `` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
+- [DEPRECATED] Using `<Toggle />` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
 
 ### Bug fixes:
 

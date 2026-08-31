@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-what-s-new
 category: generic
 type: overview
 version: 19.7.3
-tokens: 18446
+tokens: 18449
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new.txt
 ---
 
@@ -830,7 +830,7 @@ See the related storybook [Internationalization guide](https://ovh.github.io/des
 **Toggle**
 - New component `ToggleControl` has been added.
 - New component `ToggleLabel` has been added.
-- [DEPRECATED] Using `` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
+- [DEPRECATED] Using `<Toggle />` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
 
 ### Bug fixes:
 

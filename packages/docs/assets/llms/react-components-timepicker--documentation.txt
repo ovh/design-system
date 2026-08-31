@@ -4,7 +4,7 @@ slug: timepicker
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1246
+tokens: 1281
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker--documentation.txt
 ---
 
@@ -123,17 +123,17 @@ Every **Timepicker** must have a clear and explicit label to ensure that users (
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Starting time:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Timepicker withSeconds>
+    <TimepickerControl />
 
-    
-  
-
+    <TimepickerTimezoneList />
+  </Timepicker>
+</FormField>
 ```
 
  Screen readers will announce the label, the input time and the select field.

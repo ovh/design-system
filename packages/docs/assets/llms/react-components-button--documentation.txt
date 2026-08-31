@@ -4,7 +4,7 @@ slug: button
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1479
+tokens: 1520
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--documentation.txt
 ---
 
@@ -127,9 +127,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```tsx
-
+<Button>
   Clear
-
+</Button>
 ```
 
  Screen readers will announce the text content.
@@ -139,9 +139,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 If a **Button** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```tsx
-
-    
-
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce the label.
@@ -152,9 +152,9 @@ When a **Button** is associated with an existing label, content is read by scree
 
 ```tsx
 <>
-  
-    
-  
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span id="filter-btn">Filter your search results</span>
 </>
 ```

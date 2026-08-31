@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import { BASENAME } from './appBase';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
+import guidesInventory from './content/guides/guides.json';
 import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
@@ -25,7 +26,7 @@ const ComponentRoute = () => {
   const { tokens } = useOutletContext<ShellContext>();
   const page = flattenPages().find((p) => p.id === `components/${key}`);
 
-  if (!page || !page.storiesModule || !page.raw) {
+  if (!page || !page.stories) {
     return <Navigate replace to="/" />;
   }
   return <ComponentDoc key={ page.id } page={ page } tokens={ tokens } />;
@@ -89,10 +90,37 @@ const ChangelogRoute = () => (
    before the router mounts so the route resolves and stays shareable. */
 const bounced = new URLSearchParams(window.location.search);
 const deepLink = bounced.get('p');
+const legacyLink = bounced.get('path');
 if (deepLink && deepLink.startsWith('/')) {
   bounced.delete('p');
   const rest = bounced.toString();
   history.replaceState(null, '', `${BASENAME}${deepLink}${rest ? `?${rest}` : ''}${window.location.hash}`);
+} else if (legacyLink) {
+  /* Legacy Storybook deep links (…/?path=/docs/components-button--documentation)
+     hit an existing path, so the 404 bounce never runs: map the story slug back
+     onto the matching route. Guides match through their frozen legacy slug
+     (guides.json, the llms inventory), immune to title rewording; the icon
+     gallery — a sibling doc page in Storybook — maps onto the icon page's
+     gallery tab; everything else is recomputed from the nav model the same way
+     Storybook sanitized its story titles ('React Components/Button Group' →
+     react-components-button-group); unmatched slugs land on the homepage, as
+     before. */
+  const full = legacyLink.replace(/^\/(?:docs|story)\//, '');
+  const slug = full.replace(/--.*$/, '');
+  const sanitize = (title: string): string => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const guide = guidesInventory.guides.find((entry) => entry.slug === slug);
+  const target = (guide && flattenPages().find((page) => page.id === `guides/${guide.mdx}`))
+    || flattenPages().find((page) => {
+      const legacyTitles = page.kind === 'component' ? [`React Components/${page.title}`, `Components/${page.title}`]
+        : page.kind === 'helper' ? [`Helpers/${page.title}`]
+        : page.kind === 'recipe' ? [`Recipes/${page.title}`]
+        : [`OVHcloud Design System/${page.section ?? ''}/${page.title}`];
+      return legacyTitles.some((title) => sanitize(title) === slug);
+    });
+  const path = full === 'react-components-icon--gallery' ? '/components/icon/gallery' : target?.path ?? '/';
+  bounced.delete('path');
+  const rest = bounced.toString();
+  history.replaceState(null, '', `${BASENAME}${path}${rest ? `?${rest}` : ''}${window.location.hash}`);
 }
 
 const router = createBrowserRouter([

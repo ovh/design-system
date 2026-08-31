@@ -1,15 +1,16 @@
 import { MDXProvider } from '@mdx-js/react';
-import { type ComponentType, Suspense, lazy, useMemo } from 'react';
+import { type ComponentType, Suspense, lazy, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
+import { DocSkeleton } from '../doc/DocSkeleton';
 import { PageStoriesProvider } from '../doc/PageStories';
 import { IconGallery } from '../doc/ports/iconGallery/IconGallery';
 import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
 import { hasTechData } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
+import { useStories } from '../nav/useStories';
 import { ComponentPage } from './ComponentPage';
 
 /* Component page = Documentation (neutral-format MDX) + Technical information
@@ -26,6 +27,11 @@ const GALLERIES: Record<string, ComponentType> = { icon: IconGallery };
 const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, string> }) => {
   const { tab } = useParams();
   const navigate = useNavigate();
+  // The stories module and its raw source load lazily (they only ship in the
+  // page's own chunk); only the tabs that consume them (documentation's
+  // Canvas, examples) wait behind the skeleton until they land — technical
+  // and gallery load their own data.
+  const stories = useStories(page.stories);
 
   const componentKey = page.id.replace('components/', '');
   // kebab folder → PascalCase React name (button-group → ButtonGroup), matching
@@ -36,6 +42,14 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
     () => (loader ? lazy(loader as () => Promise<{ default: ComponentType }>) : null),
     [loader],
   );
+
+  // React lazy() only fetches on first render, and the documentation tab is
+  // gated on the stories chunk: warm the MDX chunk now so both loads run in
+  // parallel (dynamic imports are cached, lazy() reuses the in-flight request).
+  useEffect(() => {
+    loader?.();
+  }, [loader]);
+
   const hasTech = hasTechData(componentKey);
   const Gallery = GALLERIES[componentKey];
 
@@ -52,7 +66,7 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   const toPath = (value: string) => (value === 'documentation' ? page.path : `${page.path}/${value}`);
 
   return (
-    <PageStoriesProvider raw={ page.raw } storiesModule={ page.storiesModule }>
+    <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
       { tabs.length > 1 && (
         <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
           <TabList>
@@ -62,13 +76,17 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
       ) }
 
       { currentTab === 'documentation' && Doc && (
-        <Suspense fallback={ <Skeleton style={{ height: '320px', marginTop: '16px', width: '100%' }} /> }>
-          <DocArticle>
-            <MDXProvider components={ MDX_COMPONENTS }>
-              <Doc />
-            </MDXProvider>
-          </DocArticle>
-        </Suspense>
+        stories
+          ? (
+            <Suspense fallback={ <DocSkeleton /> }>
+              <DocArticle>
+                <MDXProvider components={ MDX_COMPONENTS }>
+                  <Doc />
+                </MDXProvider>
+              </DocArticle>
+            </Suspense>
+          )
+          : <DocSkeleton />
       ) }
 
       { currentTab === 'gallery' && Gallery && <Gallery /> }
@@ -80,7 +98,9 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
       ) }
 
       { currentTab === 'examples' && (
-        <ComponentPage component={ componentName } dark={ false } rawSource={ page.raw! } storiesModule={ page.storiesModule! } title={ page.title } tokens={ tokens } />
+        stories
+          ? <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } title={ page.title } tokens={ tokens } />
+          : <DocSkeleton />
       ) }
     </PageStoriesProvider>
   );

@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: documentation
 version: 19.7.3
-tokens: 853
+tokens: 888
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--documentation.txt
 ---
 
@@ -97,17 +97,17 @@ To ensure proper accessibility, the **Clipboard** component must be correctly la
 Every **Clipboard** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     API key:
-  
+  </FormFieldLabel>
 
-  
-    
+  <Clipboard value="loremipsum">
+    <ClipboardControl />
 
-    
-  
-
+    <ClipboardTrigger />
+  </Clipboard>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.

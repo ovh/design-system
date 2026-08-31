@@ -1,6 +1,7 @@
 import { composeStory } from '@storybook/react';
 import { type ComponentType, type ReactElement, type ReactNode, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
@@ -66,23 +67,47 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
   );
 };
 
+/* Previous-major documentation link, gated by startingVersion (the major the
+   component first shipped in): a component born in (or after) the previous
+   major has no earlier doc to link to. Same logic as the old storybook
+   IdentityCard — v18 and below is the Stencil-era storybook, whose form
+   elements lived under a "form-elements" category. */
+const LAST_NON_REACT_VERSION = 18;
+const PREVIOUS_MAJOR_FULL_VERSION = (versions as string[]).find((version) => version.split('.')[0] !== (versions as string[])[0]?.split('.')[0]) ?? '';
+const PREVIOUS_MAJOR = parseInt(PREVIOUS_MAJOR_FULL_VERSION, 10);
+const PREVIOUS_FORM_ELEMENTS = ['checkbox', 'clipboard', 'combobox', 'datepicker', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'quantity', 'radio', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'];
+
+function previousMajorDocUrl(name: string, startingVersion?: number): string {
+  if (!PREVIOUS_MAJOR_FULL_VERSION || (startingVersion && startingVersion >= PREVIOUS_MAJOR)) {
+    return '';
+  }
+  const uriName = name.toLowerCase().replace(' ', '-');
+  const suffix = PREVIOUS_FORM_ELEMENTS.includes(uriName) && (!startingVersion || startingVersion <= LAST_NON_REACT_VERSION) ? '-form-elements' : '';
+  const prefix = PREVIOUS_MAJOR > LAST_NON_REACT_VERSION ? 'react' : 'ods';
+  return `https://ovh.github.io/design-system/v${PREVIOUS_MAJOR_FULL_VERSION}/?path=/docs/${prefix}-components${suffix}-${uriName}--documentation`;
+}
+
 /* Description (plain prose, unboxed) and the metadata card sit side by side. */
-const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name }: { aliases?: string[], children?: ReactNode, figmaLink?: string, githubUrl: string, name: string }) => (
-  <div className="doc__overview">
-    <div className="doc__identity-desc">{ children }</div>
-    <dl className="doc__identity">
-      <div><dt>Name</dt><dd>{ name }</dd></div>
-      { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
-      <div>
-        <dt>Links</dt>
-        <dd className="doc__identity-links">
-          { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
-          <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
-        </dd>
-      </div>
-    </dl>
-  </div>
-);
+const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, startingVersion }: { aliases?: string[], children?: ReactNode, figmaLink?: string, githubUrl: string, name: string, startingVersion?: number }) => {
+  const previousVersionUrl = previousMajorDocUrl(name, startingVersion);
+  return (
+    <div className="doc__overview">
+      <div className="doc__identity-desc">{ children }</div>
+      <dl className="doc__identity">
+        <div><dt>Name</dt><dd>{ name }</dd></div>
+        { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
+        <div>
+          <dt>Links</dt>
+          <dd className="doc__identity-links">
+            { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
+            <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
+            { previousVersionUrl && <Link href={ previousVersionUrl } target="_blank">Previous major version <Icon name={ ICON_NAME.externalLink } /></Link> }
+          </dd>
+        </div>
+      </dl>
+    </div>
+  );
+};
 
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (
   <div className="doc__best-practices">

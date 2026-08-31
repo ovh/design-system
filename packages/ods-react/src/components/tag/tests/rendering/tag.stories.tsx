@@ -13,6 +13,15 @@ export const customStyle = () => (
   </Tag>
 );
 
+export const link = () => (
+  <Tag
+    as="a"
+    data-testid="link"
+    href="#dummy-target">
+    Link
+  </Tag>
+);
+
 export const render = () => (
   <Tag
     data-testid="render">

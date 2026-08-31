@@ -20,6 +20,57 @@ describe('Tag rendering', () => {
     });
   });
 
+  describe('as', () => {
+    it('should render a button with its removal icon by default', async() => {
+      await gotoStory(page, 'rendering/render');
+
+      const tag = await page.waitForSelector('[data-testid="render"]');
+      const tagName = await tag?.evaluate((el: Element) => el.tagName);
+      const type = await tag?.evaluate((el: Element) => el.getAttribute('type'));
+      const icon = await tag?.$('[data-ods="icon"]');
+
+      expect(tagName).toBe('BUTTON');
+      expect(type).toBe('button');
+      expect(icon).not.toBeNull();
+    });
+
+    it('should render a link when asked to', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const tag = await page.waitForSelector('[data-testid="link"]');
+      const tagName = await tag?.evaluate((el: Element) => el.tagName);
+      const href = await tag?.evaluate((el: Element) => el.getAttribute('href'));
+
+      expect(tagName).toBe('A');
+      expect(href).toBe('#dummy-target');
+    });
+
+    it('should not render the removal icon on a link, as there is nothing to remove', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const tag = await page.waitForSelector('[data-testid="link"]');
+
+      expect(await tag?.$('[data-ods="icon"]')).toBeNull();
+    });
+
+    it('should not render the button type attribute on a link', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const tag = await page.waitForSelector('[data-testid="link"]');
+
+      expect(await tag?.evaluate((el: Element) => el.getAttribute('type'))).toBeNull();
+    });
+
+    it('should render a link without the browser underline', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const tag = await page.waitForSelector('[data-testid="link"]');
+      const decoration = await tag?.evaluate((el: Element) => getComputedStyle(el).textDecorationLine);
+
+      expect(decoration).toBe('none');
+    });
+  });
+
   describe('sizes', () => {
     it('should respect increase order ( md < lg)', async() => {
       await gotoStory(page, 'rendering/sizes');

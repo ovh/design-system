@@ -13,6 +13,15 @@ export const disabled = () => (
   </Tag>
 );
 
+export const focusLink = () => (
+  <Tag
+    as="a"
+    data-testid="focus-link"
+    href="#dummy-target">
+    Focus link
+  </Tag>
+);
+
 export const focus = () => (
   <Tag data-testid="focus">
     Focus

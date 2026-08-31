@@ -49,6 +49,7 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
     '- Don\'t use full sentences or long text in a Tag label',
     '- Don\'t mix Tags with different behaviors (e.g., some removable, some static) unless necessary and clearly indicated',
     '- Don\'t use Tags as primary action triggers (e.g., "Submit", "Save"), use Buttons instead',
+    '- Don\'t use a removable Tag to navigate, nor a link Tag to filter: the element has to match the action',
   ]}
   dos={[
     '- Use Tags to represent interactive labels such as filters, categories, or user-defined keywords',
@@ -57,6 +58,7 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
     '- Allow Tags to be removable or toggleable if the interaction requires it (e.g., deselecting a filter)',
     '- Keep visual distinction between Tags (interactive) and Badges (static)',
     '- Trigger removal action when the Tag displays a delete icon',
+    '- Use a link Tag (`as="a"`) when the Tag navigates, for instance a blog category leading to its own page',
   ]}
 />
 
@@ -96,6 +98,18 @@ Multiple **Tags** can be displayed:
 - **Medium** _(default)_: main size for displaying **Tags**.
 - **Large**: highlighting important labels or metadata with greater visibility and emphasis, making them easily noticeable to users.
 
+<Heading label="Element" level={ 3 } />
+
+- **Button** _(default)_: interacting with the **Tag** in place, typically removing it or toggling a filter.
+- **Link**: navigating to another page. Pass `as="a"` with an `href`, or `as` a routing library
+  component (`as={ Link }` with react-router, for instance) to keep client side navigation.
+
+A link **Tag** never displays the removal icon, since there is nothing to remove: the icon is the
+removal affordance of the button **Tag**. Rendering the **Tag** as a link also makes its destination
+visible to search engines, which a button cannot do.
+
+<Canvas of={ TagStories.Link } sourceState='shown' />
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
@@ -107,6 +121,8 @@ The **Tag** component is focusable and follows the same keyboard interactions as
 Pressing <Kbd>Tab</Kbd> moves focus to the **Tag**.
 
 Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> triggers the assigned action: removing the **Tag**.
+
+On a link **Tag**, only <Kbd>Enter</Kbd> activates it, following the native anchor behaviour.
 
 Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus to the previous interactive element.
 

@@ -96,6 +96,22 @@ export const Disabled: Story = {
   ),
 };
 
+export const Link: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Tag as="a" href="#kubernetes">
+      Kubernetes
+    </Tag>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {

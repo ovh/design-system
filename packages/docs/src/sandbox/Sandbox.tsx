@@ -86,7 +86,7 @@ class DemoBoundary extends React.Component<{ children: React.ReactNode, onError:
 
 const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: string, tokens: Record<string, string> }) => {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [Demo, setDemo] = useState<{ Component: ComponentType } | null>(null);
+  const [Demo, setDemo] = useState<{ Component: ComponentType, compileId: number } | null>(null);
   const [runtimeError, setRuntimeError] = useState<string>('');
   const [tsErrors, setTsErrors] = useState<number>(-1);
   const [resizing, setResizing] = useState(false);
@@ -122,6 +122,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
 
     let timer: ReturnType<typeof setTimeout>;
     let attempts = 0;
+    let compileId = 0;
     const withTimeout = <T,>(promise: Promise<T>, ms: number): Promise<T> =>
       Promise.race([promise, new Promise<never>((_, reject) => setTimeout(() => reject(new Error('worker timeout')), ms))]);
     const trace = (step: string) => { (window as Record<string, unknown> & Window).__compileState = step; };
@@ -165,7 +166,11 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         }));
         const js = emit.outputFiles[0]?.text ?? '';
         setRuntimeError('');
-        setDemo({ Component: evaluate(js) });
+        // The boundary latches its failed state: remount it (via compileId as
+        // key) on each successful compile so a past crash doesn't keep the
+        // preview blank after the code is fixed.
+        compileId += 1;
+        setDemo({ Component: evaluate(js), compileId });
       } catch (e) {
         trace('failed:' + String(e).slice(0, 40) + ' attempt=' + attempts);
         // 'TypeScript not registered!': the build code-splits Monaco's
@@ -315,7 +320,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
             ) }
             <DemoFrame dark={ dark } tokens={ tokens }>
               { Component
-                ? <DemoBoundary onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
+                ? <DemoBoundary key={ Demo?.compileId } onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
                 : null }
             </DemoFrame>
           </div>

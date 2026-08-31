@@ -4,7 +4,7 @@ slug: logo
 category: component
 type: documentation
 version: 19.7.3
-tokens: 670
+tokens: 672
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--documentation.txt
 ---
 
@@ -93,7 +93,7 @@ When the logo is used within a navigational element (for example, as a link in a
 <a
   aria-label="Return to the OVHcloud home page"
   href="https://www.ovhcloud.com">
-  
+  <Logo />
 </a>
 ```
 

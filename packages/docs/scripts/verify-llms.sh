@@ -41,10 +41,12 @@ if [ "$FULL" = "--full" ]; then
   rm -rf "$ROOT/packages/docs/dist"
   if pnpm -C "$ROOT/packages/docs" build >/tmp/verify-docs.log 2>&1; then
     ok "docs build (native llms emission) succeeded"
-    if git -C "$ROOT" diff --quiet -- packages/docs/assets/llms; then
+    # status --porcelain catches modified AND untracked files, which
+    # `git diff --quiet` alone would miss (e.g. a stray extra artifact).
+    if [ -z "$(git -C "$ROOT" status --porcelain -- packages/docs/assets/llms)" ]; then
       ok "deterministic & reproducible regeneration (assets/llms unchanged vs committed)"
     else
-      ko "assets/llms differs after regeneration (broken determinism or stale commit)"
+      ko "assets/llms differs after regeneration (broken determinism, stale commit or untracked files)"
     fi
   else
     ko "docs build failed (see /tmp/verify-docs.log)"
@@ -117,7 +119,45 @@ done
   && ok "navigation links all resolve to existing sibling files" \
   || ko "$link_bad dead relative link(s) in navigation files"
 
-# --- 2. index.json validity & coverage ------------------------------------
+# --- 2. Guide coverage -------------------------------------------------------
+# Every non-excluded guide MDX must have its generated artifact, and no
+# stale guide metadata may survive its MDX file. The inventory (exclusions
+# + slug map) is guides.json, the same single source the generator and the
+# app import, so all consumers stay in sync by construction.
+section "Guide coverage (src/content/guides)"
+
+GUIDES_DIR="$ROOT/packages/docs/src/content/guides"
+GUIDES_JSON="$GUIDES_DIR/guides.json"
+EXCLUDED_GUIDES="$(node -p "require('$GUIDES_JSON').exclusions.join(' ')" 2>/dev/null)"
+GUIDE_SLUGS="$(node -p "require('$GUIDES_JSON').guides.map((g) => g.mdx + ' ' + g.slug).join('\n')" 2>/dev/null)"
+
+[ -n "$EXCLUDED_GUIDES" ] && [ -n "$GUIDE_SLUGS" ] \
+  && ok "guide inventory readable from guides.json" \
+  || ko "could not read exclusions/guides from $GUIDES_JSON"
+
+guide_missing=0
+for f in "$GUIDES_DIR"/*.mdx; do
+  name="$(basename "$f" .mdx)"
+  case " $EXCLUDED_GUIDES " in *" $name "*) continue ;; esac
+  slug="$(printf '%s\n' "$GUIDE_SLUGS" | awk -v n="$name" '$1 == n { print $2 }')"
+  { [ -n "$slug" ] && [ -f "$ASSETS/$slug.txt" ]; } || guide_missing=$((guide_missing + 1))
+done
+[ "$guide_missing" = "0" ] \
+  && ok "every non-excluded guide MDX has its generated artifact" \
+  || ko "$guide_missing guide MDX file(s) without a generated artifact"
+
+guide_stale=0
+while read -r name slug; do
+  [ -n "$name" ] || continue
+  [ -f "$GUIDES_DIR/$name.mdx" ] || guide_stale=$((guide_stale + 1))
+done <<EOF
+$GUIDE_SLUGS
+EOF
+[ "$guide_stale" = "0" ] \
+  && ok "no stale guide metadata (every entry still has its MDX file)" \
+  || ko "$guide_stale guide metadata entrie(s) whose MDX file is gone"
+
+# --- 3. index.json validity & coverage ------------------------------------
 section "Machine-readable index (llms-index.json)"
 if node -e '
   const fs = require("fs"), path = require("path");
@@ -141,7 +181,7 @@ else
   ko "index.json invalid or incomplete coverage"
 fi
 
-# --- 3. Local distribution in ods-react -----------------------------------
+# --- 4. Local distribution in ods-react -----------------------------------
 section "Local distribution (ods-react)"
 if pnpm -C "$ROOT/packages/ods-react" copy:llms >/tmp/verify-copy.log 2>&1; then
   ok "copy:llms ran"
@@ -163,7 +203,7 @@ else
   ko "ods-react/dist/llms missing after copy:llms"
 fi
 
-# --- 4. Optional: published package actually ships the docs ----------------
+# --- 5. Optional: published package actually ships the docs ----------------
 if [ "$FULL" = "--full" ]; then
   section "Published package check (offline)"
   if pnpm -C "$ROOT/packages/ods-react" build:prod >/tmp/verify-build.log 2>&1; then

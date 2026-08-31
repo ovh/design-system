@@ -1,7 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { type ComponentType, Suspense, lazy, useMemo } from 'react';
-import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
+import { DocSkeleton } from '../doc/DocSkeleton';
 import { type NavPage } from '../nav/model';
 
 /* Recipes landing: a full-width grid (no ToC), rendered straight through the
@@ -21,7 +21,7 @@ const RecipesDoc = ({ page }: { page: NavPage }) => {
     return null;
   }
   return (
-    <Suspense fallback={ <Skeleton style={{ height: '320px', width: '100%' }} /> }>
+    <Suspense fallback={ <DocSkeleton /> }>
       <article className="doc">
         <MDXProvider components={ MDX_COMPONENTS }>
           <Doc />

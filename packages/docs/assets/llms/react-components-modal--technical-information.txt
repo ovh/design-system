@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 947
+tokens: 1003
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -55,6 +55,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## Enums
 
@@ -85,6 +86,8 @@ This component extends all the native `<button>` attributes.
 | `--ods-modal-header-background-color-warning` | `var(--ods-color-warning-075)` |
 | `--ods-modal-header-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
 | `--ods-modal-header-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
 | `--ods-modal-margin-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
 | `--ods-modal-margin-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
 | `--ods-modal-mobile-max-height` | `512px` |

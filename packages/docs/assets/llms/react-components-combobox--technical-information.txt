@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 987
+tokens: 989
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
 ---
 
@@ -36,7 +36,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 | `open` | `boolean` | No | undefined | The controlled open state of the combobox. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
 | `readOnly` | `boolean` | No | undefined | Whether the component is readonly. |
-| `required` | `boolean` | No | undefined | Whether the component is required. /!\ Only work for single selection mode for now. |
+| `required` | `boolean` | No | undefined | Whether the component is required. Warning! - Only work for single selection mode for now. |
 | `value` | `string[]` | No | undefined | The controlled selected value(s). |
 
 ## ComboboxContent

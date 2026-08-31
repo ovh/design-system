@@ -5,6 +5,11 @@ const currentVersion = require('../../../lerna.json').version;
 
 const EXCLUDED_VERSIONS = ['16.0.0'];
 
+// Numeric semver rank (prerelease suffix ignored) — a plain string sort would
+// order 9.x above 19.x.
+const rank = (version) => version.split('-')[0].split('.')
+  .reduce((acc, part) => acc * 1000 + Number(part), 0);
+
 async function getVersions() {
   try {
     const registry = (process.env.npm_config_registry || 'https://registry.npmjs.org').replace(/\/$/, '');
@@ -21,8 +26,7 @@ async function getVersions() {
       .filter((version) => EXCLUDED_VERSIONS.indexOf(version) < 0)
       // But when starting locally, this could end up with current version being added twice, so we ensure uniqueness
       .filter((version, index, array) => array.indexOf(version) === index)
-      .sort()
-      .reverse()
+      .sort((a, b) => rank(b) - rank(a))
       .filter((version) => version === currentVersion || !/-alpha\.\d+$/gi.test(version));
   } catch(error) {
     console.error('Something went wrong while fetching release version on npm', error);

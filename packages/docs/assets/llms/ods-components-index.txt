@@ -20,21 +20,21 @@
 ## Badge
 
 - [Overview](./react-components-badge.txt) (~204 tokens)
-- [Documentation](./react-components-badge--documentation.txt) (~1633 tokens)
+- [Documentation](./react-components-badge--documentation.txt) (~1737 tokens)
 - [Technical Information](./react-components-badge--technical-information.txt) (~711 tokens)
 - [Examples](./react-components-badge--examples.txt) (~452 tokens)
 
 ## Breadcrumb
 
 - [Overview](./react-components-breadcrumb.txt) (~352 tokens)
-- [Documentation](./react-components-breadcrumb--documentation.txt) (~1015 tokens)
+- [Documentation](./react-components-breadcrumb--documentation.txt) (~1114 tokens)
 - [Technical Information](./react-components-breadcrumb--technical-information.txt) (~395 tokens)
 - [Examples](./react-components-breadcrumb--examples.txt) (~1077 tokens)
 
 ## Button
 
 - [Overview](./react-components-button.txt) (~297 tokens)
-- [Documentation](./react-components-button--documentation.txt) (~1479 tokens)
+- [Documentation](./react-components-button--documentation.txt) (~1520 tokens)
 - [Technical Information](./react-components-button--technical-information.txt) (~3763 tokens)
 - [Examples](./react-components-button--examples.txt) (~824 tokens)
 
@@ -48,7 +48,7 @@
 ## Card
 
 - [Overview](./react-components-card.txt) (~159 tokens)
-- [Documentation](./react-components-card--documentation.txt) (~1298 tokens)
+- [Documentation](./react-components-card--documentation.txt) (~1346 tokens)
 - [Technical Information](./react-components-card--technical-information.txt) (~257 tokens)
 - [Examples](./react-components-card--examples.txt) (~417 tokens)
 
@@ -69,8 +69,8 @@
 ## Clipboard
 
 - [Overview](./react-components-clipboard.txt) (~292 tokens)
-- [Documentation](./react-components-clipboard--documentation.txt) (~853 tokens)
-- [Technical Information](./react-components-clipboard--technical-information.txt) (~382 tokens)
+- [Documentation](./react-components-clipboard--documentation.txt) (~888 tokens)
+- [Technical Information](./react-components-clipboard--technical-information.txt) (~393 tokens)
 - [Examples](./react-components-clipboard--examples.txt) (~232 tokens)
 
 ## Code
@@ -82,16 +82,16 @@
 
 ## Combobox
 
-- [Overview](./react-components-combobox.txt) (~800 tokens)
-- [Documentation](./react-components-combobox--documentation.txt) (~1586 tokens)
-- [Technical Information](./react-components-combobox--technical-information.txt) (~987 tokens)
+- [Overview](./react-components-combobox.txt) (~801 tokens)
+- [Documentation](./react-components-combobox--documentation.txt) (~1805 tokens)
+- [Technical Information](./react-components-combobox--technical-information.txt) (~989 tokens)
 - [Examples](./react-components-combobox--examples.txt) (~1769 tokens)
 
 ## Command
 
 - [Overview](./react-components-command.txt) (~492 tokens)
-- [Documentation](./react-components-command--documentation.txt) (~1909 tokens)
-- [Technical Information](./react-components-command--technical-information.txt) (~1021 tokens)
+- [Documentation](./react-components-command--documentation.txt) (~1936 tokens)
+- [Technical Information](./react-components-command--technical-information.txt) (~1017 tokens)
 - [Examples](./react-components-command--examples.txt) (~1962 tokens)
 
 ## Data Table
@@ -104,7 +104,7 @@
 ## Datepicker
 
 - [Overview](./react-components-datepicker.txt) (~827 tokens)
-- [Documentation](./react-components-datepicker--documentation.txt) (~1719 tokens)
+- [Documentation](./react-components-datepicker--documentation.txt) (~1854 tokens)
 - [Technical Information](./react-components-datepicker--technical-information.txt) (~984 tokens)
 - [Examples](./react-components-datepicker--examples.txt) (~590 tokens)
 
@@ -117,9 +117,9 @@
 
 ## Drawer
 
-- [Overview](./react-components-drawer.txt) (~291 tokens)
-- [Documentation](./react-components-drawer--documentation.txt) (~1222 tokens)
-- [Technical Information](./react-components-drawer--technical-information.txt) (~512 tokens)
+- [Overview](./react-components-drawer.txt) (~349 tokens)
+- [Documentation](./react-components-drawer--documentation.txt) (~1326 tokens)
+- [Technical Information](./react-components-drawer--technical-information.txt) (~581 tokens)
 - [Examples](./react-components-drawer--examples.txt) (~980 tokens)
 
 ## Editable
@@ -139,28 +139,28 @@
 ## File Upload
 
 - [Overview](./react-components-file-upload.txt) (~563 tokens)
-- [Documentation](./react-components-file-upload--documentation.txt) (~1738 tokens)
+- [Documentation](./react-components-file-upload--documentation.txt) (~1908 tokens)
 - [Technical Information](./react-components-file-upload--technical-information.txt) (~822 tokens)
 - [Examples](./react-components-file-upload--examples.txt) (~1940 tokens)
 
 ## Form Field
 
 - [Overview](./react-components-form-field.txt) (~198 tokens)
-- [Documentation](./react-components-form-field--documentation.txt) (~792 tokens)
+- [Documentation](./react-components-form-field--documentation.txt) (~820 tokens)
 - [Technical Information](./react-components-form-field--technical-information.txt) (~254 tokens)
 - [Examples](./react-components-form-field--examples.txt) (~2654 tokens)
 
 ## Icon
 
 - [Overview](./react-components-icon.txt) (~984 tokens)
-- [Documentation](./react-components-icon--documentation.txt) (~883 tokens)
+- [Documentation](./react-components-icon--documentation.txt) (~900 tokens)
 - [Technical Information](./react-components-icon--technical-information.txt) (~2492 tokens)
 - [Examples](./react-components-icon--examples.txt) (~437 tokens)
 
 ## Input
 
 - [Overview](./react-components-input.txt) (~337 tokens)
-- [Documentation](./react-components-input--documentation.txt) (~1184 tokens)
+- [Documentation](./react-components-input--documentation.txt) (~1264 tokens)
 - [Technical Information](./react-components-input--technical-information.txt) (~339 tokens)
 - [Examples](./react-components-input--examples.txt) (~449 tokens)
 
@@ -174,14 +174,14 @@
 ## Link
 
 - [Overview](./react-components-link.txt) (~197 tokens)
-- [Documentation](./react-components-link--documentation.txt) (~1164 tokens)
+- [Documentation](./react-components-link--documentation.txt) (~1299 tokens)
 - [Technical Information](./react-components-link--technical-information.txt) (~126 tokens)
 - [Examples](./react-components-link--examples.txt) (~310 tokens)
 
 ## Logo
 
 - [Overview](./react-components-logo.txt) (~134 tokens)
-- [Documentation](./react-components-logo--documentation.txt) (~670 tokens)
+- [Documentation](./react-components-logo--documentation.txt) (~672 tokens)
 - [Technical Information](./react-components-logo--technical-information.txt) (~112 tokens)
 - [Examples](./react-components-logo--examples.txt) (~106 tokens)
 
@@ -195,7 +195,7 @@
 ## Medium
 
 - [Overview](./react-components-medium.txt) (~71 tokens)
-- [Documentation](./react-components-medium--documentation.txt) (~494 tokens)
+- [Documentation](./react-components-medium--documentation.txt) (~538 tokens)
 - [Technical Information](./react-components-medium--technical-information.txt) (~26 tokens)
 - [Examples](./react-components-medium--examples.txt) (~205 tokens)
 
@@ -203,13 +203,13 @@
 
 - [Overview](./react-components-menu.txt) (~352 tokens)
 - [Documentation](./react-components-menu--documentation.txt) (~764 tokens)
-- [Technical Information](./react-components-menu--technical-information.txt) (~733 tokens)
+- [Technical Information](./react-components-menu--technical-information.txt) (~744 tokens)
 - [Examples](./react-components-menu--examples.txt) (~566 tokens)
 
 ## Message
 
 - [Overview](./react-components-message.txt) (~288 tokens)
-- [Documentation](./react-components-message--documentation.txt) (~1811 tokens)
+- [Documentation](./react-components-message--documentation.txt) (~1993 tokens)
 - [Technical Information](./react-components-message--technical-information.txt) (~1687 tokens)
 - [Examples](./react-components-message--examples.txt) (~1103 tokens)
 
@@ -223,63 +223,63 @@
 ## Meter
 
 - [Overview](./react-components-meter.txt) (~261 tokens)
-- [Documentation](./react-components-meter--documentation.txt) (~945 tokens)
+- [Documentation](./react-components-meter--documentation.txt) (~1019 tokens)
 - [Technical Information](./react-components-meter--technical-information.txt) (~276 tokens)
 - [Examples](./react-components-meter--examples.txt) (~296 tokens)
 
 ## Modal
 
 - [Overview](./react-components-modal.txt) (~480 tokens)
-- [Documentation](./react-components-modal--documentation.txt) (~1471 tokens)
-- [Technical Information](./react-components-modal--technical-information.txt) (~947 tokens)
+- [Documentation](./react-components-modal--documentation.txt) (~1654 tokens)
+- [Technical Information](./react-components-modal--technical-information.txt) (~1003 tokens)
 - [Examples](./react-components-modal--examples.txt) (~1156 tokens)
 
 ## Pagination
 
 - [Overview](./react-components-pagination.txt) (~448 tokens)
-- [Documentation](./react-components-pagination--documentation.txt) (~1405 tokens)
+- [Documentation](./react-components-pagination--documentation.txt) (~1428 tokens)
 - [Technical Information](./react-components-pagination--technical-information.txt) (~573 tokens)
 - [Examples](./react-components-pagination--examples.txt) (~319 tokens)
 
 ## Password
 
 - [Overview](./react-components-password.txt) (~332 tokens)
-- [Documentation](./react-components-password--documentation.txt) (~1055 tokens)
+- [Documentation](./react-components-password--documentation.txt) (~1120 tokens)
 - [Technical Information](./react-components-password--technical-information.txt) (~218 tokens)
 - [Examples](./react-components-password--examples.txt) (~233 tokens)
 
 ## Phone Number
 
 - [Overview](./react-components-phone-number.txt) (~1368 tokens)
-- [Documentation](./react-components-phone-number--documentation.txt) (~1434 tokens)
+- [Documentation](./react-components-phone-number--documentation.txt) (~1533 tokens)
 - [Technical Information](./react-components-phone-number--technical-information.txt) (~2280 tokens)
 - [Examples](./react-components-phone-number--examples.txt) (~620 tokens)
 
 ## Popover
 
 - [Overview](./react-components-popover.txt) (~446 tokens)
-- [Documentation](./react-components-popover--documentation.txt) (~1324 tokens)
-- [Technical Information](./react-components-popover--technical-information.txt) (~595 tokens)
+- [Documentation](./react-components-popover--documentation.txt) (~1462 tokens)
+- [Technical Information](./react-components-popover--technical-information.txt) (~606 tokens)
 - [Examples](./react-components-popover--examples.txt) (~1221 tokens)
 
 ## Progress Bar
 
 - [Overview](./react-components-progress-bar.txt) (~191 tokens)
-- [Documentation](./react-components-progress-bar--documentation.txt) (~709 tokens)
+- [Documentation](./react-components-progress-bar--documentation.txt) (~718 tokens)
 - [Technical Information](./react-components-progress-bar--technical-information.txt) (~121 tokens)
 - [Examples](./react-components-progress-bar--examples.txt) (~77 tokens)
 
 ## Prompt Input
 
 - [Overview](./react-components-prompt-input.txt) (~446 tokens)
-- [Documentation](./react-components-prompt-input--documentation.txt) (~1115 tokens)
+- [Documentation](./react-components-prompt-input--documentation.txt) (~1282 tokens)
 - [Technical Information](./react-components-prompt-input--technical-information.txt) (~1224 tokens)
 - [Examples](./react-components-prompt-input--examples.txt) (~1044 tokens)
 
 ## Quantity
 
 - [Overview](./react-components-quantity.txt) (~389 tokens)
-- [Documentation](./react-components-quantity--documentation.txt) (~864 tokens)
+- [Documentation](./react-components-quantity--documentation.txt) (~904 tokens)
 - [Technical Information](./react-components-quantity--technical-information.txt) (~348 tokens)
 - [Examples](./react-components-quantity--examples.txt) (~293 tokens)
 
@@ -300,35 +300,35 @@
 ## Range
 
 - [Overview](./react-components-range.txt) (~562 tokens)
-- [Documentation](./react-components-range--documentation.txt) (~1269 tokens)
+- [Documentation](./react-components-range--documentation.txt) (~1364 tokens)
 - [Technical Information](./react-components-range--technical-information.txt) (~514 tokens)
 - [Examples](./react-components-range--examples.txt) (~772 tokens)
 
 ## Select
 
 - [Overview](./react-components-select.txt) (~549 tokens)
-- [Documentation](./react-components-select--documentation.txt) (~1106 tokens)
+- [Documentation](./react-components-select--documentation.txt) (~1186 tokens)
 - [Technical Information](./react-components-select--technical-information.txt) (~774 tokens)
 - [Examples](./react-components-select--examples.txt) (~2453 tokens)
 
 ## Skeleton
 
 - [Overview](./react-components-skeleton.txt) (~109 tokens)
-- [Documentation](./react-components-skeleton--documentation.txt) (~741 tokens)
+- [Documentation](./react-components-skeleton--documentation.txt) (~744 tokens)
 - [Technical Information](./react-components-skeleton--technical-information.txt) (~143 tokens)
 - [Examples](./react-components-skeleton--examples.txt) (~53 tokens)
 
 ## Spinner
 
 - [Overview](./react-components-spinner.txt) (~186 tokens)
-- [Documentation](./react-components-spinner--documentation.txt) (~1191 tokens)
+- [Documentation](./react-components-spinner--documentation.txt) (~1215 tokens)
 - [Technical Information](./react-components-spinner--technical-information.txt) (~120 tokens)
 - [Examples](./react-components-spinner--examples.txt) (~181 tokens)
 
 ## Switch
 
 - [Overview](./react-components-switch.txt) (~263 tokens)
-- [Documentation](./react-components-switch--documentation.txt) (~975 tokens)
+- [Documentation](./react-components-switch--documentation.txt) (~1075 tokens)
 - [Technical Information](./react-components-switch--technical-information.txt) (~423 tokens)
 - [Examples](./react-components-switch--examples.txt) (~408 tokens)
 
@@ -349,7 +349,7 @@
 ## Tag
 
 - [Overview](./react-components-tag.txt) (~1013 tokens)
-- [Documentation](./react-components-tag--documentation.txt) (~1324 tokens)
+- [Documentation](./react-components-tag--documentation.txt) (~1350 tokens)
 - [Technical Information](./react-components-tag--technical-information.txt) (~2155 tokens)
 - [Examples](./react-components-tag--examples.txt) (~298 tokens)
 
@@ -363,7 +363,7 @@
 ## Textarea
 
 - [Overview](./react-components-textarea.txt) (~157 tokens)
-- [Documentation](./react-components-textarea--documentation.txt) (~944 tokens)
+- [Documentation](./react-components-textarea--documentation.txt) (~987 tokens)
 - [Technical Information](./react-components-textarea--technical-information.txt) (~63 tokens)
 - [Examples](./react-components-textarea--examples.txt) (~359 tokens)
 
@@ -377,7 +377,7 @@
 ## Timepicker
 
 - [Overview](./react-components-timepicker.txt) (~622 tokens)
-- [Documentation](./react-components-timepicker--documentation.txt) (~1246 tokens)
+- [Documentation](./react-components-timepicker--documentation.txt) (~1281 tokens)
 - [Technical Information](./react-components-timepicker--technical-information.txt) (~723 tokens)
 - [Examples](./react-components-timepicker--examples.txt) (~351 tokens)
 
@@ -391,15 +391,15 @@
 ## Toggle
 
 - [Overview](./react-components-toggle.txt) (~306 tokens)
-- [Documentation](./react-components-toggle--documentation.txt) (~933 tokens)
+- [Documentation](./react-components-toggle--documentation.txt) (~971 tokens)
 - [Technical Information](./react-components-toggle--technical-information.txt) (~436 tokens)
 - [Examples](./react-components-toggle--examples.txt) (~277 tokens)
 
 ## Tooltip
 
 - [Overview](./react-components-tooltip.txt) (~349 tokens)
-- [Documentation](./react-components-tooltip--documentation.txt) (~1091 tokens)
-- [Technical Information](./react-components-tooltip--technical-information.txt) (~510 tokens)
+- [Documentation](./react-components-tooltip--documentation.txt) (~1146 tokens)
+- [Technical Information](./react-components-tooltip--technical-information.txt) (~521 tokens)
 - [Examples](./react-components-tooltip--examples.txt) (~1056 tokens)
 
 ## Tree View

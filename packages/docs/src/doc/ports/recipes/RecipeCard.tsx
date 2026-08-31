@@ -29,6 +29,11 @@ const TAB_ORDER_EXTS = ['tsx', 'scss', 'css', 'md'];
 
 const extOf = (filename: string): string => (filename.includes('.') ? filename.split('.').pop() ?? '' : '');
 const langOf = (filename: string): ShikiLang => EXT_TO_LANG[extOf(filename)] ?? langTsx;
+// Unknown extensions rank after every known one.
+const extRank = (ext: string): number => {
+  const index = TAB_ORDER_EXTS.indexOf(ext);
+  return index === -1 ? TAB_ORDER_EXTS.length : index;
+};
 
 const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onToggle: (name: string) => void, recipe: Recipe }) => {
   const [mode, setMode] = useState<Source>(SOURCE.cssModules);
@@ -48,7 +53,16 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onTogg
     }
     const files: CodeTab[] = Object.entries(modeSource as Record<string, string>)
       .map(([filename, code]) => ({ code, ext: extOf(filename), filename, lang: langOf(filename) }))
-      .sort((a, b) => ([a.filename, b.filename].includes('index.tsx') ? 1 : TAB_ORDER_EXTS.indexOf(a.ext ?? '') - TAB_ORDER_EXTS.indexOf(b.ext ?? '')));
+      .sort((a, b) => {
+        // index.tsx is the entry point: always the first (and default) tab.
+        if (a.filename === 'index.tsx') {
+          return -1;
+        }
+        if (b.filename === 'index.tsx') {
+          return 1;
+        }
+        return (extRank(a.ext ?? '') - extRank(b.ext ?? '')) || a.filename.localeCompare(b.filename);
+      });
     const readme = (recipe.source as Record<string, string>)[SOURCE.readMe];
     if (readme) {
       files.push({ code: readme, filename: 'README', isMarkdown: true, lang: langTsx });

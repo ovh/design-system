@@ -1,9 +1,11 @@
 import { Fragment, useMemo } from 'react';
 import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
+import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
+import { DocSkeleton } from '../DocSkeleton';
 import { AnatomyBrowser } from './AnatomyBrowser';
-import { getTechData } from './techData';
+import { type TechData, getTechData } from './techData';
 import './tech.css';
 
 const PROP_COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
@@ -24,10 +26,15 @@ const SectionHeading = ({ children, label }: { children?: React.ReactNode, label
 );
 
 const TechnicalSpecification = ({ component }: { component: string }) => {
-  // Memoized so the parsed spec (and the names array handed to the anatomy)
-  // keep a stable identity across renders.
-  const data = useMemo(() => getTechData(component), [component]);
+  // The typedoc JSON loads lazily (it only ships in its own chunk); the tab
+  // shows its skeleton until the parsed spec lands. The state keeps a stable
+  // identity across renders, like the names array handed to the anatomy.
+  const data: TechData | null | undefined = useAsyncValue(() => getTechData(component), [component]);
   const componentNames = useMemo(() => data?.spec.components.map((entry) => entry.name) ?? [], [data]);
+
+  if (data === undefined) {
+    return <DocSkeleton />;
+  }
   if (!data) {
     return null;
   }

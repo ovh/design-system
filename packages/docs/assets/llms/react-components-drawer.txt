@@ -4,7 +4,7 @@ slug: drawer
 category: component
 type: overview
 version: 19.7.3
-tokens: 291
+tokens: 349
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
 ---
 
@@ -14,6 +14,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `backdrop` | `boolean` | No | undefined | Whether a backdrop is displayed. |
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the drawer backdrop. Useful if you want to override the backdrop z-index. |
 | `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
 | `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |

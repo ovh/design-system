@@ -4,7 +4,7 @@ slug: switch
 category: component
 type: documentation
 version: 19.7.3
-tokens: 975
+tokens: 1075
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--documentation.txt
 ---
 
@@ -100,26 +100,28 @@ using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Access
 or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```tsx
-
-  Item 1
-  Item 2
-  Item 3
-
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
 ```
 
  Screen readers will announce the label and the option information (text, position, selection state).
 
 ```tsx
 <>
-  
+  <Text
+    id="switch-label"
+    preset={ TEXT_PRESET.label }>
     Select an item:
-  
+  </Text>
 
-  
-    Item 1
-    Item 2
-    Item 3
-  
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
 </>
 ```
 

@@ -1,0 +1,25 @@
+{
+  "$comment": "Per-guide llms/legacy-link metadata, in reading order (mirrors the navigation model), keyed by MDX basename. Slugs and titles are editorial legacy from the Storybook era that cannot be derived from the MDX content itself: the llms emission (vite-plugin-llms.ts), its verification (scripts/verify-llms.sh) and the legacy ?path= redirects (src/main.tsx) all read this single file. discoverGuides() cross-checks it against the filesystem and fails the build loudly on any drift. 'exclusions' lists guide MDX files that intentionally emit no llms document: llm-documentation is the meta page about this very output. (The changelog and the tools are not guide MDX content at all, so they need no exclusion.)",
+  "exclusions": ["llm-documentation"],
+  "guides": [
+    { "mdx": "get-started", "slug": "ovhcloud-design-system-get-started", "title": "Get Started" },
+    { "mdx": "accessibility", "slug": "ovhcloud-design-system-build-accessibility", "title": "Accessibility" },
+    { "mdx": "internationalization", "slug": "ovhcloud-design-system-build-internationalization", "title": "Internationalization" },
+    { "mdx": "forms", "slug": "ovhcloud-design-system-build-forms", "stories": "components/form-field", "title": "Forms" },
+    { "mdx": "charts", "slug": "ovhcloud-design-system-build-charts", "title": "Charts" },
+    { "mdx": "apply-ods-style", "slug": "ovhcloud-design-system-customize-apply-ods-style", "title": "Apply ODS Style" },
+    { "mdx": "style-customization", "slug": "ovhcloud-design-system-customize-style-customization", "title": "Style Customization" },
+    { "mdx": "design-tokens", "slug": "ovhcloud-design-system-customize-design-tokens", "title": "Design Tokens" },
+    { "mdx": "tailwind", "slug": "ovhcloud-design-system-customize-tailwind-css-integration", "title": "Tailwind CSS Integration" },
+    { "mdx": "whats-new", "slug": "ovhcloud-design-system-upgrade-what-s-new", "title": "What's new" },
+    { "mdx": "migration-to-v19", "slug": "ovhcloud-design-system-upgrade-migration-to-v19", "title": "Migration to v19" },
+    { "mdx": "migration-12-to-13", "slug": "ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x", "title": "12.x to 13.x" },
+    { "mdx": "migration-13-to-14", "slug": "ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x", "title": "13.x to 14.x" },
+    { "mdx": "migration-14-to-15", "slug": "ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x", "title": "14.x to 15.x" },
+    { "mdx": "migration-15-to-16", "slug": "ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x", "title": "15.x to 16.x" },
+    { "mdx": "migration-16-to-17", "slug": "ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x", "title": "16.x to 17.x" },
+    { "mdx": "migration-17-to-18", "slug": "ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x", "title": "17.x to 18.x" },
+    { "mdx": "faq", "slug": "ovhcloud-design-system-f-a-q", "title": "FAQ" },
+    { "mdx": "roadmap", "slug": "ovhcloud-design-system-roadmap", "title": "Roadmap" }
+  ]
+}

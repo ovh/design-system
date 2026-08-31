@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BADGE_COLOR, BADGE_SIZE, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_COLOR, Card, Clipboard, ClipboardControl, ClipboardTrigger, ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
+import { type IconNameKey } from '../constants/iconTags';
 import { CodeBlock } from '../../CodeBlock';
 import { cx } from '../cx';
 import styles from './iconDetails.module.css';
@@ -10,6 +11,7 @@ import styles from './iconDetails.module.css';
 interface IconDetailsProp {
   aliases?: string[];
   name?: ICON_NAME;
+  nameKey?: IconNameKey;
   onClose: () => void;
 }
 
@@ -18,7 +20,7 @@ const COLOR_VARIANTS = ['primary', 'critical', 'neutral', 'success', 'warning'];
 /* The copy tooltips must clear the drawer overlay. */
 const OVERLAY_POSITIONER = { zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)' };
 
-const IconDetails = ({ aliases, name, onClose }: IconDetailsProp) => {
+const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
   const [color, setColor] = useState<string>();
 
   useEffect(() => {
@@ -84,8 +86,9 @@ const IconDetails = ({ aliases, name, onClose }: IconDetailsProp) => {
         { `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';` }
       </CodeBlock>
 
+      { /* The snippet needs the camelCase enum KEY, not the kebab-case value. */ }
       <CodeBlock label="JSX usage code sample" positionerStyle={ OVERLAY_POSITIONER }>
-        { `<Icon name={ ICON_NAME.${name} } />` }
+        { `<Icon name={ ICON_NAME.${nameKey ?? name} } />` }
       </CodeBlock>
     </div>
   );

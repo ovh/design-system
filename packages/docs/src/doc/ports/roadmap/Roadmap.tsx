@@ -19,19 +19,11 @@ const Roadmap = () => {
   useEffect(() => {
     fetch('https://ovh.github.io/design-system/data/roadmap.json')
       .then(res => res.json())
-      .catch(() => setError(true))
       .then((json) => {
         setTimeout(() => setJsonData(json), 500);
-      });
+      })
+      .catch(() => setError(true));
   }, []);
-
-  if (!jsonData) {
-    return (
-      <div className={ styles['roadmap-loading'] }>
-        <Spinner />
-      </div>
-    );
-  }
 
   if (error) {
     return (
@@ -53,6 +45,14 @@ const Roadmap = () => {
             </Button>
           </MessageBody>
         </Message>
+      </div>
+    );
+  }
+
+  if (!jsonData) {
+    return (
+      <div className={ styles['roadmap-loading'] }>
+        <Spinner />
       </div>
     );
   }

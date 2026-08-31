@@ -1,34 +1,22 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { {{> ComponentName }}, type {{> ComponentName }}Prop } from '../../../../ods-react/src/components/{{> component-name }}/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<{{> ComponentName }}Prop>;
 
 const meta: Meta<{{> ComponentName }}Prop> = {
   component: {{> ComponentName }},
-  // subcomponents: { {{> ComponentName }}Xxx }, // Uncomment if sub components, otherwise remove
   tags: ['new'],
-  title: 'React Components/{{> ComponentName }}',
+  title: 'React Components/{{> ComponentTitle }}',
 };
 
 export default meta;
 
-export const Demo: Story = {
-  argTypes: orderControls({
-    dummy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    dummy: 'dummy default',
-  },
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <{{> ComponentName }} />
+  ),
 };
 
 export const Default: Story = {
@@ -46,6 +34,13 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
+  render: ({}) => (
+    <{{> ComponentName }} />
+  ),
+};
+
+export const ThemeGenerator: Story = {
+  tags: ['!dev'],
   render: ({}) => (
     <{{> ComponentName }} />
   ),

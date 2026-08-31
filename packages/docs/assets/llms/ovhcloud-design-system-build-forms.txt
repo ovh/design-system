@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 5761
+tokens: 6797
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -41,68 +41,87 @@ Optional fields do not need to be labeled "Optional" and can remain unmarked if 
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="Company" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Phone
-          
+          </FormFieldLabel>
 
-          
-            
-          
+          <PhoneNumber name="phonenumber">
+            <PhoneNumberControl />
+          </PhoneNumber>
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Include country code (e.g. +33 6 00 00 00 00)
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Your email"
+            required
+            type="email" />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               Format: name@example.com
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
       </form>
     );
   }
@@ -277,53 +296,73 @@ When using a critical **Message**:
       <form
         onSubmit={ handleSubmit }
         style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField invalid={ !!localError.firstname }>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            placeholder="Type your first name"
+            required />
 
-          
+          <FormFieldError>
             { localError.firstname }
-          
-        
+          </FormFieldError>
+        </FormField>
 
-        
-          
+        <FormField invalid={ !!localError.email }>
+          <FormFieldLabel>
             Email
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Type your email"
+            required />
 
-          
+          <FormFieldError>
             { localError.email }
-          
-        
+          </FormFieldError>
+        </FormField>
 
         {
           !!globalError &&
-           setGlobalError('') }>
+          <Message
+            color={ MESSAGE_COLOR.critical }
+            onRemove={ () => setGlobalError('') }>
             
 > { globalError }
 
-          
+          </Message>
         }
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button
+            disabled={ isSubmitting }
+            variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button
+            color={ BUTTON_COLOR.critical }
+            loading={ isSubmitting }
+            type="submit">
             Delete account
-          
+          </Button>
         </div>
       </form>
     );
@@ -352,25 +391,25 @@ Use when:
 
 ```tsx
 <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-  
-    
+  <FormField>
+    <FormFieldLabel>
       Phone number
-    
+    </FormFieldLabel>
 
-    
-      
-      
-    
-  
+    <PhoneNumber name="phonenumber">
+      <PhoneNumberCountryList />
+      <PhoneNumberControl />
+    </PhoneNumber>
+  </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    
+    <Button variant={ BUTTON_VARIANT.outline }>
       Back
-    
+    </Button>
 
-    
+    <Button>
       Update profile
-    
+    </Button>
   </div>
 </form>
 ```
@@ -391,56 +430,70 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Personal Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             First name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Last name
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
 
-        
+        <Text preset={ TEXT_PRESET.heading3 }>
           Company Information
-        
+        </Text>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Company name
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="company"
+            placeholder="OVHcloud" />
+        </FormField>
 
-        
-          
+        <FormField>
+          <FormFieldLabel>
             VAT number
-          
+          </FormFieldLabel>
 
-          
-        
+          <Input
+            name="vat"
+            placeholder="vat" />
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          
+          <Button>
             Save
-          
+          </Button>
         </div>
       </form>
     );
@@ -463,31 +516,37 @@ Use when:
 
     return (
       <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-        
-          
+        <FormField>
+          <FormFieldLabel>
             Please type DELETE to confirm
-            
+            <FormFieldLabelSubLabel>
               - mandatory
-            
-          
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
 
-          
+          <Input
+            invalid={ !!localError.confirmation }
+            name="confirmation"
+            onBlur={ onBlur }
+            pattern="^DELETE$"
+            placeholder="DELETE"
+            required />
 
-          
-            
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
               This action is irreversible.
-            
-          
-        
+            </Text>
+          </FormFieldHelper>
+        </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          
+          <Button variant={ BUTTON_VARIANT.outline }>
             Cancel
-          
+          </Button>
 
-          
+          <Button color={ BUTTON_COLOR.critical }>
             Delete account
-          
+          </Button>
         </div>
       </form>
     );

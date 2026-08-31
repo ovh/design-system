@@ -4,7 +4,7 @@ slug: icon
 category: component
 type: documentation
 version: 19.7.3
-tokens: 883
+tokens: 900
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--documentation.txt
 ---
 
@@ -82,7 +82,10 @@ Proper attributes should be used to ensure that **Icons** are either perceivable
 If the **Icon** conveys essential information, it must be accompanied by an accessible label using [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) and [role="img"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role).
 
 ```tsx
-
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
+  role="img" />
 ```
 
  Screen readers will announce the label, ensuring users understand the **Icon**'s meaning.

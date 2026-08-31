@@ -80,7 +80,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1633,
+          "tokens": 1737,
           "url": "./react-components-badge--documentation.txt"
         },
         "technical-information": {
@@ -106,7 +106,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1015,
+          "tokens": 1114,
           "url": "./react-components-breadcrumb--documentation.txt"
         },
         "technical-information": {
@@ -132,7 +132,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1479,
+          "tokens": 1520,
           "url": "./react-components-button--documentation.txt"
         },
         "technical-information": {
@@ -184,7 +184,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1298,
+          "tokens": 1346,
           "url": "./react-components-card--documentation.txt"
         },
         "technical-information": {
@@ -262,12 +262,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 853,
+          "tokens": 888,
           "url": "./react-components-clipboard--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 382,
+          "tokens": 393,
           "url": "./react-components-clipboard--technical-information.txt"
         },
         "examples": {
@@ -309,17 +309,17 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 800,
+          "tokens": 801,
           "url": "./react-components-combobox.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1586,
+          "tokens": 1805,
           "url": "./react-components-combobox--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 987,
+          "tokens": 989,
           "url": "./react-components-combobox--technical-information.txt"
         },
         "examples": {
@@ -340,12 +340,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1909,
+          "tokens": 1936,
           "url": "./react-components-command--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1021,
+          "tokens": 1017,
           "url": "./react-components-command--technical-information.txt"
         },
         "examples": {
@@ -392,7 +392,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1719,
+          "tokens": 1854,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
@@ -439,17 +439,17 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 291,
+          "tokens": 349,
           "url": "./react-components-drawer.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1222,
+          "tokens": 1326,
           "url": "./react-components-drawer--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 512,
+          "tokens": 581,
           "url": "./react-components-drawer--technical-information.txt"
         },
         "examples": {
@@ -522,7 +522,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1738,
+          "tokens": 1908,
           "url": "./react-components-file-upload--documentation.txt"
         },
         "technical-information": {
@@ -548,7 +548,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 792,
+          "tokens": 820,
           "url": "./react-components-form-field--documentation.txt"
         },
         "technical-information": {
@@ -574,7 +574,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 883,
+          "tokens": 900,
           "url": "./react-components-icon--documentation.txt"
         },
         "technical-information": {
@@ -600,7 +600,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1184,
+          "tokens": 1264,
           "url": "./react-components-input--documentation.txt"
         },
         "technical-information": {
@@ -652,7 +652,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1164,
+          "tokens": 1299,
           "url": "./react-components-link--documentation.txt"
         },
         "technical-information": {
@@ -678,7 +678,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 670,
+          "tokens": 672,
           "url": "./react-components-logo--documentation.txt"
         },
         "technical-information": {
@@ -730,7 +730,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 494,
+          "tokens": 538,
           "url": "./react-components-medium--documentation.txt"
         },
         "technical-information": {
@@ -761,7 +761,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 733,
+          "tokens": 744,
           "url": "./react-components-menu--technical-information.txt"
         },
         "examples": {
@@ -782,7 +782,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1811,
+          "tokens": 1993,
           "url": "./react-components-message--documentation.txt"
         },
         "technical-information": {
@@ -834,7 +834,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 945,
+          "tokens": 1019,
           "url": "./react-components-meter--documentation.txt"
         },
         "technical-information": {
@@ -860,12 +860,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1471,
+          "tokens": 1654,
           "url": "./react-components-modal--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 947,
+          "tokens": 1003,
           "url": "./react-components-modal--technical-information.txt"
         },
         "examples": {
@@ -886,7 +886,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1405,
+          "tokens": 1428,
           "url": "./react-components-pagination--documentation.txt"
         },
         "technical-information": {
@@ -912,7 +912,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1055,
+          "tokens": 1120,
           "url": "./react-components-password--documentation.txt"
         },
         "technical-information": {
@@ -938,7 +938,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1434,
+          "tokens": 1533,
           "url": "./react-components-phone-number--documentation.txt"
         },
         "technical-information": {
@@ -964,12 +964,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1324,
+          "tokens": 1462,
           "url": "./react-components-popover--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 595,
+          "tokens": 606,
           "url": "./react-components-popover--technical-information.txt"
         },
         "examples": {
@@ -990,7 +990,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 709,
+          "tokens": 718,
           "url": "./react-components-progress-bar--documentation.txt"
         },
         "technical-information": {
@@ -1016,7 +1016,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1115,
+          "tokens": 1282,
           "url": "./react-components-prompt-input--documentation.txt"
         },
         "technical-information": {
@@ -1042,7 +1042,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 864,
+          "tokens": 904,
           "url": "./react-components-quantity--documentation.txt"
         },
         "technical-information": {
@@ -1120,7 +1120,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1269,
+          "tokens": 1364,
           "url": "./react-components-range--documentation.txt"
         },
         "technical-information": {
@@ -1146,7 +1146,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1106,
+          "tokens": 1186,
           "url": "./react-components-select--documentation.txt"
         },
         "technical-information": {
@@ -1172,7 +1172,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 741,
+          "tokens": 744,
           "url": "./react-components-skeleton--documentation.txt"
         },
         "technical-information": {
@@ -1198,7 +1198,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1191,
+          "tokens": 1215,
           "url": "./react-components-spinner--documentation.txt"
         },
         "technical-information": {
@@ -1224,7 +1224,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 975,
+          "tokens": 1075,
           "url": "./react-components-switch--documentation.txt"
         },
         "technical-information": {
@@ -1302,7 +1302,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1324,
+          "tokens": 1350,
           "url": "./react-components-tag--documentation.txt"
         },
         "technical-information": {
@@ -1354,7 +1354,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 944,
+          "tokens": 987,
           "url": "./react-components-textarea--documentation.txt"
         },
         "technical-information": {
@@ -1406,7 +1406,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1246,
+          "tokens": 1281,
           "url": "./react-components-timepicker--documentation.txt"
         },
         "technical-information": {
@@ -1458,7 +1458,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 933,
+          "tokens": 971,
           "url": "./react-components-toggle--documentation.txt"
         },
         "technical-information": {
@@ -1484,12 +1484,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1091,
+          "tokens": 1146,
           "url": "./react-components-tooltip--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 510,
+          "tokens": 521,
           "url": "./react-components-tooltip--technical-information.txt"
         },
         "examples": {
@@ -1545,7 +1545,7 @@
       "slug": "ovhcloud-design-system-build-accessibility",
       "title": "Accessibility",
       "type": "overview",
-      "tokens": 4076,
+      "tokens": 4524,
       "url": "./ovhcloud-design-system-build-accessibility.txt"
     },
     {
@@ -1559,7 +1559,7 @@
       "slug": "ovhcloud-design-system-build-forms",
       "title": "Forms",
       "type": "overview",
-      "tokens": 5761,
+      "tokens": 6797,
       "url": "./ovhcloud-design-system-build-forms.txt"
     },
     {
@@ -1601,7 +1601,7 @@
       "slug": "ovhcloud-design-system-upgrade-what-s-new",
       "title": "What's new",
       "type": "overview",
-      "tokens": 18446,
+      "tokens": 18449,
       "url": "./ovhcloud-design-system-upgrade-what-s-new.txt"
     },
     {

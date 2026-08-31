@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4076
+tokens: 4524
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -44,17 +44,17 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```tsx
-
-  
-
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button.
 
 ```tsx
-
-    
-
+<Button aria-label='Clear'>
+    <Icon name={ ICON_NAME.xmark } />
+</Button>
 ```
 
  Screen readers will announce a button and the aria-label.
@@ -74,9 +74,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span>Filter your search results</span>
 </>
 ```
@@ -85,9 +85,9 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 ```tsx
 <>
-  
-    
-  
+  <Button aria-labelledby="filter-btn">
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
   <span id="filter-btn">Filter your search results</span>
 </>
 ```
@@ -187,43 +187,45 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
   </tbody>
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers won't announce the **Modal** content.
 
 ```tsx
-
-  
-    
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
       Trigger Modal
-    
-  
+    </Button>
+  </ModalTrigger>
 
-  
-    <span id="modal-title">Delete item</span>
-    
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    
-  
-
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
  Screen readers will announce the **Modal** content.
@@ -239,7 +241,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden) set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Some screen readers will announce the icon and detect the presence of the image.
@@ -250,7 +252,7 @@ Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 > Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
 
 ```tsx
-
+<Icon name={ ICON_NAME.home } />
 ```
 
  Screen readers will announce nothing, the icon is ignored.
@@ -268,7 +270,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div>
-  
+  <Skeleton />
 </div>
 ```
 
@@ -276,7 +278,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 ```tsx
 <div aria-busy="true">
-  
+  <Skeleton />
 </div>
 ```
 
@@ -301,9 +303,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem' }}>
           { message }
@@ -325,9 +327,9 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Copy
-        
+        </Button>
 
         <span
           aria-live="polite"
@@ -366,9 +368,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span style={{ marginLeft: '1rem', color: 'red' }}>
           { error }
@@ -390,9 +392,9 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 
     return (
       <>
-        
+        <Button onClick={ handleClick }>
           Save
-        
+        </Button>
 
         <span
           role="alert"
@@ -422,11 +424,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
   </label>
 
   <div id="rating">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
   </div>
 </>
 ```
@@ -445,11 +447,11 @@ Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
     aria-labelledby="rating-label"
     id="rating"
     role="radiogroup">
-    
-    
-    
-    
-    
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+    <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
   </div>
 </>
 ```

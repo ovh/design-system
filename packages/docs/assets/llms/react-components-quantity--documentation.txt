@@ -4,7 +4,7 @@ slug: quantity
 category: component
 type: documentation
 version: 19.7.3
-tokens: 864
+tokens: 904
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--documentation.txt
 ---
 
@@ -98,17 +98,19 @@ Every **Quantity** must have a clear and explicit label to ensure that users (es
 using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Number of CPUs:
-  
+  </FormFieldLabel>
 
-  
-    
-      
-    
-  
-
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```
 
  Screen readers will announce the label and the quantity field.

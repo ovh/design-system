@@ -4,7 +4,7 @@ slug: skeleton
 category: component
 type: documentation
 version: 19.7.3
-tokens: 741
+tokens: 744
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--documentation.txt
 ---
 
@@ -74,7 +74,7 @@ To ensure screen reader users are aware that content is being loaded, you should
 
 ```tsx
 <div aria-busy="true">
-  
+  <Skeleton />
 </div>
 ```
 

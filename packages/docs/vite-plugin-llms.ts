@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
+import guidesInventory from './src/content/guides/guides.json';
 import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
@@ -33,8 +34,9 @@ const estimateTokens = (text: string): number => Math.ceil(text.length / 4);
 
 /* ------------------------------------------------------------------ *
  * Content inventory. Components and their pages are discovered from the
- * migrated content itself; guides carry their legacy llms slug so consumer
- * URLs survive the platform switch (naming came from Storybook title paths).
+ * migrated content itself, and so is the guide list (src/content/guides);
+ * guides carry their legacy llms slug so consumer URLs survive the platform
+ * switch (naming came from Storybook title paths).
  * Excluded, as before: changelog, the llm-documentation meta page, tools.
  * ------------------------------------------------------------------ */
 
@@ -45,27 +47,35 @@ interface GuideEntry {
   title: string;
 }
 
-const GUIDES: GuideEntry[] = [
-  { mdx: 'get-started', slug: 'ovhcloud-design-system-get-started', title: 'Get Started' },
-  { mdx: 'accessibility', slug: 'ovhcloud-design-system-build-accessibility', title: 'Accessibility' },
-  { mdx: 'internationalization', slug: 'ovhcloud-design-system-build-internationalization', title: 'Internationalization' },
-  { mdx: 'forms', slug: 'ovhcloud-design-system-build-forms', stories: 'components/form-field', title: 'Forms' },
-  { mdx: 'charts', slug: 'ovhcloud-design-system-build-charts', title: 'Charts' },
-  { mdx: 'apply-ods-style', slug: 'ovhcloud-design-system-customize-apply-ods-style', title: 'Apply ODS Style' },
-  { mdx: 'style-customization', slug: 'ovhcloud-design-system-customize-style-customization', title: 'Style Customization' },
-  { mdx: 'design-tokens', slug: 'ovhcloud-design-system-customize-design-tokens', title: 'Design Tokens' },
-  { mdx: 'tailwind', slug: 'ovhcloud-design-system-customize-tailwind-css-integration', title: 'Tailwind CSS Integration' },
-  { mdx: 'whats-new', slug: 'ovhcloud-design-system-upgrade-what-s-new', title: "What's new" },
-  { mdx: 'migration-to-v19', slug: 'ovhcloud-design-system-upgrade-migration-to-v19', title: 'Migration to v19' },
-  { mdx: 'migration-12-to-13', slug: 'ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x', title: '12.x to 13.x' },
-  { mdx: 'migration-13-to-14', slug: 'ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x', title: '13.x to 14.x' },
-  { mdx: 'migration-14-to-15', slug: 'ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x', title: '14.x to 15.x' },
-  { mdx: 'migration-15-to-16', slug: 'ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x', title: '15.x to 16.x' },
-  { mdx: 'migration-16-to-17', slug: 'ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x', title: '16.x to 17.x' },
-  { mdx: 'migration-17-to-18', slug: 'ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x', title: '17.x to 18.x' },
-  { mdx: 'faq', slug: 'ovhcloud-design-system-f-a-q', title: 'FAQ' },
-  { mdx: 'roadmap', slug: 'ovhcloud-design-system-roadmap', title: 'Roadmap' },
-];
+/* The guide inventory (per-guide legacy slug/title metadata + the exclusion
+   list) lives in src/content/guides/guides.json, next to the content it
+   describes: this emitter, verify-llms.sh and the legacy ?path= redirects in
+   src/main.tsx all consume that single file. discoverGuides() cross-checks it
+   against the filesystem and fails the build loudly on any drift; exclusions
+   are validated too — one without an MDX file fails the build. */
+const GUIDE_EXCLUSIONS = new Set<string>(guidesInventory.exclusions);
+const GUIDES: GuideEntry[] = guidesInventory.guides;
+
+function discoverGuides(): GuideEntry[] {
+  const all = readdirSync(resolve(here, 'src', 'content', 'guides'))
+    .filter((name) => name.endsWith('.mdx'))
+    .map((name) => name.slice(0, -'.mdx'.length));
+  const found = all.filter((name) => !GUIDE_EXCLUSIONS.has(name));
+  const mapped = GUIDES.map((guide) => guide.mdx);
+  const unmapped = found.filter((name) => !mapped.includes(name));
+  const stale = mapped.filter((name) => !found.includes(name));
+  const duplicated = mapped.filter((name, index) => mapped.indexOf(name) !== index);
+  const deadExclusions = [...GUIDE_EXCLUSIONS].filter((name) => !all.includes(name));
+  if (unmapped.length || stale.length || duplicated.length || deadExclusions.length) {
+    throw new Error(`llms: guide inventory drift — ${[
+      ...unmapped.map((name) => `src/content/guides/${name}.mdx has no guides.json entry (add one, or exclude it explicitly)`),
+      ...stale.map((name) => `guides.json entry '${name}' has no MDX file left`),
+      ...duplicated.map((name) => `guides.json lists '${name}' more than once`),
+      ...deadExclusions.map((name) => `guides.json exclusion '${name}' matches no MDX file`),
+    ].join('; ')}`);
+  }
+  return GUIDES;
+}
 
 const HELPERS = [
   { mdx: 'format-price', name: 'formatPrice', slug: 'helpers-formatprice', stories: 'helpers/formatPrice' },
@@ -88,6 +98,48 @@ function readStories(ref: string): Record<string, string> {
 function readJson(path: string): unknown | null {
   const abs = resolve(here, path);
   return existsSync(abs) ? JSON.parse(readFileSync(abs, 'utf8')) : null;
+}
+
+/* ------------------------------------------------------------------ *
+ * Build-time invariants over the component inventory. Two silent-drift
+ * traps become hard build failures here:
+ * - a renamed/typo'd stories file would drop every example from the llms
+ *   output (readStories falls back to {}) and make the app route redirect
+ *   to the homepage — every content component must have its stories file;
+ * - the 'new'/'deprecated' badges COMPONENT_PAGES hardcodes in the nav
+ *   model must mirror each story meta's `tags` (the same source Storybook
+ *   displayed), in both directions.
+ * ------------------------------------------------------------------ */
+
+function checkComponentInvariants(componentKeys: string[]): void {
+  const model = readFileSync(resolve(here, 'src/nav/model.ts'), 'utf8');
+  const block = /const COMPONENT_PAGES[^=]*=\s*\[([\s\S]*?)\n\];/.exec(model)?.[1];
+  const tuples = block ? [...block.matchAll(/\[\s*'([^']+)'\s*,\s*'[^']*'\s*(?:,\s*'([^']+)'\s*)?\]/g)] : [];
+  if (!tuples.length) {
+    throw new Error('llms: COMPONENT_PAGES not found in src/nav/model.ts — the badge drift check cannot run, update its parsing in vite-plugin-llms.ts');
+  }
+  const badges = new Map(tuples.map((tuple) => [tuple[1], tuple[2]]));
+
+  for (const key of componentKeys) {
+    const storiesPath = `stories/components/${key}/${key}.stories.tsx`;
+    if (!existsSync(resolve(here, storiesPath))) {
+      throw new Error(`llms: component 'src/content/components/${key}' has no stories file — expected ${storiesPath}`);
+    }
+    if (!badges.has(key)) {
+      throw new Error(`llms: component '${key}' has no COMPONENT_PAGES entry in src/nav/model.ts`);
+    }
+    const meta = /^const meta[^=]*=\s*\{[\s\S]*?^\};/m.exec(readFileSync(resolve(here, storiesPath), 'utf8'))?.[0];
+    if (!meta) {
+      throw new Error(`llms: story meta not found in ${storiesPath} — the badge drift check cannot run, update its parsing in vite-plugin-llms.ts`);
+    }
+    const tags = [...(/tags:\s*\[([^\]]*)\]/.exec(meta)?.[1] ?? '').matchAll(/['"]([^'"]+)['"]/g)].map((match) => match[1]);
+    const tagged = tags.includes('deprecated') ? 'deprecated' : tags.includes('new') ? 'new' : undefined;
+    const badge = badges.get(key);
+    const mirrored = badge === 'new' || badge === 'deprecated' ? badge : undefined;
+    if (mirrored !== tagged) {
+      throw new Error(`llms: badge drift on '${key}' — src/nav/model.ts declares ${mirrored ? `badge '${mirrored}'` : 'no status badge'} but ${storiesPath} meta tags declare ${tagged ? `'${tagged}'` : `neither 'new' nor 'deprecated'`}; align COMPONENT_PAGES with the story tags`);
+    }
+  }
 }
 
 /* ------------------------------------------------------------------ *
@@ -241,8 +293,21 @@ function transformProse(text: string, ctx: MdxContext): string {
   out = out.replace(/<(Roadmap|Recipes|FormData|Component)\b[^>]*\/>/g,
     `_Interactive content — see ${ctx.pageUrl}_`);
 
-  // Leftover contract/ODS tags: drop the tags, keep their text content.
-  out = out.replace(/<\/?[A-Z]\w*(?:\s[^>]*?)?\/?>/g, '');
+  // Leftover contract/ODS tags: drop the tags from PROSE, keep their text
+  // content. Code is quoted verbatim and must survive: fences (the story
+  // sources Canvas inserted above, R2) and inline code spans (`<Toggle />`)
+  // both pass through untouched.
+  const stripTags = (text: string): string => text.replace(/<\/?[A-Z]\w*(?:\s[^>]*?)?\/?>/g, '');
+  // Split with capture groups: odd indices are the captures. Index parity is
+  // the reliable discriminator — a startsWith('`') check would misfire on
+  // unmatched remainders that merely begin with a backtick (``double``,
+  // unclosed or newline-spanning spans) and skip stripping the whole segment.
+  out = out
+    .split(/(```[\s\S]*?```)/)
+    .map((part, i) => (i % 2 === 1
+      ? part
+      : part.split(/(`[^`\n]+`)/).map((segment, j) => (j % 2 === 1 ? segment : stripTags(segment))).join('')))
+    .join('');
 
   return out.replace(/\n{3,}/g, '\n\n');
 }
@@ -251,7 +316,7 @@ function mdxToMarkdown(source: string, ctx: MdxContext): string {
   // Fences pass through untouched; only prose between them is transformed.
   return source
     .split(/(```[\s\S]*?```)/)
-    .map((segment) => (segment.startsWith('```') ? segment : transformProse(segment, ctx)))
+    .map((segment, i) => (i % 2 === 1 ? segment : transformProse(segment, ctx)))
     .join('')
     .trim();
 }
@@ -552,12 +617,13 @@ function generate(outDir: string, withRootSummary = true): number {
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
     .sort();
+  checkComponentInvariants(componentKeys);
 
   const components = componentKeys.map((key) => ({ key, title: titleize(key), ...componentDocs(key) }));
   const componentFiles = components.flatMap((comp) => comp.docs);
   const genericFiles = [
     welcomeDoc(components.map((comp) => comp.title)),
-    ...GUIDES.map(guideDoc),
+    ...discoverGuides().map(guideDoc),
     ...HELPERS.flatMap(helperDocs),
     ...(recipesDoc() ? [recipesDoc() as Doc] : []),
   ];

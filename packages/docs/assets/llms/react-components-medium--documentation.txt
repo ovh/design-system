@@ -4,7 +4,7 @@ slug: medium
 category: component
 type: documentation
 version: 19.7.3
-tokens: 494
+tokens: 538
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--documentation.txt
 ---
 
@@ -61,12 +61,14 @@ whereas the alternative text always describe what the image actually conveys.
 
 ```tsx
 <figure>
-  
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
 
   <figcaption>
-    
+    <Text preset={ TEXT_PRESET.caption }>
       © Copyright National Aeronautics and Space Administration
-    
+    </Text>
   </figcaption>
 </figure>
 ```

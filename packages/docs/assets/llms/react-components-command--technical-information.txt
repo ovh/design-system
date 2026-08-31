@@ -4,7 +4,7 @@ slug: command
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1021
+tokens: 1017
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
 ---
 
@@ -79,11 +79,11 @@ This component extends all the native `<div>` attributes.
 
 ## CommandTrigger
 
-This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
 
 ## CSS Variables
 

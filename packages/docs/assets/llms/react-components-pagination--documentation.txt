@@ -4,7 +4,7 @@ slug: pagination
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1405
+tokens: 1428
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--documentation.txt
 ---
 
@@ -135,9 +135,11 @@ The "items per page" Select uses the same keyboard shortcuts as the standard Sel
 To ensure it is correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify it.
 
 ```tsx
-
-  
-
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
 ```
 
  Screen readers will announce the pagination element correctly.

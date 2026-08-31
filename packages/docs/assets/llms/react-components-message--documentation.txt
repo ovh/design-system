@@ -4,7 +4,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1811
+tokens: 1993
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -127,23 +127,23 @@ When displaying multiple **Messages** together, they should be wrapped within an
 ```tsx
 <ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
   <li>
-    
-      
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleCheck } />
 
       
 > Your changes have been saved.
 
-    
+    </Message>
   </li>
 
   <li>
-    
-      
+    <Message color={ MESSAGE_COLOR.warning }>
+      <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
       
 > Some fields need your attention.
 
-    
+    </Message>
   </li>
 </ul>
 ```
@@ -160,21 +160,23 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
 <div
   role="list"
   style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-  
-    
+  <Message role="listitem">
+    <MessageIcon name={ ICON_NAME.circleCheck } />
 
     
 > Your changes have been saved.
 
-  
+  </Message>
 
-  
-    
+  <Message
+    color={ MESSAGE_COLOR.warning }
+    role="listitem">
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
     
 > Some fields need your attention.
 
-  
+  </Message>
 </div>
 ```
 
@@ -194,25 +196,29 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
     return (
       <>
         <div>
-           setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
-          
+          </Button>
 
-           setAlerts((a) => a.concat([new Date().toString()])) }>
+          <Button
+            color={ BUTTON_COLOR.critical }
+            onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
-          
+          </Button>
         </div>
 
         <div role="alert">
           {
             alerts.map((alert) => (
-              
-                
+              <Message
+                color={ MESSAGE_COLOR.critical }
+                key={ alert }>
+                <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
                 
 > Alert: { alert }
 
-              
+              </Message>
             ))
           }
         </div>
@@ -220,13 +226,13 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
         <div role="status">
           {
             statuses.map((status) => (
-              
-                
+              <Message key={ status }>
+                <MessageIcon name={ ICON_NAME.circleInfo } />
 
                 
 > Status: { status }
 
-              
+              </Message>
             ))
           }
         </div>

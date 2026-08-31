@@ -29,8 +29,6 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 | `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
 | `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
 | `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
@@ -39,3 +37,5 @@ _No specific property._
 | `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
 | `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
 | `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |

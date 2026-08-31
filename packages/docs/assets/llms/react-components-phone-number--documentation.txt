@@ -4,7 +4,7 @@ slug: phone-number
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1434
+tokens: 1533
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--documentation.txt
 ---
 
@@ -129,17 +129,17 @@ To ensure proper accessibility, the **Phone Number** component must be correctly
 Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Phone number:
-  
+  </FormFieldLabel>
 
-  
-    
+  <PhoneNumber>
+    <PhoneNumberCountryList />
 
-    
-  
-
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
 ```
 
  Screen readers will announce the label, the field and its content.
@@ -149,17 +149,22 @@ Every **Phone Number** must have a clear and explicit label to ensure that users
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
 
 ```tsx
-
-  
+<FormField>
+  <FormFieldLabel>
     Phone number:
-  
+  </FormFieldLabel>
 
-  
-    
+  <PhoneNumber
+    country="fr"
+    defaultValue="06 01 02 03 04"
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear phone number',
+    }}>
+    <PhoneNumberCountryList />
 
-    
-  
-
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</FormField>
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.

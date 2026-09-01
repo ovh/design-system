@@ -200,13 +200,15 @@ $ods-button-size-md: 40px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  text-decoration: none;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
   cursor: pointer;
 
-  &:disabled {
+  &:disabled,
+  &[aria-disabled="true"] {
     @include state.ods-is-disabled();
   }
 
@@ -245,7 +247,7 @@ $ods-button-size-md: 40px;
   border-width: var(--ods-button-border-radius-width);
   border-style: solid;
 
-  &:not(:disabled) {
+  &:not(:disabled, [aria-disabled="true"]) {
     @if $color == 'critical' {
       border-color: var(--ods-button-border-color-critical);
       background-color: var(--ods-button-background-color-critical);
@@ -343,11 +345,12 @@ $ods-button-size-md: 40px;
 @mixin ods-button-variant-ghost($color) {
   border: var(--ods-button-border-radius-width) solid transparent;
 
-  &:disabled {
+  &:disabled,
+  &[aria-disabled="true"] {
     background-color: inherit;
   }
 
-  &:not(:disabled) {
+  &:not(:disabled, [aria-disabled="true"]) {
     @if $color == 'critical' {
       background-color: var(--ods-button-background-color-critical-ghost);
       color: var(--ods-button-text-color-critical-ghost);
@@ -440,7 +443,7 @@ $ods-button-size-md: 40px;
   border-width: var(--ods-button-border-radius-width);
   border-style: solid;
 
-  &:not(:disabled) {
+  &:not(:disabled, [aria-disabled="true"]) {
     @if $color == 'critical' {
       border-color: var(--ods-button-border-color-critical-outline);
       background-color: var(--ods-button-background-color-critical-outline);

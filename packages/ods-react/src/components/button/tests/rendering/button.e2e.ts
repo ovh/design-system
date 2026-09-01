@@ -20,6 +20,66 @@ describe('Button rendering', () => {
     });
   });
 
+  describe('as', () => {
+    it('should render a button by default', async() => {
+      await gotoStory(page, 'rendering/render');
+
+      const button = await page.waitForSelector('[data-testid="render"]');
+
+      expect(await button?.evaluate((el: Element) => el.tagName)).toBe('BUTTON');
+      expect(await button?.evaluate((el: Element) => el.getAttribute('type'))).toBe('button');
+    });
+
+    it('should render a link when asked to', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const button = await page.waitForSelector('[data-testid="link"]');
+
+      expect(await button?.evaluate((el: Element) => el.tagName)).toBe('A');
+      expect(await button?.evaluate((el: Element) => el.getAttribute('href'))).toBe('#dummy-target');
+    });
+
+    it('should not render the button only attributes on a link', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const button = await page.waitForSelector('[data-testid="link"]');
+
+      expect(await button?.evaluate((el: Element) => el.getAttribute('type'))).toBeNull();
+      expect(await button?.evaluate((el: Element) => el.hasAttribute('disabled'))).toBe(false);
+    });
+
+    it('should render a link without the browser underline', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const button = await page.waitForSelector('[data-testid="link"]');
+
+      expect(await button?.evaluate((el: Element) => getComputedStyle(el).textDecorationLine)).toBe('none');
+    });
+
+    it('should make a disabled link inert without the disabled attribute', async() => {
+      await gotoStory(page, 'rendering/link-disabled');
+
+      const link = await page.waitForSelector('[data-testid="link-disabled"]');
+
+      expect(await link?.evaluate((el: Element) => el.getAttribute('aria-disabled'))).toBe('true');
+      expect(await link?.evaluate((el: Element) => el.hasAttribute('href'))).toBe(false);
+      expect(await link?.evaluate((el: Element) => el.getAttribute('tabindex'))).toBe('-1');
+    });
+
+    it('should apply the disabled style to a disabled link', async() => {
+      await gotoStory(page, 'rendering/link-disabled');
+
+      const button = await page.waitForSelector('[data-testid="link-disabled-button"]');
+      const link = await page.waitForSelector('[data-testid="link-disabled"]');
+
+      const buttonColor = await button?.evaluate((el: Element) => getComputedStyle(el).color);
+      const linkColor = await link?.evaluate((el: Element) => getComputedStyle(el).color);
+
+      expect(await link?.evaluate((el: Element) => getComputedStyle(el).cursor)).toBe('not-allowed');
+      expect(linkColor).toBe(buttonColor);
+    });
+  });
+
   describe('loading', () => {
     it('should disable the button', async() => {
       await gotoStory(page, 'rendering/is-loading');

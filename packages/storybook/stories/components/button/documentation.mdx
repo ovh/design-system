@@ -44,6 +44,8 @@ They must respect the proximity law in order to guide the user on the action to 
 A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
 
 **Buttons** don't usually redirect to an external page. For that, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
+When a navigation does need the visual weight of a **Button**, render the **Button** as a link with `as="a"` instead
+of navigating from a real `button` element.
 
 <Heading label="When to use a link or a button?" level={ 3 } />
 
@@ -51,14 +53,17 @@ Links and buttons serve different purposes, and using them correctly improves bo
 
 * Use a link when the action navigates the user to another page or resource, either within your application or to an external site
 * Use a button when the action performs a function or triggers a behavior on the current page, like submitting a form, opening a modal, or toggling a menu
+* Use a **Button** rendered as a link (`as="a"`) when the action navigates but deserves the emphasis of a **Button**, like a main call to action leading to another page
 
 A button should not mimic a link. It can lead to confusion for users and assistive technologies, as button are not typically expected to handle navigation.
+The `as` prop is the answer to that: it changes the rendered element without changing the look, so the destination stays a
+real `href` that is announced as a link, opens in a new tab on a middle click, and can be followed by a search engine.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Don\'t use a Button as a link, use the Link component instead',
+    '- Don\'t navigate from a plain Button, pass `as="a"` so the rendered element matches the action',
     '- Don\'t show more than one primary button per view',
     '- Don\'t place two identical Buttons side by side (same label and style)',
     '- Don\'t use standalone decorative icons in Buttons unless the action is universally understood',
@@ -71,6 +76,7 @@ A button should not mimic a link. It can lead to confusion for users and assisti
     '- Maintain a clear visual hierarchy between Button types (primary, outline, ghost)',
     '- Use icons when they add clarity to the action (e.g., arrow for "Next", trash for "Delete")',
     '- Choose the appropriate size based on context',
+    '- Use a link Button (`as="a"`) when a call to action navigates to another page',
   ]}
 />
 
@@ -112,23 +118,41 @@ An icon can be displayed on the left or right of the **Button** label. Icon-only
 - **Small**: actions in compact spaces or within densely packed interfaces, providing a more subtle and space-efficient option.
 - **Medium** _(default)_: main usage of **Buttons**, when they can be displayed in an important manner.
 
+<Heading label="Element" level={ 3 } />
+
+- **Button** _(default)_: acting on the current page, such as submitting a form, opening a modal or toggling a menu.
+- **Link**: navigating to another page. Pass `as="a"` with an `href`, or `as` a routing library component
+  (`as={ Link }` with react-router, for instance) to keep client side navigation.
+
+A link **Button** keeps every color, variant and size of the **Button**; only the rendered element changes.
+A disabled one carries no `href` at all, is taken out of the tab order and ignores clicks, since an anchor takes
+no `disabled` attribute.
+
+<Canvas of={ ButtonStories.Link } sourceState="shown" />
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
 
 The **Button** component can receive keyboard focus and is part of the standard tab order.
 
-If the **Button** is disabled, it does not receive focus and cannot be activated via keyboard.
+If the **Button** is disabled, it does not receive focus and cannot be activated via keyboard. A link **Button**
+behaves the same way: it is part of the standard tab order, and a disabled one is removed from it.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
 Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> while the **Button** is focused activates it, triggering its action.
+
+On a link **Button**, only <Kbd>Enter</Kbd> activates it, following the native anchor behaviour.
 
 Pressing <Kbd>Shift</Kbd> + <Kbd>Alt</Kbd> moves focus to the previous interactive element.
 
 <Heading label="Accessibility" level={ 2 } />
 
 This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">Button WAI-ARIA design pattern</ExternalLink>.
+
+Rendered as a link with `as`, it is a real anchor and follows the native link semantics instead: it is announced as a
+link, and a disabled one is announced as such through `aria-disabled`.
 
 <Heading label="Always provide an explicit text content" level={ 3 } />
 

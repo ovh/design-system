@@ -52,6 +52,21 @@ export const Default: Story = {
   ),
 };
 
+export const Link: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button as="a" href="#pricing">See pricing</Button>
+      <Button as="a" href="#docs" variant={ BUTTON_VARIANT.outline }>Read the docs</Button>
+      <Button as="a" disabled={ true } href="#soon">Not available yet</Button>
+    </>
+  ),
+};
+
 export const Loading: StoryObj = {
   globals: {
     imports: `import { Button } from '@ovhcloud/ods-react';`,

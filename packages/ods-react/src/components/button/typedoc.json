@@ -8,6 +8,9 @@
   "excludeInternal": true,
   "excludePrivate": true,
   "excludeProtected": true,
+  "intentionallyNotExported": [
+    "ButtonOwnProp"
+  ],
   "outputs": [
     {
       "name": "json",

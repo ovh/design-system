@@ -13,9 +13,28 @@ export const disabled = () => (
   </Button>
 );
 
+export const disabledLink = () => (
+  <Button
+    as="a"
+    data-testid="disabled-link"
+    disabled={ true }
+    href="#dummy-target">
+    Disabled link
+  </Button>
+);
+
 export const focus = () => (
   <Button data-testid="focus">
     Focus
+  </Button>
+);
+
+export const focusLink = () => (
+  <Button
+    as="a"
+    data-testid="focus-link"
+    href="#dummy-target">
+    Focus link
   </Button>
 );
 

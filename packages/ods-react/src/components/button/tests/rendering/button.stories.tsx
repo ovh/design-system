@@ -21,6 +21,33 @@ export const isLoading = () => (
   </Button>
 );
 
+export const link = () => (
+  <Button
+    as="a"
+    data-testid="link"
+    href="#dummy-target">
+    Link
+  </Button>
+);
+
+export const linkDisabled = () => (
+  <>
+    <Button
+      data-testid="link-disabled-button"
+      disabled={ true }>
+      Disabled button
+    </Button>
+
+    <Button
+      as="a"
+      data-testid="link-disabled"
+      disabled={ true }
+      href="#dummy-target">
+      Disabled link
+    </Button>
+  </>
+);
+
 export const render = () => (
   <Button
     data-testid="render">

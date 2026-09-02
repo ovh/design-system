@@ -116,31 +116,35 @@ Allows users to directly select a page from an number input.
 
 <Heading label="Page links" level={ 3 } />
 
-By default each page is a Button: activating one changes the page in place, and the pages exist only in
-the current session. Passing `getPageUrl` turns every page, along with the previous and next triggers,
-into a real link. It receives the target page and the current page size, and returns the address of that
-page: given `{ page: 2, pageSize: 10 }` a blog listing would return `/blog?page=2&size=10`.
+By default every page is a **Button** that changes the page in place. Passing `getPageUrl` renders the pages
+as real links instead, so each page gets its own address: one a search engine can crawl, and one a user can
+open in a new tab, bookmark or reload.
 
-Each page then has an address that can be crawled by a search engine, opened in a new tab, bookmarked and
-restored on reload, which is what a public listing needs. The page size is part of the URL as well, so a
+`getPageUrl` is called for every page and for the previous and next triggers. It receives the page to link
+to and the current page size, and returns the address of that page - for a blog listing,
+`{ page: 2, pageSize: 10 }` becomes `/blog?page=2&size=10`. The page size travels in the URL as well, so a
 listing that also exposes a page size selector stays consistent.
 
-In link mode the URL holds the page, and the component only renders it: it does not move on its own when a
-link is activated. Read the page back from the URL - the query string on a server rendered listing, the
-router or the hash in a single page application - and pass it as `page`. Do **not** set `page` from
-`onPageChange` in link mode: React flushes a click synchronously, so a page change made during the click
-rewrites the previous / next `href` before the browser follows it, and the user lands one page too far.
-`onPageChange` still fires, so it remains useful to trigger the routing itself.
-
-The ellipsis is not a page, so it stays a disabled Button with no address. At the boundaries there is no
-page to link to either: on the first page the previous trigger carries no `href` at all, and neither does
-the next trigger on the last page.
-
-Only the pages and the previous / next triggers become links. The go-to-page form and the page size
-selector still change the state in place and report it through `onPageChange` and `onPageSizeChange`; a
-listing that pages through the URL has to act on those callbacks itself.
-
 <Canvas of={ PaginationStories.Links } sourceState="shown" />
+
+**In link mode the URL holds the active page.** The **Pagination** renders the page it is given and never
+moves on its own when a link is activated. Read the page back from wherever the navigation left it - the
+query string of a server rendered listing, the router or the hash of a single page application - and pass
+it as `page`, or as `defaultPage` when every request is rendered by the server. Without either, the
+**Pagination** stays on page 1 whatever the URL says.
+
+Do not set `page` from `onPageChange` in link mode. That callback runs during the click, and changing the
+page at that moment rewrites the previous and next `href` before the browser has followed it, sending the
+user one page too far. `onPageChange` does still fire, so use it to trigger the navigation, never to store
+the page.
+
+Not everything becomes a link:
+
+- the **ellipsis** is not a page, so it stays a disabled Button with no address;
+- the **previous** trigger on the first page and the **next** trigger on the last page have no page to
+  point at, so they carry no `href` and are marked `aria-disabled`;
+- the go-to-page form and the page size selector are not navigation, so they keep reporting through
+  `onPageChange` and `onPageSizeChange` for the listing to act on.
 
 <Heading label="Navigation" level={ 2 } />
 

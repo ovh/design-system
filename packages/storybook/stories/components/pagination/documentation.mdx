@@ -51,6 +51,7 @@ A **Pagination** component is used in two situations :
     '- Ensure Pagination is used when the total number of pages is known or predictable',
     '- Display a reasonable number of items per page (typically around 20–30) to balance readability and navigation',
     '- Use Next/Previous buttons and page numbers to help users track their position within the dataset',
+    '- Turn the pages into links (`getPageUrl`) when the listing is public and each page has its own URL',
   ]}
 />
 
@@ -113,6 +114,38 @@ Depending on the current page number and the amount of pages, here are the diffe
 
 Allows users to directly select a page from an number input.
 
+<Heading label="Page links" level={ 3 } />
+
+By default every page is a **Button** that changes the page in place. Passing `getPageUrl` renders the pages
+as real links instead, so each page gets its own address: one a search engine can crawl, and one a user can
+open in a new tab, bookmark or reload.
+
+`getPageUrl` is called for every page and for the previous and next triggers. It receives the page to link
+to and the current page size, and returns the address of that page - for a blog listing,
+`{ page: 2, pageSize: 10 }` becomes `/blog?page=2&size=10`. The page size travels in the URL as well, so a
+listing that also exposes a page size selector stays consistent.
+
+<Canvas of={ PaginationStories.Links } sourceState="shown" />
+
+**In link mode the URL holds the active page.** The **Pagination** renders the page it is given and never
+moves on its own when a link is activated. Read the page back from wherever the navigation left it - the
+query string of a server rendered listing, the router or the hash of a single page application - and pass
+it as `page`, or as `defaultPage` when every request is rendered by the server. Without either, the
+**Pagination** stays on page 1 whatever the URL says.
+
+Do not set `page` from `onPageChange` in link mode. That callback runs during the click, and changing the
+page at that moment rewrites the previous and next `href` before the browser has followed it, sending the
+user one page too far. `onPageChange` does still fire, so use it to trigger the navigation, never to store
+the page.
+
+Not everything becomes a link:
+
+- the **ellipsis** is not a page, so it stays a disabled Button with no address;
+- the **previous** trigger on the first page and the **next** trigger on the last page have no page to
+  point at, so they carry no `href` and are marked `aria-disabled`;
+- the go-to-page form and the page size selector are not navigation, so they keep reporting through
+  `onPageChange` and `onPageSizeChange` for the listing to act on.
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
@@ -121,7 +154,9 @@ When tabbing through the page, focus moves sequentially through all interactive 
 
 The current page Button is not interactive.
 
-Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped in the tab order.
+Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped in the tab order. Page links
+behave the same way: an inert previous or next trigger is marked `aria-disabled` and taken out of the tab
+order, since an anchor takes no `disabled` attribute.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 

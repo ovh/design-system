@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -107,6 +107,45 @@ export const ItemsPerPage: Story = {
       <PaginationPages />
     </Pagination>
   ),
+};
+
+export const Links: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';
+import { useEffect, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [page, setPage] = useState(1);
+
+    // In link mode the URL holds the page: read it back rather than the onPageChange callback.
+    useEffect(() => {
+      function syncFromUrl(): void {
+        const match = window.location.hash.match(/^#page-(\d+)-size-\d+$/);
+
+        setPage(match ? Number(match[1]) : 1);
+      }
+
+      syncFromUrl();
+      window.addEventListener('hashchange', syncFromUrl);
+
+      return () => window.removeEventListener('hashchange', syncFromUrl);
+    }, []);
+
+    return (
+      <Pagination
+        getPageUrl={ ({ page: target, pageSize }) => `#page-${target}-size-${pageSize}` }
+        page={ page }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    );
+  },
 };
 
 export const Overview: Story = {

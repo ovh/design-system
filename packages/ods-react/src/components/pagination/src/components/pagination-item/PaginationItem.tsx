@@ -1,6 +1,7 @@
 import { Pagination as VendorPagination, usePaginationContext } from '@ark-ui/react/pagination';
 import { type FC, type JSX } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src';
+import { usePagination } from '../../contexts/usePagination';
 import style from './paginationItem.module.scss';
 
 interface PaginationItemProp {
@@ -17,6 +18,7 @@ const PaginationItem: FC<PaginationItemProp> = ({
   page,
 }): JSX.Element => {
   const { page: currentPage } = usePaginationContext();
+  const { getPageUrl } = usePagination();
 
   return (
     <VendorPagination.Item
@@ -26,6 +28,7 @@ const PaginationItem: FC<PaginationItemProp> = ({
       type="page"
       { ...page }>
       <Button
+        as={ getPageUrl ? 'a' : 'button' }
         disabled={ disabled }
         variant={ currentPage === page.value ? BUTTON_VARIANT.default : BUTTON_VARIANT.ghost }>
         { page.value }

@@ -17,6 +17,11 @@ interface PaginationPageSizeChangeDetail {
   pageSize: number,
 }
 
+interface PaginationPageUrlDetail {
+  page: number;
+  pageSize: number;
+}
+
 interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
   /**
    * The initial active page. Use when you don't need to control the active page of the pagination.
@@ -26,6 +31,12 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    * Whether the component is disabled.
    */
   disabled?: boolean;
+  /**
+   * Build the URL of a given page.
+   * Providing it renders the page items and the previous / next triggers as links instead of
+   * buttons, so that the pages can be crawled, opened in a new tab and restored on reload.
+   */
+  getPageUrl?: (detail: PaginationPageUrlDetail) => string;
   /**
    * The tooltip label on the "next page" button.
    */
@@ -73,7 +84,7 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
   withPageSizeSelector?: boolean;
 }
 
-interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'labelTooltipNext' | 'labelTooltipPrev' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
+interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
   children: ReactNode;
 }
 
@@ -90,6 +101,7 @@ function PaginationProvider({
   children,
   defaultPage,
   disabled,
+  getPageUrl,
   labelTooltipNext,
   labelTooltipPrev,
   onPageChange,
@@ -103,6 +115,12 @@ function PaginationProvider({
   const isControlled = page !== undefined;
   const currentPage = isControlled && page ? page : internalPage;
 
+  // Warned at render time, not in an effect: link mode exists for server rendered listings, and
+  // an effect never runs on the server - which is exactly where the mistake is made.
+  if (getPageUrl && page === undefined && defaultPage === undefined) {
+    console.warn('getPageUrl renders the pages as links, so the URL holds the active page. Please provide a controlled `page` read back from the URL, or a `defaultPage` when the page is rendered by the server, otherwise the pagination stays on page 1.');
+  }
+
   useEffect(() => {
     if (!isControlled) {
       setInternalPage(defaultPage ?? 1);
@@ -110,7 +128,10 @@ function PaginationProvider({
   }, [defaultPage, isControlled, itemsPerPage, totalItems]);
 
   function handlePageChange(detail: PaginationPageChangeDetail): void {
-    if (!isControlled) {
+    // In link mode the URL holds the page, so the component must not move on its own: React
+    // flushes a click synchronously, and a page change would rewrite the trigger href before
+    // the browser follows it, sending the user one page too far.
+    if (!isControlled && !getPageUrl) {
       setInternalPage(detail.page);
     }
     onPageChange?.(detail);
@@ -129,6 +150,7 @@ function PaginationProvider({
       currentPage,
       defaultPage,
       disabled,
+      getPageUrl,
       handlePageChange,
       handlePageSizeChange,
       itemsPerPage,
@@ -154,6 +176,7 @@ export {
   type PaginationContextType,
   type PaginationPageChangeDetail,
   type PaginationPageSizeChangeDetail,
+  type PaginationPageUrlDetail,
   PaginationProvider,
   type PaginationRootProp,
   type PaginationTotalItemsLabelRenderer,

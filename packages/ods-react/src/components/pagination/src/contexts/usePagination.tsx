@@ -115,6 +115,12 @@ function PaginationProvider({
   const isControlled = page !== undefined;
   const currentPage = isControlled && page ? page : internalPage;
 
+  // Warned at render time, not in an effect: link mode exists for server rendered listings, and
+  // an effect never runs on the server - which is exactly where the mistake is made.
+  if (getPageUrl && page === undefined && defaultPage === undefined) {
+    console.warn('getPageUrl renders the pages as links, so the URL holds the active page. Please provide a controlled `page` read back from the URL, or a `defaultPage` when the page is rendered by the server, otherwise the pagination stays on page 1.');
+  }
+
   useEffect(() => {
     if (!isControlled) {
       setInternalPage(defaultPage ?? 1);

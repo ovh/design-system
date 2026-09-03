@@ -4024,11 +4024,11 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
+| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-combobox-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-combobox-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
 | `--ods-combobox-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
-| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 
 ## Combobox
 
@@ -16092,8 +16092,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
 | `--ods-range-thumb-background-color` | `var(--ods-color-neutral-000)` |
+| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
 
 ## Range
 
@@ -17442,15 +17442,15 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-switch-item-background-color` | `inherit` |
 | `--ods-switch-item-background-color-checked` | `var(--ods-color-primary-600)` |
 | `--ods-switch-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
 | `--ods-switch-item-background-color-hover` | `var(--ods-color-primary-100)` |
 | `--ods-switch-item-text-color` | `var(--ods-color-primary-500)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-theme-input-text-color-checked)` |
+| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
+| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 
 ## Switch
 
@@ -19417,6 +19417,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 | `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
 | `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
 | `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
@@ -19425,8 +19427,6 @@ _No specific property._
 | `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
 | `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
 | `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 
 ## Tile
 
@@ -26576,13 +26576,20 @@ Nothing to do. Installation, types and runtime keep working exactly as before.
 **1. Bump React and its types** to a matching major:
 
 ```shell
-react@^19
-react-dom@^19
-@types/react@^19
-@types/react-dom@^19
+npm install react@^19 react-dom@^19
+npm install -D @types/react@^19 @types/react-dom@^19
 ```
 
 `@types/react` and `@types/react-dom` **must share the same major** (both `19`).
+
+The React team ships codemods that automate most of the app-side migration — run them on your own code (they never need to touch ODS usage):
+
+```shell
+npx codemod@latest react/19/migration-recipe
+npx types-react-codemod@latest preset-19 ./src
+```
+
+For anything beyond ODS, follow the official [React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide).
 
 **2. Make sure you have a single `@types/react` version.** This is the one real pitfall — and it is **not** specific to ODS. If a transitive dependency still pulls `@types/react@18` while your app is on `19`, TypeScript reports errors such as:
 
@@ -26606,13 +26613,21 @@ This is the classic "two copies of `@types/react`" conflict. Deduplicate to a si
   "@types/react-dom": "^19"
 }
 
-// pnpm — package.json or pnpm-workspace.yaml
+// pnpm — package.json
 "pnpm": {
   "overrides": {
     "@types/react": "^19",
     "@types/react-dom": "^19"
   }
 }
+```
+
+With pnpm you can also declare it in `pnpm-workspace.yaml` (top-level key, no `pnpm` wrapper):
+
+```yaml
+overrides:
+  "@types/react": ^19
+  "@types/react-dom": ^19
 ```
 
 Then reinstall and verify a single version is resolved:
@@ -26632,7 +26647,7 @@ These are unchanged by the React version — they apply the same way on React 18
 
 ## Need help?
 
-If you hit an issue while upgrading, reach out to us directly — especially if you see a type error that the `@types/react` deduplication above does not solve.
+If you hit an issue while upgrading, [open an issue on GitHub](https://github.com/ovh/design-system/issues) — especially if you see a type error that the `@types/react` deduplication above does not solve.
 
 ## Migration to v19
 

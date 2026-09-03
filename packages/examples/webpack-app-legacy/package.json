@@ -1,5 +1,5 @@
 {
-  "name": "webpack-app-react19",
+  "name": "webpack-app-legacy",
   "version": "19.7.3",
   "private": true,
   "description": "Example of an app using ODS, bundled with Webpack (React 19)",
@@ -9,6 +9,7 @@
     "start": "webpack serve --config webpack.config.js --mode=development"
   },
   "dependencies": {
+    "@babel/runtime": "7.23.9",
     "@ovhcloud/ods-react": "workspace:*",
     "@ovhcloud/ods-themes": "workspace:*",
     "formik": "2.4.6",

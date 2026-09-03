@@ -4433,11 +4433,11 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
+| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-combobox-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-combobox-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
 | `--ods-combobox-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
-| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 
 ---
 title: "Combobox"
@@ -17586,8 +17586,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
 | `--ods-range-thumb-background-color` | `var(--ods-color-neutral-000)` |
+| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
 
 ---
 title: "Range"
@@ -19076,15 +19076,15 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 | `--ods-switch-item-background-color` | `inherit` |
 | `--ods-switch-item-background-color-checked` | `var(--ods-color-primary-600)` |
 | `--ods-switch-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
 | `--ods-switch-item-background-color-hover` | `var(--ods-color-primary-100)` |
 | `--ods-switch-item-text-color` | `var(--ods-color-primary-500)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-theme-input-text-color-checked)` |
+| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
+| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
 
 ---
 title: "Switch"
@@ -21261,6 +21261,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 | `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
 | `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
 | `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
@@ -21269,8 +21271,6 @@ _No specific property._
 | `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
 | `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
 | `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
 
 ---
 title: "Tile"

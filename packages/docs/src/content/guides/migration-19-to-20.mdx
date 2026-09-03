@@ -20,13 +20,20 @@ Nothing to do. Installation, types and runtime keep working exactly as before.
 **1. Bump React and its types** to a matching major:
 
 ```shell
-react@^19
-react-dom@^19
-@types/react@^19
-@types/react-dom@^19
+npm install react@^19 react-dom@^19
+npm install -D @types/react@^19 @types/react-dom@^19
 ```
 
 `@types/react` and `@types/react-dom` **must share the same major** (both `19`).
+
+The React team ships codemods that automate most of the app-side migration — run them on your own code (they never need to touch ODS usage):
+
+```shell
+npx codemod@latest react/19/migration-recipe
+npx types-react-codemod@latest preset-19 ./src
+```
+
+For anything beyond ODS, follow the official <ExternalLink href="https://react.dev/blog/2024/04/25/react-19-upgrade-guide">React 19 upgrade guide</ExternalLink>.
 
 **2. Make sure you have a single `@types/react` version.** This is the one real pitfall — and it is **not** specific to ODS. If a transitive dependency still pulls `@types/react@18` while your app is on `19`, TypeScript reports errors such as:
 
@@ -50,13 +57,21 @@ This is the classic "two copies of `@types/react`" conflict. Deduplicate to a si
   "@types/react-dom": "^19"
 }
 
-// pnpm — package.json or pnpm-workspace.yaml
+// pnpm — package.json
 "pnpm": {
   "overrides": {
     "@types/react": "^19",
     "@types/react-dom": "^19"
   }
 }
+```
+
+With pnpm you can also declare it in `pnpm-workspace.yaml` (top-level key, no `pnpm` wrapper):
+
+```yaml
+overrides:
+  "@types/react": ^19
+  "@types/react-dom": ^19
 ```
 
 Then reinstall and verify a single version is resolved:
@@ -76,4 +91,4 @@ These are unchanged by the React version — they apply the same way on React 18
 
 <Heading label="Need help?" level={ 2 } />
 
-If you hit an issue while upgrading, reach out to us directly — especially if you see a type error that the `@types/react` deduplication above does not solve.
+If you hit an issue while upgrading, <ExternalLink href="https://github.com/ovh/design-system/issues">open an issue on GitHub</ExternalLink> — especially if you see a type error that the `@types/react` deduplication above does not solve.

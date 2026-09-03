@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { type ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { type ChangeEvent, type FormEvent, useEffect, useRef, useState } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
@@ -161,8 +161,8 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
 
 export const LoginForm: Story = {
   globals: {
-    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input } from '@ovhcloud/ods-react';
-import { type ChangeEvent, useState } from 'react';`,
+    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -173,29 +173,24 @@ import { type ChangeEvent, useState } from 'react';`,
   render: ({}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
 
-    function handleSubmit(e: React.FormEvent): void {
-      e.preventDefault();
-      const newErrors: { email?: string; password?: string } = {};
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
 
-      if (!email) {
-        newErrors.email = 'Email is required';
-      }
-
-      if (password.length < 12) {
-        newErrors.password = 'Password must be at least 12 characters';
-      }
-
-      setErrors(newErrors);
-
-      if (Object.keys(newErrors).length === 0) {
-        console.log('Form submitted', { email, password });
-      }
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
     }
 
     return (
-      <form onSubmit={ handleSubmit } style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
         <FormField invalid={ !!errors.email }>
           <FormFieldLabel>
             Admin email
@@ -203,17 +198,15 @@ import { type ChangeEvent, useState } from 'react';`,
 
           <Input
             name="email"
-            onChange={ (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value) }
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
             placeholder="you@example.com"
             startContent={ <Icon name={ ICON_NAME.email } /> }
             type={ INPUT_TYPE.email }
             value={ email } />
 
-          { errors.email && (
-            <FormFieldHelper>
-              { errors.email }
-            </FormFieldHelper>
-          ) }
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
         </FormField>
 
         <FormField invalid={ !!errors.password }>
@@ -224,16 +217,18 @@ import { type ChangeEvent, useState } from 'react';`,
           <Input
             maskOption={{ enable: true }}
             name="password"
-            onChange={ (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) }
-            placeholder="Enter your password"
-            required
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
             value={ password } />
 
-          { errors.password && (
-            <FormFieldHelper>
-              { errors.password }
-            </FormFieldHelper>
-          ) }
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>

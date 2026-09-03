@@ -75,7 +75,7 @@
     "jest": "30.4.2",
     "jest-puppeteer": "10.0.1",
     "jest-transform-stub": "2.0.0",
-    "puppeteer": "25.8.0",
+    "puppeteer": "25.2.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "sass": "1.103.1",

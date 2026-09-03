@@ -12,6 +12,7 @@
     { "mdx": "design-tokens", "slug": "ovhcloud-design-system-customize-design-tokens", "title": "Design Tokens" },
     { "mdx": "tailwind", "slug": "ovhcloud-design-system-customize-tailwind-css-integration", "title": "Tailwind CSS Integration" },
     { "mdx": "whats-new", "slug": "ovhcloud-design-system-upgrade-what-s-new", "title": "What's new" },
+    { "mdx": "migration-19-to-20", "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x", "title": "Migration 19.x to 20.x" },
     { "mdx": "migration-to-v19", "slug": "ovhcloud-design-system-upgrade-migration-to-v19", "title": "Migration to v19" },
     { "mdx": "migration-12-to-13", "slug": "ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x", "title": "12.x to 13.x" },
     { "mdx": "migration-13-to-14", "slug": "ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x", "title": "13.x to 14.x" },

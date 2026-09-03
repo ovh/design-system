@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type ChangeEvent, useEffect, useRef, useState } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
-import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel } from '../../../../ods-react/src/components/form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { INPUT_I18N, INPUT_TYPE, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
@@ -93,9 +93,9 @@ export const ContentAdornmentWithButton: Story = {
   ),
 };
 
-export const CompleteForm: Story = {
+export const DomainAvailabilitySearch: Story = {
   globals: {
-    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -113,8 +113,6 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
 
     useEffect(() => () => clearTimeout(checkTimer.current), []);
 
-    // Stands in for an availability call: the field stays in its loading state, next to the
-    // address suffix, until the answer comes back.
     function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
       const value = e.target.value;
       const isLongEnough = value.length > 2;
@@ -133,53 +131,52 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
     }
 
     return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  },
+};
+
+export const LoginForm: Story = {
+  globals: {
+    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { type ChangeEvent, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const isPasswordTooShort = password.length > 0 && password.length < 12;
+
+    return (
       <form style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
-        <FormField>
-          <FormFieldLabel>
-            Project name
-            <FormFieldLabelSubLabel>
-              - mandatory
-            </FormFieldLabelSubLabel>
-          </FormFieldLabel>
-
-          <Input
-            clearable
-            defaultValue="Landing page"
-            name="project"
-            required />
-
-          <FormFieldHelper>
-            <Text preset={ TEXT_PRESET.caption }>
-              Shown in the console and on your invoices.
-            </Text>
-          </FormFieldHelper>
-        </FormField>
-
-        <FormField invalid={ isTaken }>
-          <FormFieldLabel>
-            Public address
-          </FormFieldLabel>
-
-          <Input
-            endContent=".hosting.ovh.net"
-            loading={ isChecking }
-            name="address"
-            onChange={ onAddressChange }
-            placeholder="my-project"
-            startContent="https://"
-            value={ address } />
-
-          <FormFieldHelper>
-            <Text preset={ TEXT_PRESET.caption }>
-              Type at least 3 characters to check availability - "api" is already taken.
-            </Text>
-          </FormFieldHelper>
-
-          <FormFieldError>
-            This address is already taken.
-          </FormFieldError>
-        </FormField>
-
         <FormField>
           <FormFieldLabel>
             Admin email
@@ -187,48 +184,37 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
 
           <Input
             name="email"
+            onChange={ (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value) }
             placeholder="you@example.com"
             startContent={ <Icon name={ ICON_NAME.email } /> }
-            type={ INPUT_TYPE.email } />
+            type={ INPUT_TYPE.email }
+            value={ email } />
         </FormField>
 
-        <FormField>
+        <FormField invalid={ isPasswordTooShort }>
           <FormFieldLabel>
             Root password
-            <FormFieldLabelSubLabel>
-              - mandatory
-            </FormFieldLabelSubLabel>
           </FormFieldLabel>
 
-          { /* No `type` here: `maskOption` already swaps the field to a password one while the
-               mask is closed, and back to text when the user reveals it. */ }
           <Input
-            defaultValue="correct-horse-battery"
+            invalid={ isPasswordTooShort }
             maskOption={{ enable: true }}
             name="password"
-            required />
+            onChange={ (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) }
+            required
+            value={ password } />
 
           <FormFieldHelper>
             <Text preset={ TEXT_PRESET.caption }>
               At least 12 characters.
             </Text>
           </FormFieldHelper>
-        </FormField>
 
-        <FormField>
-          <FormFieldLabel>
-            Storage quota
-          </FormFieldLabel>
-
-          { /* The unit carries meaning, so it is referenced explicitly - the Input never adds
-               its adornments to `aria-describedby` on its own. */ }
-          <Input
-            aria-describedby="quota-unit"
-            defaultValue="20"
-            endContent={ <span id="quota-unit">GB</span> }
-            min="10"
-            name="quota"
-            type={ INPUT_TYPE.number } />
+          { isPasswordTooShort && (
+            <FormFieldError>
+              Password must be at least 12 characters.
+            </FormFieldError>
+          ) }
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
@@ -236,8 +222,8 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
             Cancel
           </Button>
 
-          <Button type="submit">
-            Deploy
+          <Button disabled={ !email || isPasswordTooShort } type="submit">
+            Sign in
           </Button>
         </div>
       </form>

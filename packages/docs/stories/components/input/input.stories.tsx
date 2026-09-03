@@ -161,7 +161,7 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
 
 export const LoginForm: Story = {
   globals: {
-    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -173,11 +173,30 @@ import { type ChangeEvent, useState } from 'react';`,
   render: ({}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const isPasswordTooShort = password.length > 0 && password.length < 12;
+    const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+
+    function handleSubmit(e: React.FormEvent): void {
+      e.preventDefault();
+      const newErrors: { email?: string; password?: string } = {};
+
+      if (!email) {
+        newErrors.email = 'Email is required';
+      }
+
+      if (password.length < 12) {
+        newErrors.password = 'Password must be at least 12 characters';
+      }
+
+      setErrors(newErrors);
+
+      if (Object.keys(newErrors).length === 0) {
+        console.log('Form submitted', { email, password });
+      }
+    }
 
     return (
-      <form style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
-        <FormField>
+      <form onSubmit={ handleSubmit } style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
           <FormFieldLabel>
             Admin email
           </FormFieldLabel>
@@ -189,31 +208,31 @@ import { type ChangeEvent, useState } from 'react';`,
             startContent={ <Icon name={ ICON_NAME.email } /> }
             type={ INPUT_TYPE.email }
             value={ email } />
+
+          { errors.email && (
+            <FormFieldHelper>
+              { errors.email }
+            </FormFieldHelper>
+          ) }
         </FormField>
 
-        <FormField invalid={ isPasswordTooShort }>
+        <FormField invalid={ !!errors.password }>
           <FormFieldLabel>
             Root password
           </FormFieldLabel>
 
           <Input
-            invalid={ isPasswordTooShort }
             maskOption={{ enable: true }}
             name="password"
             onChange={ (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) }
+            placeholder="Enter your password"
             required
             value={ password } />
 
-          <FormFieldHelper>
-            <Text preset={ TEXT_PRESET.caption }>
-              At least 12 characters.
-            </Text>
-          </FormFieldHelper>
-
-          { isPasswordTooShort && (
-            <FormFieldError>
-              Password must be at least 12 characters.
-            </FormFieldError>
+          { errors.password && (
+            <FormFieldHelper>
+              { errors.password }
+            </FormFieldHelper>
           ) }
         </FormField>
 
@@ -222,7 +241,7 @@ import { type ChangeEvent, useState } from 'react';`,
             Cancel
           </Button>
 
-          <Button disabled={ !email || isPasswordTooShort } type="submit">
+          <Button type="submit">
             Sign in
           </Button>
         </div>

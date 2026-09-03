@@ -126,3 +126,15 @@
   cursor: help;
   flex-shrink: 0;
 }
+
+/* Narrow layout (≤1000px, cf. shell.css): toolbar actions wrap instead of
+   overflowing; the pane split itself defaults to vertical (Sandbox.tsx). */
+@media (max-width: 1000px) {
+  .sandbox-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .sandbox-toolbar__actions {
+    flex-wrap: wrap;
+  }
+}

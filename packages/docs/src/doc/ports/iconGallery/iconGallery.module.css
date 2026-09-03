@@ -7,6 +7,7 @@
 }
 
 .icon-gallery__search {
+  max-width: 100%;
   width: 250px;
 }
 

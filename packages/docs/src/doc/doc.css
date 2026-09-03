@@ -194,3 +194,24 @@
 body:not([data-theme="dark"]) [data-ods="code"] {
   border: 1px solid var(--ods-color-neutral-200);
 }
+
+/* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———
+   Wide leaf content (props tables, code, tab strips) scrolls inside its own
+   box so the page itself never scrolls sideways. */
+@media (max-width: 1000px) {
+  .doc-layout [data-ods="table"] {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  [data-ods="tab-list"] {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  [class*="code-highlighter"] {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

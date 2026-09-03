@@ -91,7 +91,8 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
   const [tsErrors, setTsErrors] = useState<number>(-1);
   const [resizing, setResizing] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
-  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+  // Side-by-side panes need width: narrow viewports start stacked instead.
+  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>(() => window.matchMedia('(max-width: 1000px)').matches ? 'vertical' : 'horizontal');
   const [shareUrl, setShareUrl] = useState('');
   const [shareOpen, setShareOpen] = useState(false);
   const docTheme = useDocTheme();

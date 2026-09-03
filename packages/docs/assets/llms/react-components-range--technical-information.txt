@@ -40,5 +40,5 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
 | `--ods-range-thumb-background-color` | `var(--ods-color-neutral-000)` |
+| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |

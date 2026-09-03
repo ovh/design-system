@@ -1605,6 +1605,13 @@
       "url": "./ovhcloud-design-system-upgrade-what-s-new.txt"
     },
     {
+      "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
+      "title": "Migration 19.x to 20.x",
+      "type": "overview",
+      "tokens": 750,
+      "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
+    },
+    {
       "slug": "ovhcloud-design-system-upgrade-migration-to-v19",
       "title": "Migration to v19",
       "type": "overview",

@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-app-legacy",
+  "version": "19.7.3",
+  "private": true,
+  "description": "Example of a NextJS app using ODS (React 19)",
+  "scripts": {
+    "build": "next build",
+    "start": "next dev",
+    "start:prod": "next start"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-themes": "workspace:*",
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.1.1",
+    "typescript": "5.3.3"
+  }
+}

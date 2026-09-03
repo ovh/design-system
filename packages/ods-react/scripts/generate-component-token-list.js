@@ -50,7 +50,9 @@ async function writeOutput(content, outputFile) {
   }
 
   try {
-    const cssFiles = await glob('documentation/**/*.css');
+    // glob returns files in a non-deterministic order; sort so the generated
+    // JSON (and the committed docs assets derived from it) stays stable across runs
+    const cssFiles = (await glob('documentation/**/*.css')).sort();
 
     const cssVariables = (await Promise.all((cssFiles || [])
       .map((file) => {

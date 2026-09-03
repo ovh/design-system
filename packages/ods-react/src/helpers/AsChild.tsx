@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type CSSProperties, Children, type HTMLAttributes, type ReactElement, type ReactNode, cloneElement, forwardRef, isValidElement } from 'react';
+import { type CSSProperties, Children, type HTMLAttributes, type ReactElement, type ReactNode, type RefAttributes, cloneElement, forwardRef, isValidElement } from 'react';
 
 type StyleProp = {
   className?: string,
@@ -10,22 +10,23 @@ type AsChildProp<DefaultElementProps> =
   | ({ asChild?: false } & DefaultElementProps & StyleProp)
   | ({ asChild: true, children: ReactNode, ref?: any } & StyleProp) // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const AsChildSlot = forwardRef(({
+const AsChildSlot = forwardRef<HTMLElement, HTMLAttributes<HTMLElement> & { children?: ReactNode }>(({
   children,
   ...props
-}: HTMLAttributes<HTMLElement> & { children?: ReactNode }, ref): ReactElement | null => {
+}, ref): ReactElement | null => {
   if (isValidElement(children)) {
-    return cloneElement(children, {
+    const child = children as ReactElement<HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>>;
+    return cloneElement(child, {
       ref,
       ...props,
-      ...children.props,
+      ...child.props,
       className: classNames(
         props.className,
-        children.props.className,
+        child.props.className,
       ),
       style: {
         ...props.style,
-        ...children.props.style,
+        ...child.props.style,
       },
     });
   }

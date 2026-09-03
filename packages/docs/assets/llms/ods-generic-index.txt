@@ -22,6 +22,7 @@
 - [Forms](./ovhcloud-design-system-build-forms.txt) (~6797 tokens)
 - [Get Started](./ovhcloud-design-system-get-started.txt) (~658 tokens)
 - [Internationalization](./ovhcloud-design-system-build-internationalization.txt) (~608 tokens)
+- [Migration 19.x to 20.x](./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt) (~750 tokens)
 - [Migration to v19](./ovhcloud-design-system-upgrade-migration-to-v19.txt) (~443 tokens)
 - [Roadmap](./ovhcloud-design-system-roadmap.txt) (~25 tokens)
 - [Style Customization](./ovhcloud-design-system-customize-style-customization.txt) (~627 tokens)

@@ -79,6 +79,14 @@ The content must fit the field's content height (26px with the default theme) an
 
 The **Input** does not disable, hide or otherwise alter the content it is given. When the content holds a control, pass that control its own `disabled` alongside the field's.
 
+<Heading label="Content Adornments" level={ 2 } />
+
+<Canvas story="ContentAdornments" />
+
+<Heading label="Content Adornments with Button" level={ 2 } />
+
+<Canvas story="ContentAdornmentWithButton" />
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
@@ -129,9 +137,9 @@ The **Input** does not describe `startContent` or `endContent` for you: it never
 
 Decoration that carries meaning — a unit, a currency, a fixed part of the value — is therefore silent unless you reference it. Give it an id and point the field at it:
 
-<Canvas of={ InputStories.AccessibilityContent } sourceState="shown" />
+<Canvas story="AccessibilityContent" />
 
-<Icon name={ ICON_NAME.circleCheck }
+<Icon name="circle-check"
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and the unit.
 
 Only reference the parts that describe the value. A control inside the decoration announces itself when focus reaches it, and its action label must not become guidance about what to type:

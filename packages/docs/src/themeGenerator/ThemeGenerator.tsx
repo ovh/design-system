@@ -19,7 +19,8 @@ import styles from './themeGenerator.module.css';
 
 const ThemeGenerator = (): JSX.Element => {
   const [fullscreen, setFullscreen] = useState(false);
-  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+  // Side-by-side panes need width: narrow viewports start stacked instead.
+  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>(() => window.matchMedia('(max-width: 1000px)').matches ? 'vertical' : 'horizontal');
   const [selectedTheme, setSelectedTheme] = useState('default');
   const [editedVariables, setEditedVariables] = useState<Record<string, string>>({});
   const [debouncedVariables, setDebouncedVariables] = useState<Record<string, string>>({});

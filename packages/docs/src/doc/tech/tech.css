@@ -91,3 +91,17 @@
   position: absolute;
   transition: all .12s ease;
 }
+
+/* Narrow layout (≤1000px, cf. shell.css): the anatomy panel stacks (tree above
+   the stage) and the stage scrolls horizontally when the demo is wider than
+   the viewport. */
+@media (max-width: 1000px) {
+  .anatomy {
+    grid-template-columns: 1fr;
+  }
+
+  .anatomy__stage {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

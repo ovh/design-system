@@ -291,6 +291,52 @@ body {
   --ods-theme-anchor-text-color-visited: var(--ods-color-primary-700);
 }
 
+/* ——— Narrow layout (keep in sync with NARROW_QUERY in Shell.tsx) ———
+   The sidebar column disappears (Shell.tsx swaps it for a navigation drawer
+   opened from the topbar) and the content column takes the full width. */
+@media (max-width: 1000px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .shell__topbar {
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  /* The page title can be long (component names, guide titles): let it
+     shrink and ellipsize instead of pushing the topbar wide. */
+  .shell__topbar h1 {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .shell__content {
+    padding: 16px;
+  }
+}
+
+/* Navigation drawer (narrow layout): same content as the sidebar. */
+.shell__drawer {
+  width: min(320px, 88vw);
+}
+
+.shell__drawer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.shell__drawer-close {
+  align-self: flex-end;
+  margin-bottom: -8px;
+}
+
 .shell__error {
   align-items: center;
   display: flex;

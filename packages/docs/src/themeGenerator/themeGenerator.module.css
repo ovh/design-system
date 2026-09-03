@@ -51,3 +51,16 @@
   height: 4px;
   min-height: auto;
 }
+
+/* Narrow layout (≤1000px, cf. shell.css): the menu rows wrap instead of
+   overflowing; the pane split defaults to vertical (ThemeGenerator.tsx). */
+@media (max-width: 1000px) {
+  .theme-generator__menu {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .theme-generator__menu__side {
+    flex-wrap: wrap;
+  }
+}

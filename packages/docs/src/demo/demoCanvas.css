@@ -44,3 +44,20 @@
   border-radius: 0 !important;
   margin: 0 !important;
 }
+
+/* Narrow layout (≤1000px, cf. shell.css): the toolbar actions wrap under the
+   title instead of pushing the card wider than the viewport. */
+@media (max-width: 1000px) {
+  .canvas__toolbar {
+    flex-wrap: wrap;
+  }
+
+  .canvas__title {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .canvas__demo {
+    padding: 16px;
+  }
+}

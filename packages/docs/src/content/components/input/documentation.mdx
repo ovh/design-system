@@ -29,7 +29,7 @@ The **Input** component can be used in addition with an **Autocomplete**.
     '- Don\'t leave an Input without a label',
     '- Don\'t overload the Input with multiple embedded actions (e.g., clear + search + toggle) since it creates visual clutter',
     '- Don\'t use an Input that is inappropriately sized for its content',
-    '- Don\'t rely on start or end content to convey the field\'s purpose — it complements the label, it does not replace it',
+    '- Don\'t rely on start or end content to convey the field\'s purpose: it complements the label, it does not replace it',
     '- Don\'t give start or end content its own background or border, and don\'t make it taller than the field',
   ]}
   dos={[
@@ -50,8 +50,8 @@ The **Input** component can be used in addition with an **Autocomplete**.
 1. **Input**
 2. **Placeholder or input text**
 3. **Clearable button** - optional
-4. **Start content** - optional decoration before the value
-5. **End content** - optional decoration after the value
+4. **Start content** - optional content before the value
+5. **End content** - optional content after the value
 
 <Heading label="Placement" level={ 2 } />
 
@@ -71,11 +71,13 @@ A toggle mask button can be displayed within the **Input** to toggle the visibil
 
 A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
 
-Decorative content can be placed inside the field, before the value with `startContent` and after it with `endContent` — a unit such as `kg` or `%`, a currency symbol, a domain extension, an icon, or a small ghost button. It is purely visual or interactive decoration: it is never part of the value and is never submitted with the form.
+Content can be placed inside the field, before the value with `startContent` and after it with `endContent`. This content is never part of the value: the user cannot edit it, it does not appear in `value` or `onChange`, and it is not submitted with the form.
+
+Any node is accepted, within the constraints described below. Typical cases include a unit such as `kg` or `%`, a currency symbol, a fixed part of the value such as a domain extension, an icon, or a small ghost button. When to reach for it is covered in **Dos & Don'ts** above.
 
 Both are placed with logical directions, so they follow the writing direction rather than a fixed side. The built-in action buttons always stay at the far end of the field, after the end content, so they remain at the same distance from the border whether or not decoration is present.
 
-The content must fit the field's content height (26px with the default theme) and must not carry a background or a border of its own. Use `size="xs"` for a `Button` — the size the built-in actions use. For a control with its own surface adjoined to the field, such as a country selector or a calendar trigger, compose elements around the **Input** instead; see **Datepicker** and **Phone Number**.
+The content must fit within the field's content height, so that it never makes the **Input** taller, and must not carry a background or a border of its own. Use `size="xs"` for a `Button`, the size the built-in actions use. For a control with its own surface adjoined to the field, such as a country selector or a calendar trigger, compose elements around the **Input** instead; see **Datepicker** and **Phone Number**.
 
 The **Input** does not disable, hide or otherwise alter the content it is given. When the content holds a control, pass that control its own `disabled` alongside the field's.
 
@@ -135,7 +137,7 @@ using either **FormField** or a native label tag.
 
 The **Input** does not describe `startContent` or `endContent` for you: it never alters `aria-describedby`, so whatever you or the surrounding **FormField** put there is what screen readers announce.
 
-Decoration that carries meaning — a unit, a currency, a fixed part of the value — is therefore silent unless you reference it. Give it an id and point the field at it:
+Content that carries meaning, such as a unit, a currency or a fixed part of the value, is therefore silent unless you reference it. Give it an id and point the field at it:
 
 <Canvas story="AccessibilityContent" />
 

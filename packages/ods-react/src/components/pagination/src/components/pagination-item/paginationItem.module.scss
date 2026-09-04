@@ -1,12 +1,64 @@
+@use '../../../../../style/link';
+
+// The rhythm of the whole bar, shared by the page buttons, the page links and the ellipsis.
+$ods-pagination-item-size: 40px;
+
 .pagination-item {
   display: flex;
   justify-content: center;
-  width: 40px;
+  width: $ods-pagination-item-size;
 
   &[data-selected] {
     &:not(:disabled) {
       border-color: var(--ods-theme-border-color-selected);
       background-color: var(--ods-theme-background-color-selected);
+    }
+  }
+
+  // Link mode: the item is only a box holding the rhythm of the bar, the link inside hugs its
+  // digits so that its underline never runs wider than the page number it belongs to.
+  &--link {
+    align-items: center;
+    width: auto;
+    min-width: $ods-pagination-item-size;
+    height: $ods-pagination-item-size;
+  }
+
+  // The link keeps hugging its digits, so that the Link underline stays the width of the page
+  // number. The target is carried by an invisible overlay instead, at the size of a page button:
+  // a pseudo element belongs to its anchor for hit testing, so the whole cell is clickable
+  // without the box, and therefore the underline, ever growing past the text.
+  &__link {
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      min-width: $ods-pagination-item-size;
+      height: $ods-pagination-item-size;
+      content: "";
+    }
+  }
+
+  // The active page is not a link: there is nowhere to navigate to. It reads as plain text and
+  // stays out of the tab order. It borrows the geometry of the Link underline, but permanent and
+  // twice as thick, so that "you are here" never reads as "hovered".
+  &__current {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    color: var(--ods-theme-text-color);
+    font-weight: link.$ods-link-font-weight;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: currentcolor;
+      width: 100%;
+      height: 2px;
+      content: "";
     }
   }
 }

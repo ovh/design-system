@@ -3,4 +3,4 @@ export { PaginationPageSelector, type PaginationPageSelectorProp } from './compo
 export { PaginationPageSizeSelector, type PaginationPageSizeSelectorProp } from './components/pagination-page-size-selector/PaginationPageSizeSelector';
 export { PaginationPages, type PaginationPagesProp } from './components/pagination-pages/PaginationPages';
 export { PAGINATION_PER_PAGE } from './constants/pagination-per-page';
-export { type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail } from './contexts/usePagination';
+export { type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, type PaginationPageUrlDetail } from './contexts/usePagination';

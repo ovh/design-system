@@ -42,7 +42,6 @@
     &[data-disabled] {
       @include state.ods-is-disabled();
 
-      // Content inside an adornment keeps its own colour.
       #{$input}__start,
       #{$input}__end {
         color: inherit;
@@ -73,7 +72,6 @@
       background-color: inherit;
       padding: 0;
       inline-size: 100%;
-      min-inline-size: 0;
       color: inherit;
       font-family: inherit;
       font-size: inherit;

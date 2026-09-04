@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
+import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -109,6 +109,59 @@ export const ItemsPerPage: Story = {
   ),
 };
 
+export const Links: Story = {
+  globals: {
+    imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [page, setPage] = useState(1);
+
+    function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
+      return `#page-${page}-size-${pageSize}`;
+    }
+
+    return (
+      <Pagination
+        getPageUrl={ getPageUrl }
+        onPageChange={ ({ page }) => setPage(page) }
+        page={ page }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    );
+  },
+};
+
+export const LinksVsButtons: Story = {
+  globals: {
+    imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Pagination
+        defaultPage={ 4 }
+        getPageUrl={ ({ page }: PaginationPageUrlDetail) => `#page-${page}` }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+
+      <Pagination
+        defaultPage={ 4 }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    </div>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -154,16 +207,27 @@ export const SiblingCount: Story = {
 
 export const WithTooltipLabels: Story = {
   globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Pagination
-      labelTooltipPrev="Go to previous page"
-      labelTooltipNext="Go to next page"
-      totalItems={ 500 }>
-      <PaginationPages />
-    </Pagination>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Pagination
+        labelTooltipPrev="Go to previous page"
+        labelTooltipNext="Go to next page"
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+
+      <Pagination
+        getPageUrl={ ({ page }: PaginationPageUrlDetail) => `#page-${page}` }
+        labelTooltipPrev="Go to previous page"
+        labelTooltipNext="Go to next page"
+        page={ 1 }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    </div>
   ),
 };
 

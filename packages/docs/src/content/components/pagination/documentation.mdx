@@ -34,6 +34,7 @@ A **Pagination** component is used in two situations :
     '- Ensure Pagination is used when the total number of pages is known or predictable',
     '- Display a reasonable number of items per page (typically around 20–30) to balance readability and navigation',
     '- Use Next/Previous buttons and page numbers to help users track their position within the dataset',
+    '- Turn the pages into links when each page has its own URL, so that they can be crawled, opened in a new tab and restored on reload',
   ]}
 />
 
@@ -48,6 +49,8 @@ A **Pagination** component is used in two situations :
 5. **Ellipsis**
 6. **Current page button**
 7. **Unselected page button**
+
+The anatomy above describes the default **Pagination**, whose pages are <DocLink to="/components/button">Buttons</DocLink>. When the pages are links, the same anatomy is rendered with the <DocLink to="/components/link">Link</DocLink> style instead, as described in "Pages as links" below.
 
 <Heading label="Placement" level={ 2 } />
 
@@ -96,6 +99,35 @@ Depending on the current page number and the amount of pages, here are the diffe
 
 Allows users to directly select a page from an number input.
 
+<Heading label="Pages as links" level={ 3 } />
+
+Where the **Pagination** is used to move between actual pages, each with an URL of its own, the pages must be links rather than Buttons.
+
+By default a page is a <DocLink to="/components/button">Button</DocLink>: activating it swaps the content in place, and nothing outside the component knows about it. That fits a paginated <DocLink to="/components/table">Table</DocLink> inside a single page, and nothing else.
+
+As soon as a page is a destination, provide `getPageUrl` and the pages become real links. They can then be crawled by a search engine, opened in a new tab, bookmarked and restored on reload, which is what an anonymous listing (a products list, a public catalogue, a documentation index) needs.
+
+Because those pages navigate, they are rendered with the <DocLink to="/components/link">Link</DocLink> style rather than the <DocLink to="/components/button">Button</DocLink> style: a button looks like a button, a link looks like a link.
+
+<Canvas story="LinksVsButtons" source="none" />
+
+What changes in link mode:
+- Every page the user can go to is a <DocLink to="/components/link">Link</DocLink> carrying an `href`
+- The active page is not a link, as there is nowhere to navigate to: it stays plain, emphasised text carrying <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current">aria-current="page"</ExternalLink>
+- The previous and next triggers are icon links. On the first and the last page they carry no `href`, are marked `aria-disabled` and leave the tab order
+- The ellipsis is plain text, as it is a gap between two ranges of pages and not a page
+
+<Canvas story="Links" />
+
+<Message color="information" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    In link mode the URL holds the active page, so the component does not move on its own: pass the page read back from the URL as `page`, or as `defaultPage` when the page is rendered by the server.
+
+    The parts that are not links keep reporting through `onPageChange` and `onPageSizeChange`: the "Go to page" form submits, and the "items per page" select changes the size. Navigate to the matching URL from those callbacks.
+  </MessageBody>
+</Message>
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
@@ -106,6 +138,8 @@ The current page Button is not interactive.
 
 Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped in the tab order.
 
+When the pages are links, the same rules apply: the active page is plain text and the triggers that lead nowhere are skipped.
+
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
 Pressing <Kbd>Tab</Kbd> moves focus forward through all interactive elements in the **Pagination** (Select, Buttons).
@@ -114,11 +148,28 @@ Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward.
 
 Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> on a page button, "Previous", or "Next" triggers the corresponding page change.
 
+When the pages are links, <Kbd>Enter</Kbd> follows the link, as on any anchor; <Kbd>Space</Kbd> scrolls the page instead.
+
 The "items per page" Select uses the same keyboard shortcuts as the standard Select component.
 
 <Heading label="Accessibility" level={ 2 } />
 
 **Pagination** component should be properly identified, and correct labels must be implemented to ensure it is accessible to assistive technologies.
+
+<Heading label="Choosing between Buttons and links" level={ 3 } />
+
+The choice is not a matter of style: it tells assistive technologies what activating a page does, and it is announced as such.
+
+Use the default **Buttons** when the pages are internal to the page the user is already on: activating one swaps a portion of the content, the URL does not change, and the user stays where they are. A screen reader announces a button, and the user expects to remain on the page.
+
+Use **links**, through `getPageUrl`, when a page is a destination of its own: activating one leaves the current document for another URL. A screen reader announces a link, and the user expects to be taken elsewhere. Rendering that as a Button would announce the wrong thing, and it would also deny the behaviours users expect from a link: opening in a new tab, copying the address, going back.
+
+<Message color="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    A page that navigates must never be a Button, and a page that only swaps content must never be a link. Announcing the wrong role sends the user somewhere they did not expect, or keeps them from getting where they wanted.
+  </MessageBody>
+</Message>
 
 <Heading label="Identifying the Pagination with aria-label" level={ 3 } />
 

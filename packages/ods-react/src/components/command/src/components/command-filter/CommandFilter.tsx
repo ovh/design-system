@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef } from 'react';
+import { ICON_NAME, Icon } from '../../../../icon/src';
 import { Input, type InputProp } from '../../../../input/src';
 import { useCommand } from '../../contexts/useCommand';
 import style from './commandFilter.module.scss';
@@ -38,7 +39,8 @@ const CommandFilter: FC<CommandFilterProp> = forwardRef(({
       } }
       ref={ ref }
       role="combobox"
-      type='search'
+      startContent={ <Icon name={ ICON_NAME.magnifyingGlass } /> }
+      type='text'
       value={ isControlled ? value : filter }
       { ...props }
     />

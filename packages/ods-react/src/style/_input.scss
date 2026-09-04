@@ -1,7 +1,9 @@
 @use './focus';
 @use './state';
 
-$ods-input-actions-padding-right: calc(var(--ods-theme-padding-horizontal) / 2);
+// In-field controls sit as close to the border as the field's own block inset, so the gap around
+// an action button reads the same on all four sides instead of being twice as wide on the end.
+$ods-input-actions-padding-right: var(--ods-theme-input-padding-vertical);
 $ods-input-field-height: var(--ods-theme-input-min-height);
 $ods-input-placeholder-color: var(--ods-theme-input-placeholder-text-color);
 

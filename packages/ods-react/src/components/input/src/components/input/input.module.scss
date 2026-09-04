@@ -14,7 +14,7 @@
     column-gap: calc(var(--ods-theme-column-gap) / 2);
 
     &:focus-within {
-      &:not(:has(button:focus-within)) {
+      &:not(:has(:is(a, button, [role="button"]):focus-within)) {
         @include focus.ods-focus();
 
         &:not([data-readonly]) {
@@ -31,8 +31,21 @@
       @include state.ods-is-readonly();
     }
 
+    &:has(> [data-ods="input-start"] :is(a, button, [role="button"])) {
+      padding-inline-start: input.$ods-input-actions-padding-right;
+    }
+
+    &:has(> [data-ods="input-end"] :is(a, button, [role="button"])) {
+      padding-inline-end: input.$ods-input-actions-padding-right;
+    }
+
     &[data-disabled] {
       @include state.ods-is-disabled();
+
+      #{$input}__start,
+      #{$input}__end {
+        color: inherit;
+      }
     }
 
     &#{$input}[data-invalid] {
@@ -40,14 +53,25 @@
     }
 
     &--with-actions {
-      padding-right: input.$ods-input-actions-padding-right;
+      padding-inline-end: input.$ods-input-actions-padding-right;
+    }
+
+    &__start,
+    &__end {
+      display: inline-flex;
+      flex: none;
+      column-gap: calc(var(--ods-theme-column-gap) / 2);
+      align-items: center;
+      white-space: nowrap;
+      color: input.$ods-input-placeholder-color;
     }
 
     &__field {
+      box-sizing: border-box;
       border: none;
       background-color: inherit;
       padding: 0;
-      width: 100%;
+      inline-size: 100%;
       color: inherit;
       font-family: inherit;
       font-size: inherit;
@@ -76,6 +100,11 @@
       &[type="search"]::-webkit-search-cancel-button,
       &[type="search"]::-webkit-search-decoration {
         appearance: none;
+      }
+
+      // Handle Edge behavior (it adds a reveal control at the end of password inputs)
+      &[type="password"]::-ms-reveal {
+        display: none;
       }
     }
   }

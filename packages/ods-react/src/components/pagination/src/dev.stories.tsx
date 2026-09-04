@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import style from './dev.module.css';
-import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, PaginationPages } from '.';
+import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages } from '.';
 
 export default {
   component: Pagination,
@@ -114,6 +114,55 @@ export const Disabled = () => (
       totalItems={ 500 } />
   </>
 );
+
+export const Links = () => {
+  const [page, setPage] = useState(1);
+
+  // A hash so that following a link does not take the storybook iframe off the story.
+  function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
+    return `#page-${page}-size-${pageSize}`;
+  }
+
+  return (
+    <>
+      <p>Link mode: the pages navigate, so they look like a Link.</p>
+
+      <Pagination
+        getPageUrl={ getPageUrl }
+        labelTooltipNext="Go to next page"
+        labelTooltipPrev="Go to prev page"
+        onPageChange={ ({ page }) => setPage(page) }
+        page={ page }
+        totalItems={ 500 }>
+        <PaginationPageSizeSelector />
+
+        <PaginationPages />
+
+        <PaginationPageSelector />
+      </Pagination>
+
+      <hr />
+      <p>Link mode, disabled</p>
+
+      <Pagination
+        defaultPage={ 4 }
+        disabled
+        getPageUrl={ getPageUrl }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+
+      <hr />
+      <p>Button mode, for comparison</p>
+
+      <Pagination
+        defaultPage={ 4 }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    </>
+  );
+};
 
 export const Refs = () => {
   const paginationRef = useRef(null);

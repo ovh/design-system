@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { type ComponentPropsWithRef, useState } from 'react';
+import { Link as RouterLink, useSearchParams } from 'react-router-dom';
 import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
@@ -112,7 +113,7 @@ export const ItemsPerPage: Story = {
 export const Links: Story = {
   globals: {
     imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
+import { useSearchParams } from 'react-router-dom';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -121,17 +122,60 @@ import { useState } from 'react';`,
     },
   },
   render: ({}) => {
-    const [page, setPage] = useState(1);
+    // The page is read back from the URL, never from onPageChange: the links move the URL, and
+    // the component renders what the URL says.
+    const [searchParams] = useSearchParams();
 
     function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
-      return `#page-${page}-size-${pageSize}`;
+      return `?page=${page}&size=${pageSize}`;
     }
 
     return (
       <Pagination
+        aria-label="Products pagination"
         getPageUrl={ getPageUrl }
-        onPageChange={ ({ page }) => setPage(page) }
-        page={ page }
+        page={ Number(searchParams.get('page') ?? 1) }
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
+    );
+  },
+};
+
+export const WithReactRouter: Story = {
+  globals: {
+    imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
+import { type ComponentPropsWithRef } from 'react';
+import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [searchParams] = useSearchParams();
+
+    function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
+      return `?page=${page}&size=${pageSize}`;
+    }
+
+    // The Pagination hands the built URL over as `href`; React Router's Link takes it as `to`.
+    function PaginationLink({ href, ...props }: ComponentPropsWithRef<'a'>) {
+      return (
+        <RouterLink
+          to={ href ?? '' }
+          { ...props } />
+      );
+    }
+
+    return (
+      <Pagination
+        aria-label="Products pagination"
+        getPageUrl={ getPageUrl }
+        linkAs={ PaginationLink }
+        page={ Number(searchParams.get('page') ?? 1) }
         totalItems={ 500 }>
         <PaginationPages />
       </Pagination>
@@ -148,7 +192,7 @@ export const LinksVsButtons: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
       <Pagination
         defaultPage={ 4 }
-        getPageUrl={ ({ page }: PaginationPageUrlDetail) => `#page-${page}` }
+        getPageUrl={ ({ page, pageSize }: PaginationPageUrlDetail) => `?page=${page}&size=${pageSize}` }
         totalItems={ 500 }>
         <PaginationPages />
       </Pagination>
@@ -220,10 +264,10 @@ export const WithTooltipLabels: Story = {
       </Pagination>
 
       <Pagination
-        getPageUrl={ ({ page }: PaginationPageUrlDetail) => `#page-${page}` }
+        defaultPage={ 1 }
+        getPageUrl={ ({ page, pageSize }: PaginationPageUrlDetail) => `?page=${page}&size=${pageSize}` }
         labelTooltipPrev="Go to previous page"
         labelTooltipNext="Go to next page"
-        page={ 1 }
         totalItems={ 500 }>
         <PaginationPages />
       </Pagination>

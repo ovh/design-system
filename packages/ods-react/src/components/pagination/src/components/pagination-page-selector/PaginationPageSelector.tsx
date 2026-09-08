@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type FormEvent, type JSX, type ReactNode, forwardRef, useId } from 'react';
 import { BUTTON_SIZE, Button } from '../../../../button/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
+import { usePagination } from '../../contexts/usePagination';
 import style from './paginationPageSelector.module.scss';
 
 interface PaginationPageSelectorProp extends ComponentPropsWithRef<'form'> {
@@ -24,6 +25,7 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
   submitLabel = 'Go',
   ...props
 }, ref): JSX.Element => {
+  const { getPageUrl, itemsPerPage, onPageChange } = usePagination();
   const { page, setPage, totalPages } = usePaginationContext();
   const textId = useId();
 
@@ -33,9 +35,20 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
     const formData = new FormData(event.target as HTMLFormElement);
     const newPage = Number(formData.get(INPUT_NAME));
 
-    if (!isNaN(newPage) && newPage !== page) {
-      setPage(Math.max(Math.min(newPage, totalPages), 1));
+    if (isNaN(newPage) || newPage === page) {
+      return;
     }
+
+    const target = Math.max(Math.min(newPage, totalPages), 1);
+
+    // This form is not a link: in link mode it has no href for the browser to follow, so it is
+    // the one control that reports the wanted page and lets the application navigate to it.
+    if (getPageUrl) {
+      onPageChange?.({ page: target, pageSize: itemsPerPage });
+      return;
+    }
+
+    setPage(target);
   }
 
   return (

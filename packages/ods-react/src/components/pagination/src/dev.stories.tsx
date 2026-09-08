@@ -115,13 +115,35 @@ export const Disabled = () => (
   </>
 );
 
-export const Links = () => {
-  const [page, setPage] = useState(1);
+// A hash so that following a link does not take the storybook iframe off the story.
+function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
+  return `#page-${page}-size-${pageSize}`;
+}
 
-  // A hash so that following a link does not take the storybook iframe off the story.
-  function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
-    return `#page-${page}-size-${pageSize}`;
-  }
+function readPageFromHash() {
+  const match = window.location.hash.match(/^#page-(\d+)-size-\d+$/);
+
+  return match ? Number(match[1]) : 1;
+}
+
+// Only reached by the controls that are not links: the "Go to page" form and the size selector.
+function navigateToPage(page: number, pageSize: number) {
+  window.location.hash = getPageUrl({ page, pageSize });
+}
+
+export const Links = () => {
+  // The page is read back from the URL, never from onPageChange: the URL is what the links move.
+  const [page, setPage] = useState(readPageFromHash);
+
+  useEffect(() => {
+    function sync() {
+      setPage(readPageFromHash());
+    }
+
+    window.addEventListener('hashchange', sync);
+
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
 
   return (
     <>
@@ -131,7 +153,7 @@ export const Links = () => {
         getPageUrl={ getPageUrl }
         labelTooltipNext="Go to next page"
         labelTooltipPrev="Go to prev page"
-        onPageChange={ ({ page }) => setPage(page) }
+        onPageChange={ ({ page, pageSize }) => navigateToPage(page, pageSize) }
         page={ page }
         totalItems={ 500 }>
         <PaginationPageSizeSelector />

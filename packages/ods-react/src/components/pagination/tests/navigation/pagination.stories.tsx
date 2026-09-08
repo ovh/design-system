@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useState } from 'react';
-import { Pagination, PaginationPages, type PaginationPageUrlDetail } from '../../src';
+import { Pagination, PaginationPageSelector, PaginationPages, type PaginationPageUrlDetail } from '../../src';
 
 export default {
   component: Pagination,
@@ -55,3 +55,23 @@ export const link = () => (
 );
 
 export const linkFromUrl = () => <LinkFromUrl />;
+
+// Records every page change reported to the application, so that a test can tell which controls
+// report and which ones stay silent because the browser already followed a link.
+export const linkReporting = () => (
+  <Pagination
+    data-testid="link-reporting"
+    getPageUrl={ getPageUrl }
+    onPageChange={ (detail) => {
+      const store = window as unknown as { __pageChanges?: unknown[] };
+
+      store.__pageChanges = [...(store.__pageChanges ?? []), detail];
+    } }
+    page={ 3 }
+    pageSize={ PAGE_SIZE }
+    totalItems={ 200 }>
+    <PaginationPages />
+
+    <PaginationPageSelector />
+  </Pagination>
+);

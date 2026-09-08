@@ -81,6 +81,34 @@ describe('Pagination navigation', () => {
       expect(await page.evaluate(() => window.location.hash)).toBe('#page-2-size-10');
     });
 
+    it('should stay silent when a link is followed, as the URL is the only signal', async() => {
+      await gotoStory(page, 'navigation/link-reporting');
+      await page.waitForSelector('[data-testid="link-reporting"]');
+
+      const target = await page.waitForSelector('[data-part="item"]:not([aria-current="page"])');
+
+      await target?.click();
+
+      // A hash navigation keeps the document alive, so the recorder survives the click.
+      expect(await page.evaluate(() => window.location.hash)).toMatch(/^#page-\d+-size-10$/);
+      // Reporting here would let the application move the page during the click, which rewrites
+      // the trigger href before the browser follows it and lands the user one page too far.
+      expect(await page.evaluate(() => (window as unknown as { __pageChanges?: unknown[] }).__pageChanges ?? [])).toEqual([]);
+    });
+
+    it('should report the wanted page from the go-to-page form, which is not a link', async() => {
+      await gotoStory(page, 'navigation/link-reporting');
+      await page.waitForSelector('[data-testid="link-reporting"]');
+
+      await page.type('[data-ods="pagination-page-selector"] input', '7');
+      await page.click('[data-ods="pagination-page-selector"] button[type="submit"]');
+
+      expect(await page.evaluate(() => (window as unknown as { __pageChanges?: unknown[] }).__pageChanges ?? []))
+        .toEqual([{ page: 7, pageSize: 10 }]);
+      // The form has no href to follow, so the application is the one that navigates.
+      expect(await page.evaluate(() => window.location.hash)).toBe('');
+    });
+
     it('should not navigate when the active page is activated', async() => {
       await gotoStory(page, 'navigation/link');
       await page.waitForSelector('[data-testid="link"]');

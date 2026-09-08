@@ -27,13 +27,17 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { disabled, getPageUrl, labelTooltipNext, labelTooltipPrev } = usePagination();
+  const { disabled, getPageUrl, labelTooltipNext, labelTooltipPrev, linkAs } = usePagination();
   const { nextPage, previousPage } = usePaginationContext();
   const isLink = !!getPageUrl;
   // In link mode zag drops the href at the boundaries but never marks the trigger disabled, as
   // an anchor takes no `disabled` attribute. Link turns it into the `aria-disabled` contract.
   const isPrevDisabled = isLink ? (disabled || !previousPage) : disabled;
   const isNextDisabled = isLink ? (disabled || !nextPage) : disabled;
+  // A trigger that leads nowhere carries no href, so it is left a plain anchor: handing an
+  // undefined destination to a routing library is at best meaningless, and next/link throws on it.
+  const prevLinkAs = isPrevDisabled ? undefined : linkAs;
+  const nextLinkAs = isNextDisabled ? undefined : linkAs;
 
   return (
     <div
@@ -47,6 +51,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
             {
               isLink
                 ? <Link
+                  as={ prevLinkAs }
                   className={ style['pagination-pages__trigger'] }
                   disabled={ isPrevDisabled }>
                   <Icon name={ ICON_NAME.chevronLeft } />
@@ -71,7 +76,6 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
                 key={ index }>
                 {
                   isLink
-                    // Not a page, so nothing to link to: a gap between two ranges of links.
                     ? <span className={ style['pagination-pages__ellipsis'] }>&#8230;</span>
                     : <Button
                       disabled
@@ -91,6 +95,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
             {
               isLink
                 ? <Link
+                  as={ nextLinkAs }
                   className={ style['pagination-pages__trigger'] }
                   disabled={ isNextDisabled }>
                   <Icon name={ ICON_NAME.chevronRight } />

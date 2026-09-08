@@ -138,12 +138,20 @@ function PaginationProvider({
   }, [defaultPage, isControlled, itemsPerPage, totalItems]);
 
   function handlePageChange(detail: PaginationPageChangeDetail): void {
-    // In link mode the URL holds the page, so the component must not move on its own: React
-    // flushes a click synchronously, and a page change would rewrite the trigger href before
-    // the browser follows it, sending the user one page too far.
-    if (!isControlled && !getPageUrl) {
+    // Link mode: the URL owns the active page, and following a link is the only way to change it.
+    // Nothing is reported here, on purpose. React flushes a click synchronously, so a consumer
+    // moving the page from this callback would rewrite the trigger href before the browser
+    // follows it and land the user one page further than the link they clicked. Leaving the
+    // component untouched during the click makes that impossible rather than merely discouraged.
+    // The controls that are not links report on their own, see PaginationPageSelector.
+    if (getPageUrl) {
+      return;
+    }
+
+    if (!isControlled) {
       setInternalPage(detail.page);
     }
+
     onPageChange?.(detail);
   }
 

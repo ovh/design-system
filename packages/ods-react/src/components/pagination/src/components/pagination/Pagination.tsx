@@ -62,6 +62,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   getPageUrl,
   labelTooltipNext,
   labelTooltipPrev,
+  linkAs,
   onPageChange,
   onPageSizeChange,
   page,
@@ -76,6 +77,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
       getPageUrl={ getPageUrl }
       labelTooltipNext={ labelTooltipNext }
       labelTooltipPrev={ labelTooltipPrev }
+      linkAs={ linkAs }
       onPageChange={ onPageChange }
       onPageSizeChange={ onPageSizeChange }
       page={ page }

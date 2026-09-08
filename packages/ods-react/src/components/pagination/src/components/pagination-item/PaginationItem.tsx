@@ -48,7 +48,7 @@ const PaginationItem: FC<PaginationItemProp> = ({
   page,
 }): JSX.Element => {
   const { page: currentPage } = usePaginationContext();
-  const { getPageUrl } = usePagination();
+  const { getPageUrl, linkAs } = usePagination();
   const isCurrentPage = currentPage === page.value;
 
   // Link mode. The item lives inside a plain box holding the rhythm of the bar, so that the link
@@ -65,6 +65,7 @@ const PaginationItem: FC<PaginationItemProp> = ({
             isCurrentPage
               ? <PaginationCurrentPage>{ page.value }</PaginationCurrentPage>
               : <Link
+                as={ linkAs }
                 className={ style['pagination-item__link'] }
                 disabled={ disabled }>
                 { page.value }

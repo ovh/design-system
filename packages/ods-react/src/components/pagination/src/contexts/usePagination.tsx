@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, type ElementType, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
 /** @internal DEPRECATED: remove on next major version */
@@ -47,6 +47,14 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    */
   labelTooltipPrev?: string;
   /**
+   * \@default-value='a'
+   * Pass a component you may want to use to render the page links.
+   * Only used along `getPageUrl`. Useful to hand the navigation over to a routing library, which
+   * a plain anchor would bypass with a full page load: the component receives the built URL as
+   * `href` and maps it to whatever prop it expects.
+   */
+  linkAs?: ElementType;
+  /**
    * Callback fired when the active page changes.
    */
   onPageChange?: (detail: PaginationPageChangeDetail) => void;
@@ -85,7 +93,7 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
   withPageSizeSelector?: boolean;
 }
 
-interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
+interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
   children: ReactNode;
 }
 
@@ -105,6 +113,7 @@ function PaginationProvider({
   getPageUrl,
   labelTooltipNext,
   labelTooltipPrev,
+  linkAs,
   onPageChange,
   onPageSizeChange,
   page,
@@ -157,6 +166,7 @@ function PaginationProvider({
       itemsPerPage,
       labelTooltipNext,
       labelTooltipPrev,
+      linkAs,
       onPageChange,
       onPageSizeChange,
       page,

@@ -42,8 +42,12 @@ check('unknown slug → helpful error', /Unknown component/.test(unknown), unkno
 const search = await call('search_docs', { query: 'form field validation error' });
 check('search_docs finds form-field', /form/i.test(search) && /fetch with:/.test(search), search.slice(0, 160));
 
+// The guide count follows the docs content: compare against the source index
+// instead of hardcoding a number that moves with every new guide.
+const { readFileSync } = await import('node:fs');
+const genericCount = JSON.parse(readFileSync(resolve(PKG, '../docs/assets/llms/llms-index.json'), 'utf8')).generic.length;
 const guides = await call('get_guide');
-check('get_guide lists 25 guides', /25 guides/.test(guides), guides.slice(0, 120));
+check(`get_guide lists every guide (${genericCount})`, new RegExp(`${genericCount} guides`).test(guides), guides.slice(0, 120));
 
 const guide = await call('get_guide', { slug: 'get-started' });
 check('get_guide get-started resolves by suffix', /install|npm|pnpm/i.test(guide), guide.slice(0, 120));

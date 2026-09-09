@@ -4,7 +4,7 @@ slug: input
 category: component
 type: examples
 version: 19.7.3
-tokens: 449
+tokens: 1601
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--examples.txt
 ---
 
@@ -32,6 +32,169 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
     <option value="Vanilla"></option>
   </datalist>
 </>
+```
+
+## Content Adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content Adornment With Button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
+```
+
+## Domain Availability Search
+
+```tsx
+{
+    const takenAddresses = ['admin', 'api', 'www'];
+    const [address, setAddress] = useState('');
+    const [isChecking, setIsChecking] = useState(false);
+    const [isTaken, setIsTaken] = useState(false);
+    const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+    useEffect(() => () => clearTimeout(checkTimer.current), []);
+
+    function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
+      const value = e.target.value;
+      const isLongEnough = value.length > 2;
+
+      clearTimeout(checkTimer.current);
+      setAddress(value);
+      setIsTaken(false);
+      setIsChecking(isLongEnough);
+
+      if (isLongEnough) {
+        checkTimer.current = setTimeout(() => {
+          setIsChecking(false);
+          setIsTaken(takenAddresses.includes(value.toLowerCase()));
+        }, 700);
+      }
+    }
+
+    return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  }
+```
+
+## Login Form
+
+```tsx
+{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
+
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
+
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
+    }
+
+    return (
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
+          <FormFieldLabel>
+            Admin email
+          </FormFieldLabel>
+
+          <Input
+            name="email"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
+            placeholder="you@example.com"
+            startContent={ <Icon name={ ICON_NAME.email } /> }
+            type={ INPUT_TYPE.email }
+            value={ email } />
+
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!errors.password }>
+          <FormFieldLabel>
+            Root password
+          </FormFieldLabel>
+
+          <Input
+            maskOption={{ enable: true }}
+            name="password"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
+            value={ password } />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
+        </FormField>
+
+        <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </div>
+      </form>
+    );
+  }
 ```
 
 ## Default
@@ -110,6 +273,21 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
   </FormFieldLabel>
 
   <Input />
+</FormField>
+```
+
+## Accessibility Content
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Weight:
+  </FormFieldLabel>
+
+  <Input
+    aria-describedby="weight-unit"
+    defaultValue="42"
+    endContent={ <span id="weight-unit">kg</span> } />
 </FormField>
 ```
 

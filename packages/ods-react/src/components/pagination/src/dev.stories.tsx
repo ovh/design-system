@@ -120,10 +120,10 @@ function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
   return `#page-${page}-size-${pageSize}`;
 }
 
-function readPageFromHash() {
-  const match = window.location.hash.match(/^#page-(\d+)-size-\d+$/);
+function readFromHash() {
+  const match = window.location.hash.match(/^#page-(\d+)-size-(\d+)$/);
 
-  return match ? Number(match[1]) : 1;
+  return match ? { page: Number(match[1]), pageSize: Number(match[2]) } : { page: 1, pageSize: 10 };
 }
 
 // Only reached by the controls that are not links: the "Go to page" form and the size selector.
@@ -132,12 +132,13 @@ function navigateToPage(page: number, pageSize: number) {
 }
 
 export const Links = () => {
-  // The page is read back from the URL, never from onPageChange: the URL is what the links move.
-  const [page, setPage] = useState(readPageFromHash);
+  // The page and the size are read back from the URL, never from the callbacks: the URL is what
+  // the links move, and the rest of the bar navigates to it.
+  const [{ page, pageSize }, setLocation] = useState(readFromHash);
 
   useEffect(() => {
     function sync() {
-      setPage(readPageFromHash());
+      setLocation(readFromHash());
     }
 
     window.addEventListener('hashchange', sync);
@@ -154,7 +155,9 @@ export const Links = () => {
         labelTooltipNext="Go to next page"
         labelTooltipPrev="Go to prev page"
         onPageChange={ ({ page, pageSize }) => navigateToPage(page, pageSize) }
+        onPageSizeChange={ ({ pageSize }) => navigateToPage(1, pageSize) }
         page={ page }
+        pageSize={ pageSize }
         totalItems={ 500 }>
         <PaginationPageSizeSelector />
 

@@ -109,6 +109,39 @@ describe('Pagination navigation', () => {
       expect(await page.evaluate(() => window.location.hash)).toBe('');
     });
 
+    it('should report the wanted size and stay put until the application navigates', async() => {
+      await gotoStory(page, 'navigation/link-size-selection');
+      await page.waitForSelector('[data-testid="link-size-selection"]');
+
+      function readBar(): Promise<{ current: string | null, next: string | null, prev: string | null, size: string }> {
+        return page.evaluate(() => ({
+          current: document.querySelector('[data-scope="pagination"][data-part="item"][aria-current="page"]')?.textContent ?? null,
+          next: document.querySelector('[data-part="next-trigger"]')?.getAttribute('href') ?? null,
+          prev: document.querySelector('[data-part="prev-trigger"]')?.getAttribute('href') ?? null,
+          size: document.querySelector('[data-ods="pagination-page-size-selector"] [data-part="trigger"]')?.textContent ?? '',
+        }));
+      }
+
+      const before = await readBar();
+
+      expect(before).toEqual({ current: '18', next: '#page-19-size-10', prev: '#page-17-size-10', size: '10' });
+
+      const trigger = await page.waitForSelector('[data-ods="pagination-page-size-selector"] [data-scope="select"][data-part="trigger"]');
+
+      await trigger?.click();
+
+      const option = await page.waitForSelector('[data-scope="select"][data-part="item"][data-value="100"]', { visible: true });
+
+      await option?.click();
+
+      expect(await page.evaluate(() => (window as unknown as { __pageSizeChanges?: unknown[] }).__pageSizeChanges ?? []))
+        .toEqual([{ pageSize: 100 }]);
+      // Moving on its own would rebuild every href with a size the URL does not have yet, drop
+      // the active page out of the new range, and point the triggers at pages that no longer exist.
+      expect(await readBar()).toEqual(before);
+      expect(await page.evaluate(() => (window as unknown as { __pageChanges?: unknown[] }).__pageChanges ?? [])).toEqual([]);
+    });
+
     it('should not navigate when the active page is activated', async() => {
       await gotoStory(page, 'navigation/link');
       await page.waitForSelector('[data-testid="link"]');

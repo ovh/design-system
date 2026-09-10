@@ -29,6 +29,12 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
   const { page, setPage, totalPages } = usePaginationContext();
   const textId = useId();
 
+  // Warned at render time rather than in an effect, as link mode is meant for server rendered
+  // listings where an effect never runs.
+  if (getPageUrl && !onPageChange) {
+    console.warn('getPageUrl renders the pages as links, so the URL holds the active page. This form has no link to follow: please handle onPageChange and navigate to the matching URL, otherwise submitting a page does nothing.');
+  }
+
   function handleSubmit(event: FormEvent): void {
     event.preventDefault();
     event.stopPropagation();

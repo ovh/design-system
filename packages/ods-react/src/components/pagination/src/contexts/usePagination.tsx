@@ -68,6 +68,8 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
   page?: number;
   /**
    * The number of items per page.
+   * Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then
+   * what holds the size: the component renders it instead of keeping a size of its own.
    */
   pageSize?: number;
   /**
@@ -120,10 +122,14 @@ function PaginationProvider({
   pageSize = 10,
   totalItems,
 }: PaginationProviderProp): JSX.Element {
-  const [itemsPerPage, setItemsPerPage] = useState<number>(pageSize);
+  const [internalItemsPerPage, setInternalItemsPerPage] = useState<number>(pageSize);
   const [internalPage, setInternalPage] = useState<number>(defaultPage ?? 1);
   const isControlled = page !== undefined;
   const currentPage = isControlled && page ? page : internalPage;
+  // Link mode: the URL owns the page size the way it owns the page, so the component renders the
+  // prop rather than a size of its own. Holding it internally would rebuild every href with a
+  // size the URL does not have yet, and leave the active page outside the new range.
+  const itemsPerPage = getPageUrl ? pageSize : internalItemsPerPage;
 
   // Warned at render time, not in an effect: link mode exists for server rendered listings, and
   // an effect never runs on the server - which is exactly where the mistake is made.
@@ -158,7 +164,11 @@ function PaginationProvider({
   function handlePageSizeChange(value: string): void {
     const numericValue = Number(value);
 
-    setItemsPerPage(numericValue);
+    // Link mode: the size is reported and nothing else, on the same grounds as the page. The
+    // application navigates to the matching URL, and the new size comes back as a prop.
+    if (!getPageUrl) {
+      setInternalItemsPerPage(numericValue);
+    }
 
     onPageSizeChange?.({ pageSize: numericValue });
   }

@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useState } from 'react';
-import { Pagination, PaginationPageSelector, PaginationPages, type PaginationPageUrlDetail } from '../../src';
+import { Pagination, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationPageUrlDetail } from '../../src';
 
 export default {
   component: Pagination,
@@ -73,5 +73,30 @@ export const linkReporting = () => (
     <PaginationPages />
 
     <PaginationPageSelector />
+  </Pagination>
+);
+
+// The size selector has no link to follow either. Sits on the last page of the range so that a
+// bigger size would leave the active page outside of it.
+export const linkSizeSelection = () => (
+  <Pagination
+    data-testid="link-size-selection"
+    getPageUrl={ getPageUrl }
+    onPageChange={ (detail) => {
+      const store = window as unknown as { __pageChanges?: unknown[] };
+
+      store.__pageChanges = [...(store.__pageChanges ?? []), detail];
+    } }
+    onPageSizeChange={ (detail) => {
+      const store = window as unknown as { __pageSizeChanges?: unknown[] };
+
+      store.__pageSizeChanges = [...(store.__pageSizeChanges ?? []), detail];
+    } }
+    page={ 18 }
+    pageSize={ PAGE_SIZE }
+    totalItems={ 200 }>
+    <PaginationPageSizeSelector />
+
+    <PaginationPages />
   </Pagination>
 );

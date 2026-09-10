@@ -20,8 +20,14 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
   ...props
 }, ref): JSX.Element => {
   const { count: totalItems, pageSize } = usePaginationContext();
-  const { handlePageSizeChange } = usePagination();
+  const { getPageUrl, handlePageSizeChange, onPageSizeChange } = usePagination();
   const textId = useId();
+
+  // Warned at render time rather than in an effect, as link mode is meant for server rendered
+  // listings where an effect never runs.
+  if (getPageUrl && !onPageSizeChange) {
+    console.warn('getPageUrl renders the pages as links, so the URL holds the number of items per page. This selector has no link to follow: please handle onPageSizeChange and navigate to the matching URL, otherwise picking a size does nothing.');
+  }
 
   function handleValueChange(detail: SelectValueChangeDetail): void {
     if (detail.value[0]) {
@@ -36,9 +42,9 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
       ref={ ref }
       { ...props }>
       <Select
-        defaultValue={ [pageSize.toString()] }
         items={ PAGINATION_PER_PAGE_OPTIONS as SelectItem[] }
-        onValueChange={ handleValueChange }>
+        onValueChange={ handleValueChange }
+        value={ [pageSize.toString()] }>
         <SelectControl aria-labelledby={ textId } />
         <SelectContent />
       </Select>

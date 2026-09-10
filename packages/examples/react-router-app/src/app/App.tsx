@@ -2,6 +2,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react'
 import { type ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Link } from './components/link/Link';
+import { ProductList } from './components/pagination/ProductList';
 import style from './app.module.scss';
 
 const NB_PAGES = 4; // Change this to test the breadcrumb behaviour
@@ -38,8 +39,12 @@ function App(): ReactElement {
       <Link to="page1">Manual link to Page 1</Link>
       <br />
       <Link to="page2">Manual link to Page 2</Link>
+      <br />
+      <Link to="products?page=1&size=10">Paginated product list</Link>
 
       <Routes>
+        <Route element={ <ProductList /> } path="products" />
+
         {
           Pages.map((Page, idx) => (
             <Route

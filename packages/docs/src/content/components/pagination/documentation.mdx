@@ -1,4 +1,4 @@
-_A **Pagination** component allows users to navigate through large sets of data by dividing the content into multiple pages._
+_A **Pagination** component splits a long list into numbered pages and lets users move between them, whether a page is a portion of the current view or a destination with an URL of its own._
 
 <Canvas story="Overview" source="none" />
 
@@ -8,18 +8,18 @@ _A **Pagination** component allows users to navigate through large sets of data 
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=47-7743"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/pagination"
               name="Pagination">
-  The **Pagination** component is used to divide content into discrete pages and provide navigation controls to move between them.
+  The **Pagination** component divides a list into discrete pages and provides the controls to move between them, keeping a large set of items browsable without overwhelming the interface.
 
-  This component enhances usability by allowing users to browse through large sets of data without overwhelming the interface.
+  A page can be a portion of the current view, swapped in place without leaving the page, or a page of its own.
 
-  **Pagination** can include various controls like next/previous buttons and page numbers.
+  **Pagination** can include various controls like next/previous controls, page numbers, an items per page selector and a go-to-page input.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
 
-A **Pagination** component is used in two situations :
-* To navigate among a <DocLink to="/components/table">Table</DocLink> component
-* To browse in a set of items (products list, ...)
+A **Pagination** component is used in two situations, and each one calls for a different kind of control :
+* To navigate among a <DocLink to="/components/table">Table</DocLink> component, or any content swapped inside the page the user is already on.
+* To browse a set of items spread over pages of their own, each with an URL (products list, public catalogue, documentation index, ...), see "Pages as links" below.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -28,12 +28,14 @@ A **Pagination** component is used in two situations :
     '- Don\'t use Pagination when the total content fits into a single page',
     '- Avoid Pagination if the number of pages is unpredictable or constantly changing. In those cases, consider infinite scrolling or "Load more" patterns instead',
     '- Don\'t make Pagination the only method of navigation if users might need to filter or search within the dataset',
+    '- Don\'t render a page that navigates as a Button, nor a page that only swaps content as a link: the role is what assistive technologies announce',
   ]}
   dos={[
-    '- Use Pagination when users need to navigate through large datasets in a structured and orderly way',
+    '- Use Pagination when users need to move through a long list in a structured and orderly way',
     '- Ensure Pagination is used when the total number of pages is known or predictable',
-    '- Display a reasonable number of items per page (typically around 20–30) to balance readability and navigation',
-    '- Use Next/Previous buttons and page numbers to help users track their position within the dataset',
+    '- Display a reasonable number of items per page (typically around 20 to 30) to balance readability and navigation',
+    '- Use Next/Previous controls and page numbers to help users track their position in the list',
+    '- Turn the pages into links when each page has its own URL, so that they can be crawled, opened in a new tab and restored on reload',
   ]}
 />
 
@@ -48,6 +50,8 @@ A **Pagination** component is used in two situations :
 5. **Ellipsis**
 6. **Current page button**
 7. **Unselected page button**
+
+The anatomy above describes the default **Pagination**, whose pages are <DocLink to="/components/button">Buttons</DocLink>. When the pages are links, the same anatomy is rendered with the <DocLink to="/components/link">Link</DocLink> style instead, as described in "Pages as links" below.
 
 <Heading label="Placement" level={ 2 } />
 
@@ -76,25 +80,73 @@ By default, 10 items per page are displayed, but it can be set to match your nee
 
 <Heading label="Amount of pages" level={ 3 } />
 
-A maximum of 6 numbered page <DocLink to="/components/button">Buttons</DocLink> can be visible at once, with a minimum of 1.
+A maximum of 6 numbered pages can be visible at once, with a minimum of 1.
 
-Arrow Buttons are always visible, no matter what the amount of pages.
+The previous and next controls are always visible, no matter what the amount of pages.
 
 Depending on the current page number and the amount of pages, here are the different displays of the whole component:
-- If amount of pages is less than 7, all numbered page <DocLink to="/components/button">Buttons</DocLink> can be visible at once
+- If amount of pages is less than 7, all numbered pages can be visible at once
 - If amount of pages is 7 or more :
-- If current page is the 4th one or less, the first 5 numbered <DocLink to="/components/button">Buttons</DocLink> are present, then an ellipsis and the last numbered <DocLink to="/components/button">Button</DocLink> corresponding of the amount of pages
-- If current page is the 4th to last or more, the first page <DocLink to="/components/button">Button</DocLink> is displayed followed by an ellipsis and the last 5 numbered <DocLink to="/components/button">Buttons</DocLink>
-- If current page is between the previous bounds are displayed, in order :
-- the first page <DocLink to="/components/button">Button</DocLink>,
+- If current page is the 4th one or less, the first 5 numbered pages are present, then an ellipsis and the last numbered page corresponding of the amount of pages
+- If current page is the 4th to last or more, the first page is displayed followed by an ellipsis and the last 5 numbered pages
+- If current page is between the previous bounds, are displayed, in order :
+- the first page,
 - an ellipsis,
-- 3 numbered <DocLink to="/components/button">Buttons</DocLink>, corresponding to : previous-to-current / current / next-to-current page,
+- 3 numbered pages, corresponding to : previous-to-current / current / next-to-current page,
 - an ellipsis,
-- the last numbered <DocLink to="/components/button">Button</DocLink>
+- the last numbered page
+
+Those counts hold whatever the pages are made of: they are rendered as <DocLink to="/components/button">Buttons</DocLink> or as <DocLink to="/components/link">Links</DocLink> depending on what activating one does, as described in "Pages as links" below.
 
 <Heading label="Go to page" level={ 3 } />
 
 Allows users to directly select a page from an number input.
+
+<Heading label="Pages as links" level={ 3 } />
+
+Where the **Pagination** is used to move between actual pages, each with an URL of its own, the pages must be links rather than Buttons.
+
+By default a page is a <DocLink to="/components/button">Button</DocLink>: activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated <DocLink to="/components/table">Table</DocLink>.
+
+As soon as a page is a destination, provide `getPageUrl` and the pages become real links.
+
+Because those pages navigate, they are rendered with the <DocLink to="/components/link">Link</DocLink> style rather than the <DocLink to="/components/button">Button</DocLink> style: a button looks like a button, a link looks like a link.
+
+<Canvas story="LinksVsButtons" source="none" />
+
+What changes in link mode:
+- Every page the user can go to is a <DocLink to="/components/link">Link</DocLink> carrying an `href`
+- The active page is not a link, as there is nowhere to navigate to: it stays plain, emphasised text carrying <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current">aria-current="page"</ExternalLink>
+
+<Heading label="Wiring link mode" level={ 4 } />
+
+In link mode the URL holds the state of the **Pagination**, the active page and the number of items per page alike. Following a link changes the URL, and the component renders whatever the URL says: read both back from it and pass them as `page` and `pageSize`.
+
+<Canvas story="Links" />
+
+
+Two consequences follow from the URL being in charge:
+
+- **`onPageChange` does not fire when a link is followed.** The browser already did the work, and the new page is in the URL. It still fires for the controls that are not links, which have no href to follow: navigate to the matching URL from there. The same goes for `onPageSizeChange`.
+-  **Never derive `page` from a callback during a click.** There is nothing to derive it from any more, which is the point: were the component to move mid-click, it would rewrite the previous / next href before the browser followed it, and the user would land one page further than the link they clicked.
+
+<Heading label="The controls that are not links" level={ 4 } />
+
+Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page <DocLink to="/components/select">Select</DocLink>. In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into an URL and navigates.
+
+<Canvas story="LinksWithAllControls" />
+
+The **Pagination** does not move meanwhile, and that is deliberate. Were the items per page **Select** to apply the new size on its own, it would rebuild every `href` around a size the URL does not have yet, and the active page would fall outside a range that just shrank: the bar would show pages that no longer exist while the list beside it had not changed.
+
+Changing the size almost always means going back to the first page, as the page the user was on rarely survives the new range. That call belongs to the application, which is the one building the URL.
+
+<Heading label="Handing navigation to a router" level={ 4 } />
+
+`getPageUrl` is enough on its own: the pages are plain anchors, and following one loads the destination the way any link does. On a server rendered site that is all you need.
+
+A single page application does want more, as a full document load would throw its state away. Pass the link component of your routing library as `linkAs`, and the pages navigate inside the app instead. It receives the built URL as `href`, so `next/link` takes it as is, while React Router's `Link` wants it as `to`:
+
+<Canvas story="WithReactRouter" />
 
 <Heading label="Navigation" level={ 2 } />
 
@@ -102,23 +154,40 @@ Allows users to directly select a page from an number input.
 
 When tabbing through the page, focus moves sequentially through all interactive elements in the **Pagination** component.
 
-The current page Button is not interactive.
+The current page is not interactive, whether it is a Button or a link.
 
-Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped in the tab order.
+Navigation controls that lead nowhere (e.g., “Previous” on the first page) are skipped in the tab order.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing <Kbd>Tab</Kbd> moves focus forward through all interactive elements in the **Pagination** (Select, Buttons).
+Pressing <Kbd>Tab</Kbd> moves focus forward through all interactive elements in the **Pagination** (Select, page controls).
 
 Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward.
 
-Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> on a page button, "Previous", or "Next" triggers the corresponding page change.
+When the pages are Buttons, pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> on a page, "Previous", or "Next" triggers the corresponding page change.
+
+When the pages are links, <Kbd>Enter</Kbd> follows the link, as on any anchor; <Kbd>Space</Kbd> scrolls the page instead. That difference comes from the elements themselves and is what users of either one expect.
 
 The "items per page" Select uses the same keyboard shortcuts as the standard Select component.
 
 <Heading label="Accessibility" level={ 2 } />
 
 **Pagination** component should be properly identified, and correct labels must be implemented to ensure it is accessible to assistive technologies.
+
+<Heading label="Choosing between Buttons and links" level={ 3 } />
+
+The choice is not a matter of style: it tells assistive technologies what activating a page does, and it is announced as such.
+
+Use the default **Buttons** when the pages are internal to the page the user is already on: activating one swaps a portion of the content, the URL does not change, and the user stays where they are. A screen reader announces a button, and the user expects to remain on the page.
+
+Use **links**, through `getPageUrl`, when a page is a destination of its own: activating one leaves the current document for another URL. A screen reader announces a link, and the user expects to be taken elsewhere. Rendering that as a Button would announce the wrong thing, and it would also deny the behaviours users expect from a link: opening in a new tab, copying the address, going back.
+
+<Message color="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    A page that navigates must never be a Button, and a page that only swaps content must never be a link. Announcing the wrong role sends the user somewhere they did not expect, or keeps them from getting where they wanted.
+  </MessageBody>
+</Message>
 
 <Heading label="Identifying the Pagination with aria-label" level={ 3 } />
 

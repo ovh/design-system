@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type ComponentPropsWithRef, useState } from 'react';
-import { Link as RouterLink, useSearchParams } from 'react-router-dom';
-import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
+import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-dom';
+import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -122,8 +122,6 @@ import { useSearchParams } from 'react-router-dom';`,
     },
   },
   render: ({}) => {
-    // The page is read back from the URL, never from onPageChange: the links move the URL, and
-    // the component renders what the URL says.
     const [searchParams] = useSearchParams();
 
     function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
@@ -135,6 +133,7 @@ import { useSearchParams } from 'react-router-dom';`,
         aria-label="Products pagination"
         getPageUrl={ getPageUrl }
         page={ Number(searchParams.get('page') ?? 1) }
+        pageSize={ Number(searchParams.get('size') ?? 10) }
         totalItems={ 500 }>
         <PaginationPages />
       </Pagination>
@@ -161,7 +160,6 @@ import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
       return `?page=${page}&size=${pageSize}`;
     }
 
-    // The Pagination hands the built URL over as `href`; React Router's Link takes it as `to`.
     function PaginationLink({ href, ...props }: ComponentPropsWithRef<'a'>) {
       return (
         <RouterLink
@@ -178,6 +176,57 @@ import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
         page={ Number(searchParams.get('page') ?? 1) }
         totalItems={ 500 }>
         <PaginationPages />
+      </Pagination>
+    );
+  },
+};
+
+export const LinksWithAllControls: Story = {
+  globals: {
+    imports: `import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
+import { useNavigate, useSearchParams } from 'react-router-dom';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const page = Number(searchParams.get('page') ?? 1);
+    const pageSize = Number(searchParams.get('size') ?? 10);
+
+    function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
+      return `?page=${page}&size=${pageSize}`;
+    }
+
+    // The pages are links and navigate on their own.
+    // The two controls below are not, and have no href for the browser to follow:
+    // they report the state they want, and the application navigates to the URL that describes it - the same URL getPageUrl builds for the links.
+    function handlePageChange({ page, pageSize }: PaginationPageChangeDetail) {
+      navigate(getPageUrl({ page, pageSize }));
+    }
+
+    function handlePageSizeChange({ pageSize }: PaginationPageSizeChangeDetail) {
+      navigate(getPageUrl({ page: 1, pageSize }));
+    }
+
+    return (
+      <Pagination
+        aria-label="Products pagination"
+        getPageUrl={ getPageUrl }
+        onPageChange={ handlePageChange }
+        onPageSizeChange={ handlePageSizeChange }
+        page={ page }
+        pageSize={ pageSize }
+        totalItems={ 500 }>
+        <PaginationPageSizeSelector />
+
+        <PaginationPages />
+
+        <PaginationPageSelector />
       </Pagination>
     );
   },

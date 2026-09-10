@@ -106,7 +106,7 @@ Allows users to directly select a page from an number input.
 
 Where the **Pagination** is used to move between actual pages, each with an URL of its own, the pages must be links rather than Buttons.
 
-By default a page is a <DocLink to="/components/button">Button</DocLink>: activating it swaps the content in place, and nothing outside the component knows about it. That fits a paginated <DocLink to="/components/table">Table</DocLink> inside a single page, and nothing else.
+By default a page is a <DocLink to="/components/button">Button</DocLink>: activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated <DocLink to="/components/table">Table</DocLink>.
 
 As soon as a page is a destination, provide `getPageUrl` and the pages become real links.
 
@@ -120,15 +120,25 @@ What changes in link mode:
 
 <Heading label="Wiring link mode" level={ 4 } />
 
-In link mode the URL holds the active page. Following a link changes the URL, and the component renders whatever the URL says: read the page back from it and pass it as `page`.
+In link mode the URL holds the state of the **Pagination**, the active page and the number of items per page alike. Following a link changes the URL, and the component renders whatever the URL says: read both back from it and pass them as `page` and `pageSize`.
 
 <Canvas story="Links" />
 
 
 Two consequences follow from the URL being in charge:
 
-- **`onPageChange` does not fire when a link is followed.** The browser already did the work, and the new page is in the URL. It still fires for the controls that are not links, the "Go to page" form for one, which have no href to follow: navigate to the matching URL from there. The same goes for `onPageSizeChange`.
-- **Never derive `page` from a callback during a click.** There is nothing to derive it from any more, which is the point: were the component to move mid-click, it would rewrite the previous / next href before the browser followed it, and the user would land one page further than the link they clicked.
+- **`onPageChange` does not fire when a link is followed.** The browser already did the work, and the new page is in the URL. It still fires for the controls that are not links, which have no href to follow: navigate to the matching URL from there. The same goes for `onPageSizeChange`.
+-  **Never derive `page` from a callback during a click.** There is nothing to derive it from any more, which is the point: were the component to move mid-click, it would rewrite the previous / next href before the browser followed it, and the user would land one page further than the link they clicked.
+
+<Heading label="The controls that are not links" level={ 4 } />
+
+Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page <DocLink to="/components/select">Select</DocLink>. In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into an URL and navigates.
+
+<Canvas story="LinksWithAllControls" />
+
+The **Pagination** does not move meanwhile, and that is deliberate. Were the items per page **Select** to apply the new size on its own, it would rebuild every `href` around a size the URL does not have yet, and the active page would fall outside a range that just shrank: the bar would show pages that no longer exist while the list beside it had not changed.
+
+Changing the size almost always means going back to the first page, as the page the user was on rarely survives the new range. That call belongs to the application, which is the one building the URL.
 
 <Heading label="Handing navigation to a router" level={ 4 } />
 
@@ -137,8 +147,6 @@ Two consequences follow from the URL being in charge:
 A single page application does want more, as a full document load would throw its state away. Pass the link component of your routing library as `linkAs`, and the pages navigate inside the app instead. It receives the built URL as `href`, so `next/link` takes it as is, while React Router's `Link` wants it as `to`:
 
 <Canvas story="WithReactRouter" />
-
-The triggers that lead nowhere, "Previous" on the first page for one, stay plain anchors: they carry no destination to hand over.
 
 <Heading label="Navigation" level={ 2 } />
 

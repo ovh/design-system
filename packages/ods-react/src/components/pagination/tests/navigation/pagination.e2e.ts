@@ -109,6 +109,22 @@ describe('Pagination navigation', () => {
       expect(await page.evaluate(() => window.location.hash)).toBe('');
     });
 
+    it('should keep the triggers announced as links when they carry a tooltip', async() => {
+      await gotoStory(page, 'navigation/link-with-tooltips');
+      await page.waitForSelector('[data-testid="link-with-tooltips"]');
+
+      const triggers = await page.evaluate(() =>
+        [...document.querySelectorAll('[data-ods="tooltip-trigger"]')]
+          .map((el) => ({ href: el.getAttribute('href'), role: el.getAttribute('role'), tag: el.tagName })));
+
+      // The tooltip trigger is a Button in the default mode, and lends it its role. On an anchor
+      // that role would announce a link as a button, which is what link mode exists to avoid.
+      expect(triggers).toEqual([
+        { href: '#page-2-size-10', role: null, tag: 'A' },
+        { href: '#page-4-size-10', role: null, tag: 'A' },
+      ]);
+    });
+
     it('should report the wanted size and stay put until the application navigates', async() => {
       await gotoStory(page, 'navigation/link-size-selection');
       await page.waitForSelector('[data-testid="link-size-selection"]');

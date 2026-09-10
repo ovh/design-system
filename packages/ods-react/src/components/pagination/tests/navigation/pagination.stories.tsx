@@ -54,6 +54,20 @@ export const link = () => (
   </Pagination>
 );
 
+// The tooltip labels wrap the triggers in a TooltipTrigger, which is where the role comes from.
+export const linkWithTooltips = () => (
+  <Pagination
+    data-testid="link-with-tooltips"
+    getPageUrl={ getPageUrl }
+    labelTooltipNext="Go to next page"
+    labelTooltipPrev="Go to previous page"
+    page={ 3 }
+    pageSize={ PAGE_SIZE }
+    totalItems={ 200 }>
+    <PaginationPages />
+  </Pagination>
+);
+
 export const linkFromUrl = () => <LinkFromUrl />;
 
 // Records every page change reported to the application, so that a test can tell which controls

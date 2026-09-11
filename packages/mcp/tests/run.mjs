@@ -39,6 +39,15 @@ check('PascalCase slug tolerated', /datepicker/i.test(badSlug) && !/Unknown comp
 const unknown = await call('get_component', { slug: 'nonexistent-thing' });
 check('unknown slug → helpful error', /Unknown component/.test(unknown), unknown.slice(0, 120));
 
+const camel = await call('get_component', { slug: 'FormField' });
+check('camelCase slug resolves (FormField)', !/Unknown component/.test(camel) && /form-field|form field/i.test(camel), camel.slice(0, 120));
+
+const dashless = await call('get_component', { slug: 'datatable' });
+check('dash-insensitive slug resolves (datatable)', !/Unknown component/.test(dashless), dashless.slice(0, 120));
+
+const fuzzy = await call('get_component', { slug: 'datagrid' });
+check('fuzzy suggestion (datagrid → data-table)', /Did you mean:.*data-table/.test(fuzzy), fuzzy.slice(0, 160));
+
 const search = await call('search_docs', { query: 'form field validation error' });
 check('search_docs finds form-field', /form/i.test(search) && /fetch with:/.test(search), search.slice(0, 160));
 

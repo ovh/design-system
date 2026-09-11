@@ -5076,7 +5076,7 @@ slug: command
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1017
+tokens: 1122
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
 ---
 
@@ -5118,12 +5118,14 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'email' | 'search' | 'time' | 'text' | 'url' | 'password'` | No | undefined | The input type. |
 | `value` | `string | number | readonly string[]` | No | undefined | The controlled filter query. When set, the built-in option filtering is fully disabled: the consumer owns the query state (via `onChange`) and is responsible for rendering only the matching options. |
 
@@ -10275,7 +10277,7 @@ slug: input
 category: component
 type: overview
 version: 19.7.3
-tokens: 337
+tokens: 472
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
 ---
 
@@ -10288,18 +10290,24 @@ _**Input** component is an **Input** field where users can type into_
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
 
 ## Examples
 
 - Clearable
 - Datalist
+- Content Adornments
+- Content Adornment With Button
+- Domain Availability Search
+- Login Form
 - Default
 - Disabled
 - Floating Number
@@ -10309,6 +10317,7 @@ _**Input** component is an **Input** field where users can type into_
 - Read Only
 - Types
 - Accessibility Form Field
+- Accessibility Content
 - Accessibility I18n
 
 ## Documentation pages
@@ -10323,7 +10332,7 @@ slug: input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1264
+tokens: 3222
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
 ---
 
@@ -10362,6 +10371,7 @@ The **Input** component can be used in addition with an **Autocomplete**.
 - Use the toggle mask button for sensitive inputs to let users show or hide the content
 - Include a search button within the Input if a specific action is expected (e.g., triggering a search)
 - Choose the appropriate input type (email, password, search, etc.) to support native validation
+- Use start or end content for a unit, a currency symbol or a fixed part of the value, so the user does not have to type it
 
 **Don't**
 
@@ -10370,12 +10380,16 @@ The **Input** component can be used in addition with an **Autocomplete**.
 - Don't leave an Input without a label
 - Don't overload the Input with multiple embedded actions (e.g., clear + search + toggle) since it creates visual clutter
 - Don't use an Input that is inappropriately sized for its content
+- Don't rely on start or end content to convey the field's purpose: it complements the label, it does not replace it
+- Don't give start or end content its own background or border, and don't make it taller than the field
 
 ### Best Practices in Context
 
 1. **Input**
 2. **Placeholder or input text**
 3. **Clearable button** - optional
+4. **Start content** - optional content before the value
+5. **End content** - optional content after the value
 
 ## Placement
 
@@ -10395,6 +10409,43 @@ A toggle mask button can be displayed within the **Input** to toggle the visibil
 
 A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
 
+Content can be placed inside the field, before the value with `startContent` and after it with `endContent`. This content is never part of the value: the user cannot edit it, it does not appear in `value` or `onChange`, and it is not submitted with the form.
+
+Any node is accepted, within the constraints described below. Typical cases include a unit such as `kg` or `%`, a currency symbol, a fixed part of the value such as a domain extension, an icon, or a small ghost button. When to reach for it is covered in **Dos & Don'ts** above.
+
+Both are placed with logical directions, so they follow the writing direction rather than a fixed side. The built-in action buttons always stay at the far end of the field, after the end content, so they remain at the same distance from the border whether or not decoration is present.
+
+The content must fit within the field's content height, so that it never makes the **Input** taller, and must not carry a background or a border of its own. Use `size="xs"` for a `Button`, the size the built-in actions use. For a control with its own surface adjoined to the field, such as a country selector or a calendar trigger, compose elements around the **Input** instead; see **Datepicker** and **Phone Number**.
+
+The **Input** does not disable, hide or otherwise alter the content it is given. When the content holds a control, pass that control its own `disabled` alongside the field's.
+
+## Content Adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content Adornments with Button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
+```
+
 ## Navigation
 
 ### Focus Management
@@ -10406,6 +10457,8 @@ If a clear button is present, it becomes focusable immediately after the **Input
 If a toggle mask button (show/hide password) is present, it becomes focusable after the clear button.
 
 If a search button is present, it becomes focusable after the other **Input** action buttons.
+
+If `startContent` or `endContent` holds a focusable element, it takes its natural place in the tab order: start content before the field, end content after the field and before the action buttons.
 
 If the **Input** field is read-only, it can still receive focus but cannot be edited.
 
@@ -10444,6 +10497,43 @@ using either **FormField** or a native label tag.
 
  Screen readers will announce the label, the field and its content.
 
+### Make start & end content audible
+
+The **Input** does not describe `startContent` or `endContent` for you: it never alters `aria-describedby`, so whatever you or the surrounding **FormField** put there is what screen readers announce.
+
+Content that carries meaning, such as a unit, a currency or a fixed part of the value, is therefore silent unless you reference it. Give it an id and point the field at it:
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Weight:
+  </FormFieldLabel>
+
+  <Input
+    aria-describedby="weight-unit"
+    defaultValue="42"
+    endContent={ <span id="weight-unit">kg</span> } />
+</FormField>
+```
+
+ Screen readers will announce the label, the field, its content and the unit.
+
+Only reference the parts that describe the value. A control inside the decoration announces itself when focus reaches it, and its action label must not become guidance about what to type:
+
+```tsx
+<Input aria-describedby="weight-unit"
+       endContent={
+         <>
+           <span id="weight-unit">kg</span>
+           <Button aria-label="Copy value" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>
+             <Icon name={ ICON_NAME.fileCopy } />
+           </Button>
+         </>
+       } />
+```
+
+Note that a value passed to `aria-describedby` **replaces** the one the **FormField** would supply, so include the helper and error ids yourself if you still need them.
+
 ### Override action context
 
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
@@ -10467,13 +10557,149 @@ To provide more context on the interactive elements, you can provide your own cu
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
 
+## Login Form
+
+```tsx
+{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
+
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
+
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
+    }
+
+    return (
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
+          <FormFieldLabel>
+            Admin email
+          </FormFieldLabel>
+
+          <Input
+            name="email"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
+            placeholder="you@example.com"
+            startContent={ <Icon name={ ICON_NAME.email } /> }
+            type={ INPUT_TYPE.email }
+            value={ email } />
+
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!errors.password }>
+          <FormFieldLabel>
+            Root password
+          </FormFieldLabel>
+
+          <Input
+            maskOption={{ enable: true }}
+            name="password"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
+            value={ password } />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
+        </FormField>
+
+        <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </div>
+      </form>
+    );
+  }
+```
+
+## Domain Availability Search
+
+```tsx
+{
+    const takenAddresses = ['admin', 'api', 'www'];
+    const [address, setAddress] = useState('');
+    const [isChecking, setIsChecking] = useState(false);
+    const [isTaken, setIsTaken] = useState(false);
+    const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+    useEffect(() => () => clearTimeout(checkTimer.current), []);
+
+    function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
+      const value = e.target.value;
+      const isLongEnough = value.length > 2;
+
+      clearTimeout(checkTimer.current);
+      setAddress(value);
+      setIsTaken(false);
+      setIsChecking(isLongEnough);
+
+      if (isLongEnough) {
+        checkTimer.current = setTimeout(() => {
+          setIsChecking(false);
+          setIsTaken(takenAddresses.includes(value.toLowerCase()));
+        }, 700);
+      }
+    }
+
+    return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  }
+```
+
 ---
 title: "Input"
 slug: input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 339
+tokens: 444
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--technical-information.txt
 ---
 
@@ -10486,12 +10712,14 @@ This component extends all the native `<input>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
 
 ## Enums
@@ -10524,7 +10752,7 @@ slug: input
 category: component
 type: examples
 version: 19.7.3
-tokens: 449
+tokens: 1601
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--examples.txt
 ---
 
@@ -10552,6 +10780,169 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
     <option value="Vanilla"></option>
   </datalist>
 </>
+```
+
+## Content Adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content Adornment With Button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
+```
+
+## Domain Availability Search
+
+```tsx
+{
+    const takenAddresses = ['admin', 'api', 'www'];
+    const [address, setAddress] = useState('');
+    const [isChecking, setIsChecking] = useState(false);
+    const [isTaken, setIsTaken] = useState(false);
+    const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+    useEffect(() => () => clearTimeout(checkTimer.current), []);
+
+    function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
+      const value = e.target.value;
+      const isLongEnough = value.length > 2;
+
+      clearTimeout(checkTimer.current);
+      setAddress(value);
+      setIsTaken(false);
+      setIsChecking(isLongEnough);
+
+      if (isLongEnough) {
+        checkTimer.current = setTimeout(() => {
+          setIsChecking(false);
+          setIsTaken(takenAddresses.includes(value.toLowerCase()));
+        }, 700);
+      }
+    }
+
+    return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  }
+```
+
+## Login Form
+
+```tsx
+{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
+
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
+
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
+    }
+
+    return (
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
+          <FormFieldLabel>
+            Admin email
+          </FormFieldLabel>
+
+          <Input
+            name="email"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
+            placeholder="you@example.com"
+            startContent={ <Icon name={ ICON_NAME.email } /> }
+            type={ INPUT_TYPE.email }
+            value={ email } />
+
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!errors.password }>
+          <FormFieldLabel>
+            Root password
+          </FormFieldLabel>
+
+          <Input
+            maskOption={{ enable: true }}
+            name="password"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
+            value={ password } />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
+        </FormField>
+
+        <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </div>
+      </form>
+    );
+  }
 ```
 
 ## Default
@@ -10630,6 +11021,21 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
   </FormFieldLabel>
 
   <Input />
+</FormField>
+```
+
+## Accessibility Content
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Weight:
+  </FormFieldLabel>
+
+  <Input
+    aria-describedby="weight-unit"
+    defaultValue="42"
+    endContent={ <span id="weight-unit">kg</span> } />
 </FormField>
 ```
 

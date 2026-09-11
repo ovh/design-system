@@ -1,0 +1,64 @@
+> Connect your AI assistant to the official ODS documentation: the `@ovhcloud/ods-mcp` server exposes components, props, guides, icons, tokens and recipes as tools any MCP-compatible assistant can query — so generated code uses real props instead of guessed ones.
+
+<Heading label="What is MCP?" level={2} />
+
+<ExternalLink href="https://modelcontextprotocol.io">MCP (Model Context Protocol)</ExternalLink> is an open protocol supported by Claude Code, Claude Desktop, Cursor, VS Code Copilot and most AI coding assistants. An MCP server exposes **tools** the assistant can call while it works. `@ovhcloud/ods-mcp` is a read-only server over the same documentation set as this website, running locally in your workspace — no account, no network required.
+
+<Heading label="Setup" level={2} />
+
+With Claude Code:
+
+```shell
+claude mcp add ods -- npx -y @ovhcloud/ods-mcp
+```
+
+With Cursor, VS Code or Claude Desktop, add to the MCP configuration file:
+
+```json
+{
+  "mcpServers": {
+    "ods": { "command": "npx", "args": ["-y", "@ovhcloud/ods-mcp"] }
+  }
+}
+```
+
+That is all. On the next session, the assistant discovers the ODS tools automatically.
+
+<Heading label="Which documentation version is served?" level={2} />
+
+The server follows the same resolution rule as the <DocLink to="/guides/llm-documentation">LLM Documentation</DocLink> guide:
+
+1. **Your project first** — if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`, shipped from the first docs-platform release onward), it is used: the answers match the exact ODS version your project runs, offline.
+2. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release instead (same availability: docs-platform releases onward).
+3. **Bundled fallback** — in every other case (including all 19.x versions published before the docs platform), the snapshot bundled with the server is used.
+
+Every documentation answer starts with a `_source:` line telling you which one applied.
+
+<Heading label="Available tools" level={2} />
+
+| Tool | What it answers |
+|---|---|
+| `list_components` | "Which components exist? Is there a datepicker?" |
+| `get_component` | "Show me the documentation and examples of form-field" |
+| `get_component_api` | "Which props does Select accept, with defaults?" |
+| `search_docs` | "How does ODS handle form validation errors?" |
+| `get_guide` | "How do I migrate from v19 to v20?" |
+| `list_icons` | "An icon for settings?" (names and meaning aliases) |
+| `get_tokens` | "Which token holds the critical color?" |
+| `get_recipe` | "A ready-made confirmation modal pattern?" |
+
+<Heading label="Try it" level={2} />
+
+Once configured, ask your assistant for example:
+
+- *"Using the ODS tools, which props does the ODS Select accept?"* — it should call `get_component_api` and answer with the real API, including default values.
+- *"Build me a login form with ODS components"* — it should fetch `form-field`, `input` and `button` docs before writing code.
+- *"Find me an ODS icon meaning delete"* — `list_icons` matches names and aliases.
+
+If the assistant does not use the tools spontaneously, mention "ODS documentation tools" once in your prompt; it will pick them up for the rest of the session.
+
+<Heading label="Troubleshooting" level={2} />
+
+- The server needs **Node.js 18+** (`npx` comes with it).
+- Run `npx -y @ovhcloud/ods-mcp` manually: it must print `ods-mcp ready — docs X.Y.Z — source: …` on stderr and then wait for input (Ctrl-C to leave). If it does, the server is fine and the issue is in the client configuration.
+- The documentation served for your project follows the installed `@ovhcloud/ods-react` — if answers look outdated, check that version first.

@@ -1,6 +1,6 @@
 {
   "$comment": "Per-guide llms/legacy-link metadata, in reading order (mirrors the navigation model), keyed by MDX basename. Slugs and titles are editorial legacy from the Storybook era that cannot be derived from the MDX content itself: the llms emission (vite-plugin-llms.ts), its verification (scripts/verify-llms.sh) and the legacy ?path= redirects (src/main.tsx) all read this single file. discoverGuides() cross-checks it against the filesystem and fails the build loudly on any drift. 'exclusions' lists guide MDX files that intentionally emit no llms document: llm-documentation is the meta page about this very output. (The changelog and the tools are not guide MDX content at all, so they need no exclusion.)",
-  "exclusions": ["llm-documentation"],
+  "exclusions": ["llm-documentation", "mcp-server"],
   "guides": [
     { "mdx": "get-started", "slug": "ovhcloud-design-system-get-started", "title": "Get Started" },
     { "mdx": "accessibility", "slug": "ovhcloud-design-system-build-accessibility", "title": "Accessibility" },

@@ -22,17 +22,63 @@ function text(body: string): { content: { text: string, type: 'text' }[] } {
 }
 
 function normalizeSlug(input: string): string {
-  return input.trim().toLowerCase().replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/\s+/g, '-');
+  // Split camelCase BEFORE lowercasing (the boundary no longer exists after).
+  return input.trim().replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase().replace(/\s+/g, '-');
+}
+
+/* Dash-insensitive form: "datagrid" and "data-grid" collapse to the same key. */
+function compact(slug: string): string {
+  return slug.replace(/-/g, '');
+}
+
+function editDistance(a: string, b: string): number {
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i += 1) {
+    let previous = row[0];
+    row[0] = i;
+    for (let j = 1; j <= b.length; j += 1) {
+      const current = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, previous + (a[i - 1] === b[j - 1] ? 0 : 1));
+      previous = current;
+    }
+  }
+  return row[b.length];
+}
+
+function commonPrefixLength(a: string, b: string): number {
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) {
+    i += 1;
+  }
+  return i;
 }
 
 async function findComponent(slug: string): Promise<{ error?: string, component?: Awaited<ReturnType<typeof getIndex>>['components'][number] }> {
   const index = await getIndex();
   const wanted = normalizeSlug(slug);
-  const component = index.components.find((c) => c.slug === wanted);
+  const component = index.components.find((c) => c.slug === wanted)
+    // Dash-insensitive rescue: "formfield" or "datatable" resolve directly.
+    ?? index.components.find((c) => compact(c.slug) === compact(wanted));
   if (component) {
     return { component };
   }
-  const close = index.components.filter((c) => c.slug.includes(wanted) || wanted.includes(c.slug)).map((c) => c.slug);
+
+  /* Suggestions: substring either way, close spelling (edit distance), or a
+     shared stem ("datagrid" → "data-table" through the "data" prefix). */
+  const target = compact(wanted);
+  const close = index.components
+    .map((c) => {
+      const candidate = compact(c.slug);
+      const score = candidate.includes(target) || target.includes(candidate) ? 0
+        : editDistance(target, candidate) <= 2 ? 1
+          : commonPrefixLength(target, candidate) >= 4 ? 2
+            : Infinity;
+      return { score, slug: c.slug };
+    })
+    .filter((entry) => entry.score !== Infinity)
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 5)
+    .map((entry) => entry.slug);
   return { error: `Unknown component "${slug}".${close.length ? ` Did you mean: ${close.join(', ')}?` : ''} Use list_components to see every slug.` };
 }
 

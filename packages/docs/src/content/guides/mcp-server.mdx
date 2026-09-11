@@ -28,9 +28,9 @@ That is all. On the next session, the assistant discovers the ODS tools automati
 
 The server follows the same resolution rule as the <DocLink to="/guides/llm-documentation">LLM Documentation</DocLink> guide:
 
-1. **Your project first** — if `@ovhcloud/ods-react` is installed in the workspace, its embedded documentation (`dist/llms`) is used: the answers always match the exact ODS version your project runs, offline.
-2. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release instead.
-3. **Bundled fallback** — without either, the snapshot bundled with the server is used.
+1. **Your project first** — if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`, shipped from the first docs-platform release onward), it is used: the answers match the exact ODS version your project runs, offline.
+2. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release instead (same availability: docs-platform releases onward).
+3. **Bundled fallback** — in every other case (including all 19.x versions published before the docs platform), the snapshot bundled with the server is used.
 
 Every documentation answer starts with a `_source:` line telling you which one applied.
 

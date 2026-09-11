@@ -82,8 +82,25 @@ check('source resolves to project node_modules', /_source: project node_modules/
 
 await client.close();
 
-// …and from a directory with no node_modules, from the bundled snapshot.
+// …and an installed ods-react WITHOUT dist/llms (every 19.x published before
+// the docs platform) must fall through to the bundled snapshot, not crash.
+const { mkdtempSync, mkdirSync, writeFileSync } = await import('node:fs');
+const { join } = await import('node:path');
 const { tmpdir } = await import('node:os');
+const legacyDir = mkdtempSync(join(tmpdir(), 'ods-mcp-legacy-'));
+mkdirSync(join(legacyDir, 'node_modules/@ovhcloud/ods-react/dist'), { recursive: true });
+writeFileSync(join(legacyDir, 'node_modules/@ovhcloud/ods-react/package.json'), '{"name":"@ovhcloud/ods-react","version":"19.7.3"}');
+const legacy = new Client({ name: 'ods-mcp-harness-legacy', version: '0.0.0' });
+await legacy.connect(new StdioClientTransport({
+  args: [resolve(PKG, 'dist/index.js')],
+  command: process.execPath,
+  cwd: legacyDir,
+}));
+const legacyDoc = asText(await legacy.callTool({ arguments: { slug: 'button' }, name: 'get_component' }));
+check('pre-platform ods-react (no dist/llms) → bundled fallback', /_source: bundled/.test(legacyDoc), legacyDoc.split('\n')[0]);
+await legacy.close();
+
+// …and from a directory with no node_modules, from the bundled snapshot.
 const bare = new Client({ name: 'ods-mcp-harness-bare', version: '0.0.0' });
 await bare.connect(new StdioClientTransport({
   args: [resolve(PKG, 'dist/index.js')],

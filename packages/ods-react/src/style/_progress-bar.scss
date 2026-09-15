@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-$ods-progress-bar-border-radius: var(--ods-theme-border-radius);
+$ods-progress-bar-border-radius: var(--ods-semantic-size-radius-container);
 $ods-progress-bar-inderterminate-percent-width: 30%;
 
 @mixin ods-progress-bar() {
@@ -10,35 +10,35 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
   position: relative;
   border: none;
   border-radius: var(--ods-progress-bar-border-radius);
-  background-color: var(--ods-theme-track-background-color);
+  background-color: var(--ods-semantic-color-surface-neutral-minimal);
   width: 100%;
   height: 8px;
 
   &::-webkit-progress-bar {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-theme-track-background-color);
+    background-color: var(--ods-semantic-color-surface-neutral-minimal);
   }
 
   &::-webkit-progress-value {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-theme-progress-background-color);
+    background-color: var(--ods-semantic-color-surface-base);
   }
 
   &::-moz-progress-bar {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-theme-progress-background-color);
+    background-color: var(--ods-semantic-color-surface-base);
   }
 
   &:indeterminate {
     // Firefox
     &::-moz-progress-bar {
-      animation: progress-indeterminate 1.5s infinite ease-in-out;
+      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
       width: $ods-progress-bar-inderterminate-percent-width;
     }
 
     // Safari
     &::-webkit-progress-value {
-      animation: progress-indeterminate 1.5s infinite ease-in-out;
+      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
       width: $ods-progress-bar-inderterminate-percent-width;
     }
 
@@ -48,9 +48,9 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
       top: 0;
       bottom: 0;
       left: 0;
-      animation: progress-indeterminate 1.5s infinite ease-in-out;
+      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
       border-radius: var(--ods-progress-bar-border-radius);
-      background-color: var(--ods-theme-progress-background-color);
+      background-color: var(--ods-semantic-color-surface-base);
       width: $ods-progress-bar-inderterminate-percent-width;
       content: '';
     }

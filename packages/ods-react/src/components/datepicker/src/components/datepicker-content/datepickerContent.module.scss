@@ -4,16 +4,16 @@
 
 @layer ods-molecules {
   .datepicker-content {
-    --ods-datepicker-content-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
-    --ods-datepicker-content-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+    --ods-datepicker-content-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) / 2);
+    --ods-datepicker-content-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) / 2);
 
-    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color-hover);
-    border-radius: var(--ods-theme-overlay-border-radius);
-    background-color: var(--ods-theme-background-color);
+    border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
+    border-radius: var(--ods-semantic-size-radius-overlay);
+    background-color: var(--ods-semantic-color-surface-page);
     padding: var(--ods-datepicker-content-padding-vertical) var(--ods-datepicker-content-padding-horizontal);
 
     &--invalid {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
 
     &__table {
@@ -24,7 +24,7 @@
         box-sizing: border-box;
         width: button.$ods-button-size-sm;
         height: button.$ods-button-size-sm;
-        color: var(--ods-theme-text-color);
+        color: var(--ods-semantic-color-content-text);
         font-size: 1rem;
         font-weight: 400;
 
@@ -38,13 +38,13 @@
           &[data-selected] {
             &[data-today] {
               &::after {
-                background-color: var(--ods-theme-text-color-selected);
+                background-color: var(--ods-semantic-color-content-on-selected-solid);
               }
 
               &[data-focus],
               &:hover {
                 &::after {
-                  background-color: var(--ods-theme-text-color-selected);
+                  background-color: var(--ods-semantic-color-content-on-selected-solid);
                 }
               }
             }
@@ -79,7 +79,7 @@
         }
 
         &[data-outside-range] {
-          opacity: 0.5;
+          opacity: var(--ods-semantic-opacity-disabled);
         }
       }
 
@@ -97,13 +97,13 @@
           }
 
           &[data-selected] {
-            background-color: var(--ods-theme-background-color-selected);
-            color: var(--ods-theme-text-color-selected);
+            background-color: var(--ods-semantic-color-surface-selected-solid);
+            color: var(--ods-semantic-color-content-on-selected-solid);
 
             &:focus-visible,
             &:hover {
-              background-color: var(--ods-theme-background-color-selected);
-              color: var(--ods-theme-text-color-selected);
+              background-color: var(--ods-semantic-color-surface-selected-solid);
+              color: var(--ods-semantic-color-content-on-selected-solid);
             }
           }
         }
@@ -114,14 +114,14 @@
           }
 
           &[data-unavailable] {
-            background-color: var(--ods-theme-background-color-disabled);
-            color: var(--ods-theme-border-color-disabled);
+            background-color: var(--ods-semantic-color-surface-disabled);
+            color: var(--ods-semantic-color-border-disabled);
           }
         }
 
         &[data-selected] {
-          background-color: var(--ods-theme-background-color-disabled);
-          color: var(--ods-theme-border-color-disabled);
+          background-color: var(--ods-semantic-color-surface-disabled);
+          color: var(--ods-semantic-color-border-disabled);
         }
       }
 

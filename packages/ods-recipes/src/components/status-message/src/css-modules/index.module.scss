@@ -2,12 +2,12 @@
   &__body {
     display: flex;
     flex-flow: column;
-    row-gap: var(--ods-theme-row-gap);
+    row-gap: var(--ods-semantic-size-space-gap-block);
 
     &__content {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) / 2);
+      row-gap: calc(var(--ods-semantic-size-space-gap-block) / 2);
 
       &__title {
         font-weight: 700;

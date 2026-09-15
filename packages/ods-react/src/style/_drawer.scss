@@ -1,14 +1,14 @@
 @use './overlay';
 
-$animation-duration: 0.3s;
+$animation-duration: var(--ods-semantic-motion-duration-slow);
 $drawer-size: 320px;
 $drawer-max-size: calc(100% - 48px); // [Deprecated] will be removed in next major version
-$drawer-max-height: calc(100% - calc(var(--ods-theme-padding-vertical) * 6));
-$drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
+$drawer-max-height: calc(100% - calc(var(--ods-semantic-size-space-inset-block) * 6));
+$drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) * 6));
 
 @mixin ods-drawer() {
-  --ods-drawer-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-  --ods-drawer-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+  --ods-drawer-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 2);
+  --ods-drawer-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) * 2);
   // Only effective without `backdrop`: with a backdrop the positioner carries an inline z-index
   // (modal-like stacking) and creates a stacking context, so this variable only reorders content
   // inside it — use the `positionerStyle`/`backdropStyle` props to override stacking in that case.
@@ -22,8 +22,8 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
   margin: 0;
   outline: none;
   border: none;
-  box-shadow: var(--ods-theme-overlay-box-shadow);
-  background: var(--ods-theme-background-color);
+  box-shadow: var(--ods-semantic-shadow-overlay);
+  background: var(--ods-semantic-color-surface-page);
   padding: var(--ods-drawer-padding-vertical) var(--ods-drawer-padding-horizontal);
   width: auto;
   overflow: auto;
@@ -34,7 +34,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     right: 0;
     bottom: 0;
     left: 0;
-    animation: drawer-open-bottom $animation-duration ease-in-out;
+    animation: drawer-open-bottom $animation-duration var(--ods-semantic-motion-easing-standard);
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;
@@ -62,7 +62,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     bottom: 0;
     left: 0;
-    animation: drawer-open-left $animation-duration ease-in-out;
+    animation: drawer-open-left $animation-duration var(--ods-semantic-motion-easing-standard);
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
@@ -90,7 +90,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     right: 0;
     bottom: 0;
-    animation: drawer-open-right $animation-duration ease-in-out;
+    animation: drawer-open-right $animation-duration var(--ods-semantic-motion-easing-standard);
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
@@ -118,7 +118,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     right: 0;
     left: 0;
-    animation: drawer-open-top $animation-duration ease-in-out;
+    animation: drawer-open-top $animation-duration var(--ods-semantic-motion-easing-standard);
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;

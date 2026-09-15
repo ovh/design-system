@@ -3,12 +3,12 @@
 
 @layer ods-organisms {
   .prompt-input {
-    --ods-prompt-input-border-color: var(--ods-color-form-element-border-default);
-    --ods-prompt-input-border-color-focus: var(--ods-color-form-element-border-focus-default);
-    --ods-prompt-input-border-color-hover: var(--ods-color-form-element-border-hover-default);
-    --ods-prompt-input-border-radius: var(--ods-theme-border-radius);
-    --ods-prompt-input-control-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
-    --ods-prompt-input-control-padding-horizontal: var(--ods-theme-input-padding-horizontal);
+    --ods-prompt-input-border-color: var(--ods-semantic-color-border-control);
+    --ods-prompt-input-border-color-focus: var(--ods-semantic-color-interaction-control-hover);
+    --ods-prompt-input-border-color-hover: var(--ods-semantic-color-interaction-control-hover);
+    --ods-prompt-input-border-radius: var(--ods-semantic-size-radius-container);
+    --ods-prompt-input-control-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) / 2);
+    --ods-prompt-input-control-padding-horizontal: var(--ods-semantic-size-space-inset-inline);
     --ods-prompt-input-control-border-color: transparent;
     --ods-prompt-input-control-line-height: 1.375em;
     --ods-prompt-input-control-min-lines: 1;
@@ -16,10 +16,10 @@
 
     display: flex;
     flex-direction: column;
-    gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
+    gap: calc(var(--ods-semantic-size-space-gap-block) * 2) calc(var(--ods-semantic-size-space-gap-inline) * 2);
     border: 1px solid var(--ods-prompt-input-border-color);
     border-radius: var(--ods-prompt-input-border-radius);
-    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2 );
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2 );
     
     &:hover {
       border-color: var(--ods-prompt-input-border-color-hover); 

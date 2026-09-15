@@ -6,10 +6,10 @@
 .custom-cart__product__price {
   display: flex;
   flex-flow: column;
-  row-gap: calc(var(--ods-theme-row-gap) / 4);
+  row-gap: calc(var(--ods-semantic-size-space-gap-block) / 4);
 }
 
 .custom-cart__product__price__old {
-  color: var(--ods-theme-text-color-disabled);
+  color: var(--ods-semantic-color-content-disabled);
   text-decoration: line-through;
 }

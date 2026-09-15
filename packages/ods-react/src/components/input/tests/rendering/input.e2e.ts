@@ -144,7 +144,7 @@ describe('Input rendering', () => {
   });
 
   // These numbers are the in-field spacing contract, resolved from the default theme:
-  // --ods-theme-input-padding-horizontal 8px, --ods-theme-input-padding-vertical 2px,
+  // --ods-semantic-size-space-inset-inline 8px, --ods-semantic-size-space-inset-block-compact 2px,
   // column-gap 4px, $ods-input-actions-padding-right 2px, min-height 32px, xs button 24px.
   // They must hold regardless of whether the container or the individual parts pay the inset.
   describe('geometry', () => {

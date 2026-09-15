@@ -19,11 +19,11 @@
       @include modal.ods-modal();
 
       &[data-state="open"] {
-        animation: modal-open 0.2s ease-in-out;
+        animation: modal-open var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
       }
 
       &[data-state="closed"] {
-        animation: modal-close 0.2s ease-in-out;
+        animation: modal-close var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
       }
     }
 

@@ -9,7 +9,7 @@
     flex-direction: column;
 
     &__heading {
-      padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+      padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
     }
   }
 
@@ -18,8 +18,8 @@
   }
 
   #{$filled-group}:not(:nth-child(1 of #{$filled-group})) {
-    margin-top: var(--ods-theme-padding-vertical);
-    border-top: 1px solid var(--ods-color-neutral-200);
-    padding-top: var(--ods-theme-padding-vertical);
+    margin-top: var(--ods-semantic-size-space-inset-block);
+    border-top: 1px solid var(--ods-semantic-color-border-neutral-subtle);
+    padding-top: var(--ods-semantic-size-space-inset-block);
   }
 }

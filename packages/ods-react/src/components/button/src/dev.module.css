@@ -13,7 +13,12 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/*
+ * These two overrides never did anything: --ods-theme-*-critical did not exist, the role layer
+ * had no per-colour border or background token. Button reads its own tier-3 tokens, which is the
+ * per-instance override surface, so that is what a consumer overrides.
+ */
 .custom-button-critical {
-  --ods-theme-border-color-critical: #c47e01;
-  --ods-theme-background-color-critical: #ffa400;
+  --ods-button-border-color-critical: #c47e01;
+  --ods-button-background-color-critical: #ffa400;
 }

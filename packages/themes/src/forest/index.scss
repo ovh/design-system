@@ -1,0 +1,41 @@
+/*
+ * Demonstration brand - "forest".
+ *
+ * In the tier model a brand is a tier-1 change and nothing else: it rebinds the brand ramp, and
+ * declares no role token. There is deliberately not a single --ods-semantic-* declaration below.
+ *
+ * It exists to exercise one property: a role token must follow the ramp it is bound to. A role
+ * token whose value was SCSS-interpolated got resolved at compile time into a frozen literal, so
+ * it cannot follow anything - applying this brand to a build whose role layer is still
+ * interpolated leaves most of the interface blue. Applying it to a build whose role layer goes
+ * through var() turns the interface green without touching a single role.
+ *
+ * What changed with the semantic layer: the ramp to rebind is now --ods-palette-brand-*, not
+ * --ods-color-primary-*. The palette families are named by hue (blue, red, green), so `brand` is
+ * the one ramp named by role, and it exists precisely so a brand has a single seam to move.
+ * Rebinding --ods-palette-blue-* instead would be wrong twice over: it would rename a hue, and it
+ * would drag informational messages along with the brand.
+ *
+ * The interpolation used below is the intended one: this is the tier-0 to tier-1 boundary, where
+ * Sass primitives become custom properties. Interpolation is only a defect one tier further up.
+ * Note that Sass evaluates interpolation inside a loud comment like this one as well, so this
+ * header deliberately never spells one out.
+ */
+@use '../default/variables' as var;
+
+[data-ods-brand='forest'] {
+  // Tier 1 - the brand ramp, rebound onto the green palette
+  --ods-palette-brand-50: #{var.$ods-palette-green-50};
+  --ods-palette-brand-100: #{var.$ods-palette-green-100};
+  --ods-palette-brand-200: #{var.$ods-palette-green-200};
+  --ods-palette-brand-300: #{var.$ods-palette-green-300};
+  --ods-palette-brand-400: #{var.$ods-palette-green-400};
+  --ods-palette-brand-500: #{var.$ods-palette-green-500};
+  --ods-palette-brand-600: #{var.$ods-palette-green-600};
+  --ods-palette-brand-700: #{var.$ods-palette-green-700};
+  --ods-palette-brand-800: #{var.$ods-palette-green-800};
+  --ods-palette-brand-900: #{var.$ods-palette-green-900};
+
+  // content-text is not a brand role, but the demo is more legible when the prose follows too.
+  --ods-semantic-color-content-text: #{var.$ods-palette-green-900};
+}

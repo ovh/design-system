@@ -11,13 +11,13 @@
     resize: none;
 
     &::placeholder {
-      color: var(--ods-theme-input-placeholder-text-color);
+      color: var(--ods-semantic-color-content-placeholder);
     }
 
     &:not([data-invalid], :disabled, :read-only) {
       &:focus,
       &:hover {
-        border-color: var(--ods-theme-input-border-color-hover);
+        border-color: var(--ods-semantic-color-interaction-control-hover);
       }
     }
 

@@ -10,7 +10,7 @@
     &:not([data-disabled]) {
       &:hover,
       &[data-focus] {
-        border-color: var(--ods-theme-input-border-color-hover);
+        border-color: var(--ods-semantic-color-interaction-control-hover);
       }
     }
 
@@ -20,16 +20,16 @@
     }
 
     &[data-disabled] {
-      background-color: var(--ods-theme-background-color-disabled);
+      background-color: var(--ods-semantic-color-surface-disabled);
       cursor: not-allowed;
     }
 
     &#{$thumb}--invalid {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
 
       &:hover,
       &[data-focus] {
-        border-color: var(--ods-theme-input-border-color-invalid);
+        border-color: var(--ods-semantic-color-border-critical);
       }
     }
   }

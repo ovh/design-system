@@ -19,7 +19,7 @@
     }
 
     &[data-state='closed'] {
-      transition: opacity 0s linear drawer.$animation-duration;
+      transition: opacity 0s var(--ods-semantic-motion-easing-linear) drawer.$animation-duration;
       opacity: 0;
       pointer-events: none;
     }
@@ -28,7 +28,7 @@
       @include drawer.ods-drawer-position('bottom');
 
       &[data-state='closed'] {
-        animation: drawer-close-bottom drawer.$animation-duration ease-in-out;
+        animation: drawer-close-bottom drawer.$animation-duration var(--ods-semantic-motion-easing-standard);
       }
     }
 
@@ -36,7 +36,7 @@
       @include drawer.ods-drawer-position('left');
 
       &[data-state='closed'] {
-        animation: drawer-close-left drawer.$animation-duration ease-in-out;
+        animation: drawer-close-left drawer.$animation-duration var(--ods-semantic-motion-easing-standard);
       }
     }
 
@@ -44,7 +44,7 @@
       @include drawer.ods-drawer-position('right');
 
       &[data-state='closed'] {
-        animation: drawer-close-right drawer.$animation-duration ease-in-out;
+        animation: drawer-close-right drawer.$animation-duration var(--ods-semantic-motion-easing-standard);
       }
     }
 
@@ -52,7 +52,7 @@
       @include drawer.ods-drawer-position('top');
 
       &[data-state='closed'] {
-        animation: drawer-close-top drawer.$animation-duration ease-in-out;
+        animation: drawer-close-top drawer.$animation-duration var(--ods-semantic-motion-easing-standard);
       }
     }
   }

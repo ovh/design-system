@@ -10,16 +10,16 @@
     padding: var(--ods-tree-view-node-padding-vertical) var(--ods-tree-view-node-padding-horizontal);
 
     &:hover {
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-base-subtle-hover);
       cursor: pointer;
     }
 
     &:has(.tree-view-node-item__checkbox[data-state="checked"]),
     &:has(.tree-view-node-item__checkbox[data-state="indeterminate"]) {
-      background-color: var(--ods-theme-input-option-background-color-selected);
+      background-color: var(--ods-semantic-color-surface-selected);
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-theme-input-option-background-color-selected-hover);
+        background-color: var(--ods-semantic-color-surface-selected-strong);
       }
     }
 
@@ -30,10 +30,10 @@
     }
 
     &[data-selected]:not(:has(.tree-view-node-item__checkbox)) {
-      background-color: var(--ods-theme-input-option-background-color-selected);
+      background-color: var(--ods-semantic-color-surface-selected);
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-theme-input-option-background-color-selected-hover);
+        background-color: var(--ods-semantic-color-surface-selected-strong);
       }
     }
 
@@ -42,7 +42,7 @@
 
       position: relative;
       z-index: 2;
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-base-subtle-hover);
     }
 
     &__checkbox {

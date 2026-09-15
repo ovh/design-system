@@ -6,11 +6,11 @@ $tab-list-border-bottom-size: 2px;
 
 @layer ods-molecules {
   .tab-list {
-    --ods-tab-list-background-color-switch: var(--ods-color-neutral-050);
-    --ods-tab-list-border-color: var(--ods-color-neutral-100);
-    --ods-tab-list-border-radius-switch-md: calc(var(--ods-theme-border-radius) * 1.25);
-    --ods-tab-list-border-radius-switch-sm: calc(var(--ods-theme-border-radius) * 0.75);
-    --ods-tab-list-border-radius-switch-xs: calc(var(--ods-theme-border-radius) / 2);
+    --ods-tab-list-background-color-switch: var(--ods-semantic-color-surface-neutral-recessed);
+    --ods-tab-list-border-color: var(--ods-semantic-color-border-neutral-minimal);
+    --ods-tab-list-border-radius-switch-md: calc(var(--ods-semantic-size-radius-container) * 1.25);
+    --ods-tab-list-border-radius-switch-sm: calc(var(--ods-semantic-size-radius-container) * 0.75);
+    --ods-tab-list-border-radius-switch-xs: calc(var(--ods-semantic-size-radius-container) / 2);
     --ods-tab-list-border-width: #{$tab-list-border-bottom-size};
 
     display: flex;
@@ -29,7 +29,7 @@ $tab-list-border-bottom-size: 2px;
         position: absolute;
         top: 0;
         bottom: 0;
-        transition: opacity ease .3s;
+        transition: opacity var(--ods-semantic-motion-easing-standard) var(--ods-semantic-motion-duration-slow);
         opacity: 0;
         z-index: 10;
         width: 60px;

@@ -8,7 +8,7 @@ const DashboardCard = (): JSX.Element => {
 
   return (
     <Card
-      className="flex flex-col gap-y-[calc(var(--ods-theme-row-gap)_*_1.25)] py-[calc(var(--ods-theme-padding-vertical)_*_2)] px-[calc(var(--ods-theme-padding-horizontal)_*_2)] text-[var(--ods-theme-text-color)]"
+      className="flex flex-col gap-y-[calc(var(--ods-semantic-size-space-gap-block)_*_1.25)] py-[calc(var(--ods-semantic-size-space-inset-block)_*_2)] px-[calc(var(--ods-semantic-size-space-inset-inline)_*_2)] text-[var(--ods-semantic-color-content-text)]"
       color={ CARD_COLOR.neutral }>
       <Text preset={ TEXT_PRESET.heading4 }>
         Cluster Information
@@ -16,7 +16,7 @@ const DashboardCard = (): JSX.Element => {
 
       <Divider className="w-full" />
 
-      <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
+      <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)]">
         <Text
           as="span"
           id="cluster-name"
@@ -45,7 +45,7 @@ const DashboardCard = (): JSX.Element => {
 
       <Divider className="w-full" />
 
-      <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
+      <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)]">
         <Text
           as="span"
           id="cluster-id"
@@ -64,14 +64,14 @@ const DashboardCard = (): JSX.Element => {
 
       <Divider className="w-full" />
 
-      <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
+      <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)]">
         <Text
           as="span"
           preset={ TEXT_PRESET.label }>
           Region
         </Text>
 
-        <div className="flex flex-row gap-x-[calc(var(--ods-theme-column-gap)_/_2)] items-center">
+        <div className="flex flex-row gap-x-[calc(var(--ods-semantic-size-space-gap-inline)_/_2)] items-center">
           GRA9
           <Badge>
             1-AZ
@@ -92,22 +92,22 @@ const DashboardCard = (): JSX.Element => {
 
       <Divider className="w-full" />
 
-      <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
+      <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)]">
         <Text
           as="span"
           preset={ TEXT_PRESET.label }>
           Admission plugins
         </Text>
 
-        <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
-          <div className="inline-flex flex-row gap-x-[calc(var(--ods-theme-column-gap)_/_2)] items-center">
+        <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)]">
+          <div className="inline-flex flex-row gap-x-[calc(var(--ods-semantic-size-space-gap-inline)_/_2)] items-center">
             Always Pull Images Plugin
             <Badge color={ BADGE_COLOR.success }>
               Enable
             </Badge>
           </div>
 
-          <div className="inline-flex flex-row gap-x-[calc(var(--ods-theme-column-gap)_/_2)] items-center">
+          <div className="inline-flex flex-row gap-x-[calc(var(--ods-semantic-size-space-gap-inline)_/_2)] items-center">
             Plugin Node Restriction
             <Badge color={ BADGE_COLOR.success }>
               Enable
@@ -122,8 +122,8 @@ const DashboardCard = (): JSX.Element => {
 
       <Divider className="w-full" />
 
-      <div className="flex flex-row gap-x-[var(--ods-theme-column-gap)] items-start justify-between">
-        <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)] items-start">
+      <div className="flex flex-row gap-x-[var(--ods-semantic-size-space-gap-inline)] items-start justify-between">
+        <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)] items-start">
           <Button
             size={ BUTTON_SIZE.sm }
             variant={ BUTTON_VARIANT.ghost }>

@@ -4,15 +4,15 @@
   .cart-product-group-item {
     $item: &;
 
-    --ods-cart-product-group-item-padding-horizontal: var(--ods-theme-padding-horizontal);
-    --ods-cart-product-group-item-padding-vertical: var(--ods-theme-padding-vertical);
+    --ods-cart-product-group-item-padding-horizontal: var(--ods-semantic-size-space-inset-inline);
+    --ods-cart-product-group-item-padding-vertical: var(--ods-semantic-size-space-inset-block);
 
     display: flex;
     position: relative;
     flex-flow: column;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     justify-content: space-between;
-    background-color: var(--ods-theme-background-color-readonly);
+    background-color: var(--ods-semantic-color-surface-readonly);
     padding: var(--ods-cart-product-group-item-padding-vertical) var(--ods-cart-product-group-item-padding-horizontal);
 
     &:last-child {
@@ -22,7 +22,7 @@
     }
 
     &__details {
-      color: var(--ods-theme-heading-text-color);
+      color: var(--ods-semantic-color-content-heading);
       font-size: font.px-to-rem(12px);
       font-weight: 400;
     }
@@ -30,18 +30,18 @@
     &__item {
       display: flex;
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       align-items: center;
 
       &__label {
         flex: 1;
-        color: var(--ods-theme-text-color);
+        color: var(--ods-semantic-color-content-text);
         font-size: font.px-to-rem(14px);
         font-weight: 600;
       }
 
       &__price {
-        color: var(--ods-theme-text-color);
+        color: var(--ods-semantic-color-content-text);
         font-size: font.px-to-rem(14px);
         font-weight: 700;
       }

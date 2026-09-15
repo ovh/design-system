@@ -7,12 +7,12 @@ $ods-checkbox-size: 16px;
   align-items: center;
   justify-content: center;
   margin: 0;
-  border: solid var(--ods-theme-input-border-width) var(--ods-theme-input-border-color);
-  border-radius: var(--ods-theme-input-border-radius);
-  background: var(--ods-theme-background-color);
+  border: solid var(--ods-semantic-size-border-thickness) var(--ods-semantic-color-border-control);
+  border-radius: var(--ods-semantic-size-radius-control);
+  background: var(--ods-semantic-color-surface-page);
   width: $ods-checkbox-size;
   height: $ods-checkbox-size;
-  color: var(--ods-theme-input-text-color-checked);
+  color: var(--ods-semantic-color-content-on-solid);
   font-size: 0.875rem;
   cursor: pointer;
 }

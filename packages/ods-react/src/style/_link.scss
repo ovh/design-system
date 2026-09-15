@@ -3,8 +3,8 @@
 $ods-link-font-weight: 600;
 
 @mixin ods-link() {
-  --ods-link-column-gap: var(--ods-theme-column-gap);
-  --ods-link-row-gap: var(--ods-theme-row-gap);
+  --ods-link-column-gap: var(--ods-semantic-size-space-gap-inline);
+  --ods-link-row-gap: var(--ods-semantic-size-space-gap-block);
 
   display: inline-flex;
   position: relative;
@@ -13,7 +13,7 @@ $ods-link-font-weight: 600;
   align-items: center;
   width: max-content;
   text-decoration: none;
-  color: var(--ods-theme-anchor-text-color);
+  color: var(--ods-semantic-color-content-base);
   font-weight: $ods-link-font-weight;
   cursor: pointer;
 
@@ -23,7 +23,7 @@ $ods-link-font-weight: 600;
     left: 0;
     transform: scaleX(0);
     transform-origin: left center;
-    transition: transform .2s ease-out;
+    transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-enter);
     background-color: currentcolor;
     width: 100%;
     height: 1px;
@@ -33,7 +33,7 @@ $ods-link-font-weight: 600;
 
   &:hover,
   &:focus-visible {
-    color: var(--ods-theme-anchor-text-color-hover);
+    color: var(--ods-semantic-color-interaction-base-hover);
 
     &::after {
       transform: scaleX(1);
@@ -45,6 +45,6 @@ $ods-link-font-weight: 600;
   }
 
   &:visited {
-    color: var(--ods-theme-anchor-text-color-visited);
+    color: var(--ods-semantic-color-content-visited);
   }
 }

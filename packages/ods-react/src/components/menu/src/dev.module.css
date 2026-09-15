@@ -15,5 +15,5 @@
 }
 
 .menu__content__group__item__edit {
-  color: var(--ods-theme-anchor-text-color);
+  color: var(--ods-semantic-color-content-base);
 }

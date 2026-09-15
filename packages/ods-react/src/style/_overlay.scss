@@ -1,15 +1,21 @@
-$ods-overlay-arrow-background-color: var(--ods-theme-background-color); // [Deprecated] will be removed in next major version
+$ods-overlay-arrow-background-color: var(--ods-semantic-color-surface-page); // [Deprecated] will be removed in next major version
 $ods-overlay-arrow-size: 8px;
-$ods-overlay-base-z-index: var(--ods-theme-overlay-z-index);
+$ods-overlay-base-z-index: var(--ods-semantic-z-index-dropdown);
 $ods-overlay-select-z-index: $ods-overlay-base-z-index;
-$ods-overlay-modal-z-index: calc(#{$ods-overlay-base-z-index} + 1);
-$ods-overlay-drawer-z-index: calc(#{$ods-overlay-modal-z-index} + 1);
+
+/*
+ * REVIEW: this reverses the stacking order. The chain used to be base + 1 + 1, which put the
+ * drawer ABOVE the modal; the token scale puts it below. Modal and Drawer can be open together,
+ * so the change is observable.
+ */
+$ods-overlay-modal-z-index: var(--ods-semantic-z-index-modal);
+$ods-overlay-drawer-z-index: var(--ods-semantic-z-index-drawer);
 
 @mixin ods-overlay() {
   z-index: $ods-overlay-base-z-index;
-  border-radius: calc(var(--ods-theme-border-radius) / 2);
-  box-shadow: var(--ods-theme-overlay-box-shadow);
-  background: var(--ods-theme-background-color);
-  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
-  color: var(--ods-theme-text-color);
+  border-radius: var(--ods-semantic-size-radius-overlay);
+  box-shadow: var(--ods-semantic-shadow-overlay);
+  background: var(--ods-semantic-color-surface-page);
+  padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+  color: var(--ods-semantic-color-content-text);
 }

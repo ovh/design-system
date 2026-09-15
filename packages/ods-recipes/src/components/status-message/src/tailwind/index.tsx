@@ -7,8 +7,8 @@ const StatusMessage = (): JSX.Element => {
     <Message color={ MESSAGE_COLOR.information }>
       <MessageIcon name={ ICON_NAME.circleInfo } />
 
-      <MessageBody className="flex flex-col flex-nowrap gap-y-[var(--ods-theme-row-gap)]">
-        <div className="flex flex-col flex-nowrap gap-y-[calc(var(--ods-theme-row-gap)_/_2)]">
+      <MessageBody className="flex flex-col flex-nowrap gap-y-[var(--ods-semantic-size-space-gap-block)]">
+        <div className="flex flex-col flex-nowrap gap-y-[calc(var(--ods-semantic-size-space-gap-block)_/_2)]">
           <span className="font-[700]">
             Activate your project and get €200 in free cloud credit
           </span>

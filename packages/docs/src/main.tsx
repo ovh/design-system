@@ -1,6 +1,10 @@
 import '@ovhcloud/ods-react/normalize-css';
 import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
+/* Imported after the default theme: the brand block and :root have the same specificity, so
+   source order is what lets the brand win. */
+import '@ovhcloud/ods-themes/forest/css';
+import './demoBrand';
 import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';

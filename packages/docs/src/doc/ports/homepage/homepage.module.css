@@ -22,6 +22,10 @@
   row-gap: 0.75rem;
 }
 
+.homepage__heading__title {
+  color: var(--ods-semantic-color-content-heading);
+}
+
 .homepage__features {
   display: flex;
   flex-wrap: wrap;

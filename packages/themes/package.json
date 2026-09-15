@@ -27,6 +27,10 @@
     },
     "./default/tokens": {
       "default": "./dist/default/tokens.json"
+    },
+    "./forest/css": {
+      "sass": "./src/forest/index.scss",
+      "default": "./dist/forest/index.css"
     }
   },
   "types": "dist/index.d.ts",

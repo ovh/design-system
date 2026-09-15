@@ -2,7 +2,7 @@
   .query-filter {
     display: flex;
     flex-direction: column;
-    row-gap: var(--ods-theme-row-gap);
+    row-gap: var(--ods-semantic-size-space-gap-block);
     align-items: flex-start;
   }
 }

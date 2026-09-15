@@ -36,6 +36,23 @@ const FrameEnv = ({ dark, tokens }: Omit<DemoFrameProp, 'children'>) => {
     }
   }, [dark, frameDocument]);
 
+  /* The brand attribute lives on the PARENT's root element, and an iframe is a separate
+     document, so the brand stylesheet StyleSync mirrors in here would match nothing. Copy the
+     attribute across. Read once: the demo stamps it before React mounts, and changing it means
+     reloading. */
+  useEffect(() => {
+    if (!frameDocument) {
+      return;
+    }
+    const brand = document.documentElement.getAttribute('data-ods-brand');
+
+    if (brand) {
+      frameDocument.documentElement.setAttribute('data-ods-brand', brand);
+    } else {
+      frameDocument.documentElement.removeAttribute('data-ods-brand');
+    }
+  }, [frameDocument]);
+
   useEffect(() => {
     if (!frameDocument) {
       return;

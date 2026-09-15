@@ -6,7 +6,7 @@
 
 .custom-command__description {
   min-width: 100%;
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
   font-size: 80%;
 }
 
@@ -15,7 +15,7 @@
   gap: 2px;
   align-items: center;
   inline-size: 100%;
-  color: var(--ods-color-text-secondary);
+  color: var(--ods-semantic-color-content-placeholder);
 }
 
 .custom-command__shortcut {
@@ -23,7 +23,7 @@
   gap: 2px;
   align-items: center;
   margin-left: auto;
-  color: var(--ods-color-text-secondary);
+  color: var(--ods-semantic-color-content-placeholder);
   font-family: inherit;
   font-size: 80%;
 }
@@ -32,7 +32,7 @@
   display: flex;
   gap: 2px;
   align-items: center;
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
   font-family: inherit;
   font-size: 80%;
   

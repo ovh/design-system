@@ -2,17 +2,17 @@
   &__body {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 3);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 3);
 
     &__content {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) * 2);
+      row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
     }
 
     &__actions {
       display: flex;
-      column-gap: calc(var(--ods-theme-column-gap) * 2);
+      column-gap: calc(var(--ods-semantic-size-space-gap-inline) * 2);
       justify-content: flex-end;
     }
   }

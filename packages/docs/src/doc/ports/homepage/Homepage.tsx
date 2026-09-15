@@ -17,7 +17,9 @@ const Homepage = () => {
       style={{ backgroundImage: `url(${imageFile})` }}>
       <div className={ styles['homepage__content'] }>
         <div className={ styles['homepage__heading'] }>
-          <Brand />
+          <div className={ styles['homepage__heading__title'] }>
+            <Brand />
+          </div>
 
           <ul className={ styles['homepage__features'] }>
             <li>

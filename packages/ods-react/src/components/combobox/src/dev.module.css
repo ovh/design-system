@@ -4,13 +4,13 @@
 }
 
 .custom-combobox__control {
-  outline-color: var(--ods-color-primary-100);
+  outline-color: var(--ods-semantic-color-border-drag-over);
   border-radius: 4px;
-  background-color: var(--ods-color-primary-100);
+  background-color: var(--ods-semantic-color-surface-selected-strong);
 }
 
 .custom-combobox__content {
-  background-color: var(--ods-color-primary-200);
+  background-color: var(--ods-semantic-color-surface-information-subtle);
 }
 
 .custom-option {
@@ -22,7 +22,7 @@
 }
 
 .custom-option__label {
-  color: var(--ods-color-text);
+  color: var(--ods-semantic-color-content-text);
   font-weight: 500;
 }
 

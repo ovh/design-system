@@ -2,89 +2,89 @@
 
 @mixin ods-text-blockquote() {
   margin: 0;
-  border-left: solid 2px var(--ods-theme-primary-color);
-  padding-left: calc(var(--ods-theme-padding-horizontal) * 1.5);
-  color: var(--ods-theme-text-color);
+  border-left: solid 2px var(--ods-semantic-color-border-base);
+  padding-left: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
+  color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);
   font-weight: 400;
 }
 
 @mixin ods-text-caption() {
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(12px);
   font-weight: 400;
 }
 
 @mixin ods-text-code() {
-  color: var(--ods-theme-text-color);
-  font-family: var(--ods-theme-font-family-code);
+  color: var(--ods-semantic-color-content-text);
+  font-family: var(--ods-semantic-font-family-code);
   font-size: font.px-to-rem(16px);
   font-weight: 400;
 }
 
 @mixin ods-text-heading-1() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(36px);
   font-weight: 700;
 }
 
 @mixin ods-text-heading-2() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(28px);
   font-weight: 700;
 }
 
 @mixin ods-text-heading-3() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(24px);
   font-weight: 700;
 }
 
 @mixin ods-text-heading-4() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(20px);
   font-weight: 700;
 }
 
 @mixin ods-text-heading-5() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(18px);
   font-weight: 700;
 }
 
 @mixin ods-text-heading-6() {
   margin: 0;
-  color: var(--ods-theme-heading-text-color);
+  color: var(--ods-semantic-color-content-heading);
   font-size: font.px-to-rem(16px);
   font-weight: 700;
 }
 
 @mixin ods-text-label() {
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);
   font-weight: 600;
 }
 
 @mixin ods-text-paragraph() {
   margin: 0;
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);
   font-weight: 400;
 }
 
 @mixin ods-text-small() {
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-size: 14px;
   font-weight: 400;
 }
 
 @mixin ods-text-span() {
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);
   font-weight: 400;
 }

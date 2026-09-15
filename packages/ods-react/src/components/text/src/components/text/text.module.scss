@@ -5,7 +5,7 @@
     $text: &;
 
     &--disabled#{&} {
-      color: var(--ods-theme-text-color-disabled);
+      color: var(--ods-semantic-color-content-disabled);
     }
 
     &--blockquote {

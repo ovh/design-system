@@ -4,8 +4,8 @@
   &__body {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 3);
-    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 3);
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
 
     &__logo {
       align-self: center;
@@ -14,12 +14,12 @@
     &__content {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) * 2);
+      row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
     }
   }
 
   &__footer {
-    background-color: var(--ods-theme-background-color-readonly);
-    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+    background-color: var(--ods-semantic-color-surface-readonly);
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   }
 }

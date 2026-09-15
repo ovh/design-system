@@ -2,14 +2,14 @@
 
 @layer ods-atoms {
   .tile {
-    --ods-tile-border-radius: var(--ods-theme-border-radius);
-    --ods-tile-border-width: var(--ods-theme-border-width);
-    --ods-tile-border-color: var(--ods-theme-input-border-color);
-    --ods-tile-background-color: var(--ods-theme-background-color);
-    --ods-tile-background-color-selected: var(--ods-color-primary-025);
-    --ods-tile-background-color-disabled: var(--ods-color-neutral-050);
-    --ods-tile-border-color-selected : var(--ods-color-primary-500);
-    --ods-tile-border-color-hover : var(--ods-color-neutral-500);
+    --ods-tile-border-radius: var(--ods-semantic-size-radius-container);
+    --ods-tile-border-width: var(--ods-semantic-size-border-thickness);
+    --ods-tile-border-color: var(--ods-semantic-color-border-control);
+    --ods-tile-background-color: var(--ods-semantic-color-surface-page);
+    --ods-tile-background-color-selected: var(--ods-semantic-color-surface-selected);
+    --ods-tile-background-color-disabled: var(--ods-semantic-color-surface-neutral-recessed);
+    --ods-tile-border-color-selected : var(--ods-semantic-color-border-base);
+    --ods-tile-border-color-hover : var(--ods-semantic-color-interaction-control-hover);
 
     box-sizing: border-box;
     display: inline-block;
@@ -19,12 +19,12 @@
 
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);
-      box-shadow:  0 0 0 1px var(--ods-tile-border-color-hover);
+      box-shadow: 0 0 0 var(--ods-semantic-size-border-thickness) var(--ods-tile-border-color-hover);
     }
 
     &--selected {
       border-color: var( --ods-tile-border-color-selected);
-      box-shadow:  0 0 0 1px var(--ods-tile-border-color-selected);
+      box-shadow: 0 0 0 var(--ods-semantic-size-border-thickness) var(--ods-tile-border-color-selected);
       background-color: var(--ods-tile-background-color-selected);
     }
 

@@ -2,7 +2,7 @@
 
 .config-tile-select-item {
   display: flex;
-  gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
 }
 
@@ -11,19 +11,19 @@
   display: flex;
   container-type: inline-size;
   flex-wrap: wrap;
-  gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
-  padding: calc(var(--ods-theme-padding-vertical) * 2);
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 2) calc(var(--ods-semantic-size-space-gap-inline) * 2);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 2);
   width: 100%;
 
   &__info {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
     width: 100%;
 
     &__radio {
       display: flex;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       align-items: center;
     }
 
@@ -31,7 +31,7 @@
       display: inline-flex;
       flex-flow: row;
       flex-wrap: wrap;
-      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
 
       &__item {
         display: inline-flex;
@@ -39,11 +39,11 @@
         white-space: nowrap;
 
         &__icon {
-          color: var(--ods-theme-success-color);
+          color: var(--ods-semantic-color-content-success);
         }
 
         &__label {
-          color: var(--ods-theme-text-color);
+          color: var(--ods-semantic-color-content-text);
           font-size: 16px;
           font-weight: 700;
         }
@@ -71,13 +71,13 @@
     white-space: nowrap;
 
     &__from {
-      color: var(--ods-theme-text-color);
+      color: var(--ods-semantic-color-content-text);
       font-size: 14px;
       font-weight: 700;
     }
 
     &__amount {
-      color: var(--ods-theme-primary-color);
+      color: var(--ods-semantic-color-content-base);
       font-size: 20px;
       font-weight: 700;
     }

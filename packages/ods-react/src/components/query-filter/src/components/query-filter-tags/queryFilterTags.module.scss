@@ -2,7 +2,7 @@
   .query-filter-tags {
     display: flex;
     flex-flow: row wrap;
-    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     margin: 0;
     padding: 0;
     list-style-type: "";

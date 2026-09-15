@@ -1,12 +1,12 @@
 @layer ods-atoms {
   .meter {
-    --ods-meter-background-color-critical: var(--ods-theme-critical-color);
-    --ods-meter-background-color-normal: var(--ods-theme-primary-color);
-    --ods-meter-background-color-warning: var(--ods-theme-warning-color);
+    --ods-meter-background-color-critical: var(--ods-semantic-color-surface-critical);
+    --ods-meter-background-color-normal: var(--ods-semantic-color-surface-base);
+    --ods-meter-background-color-warning: var(--ods-semantic-color-surface-warning);
 
     position: relative;
-    border-radius: var(--ods-theme-border-radius);
-    background-color: var(--ods-theme-track-background-color);
+    border-radius: var(--ods-semantic-size-radius-container);
+    background-color: var(--ods-semantic-color-surface-neutral-minimal);
     width: 100%;
     height: 8px;
     overflow: hidden;

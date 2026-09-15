@@ -239,7 +239,7 @@ export const CustomShortcuts = (): JSX.Element => {
           </Command.List>
         </Command.Content>
       </Command>
-      <Toaster style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} id="notifications" />
+      <Toaster style={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)' }} id="notifications" />
     </>
   );
 };
@@ -293,7 +293,7 @@ export const NoSearchInput = (): JSX.Element => {
           </Command.List>
         </Command.Content>
       </Command>
-      <Toaster style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} id="notifications" />
+      <Toaster style={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)' }} id="notifications" />
     </>
   );
 };

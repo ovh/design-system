@@ -3,28 +3,28 @@
 
 @layer ods-molecules {
   .file-thumbnail {
-    --ods-file-thumbnail-border-color: var(--ods-color-neutral-300);
+    --ods-file-thumbnail-border-color: var(--ods-semantic-color-border-control);
     --ods-file-thumbnail-object-fit: contain;
     --ods-file-thumbnail-preview-size: 32px;
 
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr) max-content;
-    column-gap: var(--ods-theme-column-gap);
-    border: solid var(--ods-theme-border-width) var(--ods-file-thumbnail-border-color);
-    border-radius: var(--ods-theme-border-radius);
-    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
+    border: solid var(--ods-semantic-size-border-thickness) var(--ods-file-thumbnail-border-color);
+    border-radius: var(--ods-semantic-size-radius-container);
+    padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
 
     &--disabled {
       @include state.ods-is-disabled();
     }
 
     &--error {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
 
     &__preview {
       align-self: center;
-      border-radius: calc(var(--ods-theme-border-radius) / 2);
+      border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
       object-fit: var(--ods-file-thumbnail-object-fit);
       object-position: center center;
       width: var(--ods-file-thumbnail-preview-size);
@@ -36,7 +36,7 @@
       font-size: 32px;
 
       &--error {
-        color: var(--ods-theme-input-text-color-invalid);
+        color: var(--ods-semantic-color-content-critical);
       }
     }
 
@@ -49,22 +49,22 @@
       }
 
       &__size {
-        color: var(--ods-theme-input-placeholder-text-color);
+        color: var(--ods-semantic-color-content-placeholder);
 
         &--disabled {
-          color: var(--ods-theme-text-color-disabled);
+          color: var(--ods-semantic-color-content-disabled);
         }
       }
 
       &__progress {
         display: grid;
         grid-template-columns: 1fr max-content;
-        column-gap: var(--ods-theme-column-gap);
+        column-gap: var(--ods-semantic-size-space-gap-inline);
         align-items: center;
       }
 
       &__error {
-        color: var(--ods-theme-input-text-color-invalid);
+        color: var(--ods-semantic-color-content-critical);
         font-size: 0.75rem;
       }
     }

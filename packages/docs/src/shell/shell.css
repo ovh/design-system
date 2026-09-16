@@ -363,3 +363,31 @@ body {
   color: var(--ods-color-primary-500);
   margin-top: 8px;
 }
+
+/* Full-text results in the palette: the matched excerpt under the title. */
+.shell__search-option--content {
+  flex-wrap: wrap;
+}
+
+.shell__search-snippet {
+  flex-basis: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ods-color-neutral-500);
+  font-size: .78rem;
+}
+
+/* Topbar "View as Markdown": never shrinks under a long page title. */
+.shell__llms-link {
+  flex: none;
+  white-space: nowrap;
+}
+
+/* Matched terms inside a search snippet. */
+.shell__search-mark {
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+}

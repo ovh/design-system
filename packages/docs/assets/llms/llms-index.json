@@ -345,7 +345,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1017,
+          "tokens": 1122,
           "url": "./react-components-command--technical-information.txt"
         },
         "examples": {
@@ -595,22 +595,22 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 337,
+          "tokens": 472,
           "url": "./react-components-input.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1264,
+          "tokens": 3222,
           "url": "./react-components-input--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 339,
+          "tokens": 444,
           "url": "./react-components-input--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 449,
+          "tokens": 1601,
           "url": "./react-components-input--examples.txt"
         }
       }

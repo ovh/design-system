@@ -32,9 +32,21 @@ const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9
 
 const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
   const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
+  const id = slugify(label);
   return (
-    <Text as={ `h${level}` } className="doc__heading" id={ slugify(label) } preset={ presets[level] }>
+    <Text as={ `h${level}` } className="doc__heading" id={ id } preset={ presets[level] }>
       { label }{ children }
+      { /* Hover anchor: native #-navigation, plus the absolute URL in the
+           clipboard so "look at this section" is one click to share. */ }
+      <a
+        aria-label={ `Link to “${label}”` }
+        className="doc__anchor"
+        href={ `#${id}` }
+        onClick={ () => {
+          navigator.clipboard?.writeText(new URL(`#${id}`, window.location.href).href).catch(() => { /* http or denied: the hash still lands in the URL bar */ });
+        } }>
+        #
+      </a>
     </Text>
   );
 };

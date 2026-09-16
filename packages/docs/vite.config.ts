@@ -1,6 +1,6 @@
 import mdx from '@mdx-js/rollup';
 import react from '@vitejs/plugin-react';
-import { llmsEmit } from './vite-plugin-llms';
+import { llmsDevServe, llmsEmit } from './vite-plugin-llms';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 
 // The docs app compiles ods-react sources and the public CSF stories directly
@@ -12,7 +12,7 @@ export default defineConfig({
   // The runtime counterpart (router basename, frame <base>) is src/appBase.ts.
   base: './',
   // include .mdx only: plain .md files (CHANGELOG.md?raw) must stay raw text.
-  plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit()],
+  plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit(), llmsDevServe()],
   resolve: {
     // ods-react sources pull @ark-ui/react, whose peer react resolves to
     // ods-react's own copy (18.x on master): dedupe forces every bare

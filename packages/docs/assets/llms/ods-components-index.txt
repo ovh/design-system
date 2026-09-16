@@ -91,7 +91,7 @@
 
 - [Overview](./react-components-command.txt) (~492 tokens)
 - [Documentation](./react-components-command--documentation.txt) (~1936 tokens)
-- [Technical Information](./react-components-command--technical-information.txt) (~1017 tokens)
+- [Technical Information](./react-components-command--technical-information.txt) (~1122 tokens)
 - [Examples](./react-components-command--examples.txt) (~1962 tokens)
 
 ## Data Table
@@ -159,10 +159,10 @@
 
 ## Input
 
-- [Overview](./react-components-input.txt) (~337 tokens)
-- [Documentation](./react-components-input--documentation.txt) (~1264 tokens)
-- [Technical Information](./react-components-input--technical-information.txt) (~339 tokens)
-- [Examples](./react-components-input--examples.txt) (~449 tokens)
+- [Overview](./react-components-input.txt) (~472 tokens)
+- [Documentation](./react-components-input--documentation.txt) (~3222 tokens)
+- [Technical Information](./react-components-input--technical-information.txt) (~444 tokens)
+- [Examples](./react-components-input--examples.txt) (~1601 tokens)
 
 ## Kbd
 

@@ -1,6 +1,23 @@
 .doc__heading {
-  margin: 2rem 0 .75rem;
-  scroll-margin-top: 1rem;
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 5);
+  margin-bottom: calc(var(--ods-semantic-size-space-inset-block) * 1);
+  /* scroll-margin-top: 1rem; */
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+}
+.doc__heading--level-3 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 4);
+}
+
+.doc__heading--level-4 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 3);
+}
+
+.doc__heading--level-5 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
 }
 
 .doc__canvas {
@@ -131,6 +148,11 @@
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(0, 1fr) 200px;
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .doc-layout__toc {
@@ -192,7 +214,7 @@
 /* Light mode: a border marks the block boundary on the light surface (the
    background itself comes from the shiki theme — see CodeBlock.tsx). */
 body:not([data-theme="dark"]) [data-ods="code"] {
-  border: 1px solid var(--ods-color-neutral-200);
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
 }
 
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———

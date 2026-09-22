@@ -2,7 +2,7 @@
 
 @mixin ods-text-blockquote() {
   margin: 0;
-  border-left: solid 2px var(--ods-semantic-color-border-base);
+  border-left: solid 2px var(--ods-semantic-color-border-strong);
   padding-left: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);

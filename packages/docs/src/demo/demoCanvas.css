@@ -1,5 +1,5 @@
 .canvas {
-  border: 1px solid var(--ods-color-neutral-200);
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
   border-radius: 6px;
   margin: 1rem 0;
   overflow: hidden;
@@ -9,7 +9,7 @@
    separates them, so no border is needed between the two. */
 .canvas__toolbar {
   align-items: center;
-  background-color: var(--ods-color-neutral-025);
+  background-color: var(--ods-semantic-color-surface-neutral-minimal);
   display: flex;
   gap: 12px;
   justify-content: space-between;
@@ -34,7 +34,7 @@
 }
 
 .canvas__code {
-  border-top: 1px solid var(--ods-color-neutral-200);
+  border-top: 1px solid var(--ods-semantic-color-border-neutral-minimal);
 }
 
 /* The code block fills the panel edge-to-edge (the card + border-top already

@@ -23,19 +23,19 @@ const Homepage = () => {
 
           <ul className={ styles['homepage__features'] }>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge color={ BADGE_COLOR.primary }>
                 <Icon name={ ICON_NAME.circleThreeNodes } />
                 React-based
               </Badge>
             </li>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge color={ BADGE_COLOR.primary }>
                 <Icon name={ ICON_NAME.accessibilityFull } />
                 Fully accessible
               </Badge>
             </li>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge color={ BADGE_COLOR.primary }>
                 <Icon name={ ICON_NAME.lockOpen } />
                 Open source
               </Badge>

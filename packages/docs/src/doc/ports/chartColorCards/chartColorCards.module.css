@@ -1,7 +1,7 @@
 .chart-color-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: calc(var(--ods-theme-column-gap) * 2);
+  gap: calc(var(--ods-semantic-size-space-gap-inline) * 2);
   margin-top: calc(var(--ods-theme-padding-vertical) * 2);
 }
 

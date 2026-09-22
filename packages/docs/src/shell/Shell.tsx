@@ -4,12 +4,14 @@ import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/component
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
+import { Divider } from '../../../ods-react/src/components/divider/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
+import { BrandSelect } from './BrandSelect';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
 import { SearchCommand } from './SearchCommand';
 import './shell.css';
@@ -86,20 +88,28 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
       <BrandLogo />
     </RouterLink>
 
-    <div className="shell__sidebar-selects">
-      <ThemeSelect />
-      <VersionSelect />
-    </div>
+    <div className="shell__upper-controls">
+      <BrandSelect />
 
-    <button className="shell__search-hint" onClick={ onSearch } type="button">
-      <Icon name={ ICON_NAME.magnifyingGlass } /> Search… <span className="shell__search-kbds"><Kbd>cmd</Kbd><span className="shell__search-plus">+</span><Kbd>k</Kbd></span>
-    </button>
+      <div className="shell__sidebar-selects">
+        <ThemeSelect />
+        <VersionSelect />
+      </div>
+
+      <button className="shell__search-hint" onClick={onSearch} type="button">
+        <Icon name={ICON_NAME.magnifyingGlass} /> Search…{" "}
+        <span className="shell__search-kbds">
+          <Kbd>cmd</Kbd>
+          <span className="shell__search-plus">+</span>
+          <Kbd>k</Kbd>
+        </span>
+      </button>
+    </div>
 
     <nav aria-label="Documentation" className="shell__nav">
       <NavTree currentId={ currentId } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
-      <div className="shell__tree-divider">
-        <Text preset={ TEXT_PRESET.caption }>Reference</Text>
-      </div>
+      <Divider className="shell__tree-divider" />
+      <Text className="shell__tree-dividerd" preset={ TEXT_PRESET.paragraph }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 
@@ -206,7 +216,7 @@ const Shell = () => {
               <Icon name={ ICON_NAME.hamburgerMenu } />
             </Button>
           ) }
-          <Text as="h1" preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
+          <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
         </header>
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>

@@ -1,93 +1,7 @@
-/*
- * The theme design tokens and the layer order.
- *
- * Three tiers, and the boundary between each is a rule rather than a convention:
- *
- *   tier 0  $ods-palette-*     SCSS, in _variables.scss. Brand-internal, never published.
- *   tier 1  --ods-palette-*    the palette as custom properties. Varies by BRAND.
- *                              This block is the tier-0 to tier-1 boundary and the only place
- *                              where interpolating a Sass variable is legitimate.
- *   tier 2  --ods-semantic-*   the role layer. Varies by SCHEME. Every value is a var() chain -
- *                              a role frozen into a literal cannot follow a rebound palette,
- *                              which is what made the previous theme untheme-able.
- *
- * Tier 3 (--ods-<component>-*) lives with each component and may only reference tier 2.
- *
- * REVIEW markers below flag a token I deduced rather than received from design, or a delivered
- * binding I deviated from. The rule applied to the deviations: a delivered binding is kept even
- * where it fails a contrast check that already fails today, and deviated from only where
- * adopting it would introduce a NEW failure. Each one says which.
- */
-
-@use './variables' as var;
+@use './palette';
 @layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
 
 :root {
-  /* ---------------------------------------------------------------- tier 1 - palette */
-
-  --ods-palette-blue-50: #{var.$ods-palette-blue-50};
-  --ods-palette-blue-100: #{var.$ods-palette-blue-100};
-  --ods-palette-blue-200: #{var.$ods-palette-blue-200};
-  --ods-palette-blue-300: #{var.$ods-palette-blue-300};
-  --ods-palette-blue-400: #{var.$ods-palette-blue-400};
-  --ods-palette-blue-500: #{var.$ods-palette-blue-500};
-  --ods-palette-blue-600: #{var.$ods-palette-blue-600};
-  --ods-palette-blue-700: #{var.$ods-palette-blue-700};
-  --ods-palette-blue-800: #{var.$ods-palette-blue-800};
-  --ods-palette-blue-900: #{var.$ods-palette-blue-900};
-  --ods-palette-gray-50: #{var.$ods-palette-gray-50};
-  --ods-palette-gray-100: #{var.$ods-palette-gray-100};
-  --ods-palette-gray-200: #{var.$ods-palette-gray-200};
-  --ods-palette-gray-300: #{var.$ods-palette-gray-300};
-  --ods-palette-gray-400: #{var.$ods-palette-gray-400};
-  --ods-palette-gray-500: #{var.$ods-palette-gray-500};
-  --ods-palette-gray-600: #{var.$ods-palette-gray-600};
-  --ods-palette-gray-700: #{var.$ods-palette-gray-700};
-  --ods-palette-gray-800: #{var.$ods-palette-gray-800};
-  --ods-palette-gray-900: #{var.$ods-palette-gray-900};
-  --ods-palette-green-50: #{var.$ods-palette-green-50};
-  --ods-palette-green-100: #{var.$ods-palette-green-100};
-  --ods-palette-green-200: #{var.$ods-palette-green-200};
-  --ods-palette-green-300: #{var.$ods-palette-green-300};
-  --ods-palette-green-400: #{var.$ods-palette-green-400};
-  --ods-palette-green-500: #{var.$ods-palette-green-500};
-  --ods-palette-green-600: #{var.$ods-palette-green-600};
-  --ods-palette-green-700: #{var.$ods-palette-green-700};
-  --ods-palette-green-800: #{var.$ods-palette-green-800};
-  --ods-palette-green-900: #{var.$ods-palette-green-900};
-  --ods-palette-orange-50: #{var.$ods-palette-orange-50};
-  --ods-palette-orange-100: #{var.$ods-palette-orange-100};
-  --ods-palette-orange-200: #{var.$ods-palette-orange-200};
-  --ods-palette-orange-300: #{var.$ods-palette-orange-300};
-  --ods-palette-orange-400: #{var.$ods-palette-orange-400};
-  --ods-palette-orange-500: #{var.$ods-palette-orange-500};
-  --ods-palette-orange-600: #{var.$ods-palette-orange-600};
-  --ods-palette-orange-700: #{var.$ods-palette-orange-700};
-  --ods-palette-orange-800: #{var.$ods-palette-orange-800};
-  --ods-palette-orange-900: #{var.$ods-palette-orange-900};
-  --ods-palette-red-50: #{var.$ods-palette-red-50};
-  --ods-palette-red-100: #{var.$ods-palette-red-100};
-  --ods-palette-red-200: #{var.$ods-palette-red-200};
-  --ods-palette-red-300: #{var.$ods-palette-red-300};
-  --ods-palette-red-400: #{var.$ods-palette-red-400};
-  --ods-palette-red-500: #{var.$ods-palette-red-500};
-  --ods-palette-red-600: #{var.$ods-palette-red-600};
-  --ods-palette-red-700: #{var.$ods-palette-red-700};
-  --ods-palette-red-800: #{var.$ods-palette-red-800};
-  --ods-palette-red-900: #{var.$ods-palette-red-900};
-  --ods-palette-white: #{var.$ods-palette-white};
-  --ods-palette-black: #{var.$ods-palette-black};
-  --ods-palette-twilight: #{var.$ods-palette-twilight};
-  --ods-palette-decorative-alpha: #{var.$ods-palette-decorative-alpha};
-  --ods-palette-decorative-beta: #{var.$ods-palette-decorative-beta};
-  --ods-palette-decorative-new: #{var.$ods-palette-decorative-new};
-  --ods-palette-decorative-promotion: #{var.$ods-palette-decorative-promotion};
-  --ods-palette-opacity-15: #{var.$ods-palette-opacity-15};
-  --ods-palette-opacity-20: #{var.$ods-palette-opacity-20};
-  --ods-palette-opacity-25: #{var.$ods-palette-opacity-25};
-  --ods-palette-opacity-50: #{var.$ods-palette-opacity-50};
-  --ods-palette-opacity-75: #{var.$ods-palette-opacity-75};
-
   /*
    * REVIEW: deduced, and it restores a capability the delivered set drops.
    *
@@ -96,23 +10,19 @@
    * palette names families by HUE, so a brand would have to redefine "blue" as green, and the
    * only other seam left would be rebinding twenty role tokens one by one.
    *
-   * This ramp is that seam, and nothing else: it aliases blue by default, a brand rebinds it,
-   * and the roles below that belong to the brand point here instead of at blue directly.
-   *
-   * `information` deliberately does NOT point here. A brand whose primary is purple still wants
-   * informational messages blue - that is why the two ramps were duplicated in the first place,
-   * and collapsing them onto one hue would lose the distinction for good.
+   * This ramp is that seam, and nothing else: it aliases $brand-hue, and every role below that
+   * belongs to the brand points here instead of at a hue family directly.
    */
-  --ods-palette-brand-50: var(--ods-palette-blue-50);
-  --ods-palette-brand-100: var(--ods-palette-blue-100);
-  --ods-palette-brand-200: var(--ods-palette-blue-200);
-  --ods-palette-brand-300: var(--ods-palette-blue-300);
-  --ods-palette-brand-400: var(--ods-palette-blue-400);
-  --ods-palette-brand-500: var(--ods-palette-blue-500);
-  --ods-palette-brand-600: var(--ods-palette-blue-600);
-  --ods-palette-brand-700: var(--ods-palette-blue-700);
-  --ods-palette-brand-800: var(--ods-palette-blue-800);
-  --ods-palette-brand-900: var(--ods-palette-blue-900);
+  --ods-palette-brand-50: var(--ods-palette-gray-50);
+  --ods-palette-brand-100: var(--ods-palette-gray-100);
+  --ods-palette-brand-200: var(--ods-palette-gray-200);
+  --ods-palette-brand-300: var(--ods-palette-gray-300);
+  --ods-palette-brand-400: var(--ods-palette-gray-400);
+  --ods-palette-brand-500: var(--ods-palette-gray-500);
+  --ods-palette-brand-600: var(--ods-palette-gray-600);
+  --ods-palette-brand-700: var(--ods-palette-gray-700);
+  --ods-palette-brand-800: var(--ods-palette-gray-800);
+  --ods-palette-brand-900: var(--ods-palette-gray-900);
 
   /* ------------------------------------------------------- tier 2 - colour / surface */
 
@@ -149,13 +59,17 @@
   --ods-semantic-color-surface-information-minimal: var(--ods-palette-blue-100);
   --ods-semantic-color-surface-success-minimal: var(--ods-palette-green-100);
   --ods-semantic-color-surface-warning-minimal: var(--ods-palette-orange-100);
-  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
+  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-50);
   --ods-semantic-color-surface-critical-subtle: var(--ods-palette-red-200);
   --ods-semantic-color-surface-information-subtle: var(--ods-palette-blue-200);
   --ods-semantic-color-surface-success-subtle: var(--ods-palette-green-200);
   --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-200);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
-  --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
+  --ods-semantic-color-surface-selected: var(--ods-palette-brand-100);
+
+
+  --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
+
   --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-brand-800);
   --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
@@ -166,8 +80,8 @@
   --ods-semantic-color-surface-code: var(--ods-palette-gray-900);
   --ods-semantic-color-surface-thumb: var(--ods-palette-white);
 
-  /* Brand blue, not black. Only meaningful composed with opacity-backdrop - see the scrim below. */
-  --ods-semantic-color-surface-backdrop: var(--ods-palette-brand-500);
+  /* Only meaningful composed with opacity-backdrop - see the scrim below. */
+  --ods-semantic-color-surface-backdrop: var(--ods-palette-black);
 
   /*
    * REVIEW: deduced. Decorative product-lifecycle fills whose only consumer is Badge; the
@@ -181,10 +95,30 @@
 
   /* ------------------------------------------------------- tier 2 - colour / content */
 
-  --ods-semantic-color-content-text: var(--ods-palette-twilight);
-  --ods-semantic-color-content-heading: var(--ods-palette-brand-800);
+  /*
+   * Prose has no tint of its own in an unbranded build, so it takes the ramp's dark rung and
+   * reads exactly like a heading. A brand that wants the two to differ overrides this one role in
+   * its own file - blue-jeans does, with `twilight`.
+   */
+  --ods-semantic-color-content-text: var(--ods-palette-gray-900);
+  --ods-semantic-color-content-heading: var(--ods-palette-gray-900);
+
+  /* Listbox group labels. Split from content-heading so a brand's heading tint stops at headings. */
+  --ods-semantic-color-content-group-label: var(--ods-palette-gray-900);
+
+  /*
+   * Stateless chrome glyphs: carets, the Accordion chevron, DataTable's sorted arrow. One rung
+   * darker than the brand rung they held, which also stops DataTable's sorted and unsorted arrows
+   * resolving to the same grey unbranded.
+   */
+  --ods-semantic-color-content-icon: var(--ods-palette-gray-600);
   --ods-semantic-color-content-placeholder: var(--ods-palette-gray-600);
   --ods-semantic-color-content-disabled: var(--ods-palette-gray-500);
+
+  /*
+   * 700, not the 500 its siblings use: this role is text, and 500 clears 4.5:1 on white for some
+   * hue families but not others. 700 is the first rung every family clears.
+   */
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
   --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
   --ods-semantic-color-content-information: var(--ods-palette-blue-500);
@@ -274,29 +208,45 @@
 
   /* Hover only. There is no pressed rung by contract: :active reuses the hover token. */
 
+  /* 800, one rung below its siblings, so that it stays darker than content-base at 700. */
   --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-700);
   --ods-semantic-color-interaction-information-hover: var(--ods-palette-blue-700);
   --ods-semantic-color-interaction-critical-hover: var(--ods-palette-red-700);
   --ods-semantic-color-interaction-success-hover: var(--ods-palette-green-700);
   --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
+  --ods-semantic-color-interaction-warning-hover: var(--ods-palette-orange-500);
+  --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
+
+  /*
+   * Hover and keyboard highlight of one option in a list. Separate from
+   * interaction-base-subtle-hover, which Button and Tag need for their primary ghost surfaces, and
+   * neutral so that hover no longer collides with surface-selected-strong: brand means selected,
+   * grey means pointed at.
+   */
+  --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
+  // --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100);
 
   /* REVIEW: delivered as orange-700, which is 2.20:1 under the dark text this role carries. See
      the note on surface-warning: the family sits one rung lighter, so its hover is 500. */
-  --ods-semantic-color-interaction-warning-hover: var(--ods-palette-orange-500);
-  --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
-  --ods-semantic-color-interaction-critical-subtle-hover: var(--ods-palette-red-100);
-
+  
   /*
-   * REVIEW: all three deduced. The delivered set has a subtle-hover rung for base, neutral and
-   * critical only, but Button ships a ghost variant in all six colours, so information, success
-   * and warning had nothing to bind to.
-   */
+  * REVIEW: all three deduced. The delivered set has a subtle-hover rung for base, neutral and
+  * critical only, but Button ships a ghost variant in all six colours, so information, success
+  * and warning had nothing to bind to.
+  */
+  --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-base-subtle-active: var(--ods-palette-brand-200);
+  --ods-semantic-color-interaction-critical-subtle-hover: var(--ods-palette-red-100);
+  --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-200);
   --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);
+  --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-200);
+  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
+  --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-200);
   --ods-semantic-color-interaction-success-subtle-hover: var(--ods-palette-green-100);
+  --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-200);
   --ods-semantic-color-interaction-warning-subtle-hover: var(--ods-palette-orange-100);
-  --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
+  --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-200);
+  
 
   /* --------------------------------------------------------- tier 2 - colour / focus */
 
@@ -309,18 +259,6 @@
    */
   --ods-semantic-color-focus-inverse: var(--ods-palette-brand-100);
 
-  /* -------------------------------------------------------- tier 2 - colour / shadow */
-
-  /*
-   * REVIEW: both deduced - ODS-2235 requires them and the delivered colour list omits them.
-   * Values reverse-engineered from the literals in use. Neither the hue nor the alpha is inlined:
-   * that is what lets a dark scheme raise the alpha without touching the hue, which is the usual
-   * reason shadows break in dark mode.
-   */
-  --ods-semantic-color-shadow-overlay:
-    color-mix(in srgb, var(--ods-palette-brand-700) calc(var(--ods-semantic-opacity-shadow-overlay) * 100%), transparent);
-  --ods-semantic-color-shadow-control:
-    color-mix(in srgb, var(--ods-palette-black) calc(var(--ods-semantic-opacity-shadow-control) * 100%), transparent);
 
   /* --------------------------------------------------------- tier 2 - colour / chart */
 
@@ -450,6 +388,10 @@
    * REVIEW: both deduced. The geometry is the value in use; the colour and the alpha compose
    * from their own tokens rather than being inlined.
    */
+  --ods-semantic-color-shadow-overlay:
+    color-mix(in srgb, var(--ods-palette-brand-700) calc(var(--ods-semantic-opacity-shadow-overlay) * 100%), transparent);
+  --ods-semantic-color-shadow-control:
+    color-mix(in srgb, var(--ods-palette-black) calc(var(--ods-semantic-opacity-shadow-control) * 100%), transparent);
   --ods-semantic-shadow-overlay: 0 2px 8px var(--ods-semantic-color-shadow-overlay);
   --ods-semantic-shadow-control: 0 1px 1px var(--ods-semantic-color-shadow-control);
 
@@ -488,11 +430,6 @@
 
   /* -------------------------------------------------------------- tier 2 - opacity */
 
-  /*
-   * REVIEW: all four deduced. opacity: 0 and opacity: 1 are deliberately absent - they are
-   * visibility switches, not transparency decisions, and mean nothing to a theme. The single
-   * 0.15 in TreeView stays a component-level value under the more-than-one-component rule.
-   */
   --ods-semantic-opacity-disabled: var(--ods-palette-opacity-50);
   --ods-semantic-opacity-backdrop: var(--ods-palette-opacity-75);
   --ods-semantic-opacity-shadow-overlay: var(--ods-palette-opacity-20);

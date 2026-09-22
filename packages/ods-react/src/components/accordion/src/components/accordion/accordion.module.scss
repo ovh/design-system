@@ -1,6 +1,6 @@
 @layer ods-atoms {
   .accordion {
-    --ods-accordion-border-color: var(--ods-semantic-color-border-neutral-subtle);
+    --ods-accordion-border-color: var(--ods-semantic-color-border-control);
     --ods-accordion-border-color-hover: var(--ods-semantic-color-interaction-control-hover);
     --ods-accordion-border-width: 1px;
     --ods-accordion-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 3);

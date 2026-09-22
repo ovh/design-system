@@ -6,8 +6,8 @@
     --ods-switch-item-background-color: inherit;
     --ods-switch-item-background-color-checked: var(--ods-semantic-color-interaction-base-hover);
     --ods-switch-item-background-color-checked-disabled: var(--ods-semantic-color-surface-neutral);
-    --ods-switch-item-background-color-hover: var(--ods-semantic-color-interaction-base-subtle-hover);
-    --ods-switch-item-text-color: var(--ods-semantic-color-content-base);
+    --ods-switch-item-background-color-hover: var(--ods-semantic-color-interaction-option-hover);
+    --ods-switch-item-text-color: var(--ods-semantic-color-content-text);
     --ods-switch-item-text-color-checked: var(--ods-semantic-color-content-on-solid);
 
     transition: background-color var(--ods-semantic-motion-duration-slow), color var(--ods-semantic-motion-duration-slow);

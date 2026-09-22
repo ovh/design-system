@@ -491,7 +491,7 @@ function App(): ReactElement {
                 <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-heading-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
               </div>
 
-              <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+              <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
             </CartExtraContent>
 
             <CartTotal

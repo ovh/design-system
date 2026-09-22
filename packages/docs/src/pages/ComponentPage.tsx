@@ -27,7 +27,6 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
 
   return (
     <section>
-      <h2>{ title }</h2>
       <p data-testid="demo-count">{ demos.length } démos composées</p>
       { demos.map(({ Component, name }) => {
         const source = sources[name];

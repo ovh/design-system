@@ -1,0 +1,76 @@
+/*
+ * Tier 1 - the palette as custom properties.
+ *
+ * This file is the tier-0 to tier-1 boundary and the only place in the system where interpolating
+ * a Sass variable is legitimate. It holds hue families and nothing else: no role, no brand, no
+ * per-brand nuance. A brand is not a palette change, it is a re-aiming of the brand ramp at one of
+ * these families - see src/default/index.scss.
+ *
+ * A partial on purpose: `sass src:dist` compiles every non-partial file, so a bare `palette.scss`
+ * would ship a dist/default/palette.css that nothing imports.
+ */
+@use './variables' as var;
+
+:root {
+  --ods-palette-blue-50: #{var.$ods-palette-blue-50};
+  --ods-palette-blue-100: #{var.$ods-palette-blue-100};
+  --ods-palette-blue-200: #{var.$ods-palette-blue-200};
+  --ods-palette-blue-300: #{var.$ods-palette-blue-300};
+  --ods-palette-blue-400: #{var.$ods-palette-blue-400};
+  --ods-palette-blue-500: #{var.$ods-palette-blue-500};
+  --ods-palette-blue-600: #{var.$ods-palette-blue-600};
+  --ods-palette-blue-700: #{var.$ods-palette-blue-700};
+  --ods-palette-blue-800: #{var.$ods-palette-blue-800};
+  --ods-palette-blue-900: #{var.$ods-palette-blue-900};
+  --ods-palette-gray-50: #{var.$ods-palette-gray-50};
+  --ods-palette-gray-100: #{var.$ods-palette-gray-100};
+  --ods-palette-gray-200: #{var.$ods-palette-gray-200};
+  --ods-palette-gray-300: #{var.$ods-palette-gray-300};
+  --ods-palette-gray-400: #{var.$ods-palette-gray-400};
+  --ods-palette-gray-500: #{var.$ods-palette-gray-500};
+  --ods-palette-gray-600: #{var.$ods-palette-gray-600};
+  --ods-palette-gray-700: #{var.$ods-palette-gray-700};
+  --ods-palette-gray-800: #{var.$ods-palette-gray-800};
+  --ods-palette-gray-900: #{var.$ods-palette-gray-900};
+  --ods-palette-green-50: #{var.$ods-palette-green-50};
+  --ods-palette-green-100: #{var.$ods-palette-green-100};
+  --ods-palette-green-200: #{var.$ods-palette-green-200};
+  --ods-palette-green-300: #{var.$ods-palette-green-300};
+  --ods-palette-green-400: #{var.$ods-palette-green-400};
+  --ods-palette-green-500: #{var.$ods-palette-green-500};
+  --ods-palette-green-600: #{var.$ods-palette-green-600};
+  --ods-palette-green-700: #{var.$ods-palette-green-700};
+  --ods-palette-green-800: #{var.$ods-palette-green-800};
+  --ods-palette-green-900: #{var.$ods-palette-green-900};
+  --ods-palette-orange-50: #{var.$ods-palette-orange-50};
+  --ods-palette-orange-100: #{var.$ods-palette-orange-100};
+  --ods-palette-orange-200: #{var.$ods-palette-orange-200};
+  --ods-palette-orange-300: #{var.$ods-palette-orange-300};
+  --ods-palette-orange-400: #{var.$ods-palette-orange-400};
+  --ods-palette-orange-500: #{var.$ods-palette-orange-500};
+  --ods-palette-orange-600: #{var.$ods-palette-orange-600};
+  --ods-palette-orange-700: #{var.$ods-palette-orange-700};
+  --ods-palette-orange-800: #{var.$ods-palette-orange-800};
+  --ods-palette-orange-900: #{var.$ods-palette-orange-900};
+  --ods-palette-red-50: #{var.$ods-palette-red-50};
+  --ods-palette-red-100: #{var.$ods-palette-red-100};
+  --ods-palette-red-200: #{var.$ods-palette-red-200};
+  --ods-palette-red-300: #{var.$ods-palette-red-300};
+  --ods-palette-red-400: #{var.$ods-palette-red-400};
+  --ods-palette-red-500: #{var.$ods-palette-red-500};
+  --ods-palette-red-600: #{var.$ods-palette-red-600};
+  --ods-palette-red-700: #{var.$ods-palette-red-700};
+  --ods-palette-red-800: #{var.$ods-palette-red-800};
+  --ods-palette-red-900: #{var.$ods-palette-red-900};
+  --ods-palette-white: #{var.$ods-palette-white};
+  --ods-palette-black: #{var.$ods-palette-black};
+  --ods-palette-decorative-alpha: #{var.$ods-palette-decorative-alpha};
+  --ods-palette-decorative-beta: #{var.$ods-palette-decorative-beta};
+  --ods-palette-decorative-new: #{var.$ods-palette-decorative-new};
+  --ods-palette-decorative-promotion: #{var.$ods-palette-decorative-promotion};
+  --ods-palette-opacity-15: #{var.$ods-palette-opacity-15};
+  --ods-palette-opacity-20: #{var.$ods-palette-opacity-20};
+  --ods-palette-opacity-25: #{var.$ods-palette-opacity-25};
+  --ods-palette-opacity-50: #{var.$ods-palette-opacity-50};
+  --ods-palette-opacity-75: #{var.$ods-palette-opacity-75};
+}

@@ -35,7 +35,4 @@
   --ods-palette-brand-700: #{var.$ods-palette-green-700};
   --ods-palette-brand-800: #{var.$ods-palette-green-800};
   --ods-palette-brand-900: #{var.$ods-palette-green-900};
-
-  // content-text is not a brand role, but the demo is more legible when the prose follows too.
-  --ods-semantic-color-content-text: #{var.$ods-palette-green-900};
 }

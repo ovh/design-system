@@ -20,7 +20,7 @@ const NativeAttributesNote = ({ element }: { element: string }) => (
 );
 
 const SectionHeading = ({ children, label }: { children?: React.ReactNode, label: string }) => (
-  <Text as="h2" className="doc__heading tech__heading" id={ label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') } preset={ TEXT_PRESET.heading4 }>
+  <Text as="h2" className="doc__heading doc__heading--level-2 tech__heading" id={ label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') } preset={ TEXT_PRESET.heading4 }>
     { label }{ children }
   </Text>
 );

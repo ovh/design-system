@@ -18,8 +18,8 @@
 /* Skip link: off-screen until focused. */
 .shell__skip {
   position: fixed;
-  top: 8px;
-  left: 8px;
+  top: var(--ods-semantic-size-space-inset-block);
+  left: var(--ods-semantic-size-space-inset-inline);
   transform: translateY(-150%);
   transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
 
@@ -29,7 +29,7 @@
   border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-base);
   border-radius: var(--ods-semantic-size-radius-control);
   background: var(--ods-semantic-color-surface-page);
-  padding: 8px 12px;
+  padding: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   color: var(--ods-semantic-color-content-base);
 }
 
@@ -55,16 +55,15 @@ body {
 .shell__sidebar {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
   border-right: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
-  padding: 16px;
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   height: 100%;
   overflow-y: auto;
 }
 
 .shell__brand {
   display: block;
-  padding: 4px 8px 0;
   text-decoration: none;
   color: inherit;
   color: var(--ods-semantic-color-content-heading);
@@ -78,17 +77,21 @@ body {
 
 .shell__select-item {
   display: inline-flex;
-  gap: 6px;
+  column-gap: var(--ods-semantic-size-space-inset-inline);
   align-items: center;
 }
 
+.shell__upper-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-semantic-size-space-gap-block);
+}
+
+
 .shell__sidebar-selects {
   display: grid;
-
-  /* The theme cell hugs its content, the version cell takes the rest;
-     minmax(0) so neither ever overflows the sidebar. */
   grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
 }
 
 .shell__sidebar-selects [data-ods="select-control"] {
@@ -103,14 +106,20 @@ body {
   display: flex;
   gap: 8px;
   align-items: center;
-  border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle);
+  border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
   background: none;
-  padding: 6px 10px;
+  padding: 6px 10px;    
+  height: var(--ods-semantic-size-block-size-md);
   color: var(--ods-semantic-color-content-neutral);
   font-family: inherit;
   font-size: .85rem;
   cursor: pointer;
+}
+
+
+.shell__search-hint:hover {
+  border-color: var(--ods-semantic-color-interaction-control-hover);
 }
 
 .shell__search-option {
@@ -167,12 +176,13 @@ body {
 
 /* Separator between the guides tree and the reference tree. */
 .shell__tree-divider {
-  margin: 8px 0 4px;
-  border-top: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle);
-  padding-top: 12px;
+  margin: var(--ods-semantic-size-space-inset-inline) 0 calc(var(--ods-semantic-size-space-inset-inline) * 2);
+}
+
+.shell__tree-dividerd {
+  margin-bottom: calc(var(--ods-semantic-size-space-inset-inline) / 2);
   text-transform: uppercase;
   letter-spacing: .04em;
-  color: var(--ods-semantic-color-content-neutral);
 }
 
 .shell__tree-label--section {
@@ -191,6 +201,8 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100dvh;
+  max-height: 100dvh;
   overflow-y: auto;
 }
 
@@ -198,8 +210,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle);
+  border-bottom: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: 12px 24px;
+  padding: calc(var(--ods-semantic-size-space-inset-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) * 4);
 }
 
 .shell__dark {
@@ -220,8 +233,10 @@ body {
 }
 
 .shell__content {
-  padding: 24px 32px;
+  flex-grow: 1;
+  padding: calc(var(--ods-semantic-size-space-inset-inline) * 3) calc(var(--ods-semantic-size-space-inset-block) * 4);
   width: 100%;
+  overflow: auto;
 }
 
 /* The home route is full-bleed (its background reaches the edges). */
@@ -304,7 +319,7 @@ body {
   --ods-semantic-color-surface-page: var(--docs-dark-ground);
   --ods-semantic-color-surface-raised: var(--docs-dark-ground);
   --ods-semantic-color-surface-overlay: var(--docs-dark-ground);
-  --ods-semantic-color-content-text: var(--docs-dark-ink);
+  /* --ods-semantic-color-content-text: var(--docs-dark-ink); */
   --ods-semantic-color-content-heading: var(--docs-dark-ink);
 
   /* --- tier 2: every role bound to gray. */
@@ -347,7 +362,7 @@ body {
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-600);
   --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100);
+  /* --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100); */
   --ods-semantic-color-focus: var(--ods-palette-brand-500);
 
   /* The selected surfaces are dark tints here, so the text on them inverts too:
@@ -390,14 +405,16 @@ body {
 
 /* Navigation drawer (narrow layout): same content as the sidebar. */
 .shell__drawer {
+  padding: 0;
   width: min(320px, 88vw);
+  
 }
 
 .shell__drawer-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   height: 100%;
   overflow-y: auto;
 }

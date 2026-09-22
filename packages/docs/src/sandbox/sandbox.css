@@ -41,7 +41,7 @@
 }
 
 .sandbox__pane {
-  border: 1px solid var(--ods-color-neutral-200);
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -74,8 +74,8 @@
 
 .sandbox__pane-header {
   align-items: center;
-  background-color: var(--ods-color-neutral-025);
-  border-bottom: 1px solid var(--ods-color-neutral-200);
+  background-color: var(--ods-semantic-color-surface-neutral-minimal);
+  border-bottom: 1px solid var(--ods-semantic-color-border-neutral-minimal);
   display: flex;
   gap: 12px;
   min-height: 44px;
@@ -122,7 +122,7 @@
 }
 
 .sandbox__share-warning {
-  color: var(--ods-color-warning-500);
+  color: var(--ods-semantic-color-interaction-warning-hover);
   cursor: help;
   flex-shrink: 0;
 }

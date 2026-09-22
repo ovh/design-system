@@ -205,7 +205,12 @@ function resolveScopes(scopes) {
   for (const file of files) {
     const css = await fs.readFile(path.resolve(process.cwd(), file), { encoding: 'utf-8' });
 
-    output[path.basename(file)] = resolveScopes(collect(css));
+    /*
+     * Keyed by the path as given, not by its basename: every theme compiles to an `index.css`, so
+     * a basename key made `dist/default/index.css` and `dist/blue-jeans/index.css` collide and the
+     * last file silently won - which is exactly the pair you pass when comparing two brands.
+     */
+    output[file] = resolveScopes(collect(css));
   }
 
   console.log(JSON.stringify(output, null, 2));

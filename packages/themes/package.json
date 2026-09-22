@@ -28,6 +28,14 @@
     "./default/tokens": {
       "default": "./dist/default/tokens.json"
     },
+    "./blue-jeans/css": {
+      "sass": "./src/blue-jeans/index.scss",
+      "default": "./dist/blue-jeans/index.css"
+    },
+    "./manager/css": {
+      "sass": "./src/manager/index.scss",
+      "default": "./dist/manager/index.css"
+    },
     "./forest/css": {
       "sass": "./src/forest/index.scss",
       "default": "./dist/forest/index.css"
@@ -36,10 +44,13 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
-    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map && npm run generate:tokens",
+    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && npm run build:css && npm run generate:tokens",
+    "build:css": "postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
+    "build:watch": "sass --watch src:dist --no-source-map --pkg-importer=node",
     "clean": "rimraf dist",
     "generate:tokens": "node scripts/generate-token-lists.js",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
+    "tokens:resolve": "sass src:dist --no-source-map --pkg-importer=node && node scripts/resolve-tokens.js",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"
   },
   "devDependencies": {

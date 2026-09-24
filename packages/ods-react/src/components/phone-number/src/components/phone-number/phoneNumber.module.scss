@@ -1,5 +1,10 @@
+@use '../../../../../style/input';
+
 @layer ods-organisms {
+  // The uniform default field width covers the whole group, country select and input together
+  // (ODS-2002); the input flexes into whatever the country select leaves.
   .phone-number {
     display: inline-flex;
+    inline-size: input.$ods-form-field-inline-size;
   }
 }

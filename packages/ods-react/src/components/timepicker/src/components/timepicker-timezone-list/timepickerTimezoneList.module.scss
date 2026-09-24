@@ -1,5 +1,7 @@
 @layer ods-organisms {
   .timepicker-timezone-list {
+    // Sized by its content, not by the uniform field default: it rides along a Timepicker.
     min-width: 89px;
+    inline-size: auto;
   }
 }

@@ -1,5 +1,8 @@
 @layer ods-organisms {
   .phone-number-country-list {
+    // Sized by its content, not by the uniform field default: the group root carries the width.
+    inline-size: auto;
+
     &__control {
       display: flex;
       border-right: none;

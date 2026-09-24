@@ -14,6 +14,7 @@
     border-radius: var(--ods-theme-input-border-radius);
     padding-right: input.$ods-input-actions-padding-right;
     height: input.$ods-input-field-height;
+    inline-size: input.$ods-form-field-inline-size;
 
     &:focus-within:not(:has(button:focus-within)) {
       @include focus.ods-focus();

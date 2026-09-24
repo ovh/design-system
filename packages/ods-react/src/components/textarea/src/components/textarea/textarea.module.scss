@@ -8,6 +8,7 @@
     @include input.ods-input-state();
 
     height: auto;
+    inline-size: input.$ods-form-field-inline-size;
     resize: none;
 
     &::placeholder {

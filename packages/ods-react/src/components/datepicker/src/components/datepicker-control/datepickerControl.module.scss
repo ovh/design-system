@@ -5,11 +5,16 @@
     display: inline-grid;
     grid-template-columns: 1fr max-content;
     align-items: center;
+    // The uniform default field width covers input and calendar trigger together (ODS-2002).
+    inline-size: input.$ods-form-field-inline-size;
 
     &__input {
       border-right: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      // The 1fr track sizes the input; its own field default would push the trigger out.
+      inline-size: auto;
+      min-inline-size: 0;
 
       &:focus-within {
         z-index: 2;

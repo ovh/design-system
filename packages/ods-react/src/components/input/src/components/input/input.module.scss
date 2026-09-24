@@ -12,6 +12,7 @@
     display: inline-flex;
     flex-flow: row;
     column-gap: calc(var(--ods-theme-column-gap) / 2);
+    inline-size: input.$ods-form-field-inline-size;
 
     &:focus-within {
       &:not(:has(:is(a, button, [role="button"]):focus-within)) {

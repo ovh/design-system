@@ -1,6 +1,8 @@
 @layer ods-organisms {
   .phone-number-control {
-    width: inherit;
+    flex: 1 1 auto;
+    width: auto;
+    min-inline-size: 0;
     font-weight: inherit;
 
     &--adjoined {

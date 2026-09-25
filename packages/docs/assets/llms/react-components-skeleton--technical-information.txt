@@ -4,7 +4,7 @@ slug: skeleton
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 143
+tokens: 154
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--technical-information.txt
 ---
 
@@ -20,6 +20,6 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-skeleton-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-skeleton-transition-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-skeleton-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-skeleton-background-color-image` | `linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color))` |

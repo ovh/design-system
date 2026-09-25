@@ -4,7 +4,7 @@ slug: progress-bar
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 121
+tokens: 123
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--technical-information.txt
 ---
 
@@ -23,4 +23,4 @@ This component extends all the native `<progress>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-progress-bar-border-radius` | `var(--ods-theme-border-radius)` |
+| `--ods-progress-bar-border-radius` | `var(--ods-semantic-size-radius-container)` |

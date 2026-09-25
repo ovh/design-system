@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 254
+tokens: 265
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
 ---
 
@@ -47,6 +47,6 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-form-field-label-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-form-field-label-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-form-field-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
+| `--ods-form-field-label-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-form-field-label-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-form-field-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |

@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2713
+tokens: 4266
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -29,208 +29,39 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-| `--ods-theme-anchor-text-color` | `#0050d7` |
-| `--ods-theme-anchor-text-color-hover` | `#002dbe` |
-| `--ods-theme-anchor-text-color-visited` | `#000e9c` |
-| `--ods-theme-background-color` | `#fff` |
-| `--ods-theme-background-color-disabled` | `#e6e6e6` |
-| `--ods-theme-background-color-drag-over` | `var(--ods-color-primary-100)` |
-| `--ods-theme-background-color-readonly` | `#f2f2f2` |
-| `--ods-theme-background-color-selected` | `#00185e` |
-| `--ods-theme-border-color-disabled` | `#cccccc` |
-| `--ods-theme-border-color-drag-over` | `var(--ods-color-primary-100)` |
-| `--ods-theme-border-color-readonly` | `#f2f2f2` |
-| `--ods-theme-border-color-selected` | `#00185e` |
-| `--ods-theme-brand-color` | `#000e9c` |
-| `--ods-theme-heading-text-color` | `#00185e` |
-| `--ods-theme-progress-background-color` | `var(--ods-color-primary-500)` |
-| `--ods-theme-split-background-color` | `#e6e6e6` |
-| `--ods-theme-split-border-color` | `#e6e6e6` |
-| `--ods-theme-text-color` | `#4d5592` |
-| `--ods-theme-text-color-disabled` | `#808080` |
-| `--ods-theme-text-color-selected` | `#ffffff` |
-| `--ods-theme-track-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-theme-track-background-color-disabled` | `var(--ods-color-neutral-500)` |
-| `--ods-theme-critical-color` | `var(--ods-color-critical-500)` |
-| `--ods-theme-information-color` | `var(--ods-color-information-500)` |
-| `--ods-theme-neutral-color` | `var(--ods-color-neutral-500)` |
-| `--ods-theme-primary-color` | `var(--ods-color-primary-500)` |
-| `--ods-theme-success-color` | `var(--ods-color-success-500)` |
-| `--ods-theme-warning-color` | `var(--ods-color-warning-500)` |
-| `--ods-theme-chart-background-color` | `var(--ods-theme-background-color)` |
-| `--ods-theme-chart-axis-color` | `var(--ods-color-neutral-300)` |
-| `--ods-theme-chart-tick-color` | `var(--ods-color-neutral-700)` |
-| `--ods-theme-chart-legend-color` | `var(--ods-color-neutral-700)` |
-| `--ods-theme-chart-grid-color` | `var(--ods-color-neutral-200)` |
-| `--ods-theme-chart-reference-line-color` | `var(--ods-theme-critical-color)` |
 
 ### Outline
 
 | Token | Value |
 |---|---|
-| `--ods-theme-outline-color` | `#000e9c` |
-| `--ods-theme-outline-offset` | `2px` |
-| `--ods-theme-outline-style` | `solid` |
-| `--ods-theme-outline-width` | `2px` |
 
 ### Overlay
 
 | Token | Value |
 |---|---|
-| `--ods-theme-backdrop-background-color` | `#0050d7` |
-| `--ods-theme-backdrop-opacity` | `0.75` |
-| `--ods-theme-overlay-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-theme-overlay-box-shadow` | `0 2px 8px rgb(0, 14, 156, 0.2)` |
-| `--ods-theme-overlay-z-index` | `99` |
 
 ### Spacing
 
 | Token | Value |
 |---|---|
-| `--ods-theme-border-radius` | `8px` |
-| `--ods-theme-border-width` | `1px` |
-| `--ods-theme-column-gap` | `8px` |
-| `--ods-theme-padding-horizontal` | `8px` |
-| `--ods-theme-padding-vertical` | `8px` |
-| `--ods-theme-row-gap` | `8px` |
-| `--ods-theme-transition-duration` | `300ms` |
 
 ### Font Family
 
 | Token | Value |
 |---|---|
-| `--ods-theme-font-family` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-theme-font-family-code` | `'Source Code Pro', arial` |
 
 ### Form Element
 
 | Token | Value |
 |---|---|
-| `--ods-theme-input-background-color-checked` | `#0050d7` |
-| `--ods-theme-input-background-color-checked-hover` | `#000e9c` |
-| `--ods-theme-input-background-color-invalid` | `#bf0020` |
-| `--ods-theme-input-border-color` | `#b3b3b3` |
-| `--ods-theme-input-border-color-checked` | `#0050d7` |
-| `--ods-theme-input-border-color-checked-hover` | `#000e9c` |
-| `--ods-theme-input-border-color-hover` | `#808080` |
-| `--ods-theme-input-border-color-invalid` | `#bf0020` |
-| `--ods-theme-input-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-theme-input-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-theme-input-min-height` | `32px` |
-| `--ods-theme-input-option-background-color-hover` | `#bef1ff` |
-| `--ods-theme-input-option-background-color-selected` | `#e6faff` |
-| `--ods-theme-input-option-background-color-selected-hover` | `#bef1ff` |
-| `--ods-theme-input-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-theme-input-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-theme-input-placeholder-text-color` | `#666666` |
-| `--ods-theme-input-text-color` | `var(--ods-theme-text-color)` |
-| `--ods-theme-input-text-color-checked` | `var(--ods-theme-background-color)` |
-| `--ods-theme-input-text-color-invalid` | `#bf0020` |
 
 ## Color Palettes
 
 | Token | Value |
 |---|---|
-| `--ods-color-critical-000` | `#ffffff` |
-| `--ods-color-critical-025` | `#fff3f5` |
-| `--ods-color-critical-050` | `#ffe6ec` |
-| `--ods-color-critical-075` | `#ffd9e3` |
-| `--ods-color-critical-100` | `#ffccd9` |
-| `--ods-color-critical-200` | `#ef99ab` |
-| `--ods-color-critical-300` | `#e67386` |
-| `--ods-color-critical-400` | `#cf334e` |
-| `--ods-color-critical-500` | `#bf0020` |
-| `--ods-color-critical-600` | `#a6001c` |
-| `--ods-color-critical-700` | `#800015` |
-| `--ods-color-critical-800` | `#660011` |
-| `--ods-color-critical-900` | `#4d000d` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-information-000` | `#ffffff` |
-| `--ods-color-information-025` | `#f3fdff` |
-| `--ods-color-information-050` | `#e6faff` |
-| `--ods-color-information-075` | `#cef5ff` |
-| `--ods-color-information-100` | `#bef1ff` |
-| `--ods-color-information-200` | `#85d9fd` |
-| `--ods-color-information-300` | `#4bb2f6` |
-| `--ods-color-information-400` | `#157eea` |
-| `--ods-color-information-500` | `#0050d7` |
-| `--ods-color-information-600` | `#002dbe` |
-| `--ods-color-information-700` | `#000e9c` |
-| `--ods-color-information-800` | `#00185e` |
-| `--ods-color-information-900` | `#000d1f` |
-
-| Token | Value |
-|---|---|
-| `--ods-color-neutral-000` | `#ffffff` |
-| `--ods-color-neutral-025` | `#f9f9f9` |
-| `--ods-color-neutral-050` | `#f2f2f2` |
-| `--ods-color-neutral-075` | `#ececec` |
-| `--ods-color-neutral-100` | `#e6e6e6` |
-| `--ods-color-neutral-200` | `#cccccc` |
-| `--ods-color-neutral-300` | `#b3b3b3` |
-| `--ods-color-neutral-400` | `#999999` |
-| `--ods-color-neutral-500` | `#808080` |
-| `--ods-color-neutral-600` | `#666666` |
-| `--ods-color-neutral-700` | `#4d4d4d` |
-| `--ods-color-neutral-800` | `#333333` |
-| `--ods-color-neutral-900` | `#1a1a1a` |
-
-| Token | Value |
-|---|---|
-| `--ods-color-primary-000` | `#ffffff` |
-| `--ods-color-primary-025` | `#f3fdff` |
-| `--ods-color-primary-050` | `#e6faff` |
-| `--ods-color-primary-075` | `#cef5ff` |
-| `--ods-color-primary-100` | `#bef1ff` |
-| `--ods-color-primary-200` | `#85d9fd` |
-| `--ods-color-primary-300` | `#4bb2f6` |
-| `--ods-color-primary-400` | `#157eea` |
-| `--ods-color-primary-500` | `#0050d7` |
-| `--ods-color-primary-600` | `#002dbe` |
-| `--ods-color-primary-700` | `#000e9c` |
-| `--ods-color-primary-800` | `#00185e` |
-| `--ods-color-primary-900` | `#000d1f` |
-
-| Token | Value |
-|---|---|
-| `--ods-color-success-000` | `#ffffff` |
-| `--ods-color-success-025` | `#f3fbeb` |
-| `--ods-color-success-050` | `#e7f7d7` |
-| `--ods-color-success-075` | `#ddf5d1` |
-| `--ods-color-success-100` | `#d2f2c2` |
-| `--ods-color-success-200` | `#90cc7a` |
-| `--ods-color-success-300` | `#64b347` |
-| `--ods-color-success-400` | `#47991f` |
-| `--ods-color-success-500` | `#2b8000` |
-| `--ods-color-success-600` | `#267300` |
-| `--ods-color-success-700` | `#226600` |
-| `--ods-color-success-800` | `#1a4d00` |
-| `--ods-color-success-900` | `#113300` |
-
-| Token | Value |
-|---|---|
-| `--ods-color-warning-000` | `#ffffff` |
-| `--ods-color-warning-025` | `#fffbe5` |
-| `--ods-color-warning-050` | `#fff7cc` |
-| `--ods-color-warning-075` | `#feefa4` |
-| `--ods-color-warning-100` | `#feea86` |
-| `--ods-color-warning-200` | `#fed265` |
-| `--ods-color-warning-300` | `#ffbb43` |
-| `--ods-color-warning-400` | `#ffa322` |
-| `--ods-color-warning-500` | `#ff8b00` |
-| `--ods-color-warning-600` | `#cc7000` |
-| `--ods-color-warning-700` | `#995400` |
-| `--ods-color-warning-800` | `#663800` |
-| `--ods-color-warning-900` | `#4d2a00` |
-
-| Token | Value |
-|---|---|
-| `--ods-color-alpha` | `#fbfe47` |
-| `--ods-color-beta` | `#47fe78` |
-| `--ods-color-new` | `#47fffa` |
-| `--ods-color-promotion` | `#ccff66` |
 
 ## Previous Tokens (deprecated)
 
@@ -238,36 +69,254 @@ The following tokens are deprecated and will be removed in a future major releas
 
 | Token | Value |
 |---|---|
-| `--ods-border-radius-xs` | `2px` |
-| `--ods-border-radius-sm` | `4px` |
-| `--ods-border-radius-md` | `8px` |
-| `--ods-border-radius-lg` | `16px` |
-| `--ods-border-width-sm` | `1px` |
-| `--ods-border-width-md` | `2px` |
-| `--ods-color-background-disabled-default` | `#e6e6e6` |
-| `--ods-color-background-readonly-default` | `#f2f2f2` |
-| `--ods-color-border-disabled-default` | `#cccccc` |
-| `--ods-color-border-readonly-default` | `#f2f2f2` |
-| `--ods-color-element-background-selected` | `#00185e` |
-| `--ods-color-element-text-selected` | `#ffffff` |
-| `--ods-color-form-element-background-critical` | `#ffffff` |
-| `--ods-color-form-element-background-default` | `#ffffff` |
-| `--ods-color-form-element-background-focus-default` | `#ffffff` |
-| `--ods-color-form-element-background-hover-default` | `#ffffff` |
-| `--ods-color-form-element-background-selected-critical` | `#bf0020` |
-| `--ods-color-form-element-border-critical` | `#bf0020` |
-| `--ods-color-form-element-border-default` | `#b3b3b3` |
-| `--ods-color-form-element-border-focus-default` | `#808080` |
-| `--ods-color-form-element-border-hover-default` | `#808080` |
-| `--ods-color-form-element-text-default` | `#4d5592` |
-| `--ods-color-form-element-text-placeholder-default` | `#666666` |
-| `--ods-color-heading` | `#00185e` |
-| `--ods-color-text` | `#4d5592` |
-| `--ods-color-text-disabled-default` | `#808080` |
-| `--ods-font-family-code` | `'Source Code Pro', arial` |
-| `--ods-font-family-default` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-form-element-input-height` | `32px` |
-| `--ods-outline-color-default` | `#000e9c` |
-| `--ods-outline-offset` | `2px` |
-| `--ods-outline-style-default` | `solid` |
-| `--ods-outline-width` | `2px` |
+| `--ods-palette-blue-50` | `#e6faff` |
+| `--ods-palette-blue-100` | `#bef1ff` |
+| `--ods-palette-blue-200` | `#85d9fd` |
+| `--ods-palette-blue-300` | `#4bb2f6` |
+| `--ods-palette-blue-400` | `#157eea` |
+| `--ods-palette-blue-500` | `#0050d7` |
+| `--ods-palette-blue-600` | `#002dbe` |
+| `--ods-palette-blue-700` | `#000e9c` |
+| `--ods-palette-blue-800` | `#00185e` |
+| `--ods-palette-blue-900` | `#000d1f` |
+| `--ods-palette-gray-50` | `#f2f2f2` |
+| `--ods-palette-gray-100` | `#e6e6e6` |
+| `--ods-palette-gray-200` | `#cccccc` |
+| `--ods-palette-gray-300` | `#b3b3b3` |
+| `--ods-palette-gray-400` | `#999999` |
+| `--ods-palette-gray-500` | `#808080` |
+| `--ods-palette-gray-600` | `#666666` |
+| `--ods-palette-gray-700` | `#4d4d4d` |
+| `--ods-palette-gray-800` | `#333333` |
+| `--ods-palette-gray-900` | `#1a1a1a` |
+| `--ods-palette-green-50` | `#e7f7d7` |
+| `--ods-palette-green-100` | `#d2f2c2` |
+| `--ods-palette-green-200` | `#90cc7a` |
+| `--ods-palette-green-300` | `#64b347` |
+| `--ods-palette-green-400` | `#47991f` |
+| `--ods-palette-green-500` | `#2b8000` |
+| `--ods-palette-green-600` | `#267300` |
+| `--ods-palette-green-700` | `#226600` |
+| `--ods-palette-green-800` | `#1a4d00` |
+| `--ods-palette-green-900` | `#113300` |
+| `--ods-palette-orange-50` | `#fff7cc` |
+| `--ods-palette-orange-100` | `#feea86` |
+| `--ods-palette-orange-200` | `#fed265` |
+| `--ods-palette-orange-300` | `#ffbb43` |
+| `--ods-palette-orange-400` | `#ffa322` |
+| `--ods-palette-orange-500` | `#ff8b00` |
+| `--ods-palette-orange-600` | `#cc7000` |
+| `--ods-palette-orange-700` | `#995400` |
+| `--ods-palette-orange-800` | `#663800` |
+| `--ods-palette-orange-900` | `#4d2a00` |
+| `--ods-palette-red-50` | `#ffe6ec` |
+| `--ods-palette-red-100` | `#ffccd9` |
+| `--ods-palette-red-200` | `#ef99ab` |
+| `--ods-palette-red-300` | `#e67386` |
+| `--ods-palette-red-400` | `#cf334e` |
+| `--ods-palette-red-500` | `#bf0020` |
+| `--ods-palette-red-600` | `#a6001c` |
+| `--ods-palette-red-700` | `#800015` |
+| `--ods-palette-red-800` | `#660011` |
+| `--ods-palette-red-900` | `#4d000d` |
+| `--ods-palette-white` | `#ffffff` |
+| `--ods-palette-black` | `#000000` |
+| `--ods-palette-decorative-alpha` | `#fbfe47` |
+| `--ods-palette-decorative-beta` | `#47fe78` |
+| `--ods-palette-decorative-new` | `#47fffa` |
+| `--ods-palette-decorative-promotion` | `#ccff66` |
+| `--ods-palette-opacity-15` | `0.15` |
+| `--ods-palette-opacity-20` | `0.2` |
+| `--ods-palette-opacity-25` | `0.25` |
+| `--ods-palette-opacity-50` | `0.5` |
+| `--ods-palette-opacity-75` | `0.75` |
+| `--ods-palette-brand-50` | `var(--ods-palette-gray-50)` |
+| `--ods-palette-brand-100` | `var(--ods-palette-gray-100)` |
+| `--ods-palette-brand-200` | `var(--ods-palette-gray-200)` |
+| `--ods-palette-brand-300` | `var(--ods-palette-gray-300)` |
+| `--ods-palette-brand-400` | `var(--ods-palette-gray-400)` |
+| `--ods-palette-brand-500` | `var(--ods-palette-gray-500)` |
+| `--ods-palette-brand-600` | `var(--ods-palette-gray-600)` |
+| `--ods-palette-brand-700` | `var(--ods-palette-gray-700)` |
+| `--ods-palette-brand-800` | `var(--ods-palette-gray-800)` |
+| `--ods-palette-brand-900` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-surface-page` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-raised` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-overlay` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-base` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-400)` |
+| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-surface-critical-minimal` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-surface-information-minimal` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-surface-success-minimal` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-surface-warning-minimal` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
+| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-200)` |
+| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-200)` |
+| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-200)` |
+| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-200)` |
+| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-selected` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-option-hover` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-surface-selected-strong` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-brand-800)` |
+| `--ods-semantic-color-surface-selected-disabled` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-surface-disabled` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-50)` |
+| `--ods-semantic-color-surface-neutral-recessed` | `var(--ods-palette-gray-50)` |
+| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-surface-code` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-surface-thumb` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-black)` |
+| `--ods-semantic-color-surface-decorative-alpha` | `var(--ods-palette-decorative-alpha)` |
+| `--ods-semantic-color-surface-decorative-beta` | `var(--ods-palette-decorative-beta)` |
+| `--ods-semantic-color-surface-decorative-new` | `var(--ods-palette-decorative-new)` |
+| `--ods-semantic-color-surface-decorative-promotion` | `var(--ods-palette-decorative-promotion)` |
+| `--ods-semantic-color-content-text` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-heading` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-group-label` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-icon` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-disabled` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-content-base` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-visited` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-content-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-orange-900)` |
+| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-brand-900)` |
+| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-700)` |
+| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
+| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
+| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-content-on-brand-subtle` | `var(--ods-palette-brand-900)` |
+| `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-content-on-decorative` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-base` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-selected` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-border-strong` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-border-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-border-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-border-warning` | `var(--ods-palette-orange-400)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-disabled` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-50)` |
+| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-200)` |
+| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-200)` |
+| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-200)` |
+| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-200)` |
+| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-border-critical-strong` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-border-information-strong` | `var(--ods-palette-blue-700)` |
+| `--ods-semantic-color-border-success-strong` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-border-warning-strong` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-interaction-base-hover` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-700)` |
+| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-500)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-interaction-base-subtle-hover` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-base-subtle-active` | `var(--ods-palette-brand-200)` |
+| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-200)` |
+| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-200)` |
+| `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-interaction-success-subtle-hover` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-200)` |
+| `--ods-semantic-color-interaction-warning-subtle-hover` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-200)` |
+| `--ods-semantic-color-focus` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-focus-inverse` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-chart-series-02` | `#ac246f` |
+| `--ods-semantic-color-chart-series-03` | `#00875a` |
+| `--ods-semantic-color-chart-series-04` | `#df3400` |
+| `--ods-semantic-color-chart-series-05` | `#25327c` |
+| `--ods-semantic-color-chart-series-06` | `#a61e20` |
+| `--ods-semantic-color-chart-series-07` | `#006d77` |
+| `--ods-semantic-color-chart-series-08` | `#6a2ecf` |
+| `--ods-semantic-color-chart-series-09` | `#374151` |
+| `--ods-semantic-color-chart-series-10` | `#4f8400` |
+| `--ods-semantic-size-space-inset-inline` | `8px` |
+| `--ods-semantic-size-space-inset-block` | `8px` |
+| `--ods-semantic-size-space-inset-block-compact` | `2px` |
+| `--ods-semantic-size-space-gap-inline` | `8px` |
+| `--ods-semantic-size-space-gap-block` | `8px` |
+| `--ods-semantic-size-space-gap-group` | `16px` |
+| `--ods-semantic-size-space-gap-section` | `32px` |
+| `--ods-semantic-size-radius-none` | `0` |
+| `--ods-semantic-size-radius-control` | `4px` |
+| `--ods-semantic-size-radius-container` | `8px` |
+| `--ods-semantic-size-radius-overlay` | `4px` |
+| `--ods-semantic-size-radius-full` | `50%` |
+| `--ods-semantic-size-radius-pill` | `16px` |
+| `--ods-semantic-size-block-size-xs` | `24px` |
+| `--ods-semantic-size-block-size-md` | `32px` |
+| `--ods-semantic-size-block-size-lg` | `40px` |
+| `--ods-semantic-size-border-thickness` | `1px` |
+| `--ods-semantic-size-border-thickness-strong` | `2px` |
+| `--ods-semantic-size-focus-thickness` | `2px` |
+| `--ods-semantic-size-focus-offset` | `2px` |
+| `--ods-semantic-size-focus-style` | `solid` |
+| `--ods-semantic-font-family-body` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-heading` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-code` | `'Source Code Pro', arial` |
+| `--ods-semantic-font-family-base` | `var(--ods-semantic-font-family-body)` |
+| `--ods-semantic-font-weight-regular` | `400` |
+| `--ods-semantic-font-weight-medium` | `600` |
+| `--ods-semantic-font-weight-bold` | `700` |
+| `--ods-semantic-font-size-xs` | `0.75rem` |
+| `--ods-semantic-font-size-sm` | `0.875rem` |
+| `--ods-semantic-font-size-md` | `1rem` |
+| `--ods-semantic-font-size-lg` | `1.125rem` |
+| `--ods-semantic-font-size-xl` | `1.25rem` |
+| `--ods-semantic-font-size-2xl` | `1.5rem` |
+| `--ods-semantic-font-size-3xl` | `1.75rem` |
+| `--ods-semantic-font-size-4xl` | `2.25rem` |
+| `--ods-semantic-font-line-height-none` | `1` |
+| `--ods-semantic-font-line-height-tight` | `1.2` |
+| `--ods-semantic-font-line-height-default` | `1.5` |
+| `--ods-semantic-font-size-icon-sm` | `1rem` |
+| `--ods-semantic-font-size-icon-md` | `1.25rem` |
+| `--ods-semantic-font-size-icon-lg` | `1.5rem` |
+| `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
+| `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
+| `--ods-semantic-shadow-control` | `0 1px 2px 0 rgb(0, 0, 0, .2)` |
+| `--ods-semantic-shadow-raised` | `0 1px 3px 0 rgb(0, 0, 0, .1), 0 1px 2px -1px rgb(0, 0, 0, .1)` |
+| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1)` |
+| `--ods-semantic-motion-duration-instant` | `0s` |
+| `--ods-semantic-motion-duration-fast` | `150ms` |
+| `--ods-semantic-motion-duration-medium` | `200ms` |
+| `--ods-semantic-motion-duration-slow` | `300ms` |
+| `--ods-semantic-motion-easing` | `ease-in-out` |
+| `--ods-semantic-motion-easing-enter` | `ease-out` |
+| `--ods-semantic-motion-easing-exit` | `ease-in` |
+| `--ods-semantic-z-index-sticky` | `100` |
+| `--ods-semantic-z-index-dropdown` | `200` |
+| `--ods-semantic-z-index-drawer` | `300` |
+| `--ods-semantic-z-index-modal` | `400` |
+| `--ods-semantic-z-index-toast` | `500` |
+| `--ods-semantic-z-index-tooltip` | `600` |

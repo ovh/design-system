@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1034
+tokens: 1044
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -75,7 +75,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-query-filter-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-query-filter-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
+| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |

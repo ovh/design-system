@@ -27,6 +27,7 @@
 
     &--selected:not(#{$option}--highlighted) {
       background-color: var(--ods-semantic-color-surface-selected);
+      color: var(--ods-semantic-color-content-on-selected);
     }
 
     &__new-item {

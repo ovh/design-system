@@ -66,10 +66,7 @@
   --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-200);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-100);
-
-
   --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
-
   --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-brand-800);
   --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
@@ -135,6 +132,7 @@
   --ods-semantic-color-content-on-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-warning-solid: var(--ods-palette-orange-900);
   --ods-semantic-color-content-on-selected-solid: var(--ods-palette-white);
+  --ods-semantic-color-content-on-selected-surface: var(--ods-palette-brand-900);
 
   /*
    * REVIEW: delivered as white, which is 1.08:1 on surface-selected and 1.22:1 on
@@ -336,16 +334,9 @@
 
   /* ----------------------------------------------------------------- tier 2 - font */
 
-  --ods-semantic-font-family-heading: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
   --ods-semantic-font-family-body: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-semantic-font-family-heading: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
   --ods-semantic-font-family-code: 'Source Code Pro', arial;
-
-  /*
-   * REVIEW: delivered as --ods-font-family-base, without the `semantic` segment - either a typo
-   * or a deliberate different tier. Emitted here in the grammar the rest of the set uses.
-   * Redundant while all three families hold the same stack; consider deleting it.
-   */
-  --ods-semantic-font-family-base: var(--ods-semantic-font-family-body);
   --ods-semantic-font-weight-regular: 400;
   --ods-semantic-font-weight-medium: 600;
   --ods-semantic-font-weight-bold: 700;
@@ -382,37 +373,32 @@
   --ods-semantic-font-size-icon-md: 1.25rem;
   --ods-semantic-font-size-icon-lg: 1.5rem;
 
-  /* --------------------------------------------------------------- tier 2 - shadow */
+  /* opacity */
+  --ods-semantic-opacity-disabled: var(--ods-palette-opacity-50);
+  --ods-semantic-opacity-backdrop: var(--ods-palette-opacity-75);
 
-  /*
-   * REVIEW: both deduced. The geometry is the value in use; the colour and the alpha compose
-   * from their own tokens rather than being inlined.
-   */
-  --ods-semantic-color-shadow-overlay:
-    color-mix(in srgb, var(--ods-palette-brand-700) calc(var(--ods-semantic-opacity-shadow-overlay) * 100%), transparent);
-  --ods-semantic-color-shadow-control:
-    color-mix(in srgb, var(--ods-palette-black) calc(var(--ods-semantic-opacity-shadow-control) * 100%), transparent);
-  --ods-semantic-shadow-overlay: 0 2px 8px var(--ods-semantic-color-shadow-overlay);
-  --ods-semantic-shadow-control: 0 1px 1px var(--ods-semantic-color-shadow-control);
+  /* shadow */
+  --ods-semantic-shadow-control: 0 1px 2px 0 rgb(0, 0, 0, .2);
+  --ods-semantic-shadow-raised: 0 1px 3px 0 rgb(0, 0, 0, .1), 0 1px 2px -1px rgb(0, 0, 0, .1);
+  --ods-semantic-shadow-overlay: 0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1);
 
   /* --------------------------------------------------------------- tier 2 - motion */
 
   /*
-   * REVIEW: all deduced. 200ms gets its own rung because it is the system's centre of gravity
-   * (8 uses against 5 for 300ms); 120ms keeps `instant` because that is what "should not read as
-   * animated" means at 120ms and does not at 200ms.
+   * `instant` is a true 0s - no transition at all - not a very short one. Anything that should
+   * read as quick but visible belongs on `fast`, which is why the radio's mark moved there.
+   *
+   * There is no rung for a looping indicator: the four in the system disagree (0.8s, 900ms, 1.5s,
+   * 2s) and each is tuned to its own geometry, so Spinner, MessageBubble, Skeleton and
+   * ProgressBar keep their literal durations.
    */
-  --ods-semantic-motion-duration-instant: 120ms;
-  --ods-semantic-motion-duration-fast: 200ms;
+  --ods-semantic-motion-duration-instant: 0s;
+  --ods-semantic-motion-duration-fast: 150ms;
+  --ods-semantic-motion-duration-medium: 200ms;
   --ods-semantic-motion-duration-slow: 300ms;
-  --ods-semantic-motion-duration-loop: 1.5s;
-  --ods-semantic-motion-easing-standard: ease-in-out;
+  --ods-semantic-motion-easing: ease-in-out;
   --ods-semantic-motion-easing-enter: ease-out;
-  --ods-semantic-motion-easing-linear: linear;
-
-  /* Composite, so a component writes one token: transition: transform var(--…-transition-standard); */
-  --ods-semantic-motion-transition-standard:
-    var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
+  --ods-semantic-motion-easing-exit: ease-in;
 
   /* -------------------------------------------------------------- tier 2 - z-index */
 
@@ -428,10 +414,12 @@
   --ods-semantic-z-index-toast: 500;
   --ods-semantic-z-index-tooltip: 600;
 
-  /* -------------------------------------------------------------- tier 2 - opacity */
+}
 
-  --ods-semantic-opacity-disabled: var(--ods-palette-opacity-50);
-  --ods-semantic-opacity-backdrop: var(--ods-palette-opacity-75);
-  --ods-semantic-opacity-shadow-overlay: var(--ods-palette-opacity-20);
-  --ods-semantic-opacity-shadow-control: var(--ods-palette-opacity-25);
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ods-semantic-motion-duration-fast:   0.01s;
+    --ods-semantic-motion-duration-medium: 0.01s;
+    --ods-semantic-motion-duration-slow:   0.01s;
+  }
 }

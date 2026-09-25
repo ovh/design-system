@@ -21,7 +21,7 @@
   top: var(--ods-semantic-size-space-inset-block);
   left: var(--ods-semantic-size-space-inset-inline);
   transform: translateY(-150%);
-  transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
+  transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
 
   /* Above every ODS layer: the scale tops out at tooltip, and a skip link
      outranks even that. */
@@ -29,7 +29,7 @@
   border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-base);
   border-radius: var(--ods-semantic-size-radius-control);
   background: var(--ods-semantic-color-surface-page);
-  padding: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
   color: var(--ods-semantic-color-content-base);
 }
 
@@ -77,7 +77,7 @@ body {
 
 .shell__select-item {
   display: inline-flex;
-  column-gap: var(--ods-semantic-size-space-inset-inline);
+  column-gap: var(--ods-semantic-size-space-gap-inline);
   align-items: center;
 }
 
@@ -104,12 +104,12 @@ body {
 
 .shell__search-hint {
   display: flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
   border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
   background: none;
-  padding: 6px 10px;    
+  padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   height: var(--ods-semantic-size-block-size-md);
   color: var(--ods-semantic-color-content-neutral);
   font-family: inherit;
@@ -124,7 +124,7 @@ body {
 
 .shell__search-option {
   display: flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
   width: 100%;
 }
@@ -136,7 +136,7 @@ body {
 
 .shell__search-option-hint {
   margin-left: auto;
-  padding-left: 12px;
+  padding-left: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   white-space: nowrap;
   color: var(--ods-semantic-color-content-neutral);
   font-size: 0.78rem;
@@ -160,39 +160,39 @@ body {
 .shell__sidebar-footer {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
   margin-top: auto;
 }
 
 .shell__tree-label {
   display: inline-flex;
-  gap: 6px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
   align-items: center;
 }
 
 .shell__tree-badge {
-  margin-left: 4px;
+  margin-left: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 }
 
 /* Separator between the guides tree and the reference tree. */
 .shell__tree-divider {
-  margin: var(--ods-semantic-size-space-inset-inline) 0 calc(var(--ods-semantic-size-space-inset-inline) * 2);
+  margin: var(--ods-semantic-size-space-gap-block) 0 calc(var(--ods-semantic-size-space-gap-block) * 2);
 }
 
 .shell__tree-dividerd {
-  margin-bottom: calc(var(--ods-semantic-size-space-inset-inline) / 2);
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
   text-transform: uppercase;
   letter-spacing: .04em;
 }
 
 .shell__tree-label--section {
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-medium);
 }
 
 /* Layout only — the look is the ODS Link's own. */
 .shell__github {
   display: inline-flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
   font-size: .9rem;
 }
@@ -209,15 +209,13 @@ body {
 .shell__topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border-bottom: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
-  padding: 12px 24px;
-  padding: calc(var(--ods-semantic-size-space-inset-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) * 4);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }
 
 .shell__dark {
   display: flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
 }
 
@@ -234,7 +232,7 @@ body {
 
 .shell__content {
   flex-grow: 1;
-  padding: calc(var(--ods-semantic-size-space-inset-inline) * 3) calc(var(--ods-semantic-size-space-inset-block) * 4);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 3) calc(var(--ods-semantic-size-space-inset-inline) * 3);
   width: 100%;
   overflow: auto;
 }
@@ -385,8 +383,8 @@ body {
   }
 
   .shell__topbar {
-    gap: 8px;
-    padding: 8px 12px;
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+    padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   }
 
   /* The page title can be long (component names, guide titles): let it
@@ -399,7 +397,7 @@ body {
   }
 
   .shell__content {
-    padding: 16px;
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   }
 }
 
@@ -421,22 +419,22 @@ body {
 
 .shell__drawer-close {
   align-self: flex-end;
-  margin-bottom: -8px;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) * -1);
 }
 
 .shell__error {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 4) calc(var(--ods-semantic-size-space-inset-inline) * 4);
   min-height: 100dvh;
   text-align: center;
 }
 
 .shell__error .shell__brand-logo {
-  margin-bottom: 16px;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) * 2);
   width: 180px;
 }
 
@@ -447,6 +445,6 @@ body {
 }
 
 .shell__error-home {
-  margin-top: 8px;
+  margin-top: var(--ods-semantic-size-space-gap-block);
   color: var(--ods-semantic-color-content-base);
 }

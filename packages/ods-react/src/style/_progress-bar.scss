@@ -32,13 +32,13 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
   &:indeterminate {
     // Firefox
     &::-moz-progress-bar {
-      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
+      animation: progress-indeterminate 1.5s infinite var(--ods-semantic-motion-easing);
       width: $ods-progress-bar-inderterminate-percent-width;
     }
 
     // Safari
     &::-webkit-progress-value {
-      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
+      animation: progress-indeterminate 1.5s infinite var(--ods-semantic-motion-easing);
       width: $ods-progress-bar-inderterminate-percent-width;
     }
 
@@ -48,7 +48,7 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
       top: 0;
       bottom: 0;
       left: 0;
-      animation: progress-indeterminate var(--ods-semantic-motion-duration-loop) infinite var(--ods-semantic-motion-easing-standard);
+      animation: progress-indeterminate 1.5s infinite var(--ods-semantic-motion-easing);
       border-radius: var(--ods-progress-bar-border-radius);
       background-color: var(--ods-semantic-color-surface-base);
       width: $ods-progress-bar-inderterminate-percent-width;

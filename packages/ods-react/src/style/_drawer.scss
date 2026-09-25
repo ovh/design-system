@@ -34,7 +34,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) 
     right: 0;
     bottom: 0;
     left: 0;
-    animation: drawer-open-bottom $animation-duration var(--ods-semantic-motion-easing-standard);
+    animation: drawer-open-bottom $animation-duration var(--ods-semantic-motion-easing);
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;
@@ -62,7 +62,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) 
     top: 0;
     bottom: 0;
     left: 0;
-    animation: drawer-open-left $animation-duration var(--ods-semantic-motion-easing-standard);
+    animation: drawer-open-left $animation-duration var(--ods-semantic-motion-easing);
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
@@ -90,7 +90,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) 
     top: 0;
     right: 0;
     bottom: 0;
-    animation: drawer-open-right $animation-duration var(--ods-semantic-motion-easing-standard);
+    animation: drawer-open-right $animation-duration var(--ods-semantic-motion-easing);
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
@@ -118,7 +118,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) 
     top: 0;
     right: 0;
     left: 0;
-    animation: drawer-open-top $animation-duration var(--ods-semantic-motion-easing-standard);
+    animation: drawer-open-top $animation-duration var(--ods-semantic-motion-easing);
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;

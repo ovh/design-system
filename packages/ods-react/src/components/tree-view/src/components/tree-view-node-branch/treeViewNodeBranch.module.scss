@@ -60,7 +60,7 @@
         flex: 0 0 $chevron-size;
         align-items: center;
         justify-content: center;
-        transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
+        transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
         width: $chevron-size;
         height: $chevron-size;
 

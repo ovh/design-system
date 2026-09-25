@@ -23,7 +23,7 @@ $ods-link-font-weight: 600;
     left: 0;
     transform: scaleX(0);
     transform-origin: left center;
-    transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-enter);
+    transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing-enter);
     background-color: currentcolor;
     width: 100%;
     height: 1px;

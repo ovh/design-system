@@ -45,10 +45,10 @@ $spinner-size-lg: 80px;
     &__svg {
       /*
      * Component-level exception: the four looping indicators disagree on duration (0.8s, 900ms,
-     * 1.5s, 2s) and a rotation is tuned to its own diameter. Converging this one onto the 1.5s
-     * loop rung would make it read as sluggish, so it keeps its value.
+     * 1.5s, 2s) and a rotation is tuned to its own diameter, so the semantic ladder has no loop
+     * rung at all and each of them keeps its literal duration.
      */
-    animation: rotate 0.8s infinite var(--ods-semantic-motion-easing-linear);
+    animation: rotate 0.8s infinite linear;
       height: 100%;
     }
   }

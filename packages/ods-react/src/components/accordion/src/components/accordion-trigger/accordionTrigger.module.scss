@@ -35,7 +35,7 @@
       }
 
       #{$trigger}__icon {
-        transition: transform var(--ods-semantic-motion-duration-fast) var(--ods-semantic-motion-easing-standard);
+        transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
         color: var(--ods-semantic-color-content-icon);
         font-size: 1.25rem;
       }

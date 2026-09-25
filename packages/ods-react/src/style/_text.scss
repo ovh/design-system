@@ -25,6 +25,7 @@
 @mixin ods-text-heading-1() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(36px);
   font-weight: 700;
 }
@@ -32,6 +33,7 @@
 @mixin ods-text-heading-2() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(28px);
   font-weight: 700;
 }
@@ -39,6 +41,7 @@
 @mixin ods-text-heading-3() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(24px);
   font-weight: 700;
 }
@@ -46,6 +49,7 @@
 @mixin ods-text-heading-4() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(20px);
   font-weight: 700;
 }
@@ -53,6 +57,7 @@
 @mixin ods-text-heading-5() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(18px);
   font-weight: 700;
 }
@@ -60,6 +65,7 @@
 @mixin ods-text-heading-6() {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
   font-size: font.px-to-rem(16px);
   font-weight: 700;
 }

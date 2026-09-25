@@ -24,7 +24,14 @@
   --ods-palette-brand-900: var(--ods-palette-navy-900);
 
   /* --- */
-  --ods-semantic-color-content-heading: var(--ods-palette-navy-800);
+  --ods-semantic-color-content-heading: var(--ods-palette-brand-800);
+  --ods-semantic-color-content-text: var(--ods-palette-brand-500);
+  --ods-semantic-color-surface-neutral-recessed: #d8dcf0;
+  --ods-semantic-color-surface-selected: #d8dcf0;
+
+  --ods-tab-text-color-selected: var(--ods-palette-brand-700);
+  
+
   --ods-semantic-size-radius-control: 4.8px;
   --ods-semantic-size-radius-overlay: 4.8px;
   --ods-semantic-size-radius-container: 8.4px;

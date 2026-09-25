@@ -24,6 +24,7 @@
 
 .homepage__heading__title {
   color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
 }
 
 .homepage__features {

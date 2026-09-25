@@ -34,7 +34,7 @@
   // --ods-palette-brand-700: var(--ods-palette-blue-700);
   // --ods-palette-brand-800: var(--ods-palette-blue-800);
   // --ods-palette-brand-900: var(--ods-palette-blue-900);
-
+  
   --ods-palette-brand-50: var(--ods-palette-green-50);
   --ods-palette-brand-100: var(--ods-palette-green-100);
   --ods-palette-brand-200: var(--ods-palette-green-200);
@@ -45,14 +45,15 @@
   --ods-palette-brand-700: var(--ods-palette-green-700);
   --ods-palette-brand-800: var(--ods-palette-green-800);
   --ods-palette-brand-900: var(--ods-palette-green-900);
-
+  
+  /* --- */
+  --ods-semantic-font-family-body: "Outfit", "Outfit Fallback", 'Outfit Variable', sans-serif;
+  --ods-semantic-font-family-heading: cursive;
+  
   /* --- */
   --ods-semantic-color-surface-page: color-mix(in srgb,#ffcc00 15%, white);
   --ods-semantic-color-surface-neutral-recessed: color-mix(in srgb,#ffcc00 40%, white);
   --ods-semantic-color-border-neutral-subtle: color-mix(in srgb,crimson 90%, #fff);
-  --ods-semantic-font-family-heading: 'Trebuchet MS', serif;
-  // --ods-semantic-font-family-body: 'Source Code Pro', sans-serif;
-  --ods-semantic-font-family-body: "Outfit", "Outfit Fallback", 'Outfit Variable', sans-serif;
   // --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
   --ods-semantic-color-border-neutral-minimal: color-mix(in srgb,#ffcc00 88%, #000);
   // --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-brand-50);

@@ -29,7 +29,7 @@ $tab-list-border-bottom-size: 2px;
         position: absolute;
         top: 0;
         bottom: 0;
-        transition: opacity var(--ods-semantic-motion-easing-standard) var(--ods-semantic-motion-duration-slow);
+        transition: opacity var(--ods-semantic-motion-easing) var(--ods-semantic-motion-duration-slow);
         opacity: 0;
         z-index: 10;
         width: 60px;

@@ -1,7 +1,7 @@
 .doc__heading {
   margin-top: calc(var(--ods-semantic-size-space-inset-block) * 5);
   margin-bottom: calc(var(--ods-semantic-size-space-inset-block) * 1);
-  /* scroll-margin-top: 1rem; */
+  scroll-margin-top: calc(var(--ods-semantic-size-space-inset-block) * 1.5);
 
   &:first-child {
     margin-top: 0;

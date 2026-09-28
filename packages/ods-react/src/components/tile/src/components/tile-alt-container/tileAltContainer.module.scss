@@ -3,7 +3,7 @@
 @layer ods-atoms {
   .tile-alt-container {
     --ods-tile-alt-container-background-color: var(--ods-semantic-color-surface-neutral-recessed);
-    --ods-tile-alt-container-background-color-selected: var(--ods-semantic-color-surface-selected-strong);
+    --ods-tile-alt-container-background-color-selected: var(--ods-semantic-color-interaction-selected-highlight-hover);
 
     box-sizing: border-box;
     background-color: var(--ods-tile-alt-container-background-color);

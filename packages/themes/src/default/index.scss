@@ -67,7 +67,7 @@
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
-  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-brand-800);
   --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
   --ods-semantic-color-surface-disabled: var(--ods-palette-gray-100);
@@ -79,6 +79,8 @@
 
   /* Only meaningful composed with opacity-backdrop - see the scrim below. */
   --ods-semantic-color-surface-backdrop: var(--ods-palette-black);
+
+  
 
   /*
    * REVIEW: deduced. Decorative product-lifecycle fills whose only consumer is Badge; the
@@ -97,7 +99,7 @@
    * reads exactly like a heading. A brand that wants the two to differ overrides this one role in
    * its own file - blue-jeans does, with `twilight`.
    */
-  --ods-semantic-color-content-text: var(--ods-palette-gray-900);
+  --ods-semantic-color-content-text: var(--ods-palette-gray-800);
   --ods-semantic-color-content-heading: var(--ods-palette-gray-900);
 
   /* Listbox group labels. Split from content-heading so a brand's heading tint stops at headings. */
@@ -132,7 +134,6 @@
   --ods-semantic-color-content-on-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-warning-solid: var(--ods-palette-orange-900);
   --ods-semantic-color-content-on-selected-solid: var(--ods-palette-white);
-  --ods-semantic-color-content-on-selected-surface: var(--ods-palette-brand-900);
 
   /*
    * REVIEW: delivered as white, which is 1.08:1 on surface-selected and 1.22:1 on
@@ -221,7 +222,7 @@
    * neutral so that hover no longer collides with surface-selected-strong: brand means selected,
    * grey means pointed at.
    */
-  --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
+  
   // --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100);
 
   /* REVIEW: delivered as orange-700, which is 2.20:1 under the dark text this role carries. See

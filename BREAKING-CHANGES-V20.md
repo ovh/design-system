@@ -113,7 +113,7 @@ not the history of the branch.
 | `--ods-theme-input-min-height` | `--ods-semantic-size-block-size-md` |
 | `--ods-theme-input-option-background-color-hover` | `--ods-semantic-color-interaction-base-subtle-hover` |
 | `--ods-theme-input-option-background-color-selected` | `--ods-semantic-color-surface-selected` |
-| `--ods-theme-input-option-background-color-selected-hover` | `--ods-semantic-color-surface-selected-strong` |
+| `--ods-theme-input-option-background-color-selected-hover` | `--ods-semantic-color-interaction-selected-highlight-hover` |
 | `--ods-theme-input-padding-horizontal` | `--ods-semantic-size-space-inset-inline` |
 | `--ods-theme-input-padding-vertical` | `--ods-semantic-size-space-inset-block-compact` |
 | `--ods-theme-input-placeholder-text-color` | `--ods-semantic-color-content-placeholder` |

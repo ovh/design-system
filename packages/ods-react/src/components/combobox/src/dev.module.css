@@ -6,7 +6,7 @@
 .custom-combobox__control {
   outline-color: var(--ods-semantic-color-border-drag-over);
   border-radius: 4px;
-  background-color: var(--ods-semantic-color-surface-selected-strong);
+  background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
 }
 
 .custom-combobox__content {

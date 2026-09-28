@@ -29,7 +29,7 @@
         background-color: var(--ods-semantic-color-surface-selected);
 
         &:not([data-disabled]):hover {
-          background-color: var(--ods-semantic-color-surface-selected-strong);
+          background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
         }
       }
 
@@ -43,7 +43,7 @@
         background-color: var(--ods-semantic-color-surface-selected);
 
         &:not([data-disabled]):hover {
-          background-color: var(--ods-semantic-color-surface-selected-strong);
+          background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
         }
       }
 

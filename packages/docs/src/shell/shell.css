@@ -350,7 +350,7 @@ body {
   /* --- tier 2: every role bound to the brand ramp. */
   --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
-  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-100);
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
   --ods-semantic-color-content-visited: var(--ods-palette-brand-700);

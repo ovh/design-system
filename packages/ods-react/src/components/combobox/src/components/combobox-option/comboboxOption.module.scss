@@ -25,9 +25,9 @@
       border-bottom: solid var(--ods-semantic-size-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
 
-    &--selected:not(#{$option}--highlighted) {
+    // &--selected:not(#{$option}--highlighted),
+    &--selected {
       background-color: var(--ods-semantic-color-surface-selected);
-      color: var(--ods-semantic-color-content-on-selected);
     }
 
     &__new-item {

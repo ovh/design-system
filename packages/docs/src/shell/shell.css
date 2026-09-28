@@ -26,7 +26,7 @@
   /* Above every ODS layer: the scale tops out at tooltip, and a skip link
      outranks even that. */
   z-index: calc(var(--ods-semantic-z-index-tooltip) + 1);
-  border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-base);
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-base);
   border-radius: var(--ods-semantic-size-radius-control);
   background: var(--ods-semantic-color-surface-page);
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
@@ -56,7 +56,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
-  border-right: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   height: 100%;
   overflow-y: auto;
@@ -106,7 +106,7 @@ body {
   display: flex;
   gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
-  border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-control);
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
   background: none;
   padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
@@ -209,7 +209,7 @@ body {
 .shell__topbar {
   display: flex;
   align-items: center;
-  border-bottom: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }
 
@@ -350,7 +350,7 @@ body {
   /* --- tier 2: every role bound to the brand ramp. */
   --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
-  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-100);
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
   --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
@@ -360,7 +360,8 @@ body {
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-600);
   --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
-  /* --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100); */
+  --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
   --ods-semantic-color-focus: var(--ods-palette-brand-500);
 
   /* The selected surfaces are dark tints here, so the text on them inverts too:
@@ -371,7 +372,7 @@ body {
   /* Left alone on purpose: surface-code and content-on-code (already a dark
      ground with light text), content-on-solid and surface-thumb (white belongs
      on a solid fill in both schemes), and everything bound to red, green or
-     orange — a status colour keeps its hue. */
+     orange - a status colour keeps its hue. */
 }
 
 /* ——— Narrow layout (keep in sync with NARROW_QUERY in Shell.tsx) ———

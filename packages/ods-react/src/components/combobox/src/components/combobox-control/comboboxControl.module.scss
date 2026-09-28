@@ -17,7 +17,7 @@
     gap: var(--ods-combobox-control-row-gap) var(--ods-combobox-control-column-gap);
     align-items: center;
     margin: 0;
-    border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-border-control);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
     border-radius: var(--ods-semantic-size-radius-control);
     padding: var(--ods-combobox-control-padding-vertical) var(--ods-semantic-size-space-inset-inline);
     width: 100%;
@@ -74,7 +74,7 @@
         border: none;
         background: transparent;
         padding: 0;
-        min-height: calc(var(--ods-semantic-size-block-size-md) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-semantic-size-border-thickness) * 2));
+        min-height: calc(var(--ods-semantic-size-block-size-md) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-semantic-border-thickness) * 2));
       }
 
       &__caret {

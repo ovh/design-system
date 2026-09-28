@@ -18,16 +18,19 @@
     }
 
     &--highlighted {
-      background-color: var(--ods-semantic-color-interaction-option-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight-hover);
     }
 
     &--new {
-      border-bottom: solid var(--ods-semantic-size-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
 
-    // &--selected:not(#{$option}--highlighted),
     &--selected {
       background-color: var(--ods-semantic-color-surface-selected);
+
+      &#{$option}--highlighted {
+        background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
+      }
     }
 
     &__new-item {

@@ -4,7 +4,7 @@
   .select-content {
     --ods-select-group-option-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 3);
 
-    border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
     background-color: var(--ods-semantic-color-surface-page);
     padding: 0;
     max-height: 200px;
@@ -36,7 +36,7 @@
     }
 
     [role="group"]:not(:last-child) {
-      border-bottom: solid var(--ods-semantic-size-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
   }
 }

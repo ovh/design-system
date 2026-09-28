@@ -57,27 +57,27 @@
 
 @mixin ods-message-variant-light($color) {
   @if $color == 'critical' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-critical-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-critical-light);
     background-color: var(--ods-message-background-color-critical-light);
     color: var(--ods-message-text-color-critical-light);
   } @else if $color == 'information' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-information-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-information-light);
     background-color: var(--ods-message-background-color-information-light);
     color: var(--ods-message-text-color-information-light);
   } @else if $color == 'neutral' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-neutral-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-neutral-light);
     background-color: var(--ods-message-background-color-neutral-light);
     color: var(--ods-message-text-color-neutral-light);
   } @else if $color == 'primary' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-primary-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-primary-light);
     background-color: var(--ods-message-background-color-primary-light);
     color: var(--ods-message-text-color-primary-light);
   } @else if $color == 'success' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-success-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-success-light);
     background-color: var(--ods-message-background-color-success-light);
     color: var(--ods-message-text-color-success-light);
   } @else if $color == 'warning' {
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-message-text-color-warning-light);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-text-color-warning-light);
     background-color: var(--ods-message-background-color-warning-light);
     color: var(--ods-message-text-color-warning-light);
   }

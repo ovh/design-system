@@ -1,7 +1,7 @@
 @layer ods-atoms {
   .kbd {
-    --ods-kbd-border-width: var(--ods-semantic-size-border-thickness);
-    --ods-kbd-border-bottom-width: calc(var(--ods-semantic-size-border-thickness) * 2);
+    --ods-kbd-border-width: var(--ods-semantic-border-thickness);
+    --ods-kbd-border-bottom-width: calc(var(--ods-semantic-border-thickness) * 2);
     --ods-kbd-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
     --ods-kbd-border-color: var(--ods-semantic-color-border-neutral-subtle);
     --ods-kbd-background-color: var(--ods-semantic-color-surface-neutral-minimal);

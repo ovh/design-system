@@ -10,7 +10,7 @@
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr) max-content;
     column-gap: var(--ods-semantic-size-space-gap-inline);
-    border: solid var(--ods-semantic-size-border-thickness) var(--ods-file-thumbnail-border-color);
+    border: solid var(--ods-semantic-border-thickness) var(--ods-file-thumbnail-border-color);
     border-radius: var(--ods-semantic-size-radius-container);
     padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
 

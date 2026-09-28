@@ -7,7 +7,7 @@
     --ods-datepicker-content-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) / 2);
     --ods-datepicker-content-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) / 2);
 
-    border: var(--ods-semantic-size-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
     border-radius: var(--ods-semantic-size-radius-overlay);
     background-color: var(--ods-semantic-color-surface-page);
     padding: var(--ods-datepicker-content-padding-vertical) var(--ods-datepicker-content-padding-horizontal);

@@ -63,7 +63,7 @@
       border-left: none;
 
       &:focus-visible:focus-visible {
-        outline-offset: calc(var(--ods-semantic-size-focus-offset) * -1);
+        outline-offset: calc(var(--ods-semantic-border-focus-offset) * -1);
       }
 
       &:hover:not([disabled], [aria-selected="true"]) {

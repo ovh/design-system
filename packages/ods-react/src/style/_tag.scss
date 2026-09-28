@@ -1,6 +1,6 @@
 @use './focus';
 
-$ods-tag-border-width: calc(var(--ods-semantic-size-border-thickness) * 2);
+$ods-tag-border-width: calc(var(--ods-semantic-border-thickness) * 2);
 $ods-tag-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 $ods-tag-row-gap: calc(var(--ods-semantic-size-space-gap-block) / 2);
 $ods-tag-height-md: 24px;

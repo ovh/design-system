@@ -1,7 +1,7 @@
 @layer ods-atoms {
   .card {
     --ods-card-border-radius: var(--ods-semantic-size-radius-container);
-    --ods-card-border-width: var(--ods-semantic-size-border-thickness);
+    --ods-card-border-width: var(--ods-semantic-border-thickness);
     --ods-card-border-color-critical: var(--ods-semantic-color-border-critical-subtle);
     --ods-card-border-color-information: var(--ods-semantic-color-border-information-subtle);
     --ods-card-border-color-neutral: var(--ods-semantic-color-border-neutral-subtle);

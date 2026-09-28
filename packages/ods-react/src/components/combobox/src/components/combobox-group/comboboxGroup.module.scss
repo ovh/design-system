@@ -5,7 +5,7 @@
     box-sizing: border-box;
 
     &:not(:last-child) {
-      border-bottom: solid var(--ods-semantic-size-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
 
     &__label {

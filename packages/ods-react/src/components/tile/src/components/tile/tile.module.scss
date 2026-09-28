@@ -3,7 +3,7 @@
 @layer ods-atoms {
   .tile {
     --ods-tile-border-radius: var(--ods-semantic-size-radius-container);
-    --ods-tile-border-width: var(--ods-semantic-size-border-thickness);
+    --ods-tile-border-width: var(--ods-semantic-border-thickness);
     --ods-tile-border-color: var(--ods-semantic-color-border-control);
     --ods-tile-background-color: var(--ods-semantic-color-surface-page);
     --ods-tile-background-color-selected: var(--ods-semantic-color-surface-selected);
@@ -19,12 +19,12 @@
 
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);
-      box-shadow: 0 0 0 var(--ods-semantic-size-border-thickness) var(--ods-tile-border-color-hover);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-hover);
     }
 
     &--selected {
       border-color: var( --ods-tile-border-color-selected);
-      box-shadow: 0 0 0 var(--ods-semantic-size-border-thickness) var(--ods-tile-border-color-selected);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-selected);
       background-color: var(--ods-tile-background-color-selected);
     }
 

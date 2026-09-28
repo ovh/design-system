@@ -50,7 +50,7 @@
     display: flex;
     flex-flow: row;
     column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
-    margin: 0 calc(var(--ods-semantic-size-focus-offset) * 2) calc(var(--ods-semantic-size-focus-offset) * 2);
+    margin: 0 calc(var(--ods-semantic-border-focus-offset) * 2) calc(var(--ods-semantic-border-focus-offset) * 2);
 
     &__copy {
       background-color: transparent;

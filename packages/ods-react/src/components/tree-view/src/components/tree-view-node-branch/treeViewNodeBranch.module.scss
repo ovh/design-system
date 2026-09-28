@@ -15,7 +15,7 @@
       cursor: pointer;
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-semantic-color-interaction-option-hover);
+        background-color: var(--ods-semantic-color-interaction-highlight-hover);
       }
 
       &:is([aria-expanded="true"], [data-state="open"]) {
@@ -52,7 +52,7 @@
 
         position: relative;
         z-index: 2;
-        background-color: var(--ods-semantic-color-interaction-option-hover);
+        background-color: var(--ods-semantic-color-interaction-highlight-hover);
       }
 
       &__chevron {

@@ -2,6 +2,8 @@
 @layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
 
 :root {
+  /* -------------------------------------------------------------- tier 1 - palette / brand ramp */
+
   /*
    * REVIEW: deduced, and it restores a capability the delivered set drops.
    *
@@ -24,14 +26,17 @@
   --ods-palette-brand-800: var(--ods-palette-gray-800);
   --ods-palette-brand-900: var(--ods-palette-gray-900);
 
-  /* ------------------------------------------------------- tier 2 - colour / surface */
+  /* ------------------------------------------------------------------ tier 2 - colour / surface */
 
+  /* The three grounds. */
   --ods-semantic-color-surface-page: var(--ods-palette-white);
   --ods-semantic-color-surface-raised: var(--ods-palette-white);
   --ods-semantic-color-surface-overlay: var(--ods-palette-white);
+
+  /* The solid fills, one per role. */
   --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
-  --ods-semantic-color-surface-information: var(--ods-palette-blue-500);
   --ods-semantic-color-surface-critical: var(--ods-palette-red-500);
+  --ods-semantic-color-surface-information: var(--ods-palette-blue-500);
   --ods-semantic-color-surface-success: var(--ods-palette-green-500);
 
   /*
@@ -55,21 +60,30 @@
    * introduce a new failure rather than carry an existing one.
    */
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
+
+  /* The two tinted rungs under each solid. */
   --ods-semantic-color-surface-critical-minimal: var(--ods-palette-red-100);
   --ods-semantic-color-surface-information-minimal: var(--ods-palette-blue-100);
   --ods-semantic-color-surface-success-minimal: var(--ods-palette-green-100);
   --ods-semantic-color-surface-warning-minimal: var(--ods-palette-orange-100);
-  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-50);
+  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-critical-subtle: var(--ods-palette-red-200);
   --ods-semantic-color-surface-information-subtle: var(--ods-palette-blue-200);
   --ods-semantic-color-surface-success-subtle: var(--ods-palette-green-200);
   --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-200);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
-  --ods-semantic-color-surface-selected: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-option-hover: var(--ods-palette-brand-50);
-  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
+
+  /*
+   * Two rest fills, not one plus a hover: `selected` is an item that is on, `selected-strong` the
+   * same on a ground that is already tinted. Hovering a selected item is a separate role, in the
+   * interaction family below.
+   */
+  --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
+  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-brand-800);
   --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
+
+  /* Field and container states. */
   --ods-semantic-color-surface-disabled: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-readonly: var(--ods-palette-gray-50);
   --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-gray-50);
@@ -79,8 +93,6 @@
 
   /* Only meaningful composed with opacity-backdrop - see the scrim below. */
   --ods-semantic-color-surface-backdrop: var(--ods-palette-black);
-
-  
 
   /*
    * REVIEW: deduced. Decorative product-lifecycle fills whose only consumer is Badge; the
@@ -92,12 +104,12 @@
   --ods-semantic-color-surface-decorative-new: var(--ods-palette-decorative-new);
   --ods-semantic-color-surface-decorative-promotion: var(--ods-palette-decorative-promotion);
 
-  /* ------------------------------------------------------- tier 2 - colour / content */
+  /* ------------------------------------------------------------------ tier 2 - colour / content */
 
   /*
-   * Prose has no tint of its own in an unbranded build, so it takes the ramp's dark rung and
-   * reads exactly like a heading. A brand that wants the two to differ overrides this one role in
-   * its own file - blue-jeans does, with `twilight`.
+   * Prose sits one rung above a heading, so the two read as a hierarchy without a hue. A brand
+   * that wants them to differ by tint rather than by weight overrides this one role in its own
+   * file - blue-jeans does, with `twilight`.
    */
   --ods-semantic-color-content-text: var(--ods-palette-gray-800);
   --ods-semantic-color-content-heading: var(--ods-palette-gray-900);
@@ -115,13 +127,15 @@
   --ods-semantic-color-content-disabled: var(--ods-palette-gray-500);
 
   /*
-   * 700, not the 500 its siblings use: this role is text, and 500 clears 4.5:1 on white for some
-   * hue families but not others. 700 is the first rung every family clears.
+   * REVIEW: content-base is the delivered 500, and 500 is a text rung only for some hue families.
+   * Every branded build clears AA on the page - blue 6.71:1, red 6.49:1, orange-700 5.80:1,
+   * green 5.01:1 - but the unbranded default, where the brand ramp is grey, reads 3.95:1 and
+   * fails. Either the default's link colour is not brand-500, or the role moves to 700.
    */
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
   --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
-  --ods-semantic-color-content-information: var(--ods-palette-blue-500);
   --ods-semantic-color-content-critical: var(--ods-palette-red-500);
+  --ods-semantic-color-content-information: var(--ods-palette-blue-500);
   --ods-semantic-color-content-success: var(--ods-palette-green-500);
   --ods-semantic-color-content-warning: var(--ods-palette-orange-700);
 
@@ -131,14 +145,18 @@
    * today, so adopting 500 would lighten shipped text into a failure rather than carry one.
    */
   --ods-semantic-color-content-neutral: var(--ods-palette-gray-600);
+
+  /* On a solid fill. */
   --ods-semantic-color-content-on-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-warning-solid: var(--ods-palette-orange-900);
   --ods-semantic-color-content-on-selected-solid: var(--ods-palette-white);
 
   /*
-   * REVIEW: delivered as white, which is 1.08:1 on surface-selected and 1.22:1 on
-   * surface-selected-strong - unusable on either surface it names. The solid selected surface
-   * has its own token above. Deviated to blue-900: 18.08:1 and 15.98:1.
+   * On a tinted fill.
+   *
+   * REVIEW: content-on-selected is delivered as white, which is 1.08:1 on surface-selected and
+   * 1.22:1 on surface-selected-strong - unusable on either surface it names. The solid selected
+   * surface has its own token above. Deviated to brand-900: 18.08:1 and 15.98:1.
    */
   --ods-semantic-color-content-on-selected: var(--ods-palette-brand-900);
   --ods-semantic-color-content-on-critical: var(--ods-palette-red-700);
@@ -157,97 +175,107 @@
   /* REVIEW: deduced. surface-code is the one dark ground in the set and had no content partner. */
   --ods-semantic-color-content-on-code: var(--ods-palette-white);
 
-  /* REVIEW: deduced. Replaces --ods-theme-brand-color, whose only consumer is the Logo fill. */
-  --ods-semantic-color-content-brand: var(--ods-palette-brand-700);
-
   /* REVIEW: deduced. Text on the decorative badges, carried over from Badge's bindings. */
   --ods-semantic-color-content-on-decorative: var(--ods-palette-blue-900);
 
-  /* -------------------------------------------------------- tier 2 - colour / border */
+  /* REVIEW: deduced. Replaces --ods-theme-brand-color, whose only consumer is the Logo fill. */
+  --ods-semantic-color-content-brand: var(--ods-palette-brand-700);
+
+  /* ------------------------------------------------------------------- tier 2 - colour / border */
 
   --ods-semantic-color-border-base: var(--ods-palette-brand-500);
   --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
-  --ods-semantic-color-border-critical: var(--ods-palette-red-500);
-  --ods-semantic-color-border-strong: var(--ods-palette-gray-600);
 
   /*
-   * REVIEW: all three deduced. The delivered set has a solid border rung for critical only,
-   * but Message, Tag and Button outline border in all four semantic colours. Without these the
-   * only destinations are the subtle rung (200, too light) or the strong rung (700, too dark),
-   * so a re-point would have had to change the value of every such border.
+   * REVIEW: information, success and warning are deduced. The delivered set has a solid border
+   * rung for critical only, but Message, Tag and Button outline border in all four semantic
+   * colours. Without these the only destinations are the subtle rung (200, too light) or the
+   * strong rung (700, too dark), so a re-point would have had to change every such border.
+   *
+   * Warning is orange-400, not 500, so the border tracks the fill - see the note on
+   * surface-warning.
    */
+  --ods-semantic-color-border-critical: var(--ods-palette-red-500);
   --ods-semantic-color-border-information: var(--ods-palette-blue-500);
   --ods-semantic-color-border-success: var(--ods-palette-green-500);
-
-  /* orange-400, not 500, so the border tracks the fill - see the note on surface-warning. */
   --ods-semantic-color-border-warning: var(--ods-palette-orange-400);
 
   /*
-   * REVIEW: delivered as gray-300, which is 2.10:1 where WCAG 1.4.11 asks 3:1 of a control
-   * boundary. Kept, because that is exactly what every field renders today - deviating would be
-   * a large unrequested visual change. gray-500 would clear it at 3.95:1.
+   * REVIEW: border-control is delivered as gray-300, which is 2.10:1 where WCAG 1.4.11 asks 3:1
+   * of a control boundary. Kept, because that is exactly what every field renders today -
+   * deviating would be a large unrequested visual change. gray-500 would clear it at 3.95:1.
    */
   --ods-semantic-color-border-control: var(--ods-palette-gray-300);
+  --ods-semantic-color-border-strong: var(--ods-palette-gray-600);
   --ods-semantic-color-border-disabled: var(--ods-palette-gray-200);
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-50);
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);
+
+  /* The three tinted rungs. */
+  --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-100);
   --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-200);
   --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-200);
   --ods-semantic-color-border-success-subtle: var(--ods-palette-green-200);
   --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-200);
   --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-200);
-  --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-100);
   --ods-semantic-color-border-critical-strong: var(--ods-palette-red-700);
   --ods-semantic-color-border-information-strong: var(--ods-palette-blue-700);
   --ods-semantic-color-border-success-strong: var(--ods-palette-green-700);
   --ods-semantic-color-border-warning-strong: var(--ods-palette-orange-700);
   --ods-semantic-color-border-neutral-strong: var(--ods-palette-gray-700);
 
-  /* --------------------------------------------------- tier 2 - colour / interaction */
+  /* -------------------------------------------------------------- tier 2 - colour / interaction */
 
-  /* Hover only. There is no pressed rung by contract: :active reuses the hover token. */
-
-  /* 800, one rung below its siblings, so that it stays darker than content-base at 700. */
   --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-700);
-  --ods-semantic-color-interaction-information-hover: var(--ods-palette-blue-700);
   --ods-semantic-color-interaction-critical-hover: var(--ods-palette-red-700);
+  --ods-semantic-color-interaction-information-hover: var(--ods-palette-blue-700);
   --ods-semantic-color-interaction-success-hover: var(--ods-palette-green-700);
-  --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
+
+  /*
+   * REVIEW: delivered as orange-700, which is 2.20:1 under the dark text this role carries. See
+   * the note on surface-warning: the family sits one rung lighter, so its hover is 500.
+   */
   --ods-semantic-color-interaction-warning-hover: var(--ods-palette-orange-500);
+  --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
 
   /*
-   * Hover and keyboard highlight of one option in a list. Separate from
-   * interaction-base-subtle-hover, which Button and Tag need for their primary ghost surfaces, and
-   * neutral so that hover no longer collides with surface-selected-strong: brand means selected,
-   * grey means pointed at.
+   * Hover and keyboard highlight of one option in a list, and of one that is already selected.
+   * Separate from interaction-base-subtle-hover, which Button and Tag need for their primary ghost
+   * surfaces.
+   *
+   * REVIEW: selected-highlight-hover is the one role the delivered set leaves without a value.
+   * 200 is the only rung that keeps the four states of an option apart: rest is the page, hover is
+   * 100, selected is 50, selected-and-hovered is 200.
    */
-  
-  // --ods-semantic-color-interaction-highlight: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
 
-  /* REVIEW: delivered as orange-700, which is 2.20:1 under the dark text this role carries. See
-     the note on surface-warning: the family sits one rung lighter, so its hover is 500. */
-  
   /*
-  * REVIEW: all three deduced. The delivered set has a subtle-hover rung for base, neutral and
-  * critical only, but Button ships a ghost variant in all six colours, so information, success
-  * and warning had nothing to bind to.
-  */
+   * The ghost and outline fills.
+   *
+   * REVIEW: base, success and warning are deduced - the delivered set has a subtle-hover rung for
+   * information, neutral and critical only, but Button ships a ghost variant in all six colours.
+   *
+   * REVIEW: the `-active` rungs are deduced too, and they contradict the delivered contract, which
+   * has no pressed rung and reuses the hover token for :active. They exist because Button and Tag
+   * ship a distinct pressed fill today; dropping them would flatten that, which design has not
+   * asked for. Everything outside those two components does follow the contract.
+   */
   --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-base-subtle-active: var(--ods-palette-brand-200);
   --ods-semantic-color-interaction-critical-subtle-hover: var(--ods-palette-red-100);
   --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-200);
   --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);
   --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-200);
-  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
-  --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-200);
   --ods-semantic-color-interaction-success-subtle-hover: var(--ods-palette-green-100);
   --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-200);
   --ods-semantic-color-interaction-warning-subtle-hover: var(--ods-palette-orange-100);
   --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-200);
-  
+  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
+  --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-200);
 
-  /* --------------------------------------------------------- tier 2 - colour / focus */
+  /* -------------------------------------------------------------------- tier 2 - colour / focus */
 
   --ods-semantic-color-focus: var(--ods-palette-brand-700);
 
@@ -258,8 +286,7 @@
    */
   --ods-semantic-color-focus-inverse: var(--ods-palette-brand-100);
 
-
-  /* --------------------------------------------------------- tier 2 - colour / chart */
+  /* -------------------------------------------------------------------- tier 2 - colour / chart */
 
   /*
    * REVIEW: all deduced. Six chart roles exist today as --ods-theme-chart-*, with no delivered
@@ -288,7 +315,7 @@
   --ods-semantic-color-chart-series-09: #374151;
   --ods-semantic-color-chart-series-10: #4f8400;
 
-  /* ----------------------------------------------------------- tier 2 - size / space */
+  /* ---------------------------------------------------------------------- tier 2 - size / space */
 
   --ods-semantic-size-space-inset-inline: 8px;
   --ods-semantic-size-space-inset-block: 8px;
@@ -300,16 +327,16 @@
   --ods-semantic-size-space-gap-group: 16px;
   --ods-semantic-size-space-gap-section: 32px;
 
-  /* ---------------------------------------------------------- tier 2 - size / radius */
+  /* --------------------------------------------------------------------- tier 2 - size / radius */
 
   --ods-semantic-size-radius-none: 0;
   --ods-semantic-size-radius-control: 4px;
   --ods-semantic-size-radius-container: 8px;
   --ods-semantic-size-radius-overlay: 4px;
-  --ods-semantic-size-radius-full: 50%;
   --ods-semantic-size-radius-pill: 16px;
+  --ods-semantic-size-radius-full: 50%;
 
-  /* ------------------------------------------------------------ tier 2 - size / block */
+  /* ---------------------------------------------------------------------- tier 2 - size / block */
 
   /*
    * The rung names change meaning: sm (32px) is gone, md moves 40px -> 32px, lg is new at 40px.
@@ -319,24 +346,22 @@
   --ods-semantic-size-block-size-md: 32px;
   --ods-semantic-size-block-size-lg: 40px;
 
-  /* --------------------------------------------------- tier 2 - size / border + focus */
-
-  --ods-semantic-size-border-thickness: 1px;
-  --ods-semantic-size-border-thickness-strong: 2px;
-  --ods-semantic-size-focus-thickness: 2px;
-  --ods-semantic-size-focus-offset: 2px;
+  /* -------------------------------------------------------------------- tier 2 - border + focus */
 
   /*
-   * REVIEW: a keyword filed under the `size` type - the only token in the set whose value is
-   * not a length, a colour or a number. It breaks any generated typing that assumes size-*
-   * means <length>.
+   * Their own family rather than `size`, which is what lets focus-style sit here: a keyword has
+   * no business under a type whose every other member is a length.
    */
-  --ods-semantic-size-focus-style: solid;
+  --ods-semantic-border-thickness: 1px;
+  --ods-semantic-border-thickness-strong: 2px;
+  --ods-semantic-border-focus-thickness: 2px;
+  --ods-semantic-border-focus-offset: 2px;
+  --ods-semantic-border-focus-style: solid;
 
-  /* ----------------------------------------------------------------- tier 2 - font */
+  /* ------------------------------------------------------------------------------ tier 2 - font */
 
-  --ods-semantic-font-family-body: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
   --ods-semantic-font-family-heading: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-semantic-font-family-body: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
   --ods-semantic-font-family-code: 'Source Code Pro', arial;
   --ods-semantic-font-weight-regular: 400;
   --ods-semantic-font-weight-medium: 600;
@@ -374,16 +399,18 @@
   --ods-semantic-font-size-icon-md: 1.25rem;
   --ods-semantic-font-size-icon-lg: 1.5rem;
 
-  /* opacity */
+  /* --------------------------------------------------------------------------- tier 2 - opacity */
+
   --ods-semantic-opacity-disabled: var(--ods-palette-opacity-50);
   --ods-semantic-opacity-backdrop: var(--ods-palette-opacity-75);
 
-  /* shadow */
+  /* ---------------------------------------------------------------------------- tier 2 - shadow */
+
   --ods-semantic-shadow-control: 0 1px 2px 0 rgb(0, 0, 0, .2);
   --ods-semantic-shadow-raised: 0 1px 3px 0 rgb(0, 0, 0, .1), 0 1px 2px -1px rgb(0, 0, 0, .1);
   --ods-semantic-shadow-overlay: 0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1);
 
-  /* --------------------------------------------------------------- tier 2 - motion */
+  /* ---------------------------------------------------------------------------- tier 2 - motion */
 
   /*
    * `instant` is a true 0s - no transition at all - not a very short one. Anything that should
@@ -401,7 +428,7 @@
   --ods-semantic-motion-easing-enter: ease-out;
   --ods-semantic-motion-easing-exit: ease-in;
 
-  /* -------------------------------------------------------------- tier 2 - z-index */
+  /* --------------------------------------------------------------------------- tier 2 - z-index */
 
   /*
    * REVIEW: this reverses the current stacking order. Today _overlay.scss computes base 99,
@@ -414,13 +441,12 @@
   --ods-semantic-z-index-modal: 400;
   --ods-semantic-z-index-toast: 500;
   --ods-semantic-z-index-tooltip: 600;
-
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --ods-semantic-motion-duration-fast:   0.01s;
+    --ods-semantic-motion-duration-fast: 0.01s;
     --ods-semantic-motion-duration-medium: 0.01s;
-    --ods-semantic-motion-duration-slow:   0.01s;
+    --ods-semantic-motion-duration-slow: 0.01s;
   }
 }

@@ -83,16 +83,16 @@ not the history of the branch.
 | `--ods-theme-track-background-color` | `--ods-semantic-color-surface-neutral-minimal` |
 | `--ods-theme-track-background-color-disabled` | `--ods-semantic-color-surface-neutral` |
 | `--ods-theme-outline-color` | `--ods-semantic-color-focus` |
-| `--ods-theme-outline-offset` | `--ods-semantic-size-focus-offset` |
-| `--ods-theme-outline-style` | `--ods-semantic-size-focus-style` |
-| `--ods-theme-outline-width` | `--ods-semantic-size-focus-thickness` |
+| `--ods-theme-outline-offset` | `--ods-semantic-border-focus-offset` |
+| `--ods-theme-outline-style` | `--ods-semantic-border-focus-style` |
+| `--ods-theme-outline-width` | `--ods-semantic-border-focus-thickness` |
 | `--ods-theme-backdrop-background-color` | `--ods-semantic-color-surface-backdrop` |
 | `--ods-theme-backdrop-opacity` | `--ods-semantic-opacity-backdrop` |
 | `--ods-theme-overlay-border-radius` | `--ods-semantic-size-radius-overlay` |
 | `--ods-theme-overlay-box-shadow` | `--ods-semantic-shadow-overlay` |
 | `--ods-theme-overlay-z-index` | `--ods-semantic-z-index-dropdown` |
 | `--ods-theme-border-radius` | `--ods-semantic-size-radius-container` |
-| `--ods-theme-border-width` | `--ods-semantic-size-border-thickness` |
+| `--ods-theme-border-width` | `--ods-semantic-border-thickness` |
 | `--ods-theme-column-gap` | `--ods-semantic-size-space-gap-inline` |
 | `--ods-theme-padding-horizontal` | `--ods-semantic-size-space-inset-inline` |
 | `--ods-theme-padding-vertical` | `--ods-semantic-size-space-inset-block` |
@@ -109,9 +109,9 @@ not the history of the branch.
 | `--ods-theme-input-border-color-hover` | `--ods-semantic-color-interaction-control-hover` |
 | `--ods-theme-input-border-color-invalid` | `--ods-semantic-color-border-critical` |
 | `--ods-theme-input-border-radius` | `--ods-semantic-size-radius-control` |
-| `--ods-theme-input-border-width` | `--ods-semantic-size-border-thickness` |
+| `--ods-theme-input-border-width` | `--ods-semantic-border-thickness` |
 | `--ods-theme-input-min-height` | `--ods-semantic-size-block-size-md` |
-| `--ods-theme-input-option-background-color-hover` | `--ods-semantic-color-interaction-base-subtle-hover` |
+| `--ods-theme-input-option-background-color-hover` | `--ods-semantic-color-interaction-highlight-hover` |
 | `--ods-theme-input-option-background-color-selected` | `--ods-semantic-color-surface-selected` |
 | `--ods-theme-input-option-background-color-selected-hover` | `--ods-semantic-color-interaction-selected-highlight-hover` |
 | `--ods-theme-input-padding-horizontal` | `--ods-semantic-size-space-inset-inline` |
@@ -299,15 +299,15 @@ role, not a value-preserving rename.
 | `--ods-border-radius-sm` | `4px` | `--ods-semantic-size-radius-control` | `4px` |
 | `--ods-border-radius-md` | `8px` | `--ods-semantic-size-radius-container` | `8px` |
 | `--ods-border-radius-lg` | `16px` | `--ods-semantic-size-radius-pill` | `16px` |
-| `--ods-border-width-sm` | `1px` | `--ods-semantic-size-border-thickness` | `1px` |
-| `--ods-border-width-md` | `2px` | `--ods-semantic-size-border-thickness-strong` | `2px` |
+| `--ods-border-width-sm` | `1px` | `--ods-semantic-border-thickness` | `1px` |
+| `--ods-border-width-md` | `2px` | `--ods-semantic-border-thickness-strong` | `2px` |
 | `--ods-font-family-default` | Source Sans Pro stack | `--ods-semantic-font-family-body` | same stack |
 | `--ods-font-family-code` | Source Code Pro stack | `--ods-semantic-font-family-code` | same stack |
 | `--ods-form-element-input-height` | `32px` | `--ods-semantic-size-block-size-md` | `32px` |
 | `--ods-outline-color-default` | `primary-700` | `--ods-semantic-color-focus` | role |
-| `--ods-outline-offset` | `2px` | `--ods-semantic-size-focus-offset` | `2px` |
-| `--ods-outline-style-default` | `solid` | `--ods-semantic-size-focus-style` | `solid` |
-| `--ods-outline-width` | `2px` | `--ods-semantic-size-focus-thickness` | `2px` |
+| `--ods-outline-offset` | `2px` | `--ods-semantic-border-focus-offset` | `2px` |
+| `--ods-outline-style-default` | `solid` | `--ods-semantic-border-focus-style` | `solid` |
+| `--ods-outline-width` | `2px` | `--ods-semantic-border-focus-thickness` | `2px` |
 
 `--ods-border-radius-xs` is the one with no destination: the radius scale is now named by what it
 wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung below `control`.

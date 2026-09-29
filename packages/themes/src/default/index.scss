@@ -161,6 +161,7 @@
   --ods-theme-input-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-theme-input-border-width: var(--ods-theme-border-width);
   --ods-theme-input-min-height: #{var.$ods-form-element-input-height};
+  --ods-theme-input-width: #{var.$ods-form-element-input-width};
   --ods-theme-input-option-background-color-hover: #{var.$ods-color-primary-100};
   --ods-theme-input-option-background-color-selected: #{var.$ods-color-primary-050};
   --ods-theme-input-option-background-color-selected-hover: #{var.$ods-color-primary-100};
@@ -209,6 +210,7 @@
   --ods-font-family-code: 'Source Code Pro', arial;
   --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
   --ods-form-element-input-height: #{var.$ods-form-element-input-height};
+  --ods-form-element-input-width: #{var.$ods-form-element-input-width};
   --ods-outline-color-default: #{var.$ods-outline-color-default};
   --ods-outline-offset: #{var.$ods-outline-offset};
   --ods-outline-style-default: #{var.$ods-outline-style-default};

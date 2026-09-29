@@ -5,6 +5,7 @@
 @layer ods-molecules {
   .clipboard {
     @include state.ods-is-readonly();
+    @include input.ods-input-width();
 
     box-sizing: border-box;
     display: inline-flex;

@@ -8,5 +8,12 @@
       color: var(--ods-theme-text-color);
       font-weight: 600;
     }
+
+    // Sized by its content, not by the uniform field default: it rides along the pagination bar.
+    // The attribute doubles the specificity on purpose: this rule lives in the same layer as the
+    // Select default and must win regardless of module emission order.
+    &__select[data-ods='select'] {
+      width: auto;
+    }
   }
 }

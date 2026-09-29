@@ -36,6 +36,7 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
       ref={ ref }
       { ...props }>
       <Select
+        className={ style['pagination-page-size-selector__select'] }
         defaultValue={ [pageSize.toString()] }
         items={ PAGINATION_PER_PAGE_OPTIONS as SelectItem[] }
         onValueChange={ handleValueChange }>

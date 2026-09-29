@@ -1,6 +1,10 @@
 @layer ods-organisms {
+  // The group root carries the uniform default field width; the phone input flexes into
+  // whatever the country select leaves.
   .phone-number-control {
-    width: inherit;
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
     font-weight: inherit;
 
     &--adjoined {

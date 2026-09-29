@@ -2,6 +2,9 @@
 
 @layer ods-molecules {
   .datepicker-control {
+    // The uniform default field width covers input and calendar trigger together.
+    @include input.ods-input-width();
+
     display: inline-grid;
     grid-template-columns: 1fr max-content;
     align-items: center;
@@ -10,6 +13,10 @@
       border-right: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      // The 1fr track sizes the input; its own field default would push the trigger out.
+      width: auto;
+      min-width: 0;
+      max-width: none;
 
       &:focus-within {
         z-index: 2;

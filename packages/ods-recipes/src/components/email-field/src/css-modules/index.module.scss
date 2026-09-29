@@ -8,6 +8,13 @@
       z-index: 1;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      // The joined field is sized by the grid tracks, not by the uniform field default.
+      width: 100%;
+    }
+
+    // Same for the domain select: its root must fill its 1fr track.
+    [data-ods='select'] {
+      width: 100%;
     }
 
     &__at {

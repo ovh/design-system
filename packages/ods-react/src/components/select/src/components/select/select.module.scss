@@ -1,0 +1,11 @@
+@use '../../../../../style/input';
+
+@layer ods-molecules {
+  // The control fills its root, so the root carries the uniform default field width;
+  // a consumer resizes the Select by styling this root.
+  .select {
+    @include input.ods-input-width();
+
+    display: inline-block;
+  }
+}

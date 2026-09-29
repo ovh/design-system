@@ -1,0 +1,11 @@
+@use '../../../../../style/input';
+
+@layer ods-organisms {
+  // The control fills its root, so the root carries the uniform default field width;
+  // a consumer resizes the Combobox by styling this root.
+  .combobox {
+    @include input.ods-input-width();
+
+    display: inline-block;
+  }
+}

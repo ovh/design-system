@@ -1,0 +1,10 @@
+@layer ods-organisms {
+  // The group root carries the uniform default field width; the time input flexes
+  // into whatever the timezone select leaves.
+  .timepicker-control {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+}

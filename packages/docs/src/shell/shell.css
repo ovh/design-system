@@ -72,6 +72,13 @@ body {
   width: 150px;
 }
 
+/* The sidebar selects are sized by their grid cells (.shell__sidebar-selects), not by the
+   uniform field default. */
+[data-testid='theme-select'],
+[data-testid='version-select'] {
+  width: auto;
+}
+
 .shell__select-item {
   align-items: center;
   display: inline-flex;

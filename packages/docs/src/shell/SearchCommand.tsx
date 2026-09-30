@@ -4,7 +4,7 @@ import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/component
 import { Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandList, CommandOption } from '../../../ods-react/src/components/command/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { type NavPage, flattenPages } from '../nav/model';
-import { loadSearchIndex, searchDocs, type SearchHit } from './search';
+import { loadSearchIndex, searchDocs, type SearchHit, tokenize } from './search';
 
 /* Global search — our own Command component (the palette pattern it was
    built for), controlled so selecting an entry closes it, bound to ⌘K.
@@ -30,7 +30,7 @@ const BADGES = {
 
 /* The matched terms, bolded inside the snippet. */
 const HighlightedSnippet = ({ query, text }: { query: string, text: string }) => {
-  const terms = query.toLowerCase().split(/[^a-z0-9]+/).filter((term) => term.length >= 2);
+  const terms = tokenize(query);
   if (terms.length === 0) {
     return <>{ text }</>;
   }
@@ -92,7 +92,7 @@ const SearchCommand = () => {
   // Content hits carry the query terms in the router state: the landing page
   // flash-highlights them (searchHighlight.ts) so the eye finds the match.
   const goToHit = (hit: SearchHit) => {
-    const terms = query.toLowerCase().split(/[^a-z0-9]+/).filter((term) => term.length >= 2);
+    const terms = tokenize(query);
     navigate(hit.route, { state: { highlight: terms } });
     setOpen(false);
   };

@@ -1,5 +1,7 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { flashSearchTerms } from './searchHighlight';
 
 interface TocEntry {
   id: string;
@@ -144,10 +146,71 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
 const DocArticle = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
+  const honoredHash = useRef<string>('');
 
   useEffect(() => {
     setContainer(ref.current);
   }, []);
+
+  /* Deep links to a section (#anchor): the MDX content mounts lazily, so the
+     browser's native jump fires before the heading exists — honor the hash
+     once the target actually lands in the DOM. Re-armed on every router
+     location change so SPA navigations (palette hits, in-content links) land
+     on their section too, not only full page loads. */
+  const location = useLocation();
+  useEffect(() => {
+    const wanted = location.hash.slice(1);
+    if (!container || !wanted) {
+      return;
+    }
+    const stamp = `${location.pathname}#${wanted}@${location.key}`;
+    if (honoredHash.current === stamp) {
+      return;
+    }
+    const jump = () => {
+      const target = document.getElementById(wanted);
+      if (target) {
+        honoredHash.current = stamp;
+        target.scrollIntoView();
+        observer.disconnect();
+      }
+    };
+    const observer = new MutationObserver(jump);
+    observer.observe(container, { childList: true, subtree: true });
+    jump();
+    return () => observer.disconnect();
+  }, [container, location]);
+
+  /* Palette content hits carry the query in the router state: once the lazy
+     content has settled (and the anchor target exists when there is one),
+     flash-highlight the searched terms so the eye lands on the match. */
+  useEffect(() => {
+    const terms = (location.state as { highlight?: string[] } | null)?.highlight;
+    if (!container || !terms?.length) {
+      return;
+    }
+    let done = false;
+    let clear: (() => void) | undefined;
+    const tryFlash = () => {
+      if (done) {
+        return;
+      }
+      const wanted = location.hash.slice(1);
+      // The 100-char floor tells the article apart from its loading skeleton.
+      if ((!wanted || document.getElementById(wanted)) && (container.textContent ?? '').length > 100) {
+        done = true;
+        observer.disconnect();
+        clear = flashSearchTerms(container, terms);
+      }
+    };
+    const observer = new MutationObserver(tryFlash);
+    observer.observe(container, { childList: true, subtree: true });
+    tryFlash();
+    return () => {
+      observer.disconnect();
+      clear?.();
+    };
+  }, [container, location]);
 
   return (
     <div className="doc-layout">

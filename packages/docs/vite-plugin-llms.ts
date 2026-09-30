@@ -690,6 +690,94 @@ function generate(outDir: string, withRootSummary = true): number {
   return componentFiles.length + genericFiles.length + 7;
 }
 
+/* ------------------------------------------------------------------ *
+ * Full-text search index — one entry per app route, plain-text body for
+ * client-side scoring in the ⌘K palette. Emitted to dist/search-index.json
+ * (NOT into llms/: it is an app asset, outside the verified llms contract,
+ * and never committed). Lazy-fetched by the app on the first search.
+ * ------------------------------------------------------------------ */
+
+interface SearchEntry {
+  b: string; // plain-text body, fences stripped, capped
+  r: string; // app route
+  s: string; // context label shown in the results
+  t: string; // page title
+}
+
+function searchText(body: string): string {
+  return body
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[#>*_`|]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 6000);
+}
+
+/* Same id scheme as the app's Heading/SectionHeading components: a section
+   entry's `#slug` therefore lands on the rendered heading. */
+function anchorSlug(label: string): string {
+  return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+/* One index entry per `## section` of the doc (plus the intro), so a palette
+   hit deep-links to the section itself instead of the top of the page. */
+function sectionEntries(doc: { body: string }, route: string, title: string, fallbackLabel: string): SearchEntry[] {
+  const withoutFences = doc.body.replace(/```[\s\S]*?```/g, ' ');
+  const [intro, ...rest] = withoutFences.split(/^## +(.+)$/m);
+  const entries: SearchEntry[] = [];
+  const introText = searchText(intro);
+  if (introText.length > 40) {
+    entries.push({ b: introText, r: route, s: fallbackLabel, t: title });
+  }
+  for (let i = 0; i + 1 < rest.length; i += 2) {
+    const heading = rest[i].trim();
+    const text = searchText(rest[i + 1]);
+    if (text.length > 0) {
+      entries.push({ b: text, r: `${route}#${anchorSlug(heading)}`, s: heading, t: title });
+    }
+  }
+  return entries;
+}
+
+const SECTION_ROUTES: Record<Doc['type'], { label: string, path: string }> = {
+  'documentation': { label: 'Documentation', path: '' },
+  'examples': { label: 'Examples', path: '/examples' },
+  'overview': { label: 'Overview', path: '' },
+  'technical-information': { label: 'Technical information', path: '/technical' },
+};
+
+function buildSearchIndex(): SearchEntry[] {
+  const componentKeys = readdirSync(resolve(here, 'src', 'content', 'components'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+
+  const entries: SearchEntry[] = [];
+  for (const key of componentKeys) {
+    const { pages } = componentDocs(key);
+    for (const [type, doc] of Object.entries(pages)) {
+      if (type === 'overview') {
+        continue; // same route as documentation, subset of its content
+      }
+      const section = SECTION_ROUTES[type as Doc['type']];
+      entries.push(...sectionEntries(doc, `/components/${key}${section.path}`, doc.title, section.label));
+    }
+  }
+  for (const guide of discoverGuides()) {
+    entries.push(...sectionEntries(guideDoc(guide), `/guides/${guide.mdx}`, guide.title, 'Guide'));
+  }
+  for (const helper of HELPERS) {
+    for (const doc of helperDocs(helper)) {
+      if (doc.type === 'documentation') {
+        entries.push(...sectionEntries(doc, `/helpers/${helper.mdx}`, helper.name, 'Helper'));
+      }
+    }
+  }
+  // Recipes are left out on purpose: their llms doc is a single aggregate
+  // with no matching route; the nav titles already cover them in the palette.
+  return entries;
+}
+
 function llmsEmit(): Plugin {
   return {
     name: 'ods-docs:llms-emit',
@@ -701,9 +789,44 @@ function llmsEmit(): Plugin {
       // release, so the files must live in git, not only in dist.
       rmSync(resolve(here, 'assets', 'llms'), { force: true, recursive: true });
       generate(resolve(here, 'assets', 'llms'), false);
-      this.info(`llms: ${count} files emitted natively (dist + committed assets)`);
+      const searchEntries = buildSearchIndex();
+      writeFileSync(resolve(here, 'dist', 'search-index.json'), JSON.stringify(searchEntries), 'utf8');
+      this.info(`llms: ${count} files emitted natively (dist + committed assets), search index: ${searchEntries.length} entries`);
     },
   };
 }
 
-export { generate, llmsEmit };
+/* Dev-server counterpart of the build emissions: the palette's search index
+   and the View-as-Markdown fetches must work in `pnpm start` too. The llms files
+   are served from the committed assets copy; the search index is built once
+   on first request. */
+function llmsDevServe(): Plugin {
+  const llmsRoot = resolve(here, 'assets', 'llms');
+  let cachedIndex: string | undefined;
+  return {
+    name: 'ods-docs:llms-dev-serve',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = (req.url ?? '').split('?')[0];
+        if (url === '/search-index.json') {
+          cachedIndex ??= JSON.stringify(buildSearchIndex());
+          res.setHeader('Content-Type', 'application/json');
+          res.end(cachedIndex);
+          return;
+        }
+        if (url.startsWith('/llms/')) {
+          const file = resolve(llmsRoot, url.slice('/llms/'.length));
+          if (file.startsWith(llmsRoot) && existsSync(file)) {
+            res.setHeader('Content-Type', url.endsWith('.json') ? 'application/json' : 'text/plain; charset=utf-8');
+            res.end(readFileSync(file, 'utf8'));
+            return;
+          }
+        }
+        next();
+      });
+    },
+  };
+}
+
+export { generate, llmsDevServe, llmsEmit };

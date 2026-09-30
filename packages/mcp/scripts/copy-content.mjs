@@ -47,8 +47,14 @@ cpSync(RECIPES, resolve(OUT, 'recipes.json'));
 // 5. icons: names from the ods-react enum, search aliases from the docs constants.
 const enumSrc = readFileSync(resolve(ROOT, 'packages/ods-react/src/components/icon/src/constants/icon-name.ts'), 'utf8');
 const names = {};
+// Assumes the enum's current shape (2-space indent, single-quoted values); a
+// reformat yields zero matches, so fail the build loudly rather than ship an
+// empty icon list.
 for (const [, key, value] of enumSrc.matchAll(/^\s{2}(\w+) = '([^']+)',?$/gm)) {
   names[key] = value;
+}
+if (Object.keys(names).length === 0) {
+  throw new Error('copy-content: no icon extracted from icon-name.ts — the enum format changed');
 }
 
 const tagsSrc = readFileSync(resolve(ROOT, 'packages/docs/src/doc/ports/constants/iconTags.ts'), 'utf8');

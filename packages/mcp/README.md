@@ -20,8 +20,8 @@ claude mcp add ods -- npx -y @ovhcloud/ods-mcp
 
 ## Documentation version resolution
 
-1. **Your project first**: if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`), it is used — the docs match the exact ODS version your project runs, offline. Ships from the first docs-platform release onward; the 19.x packages published before it contain no `dist/llms` and fall through to 3.
-2. **Pinned version**: set `ODS_DOCS_VERSION=X.Y.Z` to read `https://ovh.github.io/design-system/vX.Y.Z/llms` instead. Only works for versions published with the docs platform: the older Storybook-era sets (≤ 19.7.x) do not ship the `llms-index.json` the server needs.
+1. **Pinned version**: set `ODS_DOCS_VERSION=X.Y.Z` to read `https://ovh.github.io/design-system/vX.Y.Z/llms`. Only works for versions published with the docs platform: the older Storybook-era sets (≤ 19.7.x) do not ship the `llms-index.json` the server needs.
+2. **Your project**: otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`), it is used — the docs match the exact ODS version your project runs, offline. Ships from the first docs-platform release onward; the 19.x packages published before it contain no `dist/llms` and fall through to 3.
 3. **Bundled fallback**: the documentation snapshot bundled with this package.
 
 Design tokens, icon aliases and recipes always come from the bundled snapshot (they are not part of the ods-react tarball).

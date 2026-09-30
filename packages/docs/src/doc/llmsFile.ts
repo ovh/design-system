@@ -1,10 +1,10 @@
 import guidesInventory from '../content/guides/guides.json';
 
-/* Route → llms filename, for the topbar "Copy for LLM" button. The filenames
+/* Route → llms filename, for the topbar "View as Markdown" link. The filenames
    follow the emission conventions of vite-plugin-llms.ts; guides carry their
    editorial legacy slug, read from the same guides.json the plugin uses.
    Returns null when the page has no llms document (gallery, tools, recipes,
-   llms-excluded guides) — the button simply hides. */
+   llms-excluded guides) — the link simply hides. */
 function llmsFileFor(pathname: string): string | null {
   if (pathname === '/') {
     return 'ovhcloud-design-system-welcome.txt';

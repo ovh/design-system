@@ -5,6 +5,8 @@
 
 const HIGHLIGHT_NAME = 'ods-search';
 const CLEAR_AFTER_MS = 2600;
+// Bounds the TreeWalker's work on very long articles: past this, more paint
+// adds noise, not findability.
 const MAX_RANGES = 150;
 
 function supported(): boolean {

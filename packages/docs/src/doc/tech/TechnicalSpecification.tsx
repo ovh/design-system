@@ -102,7 +102,9 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
 
       { spec.unions.length > 0 && (
         <section>
-          <SectionHeading label="Unions" />
+          { /* "Types", not "Unions": the llms pipeline emits this section as
+               "## Types", and the palette's deep-links target the same slug. */ }
+          <SectionHeading label="Types" />
           <ul className="tech__enum">
             { spec.unions.map((union) => (
               <li key={ union.name }><code className="tech__type">{ union.name } = { union.value }</code></li>

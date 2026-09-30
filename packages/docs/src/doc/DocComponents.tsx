@@ -34,8 +34,12 @@ const Heading = ({ children, label, level }: { children?: ReactNode, label: stri
   const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
   const id = slugify(label);
   return (
-    <Text as={ `h${level}` } className="doc__heading" id={ id } preset={ presets[level] }>
-      { label }{ children }
+    // The anchor sits BESIDE the heading, not inside it: nested, its label would
+    // enter the heading's accessible name and the table of contents text.
+    <div className="doc__heading-row">
+      <Text as={ `h${level}` } className="doc__heading" id={ id } preset={ presets[level] }>
+        { label }{ children }
+      </Text>
       { /* Hover anchor: native #-navigation, plus the absolute URL in the
            clipboard so "look at this section" is one click to share. */ }
       <a
@@ -47,7 +51,7 @@ const Heading = ({ children, label, level }: { children?: ReactNode, label: stri
         } }>
         #
       </a>
-    </Text>
+    </div>
   );
 };
 

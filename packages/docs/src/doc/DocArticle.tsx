@@ -196,6 +196,7 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
         return;
       }
       const wanted = location.hash.slice(1);
+      // The 100-char floor tells the article apart from its loading skeleton.
       if ((!wanted || document.getElementById(wanted)) && (container.textContent ?? '').length > 100) {
         done = true;
         observer.disconnect();

@@ -797,7 +797,7 @@ function llmsEmit(): Plugin {
 }
 
 /* Dev-server counterpart of the build emissions: the palette's search index
-   and the Copy-for-LLM fetches must work in `pnpm start` too. The llms files
+   and the View-as-Markdown fetches must work in `pnpm start` too. The llms files
    are served from the committed assets copy; the search index is built once
    on first request. */
 function llmsDevServe(): Plugin {

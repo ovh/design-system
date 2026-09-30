@@ -1,4 +1,4 @@
-// DX lot 1: full-text palette search, Copy-for-LLM, heading anchors.
+// DX lot 1: full-text palette search, View-as-Markdown links, heading anchors.
 async function suite(browser, { base, version }) {
   const root = `${base}/v${version}`;
   const results = [];

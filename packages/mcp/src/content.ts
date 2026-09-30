@@ -26,8 +26,8 @@ interface DocSource {
 }
 
 /* The host project's own copy of the docs ships inside the @ovhcloud/ods-react
-   tarball (dist/llms): reading it first guarantees the documentation matches
-   the exact ODS version the project uses, with zero network access. */
+   tarball (dist/llms): reading it guarantees the documentation matches the
+   exact ODS version the project uses, with zero network access. */
 function findProjectLlms(): string | null {
   let dir = process.cwd();
   for (;;) {
@@ -44,6 +44,8 @@ function findProjectLlms(): string | null {
 }
 
 function resolveDocSource(): DocSource {
+  // An explicit ODS_DOCS_VERSION wins over the project copy: a deliberate
+  // configuration must never be silently overridden by whatever is installed.
   const pinned = process.env.ODS_DOCS_VERSION;
   if (pinned) {
     const base = `https://ovh.github.io/design-system/v${pinned}/llms`;

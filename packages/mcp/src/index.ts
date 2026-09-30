@@ -6,7 +6,8 @@ import { registerTools } from './tools.js';
 
 const index = await getIndex().catch((error: unknown) => {
   // Startup survives so the message below can explain the situation on stderr:
-  // every tool call will surface the same failure to the assistant anyway.
+  // the documentation tools will surface the same failure to the assistant
+  // anyway (icons, tokens and recipes read the bundled JSON and keep working).
   console.error(`ods-mcp: cannot load the documentation index from ${source.label}: ${String(error)}`);
   if (source.kind === 'pinned') {
     console.error('ods-mcp: ODS_DOCS_VERSION only works for versions published with the docs platform (the older Storybook-era sets do not ship llms-index.json).');

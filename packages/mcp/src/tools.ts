@@ -231,6 +231,8 @@ function registerTools(server: McpServer): void {
   }, async ({ name }) => {
     const data = await readBundledJson<{ component: Record<string, RecipeEntry> }>('recipes.json');
     if (!name) {
+      // odsComponents comes from parsing the recipes' import statements, so it
+      // mixes in SCREAMING_CASE enums and type imports: keep the components only.
       const lines = Object.entries(data.component).map(([key, r]) => `- ${key} (${r.name}) — tags: ${r.tags.join(', ')} — uses: ${r.odsComponents.filter((c) => !c.includes('_') && !c.startsWith('type ')).join(', ')}`);
       return text(`${lines.length} recipes:\n${lines.join('\n')}`);
     }

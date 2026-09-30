@@ -23,9 +23,19 @@ let indexPromise: Promise<SearchEntry[]> | undefined;
 function loadSearchIndex(): Promise<SearchEntry[]> {
   indexPromise ??= fetch(new URL('search-index.json', APP_ROOT))
     .then((res) => (res.ok ? res.json() as Promise<SearchEntry[]> : []))
-    .catch(() => []);
+    .catch(() => {
+      // A transient network failure must not kill full-text search for the
+      // whole session: forget the attempt so the next keystroke retries.
+      indexPromise = undefined;
+      return [];
+    });
   return indexPromise;
 }
+
+/* Shared with the palette's term highlighting and hit navigation: if their
+   tokenization diverged from the scoring's, the bolded terms would not be the
+   matched ones. */
+const tokenize = (query: string): string[] => query.toLowerCase().split(/[^a-z0-9]+/).filter((term) => term.length >= 2);
 
 function snippetAround(body: string, at: number): string {
   const start = Math.max(0, at - 40);
@@ -41,7 +51,7 @@ function snippetAround(body: string, at: number): string {
    pass keeps the entries matching ANY term instead of returning an empty
    palette. */
 function searchDocs(entries: SearchEntry[], query: string): SearchHit[] {
-  const terms = query.toLowerCase().split(/[^a-z0-9]+/).filter((term) => term.length >= 2);
+  const terms = tokenize(query);
   if (terms.length === 0) {
     return [];
   }
@@ -119,4 +129,4 @@ function rank(entries: SearchEntry[], terms: string[], requireAll: boolean): Sea
   return top;
 }
 
-export { loadSearchIndex, searchDocs, type SearchHit };
+export { loadSearchIndex, searchDocs, type SearchHit, tokenize };

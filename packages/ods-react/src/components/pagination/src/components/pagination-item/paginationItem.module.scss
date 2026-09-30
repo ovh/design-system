@@ -1,6 +1,6 @@
 @use '../../../../../style/link';
 
-// The rhythm of the whole bar, shared by the page buttons, the page links and the ellipsis.
+// The cell size of the whole bar, shared by the page buttons, the page links and the ellipsis.
 $ods-pagination-item-size: 40px;
 
 .pagination-item {
@@ -15,8 +15,8 @@ $ods-pagination-item-size: 40px;
     }
   }
 
-  // Link mode: the item is only a box holding the rhythm of the bar, the link inside hugs its
-  // digits so that its underline never runs wider than the page number it belongs to.
+  // Link mode: the item is only the cell, the link inside hugs its digits so that its underline
+  // never runs wider than the page number it belongs to.
   &--link {
     align-items: center;
     width: auto;

@@ -1,5 +1,5 @@
 import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
-import { type ReactElement, useEffect } from 'react';
+import { type ReactElement } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PaginationLink } from './PaginationLink';
 import style from './productList.module.scss';
@@ -10,10 +10,10 @@ function getPageUrl({ page, pageSize }: PaginationPageUrlDetail): string {
   return `/products?page=${page}&size=${pageSize}`;
 }
 
-/* Counts how many times the module was evaluated. A client side navigation keeps the module
-   alive, so this stays at 1; a full document load resets it. It is the plain way to see, in the
-   browser, whether the pagination navigates within the app or reloads it. */
-let moduleLoads = 0;
+/* Lives at module scope, so a client side navigation keeps it while a full document load computes
+   it again. Watching it hold still as the pages change is the plain way to see, in the browser,
+   whether the pagination navigates within the app or reloads it. */
+const documentLoadedAt = new Date().toLocaleTimeString();
 
 function ProductList(): ReactElement {
   const [searchParams] = useSearchParams();
@@ -21,10 +21,6 @@ function ProductList(): ReactElement {
   // The whole state of the pagination is read back from the URL, nothing is held beside it.
   const page = Number(searchParams.get('page') ?? 1);
   const pageSize = Number(searchParams.get('size') ?? 10);
-
-  useEffect(() => {
-    moduleLoads += 1;
-  }, []);
 
   /* The pages are links, so they navigate on their own. The two controls below are not, and have
      no href for the browser to follow: they report, and the application navigates to the URL
@@ -82,9 +78,9 @@ function ProductList(): ReactElement {
       <p
         className={ style['product-list__probe'] }
         data-testid="probe">
-        Mounts since the document was loaded: <strong>{ moduleLoads + 1 }</strong>
+        Document loaded at <strong>{ documentLoadedAt }</strong>
         { ' ' }-{ ' ' }
-        a client side navigation makes this grow, a full reload sends it back to 1.
+        moving between pages leaves it untouched, a full reload moves it on.
       </p>
     </div>
   );

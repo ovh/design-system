@@ -1,12 +1,62 @@
+@use '../../../../../style/link';
+
+// The cell size of the whole bar, shared by the page buttons, the page links and the ellipsis.
+$ods-pagination-item-size: 40px;
+
 .pagination-item {
   display: flex;
   justify-content: center;
-  width: 40px;
+  width: $ods-pagination-item-size;
 
   &[data-selected] {
     &:not(:disabled) {
       border-color: var(--ods-theme-border-color-selected);
       background-color: var(--ods-theme-background-color-selected);
+    }
+  }
+
+  // Link mode. The link hugs its digits, so that the Link underline stays the width of the page
+  // number: the item is only a cell around it, and an invisible overlay the size of a page button
+  // carries the target. A pseudo element belongs to its anchor for hit testing, so the whole cell
+  // is clickable without the box, and therefore the underline, ever growing past the text.
+  &--link {
+    align-items: center;
+    width: auto;
+    min-width: $ods-pagination-item-size;
+    height: $ods-pagination-item-size;
+  }
+
+  &__link {
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      min-width: $ods-pagination-item-size;
+      height: $ods-pagination-item-size;
+      content: "";
+    }
+  }
+
+  // The active page is not a link: there is nowhere to navigate to. It reads as plain text and
+  // stays out of the tab order. It borrows the geometry of the Link underline, but permanent and
+  // twice as thick, so that "you are here" never reads as "hovered".
+  &__current {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    color: var(--ods-theme-text-color);
+    font-weight: link.$ods-link-font-weight;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: currentcolor;
+      width: 100%;
+      height: 2px;
+      content: "";
     }
   }
 }

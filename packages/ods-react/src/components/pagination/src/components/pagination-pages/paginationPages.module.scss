@@ -1,7 +1,43 @@
+// The rhythm of the whole bar, shared with the pagination items.
+$ods-pagination-trigger-size: 40px;
+
 @layer ods-molecules {
   .pagination-pages {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    // Link mode. The cell holds the slot of a page button around a trigger that hugs its chevron,
+    // the way an icon only Link does. Same mechanism as a page, see paginationItem.module.scss.
+    &__cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $ods-pagination-trigger-size;
+      height: $ods-pagination-trigger-size;
+    }
+
+    &__trigger {
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        min-width: $ods-pagination-trigger-size;
+        height: $ods-pagination-trigger-size;
+        content: "";
+      }
+    }
+
+    // Link mode. The ellipsis is a gap between two ranges of pages, not a page: plain muted text.
+    &__ellipsis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $ods-pagination-trigger-size;
+      height: $ods-pagination-trigger-size;
+      color: var(--ods-theme-text-color-disabled);
+    }
   }
 }

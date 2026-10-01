@@ -1,0 +1,13 @@
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+
+  &__probe {
+    border-left: 3px solid var(--ods-theme-primary-color);
+    padding-left: 8px;
+    color: var(--ods-theme-text-color);
+    font-size: 14px;
+  }
+}

@@ -7,9 +7,8 @@ $ods-pagination-trigger-size: 40px;
     flex-direction: row;
     align-items: center;
 
-    // Link mode. The cell holds the slot of a page button, so that the trigger inside can hug
-    // its chevron: an icon only Link is underlined like any other, and that underline has to be
-    // the width of the glyph rather than of the slot around it.
+    // Link mode. The cell holds the slot of a page button around a trigger that hugs its chevron,
+    // the way an icon only Link does. Same mechanism as a page, see paginationItem.module.scss.
     &__cell {
       display: flex;
       align-items: center;
@@ -18,8 +17,6 @@ $ods-pagination-trigger-size: 40px;
       height: $ods-pagination-trigger-size;
     }
 
-    // The target, carried by an invisible overlay so that the box, and therefore the underline,
-    // never grows past the chevron. Same mechanism as a page, see paginationItem.module.scss.
     &__trigger {
       &::before {
         position: absolute;

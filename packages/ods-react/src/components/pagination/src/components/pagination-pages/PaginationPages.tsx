@@ -12,8 +12,7 @@ import style from './paginationPages.module.scss';
 interface PaginationPagesProp extends ComponentPropsWithRef<'div'> {}
 
 /**
- * In link mode the trigger hugs its chevron, the way an icon only Link does, so that its
- * underline is the width of the glyph. A cell then holds the slot of a page button around it.
+ * The cell a trigger sits in when the pages are links, see paginationPages.module.scss.
  * @internal
  */
 const PaginationTriggerCell: FC<{ children: ReactNode, isLink: boolean }> = ({

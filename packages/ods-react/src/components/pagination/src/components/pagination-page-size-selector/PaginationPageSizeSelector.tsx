@@ -40,6 +40,8 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
       data-ods="pagination-page-size-selector"
       ref={ ref }
       { ...props }>
+      {/* Controlled rather than defaulted: the Select has to keep showing the size it was given,
+          which in link mode stays the URL's size until the application navigates. */}
       <Select
         items={ PAGINATION_PER_PAGE_OPTIONS as SelectItem[] }
         onValueChange={ handleValueChange }

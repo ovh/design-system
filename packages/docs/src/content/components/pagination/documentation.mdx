@@ -1,4 +1,4 @@
-_A **Pagination** component splits a long list into numbered pages and lets users move between them, whether a page is a portion of the current view or a destination with an URL of its own._
+_A **Pagination** component splits a long list into numbered pages and lets users move between them, whether a page is a portion of the current view or a destination with a URL of its own._
 
 <Canvas story="Overview" source="none" />
 
@@ -19,7 +19,7 @@ _A **Pagination** component splits a long list into numbered pages and lets user
 
 A **Pagination** component is used in two situations, and each one calls for a different kind of control :
 * To navigate among a <DocLink to="/components/table">Table</DocLink> component, or any content swapped inside the page the user is already on.
-* To browse a set of items spread over pages of their own, each with an URL (products list, public catalogue, documentation index, ...), see "Pages as links" below.
+* To browse a set of items spread over pages of their own, each with a URL (products list, public catalogue, documentation index, ...), see "Pages as links" below.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -89,7 +89,7 @@ Depending on the current page number and the amount of pages, here are the diffe
 - If amount of pages is 7 or more :
 - If current page is the 4th one or less, the first 5 numbered pages are present, then an ellipsis and the last numbered page corresponding of the amount of pages
 - If current page is the 4th to last or more, the first page is displayed followed by an ellipsis and the last 5 numbered pages
-- If current page is between the previous bounds, are displayed, in order :
+- If current page is between the previous bounds, the following are displayed, in order :
 - the first page,
 - an ellipsis,
 - 3 numbered pages, corresponding to : previous-to-current / current / next-to-current page,
@@ -104,7 +104,7 @@ Allows users to directly select a page from an number input.
 
 <Heading label="Pages as links" level={ 3 } />
 
-Where the **Pagination** is used to move between actual pages, each with an URL of its own, the pages must be links rather than Buttons.
+Where the **Pagination** is used to move between actual pages, each with a URL of its own, the pages must be links rather than Buttons.
 
 By default a page is a <DocLink to="/components/button">Button</DocLink>: activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated <DocLink to="/components/table">Table</DocLink>.
 
@@ -132,7 +132,7 @@ Two consequences follow from the URL being in charge:
 
 <Heading label="The controls that are not links" level={ 4 } />
 
-Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page <DocLink to="/components/select">Select</DocLink>. In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into an URL and navigates.
+Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page <DocLink to="/components/select">Select</DocLink>. In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into a URL and navigates.
 
 <Canvas story="LinksWithAllControls" />
 

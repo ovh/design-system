@@ -15,8 +15,10 @@ $ods-pagination-item-size: 40px;
     }
   }
 
-  // Link mode: the item is only the cell, the link inside hugs its digits so that its underline
-  // never runs wider than the page number it belongs to.
+  // Link mode. The link hugs its digits, so that the Link underline stays the width of the page
+  // number: the item is only a cell around it, and an invisible overlay the size of a page button
+  // carries the target. A pseudo element belongs to its anchor for hit testing, so the whole cell
+  // is clickable without the box, and therefore the underline, ever growing past the text.
   &--link {
     align-items: center;
     width: auto;
@@ -24,10 +26,6 @@ $ods-pagination-item-size: 40px;
     height: $ods-pagination-item-size;
   }
 
-  // The link keeps hugging its digits, so that the Link underline stays the width of the page
-  // number. The target is carried by an invisible overlay instead, at the size of a page button:
-  // a pseudo element belongs to its anchor for hit testing, so the whole cell is clickable
-  // without the box, and therefore the underline, ever growing past the text.
   &__link {
     &::before {
       position: absolute;

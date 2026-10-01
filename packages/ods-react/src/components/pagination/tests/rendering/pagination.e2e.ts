@@ -67,7 +67,6 @@ describe('Pagination rendering', () => {
 
       expect(measured.length).toBeGreaterThan(0);
 
-      // The underline belongs to the page number, not to the 40px cell it sits in.
       measured.forEach(({ cell, text, underline }) => {
         expect(underline).toBeCloseTo(text, 1);
         expect(underline).toBeLessThan(cell);
@@ -84,7 +83,6 @@ describe('Pagination rendering', () => {
         underline: parseFloat(window.getComputedStyle(el, '::after').width),
       }));
 
-      // An icon only Link keeps its underline, at the width of the glyph and not of the cell.
       expect(measured?.underline).toBeGreaterThan(0);
       expect(measured?.underline).toBeCloseTo(measured!.glyph, 1);
       expect(measured?.underline).toBeLessThan(measured!.cell);

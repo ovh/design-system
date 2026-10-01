@@ -91,8 +91,7 @@ describe('Pagination navigation', () => {
 
       // A hash navigation keeps the document alive, so the recorder survives the click.
       expect(await page.evaluate(() => window.location.hash)).toMatch(/^#page-\d+-size-10$/);
-      // Reporting here would let the application move the page during the click, which rewrites
-      // the trigger href before the browser follows it and lands the user one page too far.
+      // Why nothing is reported: see handlePageChange in usePagination.
       expect(await page.evaluate(() => (window as unknown as { __pageChanges?: unknown[] }).__pageChanges ?? [])).toEqual([]);
     });
 
@@ -117,8 +116,7 @@ describe('Pagination navigation', () => {
         [...document.querySelectorAll('[data-ods="tooltip-trigger"]')]
           .map((el) => ({ href: el.getAttribute('href'), role: el.getAttribute('role'), tag: el.tagName })));
 
-      // The tooltip trigger is a Button in the default mode, and lends it its role. On an anchor
-      // that role would announce a link as a button, which is what link mode exists to avoid.
+      // TooltipTrigger hardcodes role="button", see PaginationButtonWithTooltip.
       expect(triggers).toEqual([
         { href: '#page-2-size-10', role: null, tag: 'A' },
         { href: '#page-4-size-10', role: null, tag: 'A' },
@@ -152,8 +150,6 @@ describe('Pagination navigation', () => {
 
       expect(await page.evaluate(() => (window as unknown as { __pageSizeChanges?: unknown[] }).__pageSizeChanges ?? []))
         .toEqual([{ pageSize: 100 }]);
-      // Moving on its own would rebuild every href with a size the URL does not have yet, drop
-      // the active page out of the new range, and point the triggers at pages that no longer exist.
       expect(await readBar()).toEqual(before);
       expect(await page.evaluate(() => (window as unknown as { __pageChanges?: unknown[] }).__pageChanges ?? [])).toEqual([]);
     });

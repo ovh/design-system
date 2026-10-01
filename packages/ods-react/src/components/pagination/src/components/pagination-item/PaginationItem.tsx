@@ -15,7 +15,7 @@ interface PaginationItemProp {
 }
 
 /** @internal The anchor attributes Ark puts on an item in link mode, dropped by the active page. */
-type PaginationCurrentPageProp = ComponentPropsWithRef<'span'> & Pick<ComponentPropsWithRef<'a'>, 'href' | 'type'>;
+type PaginationCurrentPageProp = ComponentPropsWithRef<'span'> & Pick<ComponentPropsWithRef<'a'>, 'href'>;
 
 /**
  * The active page in link mode. It keeps the identity Ark puts on the item - `aria-current`,
@@ -29,7 +29,6 @@ const PaginationCurrentPage: FC<PaginationCurrentPageProp> = forwardRef(({
   href,
   onClick,
   tabIndex,
-  type,
   ...props
 }, ref): JSX.Element => (
   <span
@@ -51,8 +50,8 @@ const PaginationItem: FC<PaginationItemProp> = ({
   const { getPageUrl, linkAs } = usePagination();
   const isCurrentPage = currentPage === page.value;
 
-  // Link mode. The item lives inside a plain box holding the rhythm of the bar, so that the link
-  // hugs its digits: its underline would otherwise run far wider than the page number.
+  // Link mode. The item is a cell holding the rhythm of the bar around a link that hugs its
+  // digits, see paginationItem.module.scss.
   if (getPageUrl) {
     return (
       <span className={ classNames(style['pagination-item'], style['pagination-item--link']) }>

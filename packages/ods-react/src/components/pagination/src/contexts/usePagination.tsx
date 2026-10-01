@@ -2,6 +2,7 @@
 
 import { type ComponentPropsWithRef, type ElementType, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
 import { useContext } from '../../../../utils/context';
+import { warnOnce } from '../../../../utils/warn';
 
 /** @internal DEPRECATED: remove on next major version */
 type PaginationTotalItemsLabelRenderer = (params: { totalItems: number }) => string | number;
@@ -134,7 +135,7 @@ function PaginationProvider({
   // Warned at render time, not in an effect: link mode exists for server rendered listings, and
   // an effect never runs on the server - which is exactly where the mistake is made.
   if (getPageUrl && page === undefined && defaultPage === undefined) {
-    console.warn('getPageUrl renders the pages as links, so the URL holds the active page. Please provide a controlled `page` read back from the URL, or a `defaultPage` when the page is rendered by the server, otherwise the pagination stays on page 1.');
+    warnOnce('getPageUrl renders the pages as links, so the URL holds the active page. Please provide a controlled `page` read back from the URL, or a `defaultPage` when the page is rendered by the server, otherwise the pagination stays on page 1.');
   }
 
   useEffect(() => {

@@ -79,6 +79,7 @@
           top: .25rem;
           bottom: .25rem;
           left: 0;
+
           /* Component-level exception: one consumer, so it does not earn a semantic token. */
           opacity: .15;
           background-color: var(--ods-semantic-color-border-control);

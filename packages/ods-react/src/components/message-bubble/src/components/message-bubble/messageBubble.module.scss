@@ -36,8 +36,9 @@
 
     &__typing-dot {
       display: block;
+
       /* Component-level exception, as for Spinner: a bounce is tuned to its own travel. */
-    animation: message-bubble-bounce 900ms infinite var(--ods-semantic-motion-easing);
+      animation: message-bubble-bounce 900ms infinite var(--ods-semantic-motion-easing);
       border-radius: 50%;
       background-color: currentcolor;
       width: 8px;

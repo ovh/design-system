@@ -72,6 +72,7 @@
       bottom: 1px;
       left: 1px;
       transform: translateX(0);
+
       /* 400ms converged onto the slow rung - the thumb travel is now 300ms. */
       transition: transform var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing);
       z-index: 2;

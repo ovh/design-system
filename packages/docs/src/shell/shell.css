@@ -22,10 +22,7 @@
   left: var(--ods-semantic-size-space-inset-inline);
   transform: translateY(-150%);
   transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
-
-  /* Above every ODS layer: the scale tops out at tooltip, and a skip link
-     outranks even that. */
-  z-index: calc(var(--ods-semantic-z-index-tooltip) + 1);
+  z-index: calc(var(--ods-semantic-z-index-modal) + 1);
   border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-base);
   border-radius: var(--ods-semantic-size-radius-control);
   background: var(--ods-semantic-color-surface-page);
@@ -108,7 +105,8 @@ body {
   align-items: center;
   border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
-  background: none;
+  box-shadow: var(--ods-semantic-shadow-control);
+  background-color: var(--ods-semantic-color-surface-control);
   padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   height: var(--ods-semantic-size-block-size-md);
   color: var(--ods-semantic-color-content-neutral);

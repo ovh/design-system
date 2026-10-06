@@ -15,7 +15,7 @@ $ods-overlay-drawer-z-index: var(--ods-semantic-z-index-drawer);
   z-index: $ods-overlay-base-z-index;
   border-radius: var(--ods-semantic-size-radius-overlay);
   box-shadow: var(--ods-semantic-shadow-overlay);
-  background: var(--ods-semantic-color-surface-page);
+  background: var(--ods-semantic-color-surface-overlay);
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
   color: var(--ods-semantic-color-content-text);
 }

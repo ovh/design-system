@@ -5,7 +5,8 @@
     --ods-select-group-option-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 3);
 
     border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
-    background-color: var(--ods-semantic-color-surface-page);
+    box-shadow: var(--ods-semantic-shadow-overlay);
+    background-color: var(--ods-semantic-color-surface-control);
     padding: 0;
     max-height: 200px;
     overflow: hidden auto;

@@ -5,11 +5,14 @@
     display: inline-grid;
     grid-template-columns: 1fr max-content;
     align-items: center;
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
 
     &__input {
       border-right: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      box-shadow: none;
 
       &:focus-within {
         z-index: 2;

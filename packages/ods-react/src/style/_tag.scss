@@ -86,7 +86,7 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   align-items: center;
   border-width: var(--ods-tag-border-width);
   border-style: solid;
-  border-radius: var(--ods-border-radius-lg);
+  border-radius: var(--ods-semantic-size-radius-pill);
   font-family: inherit;
   cursor: pointer;
 

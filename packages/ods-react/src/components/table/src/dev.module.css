@@ -9,4 +9,5 @@
 .sticky-header {
   position: sticky;
   top: 0;
+  z-index: var(--ods-semantic-z-index-sticky);
 }

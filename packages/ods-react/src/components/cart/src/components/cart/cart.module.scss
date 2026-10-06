@@ -9,6 +9,7 @@
     flex-flow: column;
     row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
     box-shadow: var(--ods-semantic-shadow-overlay);
+    background: var(--ods-semantic-color-surface-overlay);
     padding: var(--ods-cart-padding-vertical) var(--ods-cart-padding-horizontal);
 
     &__handle {

@@ -1,7 +1,7 @@
 $ods-badge-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
-$ods-badge-height-sm: 20px;
-$ods-badge-height-md: 24px;
-$ods-badge-height-lg: 28px;
+$ods-badge-height-sm: var(--ods-semantic-size-block-size-xxs);
+$ods-badge-height-md: var(--ods-semantic-size-block-size-xs);
+$ods-badge-height-lg: var(--ods-semantic-size-block-size-sm);
 $ods-badge-padding-horizontal-sm: calc(var(--ods-semantic-size-space-inset-inline) / 2);
 $ods-badge-padding-vertical-sm: calc(var(--ods-semantic-size-space-inset-block) / 2);
 $ods-badge-padding-horizontal-md: calc(var(--ods-semantic-size-space-inset-inline) / 2);

@@ -13,7 +13,7 @@
       display: flex;
       flex-direction: column;
       gap: calc(var(--ods-command-padding-vertical) / 2);
-      background-color: var(--ods-semantic-color-surface-page);
+      background-color: var(--ods-semantic-color-surface-overlay);
       padding: var(--ods-command-padding-vertical) var(--ods-command-padding-horizontal);
       overflow: hidden;
     }

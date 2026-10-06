@@ -43,6 +43,7 @@ $ods-code-secondary-color: #000;
     &__clipboard {
       position: sticky;
       top: var(--ods-code-padding-vertical);
+      z-index: var(--ods-semantic-z-index-sticky);
       background-color: transparent;
       padding: 0;
 

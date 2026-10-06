@@ -18,5 +18,15 @@
   --ods-semantic-color-content-group-label: var(--ods-palette-brand-800);
   --ods-semantic-color-content-icon: var(--ods-palette-brand-500);
   --ods-semantic-color-content-text: var(--ods-palette-twilight);
-  --ods-semantic-shadow-raised: none;
+
+  /*
+   * The brand draws its containers with a line, not with elevation. Off, not absent: Card and
+   * Tile still carry the token, so a future theme turns elevation back on by setting a value
+   * here and nothing else.
+   *
+   * `0 0 #0000` rather than `none`, because Tile composes this token with the box-shadow it uses
+   * to draw its outline, and `none` is not a valid member of a shadow list - it would invalidate
+   * the whole declaration and take the outline down with it.
+   */
+  --ods-semantic-shadow-raised: 0 0 #0000;
 }

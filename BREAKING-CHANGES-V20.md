@@ -42,6 +42,8 @@ not the history of the branch.
 | [BC-07](#bc-07--the-default-theme-is-brand-neutral) | `@ovhcloud/ods-themes` | the default theme is grey, not OVHcloud blue | manual |
 | [BC-08](#bc-08--tier-3-component-token-values-re-bound) | `@ovhcloud/ods-react` | tier-3 component token values re-bound | none needed |
 | [BC-09](#bc-09--card-color-defaults-to-neutral) | `@ovhcloud/ods-react` | `Card` `color` defaults to `neutral` | automatable |
+| [BC-10](#bc-10--button-radius-moves-to-the-control-family) | `@ovhcloud/ods-react` | `Button` radius is 4px at every size | manual |
+| [BC-11](#bc-11--accordion-takes-the-whole-container-radius) | `@ovhcloud/ods-react` | `Accordion` outer corners go 4px -> 8px | manual |
 
 ---
 
@@ -378,7 +380,7 @@ migration guide cannot be written before it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The `--ods-<component>-*` names are untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, plus nothing - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
+| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface and minus three dead `Tile` tokens (see below), plus nothing - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
 | **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colours shift slightly even where nothing breaks. |
 | **Detection** | covered by the BC-01 / BC-02 greps |
 | **Codemod** | none needed beyond BC-01 / BC-02 |
@@ -386,6 +388,11 @@ migration guide cannot be written before it.
 
 The mixins and SCSS variables exported by `@ovhcloud/ods-react/style` are unchanged - only the
 tokens they read.
+
+`Tile` loses `--ods-tile-border-width`, `--ods-tile-border-color` and `--ods-tile-background-color`.
+All three were declared but never read: `Tile` renders a `Card`, so its border, its background and
+its elevation come from `--ods-card-*`. Overriding them never did anything, and overriding the
+`--ods-card-*` equivalents still works.
 
 ---
 
@@ -399,6 +406,38 @@ tokens they read.
 | **Detection** | `grep -rn '<Card' src/` and look for the ones with no `color` |
 | **Codemod** | **automatable** - add `color="primary"` to every `<Card>` that has no `color` prop, for a consumer who wants the old look. Worth offering as an opt-in step rather than applying by default: the new default is the intended one. |
 | **Source of truth** | `packages/ods-react/src/components/card/src/components/card/Card.tsx` |
+
+---
+
+## BC-10 - `Button` radius moves to the control family
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The three sizes derived their radius from the container rung (`xs` 2px, `sm` 4px, `md` 8px). They now all read `--ods-semantic-size-radius-control`, so a button is 4px whatever its size - the same radius as the input it sits next to. |
+| **Impact** | `xs` goes 2px -> 4px and `md` goes 8px -> 4px. Visual only, on every button in the app. The `--ods-button-border-radius-xs` / `-sm` / `-md` names are kept, so a consumer who wants the old scale re-declares them. |
+| **Detection** | none to run - it applies to every `<Button>` |
+| **Codemod** | **manual** - restore the old look by re-declaring the three component tokens: `--ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px;` |
+| **Source of truth** | `packages/ods-react/src/style/_button.scss` |
+
+A theme that widens `radius-container` no longer widens buttons with it. `Tabs` still derives its
+radius from the container rung, so the two no longer move together.
+
+---
+
+## BC-11 - `Accordion` takes the whole container radius
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | `--ods-accordion-border-radius` was `calc(--ods-semantic-size-radius-container / 2)`, it is now `--ods-semantic-size-radius-container`. An accordion is an in-flow container, so it reads the container rung whole, like `Card`, `Tile`, `Meter`, `Progress Bar` and `Skeleton`. |
+| **Impact** | The outer corners of the first and last item go 4px -> 8px. Visual only. The token name is unchanged, so an override by name keeps working. |
+| **Detection** | none to run - it applies to every `<Accordion>` |
+| **Codemod** | **manual** - restore the old look by re-declaring `--ods-accordion-border-radius: 4px;` |
+| **Source of truth** | `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss` |
+
+The trigger and the content inherit the item's radius, so nothing else changes. A theme that widens
+`radius-container` now widens the accordion with it, at full rate rather than at half.
 
 ---
 

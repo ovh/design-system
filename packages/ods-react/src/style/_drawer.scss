@@ -23,7 +23,7 @@ $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) 
   outline: none;
   border: none;
   box-shadow: var(--ods-semantic-shadow-overlay);
-  background: var(--ods-semantic-color-surface-page);
+  background: var(--ods-semantic-color-surface-overlay);
   padding: var(--ods-drawer-padding-vertical) var(--ods-drawer-padding-horizontal);
   width: auto;
   overflow: auto;

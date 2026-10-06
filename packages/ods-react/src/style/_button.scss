@@ -1,9 +1,9 @@
 @use './focus';
 @use './state';
 
-$ods-button-border-radius-xs: calc(var(--ods-semantic-size-radius-container) / 4);
-$ods-button-border-radius-sm: calc(var(--ods-semantic-size-radius-container) / 2);
-$ods-button-border-radius-md: var(--ods-semantic-size-radius-container);
+$ods-button-border-radius-xs: var(--ods-semantic-size-radius-control);
+$ods-button-border-radius-sm: var(--ods-semantic-size-radius-control);
+$ods-button-border-radius-md: var(--ods-semantic-size-radius-control);
 $ods-button-border-radius-width: var(--ods-semantic-border-thickness);
 $ods-button-column-gap-xs: calc(var(--ods-semantic-size-space-gap-inline) * 0.75);
 $ods-button-column-gap-sm: calc(var(--ods-semantic-size-space-gap-inline) * 0.75);
@@ -14,9 +14,9 @@ $ods-button-padding-horizontal-sm: calc(var(--ods-semantic-size-space-inset-inli
 $ods-button-padding-vertical-sm: calc(var(--ods-semantic-size-space-inset-block) * 0.75);
 $ods-button-padding-horizontal-md: var(--ods-semantic-size-space-inset-inline);
 $ods-button-padding-vertical-md: var(--ods-semantic-size-space-inset-block);
-$ods-button-size-xs: 24px;
-$ods-button-size-sm: 32px;
-$ods-button-size-md: 40px;
+$ods-button-size-xs: var(--ods-semantic-size-block-size-xs);
+$ods-button-size-sm: var(--ods-semantic-size-block-size-md);
+$ods-button-size-md: var(--ods-semantic-size-block-size-lg);
 
 @mixin ods-button() {
   --ods-button-border-radius-xs: #{$ods-button-border-radius-xs};

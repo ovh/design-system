@@ -163,6 +163,7 @@
   max-height: calc(100dvh - 120px);
   overflow-y: auto;
   position: sticky;
+  z-index: var(--ods-semantic-z-index-sticky);
   top: 8px;
 }
 

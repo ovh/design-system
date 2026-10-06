@@ -8,7 +8,7 @@
 }
 
 .custom-code [data-part='trigger']:hover {
-  border-radius: var(--ods-border-radius-sm);
+  border-radius: var(--ods-semantic-size-radius-control);
   background-color: var(--ods-semantic-color-surface-selected-solid);
   color: var(--ods-semantic-color-content-on-solid);
 }

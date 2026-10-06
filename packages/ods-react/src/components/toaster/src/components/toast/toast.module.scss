@@ -1,5 +1,6 @@
 @layer ods-organisms {
   .toast {
+    box-shadow: var(--ods-semantic-shadow-overlay);
     pointer-events: auto;
 
     [data-ods="message-body"] {

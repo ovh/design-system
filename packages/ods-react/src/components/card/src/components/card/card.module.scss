@@ -13,6 +13,7 @@
     display: inline-block;
     border: var(--ods-card-border-width) solid;
     border-radius: var(--ods-card-border-radius);
+    box-shadow: var(--ods-semantic-shadow-raised);
 
     &--critical {
       border-color: var(--ods-card-border-color-critical);

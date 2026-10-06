@@ -3,18 +3,6 @@
 
 :root {
   /* -------------------------------------------------------------- tier 1 - palette / brand ramp */
-
-  /*
-   * REVIEW: deduced, and it restores a capability the delivered set drops.
-   *
-   * The old tier 1 named its ramps by ROLE - primary, information, critical - which is what made
-   * white-labelling work: a brand rebound `primary` to whatever hue it wanted. The delivered
-   * palette names families by HUE, so a brand would have to redefine "blue" as green, and the
-   * only other seam left would be rebinding twenty role tokens one by one.
-   *
-   * This ramp is that seam, and nothing else: it aliases $brand-hue, and every role below that
-   * belongs to the brand points here instead of at a hue family directly.
-   */
   --ods-palette-brand-50: var(--ods-palette-gray-50);
   --ods-palette-brand-100: var(--ods-palette-gray-100);
   --ods-palette-brand-200: var(--ods-palette-gray-200);
@@ -32,33 +20,14 @@
   --ods-semantic-color-surface-page: var(--ods-palette-white);
   --ods-semantic-color-surface-raised: var(--ods-palette-white);
   --ods-semantic-color-surface-overlay: var(--ods-palette-white);
+  --ods-semantic-color-surface-control: var(--ods-palette-white);
 
   /* The solid fills, one per role. */
   --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
   --ods-semantic-color-surface-critical: var(--ods-palette-red-500);
   --ods-semantic-color-surface-information: var(--ods-palette-blue-500);
   --ods-semantic-color-surface-success: var(--ods-palette-green-500);
-
-  /*
-   * REVIEW: delivered as orange-500. Deviated to the rung the system actually ships, and this is
-   * the deviation most worth a second opinion.
-   *
-   * Warning is the one role whose solid fill carries dark text rather than white, and orange
-   * darkens out of contrast fast: orange-900 reads 6.38:1 on orange-400 and 5.43:1 on orange-500,
-   * then falls to 3.57:1 on orange-600 and 2.20:1 on orange-700. The delivered pair - fill 500,
-   * hover 700 - is therefore unusable at hover whichever way it is read.
-   *
-   * Today the button ships 400 at rest and 500 on hover, and both clear AA. Keeping that offset
-   * is the only option that neither inverts the hover direction nor introduces a failure, so the
-   * whole warning family sits one rung lighter than its four siblings.
-   */
   --ods-semantic-color-surface-warning: var(--ods-palette-orange-400);
-
-  /*
-   * REVIEW: delivered as gray-500. Deviated, because white on gray-500 is 3.95:1 and the solid
-   * neutral button uses gray-600 today precisely to clear AA (5.74:1). Adopting 500 would
-   * introduce a new failure rather than carry an existing one.
-   */
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
 
   /* The two tinted rungs under each solid. */
@@ -72,12 +41,6 @@
   --ods-semantic-color-surface-success-subtle: var(--ods-palette-green-200);
   --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-200);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
-
-  /*
-   * Two rest fills, not one plus a hover: `selected` is an item that is on, `selected-strong` the
-   * same on a ground that is already tinted. Hovering a selected item is a separate role, in the
-   * interaction family below.
-   */
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
   --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-brand-800);
@@ -90,15 +53,7 @@
   --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-code: var(--ods-palette-gray-900);
   --ods-semantic-color-surface-thumb: var(--ods-palette-white);
-
-  /* Only meaningful composed with opacity-backdrop - see the scrim below. */
   --ods-semantic-color-surface-backdrop: var(--ods-palette-black);
-
-  /*
-   * REVIEW: deduced. Decorative product-lifecycle fills whose only consumer is Badge; the
-   * delivered set has no equivalent. They sit outside the semantic ladder on purpose - they are
-   * brand decoration, not state.
-   */
   --ods-semantic-color-surface-decorative-alpha: var(--ods-palette-decorative-alpha);
   --ods-semantic-color-surface-decorative-beta: var(--ods-palette-decorative-beta);
   --ods-semantic-color-surface-decorative-new: var(--ods-palette-decorative-new);
@@ -337,12 +292,11 @@
   --ods-semantic-size-radius-full: 50%;
 
   /* ---------------------------------------------------------------------- tier 2 - size / block */
-
-  /*
-   * The rung names change meaning: sm (32px) is gone, md moves 40px -> 32px, lg is new at 40px.
-   * md is a public enum value, so a consumer passing size="md" gets a visibly smaller control.
-   */
+  
+  /* TODO */
+  --ods-semantic-size-block-size-xxs: 20px;
   --ods-semantic-size-block-size-xs: 24px;
+  --ods-semantic-size-block-size-sm: 28px;
   --ods-semantic-size-block-size-md: 32px;
   --ods-semantic-size-block-size-lg: 40px;
 
@@ -367,37 +321,6 @@
   --ods-semantic-font-weight-medium: 600;
   --ods-semantic-font-weight-bold: 700;
 
-  /*
-   * REVIEW: all eight deduced - design delivered families and weights only. These are the sizes
-   * actually in use, read off the ods-text-* presets, in rem against a 16px root.
-   */
-  --ods-semantic-font-size-xs: 0.75rem;
-  --ods-semantic-font-size-sm: 0.875rem;
-  --ods-semantic-font-size-md: 1rem;
-  --ods-semantic-font-size-lg: 1.125rem;
-  --ods-semantic-font-size-xl: 1.25rem;
-  --ods-semantic-font-size-2xl: 1.5rem;
-  --ods-semantic-font-size-3xl: 1.75rem;
-  --ods-semantic-font-size-4xl: 2.25rem;
-
-  /*
-   * REVIEW: all three deduced, and this is the one place the set introduces a property the
-   * system does not currently set at all - every ods-text-* preset omits line-height today, so
-   * the UA default applies. Adopting these changes vertical rhythm everywhere.
-   */
-  --ods-semantic-font-line-height-none: 1;
-  --ods-semantic-font-line-height-tight: 1.2;
-  --ods-semantic-font-line-height-default: 1.5;
-
-  /*
-   * REVIEW: all three deduced, and they may not be wanted. Icons are an icon font and inherit
-   * font-size from their context today - style/_icon.scss sets only line-height and the family.
-   * So there is nothing to migrate: this is a new family. It lives under `font` because an icon
-   * size is a font-size, which is why ODS-2232 excluded a size-icon-* family.
-   */
-  --ods-semantic-font-size-icon-sm: 1rem;
-  --ods-semantic-font-size-icon-md: 1.25rem;
-  --ods-semantic-font-size-icon-lg: 1.5rem;
 
   /* --------------------------------------------------------------------------- tier 2 - opacity */
 
@@ -411,15 +334,7 @@
   --ods-semantic-shadow-overlay: 0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1);
 
   /* ---------------------------------------------------------------------------- tier 2 - motion */
-
-  /*
-   * `instant` is a true 0s - no transition at all - not a very short one. Anything that should
-   * read as quick but visible belongs on `fast`, which is why the radio's mark moved there.
-   *
-   * There is no rung for a looping indicator: the four in the system disagree (0.8s, 900ms, 1.5s,
-   * 2s) and each is tuned to its own geometry, so Spinner, MessageBubble, Skeleton and
-   * ProgressBar keep their literal durations.
-   */
+  
   --ods-semantic-motion-duration-instant: 0s;
   --ods-semantic-motion-duration-fast: 150ms;
   --ods-semantic-motion-duration-medium: 200ms;
@@ -430,17 +345,12 @@
 
   /* --------------------------------------------------------------------------- tier 2 - z-index */
 
-  /*
-   * REVIEW: this reverses the current stacking order. Today _overlay.scss computes base 99,
-   * modal 100, drawer 101 - a drawer covers a modal. Here drawer sits below modal, and the two
-   * can be open together.
-   */
   --ods-semantic-z-index-sticky: 100;
   --ods-semantic-z-index-dropdown: 200;
   --ods-semantic-z-index-drawer: 300;
   --ods-semantic-z-index-modal: 400;
-  --ods-semantic-z-index-toast: 500;
-  --ods-semantic-z-index-tooltip: 600;
+  // --ods-semantic-z-index-toast: 500;
+  // --ods-semantic-z-index-tooltip: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {

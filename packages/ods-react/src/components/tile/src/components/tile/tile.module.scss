@@ -3,9 +3,6 @@
 @layer ods-atoms {
   .tile {
     --ods-tile-border-radius: var(--ods-semantic-size-radius-container);
-    --ods-tile-border-width: var(--ods-semantic-border-thickness);
-    --ods-tile-border-color: var(--ods-semantic-color-border-control);
-    --ods-tile-background-color: var(--ods-semantic-color-surface-page);
     --ods-tile-background-color-selected: var(--ods-semantic-color-surface-selected);
     --ods-tile-background-color-disabled: var(--ods-semantic-color-surface-neutral-recessed);
     --ods-tile-border-color-selected : var(--ods-semantic-color-border-base);
@@ -17,14 +14,19 @@
     overflow: hidden;
     cursor: pointer;
 
+    /*
+     * The outline is drawn with a spread shadow, not a border, so elevation has to ride in the
+     * same declaration. That is why the theme's off-value for shadow-raised is `0 0 #0000` and
+     * not `none`: `none` is not a valid member of a shadow list and would drop the outline too.
+     */
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);
-      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-hover);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-hover), var(--ods-semantic-shadow-raised);
     }
 
     &--selected {
       border-color: var( --ods-tile-border-color-selected);
-      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-selected);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-selected), var(--ods-semantic-shadow-raised);
       background-color: var(--ods-tile-background-color-selected);
     }
 

@@ -9,7 +9,8 @@
 
     border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
     border-radius: var(--ods-semantic-size-radius-overlay);
-    background-color: var(--ods-semantic-color-surface-page);
+    box-shadow: var(--ods-semantic-shadow-overlay);
+    background-color: var(--ods-semantic-color-surface-overlay);
     padding: var(--ods-datepicker-content-padding-vertical) var(--ods-datepicker-content-padding-horizontal);
 
     &--invalid {

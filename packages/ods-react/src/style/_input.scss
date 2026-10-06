@@ -11,6 +11,8 @@ $ods-input-placeholder-color: var(--ods-semantic-color-content-placeholder);
   box-sizing: border-box;
   border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
+  box-shadow: var(--ods-semantic-shadow-control);
+  background-color: var(--ods-semantic-color-surface-control);
   padding: var(--ods-semantic-size-space-inset-block-compact) var(--ods-semantic-size-space-inset-inline);
   min-height: $ods-input-field-height;
   color: var(--ods-semantic-color-content-text);

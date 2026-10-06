@@ -19,6 +19,7 @@
     gap: calc(var(--ods-semantic-size-space-gap-block) * 2) calc(var(--ods-semantic-size-space-gap-inline) * 2);
     border: 1px solid var(--ods-prompt-input-border-color);
     border-radius: var(--ods-prompt-input-border-radius);
+    box-shadow: var(--ods-semantic-shadow-control);
     padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2 );
     
     &:hover {

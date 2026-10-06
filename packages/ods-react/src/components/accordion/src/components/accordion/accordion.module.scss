@@ -5,6 +5,6 @@
     --ods-accordion-border-width: 1px;
     --ods-accordion-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 3);
     --ods-accordion-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) * 3);
-    --ods-accordion-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
+    --ods-accordion-border-radius: var(--ods-semantic-size-radius-container);
   }
 }

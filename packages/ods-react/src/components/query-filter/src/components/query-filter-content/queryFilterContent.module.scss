@@ -5,7 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     border: 1px solid var(--ods-semantic-color-interaction-control-hover);
-    background: var(--ods-semantic-color-surface-page);
+    background: var(--ods-semantic-color-surface-control);
     padding: 0;
     max-height: 400px;
     overflow: auto;
@@ -15,11 +15,11 @@
     }
 
     &--open-bottom {
-      border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);
+      border-radius: 0 0 var(--ods-semantic-size-radius-overlay) var(--ods-semantic-size-radius-overlay);
     }
 
     &--open-top {
-      border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
+      border-radius: var(--ods-semantic-size-radius-overlay) var(--ods-semantic-size-radius-overlay) 0 0;
     }
 
     &__empty {

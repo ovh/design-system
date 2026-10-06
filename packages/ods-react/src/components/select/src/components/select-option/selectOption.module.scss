@@ -4,17 +4,17 @@
 @layer ods-molecules {
   .select-option {
     display: flex;
-    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     align-items: center;
-    padding: 0 var(--ods-theme-input-padding-horizontal);
+    padding: 0 var(--ods-semantic-size-space-inset-inline);
     min-height: input.$ods-input-field-height;
-    color: var(--ods-theme-input-text-color);
+    color: var(--ods-semantic-color-content-text);
     cursor: pointer;
 
     &:hover,
     &[data-highlighted],
     &[data-highlighted]:hover {
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight-hover);
     }
 
     &[data-disabled] {
@@ -22,12 +22,12 @@
     }
 
     &[data-state="checked"] {
-      background-color: var(--ods-theme-input-option-background-color-selected);
+      background-color: var(--ods-semantic-color-surface-selected);
 
       &:hover,
       &[data-highlighted],
       &[data-highlighted]:hover {
-        background-color: var(--ods-theme-input-option-background-color-selected-hover);
+        background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
       }
     }
 

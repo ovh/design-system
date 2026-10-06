@@ -16,7 +16,7 @@
     }
 
     &--disabled {
-      opacity: 0.5;
+      opacity: var(--ods-semantic-opacity-disabled);
     }
   }
 }

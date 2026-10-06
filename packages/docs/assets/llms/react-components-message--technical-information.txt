@@ -4,7 +4,7 @@ slug: message
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1687
+tokens: 1776
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
 ---
 
@@ -60,29 +60,29 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-message-close-button-text-color-primary` | `var(--ods-color-neutral-000)` |
-| `--ods-message-background-color-critical` | `var(--ods-color-critical-075)` |
-| `--ods-message-background-color-critical-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-information` | `var(--ods-color-information-075)` |
-| `--ods-message-background-color-information-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-neutral` | `var(--ods-color-neutral-075)` |
-| `--ods-message-background-color-neutral-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-message-background-color-primary-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-success` | `var(--ods-color-success-075)` |
-| `--ods-message-background-color-success-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-warning` | `var(--ods-color-warning-075)` |
-| `--ods-message-background-color-warning-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-message-text-color-critical` | `var(--ods-color-critical-700)` |
-| `--ods-message-text-color-critical-light` | `var(--ods-color-critical-600)` |
-| `--ods-message-text-color-information` | `var(--ods-color-information-700)` |
-| `--ods-message-text-color-information-light` | `var(--ods-color-information-600)` |
-| `--ods-message-text-color-neutral` | `var(--ods-color-neutral-700)` |
-| `--ods-message-text-color-neutral-light` | `var(--ods-color-neutral-600)` |
-| `--ods-message-text-color-primary` | `var(--ods-color-primary-000)` |
-| `--ods-message-text-color-primary-light` | `var(--ods-color-primary-600)` |
-| `--ods-message-text-color-success` | `var(--ods-color-success-700)` |
-| `--ods-message-text-color-success-light` | `var(--ods-color-success-600)` |
-| `--ods-message-text-color-warning` | `var(--ods-color-warning-700)` |
-| `--ods-message-text-color-warning-light` | `var(--ods-color-warning-600)` |
+| `--ods-message-close-button-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-message-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-text-color-critical-light` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-text-color-information-light` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-message-text-color-neutral-light` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-message-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-text-color-success-light` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-text-color-warning-light` | `var(--ods-semantic-color-content-warning)` |

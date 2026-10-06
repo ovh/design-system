@@ -2,10 +2,11 @@
 
 @layer ods-molecules {
   .select-content {
-    --ods-select-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
+    --ods-select-group-option-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 3);
 
-    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color-hover);
-    background-color: var(--ods-theme-background-color);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
+    box-shadow: var(--ods-semantic-shadow-overlay);
+    background-color: var(--ods-semantic-color-surface-control);
     padding: 0;
     max-height: 200px;
     overflow: hidden auto;
@@ -21,22 +22,22 @@
 
     &[data-state="open"] {
       &[data-placement="bottom-start"] {
-        border-bottom-left-radius: var(--ods-theme-overlay-border-radius);
-        border-bottom-right-radius: var(--ods-theme-overlay-border-radius);
+        border-bottom-left-radius: var(--ods-semantic-size-radius-overlay);
+        border-bottom-right-radius: var(--ods-semantic-size-radius-overlay);
       }
 
       &[data-placement="top-start"] {
-        border-top-left-radius: var(--ods-theme-overlay-border-radius);
-        border-top-right-radius: var(--ods-theme-overlay-border-radius);
+        border-top-left-radius: var(--ods-semantic-size-radius-overlay);
+        border-top-right-radius: var(--ods-semantic-size-radius-overlay);
       }
     }
 
     &--invalid {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
 
     [role="group"]:not(:last-child) {
-      border-bottom: solid var(--ods-theme-input-border-width) var(--ods-theme-split-border-color);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
   }
 }

@@ -2,14 +2,11 @@
 
 @layer ods-atoms {
   .tile {
-    --ods-tile-border-radius: var(--ods-theme-border-radius);
-    --ods-tile-border-width: var(--ods-theme-border-width);
-    --ods-tile-border-color: var(--ods-theme-input-border-color);
-    --ods-tile-background-color: var(--ods-theme-background-color);
-    --ods-tile-background-color-selected: var(--ods-color-primary-025);
-    --ods-tile-background-color-disabled: var(--ods-color-neutral-050);
-    --ods-tile-border-color-selected : var(--ods-color-primary-500);
-    --ods-tile-border-color-hover : var(--ods-color-neutral-500);
+    --ods-tile-border-radius: var(--ods-semantic-size-radius-container);
+    --ods-tile-background-color-selected: var(--ods-semantic-color-surface-selected);
+    --ods-tile-background-color-disabled: var(--ods-semantic-color-surface-neutral-recessed);
+    --ods-tile-border-color-selected : var(--ods-semantic-color-border-base);
+    --ods-tile-border-color-hover : var(--ods-semantic-color-interaction-control-hover);
 
     box-sizing: border-box;
     display: inline-block;
@@ -17,14 +14,19 @@
     overflow: hidden;
     cursor: pointer;
 
+    /*
+     * The outline is drawn with a spread shadow, not a border, so elevation has to ride in the
+     * same declaration. That is why the theme's off-value for shadow-raised is `0 0 #0000` and
+     * not `none`: `none` is not a valid member of a shadow list and would drop the outline too.
+     */
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);
-      box-shadow:  0 0 0 1px var(--ods-tile-border-color-hover);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-hover), var(--ods-semantic-shadow-raised);
     }
 
     &--selected {
       border-color: var( --ods-tile-border-color-selected);
-      box-shadow:  0 0 0 1px var(--ods-tile-border-color-selected);
+      box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-selected), var(--ods-semantic-shadow-raised);
       background-color: var(--ods-tile-background-color-selected);
     }
 

@@ -34,7 +34,7 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
         <Dialog.Backdrop
           className={ style['drawer-backdrop'] }
           style={{
-            zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)',
+            zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)',
             ...(backdropStyle || {}),
           }} />
       }
@@ -43,7 +43,7 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
            unconditionally would turn the positioner into a stacking context and silently break
            the documented --ods-drawer-z-index override for existing backdrop-less drawers. */ }
       <Dialog.Positioner style={{
-        ...(backdrop ? { zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)' } : {}),
+        ...(backdrop ? { zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 2)' } : {}),
         ...(positionerStyle || {}),
       }}>
         { /* zag inlines pointer-events:auto on non-modal dialog content even when

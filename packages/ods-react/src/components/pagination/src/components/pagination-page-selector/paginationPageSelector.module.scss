@@ -1,7 +1,7 @@
 @layer ods-molecules {
   .pagination-page-selector {
     display: flex;
-    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     align-items: center;
 
     &__input {
@@ -9,7 +9,7 @@
     }
 
     &__label {
-      color: var(--ods-theme-text-color);
+      color: var(--ods-semantic-color-content-text);
       font-weight: 600;
     }
   }

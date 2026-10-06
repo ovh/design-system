@@ -1,17 +1,29 @@
 #! /usr/bin/env node
 
-const { toJSON } = require('cssjson');
+/*
+ * postcss, not cssjson: cssjson drops the declaration that directly follows a comment, folding it
+ * into the comment node instead. That was survivable while the theme carried almost no comments -
+ * it silently lost a handful - but the semantic layer documents its deduced tokens and its
+ * contrast deviations inline, and the same bug then swallowed 41 of 248 tokens. tokens.json is a
+ * published export, so the loss reached consumers.
+ */
+const postcss = require('postcss');
 const fs = require('fs').promises;
 const path = require('path');
 
 async function getTokens(theme) {
   try {
     const indexCSS = await fs.readFile(path.resolve(process.cwd(), 'dist', theme, 'index.css'), { encoding: 'utf-8' });
-    const indexJSON = toJSON(indexCSS);
+    const root = {};
 
-    return {
-      root: indexJSON.children[':root'].attributes,
-    };
+    postcss.parse(indexCSS).walkRules(':root', (rule) => {
+      rule.walkDecls(/^--/, (decl) => {
+        /* Declared twice in one scope means the last one wins, exactly as the cascade would. */
+        root[decl.prop] = decl.value;
+      });
+    });
+
+    return { root };
   } catch(error) {
     console.error('Something went wrong while getting design tokens', error);
   }

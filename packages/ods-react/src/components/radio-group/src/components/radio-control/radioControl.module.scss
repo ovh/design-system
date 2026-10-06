@@ -10,13 +10,13 @@
       &:not([data-invalid]) {
         &[data-focus],
         &:hover {
-          border-color: var(--ods-theme-input-border-color-hover);
+          border-color: var(--ods-semantic-color-interaction-control-hover);
         }
       }
 
       &[data-state="checked"] {
-        border-color: var(--ods-theme-input-border-color-checked);
-        background-color: var(--ods-theme-input-background-color-checked);
+        border-color: var(--ods-semantic-color-border-selected);
+        background-color: var(--ods-semantic-color-surface-base);
 
         &::before {
           transform: scale(1);
@@ -24,13 +24,13 @@
 
         &[data-focus],
         &:hover {
-          border-color: var(--ods-theme-input-border-color-checked-hover);
-          background: var(--ods-theme-input-background-color-checked-hover);
+          border-color: var(--ods-semantic-color-interaction-base-hover);
+          background: var(--ods-semantic-color-interaction-base-hover);
         }
 
         &[data-invalid] {
-          border-color: var(--ods-theme-input-border-color-invalid);
-          background-color: var(--ods-theme-input-background-color-invalid);
+          border-color: var(--ods-semantic-color-border-critical);
+          background-color: var(--ods-semantic-color-surface-critical);
         }
       }
     }
@@ -51,7 +51,7 @@
     }
 
     &[data-invalid] {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
   }
 }

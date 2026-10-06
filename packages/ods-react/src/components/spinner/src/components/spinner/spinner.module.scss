@@ -35,15 +35,20 @@ $spinner-size-lg: 80px;
     }
 
     &--neutral {
-      fill: var(--ods-theme-neutral-color);
+      fill: var(--ods-semantic-color-content-neutral);
     }
 
     &--primary {
-      fill: var(--ods-theme-primary-color);
+      fill: var(--ods-semantic-color-content-base);
     }
 
     &__svg {
-      animation: rotate 0.8s infinite linear;
+      /*
+     * Component-level exception: the four looping indicators disagree on duration (0.8s, 900ms,
+     * 1.5s, 2s) and a rotation is tuned to its own diameter, so the semantic ladder has no loop
+     * rung at all and each of them keeps its literal duration.
+     */
+    animation: rotate 0.8s infinite linear;
       height: 100%;
     }
   }

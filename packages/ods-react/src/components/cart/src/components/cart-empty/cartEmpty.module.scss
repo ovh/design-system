@@ -4,12 +4,12 @@
   .cart-empty {
     display: flex;
     flex-flow: row;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     align-items: center;
     justify-content: center;
 
     &__icon {
-      color: var(--ods-theme-primary-color);
+      color: var(--ods-semantic-color-content-icon);
     }
 
     &__content {

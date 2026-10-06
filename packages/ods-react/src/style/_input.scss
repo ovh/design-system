@@ -3,23 +3,25 @@
 
 // In-field controls sit as close to the border as the field's own block inset, so the gap around
 // an action button reads the same on all four sides instead of being twice as wide on the end.
-$ods-input-actions-padding-right: var(--ods-theme-input-padding-vertical);
-$ods-input-field-height: var(--ods-theme-input-min-height);
-$ods-input-placeholder-color: var(--ods-theme-input-placeholder-text-color);
+$ods-input-actions-padding-right: var(--ods-semantic-size-space-inset-block-compact);
+$ods-input-field-height: var(--ods-semantic-size-block-size-md);
+$ods-input-placeholder-color: var(--ods-semantic-color-content-placeholder);
 
 @mixin ods-input() {
   box-sizing: border-box;
-  border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
-  border-radius: var(--ods-theme-input-border-radius);
-  padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
+  border-radius: var(--ods-semantic-size-radius-control);
+  box-shadow: var(--ods-semantic-shadow-control);
+  background-color: var(--ods-semantic-color-surface-control);
+  padding: var(--ods-semantic-size-space-inset-block-compact) var(--ods-semantic-size-space-inset-inline);
   min-height: $ods-input-field-height;
-  color: var(--ods-theme-input-text-color);
+  color: var(--ods-semantic-color-content-text);
   font-family: inherit;
   font-size: 1rem;
 }
 
 @mixin ods-input-error() {
-  border-color: var(--ods-theme-input-border-color-invalid);
+  border-color: var(--ods-semantic-color-border-critical);
 }
 
 @mixin ods-input-state() {

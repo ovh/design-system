@@ -2,6 +2,6 @@
   .prompt-input-files {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
-    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   }
 }

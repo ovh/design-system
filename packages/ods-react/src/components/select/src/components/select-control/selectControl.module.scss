@@ -8,16 +8,17 @@
 
     box-sizing: border-box;
     display: inline-flex;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     align-items: center;
     justify-content: space-between;
-    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
-    border-radius: var(--ods-theme-input-border-radius);
-    background-color: var(--ods-theme-background-color);
-    padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
+    background-color: var(--ods-semantic-color-surface-control);
+    padding: var(--ods-semantic-size-space-inset-block-compact) var(--ods-semantic-size-space-inset-inline);
     width: 100%;
     min-height: input.$ods-input-field-height;
-    color: var(--ods-theme-input-text-color);
+    color: var(--ods-semantic-color-content-text);
     font-family: inherit;
     font-size: 1rem;
     cursor: pointer;
@@ -25,11 +26,11 @@
     &:focus {
       @include focus.ods-focus();
 
-      border-color: var(--ods-theme-input-border-color-hover);
+      border-color: var(--ods-semantic-color-interaction-control-hover);
     }
 
     &:not([data-disabled], [data-readonly]):hover {
-      border-color: var(--ods-theme-input-border-color-hover);
+      border-color: var(--ods-semantic-color-interaction-control-hover);
     }
 
     &:not([data-disabled])[data-readonly] {
@@ -47,7 +48,7 @@
     }
 
     &[data-state="open"] {
-      border-color: var(--ods-theme-input-border-color-hover);
+      border-color: var(--ods-semantic-color-interaction-control-hover);
 
       &[data-empty="false"] {
         &[data-placement="bottom-start"] {
@@ -67,7 +68,7 @@
     }
 
     &__icon {
-      color: var(--ods-theme-primary-color);
+      color: var(--ods-semantic-color-content-icon);
       font-size: 1.25rem;
 
       &[data-state="open"] {
@@ -75,7 +76,7 @@
       }
 
       &--disabled {
-        color: var(--ods-theme-text-color-disabled);
+        color: var(--ods-semantic-color-content-disabled);
       }
     }
   }

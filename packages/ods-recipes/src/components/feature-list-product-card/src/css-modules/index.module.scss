@@ -6,24 +6,24 @@
   &__info,
   &__features,
   &__footer {
-    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   }
 
   &__info {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
 
     &__badges {
       display: flex;
       flex-flow: row;
-      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     }
 
     &__description {
       display: flex;
       flex-flow: column;
-      row-gap: var(--ods-theme-row-gap);
+      row-gap: var(--ods-semantic-size-space-gap-block);
     }
 
     &__pricing {
@@ -31,7 +31,7 @@
       flex-flow: column;
 
       &__from {
-        color: var(--ods-theme-text-color);
+        color: var(--ods-semantic-color-content-text);
         font-size: 18px;
         font-weight: 700;
       }
@@ -39,11 +39,11 @@
       &__price {
         display: flex;
         flex-flow: row;
-        column-gap: var(--ods-theme-column-gap);
+        column-gap: var(--ods-semantic-size-space-gap-inline);
         align-items: baseline;
 
         &__amount {
-          color: var(--ods-theme-primary-color);
+          color: var(--ods-semantic-color-content-base);
           font-size: 36px;
           font-weight: 700;
         }
@@ -57,12 +57,12 @@
     &__details {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) / 2);
+      row-gap: calc(var(--ods-semantic-size-space-gap-block) / 2);
 
       &__installation {
         display: flex;
         flex-flow: row;
-        column-gap: calc(var(--ods-theme-column-gap) / 2);
+        column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
       }
     }
 
@@ -70,27 +70,27 @@
       $primary-color: #ff0004;
       $button: &;
 
-      --order-button-color-active: var(--ods-color-critical-700);
-      --order-button-color-hover: var(--ods-color-critical-500);
+      --order-button-color-active: var(--ods-semantic-color-content-on-critical);
+      --order-button-color-hover: var(--ods-semantic-color-content-critical);
       --order-button-text-color: #fff;
 
       display: flex;
       flex-flow: row;
-      column-gap: calc(var(--ods-theme-column-gap) * 2);
+      column-gap: calc(var(--ods-semantic-size-space-gap-inline) * 2);
       align-items: center;
       align-self: center;
       border: 0;
-      border-radius: var(--ods-theme-border-radius);
-      padding: calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-column-gap) * 2) calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-padding-horizontal) / 2);
+      border-radius: var(--ods-semantic-size-radius-container);
+      padding: calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-gap-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-inset-inline) / 2);
       font-size: 16px;
       font-weight: 600;
 
       &:disabled {
-        background: var(--ods-theme-background-color-disabled);
-        color: var(--ods-theme-text-color-disabled);
+        background: var(--ods-semantic-color-surface-disabled);
+        color: var(--ods-semantic-color-content-disabled);
 
         #{$button}__icon {
-          color: var(--ods-theme-text-color-disabled);
+          color: var(--ods-semantic-color-content-disabled);
         }
       }
 
@@ -132,9 +132,9 @@
       }
 
       &__icon {
-        border-radius: calc(var(--ods-theme-border-radius) * .75);
+        border-radius: calc(var(--ods-semantic-size-radius-container) * .75);
         background-color: var(--order-button-text-color);
-        padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+        padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
         color: $primary-color;
         font-size: 18px;
       }
@@ -144,26 +144,26 @@
   &__features {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
     margin: 0;
     list-style-type: "";
 
     &__section {
       display: flex;
       flex-flow: column;
-      row-gap: var(--ods-theme-row-gap);
+      row-gap: var(--ods-semantic-size-space-gap-block);
 
       &__item {
         &__tooltip-trigger {
-          margin-left: calc(var(--ods-theme-column-gap) / 2);
-          color: var(--ods-theme-primary-color);
+          margin-left: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+          color: var(--ods-semantic-color-content-base);
         }
       }
 
       &__items {
         display: flex;
         flex-flow: column;
-        row-gap: var(--ods-theme-row-gap);
+        row-gap: var(--ods-semantic-size-space-gap-block);
         margin: 0;
         padding: 0;
         list-style-type: "";
@@ -171,16 +171,16 @@
         &__item {
           display: flex;
           flex-flow: row;
-          column-gap: calc(var(--ods-theme-column-gap) / 2);
+          column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
           align-items: baseline;
 
           &__tooltip-trigger {
-            margin-left: calc(var(--ods-theme-column-gap) / 2);
-            color: var(--ods-theme-primary-color);
+            margin-left: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+            color: var(--ods-semantic-color-content-base);
           }
 
           &__icon {
-            color: var(--ods-theme-success-color);
+            color: var(--ods-semantic-color-content-success);
           }
         }
       }
@@ -189,6 +189,6 @@
 
   &__features,
   &__footer {
-    background-color: var(--ods-theme-background-color-readonly);
+    background-color: var(--ods-semantic-color-surface-readonly);
   }
 }

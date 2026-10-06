@@ -34,7 +34,7 @@
     &[data-disabled] {
       @include state.ods-is-disabled();
 
-      opacity: 0.5;
+      opacity: var(--ods-semantic-opacity-disabled);
     }
   }
 }

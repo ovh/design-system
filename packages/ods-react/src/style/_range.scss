@@ -1,14 +1,14 @@
-$ods-range-background-color: var(--ods-theme-track-background-color);
-$ods-range-background-color-active: var(--ods-theme-progress-background-color);
+$ods-range-background-color: var(--ods-semantic-color-surface-neutral-minimal);
+$ods-range-background-color-active: var(--ods-semantic-color-surface-base);
 $ods-range-track-height: 8px;
 $ods-range-thumb-size: 20px;
-$ods-range-label-padding-top: var(--ods-theme-padding-vertical);
+$ods-range-label-padding-top: var(--ods-semantic-size-space-inset-block);
 
 @mixin ods-range-thumb() {
-  --ods-range-thumb-background-color: var(--ods-color-neutral-000);
+  --ods-range-thumb-background-color: var(--ods-semantic-color-surface-page);
 
   box-sizing: border-box;
-  border: 1px solid var(--ods-theme-input-border-color);
+  border: 1px solid var(--ods-semantic-color-border-control);
   border-radius: 50%;
   background-color: var(--ods-range-thumb-background-color);
   width: $ods-range-thumb-size;
@@ -16,7 +16,7 @@ $ods-range-label-padding-top: var(--ods-theme-padding-vertical);
 }
 
 @mixin ods-range-track($filled: false) {
-  --ods-range-track-border-radius: calc(var(--ods-theme-border-radius) / 2);
+  --ods-range-track-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
 
   border-radius: var(--ods-range-track-border-radius);
   height: $ods-range-track-height;

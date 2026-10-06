@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 822
+tokens: 833
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -77,7 +77,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-upload-item-background-color-hover` | `var(--ods-color-primary-050)` |
-| `--ods-file-upload-item-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-file-upload-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-file-upload-padding-vertical` | `var(--ods-theme-padding-vertical)` |
+| `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-file-upload-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-file-upload-padding-vertical` | `var(--ods-semantic-size-space-inset-block)` |

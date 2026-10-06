@@ -1,4 +1,4 @@
 @mixin ods-focus() {
-  outline: var(--ods-theme-outline-style) var(--ods-theme-outline-width) var(--ods-theme-outline-color);
-  outline-offset: var(--ods-theme-outline-offset);
+  outline: var(--ods-semantic-border-focus-style) var(--ods-semantic-border-focus-thickness) var(--ods-semantic-color-focus);
+  outline-offset: var(--ods-semantic-border-focus-offset);
 }

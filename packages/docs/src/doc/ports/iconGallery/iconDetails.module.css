@@ -7,7 +7,7 @@
 .icon-details__header {
   display: grid;
   grid-template-columns: 1fr max-content;
-  column-gap: var(--ods-theme-column-gap);
+  column-gap: var(--ods-semantic-size-space-gap-inline);
   align-items: start;
   justify-content: space-between;
 }
@@ -16,7 +16,7 @@
   display: flex;
   flex-flow: row;
   grid-column: span 2;
-  column-gap: calc(var(--ods-theme-column-gap) / 2);
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 }
 
 /* Surfaces read from the neutral ramp, which the shell remaps in dark — the
@@ -33,7 +33,7 @@
 .icon-details__colors {
   display: flex;
   flex-flow: row;
-  column-gap: calc(var(--ods-theme-column-gap) * 2);
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) * 2);
   justify-content: center;
 }
 

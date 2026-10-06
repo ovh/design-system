@@ -10,6 +10,7 @@
     border-right: 0;
     border-left: 0;
     border-radius: 0;
+    box-shadow: none;
     width: 100%;
     text-align: center;
 
@@ -20,7 +21,7 @@
     &:not([data-invalid], :disabled, :read-only) {
       &:focus,
       &:hover {
-        border-color: var(--ods-theme-input-border-color-hover);
+        border-color: var(--ods-semantic-color-interaction-control-hover);
       }
     }
 

@@ -1,13 +1,13 @@
 @layer ods-organisms {
   .file-upload {
-    --ods-file-upload-item-background-color-hover: var(--ods-color-primary-050);
-    --ods-file-upload-item-border-radius: calc(var(--ods-theme-border-radius) / 2);
-    --ods-file-upload-padding-horizontal: var(--ods-theme-padding-horizontal);
-    --ods-file-upload-padding-vertical: var(--ods-theme-padding-vertical);
+    --ods-file-upload-item-background-color-hover: var(--ods-semantic-color-surface-selected);
+    --ods-file-upload-item-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
+    --ods-file-upload-padding-horizontal: var(--ods-semantic-size-space-inset-inline);
+    --ods-file-upload-padding-vertical: var(--ods-semantic-size-space-inset-block);
 
     display: inline-flex;
     flex-flow: column;
-    row-gap: var(--ods-theme-row-gap);
-    color: var(--ods-theme-input-text-color);
+    row-gap: var(--ods-semantic-size-space-gap-block);
+    color: var(--ods-semantic-color-content-text);
   }
 }

@@ -11,7 +11,8 @@
     position: relative;
     border-width: 0;
     border-style: solid;
-    border-radius: var(--ods-theme-input-border-radius);
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
     padding-right: input.$ods-input-actions-padding-right;
     height: input.$ods-input-field-height;
 

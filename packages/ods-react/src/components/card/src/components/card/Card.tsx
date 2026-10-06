@@ -14,7 +14,7 @@ interface CardProp extends ComponentPropsWithRef<'div'> {
 const Card: FC<CardProp> = forwardRef(({
   className,
   children,
-  color = CARD_COLOR.primary,
+  color = CARD_COLOR.neutral,
   ...props
 }, ref): JSX.Element => {
   return (

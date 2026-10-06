@@ -6,7 +6,7 @@
     &__pricing {
       display: flex;
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       align-items: baseline;
       justify-content: space-between;
     }
@@ -14,7 +14,7 @@
     &__details {
       display: flex;
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       justify-content: space-between;
 
       &__price {

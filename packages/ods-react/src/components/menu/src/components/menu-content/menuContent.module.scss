@@ -6,7 +6,7 @@
 
     @include overlay.ods-overlay();
 
-    z-index: calc(var(--ods-theme-overlay-z-index) + var(--layer-index))!important;
+    z-index: calc(var(--ods-semantic-z-index-dropdown) + var(--layer-index))!important;
     outline: none;
     padding: 0;
     overflow: hidden;

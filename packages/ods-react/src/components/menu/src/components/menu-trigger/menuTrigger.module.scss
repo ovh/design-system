@@ -12,12 +12,12 @@
   .menu-submenu-trigger {
     display: flex;
     position: relative;
-    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     align-items: center;
     justify-content: space-between;
     border: none;
     background: transparent;
-    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
     width: 100%;
     text-align: left;
     color: inherit;
@@ -28,7 +28,7 @@
     &:hover,
     &[data-highlighted],
     &[data-highlighted]:hover {
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight-hover);
     }
 
     &__label {

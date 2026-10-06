@@ -4,7 +4,7 @@
   .command-list {
     display: flex;
     flex-direction: column;
-    gap: calc(var(--ods-theme-padding-vertical) / 2);
+    gap: calc(var(--ods-semantic-size-space-inset-block) / 2);
 
     &__wrapper {
       @include scroll.hide-scrollbar();

@@ -47,14 +47,14 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
       <Dialog.Backdrop
         className={ style['modal-backdrop'] }
         style={{
-          zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)',
+          zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)',
           ...(backdropStyle || {}),
         }} />
 
       <Dialog.Positioner
         className={ style['modal-positioner'] }
         style={{
-          zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)',
+          zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 2)',
           ...(positionerStyle || {}),
         }}>
         <Dialog.Content

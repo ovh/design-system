@@ -7,10 +7,10 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding: 0 var(--ods-theme-input-padding-horizontal);
-    min-height: var(--ods-theme-input-min-height);
+    padding: 0 var(--ods-semantic-size-space-inset-inline);
+    min-height: var(--ods-semantic-size-block-size-md);
     white-space: break-spaces;
-    color: var(--ods-theme-input-text-color);
+    color: var(--ods-semantic-color-content-text);
     cursor: pointer;
 
     &--disabled {
@@ -18,15 +18,19 @@
     }
 
     &--highlighted {
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight-hover);
     }
 
     &--new {
-      border-bottom: solid var(--ods-theme-input-border-width) var(--ods-theme-split-border-color);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
     }
 
-    &--selected:not(#{$option}--highlighted) {
-      background-color: var(--ods-theme-input-option-background-color-selected);
+    &--selected {
+      background-color: var(--ods-semantic-color-surface-selected);
+
+      &#{$option}--highlighted {
+        background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
+      }
     }
 
     &__new-item {
@@ -34,7 +38,7 @@
       flex-flow: row;
       column-gap: var(--ods-combobox-option-new-column-gap);
       align-items: center;
-      color: var(--ods-theme-primary-color);
+      color: var(--ods-semantic-color-content-base);
       font-weight: 600;
     }
   }

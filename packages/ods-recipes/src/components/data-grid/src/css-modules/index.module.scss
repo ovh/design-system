@@ -1,18 +1,18 @@
 .data-grid {
   display: flex;
   flex-flow: column;
-  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
 
   &__toolbar {
     display: flex;
     flex-flow: row;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     justify-content: space-between;
 
     &__search {
       display: flex;
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
     }
   }
 

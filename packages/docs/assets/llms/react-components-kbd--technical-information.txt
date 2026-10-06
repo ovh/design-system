@@ -4,7 +4,7 @@ slug: kbd
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 182
+tokens: 209
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--technical-information.txt
 ---
 
@@ -20,11 +20,11 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-kbd-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-kbd-border-bottom-width` | `calc(var(--ods-theme-border-width) * 2)` |
-| `--ods-kbd-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-kbd-border-color` | `var(--ods-color-neutral-200)` |
-| `--ods-kbd-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-kbd-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-kbd-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-kbd-text-color` | `var(--ods-color-neutral-700)` |
+| `--ods-kbd-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-kbd-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-kbd-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-kbd-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-kbd-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-kbd-text-color` | `var(--ods-semantic-color-content-on-neutral)` |

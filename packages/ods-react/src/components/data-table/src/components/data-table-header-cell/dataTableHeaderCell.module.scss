@@ -7,16 +7,16 @@
     &__content {
       display: flex;
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       justify-content: space-between;
       text-align: left;
     }
 
     &__sort-icon {
-      color: var(--ods-theme-text-color-disabled);
+      color: var(--ods-semantic-color-content-disabled);
 
       &--sorted {
-        color: var(--ods-theme-primary-color);
+        color: var(--ods-semantic-color-content-icon);
       }
     }
   }

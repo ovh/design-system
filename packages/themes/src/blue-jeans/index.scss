@@ -1,0 +1,32 @@
+:root {
+  /* --- */
+  --ods-palette-brand-50: var(--ods-palette-blue-50);
+  --ods-palette-brand-100: var(--ods-palette-blue-100);
+  --ods-palette-brand-200: var(--ods-palette-blue-200);
+  --ods-palette-brand-300: var(--ods-palette-blue-300);
+  --ods-palette-brand-400: var(--ods-palette-blue-400);
+  --ods-palette-brand-500: var(--ods-palette-blue-500);
+  --ods-palette-brand-600: var(--ods-palette-blue-600);
+  --ods-palette-brand-700: var(--ods-palette-blue-700);
+  --ods-palette-brand-800: var(--ods-palette-blue-800);
+  --ods-palette-brand-900: var(--ods-palette-blue-900);
+  --ods-palette-twilight: #4d5592;
+
+  /* --- */
+  --ods-semantic-color-surface-backdrop: var(--ods-palette-brand-500);
+  --ods-semantic-color-content-heading: var(--ods-palette-brand-800);
+  --ods-semantic-color-content-group-label: var(--ods-palette-brand-800);
+  --ods-semantic-color-content-icon: var(--ods-palette-brand-500);
+  --ods-semantic-color-content-text: var(--ods-palette-twilight);
+
+  /*
+   * The brand draws its containers with a line, not with elevation. Off, not absent: Card and
+   * Tile still carry the token, so a future theme turns elevation back on by setting a value
+   * here and nothing else.
+   *
+   * `0 0 #0000` rather than `none`, because Tile composes this token with the box-shadow it uses
+   * to draw its outline, and `none` is not a valid member of a shadow list - it would invalidate
+   * the whole declaration and take the outline down with it.
+   */
+  --ods-semantic-shadow-raised: 0 0 #0000;
+}

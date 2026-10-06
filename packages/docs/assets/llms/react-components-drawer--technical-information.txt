@@ -4,7 +4,7 @@ slug: drawer
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 581
+tokens: 587
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
 ---
 
@@ -61,6 +61,6 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-drawer-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-drawer-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-drawer-z-index` | `calc(calc(var(--ods-theme-overlay-z-index) + 1) + 1)` |
+| `--ods-drawer-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-drawer-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-drawer-z-index` | `calc(calc(var(--ods-semantic-z-index-dropdown) + 1) + 1)` |

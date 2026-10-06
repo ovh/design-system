@@ -13,14 +13,14 @@
 
   display: grid;
   grid-template-columns: max-content 1fr 1fr 1fr;
-  grid-column-gap: var(--ods-theme-column-gap);
+  grid-column-gap: var(--ods-semantic-size-space-gap-inline);
 }
 
 .roadmap__section {
   padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
   writing-mode: vertical-rl;
   text-align: center;
-  color: #fff;
+  color: var(--roadmap-components-color);
   font-weight: bold;
 }
 

@@ -6,9 +6,9 @@
   .combobox-control {
     $control: &;
 
-    --ods-combobox-control-column-gap: calc(var(--ods-theme-column-gap) / 2);
-    --ods-combobox-control-row-gap: calc(var(--ods-theme-row-gap) / 2);
-    --ods-combobox-control-padding-vertical: calc(var(--ods-theme-input-padding-vertical) / 2);
+    --ods-combobox-control-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+    --ods-combobox-control-row-gap: calc(var(--ods-semantic-size-space-gap-block) / 2);
+    --ods-combobox-control-padding-vertical: calc(var(--ods-semantic-size-space-inset-block-compact) / 2);
 
     box-sizing: border-box;
     display: flex;
@@ -17,16 +17,18 @@
     gap: var(--ods-combobox-control-row-gap) var(--ods-combobox-control-column-gap);
     align-items: center;
     margin: 0;
-    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
-    border-radius: var(--ods-theme-input-border-radius);
-    padding: var(--ods-combobox-control-padding-vertical) var(--ods-theme-input-padding-horizontal);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
+    background-color: var(--ods-semantic-color-surface-control);
+    padding: var(--ods-combobox-control-padding-vertical) var(--ods-semantic-size-space-inset-inline);
     width: 100%;
-    min-height: var(--ods-theme-input-min-height);
+    min-height: var(--ods-semantic-size-block-size-md);
 
     &:not(#{$control}--invalid, #{$control}--disabled, #{$control}--read-only) {
       &:hover,
       &#{$control}--focused {
-        border-color: var(--ods-theme-input-border-color-hover);
+        border-color: var(--ods-semantic-color-interaction-control-hover);
       }
     }
 
@@ -43,16 +45,16 @@
     }
 
     &--open-bottom {
-      border-radius: var(--ods-theme-input-border-radius) var(--ods-theme-input-border-radius) 0 0;
+      border-radius: var(--ods-semantic-size-radius-control) var(--ods-semantic-size-radius-control) 0 0;
     }
 
     &--open-top {
-      border-radius: 0 0 var(--ods-theme-input-border-radius) var(--ods-theme-input-border-radius);
+      border-radius: 0 0 var(--ods-semantic-size-radius-control) var(--ods-semantic-size-radius-control);
     }
 
     &--read-only {
-      border-color: var(--ods-theme-border-color-readonly);
-      background-color: var(--ods-theme-background-color-readonly);
+      border-color: var(--ods-semantic-color-border-readonly);
+      background-color: var(--ods-semantic-color-surface-readonly);
     }
 
     &__tag {
@@ -72,9 +74,10 @@
         flex: 1;
         outline: none;
         border: none;
+        box-shadow: none;
         background: transparent;
         padding: 0;
-        min-height: calc(var(--ods-theme-input-min-height) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-theme-input-border-width) * 2));
+        min-height: calc(var(--ods-semantic-size-block-size-md) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-semantic-border-thickness) * 2));
       }
 
       &__caret {
@@ -86,11 +89,11 @@
         padding: 0;
         width: $caret-size;
         height: $caret-size;
-        color: var(--ods-theme-primary-color);
+        color: var(--ods-semantic-color-content-icon);
         cursor: pointer;
 
         &--disabled {
-          color: var(--ods-theme-text-color-disabled);
+          color: var(--ods-semantic-color-content-disabled);
           cursor: not-allowed;
         }
 

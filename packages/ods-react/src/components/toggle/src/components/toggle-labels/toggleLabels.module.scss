@@ -14,7 +14,7 @@
     &__label-off {
       display: none;
       position: absolute;
-      transition: color 0.2s;
+      transition: color var(--ods-semantic-motion-duration-medium);
     }
 
     &__label-on {
@@ -26,7 +26,7 @@
       }
 
       &--disabled {
-        color: var(--ods-theme-text-color-disabled);
+        color: var(--ods-semantic-color-content-disabled);
       }
     }
 
@@ -41,7 +41,7 @@
       }
 
       &--disabled {
-        color: var(--ods-theme-text-color-disabled);
+        color: var(--ods-semantic-color-content-disabled);
       }
     }
   }

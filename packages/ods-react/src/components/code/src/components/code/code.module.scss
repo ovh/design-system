@@ -5,19 +5,19 @@ $ods-code-secondary-color: #000;
 
 @layer ods-organisms {
   .code {
-    --ods-code-border-radius: calc(var(--ods-theme-border-radius) / 2);
-    --ods-code-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 1.5);
-    --ods-code-padding-vertical: calc(var(--ods-theme-padding-vertical) * 1.5);
+    --ods-code-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
+    --ods-code-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
+    --ods-code-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) * 1.5);
     --ods-code-primary-color: #{$ods-code-primary-color};
     --ods-code-secondary-color: #{$ods-code-secondary-color};
     --ods-code-trigger-background-color: #{$ods-code-primary-color};
-    --ods-code-trigger-background-color-active: var(--ods-color-neutral-700);
-    --ods-code-trigger-background-color-hover: var(--ods-color-neutral-600);
+    --ods-code-trigger-background-color-active: var(--ods-semantic-color-interaction-neutral-hover);
+    --ods-code-trigger-background-color-hover: var(--ods-semantic-color-surface-neutral);
     --ods-code-trigger-outline-color: #{$ods-code-primary-color};
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     justify-content: space-between;
     border-radius: var(--ods-code-border-radius);
     background-color: var(--ods-code-secondary-color);
@@ -36,13 +36,14 @@ $ods-code-secondary-color: #000;
       white-space: pre-wrap;
 
       &__code {
-        font-family: var(--ods-theme-font-family-code);
+        font-family: var(--ods-semantic-font-family-code);
       }
     }
 
     &__clipboard {
       position: sticky;
       top: var(--ods-code-padding-vertical);
+      z-index: var(--ods-semantic-z-index-sticky);
       background-color: transparent;
       padding: 0;
 

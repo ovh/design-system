@@ -4,13 +4,13 @@
 @layer ods-atoms {
   .switch-item {
     --ods-switch-item-background-color: inherit;
-    --ods-switch-item-background-color-checked: var(--ods-color-primary-600);
-    --ods-switch-item-background-color-checked-disabled: var(--ods-color-neutral-500);
-    --ods-switch-item-background-color-hover: var(--ods-color-primary-100);
-    --ods-switch-item-text-color: var(--ods-color-primary-500);
-    --ods-switch-item-text-color-checked: var(--ods-theme-input-text-color-checked);
+    --ods-switch-item-background-color-checked: var(--ods-semantic-color-interaction-base-hover);
+    --ods-switch-item-background-color-checked-disabled: var(--ods-semantic-color-surface-neutral);
+    --ods-switch-item-background-color-hover: var(--ods-semantic-color-interaction-highlight-hover);
+    --ods-switch-item-text-color: var(--ods-semantic-color-content-text);
+    --ods-switch-item-text-color-checked: var(--ods-semantic-color-content-on-solid);
 
-    transition: background-color .3s, color .3s;
+    transition: background-color var(--ods-semantic-motion-duration-slow), color var(--ods-semantic-motion-duration-slow);
     border: none;
     border-radius: var(--ods-switch-border-radius);
     background-color: var(--ods-switch-item-background-color);

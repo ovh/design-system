@@ -5,7 +5,7 @@
     $trigger: &;
 
     display: flex;
-    gap: var(--ods-theme-column-gap);
+    gap: var(--ods-semantic-size-space-gap-inline);
     align-items: center;
     border: solid var(--ods-accordion-border-width) transparent;
     background: transparent;
@@ -35,8 +35,8 @@
       }
 
       #{$trigger}__icon {
-        transition: transform 0.2s ease-in-out;
-        color: var(--ods-theme-primary-color);
+        transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
+        color: var(--ods-semantic-color-content-icon);
         font-size: 1.25rem;
       }
     }

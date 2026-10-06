@@ -8,26 +8,26 @@
 /* Honor reduced-motion globally: no smooth scroll, no long transitions. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
+    transition-duration: .01ms !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
   }
 }
 
 /* Skip link: off-screen until focused. */
 .shell__skip {
-  background: var(--ods-theme-background-color);
-  border: 1px solid var(--ods-color-primary-500);
-  border-radius: 4px;
-  color: var(--ods-color-primary-500);
-  left: 8px;
-  padding: 8px 12px;
   position: fixed;
-  top: 8px;
+  top: var(--ods-semantic-size-space-inset-block);
+  left: var(--ods-semantic-size-space-inset-inline);
   transform: translateY(-150%);
-  transition: transform .15s ease;
-  z-index: 1000;
+  transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
+  z-index: calc(var(--ods-semantic-z-index-modal) + 1);
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-base);
+  border-radius: var(--ods-semantic-size-radius-control);
+  background: var(--ods-semantic-color-surface-page);
+  padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+  color: var(--ods-semantic-color-content-base);
 }
 
 .shell__skip:focus {
@@ -36,10 +36,10 @@
 
 /* Base shell: ODS ships tokens but no body-level application. */
 body {
-  background-color: var(--ods-theme-background-color);
-  color: var(--ods-theme-text-color);
-  font-family: var(--ods-theme-font-family);
   margin: 0;
+  background-color: var(--ods-semantic-color-surface-page);
+  color: var(--ods-semantic-color-content-text);
+  font-family: var(--ods-semantic-font-family-body);
 }
 
 .shell {
@@ -50,20 +50,20 @@ body {
 }
 
 .shell__sidebar {
-  border-right: 1px solid var(--ods-color-neutral-200);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
+  border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   height: 100%;
   overflow-y: auto;
-  padding: 16px;
 }
 
 .shell__brand {
-  color: inherit;
   display: block;
-  padding: 4px 8px 0;
   text-decoration: none;
+  color: inherit;
+  color: var(--ods-semantic-color-content-heading);
 }
 
 .shell__brand-logo {
@@ -73,68 +73,81 @@ body {
 }
 
 .shell__select-item {
-  align-items: center;
   display: inline-flex;
-  gap: 6px;
+  column-gap: var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
 }
+
+.shell__upper-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-semantic-size-space-gap-block);
+}
+
 
 .shell__sidebar-selects {
   display: grid;
-  gap: 8px;
-  /* The theme cell hugs its content, the version cell takes the rest;
-     minmax(0) so neither ever overflows the sidebar. */
   grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
 }
 
 .shell__sidebar-selects [data-ods="select-control"] {
+  width: 100%;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
 }
 
 .shell__search-hint {
-  align-items: center;
-  background: none;
-  border: 1px solid var(--ods-color-neutral-200);
-  border-radius: 4px;
-  color: var(--ods-color-neutral-500);
-  cursor: pointer;
   display: flex;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
+  border-radius: var(--ods-semantic-size-radius-control);
+  box-shadow: var(--ods-semantic-shadow-control);
+  background-color: var(--ods-semantic-color-surface-control);
+  padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
+  height: var(--ods-semantic-size-block-size-md);
+  color: var(--ods-semantic-color-content-neutral);
   font-family: inherit;
   font-size: .85rem;
-  gap: 8px;
-  padding: 6px 10px;
+  cursor: pointer;
+}
+
+
+.shell__search-hint:hover {
+  border-color: var(--ods-semantic-color-interaction-control-hover);
 }
 
 .shell__search-option {
-  align-items: center;
   display: flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
   width: 100%;
 }
 
 .shell__search-option-icon {
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
   font-size: 0.8rem;
 }
 
 .shell__search-option-hint {
-  color: var(--ods-color-neutral-500);
-  font-size: 0.78rem;
   margin-left: auto;
-  padding-left: 12px;
+  padding-left: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   white-space: nowrap;
+  color: var(--ods-semantic-color-content-neutral);
+  font-size: 0.78rem;
 }
 
 .shell__search-kbds {
+  display: flex;
+  gap: 3px;
+
   /* baseline, not center: the Kbd caps have a doubled bottom border (keycap
      effect) that optically raises their glyphs — box-centering leaves the
      chip text and the + on visibly different lines. */
   align-items: baseline;
-  display: flex;
-  gap: 3px;
   margin-left: auto;
 }
 
@@ -145,77 +158,81 @@ body {
 .shell__sidebar-footer {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
   margin-top: auto;
 }
 
 .shell__tree-label {
-  align-items: center;
   display: inline-flex;
-  gap: 6px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
+  align-items: center;
 }
 
 .shell__tree-badge {
-  margin-left: 4px;
+  margin-left: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 }
 
 /* Separator between the guides tree and the reference tree. */
 .shell__tree-divider {
-  border-top: 1px solid var(--ods-color-neutral-200);
-  color: var(--ods-color-neutral-500);
-  margin: 8px 0 4px;
-  padding-top: 12px;
+  margin: var(--ods-semantic-size-space-gap-block) 0 calc(var(--ods-semantic-size-space-gap-block) * 2);
+}
+
+.shell__tree-dividerd {
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
   text-transform: uppercase;
   letter-spacing: .04em;
 }
 
 .shell__tree-label--section {
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-medium);
 }
 
 /* Layout only — the look is the ODS Link's own. */
 .shell__github {
-  align-items: center;
   display: inline-flex;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
   font-size: .9rem;
-  gap: 8px;
 }
 
 .shell__main {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100dvh;
+  max-height: 100dvh;
   overflow-y: auto;
 }
 
 .shell__topbar {
-  align-items: center;
-  border-bottom: 1px solid var(--ods-color-neutral-200);
   display: flex;
-  justify-content: space-between;
-  padding: 12px 24px;
+  align-items: center;
+  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }
 
 .shell__dark {
-  align-items: center;
   display: flex;
-  gap: 8px;
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
 }
 
 .sr-only {
+  position: absolute;
   border: 0;
-  clip: rect(0, 0, 0, 0);
+  padding: 0;
+  width: 1px;
   height: 1px;
   overflow: hidden;
-  padding: 0;
-  position: absolute;
   white-space: nowrap;
-  width: 1px;
+  clip: rect(0, 0, 0, 0);
 }
 
 .shell__content {
-  padding: 24px 32px;
+  flex-grow: 1;
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 3) calc(var(--ods-semantic-size-space-inset-inline) * 3);
   width: 100%;
+  overflow: auto;
 }
 
 /* The home route is full-bleed (its background reaches the edges). */
@@ -242,66 +259,131 @@ body {
    transparent computed background. Only an explicit background wins. */
 [data-theme="dark"] input[data-ods="input"],
 [data-theme="dark"] [data-ods="textarea"] {
-  background-color: var(--ods-theme-background-color);
+  background-color: var(--ods-semantic-color-surface-page);
 }
 
+/* Why this block is long, and why it cannot just override the ramps.
+ *
+ * A custom property that references another is substituted on the element the
+ * declaration applies to, and descendants inherit the already-substituted value.
+ * data-theme sits on <body>, while the ODS semantic layer is declared on :root —
+ * so by the time this rule matches, every --ods-semantic-* has ALREADY resolved
+ * against the light palette. Overriding the palette here only reaches tokens
+ * declared further down the tree, which used to be the component tier: it read
+ * the ramps directly, so flipping --ods-color-neutral-* was enough.
+ *
+ * Since the token refactor the component tier reads the semantic layer instead,
+ * so a palette override alone now reaches nothing. Both tiers have to be
+ * restated: the palette for anything resolved below, and every semantic role
+ * that is bound to gray, to the brand ramp or to white.
+ *
+ * The real fix is to move data-theme onto the root element, where one palette
+ * override would carry the whole layer — which is exactly what the scheme axis
+ * will do with data-ods-scheme. Until then this list is the price, and it must
+ * be kept in sync with the gray/brand/white bindings in the theme.
+ */
 [data-theme="dark"] {
+  /* The chrome's ground. Not a --ods-palette-white override: white also drives
+     content-on-solid and the toggle thumb, which must stay white on dark. */
+  --docs-dark-ground: #1b1c1d;
+  --docs-dark-ink: #e6e8f5;
 
-  --ods-theme-background-color: #1b1c1d;
-  --ods-theme-heading-text-color: #e6e8f5;
-  --ods-theme-text-color: #e6e8f5;
+  /* --- tier 1: the neutral ramp, inverted. The legacy 025 and 075 rungs are
+     gone, and the old 050 value carries over onto the new 50. */
+  --ods-palette-gray-50: #26282a;
+  --ods-palette-gray-100: #313437;
+  --ods-palette-gray-200: #3c3f43;
+  --ods-palette-gray-300: #4c5054;
+  --ods-palette-gray-400: #6c7176;
+  --ods-palette-gray-500: #9298a0;
+  --ods-palette-gray-600: #aeb4bc;
+  --ods-palette-gray-700: #c9ced4;
+  --ods-palette-gray-800: #e0e3ea;
+  --ods-palette-gray-900: #f0f2f7;
 
-  --ods-color-neutral-000: #1b1c1d;
-  --ods-color-neutral-025: #202224;
-  --ods-color-neutral-050: #26282a;
-  --ods-color-neutral-075: #2b2d30;
-  --ods-color-neutral-100: #313437;
-  --ods-color-neutral-200: #3c3f43;
-  --ods-color-neutral-300: #4c5054;
-  --ods-color-neutral-400: #6c7176;
-  --ods-color-neutral-500: #9298a0;
-  --ods-color-neutral-600: #aeb4bc;
-  --ods-color-neutral-700: #c9ced4;
-  --ods-color-neutral-800: #e0e3ea;
-  --ods-color-neutral-900: #f0f2f7;
+  /* --- tier 1: brand. #0050d7 is too dim on the dark ground for link and
+     ghost-button text; the two light rungs become dark tints so the selected
+     and hover surfaces stay legible under light text. Demos keep the original
+     brand: they render in frames, outside this rule. */
+  --ods-palette-brand-50: #1f3a52;
+  --ods-palette-brand-100: #274a68;
+  --ods-palette-brand-500: #3d8bfd;
+  --ods-palette-brand-600: #2f7bef;
+  --ods-palette-brand-700: #2a6fd8;
 
-  /* Option hover/selected surfaces (TreeView, Select…) are light cyan by
-     default — dark tints so the light text stays legible on them. */
-  --ods-theme-input-option-background-color-hover: #2b2e31;
-  --ods-theme-input-option-background-color-selected: #1f3a52;
-  --ods-theme-input-option-background-color-selected-hover: #274a68;
+  /* --- tier 2: the grounds and the prose. */
+  --ods-semantic-color-surface-page: var(--docs-dark-ground);
+  --ods-semantic-color-surface-raised: var(--docs-dark-ground);
+  --ods-semantic-color-surface-overlay: var(--docs-dark-ground);
+  /* --ods-semantic-color-content-text: var(--docs-dark-ink); */
+  --ods-semantic-color-content-heading: var(--docs-dark-ink);
 
-  /* Derived tokens resolve their var() at :root (light) and inherit frozen —
-     re-declare them here so they pick up the dark text/background. */
-  --ods-theme-input-text-color: var(--ods-theme-text-color);
-  --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
+  /* --- tier 2: every role bound to gray. */
+  --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
+  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
+  --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
+  --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-gray-50);
+  --ods-semantic-color-surface-readonly: var(--ods-palette-gray-50);
+  --ods-semantic-color-surface-disabled: var(--ods-palette-gray-100);
+  --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
+  --ods-semantic-color-content-neutral: var(--ods-palette-gray-600);
+  --ods-semantic-color-content-placeholder: var(--ods-palette-gray-600);
+  --ods-semantic-color-content-disabled: var(--ods-palette-gray-500);
+  --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-700);
+  --ods-semantic-color-border-strong: var(--ods-palette-gray-600);
+  --ods-semantic-color-border-control: var(--ods-palette-gray-300);
+  --ods-semantic-color-border-disabled: var(--ods-palette-gray-200);
+  --ods-semantic-color-border-readonly: var(--ods-palette-gray-50);
+  --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-100);
+  --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-200);
+  --ods-semantic-color-border-neutral-strong: var(--ods-palette-gray-700);
+  --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
+  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
+  --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
+  --ods-semantic-color-chart-axis: var(--ods-palette-gray-300);
+  --ods-semantic-color-chart-grid: var(--ods-palette-gray-200);
+  --ods-semantic-color-chart-tick: var(--ods-palette-gray-700);
+  --ods-semantic-color-chart-legend: var(--ods-palette-gray-700);
 
-  /* Brighten primary for dark: ghost-button text and links derive from
-     primary-500, and #0050d7 is too dim on the dark surface. Demos keep the
-     original primary (they render in frames, outside this rule). */
-  --ods-color-primary-500: #3d8bfd;
-  --ods-color-primary-600: #2f7bef;
-  --ods-color-primary-700: #2a6fd8;
+  /* --- tier 2: every role bound to the brand ramp. */
+  --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
+  --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
+  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
+  --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-100);
+  --ods-semantic-color-content-base: var(--ods-palette-brand-500);
+  --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
+  --ods-semantic-color-content-brand: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-base: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-600);
+  --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
+  --ods-semantic-color-focus: var(--ods-palette-brand-500);
 
-  /* Link (ODS anchor) colours are derived tokens resolved at :root — like the
-     input text, re-declare them so they pick up the brightened primaries
-     above instead of the frozen #0050d7. */
-  --ods-theme-anchor-text-color: var(--ods-color-primary-500);
-  --ods-theme-anchor-text-color-hover: var(--ods-color-primary-600);
-  --ods-theme-anchor-text-color-visited: var(--ods-color-primary-700);
+  /* The selected surfaces are dark tints here, so the text on them inverts too:
+     the light-theme bindings are near-black. */
+  --ods-semantic-color-content-on-selected: var(--docs-dark-ink);
+  --ods-semantic-color-content-on-brand-subtle: var(--docs-dark-ink);
+
+  /* Left alone on purpose: surface-code and content-on-code (already a dark
+     ground with light text), content-on-solid and surface-thumb (white belongs
+     on a solid fill in both schemes), and everything bound to red, green or
+     orange - a status colour keeps its hue. */
 }
 
 /* ——— Narrow layout (keep in sync with NARROW_QUERY in Shell.tsx) ———
    The sidebar column disappears (Shell.tsx swaps it for a navigation drawer
    opened from the topbar) and the content column takes the full width. */
-@media (max-width: 1000px) {
+@media (width <= 1000px) {
   .shell {
     grid-template-columns: 1fr;
   }
 
   .shell__topbar {
-    gap: 8px;
-    padding: 8px 12px;
+    gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+    padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
   }
 
   /* The page title can be long (component names, guide titles): let it
@@ -314,52 +396,54 @@ body {
   }
 
   .shell__content {
-    padding: 16px;
+    padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   }
 }
 
 /* Navigation drawer (narrow layout): same content as the sidebar. */
 .shell__drawer {
+  padding: 0;
   width: min(320px, 88vw);
+  
 }
 
 .shell__drawer-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   height: 100%;
   overflow-y: auto;
-  padding: 16px;
 }
 
 .shell__drawer-close {
   align-self: flex-end;
-  margin-bottom: -8px;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) * -1);
 }
 
 .shell__error {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
+  align-items: center;
   justify-content: center;
+  padding: calc(var(--ods-semantic-size-space-inset-block) * 4) calc(var(--ods-semantic-size-space-inset-inline) * 4);
   min-height: 100dvh;
-  padding: 32px;
   text-align: center;
 }
 
 .shell__error .shell__brand-logo {
-  margin-bottom: 16px;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) * 2);
   width: 180px;
 }
 
 .shell__error-detail {
-  color: var(--ods-color-neutral-500);
-  font-family: var(--ods-theme-font-family-code, monospace);
   max-width: 640px;
+  color: var(--ods-semantic-color-content-neutral);
+  font-family: var(--ods-semantic-font-family-code, monospace);
 }
 
 .shell__error-home {
-  color: var(--ods-color-primary-500);
-  margin-top: 8px;
+  margin-top: var(--ods-semantic-size-space-gap-block);
+  color: var(--ods-semantic-color-content-base);
 }

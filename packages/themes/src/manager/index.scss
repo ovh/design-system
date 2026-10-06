@@ -1,0 +1,33 @@
+:root {
+  /* --- */
+  --ods-palette-navy-50: #edf0f7;
+  --ods-palette-navy-100: #d8dcf0;
+  --ods-palette-navy-200: #bec5e3;
+  --ods-palette-navy-300: #6e7eb5;
+  --ods-palette-navy-400: #4e5e9e;
+  --ods-palette-navy-500: #3a4a87;
+  --ods-palette-navy-600: #2b3870;
+  --ods-palette-navy-700: #1e2858;
+  --ods-palette-navy-800: #131a3f;
+  --ods-palette-navy-900: #0a1028;
+
+  /* --- */
+  --ods-palette-brand-50: var(--ods-palette-navy-50);
+  --ods-palette-brand-100: var(--ods-palette-navy-100);
+  --ods-palette-brand-200: var(--ods-palette-navy-200);
+  --ods-palette-brand-300: var(--ods-palette-navy-300);
+  --ods-palette-brand-400: var(--ods-palette-navy-400);
+  --ods-palette-brand-500: var(--ods-palette-navy-500);
+  --ods-palette-brand-600: var(--ods-palette-navy-600);
+  --ods-palette-brand-700: var(--ods-palette-navy-700);
+  --ods-palette-brand-800: var(--ods-palette-navy-800);
+  --ods-palette-brand-900: var(--ods-palette-navy-900);
+
+  /* --- */
+  --ods-semantic-color-content-heading: var(--ods-palette-brand-800);
+  --ods-semantic-color-content-text: var(--ods-palette-brand-500);
+  --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-brand-50);
+  --ods-semantic-size-radius-control: 4.8px;
+  --ods-semantic-size-radius-overlay: 4.8px;
+  --ods-semantic-size-radius-container: 8.4px;
+}

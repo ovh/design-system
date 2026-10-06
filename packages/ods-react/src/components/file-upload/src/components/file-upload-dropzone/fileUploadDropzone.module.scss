@@ -4,7 +4,7 @@
   .file-upload-dropzone {
     display: flex;
     flex-flow: column;
-    row-gap: var(--ods-theme-row-gap);
+    row-gap: var(--ods-semantic-size-space-gap-block);
 
     &__rules {
       display: flex;
@@ -17,10 +17,10 @@
 
       display: flex;
       flex-flow: column;
-      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
       align-items: center;
-      border: dashed 1px var(--ods-theme-input-border-color);
-      border-radius: calc(var(--ods-theme-border-radius) / 2);
+      border: dashed 1px var(--ods-semantic-color-border-control);
+      border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
       padding: calc(var(--ods-file-upload-padding-vertical) * 3) calc(var(--ods-file-upload-padding-horizontal) * 3);
 
       &--compact {
@@ -31,7 +31,7 @@
       }
 
       &--dragging {
-        background-color: var(--ods-theme-background-color-drag-over);
+        background-color: var(--ods-semantic-color-surface-drag-over);
       }
 
       &--disabled {
@@ -43,17 +43,17 @@
       }
 
       &--invalid#{$zone}--invalid {
-        border-color: var(--ods-theme-input-border-color-invalid);
+        border-color: var(--ods-semantic-color-border-critical);
       }
 
       &__icon {
-        color: var(--ods-theme-primary-color);
+        color: var(--ods-semantic-color-content-base);
         font-size: 2rem;
       }
     }
 
     &__error {
-      color: var(--ods-theme-input-text-color-invalid);
+      color: var(--ods-semantic-color-content-critical);
       font-size: 0.75rem;
       font-weight: 600;
     }

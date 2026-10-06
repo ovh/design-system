@@ -29,7 +29,7 @@ const TooltipContent: FC<TooltipContentProp> = forwardRef(({
   return (
     <Portal disabled={ !createPortal }>
       <Tooltip.Positioner style={{
-        zIndex: 'var(--ods-theme-overlay-z-index)',
+        zIndex: 'var(--ods-semantic-z-index-dropdown)',
         ...(positionerStyle || {}),
       }}>
         <Tooltip.Content

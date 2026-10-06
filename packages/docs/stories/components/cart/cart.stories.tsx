@@ -80,7 +80,7 @@ const FullExample = () => (
         <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
       </div>
 
-      <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+      <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-gap-block) * 2)' }} />
     </CartExtraContent>
 
     <CartTotal
@@ -107,7 +107,7 @@ export const AnatomyTech: Story = {
     <div style={{
       display: 'flex',
       alignItems: 'start',
-      gap: 'var(--ods-theme-row-gap) var(--ods-theme-column-gap)',
+      gap: 'var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline)',
     }}>
       <FullExample />
 
@@ -253,7 +253,7 @@ export const Full: Story = {
           <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
         </div>
 
-        <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+        <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
       </CartExtraContent>
 
       <CartTotal
@@ -347,7 +347,7 @@ export const Mobile: Story = {
           <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
         </div>
 
-        <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+        <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
       </CartExtraContent>
 
       <CartTotal

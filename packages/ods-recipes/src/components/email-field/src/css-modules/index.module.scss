@@ -14,7 +14,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--ods-theme-background-color-readonly);
+      background-color: var(--ods-semantic-color-surface-readonly);
       width: 30px;
       height: 100%;
     }
@@ -28,7 +28,7 @@
   &__helper {
     &__list {
       margin: 0;
-      padding: 0 calc(var(--ods-theme-padding-horizontal) * 2);
+      padding: 0 calc(var(--ods-semantic-size-space-inset-inline) * 2);
     }
   }
 }

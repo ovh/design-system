@@ -1,5 +1,5 @@
 /* The OVHcloud Design System wordmark, ported from the Storybook brand addon.
-   fill=currentColor so it follows the shell text color in both themes. */
+   fill=currentColor so it takes the brand color in both themes. */
 const BrandLogo = () => (
   <svg
     aria-hidden

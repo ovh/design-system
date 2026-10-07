@@ -70,6 +70,7 @@ body {
   display: flex;
   margin: auto;
   width: 150px;
+  color: var(--ods-theme-brand-color);
 }
 
 .shell__select-item {

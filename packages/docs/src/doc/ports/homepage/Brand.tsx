@@ -1,4 +1,4 @@
-/* fill=currentColor: the wordmark follows the shell text color in both themes
+/* fill=currentColor: the wordmark takes the brand color in both themes
    (the Storybook ThemeApplier plumbing is gone). */
 const Brand = () => {
   return (

@@ -1,5 +1,6 @@
 {
   "name": "@ovhcloud/ods-mcp",
+  "mcpName": "io.github.ovh/ods-mcp",
   "version": "19.7.3",
   "description": "MCP server exposing the OVHcloud Design System documentation to AI assistants",
   "author": "OVH SAS",
@@ -18,7 +19,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "build:ci": "pnpm run build:prod",

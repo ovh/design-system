@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2713
+tokens: 2723
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -126,6 +126,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-theme-input-text-color` | `var(--ods-theme-text-color)` |
 | `--ods-theme-input-text-color-checked` | `var(--ods-theme-background-color)` |
 | `--ods-theme-input-text-color-invalid` | `#bf0020` |
+| `--ods-theme-input-width` | `280px` |
 
 ## Color Palettes
 

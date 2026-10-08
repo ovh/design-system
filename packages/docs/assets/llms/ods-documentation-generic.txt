@@ -2091,7 +2091,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2713
+tokens: 2723
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -2213,6 +2213,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-theme-input-text-color` | `var(--ods-theme-text-color)` |
 | `--ods-theme-input-text-color-checked` | `var(--ods-theme-background-color)` |
 | `--ods-theme-input-text-color-invalid` | `#bf0020` |
+| `--ods-theme-input-width` | `280px` |
 
 ## Color Palettes
 
@@ -5031,7 +5032,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 750
+tokens: 1235
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5048,7 +5049,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The public API of the components is **unchanged**: same props, same refs, same composition. Moving to React 19 requires **no ODS-related code change** on your side. The only visible change is the default width of form fields: see **Form fields share one default width** below if your layout relied on fields filling their container.
 
 ## If you stay on React 18
 
@@ -5119,6 +5120,50 @@ Then reinstall and verify a single version is resolved:
 npm ls @types/react
 # or: pnpm why @types/react
 ```
+
+## Form fields share one default width
+
+Every form field now ships the same default width, so mixed fields line up in a form out of the box:
+
+- **Input** (including the password type)
+- **Textarea**
+- **Clipboard**
+- **Select**
+- **Combobox**
+- **Datepicker** (input and calendar trigger together)
+- **PhoneNumber** (country select and input together)
+- **Timepicker** (time input and timezone select together)
+
+The default is **280px**, capped at **100%** of the container so narrow layouts never overflow.
+
+In v19, **Select** and **Combobox** filled their container, and any field placed inside a **FormField** stretched to its width. This is no longer the case. No prop, ref or composition has changed.
+
+**To get the v19 behavior back**, set `width: 100%` on the **root** of the field. Never set it on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`: the root now carries the width and the control only fills it.
+
+```css
+[data-ods="select"],
+[data-ods="combobox"],
+[data-ods="phone-number"],
+[data-ods="timepicker"],
+[data-ods="clipboard"],
+[data-ods="textarea"] {
+  width: 100%;
+}
+```
+
+For **Input** and **Datepicker**, pass a `className` to the component (`Input`, `DatepickerControl`) instead: their root carries no `data-ods` attribute (`[data-ods="input"]` and `[data-ods="datepicker-control"]` target the native `<input>`, not the root).
+
+To change the default width of every field at once, override the theme token:
+
+```css
+:root {
+  --ods-theme-input-width: 320px;
+}
+```
+
+**Quantity** and **QueryFilter** keep their own size and are not affected.
+
+`PhoneNumberControl` no longer declares `width: inherit`: it flexes into the space the country select leaves, so an explicit width set on the control is now overridden by its `flex-grow`. Size the **PhoneNumber** root instead.
 
 ## Bundler & framework notes
 

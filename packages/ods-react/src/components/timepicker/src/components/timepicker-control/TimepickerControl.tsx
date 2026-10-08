@@ -1,7 +1,9 @@
+import classNames from 'classnames';
 import { type ChangeEvent, type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import { type TimepickerInputProp, useTimepicker } from '../../contexts/useTimepicker';
+import style from './timepickerControl.module.scss';
 
 interface TimepickerControlProp extends TimepickerInputProp {}
 
@@ -39,7 +41,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
   return (
     <Input
       aria-labelledby={ fieldContext?.labelId }
-      className={ className }
+      className={ classNames(style['timepicker-control'], className) }
       data-ods="timepicker-control"
       ref={ ref }
       { ...props }

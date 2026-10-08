@@ -8,6 +8,7 @@
     $input: &;
 
     @include input.ods-input();
+    @include input.ods-input-width();
 
     display: inline-flex;
     flex-flow: row;

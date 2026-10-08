@@ -6,6 +6,7 @@
 
     @include input.ods-input();
     @include input.ods-input-state();
+    @include input.ods-input-width();
 
     height: auto;
     resize: none;

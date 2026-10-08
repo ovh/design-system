@@ -4,7 +4,7 @@ slug: select
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1186
+tokens: 1211
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--documentation.txt
 ---
 
@@ -66,7 +66,7 @@ The order of items or options in the list should be sorted as following, dependi
 
 **Select** should be vertically aligned with other form components on a same page.
 
-It has a width by default, but it can widen to match its container.
+It shares the default width of every form field (280px, capped to its container). To widen it, set `width: 100%` on the **Select** root, not on the **SelectControl**.
 
 ## Behavior
 

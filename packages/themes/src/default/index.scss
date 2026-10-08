@@ -170,6 +170,7 @@
   --ods-theme-input-text-color: var(--ods-theme-text-color);
   --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
   --ods-theme-input-text-color-invalid: #{var.$ods-color-critical-500};
+  --ods-theme-input-width: #{var.$ods-form-element-input-width};
 
   // Chart colors
   --ods-theme-chart-background-color: var(--ods-theme-background-color);

@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+/* The style select rides along its row: content-sized, not the uniform field default. */
+.theme-generator-input [data-ods='select'] {
+  width: auto;
+}
+
 .theme-generator-input label {
   font-weight: normal;
 }

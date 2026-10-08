@@ -50,7 +50,7 @@ That is all. On the next session, the assistant discovers the ODS tools automati
 
 The server picks the documentation set in this order — an explicit choice first, then your project, then its own snapshot:
 
-1. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release (docs-platform releases onward) from ovh.github.io: an explicit choice always wins. A version without a docs-platform documentation set falls back to the bundled snapshot, and every answer says so.
+1. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release (docs-platform releases onward) from ovh.github.io: an explicit choice always wins. A version without a docs-platform documentation set falls back to the bundled snapshot, and the `_source:` line of every page answer says so.
 2. **Your project** — otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`, shipped from the first docs-platform release onward), it is used: the answers match the exact ODS version your project runs, offline. The server looks for `node_modules` from `ODS_PROJECT_DIR` if set, then from the project directory your assistant reports (`CLAUDE_PROJECT_DIR` in Claude Code), then from its working directory, walking up the parent folders.
 3. **Bundled fallback** — in every other case (including all 19.x versions published before the docs platform), the snapshot bundled with the server is used.
 

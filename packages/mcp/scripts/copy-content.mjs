@@ -17,7 +17,8 @@ mkdirSync(OUT, { recursive: true });
 
 // Freshness: a workspace dist is reused only if it is newer than every file of
 // its inputs (mtime). Simpler than always rebuilding (ods-react takes minutes)
-// and safe: a checkout or an edit touches the sources, which forces a rebuild;
+// and safe: a checkout or an edit touches the sources (a deletion touches its
+// directory, hence directories count too), which forces a rebuild;
 // at worst a no-op touch rebuilds for nothing, never ships a stale dist.
 function newestMtime(path) {
   if (!existsSync(path)) {
@@ -27,7 +28,7 @@ function newestMtime(path) {
   if (!stat.isDirectory()) {
     return stat.mtimeMs;
   }
-  let newest = 0;
+  let newest = stat.mtimeMs;
   for (const entry of readdirSync(path)) {
     if (entry !== 'node_modules' && entry !== 'dist') {
       newest = Math.max(newest, newestMtime(resolve(path, entry)));

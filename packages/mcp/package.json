@@ -28,7 +28,7 @@
     "lint:ts": "eslint 'src/**/*.ts'",
     "start": "node dist/index.js",
     "test:spec": "node tests/run.mjs",
-    "test:spec:ci": "pnpm run test:spec",
+    "test:spec:ci": "pnpm run build:ci && pnpm run test:spec",
     "prepublishOnly": "pnpm run build:prod"
   },
   "dependencies": {

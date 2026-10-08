@@ -1,6 +1,6 @@
 @layer ods-organisms {
   .phone-number-country-list {
-    // Sized by its content, not by the uniform field default: the group root carries the width.
+    // Content-sized; the group root carries the width (see phoneNumber.module.scss).
     width: auto;
 
     &__control {

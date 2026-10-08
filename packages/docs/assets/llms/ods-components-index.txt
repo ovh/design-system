@@ -91,7 +91,7 @@
 
 - [Overview](./react-components-command.txt) (~492 tokens)
 - [Documentation](./react-components-command--documentation.txt) (~1936 tokens)
-- [Technical Information](./react-components-command--technical-information.txt) (~1017 tokens)
+- [Technical Information](./react-components-command--technical-information.txt) (~1122 tokens)
 - [Examples](./react-components-command--examples.txt) (~1962 tokens)
 
 ## Data Table
@@ -104,7 +104,7 @@
 ## Datepicker
 
 - [Overview](./react-components-datepicker.txt) (~827 tokens)
-- [Documentation](./react-components-datepicker--documentation.txt) (~1854 tokens)
+- [Documentation](./react-components-datepicker--documentation.txt) (~1883 tokens)
 - [Technical Information](./react-components-datepicker--technical-information.txt) (~984 tokens)
 - [Examples](./react-components-datepicker--examples.txt) (~590 tokens)
 
@@ -159,10 +159,10 @@
 
 ## Input
 
-- [Overview](./react-components-input.txt) (~337 tokens)
-- [Documentation](./react-components-input--documentation.txt) (~1264 tokens)
-- [Technical Information](./react-components-input--technical-information.txt) (~339 tokens)
-- [Examples](./react-components-input--examples.txt) (~449 tokens)
+- [Overview](./react-components-input.txt) (~472 tokens)
+- [Documentation](./react-components-input--documentation.txt) (~3222 tokens)
+- [Technical Information](./react-components-input--technical-information.txt) (~444 tokens)
+- [Examples](./react-components-input--examples.txt) (~1601 tokens)
 
 ## Kbd
 
@@ -307,7 +307,7 @@
 ## Select
 
 - [Overview](./react-components-select.txt) (~549 tokens)
-- [Documentation](./react-components-select--documentation.txt) (~1186 tokens)
+- [Documentation](./react-components-select--documentation.txt) (~1211 tokens)
 - [Technical Information](./react-components-select--technical-information.txt) (~774 tokens)
 - [Examples](./react-components-select--examples.txt) (~2453 tokens)
 
@@ -377,7 +377,7 @@
 ## Timepicker
 
 - [Overview](./react-components-timepicker.txt) (~622 tokens)
-- [Documentation](./react-components-timepicker--documentation.txt) (~1281 tokens)
+- [Documentation](./react-components-timepicker--documentation.txt) (~1323 tokens)
 - [Technical Information](./react-components-timepicker--technical-information.txt) (~723 tokens)
 - [Examples](./react-components-timepicker--examples.txt) (~351 tokens)
 

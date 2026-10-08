@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1854
+tokens: 1883
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--documentation.txt
 ---
 
@@ -65,7 +65,7 @@ Form Guidelines] }
 
 A **Datepicker** can be used in a page as long as there is a need to allow users to pick a date.
 
-The date field has a fixed width by default but when used in a form its width should match the other inputs.
+The date field shares the default width of every form field (280px, capped to its container), so it lines up with the other inputs of a form. To widen it, give the **DatepickerControl** a `className` that sets `width: 100%`.
 
 The **Datepicker** dropdown has a fixed width and is not adjustable.
 

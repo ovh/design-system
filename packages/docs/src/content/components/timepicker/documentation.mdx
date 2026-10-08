@@ -51,13 +51,13 @@ For some use case, an optional timezone Select can be added to allow users to se
 
 A **Timepicker** can be used in a page as long as there is a need to allow users to pick a time.
 
-The time field has a fixed width by default but, when used in a form, its width should match the other inputs.
+A **Timepicker** shares the default width of every form field (280px, capped to its container), time field and timezone select included, so it lines up with the other inputs of a form.
 
 **Timepicker** should be vertically aligned with other form components on a same page.
 
 <Heading label="Behavior" level={ 2 } />
 
-A **Timepicker** can widen to match its container (width of the elements is 50% each).
+A **Timepicker** can widen to match its container by setting `width: 100%` on its root: the timezone select keeps its content width and the time field takes the remaining space.
 
 It has the same states and behaviors for each inner component (i.e. <DocLink to="/components/input">Input</DocLink> and <DocLink to="/components/select">Select</DocLink>).
 

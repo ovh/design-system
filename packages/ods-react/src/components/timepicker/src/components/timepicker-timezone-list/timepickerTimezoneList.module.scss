@@ -1,6 +1,6 @@
 @layer ods-organisms {
   .timepicker-timezone-list {
-    // Sized by its content, not by the uniform field default: the group root carries the width.
+    // Content-sized; the group root carries the width (see timepicker.module.scss).
     width: auto;
     min-width: 89px;
   }

@@ -1,6 +1,5 @@
 @layer ods-organisms {
-  // The group root carries the uniform default field width; the phone input flexes into
-  // whatever the country select leaves.
+  // Flexes inside the group root, which carries the width (see phoneNumber.module.scss).
   .phone-number-control {
     flex: 1 1 auto;
     width: auto;

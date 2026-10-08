@@ -128,6 +128,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     title: 'AI Agents',
     children: [
       { icon: ICON_NAME.file, id: 'guides/llm-documentation', kind: 'guide', path: '/guides/llm-documentation', title: 'LLM Documentation' },
+      { badge: 'new', icon: ICON_NAME.shareNodes, id: 'guides/mcp-server', kind: 'guide', path: '/guides/mcp-server', title: 'MCP Server' },
     ],
   },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },

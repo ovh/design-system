@@ -1,17 +1,14 @@
 #!/usr/bin/env node
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { getIndex, source } from './content.js';
+import { getIndex, sourceLabel } from './content.js';
 import { registerTools } from './tools.js';
 
+// A pinned version without a docs set already falls back to the bundled
+// snapshot (logged by content.ts). What remains is a broken install: startup
+// survives and every documentation tool reports the failure to the assistant.
 const index = await getIndex().catch((error: unknown) => {
-  // Startup survives so the message below can explain the situation on stderr:
-  // the documentation tools will surface the same failure to the assistant
-  // anyway (icons, tokens and recipes read the bundled JSON and keep working).
-  console.error(`ods-mcp: cannot load the documentation index from ${source.label}: ${String(error)}`);
-  if (source.kind === 'pinned') {
-    console.error('ods-mcp: ODS_DOCS_VERSION only works for versions published with the docs platform (the older Storybook-era sets do not ship llms-index.json).');
-  }
+  console.error(`ods-mcp: cannot load the documentation index: ${String(error)}`);
   return undefined;
 });
 
@@ -20,8 +17,8 @@ const server = new McpServer({
   version: index?.version ?? '0.0.0',
 });
 
-registerTools(server);
+await registerTools(server);
 
 await server.connect(new StdioServerTransport());
 // stdout carries the protocol: any human-facing logging goes to stderr.
-console.error(`ods-mcp ready — docs ${index?.version ?? 'unknown'} — source: ${source.label}`);
+console.error(`ods-mcp ready — docs ${index?.version ?? 'unknown'} — source: ${sourceLabel()}`);

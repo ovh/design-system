@@ -4,13 +4,16 @@ MCP ([Model Context Protocol](https://modelcontextprotocol.io)) server exposing 
 
 ## Setup
 
+Requires **Node.js 18+**.
+
 ```bash
 # Claude Code
 claude mcp add ods -- npx -y @ovhcloud/ods-mcp
 ```
 
 ```jsonc
-// Cursor / VS Code / Claude Desktop configuration
+// Cursor: .cursor/mcp.json (or ~/.cursor/mcp.json)
+// Claude Desktop: claude_desktop_config.json
 {
   "mcpServers": {
     "ods": { "command": "npx", "args": ["-y", "@ovhcloud/ods-mcp"] }
@@ -18,11 +21,22 @@ claude mcp add ods -- npx -y @ovhcloud/ods-mcp
 }
 ```
 
+```jsonc
+// VS Code (Copilot): .vscode/mcp.json — the key is `servers`
+{
+  "servers": {
+    "ods": { "type": "stdio", "command": "npx", "args": ["-y", "@ovhcloud/ods-mcp"] }
+  }
+}
+```
+
 ## Documentation version resolution
 
-1. **Pinned version**: set `ODS_DOCS_VERSION=X.Y.Z` to read `https://ovh.github.io/design-system/vX.Y.Z/llms`. Only works for versions published with the docs platform: the older Storybook-era sets (≤ 19.7.x) do not ship the `llms-index.json` the server needs.
-2. **Your project**: otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`), it is used — the docs match the exact ODS version your project runs, offline. Ships from the first docs-platform release onward; the 19.x packages published before it contain no `dist/llms` and fall through to 3.
-3. **Bundled fallback**: the documentation snapshot bundled with this package.
+Checked in this order: pinned version → your project → bundled snapshot.
+
+1. **Pinned version**: set `ODS_DOCS_VERSION=X.Y.Z` (exact version, validated at startup) to read `https://ovh.github.io/design-system/vX.Y.Z/llms`. Only versions published with the docs platform ship the `llms-index.json` the server needs: for the older Storybook-era sets (≤ 19.7.x) the server logs the reason, falls back to the bundled snapshot and says so in every `_source:` line. The only mode that uses the network (10 s timeout, failures are not retried).
+2. **Your project**: otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`), it is used — the docs match the exact ODS version your project runs, offline. `node_modules` is searched upwards from `ODS_PROJECT_DIR`, else `CLAUDE_PROJECT_DIR` (set by Claude Code), else the working directory: set `ODS_PROJECT_DIR` when your client starts the server outside the project. Ships from the first docs-platform release onward; no published release up to 19.7.x contains `dist/llms`, those fall through to 3.
+3. **Bundled snapshot**: the documentation bundled with this package.
 
 Design tokens, icon aliases and recipes always come from the bundled snapshot (they are not part of the ods-react tarball).
 
@@ -42,6 +56,7 @@ Design tokens, icon aliases and recipes always come from the bundled snapshot (t
 ## Development
 
 ```bash
-pnpm --filter @ovhcloud/ods-mcp run build:prod   # tsc + bundle the docs content
-pnpm --filter @ovhcloud/ods-mcp run test:spec    # harness over the real stdio server
+pnpm --filter @ovhcloud/ods-mcp run build:prod   # tsc + bundle the docs content (rebuilds stale workspace dists)
+pnpm --filter @ovhcloud/ods-mcp run test:spec    # harness over the built stdio server (build first)
+pnpm --filter @ovhcloud/ods-mcp run lint:ts
 ```

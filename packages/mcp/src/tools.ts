@@ -50,6 +50,19 @@ function annotations(network: boolean): { destructiveHint: boolean, idempotentHi
   return { destructiveHint: false, idempotentHint: true, openWorldHint: network, readOnlyHint: true };
 }
 
+/* A broken install (index missing) must not surface a raw ENOENT with a local
+   path: the details are in the server log (see index.ts). */
+async function withIndex(run: (index: Index) => Promise<ToolResult> | ToolResult): Promise<ToolResult> {
+  const index = await getIndex().catch(() => undefined);
+  return index ? run(index) : fail('The ODS documentation index cannot be loaded (broken install?): reinstall @ovhcloud/ods-mcp. Details are in the server log.');
+}
+
+/* Guides are identified by their page file: two pages may share a slug (the
+   helpers have an overview and a documentation page). */
+function guideId(guide: { url: string }): string {
+  return guide.url.replace(/^\.\/|\.txt$/g, '');
+}
+
 function normalizeSlug(input: string): string {
   // Split camelCase BEFORE lowercasing (the boundary no longer exists after).
   return input.trim().replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase().replace(/\s+/g, '-');
@@ -97,12 +110,11 @@ function suggestionScore(target: string, candidate: string): number {
   return Infinity;
 }
 
-async function findComponent(slug: string): Promise<{ component?: Component, error?: string }> {
+function findComponent(index: Index, slug: string): { component?: Component, error?: string } {
   const wanted = normalizeSlug(slug);
   if (!wanted) {
     return { error: 'Missing component slug. Use list_components to see every slug.' };
   }
-  const index = await getIndex();
   const component = index.components.find((c) => c.slug === wanted)
     // Dash-insensitive rescue: "formfield" or "datatable" resolve directly.
     ?? index.components.find((c) => compact(c.slug) === compact(wanted));
@@ -120,13 +132,13 @@ async function findComponent(slug: string): Promise<{ component?: Component, err
   return { error: `Unknown component "${slug}".${close.length ? ` Did you mean: ${close.join(', ')}?` : ''} Use list_components to see every slug.` };
 }
 
-/* Reads a page and prefixes its provenance; never leaks a local path. */
+/* Reads a page and prefixes its provenance (never a local path, see content.ts). */
 async function pageAnswer(url: string, notice = ''): Promise<ToolResult> {
   try {
     const body = await readDoc(url);
     return text(`_source: ${sourceLabel()}_\n${notice ? `_note: ${notice}_\n` : ''}\n${body}`);
   } catch {
-    return fail(`Cannot read the documentation page ${url.replace(/^\.\//, '')} from the ${sourceKind()} documentation set.`);
+    return fail(`Cannot read the documentation page ${url.replace(/^\.\//, '')} from the ${sourceKind()} documentation set. Failures are not retried: restart the server once the cause is fixed.`);
   }
 }
 
@@ -153,11 +165,10 @@ async function registerTools(server: McpServer): Promise<void> {
     description: 'List every component of the OVHcloud Design System (ODS) with its documentation sections. Call this first when unsure of a component slug.',
     inputSchema: z.object({}).strict(),
     title: 'List ODS components',
-  }, async() => {
-    const index = await getIndex();
+  }, () => withIndex((index) => {
     const lines = index.components.map((c) => `- ${c.slug} (${c.title}) — sections: ${Object.keys(c.pages).join(', ')}`);
     return text(`ODS ${index.version} — ${index.components.length} components:\n${lines.join('\n')}`);
-  });
+  }));
 
   server.registerTool('get_component', {
     annotations: annotations(docsNetwork),
@@ -167,8 +178,8 @@ async function registerTools(server: McpServer): Promise<void> {
       slug: z.string().max(MAX_INPUT).describe('Component slug, e.g. "button", "form-field", "datepicker"'),
     }).strict(),
     title: 'Get ODS component documentation',
-  }, async({ section, slug }) => {
-    const { component, error } = await findComponent(slug);
+  }, ({ section, slug }) => withIndex((index) => {
+    const { component, error } = findComponent(index, slug);
     if (!component) {
       return fail(error!);
     }
@@ -183,7 +194,7 @@ async function registerTools(server: McpServer): Promise<void> {
       );
     }
     return fail(`${component.slug} has no "${requested}" documentation page. Available sections: ${Object.keys(component.pages).join(', ') || 'none'}.`);
-  });
+  }));
 
   server.registerTool('get_component_api', {
     annotations: annotations(docsNetwork),
@@ -192,8 +203,8 @@ async function registerTools(server: McpServer): Promise<void> {
       slug: z.string().max(MAX_INPUT).describe('Component slug, e.g. "select"'),
     }).strict(),
     title: 'Get ODS component API',
-  }, async({ slug }) => {
-    const { component, error } = await findComponent(slug);
+  }, ({ slug }) => withIndex((index) => {
+    const { component, error } = findComponent(index, slug);
     if (!component) {
       return fail(error!);
     }
@@ -204,7 +215,7 @@ async function registerTools(server: McpServer): Promise<void> {
       return pageAnswer(component.pages['overview'].url, `${component.slug} has no technical-information section, showing overview instead`);
     }
     return fail(`${component.slug} has no API documentation page.`);
-  });
+  }));
 
   server.registerTool('search_docs', {
     annotations: annotations(docsNetwork),
@@ -215,9 +226,9 @@ async function registerTools(server: McpServer): Promise<void> {
       section: z.enum([...SECTIONS, 'guide']).optional().describe('Restrict the search to one section type ("guide" for guides)'),
     }).strict(),
     title: 'Search ODS documentation',
-  }, async({ limit, query, section }) => {
-    const index = await getIndex();
-    const terms = query.toLowerCase().split(/\W+/).filter((t) => t.length > 2);
+  }, ({ limit, query, section }) => withIndex(async(index) => {
+    // Unicode-aware split: "élément" stays one term instead of "ment".
+    const terms = query.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter((t) => t.length > 2);
     if (terms.length === 0) {
       return fail('Query too short: use at least one word of 3 characters or more.');
     }
@@ -226,7 +237,7 @@ async function registerTools(server: McpServer): Promise<void> {
       ...index.components.flatMap((c) => Object.entries(c.pages).map(([sectionName, page]) => ({
         fetch: `get_component slug=${c.slug} section=${sectionName}`, key: c.slug, section: sectionName, title: c.title, url: page.url,
       }))),
-      ...index.generic.map((g) => ({ fetch: `get_guide slug=${g.slug}`, key: g.slug, section: 'guide', title: g.title, url: g.url })),
+      ...index.generic.map((g) => ({ fetch: `get_guide slug=${guideId(g)}`, key: guideId(g), section: 'guide', title: g.title, url: g.url })),
     ].filter((entry) => !section || entry.section === section);
 
     // Remote source: scoring every page would mean hundreds of fetches — fall
@@ -269,7 +280,7 @@ async function registerTools(server: McpServer): Promise<void> {
     }
     const results = top.map((r) => `## ${r.title} (${r.section}) — fetch with: ${r.fetch}${r.snippet ? `\n…${r.snippet}…` : ''}`);
     return text([...notes, ...results].join('\n\n'));
-  });
+  }));
 
   server.registerTool('get_guide', {
     annotations: annotations(docsNetwork),
@@ -278,14 +289,14 @@ async function registerTools(server: McpServer): Promise<void> {
       slug: z.string().max(MAX_INPUT).optional().describe('Guide slug or a distinctive part of it (3+ characters), e.g. "get-started", "migration-19-x-to-20-x"'),
     }).strict(),
     title: 'Get ODS guide',
-  }, async({ slug }) => {
-    const index = await getIndex();
+  }, ({ slug }) => withIndex((index) => {
     const wanted = normalizeSlug(slug ?? '');
     if (!wanted) {
-      return text(`${index.generic.length} guides:\n${index.generic.map((g) => `- ${g.slug} (${g.title})`).join('\n')}`);
+      return text(`${index.generic.length} guides:\n${index.generic.map((g) => `- ${guideId(g)} (${g.title}${g.type === 'overview' ? '' : `, ${g.type}`})`).join('\n')}`);
     }
     const partial = wanted.length >= 3;
-    const guide = index.generic.find((g) => g.slug === wanted)
+    const guide = index.generic.find((g) => guideId(g) === wanted)
+      ?? index.generic.find((g) => g.slug === wanted)
       ?? index.generic.find((g) => compact(g.slug) === compact(wanted))
       ?? (partial ? index.generic.find((g) => g.slug.endsWith(`-${wanted}`)) : undefined)
       ?? (partial ? index.generic.find((g) => g.slug.includes(wanted)) : undefined);
@@ -293,7 +304,7 @@ async function registerTools(server: McpServer): Promise<void> {
       return fail(`Unknown guide "${slug}". Call get_guide without argument to list them.`);
     }
     return pageAnswer(guide.url);
-  });
+  }));
 
   const iconCount = await readBundledJson<IconEntry[]>('icons.json').then((icons) => icons.length, () => 0);
   server.registerTool('list_icons', {

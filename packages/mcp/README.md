@@ -4,7 +4,7 @@ MCP ([Model Context Protocol](https://modelcontextprotocol.io)) server exposing 
 
 ## Setup
 
-Requires **Node.js 18+**.
+Requires **Node.js 20+**.
 
 ```bash
 # Claude Code

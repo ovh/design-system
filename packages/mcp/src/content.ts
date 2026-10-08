@@ -15,7 +15,7 @@ interface LlmsPage {
 interface LlmsIndex {
   baseUrl: string,
   components: { pages: Record<string, LlmsPage>, slug: string, title: string }[],
-  generic: { slug: string, title: string, url: string }[],
+  generic: { slug: string, title: string, type: string, url: string }[],
   name: string,
   version: string,
 }
@@ -91,9 +91,11 @@ function resolveDocSource(): DocSource {
 
   const project = findProjectLlms();
   if (project) {
+    // The full path stays in the server log: answers never carry a local path.
+    console.error(`ods-mcp: reading the project documentation from ${project}`);
     return {
       kind: 'project',
-      label: `project node_modules (${project})`,
+      label: 'project node_modules (@ovhcloud/ods-react/dist/llms)',
       read: (rel) => readFile(join(project, rel), 'utf8'),
     };
   }

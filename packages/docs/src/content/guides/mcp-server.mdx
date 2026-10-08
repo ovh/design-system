@@ -2,17 +2,39 @@
 
 <Heading label="What is MCP?" level={2} />
 
-<ExternalLink href="https://modelcontextprotocol.io">MCP (Model Context Protocol)</ExternalLink> is an open protocol supported by Claude Code, Claude Desktop, Cursor, VS Code Copilot and most AI coding assistants. An MCP server exposes **tools** the assistant can call while it works. `@ovhcloud/ods-mcp` is a read-only server over the same documentation set as this website, running locally in your workspace — no account, no network required.
+<ExternalLink href="https://modelcontextprotocol.io">MCP (Model Context Protocol)</ExternalLink> is an open protocol supported by Claude Code, Claude Desktop, Cursor, VS Code Copilot and most AI coding assistants. An MCP server exposes **tools** the assistant can call while it works. `@ovhcloud/ods-mcp` is a read-only server over the same documentation set as this website, running locally in your workspace — no account; works offline once installed (only `ODS_DOCS_VERSION` reads ovh.github.io).
 
 <Heading label="Setup" level={2} />
 
-With Claude Code:
+The server needs **Node.js 18+** (`npx` comes with it). Then register it in your assistant:
+
+**Claude Code** — run once in your project:
 
 ```shell
 claude mcp add ods -- npx -y @ovhcloud/ods-mcp
 ```
 
-With Cursor, VS Code or Claude Desktop, add to the MCP configuration file:
+**Cursor** — `.cursor/mcp.json` in your project (or `~/.cursor/mcp.json` for every project):
+
+```json
+{
+  "mcpServers": {
+    "ods": { "command": "npx", "args": ["-y", "@ovhcloud/ods-mcp"] }
+  }
+}
+```
+
+**VS Code (Copilot)** — `.vscode/mcp.json` in your project (note the `servers` key):
+
+```json
+{
+  "servers": {
+    "ods": { "type": "stdio", "command": "npx", "args": ["-y", "@ovhcloud/ods-mcp"] }
+  }
+}
+```
+
+**Claude Desktop** — `claude_desktop_config.json` (Settings › Developer › Edit Config):
 
 ```json
 {
@@ -26,26 +48,58 @@ That is all. On the next session, the assistant discovers the ODS tools automati
 
 <Heading label="Which documentation version is served?" level={2} />
 
-The server follows the same resolution rule as the <DocLink to="/guides/llm-documentation">LLM Documentation</DocLink> guide:
+The server picks the documentation set in this order — an explicit choice first, then your project, then its own snapshot:
 
-1. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release (docs-platform releases onward): an explicit choice always wins.
-2. **Your project** — otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`, shipped from the first docs-platform release onward), it is used: the answers match the exact ODS version your project runs, offline.
+1. **Pinned version** — set the `ODS_DOCS_VERSION=X.Y.Z` environment variable to read the published documentation of a specific release (docs-platform releases onward) from ovh.github.io: an explicit choice always wins. A version without a docs-platform documentation set falls back to the bundled snapshot, and every answer says so.
+2. **Your project** — otherwise, if the installed `@ovhcloud/ods-react` embeds its documentation (`dist/llms`, shipped from the first docs-platform release onward), it is used: the answers match the exact ODS version your project runs, offline. The server looks for `node_modules` from `ODS_PROJECT_DIR` if set, then from the project directory your assistant reports (`CLAUDE_PROJECT_DIR` in Claude Code), then from its working directory, walking up the parent folders.
 3. **Bundled fallback** — in every other case (including all 19.x versions published before the docs platform), the snapshot bundled with the server is used.
 
 Every page answer (component, API, guide) starts with a `_source:` line telling you which one applied.
 
 <Heading label="Available tools" level={2} />
 
-| Tool | What it answers |
-|---|---|
-| `list_components` | "Which components exist? Is there a datepicker?" |
-| `get_component` | "Show me the documentation and examples of form-field" |
-| `get_component_api` | "Which props does Select accept, with defaults?" |
-| `search_docs` | "How does ODS handle form validation errors?" |
-| `get_guide` | "How do I migrate from v19 to v20?" |
-| `list_icons` | "An icon for settings?" (names and meaning aliases) |
-| `get_tokens` | "Which token holds the critical color?" |
-| `get_recipe` | "A ready-made confirmation modal pattern?" |
+<Table>
+  <thead>
+  <tr>
+    <th scope="col">Tool</th>
+    <th scope="col">What it answers</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>list_components</code></td>
+    <td>"Which components exist? Is there a datepicker?"</td>
+  </tr>
+  <tr>
+    <td><code>get_component</code></td>
+    <td>"Show me the documentation and examples of form-field"</td>
+  </tr>
+  <tr>
+    <td><code>get_component_api</code></td>
+    <td>"Which props does Select accept, with defaults?"</td>
+  </tr>
+  <tr>
+    <td><code>search_docs</code></td>
+    <td>"How does ODS handle form validation errors?"</td>
+  </tr>
+  <tr>
+    <td><code>get_guide</code></td>
+    <td>"How do I migrate from v19 to v20?"</td>
+  </tr>
+  <tr>
+    <td><code>list_icons</code></td>
+    <td>"An icon for settings?" (names and meaning aliases)</td>
+  </tr>
+  <tr>
+    <td><code>get_tokens</code></td>
+    <td>"Which token holds the critical color?"</td>
+  </tr>
+  <tr>
+    <td><code>get_recipe</code></td>
+    <td>"A ready-made status modal pattern?"</td>
+  </tr>
+  </tbody>
+</Table>
 
 <Heading label="Try it" level={2} />
 
@@ -59,6 +113,6 @@ If the assistant does not use the tools spontaneously, mention "ODS documentatio
 
 <Heading label="Troubleshooting" level={2} />
 
-- The server needs **Node.js 18+** (`npx` comes with it).
 - Run `npx -y @ovhcloud/ods-mcp` manually: it must print `ods-mcp ready — docs X.Y.Z — source: …` on stderr and then wait for input (Ctrl-C to leave). If it does, the server is fine and the issue is in the client configuration.
 - The documentation served for your project follows the installed `@ovhcloud/ods-react` — if answers look outdated, check that version first.
+- The `_source:` line says `bundled` although your project installs a docs-platform `@ovhcloud/ods-react`? Your client probably starts the server outside the project: set `ODS_PROJECT_DIR` to the project path in the server's `env`.

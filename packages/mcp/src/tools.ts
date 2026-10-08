@@ -1,8 +1,15 @@
 import { type McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { getIndex, readBundledJson, readDoc, source } from './content.js';
+import { configuredSource, getIndex, readBundledJson, readDoc, sourceKind, sourceLabel } from './content.js';
 
 const SECTIONS = ['overview', 'documentation', 'technical-information', 'examples'] as const;
+const SEARCH_LIMIT_DEFAULT = 8;
+const SEARCH_LIMIT_MAX = 20;
+const MAX_INPUT = 200;
+
+type Index = Awaited<ReturnType<typeof getIndex>>;
+type Component = Index['components'][number];
+type ToolResult = { content: { text: string, type: 'text' }[], isError?: boolean };
 
 interface IconEntry {
   name: string,
@@ -17,8 +24,30 @@ interface RecipeEntry {
   tags: string[],
 }
 
-function text(body: string): { content: { text: string, type: 'text' }[] } {
+interface SearchHit {
+  fetch: string,
+  key: string,
+  score: number,
+  section: string,
+  snippet: string,
+  title: string,
+}
+
+function text(body: string): ToolResult {
   return { content: [{ text: body, type: 'text' }] };
+}
+
+/* Business errors (unknown slug, no match…) are tool results flagged isError,
+   so the assistant sees them and can correct itself; protocol errors stay for
+   malformed requests. */
+function fail(message: string): ToolResult {
+  return { content: [{ text: message, type: 'text' }], isError: true };
+}
+
+/* Every tool only reads documentation. openWorld only when it may reach the
+   network, i.e. documentation tools under ODS_DOCS_VERSION. */
+function annotations(network: boolean): { destructiveHint: boolean, idempotentHint: boolean, openWorldHint: boolean, readOnlyHint: boolean } {
+  return { destructiveHint: false, idempotentHint: true, openWorldHint: network, readOnlyHint: true };
 }
 
 function normalizeSlug(input: string): string {
@@ -53,9 +82,27 @@ function commonPrefixLength(a: string, b: string): number {
   return i;
 }
 
-async function findComponent(slug: string): Promise<{ error?: string, component?: Awaited<ReturnType<typeof getIndex>>['components'][number] }> {
-  const index = await getIndex();
+/* Suggestion rank: substring either way, close spelling (edit distance), or a
+   shared stem ("datagrid" → "data-table" through the "data" prefix). */
+function suggestionScore(target: string, candidate: string): number {
+  if (candidate.includes(target) || target.includes(candidate)) {
+    return 0;
+  }
+  if (editDistance(target, candidate) <= 2) {
+    return 1;
+  }
+  if (commonPrefixLength(target, candidate) >= 4) {
+    return 2;
+  }
+  return Infinity;
+}
+
+async function findComponent(slug: string): Promise<{ component?: Component, error?: string }> {
   const wanted = normalizeSlug(slug);
+  if (!wanted) {
+    return { error: 'Missing component slug. Use list_components to see every slug.' };
+  }
+  const index = await getIndex();
   const component = index.components.find((c) => c.slug === wanted)
     // Dash-insensitive rescue: "formfield" or "datatable" resolve directly.
     ?? index.components.find((c) => compact(c.slug) === compact(wanted));
@@ -63,18 +110,9 @@ async function findComponent(slug: string): Promise<{ error?: string, component?
     return { component };
   }
 
-  /* Suggestions: substring either way, close spelling (edit distance), or a
-     shared stem ("datagrid" → "data-table" through the "data" prefix). */
   const target = compact(wanted);
   const close = index.components
-    .map((c) => {
-      const candidate = compact(c.slug);
-      const score = candidate.includes(target) || target.includes(candidate) ? 0
-        : editDistance(target, candidate) <= 2 ? 1
-          : commonPrefixLength(target, candidate) >= 4 ? 2
-            : Infinity;
-      return { score, slug: c.slug };
-    })
+    .map((c) => ({ score: suggestionScore(target, compact(c.slug)), slug: c.slug }))
     .filter((entry) => entry.score !== Infinity)
     .sort((a, b) => a.score - b.score)
     .slice(0, 5)
@@ -82,131 +120,209 @@ async function findComponent(slug: string): Promise<{ error?: string, component?
   return { error: `Unknown component "${slug}".${close.length ? ` Did you mean: ${close.join(', ')}?` : ''} Use list_components to see every slug.` };
 }
 
-function registerTools(server: McpServer): void {
+/* Reads a page and prefixes its provenance; never leaks a local path. */
+async function pageAnswer(url: string, notice = ''): Promise<ToolResult> {
+  try {
+    const body = await readDoc(url);
+    return text(`_source: ${sourceLabel()}_\n${notice ? `_note: ${notice}_\n` : ''}\n${body}`);
+  } catch {
+    return fail(`Cannot read the documentation page ${url.replace(/^\.\//, '')} from the ${sourceKind()} documentation set.`);
+  }
+}
+
+/* Page files start with a `---` metadata block: search and snippets skip it. */
+function stripFrontMatter(body: string): string {
+  const match = /^---\r?\n[\s\S]*?\r?\n---\r?\n/.exec(body);
+  return match ? body.slice(match[0].length) : body;
+}
+
+function scoreEntry(terms: string[], title: string, body: string): { at: number, score: number } {
+  const lowerTitle = title.toLowerCase();
+  const lowerBody = body.toLowerCase();
+  let score = terms.reduce((res, t) => res + (lowerTitle.includes(t) ? 5 : 0), 0);
+  score += terms.reduce((res, t) => res + Math.min(lowerBody.split(t).length - 1, 10), 0);
+  const first = terms.find((t) => lowerBody.includes(t));
+  return { at: first ? lowerBody.indexOf(first) : 0, score };
+}
+
+async function registerTools(server: McpServer): Promise<void> {
+  const docsNetwork = configuredSource.kind === 'pinned';
+
   server.registerTool('list_components', {
+    annotations: annotations(docsNetwork),
     description: 'List every component of the OVHcloud Design System (ODS) with its documentation sections. Call this first when unsure of a component slug.',
-  }, async () => {
+    inputSchema: z.object({}).strict(),
+    title: 'List ODS components',
+  }, async() => {
     const index = await getIndex();
     const lines = index.components.map((c) => `- ${c.slug} (${c.title}) — sections: ${Object.keys(c.pages).join(', ')}`);
     return text(`ODS ${index.version} — ${index.components.length} components:\n${lines.join('\n')}`);
   });
 
   server.registerTool('get_component', {
+    annotations: annotations(docsNetwork),
     description: 'Get the documentation of an ODS component. Sections: overview (default, short), documentation (usage, props overview, best practices), technical-information (full props/types/CSS variables), examples (code snippets for every variant).',
-    inputSchema: {
+    inputSchema: z.object({
       section: z.enum(SECTIONS).optional().describe('Documentation section, defaults to overview'),
-      slug: z.string().describe('Component slug, e.g. "button", "form-field", "datepicker"'),
-    },
-  }, async ({ section, slug }) => {
+      slug: z.string().max(MAX_INPUT).describe('Component slug, e.g. "button", "form-field", "datepicker"'),
+    }).strict(),
+    title: 'Get ODS component documentation',
+  }, async({ section, slug }) => {
     const { component, error } = await findComponent(slug);
     if (!component) {
-      return text(error!);
+      return fail(error!);
     }
-    const page = component.pages[section ?? 'overview'] ?? component.pages['overview'];
-    const body = await readDoc(page.url);
-    return text(`_source: ${source.label}_\n\n${body}`);
+    const requested = section ?? 'overview';
+    if (component.pages[requested]) {
+      return pageAnswer(component.pages[requested].url);
+    }
+    if (requested !== 'overview' && component.pages['overview']) {
+      return pageAnswer(
+        component.pages['overview'].url,
+        `${component.slug} has no "${requested}" section, showing overview instead (available: ${Object.keys(component.pages).join(', ')})`,
+      );
+    }
+    return fail(`${component.slug} has no "${requested}" documentation page. Available sections: ${Object.keys(component.pages).join(', ') || 'none'}.`);
   });
 
   server.registerTool('get_component_api', {
+    annotations: annotations(docsNetwork),
     description: 'Get the full API of an ODS component: props (name, type, required, default), exported types/enums and CSS customization variables. Shortcut for get_component with section technical-information.',
-    inputSchema: {
-      slug: z.string().describe('Component slug, e.g. "select"'),
-    },
-  }, async ({ slug }) => {
+    inputSchema: z.object({
+      slug: z.string().max(MAX_INPUT).describe('Component slug, e.g. "select"'),
+    }).strict(),
+    title: 'Get ODS component API',
+  }, async({ slug }) => {
     const { component, error } = await findComponent(slug);
     if (!component) {
-      return text(error!);
+      return fail(error!);
     }
-    const page = component.pages['technical-information'] ?? component.pages['overview'];
-    return text(`_source: ${source.label}_\n\n${await readDoc(page.url)}`);
+    if (component.pages['technical-information']) {
+      return pageAnswer(component.pages['technical-information'].url);
+    }
+    if (component.pages['overview']) {
+      return pageAnswer(component.pages['overview'].url, `${component.slug} has no technical-information section, showing overview instead`);
+    }
+    return fail(`${component.slug} has no API documentation page.`);
   });
 
   server.registerTool('search_docs', {
-    description: 'Full-text search across the whole ODS documentation (components and guides). Returns the best matching pages with a snippet; then fetch the full page with get_component or get_guide.',
-    inputSchema: {
-      query: z.string().describe('Free-text query, e.g. "form validation error message"'),
-    },
-  }, async ({ query }) => {
+    annotations: annotations(docsNetwork),
+    description: 'Full-text search across the whole ODS documentation (components and guides). Returns the best matching page per component with a snippet; then fetch the full page with get_component or get_guide.',
+    inputSchema: z.object({
+      limit: z.number().int().min(1).max(SEARCH_LIMIT_MAX).optional().describe(`Maximum number of results, defaults to ${SEARCH_LIMIT_DEFAULT}`),
+      query: z.string().max(MAX_INPUT).describe('Free-text query, e.g. "form validation error message"'),
+      section: z.enum([...SECTIONS, 'guide']).optional().describe('Restrict the search to one section type ("guide" for guides)'),
+    }).strict(),
+    title: 'Search ODS documentation',
+  }, async({ limit, query, section }) => {
     const index = await getIndex();
     const terms = query.toLowerCase().split(/\W+/).filter((t) => t.length > 2);
     if (terms.length === 0) {
-      return text('Query too short.');
+      return fail('Query too short: use at least one word of 3 characters or more.');
     }
 
     const entries = [
       ...index.components.flatMap((c) => Object.entries(c.pages).map(([sectionName, page]) => ({
-        fetch: `get_component slug=${c.slug} section=${sectionName}`, section: sectionName, title: c.title, url: page.url,
+        fetch: `get_component slug=${c.slug} section=${sectionName}`, key: c.slug, section: sectionName, title: c.title, url: page.url,
       }))),
-      ...index.generic.map((g) => ({ fetch: `get_guide slug=${g.slug}`, section: 'guide', title: g.title, url: g.url })),
-    ];
+      ...index.generic.map((g) => ({ fetch: `get_guide slug=${g.slug}`, key: g.slug, section: 'guide', title: g.title, url: g.url })),
+    ].filter((entry) => !section || entry.section === section);
 
     // Remote source: scoring every page would mean hundreds of fetches — fall
     // back to title matching, which still routes the agent to the right page.
-    const fullText = source.kind !== 'pinned';
-    const scored = [];
-    for (const entry of entries) {
-      const title = entry.title.toLowerCase();
-      let score = terms.reduce((res, t) => res + (title.includes(t) ? 5 : 0), 0);
+    const titleOnly = sourceKind() === 'pinned';
+    let unreadable = 0;
+    const hits = await Promise.all(entries.map(async(entry): Promise<SearchHit | null> => {
       let body = '';
-      if (fullText) {
-        body = (await readDoc(entry.url)).toLowerCase();
-        score += terms.reduce((res, t) => res + Math.min(body.split(t).length - 1, 10), 0);
+      if (!titleOnly) {
+        try {
+          body = stripFrontMatter(await readDoc(entry.url));
+        } catch {
+          // One missing page must not take the whole search down.
+          unreadable += 1;
+        }
       }
-      if (score > 0) {
-        const at = body ? Math.max(0, body.indexOf(terms.find((t) => body.includes(t)) ?? '')) : 0;
-        scored.push({ ...entry, score, snippet: body ? body.slice(Math.max(0, at - 80), at + 180).replace(/\s+/g, ' ') : '' });
+      const { at, score } = scoreEntry(terms, entry.title, body);
+      if (score === 0) {
+        return null;
+      }
+      const snippet = body ? body.slice(Math.max(0, at - 80), at + 180).replace(/\s+/g, ' ').trim() : '';
+      return { fetch: entry.fetch, key: entry.key, score, section: entry.section, snippet, title: entry.title };
+    }));
+
+    // One result per component (or guide): its best-scoring section.
+    const best = new Map<string, SearchHit>();
+    for (const hit of hits) {
+      if (hit && (best.get(hit.key)?.score ?? -1) < hit.score) {
+        best.set(hit.key, hit);
       }
     }
-    scored.sort((a, b) => b.score - a.score);
-    const top = scored.slice(0, 8);
+    const top = [...best.values()].sort((a, b) => b.score - a.score).slice(0, limit ?? SEARCH_LIMIT_DEFAULT);
+
+    const notes = [
+      titleOnly ? '_note: title-only search (ODS_DOCS_VERSION serves remote documentation, page bodies are not scanned)._' : '',
+      unreadable ? `_note: ${unreadable} page(s) could not be read and were skipped._` : '',
+    ].filter(Boolean);
     if (top.length === 0) {
-      return text(`No match for "${query}". Try list_components or get_guide.`);
+      return fail([...notes, `No match for "${query}". Try list_components or get_guide.`].join('\n'));
     }
-    return text(top.map((r) => `## ${r.title} (${r.section}) — fetch with: ${r.fetch}\n…${r.snippet}…`).join('\n\n'));
+    const results = top.map((r) => `## ${r.title} (${r.section}) — fetch with: ${r.fetch}${r.snippet ? `\n…${r.snippet}…` : ''}`);
+    return text([...notes, ...results].join('\n\n'));
   });
 
   server.registerTool('get_guide', {
+    annotations: annotations(docsNetwork),
     description: 'Get an ODS guide (get started, forms, accessibility, migrations, design tokens…). Call without slug to list every available guide.',
-    inputSchema: {
-      slug: z.string().optional().describe('Guide slug or a distinctive part of it, e.g. "get-started", "migration-19-x-to-20-x"'),
-    },
-  }, async ({ slug }) => {
+    inputSchema: z.object({
+      slug: z.string().max(MAX_INPUT).optional().describe('Guide slug or a distinctive part of it (3+ characters), e.g. "get-started", "migration-19-x-to-20-x"'),
+    }).strict(),
+    title: 'Get ODS guide',
+  }, async({ slug }) => {
     const index = await getIndex();
-    if (!slug) {
+    const wanted = normalizeSlug(slug ?? '');
+    if (!wanted) {
       return text(`${index.generic.length} guides:\n${index.generic.map((g) => `- ${g.slug} (${g.title})`).join('\n')}`);
     }
-    const wanted = normalizeSlug(slug);
+    const partial = wanted.length >= 3;
     const guide = index.generic.find((g) => g.slug === wanted)
-      ?? index.generic.find((g) => g.slug.endsWith(wanted) || g.slug.includes(wanted));
+      ?? index.generic.find((g) => compact(g.slug) === compact(wanted))
+      ?? (partial ? index.generic.find((g) => g.slug.endsWith(`-${wanted}`)) : undefined)
+      ?? (partial ? index.generic.find((g) => g.slug.includes(wanted)) : undefined);
     if (!guide) {
-      return text(`Unknown guide "${slug}". Call get_guide without argument to list them.`);
+      return fail(`Unknown guide "${slug}". Call get_guide without argument to list them.`);
     }
-    return text(`_source: ${source.label}_\n\n${await readDoc(guide.url)}`);
+    return pageAnswer(guide.url);
   });
 
+  const iconCount = await readBundledJson<IconEntry[]>('icons.json').then((icons) => icons.length, () => 0);
   server.registerTool('list_icons', {
-    description: 'Search the ODS icon set (500+ icons) by name or meaning (aliases like "settings", "delete", "warning" are indexed). Returns icon names usable as <Icon name="…">.',
-    inputSchema: {
-      filter: z.string().optional().describe('Substring matched against icon names and search aliases; omit to list everything'),
-    },
-  }, async ({ filter }) => {
+    annotations: annotations(false),
+    description: `Search the ODS icon set${iconCount ? ` (${iconCount} icons)` : ''} by name or meaning (aliases like "settings", "delete", "warning" are indexed). Returns icon names usable as <Icon name="…">.`,
+    inputSchema: z.object({
+      filter: z.string().max(MAX_INPUT).optional().describe('Substring matched against icon names and search aliases; omit to list everything'),
+    }).strict(),
+    title: 'Search ODS icons',
+  }, async({ filter }) => {
     const icons = await readBundledJson<IconEntry[]>('icons.json');
     const needle = filter?.toLowerCase().trim();
     const matches = needle
       ? icons.filter((i) => i.name.includes(needle) || i.tags.some((t) => t.includes(needle)))
       : icons;
     if (matches.length === 0) {
-      return text(`No icon matching "${filter}".`);
+      return fail(`No icon matching "${filter}".`);
     }
     return text(`${matches.length} icon(s):\n${matches.map((i) => `- ${i.name}${i.tags.length ? ` (aliases: ${i.tags.join(', ')})` : ''}`).join('\n')}`);
   });
 
   server.registerTool('get_tokens', {
+    annotations: annotations(false),
     description: 'Get the ODS design tokens (CSS custom properties of the default theme): colors, spacing, fonts, radii… Filter by substring, e.g. "color-critical", "spacing", "font".',
-    inputSchema: {
-      filter: z.string().optional().describe('Substring matched against token names; omit to list everything'),
-    },
-  }, async ({ filter }) => {
+    inputSchema: z.object({
+      filter: z.string().max(MAX_INPUT).optional().describe('Substring matched against token names; omit to list everything'),
+    }).strict(),
+    title: 'Get ODS design tokens',
+  }, async({ filter }) => {
     const tokens = await readBundledJson<Record<string, Record<string, string>>>('tokens.json');
     const needle = filter?.toLowerCase().trim();
     const lines: string[] = [];
@@ -218,29 +334,35 @@ function registerTools(server: McpServer): void {
       }
     }
     if (lines.length === 0) {
-      return text(`No token matching "${filter}".`);
+      return fail(`No token matching "${filter}".`);
     }
     return text(`${lines.length} token(s):\n${lines.join('\n')}`);
   });
 
   server.registerTool('get_recipe', {
-    description: 'Get an ODS recipe: a ready-made UI pattern combining several components (chat, confirmation modal…), with its full source code. Call without name to list every recipe.',
-    inputSchema: {
-      name: z.string().optional().describe('Recipe key, e.g. "chat"'),
-    },
-  }, async ({ name }) => {
+    annotations: annotations(false),
+    description: 'Get an ODS recipe: a ready-made UI pattern combining several components (chat, status modal…), with its full source code. Call without name to list every recipe.',
+    inputSchema: z.object({
+      name: z.string().max(MAX_INPUT).optional().describe('Recipe key, e.g. "chat"'),
+    }).strict(),
+    title: 'Get ODS recipe',
+  }, async({ name }) => {
     const data = await readBundledJson<{ component: Record<string, RecipeEntry> }>('recipes.json');
-    if (!name) {
+    const wanted = normalizeSlug(name ?? '');
+    if (!wanted) {
       // odsComponents comes from parsing the recipes' import statements, so it
       // mixes in SCREAMING_CASE enums and type imports: keep the components only.
       const lines = Object.entries(data.component).map(([key, r]) => `- ${key} (${r.name}) — tags: ${r.tags.join(', ')} — uses: ${r.odsComponents.filter((c) => !c.includes('_') && !c.startsWith('type ')).join(', ')}`);
       return text(`${lines.length} recipes:\n${lines.join('\n')}`);
     }
-    const key = name.trim().toLowerCase();
-    const recipe = data.component[key];
-    if (!recipe) {
-      return text(`Unknown recipe "${name}". Available: ${Object.keys(data.component).join(', ')}.`);
+    // Same normalization as component and guide slugs: "data grid", "DataGrid"
+    // and "datagrid" all reach the data-grid recipe.
+    const entry = Object.entries(data.component).find(([key]) => normalizeSlug(key) === wanted)
+      ?? Object.entries(data.component).find(([key]) => compact(normalizeSlug(key)) === compact(wanted));
+    if (!entry) {
+      return fail(`Unknown recipe "${name}". Available: ${Object.keys(data.component).join(', ')}.`);
     }
+    const [, recipe] = entry;
     const sources = Object.entries(recipe.source).map(([variant, files]) => {
       const parts = typeof files === 'string'
         ? files

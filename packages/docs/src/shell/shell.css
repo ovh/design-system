@@ -465,7 +465,8 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--ods-color-neutral-500);
+  /* content-neutral: 5.7:1 on the light overlay, over WCAG AA 4.5:1 at this size */
+  color: var(--ods-semantic-color-content-neutral);
   font-size: .78rem;
 }
 

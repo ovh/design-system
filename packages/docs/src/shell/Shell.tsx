@@ -121,7 +121,7 @@ const openSearchPalette = () => {
 /* Direct link to the current page's llms markdown — the exact file the AI
    toolchain consumes. A URL rather than a copy button: it can be read,
    shared, curl'ed or handed to an assistant as-is. Hidden on pages that emit
-   no llms document (tools, galleries, excluded guides). */
+   no llms document (the route mapping and its exclusions: llmsFile.ts). */
 const MarkdownLink = ({ pathname }: { pathname: string }) => {
   const file = llmsFileFor(pathname);
 

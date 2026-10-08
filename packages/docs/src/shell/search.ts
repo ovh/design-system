@@ -21,21 +21,29 @@ interface SearchHit {
 let indexPromise: Promise<SearchEntry[]> | undefined;
 
 function loadSearchIndex(): Promise<SearchEntry[]> {
+  // A failed load (network error OR non-2xx answer) must not kill full-text
+  // search for the whole session: forget the attempt so the next keystroke
+  // retries.
+  const forget = (): SearchEntry[] => {
+    indexPromise = undefined;
+    return [];
+  };
   indexPromise ??= fetch(new URL('search-index.json', APP_ROOT))
-    .then((res) => (res.ok ? res.json() as Promise<SearchEntry[]> : []))
-    .catch(() => {
-      // A transient network failure must not kill full-text search for the
-      // whole session: forget the attempt so the next keystroke retries.
-      indexPromise = undefined;
-      return [];
-    });
+    .then((res) => (res.ok ? res.json() as Promise<SearchEntry[]> : forget()))
+    .catch(forget);
   return indexPromise;
 }
 
 /* Shared with the palette's term highlighting and hit navigation: if their
    tokenization diverged from the scoring's, the bolded terms would not be the
-   matched ones. */
-const tokenize = (query: string): string[] => query.toLowerCase().split(/[^a-z0-9]+/).filter((term) => term.length >= 2);
+   matched ones. Accents are folded first, as the build-time index does
+   (vite-plugin-llms.ts searchText): "modèle" still yields "modele". */
+const tokenize = (query: string): string[] => query
+  .normalize('NFD')
+  .replace(/\p{M}/gu, '')
+  .toLowerCase()
+  .split(/[^a-z0-9]+/)
+  .filter((term) => term.length >= 2);
 
 function snippetAround(body: string, at: number): string {
   const start = Math.max(0, at - 40);
@@ -59,9 +67,10 @@ function searchDocs(entries: SearchEntry[], query: string): SearchHit[] {
   if (strict.length > 0) {
     return strict;
   }
-  // Substring matching makes 2-letter terms pure noise in any-term mode
-  // ("de" is inside "default"): the fallback only keeps discriminating ones.
-  const discriminating = terms.filter((term) => term.length >= 3);
+  // Substring matching makes short terms pure noise in any-term mode ("de" is
+  // inside "default", the FR stopwords "les"/"des" match nearly every entry):
+  // the fallback only keeps discriminating terms of 4+ characters.
+  const discriminating = terms.filter((term) => term.length >= 4);
   return discriminating.length > 0 ? rank(entries, discriminating, false) : [];
 }
 
@@ -86,6 +95,7 @@ function rank(entries: SearchEntry[], terms: string[], requireAll: boolean): Sea
         continue;
       }
       matched += 1;
+      // 20 > 5 (the body-count cap): one title hit outranks any body density.
       if (inTitle) {
         score += 20;
       }

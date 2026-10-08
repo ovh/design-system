@@ -23,6 +23,8 @@ async function suite(browser, { base, version }) {
   await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
   await page.waitForSelector('[data-ods="command-filter"]', { timeout: 5000 });
   await page.locator('[data-ods="command-filter"]').fill('aria-describedby');
+  // First real query: covers the lazy fetch of the index + the async render
+  // of the "In the docs" group (no DOM signal to await when it stays empty).
   await page.waitForTimeout(1200);
   const contentGroup = page.getByText('In the docs', { exact: true });
   const hasContentHits = (await contentGroup.count()) > 0;
@@ -44,7 +46,8 @@ async function suite(browser, { base, version }) {
     // Flash highlight (CSS Custom Highlight API): painted on arrival…
     const flashed = await page.evaluate(() => CSS.highlights?.has('ods-search') ?? false);
     ok('searched terms are flash-highlighted on arrival', flashed);
-    // …and self-cleared shortly after.
+    // …and self-cleared shortly after. Coupled to CLEAR_AFTER_MS (2600) in
+    // src/doc/searchHighlight.ts: keep this wait above CLEAR_AFTER_MS.
     await page.waitForTimeout(2800);
     const cleared = await page.evaluate(() => !(CSS.highlights?.has('ods-search') ?? false));
     ok('the flash highlight clears itself', cleared);
@@ -57,6 +60,27 @@ async function suite(browser, { base, version }) {
   await page.locator('[data-ods="command-filter"]').fill('validation formulaire');
   await page.waitForTimeout(900);
   ok('fallback surfaces hits for a mixed FR/EN query', (await page.locator('.shell__search-option--content').count()) > 0);
+
+  // Status badges are matched too: "deprecated" lists the deprecated pages
+  // (Switch) in their own group, not only as full-text hits.
+  await page.locator('[data-ods="command-filter"]').fill('deprecated');
+  await page.waitForTimeout(900);
+  const deprecatedSwitch = page.getByRole('group', { name: 'Components' }).locator('[data-ods="command-option"]', { hasText: 'Switch' });
+  ok('"deprecated" lists Switch in the Components group', (await deprecatedSwitch.count()) > 0);
+
+  // A page listed by title is not repeated as a content hit, whatever the
+  // #section of the hit: no "In the docs" entry may land on the Button
+  // documentation page (its technical tab is another page, allowed).
+  await page.locator('[data-ods="command-filter"]').fill('button');
+  await page.waitForTimeout(900);
+  const labelsOf = (pattern) => new Set(index.filter((entry) => pattern.test(entry.r)).map((entry) => entry.s));
+  const technicalLabels = labelsOf(/^\/components\/button\/technical(#|$)/);
+  const documentationLabels = [...labelsOf(/^\/components\/button(#|$)/)].filter((label) => !technicalLabels.has(label));
+  const repeated = await page.locator('.shell__search-option--content').evaluateAll((options, labels) => options
+    .map((option) => [option.children[1]?.textContent, option.querySelector('.shell__search-option-hint')?.textContent])
+    .filter(([title, hint]) => title === 'Button' && labels.includes(hint))
+    .map(([, hint]) => hint), documentationLabels);
+  ok('"button" does not repeat the Button page under "In the docs"', documentationLabels.length > 0 && repeated.length === 0, `repeated sections: ${repeated.join(', ') || '(no doc labels in index)'}`);
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
 
@@ -98,6 +122,28 @@ async function suite(browser, { base, version }) {
   } catch (error) {
     ok('heading anchors', false, String(error).slice(0, 120));
   }
+
+  // Index deep-links land on a real heading id: sample 5 `#` routes across
+  // the route families (component doc, technical tab, guide, helper, +1).
+  const hashed = index.filter((entry) => entry.r.includes('#'));
+  const families = [/^\/components\/[^/]+#/, /^\/components\/[^/]+\/technical#/, /^\/guides\//, /^\/helpers\//];
+  const sample = families.map((family) => hashed.find((entry) => family.test(entry.r))).filter(Boolean);
+  sample.push(...hashed.filter((_, at) => at === Math.floor(hashed.length / 2)));
+  const routes = [...new Set(sample.map((entry) => entry.r))].slice(0, 5);
+  for (const route of routes) {
+    const hash = route.split('#')[1];
+    const landing = await ctx.newPage();
+    landing.on('pageerror', (e) => errors.push(e.message));
+    try {
+      await landing.goto(`${root}${route}`, { waitUntil: 'domcontentloaded' });
+      await landing.waitForFunction((id) => document.getElementById(id) !== null, hash, { timeout: 30000 });
+      ok(`index deep-link resolves to a heading id (${route})`, true);
+    } catch {
+      ok(`index deep-link resolves to a heading id (${route})`, false, `no element #${hash}`);
+    }
+    await landing.close();
+  }
+  ok('5 index deep-links sampled', routes.length === 5, `${routes.length} sampled`);
 
   ok('zero pageerror', errors.length === 0, errors[0] ?? '');
   await ctx.close();

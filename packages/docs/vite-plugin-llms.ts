@@ -8,6 +8,7 @@ import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
 import { categorizeTokens, splitPalettes } from './src/doc/ports/helpers/designTokens';
+import { slugify } from './src/doc/slug';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
 /* The llms invariant (CDC P1): the platform emits its llms output natively at
@@ -15,7 +16,7 @@ import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/ty
    raw CSF stories, typedoc JSON) — no post-build scraping of the DOM.
 
    The output honors the contract of the previous extractor, spec'd by
-   packages/storybook/scripts/verify-llms.sh: same file naming, front-matter
+   packages/docs/scripts/verify-llms.sh: same file naming, front-matter
    keys (title/slug/category/type/version/tokens/source), navigation files
    with relative links, absolute versioned front-matter sources, aggregate
    documents and the machine-readable llms-index.json. */
@@ -706,17 +707,16 @@ interface SearchEntry {
 
 function searchText(body: string): string {
   return body
+    // Accents folded like the client's tokenize(): "modèle" matches "modele".
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    // Residual inline HTML (<br/>, <kbd>…) is markup, not searchable text.
+    .replace(/<\/?[a-z][^>]*>?/g, ' ')
     .replace(/[#>*_`|]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 6000);
-}
-
-/* Same id scheme as the app's Heading/SectionHeading components: a section
-   entry's `#slug` therefore lands on the rendered heading. */
-function anchorSlug(label: string): string {
-  return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
 /* One index entry per `## section` of the doc (plus the intro), so a palette
@@ -733,15 +733,15 @@ function sectionEntries(doc: { body: string }, route: string, title: string, fal
     const heading = rest[i].trim();
     const text = searchText(rest[i + 1]);
     if (text.length > 0) {
-      entries.push({ b: text, r: `${route}#${anchorSlug(heading)}`, s: heading, t: title });
+      entries.push({ b: text, r: `${route}#${slugify(heading)}`, s: heading, t: title });
     }
   }
   return entries;
 }
 
-const SECTION_ROUTES: Record<Doc['type'], { label: string, path: string }> = {
+// No 'examples': those docs are code fences only, empty once fences are stripped.
+const SECTION_ROUTES: Partial<Record<Doc['type'], { label: string, path: string }>> = {
   'documentation': { label: 'Documentation', path: '' },
-  'examples': { label: 'Examples', path: '/examples' },
   'overview': { label: 'Overview', path: '' },
   'technical-information': { label: 'Technical information', path: '/technical' },
 };
@@ -760,6 +760,9 @@ function buildSearchIndex(): SearchEntry[] {
         continue; // same route as documentation, subset of its content
       }
       const section = SECTION_ROUTES[type as Doc['type']];
+      if (!section) {
+        continue;
+      }
       entries.push(...sectionEntries(doc, `/components/${key}${section.path}`, doc.title, section.label));
     }
   }
@@ -773,8 +776,16 @@ function buildSearchIndex(): SearchEntry[] {
       }
     }
   }
-  // Recipes are left out on purpose: their llms doc is a single aggregate
-  // with no matching route; the nav titles already cover them in the palette.
+  // Recipes: their llms doc is one aggregate rendered by the single
+  // /recipes/components page, so it is indexed as ONE page-level entry (no
+  // #section: the recipe cards carry no heading ids to land on).
+  const recipes = recipesDoc();
+  if (recipes) {
+    const text = searchText(recipes.body.replace(/```[\s\S]*?```/g, ' '));
+    if (text.length > 0) {
+      entries.push({ b: text, r: '/recipes/components', s: 'Recipes', t: recipes.title });
+    }
+  }
   return entries;
 }
 

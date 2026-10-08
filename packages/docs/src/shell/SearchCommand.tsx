@@ -9,7 +9,8 @@ import { loadSearchIndex, searchDocs, type SearchHit, tokenize } from './search'
 /* Global search — our own Command component (the palette pattern it was
    built for), controlled so selecting an entry closes it, bound to ⌘K.
    The filter is CONTROLLED (query state below), which turns the Command's
-   own matching off: page entries are matched on title + section trail here,
+   own matching off: page entries are matched on title + section trail +
+   status badge label ("deprecated" lists the deprecated pages) here,
    and a full-text pass over the whole documentation corpus (lazy-loaded
    index, see search.ts) fills the "In the docs" group for everything the
    titles alone can't answer. */
@@ -21,6 +22,8 @@ const GROUPS: { heading: string, kind: NavPage['kind'] }[] = [
   { heading: 'Recipes', kind: 'recipe' },
   { heading: 'Helpers', kind: 'helper' },
 ];
+
+type SearchPage = ReturnType<typeof flattenPages>[number];
 
 const BADGES = {
   beta: { color: BADGE_COLOR.beta, label: 'Beta' },
@@ -98,13 +101,16 @@ const SearchCommand = () => {
   };
 
   const needle = query.trim().toLowerCase();
-  const pageMatches = (page: NavPage): boolean => !needle || `${page.title} ${page.section}`.toLowerCase().includes(needle);
+  const pageMatches = (page: SearchPage): boolean => !needle
+    || [page.title, page.section, page.badge && BADGES[page.badge].label].filter(Boolean).join(' ').toLowerCase().includes(needle);
   const groups = GROUPS
     .map(({ heading, kind }) => ({ heading, kind, items: pages.filter((page) => page.kind === kind && pageMatches(page)) }))
     .filter((group) => group.items.length > 0);
-  // A page already listed by title above is not repeated as a content hit.
+  // A page already listed by title above is not repeated as a content hit,
+  // whatever its #section: routes are compared without the hash.
   const shownPaths = new Set(groups.flatMap((group) => group.items.map((page) => page.path)));
-  const contentHits = docHits.filter((hit) => !shownPaths.has(hit.route));
+  const contentHits = docHits.filter((hit) => !shownPaths.has(hit.route.split('#')[0]));
+  const resultCount = groups.reduce((total, group) => total + group.items.length, 0) + contentHits.length;
 
   return (
     <Command
@@ -119,8 +125,13 @@ const SearchCommand = () => {
         <CommandFilter
           aria-label="Search"
           onChange={ (e) => setQuery(e.target.value) }
-          placeholder="Search components, guides, tools…"
+          placeholder="Search the documentation…"
           value={ query } />
+        { /* Screen readers hear the result count settle, the full-text group
+             included (it lands asynchronously, after the index fetch). */ }
+        <span aria-live="polite" className="sr-only">
+          { needle ? `${resultCount} result${resultCount === 1 ? '' : 's'}` : '' }
+        </span>
         <CommandList aria-label="Results">
           { groups.map(({ heading, items, kind }) => (
             <CommandGroup heading={ heading } key={ kind }>

@@ -374,7 +374,8 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--ods-color-neutral-500);
+  /* neutral-700: neutral-500 measured 3.95:1 at this size, under WCAG AA 4.5:1 */
+  color: var(--ods-color-neutral-700);
   font-size: .78rem;
 }
 

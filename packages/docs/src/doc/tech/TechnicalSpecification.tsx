@@ -4,6 +4,7 @@ import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
 import { DocSkeleton } from '../DocSkeleton';
+import { slugify } from '../slug';
 import { AnatomyBrowser } from './AnatomyBrowser';
 import { type TechData, getTechData } from './techData';
 import './tech.css';
@@ -20,7 +21,7 @@ const NativeAttributesNote = ({ element }: { element: string }) => (
 );
 
 const SectionHeading = ({ children, label }: { children?: React.ReactNode, label: string }) => (
-  <Text as="h2" className="doc__heading tech__heading" id={ label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') } preset={ TEXT_PRESET.heading4 }>
+  <Text as="h2" className="doc__heading tech__heading" id={ slugify(label) } preset={ TEXT_PRESET.heading4 }>
     { label }{ children }
   </Text>
 );

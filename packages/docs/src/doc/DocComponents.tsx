@@ -20,6 +20,7 @@ import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
 import { Recipes } from './ports/recipes/Recipes';
 import { Roadmap } from './ports/roadmap/Roadmap';
+import { slugify } from './slug';
 import './doc.css';
 
 /* The neutral-format component contract: every component available inside a
@@ -27,8 +28,6 @@ import './doc.css';
    NOTHING. */
 
 const anatomyImages = import.meta.glob('../../assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
-
-const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
   const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;

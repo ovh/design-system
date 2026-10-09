@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../src';
+import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonStatus } from '../../src';
 
 export default {
   component: Button,
@@ -57,5 +57,47 @@ export const variantsXs = () => (
     <Button data-testid="variant-xs-default" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.default }>Default</Button>
     <Button data-testid="variant-xs-ghost" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>Ghost</Button>
     <Button data-testid="variant-xs-outline" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.outline }>Outline</Button>
+  </>
+);
+
+export const deprecatedColor = () => (
+  <>
+    <Button color={ BUTTON_COLOR.primary } data-testid="color-primary">Primary</Button>
+    <Button data-testid="status-brand" status={ BUTTON_STATUS.brand }>Brand</Button>
+    <Button color={ BUTTON_COLOR.critical } data-testid="color-critical-status-neutral" status={ BUTTON_STATUS.neutral }>Both</Button>
+    <Button data-testid="status-neutral" status={ BUTTON_STATUS.neutral }>Neutral</Button>
+    <Button color={ BUTTON_COLOR.information } data-testid="color-information">Information</Button>
+    <Button color={ BUTTON_COLOR.success } data-testid="color-success">Success</Button>
+    <Button color={ BUTTON_COLOR.warning } data-testid="color-warning">Warning</Button>
+    <Button data-testid="status-none" status={ 'none' as ButtonStatus }>None</Button>
+  </>
+);
+
+export const statuses = () => (
+  <>
+    {
+      BUTTON_VARIANTS.map((variant) => (
+        <div key={ variant }>
+          <Button
+            data-testid={ `status-none-${variant}` }
+            status={ 'none' as ButtonStatus }
+            variant={ variant }>
+            None
+          </Button>
+
+          {
+            BUTTON_STATUSES.map((status) => (
+              <Button
+                data-testid={ `status-${status}-${variant}` }
+                key={ status }
+                status={ status }
+                variant={ variant }>
+                { status }
+              </Button>
+            ))
+          }
+        </div>
+      ))
+    }
   </>
 );

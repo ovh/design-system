@@ -15,4 +15,17 @@ describe('Toaster rendering', () => {
 
     expect(await page.waitForSelector('[data-ods="message"]')).not.toBeNull();
   });
+
+  describe('status', () => {
+    it('should announce a critical toast as an alert and the others as a status', async() => {
+      await gotoStory(page, 'rendering/status');
+      await page.waitForSelector('[data-ods="toaster"]');
+
+      await page.click('#trigger-critical');
+      await page.click('#trigger-accent');
+
+      expect(await page.waitForSelector('[role="alert"] [data-ods="message"]')).not.toBeNull();
+      expect(await page.waitForSelector('[role="status"] [data-ods="message"]')).not.toBeNull();
+    });
+  });
 });

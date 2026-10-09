@@ -1,12 +1,15 @@
 import 'jest-puppeteer';
-import { gotoStory } from '../../../../helpers/test';
+import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { BUTTON_STATUSES } from '../../src/constants/button-status';
+import { BUTTON_VARIANTS } from '../../src/constants/button-variant';
 
 describe('Button rendering', () => {
   it('should render the web component', async() => {
-    await gotoStory(page, 'rendering/render');
+    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="button"]')).not.toBeNull();
+    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -102,6 +105,45 @@ describe('Button rendering', () => {
         expect(defaultHeight).toBe(ghostHeight);
         expect(ghostHeight).toBe(outlineHeight);
       });
+    });
+  });
+
+  describe('statuses', () => {
+    it('should style every status in every variant, unlike an unknown status, without any warning', async() => {
+      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+
+      const unstyled = await Promise.all(BUTTON_VARIANTS.map(async(variant) => {
+        const unknownStyle = await getStatusStyle(page, `status-none-${variant}`);
+        const styles = await Promise.all(BUTTON_STATUSES.map((status) => getStatusStyle(page, `status-${status}-${variant}`)));
+
+        return BUTTON_STATUSES.filter((_, index) => styles[index] === unknownStyle).map((status) => `${variant} ${status}`);
+      }));
+
+      expect(unstyled.flat()).toEqual([]);
+      expect(warnings).toEqual([]);
+    });
+  });
+
+  describe('deprecated color', () => {
+    it('should render color primary as status brand, let status win and warn once', async() => {
+      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
+
+      expect(await getStatusStyle(page, 'color-primary')).toBe(await getStatusStyle(page, 'status-brand'));
+      expect(await getStatusStyle(page, 'color-critical-status-neutral')).toBe(await getStatusStyle(page, 'status-neutral'));
+      expect(warnings).toEqual([
+        '[DEPRECATED]: The color prop of Button is deprecated and will be removed in v21, use the status prop instead (information, success and warning have no status equivalent).',
+      ]);
+    });
+
+    it('should keep styling information, success and warning through color', async() => {
+      await gotoStory(page, 'rendering/deprecated-color');
+
+      const unknownStyle = await getStatusStyle(page, 'status-none');
+
+      const colors = ['information', 'success', 'warning'];
+      const styles = await Promise.all(colors.map((color) => getStatusStyle(page, `color-${color}`)));
+
+      expect(colors.filter((_, index) => styles[index] === unknownStyle)).toEqual([]);
     });
   });
 });

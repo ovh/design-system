@@ -16,3 +16,21 @@ export const Default = () => (
     </button>
   </>
 );
+
+export const status = () => (
+  <>
+    <Toaster duration={ Infinity } />
+
+    <button
+      id="trigger-critical"
+      onClick={ () => toast.critical('Critical notification') }>
+      Trigger critical toast
+    </button>
+
+    <button
+      id="trigger-accent"
+      onClick={ () => toast.accent('Accent notification') }>
+      Trigger accent toast
+    </button>
+  </>
+);

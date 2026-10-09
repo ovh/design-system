@@ -1,12 +1,31 @@
 import 'jest-puppeteer';
-import { gotoStory } from '../../../../helpers/test';
+import { type Page } from 'puppeteer';
+import { gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+
+async function getFill(page: Page, testId: string): Promise<string> {
+  const spinner = await page.waitForSelector(`[data-testid="${testId}"]`);
+
+  return spinner!.evaluate((el: Element) => getComputedStyle(el).fill);
+}
+
+async function resolveColor(page: Page, color: string): Promise<string> {
+  return page.evaluate((value: string) => {
+    const probe = document.createElement('span');
+    probe.style.color = value;
+    document.body.appendChild(probe);
+    const resolved = getComputedStyle(probe).color;
+    probe.remove();
+    return resolved;
+  }, color);
+}
 
 describe('Spinner rendering', () => {
   it('should render the web component', async() => {
-    await gotoStory(page, 'rendering/render');
+    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="spinner"]')).not.toBeNull();
+    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -46,6 +65,29 @@ describe('Spinner rendering', () => {
       expect(lgHeight).toBeGreaterThan(xsHeight);
       expect(lgHeight).toBeGreaterThan(smHeight);
       expect(lgHeight).toBeGreaterThan(mdHeight);
+    });
+  });
+
+  describe('color', () => {
+    it('should fill with primary by default and with the --ods-spinner-color custom property, without any warning', async() => {
+      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/color');
+
+      expect(await getFill(page, 'default')).toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
+      expect(await getFill(page, 'current-color')).toBe('rgb(255, 0, 0)');
+      expect(await getFill(page, 'custom-property')).toBe('rgb(0, 128, 0)');
+      expect(await getFill(page, 'parent-custom-property')).toBe('rgb(0, 0, 255)');
+      expect(warnings).toEqual([]);
+    });
+
+    it('should keep the v19 fill with the deprecated color prop and warn once', async() => {
+      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
+
+      expect(await getFill(page, 'color-neutral')).toBe(await resolveColor(page, 'var(--ods-theme-neutral-color)'));
+      expect(await getFill(page, 'color-primary')).toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
+      expect(await resolveColor(page, 'var(--ods-theme-neutral-color)')).not.toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
+      expect(warnings).toEqual([
+        '[DEPRECATED]: The color prop of Spinner is deprecated and will be removed in v21, set the --ods-spinner-color CSS custom property instead.',
+      ]);
     });
   });
 });

@@ -1,4 +1,4 @@
-import { type Page } from 'puppeteer';
+import { type ConsoleMessage, type Page } from 'puppeteer';
 
 async function gotoStory(page: Page, story: string): Promise<void> {
   const uriPart = story.replace('/', '--');
@@ -9,6 +9,34 @@ async function gotoStory(page: Page, story: string): Promise<void> {
   await page.goto(`http://localhost:3000/iframe.html?args=&id=tests-${uriPart}&viewMode=story`, { waitUntil: ['load', 'networkidle0'] });
 }
 
+const STATUS_STYLE_PROPERTIES = ['background-color', 'border-color', 'color'];
+
+async function getStatusStyle(page: Page, testId: string): Promise<string> {
+  const element = await page.waitForSelector(`[data-testid="${testId}"]`);
+
+  return element!.evaluate((el: Element, properties: string[]) => {
+    const style = getComputedStyle(el);
+    return properties.map((property) => style.getPropertyValue(property)).join(' | ');
+  }, STATUS_STYLE_PROPERTIES);
+}
+
+async function gotoStoryAndCollectDeprecations(page: Page, story: string): Promise<string[]> {
+  const warnings: string[] = [];
+  const onConsole = (message: ConsoleMessage): void => {
+    if (message.text().includes('[DEPRECATED]')) {
+      warnings.push(message.text());
+    }
+  };
+
+  page.on('console', onConsole);
+  await gotoStory(page, story);
+  page.off('console', onConsole);
+
+  return warnings;
+}
+
 export {
+  getStatusStyle,
   gotoStory,
+  gotoStoryAndCollectDeprecations,
 };

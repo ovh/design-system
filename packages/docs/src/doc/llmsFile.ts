@@ -1,4 +1,5 @@
 import guidesInventory from '../content/guides/guides.json';
+import helpersInventory from '../content/helpers/helpers.json';
 
 // Component tab → llms filename suffix (no tab: the documentation page).
 const COMPONENT_TAB_SUFFIX: Record<string, string> = {
@@ -8,7 +9,8 @@ const COMPONENT_TAB_SUFFIX: Record<string, string> = {
 
 /* Route → llms filename, for the topbar "View as Markdown" link. The filenames
    follow the emission conventions of vite-plugin-llms.ts; guides carry their
-   editorial legacy slug, read from the same guides.json the plugin uses.
+   editorial legacy slug, read from the same guides.json the plugin uses, and
+   helpers theirs from helpers.json.
    Recipes have one aggregate document (recipes-components.txt) for their
    single page. Returns null when the page has no llms document (gallery,
    tools, llms-excluded guides) — the link simply hides. */
@@ -35,7 +37,8 @@ function llmsFileFor(pathname: string): string | null {
 
   const helper = pathname.match(/^\/helpers\/([^/]+)$/);
   if (helper) {
-    return `helpers-${helper[1].replace(/-/g, '').toLowerCase()}--documentation.txt`;
+    const entry = helpersInventory.find((candidate) => candidate.mdx === helper[1]);
+    return entry ? `${entry.slug}--documentation.txt` : null;
   }
 
   return null;

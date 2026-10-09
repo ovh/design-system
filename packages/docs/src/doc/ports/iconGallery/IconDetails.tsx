@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BADGE_SIZE, BADGE_STATUS, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
+import { BADGE_SIZE, BADGE_STATUS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
 import { type IconNameKey } from '../constants/iconTags';
 import { CodeBlock } from '../../CodeBlock';
 import { cx } from '../cx';
@@ -42,7 +42,7 @@ const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
           { name }
         </Text>
 
-        <Button color={ BUTTON_COLOR.neutral } onClick={ onClose } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
+        <Button status={ BUTTON_STATUS.neutral } onClick={ onClose } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
 

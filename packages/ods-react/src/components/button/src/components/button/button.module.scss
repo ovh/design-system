@@ -25,6 +25,7 @@
         @include button.ods-button-variant-default('critical');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--information {
         @include button.ods-button-variant-default('information');
       }
@@ -33,14 +34,16 @@
         @include button.ods-button-variant-default('neutral');
       }
 
-      &#{$button}--primary {
+      &#{$button}--brand {
         @include button.ods-button-variant-default('primary');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--success {
         @include button.ods-button-variant-default('success');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--warning {
         @include button.ods-button-variant-default('warning');
       }
@@ -51,6 +54,7 @@
         @include button.ods-button-variant-ghost('critical');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--information {
         @include button.ods-button-variant-ghost('information');
       }
@@ -59,14 +63,16 @@
         @include button.ods-button-variant-ghost('neutral');
       }
 
-      &#{$button}--primary {
+      &#{$button}--brand {
         @include button.ods-button-variant-ghost('primary');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--success {
         @include button.ods-button-variant-ghost('success');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--warning {
         @include button.ods-button-variant-ghost('warning');
       }
@@ -77,6 +83,7 @@
         @include button.ods-button-variant-outline('critical');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--information {
         @include button.ods-button-variant-outline('information');
       }
@@ -85,14 +92,16 @@
         @include button.ods-button-variant-outline('neutral');
       }
 
-      &#{$button}--primary {
+      &#{$button}--brand {
         @include button.ods-button-variant-outline('primary');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--success {
         @include button.ods-button-variant-outline('success');
       }
 
+      // [Deprecated] only reachable through the deprecated color prop, will be removed in v21
       &#{$button}--warning {
         @include button.ods-button-variant-outline('warning');
       }

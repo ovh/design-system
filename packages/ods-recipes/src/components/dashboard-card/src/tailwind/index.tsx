@@ -1,4 +1,4 @@
-import { BADGE_STATUS, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { BADGE_STATUS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
 import { type JSX, useRef, useState } from 'react';
 import './index.module.css';
 
@@ -131,7 +131,7 @@ const DashboardCard = (): JSX.Element => {
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             size={ BUTTON_SIZE.sm }
             variant={ BUTTON_VARIANT.ghost }>
             Delete Cluster

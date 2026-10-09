@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_STATUS, TAG_STATUS, TEXT_PRESET,
+  BUTTON_STATUS, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_STATUS, TAG_STATUS, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -323,47 +323,29 @@ function App(): ReactElement {
           </Button>
           <span id="filter-btn">Filter your search results</span>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical }>Critical</Button>
-          <Button color={ BUTTON_COLOR.information }>Information</Button>
-          <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary }>Primary</Button>
-          <Button color={ BUTTON_COLOR.success }>Success</Button>
-          <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+          <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand }>Brand</Button>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.ghost }>Critical</Button>
-          <Button color={ BUTTON_COLOR.information } variant={ BUTTON_VARIANT.ghost }>Information</Button>
-          <Button color={ BUTTON_COLOR.neutral } variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary } variant={ BUTTON_VARIANT.ghost }>Primary</Button>
-          <Button color={ BUTTON_COLOR.success } variant={ BUTTON_VARIANT.ghost }>Success</Button>
-          <Button color={ BUTTON_COLOR.warning } variant={ BUTTON_VARIANT.ghost }>Warning</Button>
+          <Button status={ BUTTON_STATUS.critical } variant={ BUTTON_VARIANT.ghost }>Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral } variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand } variant={ BUTTON_VARIANT.ghost }>Brand</Button>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.outline }>Critical</Button>
-          <Button color={ BUTTON_COLOR.information } variant={ BUTTON_VARIANT.outline }>Information</Button>
-          <Button color={ BUTTON_COLOR.neutral } variant={ BUTTON_VARIANT.outline }>Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary } variant={ BUTTON_VARIANT.outline }>Primary</Button>
-          <Button color={ BUTTON_COLOR.success } variant={ BUTTON_VARIANT.outline }>Success</Button>
-          <Button color={ BUTTON_COLOR.warning } variant={ BUTTON_VARIANT.outline }>Warning</Button>
+          <Button status={ BUTTON_STATUS.critical } variant={ BUTTON_VARIANT.outline }>Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral } variant={ BUTTON_VARIANT.outline }>Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand } variant={ BUTTON_VARIANT.outline }>Brand</Button>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical } size="sm">Critical</Button>
-          <Button color={ BUTTON_COLOR.information } size="sm">Information</Button>
-          <Button color={ BUTTON_COLOR.neutral } size="sm">Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary } size="sm">Primary</Button>
-          <Button color={ BUTTON_COLOR.success } size="sm">Success</Button>
-          <Button color={ BUTTON_COLOR.warning } size="sm">Warning</Button>
+          <Button status={ BUTTON_STATUS.critical } size="sm">Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral } size="sm">Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand } size="sm">Brand</Button>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical } size="sm" variant={ BUTTON_VARIANT.ghost }>Critical</Button>
-          <Button color={ BUTTON_COLOR.information } size="sm" variant={ BUTTON_VARIANT.ghost }>Information</Button>
-          <Button color={ BUTTON_COLOR.neutral } size="sm" variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary } size="sm" variant={ BUTTON_VARIANT.ghost }>Primary</Button>
-          <Button color={ BUTTON_COLOR.success } size="sm" variant={ BUTTON_VARIANT.ghost }>Success</Button>
-          <Button color={ BUTTON_COLOR.warning } size="sm" variant={ BUTTON_VARIANT.ghost }>Warning</Button>
+          <Button status={ BUTTON_STATUS.critical } size="sm" variant={ BUTTON_VARIANT.ghost }>Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral } size="sm" variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand } size="sm" variant={ BUTTON_VARIANT.ghost }>Brand</Button>
           <br /><br />
-          <Button color={ BUTTON_COLOR.critical } size="sm" variant={ BUTTON_VARIANT.outline }>Critical</Button>
-          <Button color={ BUTTON_COLOR.information } size="sm" variant={ BUTTON_VARIANT.outline }>Information</Button>
-          <Button color={ BUTTON_COLOR.neutral } size="sm" variant={ BUTTON_VARIANT.outline }>Neutral</Button>
-          <Button color={ BUTTON_COLOR.primary } size="sm" variant={ BUTTON_VARIANT.outline }>Primary</Button>
-          <Button color={ BUTTON_COLOR.success } size="sm" variant={ BUTTON_VARIANT.outline }>Success</Button>
-          <Button color={ BUTTON_COLOR.warning } size="sm" variant={ BUTTON_VARIANT.outline }>Warning</Button>
+          <Button status={ BUTTON_STATUS.critical } size="sm" variant={ BUTTON_VARIANT.outline }>Critical</Button>
+          <Button status={ BUTTON_STATUS.neutral } size="sm" variant={ BUTTON_VARIANT.outline }>Neutral</Button>
+          <Button status={ BUTTON_STATUS.brand } size="sm" variant={ BUTTON_VARIANT.outline }>Brand</Button>
         </section>
 
         <section>
@@ -1156,7 +1138,7 @@ function App(): ReactElement {
                 <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
                 <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
                 <Divider style={{ width: '100%' }} />
-                <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+                <Button status={BUTTON_STATUS.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
               </div>
             </PopoverContent>
           </Popover>

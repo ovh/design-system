@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
@@ -183,7 +183,7 @@ const Shell = () => {
               <Button
                 aria-label="Close navigation"
                 className="shell__drawer-close"
-                color={ BUTTON_COLOR.neutral }
+                status={ BUTTON_STATUS.neutral }
                 onClick={ () => setNavOpen(false) }
                 variant={ BUTTON_VARIANT.ghost }>
                 <Icon name={ ICON_NAME.xmark } />
@@ -200,7 +200,7 @@ const Shell = () => {
             <Button
               aria-label="Open navigation"
               className="shell__menu-button"
-              color={ BUTTON_COLOR.neutral }
+              status={ BUTTON_STATUS.neutral }
               onClick={ () => setNavOpen(true) }
               variant={ BUTTON_VARIANT.ghost }>
               <Icon name={ ICON_NAME.hamburgerMenu } />

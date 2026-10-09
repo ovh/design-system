@@ -8,7 +8,7 @@ import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { APP_ROOT } from '../appBase';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
@@ -305,7 +305,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
         </Splitter.Panel>
 
         <Splitter.ResizeTrigger aria-label="Resize panels" asChild id="editor:preview">
-          <Button className={ `sandbox__resizer sandbox__resizer--${orientation}` } color={ BUTTON_COLOR.neutral } />
+          <Button className={ `sandbox__resizer sandbox__resizer--${orientation}` } status={ BUTTON_STATUS.neutral } />
         </Splitter.ResizeTrigger>
 
         <Splitter.Panel className="sandbox__pane" id="preview">

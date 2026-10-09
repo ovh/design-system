@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useRef, useState } from 'react';
-import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
+import { Button, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Icon, ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import {
@@ -515,7 +515,7 @@ export const InFormField: Story = {
 
 export const DynamicChildren: Story = {
   globals: {
-    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+    imports: `import { Button, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
 import { useRef, useState } from 'react';`,
   },
   parameters: {
@@ -614,7 +614,7 @@ import { useRef, useState } from 'react';`,
                       ) : null }
                       <Button
                         aria-label="Delete"
-                        color={ BUTTON_COLOR.critical }
+                        status={ BUTTON_STATUS.critical }
                         onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
                         onMouseDown={(e) => { e.stopPropagation(); }}
                         onKeyDown={(e) => { e.stopPropagation(); }}

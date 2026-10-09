@@ -2,7 +2,7 @@
    the demos must share one React/Ark instance — see resolve.dedupe in
    vite.config.ts. Ported doc components import ODS from here. */
 export { BADGE_SIZE, BADGE_STATUS, Badge } from '../../ods-react/src/components/badge/src';
-export { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../ods-react/src/components/button/src';
+export { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../ods-react/src/components/button/src';
 export { CARD_STATUS, Card } from '../../ods-react/src/components/card/src';
 export { Clipboard, ClipboardControl, ClipboardTrigger } from '../../ods-react/src/components/clipboard/src';
 export { DIVIDER_ORIENTATION, DIVIDER_SPACING, Divider } from '../../ods-react/src/components/divider/src';

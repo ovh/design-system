@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
 import guidesInventory from './src/content/guides/guides.json';
+import helpersInventory from './src/content/helpers/helpers.json';
 import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
@@ -78,10 +79,8 @@ function discoverGuides(): GuideEntry[] {
   return GUIDES;
 }
 
-const HELPERS = [
-  { mdx: 'format-price', name: 'formatPrice', slug: 'helpers-formatprice', stories: 'helpers/formatPrice' },
-  { mdx: 'format-relative-time', name: 'formatRelativeTime', slug: 'helpers-formatrelativetime', stories: 'helpers/formatRelativeTime' },
-];
+// Shared with the "View as Markdown" link (src/doc/llmsFile.ts): one inventory.
+const HELPERS = helpersInventory;
 
 const titleize = (kebab: string): string => kebab.split('-').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
 const humanize = (storyName: string): string => storyName.replace(/([a-z0-9])([A-Z])/g, '$1 $2');

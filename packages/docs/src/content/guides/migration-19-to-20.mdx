@@ -9,7 +9,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The public API of the components has **no breaking change**: existing props, refs and composition keep working (see **Deprecations** below). There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
@@ -88,6 +88,26 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+<Heading label="Deprecations" level={ 2 } />
+
+The following APIs are deprecated in 20.0. They keep working in 20.x, log a `[DEPRECATED]` warning in the console, and will be removed in v21: migrate when convenient.
+
+<Heading label="Table" level={ 3 } />
+
+The `variant` prop is deprecated in favor of a `striped` boolean prop (default `false`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are deprecated with it.
+
+- `variant="default"` (or `TABLE_VARIANT.default`): remove the prop.
+- `variant="striped"` (or `TABLE_VARIANT.striped`): use `striped`.
+- `TableVariant` (e.g. in the props of a wrapper component): use `TableProp['striped']`.
+
+```tsx
+// before
+<Table variant={ TABLE_VARIANT.striped }>...</Table>
+
+// after
+<Table striped>...</Table>
+```
 
 <Heading label="Need help?" level={ 2 } />
 

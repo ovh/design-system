@@ -19,7 +19,7 @@ export { Select, SelectContent, SelectControl, type SelectOptionItem, type Selec
 export { Skeleton } from '../../ods-react/src/components/skeleton/src';
 export { SPINNER_SIZE, Spinner } from '../../ods-react/src/components/spinner/src';
 export { Switch, SwitchItem, type SwitchValueChangeDetail } from '../../ods-react/src/components/switch/src';
-export { TABLE_SIZE, TABLE_VARIANT, Table } from '../../ods-react/src/components/table/src';
+export { TABLE_SIZE, Table } from '../../ods-react/src/components/table/src';
 export { TEXT_PRESET, Text } from '../../ods-react/src/components/text/src';
 export { Textarea } from '../../ods-react/src/components/textarea/src';
 export { Tooltip, TooltipContent, TooltipTrigger } from '../../ods-react/src/components/tooltip/src';

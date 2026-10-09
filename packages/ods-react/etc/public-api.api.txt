@@ -3004,6 +3004,11 @@ interface InputRootProp {
      */
     clearable?: boolean;
     /**
+     * Decorative content displayed inside the field, after the value and before the action buttons
+     * (a unit, an icon, a ghost button). Never part of the input value.
+     */
+    endContent?: ReactNode;
+    /**
      * Whether the component is in error state.
      */
     invalid?: boolean;
@@ -3038,6 +3043,11 @@ interface InputRootProp {
      */
     onClear?: () => void;
     /**
+     * Decorative content displayed inside the field, before the value (a currency symbol, an icon,
+     * a fixed scheme such as `https://`). Never part of the input value.
+     */
+    startContent?: ReactNode;
+    /**
      * The input type.
      */
     type?: InputType;
@@ -3051,8 +3061,15 @@ declare function useInput(): InputContextType;
 export { type InputContextType, type InputProviderProp, type InputRootProp, InputProvider, useInput, };
 
 // ==================== components/input/src/controller/input.d.ts ====================
+import { ReactNode } from 'react';
+/**
+ * Whether an adornment will actually produce visible content.
+ * Mirrors what React renders, so `null`, `undefined`, booleans and the empty string emit no wrapper element,
+ * while `0`, which is falsy but renderable, does.
+ */
+declare function isSlotDefined(slot: ReactNode): boolean;
 declare function isValueDefined(value?: number | readonly string[] | string | null): boolean;
-export { isValueDefined, };
+export { isSlotDefined, isValueDefined, };
 
 // ==================== components/input/src/index.d.ts ====================
 export { Input, type InputProp } from './components/input/Input';
@@ -5730,7 +5747,13 @@ interface TableProp extends ComponentPropsWithRef<'table'> {
      */
     size?: TableSize;
     /**
+     * Whether the body rows should alternate background colors.
+     */
+    striped?: boolean;
+    /**
+     * @deprecated
      * The variant preset to use.
+     * DEPRECATED: Use the `striped` prop instead, variant will be removed in v21.
      */
     variant?: TableVariant;
 }
@@ -5748,11 +5771,23 @@ declare const TABLE_SIZES: readonly TABLE_SIZE[];
 export { TABLE_SIZE, TABLE_SIZES, type TableSize, };
 
 // ==================== components/table/src/constants/table-variant.d.ts ====================
+/**
+ * @deprecated
+ * Use the `striped` prop of the Table instead, removed in v21.
+ */
 declare enum TABLE_VARIANT {
     default = "default",
     striped = "striped"
 }
+/**
+ * @deprecated
+ * Use the `striped` prop of the Table instead, removed in v21.
+ */
 type TableVariant = `${TABLE_VARIANT}`;
+/**
+ * @deprecated
+ * Use the `striped` prop of the Table instead, removed in v21.
+ */
 declare const TABLE_VARIANTS: readonly TABLE_VARIANT[];
 export { TABLE_VARIANT, TABLE_VARIANTS, type TableVariant, };
 

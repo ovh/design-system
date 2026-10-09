@@ -80,3 +80,88 @@ export const render = () => (
     </tbody>
   </Table>
 );
+
+export const notStriped = () => (
+  <Table data-testid="not-striped">
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    </tbody>
+  </Table>
+);
+
+export const striped = () => (
+  <Table
+    data-testid="striped"
+    striped>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    </tbody>
+  </Table>
+);
+
+export const deprecatedVariantStriped = () => (
+  <Table
+    data-testid="deprecated-variant-striped"
+    variant="striped">
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    </tbody>
+  </Table>
+);

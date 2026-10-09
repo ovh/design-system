@@ -10,6 +10,7 @@ import { CodeBlock } from './CodeBlock';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
@@ -20,7 +21,6 @@ import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
 import { Recipes } from './ports/recipes/Recipes';
 import { Roadmap } from './ports/roadmap/Roadmap';
-import { slugify } from './slug';
 import './doc.css';
 
 /* The neutral-format component contract: every component available inside a
@@ -28,31 +28,6 @@ import './doc.css';
    NOTHING. */
 
 const anatomyImages = import.meta.glob('../../assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
-
-const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
-  const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
-  const id = slugify(label);
-  return (
-    // The anchor sits BESIDE the heading, not inside it: nested, its label would
-    // enter the heading's accessible name and the table of contents text.
-    <div className="doc__heading-row">
-      <Text as={ `h${level}` } className="doc__heading" id={ id } preset={ presets[level] }>
-        { label }{ children }
-      </Text>
-      { /* Hover anchor: native #-navigation, plus the absolute URL in the
-           clipboard so "look at this section" is one click to share. */ }
-      <a
-        aria-label={ `Link to “${label}”` }
-        className="doc__anchor"
-        href={ `#${id}` }
-        onClick={ () => {
-          navigator.clipboard?.writeText(new URL(`#${id}`, window.location.href).href).catch(() => { /* http or denied: the hash still lands in the URL bar */ });
-        } }>
-        #
-      </a>
-    </div>
-  );
-};
 
 const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'shown' | 'none', story: string }) => {
   const page = usePageStories();

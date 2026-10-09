@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { CARD_COLOR, Card, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
+import { CARD_STATUS, Card, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
 import styles from './homepageTile.module.css';
 
 interface HomepageTileProp {
@@ -14,7 +14,7 @@ const HomepageTile = ({ description, icon, linkLabel, path, title }: HomepageTil
   const navigate = useNavigate();
 
   return (
-    <Card className={ styles['homepage-tile'] } color={ CARD_COLOR.neutral }>
+    <Card className={ styles['homepage-tile'] } status={ CARD_STATUS.neutral }>
       <div className={ styles['homepage-tile__title'] }>
         <Icon className={ styles['homepage-tile__icon'] } name={ icon } />
 

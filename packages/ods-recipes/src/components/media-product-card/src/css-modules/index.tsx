@@ -1,4 +1,4 @@
-import { CARD_COLOR, Card, ICON_NAME, Icon, Link, Medium, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { CARD_STATUS, Card, ICON_NAME, Icon, Link, Medium, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type JSX } from 'react';
 import logoUrl from '../assets/product.png';
 import style from './index.module.scss';
@@ -7,7 +7,7 @@ const MediaProductCard = (): JSX.Element => {
   return (
     <Card
       className={ style['media-product-card'] }
-      color={ CARD_COLOR.neutral }>
+      status={ CARD_STATUS.neutral }>
       <div className={ style['media-product-card__body'] }>
         <Medium
           alt="AI Deploy logo"

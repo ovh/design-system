@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BADGE_COLOR, BADGE_SIZE, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_COLOR, Card, Clipboard, ClipboardControl, ClipboardTrigger, ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
+import { BADGE_COLOR, BADGE_SIZE, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
 import { type IconNameKey } from '../constants/iconTags';
 import { CodeBlock } from '../../CodeBlock';
 import { cx } from '../cx';
@@ -57,7 +57,7 @@ const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
 
       <Card
         className={ styles['icon-details__preview'] }
-        color={ CARD_COLOR.neutral }
+        status={ CARD_STATUS.neutral }
         style={{ color: color && `var(--ods-color-${color}-500)` }}>
         <Icon name={ name } />
       </Card>

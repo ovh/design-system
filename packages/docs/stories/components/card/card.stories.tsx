@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { CARD_COLOR, CARD_COLORS, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
+import { CARD_STATUS, CARD_STATUSES, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
 
 type Story = StoryObj<CardProp>;
 
@@ -21,35 +21,35 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Color: Story = {
+export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
   globals: {
-    imports: `import { CARD_COLOR, Card } from '@ovhcloud/ods-react';`,
+    imports: `import { CARD_STATUS, Card } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Card color={ CARD_COLOR.critical }>
+      <Card status={ CARD_STATUS.accent }>
+        <p>Accent</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.critical }>
         <p>Critical</p>
       </Card>
 
-      <Card color={ CARD_COLOR.information }>
+      <Card status={ CARD_STATUS.information }>
         <p>Information</p>
       </Card>
 
-      <Card color={ CARD_COLOR.neutral }>
+      <Card status={ CARD_STATUS.neutral }>
         <p>Neutral</p>
       </Card>
 
-      <Card color={ CARD_COLOR.primary }>
-        <p>Primary</p>
-      </Card>
-
-      <Card color={ CARD_COLOR.success }>
+      <Card status={ CARD_STATUS.success }>
         <p>Success</p>
       </Card>
 
-      <Card color={ CARD_COLOR.warning }>
+      <Card status={ CARD_STATUS.warning }>
         <p>Warning</p>
       </Card>
     </>
@@ -140,9 +140,9 @@ export const ThemeGenerator: Story = {
   tags: ['!dev', 'hidden'],
   render: ({}) => (
     <div style={{ display: 'flex', gap: '16px' }}>
-      { CARD_COLORS.map((color) => (
-        <Card key={ String(color) } color={ color }>
-          <p style={{ margin: 0 }}>{ String(color) }</p>
+      { CARD_STATUSES.map((status) => (
+        <Card key={ String(status) } status={ status }>
+          <p style={{ margin: 0 }}>{ String(status) }</p>
         </Card>
       )) }
     </div>

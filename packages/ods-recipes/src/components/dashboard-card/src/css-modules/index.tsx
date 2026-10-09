@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_COLOR, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
 import { type JSX, useRef, useState } from 'react';
 import style from './index.module.scss';
 
@@ -9,7 +9,7 @@ const DashboardCard = (): JSX.Element => {
   return (
     <Card
       className={ style['dashboard-card'] }
-      color={ CARD_COLOR.neutral }>
+      status={ CARD_STATUS.neutral }>
       <Text preset={ TEXT_PRESET.heading4 }>
         Cluster Information
       </Text>

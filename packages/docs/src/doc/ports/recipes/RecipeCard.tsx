@@ -7,7 +7,7 @@ import theme from '@shikijs/themes/nord';
 import Markdown from 'markdown-to-jsx';
 import { type ComponentType, memo, useMemo, useState } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../../ods-react/src/components/button/src';
-import { CARD_COLOR, Card } from '../../../../../ods-react/src/components/card/src';
+import { CARD_STATUS, Card } from '../../../../../ods-react/src/components/card/src';
 import { Code } from '../../../../../ods-react/src/components/code/src';
 import { ICON_NAME, Icon } from '../../../../../ods-react/src/components/icon/src';
 import { Select, SelectContent, SelectControl, type SelectItem, type SelectValueChangeDetail } from '../../../../../ods-react/src/components/select/src';
@@ -72,7 +72,7 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onTogg
 
   return (
     <div className={ cx(styles['recipe-card'], isOpen && styles['recipe-card--open']) }>
-      <Card className={ styles['recipe-card__inner'] } color={ CARD_COLOR.neutral }>
+      <Card className={ styles['recipe-card__inner'] } status={ CARD_STATUS.neutral }>
         <div className={ styles['recipe-card__inner__header'] }>
           <span className={ styles['recipe-card__inner__header__title'] }>{ recipe.name }</span>
           <Button

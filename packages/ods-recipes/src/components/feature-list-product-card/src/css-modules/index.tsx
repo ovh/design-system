@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BADGE_SIZE, Badge, CARD_COLOR, Card, ICON_NAME, Icon, Link, Select, SelectContent, SelectControl, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger, formatPrice } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, BADGE_SIZE, Badge, CARD_STATUS, Card, ICON_NAME, Icon, Link, Select, SelectContent, SelectControl, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger, formatPrice } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -67,7 +67,7 @@ const FeatureListProductCard = (): JSX.Element => {
   return (
     <Card
       className={ style['feature-list-product-card'] }
-      color={ CARD_COLOR.neutral }>
+      status={ CARD_STATUS.neutral }>
       <div className={ style['feature-list-product-card__info'] }>
         <Text preset={ TEXT_PRESET.span }>
           WEB HOSTING

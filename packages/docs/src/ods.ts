@@ -3,7 +3,7 @@
    vite.config.ts. Ported doc components import ODS from here. */
 export { BADGE_COLOR, BADGE_SIZE, Badge } from '../../ods-react/src/components/badge/src';
 export { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../ods-react/src/components/button/src';
-export { CARD_COLOR, Card } from '../../ods-react/src/components/card/src';
+export { CARD_STATUS, Card } from '../../ods-react/src/components/card/src';
 export { Clipboard, ClipboardControl, ClipboardTrigger } from '../../ods-react/src/components/clipboard/src';
 export { DIVIDER_ORIENTATION, DIVIDER_SPACING, Divider } from '../../ods-react/src/components/divider/src';
 export { Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '../../ods-react/src/components/drawer/src';

@@ -7,7 +7,7 @@ import { formatPrice, formatRelativeTime } from '../../../ods-react/src/utils/fo
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { APP_ROOT } from '../appBase';
 import { Splitter } from '@ark-ui/react/splitter';
-import { BADGE_COLOR, Badge } from '../../../ods-react/src/components/badge/src';
+import { BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
@@ -234,11 +234,11 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
     <div className="sandbox-wrap" ref={ wrapRef }>
       <div className="sandbox-toolbar">
         { tsErrors === 0 ? (
-          <Badge color={ BADGE_COLOR.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
+          <Badge status={ BADGE_STATUS.success } size="sm"><Icon name={ ICON_NAME.circleCheck } /> No errors</Badge>
         ) : tsErrors > 0 ? (
-          <Badge color={ BADGE_COLOR.critical } size="sm" data-testid="ts-errors-badge">{ tsErrors } error{ tsErrors > 1 ? 's' : '' }</Badge>
+          <Badge status={ BADGE_STATUS.critical } size="sm" data-testid="ts-errors-badge">{ tsErrors } error{ tsErrors > 1 ? 's' : '' }</Badge>
         ) : (
-          <Badge color={ BADGE_COLOR.neutral } size="sm">Compiling…</Badge>
+          <Badge status={ BADGE_STATUS.neutral } size="sm">Compiling…</Badge>
         ) }
         <span data-testid="ts-errors" hidden>{ tsErrors }</span>
 

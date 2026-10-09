@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BADGE_SIZE, Badge, ICON_NAME, Icon, Quantity, QuantityControl, QuantityInput, Radio, RadioControl, RadioGroup, RadioLabel, Select, SelectContent, SelectControl, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, TEXT_PRESET, Text, Tile, formatPrice } from '@ovhcloud/ods-react';
+import { BADGE_SIZE, BADGE_STATUS, Badge, ICON_NAME, Icon, Quantity, QuantityControl, QuantityInput, Radio, RadioControl, RadioGroup, RadioLabel, Select, SelectContent, SelectControl, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, TEXT_PRESET, Text, Tile, formatPrice } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -24,7 +24,7 @@ function renderSelectItem(label: string, offer?: string): JSX.Element {
       {
         offer &&
         <Badge
-          color={ BADGE_COLOR.promotion }
+          status={ BADGE_STATUS.promotion }
           size={ BADGE_SIZE.sm }>
           <Icon name={ ICON_NAME.tag } />&nbsp;{ offer }
         </Badge>

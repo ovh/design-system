@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { BADGE_COLOR, BADGE_COLORS, BADGE_SIZE, BADGE_SIZES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
+import { BADGE_SIZE, BADGE_SIZES, BADGE_STATUS, BADGE_STATUSES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 
@@ -13,24 +13,24 @@ const meta: Meta<BadgeProp> = {
 
 export default meta;
 
-export const Color: Story = {
+export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';`,
+    imports: `import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Badge color={ BADGE_COLOR.alpha }>Alpha</Badge>
-      <Badge color={ BADGE_COLOR.beta }>Beta</Badge>
-      <Badge color={ BADGE_COLOR.critical }>Critical</Badge>
-      <Badge color={ BADGE_COLOR.information }>Information</Badge>
-      <Badge color={ BADGE_COLOR.neutral }>Neutral</Badge>
-      <Badge color={ BADGE_COLOR.new }>New</Badge>
-      <Badge color={ BADGE_COLOR.primary }>Primary</Badge>
-      <Badge color={ BADGE_COLOR.promotion }>Promotion</Badge>
-      <Badge color={ BADGE_COLOR.success }>Success</Badge>
-      <Badge color={ BADGE_COLOR.warning }>Warning</Badge>
+      <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
+      <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
+      <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
+      <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
+      <Badge status={ BADGE_STATUS.information }>Information</Badge>
+      <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
+      <Badge status={ BADGE_STATUS.new }>New</Badge>
+      <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
+      <Badge status={ BADGE_STATUS.success }>Success</Badge>
+      <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
     </>
   ),
 };
@@ -100,7 +100,7 @@ export const AccessibilityAriaLabel: Story = {
 
 export const AccessibilityWithTooltip: Story = {
   globals: {
-    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BADGE_STATUS, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -108,7 +108,7 @@ export const AccessibilityWithTooltip: Story = {
       <TooltipTrigger asChild>
         <Badge
           aria-labelledby="tooltip-a11y"
-          color={ BADGE_COLOR.promotion }>
+          status={ BADGE_STATUS.promotion }>
           <Icon name={ ICON_NAME.tag } />
         </Badge>
       </TooltipTrigger>
@@ -169,9 +169,9 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       { BADGE_SIZES.map((size) => (
         <div key={ size } style={{ display: 'flex', flexFlow: 'row', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
-          { BADGE_COLORS.map((color) => (
-            <Badge key={`${String(size)}-${String(color)}`} size={ size } color={ color }>
-              { String(color) }
+          { BADGE_STATUSES.map((status) => (
+            <Badge key={`${String(size)}-${String(status)}`} size={ size } status={ status }>
+              { String(status) }
             </Badge>
           )) }
         </div>

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import imageFile from '../../../../assets/ods_bg.png';
 import { BASENAME } from '../../../appBase';
 import { ExternalLink } from '../../DocComponents';
-import { BADGE_COLOR, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
+import { BADGE_STATUS, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
 import { Brand } from './Brand';
 import { HomepageTile } from './HomepageTile';
 import styles from './homepage.module.css';
@@ -21,19 +21,19 @@ const Homepage = () => {
 
           <ul className={ styles['homepage__features'] }>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge status={ BADGE_STATUS.information }>
                 <Icon name={ ICON_NAME.circleThreeNodes } />
                 React-based
               </Badge>
             </li>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge status={ BADGE_STATUS.information }>
                 <Icon name={ ICON_NAME.accessibilityFull } />
                 Fully accessible
               </Badge>
             </li>
             <li>
-              <Badge color={ BADGE_COLOR.information }>
+              <Badge status={ BADGE_STATUS.information }>
                 <Icon name={ ICON_NAME.lockOpen } />
                 Open source
               </Badge>

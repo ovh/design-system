@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -692,7 +692,7 @@ function App(): ReactElement {
         <section>
           <h1>Divider</h1>
 
-          <Divider color={ DIVIDER_COLOR.primary } />
+          <Divider />
         </section>
 
         <section>

@@ -2,7 +2,7 @@ import { COLOR } from '../../../../utils/colors';
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 enum DIVIDER_COLOR {
   neutral = COLOR.neutral,
@@ -11,13 +11,13 @@ enum DIVIDER_COLOR {
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 type DividerColor = `${DIVIDER_COLOR}`;
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 const DIVIDER_COLORS = Object.freeze(Object.values(DIVIDER_COLOR));
 

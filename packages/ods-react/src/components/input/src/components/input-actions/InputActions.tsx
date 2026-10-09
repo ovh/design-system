@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type FC } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_I18N, TRANSLATION } from '../../constants/input-i18n';
@@ -51,10 +51,10 @@ const InputActions: FC<InputActionsProps> = ({
         <Button
           aria-controls={ inputId }
           aria-label={ translate(INPUT_I18N.clearButton) }
-          color={ BUTTON_COLOR.neutral }
           disabled={ disabled || readOnly }
           onClick={ onClearClick }
           size={ BUTTON_SIZE.xs }
+          status={ BUTTON_STATUS.neutral }
           type="button"
           variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.xmark } />
@@ -64,10 +64,10 @@ const InputActions: FC<InputActionsProps> = ({
         <Button
           aria-controls={ inputId }
           aria-label={ translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow) }
-          color={ BUTTON_COLOR.primary }
           disabled={ disabled }
           onClick={ onToggleMask }
           size={ BUTTON_SIZE.xs }
+          status={ BUTTON_STATUS.brand }
           type="button"
           variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
@@ -76,9 +76,9 @@ const InputActions: FC<InputActionsProps> = ({
       { hasSearchButton && (
         <Button
           aria-label={ translate(INPUT_I18N.searchButton) }
-          color={ BUTTON_COLOR.primary }
           disabled={ disabled || readOnly }
           size={ BUTTON_SIZE.xs }
+          status={ BUTTON_STATUS.brand }
           type="submit"
           variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.magnifyingGlass } />

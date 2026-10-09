@@ -1,12 +1,12 @@
 import style from './dev.module.css';
-import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
+import { BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANTS, Button } from '.';
 
 export default {
   component: Button,
   title: 'Button dev',
 };
 
-export const Colors = () => (
+export const Statuses = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>
     {
       BUTTON_VARIANTS.map((variant) => (
@@ -14,12 +14,12 @@ export const Colors = () => (
           key={ variant }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
-            BUTTON_COLORS.map((color) => (
+            BUTTON_STATUSES.map((status) => (
               <Button
-                color={ color }
-                key={ color }
+                key={ status }
+                status={ status }
                 variant={ variant }>
-                { color }
+                { status }
               </Button>
             ))
           }
@@ -36,12 +36,12 @@ export const CustomStyle = () => (
     </Button>
 
     <br /><br />
-    <Button color={ BUTTON_COLOR.critical }>
+    <Button status={ BUTTON_STATUS.critical }>
       Normal critical
     </Button>
     <Button
       className={ style['custom-button-critical'] }
-      color={ BUTTON_COLOR.critical }>
+      status={ BUTTON_STATUS.critical }>
       Overridden critical
     </Button>
   </>

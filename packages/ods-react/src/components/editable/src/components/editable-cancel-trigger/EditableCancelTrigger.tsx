@@ -1,7 +1,7 @@
 import { type FC, type JSX, forwardRef } from 'react';
 import { type AsChildProp, AsChildSlot } from '../../../../../helpers/AsChild';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../../button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, type ButtonProp } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { EDITABLE_I18N, TRANSLATION } from '../../constants/editable-i18n';
 import { useEditable } from '../../contexts/useEditable';
@@ -35,8 +35,9 @@ const EditableCancelTrigger: FC<EditableCancelTriggerProp> = forwardRef(({
         { ...sharedProps }
         { ...props } />
       : <Button
-        color={ BUTTON_COLOR.neutral }
         size={ BUTTON_SIZE.sm }
+        // The internal status only applies when the integrator sets neither status nor color
+        status={ 'color' in props && props.color ? undefined : BUTTON_STATUS.neutral }
         variant={ BUTTON_VARIANT.ghost }
         { ...sharedProps }
         { ...props }>

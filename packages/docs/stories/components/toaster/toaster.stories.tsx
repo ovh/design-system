@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { Link } from '../../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
@@ -20,7 +20,7 @@ export default meta;
 
 export const Statuses: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_STATUS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -34,37 +34,34 @@ export const Statuses: Story = {
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Button
-          color={ BUTTON_COLOR.critical }
+          status={ BUTTON_STATUS.critical }
           onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
           Critical toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.information }
           onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
           Information toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.neutral }
+          status={ BUTTON_STATUS.neutral }
           onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
           Neutral toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.primary }
+          status={ BUTTON_STATUS.brand }
           onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
           Accent toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.success }
           onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
           Success toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.warning }
           onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
           Warning toast
         </Button>
@@ -298,37 +295,34 @@ export const ThemeGenerator: Story = {
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Button
-          color={ BUTTON_COLOR.critical }
+          status={ BUTTON_STATUS.critical }
           onClick={ () => toast.critical('Critical', { icon: ICON_NAME.circleXmark }) }>
           Critical toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.information }
           onClick={ () => toast.information('Information', { icon: ICON_NAME.circleInfo }) }>
           Information toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.neutral }
+          status={ BUTTON_STATUS.neutral }
           onClick={ () => toast.neutral('Neutral', { icon: ICON_NAME.email }) }>
           Neutral toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.primary }
+          status={ BUTTON_STATUS.brand }
           onClick={ () => toast.accent('Accent', { icon: ICON_NAME.lightbulb }) }>
           Accent toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.success }
           onClick={ () => toast.success('Success', { icon: ICON_NAME.circleCheck }) }>
           Success toast
         </Button>
 
         <Button
-          color={ BUTTON_COLOR.warning }
           onClick={ () => toast.warning('Warning', { icon: ICON_NAME.triangleExclamation }) }>
           Warning toast
         </Button>

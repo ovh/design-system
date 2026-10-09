@@ -1,7 +1,7 @@
 import { NumberInput, useNumberInputContext } from '@ark-ui/react/number-input';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './quantityControl.module.scss';
 
@@ -29,10 +29,10 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
           style['quantity-control__decrement'],
           { [style['quantity-control__decrement--invalid']]: invalid },
         )}
-        color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
         disabled={ decrementTriggerProps.disabled }
         onClick={ decrement }
         size={ BUTTON_SIZE.sm }
+        status={ invalid ? BUTTON_STATUS.critical : BUTTON_STATUS.brand }
         tabIndex={ -1 }
         variant={ BUTTON_VARIANT.outline }>
         <Icon name={ ICON_NAME.minus } />
@@ -46,10 +46,10 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
           style['quantity-control__increment'],
           { [style['quantity-control__increment--invalid']]: invalid },
         )}
-        color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
         disabled={ incrementTriggerProps.disabled }
         onClick={ increment }
         size={ BUTTON_SIZE.sm }
+        status={ invalid ? BUTTON_STATUS.critical : BUTTON_STATUS.brand }
         tabIndex={ -1 }
         variant={ BUTTON_VARIANT.outline }>
         <Icon name={ ICON_NAME.plus } />

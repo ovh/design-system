@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_SIZE, BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -22,20 +22,17 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Color: StoryObj = {
+export const Status: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Button color={ BUTTON_COLOR.critical }>Critical</Button>
-      <Button color={ BUTTON_COLOR.information }>Information</Button>
-      <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
-      <Button color={ BUTTON_COLOR.primary }>Primary</Button>
-      <Button color={ BUTTON_COLOR.success }>Success</Button>
-      <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+      <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+      <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+      <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
     </>
   ),
 };
@@ -320,9 +317,9 @@ export const ThemeGenerator: StoryObj = {
         <div key={ size } style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           { BUTTON_VARIANTS.map((variant) => (
             <div key={`${String(size)}-${String(variant)}`} style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
-              { BUTTON_COLORS.map((color) => (
-                <Button key={`${String(size)}-${String(variant)}-${String(color)}`} size={ size } variant={ variant } color={ color }>
-                  { `${String(variant)} ${String(color)}` }
+              { BUTTON_STATUSES.map((status) => (
+                <Button key={`${String(size)}-${String(variant)}-${String(status)}`} size={ size } variant={ variant } status={ status }>
+                  { `${String(variant)} ${String(status)}` }
                 </Button>
               )) }
             </div>

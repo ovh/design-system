@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import {
   Modal,
@@ -83,7 +83,7 @@ export const AnatomyTech: Story = {
 
 export const AccessibilityActions: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -106,7 +106,7 @@ export const AccessibilityActions: Story = {
               Cancel
             </Button>
 
-            <Button color={ BUTTON_COLOR.critical }>
+            <Button status={ BUTTON_STATUS.critical }>
               Delete
             </Button>
           </div>
@@ -418,7 +418,7 @@ export const ThemeGenerator: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.critical }>Critical</Button>
+          <Button status={ BUTTON_STATUS.critical }>Critical</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false } role="alertdialog">
           <ModalHeader>Critical</ModalHeader>

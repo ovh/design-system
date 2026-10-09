@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { POPOVER_POSITION, Popover, type PopoverProp, PopoverContent, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
@@ -234,7 +234,7 @@ export const Overview: Story = {
 
 export const AccessibilityWithMenu: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -268,7 +268,7 @@ export const AccessibilityWithMenu: Story = {
           <Divider style={{ width: '100%' }} />
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             role="menuitem"
             variant={ BUTTON_VARIANT.ghost }>
             Sign out

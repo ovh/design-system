@@ -1,7 +1,7 @@
 import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
-import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import {
   FormField,
   type FormFieldProp,
@@ -83,7 +83,7 @@ export const Error: Story = {
 
 export const GuideFormCritical: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -128,7 +128,7 @@ import { type FormEvent, useState } from 'react';`,
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -139,7 +139,7 @@ import { type FormEvent, useState } from 'react';`,
 
 export const GuideFormError: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_STATUS, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_STATUS, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -243,7 +243,7 @@ import { type FormEvent, useState } from 'react';`,
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account

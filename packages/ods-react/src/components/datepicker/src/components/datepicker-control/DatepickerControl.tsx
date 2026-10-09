@@ -1,7 +1,7 @@
 import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { useDatepicker } from '../../contexts/useDatepicker';
@@ -52,9 +52,9 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
             style['datepicker-control__trigger'],
             { [style['datepicker-control__trigger--invalid']]: invalid },
           )}
-          color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
           disabled={ disabled || readOnly }
           size={ BUTTON_SIZE.sm }
+          status={ invalid ? BUTTON_STATUS.critical : BUTTON_STATUS.brand }
           variant={ BUTTON_VARIANT.outline }>
           <Icon name={ ICON_NAME.calendar } />
         </Button>

@@ -1,7 +1,7 @@
 import { Splitter } from '@ark-ui/react/splitter';
 import { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
 import { DemoFrame } from '../demo/DemoFrame';
 import { resolveTokenValues } from '../doc/ports/helpers/designTokens';
 import { ThemeGeneratorJSONModal } from './ThemeGeneratorJSONModal';
@@ -167,7 +167,7 @@ const ThemeGenerator = (): JSX.Element => {
         <Splitter.ResizeTrigger aria-label="Resize" asChild id="tree-view:preview">
           <Button
             className={ `${styles['theme-generator__container__resize']} ${styles[`theme-generator__container__resize--${orientation}`]}` }
-            color={ BUTTON_COLOR.neutral } />
+            status={ BUTTON_STATUS.neutral } />
         </Splitter.ResizeTrigger>
 
         <Splitter.Panel id="preview" style={{ overflow: 'auto' }}>

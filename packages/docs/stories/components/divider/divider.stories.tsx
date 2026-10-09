@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import {
-  DIVIDER_COLOR, DIVIDER_SPACING, DIVIDER_ORIENTATION, Divider, type DividerProp,
+  DIVIDER_SPACING, DIVIDER_ORIENTATION, Divider, type DividerProp,
 } from '../../../../ods-react/src/components/divider/src';
 
 type Story = StoryObj<DividerProp>;
@@ -18,7 +18,7 @@ export const AnatomyTech: Story = {
   render: ({}) => (
     <>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <Divider color={ DIVIDER_COLOR.primary } />
+      <Divider />
       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </>
   ),
@@ -42,7 +42,7 @@ export const Overview: Story = {
   render: ({}) => (
     <>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <Divider color={ DIVIDER_COLOR.primary } />
+      <Divider />
       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </>
   ),
@@ -50,13 +50,13 @@ export const Overview: Story = {
 
 export const Color: Story = {
   globals: {
-    imports: `import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';`,
+    imports: `import { Divider } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Divider color={ DIVIDER_COLOR.neutral } />
-      <Divider color={ DIVIDER_COLOR.primary } />
+      <Divider />
+      <Divider style={{ backgroundColor: 'var(--ods-color-neutral-700)' }} />
     </>
   ),
 };

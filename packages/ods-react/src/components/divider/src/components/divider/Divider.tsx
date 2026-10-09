@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { warnDeprecated } from '../../../../../utils/deprecation';
 import { type DividerColor } from '../../constants/divider-color';
 import { DIVIDER_ORIENTATION } from '../../constants/divider-orientation';
 import { DIVIDER_SPACING, type DividerSpacing } from '../../constants/divider-spacing';
@@ -8,8 +9,9 @@ import style from './divider.module.scss';
 interface DividerProp extends ComponentPropsWithRef<'hr'> {
   /**
    * @deprecated
+   * @type=DIVIDER_COLOR
    * The color preset to use.
-   * DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css.
+   * DEPRECATED: Override the background-color in CSS instead, color will be removed in v21.
    */
   color?: DividerColor,
   /**
@@ -30,14 +32,14 @@ const Divider: FC<DividerProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   if (color) {
-    console.warn('[DEPRECATED]: Color will now always be primary, if you need another color, prefer overriding it using css.');
+    warnDeprecated('Divider.color', '[DEPRECATED]: The color prop of Divider is deprecated and will be removed in v21, override the background-color in CSS instead.');
   }
 
   return (
     <hr
       className={ classNames(
         style['divider'],
-        style[`divider--${color}`],
+        { [style[`divider--${color}`]]: !!color },
         style[`divider--${orientation}`],
         style[`divider--${spacing}`],
         className,

@@ -2,7 +2,7 @@ import { COLOR } from '../../../../utils/colors';
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 enum MODAL_COLOR {
   critical = COLOR.critical,
@@ -15,13 +15,13 @@ enum MODAL_COLOR {
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 type ModalColor = `${MODAL_COLOR}`;
 
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 const MODAL_COLORS = Object.freeze(Object.values(MODAL_COLOR));
 

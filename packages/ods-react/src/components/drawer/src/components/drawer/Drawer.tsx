@@ -9,7 +9,7 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
   backdropStyle,
   children,
   closeOnEscape = true,
-  closeOnInteractOutside = false,
+  closeOnInteractOutside,
   defaultOpen,
   onOpenChange,
   open,
@@ -22,12 +22,12 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
       positionerStyle={ positionerStyle }>
       <Dialog.Root
         closeOnEscape={ closeOnEscape }
-        closeOnInteractOutside={ closeOnInteractOutside }
+        closeOnInteractOutside={ closeOnInteractOutside ?? backdrop === true }
         defaultOpen={ defaultOpen }
         modal={ backdrop === true }
         onOpenChange={ onOpenChange }
         open={ open }
-        preventScroll={ false }
+        preventScroll={ backdrop === true }
         trapFocus={ backdrop === true }>
         { children }
       </Dialog.Root>

@@ -53,6 +53,7 @@ not the history of the branch.
 | [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, the `Combobox` tags and the transitions render differently by default | manual |
 | [BC-20](#bc-20---a-19x-custom-theme-no-longer-applies) | `@ovhcloud/ods-themes` | a 19.x custom theme no longer applies | manual |
 | [BC-21](#bc-21---form-fields-share-one-default-width) | `@ovhcloud/ods-react` | form fields share one default width instead of filling their container | manual |
+| [BC-22](#bc-22---a-drawer-without-backdrop-gives-the-focus-back-on-close) | `@ovhcloud/ods-react` | a drawer without backdrop gives the focus back on close | none needed |
 
 ## The v20 token contract
 
@@ -749,6 +750,19 @@ goes under the v20 modal.
 | **Detection** | none to run - it applies to every listed field; review the forms whose layout relied on full-width `Select` or `Combobox` |
 | **Codemod** | **manual** - set `width: 100%` on the root of the field to fill the container again (a `className` on `Input` and `Password`, on both `Datepicker` and `DatepickerControl`), never on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`; or change every field at once by re-declaring `--ods-semantic-size-inline-size-field`. |
 | **Source of truth** | `packages/ods-react/src/style/_input.scss` (`ods-input-width()`), `packages/themes/src/default/index.scss` (the token) |
+
+---
+
+## BC-22 - a drawer without backdrop gives the focus back on close
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | Without backdrop, closing a `Drawer` while the focus is inside it, or after its focused element was removed, moves the focus to the `DrawerTrigger` it was opened from, or to the element focused before it opened, and scrolls it into view. In 19.7.3 the focus stayed on an element of the closed drawer. A custom `id` on `DrawerContent` is now given to the dialog machine: Escape, `closeOnInteractOutside` and the focus on open work with it, where 19.7.3 silently ignored them. |
+| **Impact** | Behavior only, nothing fails. The page may scroll back to the trigger on close. With a custom content `id`, Escape now closes the drawer and `onOpenChange` receives `{ open: false }`. A focus the user or the application moved elsewhere is left where it is. |
+| **Detection** | every `<Drawer>` without `backdrop`; `grep -rnE '<DrawerContent[^>]*[[:space:]]id=' src/` for the custom content ids |
+| **Codemod** | **none needed** - code that focuses the trigger again after closing becomes redundant and can be removed. A drawer unmounted while open gives nothing back, as in 19.7.3: keep it mounted and drive `open` to get the focus return. |
+| **Source of truth** | `packages/ods-react/src/components/drawer/src/components/drawer/Drawer.tsx`, `packages/ods-react/src/components/drawer/src/components/drawer-content/DrawerContent.tsx` |
 
 ---
 

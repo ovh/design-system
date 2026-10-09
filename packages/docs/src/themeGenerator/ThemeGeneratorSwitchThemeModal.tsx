@@ -1,5 +1,5 @@
 import { type JSX } from 'react';
-import { BUTTON_COLOR, BUTTON_VARIANT, Button, MODAL_COLOR, Modal, ModalBody, ModalContent, TEXT_PRESET, Text } from '../ods';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text } from '../ods';
 import styles from './themeGeneratorSwitchThemeModal.module.css';
 
 /* Confirmation before discarding an edited custom theme. */
@@ -16,7 +16,7 @@ const ThemeGeneratorSwitchThemeModal = ({ onCancel, onConfirm, open, targetTheme
 
   return (
     <Modal onOpenChange={ ({ open }) => !open && onCancel() } open={ open }>
-      <ModalContent color={ MODAL_COLOR.warning }>
+      <ModalContent>
         <ModalBody>
           <Text preset={ TEXT_PRESET.heading4 }>
             Leave custom theme?

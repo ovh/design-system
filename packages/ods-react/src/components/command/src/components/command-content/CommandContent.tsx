@@ -80,7 +80,9 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
         handleKeyDown(e);
         props.onKeyDown?.(e);
       } }
-      color={ undefined } // Color is no longer used and will be removed in the next major version. Setting to undefined to avoid passing deprecated prop to ModalContent.
+      // CommandContentProp inherits the HTML color attribute: reset it so it never reaches the deprecated color prop
+      // of ModalContent (type error and warning). Remove in v21 with that prop.
+      color={ undefined }
     >
       <ModalBody className={ classNames(style['command-content__body']) }>
         { children }

@@ -1,4 +1,4 @@
-import { BUTTON_VARIANT, Button, MODAL_COLOR, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -27,7 +27,7 @@ const StatusModal = (): JSX.Element => {
         </Button>
       </ModalTrigger>
 
-      <ModalContent color={ MODAL_COLOR.information }>
+      <ModalContent>
         <ModalHeader>
           <Text
             as="span"

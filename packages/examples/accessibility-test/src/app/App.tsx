@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_STATUS, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -1499,12 +1499,12 @@ function App(): ReactElement {
         <section>
           <h1>Tag</h1>
 
-          <Tag color={ TAG_COLOR.critical }>Critical</Tag>
-          <Tag color={ TAG_COLOR.information }>Information</Tag>
-          <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
-          <Tag color={ TAG_COLOR.primary }>Primary</Tag>
-          <Tag color={ TAG_COLOR.success }>Success</Tag>
-          <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+          <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+          <Tag status={ TAG_STATUS.information }>Information</Tag>
+          <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+          <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+          <Tag status={ TAG_STATUS.success }>Success</Tag>
+          <Tag status={ TAG_STATUS.warning }>Warning</Tag>
 
           <Tag aria-label="Remove my tag">My tag</Tag>
 

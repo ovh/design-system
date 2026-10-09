@@ -9,6 +9,10 @@
     @include tag.ods-tag();
 
     &:not(:disabled) {
+      &#{$tag}--accent {
+        @include tag.ods-tag-color('primary');
+      }
+
       &#{$tag}--critical {
         @include tag.ods-tag-color('critical');
       }
@@ -19,10 +23,6 @@
 
       &#{$tag}--neutral {
         @include tag.ods-tag-color('neutral');
-      }
-
-      &#{$tag}--primary {
-        @include tag.ods-tag-color('primary');
       }
 
       &#{$tag}--success {

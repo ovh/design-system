@@ -1,5 +1,5 @@
-import { TAG_COLORS } from './constants/tag-color';
 import { TAG_SIZE } from './constants/tag-size';
+import { TAG_STATUSES } from './constants/tag-status';
 import style from './dev.module.css';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Text } from '../../text/src';
@@ -9,20 +9,6 @@ export default {
   component: Tag,
   title: 'Tag dev',
 };
-
-export const Colors = () => (
-  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
-    {
-      TAG_COLORS.map((color) => (
-        <Tag
-          color={ color }
-          key={ color }>
-          { color }
-        </Tag>
-      ))
-    }
-  </div>
-);
 
 export const Default = () => (
   <Tag>
@@ -67,6 +53,20 @@ export const Sizes = () => (
     <Tag size={ TAG_SIZE.lg }>
       Large
     </Tag>
+  </div>
+);
+
+export const Statuses = () => (
+  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+    {
+      TAG_STATUSES.map((status) => (
+        <Tag
+          key={ status }
+          status={ status }>
+          { status }
+        </Tag>
+      ))
+    }
   </div>
 );
 

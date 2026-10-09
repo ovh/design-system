@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
-import { TAG_COLOR, TAG_SIZE, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
+import { TAG_SIZE, TAG_STATUS, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
 import { excludeFromDemoControls } from '../../support/controls';
 
 type Story = StoryObj<TagProp>;
@@ -23,10 +23,10 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Color: Story = {
+export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';`,
+    imports: `import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -34,12 +34,12 @@ export const Color: Story = {
   },
   render: ({}) => (
     <>
-      <Tag color={ TAG_COLOR.critical }>Critical</Tag>
-      <Tag color={ TAG_COLOR.information }>Information</Tag>
-      <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
-      <Tag color={ TAG_COLOR.primary }>Primary</Tag>
-      <Tag color={ TAG_COLOR.success }>Success</Tag>
-      <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+      <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+      <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+      <Tag status={ TAG_STATUS.information }>Information</Tag>
+      <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+      <Tag status={ TAG_STATUS.success }>Success</Tag>
+      <Tag status={ TAG_STATUS.warning }>Warning</Tag>
     </>
   ),
 };
@@ -192,12 +192,12 @@ export const ThemeGenerator: Story = {
       <Tag>Default</Tag>
       <Tag disabled>Disabled</Tag>
       <Tag size={ TAG_SIZE.lg }>Large</Tag>
-      <Tag color={ TAG_COLOR.primary }>Primary</Tag>
-      <Tag color={ TAG_COLOR.success }>Success</Tag>
-      <Tag color={ TAG_COLOR.warning }>Warning</Tag>
-      <Tag color={ TAG_COLOR.critical }>Critical</Tag>
-      <Tag color={ TAG_COLOR.information }>Info</Tag>
-      <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
+      <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+      <Tag status={ TAG_STATUS.success }>Success</Tag>
+      <Tag status={ TAG_STATUS.warning }>Warning</Tag>
+      <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+      <Tag status={ TAG_STATUS.information }>Info</Tag>
+      <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
     </div>
   ),
 };

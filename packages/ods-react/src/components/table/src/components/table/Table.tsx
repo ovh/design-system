@@ -16,7 +16,7 @@ interface TableProp extends ComponentPropsWithRef<'table'> {
   /**
    * @deprecated
    * The variant preset to use.
-   * DEPRECATED: Use the `striped` prop instead, variant will be removed in the next major version.
+   * DEPRECATED: Use the `striped` prop instead, variant will be removed in v21.
    */
   variant?: TableVariant,
 }
@@ -30,7 +30,7 @@ const Table: FC<TableProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   if (variant) {
-    console.warn('[DEPRECATED]: Variant prop is deprecated and will be removed in the next major version, use the striped prop instead.');
+    console.warn('[DEPRECATED]: The variant prop is deprecated and will be removed in v21, use the striped prop instead.');
   }
 
   return (

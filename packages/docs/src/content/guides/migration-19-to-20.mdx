@@ -9,7 +9,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The public API of the components has **no breaking change**: existing props, refs and composition keep working (see **Deprecations** below). There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
@@ -91,11 +91,11 @@ These are unchanged by the React version — they apply the same way on React 18
 
 <Heading label="Deprecations" level={ 2 } />
 
-Deprecated APIs keep working in 20.x and log a `[DEPRECATED]` warning in the console. They will be removed in the next major version: migrate when convenient.
+The following APIs are deprecated in 20.0. They keep working in 20.x, log a `[DEPRECATED]` warning in the console, and will be removed in v21: migrate when convenient.
 
 <Heading label="Table" level={ 3 } />
 
-The `variant` prop is deprecated in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are deprecated with it.
+The `variant` prop is deprecated in favor of a `striped` boolean prop (default `false`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are deprecated with it.
 
 - `variant="default"` (or `TABLE_VARIANT.default`): remove the prop.
 - `variant="striped"` (or `TABLE_VARIANT.striped`): use `striped`.

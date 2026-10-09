@@ -5753,7 +5753,7 @@ interface TableProp extends ComponentPropsWithRef<'table'> {
     /**
      * @deprecated
      * The variant preset to use.
-     * DEPRECATED: Use the `striped` prop instead, variant will be removed in the next major version.
+     * DEPRECATED: Use the `striped` prop instead, variant will be removed in v21.
      */
     variant?: TableVariant;
 }
@@ -5773,7 +5773,7 @@ export { TABLE_SIZE, TABLE_SIZES, type TableSize, };
 // ==================== components/table/src/constants/table-variant.d.ts ====================
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 declare enum TABLE_VARIANT {
     default = "default",
@@ -5781,12 +5781,12 @@ declare enum TABLE_VARIANT {
 }
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 type TableVariant = `${TABLE_VARIANT}`;
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 declare const TABLE_VARIANTS: readonly TABLE_VARIANT[];
 export { TABLE_VARIANT, TABLE_VARIANTS, type TableVariant, };

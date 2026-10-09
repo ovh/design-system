@@ -1,6 +1,6 @@
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 enum TABLE_VARIANT {
   default = 'default',
@@ -9,13 +9,13 @@ enum TABLE_VARIANT {
 
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 type TableVariant =`${TABLE_VARIANT}`;
 
 /**
  * @deprecated
- * Use the `striped` prop of the Table instead.
+ * Use the `striped` prop of the Table instead, removed in v21.
  */
 const TABLE_VARIANTS = Object.freeze(Object.values(TABLE_VARIANT));
 

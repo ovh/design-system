@@ -1,5 +1,5 @@
 import { Fragment, useMemo } from 'react';
-import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
+import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, Table, TEXT_PRESET, Text } from '../../ods';
 import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
@@ -58,7 +58,7 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
           { entry.props.length === 0
             ? !entry.nativeElement && <p className="tech__empty">This component has no specific properties.</p>
             : (
-              <Table variant={ TABLE_VARIANT.striped }>
+              <Table striped>
                 <thead>
                   <tr>{ PROP_COLUMNS.map((column) => <th key={ column }>{ column }</th>) }</tr>
                 </thead>

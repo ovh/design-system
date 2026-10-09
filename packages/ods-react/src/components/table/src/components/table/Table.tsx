@@ -10,7 +10,13 @@ interface TableProp extends ComponentPropsWithRef<'table'> {
    */
   size?: TableSize,
   /**
+   * Whether the body rows should alternate background colors.
+   */
+  striped?: boolean,
+  /**
+   * @deprecated
    * The variant preset to use.
+   * DEPRECATED: Use the `striped` prop instead, variant will be removed in the next major version.
    */
   variant?: TableVariant,
 }
@@ -19,15 +25,20 @@ const Table: FC<TableProp> = forwardRef(({
   children,
   className,
   size = TABLE_SIZE.md,
-  variant = TABLE_VARIANT.default,
+  striped = false,
+  variant,
   ...props
 }, ref): JSX.Element => {
+  if (variant) {
+    console.warn('[DEPRECATED]: Variant prop is deprecated and will be removed in the next major version, use the striped prop instead.');
+  }
+
   return (
     <table
       className={ classNames(
         style['table'],
         style[`table--${size}`],
-        style[`table--${variant}`],
+        { [style['table--striped']]: striped || variant === TABLE_VARIANT.striped },
         className,
       )}
       data-ods="table"

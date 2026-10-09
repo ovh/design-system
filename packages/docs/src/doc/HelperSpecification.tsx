@@ -1,5 +1,5 @@
 import utils from '../../../ods-react/documentation/utils.json';
-import { ICON_NAME, Icon, Link, TABLE_VARIANT, Table } from '../ods';
+import { ICON_NAME, Icon, Link, Table } from '../ods';
 import { parseHelper } from './tech/typedoc';
 import './tech/tech.css';
 
@@ -30,7 +30,7 @@ const HelperSpecification = ({ name }: { name: string }) => {
         </>
       ) }
 
-      <Table variant={ TABLE_VARIANT.striped }>
+      <Table striped>
         <thead>
           <tr>{ COLUMNS.map((column) => <th key={ column }>{ column }</th>) }</tr>
         </thead>

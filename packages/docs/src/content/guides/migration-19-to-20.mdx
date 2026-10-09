@@ -89,6 +89,26 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
 
+<Heading label="Deprecations" level={ 2 } />
+
+Deprecated APIs keep working in 20.x and log a `[DEPRECATED]` warning in the console. They will be removed in the next major version: migrate when convenient.
+
+<Heading label="Table" level={ 3 } />
+
+The `variant` prop is deprecated in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are deprecated with it.
+
+- `variant="default"` (or `TABLE_VARIANT.default`): remove the prop.
+- `variant="striped"` (or `TABLE_VARIANT.striped`): use `striped`.
+- `TableVariant` (e.g. in the props of a wrapper component): use `TableProp['striped']`.
+
+```tsx
+// before
+<Table variant={ TABLE_VARIANT.striped }>...</Table>
+
+// after
+<Table striped>...</Table>
+```
+
 <Heading label="Need help?" level={ 2 } />
 
 If you hit an issue while upgrading, <ExternalLink href="https://github.com/ovh/design-system/issues">open an issue on GitHub</ExternalLink> — especially if you see a type error that the `@types/react` deduplication above does not solve.

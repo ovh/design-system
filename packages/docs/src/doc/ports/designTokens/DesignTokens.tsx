@@ -1,4 +1,4 @@
-import { BADGE_COLOR, Badge } from '../../../ods';
+import { BADGE_STATUS, Badge } from '../../../ods';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { useMemo } from 'react';
 import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from '../constants/designTokens';
@@ -124,7 +124,7 @@ const DesignTokens = () => {
       <Heading
         label="Previous tokens"
         level={ 2 }>
-        <Badge color={ BADGE_COLOR.warning }>Deprecated</Badge>
+        <Badge status={ BADGE_STATUS.warning }>Deprecated</Badge>
       </Heading>
 
       <p>

@@ -1,5 +1,5 @@
 import { Fragment, useMemo } from 'react';
-import { BADGE_COLOR, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
+import { BADGE_STATUS, Badge, ICON_NAME, Icon, Link, TABLE_VARIANT, Table, TEXT_PRESET, Text } from '../../ods';
 import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
@@ -67,7 +67,7 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
                     <tr key={ prop.name }>
                       <td>
                         <span className="tech__prop-name">{ prop.name }</span>
-                        { prop.deprecated && <Badge color={ BADGE_COLOR.warning } size="sm">Deprecated</Badge> }
+                        { prop.deprecated && <Badge status={ BADGE_STATUS.warning } size="sm">Deprecated</Badge> }
                       </td>
                       <td><code className="tech__type">{ prop.type }</code></td>
                       <td>{ prop.optional ? '-' : <Icon aria-label="Required" name={ ICON_NAME.check } role="img" /> }</td>
@@ -88,7 +88,7 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
             <Fragment key={ enumSpec.name }>
               <Text as="h3" className="doc__heading" preset={ TEXT_PRESET.heading5 }>
                 { enumSpec.name }
-                { enumSpec.deprecated && <Badge color={ BADGE_COLOR.warning } size="sm">Deprecated</Badge> }
+                { enumSpec.deprecated && <Badge status={ BADGE_STATUS.warning } size="sm">Deprecated</Badge> }
               </Text>
               <ul className="tech__enum">
                 { enumSpec.members.map((member) => (

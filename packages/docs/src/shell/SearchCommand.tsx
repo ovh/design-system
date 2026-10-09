@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/components/badge/src';
+import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandList, CommandOption } from '../../../ods-react/src/components/command/src';
 import { Icon } from '../../../ods-react/src/components/icon/src';
 import { type NavPage, flattenPages } from '../nav/model';
@@ -19,9 +19,9 @@ const GROUPS: { heading: string, kind: NavPage['kind'] }[] = [
 ];
 
 const BADGES = {
-  beta: { color: BADGE_COLOR.beta, label: 'Beta' },
-  deprecated: { color: BADGE_COLOR.warning, label: 'Deprecated' },
-  new: { color: BADGE_COLOR.new, label: 'New' },
+  beta: { label: 'Beta', status: BADGE_STATUS.beta },
+  deprecated: { label: 'Deprecated', status: BADGE_STATUS.warning },
+  new: { label: 'New', status: BADGE_STATUS.new },
 } as const;
 
 const SearchCommand = () => {
@@ -61,7 +61,7 @@ const SearchCommand = () => {
                     <span className="shell__search-option">
                       <Icon className="shell__search-option-icon" name={ page.icon } />
                       <span>{ page.title }</span>
-                      { badge && <Badge color={ badge.color } size={ BADGE_SIZE.sm }>{ badge.label }</Badge> }
+                      { badge && <Badge size={ BADGE_SIZE.sm } status={ badge.status }>{ badge.label }</Badge> }
                       { hint && <span className="shell__search-option-hint">{ hint }</span> }
                     </span>
                   </CommandOption>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/components/badge/src';
+import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
@@ -53,14 +53,14 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
           <TreeViewNode item={ item } key={ item.id }>
             { ({ customData, isBranch, item: node }) => {
               const data = customData as { badge?: 'beta' | 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
-              const badgeColor = data?.badge === 'new' ? BADGE_COLOR.new : data?.badge === 'beta' ? BADGE_COLOR.beta : BADGE_COLOR.warning;
+              const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
                 <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
-                    <Badge className="shell__tree-badge" color={ badgeColor } size={ BADGE_SIZE.sm }>
+                    <Badge className="shell__tree-badge" size={ BADGE_SIZE.sm } status={ badgeStatus }>
                       { badgeLabel }
                     </Badge>
                   ) }

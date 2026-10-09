@@ -8,11 +8,27 @@ enum CUSTOM_BADGE_COLOR {
 }
 
 // TS does not support enum extends (see https://github.com/microsoft/TypeScript/issues/17592#issuecomment-1294079155)
+/**
+ * @deprecated
+ * Use BADGE_STATUS instead, removed in v21.
+ */
 const BADGE_COLOR = { ...COLOR, ...CUSTOM_BADGE_COLOR } as const;
+/**
+ * @deprecated
+ * Use BADGE_STATUS instead, removed in v21.
+ */
 type BADGE_COLOR = (typeof BADGE_COLOR)[keyof typeof BADGE_COLOR];
 
+/**
+ * @deprecated
+ * Use BadgeStatus instead, removed in v21.
+ */
 type BadgeColor = `${BADGE_COLOR}`;
 
+/**
+ * @deprecated
+ * Use BADGE_STATUSES instead, removed in v21.
+ */
 const BADGE_COLORS = Object.freeze(Object.values(BADGE_COLOR));
 
 export {

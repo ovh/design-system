@@ -1,24 +1,10 @@
 import style from './dev.module.css';
-import { BADGE_COLORS, BADGE_SIZES, Badge } from '.';
+import { BADGE_SIZES, BADGE_STATUSES, Badge } from '.';
 
 export default {
   component: Badge,
   title: 'Badge dev',
 };
-
-export const Colors = () => (
-  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
-    {
-      BADGE_COLORS.map((color) => (
-        <Badge
-          color={ color }
-          key={ color }>
-          { color }
-        </Badge>
-      ))
-    }
-  </div>
-);
 
 export const CustomStyle = () => (
   <Badge className={ style['custom-badge'] }>
@@ -41,6 +27,20 @@ export const Sizes = () => (
           key={ size }
           size={ size }>
           Badge - { size }
+        </Badge>
+      ))
+    }
+  </div>
+);
+
+export const Statuses = () => (
+  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+    {
+      BADGE_STATUSES.map((status) => (
+        <Badge
+          key={ status }
+          status={ status }>
+          { status }
         </Badge>
       ))
     }

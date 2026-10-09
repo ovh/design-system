@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BADGE_SIZE, Badge, CARD_STATUS, Card, ICON_NAME, Icon, Link, Select, SelectContent, SelectControl, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger, formatPrice } from '@ovhcloud/ods-react';
+import { BADGE_SIZE, BADGE_STATUS, Badge, CARD_STATUS, Card, ICON_NAME, Icon, Link, Select, SelectContent, SelectControl, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger, formatPrice } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -75,13 +75,13 @@ const FeatureListProductCard = (): JSX.Element => {
 
         <div className={ style['feature-list-product-card__info__badges'] }>
           <Badge
-            color={ BADGE_COLOR.new }
+            status={ BADGE_STATUS.new }
             size={ BADGE_SIZE.sm }>
             New
           </Badge>
 
           <Badge
-            color={ BADGE_COLOR.information }
+            status={ BADGE_STATUS.information }
             size={ BADGE_SIZE.sm }>
             Best seller
           </Badge>
@@ -148,7 +148,7 @@ const FeatureListProductCard = (): JSX.Element => {
           <Text
             as="span"
             preset={ TEXT_PRESET.heading6 }>
-            <Badge color={ BADGE_COLOR.promotion }><Icon name={ ICON_NAME.tag } /></Badge> €100 free with a 5-year registration
+            <Badge status={ BADGE_STATUS.promotion }><Icon name={ ICON_NAME.tag } /></Badge> €100 free with a 5-year registration
           </Text>
 
           <div className={ style['feature-list-product-card__info__details__installation'] }>

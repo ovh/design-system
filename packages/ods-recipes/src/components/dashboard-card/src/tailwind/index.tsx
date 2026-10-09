@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { BADGE_STATUS, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
 import { type JSX, useRef, useState } from 'react';
 import './index.module.css';
 
@@ -102,14 +102,14 @@ const DashboardCard = (): JSX.Element => {
         <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
           <div className="inline-flex flex-row gap-x-[calc(var(--ods-theme-column-gap)_/_2)] items-center">
             Always Pull Images Plugin
-            <Badge color={ BADGE_COLOR.success }>
+            <Badge status={ BADGE_STATUS.success }>
               Enable
             </Badge>
           </div>
 
           <div className="inline-flex flex-row gap-x-[calc(var(--ods-theme-column-gap)_/_2)] items-center">
             Plugin Node Restriction
-            <Badge color={ BADGE_COLOR.success }>
+            <Badge status={ BADGE_STATUS.success }>
               Enable
             </Badge>
           </div>

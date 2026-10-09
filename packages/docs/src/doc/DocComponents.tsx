@@ -10,6 +10,7 @@ import { CodeBlock } from './CodeBlock';
 import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
@@ -27,17 +28,6 @@ import './doc.css';
    NOTHING. */
 
 const anatomyImages = import.meta.glob('../../assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
-
-const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
-  const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
-  return (
-    <Text as={ `h${level}` } className="doc__heading" id={ slugify(label) } preset={ presets[level] }>
-      { label }{ children }
-    </Text>
-  );
-};
 
 const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'shown' | 'none', story: string }) => {
   const page = usePageStories();

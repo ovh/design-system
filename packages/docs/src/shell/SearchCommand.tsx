@@ -2,13 +2,18 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BADGE_COLOR, BADGE_SIZE, Badge } from '../../../ods-react/src/components/badge/src';
 import { Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandList, CommandOption } from '../../../ods-react/src/components/command/src';
-import { Icon } from '../../../ods-react/src/components/icon/src';
+import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { type NavPage, flattenPages } from '../nav/model';
+import { loadSearchIndex, searchDocs, type SearchHit, tokenize } from './search';
 
 /* Global search — our own Command component (the palette pattern it was
    built for), controlled so selecting an entry closes it, bound to ⌘K.
-   Components first (the most searched), one icon per entry, the section
-   trail as right-hand context, status badges carried over from the nav. */
+   The filter is CONTROLLED (query state below), which turns the Command's
+   own matching off: page entries are matched on title + section trail +
+   status badge label ("deprecated" lists the deprecated pages) here,
+   and a full-text pass over the whole documentation corpus (lazy-loaded
+   index, see search.ts) fills the "In the docs" group for everything the
+   titles alone can't answer. */
 
 const GROUPS: { heading: string, kind: NavPage['kind'] }[] = [
   { heading: 'Components', kind: 'component' },
@@ -18,14 +23,37 @@ const GROUPS: { heading: string, kind: NavPage['kind'] }[] = [
   { heading: 'Helpers', kind: 'helper' },
 ];
 
+type SearchPage = ReturnType<typeof flattenPages>[number];
+
 const BADGES = {
   beta: { color: BADGE_COLOR.beta, label: 'Beta' },
   deprecated: { color: BADGE_COLOR.warning, label: 'Deprecated' },
   new: { color: BADGE_COLOR.new, label: 'New' },
 } as const;
 
+/* The matched terms, bolded inside the snippet. */
+const HighlightedSnippet = ({ query, text }: { query: string, text: string }) => {
+  const terms = tokenize(query);
+  if (terms.length === 0) {
+    return <>{ text }</>;
+  }
+  const pattern = new RegExp(`(${terms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+  return (
+    <>
+      { /* split with a capturing group: captures land on odd indexes */ }
+      { text.split(pattern).map((part, index) => (
+        index % 2 === 1
+          ? <mark className="shell__search-mark" key={ index }>{ part }</mark>
+          : <span key={ index }>{ part }</span>
+      )) }
+    </>
+  );
+};
+
 const SearchCommand = () => {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [docHits, setDocHits] = useState<SearchHit[]>([]);
   const navigate = useNavigate();
   const pages = flattenPages();
 
@@ -40,19 +68,74 @@ const SearchCommand = () => {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  // Full-text pass: only from 3 typed characters, so the index (a few
+  // hundred KB, fetched once) is never loaded for a glance at the palette.
+  useEffect(() => {
+    const wanted = query.trim();
+    if (wanted.length < 3) {
+      setDocHits([]);
+      return;
+    }
+    let stale = false;
+    loadSearchIndex().then((index) => {
+      if (!stale) {
+        setDocHits(searchDocs(index, wanted));
+      }
+    });
+    return () => {
+      stale = true;
+    };
+  }, [query]);
+
   const go = (path: string) => {
     navigate(path);
     setOpen(false);
   };
 
+  // Content hits carry the query terms in the router state: the landing page
+  // flash-highlights them (searchHighlight.ts) so the eye finds the match.
+  const goToHit = (hit: SearchHit) => {
+    const terms = tokenize(query);
+    navigate(hit.route, { state: { highlight: terms } });
+    setOpen(false);
+  };
+
+  const needle = query.trim().toLowerCase();
+  const pageMatches = (page: SearchPage): boolean => !needle
+    || [page.title, page.section, page.badge && BADGES[page.badge].label].filter(Boolean).join(' ').toLowerCase().includes(needle);
+  const groups = GROUPS
+    .map(({ heading, kind }) => ({ heading, kind, items: pages.filter((page) => page.kind === kind && pageMatches(page)) }))
+    .filter((group) => group.items.length > 0);
+  // A page already listed by title above is not repeated as a content hit,
+  // whatever its #section: routes are compared without the hash.
+  const shownPaths = new Set(groups.flatMap((group) => group.items.map((page) => page.path)));
+  const contentHits = docHits.filter((hit) => !shownPaths.has(hit.route.split('#')[0]));
+  const resultCount = groups.reduce((total, group) => total + group.items.length, 0) + contentHits.length;
+
   return (
-    <Command onOpenChange={ ({ open: value }) => setOpen(value) } open={ open }>
+    <Command
+      onOpenChange={ ({ open: value }) => {
+        setOpen(value);
+        if (!value) {
+          setQuery('');
+        }
+      } }
+      open={ open }>
       <CommandContent aria-label="Search the documentation">
-        <CommandFilter aria-label="Search" placeholder="Search components, guides, tools…" />
+        <CommandFilter
+          aria-label="Search"
+          onChange={ (e) => setQuery(e.target.value) }
+          placeholder="Search the documentation…"
+          value={ query } />
+        { /* Screen readers hear the result count settle, the full-text group
+             included (it lands asynchronously, after the index fetch). */ }
+        <span aria-live="polite" className="sr-only">
+          { needle ? `${resultCount} result${resultCount === 1 ? '' : 's'}` : '' }
+        </span>
         <CommandList aria-label="Results">
-          { GROUPS.map(({ heading, kind }) => (
+          { groups.map(({ heading, items, kind }) => (
             <CommandGroup heading={ heading } key={ kind }>
-              { pages.filter((page) => page.kind === kind).map((page) => {
+              { items.map((page) => {
                 const badge = page.badge ? BADGES[page.badge] : undefined;
                 // the group heading already says it: only deeper trails add context
                 const hint = page.section !== heading ? page.section : undefined;
@@ -69,7 +152,25 @@ const SearchCommand = () => {
               }) }
             </CommandGroup>
           )) }
-          <CommandEmpty>No result.</CommandEmpty>
+          { contentHits.length > 0 && (
+            <CommandGroup heading="In the docs">
+              { contentHits.map((hit) => (
+                <CommandOption key={ `doc:${hit.route}:${hit.section}` } onSelect={ () => goToHit(hit) }>
+                  <span className="shell__search-option shell__search-option--content">
+                    <Icon className="shell__search-option-icon" name={ ICON_NAME.magnifyingGlass } />
+                    <span>{ hit.title }</span>
+                    <span className="shell__search-option-hint">{ hit.section }</span>
+                    { hit.snippet && (
+                      <span className="shell__search-snippet">
+                        <HighlightedSnippet query={ query } text={ hit.snippet } />
+                      </span>
+                    ) }
+                  </span>
+                </CommandOption>
+              )) }
+            </CommandGroup>
+          ) }
+          { groups.length === 0 && contentHits.length === 0 && <CommandEmpty>No result.</CommandEmpty> }
         </CommandList>
       </CommandContent>
     </Command>

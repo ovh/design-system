@@ -363,3 +363,32 @@ body {
   color: var(--ods-color-primary-500);
   margin-top: 8px;
 }
+
+/* Full-text results in the palette: the matched excerpt under the title. */
+.shell__search-option--content {
+  flex-wrap: wrap;
+}
+
+.shell__search-snippet {
+  flex-basis: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* neutral-700: neutral-500 measured 3.95:1 at this size, under WCAG AA 4.5:1 */
+  color: var(--ods-color-neutral-700);
+  font-size: .78rem;
+}
+
+/* Topbar "View as Markdown": never shrinks under a long page title. */
+.shell__llms-link {
+  flex: none;
+  white-space: nowrap;
+}
+
+/* Matched terms inside a search snippet. */
+.shell__search-mark {
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+}

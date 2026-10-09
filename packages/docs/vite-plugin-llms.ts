@@ -3,11 +3,13 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
 import guidesInventory from './src/content/guides/guides.json';
+import helpersInventory from './src/content/helpers/helpers.json';
 import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
 import { categorizeTokens, splitPalettes } from './src/doc/ports/helpers/designTokens';
+import { slugify } from './src/doc/slug';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
 /* The llms invariant (CDC P1): the platform emits its llms output natively at
@@ -15,7 +17,7 @@ import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/ty
    raw CSF stories, typedoc JSON) — no post-build scraping of the DOM.
 
    The output honors the contract of the previous extractor, spec'd by
-   packages/storybook/scripts/verify-llms.sh: same file naming, front-matter
+   packages/docs/scripts/verify-llms.sh: same file naming, front-matter
    keys (title/slug/category/type/version/tokens/source), navigation files
    with relative links, absolute versioned front-matter sources, aggregate
    documents and the machine-readable llms-index.json. */
@@ -77,10 +79,8 @@ function discoverGuides(): GuideEntry[] {
   return GUIDES;
 }
 
-const HELPERS = [
-  { mdx: 'format-price', name: 'formatPrice', slug: 'helpers-formatprice', stories: 'helpers/formatPrice' },
-  { mdx: 'format-relative-time', name: 'formatRelativeTime', slug: 'helpers-formatrelativetime', stories: 'helpers/formatRelativeTime' },
-];
+// Shared with the "View as Markdown" link (src/doc/llmsFile.ts): one inventory.
+const HELPERS = helpersInventory;
 
 const titleize = (kebab: string): string => kebab.split('-').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
 const humanize = (storyName: string): string => storyName.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
@@ -690,6 +690,104 @@ function generate(outDir: string, withRootSummary = true): number {
   return componentFiles.length + genericFiles.length + 7;
 }
 
+/* ------------------------------------------------------------------ *
+ * Full-text search index — one entry per app route, plain-text body for
+ * client-side scoring in the ⌘K palette. Emitted to dist/search-index.json
+ * (NOT into llms/: it is an app asset, outside the verified llms contract,
+ * and never committed). Lazy-fetched by the app on the first search.
+ * ------------------------------------------------------------------ */
+
+interface SearchEntry {
+  b: string; // plain-text body, fences stripped, capped
+  r: string; // app route
+  s: string; // context label shown in the results
+  t: string; // page title
+}
+
+function searchText(body: string): string {
+  return body
+    // Accents folded like the client's tokenize(): "modèle" matches "modele".
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    // Residual inline HTML (<br/>, <kbd>…) is markup, not searchable text.
+    .replace(/<\/?[a-z][^>]*>?/g, ' ')
+    .replace(/[#>*_`|]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 6000);
+}
+
+/* One index entry per `## section` of the doc (plus the intro), so a palette
+   hit deep-links to the section itself instead of the top of the page. */
+function sectionEntries(doc: { body: string }, route: string, title: string, fallbackLabel: string): SearchEntry[] {
+  const withoutFences = doc.body.replace(/```[\s\S]*?```/g, ' ');
+  const [intro, ...rest] = withoutFences.split(/^## +(.+)$/m);
+  const entries: SearchEntry[] = [];
+  const introText = searchText(intro);
+  if (introText.length > 40) {
+    entries.push({ b: introText, r: route, s: fallbackLabel, t: title });
+  }
+  for (let i = 0; i + 1 < rest.length; i += 2) {
+    const heading = rest[i].trim();
+    const text = searchText(rest[i + 1]);
+    if (text.length > 0) {
+      entries.push({ b: text, r: `${route}#${slugify(heading)}`, s: heading, t: title });
+    }
+  }
+  return entries;
+}
+
+// No 'examples': those docs are code fences only, empty once fences are stripped.
+const SECTION_ROUTES: Partial<Record<Doc['type'], { label: string, path: string }>> = {
+  'documentation': { label: 'Documentation', path: '' },
+  'overview': { label: 'Overview', path: '' },
+  'technical-information': { label: 'Technical information', path: '/technical' },
+};
+
+function buildSearchIndex(): SearchEntry[] {
+  const componentKeys = readdirSync(resolve(here, 'src', 'content', 'components'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+
+  const entries: SearchEntry[] = [];
+  for (const key of componentKeys) {
+    const { pages } = componentDocs(key);
+    for (const [type, doc] of Object.entries(pages)) {
+      if (type === 'overview') {
+        continue; // same route as documentation, subset of its content
+      }
+      const section = SECTION_ROUTES[type as Doc['type']];
+      if (!section) {
+        continue;
+      }
+      entries.push(...sectionEntries(doc, `/components/${key}${section.path}`, doc.title, section.label));
+    }
+  }
+  for (const guide of discoverGuides()) {
+    entries.push(...sectionEntries(guideDoc(guide), `/guides/${guide.mdx}`, guide.title, 'Guide'));
+  }
+  for (const helper of HELPERS) {
+    for (const doc of helperDocs(helper)) {
+      if (doc.type === 'documentation') {
+        entries.push(...sectionEntries(doc, `/helpers/${helper.mdx}`, helper.name, 'Helper'));
+      }
+    }
+  }
+  // Recipes: their llms doc is one aggregate rendered by the single
+  // /recipes/components page, so it is indexed as ONE page-level entry (no
+  // #section: the recipe cards carry no heading ids to land on).
+  const recipes = recipesDoc();
+  if (recipes) {
+    const text = searchText(recipes.body.replace(/```[\s\S]*?```/g, ' '));
+    if (text.length > 0) {
+      entries.push({ b: text, r: '/recipes/components', s: 'Recipes', t: recipes.title });
+    }
+  }
+  return entries;
+}
+
 function llmsEmit(): Plugin {
   return {
     name: 'ods-docs:llms-emit',
@@ -701,9 +799,44 @@ function llmsEmit(): Plugin {
       // release, so the files must live in git, not only in dist.
       rmSync(resolve(here, 'assets', 'llms'), { force: true, recursive: true });
       generate(resolve(here, 'assets', 'llms'), false);
-      this.info(`llms: ${count} files emitted natively (dist + committed assets)`);
+      const searchEntries = buildSearchIndex();
+      writeFileSync(resolve(here, 'dist', 'search-index.json'), JSON.stringify(searchEntries), 'utf8');
+      this.info(`llms: ${count} files emitted natively (dist + committed assets), search index: ${searchEntries.length} entries`);
     },
   };
 }
 
-export { generate, llmsEmit };
+/* Dev-server counterpart of the build emissions: the palette's search index
+   and the View-as-Markdown fetches must work in `pnpm start` too. The llms files
+   are served from the committed assets copy; the search index is built once
+   on first request. */
+function llmsDevServe(): Plugin {
+  const llmsRoot = resolve(here, 'assets', 'llms');
+  let cachedIndex: string | undefined;
+  return {
+    name: 'ods-docs:llms-dev-serve',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = (req.url ?? '').split('?')[0];
+        if (url === '/search-index.json') {
+          cachedIndex ??= JSON.stringify(buildSearchIndex());
+          res.setHeader('Content-Type', 'application/json');
+          res.end(cachedIndex);
+          return;
+        }
+        if (url.startsWith('/llms/')) {
+          const file = resolve(llmsRoot, url.slice('/llms/'.length));
+          if (file.startsWith(llmsRoot) && existsSync(file)) {
+            res.setHeader('Content-Type', url.endsWith('.json') ? 'application/json' : 'text/plain; charset=utf-8');
+            res.end(readFileSync(file, 'utf8'));
+            return;
+          }
+        }
+        next();
+      });
+    },
+  };
+}
+
+export { generate, llmsDevServe, llmsEmit };

@@ -4,6 +4,7 @@ import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
 import { DocSkeleton } from '../DocSkeleton';
+import { Heading } from '../Heading';
 import { AnatomyBrowser } from './AnatomyBrowser';
 import { type TechData, getTechData } from './techData';
 import './tech.css';
@@ -19,10 +20,9 @@ const NativeAttributesNote = ({ element }: { element: string }) => (
   </p>
 );
 
+// Same heading as the documentation tab: deep-linkable and shareable by click.
 const SectionHeading = ({ children, label }: { children?: React.ReactNode, label: string }) => (
-  <Text as="h2" className="doc__heading tech__heading" id={ label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') } preset={ TEXT_PRESET.heading4 }>
-    { label }{ children }
-  </Text>
+  <Heading className="tech__heading" label={ label } level={ 2 }>{ children }</Heading>
 );
 
 const TechnicalSpecification = ({ component }: { component: string }) => {
@@ -102,7 +102,9 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
 
       { spec.unions.length > 0 && (
         <section>
-          <SectionHeading label="Unions" />
+          { /* "Types", not "Unions": the llms pipeline emits this section as
+               "## Types", and the palette's deep-links target the same slug. */ }
+          <SectionHeading label="Types" />
           <ul className="tech__enum">
             { spec.unions.map((union) => (
               <li key={ union.name }><code className="tech__type">{ union.name } = { union.value }</code></li>

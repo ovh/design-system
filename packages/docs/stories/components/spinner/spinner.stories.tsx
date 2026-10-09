@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { SPINNER_COLOR, SPINNER_SIZE, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
+import { SPINNER_SIZE, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
 
 type Story = StoryObj<SpinnerProp>;
 
@@ -20,13 +20,13 @@ export const AnatomyTech: Story = {
 
 export const Color: Story = {
   globals: {
-    imports: `import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';`,
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Spinner color={ SPINNER_COLOR.neutral } />
-      <Spinner color={ SPINNER_COLOR.primary } />
+      <Spinner style={{ '--ods-spinner-color': 'var(--ods-theme-neutral-color)' } as React.CSSProperties} />
+      <Spinner />
     </>
   ),
 };
@@ -117,8 +117,8 @@ export const ThemeGenerator: Story = {
       <Spinner />
       <Spinner size={ SPINNER_SIZE.sm } />
       <Spinner size={ SPINNER_SIZE.lg } />
-      <Spinner color={ SPINNER_COLOR.neutral } />
-      <Spinner color={ SPINNER_COLOR.primary } />
+      <Spinner style={{ '--ods-spinner-color': 'var(--ods-theme-neutral-color)' } as React.CSSProperties} />
+      <Spinner />
     </div>
   ),
 };

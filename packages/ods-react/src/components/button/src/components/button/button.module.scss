@@ -105,6 +105,10 @@
       align-items: center;
       justify-content: center;
       background-color: var(--ods-theme-background-color-disabled);
+
+      &-icon {
+        --ods-spinner-color: var(--ods-theme-neutral-color);
+      }
     }
   }
 }

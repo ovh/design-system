@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import { type FC } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
+import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_I18N, TRANSLATION } from '../../constants/input-i18n';
 import { useInput } from '../../contexts/useInput';
 import style from './inputActions.module.scss';
@@ -39,8 +40,10 @@ const InputActions: FC<InputActionsProps> = ({
     <div className={ style['input-actions'] }>
       { loading && (
         <Spinner
-          className={ style['input-actions__loading'] }
-          color={ disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
+          className={ classNames(
+            style['input-actions__loading'],
+            { [style['input-actions__loading--disabled']]: disabled },
+          )}
           role="none"
           size={ SPINNER_SIZE.xs } />
       )}

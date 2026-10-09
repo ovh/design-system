@@ -11,6 +11,10 @@
       display: flex;
       justify-content: center;
       width: button.$ods-button-size-xs;
+
+      &--disabled {
+        --ods-spinner-color: var(--ods-theme-neutral-color);
+      }
     }
   }
 }

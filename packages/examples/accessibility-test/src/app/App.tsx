@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -393,27 +393,27 @@ function App(): ReactElement {
             </Card>
           </div>
 
-          <Card color={ CARD_COLOR.critical }>
+          <Card status={ CARD_STATUS.critical }>
             <p>Critical</p>
           </Card>
 
-          <Card color={ CARD_COLOR.information }>
+          <Card status={ CARD_STATUS.information }>
             <p>Information</p>
           </Card>
 
-          <Card color={ CARD_COLOR.neutral }>
+          <Card status={ CARD_STATUS.neutral }>
             <p>Neutral</p>
           </Card>
 
-          <Card color={ CARD_COLOR.primary }>
-            <p>Primary</p>
+          <Card status={ CARD_STATUS.accent }>
+            <p>Accent</p>
           </Card>
 
-          <Card color={ CARD_COLOR.success }>
+          <Card status={ CARD_STATUS.success }>
             <p>Success</p>
           </Card>
 
-          <Card color={ CARD_COLOR.warning }>
+          <Card status={ CARD_STATUS.warning }>
             <p>Warning</p>
           </Card>
         </section>

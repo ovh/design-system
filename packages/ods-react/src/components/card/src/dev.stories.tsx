@@ -1,20 +1,20 @@
 import style from './dev.module.css';
-import { CARD_COLORS, Card } from '.';
+import { CARD_STATUSES, Card } from '.';
 
 export default {
   component: Card,
   title: 'Card dev',
 };
 
-export const Colors = () => (
+export const Statuses = () => (
   <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
     {
-      CARD_COLORS.map((color) => (
+      CARD_STATUSES.map((status) => (
         <Card
-          color={ color }
-          style={{ padding: '8px' }}
-          key={ color }>
-          { color }
+          key={ status }
+          status={ status }
+          style={{ padding: '8px' }}>
+          { status }
         </Card>
       ))
     }

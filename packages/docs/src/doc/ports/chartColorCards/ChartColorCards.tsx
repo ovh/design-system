@@ -1,4 +1,4 @@
-import { CARD_COLOR, Card, Clipboard, ClipboardTrigger, TEXT_PRESET, Text } from '../../../ods';
+import { CARD_STATUS, Card, Clipboard, ClipboardTrigger, TEXT_PRESET, Text } from '../../../ods';
 import { type FC, type JSX } from 'react';
 import styles from './chartColorCards.module.css';
 import { CHART_SERIES_COLORS } from '../constants/chartColors';
@@ -10,7 +10,7 @@ const ChartColorCards: FC = (): JSX.Element => {
         CHART_SERIES_COLORS.map((color, index) => (
           <Card
             className={ styles['chart-color-cards__card'] }
-            color={ CARD_COLOR.neutral }
+            status={ CARD_STATUS.neutral }
             key={ color }>
             <Clipboard value={ color }>
               <ClipboardTrigger

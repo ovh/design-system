@@ -4,7 +4,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useDevice } from '../../../../../hooks/useDevice';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { Button } from '../../../../button/src';
-import { CARD_COLOR, Card } from '../../../../card/src';
+import { CARD_STATUS, Card } from '../../../../card/src';
 import { CART_I18N, TRANSLATION } from '../../constants/cart-i18n';
 import { CartProvider, type CartRootProp, useCart } from '../../contexts/useCart';
 import style from './cart.module.scss';
@@ -28,9 +28,9 @@ const CartRoot: FC<CartProp> = forwardRef(({
   return (
     <Card
       className={ classNames(style['cart'], className) }
-      color={ CARD_COLOR.neutral }
       data-ods="cart"
       ref={ ref }
+      status={ CARD_STATUS.neutral }
       { ...props }>
       {
         !isEmpty && isMobile &&

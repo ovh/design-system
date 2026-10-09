@@ -9,7 +9,7 @@ interface CartOpenChangeDetail {
   open: boolean,
 }
 
-interface CartRootProp extends Omit<CardProp, 'color'> {
+interface CartRootProp extends Omit<CardProp, 'color' | 'status'> {
   /**
    * Internal translations override.
    */

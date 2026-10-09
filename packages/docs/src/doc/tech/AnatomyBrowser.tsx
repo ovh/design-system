@@ -1,6 +1,6 @@
 import { composeStory } from '@storybook/react';
 import { type ComponentType, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { CARD_COLOR, Card, DIVIDER_ORIENTATION, Divider, ICON_NAME, Icon } from '../../ods';
+import { CARD_STATUS, Card, DIVIDER_ORIENTATION, Divider, ICON_NAME, Icon } from '../../ods';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../../ods-react/src/components/tree-view/src';
 import { DemoFrame } from '../../demo/DemoFrame';
 import { usePageStories } from '../PageStories';
@@ -123,7 +123,7 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
 
   return (
     <div className="anatomy">
-      <Card className="anatomy__tree" color={ CARD_COLOR.neutral }>
+      <Card className="anatomy__tree" status={ CARD_STATUS.neutral }>
         { /* expandedValue held (no onExpandedChange) so the tree never collapses. */ }
         <TreeView
           expandedValue={ [root] }

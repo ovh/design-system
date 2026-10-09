@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { CARD_COLOR, Card } from '../../../../card/src';
+import { CARD_STATUS, Card } from '../../../../card/src';
 import { TileProvider, type TileRootProp } from '../../contexts/useTile';
 import style from './tile.module.scss';
 
@@ -20,9 +20,9 @@ const Tile: FC<TileProp> = forwardRef(({
           { [ style[ 'tile--selected' ] ]: selected },
           { [ style[ 'tile--disabled' ] ]: disabled },
           className) }
-        color={ CARD_COLOR.neutral }
         data-ods="tile"
         ref={ ref }
+        status={ CARD_STATUS.neutral }
         { ...props }
       >
         { children }

@@ -55,9 +55,14 @@ The **Spinner** component has a spinning animation to show to the user that the 
 
 <Heading label="Color" level={ 3 } />
 
-* **Primary** (default): used in contexts where the **Spinner** is tied to the main brand action
-* **Neutral**: used for secondary or subtle loading indicators, and commonly displayed in disabled parent components to indicate background activity without drawing too much attention
-* **White**: designed for use on dark or colored backgrounds to ensure proper contrast and visibility
+The **Spinner** is primary by default, for contexts where it is tied to the main brand action.
+
+To use another color, set the `--ods-spinner-color` CSS custom property on the **Spinner**, through its `className`, or on a container of yours, for example:
+
+* `var(--ods-theme-neutral-color)`: for secondary or subtle loading indicators, commonly displayed in disabled parent components to indicate background activity without drawing too much attention
+* `currentColor`: to follow the text color around the **Spinner**, for example on a dark or colored background
+
+Avoid a global `[data-ods="spinner"]` selector, which would also reach the Spinners displayed by other components (Button, Input, FileUpload). A container also reaches the loading Spinners of the **Input** (when enabled) and **FileUpload** placed inside it; only the **Button** and disabled **Input** Spinners keep their neutral color. In TypeScript, setting the custom property through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`), which a `className` avoids.
 
 <Heading label="Navigation" level={ 2 } />
 

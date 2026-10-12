@@ -19,5 +19,12 @@ describe('Editable rendering', () => {
       expect(await getStatusStyle(page, 'cancel-status')).toBe(await getStatusStyle(page, 'button-status-critical'));
       expect(await getStatusStyle(page, 'button-color-success')).not.toBe(await getStatusStyle(page, 'button-status-brand'));
     });
+
+    it('should let the integrator emphasis win over the internal emphasis', async() => {
+      await gotoStory(page, 'rendering/triggers');
+
+      expect(await getStatusStyle(page, 'cancel-emphasis')).toBe(await getStatusStyle(page, 'button-status-neutral-high'));
+      expect(await getStatusStyle(page, 'button-status-brand-medium')).not.toBe(await getStatusStyle(page, 'button-status-brand'));
+    });
   });
 });

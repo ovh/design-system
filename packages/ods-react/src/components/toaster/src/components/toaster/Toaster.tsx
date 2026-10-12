@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { type FC, type JSX, forwardRef, useEffect, useMemo } from 'react';
 import { createPortal as domPortal } from 'react-dom';
 import { useToaster, useToasterStore } from 'react-hot-toast/headless';
-import { TOAST_COLOR } from '../../constants/toast-color';
+import { TOAST_STATUS } from '../../constants/toast-status';
 import { TOASTER_POSITION } from '../../constants/toaster-position';
 import { type Toast as ToastItem, ToasterProvider, type ToasterRootProp } from '../../contexts/useToaster';
-import { toast as controller } from '../../controller/toaster';
+import { toast as controller, getToastStatus } from '../../controller/toaster';
 import { Toast } from '../toast/Toast';
 import style from './toaster.module.scss';
 
@@ -85,7 +85,7 @@ const ToasterRoot: FC<ToasterProp> = forwardRef(({
               )}
               key={ toast.id }
               ref={ toastRef }
-              role={ toast.color === TOAST_COLOR.critical ? 'alert' : 'status' }
+              role={ getToastStatus(toast) === TOAST_STATUS.critical ? 'alert' : 'status' }
               style={{
                 opacity: toast.visible ? 1 : 0,
                 transform: `translateY(${isBottom ? -offset : offset}px)`,

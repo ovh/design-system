@@ -17,6 +17,9 @@ export const Colors = () => (
     <button onClick={ () => toast('Default') }>
       Default toast
     </button>
+    <button onClick={ () => toast.accent('Accent') }>
+      Accent toast
+    </button>
     <button onClick={ () => toast.critical('Critical') }>
       Critical toast
     </button>
@@ -25,9 +28,6 @@ export const Colors = () => (
     </button>
     <button onClick={ () => toast.neutral('Neutral') }>
       Neutral toast
-    </button>
-    <button onClick={ () => toast.primary('Primary') }>
-      Primary toast
     </button>
     <button onClick={ () => toast.success('Success') }>
       Success toast

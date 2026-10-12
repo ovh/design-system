@@ -47,6 +47,24 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   --ods-badge-background-color-warning: var(--ods-semantic-color-surface-warning-subtle);
   --ods-badge-border-color-warning: var(--ods-semantic-color-border-warning-subtle);
   --ods-badge-text-color-warning: var(--ods-semantic-color-content-on-warning);
+  // High emphasis: filled background with white text (warning: dark text on its 400 step), all AA (4.5:1).
+  --ods-badge-background-color-critical-high: var(--ods-color-critical-500);
+  --ods-badge-text-color-critical-high: var(--ods-color-neutral-000);
+  --ods-badge-background-color-information-high: var(--ods-color-information-500);
+  --ods-badge-text-color-information-high: var(--ods-color-neutral-000);
+  --ods-badge-background-color-neutral-high: var(--ods-color-neutral-600);
+  --ods-badge-text-color-neutral-high: var(--ods-color-neutral-000);
+  --ods-badge-background-color-success-high: var(--ods-color-success-500);
+  --ods-badge-text-color-success-high: var(--ods-color-neutral-000);
+  --ods-badge-background-color-warning-high: var(--ods-color-warning-400);
+  --ods-badge-text-color-warning-high: var(--ods-color-warning-900);
+  // Low emphasis: colored text only, on a transparent background. Each step keeps AA (4.5:1) on the page background.
+  --ods-badge-text-color-critical-low: var(--ods-color-critical-500);
+  --ods-badge-text-color-information-low: var(--ods-color-information-500);
+  --ods-badge-text-color-neutral-low: var(--ods-color-neutral-600);
+  --ods-badge-text-color-primary-low: var(--ods-color-primary-500);
+  --ods-badge-text-color-success-low: var(--ods-color-success-500);
+  --ods-badge-text-color-warning-low: var(--ods-color-warning-700);
 
   box-sizing: border-box;
   display: inline-flex;
@@ -99,6 +117,43 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     border-color: var(--ods-badge-border-color-warning);
     background-color: var(--ods-badge-background-color-warning);
     color: var(--ods-badge-text-color-warning);
+  }
+}
+
+@mixin ods-badge-color-high($color) {
+  @if $color == 'critical' {
+    background-color: var(--ods-badge-background-color-critical-high);
+    color: var(--ods-badge-text-color-critical-high);
+  } @else if $color == 'information' {
+    background-color: var(--ods-badge-background-color-information-high);
+    color: var(--ods-badge-text-color-information-high);
+  } @else if $color == 'neutral' {
+    background-color: var(--ods-badge-background-color-neutral-high);
+    color: var(--ods-badge-text-color-neutral-high);
+  } @else if $color == 'success' {
+    background-color: var(--ods-badge-background-color-success-high);
+    color: var(--ods-badge-text-color-success-high);
+  } @else if $color == 'warning' {
+    background-color: var(--ods-badge-background-color-warning-high);
+    color: var(--ods-badge-text-color-warning-high);
+  }
+}
+
+@mixin ods-badge-color-low($color) {
+  background-color: transparent;
+
+  @if $color == 'critical' {
+    color: var(--ods-badge-text-color-critical-low);
+  } @else if $color == 'information' {
+    color: var(--ods-badge-text-color-information-low);
+  } @else if $color == 'neutral' {
+    color: var(--ods-badge-text-color-neutral-low);
+  } @else if $color == 'primary' {
+    color: var(--ods-badge-text-color-primary-low);
+  } @else if $color == 'success' {
+    color: var(--ods-badge-text-color-success-low);
+  } @else if $color == 'warning' {
+    color: var(--ods-badge-text-color-warning-low);
   }
 }
 

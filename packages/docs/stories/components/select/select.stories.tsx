@@ -36,10 +36,9 @@ export const AnatomyTech: Story = {
         open
         overlayConfig={{
           flip: false,
-        }}>
-        <SelectControl
-          placeholder="Select one or more pets"
-          style={{ width: '230px' }} />
+        }}
+        style={{ width: '230px' }}>
+        <SelectControl placeholder="Select one or more pets" />
 
         <SelectContent createPortal={ false } />
       </Select>

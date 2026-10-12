@@ -1,5 +1,7 @@
 @layer ods-molecules {
   .datepicker {
     display: inline-block;
+    // Lets the control's max-width: 100% resolve against the container, not this shrink-to-fit box.
+    max-width: 100%;
   }
 }

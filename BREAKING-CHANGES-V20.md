@@ -52,13 +52,14 @@ not the history of the branch.
 | [BC-18](#bc-18---button-border-width-token-renamed) | `@ovhcloud/ods-react` | `Button` border width token renamed | automatable |
 | [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, the `Combobox` tags and the transitions render differently by default | manual |
 | [BC-20](#bc-20---a-19x-custom-theme-no-longer-applies) | `@ovhcloud/ods-themes` | a 19.x custom theme no longer applies | manual |
+| [BC-21](#bc-21---form-fields-share-one-default-width) | `@ovhcloud/ods-react` | form fields share one default width instead of filling their container | manual |
 
 ## The v20 token contract
 
 `--ods-semantic-*` is the public surface of the theme: a consumer reads these roles, and a theme
 re-declares them. Their names and their meaning hold for the whole v20 line; their values belong
 to the theme. The `--ods-palette-*` ramps are public as well, as the input of a theme. The
-reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 276 in 20.0, 185
+reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 277 in 20.0, 186
 semantic and 91 palette, as counted by
 
 ```sh
@@ -448,7 +449,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 276 new ones are in (185 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 277 new ones are in (186 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |
@@ -735,6 +736,19 @@ goes under the v20 modal.
 | **Detection** | `grep -rnE -- "--ods-(theme\|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/`: it finds a theme written as CSS, as the JSON the 19.x Theme Generator exports, or as that object kept in a JS or TS file |
 | **Codemod** | **manual** - move the brand colors onto the two ramps, then re-declare the roles the ramps do not reach. |
 | **Source of truth** | `packages/themes/src/default/index.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/index.scss` (a theme written this way) |
+
+---
+
+## BC-21 - form fields share one default width
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | `Input` (password type included), `Password`, `Textarea`, `Clipboard`, `Select`, `Combobox`, `Datepicker` (input and calendar trigger together), `Phone Number`, `Timepicker` (input and timezone select together) and the `Editable` input render at `var(--ods-semantic-size-inline-size-field)`, `280px` in the default theme, border box and addons included, capped at `max-width: 100%`. In 19.7.3, `Select` and `Combobox` filled their container, and any field inside a `FormField` stretched to its width. The `Select` and `Combobox` roots now always carry a CSS-module class and render as `inline-block`. |
+| **Impact** | Visual only, nothing fails. A field that filled a form column, a `FormField` or a table cell now stops at `280px`. |
+| **Detection** | none to run - it applies to every listed field; review the forms whose layout relied on full-width `Select` or `Combobox` |
+| **Codemod** | **manual** - set `width: 100%` on the root of the field to fill the container again (a `className` on `Input` and `Password`, on both `Datepicker` and `DatepickerControl`), never on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`; or change every field at once by re-declaring `--ods-semantic-size-inline-size-field`. |
+| **Source of truth** | `packages/ods-react/src/style/_input.scss` (`ods-input-width()`), `packages/themes/src/default/index.scss` (the token) |
 
 ---
 

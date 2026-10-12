@@ -5,8 +5,17 @@
 // an action button reads the same on all four sides instead of being twice as wide on the end.
 $ods-input-actions-padding-right: var(--ods-semantic-size-space-inset-block-compact);
 $ods-input-field-height: var(--ods-semantic-size-block-size-md);
+$ods-input-field-width: var(--ods-semantic-size-inline-size-field);
 $ods-input-placeholder-color: var(--ods-semantic-color-content-placeholder);
 $ods-input-icon-color: var(--ods-semantic-color-content-text);
+
+// Every form field ships the same default width, addons included, so mixed fields line up in a
+// form out of the box — themable through the width token behind `$ods-input-field-width`.
+// Capped by the container so narrow layouts never overflow; consumers resize through the field root.
+@mixin ods-input-width() {
+  width: $ods-input-field-width;
+  max-width: 100%;
+}
 
 @mixin ods-input() {
   box-sizing: border-box;

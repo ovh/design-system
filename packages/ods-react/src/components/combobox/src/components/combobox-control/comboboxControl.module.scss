@@ -71,6 +71,7 @@
       align-items: center;
 
       &__input {
+        // The field root carries the 280px default; this inner Input must not re-apply it.
         display: inline-flex;
         flex: 1;
         outline: none;
@@ -78,6 +79,9 @@
         box-shadow: none;
         background: transparent;
         padding: 0;
+        width: auto;
+        min-width: 0;
+        max-width: none;
         min-height: calc(var(--ods-semantic-size-block-size-md) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-semantic-border-thickness) * 2));
       }
 

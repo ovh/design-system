@@ -1,6 +1,7 @@
 import { Accordion } from '@ark-ui/react/accordion';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { useAccordion } from '../../contexts/useAccordion';
 import style from './accordionItem.module.scss';
 
 interface AccordionItemProp extends ComponentPropsWithRef<'div'> {
@@ -21,9 +22,11 @@ const AccordionItem: FC<AccordionItemProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const { emphasis } = useAccordion();
+
   return (
     <Accordion.Item
-      className={ classNames(style['accordion-item'], className) }
+      className={ classNames(style['accordion-item'], style[`accordion-item--${emphasis}`], className) }
       data-ods="accordion-item"
       disabled={ disabled }
       ref={ ref }

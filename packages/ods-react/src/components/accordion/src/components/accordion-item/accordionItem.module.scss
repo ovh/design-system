@@ -35,5 +35,19 @@
     &[data-disabled] {
       @include state.ods-is-disabled();
     }
+
+    &--low {
+      border-width: 0;
+
+      // No border to overlap: cancels the -1px overlap of medium.
+      &:not(:first-child) {
+        margin-top: 0;
+      }
+
+      // Overrides the background of ods-is-disabled(): low only keeps its opacity.
+      &[data-disabled] {
+        background-color: transparent;
+      }
+    }
   }
 }

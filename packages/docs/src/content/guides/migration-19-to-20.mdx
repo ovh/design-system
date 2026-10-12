@@ -141,6 +141,7 @@ The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('prim
 - `color="primary"`: use `status="accent"`.
 - `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+- New `emphasis` prop (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
 
 **before**
 ```tsx
@@ -156,6 +157,14 @@ import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
 
 <Badge status={ BADGE_STATUS.accent }>New feature</Badge>
 <Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+**optional, new in v20**
+```tsx
+import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Expired</Badge>
+<Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Active</Badge>
 ```
 
 <Heading label="Button" level={ 3 } />

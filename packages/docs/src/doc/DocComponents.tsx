@@ -7,7 +7,7 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
 import { CodeBlock } from './CodeBlock';
-import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { HelperSpecification } from './HelperSpecification';
@@ -185,7 +185,7 @@ const TableVsDataTable = () => (
 
 /* Deprecation banner (switch doc): replacement path per use-case. */
 const Deprecated = () => (
-  <Message color={ MESSAGE_COLOR.warning } dismissible={ false } style={{ width: '100%' }}>
+  <Message status={ MESSAGE_STATUS.warning } dismissible={ false } style={{ width: '100%' }}>
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
     <MessageBody>
       Component is now deprecated and will be removed in a future major release.

@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, Button, ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon, Spinner } from '../../../ods';
+import { BUTTON_SIZE, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon, Spinner } from '../../../ods';
 import { cx as classNames } from '../cx';
 import { Fragment, useEffect, useState } from 'react';
 import { ROADMAP_ITEM_HEIGHT, RoadmapItem, type RoadmapItemData } from './RoadmapItem';
@@ -29,7 +29,7 @@ const Roadmap = () => {
     return (
       <div className={ styles['roadmap-error'] }>
         <Message
-          color={ MESSAGE_COLOR.critical }
+          status={ MESSAGE_STATUS.critical }
           dismissible={ false }>
           <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 

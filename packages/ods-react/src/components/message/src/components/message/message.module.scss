@@ -21,7 +21,7 @@
         @include message.ods-message-variant-default('neutral');
       }
 
-      &#{$message}--primary {
+      &#{$message}--accent {
         @include message.ods-message-variant-default('primary');
 
         #{$message}__close {
@@ -53,7 +53,7 @@
         @include message.ods-message-variant-light('neutral');
       }
 
-      &#{$message}--primary {
+      &#{$message}--accent {
         @include message.ods-message-variant-light('primary');
       }
 

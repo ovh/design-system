@@ -11,7 +11,7 @@ export { FormField, FormFieldLabel } from '../../ods-react/src/components/form-f
 export { ICON_NAME, ICON_NAMES, Icon } from '../../ods-react/src/components/icon/src';
 export { INPUT_TYPE, Input } from '../../ods-react/src/components/input/src';
 export { Link } from '../../ods-react/src/components/link/src';
-export { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../ods-react/src/components/message/src';
+export { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../ods-react/src/components/message/src';
 export { Modal, ModalBody, ModalContent } from '../../ods-react/src/components/modal/src';
 export { Quantity, QuantityControl, QuantityInput } from '../../ods-react/src/components/quantity/src';
 export { Range, type RangeValueChangeDetail } from '../../ods-react/src/components/range/src';

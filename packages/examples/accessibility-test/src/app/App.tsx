@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_STATUS, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_STATUS, TAG_STATUS, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -971,38 +971,38 @@ function App(): ReactElement {
         <section>
           <h1>Message</h1>
 
-          <Message color={ MESSAGE_COLOR.critical }>
+          <Message status={ MESSAGE_STATUS.critical }>
             <MessageIcon name={ ICON_NAME.hexagonExclamation } />
             <MessageBody>Critical message</MessageBody>
           </Message>
 
-          <Message color={ MESSAGE_COLOR.information }>
+          <Message status={ MESSAGE_STATUS.information }>
             <MessageIcon name={ ICON_NAME.circleInfo } />
             <MessageBody>Information message</MessageBody>
           </Message>
 
-          <Message color={ MESSAGE_COLOR.neutral }>
+          <Message status={ MESSAGE_STATUS.neutral }>
             <MessageIcon name={ ICON_NAME.email } />
             <MessageBody>Neutral message</MessageBody>
           </Message>
 
-          <Message color={ MESSAGE_COLOR.primary }>
+          <Message status={ MESSAGE_STATUS.accent }>
             <MessageIcon name={ ICON_NAME.lightbulb } />
-            <MessageBody>Primary message</MessageBody>
+            <MessageBody>Accent message</MessageBody>
           </Message>
 
-          <Message color={ MESSAGE_COLOR.success }>
+          <Message status={ MESSAGE_STATUS.success }>
             <MessageIcon name={ ICON_NAME.circleCheck } />
             <MessageBody>Success message</MessageBody>
           </Message>
 
-          <Message color={ MESSAGE_COLOR.warning }>
+          <Message status={ MESSAGE_STATUS.warning }>
             <MessageIcon name={ ICON_NAME.triangleExclamation } />
             <MessageBody>Warning message</MessageBody>
           </Message>
 
           <div role="alert">
-            <Message color="critical">
+            <Message status="critical">
               <MessageIcon name="hexagon-exclamation" />
 
               <MessageBody >

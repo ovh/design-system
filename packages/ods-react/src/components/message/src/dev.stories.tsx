@@ -2,7 +2,7 @@
 import type { Locale } from '../../../utils/locales';
 import { useState } from 'react';
 import style from './dev.module.css';
-import { MESSAGE_COLORS, MESSAGE_I18N, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
+import { MESSAGE_I18N, MESSAGE_STATUSES, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
 
 export default {
   component: Message,
@@ -22,7 +22,7 @@ export const A11Y = () => {
       <div role="alert">
         {
           alerts.map((alert) => (
-            <Message color="critical" key={ alert }>
+            <Message key={ alert } status="critical">
               <MessageIcon name="hexagon-exclamation" />
 
               <MessageBody >
@@ -50,7 +50,7 @@ export const A11Y = () => {
   );
 };
 
-export const Colors = () => (
+export const Statuses = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
     {
       MESSAGE_VARIANTS.map((variant) => (
@@ -58,15 +58,15 @@ export const Colors = () => (
           key={ variant }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
-            MESSAGE_COLORS.map((color) => (
+            MESSAGE_STATUSES.map((messageStatus) => (
               <Message
-                color={ color }
-                key={ color }
+                key={ messageStatus }
+                status={ messageStatus }
                 variant={ variant }>
                 <MessageIcon name="circle-info" />
 
                 <MessageBody>
-                  { color }
+                  { messageStatus }
                 </MessageBody>
               </Message>
             ))
@@ -81,13 +81,13 @@ export const Colors = () => (
           key={ variant }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
-            MESSAGE_COLORS.map((color) => (
+            MESSAGE_STATUSES.map((messageStatus) => (
               <Message
-                color={ color }
-                key={ color }
+                key={ messageStatus }
+                status={ messageStatus }
                 variant={ variant }>
                 <MessageBody>
-                  { color }
+                  { messageStatus }
                 </MessageBody>
               </Message>
             ))

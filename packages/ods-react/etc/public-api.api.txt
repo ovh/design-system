@@ -3004,6 +3004,11 @@ interface InputRootProp {
      */
     clearable?: boolean;
     /**
+     * Decorative content displayed inside the field, after the value and before the action buttons
+     * (a unit, an icon, a ghost button). Never part of the input value.
+     */
+    endContent?: ReactNode;
+    /**
      * Whether the component is in error state.
      */
     invalid?: boolean;
@@ -3038,6 +3043,11 @@ interface InputRootProp {
      */
     onClear?: () => void;
     /**
+     * Decorative content displayed inside the field, before the value (a currency symbol, an icon,
+     * a fixed scheme such as `https://`). Never part of the input value.
+     */
+    startContent?: ReactNode;
+    /**
      * The input type.
      */
     type?: InputType;
@@ -3051,8 +3061,15 @@ declare function useInput(): InputContextType;
 export { type InputContextType, type InputProviderProp, type InputRootProp, InputProvider, useInput, };
 
 // ==================== components/input/src/controller/input.d.ts ====================
+import { ReactNode } from 'react';
+/**
+ * Whether an adornment will actually produce visible content.
+ * Mirrors what React renders, so `null`, `undefined`, booleans and the empty string emit no wrapper element,
+ * while `0`, which is falsy but renderable, does.
+ */
+declare function isSlotDefined(slot: ReactNode): boolean;
 declare function isValueDefined(value?: number | readonly string[] | string | null): boolean;
-export { isValueDefined, };
+export { isSlotDefined, isValueDefined, };
 
 // ==================== components/input/src/index.d.ts ====================
 export { Input, type InputProp } from './components/input/Input';
@@ -5763,7 +5780,14 @@ export { TABLE_VARIANT, TABLE_VARIANTS, type TableVariant } from './constants/ta
 
 // ==================== components/tabs/src/components/tab-content/TabContent.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
+import { TabsMountStrategy } from '../../constants/tabs-mount-strategy';
 interface TabContentProp extends ComponentPropsWithRef<'div'> {
+    /**
+     * @type=TABS_MOUNT_STRATEGY
+     * When the content of this panel is rendered while it is inactive. Overrides the Tabs mountStrategy for this panel only.
+     * SEO: with 'lazy' or 'unmount', the content of this panel is in the server-rendered HTML only if it is the selected one.
+     */
+    mountStrategy?: TabsMountStrategy;
     /**
      * The value of the tab content item.
      */
@@ -5798,6 +5822,10 @@ interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, T
 declare const Tabs: FC<TabsProp>;
 export { Tabs, type TabsProp, };
 
+// ==================== components/tabs/src/constants/tabs-mount-strategy.d.ts ====================
+import { MOUNT_STRATEGIES, MOUNT_STRATEGY, MountStrategy } from '../../../../utils/mount-strategy';
+export { MOUNT_STRATEGY as TABS_MOUNT_STRATEGY, MOUNT_STRATEGIES as TABS_MOUNT_STRATEGIES, type MountStrategy as TabsMountStrategy, };
+
 // ==================== components/tabs/src/constants/tabs-size.d.ts ====================
 declare enum TABS_SIZE {
     md = "md",
@@ -5819,6 +5847,7 @@ export { TABS_VARIANT, TABS_VARIANTS, type TabsVariant, };
 
 // ==================== components/tabs/src/contexts/useTabs.d.ts ====================
 import { JSX, ReactNode, RefObject } from 'react';
+import { TabsMountStrategy } from '../constants/tabs-mount-strategy';
 import { TabsSize } from '../constants/tabs-size';
 import { TabsVariant } from '../constants/tabs-variant';
 interface TabsValueChangeEvent {
@@ -5829,6 +5858,14 @@ interface TabsRootProp {
      * The initial value of the selected tab. Use when you don't need to control the value of the tabs.
      */
     defaultValue?: string;
+    /**
+     * @type=TABS_MOUNT_STRATEGY
+     * @default-value='keep'
+     * When the content of the inactive panels is rendered: always ('keep'), from the first time it is shown ('lazy')
+     * or only while it is shown ('unmount'). Each TabContent can override it.
+     * SEO: only 'keep' puts the content of the inactive panels in the server-rendered HTML, so it can be indexed.
+     */
+    mountStrategy?: TabsMountStrategy;
     /**
      * Callback fired when the state of selected tab changes.
      */
@@ -5850,14 +5887,14 @@ interface TabsRootProp {
      */
     withArrows?: boolean;
 }
-interface TabsProviderProp extends Pick<TabsRootProp, 'size' | 'variant' | 'withArrows'> {
+interface TabsProviderProp extends Pick<TabsRootProp, 'mountStrategy' | 'size' | 'variant' | 'withArrows'> {
     children: ReactNode;
 }
 type TabsContextType = Omit<TabsProviderProp, 'children'> & {
     scrollContainerRef?: RefObject<HTMLElement | null> | null;
     setScrollContainerRef: (ref: RefObject<HTMLElement | null>) => void;
 };
-declare function TabsProvider({ children, size, variant, withArrows, }: TabsProviderProp): JSX.Element;
+declare function TabsProvider({ children, mountStrategy, size, variant, withArrows, }: TabsProviderProp): JSX.Element;
 declare function useTabs(): TabsContextType;
 export { TabsProvider, type TabsRootProp, type TabsValueChangeEvent, useTabs, };
 
@@ -5874,6 +5911,7 @@ declare const Tabs: import('react').FC<TabsProp> & {
 export { Tabs };
 export { Tab, TabContent, TabList };
 export type { TabsProp, TabListProp, TabProp, TabContentProp };
+export { TABS_MOUNT_STRATEGIES, TABS_MOUNT_STRATEGY, type TabsMountStrategy } from './constants/tabs-mount-strategy';
 export { TABS_SIZE, TABS_SIZES, type TabsSize } from './constants/tabs-size';
 export { TABS_VARIANT, TABS_VARIANTS, type TabsVariant } from './constants/tabs-variant';
 export { type TabsValueChangeEvent } from './contexts/useTabs';
@@ -6840,6 +6878,26 @@ declare enum LOCALE {
 type Locale = `${LOCALE}`;
 declare const LOCALES: readonly string[];
 export { LOCALE, LOCALES, type Locale, };
+
+// ==================== utils/mount-strategy.d.ts ====================
+declare enum MOUNT_STRATEGY {
+    /** Always rendered. Inactive content stays in the DOM, hidden. */
+    keep = "keep",
+    /** Not rendered until shown for the first time, then kept like `keep`. */
+    lazy = "lazy",
+    /** Rendered only while shown. Its state (inputs, scroll position, ...) is lost when hidden. */
+    unmount = "unmount"
+}
+type MountStrategy = `${MOUNT_STRATEGY}`;
+declare const MOUNT_STRATEGIES: readonly MOUNT_STRATEGY[];
+/**
+ * Whether content governed by `strategy` must be rendered.
+ * @param strategy - The mount strategy to apply.
+ * @param isShown - Whether the content is currently shown.
+ * @param wasShown - Whether the content has been shown at least once.
+ */
+declare function shouldRenderContent(strategy: MountStrategy, isShown: boolean, wasShown: boolean): boolean;
+export { MOUNT_STRATEGY, MOUNT_STRATEGIES, type MountStrategy, shouldRenderContent, };
 
 // ==================== utils/overlay.d.ts ====================
 declare enum OVERLAY_POSITION {

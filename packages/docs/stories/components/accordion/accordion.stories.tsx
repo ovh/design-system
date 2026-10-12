@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
+import { ACCORDION_EMPHASIS, Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
@@ -237,6 +237,78 @@ import { useState } from 'react';`,
       </Accordion>
     );
   },
+};
+
+export const Emphasis: Story = {
+  globals: {
+    imports: `import { ACCORDION_EMPHASIS, Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.high }>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            High emphasis
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            High emphasis
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.medium }>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            Medium emphasis (default)
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            Medium emphasis (default)
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.low }>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            Low emphasis
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            Low emphasis
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
 };
 
 export const ExpandIconPositionExample: Story = {

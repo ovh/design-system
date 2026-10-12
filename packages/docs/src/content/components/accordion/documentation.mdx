@@ -78,9 +78,23 @@ The **Icon** helps the user to know if the **Accordion** is collapsed or expande
   * Collapsed : chevron points right
   * Expanded : chevron points down
 
-The Header part of this component acts like a button, with hover, focus and active styles.
+The Header part of this component acts like a button, with hover, focus and active styles. With the `low` emphasis, hovering only changes the cursor, as there is no border or background to highlight.
 
 Same behavior and styling applies to both Desktop and Mobile modes.
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Emphasis" level={ 3 } />
+
+The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
+
+- **High**: the header sits on a tinted surface and the panel on a white surface, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **Medium** _(default)_: items are outlined by borders, on a transparent background.
+- **Low**: no border nor background: items are only told apart by their header typography and expand icon. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
+
+Every emphasis supports the disabled state, the multiple mode and both expand icon positions. The keyboard focus stays visible on the header in every emphasis.
+
+<Canvas story="Emphasis" />
 
 <Heading label="Navigation" level={ 2 } />
 

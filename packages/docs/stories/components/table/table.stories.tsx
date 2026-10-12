@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { TABLE_SIZE, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
+import { TABLE_SIZE, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 
 type Story = StoryObj<TableProp>;
@@ -310,7 +310,7 @@ export const Size: Story = {
   ),
 };
 
-export const Variant: Story = {
+export const Striped: Story = {
   decorators: [(story) => (
     <div style={{
       display: 'flex',
@@ -321,12 +321,12 @@ export const Variant: Story = {
     </div>
   )],
   globals: {
-    imports: `import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';`,
+    imports: `import { Table } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Table variant={ TABLE_VARIANT.default }>
+      <Table>
         <caption>
           Front-end web developer course 2021
         </caption>
@@ -361,7 +361,7 @@ export const Variant: Story = {
         </tbody>
       </Table>
 
-      <Table variant={ TABLE_VARIANT.striped }>
+      <Table striped>
         <caption>
           Front-end web developer course 2021
         </caption>
@@ -418,7 +418,7 @@ export const ThemeGenerator: Story = {
         </tbody>
       </Table>
 
-      <Table variant={ TABLE_VARIANT.striped }>
+      <Table striped>
         <caption>Striped</caption>
         <thead>
           <tr><th scope="col">Person</th><th scope="col">Most interest in</th><th scope="col">Age</th></tr>

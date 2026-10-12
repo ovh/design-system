@@ -15,7 +15,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
-Nothing to do for React. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before (review the Button default rendering, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 <Heading label="If you move to React 19" level={ 2 } />
 
@@ -409,6 +409,45 @@ If you reference the theme Sass sources or font files directly (Sass imports, co
 <Heading label="Breaking changes" level={ 2 } />
 
 These changes require a code update: each one comes with its before and after.
+
+<Heading label="Button" level={ 3 } />
+
+**The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
+
+- `variant="default"`: use `emphasis="high"`.
+- `variant="outline"`: use `emphasis="medium"`, or nothing, as `medium` is the new default.
+- `variant="ghost"`: use `emphasis="low"`.
+- The Sass mixins (`ods-button-variant-default`, `-ghost`, `-outline`) and the `--ods-button-*-ghost` and `--ods-button-*-outline` CSS custom properties keep their v19 names: `default` styles the `high` emphasis, `outline` the `medium` one and `ghost` the `low` one.
+
+**The default rendering changes.** In v19, a Button without `variant` was filled (the `default` variant). In v20, a Button without `emphasis` is `medium`, which renders as the v19 `outline` variant. The ODS components built on Button (Pagination, ButtonGroup, Cart…) keep their v19 rendering.
+
+- To keep the filled rendering, add `emphasis={ BUTTON_EMPHASIS.high }` (or `emphasis="high"`) to each Button that set no `variant`, including in your own components that render or wrap a Button.
+- If one of your wrappers declares its own `emphasis` prop on top of `ButtonProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Button is now read as the emphasis preset.
+
+To find the Buttons to review in your code:
+
+```sh
+grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_VARIANTS?\b|\bButtonVariant\b" src/
+```
+
+TypeScript reports every remaining `variant` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
+
+**before**
+```tsx
+import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
+
+// filled in v19, medium (outlined) in v20
+<Button>Save</Button>
+<Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+
+<Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
+<Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
+```
 
 <Heading label="Table" level={ 3 } />
 

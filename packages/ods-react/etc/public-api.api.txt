@@ -111,15 +111,24 @@ export { Avatar, type AvatarProp } from './components/avatar/Avatar';
 import { ComponentPropsWithRef, FC } from 'react';
 import { BadgeColor } from '../../constants/badge-color';
 import { BadgeSize } from '../../constants/badge-size';
+import { BadgeStatus } from '../../constants/badge-status';
 interface BadgeProp extends ComponentPropsWithRef<'span'> {
     /**
+     * @deprecated
+     * @type=BADGE_COLOR
      * The color preset to use.
+     * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
      */
     color?: BadgeColor;
     /**
      * The size preset to use.
      */
     size?: BadgeSize;
+    /**
+     * @type=BADGE_STATUS
+     * The status preset to use.
+     */
+    status?: BadgeStatus;
 }
 declare const Badge: FC<BadgeProp>;
 export { Badge, type BadgeProp, };
@@ -132,6 +141,10 @@ declare enum CUSTOM_BADGE_COLOR {
     new = "new",
     promotion = "promotion"
 }
+/**
+ * @deprecated
+ * Use BADGE_STATUS instead, removed in v21.
+ */
 declare const BADGE_COLOR: {
     readonly alpha: CUSTOM_BADGE_COLOR.alpha;
     readonly beta: CUSTOM_BADGE_COLOR.beta;
@@ -144,8 +157,20 @@ declare const BADGE_COLOR: {
     readonly success: COLOR.success;
     readonly warning: COLOR.warning;
 };
+/**
+ * @deprecated
+ * Use BADGE_STATUS instead, removed in v21.
+ */
 type BADGE_COLOR = (typeof BADGE_COLOR)[keyof typeof BADGE_COLOR];
+/**
+ * @deprecated
+ * Use BadgeStatus instead, removed in v21.
+ */
 type BadgeColor = `${BADGE_COLOR}`;
+/**
+ * @deprecated
+ * Use BADGE_STATUSES instead, removed in v21.
+ */
 declare const BADGE_COLORS: readonly (COLOR | CUSTOM_BADGE_COLOR)[];
 export { BADGE_COLOR, BADGE_COLORS, type BadgeColor, };
 
@@ -159,10 +184,28 @@ type BadgeSize = `${BADGE_SIZE}`;
 declare const BADGE_SIZES: readonly BADGE_SIZE[];
 export { BADGE_SIZE, BADGE_SIZES, type BadgeSize, };
 
+// ==================== components/badge/src/constants/badge-status.d.ts ====================
+declare enum BADGE_STATUS {
+    accent = "accent",
+    alpha = "alpha",
+    beta = "beta",
+    critical = "critical",
+    information = "information",
+    neutral = "neutral",
+    new = "new",
+    promotion = "promotion",
+    success = "success",
+    warning = "warning"
+}
+type BadgeStatus = `${BADGE_STATUS}`;
+declare const BADGE_STATUSES: readonly BADGE_STATUS[];
+export { BADGE_STATUS, BADGE_STATUSES, type BadgeStatus, };
+
 // ==================== components/badge/src/index.d.ts ====================
 export { Badge, type BadgeProp } from './components/badge/Badge';
 export { BADGE_COLOR, BADGE_COLORS, type BadgeColor } from './constants/badge-color';
 export { BADGE_SIZE, BADGE_SIZES, type BadgeSize } from './constants/badge-size';
+export { BADGE_STATUS, BADGE_STATUSES, type BadgeStatus } from './constants/badge-status';
 
 // ==================== components/breadcrumb/src/components/breadcrumb-ellipsis/BreadcrumbEllipsis.d.ts ====================
 import { ComponentPropsWithoutRef, FC } from 'react';
@@ -380,11 +423,14 @@ export { type ButtonGroupValueChangeDetail } from './contexts/useButtonGroup';
 import { ComponentPropsWithRef, FC } from 'react';
 import { ButtonColor } from '../../constants/button-color';
 import { ButtonSize } from '../../constants/button-size';
+import { ButtonStatus } from '../../constants/button-status';
 import { ButtonVariant } from '../../constants/button-variant';
 interface ButtonProp extends ComponentPropsWithRef<'button'> {
     /**
+     * @deprecated
      * @type=BUTTON_COLOR
      * The color preset to use.
+     * DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21.
      */
     color?: ButtonColor;
     /**
@@ -396,6 +442,11 @@ interface ButtonProp extends ComponentPropsWithRef<'button'> {
      */
     size?: ButtonSize;
     /**
+     * @type=BUTTON_STATUS
+     * The status preset to use.
+     */
+    status?: ButtonStatus;
+    /**
      * The variant preset to use.
      */
     variant?: ButtonVariant;
@@ -404,8 +455,23 @@ declare const Button: FC<ButtonProp>;
 export { Button, type ButtonProp, };
 
 // ==================== components/button/src/constants/button-color.d.ts ====================
-import { COLOR, COLORS, Color } from '../../../../utils/colors';
-export { COLOR as BUTTON_COLOR, COLORS as BUTTON_COLORS, type Color as ButtonColor, };
+import { COLOR } from '../../../../utils/colors';
+/**
+ * @deprecated
+ * Use BUTTON_STATUS instead, removed in v21.
+ */
+import BUTTON_COLOR = COLOR;
+/**
+ * @deprecated
+ * Use BUTTON_STATUSES instead, removed in v21.
+ */
+declare const BUTTON_COLORS: readonly COLOR[];
+/**
+ * @deprecated
+ * Use ButtonStatus instead, removed in v21.
+ */
+type ButtonColor = `${COLOR}`;
+export { BUTTON_COLOR, BUTTON_COLORS, type ButtonColor, };
 
 // ==================== components/button/src/constants/button-size.d.ts ====================
 declare enum BUTTON_SIZE {
@@ -416,6 +482,16 @@ declare enum BUTTON_SIZE {
 type ButtonSize = `${BUTTON_SIZE}`;
 declare const BUTTON_SIZES: readonly BUTTON_SIZE[];
 export { BUTTON_SIZE, BUTTON_SIZES, type ButtonSize, };
+
+// ==================== components/button/src/constants/button-status.d.ts ====================
+declare enum BUTTON_STATUS {
+    brand = "brand",
+    critical = "critical",
+    neutral = "neutral"
+}
+type ButtonStatus = `${BUTTON_STATUS}`;
+declare const BUTTON_STATUSES: readonly BUTTON_STATUS[];
+export { BUTTON_STATUS, BUTTON_STATUSES, type ButtonStatus, };
 
 // ==================== components/button/src/constants/button-variant.d.ts ====================
 declare enum BUTTON_VARIANT {
@@ -431,28 +507,66 @@ export { BUTTON_VARIANT, BUTTON_VARIANTS, type ButtonVariant, };
 export { Button, type ButtonProp } from './components/button/Button';
 export { BUTTON_COLOR, BUTTON_COLORS, type ButtonColor } from './constants/button-color';
 export { BUTTON_SIZE, BUTTON_SIZES, type ButtonSize } from './constants/button-size';
+export { BUTTON_STATUS, BUTTON_STATUSES, type ButtonStatus } from './constants/button-status';
 export { BUTTON_VARIANT, BUTTON_VARIANTS, type ButtonVariant } from './constants/button-variant';
 
 // ==================== components/card/src/components/card/Card.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
 import { CardColor } from '../../constants/card-color';
+import { CardStatus } from '../../constants/card-status';
 interface CardProp extends ComponentPropsWithRef<'div'> {
     /**
+     * @deprecated
      * @type=CARD_COLOR
      * The color preset to use.
+     * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
      */
     color?: CardColor;
+    /**
+     * @type=CARD_STATUS
+     * The status preset to use.
+     */
+    status?: CardStatus;
 }
 declare const Card: FC<CardProp>;
 export { Card, type CardProp, };
 
 // ==================== components/card/src/constants/card-color.d.ts ====================
-import { COLOR, COLORS, Color } from '../../../../utils/colors';
-export { COLOR as CARD_COLOR, COLORS as CARD_COLORS, type Color as CardColor, };
+import { COLOR } from '../../../../utils/colors';
+/**
+ * @deprecated
+ * Use CARD_STATUS instead, removed in v21.
+ */
+import CARD_COLOR = COLOR;
+/**
+ * @deprecated
+ * Use CARD_STATUSES instead, removed in v21.
+ */
+declare const CARD_COLORS: readonly COLOR[];
+/**
+ * @deprecated
+ * Use CardStatus instead, removed in v21.
+ */
+type CardColor = `${COLOR}`;
+export { CARD_COLOR, CARD_COLORS, type CardColor, };
+
+// ==================== components/card/src/constants/card-status.d.ts ====================
+declare enum CARD_STATUS {
+    accent = "accent",
+    critical = "critical",
+    information = "information",
+    neutral = "neutral",
+    success = "success",
+    warning = "warning"
+}
+type CardStatus = `${CARD_STATUS}`;
+declare const CARD_STATUSES: readonly CARD_STATUS[];
+export { CARD_STATUS, CARD_STATUSES, type CardStatus, };
 
 // ==================== components/card/src/index.d.ts ====================
 export { Card, type CardProp } from './components/card/Card';
 export { CARD_COLOR, CARD_COLORS, type CardColor } from './constants/card-color';
+export { CARD_STATUS, CARD_STATUSES, type CardStatus } from './constants/card-status';
 
 // ==================== components/cart/src/components/cart-action/CartAction.d.ts ====================
 import { FC } from 'react';
@@ -580,7 +694,7 @@ import { CART_I18N } from '../constants/cart-i18n';
 interface CartOpenChangeDetail {
     open: boolean;
 }
-interface CartRootProp extends Omit<CardProp, 'color'> {
+interface CartRootProp extends Omit<CardProp, 'color' | 'status'> {
     /**
      * Internal translations override.
      */
@@ -1800,8 +1914,9 @@ import { DividerSpacing } from '../../constants/divider-spacing';
 interface DividerProp extends ComponentPropsWithRef<'hr'> {
     /**
      * @deprecated
+     * @type=DIVIDER_COLOR
      * The color preset to use.
-     * DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css.
+     * DEPRECATED: Override the background-color in CSS instead, color will be removed in v21.
      */
     color?: DividerColor;
     /**
@@ -1819,7 +1934,7 @@ export { Divider, type DividerProp, };
 // ==================== components/divider/src/constants/divider-color.d.ts ====================
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 declare enum DIVIDER_COLOR {
     neutral = "neutral",
@@ -1827,12 +1942,12 @@ declare enum DIVIDER_COLOR {
 }
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 type DividerColor = `${DIVIDER_COLOR}`;
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Override the background-color in CSS instead, removed in v21.
  */
 declare const DIVIDER_COLORS: readonly DIVIDER_COLOR[];
 export { DIVIDER_COLOR, DIVIDER_COLORS, type DividerColor, };
@@ -3004,6 +3119,11 @@ interface InputRootProp {
      */
     clearable?: boolean;
     /**
+     * Decorative content displayed inside the field, after the value and before the action buttons
+     * (a unit, an icon, a ghost button). Never part of the input value.
+     */
+    endContent?: ReactNode;
+    /**
      * Whether the component is in error state.
      */
     invalid?: boolean;
@@ -3038,6 +3158,11 @@ interface InputRootProp {
      */
     onClear?: () => void;
     /**
+     * Decorative content displayed inside the field, before the value (a currency symbol, an icon,
+     * a fixed scheme such as `https://`). Never part of the input value.
+     */
+    startContent?: ReactNode;
+    /**
      * The input type.
      */
     type?: InputType;
@@ -3051,8 +3176,15 @@ declare function useInput(): InputContextType;
 export { type InputContextType, type InputProviderProp, type InputRootProp, InputProvider, useInput, };
 
 // ==================== components/input/src/controller/input.d.ts ====================
+import { ReactNode } from 'react';
+/**
+ * Whether an adornment will actually produce visible content.
+ * Mirrors what React renders, so `null`, `undefined`, booleans and the empty string emit no wrapper element,
+ * while `0`, which is falsy but renderable, does.
+ */
+declare function isSlotDefined(slot: ReactNode): boolean;
 declare function isValueDefined(value?: number | readonly string[] | string | null): boolean;
-export { isValueDefined, };
+export { isSlotDefined, isValueDefined, };
 
 // ==================== components/input/src/index.d.ts ====================
 export { Input, type InputProp } from './components/input/Input';
@@ -3445,11 +3577,14 @@ import { ComponentPropsWithRef, FC } from 'react';
 import { Locale } from '../../../../../utils/locales';
 import { MessageColor } from '../../constants/message-color';
 import { MESSAGE_I18N } from '../../constants/message-i18n';
+import { MessageStatus } from '../../constants/message-status';
 import { MessageVariant } from '../../constants/message-variant';
 interface MessageProp extends ComponentPropsWithRef<'div'> {
     /**
+     * @deprecated
      * @type=MESSAGE_COLOR
      * The color preset to use.
+     * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
      */
     color?: MessageColor;
     /**
@@ -3469,6 +3604,11 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
      */
     onRemove?: () => void;
     /**
+     * @type=MESSAGE_STATUS
+     * The status preset to use.
+     */
+    status?: MessageStatus;
+    /**
      * The variant preset to use.
      */
     variant?: MessageVariant;
@@ -3477,8 +3617,23 @@ declare const Message: FC<MessageProp>;
 export { Message, type MessageProp, };
 
 // ==================== components/message/src/constants/message-color.d.ts ====================
-import { COLOR, COLORS, Color } from '../../../../utils/colors';
-export { COLOR as MESSAGE_COLOR, COLORS as MESSAGE_COLORS, type Color as MessageColor, };
+import { COLOR } from '../../../../utils/colors';
+/**
+ * @deprecated
+ * Use MESSAGE_STATUS instead, removed in v21.
+ */
+import MESSAGE_COLOR = COLOR;
+/**
+ * @deprecated
+ * Use MESSAGE_STATUSES instead, removed in v21.
+ */
+declare const MESSAGE_COLORS: readonly COLOR[];
+/**
+ * @deprecated
+ * Use MessageStatus instead, removed in v21.
+ */
+type MessageColor = `${COLOR}`;
+export { MESSAGE_COLOR, MESSAGE_COLORS, type MessageColor, };
 
 // ==================== components/message/src/constants/message-i18n.d.ts ====================
 declare enum MESSAGE_I18N {
@@ -3497,6 +3652,19 @@ declare const TRANSLATION: {
     };
 };
 export { MESSAGE_I18N, TRANSLATION, };
+
+// ==================== components/message/src/constants/message-status.d.ts ====================
+declare enum MESSAGE_STATUS {
+    accent = "accent",
+    critical = "critical",
+    information = "information",
+    neutral = "neutral",
+    success = "success",
+    warning = "warning"
+}
+type MessageStatus = `${MESSAGE_STATUS}`;
+declare const MESSAGE_STATUSES: readonly MESSAGE_STATUS[];
+export { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus, };
 
 // ==================== components/message/src/constants/message-variant.d.ts ====================
 declare enum MESSAGE_VARIANT {
@@ -3520,6 +3688,7 @@ export { MessageBody, MessageIcon };
 export type { MessageProp, MessageBodyProp, MessageIconProp };
 export { MESSAGE_I18N } from './constants/message-i18n';
 export { MESSAGE_COLOR, MESSAGE_COLORS, type MessageColor } from './constants/message-color';
+export { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from './constants/message-status';
 export { MESSAGE_VARIANT, MESSAGE_VARIANTS, type MessageVariant } from './constants/message-variant';
 
 // ==================== components/meter/src/components/meter/Meter.d.ts ====================
@@ -3590,8 +3759,9 @@ import { ModalColor } from '../../constants/modal-color';
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
     /**
      * @deprecated
+     * @type=MODAL_COLOR
      * The color preset to use.
-     * DEPRECATED: Color is no longer used and will be removed in the next major version.
+     * DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21.
      */
     color?: ModalColor;
     /**
@@ -3637,7 +3807,7 @@ export { Modal, type ModalProp, };
 // ==================== components/modal/src/constants/modal-color.d.ts ====================
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 declare enum MODAL_COLOR {
     critical = "critical",
@@ -3649,12 +3819,12 @@ declare enum MODAL_COLOR {
 }
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 type ModalColor = `${MODAL_COLOR}`;
 /**
  * @deprecated
- * Color will now always be primary, if you need another color, prefer overriding it using css.
+ * Pass role="alertdialog" to ModalContent instead of color="critical", removed in v21.
  */
 declare const MODAL_COLORS: readonly MODAL_COLOR[];
 export { MODAL_COLOR, MODAL_COLORS, type ModalColor, };
@@ -5622,7 +5792,10 @@ import { SpinnerColor } from '../../constants/spinner-color';
 import { SpinnerSize } from '../../constants/spinner-size';
 interface SpinnerProp extends ComponentPropsWithRef<'span'> {
     /**
+     * @deprecated
+     * @type=SPINNER_COLOR
      * The color preset to use.
+     * DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21.
      */
     color?: SpinnerColor;
     /**
@@ -5634,11 +5807,23 @@ declare const Spinner: FC<SpinnerProp>;
 export { Spinner, type SpinnerProp, };
 
 // ==================== components/spinner/src/constants/spinner-color.d.ts ====================
+/**
+ * @deprecated
+ * Set the --ods-spinner-color CSS custom property instead, removed in v21.
+ */
 declare enum SPINNER_COLOR {
     neutral = "neutral",
     primary = "primary"
 }
+/**
+ * @deprecated
+ * Set the --ods-spinner-color CSS custom property instead, removed in v21.
+ */
 type SpinnerColor = `${SPINNER_COLOR}`;
+/**
+ * @deprecated
+ * Set the --ods-spinner-color CSS custom property instead, removed in v21.
+ */
 declare const SPINNER_COLORS: readonly SPINNER_COLOR[];
 export { SPINNER_COLOR, SPINNER_COLORS, type SpinnerColor, };
 
@@ -5883,10 +6068,13 @@ import { ComponentPropsWithRef, FC } from 'react';
 import { IconName } from '../../../../icon/src';
 import { TagColor } from '../../constants/tag-color';
 import { TagSize } from '../../constants/tag-size';
+import { TagStatus } from '../../constants/tag-status';
 interface TagProp extends ComponentPropsWithRef<'button'> {
     /**
+     * @deprecated
      * @type=TAG_COLOR
      * The color preset to use.
+     * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
      */
     color?: TagColor;
     /**
@@ -5897,13 +6085,33 @@ interface TagProp extends ComponentPropsWithRef<'button'> {
      * The size preset to use.
      */
     size?: TagSize;
+    /**
+     * @type=TAG_STATUS
+     * The status preset to use.
+     */
+    status?: TagStatus;
 }
 declare const Tag: FC<TagProp>;
 export { Tag, type TagProp, };
 
 // ==================== components/tag/src/constants/tag-color.d.ts ====================
-import { COLOR, COLORS, Color } from '../../../../utils/colors';
-export { COLOR as TAG_COLOR, COLORS as TAG_COLORS, type Color as TagColor, };
+import { COLOR } from '../../../../utils/colors';
+/**
+ * @deprecated
+ * Use TAG_STATUS instead, removed in v21.
+ */
+import TAG_COLOR = COLOR;
+/**
+ * @deprecated
+ * Use TAG_STATUSES instead, removed in v21.
+ */
+declare const TAG_COLORS: readonly COLOR[];
+/**
+ * @deprecated
+ * Use TagStatus instead, removed in v21.
+ */
+type TagColor = `${COLOR}`;
+export { TAG_COLOR, TAG_COLORS, type TagColor, };
 
 // ==================== components/tag/src/constants/tag-size.d.ts ====================
 declare enum TAG_SIZE {
@@ -5914,10 +6122,24 @@ type TagSize = `${TAG_SIZE}`;
 declare const TAG_SIZES: readonly TAG_SIZE[];
 export { TAG_SIZE, TAG_SIZES, type TagSize, };
 
+// ==================== components/tag/src/constants/tag-status.d.ts ====================
+declare enum TAG_STATUS {
+    accent = "accent",
+    critical = "critical",
+    information = "information",
+    neutral = "neutral",
+    success = "success",
+    warning = "warning"
+}
+type TagStatus = `${TAG_STATUS}`;
+declare const TAG_STATUSES: readonly TAG_STATUS[];
+export { TAG_STATUS, TAG_STATUSES, type TagStatus, };
+
 // ==================== components/tag/src/index.d.ts ====================
 export { Tag, type TagProp } from './components/tag/Tag';
 export { TAG_COLOR, TAG_COLORS, type TagColor } from './constants/tag-color';
 export { TAG_SIZE, TAG_SIZES, type TagSize } from './constants/tag-size';
+export { TAG_STATUS, TAG_STATUSES, type TagStatus } from './constants/tag-status';
 
 // ==================== components/text/src/components/text/Text.d.ts ====================
 import { ComponentPropsWithRef, ComponentPropsWithoutRef, JSX } from 'react';
@@ -6246,8 +6468,36 @@ declare const Toaster: FC<ToasterProp>;
 export { Toaster, type ToasterProp, };
 
 // ==================== components/toaster/src/constants/toast-color.d.ts ====================
-import { COLOR, COLORS, Color } from '../../../../utils/colors';
-export { COLOR as TOAST_COLOR, COLORS as TOAST_COLORS, type Color as ToastColor, };
+import { COLOR } from '../../../../utils/colors';
+/**
+ * @deprecated
+ * Use TOAST_STATUS instead, removed in v21.
+ */
+import TOAST_COLOR = COLOR;
+/**
+ * @deprecated
+ * Use TOAST_STATUSES instead, removed in v21.
+ */
+declare const TOAST_COLORS: readonly COLOR[];
+/**
+ * @deprecated
+ * Use ToastStatus instead, removed in v21.
+ */
+type ToastColor = `${COLOR}`;
+export { TOAST_COLOR, TOAST_COLORS, type ToastColor, };
+
+// ==================== components/toaster/src/constants/toast-status.d.ts ====================
+declare enum TOAST_STATUS {
+    accent = "accent",
+    critical = "critical",
+    information = "information",
+    neutral = "neutral",
+    success = "success",
+    warning = "warning"
+}
+type ToastStatus = `${TOAST_STATUS}`;
+declare const TOAST_STATUSES: readonly TOAST_STATUS[];
+export { TOAST_STATUS, TOAST_STATUSES, type ToastStatus, };
 
 // ==================== components/toaster/src/constants/toaster-position.d.ts ====================
 declare enum TOASTER_POSITION {
@@ -6267,6 +6517,7 @@ import { ComponentPropsWithRef, JSX, ReactNode } from 'react';
 import { Toast as VendorToast } from 'react-hot-toast/headless';
 import { IconName } from '../../../icon/src';
 import { ToastColor } from '../constants/toast-color';
+import { ToastStatus } from '../constants/toast-status';
 import { ToasterPosition } from '../constants/toaster-position';
 type ToasterRootProp = ComponentPropsWithRef<'div'> & {
     /**
@@ -6292,12 +6543,18 @@ type ToasterRootProp = ComponentPropsWithRef<'div'> & {
 };
 type ToastOption = {
     className?: string;
-    /** @internal */
+    /**
+     * @internal
+     * @deprecated
+     * Use the toast.accent(), toast.critical()… helpers instead, removed in v21.
+     */
     color?: ToastColor;
     dismissible?: boolean;
     duration?: number;
     icon?: IconName;
     id?: string;
+    /** @internal */
+    status?: ToastStatus;
     toasterId?: string;
 };
 type Toast = Omit<VendorToast, 'icon'> & ToastOption;
@@ -6311,25 +6568,34 @@ export { type Toast, type ToastOption, ToasterProvider, type ToasterRootProp, us
 
 // ==================== components/toaster/src/controller/toaster.d.ts ====================
 import { ReactNode } from 'react';
-import { ToastOption } from '../contexts/useToaster';
+import { ToastStatus } from '../constants/toast-status';
+import { Toast as ToastItem, ToastOption } from '../contexts/useToaster';
 type ToastHandler = (content: ReactNode, option?: ToastOption) => string;
 /** @internal */
 interface ToastController {
     (content: ReactNode, option?: ToastOption): string;
+    accent: ToastHandler;
     critical: ToastHandler;
     information: ToastHandler;
     neutral: ToastHandler;
+    /**
+     * @deprecated
+     * Use toast.accent() instead, removed in v21.
+     */
     primary: ToastHandler;
     remove: (toastId: string) => void;
     success: ToastHandler;
     warning: ToastHandler;
 }
+/** @internal */
+declare function getToastStatus(toast: ToastItem): ToastStatus | undefined;
 declare const toast: ToastController;
-export { type ToastController, toast, };
+export { getToastStatus, type ToastController, toast, };
 
 // ==================== components/toaster/src/index.d.ts ====================
 export { Toaster, type ToasterProp } from './components/toaster/Toaster';
 export { TOAST_COLOR, TOAST_COLORS, type ToastColor } from './constants/toast-color';
+export { TOAST_STATUS, TOAST_STATUSES, type ToastStatus } from './constants/toast-status';
 export { TOASTER_POSITION, TOASTER_POSITIONS, type ToasterPosition } from './constants/toaster-position';
 export { type ToastOption } from './contexts/useToaster';
 export { type ToastController, toast } from './controller/toaster';
@@ -6738,7 +7004,9 @@ export { type AsChildProp, AsChildSlot, };
 // ==================== helpers/test.d.ts ====================
 import { Page } from 'puppeteer';
 declare function gotoStory(page: Page, story: string): Promise<void>;
-export { gotoStory, };
+declare function getStatusStyle(page: Page, testId: string): Promise<string>;
+declare function gotoStoryAndCollectDeprecations(page: Page, story: string): Promise<string[]>;
+export { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations, };
 
 // ==================== hooks/useDevice.d.ts ====================
 interface UseDevice {
@@ -6784,6 +7052,14 @@ export { useContext, };
 // ==================== utils/debounce.d.ts ====================
 declare function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(callback: F, waitFor: number): (...args: Parameters<F>) => void;
 export { debounce, };
+
+// ==================== utils/deprecation.d.ts ====================
+/**
+ * Log a deprecation warning only once per session for a given key (usually "Component.prop"),
+ * whatever the number of renders.
+ */
+declare function warnDeprecated(key: string, message: string): void;
+export { warnDeprecated, };
 
 // ==================== utils/element.d.ts ====================
 import { JSX, ReactElement, ReactNode } from 'react';

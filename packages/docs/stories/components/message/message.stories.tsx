@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
-import { MESSAGE_COLOR, MESSAGE_VARIANT, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
+import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -19,7 +19,7 @@ export default meta;
 
 export const AccessibilityGrouping: Story = {
   globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+    imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -35,7 +35,7 @@ export const AccessibilityGrouping: Story = {
       </li>
 
       <li>
-        <Message color={ MESSAGE_COLOR.warning }>
+        <Message status={ MESSAGE_STATUS.warning }>
           <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
           <MessageBody>
@@ -49,7 +49,7 @@ export const AccessibilityGrouping: Story = {
 
 export const AccessibilityAlternativeGrouping: Story = {
   globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+    imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -65,7 +65,7 @@ export const AccessibilityAlternativeGrouping: Story = {
       </Message>
 
       <Message
-        color={ MESSAGE_COLOR.warning }
+        status={ MESSAGE_STATUS.warning }
         role="listitem">
         <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
@@ -80,7 +80,7 @@ export const AccessibilityAlternativeGrouping: Story = {
 export const AccessibilityRoles: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { BUTTON_COLOR, ICON_NAME, MESSAGE_COLOR, Button, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_COLOR, ICON_NAME, MESSAGE_STATUS, Button, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -111,7 +111,7 @@ import { useState } from 'react';`,
           {
             alerts.map((alert) => (
               <Message
-                color={ MESSAGE_COLOR.critical }
+                status={ MESSAGE_STATUS.critical }
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
@@ -154,45 +154,45 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Color: Story = {
+export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+    imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Message color={ MESSAGE_COLOR.critical }>
+      <Message status={ MESSAGE_STATUS.accent }>
+        <MessageIcon name={ ICON_NAME.lightbulb } />
+
+        <MessageBody>Accent message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.critical }>
         <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
         <MessageBody>Critical message</MessageBody>
       </Message>
 
-      <Message color={ MESSAGE_COLOR.information }>
+      <Message status={ MESSAGE_STATUS.information }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
 
         <MessageBody>Information message</MessageBody>
       </Message>
 
-      <Message color={ MESSAGE_COLOR.neutral }>
+      <Message status={ MESSAGE_STATUS.neutral }>
         <MessageIcon name={ ICON_NAME.email } />
 
         <MessageBody>Neutral message</MessageBody>
       </Message>
 
-      <Message color={ MESSAGE_COLOR.primary }>
-        <MessageIcon name={ ICON_NAME.lightbulb } />
-
-        <MessageBody>Primary message</MessageBody>
-      </Message>
-
-      <Message color={ MESSAGE_COLOR.success }>
+      <Message status={ MESSAGE_STATUS.success }>
         <MessageIcon name={ ICON_NAME.circleCheck } />
 
         <MessageBody>Success message</MessageBody>
       </Message>
 
-      <Message color={ MESSAGE_COLOR.warning }>
+      <Message status={ MESSAGE_STATUS.warning }>
         <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
         <MessageBody>Warning message</MessageBody>
@@ -309,19 +309,19 @@ export const ThemeGenerator: Story = {
         <MessageIcon name={ ICON_NAME.circleInfo } />
         <MessageBody>Default message</MessageBody>
       </Message>
-      <Message color={ MESSAGE_COLOR.information }>
+      <Message status={ MESSAGE_STATUS.information }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
         <MessageBody>Information</MessageBody>
       </Message>
-      <Message color={ MESSAGE_COLOR.success }>
+      <Message status={ MESSAGE_STATUS.success }>
         <MessageIcon name={ ICON_NAME.circleCheck } />
         <MessageBody>Success</MessageBody>
       </Message>
-      <Message color={ MESSAGE_COLOR.warning }>
+      <Message status={ MESSAGE_STATUS.warning }>
         <MessageIcon name={ ICON_NAME.triangleExclamation } />
         <MessageBody>Warning</MessageBody>
       </Message>
-      <Message color={ MESSAGE_COLOR.critical }>
+      <Message status={ MESSAGE_STATUS.critical }>
         <MessageIcon name={ ICON_NAME.hexagonExclamation } />
         <MessageBody>Critical</MessageBody>
       </Message>

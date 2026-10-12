@@ -4,7 +4,7 @@ import { DIVIDER_SPACING, Divider } from '../../../../../ods-react/src/component
 import { FormField, FormFieldLabel } from '../../../../../ods-react/src/components/form-field/src';
 import { ICON_NAME } from '../../../../../ods-react/src/components/icon/src';
 import { INPUT_TYPE, Input } from '../../../../../ods-react/src/components/input/src';
-import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../../../ods-react/src/components/message/src';
+import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../../../ods-react/src/components/message/src';
 import { RecipeCard, type Recipe } from './RecipeCard';
 import styles from './recipes.module.css';
 
@@ -60,7 +60,7 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
               recipe={ recipe } />
           ))
         ) : (
-          <Message className={ styles['recipes__grid__empty'] } color={ MESSAGE_COLOR.information } dismissible={ false }>
+          <Message className={ styles['recipes__grid__empty'] } status={ MESSAGE_STATUS.information } dismissible={ false }>
             <MessageIcon name={ ICON_NAME.circleInfo } />
             <MessageBody>No recipe found for "{ search }"</MessageBody>
           </Message>

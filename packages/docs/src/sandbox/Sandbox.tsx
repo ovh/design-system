@@ -11,7 +11,7 @@ import { BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '../../../ods-react/src/components/clipboard/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
-import { MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Modal, ModalBody, ModalContent, ModalHeader } from '../../../ods-react/src/components/modal/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
@@ -314,7 +314,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
           </header>
           <div className="sandbox__preview">
             { runtimeError && (
-              <Message className="sandbox__error" color={ MESSAGE_COLOR.critical } data-testid="runtime-error" dismissible={ false }>
+              <Message className="sandbox__error" status={ MESSAGE_STATUS.critical } data-testid="runtime-error" dismissible={ false }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
                 <MessageBody>{ runtimeError }</MessageBody>
               </Message>

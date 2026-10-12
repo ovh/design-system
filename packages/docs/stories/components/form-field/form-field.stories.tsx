@@ -10,7 +10,7 @@ import {
   FormFieldLabel,
   FormFieldLabelSubLabel,
 } from '../../../../ods-react/src/components/form-field/src';
-import { MESSAGE_COLOR, Message, MessageBody } from '../../../../ods-react/src/components/message/src';
+import { MESSAGE_STATUS, Message, MessageBody } from '../../../../ods-react/src/components/message/src';
 import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '../../../../ods-react/src/components/phone-number/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea } from '../../../../ods-react/src/components/textarea/src';
@@ -139,7 +139,7 @@ import { type FormEvent, useState } from 'react';`,
 
 export const GuideFormError: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_COLOR, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_STATUS, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -227,7 +227,7 @@ import { type FormEvent, useState } from 'react';`,
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             <MessageBody>
               { globalError }

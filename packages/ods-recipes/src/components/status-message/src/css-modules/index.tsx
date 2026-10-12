@@ -1,10 +1,10 @@
-import { BUTTON_COLOR, BUTTON_SIZE, Button, ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { BUTTON_COLOR, BUTTON_SIZE, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { type JSX } from 'react';
 import style from './index.module.scss';
 
 const StatusMessage = (): JSX.Element => {
   return (
-    <Message color={ MESSAGE_COLOR.information }>
+    <Message status={ MESSAGE_STATUS.information }>
       <MessageIcon name={ ICON_NAME.circleInfo } />
 
       <MessageBody className={ style['status-message__body'] }>

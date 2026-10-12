@@ -1,18 +1,22 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
+import { warnDeprecated } from '../../../../../utils/deprecation';
 import { type Locale } from '../../../../../utils/locales';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MESSAGE_COLOR, type MessageColor } from '../../constants/message-color';
 import { MESSAGE_I18N, TRANSLATION } from '../../constants/message-i18n';
+import { MESSAGE_STATUS, type MessageStatus } from '../../constants/message-status';
 import { MESSAGE_VARIANT, type MessageVariant } from '../../constants/message-variant';
 import style from './message.module.scss';
 
 interface MessageProp extends ComponentPropsWithRef<'div'> {
   /**
+   * @deprecated
    * @type=MESSAGE_COLOR
    * The color preset to use.
+   * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
    */
   color?: MessageColor,
   /**
@@ -32,6 +36,11 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
    */
   onRemove?: () => void,
   /**
+   * @type=MESSAGE_STATUS
+   * The status preset to use.
+   */
+  status?: MessageStatus,
+  /**
    * The variant preset to use.
    */
   variant?: MessageVariant,
@@ -40,21 +49,28 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
 const Message: FC<MessageProp> = forwardRef(({
   children,
   className,
-  color = MESSAGE_COLOR.information,
+  color,
   dismissible = true,
   i18n,
   locale,
   onRemove,
+  status,
   variant = MESSAGE_VARIANT.default,
   ...props
 }, ref): JSX.Element => {
   const { translate } = useI18n(TRANSLATION, locale, i18n);
 
+  if (color) {
+    warnDeprecated('Message.color', '[DEPRECATED]: The color prop of Message is deprecated and will be removed in v21, use the status prop instead.');
+  }
+
+  const messageStatus = status ?? (color === MESSAGE_COLOR.primary ? MESSAGE_STATUS.accent : color) ?? MESSAGE_STATUS.information;
+
   return (
     <div
       className={ classNames(
         style['message'],
-        style[`message--${color}`],
+        style[`message--${messageStatus}`],
         style[`message--${variant}`],
         className,
       )}

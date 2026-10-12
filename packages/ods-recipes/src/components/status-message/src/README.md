@@ -14,7 +14,7 @@ while offering a convenient action that can help them continue or learn more.
 
 Recommended icon to use: `ICON_NAME.circleInfo`
 
-Message variant to use: `MESSAGE_COLOR.information`
+Message status to use: `MESSAGE_STATUS.information`
 
 ### Success
 
@@ -24,7 +24,7 @@ action (e.g., "view results", "undo").
 
 Recommended icon to use: `ICON_NAME.circleCheck`
 
-Message variant to use: `MESSAGE_COLOR.success`
+Message status to use: `MESSAGE_STATUS.success`
 
 ### Warning
 
@@ -35,7 +35,7 @@ you want to alert the user while giving an optional action to mitigate or invest
 
 Recommended icon to use: `ICON_NAME.triangleExclamation`
 
-Message variant to use: `MESSAGE_COLOR.warning`
+Message status to use: `MESSAGE_STATUS.warning`
 
 ### Critical
 
@@ -46,4 +46,4 @@ system encounters a severe problem that impacts functionality or data integrity.
 
 Recommended icon to use: `ICON_NAME.hexagonExclamation`
 
-Message variant to use: `MESSAGE_COLOR.critical`
+Message status to use: `MESSAGE_STATUS.critical`

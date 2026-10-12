@@ -1,5 +1,11 @@
+@use '../../../../../style/input';
+
 @layer ods-organisms {
+  // The uniform default field width covers the whole group, time input and timezone select
+  // together; the input flexes into whatever the timezone select leaves.
   .timepicker {
+    @include input.ods-input-width();
+
     display: inline-flex;
     column-gap: var(--ods-theme-column-gap);
   }

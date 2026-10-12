@@ -1,5 +1,8 @@
 @layer ods-organisms {
   .phone-number-country-list {
+    // Content-sized; the group root carries the width (see phoneNumber.module.scss).
+    width: auto;
+
     &__control {
       display: flex;
       border-right: none;

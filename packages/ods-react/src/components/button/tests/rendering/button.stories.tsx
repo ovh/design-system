@@ -1,4 +1,4 @@
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonStatus } from '../../src';
+import { BUTTON_COLOR, BUTTON_EMPHASES, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_STATUSES, Button, type ButtonEmphasis, type ButtonStatus } from '../../src';
 
 export default {
   component: Button,
@@ -42,27 +42,27 @@ export const sizes = () => (
   </>
 );
 
-export const variantsMd = () => (
+export const emphasesMd = () => (
   <>
-    <Button data-testid="variant-md-default" size={ BUTTON_SIZE.md } variant={ BUTTON_VARIANT.default }>Default</Button>
-    <Button data-testid="variant-md-ghost" size={ BUTTON_SIZE.md } variant={ BUTTON_VARIANT.ghost }>Ghost</Button>
-    <Button data-testid="variant-md-outline" size={ BUTTON_SIZE.md } variant={ BUTTON_VARIANT.outline }>Outline</Button>
+    <Button data-testid="emphasis-md-high" emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.md }>High</Button>
+    <Button data-testid="emphasis-md-low" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.md }>Low</Button>
+    <Button data-testid="emphasis-md-medium" emphasis={ BUTTON_EMPHASIS.medium } size={ BUTTON_SIZE.md }>Medium</Button>
   </>
 );
 
-export const variantsSm = () => (
+export const emphasesSm = () => (
   <>
-    <Button data-testid="variant-sm-default" size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.default }>Default</Button>
-    <Button data-testid="variant-sm-ghost" size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>Ghost</Button>
-    <Button data-testid="variant-sm-outline" size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.outline }>Outline</Button>
+    <Button data-testid="emphasis-sm-high" emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>High</Button>
+    <Button data-testid="emphasis-sm-low" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.sm }>Low</Button>
+    <Button data-testid="emphasis-sm-medium" emphasis={ BUTTON_EMPHASIS.medium } size={ BUTTON_SIZE.sm }>Medium</Button>
   </>
 );
 
-export const variantsXs = () => (
+export const emphasesXs = () => (
   <>
-    <Button data-testid="variant-xs-default" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.default }>Default</Button>
-    <Button data-testid="variant-xs-ghost" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>Ghost</Button>
-    <Button data-testid="variant-xs-outline" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.outline }>Outline</Button>
+    <Button data-testid="emphasis-xs-high" emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.xs }>High</Button>
+    <Button data-testid="emphasis-xs-low" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.xs }>Low</Button>
+    <Button data-testid="emphasis-xs-medium" emphasis={ BUTTON_EMPHASIS.medium } size={ BUTTON_SIZE.xs }>Medium</Button>
   </>
 );
 
@@ -82,23 +82,47 @@ export const deprecatedColor = () => (
 export const statuses = () => (
   <>
     {
-      BUTTON_VARIANTS.map((variant) => (
-        <div key={ variant }>
+      BUTTON_EMPHASES.map((emphasis) => (
+        <div key={ emphasis }>
           <Button
-            data-testid={ `status-none-${variant}` }
-            status={ 'none' as ButtonStatus }
-            variant={ variant }>
+            data-testid={ `status-none-${emphasis}` }
+            emphasis={ emphasis }
+            status={ 'none' as ButtonStatus }>
             None
           </Button>
 
           {
             BUTTON_STATUSES.map((status) => (
               <Button
-                data-testid={ `status-${status}-${variant}` }
+                data-testid={ `status-${status}-${emphasis}` }
+                emphasis={ emphasis }
                 key={ status }
-                status={ status }
-                variant={ variant }>
+                status={ status }>
                 { status }
+              </Button>
+            ))
+          }
+        </div>
+      ))
+    }
+  </>
+);
+
+export const emphases = () => (
+  <>
+    <Button data-testid="emphasis-none">Default</Button>
+    <Button data-testid="emphasis-unknown" emphasis={ 'unknown' as ButtonEmphasis }>Unknown</Button>
+    {
+      BUTTON_STATUSES.map((status) => (
+        <div key={ status }>
+          {
+            BUTTON_EMPHASES.map((emphasis) => (
+              <Button
+                data-testid={ `emphasis-${status}-${emphasis}` }
+                emphasis={ emphasis }
+                key={ emphasis }
+                status={ status }>
+                { emphasis }
               </Button>
             ))
           }

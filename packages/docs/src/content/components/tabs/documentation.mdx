@@ -74,6 +74,49 @@ When at the last tab, the right button is displayed but disabled.
 
 Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
 
+<Heading label="Panel content rendering" level={ 3 } />
+
+By default, the content of every panel is rendered, and inactive panels are hidden. Use the `mountStrategy` prop on **Tabs** to choose when the content of inactive panels is rendered:
+
+- `keep` (default): the content of every panel is always rendered, inactive panels are only hidden.
+- `lazy`: the content of a panel is rendered the first time its **Tab** is selected, then kept like `keep`.
+- `unmount`: the content of a panel is rendered only while its **Tab** is selected, and removed when another **Tab** is selected.
+
+Each **TabContent** can set its own `mountStrategy`, which overrides the **Tabs** one for this panel only.
+
+The panel element itself (with its `id`, `role="tabpanel"` and `aria-labelledby`) is always rendered, only its content depends on the strategy.
+
+<Canvas story="MountStrategy" />
+
+**SEO**: only `keep` puts the content of the inactive panels in the server-rendered HTML. With `lazy` and `unmount`, this content is not indexed by search engines, as they do not load content that requires a user interaction. Use them only for heavy content that does not need to be indexed, like dashboards, charts or iframes.
+
+**State loss**: with `unmount`, the content of a panel is removed each time it is hidden. Its state is lost (input values, scroll position, component state, ...) and it is rendered again from scratch the next time it is shown. Use `lazy` if this state must be kept.
+
+If you come from another library, here is how its props translate to `mountStrategy`:
+
+<Table>
+  <thead>
+    <tr>
+      <th>Other libraries</th>
+      <th>ODS mountStrategy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`keepMounted` (MUI, Base UI, Mantine), `forceMount` (Radix), `unmount={ false }` (Headless UI)</td>
+      <td>`keep`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` (Ark UI, Chakra UI)</td>
+      <td>`lazy`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` + `unmountOnExit` (Ark UI, Chakra UI), `unmount` (Headless UI)</td>
+      <td>`unmount`</td>
+    </tr>
+  </tbody>
+</Table>
+
 <Heading label="Variation" level={ 2 } />
 
 <Heading label="Default (standard Tabs)" level={ 3 } />

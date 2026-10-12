@@ -439,9 +439,9 @@ export { type ButtonGroupValueChangeDetail } from './contexts/useButtonGroup';
 // ==================== components/button/src/components/button/Button.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
 import { ButtonColor } from '../../constants/button-color';
+import { ButtonEmphasis } from '../../constants/button-emphasis';
 import { ButtonSize } from '../../constants/button-size';
 import { ButtonStatus } from '../../constants/button-status';
-import { ButtonVariant } from '../../constants/button-variant';
 interface ButtonProp extends ComponentPropsWithRef<'button'> {
     /**
      * @deprecated
@@ -450,6 +450,11 @@ interface ButtonProp extends ComponentPropsWithRef<'button'> {
      * DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21.
      */
     color?: ButtonColor;
+    /**
+     * @type=BUTTON_EMPHASIS
+     * The emphasis preset to use, setting the visual weight of the button.
+     */
+    emphasis?: ButtonEmphasis;
     /**
      * Whether the component is in loading state, disabling it.
      */
@@ -463,10 +468,6 @@ interface ButtonProp extends ComponentPropsWithRef<'button'> {
      * The status preset to use.
      */
     status?: ButtonStatus;
-    /**
-     * The variant preset to use.
-     */
-    variant?: ButtonVariant;
 }
 declare const Button: FC<ButtonProp>;
 export { Button, type ButtonProp, };
@@ -490,6 +491,16 @@ declare const BUTTON_COLORS: readonly COLOR[];
 type ButtonColor = `${COLOR}`;
 export { BUTTON_COLOR, BUTTON_COLORS, type ButtonColor, };
 
+// ==================== components/button/src/constants/button-emphasis.d.ts ====================
+declare enum BUTTON_EMPHASIS {
+    high = "high",
+    low = "low",
+    medium = "medium"
+}
+type ButtonEmphasis = `${BUTTON_EMPHASIS}`;
+declare const BUTTON_EMPHASES: readonly BUTTON_EMPHASIS[];
+export { BUTTON_EMPHASIS, BUTTON_EMPHASES, type ButtonEmphasis, };
+
 // ==================== components/button/src/constants/button-size.d.ts ====================
 declare enum BUTTON_SIZE {
     md = "md",
@@ -510,22 +521,12 @@ type ButtonStatus = `${BUTTON_STATUS}`;
 declare const BUTTON_STATUSES: readonly BUTTON_STATUS[];
 export { BUTTON_STATUS, BUTTON_STATUSES, type ButtonStatus, };
 
-// ==================== components/button/src/constants/button-variant.d.ts ====================
-declare enum BUTTON_VARIANT {
-    default = "default",
-    ghost = "ghost",
-    outline = "outline"
-}
-type ButtonVariant = `${BUTTON_VARIANT}`;
-declare const BUTTON_VARIANTS: readonly BUTTON_VARIANT[];
-export { BUTTON_VARIANT, BUTTON_VARIANTS, type ButtonVariant, };
-
 // ==================== components/button/src/index.d.ts ====================
 export { Button, type ButtonProp } from './components/button/Button';
 export { BUTTON_COLOR, BUTTON_COLORS, type ButtonColor } from './constants/button-color';
+export { BUTTON_EMPHASIS, BUTTON_EMPHASES, type ButtonEmphasis } from './constants/button-emphasis';
 export { BUTTON_SIZE, BUTTON_SIZES, type ButtonSize } from './constants/button-size';
 export { BUTTON_STATUS, BUTTON_STATUSES, type ButtonStatus } from './constants/button-status';
-export { BUTTON_VARIANT, BUTTON_VARIANTS, type ButtonVariant } from './constants/button-variant';
 
 // ==================== components/card/src/components/card/Card.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

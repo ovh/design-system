@@ -12,6 +12,7 @@ const Tabs = Object.assign(TabsRoot, {
 export { Tabs };
 export { Tab, TabContent, TabList };
 export type { TabsProp, TabListProp, TabProp, TabContentProp };
+export { TABS_MOUNT_STRATEGIES, TABS_MOUNT_STRATEGY, type TabsMountStrategy } from './constants/tabs-mount-strategy';
 export { TABS_SIZE, TABS_SIZES, type TabsSize } from './constants/tabs-size';
 export { TABS_VARIANT, TABS_VARIANTS, type TabsVariant } from './constants/tabs-variant';
 export { type TabsValueChangeEvent } from './contexts/useTabs';

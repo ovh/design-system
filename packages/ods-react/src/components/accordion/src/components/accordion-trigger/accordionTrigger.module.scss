@@ -35,6 +35,18 @@
       }
     }
 
+    // Tinted header, like the neutral Modal header. Not on a disabled item, so its
+    // ods-is-disabled() background shows through.
+    &--high:not(:disabled) {
+      border-radius: inherit;
+      background-color: var(--ods-color-neutral-100);
+
+      &[data-state="open"] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
     &--expand-icon-left {
       flex-flow: row-reverse;
     }

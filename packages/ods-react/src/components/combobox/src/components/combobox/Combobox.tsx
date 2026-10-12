@@ -1,6 +1,8 @@
+import classNames from 'classnames';
 import { type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
+import style from './combobox.module.scss';
 
 interface ComboboxProp extends ComboboxRootProp {}
 
@@ -61,7 +63,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       required={ required }
       value={ value }>
       <div
-        className={ className }
+        className={ classNames(style['combobox'], className) }
         data-ods="combobox"
         ref={ ref }
         { ...props }>

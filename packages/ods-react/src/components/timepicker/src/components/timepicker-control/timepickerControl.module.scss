@@ -1,0 +1,9 @@
+@layer ods-organisms {
+  // Flexes inside the group root, which carries the width (see timepicker.module.scss).
+  .timepicker-control {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+}

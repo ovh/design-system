@@ -53,6 +53,7 @@ const ThemeSelect = () => {
 
   return (
     <Select
+      className="shell__topbar-select"
       data-testid="theme-select"
       items={ THEME_ITEMS }
       onValueChange={ ({ value }) => setChoice((value[0] as ThemeChoice) ?? 'system') }
@@ -97,6 +98,7 @@ const VersionSelect = () => {
 
   return (
     <Select
+      className="shell__topbar-select"
       data-testid="version-select"
       items={ VERSION_ITEMS }
       onValueChange={ ({ value }) => {

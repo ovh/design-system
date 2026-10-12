@@ -18,7 +18,7 @@ const meta: Meta<ToasterProp> = {
 
 export default meta;
 
-export const Colors: Story = {
+export const Statuses: Story = {
   globals: {
     imports: `import { BUTTON_COLOR, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
@@ -30,42 +30,42 @@ export const Colors: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Toaster id="colors" />
+      <Toaster id="statuses" />
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Button
           color={ BUTTON_COLOR.critical }
-          onClick={ () => toast.critical('Critical', { toasterId: 'colors' }) }>
+          onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
           Critical toast
         </Button>
 
         <Button
           color={ BUTTON_COLOR.information }
-          onClick={ () => toast.information('Information', { toasterId: 'colors' }) }>
+          onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
           Information toast
         </Button>
 
         <Button
           color={ BUTTON_COLOR.neutral }
-          onClick={ () => toast.neutral('Neutral', { toasterId: 'colors' }) }>
+          onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
           Neutral toast
         </Button>
 
         <Button
           color={ BUTTON_COLOR.primary }
-          onClick={ () => toast.primary('Primary', { toasterId: 'colors' }) }>
-          Primary toast
+          onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+          Accent toast
         </Button>
 
         <Button
           color={ BUTTON_COLOR.success }
-          onClick={ () => toast.success('Success', { toasterId: 'colors' }) }>
+          onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
           Success toast
         </Button>
 
         <Button
           color={ BUTTON_COLOR.warning }
-          onClick={ () => toast.warning('Warning', { toasterId: 'colors' }) }>
+          onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
           Warning toast
         </Button>
       </div>
@@ -317,8 +317,8 @@ export const ThemeGenerator: Story = {
 
         <Button
           color={ BUTTON_COLOR.primary }
-          onClick={ () => toast.primary('Primary', { icon: ICON_NAME.lightbulb }) }>
-          Primary toast
+          onClick={ () => toast.accent('Accent', { icon: ICON_NAME.lightbulb }) }>
+          Accent toast
         </Button>
 
         <Button

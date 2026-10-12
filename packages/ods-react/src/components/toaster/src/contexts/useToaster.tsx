@@ -3,6 +3,7 @@ import { type Toast as VendorToast } from 'react-hot-toast/headless';
 import { useContext } from '../../../../utils/context';
 import { type IconName } from '../../../icon/src';
 import { type ToastColor } from '../constants/toast-color';
+import { type ToastStatus } from '../constants/toast-status';
 import { type ToasterPosition } from '../constants/toaster-position';
 
 type ToasterRootProp = ComponentPropsWithRef<'div'> & {
@@ -30,12 +31,18 @@ type ToasterRootProp = ComponentPropsWithRef<'div'> & {
 
 type ToastOption = {
   className?: string,
-  /** @internal */
+  /**
+   * @internal
+   * @deprecated
+   * Use the toast.accent(), toast.critical()… helpers instead, removed in v21.
+   */
   color?: ToastColor,
   dismissible?: boolean,
   duration?: number,
   icon?: IconName,
   id?: string,
+  /** @internal */
+  status?: ToastStatus,
   toasterId?: string,
 };
 

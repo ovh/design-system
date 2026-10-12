@@ -1,5 +1,5 @@
 import style from './dev.module.css';
-import { BADGE_SIZES, BADGE_STATUSES, Badge } from '.';
+import { BADGE_EMPHASES, BADGE_SIZES, BADGE_STATUSES, Badge } from '.';
 
 export default {
   component: Badge,
@@ -16,6 +16,29 @@ export const Default = () => (
   <Badge>
     Default
   </Badge>
+);
+
+export const Emphases = () => (
+  <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+    {
+      BADGE_EMPHASES.map((emphasis) => (
+        <div
+          key={ emphasis }
+          style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+          {
+            BADGE_STATUSES.map((status) => (
+              <Badge
+                emphasis={ emphasis }
+                key={ status }
+                status={ status }>
+                { emphasis } { status }
+              </Badge>
+            ))
+          }
+        </div>
+      ))
+    }
+  </div>
 );
 
 export const Sizes = () => (

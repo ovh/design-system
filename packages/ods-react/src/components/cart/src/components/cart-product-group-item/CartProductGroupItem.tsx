@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { DIVIDER_SPACING, Divider } from '../../../../divider/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TEXT_PRESET, Text } from '../../../../text/src';
@@ -64,9 +64,9 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
           onRemove &&
           <Button
             aria-label={ translate(CART_I18N.removeProductButton) }
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ onRemove }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.trash } />
           </Button>
         }

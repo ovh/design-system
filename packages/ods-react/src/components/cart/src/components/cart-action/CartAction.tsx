@@ -1,6 +1,6 @@
 import { type FC, type JSX, forwardRef } from 'react';
 import { type AsChildProp, AsChildSlot } from '../../../../../helpers/AsChild';
-import { Button, type ButtonProp } from '../../../../button/src';
+import { BUTTON_EMPHASIS, Button, type ButtonProp } from '../../../../button/src';
 import { useCart } from '../../contexts/useCart';
 
 type CartActionProp = AsChildProp<ButtonProp>
@@ -20,6 +20,7 @@ const CartAction: FC<CartActionProp> = forwardRef(({
       : <Button
         data-ods="cart-action"
         disabled={ isEmpty }
+        emphasis={ BUTTON_EMPHASIS.high }
         ref={ ref }
         { ...props } />
   );

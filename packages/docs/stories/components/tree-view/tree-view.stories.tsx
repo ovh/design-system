@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useRef, useState } from 'react';
-import { Button, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, Button, BUTTON_SIZE, BUTTON_STATUS } from '../../../../ods-react/src/components/button/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Icon, ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import {
@@ -515,7 +515,7 @@ export const InFormField: Story = {
 
 export const DynamicChildren: Story = {
   globals: {
-    imports: `import { Button, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, BUTTON_SIZE, BUTTON_STATUS, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
 import { useRef, useState } from 'react';`,
   },
   parameters: {
@@ -581,9 +581,9 @@ import { useRef, useState } from 'react';`,
         <div style={{ marginBottom: 16 }}>
           <Button
             aria-label="Add file at root level"
+            emphasis={ BUTTON_EMPHASIS.medium }
             onClick={ handleAddRootFile }
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.outline }>
+            size={ BUTTON_SIZE.xs }>
             <Icon name={ ICON_NAME.plus } />
             Add file at root level
           </Button>
@@ -604,22 +604,22 @@ import { useRef, useState } from 'react';`,
                       { isBranch ? (
                         <Button
                         aria-label="Add child"
+                        emphasis={ BUTTON_EMPHASIS.medium }
                         onClick={(e) => { e.stopPropagation(); handleAddChild(item.id); }}
                         size={ BUTTON_SIZE.xs }
                         onKeyDown={(e) => { e.stopPropagation(); }}
-                        variant={ BUTTON_VARIANT.outline }
                         >
                           <Icon name={ ICON_NAME.plus } />
                         </Button>
                       ) : null }
                       <Button
                         aria-label="Delete"
+                        emphasis={ BUTTON_EMPHASIS.medium }
                         status={ BUTTON_STATUS.critical }
                         onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
                         onMouseDown={(e) => { e.stopPropagation(); }}
                         onKeyDown={(e) => { e.stopPropagation(); }}
-                        size={ BUTTON_SIZE.xs }
-                        variant={ BUTTON_VARIANT.outline }>
+                        size={ BUTTON_SIZE.xs }>
                         <Icon name={ ICON_NAME.trash } />
                       </Button>
                     </div>

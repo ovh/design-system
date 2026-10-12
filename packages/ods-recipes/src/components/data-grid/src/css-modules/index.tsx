@@ -1,6 +1,6 @@
 import {
+  BUTTON_EMPHASIS,
   BUTTON_SIZE,
-  BUTTON_VARIANT,
   Button,
   Clipboard,
   ClipboardControl,
@@ -74,8 +74,8 @@ const columns: DataTableColumnDef<Person>[] = [
         <Menu>
           <MenuTrigger asChild>
             <Button
-              size={ BUTTON_SIZE.sm }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.ellipsisVertical } />
             </Button>
           </MenuTrigger>
@@ -200,8 +200,8 @@ const DataGrid = (): JSX.Element => {
           <Menu>
             <MenuTrigger asChild>
               <Button
-                size={ BUTTON_SIZE.sm }
-                variant={ BUTTON_VARIANT.outline }>
+                emphasis={ BUTTON_EMPHASIS.medium }
+                size={ BUTTON_SIZE.sm }>
                 Export in CSV <Icon name={ ICON_NAME.download } />
               </Button>
             </MenuTrigger>
@@ -224,9 +224,9 @@ const DataGrid = (): JSX.Element => {
 
         <div className={ style['data-grid__toolbar__search'] }>
           <Button
+            emphasis={ BUTTON_EMPHASIS.medium }
             onClick={ () => updateData(currentPage, pageSize, searchQuery) }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.outline }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.refresh } />
           </Button>
 
@@ -240,8 +240,8 @@ const DataGrid = (): JSX.Element => {
           <Popover>
             <PopoverTrigger asChild>
               <Button
-                size={ BUTTON_SIZE.sm }
-                variant={ BUTTON_VARIANT.outline }>
+                emphasis={ BUTTON_EMPHASIS.medium }
+                size={ BUTTON_SIZE.sm }>
                 <Icon name={ ICON_NAME.columns } /> Columns ({ columns.length - Object.keys(visibleColumn).length })
               </Button>
             </PopoverTrigger>

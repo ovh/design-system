@@ -1,7 +1,7 @@
 import { Splitter } from '@ark-ui/react/splitter';
 import { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
-import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
 import { DemoFrame } from '../demo/DemoFrame';
 import { declaredTokens, resolveTokenValues } from '../doc/ports/helpers/designTokens';
 import { ThemeGeneratorJSONModal } from './ThemeGeneratorJSONModal';
@@ -123,9 +123,9 @@ const ThemeGenerator = (): JSX.Element => {
       <div className={ styles['theme-generator__menu'] }>
         <div className={ styles['theme-generator__menu__side'] }>
           <Button
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ () => setIsJsonOpen(true) }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.chevronLeftUnderscore } /> JSON
           </Button>
 
@@ -135,22 +135,22 @@ const ThemeGenerator = (): JSX.Element => {
           </Switch>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ () => setIsPaletteOpen(true) }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.magicWand } /> Generate palette
           </Button>
         </div>
 
         <div className={ styles['theme-generator__menu__side'] }>
           <Button
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ () => setOrientation((o) => (o === 'horizontal' ? 'vertical' : 'horizontal')) }
             size={ BUTTON_SIZE.sm }
-            title={ orientation === 'horizontal' ? 'Split vertically' : 'Split horizontally' }
-            variant={ BUTTON_VARIANT.ghost }>
+            title={ orientation === 'horizontal' ? 'Split vertically' : 'Split horizontally' }>
             <Icon name={ orientation === 'horizontal' ? ICON_NAME.splitVertical : ICON_NAME.splitHorizontal } /> Layout
           </Button>
-          <Button onClick={ toggleFullscreen } size={ BUTTON_SIZE.sm } variant={ BUTTON_VARIANT.ghost }>
+          <Button emphasis={ BUTTON_EMPHASIS.low } onClick={ toggleFullscreen } size={ BUTTON_SIZE.sm }>
             <Icon name={ fullscreen ? ICON_NAME.shrink : ICON_NAME.resize } /> { fullscreen ? 'Exit' : 'Fullscreen' }
           </Button>
         </div>
@@ -170,6 +170,7 @@ const ThemeGenerator = (): JSX.Element => {
         <Splitter.ResizeTrigger aria-label="Resize" asChild id="tree-view:preview">
           <Button
             className={ `${styles['theme-generator__container__resize']} ${styles[`theme-generator__container__resize--${orientation}`]}` }
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.neutral } />
         </Splitter.ResizeTrigger>
 

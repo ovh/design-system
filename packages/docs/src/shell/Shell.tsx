@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Divider } from '../../../ods-react/src/components/divider/src';
@@ -193,9 +193,9 @@ const Shell = () => {
               <Button
                 aria-label="Close navigation"
                 className="shell__drawer-close"
+                emphasis={ BUTTON_EMPHASIS.low }
                 status={ BUTTON_STATUS.neutral }
-                onClick={ () => setNavOpen(false) }
-                variant={ BUTTON_VARIANT.ghost }>
+                onClick={ () => setNavOpen(false) }>
                 <Icon name={ ICON_NAME.xmark } />
               </Button>
               <SidebarPanels currentId={ currentPage?.id } onNavigate={ onNavigate } onSearch={ onSearch } />
@@ -210,9 +210,9 @@ const Shell = () => {
             <Button
               aria-label="Open navigation"
               className="shell__menu-button"
+              emphasis={ BUTTON_EMPHASIS.low }
               status={ BUTTON_STATUS.neutral }
-              onClick={ () => setNavOpen(true) }
-              variant={ BUTTON_VARIANT.ghost }>
+              onClick={ () => setNavOpen(true) }>
               <Icon name={ ICON_NAME.hamburgerMenu } />
             </Button>
           ) }

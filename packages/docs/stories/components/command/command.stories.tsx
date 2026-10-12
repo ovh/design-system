@@ -4,7 +4,7 @@ import { Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, Com
 import { Kbd } from '../../../../ods-react/src/components/kbd/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
-import { Button, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../ods-react/src/components/button/src';
 import { Toaster, toast } from '../../../../ods-react/src/components/toaster/src';
 
 type Story = StoryObj<CommandProp>;
@@ -29,13 +29,13 @@ export default meta;
 
 export const Default: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content>
         <Command.Filter />
@@ -59,7 +59,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content>
         <Command.Filter placeholder="Search..." />
@@ -96,7 +96,7 @@ export const Overview: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -118,7 +118,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ openCommand }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openCommand }>
           Open command
         </Button>
 
@@ -144,7 +144,7 @@ import { useState } from 'react';`,
 
 export const ControlledFiltering: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -162,7 +162,7 @@ import { useState } from 'react';`,
     return (
       <Command>
         <Command.Trigger asChild>
-          <Button>Open command</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
         </Command.Trigger>
         <Command.Content>
           <Command.Filter
@@ -186,13 +186,13 @@ import { useState } from 'react';`,
 
 export const WithShortcuts: Story = {
   globals: {
-    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command, Kbd } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content>
         <Command.Filter placeholder="Search..." />
@@ -220,7 +220,7 @@ export const WithShortcuts: Story = {
 
 export const WithOnSelect: Story = {
   globals: {
-    imports: `import { Button, Command, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -232,7 +232,7 @@ export const WithOnSelect: Story = {
     <>
       <Command>
         <Command.Trigger asChild>
-          <Button>Open command</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
         </Command.Trigger>
         <Command.Content>
           <Command.Filter placeholder="Search..." />
@@ -254,13 +254,13 @@ export const WithOnSelect: Story = {
 
 export const WithoutFilter: Story = {
   globals: {
-    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command, Kbd } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content>
         <Command.List aria-label="Actions">
@@ -292,13 +292,13 @@ export const WithoutFilter: Story = {
 
 export const EmptyState: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content>
         <Command.Filter placeholder="Search..." />
@@ -388,7 +388,7 @@ export const AnatomyTech: Story = {
       </div>
       <Command open={false} aria-label="Command component demo">
         <Command.Trigger asChild>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Trigger Command
           </Button>
         </Command.Trigger>
@@ -399,13 +399,13 @@ export const AnatomyTech: Story = {
 
 export const AccessibilityLabels: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content aria-label="Command palette">
         <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -425,12 +425,12 @@ export const AccessibilityLabels: Story = {
 export const AccessibilityFilterLabel: Story = {
   tags: ['!dev'],
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content aria-label="Command palette">
         <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -449,13 +449,13 @@ export const AccessibilityFilterLabel: Story = {
 
 export const AccessibilityGroupNames: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content aria-label="Command palette">
         <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -477,13 +477,13 @@ export const AccessibilityGroupNames: Story = {
 
 export const AccessibilityDisabledOption: Story = {
   globals: {
-    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
       <Command.Trigger asChild>
-        <Button>Open command</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
       </Command.Trigger>
       <Command.Content aria-label="Command palette">
         <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -513,7 +513,7 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
       <Command>
         <Command.Trigger asChild>
-          <Button>Default</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Default</Button>
         </Command.Trigger>
         <Command.Content createPortal={ false }>
           <Command.Filter placeholder="Search..." />
@@ -530,7 +530,7 @@ export const ThemeGenerator: Story = {
 
       <Command>
         <Command.Trigger asChild>
-          <Button>With shortcuts</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>With shortcuts</Button>
         </Command.Trigger>
         <Command.Content createPortal={ false }>
           <Command.Filter placeholder="Search..." />
@@ -562,7 +562,7 @@ export const ThemeGenerator: Story = {
 
       <Command>
         <Command.Trigger asChild>
-          <Button>Empty state</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Empty state</Button>
         </Command.Trigger>
         <Command.Content createPortal={ false }>
           <Command.Filter placeholder="Search..." />
@@ -574,7 +574,7 @@ export const ThemeGenerator: Story = {
 
       <Command>
         <Command.Trigger asChild>
-          <Button>Without filter</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Without filter</Button>
         </Command.Trigger>
         <Command.Content createPortal={ false }>
           <Command.List aria-label="Actions">

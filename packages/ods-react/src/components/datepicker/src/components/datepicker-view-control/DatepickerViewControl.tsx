@@ -1,6 +1,6 @@
 import { DatePicker } from '@ark-ui/react/date-picker';
 import { type FC, type JSX } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './datepickerViewControl.module.scss';
 
@@ -18,8 +18,8 @@ const DatepickerViewControl: FC<DatepickerViewControlProp> = ({
       <DatePicker.PrevTrigger asChild>
         <Button
           disabled={ disabled || readOnly }
-          size={ BUTTON_SIZE.sm }
-          variant={ BUTTON_VARIANT.ghost }>
+          emphasis={ BUTTON_EMPHASIS.low }
+          size={ BUTTON_SIZE.sm }>
           <Icon name={ ICON_NAME.chevronLeft } />
         </Button>
       </DatePicker.PrevTrigger>
@@ -27,8 +27,8 @@ const DatepickerViewControl: FC<DatepickerViewControlProp> = ({
       <DatePicker.ViewTrigger asChild>
         <Button
           disabled={ disabled || readOnly }
-          size={ BUTTON_SIZE.sm }
-          variant={ BUTTON_VARIANT.ghost }>
+          emphasis={ BUTTON_EMPHASIS.low }
+          size={ BUTTON_SIZE.sm }>
           <DatePicker.RangeText /> <Icon name={ ICON_NAME.chevronDown } />
         </Button>
       </DatePicker.ViewTrigger>
@@ -36,8 +36,8 @@ const DatepickerViewControl: FC<DatepickerViewControlProp> = ({
       <DatePicker.NextTrigger asChild>
         <Button
           disabled={ disabled || readOnly }
-          size={ BUTTON_SIZE.sm }
-          variant={ BUTTON_VARIANT.ghost }>
+          emphasis={ BUTTON_EMPHASIS.low }
+          size={ BUTTON_SIZE.sm }>
           <Icon name={ ICON_NAME.chevronRight } />
         </Button>
       </DatePicker.NextTrigger>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import style from './dev.module.css';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
@@ -79,10 +79,10 @@ export const CustomStyle = () => (
         <p>The styling includes custom backgrounds, borders, shadows, and more.</p>
       </ModalBody>
       <div className={ style['custom-modal-footer'] }>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Cancel
         </Button>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Confirm
         </Button>
       </div>
@@ -419,7 +419,7 @@ export const CompoundControlled = () => {
 
   return (
     <>
-      <Button onClick={ () => setIsOpen(true) }>
+      <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setIsOpen(true) }>
         Open Controlled Modal
       </Button>
 
@@ -428,7 +428,7 @@ export const CompoundControlled = () => {
           <ModalCompound.Header>Controlled Modal</ModalCompound.Header>
           <ModalCompound.Body>
             <p>This is a controlled modal using compound pattern.</p>
-            <Button onClick={ () => setIsOpen(false) }>Close</Button>
+            <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setIsOpen(false) }>Close</Button>
           </ModalCompound.Body>
         </ModalCompound.Content>
       </ModalCompound>

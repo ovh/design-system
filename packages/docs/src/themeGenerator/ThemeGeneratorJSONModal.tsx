@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useMemo, useState } from 'react';
-import { BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text, Textarea } from '../ods';
+import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text, Textarea } from '../ods';
 import styles from './themeGeneratorJSONModal.module.css';
 
 /* Import/export of the edited variables as JSON. */
@@ -63,11 +63,11 @@ const ThemeGeneratorJSONModal = ({ onClose, onReplace, open, variables }: ThemeG
           ) }
 
           <div className={ styles['theme-generator-json-modal__actions'] }>
-            <Button onClick={ handleReplace }>
+            <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ handleReplace }>
               Apply
             </Button>
 
-            <Button onClick={ onClose } variant={ BUTTON_VARIANT.ghost }>
+            <Button emphasis={ BUTTON_EMPHASIS.low } onClick={ onClose }>
               Close
             </Button>
           </div>

@@ -2,7 +2,7 @@ import { type HighlighterCore, type LanguageRegistration, type ThemeRegistration
 import classNames from 'classnames';
 import { type CSSProperties, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useState } from 'react';
 import { createHighlighterCore, createOnigurumaEngine } from 'react-shiki/core';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { Clipboard, ClipboardTrigger } from '../../../../clipboard/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { CodeHighlighter } from '../code-highlighter/CodeHighlighter';
@@ -150,8 +150,8 @@ const Code: FC<CodeProp> = forwardRef(({
             labelCopySuccess={ labelCopySuccess }>
             <Button
               className={ style['code__clipboard__trigger__button'] }
-              size={ BUTTON_SIZE.sm }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.fileCopy } />
             </Button>
           </ClipboardTrigger>

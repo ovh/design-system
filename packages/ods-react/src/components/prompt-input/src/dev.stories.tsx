@@ -4,7 +4,7 @@ import { PromptInputFileUploadButton } from './components/prompt-input-file-uplo
 import { PromptInputFiles } from './components/prompt-input-files/PromptInputFiles';
 import { PromptInputSendButton } from './components/prompt-input-send-button/PromptInputSendButton';
 import { PromptInputTextControl } from './components/prompt-input-text-control/PromptInputTextControl';
-import { BUTTON_VARIANT } from '../../button/src';
+import { BUTTON_EMPHASIS } from '../../button/src';
 import { Divider } from '../../divider/src';
 import { FileThumbnail } from '../../file-thumbnail/src';
 import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
@@ -198,7 +198,7 @@ export const WithFiles = (): JSX.Element => {
       ))}
     </PromptInputFiles>
     <PromptInputControls>
-      <PromptInputFileUploadButton variant={BUTTON_VARIANT.default} accept="image/png" multiple />
+      <PromptInputFileUploadButton emphasis={BUTTON_EMPHASIS.high} accept="image/png" multiple />
       <PromptInputTextControl placeholder="Enter your prompt" />
       <PromptInputSendButton />
     </PromptInputControls>

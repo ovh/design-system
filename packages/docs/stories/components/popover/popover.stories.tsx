@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { POPOVER_POSITION, Popover, type PopoverProp, PopoverContent, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
@@ -28,7 +28,7 @@ export const AnatomyTech: Story = {
         position: POPOVER_POSITION.top,
       }}>
       <PopoverTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Popover trigger
         </Button>
       </PopoverTrigger>
@@ -43,7 +43,7 @@ export const AnatomyTech: Story = {
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { ICON_NAME, Button, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, Button, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -61,7 +61,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ togglePopover }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ togglePopover }>
           Toggle popover
         </Button>
 
@@ -81,13 +81,13 @@ import { useState } from 'react';`,
 
 export const CustomTrigger: Story = {
   globals: {
-    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Custom Trigger
         </Button>
       </PopoverTrigger>
@@ -220,7 +220,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Show popover
         </Button>
       </PopoverTrigger>
@@ -234,7 +234,7 @@ export const Overview: Story = {
 
 export const AccessibilityWithMenu: Story = {
   globals: {
-    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -242,7 +242,7 @@ export const AccessibilityWithMenu: Story = {
       <PopoverTrigger
         aria-haspopup="menu"
         asChild>
-        <Button aria-label="Profile">
+        <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
           <Icon name={ ICON_NAME.ellipsisVertical } />
         </Button>
       </PopoverTrigger>
@@ -254,23 +254,23 @@ export const AccessibilityWithMenu: Story = {
           role="menu"
           style={{ display: 'flex', flexDirection: 'column' }}>
           <Button
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            role="menuitem">
             Information
           </Button>
 
           <Button
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            role="menuitem">
             Notifications
           </Button>
 
           <Divider style={{ width: '100%' }} />
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.low }
             status={ BUTTON_STATUS.critical }
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
+            role="menuitem">
             Sign out
           </Button>
         </div>
@@ -306,14 +306,14 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
       <Popover>
         <PopoverTrigger asChild>
-          <Button>Default</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Default</Button>
         </PopoverTrigger>
         <PopoverContent createPortal={ false }>This is the popover content</PopoverContent>
       </Popover>
 
       <Popover>
         <PopoverTrigger asChild>
-          <Button>With Arrow</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>With Arrow</Button>
         </PopoverTrigger>
         <PopoverContent createPortal={ false } withArrow>This is the popover content</PopoverContent>
       </Popover>

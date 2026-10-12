@@ -1,7 +1,7 @@
 import { Clipboard, useClipboardContext } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 import { useClipboard } from '../../contexts/useClipboard';
@@ -47,8 +47,8 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
             children
             || <Button
               disabled={ disabled }
-              size={ BUTTON_SIZE.xs }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              size={ BUTTON_SIZE.xs }>
               <Icon name={ ICON_NAME.fileCopy } />
             </Button>
           }

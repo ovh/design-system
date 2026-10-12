@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from './dev.module.css';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { DIVIDER_SPACING, Divider } from '../../divider/src';
 import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '../../modal/src';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
@@ -19,7 +19,7 @@ export const Controlled = () => {
 
   return (
     <>
-      <Button onClick={ togglePopover }>
+      <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ togglePopover }>
         Toggle popover
       </Button>
 
@@ -56,6 +56,7 @@ export const ControlledPlusModal = () => {
   return (
     <>
       <Button
+        emphasis={ BUTTON_EMPHASIS.high }
         id="trigger"
         onClick={ togglePopover }>
         Toggle popover
@@ -74,7 +75,7 @@ export const ControlledPlusModal = () => {
             Some popover content
           </p>
 
-          <Button onClick={ onOpenModal }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ onOpenModal }>
             Open modal
           </Button>
         </PopoverContent>
@@ -116,7 +117,7 @@ export const CustomId = () => {
       <p>Custom ID + asChild</p>
       <Popover>
         <PopoverTrigger asChild>
-          <Button id="my-id2">
+          <Button emphasis={ BUTTON_EMPHASIS.high } id="my-id2">
             Trigger
           </Button>
         </PopoverTrigger>
@@ -129,7 +130,7 @@ export const CustomId = () => {
       <p>Dynamic ID</p>
       <Popover>
         <PopoverTrigger asChild>
-          <Button id={ triggerId }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } id={ triggerId }>
             Trigger
           </Button>
         </PopoverTrigger>
@@ -159,7 +160,7 @@ export const CustomStyle = () => (
 export const CustomTrigger = () => (
   <Popover>
     <PopoverTrigger asChild>
-      <Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>
         Custom Trigger
       </Button>
     </PopoverTrigger>
@@ -191,9 +192,9 @@ export const Focus = () => (
       </PopoverTrigger>
 
       <PopoverContent>
-        <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
-        <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
-        <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 1') }>Focus 1</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 2') }>Focus 2</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 3') }>Focus 3</Button>
       </PopoverContent>
     </Popover>
 
@@ -204,9 +205,9 @@ export const Focus = () => (
       </PopoverTrigger>
 
       <PopoverContent>
-        <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
-        <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
-        <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 1') }>Focus 1</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 2') }>Focus 2</Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => console.log('focus 3') }>Focus 3</Button>
       </PopoverContent>
     </Popover>
   </>

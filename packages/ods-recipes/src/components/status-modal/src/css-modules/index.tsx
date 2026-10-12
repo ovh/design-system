@@ -1,4 +1,4 @@
-import { BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -22,7 +22,7 @@ const StatusModal = (): JSX.Element => {
       onOpenChange={ onOpenChange }
       open={ isOpen }>
       <ModalTrigger asChild>
-        <Button onClick={ openModal }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
           Trigger Status Modal
         </Button>
       </ModalTrigger>
@@ -45,12 +45,12 @@ const StatusModal = (): JSX.Element => {
 
           <div className={ style['status-modal__body__actions'] }>
             <Button
-              onClick={ closeModal }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              onClick={ closeModal }>
               Cancel
             </Button>
 
-            <Button>
+            <Button emphasis={ BUTTON_EMPHASIS.high }>
               Confirm
             </Button>
           </div>

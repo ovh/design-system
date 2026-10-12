@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.module.scss';
@@ -112,12 +112,12 @@ function FormHookForm(): ReactElement {
 
       <div>
         <Button
-          type="reset"
-          variant="outline">
+          emphasis="medium"
+          type="reset">
           Reset button
         </Button>
 
-        <Button type="submit">
+        <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
           Submit button
         </Button>
       </div>

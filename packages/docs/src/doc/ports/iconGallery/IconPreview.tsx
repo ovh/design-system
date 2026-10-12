@@ -1,4 +1,4 @@
-import { BUTTON_VARIANT, Button, type ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
+import { BUTTON_EMPHASIS, Button, type ICON_NAME, Icon, TEXT_PRESET, Text } from '../../../ods';
 import { cx } from '../cx';
 import styles from './iconPreview.module.css';
 
@@ -11,9 +11,9 @@ interface IconPreviewProp {
 const IconPreview = ({ isSelected, name, onSelect }: IconPreviewProp) => (
   <Button
     className={ cx(styles['icon-preview'], { [styles['icon-preview--selected']]: isSelected }) }
+    emphasis={ isSelected ? BUTTON_EMPHASIS.medium : BUTTON_EMPHASIS.low }
     onClick={ onSelect }
-    title={ name }
-    variant={ isSelected ? BUTTON_VARIANT.outline : BUTTON_VARIANT.ghost }>
+    title={ name }>
     <Icon name={ name } />
 
     <Text className={ styles['icon-preview__name'] } preset={ TEXT_PRESET.caption }>

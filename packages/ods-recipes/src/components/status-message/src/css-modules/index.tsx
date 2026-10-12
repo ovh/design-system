@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, BUTTON_STATUS, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { type JSX } from 'react';
 import style from './index.module.scss';
 
@@ -20,6 +20,7 @@ const StatusMessage = (): JSX.Element => {
 
         <div>
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.brand }
             size={ BUTTON_SIZE.xs }>
             Activate

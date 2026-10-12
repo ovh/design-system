@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { type FC, type JSX, forwardRef } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger } from '../../../../accordion/src';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TEXT_PRESET, Text } from '../../../../text/src';
 import { CART_I18N, TRANSLATION } from '../../constants/cart-i18n';
@@ -75,9 +75,9 @@ const CartProductGroup: FC<CartProductGroupProp> = forwardRef(({
             onRemove &&
             <Button
               aria-label={ translate(CART_I18N.removeProductButton) }
+              emphasis={ BUTTON_EMPHASIS.low }
               onClick={ onRemove }
-              size={ BUTTON_SIZE.sm }
-              variant={ BUTTON_VARIANT.ghost }>
+              size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.trash } />
             </Button>
           }

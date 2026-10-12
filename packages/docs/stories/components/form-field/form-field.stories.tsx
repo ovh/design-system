@@ -1,7 +1,7 @@
 import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import {
   FormField,
   type FormFieldProp,
@@ -83,7 +83,7 @@ export const Error: Story = {
 
 export const GuideFormCritical: Story = {
   globals: {
-    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -124,11 +124,11 @@ import { type FormEvent, useState } from 'react';`,
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -139,7 +139,7 @@ import { type FormEvent, useState } from 'react';`,
 
 export const GuideFormError: Story = {
   globals: {
-    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_STATUS, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, MESSAGE_STATUS, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -238,11 +238,12 @@ import { type FormEvent, useState } from 'react';`,
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -256,7 +257,7 @@ import { type FormEvent, useState } from 'react';`,
 
 export const GuideFormGroupedField: Story = {
   globals: {
-    imports: `import { Button, FormField, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -334,7 +335,7 @@ import { type FormEvent, useState } from 'react';`,
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -450,7 +451,7 @@ import { type FormEvent, useState } from 'react';`,
 
 export const GuideFormSimple: Story = {
   globals: {
-    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -467,11 +468,11 @@ export const GuideFormSimple: Story = {
       </FormField>
 
       <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-        <Button variant={ BUTTON_VARIANT.outline }>
+        <Button emphasis={ BUTTON_EMPHASIS.medium }>
           Back
         </Button>
 
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Update profile
         </Button>
       </div>

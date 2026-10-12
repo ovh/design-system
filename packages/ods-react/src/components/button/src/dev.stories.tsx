@@ -1,5 +1,5 @@
 import style from './dev.module.css';
-import { BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANTS, Button } from '.';
+import { BUTTON_EMPHASES, BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, Button } from '.';
 
 export default {
   component: Button,
@@ -9,17 +9,17 @@ export default {
 export const Statuses = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>
     {
-      BUTTON_VARIANTS.map((variant) => (
+      BUTTON_EMPHASES.map((emphasis) => (
         <div
-          key={ variant }
+          key={ emphasis }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
             BUTTON_STATUSES.map((status) => (
               <Button
+                emphasis={ emphasis }
                 key={ status }
-                status={ status }
-                variant={ variant }>
-                { status }
+                status={ status }>
+                { emphasis } - { status }
               </Button>
             ))
           }
@@ -68,18 +68,18 @@ export const Accessibility = () => (
 export const Sizes = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>
     {
-      BUTTON_VARIANTS.map((variant) => (
+      BUTTON_EMPHASES.map((emphasis) => (
         <div
-          key={ variant }
+          key={ emphasis }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
             BUTTON_SIZES.map((size) => (
               <Button
+                emphasis={ emphasis }
                 style={{ alignSelf: 'center' }}
                 key={ size }
-                size={ size }
-                variant={ variant }>
-                { variant } - { size }
+                size={ size }>
+                { emphasis } - { size }
               </Button>
             ))
           }

@@ -1,4 +1,4 @@
-import { Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import {
@@ -32,7 +32,7 @@ export const AnatomyTech: Story = {
   render: ({}) => (
     <Drawer open>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Drawer trigger
         </Button>
       </DrawerTrigger>
@@ -56,13 +56,13 @@ export const AnatomyTech: Story = {
 
 export const Backdrop: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer backdrop>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -78,7 +78,7 @@ export const Backdrop: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -100,7 +100,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ openDrawer }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
           Trigger Drawer
         </Button>
 
@@ -120,13 +120,13 @@ import { useState } from 'react';`,
 
 export const Default: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -142,13 +142,13 @@ export const Default: Story = {
 
 export const OverlayElements: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -193,7 +193,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -211,14 +211,14 @@ export const Position: Story = {
   decorators: [(story) =>
     <div style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { DRAWER_POSITION, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, DRAWER_POSITION, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Top drawer
         </Button>
       </DrawerTrigger>
@@ -232,7 +232,7 @@ export const Position: Story = {
 
    <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Left drawer
         </Button>
       </DrawerTrigger>
@@ -246,7 +246,7 @@ export const Position: Story = {
 
    <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Right Drawer
         </Button>
       </DrawerTrigger>
@@ -260,7 +260,7 @@ export const Position: Story = {
 
    <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Bottom Drawer
         </Button>
       </DrawerTrigger>
@@ -278,13 +278,13 @@ export const Position: Story = {
 
 export const AccessibilityAriaLabelledBy: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -308,13 +308,13 @@ export const AccessibilityAriaLabelledBy: Story = {
 
 export const AccessibilityAriaLabel: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Drawer
         </Button>
       </DrawerTrigger>
@@ -340,7 +340,7 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button>Left</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Left</Button>
         </DrawerTrigger>
         <DrawerContent createPortal={ false } position={ DRAWER_POSITION.left }>
           <DrawerBody>Left drawer</DrawerBody>
@@ -349,7 +349,7 @@ export const ThemeGenerator: Story = {
 
       <Drawer>
         <DrawerTrigger asChild>
-          <Button>Right</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Right</Button>
         </DrawerTrigger>
         <DrawerContent createPortal={ false } position={ DRAWER_POSITION.right }>
           <DrawerBody>Right drawer</DrawerBody>
@@ -358,7 +358,7 @@ export const ThemeGenerator: Story = {
 
       <Drawer>
         <DrawerTrigger asChild>
-          <Button>Top</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Top</Button>
         </DrawerTrigger>
         <DrawerContent createPortal={ false } position={ DRAWER_POSITION.top }>
           <DrawerBody>Top drawer</DrawerBody>
@@ -367,7 +367,7 @@ export const ThemeGenerator: Story = {
 
       <Drawer>
         <DrawerTrigger asChild>
-          <Button>Bottom</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Bottom</Button>
         </DrawerTrigger>
         <DrawerContent createPortal={ false } position={ DRAWER_POSITION.bottom }>
           <DrawerBody>Bottom drawer</DrawerBody>

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type ChangeEvent, type FormEvent, useEffect, useRef, useState } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../ods-react/src/components/button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { INPUT_I18N, INPUT_TYPE, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
@@ -76,7 +76,7 @@ export const ContentAdornments: Story = {
 
 export const ContentAdornmentWithButton: Story = {
   globals: {
-    imports: `import { BUTTON_SIZE, BUTTON_VARIANT, Button, ICON_NAME, Icon, Input } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, BUTTON_SIZE, Button, ICON_NAME, Icon, Input } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -85,8 +85,8 @@ export const ContentAdornmentWithButton: Story = {
       endContent={ (
         <Button
           aria-label="Copy value"
-          size={ BUTTON_SIZE.xs }
-          variant={ BUTTON_VARIANT.ghost }>
+          emphasis={ BUTTON_EMPHASIS.low }
+          size={ BUTTON_SIZE.xs }>
           <Icon name={ ICON_NAME.fileCopy } />
         </Button>
       ) } />
@@ -161,7 +161,7 @@ import { type ChangeEvent, useEffect, useRef, useState } from 'react';`,
 
 export const LoginForm: Story = {
   globals: {
-    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, ICON_NAME, INPUT_TYPE, Icon, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type ChangeEvent, type FormEvent, useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -232,11 +232,11 @@ import { type ChangeEvent, type FormEvent, useState } from 'react';`,
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button type="submit">
+          <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
             Sign in
           </Button>
         </div>

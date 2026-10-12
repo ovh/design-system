@@ -1,5 +1,5 @@
 import {
-  Button,
+  BUTTON_EMPHASIS, Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
   Combobox, ComboboxContent, ComboboxControl,
   Datepicker, DatepickerControl, DatepickerContent,
@@ -358,12 +358,12 @@ function FormNative(): ReactElement {
 
       <div>
         <Button
-          type="reset"
-          variant="outline">
+          emphasis="medium"
+          type="reset">
           Reset button
         </Button>
 
-        <Button type="submit">
+        <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
           Submit button
         </Button>
       </div>

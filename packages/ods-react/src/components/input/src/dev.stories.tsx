@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { type ChangeEvent, useEffect, useRef, useState } from 'react';
 import style from './dev.module.css';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Link } from '../../link/src';
@@ -296,8 +296,8 @@ export const Disabled = () => (
         disabled
         endContent={ (
           <Button
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            size={ BUTTON_SIZE.xs }>
             <Icon name={ ICON_NAME.fileCopy } />
           </Button>
         ) } />
@@ -311,8 +311,8 @@ export const Disabled = () => (
         endContent={ (
           <Button
             disabled
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            size={ BUTTON_SIZE.xs }>
             <Icon name={ ICON_NAME.fileCopy } />
           </Button>
         ) } />
@@ -486,8 +486,8 @@ export const StartAndEndSlots = () => (
         endContent={ (
           <Button
             aria-label="Copy value"
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            size={ BUTTON_SIZE.xs }>
             <Icon name={ ICON_NAME.fileCopy } />
           </Button>
         ) } />
@@ -504,8 +504,8 @@ export const StartAndEndSlots = () => (
 
             <Button
               aria-label="Copy value"
-              size={ BUTTON_SIZE.xs }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              size={ BUTTON_SIZE.xs }>
               <Icon name={ ICON_NAME.fileCopy } />
             </Button>
           </>
@@ -533,15 +533,15 @@ export const StartAndEndSlots = () => (
 
       <Input
         defaultValue="42"
-        endContent={ <Button size={ BUTTON_SIZE.xs }>xs</Button> } />
+        endContent={ <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.xs }>xs</Button> } />
 
       <Input
         defaultValue="42"
-        endContent={ <Button size={ BUTTON_SIZE.sm }>sm</Button> } />
+        endContent={ <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>sm</Button> } />
 
       <Input
         defaultValue="42"
-        endContent={ <Button size={ BUTTON_SIZE.md }>md</Button> } />
+        endContent={ <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.md }>md</Button> } />
     </div>
 
     <div dir="rtl">

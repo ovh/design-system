@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo, useState } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { type Locale } from '../../../../../utils/locales';
-import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { ProgressBar } from '../../../../progress-bar/src';
 import { TEXT_PRESET, Text } from '../../../../text/src';
@@ -151,10 +151,10 @@ const FileThumbnail: FC<FileThumbnailProp> = forwardRef(({
           aria-label={ isInProgress ? translate(FILE_THUMBNAIL_I18N.cancelButton) : translate(FILE_THUMBNAIL_I18N.deleteButton) }
           className={ style['file-thumbnail__delete'] }
           disabled={ disabled }
+          emphasis={ BUTTON_EMPHASIS.low }
           onClick={ () => onFileRemove?.({ file }) }
           size={ BUTTON_SIZE.xs }
-          status={ BUTTON_STATUS.neutral }
-          variant={ BUTTON_VARIANT.ghost }>
+          status={ BUTTON_STATUS.neutral }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       }

@@ -2,7 +2,7 @@ import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { DATEPICKER_VIEW } from '../../constants/datepicker-view';
 import { useDatepicker } from '../../contexts/useDatepicker';
@@ -82,8 +82,8 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                                       <Button
                                         className={ style['datepicker-content__table__day'] }
                                         disabled={ disabled || readOnly || isUnavailable(day) }
-                                        size={ BUTTON_SIZE.sm }
-                                        variant={ BUTTON_VARIANT.ghost }>
+                                        emphasis={ BUTTON_EMPHASIS.low }
+                                        size={ BUTTON_SIZE.sm }>
                                         { day.day }
                                       </Button>
                                     </DatePicker.TableCellTrigger>
@@ -124,8 +124,8 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                                       <Button
                                         className={ style['datepicker-content__table__month'] }
                                         disabled={ disabled || readOnly || datePicker.getMonthTableCellState(month).disabled }
-                                        size={ BUTTON_SIZE.sm }
-                                        variant={ BUTTON_VARIANT.ghost }>
+                                        emphasis={ BUTTON_EMPHASIS.low }
+                                        size={ BUTTON_SIZE.sm }>
                                         { month.label }
                                       </Button>
                                     </DatePicker.TableCellTrigger>
@@ -166,8 +166,8 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                                       <Button
                                         className={ style['datepicker-content__table__year'] }
                                         disabled={ disabled || readOnly || datePicker.getYearTableCellState(year).disabled }
-                                        size={ BUTTON_SIZE.sm }
-                                        variant={ BUTTON_VARIANT.ghost }>
+                                        emphasis={ BUTTON_EMPHASIS.low }
+                                        size={ BUTTON_SIZE.sm }>
                                         { year.label }
                                       </Button>
                                     </DatePicker.TableCellTrigger>

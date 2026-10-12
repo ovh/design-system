@@ -110,6 +110,7 @@ export { Avatar, type AvatarProp } from './components/avatar/Avatar';
 // ==================== components/badge/src/components/badge/Badge.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
 import { BadgeColor } from '../../constants/badge-color';
+import { BadgeEmphasis } from '../../constants/badge-emphasis';
 import { BadgeSize } from '../../constants/badge-size';
 import { BadgeStatus } from '../../constants/badge-status';
 interface BadgeProp extends ComponentPropsWithRef<'span'> {
@@ -120,6 +121,11 @@ interface BadgeProp extends ComponentPropsWithRef<'span'> {
      * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
      */
     color?: BadgeColor;
+    /**
+     * @type=BADGE_EMPHASIS
+     * The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight.
+     */
+    emphasis?: BadgeEmphasis;
     /**
      * The size preset to use.
      */
@@ -174,6 +180,16 @@ type BadgeColor = `${BADGE_COLOR}`;
 declare const BADGE_COLORS: readonly (COLOR | CUSTOM_BADGE_COLOR)[];
 export { BADGE_COLOR, BADGE_COLORS, type BadgeColor, };
 
+// ==================== components/badge/src/constants/badge-emphasis.d.ts ====================
+declare enum BADGE_EMPHASIS {
+    high = "high",
+    low = "low",
+    medium = "medium"
+}
+type BadgeEmphasis = `${BADGE_EMPHASIS}`;
+declare const BADGE_EMPHASES: readonly BADGE_EMPHASIS[];
+export { BADGE_EMPHASIS, BADGE_EMPHASES, type BadgeEmphasis, };
+
 // ==================== components/badge/src/constants/badge-size.d.ts ====================
 declare enum BADGE_SIZE {
     lg = "lg",
@@ -204,6 +220,7 @@ export { BADGE_STATUS, BADGE_STATUSES, type BadgeStatus, };
 // ==================== components/badge/src/index.d.ts ====================
 export { Badge, type BadgeProp } from './components/badge/Badge';
 export { BADGE_COLOR, BADGE_COLORS, type BadgeColor } from './constants/badge-color';
+export { BADGE_EMPHASIS, BADGE_EMPHASES, type BadgeEmphasis } from './constants/badge-emphasis';
 export { BADGE_SIZE, BADGE_SIZES, type BadgeSize } from './constants/badge-size';
 export { BADGE_STATUS, BADGE_STATUSES, type BadgeStatus } from './constants/badge-status';
 

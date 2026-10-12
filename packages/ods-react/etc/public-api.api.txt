@@ -36,6 +36,7 @@ export { AccordionTrigger, type AccordionTriggerProp, };
 
 // ==================== components/accordion/src/components/accordion/Accordion.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
+import { AccordionEmphasis } from '../../constants/accordion-emphasis';
 interface AccordionChangeDetail {
     value: string[];
 }
@@ -48,6 +49,11 @@ interface AccordionProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
      * Whether the component is disabled.
      */
     disabled?: boolean;
+    /**
+     * @type=ACCORDION_EMPHASIS
+     * The emphasis preset to use, setting the visual weight of all the accordion items.
+     */
+    emphasis?: AccordionEmphasis;
     /**
      * Whether multiple accordion items can be expanded at the same time.
      */
@@ -64,6 +70,16 @@ interface AccordionProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
 declare const Accordion: FC<AccordionProp>;
 export { Accordion, type AccordionProp, type AccordionChangeDetail, };
 
+// ==================== components/accordion/src/constants/accordion-emphasis.d.ts ====================
+declare enum ACCORDION_EMPHASIS {
+    high = "high",
+    low = "low",
+    medium = "medium"
+}
+type AccordionEmphasis = `${ACCORDION_EMPHASIS}`;
+declare const ACCORDION_EMPHASES: readonly ACCORDION_EMPHASIS[];
+export { ACCORDION_EMPHASIS, ACCORDION_EMPHASES, type AccordionEmphasis, };
+
 // ==================== components/accordion/src/constants/expand-icon-position.d.ts ====================
 declare enum EXPAND_ICON_POSITION {
     left = "left",
@@ -72,6 +88,18 @@ declare enum EXPAND_ICON_POSITION {
 type ExpandIconPosition = `${EXPAND_ICON_POSITION}`;
 declare const EXPAND_ICON_POSITIONS: readonly EXPAND_ICON_POSITION[];
 export { EXPAND_ICON_POSITION, EXPAND_ICON_POSITIONS, type ExpandIconPosition, };
+
+// ==================== components/accordion/src/contexts/useAccordion.d.ts ====================
+import { JSX, ReactNode } from 'react';
+import { AccordionEmphasis } from '../constants/accordion-emphasis';
+interface AccordionProviderProp {
+    children: ReactNode;
+    emphasis: AccordionEmphasis;
+}
+type AccordionContextType = Omit<AccordionProviderProp, 'children'>;
+declare function AccordionProvider({ children, emphasis, }: AccordionProviderProp): JSX.Element;
+declare function useAccordion(): AccordionContextType;
+export { AccordionProvider, useAccordion, };
 
 // ==================== components/accordion/src/index.d.ts ====================
 import { AccordionChangeDetail, AccordionProp } from './components/accordion/Accordion';
@@ -86,6 +114,7 @@ declare const Accordion: import('react').FC<AccordionProp> & {
 export { Accordion };
 export { AccordionContent, AccordionItem, AccordionTrigger };
 export type { AccordionProp, AccordionChangeDetail, AccordionContentProp, AccordionItemProp, AccordionTriggerProp };
+export { ACCORDION_EMPHASIS, ACCORDION_EMPHASES, type AccordionEmphasis } from './constants/accordion-emphasis';
 export { EXPAND_ICON_POSITION, EXPAND_ICON_POSITIONS, type ExpandIconPosition } from './constants/expand-icon-position';
 
 // ==================== components/avatar/src/components/avatar/Avatar.d.ts ====================

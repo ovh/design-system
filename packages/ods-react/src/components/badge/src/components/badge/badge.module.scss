@@ -2,10 +2,20 @@
 
 @layer ods-atoms {
   .badge {
+    $badge: &;
+
     @include badge.ods-badge();
+
+    // medium is the status rendering itself (v19 look), so it has no class of its own.
+    // The promotional statuses (alpha, beta, new, promotion) keep it in high and low,
+    // and accent, already filled, keeps it in high.
 
     &--accent {
       @include badge.ods-badge-color('primary');
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('primary');
+      }
     }
 
     &--alpha {
@@ -18,14 +28,38 @@
 
     &--critical {
       @include badge.ods-badge-color('critical');
+
+      &#{$badge}--high {
+        @include badge.ods-badge-color-high('critical');
+      }
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('critical');
+      }
     }
 
     &--information {
       @include badge.ods-badge-color('information');
+
+      &#{$badge}--high {
+        @include badge.ods-badge-color-high('information');
+      }
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('information');
+      }
     }
 
     &--neutral {
       @include badge.ods-badge-color('neutral');
+
+      &#{$badge}--high {
+        @include badge.ods-badge-color-high('neutral');
+      }
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('neutral');
+      }
     }
 
     &--new {
@@ -38,10 +72,26 @@
 
     &--success {
       @include badge.ods-badge-color('success');
+
+      &#{$badge}--high {
+        @include badge.ods-badge-color-high('success');
+      }
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('success');
+      }
     }
 
     &--warning {
       @include badge.ods-badge-color('warning');
+
+      &#{$badge}--high {
+        @include badge.ods-badge-color-high('warning');
+      }
+
+      &#{$badge}--low {
+        @include badge.ods-badge-color-low('warning');
+      }
     }
 
     &--sm {

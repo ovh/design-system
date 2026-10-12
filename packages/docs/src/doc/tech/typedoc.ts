@@ -183,7 +183,8 @@ function getComponentProps(root: Node): ComponentSpec[] {
     .map((node) => {
       const children = node.children ?? node.type?.declaration?.children ?? [];
       const props = children.map((child) => {
-        const summary = summaryText(child.comment);
+        // A deprecated prop documents itself (its @type= included) inside its @deprecated block.
+        const summary = summaryText(child.comment) || blockTag(child.comment, TAG.deprecated) || '';
         const tags = extractTags(summary);
         return {
           default: blockTag(child.comment, TAG.defaultValue) ?? tags.get(TAG.defaultValue) ?? 'undefined',
@@ -203,20 +204,29 @@ function getComponentProps(root: Node): ComponentSpec[] {
   return specs;
 }
 
-/* Enums, plus the "fake enums" (const objects used as enums, e.g. BUTTON_COLOR). */
+function isDeprecated(node?: Node): boolean {
+  return !!node?.comment?.blockTags?.some((block) => block.tag === TAG.deprecated);
+}
+
+/* Enums, plus the "fake enums" (const objects used as enums, e.g. BADGE_COLOR). */
 function getEnums(root: Node): EnumSpec[] {
+  const variables = filterByKind(root.children, [KIND.variable]);
+  // An enum exported through an alias (e.g. BUTTON_COLOR, alias of the shared COLOR enum) comes with the comment of
+  // the aliased enum, so its own @deprecated is lost: rely on its companion list (BUTTON_COLORS), deprecated with it.
+  const isDeprecatedEnum = (node: Node): boolean => isDeprecated(node) ||
+    isDeprecated(variables.find((variable) => variable.name === `${node.name}S`));
   const real = filterByKind(root.children, [KIND.enum]).map((node) => ({
-    deprecated: !!node.comment?.blockTags?.some((block) => block.tag === TAG.deprecated),
+    deprecated: isDeprecatedEnum(node),
     name: node.name ?? '',
     members: filterByKind(node.children, [KIND.enumMember]).map((member) => ({
       name: member.name ?? '',
       value: String((member.type as RawType)?.value ?? ''),
     })),
   }));
-  const fake = filterByKind(root.children, [KIND.variable])
+  const fake = variables
     .filter((node) => node.flags?.isConst && node.type?.type === 'reflection')
     .map((node) => ({
-      deprecated: false,
+      deprecated: isDeprecated(node),
       name: node.name ?? '',
       members: filterByKind(node.type?.declaration?.children, [KIND.enumMember]).map((member) => ({
         name: member.name ?? '',

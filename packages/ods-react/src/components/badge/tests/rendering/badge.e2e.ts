@@ -1,6 +1,42 @@
 import 'jest-puppeteer';
+import { type Page } from 'puppeteer';
 import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
-import { BADGE_STATUSES } from '../../src/constants/badge-status';
+import { BADGE_EMPHASES, BADGE_EMPHASIS } from '../../src/constants/badge-emphasis';
+import { BADGE_STATUS, BADGE_STATUSES } from '../../src/constants/badge-status';
+
+// Statuses without a high or low value yet: they keep their medium rendering in both.
+const PROMOTIONAL_STATUSES = [BADGE_STATUS.alpha, BADGE_STATUS.beta, BADGE_STATUS.new, BADGE_STATUS.promotion];
+const FILLED_STATUSES = [BADGE_STATUS.critical, BADGE_STATUS.information, BADGE_STATUS.neutral, BADGE_STATUS.success, BADGE_STATUS.warning];
+const TEXT_ONLY_STATUSES = [BADGE_STATUS.accent, ...FILLED_STATUSES];
+const PAGE_BACKGROUND = 'rgb(255, 255, 255)';
+const TRANSPARENT = 'rgba(0, 0, 0, 0)';
+
+type Colors = { background: string, text: string };
+
+async function getColors(page: Page, testId: string): Promise<Colors> {
+  const element = await page.waitForSelector(`[data-testid="${testId}"]`);
+
+  return element!.evaluate((el: Element) => {
+    const style = getComputedStyle(el);
+    return { background: style.backgroundColor, text: style.color };
+  });
+}
+
+function getLuminance(color: string): number {
+  const [r, g, b] = color.match(/\d+(\.\d+)?/g)!.slice(0, 3).map((channel) => {
+    const value = Number(channel) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+function getContrastRatio({ background, text }: Colors): number {
+  // A transparent badge is read on the page background.
+  const [lighter, darker] = [getLuminance(background === TRANSPARENT ? PAGE_BACKGROUND : background), getLuminance(text)].sort((a, b) => b - a);
+
+  return (lighter + 0.05) / (darker + 0.05);
+}
 
 describe('Badge rendering', () => {
   it('should render the web component', async() => {
@@ -65,6 +101,62 @@ describe('Badge rendering', () => {
 
       expect(unstyledStatuses).toEqual([]);
       expect(warnings).toEqual([]);
+    });
+  });
+
+  describe('emphases', () => {
+    beforeAll(async() => {
+      await gotoStory(page, 'rendering/emphases');
+    });
+
+    it('should render medium by default, for every status, without any warning', async() => {
+      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+
+      const defaultStyles = await Promise.all(BADGE_STATUSES.map((status) => getStatusStyle(page, `${status}-default`)));
+      const mediumStyles = await Promise.all(BADGE_STATUSES.map((status) => getStatusStyle(page, `${status}-${BADGE_EMPHASIS.medium}`)));
+
+      expect(defaultStyles).toEqual(mediumStyles);
+      expect(warnings).toEqual([]);
+    });
+
+    it('should fill the background in high, unlike medium', async() => {
+      const highColors = await Promise.all(FILLED_STATUSES.map((status) => getColors(page, `${status}-${BADGE_EMPHASIS.high}`)));
+      const mediumColors = await Promise.all(FILLED_STATUSES.map((status) => getColors(page, `${status}-${BADGE_EMPHASIS.medium}`)));
+      // The text may stay the same (warning keeps its dark text on its filled background).
+      const unfilledStatuses = FILLED_STATUSES.filter((_, index) => highColors[index].background === mediumColors[index].background);
+
+      expect(unfilledStatuses).toEqual([]);
+    });
+
+    it('should render low as colored text only, without background', async() => {
+      const lowColors = await Promise.all(TEXT_ONLY_STATUSES.map((status) => getColors(page, `${status}-${BADGE_EMPHASIS.low}`)));
+      const mediumColors = await Promise.all(TEXT_ONLY_STATUSES.map((status) => getColors(page, `${status}-${BADGE_EMPHASIS.medium}`)));
+      const invalidStatuses = TEXT_ONLY_STATUSES.filter((_, index) => {
+        return lowColors[index].background !== TRANSPARENT || lowColors[index].text === mediumColors[index].text;
+      });
+
+      expect(invalidStatuses).toEqual([]);
+    });
+
+    it('should keep the medium rendering where high or low has no value yet', async() => {
+      const pairs = [
+        [BADGE_STATUS.accent, BADGE_EMPHASIS.high],
+        ...PROMOTIONAL_STATUSES.flatMap((status) => [[status, BADGE_EMPHASIS.high], [status, BADGE_EMPHASIS.low]]),
+      ];
+      const styles = await Promise.all(pairs.map(([status, emphasis]) => getStatusStyle(page, `${status}-${emphasis}`)));
+      const mediumStyles = await Promise.all(pairs.map(([status]) => getStatusStyle(page, `${status}-${BADGE_EMPHASIS.medium}`)));
+
+      expect(styles).toEqual(mediumStyles);
+    });
+
+    it('should keep an AA text contrast (4.5:1) for every status and emphasis', async() => {
+      const testIds = BADGE_STATUSES.flatMap((status) => BADGE_EMPHASES.map((emphasis) => `${status}-${emphasis}`));
+      const ratios = await Promise.all(testIds.map(async(testId) => getContrastRatio(await getColors(page, testId))));
+      const failures = testIds
+        .map((testId, index) => `${testId}: ${ratios[index].toFixed(2)}`)
+        .filter((_, index) => ratios[index] < 4.5);
+
+      expect(failures).toEqual([]);
     });
   });
 

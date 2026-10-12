@@ -1,5 +1,5 @@
 import {
-  Button,
+  BUTTON_EMPHASIS, Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
   Combobox, ComboboxContent, ComboboxControl,
   Datepicker, DatepickerControl, DatepickerContent,
@@ -454,13 +454,13 @@ function FormHookForm(): ReactElement {
 
       <div>
         <Button
+          emphasis="medium"
           onClick={ () => reset(defaultValue) }
-          type="reset"
-          variant="outline">
+          type="reset">
           Reset button
         </Button>
 
-        <Button type="submit">
+        <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
           Submit button
         </Button>
       </div>

@@ -1,4 +1,4 @@
-import { BADGE_STATUS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { BADGE_STATUS, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Badge, Button, CARD_STATUS, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
 import { type JSX, useRef, useState } from 'react';
 import './index.module.css';
 
@@ -125,15 +125,15 @@ const DashboardCard = (): JSX.Element => {
       <div className="flex flex-row gap-x-[var(--ods-semantic-size-space-gap-inline)] items-start justify-between">
         <div className="flex flex-col gap-y-[var(--ods-semantic-size-space-gap-block)] items-start">
           <Button
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            size={ BUTTON_SIZE.sm }>
             Reset Cluster
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.low }
             status={ BUTTON_STATUS.critical }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             Delete Cluster
           </Button>
         </div>
@@ -141,8 +141,8 @@ const DashboardCard = (): JSX.Element => {
         <Menu>
           <MenuTrigger asChild>
             <Button
-              size={ BUTTON_SIZE.sm }
-              variant={ BUTTON_VARIANT.ghost }>
+              emphasis={ BUTTON_EMPHASIS.low }
+              size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.ellipsisVertical } />
             </Button>
           </MenuTrigger>

@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon, Spinner } from '../../../ods';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button, ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon, Spinner } from '../../../ods';
 import { cx as classNames } from '../cx';
 import { Fragment, useEffect, useState } from 'react';
 import { ROADMAP_ITEM_HEIGHT, RoadmapItem, type RoadmapItemData } from './RoadmapItem';
@@ -39,6 +39,7 @@ const Roadmap = () => {
             If the error persists, please reach out to us.
             <br />
             <Button
+              emphasis={ BUTTON_EMPHASIS.high }
               onClick={ () => window.location.reload() }
               size={ BUTTON_SIZE.xs }>
               Retry

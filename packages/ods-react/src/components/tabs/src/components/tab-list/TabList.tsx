@@ -2,7 +2,7 @@ import { Tabs } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { debounce } from '../../../../../utils/debounce';
-import { BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { useTabs } from '../../contexts/useTabs';
 import style from './tabList.module.scss';
@@ -87,10 +87,10 @@ const TabList: FC<TabListProp> = forwardRef(({
         )}>
           <Button
             disabled={ isLeftButtonDisabled }
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ onLeftScrollClick }
             size={ size }
-            tabIndex={ -1 }
-            variant={ BUTTON_VARIANT.ghost }>
+            tabIndex={ -1 }>
             <Icon name={ ICON_NAME.chevronLeft } />
           </Button>
         </div>
@@ -119,10 +119,10 @@ const TabList: FC<TabListProp> = forwardRef(({
         )}>
           <Button
             disabled={ isRightButtonDisabled }
+            emphasis={ BUTTON_EMPHASIS.low }
             onClick={ onRightScrollClick }
             size={ size }
-            tabIndex={ -1 }
-            variant={ BUTTON_VARIANT.ghost }>
+            tabIndex={ -1 }>
             <Icon name={ ICON_NAME.chevronRight } />
           </Button>
         </div>

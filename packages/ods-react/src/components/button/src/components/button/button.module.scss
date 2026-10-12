@@ -28,7 +28,8 @@
       @include button.ods-button-size('md');
     }
 
-    &--default {
+    // The Sass mixins keep their v19 variant names: default renders high, ghost low and outline medium
+    &--high {
       &#{$button}--critical {
         @include button.ods-button-variant-default('critical');
       }
@@ -57,7 +58,7 @@
       }
     }
 
-    &--ghost {
+    &--low {
       &#{$button}--critical {
         @include button.ods-button-variant-ghost('critical');
       }
@@ -86,7 +87,7 @@
       }
     }
 
-    &--outline {
+    &--medium {
       &#{$button}--critical {
         @include button.ods-button-variant-outline('critical');
       }

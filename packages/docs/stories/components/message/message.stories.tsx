@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { excludeFromDemoControls } from '../../support/controls';
@@ -80,7 +80,7 @@ export const AccessibilityAlternativeGrouping: Story = {
 export const AccessibilityRoles: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { BUTTON_STATUS, ICON_NAME, MESSAGE_STATUS, Button, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, ICON_NAME, MESSAGE_STATUS, Button, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -96,11 +96,12 @@ import { useState } from 'react';`,
     return (
       <>
         <div>
-          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert

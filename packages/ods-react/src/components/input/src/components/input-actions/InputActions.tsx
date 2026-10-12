@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_I18N, TRANSLATION } from '../../constants/input-i18n';
@@ -48,11 +48,11 @@ const InputActions: FC<InputActionsProps> = ({
           aria-controls={ inputId }
           aria-label={ translate(INPUT_I18N.clearButton) }
           disabled={ disabled || readOnly }
+          emphasis={ BUTTON_EMPHASIS.low }
           onClick={ onClearClick }
           size={ BUTTON_SIZE.xs }
           status={ BUTTON_STATUS.neutral }
-          type="button"
-          variant={ BUTTON_VARIANT.ghost }>
+          type="button">
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       )}
@@ -61,11 +61,11 @@ const InputActions: FC<InputActionsProps> = ({
           aria-controls={ inputId }
           aria-label={ translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow) }
           disabled={ disabled }
+          emphasis={ BUTTON_EMPHASIS.low }
           onClick={ onToggleMask }
           size={ BUTTON_SIZE.xs }
           status={ BUTTON_STATUS.brand }
-          type="button"
-          variant={ BUTTON_VARIANT.ghost }>
+          type="button">
           <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
         </Button>
       )}
@@ -73,10 +73,10 @@ const InputActions: FC<InputActionsProps> = ({
         <Button
           aria-label={ translate(INPUT_I18N.searchButton) }
           disabled={ disabled || readOnly }
+          emphasis={ BUTTON_EMPHASIS.low }
           size={ BUTTON_SIZE.xs }
           status={ BUTTON_STATUS.brand }
-          type="submit"
-          variant={ BUTTON_VARIANT.ghost }>
+          type="submit">
           <Icon name={ ICON_NAME.magnifyingGlass } />
         </Button>
       )}

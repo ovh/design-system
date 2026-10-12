@@ -1,7 +1,7 @@
 import { ToggleGroup, useToggleGroupContext } from '@ark-ui/react/toggle-group';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../button/src';
 import { useButtonGroup } from '../../contexts/useButtonGroup';
 import style from './buttonGroupItem.module.scss';
 
@@ -38,9 +38,9 @@ const ButtonGroupItem: FC<ButtonGroupItemProp> = forwardRef(({
       value={ value }
       { ...props }>
       <Button
+        emphasis={ selection.indexOf(value) > -1 ? BUTTON_EMPHASIS.high : BUTTON_EMPHASIS.medium }
         size={ size }
-        status={ BUTTON_STATUS.brand }
-        variant={ selection.indexOf(value) > -1 ? BUTTON_VARIANT.default : BUTTON_VARIANT.outline }>
+        status={ BUTTON_STATUS.brand }>
         { children }
       </Button>
     </ToggleGroup.Item>

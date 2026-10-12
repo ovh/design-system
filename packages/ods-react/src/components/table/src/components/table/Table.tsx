@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { TABLE_SIZE, type TableSize } from '../../constants/table-size';
-import { TABLE_VARIANT, type TableVariant } from '../../constants/table-variant';
 import style from './table.module.scss';
 
 interface TableProp extends ComponentPropsWithRef<'table'> {
@@ -10,16 +9,16 @@ interface TableProp extends ComponentPropsWithRef<'table'> {
    */
   size?: TableSize,
   /**
-   * The variant preset to use.
+   * Whether the body rows should alternate background colors.
    */
-  variant?: TableVariant,
+  striped?: boolean,
 }
 
 const Table: FC<TableProp> = forwardRef(({
   children,
   className,
   size = TABLE_SIZE.md,
-  variant = TABLE_VARIANT.default,
+  striped = false,
   ...props
 }, ref): JSX.Element => {
   return (
@@ -27,7 +26,7 @@ const Table: FC<TableProp> = forwardRef(({
       className={ classNames(
         style['table'],
         style[`table--${size}`],
-        style[`table--${variant}`],
+        { [style['table--striped']]: striped },
         className,
       )}
       data-ods="table"

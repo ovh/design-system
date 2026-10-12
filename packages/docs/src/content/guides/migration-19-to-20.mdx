@@ -9,7 +9,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**; deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
@@ -88,6 +88,34 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+<Heading label="Breaking changes" level={ 2 } />
+
+These changes require a code update: each one comes with its before and after.
+
+<Heading label="Table" level={ 3 } />
+
+The `variant` prop is removed in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are removed with it.
+
+- `variant="default"` (or `TABLE_VARIANT.default`): remove the prop.
+- `variant="striped"` (or `TABLE_VARIANT.striped`): use `striped`.
+- `TableVariant` (e.g. in the props of a wrapper component): use `TableProp['striped']`.
+
+To find the usages to migrate: `grep -rnE "TABLE_VARIANTS?\b|TableVariant\b|<Table[^>]*variant=" src/`.
+
+**before**
+```tsx
+import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';
+
+<Table variant={ TABLE_VARIANT.striped }>...</Table>
+```
+
+**after**
+```tsx
+import { Table } from '@ovhcloud/ods-react';
+
+<Table striped>...</Table>
+```
 
 <Heading label="Deprecations" level={ 2 } />
 

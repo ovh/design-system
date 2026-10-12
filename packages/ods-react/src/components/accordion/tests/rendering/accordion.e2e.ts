@@ -1,5 +1,30 @@
 import 'jest-puppeteer';
-import { gotoStory } from '../../../../helpers/test';
+import { type Page } from 'puppeteer';
+import { gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { ACCORDION_EMPHASES } from '../../src/constants/accordion-emphasis';
+
+type Styles = Record<string, Record<string, string>>;
+
+const MODES = ['multiple', 'single'];
+const PARTS = ['item-open', 'trigger-open', 'content-open', 'item-closed', 'trigger-closed', 'item-disabled', 'trigger-disabled'];
+const PROPERTIES = [
+  'background-color',
+  'border-top-color', 'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width',
+  'flex-direction', 'margin-top', 'opacity', 'padding-top',
+];
+const TRANSPARENT = 'rgba(0, 0, 0, 0)';
+
+async function getStyles(page: Page): Promise<Styles> {
+  return page.evaluate((properties: string[]) => {
+    return Object.fromEntries(Array.from(document.querySelectorAll('[data-testid]')).map((el) => {
+      const style = getComputedStyle(el);
+      return [
+        el.getAttribute('data-testid'),
+        Object.fromEntries(properties.map((property) => [property, style.getPropertyValue(property)])),
+      ];
+    }));
+  }, PROPERTIES);
+}
 
 describe('Accordion rendering', () => {
   it('should render the web component', async() => {
@@ -20,6 +45,135 @@ describe('Accordion rendering', () => {
       const height = await accordion?.evaluate((el: Element) => el.getBoundingClientRect().height);
 
       expect(height).toBe(42);
+    });
+  });
+
+  describe('emphasis', () => {
+    let styles: Styles;
+    let warnings: string[];
+
+    beforeEach(async() => {
+      await page.mouse.move(0, 0);
+      warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+      await page.waitForSelector('[data-testid="low-single-trigger-disabled"]');
+      styles = await getStyles(page);
+    });
+
+    it('should render without emphasis as medium, without any warning', () => {
+      MODES.forEach((mode) => {
+        PARTS.forEach((part) => {
+          expect(styles[`none-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
+        });
+      });
+
+      expect(warnings).toEqual([]);
+    });
+
+    it('should render medium as v19: borders only, transparent background', () => {
+      MODES.forEach((mode) => {
+        const open = styles[`medium-${mode}-item-open`];
+        const closed = styles[`medium-${mode}-item-closed`];
+
+        expect(open['border-top-color']).toBe('rgb(128, 128, 128)');
+        expect(closed['border-top-color']).toBe('rgb(204, 204, 204)');
+        expect(closed['border-left-width']).toBe('1px');
+        expect(closed['margin-top']).toBe('-1px');
+        expect(open['background-color']).toBe(TRANSPARENT);
+        expect(styles[`medium-${mode}-trigger-open`]['background-color']).toBe(TRANSPARENT);
+        expect(styles[`medium-${mode}-content-open`]['background-color']).toBe(TRANSPARENT);
+        expect(styles[`medium-${mode}-content-open`]['padding-top']).toBe('0px');
+      });
+    });
+
+    it('should render high with a tinted trigger, the content on a white surface and the medium borders', () => {
+      MODES.forEach((mode) => {
+        ['item-open', 'item-closed', 'item-disabled'].forEach((part) => {
+          expect(styles[`high-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
+        });
+
+        expect(styles[`high-${mode}-trigger-open`]['background-color']).toBe('rgb(230, 230, 230)');
+        expect(styles[`high-${mode}-trigger-closed`]['background-color']).toBe('rgb(230, 230, 230)');
+        expect(styles[`high-${mode}-trigger-disabled`]['background-color']).toBe(TRANSPARENT);
+        expect(styles[`high-${mode}-content-open`]['background-color']).toBe('rgb(255, 255, 255)');
+        expect(styles[`high-${mode}-content-open`]['padding-top']).toBe(styles[`medium-${mode}-content-open`]['padding-top']);
+      });
+
+      expect(styles['high-multiple-content-disabled']['background-color']).toBe(TRANSPARENT);
+    });
+
+    it('should render low without any border nor background', () => {
+      MODES.forEach((mode) => {
+        const open = styles[`low-${mode}-item-open`];
+        const closed = styles[`low-${mode}-item-closed`];
+        const disabled = styles[`low-${mode}-item-disabled`];
+
+        [open, closed, disabled].forEach((item) => {
+          expect(item['border-top-width']).toBe('0px');
+          expect(item['border-left-width']).toBe('0px');
+          expect(item['border-right-width']).toBe('0px');
+          expect(item['border-bottom-width']).toBe('0px');
+          expect(item['background-color']).toBe(TRANSPARENT);
+          expect(item['margin-top']).toBe('0px');
+        });
+
+        ['trigger-open', 'trigger-closed', 'trigger-disabled', 'content-open'].forEach((part) => {
+          expect(styles[`low-${mode}-${part}`]['background-color']).toBe(TRANSPARENT);
+        });
+      });
+    });
+
+    it('should keep the disabled state and the expand icon position on every emphasis', async() => {
+      const disabledTriggers = await page.$$eval('[data-testid$="-trigger-disabled"]', (els) => els.map((el) => (el as HTMLButtonElement).disabled));
+
+      expect(disabledTriggers).toHaveLength(8);
+      expect(disabledTriggers.every(Boolean)).toBe(true);
+
+      ACCORDION_EMPHASES.forEach((emphasis) => {
+        MODES.forEach((mode) => {
+          expect(styles[`${emphasis}-${mode}-item-disabled`]['opacity']).toBe('0.5');
+          expect(styles[`${emphasis}-${mode}-trigger-closed`]['flex-direction']).toBe('row-reverse');
+          expect(styles[`${emphasis}-${mode}-trigger-open`]['flex-direction']).toBe('row');
+        });
+      });
+    });
+
+    it('should keep the multiple and single modes on every emphasis', async() => {
+      const triggers = ACCORDION_EMPHASES.flatMap((emphasis) => MODES.map((mode) => `[data-testid="${emphasis}-${mode}-trigger-closed"]`));
+
+      const closedItems = ACCORDION_EMPHASES.flatMap((emphasis) => MODES.map((mode) => `${emphasis}-${mode}-item-closed`));
+
+      await triggers.reduce((previous, trigger) => previous.then(() => page.click(trigger)), Promise.resolve());
+      await page.waitForFunction((testIds: string[]) => testIds
+        .every((testId) => document.querySelector(`[data-testid="${testId}"]`)!.getAttribute('data-state') === 'open'), {}, closedItems);
+
+      const states = await page.$$eval('[data-testid$="-item-open"], [data-testid$="-item-closed"]', (items) => Object.fromEntries(items.map((item) => [
+        item.getAttribute('data-testid'),
+        item.getAttribute('data-state'),
+      ])));
+
+      ACCORDION_EMPHASES.forEach((emphasis) => {
+        expect(states[`${emphasis}-multiple-item-closed`]).toBe('open');
+        expect(states[`${emphasis}-multiple-item-open`]).toBe('open');
+        expect(states[`${emphasis}-single-item-closed`]).toBe('open');
+        expect(states[`${emphasis}-single-item-open`]).toBe('closed');
+      });
+    });
+
+    it('should keep a visible focus outline on the trigger of every emphasis', async() => {
+      await page.keyboard.press('Tab');
+
+      const outlines = await page.evaluate((emphases: string[]) => emphases.map((emphasis) => {
+        const trigger = document.querySelector(`[data-testid="${emphasis}-single-trigger-open"]`) as HTMLButtonElement;
+        trigger.focus();
+        const style = getComputedStyle(trigger);
+        return { focusVisible: trigger.matches(':focus-visible'), style: style.outlineStyle, width: style.outlineWidth };
+      }), [...ACCORDION_EMPHASES]);
+
+      outlines.forEach((outline) => {
+        expect(outline.focusVisible).toBe(true);
+        expect(outline.style).not.toBe('none');
+        expect(outline.width).not.toBe('0px');
+      });
     });
   });
 });

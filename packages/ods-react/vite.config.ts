@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
 import { globSync } from 'glob';
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
+import { defaultClientConditions, defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
@@ -44,4 +44,10 @@ export default defineConfig({
       tsconfigPath: 'tsconfig.json',
     }),
   ],
+  resolve: {
+    // The bundle is shipped to both browsers and servers (SSR), so bundled dependencies
+    // must not be resolved to their browser-only variant. E.g. the "browser" export of
+    // decode-named-character-reference (used by Markdown) calls `document` at load time.
+    conditions: defaultClientConditions.filter((condition) => condition !== 'browser'),
+  },
 });

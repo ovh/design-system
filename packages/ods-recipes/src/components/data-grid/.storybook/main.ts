@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     ${head}
     <style>
       html, body {
-        font-family: "Source Sans Pro", "Trebuchet MS", "Arial", "Segoe UI", sans-serif;
+        font-family: var(--ods-theme-font-family);
       }
     </style>
   `,

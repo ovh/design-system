@@ -23,3 +23,12 @@ export const render = () => (
     <SelectContent />
   </Select>
 );
+
+export const DefaultWidth = () => (
+  <>
+    <style>{ '.probe-wide { width: 400px; }' }</style>
+    <div data-testid="default"><Select className="probe" items={ [] }><SelectControl /><SelectContent /></Select></div>
+    <div data-testid="narrow" style={ { width: '200px' } }><Select className="probe" items={ [] }><SelectControl /><SelectContent /></Select></div>
+    <div data-testid="override"><Select className="probe probe-wide" items={ [] }><SelectControl /><SelectContent /></Select></div>
+  </>
+);

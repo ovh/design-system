@@ -250,3 +250,12 @@ export const GeometrySlotMixedClearable = () => (
       </Button>
     ) } />
 );
+
+export const DefaultWidth = () => (
+  <>
+    <style>{ '.probe-wide { width: 400px; }' }</style>
+    <div data-testid="default"><Input className="probe" /></div>
+    <div data-testid="narrow" style={ { width: '200px' } }><Input className="probe" /></div>
+    <div data-testid="override"><Input className="probe probe-wide" /></div>
+  </>
+);

@@ -40,3 +40,12 @@ export const Render = () => (
     <DatepickerContent />
   </Datepicker>
 );
+
+export const DefaultWidth = () => (
+  <>
+    <style>{ '.probe-wide { width: 400px; }' }</style>
+    <div data-testid="default"><Datepicker><DatepickerControl className="probe" /><DatepickerContent /></Datepicker></div>
+    <div data-testid="narrow" style={ { width: '200px' } }><Datepicker><DatepickerControl className="probe" /><DatepickerContent /></Datepicker></div>
+    <div data-testid="override"><Datepicker><DatepickerControl className="probe probe-wide" /><DatepickerContent /></Datepicker></div>
+  </>
+);

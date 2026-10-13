@@ -84,7 +84,7 @@ done; fi
 echo "================================================="
 
 if [ "$FAILED" -ne 0 ]; then
-  echo "✗ At least one example app does not build — integration regression."
+  echo "✗ At least one check failed (SSR of the ods-react dist or an example app build) — integration regression."
   exit 1
 fi
 echo "✓ Every example app builds."

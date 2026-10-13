@@ -28,6 +28,13 @@ register(`data:text/javascript,${encodeURIComponent(cssHook)}`);
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
 const failures = [];
 
+// The entry list is long: repeat the failures last, so they survive a log truncated to its tail.
+function exitWithFailures(summary) {
+  console.error(`\n✗ ${summary}`);
+  failures.forEach((failure) => console.error(`  - ${failure}`));
+  process.exit(1);
+}
+
 function check(condition, message) {
   if (condition) {
     console.log(`  ok   ${message}`);
@@ -52,8 +59,7 @@ for (const entry of entries) {
 }
 
 if (failures.length) {
-  console.error(`\n✗ ${failures.length} entry point(s) cannot be imported in Node`);
-  process.exit(1);
+  exitWithFailures(`${failures.length} entry point(s) cannot be imported in Node`);
 }
 
 console.log('\n▶ renderToString');
@@ -85,7 +91,6 @@ check(!/\shidden(=|\s|>)/.test(panelTag('First panel content')), 'Tabs: active p
 check(/\shidden(=|\s|>)/.test(panelTag('Second panel content')), 'Tabs: inactive panel is hidden');
 
 if (failures.length) {
-  console.error(`\n✗ ${failures.length} SSR check(s) failed`);
-  process.exit(1);
+  exitWithFailures(`${failures.length} SSR check(s) failed`);
 }
 console.log(`\n✓ ${entries.length} entry points import in Node and render on the server`);

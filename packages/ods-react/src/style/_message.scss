@@ -1,15 +1,15 @@
 @mixin ods-message() {
-  --ods-message-background-color-critical: var(--ods-semantic-color-surface-critical-minimal);
+  --ods-message-background-color-critical: var(--ods-semantic-color-surface-critical-subtle);
   --ods-message-background-color-critical-light: var(--ods-semantic-color-surface-page);
-  --ods-message-background-color-information: var(--ods-semantic-color-surface-information-minimal);
+  --ods-message-background-color-information: var(--ods-semantic-color-surface-information-subtle);
   --ods-message-background-color-information-light: var(--ods-semantic-color-surface-page);
-  --ods-message-background-color-neutral: var(--ods-semantic-color-surface-neutral-recessed);
+  --ods-message-background-color-neutral: var(--ods-semantic-color-surface-neutral-minimal);
   --ods-message-background-color-neutral-light: var(--ods-semantic-color-surface-page);
   --ods-message-background-color-primary: var(--ods-semantic-color-surface-base);
   --ods-message-background-color-primary-light: var(--ods-semantic-color-surface-page);
-  --ods-message-background-color-success: var(--ods-semantic-color-surface-success-minimal);
+  --ods-message-background-color-success: var(--ods-semantic-color-surface-success-subtle);
   --ods-message-background-color-success-light: var(--ods-semantic-color-surface-page);
-  --ods-message-background-color-warning: var(--ods-semantic-color-surface-warning-minimal);
+  --ods-message-background-color-warning: var(--ods-semantic-color-surface-warning-subtle);
   --ods-message-background-color-warning-light: var(--ods-semantic-color-surface-page);
   --ods-message-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
   --ods-message-text-color-critical: var(--ods-semantic-color-content-on-critical);

@@ -10,23 +10,23 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
   position: relative;
   border: none;
   border-radius: var(--ods-progress-bar-border-radius);
-  background-color: var(--ods-semantic-color-surface-neutral-minimal);
+  background-color: var(--ods-semantic-color-surface-track);
   width: 100%;
   height: 8px;
 
   &::-webkit-progress-bar {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    background-color: var(--ods-semantic-color-surface-track);
   }
 
   &::-webkit-progress-value {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-semantic-color-surface-base);
+    background-color: var(--ods-semantic-color-surface-control-solid);
   }
 
   &::-moz-progress-bar {
     border-radius: var(--ods-progress-bar-border-radius);
-    background-color: var(--ods-semantic-color-surface-base);
+    background-color: var(--ods-semantic-color-surface-control-solid);
   }
 
   &:indeterminate {
@@ -50,7 +50,7 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
       left: 0;
       animation: progress-indeterminate 1.5s infinite var(--ods-semantic-motion-easing);
       border-radius: var(--ods-progress-bar-border-radius);
-      background-color: var(--ods-semantic-color-surface-base);
+      background-color: var(--ods-semantic-color-surface-control-solid);
       width: $ods-progress-bar-inderterminate-percent-width;
       content: '';
     }

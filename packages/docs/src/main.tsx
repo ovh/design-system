@@ -24,6 +24,7 @@ import { Shell, type ShellContext } from './shell/Shell';
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 const ThemeGenerator = lazy(() => import('./themeGenerator/ThemeGenerator').then((m) => ({ default: m.ThemeGenerator })));
+const AluminiumLab = lazy(() => import('./pages/aluminiumLab/AluminiumLab').then((m) => ({ default: m.AluminiumLab })));
 
 const ComponentRoute = () => {
   const { key } = useParams();
@@ -146,6 +147,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         path: '/tools/theme-generator',
+      },
+      {
+        element: (
+          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
+            <AluminiumLab />
+          </Suspense>
+        ),
+        path: '/tools/aluminium-lab',
       },
       { element: <Navigate replace to="/" />, path: '*' },
     ],

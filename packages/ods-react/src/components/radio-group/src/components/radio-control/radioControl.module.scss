@@ -14,9 +14,10 @@
         }
       }
 
+      // QUID DES BORDURES ET DU HOVER
       &[data-state="checked"] {
         border-color: var(--ods-semantic-color-border-selected);
-        background-color: var(--ods-semantic-color-surface-base);
+        background-color: var(--ods-semantic-color-surface-control-solid);
 
         &::before {
           transform: scale(1);

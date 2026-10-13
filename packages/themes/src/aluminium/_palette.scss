@@ -1,0 +1,24 @@
+/*
+ * Tier 1 - nothing left to say.
+ *
+ * This file used to restate the six hue families, because the candidate set replaced them. They
+ * have since been adopted into src/default/_variables.scss, so every stop aluminium would declare
+ * now resolves to the same value and the whole block was dead weight. What is left is the one
+ * tier-1 binding the delivered list never names, because it points the brand roles straight at
+ * blue instead: the brand ramp. The default binds it to gray, so this has to be said out loud.
+ *
+ * Keeping the file (rather than folding the ramp into _semantic.scss) is deliberate: the three
+ * tiers stay one file each, and the day design moves a stop again, this is where it lands.
+ */
+:root[data-ods-theme='aluminium'] {
+  --ods-palette-brand-50: var(--ods-palette-blue-50);
+  --ods-palette-brand-100: var(--ods-palette-blue-100);
+  --ods-palette-brand-200: var(--ods-palette-blue-200);
+  --ods-palette-brand-300: var(--ods-palette-blue-300);
+  --ods-palette-brand-400: var(--ods-palette-blue-400);
+  --ods-palette-brand-500: var(--ods-palette-blue-500);
+  --ods-palette-brand-600: var(--ods-palette-blue-600);
+  --ods-palette-brand-700: var(--ods-palette-blue-700);
+  --ods-palette-brand-800: var(--ods-palette-blue-800);
+  --ods-palette-brand-900: var(--ods-palette-blue-900);
+}

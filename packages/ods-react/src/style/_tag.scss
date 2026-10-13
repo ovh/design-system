@@ -49,15 +49,15 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-text-color-neutral-active: var(--ods-semantic-color-content-on-neutral);
   --ods-tag-text-color-neutral-hover: var(--ods-semantic-color-content-on-neutral);
   // primary
-  --ods-tag-border-color-primary: var(--ods-semantic-color-border-base);
-  --ods-tag-border-color-primary-active: var(--ods-semantic-color-interaction-base-hover);
-  --ods-tag-border-color-primary-hover: var(--ods-semantic-color-interaction-base-hover);
+  --ods-tag-border-color-primary: var(--ods-semantic-color-border-accent-subtle);
+  --ods-tag-border-color-primary-active: var(--ods-semantic-color-border-accent-subtle);
+  --ods-tag-border-color-primary-hover: var(--ods-semantic-color-border-accent-subtle);
   --ods-tag-background-color-primary: var(--ods-semantic-color-surface-page);
-  --ods-tag-background-color-primary-active: var(--ods-semantic-color-interaction-base-subtle-active);
-  --ods-tag-background-color-primary-hover: var(--ods-semantic-color-interaction-base-subtle-hover);
-  --ods-tag-text-color-primary: var(--ods-semantic-color-content-on-brand-subtle);
-  --ods-tag-text-color-primary-active: var(--ods-semantic-color-content-on-brand-subtle);
-  --ods-tag-text-color-primary-hover: var(--ods-semantic-color-content-on-brand-subtle);
+  --ods-tag-background-color-primary-active: var(--ods-semantic-color-interaction-accent-subtle-active);
+  --ods-tag-background-color-primary-hover: var(--ods-semantic-color-interaction-accent-subtle-hover);
+  --ods-tag-text-color-primary: var(--ods-semantic-color-content-on-accent);
+  --ods-tag-text-color-primary-active: var(--ods-semantic-color-content-on-accent);
+  --ods-tag-text-color-primary-hover: var(--ods-semantic-color-content-on-accent);
   // success
   --ods-tag-border-color-success: var(--ods-semantic-color-border-success-subtle);
   --ods-tag-border-color-success-active: var(--ods-semantic-color-border-success-subtle);

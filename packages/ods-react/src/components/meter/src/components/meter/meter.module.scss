@@ -6,7 +6,7 @@
 
     position: relative;
     border-radius: var(--ods-semantic-size-radius-container);
-    background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    background-color: var(--ods-semantic-color-surface-track);
     width: 100%;
     height: 8px;
     overflow: hidden;
@@ -16,6 +16,7 @@
       top: 0;
       left: 0;
       border-radius: inherit;
+      background-color: var(--ods-semantic-color-surface-control-solid);
       width: var(--ods-meter-fill-width);
       height: 100%;
       content: '';

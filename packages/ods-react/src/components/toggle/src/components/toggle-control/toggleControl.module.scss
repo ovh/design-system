@@ -38,11 +38,12 @@
       border-color: state.$ods-state-is-disabled-background-color;
     }
 
+    // QUID DES BORDURES ET DU HOVER
     &[data-state="checked"] {
       &:not([data-disabled]) {
         transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
         border-color: var(--ods-semantic-color-border-selected);
-        background-color: var(--ods-semantic-color-surface-base);
+        background-color: var(--ods-semantic-color-surface-control-solid);
 
         &:hover, &[data-focus] {
           border-color: var(--ods-semantic-color-interaction-base-hover);

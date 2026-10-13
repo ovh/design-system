@@ -23,7 +23,7 @@
 }
 
 .homepage__heading__title {
-  color: var(--ods-semantic-color-content-heading);
+  color: var(--ods-semantic-color-content-brand);
   font-family: var(--ods-semantic-font-family-heading);
 }
 

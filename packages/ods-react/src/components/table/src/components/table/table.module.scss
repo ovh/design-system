@@ -2,8 +2,6 @@
 
 @layer ods-organisms {
   .table {
-    --ods-table-striped-background-color: var(--ods-semantic-color-surface-neutral-recessed);
-
     &--sm {
       @include table.ods-table('sm');
     }
@@ -21,7 +19,7 @@
         tr:nth-child(2n) {
           th,
           td {
-            background-color: var(--ods-table-striped-background-color);
+            background-color: var(--ods-semantic-color-surface-neutral-minimal);
           }
         }
       }

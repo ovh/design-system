@@ -1,11 +1,11 @@
-$ods-range-background-color: var(--ods-semantic-color-surface-neutral-minimal);
-$ods-range-background-color-active: var(--ods-semantic-color-surface-base);
+$ods-range-background-color: var(--ods-semantic-color-surface-track);
+$ods-range-background-color-active: var(--ods-semantic-color-surface-control-solid);
 $ods-range-track-height: 8px;
 $ods-range-thumb-size: 20px;
 $ods-range-label-padding-top: var(--ods-semantic-size-space-inset-block);
 
 @mixin ods-range-thumb() {
-  --ods-range-thumb-background-color: var(--ods-semantic-color-surface-page);
+  --ods-range-thumb-background-color: var(--ods-semantic-color-surface-thumb);
 
   box-sizing: border-box;
   border: 1px solid var(--ods-semantic-color-border-control);

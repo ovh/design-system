@@ -105,7 +105,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
         </span>
       </button>
     </div>
-
+    
     <nav aria-label="Documentation" className="shell__nav">
       <NavTree currentId={ currentId } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
       <Divider className="shell__tree-divider" />

@@ -1,0 +1,212 @@
+/* The lab chrome paints from literals, not from tokens: the one thing on this page that must not
+   move when the token set is flipped is the control that flips it. Everything inside .lab__canvas
+   does paint from tokens - that is the comparison. */
+
+.lab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: -16px;
+}
+
+.lab__toolbar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-flow: row wrap;
+  gap: 8px 24px;
+  align-items: center;
+  z-index: 500;
+  background: #16181d;
+  padding: 12px 16px;
+  color: #e9eaee;
+  font-size: 14px;
+}
+
+.lab__toolbar-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lab__toolbar-group--grow {
+  flex: 1;
+  min-width: 180px;
+}
+
+.lab__toolbar-label {
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+}
+
+.lab__segmented {
+  display: inline-flex;
+  border: 1px solid #3a3e47;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.lab__segment {
+  border: 0;
+  background: transparent;
+  padding: 5px 12px;
+  text-transform: capitalize;
+  color: #c9ccd4;
+  font: inherit;
+  cursor: pointer;
+}
+
+.lab__segment + .lab__segment {
+  border-left: 1px solid #3a3e47;
+}
+
+.lab__segment:hover {
+  background: #23262d;
+}
+
+.lab__segment[aria-pressed='true'] {
+  background: #4b7bec;
+  color: #ffffff;
+}
+
+.lab__filter {
+  box-sizing: border-box;
+  border: 1px solid #3a3e47;
+  border-radius: 6px;
+  background: #0f1115;
+  padding: 6px 10px;
+  width: 100%;
+  max-width: 320px;
+  color: #e9eaee;
+  font: inherit;
+}
+
+.lab__canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--ods-semantic-color-surface-page);
+  padding: 16px;
+  min-height: 60vh;
+}
+
+.lab__card {
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  border-radius: var(--ods-semantic-size-radius-container);
+  background-color: var(--ods-semantic-color-surface-raised);
+  padding: 16px;
+}
+
+.lab__card-title {
+  margin: 0 0 4px;
+  color: var(--ods-semantic-color-content-heading);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lab__card-note {
+  margin: 0 0 12px;
+  max-width: 90ch;
+  color: var(--ods-semantic-color-content-placeholder);
+  font-size: 13px;
+}
+
+.lab__card-note--long {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.lab__card-body {
+  padding-top: 4px;
+  overflow-x: auto;
+}
+
+.lab__card-body--swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 6px 16px;
+}
+
+.lab__fixture-error,
+.lab__empty {
+  margin: 0;
+  color: var(--ods-semantic-color-content-critical);
+  font-size: 13px;
+}
+
+/* ----------------------------------------------------------------------------- token swatches */
+
+.lab__tokens,
+.lab__notes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lab__ramp {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.lab__ramp-name {
+  flex: none;
+  width: 70px;
+  color: var(--ods-semantic-color-content-text);
+  font-size: 12px;
+}
+
+.lab__ramp-stop {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 40px;
+  text-align: center;
+  color: var(--ods-semantic-color-content-placeholder);
+  font-size: 10px;
+}
+
+.lab__ramp-stop::before {
+  outline: 1px solid rgb(0, 0, 0, 0.1);
+  outline-offset: -1px;
+  border-radius: 3px;
+  background: inherit;
+  height: 32px;
+  content: '';
+}
+
+.lab__ramp-stop--absent {
+  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgb(128, 128, 128, 0.25) 4px, rgb(128, 128, 128, 0.25) 8px);
+}
+
+.lab__swatch {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) max-content;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.lab__swatch-chip {
+  outline: 1px solid rgb(0, 0, 0, 0.15);
+  outline-offset: -1px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(45deg, transparent, transparent 3px, rgb(128, 128, 128, 0.25) 3px, rgb(128, 128, 128, 0.25) 6px);
+  width: 20px;
+  height: 20px;
+}
+
+.lab__swatch-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ods-semantic-color-content-text);
+}
+
+.lab__swatch-value {
+  color: var(--ods-semantic-color-content-placeholder);
+  font-size: 11px;
+}

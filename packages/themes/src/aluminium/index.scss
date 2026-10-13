@@ -1,0 +1,21 @@
+/*
+ * "aluminium" - the second token set, kept side by side with the one on the branch.
+ *
+ * It exists to answer one question: can an integrator build an ODS theme of their own, and does
+ * that theme reach every component? So it is deliberately NOT a brand (a brand rebinds the brand
+ * ramp and nothing else - see src/forest/index.scss). It replaces the palette, restates the whole
+ * semantic layer against design's updated token list, and then carries the component-side changes
+ * that list depends on.
+ *
+ * Everything is scoped under `[data-ods-theme='aluminium']` so the two sets can be compared on one
+ * page by flipping one attribute on <html>. An integrator shipping this for real would drop the
+ * attribute and declare the tiers on `:root`, the way src/blue-jeans/index.scss does.
+ *
+ * Three tiers, one file each:
+ *   _palette.scss    tier 1 - the six hue families, restated
+ *   _semantic.scss   tier 2 - the role layer, plus the bindings the new list does not name
+ *   _components.scss tier 3 - the component changes the new list depends on, as CSS only
+ */
+@use './palette';
+@use './semantic';
+@use './components';

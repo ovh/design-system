@@ -62,19 +62,20 @@ change that is not described in the PR body is a P0.
 
 - **Inventory** every `@deprecated` (TSDoc), `[Deprecated]` (SCSS) or "will be removed in
   next major" marker touched or introduced by the diff.
-- **v20 rule (proposed, pending team alignment)**: only design tokens may break in v20.
-  New component API changes deprecate the old API (`@deprecated` + a runtime
-  `console.warn` naming v21 as the removal version) instead of removing it. Deprecations
-  that already expire in v20 (introduced in v19 with "removed in next major") may be
-  removed. When the PR or its ticket follows a different rule, point out the discrepancy
-  as a P1 question rather than a P0.
+- **In a major (v20)**: breaking changes are applied directly, with no deprecation
+  step and no alias. Everything already marked deprecated must be removed: a survivor is
+  a P1. A new `@deprecated` or compatibility alias introduced by the PR is a P1.
+- **Easy migration is the price of a break.** Every breaking change must come with an
+  entry in the migration guide (`packages/docs/src/content/guides/migration-19-to-20.mdx`)
+  showing a **before / after** snippet an integrator can apply mechanically: renamed prop,
+  value mapping (old value → new value), replaced token. A break with no entry, or with an
+  entry that does not let the integrator migrate without reading the source, is a P0.
 - **In a minor**: any removal of public API is a P0 — it must be deprecated instead. A new
   deprecation must name its removal version and keep resolving to a value consistent with
   the new system (never an alias frozen on the old value).
 - **Should be deprecated or deleted**: code made dead by the PR (tokens, SCSS variables,
   enums, exports declared but no longer read), dependencies no longer used.
-- **Traceability**: every deprecation or removal appears in the CHANGELOG and in
-  `MIGRATION.md` when relevant. Missing = P2.
+- **Traceability**: every deprecation or removal appears in the CHANGELOG. Missing = P2.
 
 ## 4. Repo conventions
 

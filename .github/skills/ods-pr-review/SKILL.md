@@ -44,7 +44,8 @@ review on top: these angles replace it.
 Compare the public surface before / after:
 
 - `packages/ods-react/etc/public-api.api.txt` — every removed or changed line is a
-  candidate break. A source change to exports **without** an update of this file is a P0.
+  candidate break. A source change to exports **without** an update of this file is a P0;
+  the fix is to regenerate it with `pnpm test:api:update` (`scripts/api-snapshot.sh`).
 - Component exports in `src/components/<name>/src/index.ts` (components, `*_COLOR(S)`,
   `*_SIZE(S)`, `*_VARIANT(S)` constants, types).
 - Prop types and **runtime defaults** (a changed default is a break even if types match).
@@ -61,8 +62,12 @@ change that is not described in the PR body is a P0.
 
 - **Inventory** every `@deprecated` (TSDoc), `[Deprecated]` (SCSS) or "will be removed in
   next major" marker touched or introduced by the diff.
-- **v20 rule**: only design tokens may break in v20. Component APIs are deprecated
-  (`@deprecated` + a runtime `console.warn`), never removed, and are removed in v21.
+- **v20 rule (proposed, pending team alignment)**: only design tokens may break in v20.
+  New component API changes deprecate the old API (`@deprecated` + a runtime
+  `console.warn` naming v21 as the removal version) instead of removing it. Deprecations
+  that already expire in v20 (introduced in v19 with "removed in next major") may be
+  removed. When the PR or its ticket follows a different rule, point out the discrepancy
+  as a P1 question rather than a P0.
 - **In a minor**: any removal of public API is a P0 — it must be deprecated instead. A new
   deprecation must name its removal version and keep resolving to a value consistent with
   the new system (never an alias frozen on the old value).

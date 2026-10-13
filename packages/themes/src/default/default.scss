@@ -6,12 +6,12 @@
 @use '../../assets/fonts/ods-icon/icomoon/icomoon';
 @use '../../assets/fonts/source-code-pro/base64/source-code-pro-variable';
 @use '../../assets/fonts/source-code-pro/base64/source-code-pro-variable-italic';
-@use '../../assets/fonts/source-sans-pro/base64/source-sans3-variable-custom';
-@use '../../assets/fonts/source-sans-pro/base64/source-sans3-variable-custom-italic';
+@use '../../assets/fonts/source-sans-3/base64/source-sans3-variable-custom';
+@use '../../assets/fonts/source-sans-3/base64/source-sans3-variable-custom-italic';
 @use '../helpers/fonts';
 @use './index';
 @include fonts.ods-icon-font-face(icomoon.$base64);
 @include fonts.source-code-pro-font-face(source-code-pro-variable.$base64);
 @include fonts.source-code-pro-italic-font-face(source-code-pro-variable-italic.$base64);
-@include fonts.source-sans-pro-font-face(source-sans3-variable-custom.$base64);
-@include fonts.source-sans-pro-italic-font-face(source-sans3-variable-custom-italic.$base64);
+@include fonts.source-sans-3-font-face(source-sans3-variable-custom.$base64);
+@include fonts.source-sans-3-italic-font-face(source-sans3-variable-custom-italic.$base64);

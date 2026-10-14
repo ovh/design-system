@@ -2,7 +2,7 @@
 import type { Locale } from '../../../utils/locales';
 import { useState } from 'react';
 import style from './dev.module.css';
-import { MESSAGE_I18N, MESSAGE_STATUSES, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
+import { MESSAGE_EMPHASES, MESSAGE_I18N, MESSAGE_STATUSES, Message, MessageBody, MessageIcon } from '.';
 
 export default {
   component: Message,
@@ -53,16 +53,16 @@ export const A11Y = () => {
 export const Statuses = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
     {
-      MESSAGE_VARIANTS.map((variant) => (
+      MESSAGE_EMPHASES.map((emphasis) => (
         <div
-          key={ variant }
+          key={ emphasis }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
             MESSAGE_STATUSES.map((messageStatus) => (
               <Message
+                emphasis={ emphasis }
                 key={ messageStatus }
-                status={ messageStatus }
-                variant={ variant }>
+                status={ messageStatus }>
                 <MessageIcon name="circle-info" />
 
                 <MessageBody>
@@ -76,16 +76,16 @@ export const Statuses = () => (
     }
 
     {
-      MESSAGE_VARIANTS.map((variant) => (
+      MESSAGE_EMPHASES.map((emphasis) => (
         <div
-          key={ variant }
+          key={ emphasis }
           style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
           {
             MESSAGE_STATUSES.map((messageStatus) => (
               <Message
+                emphasis={ emphasis }
                 key={ messageStatus }
-                status={ messageStatus }
-                variant={ variant }>
+                status={ messageStatus }>
                 <MessageBody>
                   { messageStatus }
                 </MessageBody>

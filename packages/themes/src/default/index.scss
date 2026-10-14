@@ -48,12 +48,7 @@
       // DONE: Treeview ou conmbobox option selectionnée / Meme token pour la Tile selectionnée
       --ods-semantic-color-surface-selected-subtle: var(--ods-palette-accent-50);
   --ods-semantic-color-surface-selected: var(--ods-palette-accent-100);
-  --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-700); // boutons
-
-      // TODO: useless I think
-      --ods-semantic-color-surface-selected-strong: var(--ods-palette-accent-100); // Charles.
-      // TODO: useless I think
-      --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500); // Charles
+  --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-700);
   // ***************
 
 
@@ -69,10 +64,8 @@
   --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-100);
   --ods-semantic-color-surface-critical: var(--ods-palette-red-500);
   --ods-semantic-color-surface-critical-subtle: var(--ods-palette-red-100);
-    // MESSAGE, BADGES, etc / blue-jeans -> information, aluminium -> accent
-    // TODO
-      --ods-semantic-color-surface-accent: var(--ods-palette-accent-500);
-      --ods-semantic-color-surface-accent-subtle: var(--ods-palette-accent-100); 
+  --ods-semantic-color-surface-accent: var(--ods-palette-accent-500);
+  --ods-semantic-color-surface-accent-subtle: var(--ods-palette-accent-100); 
   --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-50);
   // ***************
 
@@ -331,19 +324,11 @@
 
 
 
-
-
-
-
   /* Field and container states. */
   // DONE: ça dégage au profit de l'opacité 
   --ods-semantic-color-surface-disabled: var(--ods-palette-gray-100);
-  // DONE: ça dégage au profit de --ods-semantic-color-surface-neutral-minimal (cas par cas...)
-  --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-gray-50);
   // DONE: ça dégage au profit de l'opacité (cas par cas)
   --ods-semantic-color-content-disabled: var(--ods-palette-gray-500);
-  // DONE on remplace par --ods-semantic-color-content-on-vivid :
-  --ods-semantic-color-content-on-decorative: var(--ods-palette-blue-900);
   // Done: çà dégage au profit de l'opacité 
   --ods-semantic-color-border-disabled: var(--ods-palette-gray-200);
 
@@ -436,7 +421,6 @@
 
   /* --------------------------------------------------------------------------- tier 2 - opacity */
 
-  /* TODO: a deployer partout !! */
   --ods-semantic-opacity-disabled: var(--ods-palette-opacity-50);
   --ods-semantic-opacity-backdrop: var(--ods-palette-opacity-75);
 

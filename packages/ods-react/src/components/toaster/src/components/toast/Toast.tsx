@@ -3,7 +3,7 @@ import { type FC, type JSX } from 'react';
 import { resolveValue } from 'react-hot-toast/headless';
 import { Message, MessageBody, MessageIcon } from '../../../../message/src';
 import { type Toast as ToastItem, useToaster } from '../../contexts/useToaster';
-import { toast as controller, getToastStatus } from '../../controller/toaster';
+import { toast as controller } from '../../controller/toaster';
 import style from './toast.module.scss';
 
 interface ToastProp {
@@ -20,7 +20,7 @@ const Toast: FC<ToastProp> = ({
       className={ classNames(style['toast'], toast.className) }
       dismissible={ typeof toast.dismissible === 'boolean' ? toast.dismissible : dismissible }
       onRemove={ () => controller.remove(toast.id) }
-      status={ getToastStatus(toast) }>
+      status={ toast.status }>
       {
         toast.icon &&
         <MessageIcon name={ toast.icon } />

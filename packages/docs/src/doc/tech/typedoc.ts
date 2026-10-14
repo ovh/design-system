@@ -208,15 +208,11 @@ function isDeprecated(node?: Node): boolean {
   return !!node?.comment?.blockTags?.some((block) => block.tag === TAG.deprecated);
 }
 
-/* Enums, plus the "fake enums" (const objects used as enums, e.g. BADGE_COLOR). */
+/* Enums, plus the "fake enums" (const objects used as enums). */
 function getEnums(root: Node): EnumSpec[] {
   const variables = filterByKind(root.children, [KIND.variable]);
-  // An enum exported through an alias (e.g. BUTTON_COLOR, alias of the shared COLOR enum) comes with the comment of
-  // the aliased enum, so its own @deprecated is lost: rely on its companion list (BUTTON_COLORS), deprecated with it.
-  const isDeprecatedEnum = (node: Node): boolean => isDeprecated(node) ||
-    isDeprecated(variables.find((variable) => variable.name === `${node.name}S`));
   const real = filterByKind(root.children, [KIND.enum]).map((node) => ({
-    deprecated: isDeprecatedEnum(node),
+    deprecated: isDeprecated(node),
     name: node.name ?? '',
     members: filterByKind(node.children, [KIND.enumMember]).map((member) => ({
       name: member.name ?? '',

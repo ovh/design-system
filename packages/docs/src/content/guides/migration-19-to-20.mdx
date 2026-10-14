@@ -9,13 +9,13 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**). Moving to React 19 requires no ODS-related code change.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is <ExternalLink href="https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md">BREAKING-CHANGES-V20.md</ExternalLink>.
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
-Nothing to do for React. Installation and types keep working as before (review the Button default rendering and migrate the Message `variant`, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before. The component API changes apply whatever your React version: migrate the removed `color` props and `toast.primary()`, the Message `variant` and the Table `variant`, and review the Button default rendering (see **Breaking changes**). The theme changes below apply whatever your React version too.
 
 <Heading label="If you move to React 19" level={ 2 } />
 
@@ -410,6 +410,23 @@ If you reference the theme Sass sources or font files directly (Sass imports, co
 
 These changes require a code update: each one comes with its before and after.
 
+**The `color` prop is removed** from Badge, Button, Card, Divider, Message, ModalContent, Spinner and Tag (on Divider and ModalContent, it was deprecated since v19), with the `XXX_COLOR` and `XXX_COLORS` constants and the `XxxColor` types of these components and of the Toaster, and with `toast.primary()`. Where the component has a `status` prop, use it instead (`XXX_STATUS`, `XXX_STATUSES` and the `XxxStatus` type): the `primary` value is renamed `accent` (`brand` on Button), the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button). Divider, ModalContent and Spinner have no `status`: see their own entry.
+
+- TypeScript reports each removed usage, even through a spread object: `color` is typed `never` on these components, so not even the HTML `color` attribute is accepted.
+- In untyped JavaScript, a `color` attribute is no longer read by these components: it is forwarded to the DOM as the obsolete HTML `color` attribute. Remove it.
+- If one of your wrappers declares its own `color` prop on top of `BadgeProp` (or the props of the other components above), TypeScript reports that it incorrectly extends it: remove the prop and map its values to `status`, or keep it under an `Omit<BadgeProp, 'color'>` if it serves another purpose.
+- If one of your wrappers takes the HTML props of an element (`ComponentPropsWithRef<'span'>`…) and spreads them into one of these components, TypeScript reports that `color` is not assignable to `undefined`: omit it from the wrapper props (`Omit<ComponentPropsWithRef<'span'>, 'color'>`).
+- If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+- The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see Message).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched, but TypeScript reports them. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. A library built on ODS (a UI kit wrapping Badge or Button) must migrate too before you can move to v20.
+
 <Heading label="Accordion" level={ 3 } />
 
 **New `emphasis` prop** (`ACCORDION_EMPHASIS`, `ACCORDION_EMPHASES` and the `AccordionEmphasis` type): `high`, `medium` or `low`, set on the root for every item. `medium` is the default, so an Accordion without `emphasis` renders as before: nothing to migrate. Only a wrapper is affected: if it declares its own `emphasis` prop on top of `AccordionProp`, add `'emphasis'` to its `Omit` or rename it. In untyped JavaScript, an `emphasis` attribute forwarded to Accordion is now read as the emphasis preset.
@@ -432,7 +449,52 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 }
 ```
 
+<Heading label="Badge" level={ 3 } />
+
+**The `color` prop is removed**, with `BADGE_COLOR`, `BADGE_COLORS` and the `BadgeColor` type (see above):
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
+
+To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b|<Badge[^>]*[[:space:]]color=" src/`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+**optional, new in v20**
+```tsx
+import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Expired</Badge>
+<Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Active</Badge>
+```
+
 <Heading label="Button" level={ 3 } />
+
+**The `color` prop is removed**, with `BUTTON_COLOR`, `BUTTON_COLORS` and the `ButtonColor` type (see above):
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` are removed **without** `status` equivalent: a Button does not convey a status. Use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
 
 **The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
 
@@ -449,29 +511,89 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 To find the Buttons to review in your code:
 
 ```sh
-grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_VARIANTS?\b|\bButtonVariant\b" src/
+grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_(VARIANT|COLOR)S?\b|\bButton(Variant|Color)\b" src/
 ```
 
-TypeScript reports every remaining `variant` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
+TypeScript reports every remaining `variant` and `color` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
 
 **before**
 ```tsx
-import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
 
 // filled in v19, medium (outlined) in v20
 <Button>Save</Button>
 <Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>
+<Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.default }>Delete</Button>
 ```
 
 **after**
 ```tsx
-import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
 
 <Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
 <Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
+<Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+<Heading label="Card" level={ 3 } />
+
+**The `color` prop is removed**, with `CARD_COLOR`, `CARD_COLORS` and the `CardColor` type (see above):
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+To find the usages to migrate: `grep -rnE "\bCARD_COLORS?\b|\bCardColor\b|<Card[^>]*[[:space:]]color=" src/`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+<Heading label="Divider" level={ 3 } />
+
+**The `color` prop is removed** (it was deprecated since v19), with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+To find the usages to migrate: `grep -rnE "\bDIVIDER_COLORS?\b|\bDividerColor\b|<Divider[^>]*[[:space:]]color=" src/`.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
 ```
 
 <Heading label="Message" level={ 3 } />
+
+**The `color` prop is removed**, with `MESSAGE_COLOR`, `MESSAGE_COLORS` and the `MessageColor` type (see above):
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
 
 **The `variant` prop of the Message is removed, replaced by `emphasis`, and every Message changes rendering.** `MESSAGE_VARIANT`, `MESSAGE_VARIANTS` and the `MessageVariant` type are removed with it, without deprecation period: TypeScript reports each usage, and in untyped JavaScript a `variant` attribute is ignored (and forwarded to the DOM).
 
@@ -501,7 +623,7 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 To find the usages to migrate in your code:
 
 ```sh
-grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
+grep -rnE "\bMESSAGE_(VARIANT|COLOR)S?\b|\bMessage(Variant|Color)\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
 grep -rnE "<Message([[:space:]]|>|$)" src/
 ```
 
@@ -509,7 +631,7 @@ Review each match of the second search that sets neither `variant` nor `emphasis
 
 **before**
 ```tsx
-import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
+import { MESSAGE_COLOR, MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
 
 // tinted background in v19, medium (raised surface with a border) in v20
 <Message status={ MESSAGE_STATUS.success }>
@@ -518,6 +640,10 @@ import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud
 
 <Message status={ MESSAGE_STATUS.warning } variant={ MESSAGE_VARIANT.light }>
   <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+
+<Message color={ MESSAGE_COLOR.primary } variant={ MESSAGE_VARIANT.light }>
+  <MessageBody>A new version is available.</MessageBody>
 </Message>
 ```
 
@@ -532,6 +658,76 @@ import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody } from '@ovhclou
 <Message status={ MESSAGE_STATUS.warning }>
   <MessageBody>Your session will expire soon.</MessageBody>
 </Message>
+
+<Message status={ MESSAGE_STATUS.accent }>
+  <MessageBody>A new version is available.</MessageBody>
+</Message>
+```
+
+<Heading label="Modal" level={ 3 } />
+
+**The `color` prop of `ModalContent` is removed** (it was deprecated since v19), with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It had no visual effect: its only effect was to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- Any other value: remove the prop.
+- A computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): replace it with your own constant or a boolean such as `isCritical`.
+
+To find the usages to migrate: `grep -rnE "\bMODAL_COLORS?\b|\bModalColor\b|<ModalContent[^>]*[[:space:]]color=" src/`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+<Heading label="Spinner" level={ 3 } />
+
+**The `color` prop is removed**, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is set by the `--ods-spinner-color` CSS custom property, primary by default, so a Spinner without `color` renders as before.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+To find the usages to migrate: `grep -rnE "\bSPINNER_COLORS?\b|\bSpinnerColor\b|<Spinner[^>]*[[:space:]]color=" src/`.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
 ```
 
 <Heading label="Table" level={ 3 } />
@@ -558,219 +754,16 @@ import { Table } from '@ovhcloud/ods-react';
 <Table striped>...</Table>
 ```
 
-<Heading label="Deprecations" level={ 2 } />
-
-The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
-
-**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
-
-To find the usages to migrate in your code:
-
-```sh
-grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
-```
-
-`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
-
-If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
-
-The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see **Breaking changes**).
-
-<Heading label="Badge" level={ 3 } />
-
-- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
-- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
-- New `emphasis` prop (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
-
-**before**
-```tsx
-import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
-
-<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
-<Badge color={ BADGE_COLOR.success }>Active</Badge>
-```
-
-**after**
-```tsx
-import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
-
-<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
-<Badge status={ BADGE_STATUS.success }>Active</Badge>
-```
-
-**optional, new in v20**
-```tsx
-import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
-
-<Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Expired</Badge>
-<Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Active</Badge>
-```
-
-<Heading label="Button" level={ 3 } />
-
-- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
-- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
-- `color="critical"` and `color="neutral"`: use `status` with the same value.
-- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
-- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
-
-**before**
-```tsx
-import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
-
-<Button color={ BUTTON_COLOR.primary }>Save</Button>
-<Button color={ BUTTON_COLOR.critical }>Delete</Button>
-```
-
-**after**
-```tsx
-import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
-
-<Button>Save</Button>
-<Button status={ BUTTON_STATUS.critical }>Delete</Button>
-```
-
-<Heading label="Card" level={ 3 } />
-
-- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
-- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
-- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
-
-**before**
-```tsx
-import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
-
-<Card color={ CARD_COLOR.neutral }>...</Card>
-```
-
-**after**
-```tsx
-import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
-
-<Card status={ CARD_STATUS.neutral }>...</Card>
-```
-
-<Heading label="Divider" level={ 3 } />
-
-The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
-
-- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
-- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
-
-**before**
-```tsx
-import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
-
-<Divider color={ DIVIDER_COLOR.primary } />
-<Divider color={ DIVIDER_COLOR.neutral } />
-```
-
-**after**
-```tsx
-import { Divider } from '@ovhcloud/ods-react';
-
-<Divider />
-<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
-```
-
-<Heading label="Message" level={ 3 } />
-
-- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
-- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
-- `variant` (or `MESSAGE_VARIANT`): removed in v20, see **Breaking changes**.
-
-**before**
-```tsx
-import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
-
-<Message color={ MESSAGE_COLOR.warning }>
-  <MessageBody>Your session will expire soon.</MessageBody>
-</Message>
-```
-
-**after**
-```tsx
-import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
-
-<Message status={ MESSAGE_STATUS.warning }>
-  <MessageBody>Your session will expire soon.</MessageBody>
-</Message>
-```
-
-<Heading label="Modal" level={ 3 } />
-
-The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
-
-- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
-- any other value: remove the prop.
-- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
-- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
-
-**before**
-```tsx
-import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
-
-<Modal>
-  <ModalContent color={ MODAL_COLOR.critical }>
-    <ModalBody>Are you sure you want to delete this item?</ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-**after**
-```tsx
-import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
-
-<Modal>
-  <ModalContent role="alertdialog">
-    <ModalBody>Are you sure you want to delete this item?</ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-<Heading label="Spinner" level={ 3 } />
-
-The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
-
-- No `color`: nothing to do, the Spinner stays primary.
-- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
-- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
-- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
-- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
-- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
-
-**before**
-```tsx
-import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
-
-<Spinner color={ SPINNER_COLOR.neutral } />
-```
-
-**after**
-```tsx
-import { Spinner } from '@ovhcloud/ods-react';
-
-<Spinner className="my-spinner" />
-```
-
-```css
-.my-spinner {
-  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
-}
-```
-
 <Heading label="Tag" level={ 3 } />
+
+**The `color` prop is removed**, with `TAG_COLOR`, `TAG_COLORS` and the `TagColor` type (see above):
 
 - `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
 - `color="primary"`: use `status="accent"`.
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+To find the usages to migrate: `grep -rnE "\bTAG_COLORS?\b|\bTagColor\b|<Tag[^>]*[[:space:]]color=" src/`.
 
 **before**
 ```tsx
@@ -788,9 +781,14 @@ import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
 
 <Heading label="Toaster" level={ 3 } />
 
+**`toast.primary()` is removed**, with `TOAST_COLOR`, `TOAST_COLORS` and the `ToastColor` type (see above):
+
 - `toast.primary()`: use `toast.accent()`.
 - `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- A `color` passed in the toast options (`toast('…', { color: 'primary' })`): use the matching helper (`toast.accent('…')`).
 - `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+To find the usages to migrate: `grep -rnE "\bTOAST_COLORS?\b|\bToastColor\b|toast\.primary\(" src/`.
 
 **before**
 ```tsx

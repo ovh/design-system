@@ -77,24 +77,6 @@ describe('Toaster controller', () => {
       });
     });
 
-    describe('primary', () => {
-      it('should warn once about the deprecation and trigger a custom toast with accent config', () => {
-        const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-
-        toast.primary(dummyMessage);
-
-        expect(warnSpy).toHaveBeenCalledWith('[DEPRECATED]: toast.primary() is deprecated and will be removed in v21, use toast.accent() instead.');
-        expect(vendorToast.custom).toHaveBeenLastCalledWith(dummyMessage, { status: TOAST_STATUS.accent });
-
-        toast.primary(dummyMessage, dummyOption);
-
-        expect(vendorToast.custom).toHaveBeenLastCalledWith(dummyMessage, { ...dummyOption, status: TOAST_STATUS.accent });
-        expect(warnSpy).toHaveBeenCalledTimes(1);
-
-        warnSpy.mockRestore();
-      });
-    });
-
     describe('remove', () => {
       it('should remove the given toast', () => {
         const dummyId = 'dummy-id';

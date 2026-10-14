@@ -1,4 +1,4 @@
-import { TAG_COLOR, TAG_SIZE, TAG_STATUS, TAG_STATUSES, Tag, type TagStatus } from '../../src';
+import { TAG_SIZE, TAG_STATUS, TAG_STATUSES, Tag, type TagStatus } from '../../src';
 
 export default {
   component: Tag,
@@ -24,15 +24,6 @@ export const sizes = () => (
   <>
     <Tag data-testid="size-md" size={ TAG_SIZE.md }>MD</Tag>
     <Tag data-testid="size-lg" size={ TAG_SIZE.lg }>LG</Tag>
-  </>
-);
-
-export const deprecatedColor = () => (
-  <>
-    <Tag color={ TAG_COLOR.primary } data-testid="color-primary">Primary</Tag>
-    <Tag data-testid="status-accent" status={ TAG_STATUS.accent }>Accent</Tag>
-    <Tag color={ TAG_COLOR.critical } data-testid="color-critical-status-success" status={ TAG_STATUS.success }>Both</Tag>
-    <Tag data-testid="status-success" status={ TAG_STATUS.success }>Success</Tag>
   </>
 );
 

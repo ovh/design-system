@@ -1,4 +1,4 @@
-import { BADGE_COLOR, BADGE_EMPHASES, BADGE_SIZE, BADGE_STATUS, BADGE_STATUSES, Badge, type BadgeStatus } from '../../src';
+import { BADGE_EMPHASES, BADGE_SIZE, BADGE_STATUS, BADGE_STATUSES, Badge, type BadgeStatus } from '../../src';
 
 export default {
   component: Badge,
@@ -53,15 +53,6 @@ export const emphases = () => (
       ))
     }
   </div>
-);
-
-export const deprecatedColor = () => (
-  <>
-    <Badge color={ BADGE_COLOR.primary } data-testid="color-primary">Primary</Badge>
-    <Badge data-testid="status-accent" status={ BADGE_STATUS.accent }>Accent</Badge>
-    <Badge color={ BADGE_COLOR.critical } data-testid="color-critical-status-success" status={ BADGE_STATUS.success }>Both</Badge>
-    <Badge data-testid="status-success" status={ BADGE_STATUS.success }>Success</Badge>
-  </>
 );
 
 export const statuses = () => (

@@ -120,7 +120,6 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     children: [
       { icon: ICON_NAME.chevronLeftUnderscore, id: 'tools/sandbox', kind: 'tool', path: '/tools/sandbox', title: 'Code Sandbox' },
       { badge: 'beta', icon: ICON_NAME.magicWand, id: 'tools/theme-generator', kind: 'tool', path: '/tools/theme-generator', title: 'Theme Generator' },
-      { badge: 'beta', icon: ICON_NAME.flaskHalf, id: 'tools/aluminium-lab', kind: 'tool', path: '/tools/aluminium-lab', title: 'Aluminium Lab' },
     ],
   },
   {

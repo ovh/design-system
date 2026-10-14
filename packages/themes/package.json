@@ -28,21 +28,9 @@
     "./default/tokens": {
       "default": "./dist/default/tokens.json"
     },
-    "./aluminium/css": {
-      "sass": "./src/aluminium/index.scss",
-      "default": "./dist/aluminium/index.css"
-    },
     "./blue-jeans/css": {
       "sass": "./src/blue-jeans/index.scss",
       "default": "./dist/blue-jeans/index.css"
-    },
-    "./manager/css": {
-      "sass": "./src/manager/index.scss",
-      "default": "./dist/manager/index.css"
-    },
-    "./forest/css": {
-      "sass": "./src/forest/index.scss",
-      "default": "./dist/forest/index.css"
     }
   },
   "types": "dist/index.d.ts",

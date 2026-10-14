@@ -367,12 +367,12 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | **Codemod** | **manual** - the fix is an import, but which import depends on how the brand ends up being delivered. |
 | **Source of truth** | `packages/themes/src/default/index.scss` (`$brand-hue`), `packages/themes/src/blue-jeans/index.scss` |
 
-**Open**: how a brand is delivered is not settled. Today `blue-jeans` and `manager` exist as
-whole-theme overrides loaded after the default one, and the docs app treats them as a debug
-switch. A Sass consumer can instead configure the core (`@use '…/default/index' with ($brand-hue:
-'blue')`), which emits each token once. Both are exported from `package.json`
-(`./blue-jeans/css`, `./manager/css`). This entry needs rewriting once that decision lands, and the
-migration guide cannot be written before it.
+**Open**: how a brand is delivered is not settled. Today `blue-jeans` exists as a whole-theme
+override loaded after the default one, and the docs app treats it as a debug switch. A Sass
+consumer can instead configure the core (`@use '…/default/index' with ($brand-hue: 'blue')`),
+which emits each token once. The override is exported from `package.json` (`./blue-jeans/css`).
+This entry needs rewriting once that decision lands, and the migration guide cannot be written
+before it.
 
 ---
 

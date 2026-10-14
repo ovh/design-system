@@ -1,10 +1,6 @@
 import '@ovhcloud/ods-react/normalize-css';
 import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
-/* Imported after the default theme: the brand block and :root have the same specificity, so
-   source order is what lets the brand win. */
-import '@ovhcloud/ods-themes/forest/css';
-import './demoBrand';
 import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
@@ -24,7 +20,6 @@ import { Shell, type ShellContext } from './shell/Shell';
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 const ThemeGenerator = lazy(() => import('./themeGenerator/ThemeGenerator').then((m) => ({ default: m.ThemeGenerator })));
-const AluminiumLab = lazy(() => import('./pages/aluminiumLab/AluminiumLab').then((m) => ({ default: m.AluminiumLab })));
 
 const ComponentRoute = () => {
   const { key } = useParams();
@@ -147,14 +142,6 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         path: '/tools/theme-generator',
-      },
-      {
-        element: (
-          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
-            <AluminiumLab />
-          </Suspense>
-        ),
-        path: '/tools/aluminium-lab',
       },
       { element: <Navigate replace to="/" />, path: '*' },
     ],

@@ -3623,9 +3623,9 @@ export { MessageIcon, type MessageIconProp, };
 import { ComponentPropsWithRef, FC } from 'react';
 import { Locale } from '../../../../../utils/locales';
 import { MessageColor } from '../../constants/message-color';
+import { MessageEmphasis } from '../../constants/message-emphasis';
 import { MESSAGE_I18N } from '../../constants/message-i18n';
 import { MessageStatus } from '../../constants/message-status';
-import { MessageVariant } from '../../constants/message-variant';
 interface MessageProp extends ComponentPropsWithRef<'div'> {
     /**
      * @deprecated
@@ -3638,6 +3638,11 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
      * Whether the remove button is displayed.
      */
     dismissible?: boolean;
+    /**
+     * @type=MESSAGE_EMPHASIS
+     * The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight.
+     */
+    emphasis?: MessageEmphasis;
     /**
      * Internal translations override.
      */
@@ -3655,10 +3660,6 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
      * The status preset to use.
      */
     status?: MessageStatus;
-    /**
-     * The variant preset to use.
-     */
-    variant?: MessageVariant;
 }
 declare const Message: FC<MessageProp>;
 export { Message, type MessageProp, };
@@ -3681,6 +3682,16 @@ declare const MESSAGE_COLORS: readonly COLOR[];
  */
 type MessageColor = `${COLOR}`;
 export { MESSAGE_COLOR, MESSAGE_COLORS, type MessageColor, };
+
+// ==================== components/message/src/constants/message-emphasis.d.ts ====================
+declare enum MESSAGE_EMPHASIS {
+    high = "high",
+    low = "low",
+    medium = "medium"
+}
+type MessageEmphasis = `${MESSAGE_EMPHASIS}`;
+declare const MESSAGE_EMPHASES: readonly MESSAGE_EMPHASIS[];
+export { MESSAGE_EMPHASIS, MESSAGE_EMPHASES, type MessageEmphasis, };
 
 // ==================== components/message/src/constants/message-i18n.d.ts ====================
 declare enum MESSAGE_I18N {
@@ -3713,15 +3724,6 @@ type MessageStatus = `${MESSAGE_STATUS}`;
 declare const MESSAGE_STATUSES: readonly MESSAGE_STATUS[];
 export { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus, };
 
-// ==================== components/message/src/constants/message-variant.d.ts ====================
-declare enum MESSAGE_VARIANT {
-    default = "default",
-    light = "light"
-}
-type MessageVariant = `${MESSAGE_VARIANT}`;
-declare const MESSAGE_VARIANTS: readonly MESSAGE_VARIANT[];
-export { MESSAGE_VARIANT, MESSAGE_VARIANTS, type MessageVariant, };
-
 // ==================== components/message/src/index.d.ts ====================
 import { MessageProp } from './components/message/Message';
 import { MessageBody, MessageBodyProp } from './components/message-body/MessageBody';
@@ -3735,8 +3737,8 @@ export { MessageBody, MessageIcon };
 export type { MessageProp, MessageBodyProp, MessageIconProp };
 export { MESSAGE_I18N } from './constants/message-i18n';
 export { MESSAGE_COLOR, MESSAGE_COLORS, type MessageColor } from './constants/message-color';
+export { MESSAGE_EMPHASIS, MESSAGE_EMPHASES, type MessageEmphasis } from './constants/message-emphasis';
 export { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from './constants/message-status';
-export { MESSAGE_VARIANT, MESSAGE_VARIANTS, type MessageVariant } from './constants/message-variant';
 
 // ==================== components/meter/src/components/meter/Meter.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

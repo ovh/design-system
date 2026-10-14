@@ -52,7 +52,7 @@ There are four different subtypes of standard **Messages**, in order of priority
   dos={[
     '- Write Message in a clear, concise, and affirmative tone that aligns with the user\'s task',
     '- Place Message in a visible and relevant area of the page, ideally close to the triggering element if any or top of the section',
-    '- Use the correct variant (e.g., information, success, warning, error) to match the context and urgency',
+    '- Use the correct status (e.g., information, success, warning, critical) and emphasis to match the context and urgency',
     '- Use non-dismissible Message for critical warnings or errors that require immediate resolution',
     '- Allow content selection (e.g., to copy error messages)',
   ]}
@@ -90,10 +90,15 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
 - **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
 
-<Heading label="Variant" level={ 3 } />
+<Heading label="Emphasis" level={ 3 } />
 
-- **Default**: conveying mild to important information, ensuring the message is seen by the user.
-- **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
+- **High**: tinted background, for important information that must be seen by the user.
+- **Medium** _(default)_: light background with a colored border, for information that should be noticed without competing with the content around it.
+- **Low**: colored text and icon only, without background nor border, for non-urgent information in a subtle and less prominent manner.
+
+The **Accent** status uses the same colors as **Information** in every emphasis. The close button looks the same in every emphasis.
+
+<Canvas story="Emphasis" />
 
 <Heading label="Navigation" level={ 2 } />
 

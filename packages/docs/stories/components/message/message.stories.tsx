@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
-import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
+import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -271,33 +271,40 @@ export const Overview: Story = {
   ),
 };
 
-export const Variant: Story = {
+export const Emphasis: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { ICON_NAME, MESSAGE_VARIANT, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+    imports: `import { ICON_NAME, MESSAGE_EMPHASIS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Message variant={ MESSAGE_VARIANT.default }>
+      <Message emphasis={ MESSAGE_EMPHASIS.high }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
 
         <MessageBody>
-          Default variant Message
+          High emphasis Message
         </MessageBody>
       </Message>
 
-      <Message variant={ MESSAGE_VARIANT.light }>
+      <Message emphasis={ MESSAGE_EMPHASIS.medium }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
 
         <MessageBody>
-          Light variant Message
+          Medium emphasis Message
+        </MessageBody>
+      </Message>
+
+      <Message emphasis={ MESSAGE_EMPHASIS.low }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+
+        <MessageBody>
+          Low emphasis Message
         </MessageBody>
       </Message>
     </>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {
@@ -326,9 +333,13 @@ export const ThemeGenerator: Story = {
         <MessageIcon name={ ICON_NAME.hexagonExclamation } />
         <MessageBody>Critical</MessageBody>
       </Message>
-      <Message variant={ MESSAGE_VARIANT.light }>
+      <Message emphasis={ MESSAGE_EMPHASIS.high }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
-        <MessageBody>Light variant</MessageBody>
+        <MessageBody>High emphasis</MessageBody>
+      </Message>
+      <Message emphasis={ MESSAGE_EMPHASIS.low }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+        <MessageBody>Low emphasis</MessageBody>
       </Message>
     </div>
   ),

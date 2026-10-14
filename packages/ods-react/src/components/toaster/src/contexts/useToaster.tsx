@@ -2,7 +2,6 @@ import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext } f
 import { type Toast as VendorToast } from 'react-hot-toast/headless';
 import { useContext } from '../../../../utils/context';
 import { type IconName } from '../../../icon/src';
-import { type ToastColor } from '../constants/toast-color';
 import { type ToastStatus } from '../constants/toast-status';
 import { type ToasterPosition } from '../constants/toaster-position';
 
@@ -32,11 +31,10 @@ type ToasterRootProp = ComponentPropsWithRef<'div'> & {
 type ToastOption = {
   className?: string,
   /**
+   * Removed in v20, use the toast.accent(), toast.critical()… helpers. Typed never so that the v19 prop also fails through a spread object.
    * @internal
-   * @deprecated
-   * Use the toast.accent(), toast.critical()… helpers instead, removed in v21.
    */
-  color?: ToastColor,
+  color?: never,
   dismissible?: boolean,
   duration?: number,
   icon?: IconName,

@@ -1,18 +1,14 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { warnDeprecated } from '../../../../../utils/deprecation';
-import { type SpinnerColor } from '../../constants/spinner-color';
 import { SPINNER_SIZE, type SpinnerSize } from '../../constants/spinner-size';
 import style from './spinner.module.scss';
 
 interface SpinnerProp extends ComponentPropsWithRef<'span'> {
   /**
-   * @deprecated
-   * @type=SPINNER_COLOR
-   * The color preset to use.
-   * DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21.
+   * Removed in v20, set the --ods-spinner-color CSS custom property. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
    */
-  color?: SpinnerColor,
+  color?: never,
   /**
    * The size preset to use.
    */
@@ -21,19 +17,13 @@ interface SpinnerProp extends ComponentPropsWithRef<'span'> {
 
 const Spinner: FC<SpinnerProp> = forwardRef(({
   className,
-  color,
   size = SPINNER_SIZE.md,
   ...props
 }, ref): JSX.Element => {
-  if (color) {
-    warnDeprecated('Spinner.color', '[DEPRECATED]: The color prop of Spinner is deprecated and will be removed in v21, set the --ods-spinner-color CSS custom property instead.');
-  }
-
   return (
     <span
       className={ classNames(
         style['spinner'],
-        { [style[`spinner--${color}`]]: !!color },
         style[`spinner--${size}`],
         className,
       )}

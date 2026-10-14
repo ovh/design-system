@@ -4,7 +4,8 @@ import { ModalBody, ModalContent } from '../../../../modal/src';
 import { useCommand } from '../../contexts/useCommand';
 import style from './commandContent.module.scss';
 
-interface CommandContentProp extends ComponentPropsWithRef<'div'> {
+// color is omitted: ModalContent does not accept it.
+interface CommandContentProp extends Omit<ComponentPropsWithRef<'div'>, 'color'> {
   /**
    * Whether the component should be rendered in the DOM close to the body tag.
    */
@@ -80,9 +81,6 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
         handleKeyDown(e);
         props.onKeyDown?.(e);
       } }
-      // CommandContentProp inherits the HTML color attribute: reset it so it never reaches the deprecated color prop
-      // of ModalContent (type error and warning). Remove in v21 with that prop.
-      color={ undefined }
     >
       <ModalBody className={ classNames(style['command-content__body']) }>
         { children }

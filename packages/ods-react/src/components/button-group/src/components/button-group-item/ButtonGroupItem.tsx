@@ -19,7 +19,7 @@ interface ButtonGroupItemProp extends ComponentPropsWithRef<'button'> {
 const ButtonGroupItem: FC<ButtonGroupItemProp> = forwardRef(({
   children,
   className,
-  // The HTML color attribute had no effect in v19: keep it from reaching the deprecated color prop of the Button.
+  // The HTML color attribute has no effect on a button: drop it rather than forwarding it to the Button, which omits it.
   color,
   disabled,
   value,

@@ -14,6 +14,5 @@ const Modal = Object.assign(ModalRoot, {
 export { Modal };
 export { ModalBody, ModalContent, ModalHeader, ModalTrigger };
 export type { ModalProp, ModalBodyProp, ModalContentProp, ModalHeaderProp, ModalTriggerProp };
-export { MODAL_COLOR, MODAL_COLORS, type ModalColor } from './constants/modal-color';
 export { MODAL_I18N } from './constants/modal-i18n';
 export { type ModalOpenChangeDetail } from './contexts/useModal';

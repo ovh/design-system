@@ -1,5 +1,5 @@
 import style from './dev.module.css';
-import { DIVIDER_COLOR, Divider } from '.';
+import { Divider } from '.';
 
 export default {
   component: Divider,
@@ -16,11 +16,4 @@ export const Default = () => (
 
 export const Vertical = () => (
   <Divider orientation="vertical" />
-);
-
-export const Deprecated = () => (
-  <>
-    <Divider color={ DIVIDER_COLOR.primary } />
-    <Divider color={ DIVIDER_COLOR.neutral } />
-  </>
 );

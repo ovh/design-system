@@ -169,29 +169,6 @@ describe('Button rendering', () => {
     });
   });
 
-  describe('deprecated color', () => {
-    it('should render color primary as status brand, let status win and warn once', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
-
-      expect(await getStatusStyle(page, 'color-primary')).toBe(await getStatusStyle(page, 'status-brand'));
-      expect(await getStatusStyle(page, 'color-critical-status-neutral')).toBe(await getStatusStyle(page, 'status-neutral'));
-      expect(warnings).toEqual([
-        '[DEPRECATED]: The color prop of Button is deprecated and will be removed in v21, use the status prop instead (information, success and warning have no status equivalent).',
-      ]);
-    });
-
-    it('should keep styling information, success and warning through color', async() => {
-      await gotoStory(page, 'rendering/deprecated-color');
-
-      const unknownStyle = await getStatusStyle(page, 'status-none');
-
-      const colors = ['information', 'success', 'warning'];
-      const styles = await Promise.all(colors.map((color) => getStatusStyle(page, `color-${color}`)));
-
-      expect(colors.filter((_, index) => styles[index] === unknownStyle)).toEqual([]);
-    });
-  });
-
   describe('emphasis', () => {
     it('should render each emphasis of each status like its v19 variant (high as default, medium as outline, low as ghost), without any warning', async() => {
       const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');

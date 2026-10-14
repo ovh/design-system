@@ -1,5 +1,5 @@
 import { type CSSProperties } from 'react';
-import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../src';
+import { SPINNER_SIZE, Spinner } from '../../src';
 
 export default {
   component: Spinner,
@@ -42,17 +42,5 @@ export const color = () => (
     <div style={{ '--ods-spinner-color': 'rgb(0, 0, 255)' } as CSSProperties}>
       <Spinner data-testid="parent-custom-property" />
     </div>
-  </>
-);
-
-export const deprecatedColor = () => (
-  <>
-    <Spinner
-      color={ SPINNER_COLOR.neutral }
-      data-testid="color-neutral" />
-
-    <Spinner
-      color={ SPINNER_COLOR.primary }
-      data-testid="color-primary" />
   </>
 );

@@ -1,6 +1,6 @@
 @layer ods-organisms {
   .file-upload {
-    --ods-file-upload-item-background-color-hover: var(--ods-semantic-color-surface-selected);
+    --ods-file-upload-item-background-color-hover: var(--ods-semantic-color-interaction-highlight);
     --ods-file-upload-item-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
     --ods-file-upload-padding-horizontal: var(--ods-semantic-size-space-inset-inline);
     --ods-file-upload-padding-vertical: var(--ods-semantic-size-space-inset-block);

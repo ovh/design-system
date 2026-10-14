@@ -46,6 +46,7 @@
   /* Surfaces — brand and selection */
   --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
       // DONE: Treeview ou conmbobox option selectionnée / Meme token pour la Tile selectionnée
+      // --> J'ai appliqué que sur Tile
       --ods-semantic-color-surface-selected-subtle: var(--ods-palette-accent-50);
   --ods-semantic-color-surface-selected: var(--ods-palette-accent-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-700);
@@ -103,12 +104,8 @@
 
   /* Content — text */
   --ods-semantic-color-content-heading: var(--ods-palette-accent-800);
-  // Text et les labels aussi
   --ods-semantic-color-content-text: var(--ods-palette-accent-500);
-      // DONE: Data-table -> icone de tri dans l'entete, file-thumbnail -> taille du fichier quabd il est desactivé, 
-      // Query-filter -> chevron du controle quand il est desactivé, date-picker -> chiffre d'un jour desactivé quand il est selectionné
-      // tabs -> onglet non-selectionné, toggle -> label on/off
-      --ods-semantic-color-content-icon: var(--ods-palette-accent-800);
+  --ods-semantic-color-content-icon: var(--ods-palette-accent-800);
   --ods-semantic-color-content-placeholder: var(--ods-palette-gray-600);
   // ***************
 
@@ -116,10 +113,8 @@
 
   /* Content — brand and links */
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
-      // DONE: Same value as base. Oui mais...
-      --ods-semantic-color-content-visited: var(--ods-palette-brand-500);
-      // DONE: Text des boutons medium et low (aka outline et ghost) ? chelou mais ok
-      --ods-semantic-color-content-accent: var(--ods-palette-accent-500);
+  --ods-semantic-color-content-visited: var(--ods-palette-brand-500);
+  --ods-semantic-color-content-accent: var(--ods-palette-accent-500);
   // ***************
 
 
@@ -169,12 +164,10 @@
 
 
   /* Borders — neutral lines */
-  // DONE: aurore envoi la spec
   --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-200);
   --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-300);
   --ods-semantic-color-border-neutral-strong: var(--ods-palette-gray-300);
-      // DONE: Se Referer à la spec
-      --ods-semantic-color-border-neutral: var(--ods-palette-gray-500);
+  --ods-semantic-color-border-neutral: var(--ods-palette-gray-500);
   // ***************
 
 
@@ -187,35 +180,25 @@
 
 
   /* Borders — brand and selection */
-      // TODO: Blue ?
-      --ods-semantic-color-border-base: var(--ods-palette-brand-500);
-      --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-base: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
   // ***************
 
 
 
   /* Borders — statuses (subtle / strong / solid)  -> Buttons */
-      // DONE: subtle and strong are equal?
-      // xxx-strong a virer badge tag message utilisent xxx-subtle
-      --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-300);
-      --ods-semantic-color-border-accent-strong: var(--ods-palette-accent-300);
-      --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-300);
-      --ods-semantic-color-border-information-strong: var(--ods-palette-blue-300);
-      --ods-semantic-color-border-success-subtle: var(--ods-palette-green-300);
-      --ods-semantic-color-border-success-strong: var(--ods-palette-green-300);
-      --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-300);
-      --ods-semantic-color-border-warning-strong: var(--ods-palette-orange-300);
-          // DONE: Exception pour le critical bizarre de n'avoir cette alternative que sur critical' ?
-          // Suugestion de les ajouter pour tous (et de les cabler en consequence / tous en 500) (
-          --ods-semantic-color-border-critical: var(--ods-palette-red-500);
-      --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-300);
-      --ods-semantic-color-border-critical-strong: var(--ods-palette-red-300);
+  --ods-semantic-color-border-accent: var(--ods-palette-accent-500);
+  --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-300);
+  --ods-semantic-color-border-information: var(--ods-palette-blue-500);
+  --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-300);
+  --ods-semantic-color-border-success: var(--ods-palette-green-500);
+  --ods-semantic-color-border-success-subtle: var(--ods-palette-green-300);
+  --ods-semantic-color-border-warning: var(--ods-palette-orange-400);
+  --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-300);
+  --ods-semantic-color-border-critical: var(--ods-palette-red-500);
+  --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-300);
 
 
-      // --ods-semantic-color-border-critical: var(--ods-palette-red-500);
-      // --ods-semantic-color-border-information: var(--ods-palette-blue-500);
-      // --ods-semantic-color-border-success: var(--ods-palette-green-500);
-      // --ods-semantic-color-border-warning: var(--ods-palette-orange-400);
   // ***************
 
 
@@ -244,37 +227,27 @@
 
 
   /* Interaction — hover on a tinted / transparent surface */
-  --ods-semantic-color-interaction-base-subtle-hover:        var(--ods-palette-blue-100);
-  --ods-semantic-color-interaction-neutral-subtle-hover:     var(--ods-palette-gray-100);
+  --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-blue-100);
+  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
   --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);
-  --ods-semantic-color-interaction-success-subtle-hover:     var(--ods-palette-green-100);
-  --ods-semantic-color-interaction-warning-subtle-hover:     var(--ods-palette-orange-100);
-  --ods-semantic-color-interaction-critical-subtle-hover:    var(--ods-palette-red-100);
-  --ods-semantic-color-interaction-accent-subtle-hover:      var(--ods-palette-accent-100);
-      // DONE: Where -> TAG (accent)?
-      // DONE: On garde
-      --ods-semantic-color-interaction-base-subtle-active: var(--ods-palette-accent-100);
-      --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-100);
-      --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-100);
-      --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-100);
-      --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-100);
-      --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-100);
-      --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-100);
+  --ods-semantic-color-interaction-success-subtle-hover: var(--ods-palette-green-100);
+  --ods-semantic-color-interaction-warning-subtle-hover: var(--ods-palette-orange-100);
+  --ods-semantic-color-interaction-critical-subtle-hover: var(--ods-palette-red-100);
+  --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-100);
+  --ods-semantic-color-interaction-base-subtle-active: var(--ods-palette-accent-100);
+  --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-100);
+  --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-100);
+  --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-100);
+  --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-100);
+  --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-100);
+  --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-100);
   // ***************
 
 
 
   /* Interaction — lists and selection -> Select, combobox, Treeview */
-      // DONE: Select, combobox, Treeview, query-filter, command, menu item, fichiers survolés du file upload, tab survolé (default et switch), 
-      // input (fond du champ au survol)
-      --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-50);
-      --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-200);
-      
-      // DONE: Probablement à remapper sur les 2 précédents
-      // c'est maintenant --ods-semantic-color-interaction-highlight
-      --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-accent-100); // Charles
-      // c'est maintenant --ods-semantic-color-interaction-selected-highlight
-      --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-accent-200); // Charles
+  --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-50);
+  --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-200);
       
   /* Highlight = hover */
   
@@ -289,12 +262,8 @@
 
 
   /* Interaction — form controls */
-  // Les borders des champs de formulaire sont en hover - la surface hover est manquante (cf. fin de fichier)
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-accent-400);
-  // Pour info au repos c'est --ods-semantic-color-border-control
-      // TODO: Halo autour des champs de formulaire (border ou shadow) ?
-      // CA degage
-      --ods-semantic-color-interaction-control-subtle-hover: var(--ods-palette-gray-200); 
+   --ods-semantic-color-interaction-control-subtle-hover: var(--ods-palette-gray-200); 
   // ***************
 
 
@@ -317,20 +286,8 @@
   /* Listbox group labels. Split from content-heading so a brand's heading tint stops at headings. */
   --ods-semantic-color-content-group-label: var(--ods-palette-gray-900);
 
-  /* AJOUTER TOKEN POUR LA COULEUR DU LOGO */
-  // Déjà branché. Nom pas définitif */
+  // Logo color */
   --ods-semantic-color-content-brand: var(--ods-palette-brand-700);
-
-
-
-
-  /* Field and container states. */
-  // DONE: ça dégage au profit de l'opacité 
-  --ods-semantic-color-surface-disabled: var(--ods-palette-gray-100);
-  // DONE: ça dégage au profit de l'opacité (cas par cas)
-  --ods-semantic-color-content-disabled: var(--ods-palette-gray-500);
-  // Done: çà dégage au profit de l'opacité 
-  --ods-semantic-color-border-disabled: var(--ods-palette-gray-200);
 
 
 
@@ -462,7 +419,9 @@
 
 // Missing :
 :root {
-    --surface-control-hover: var(--ods-palette-accent-50);
-
     // Les box-shadow des champs de formulaire au hover / focus
+    // Les border des checkbox, etc.. quand ils sont selectionnés
+    // sur les button-background-color-primary on a un melange de base et de accent
+    --surface-toggle-background-xxx: var(--ods-palette-gray-400);
+    --surface-toggle-background-hover-xxx: var(--ods-palette-gray-500);
 }

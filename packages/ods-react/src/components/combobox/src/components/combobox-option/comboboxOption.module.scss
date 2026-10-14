@@ -18,7 +18,7 @@
     }
 
     &--highlighted {
-      background-color: var(--ods-semantic-color-interaction-highlight-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight);
     }
 
     &--new {
@@ -29,7 +29,7 @@
       background-color: var(--ods-semantic-color-surface-selected);
 
       &#{$option}--highlighted {
-        background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
+        background-color: var(--ods-semantic-color-interaction-selected-highlight);
       }
     }
 

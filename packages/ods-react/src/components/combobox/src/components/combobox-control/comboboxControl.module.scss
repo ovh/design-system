@@ -29,7 +29,7 @@
       &:hover,
       &#{$control}--focused {
         border-color: var(--ods-semantic-color-interaction-control-hover);
-        background-color: var(--surface-control-hover);
+        background-color: var(--ods-semantic-color-interaction-highlight);
       }
     }
 

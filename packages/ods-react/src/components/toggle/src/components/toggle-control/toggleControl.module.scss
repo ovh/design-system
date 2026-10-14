@@ -5,12 +5,12 @@
   .toggle-control {
     $control: &;
 
-    --ods-toggle-control-background-color: var(--ods-semantic-color-surface-neutral-subtle);
-    --ods-toggle-control-background-color-hover: var(--ods-semantic-color-surface-neutral-subtle);
+    --ods-toggle-control-background-color: var(--surface-toggle-background-xxx);
+    --ods-toggle-control-background-color-hover: var(--surface-toggle-background-hover-xxx);
     --ods-toggle-control-border-color: var(--ods-semantic-color-border-neutral-subtle);
     --ods-toggle-control-border-color-hover: var(--ods-semantic-color-border-control);
     --ods-toggle-control-label-off-text-color: var(--ods-semantic-color-content-on-neutral);
-    --ods-toggle-control-label-on-text-color: var(--ods-semantic-color-content-on-solid);
+    --ods-toggle-control-label-on-text-color: var(--ods-semantic-color-surface-control-solid);
     --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-surface-page);
 
     box-sizing: border-box;

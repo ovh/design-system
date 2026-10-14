@@ -14,7 +14,7 @@
     &:not([data-disabled]):hover,
     &[data-highlighted],
     &[data-highlighted]:hover {
-      background-color: var(--ods-semantic-color-interaction-highlight-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight);
     }
 
     &[data-disabled] {
@@ -27,7 +27,7 @@
       &:not([data-disabled]):hover,
       &[data-highlighted],
       &[data-highlighted]:hover {
-        background-color: var(--ods-semantic-color-interaction-selected-highlight-hover);
+        background-color: var(--ods-semantic-color-interaction-selected-highlight);
       }
     }
 

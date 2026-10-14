@@ -22,8 +22,8 @@
     box-shadow: var(--ods-semantic-shadow-control);
     padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2 );
     
-    &:hover {
-      border-color: var(--ods-prompt-input-border-color-hover); 
+    &:not(&--disabled):hover {
+      border-color: var(--ods-prompt-input-border-color-hover);
     }
     
     &:has(textarea:focus),

@@ -40,7 +40,7 @@ const InputActions: FC<InputActionsProps> = ({
       { loading && (
         <Spinner
           className={ style['input-actions__loading'] }
-          color={ disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
+          color={ SPINNER_COLOR.primary }
           role="none"
           size={ SPINNER_SIZE.xs } />
       )}

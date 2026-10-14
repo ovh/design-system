@@ -22,10 +22,12 @@
     width: 48px;
     height: 24px;
 
-    &:hover,
-    &[data-focus] {
-      border-color: var(--ods-toggle-control-border-color-hover);
-      background-color: var(--ods-toggle-control-background-color-hover);
+    &:not([data-disabled]) {
+      &:hover,
+      &[data-focus] {
+        border-color: var(--ods-toggle-control-border-color-hover);
+        background-color: var(--ods-toggle-control-background-color-hover);
+      }
     }
 
     &[data-focus] {
@@ -34,29 +36,23 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      border-color: state.$ods-state-is-disabled-background-color;
     }
 
     // QUID DES BORDURES ET DU HOVER
     &[data-state="checked"] {
-      &:not([data-disabled]) {
-        transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
-        border-color: var(--ods-semantic-color-border-selected);
-        background-color: var(--ods-semantic-color-surface-control-solid);
+      transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
+      border-color: var(--ods-semantic-color-border-selected);
+      background-color: var(--ods-semantic-color-surface-control-solid);
 
+      &:not([data-disabled], [data-invalid]) {
         &:hover, &[data-focus] {
           border-color: var(--ods-semantic-color-interaction-base-hover);
           background-color: var(--ods-semantic-color-interaction-base-hover);
-
-          &[data-invalid] {
-            border-color: var(--ods-semantic-color-border-critical);
-          }
         }
+      }
 
-        &[data-invalid] {
-          background-color: var(--ods-semantic-color-surface-critical);
-        }
+      &[data-invalid] {
+        background-color: var(--ods-semantic-color-surface-critical);
       }
 
       #{$control}__thumb {

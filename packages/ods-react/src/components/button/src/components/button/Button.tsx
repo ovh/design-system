@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
+import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { BUTTON_COLOR, type ButtonColor } from '../../constants/button-color';
 import { BUTTON_SIZE, type ButtonSize } from '../../constants/button-size';
 import { BUTTON_VARIANT, type ButtonVariant } from '../../constants/button-variant';
@@ -53,7 +53,7 @@ const Button: FC<ButtonProp> = forwardRef(({
         loading &&
         <span className={ style['button__spinner'] }>
           <Spinner
-            color={ SPINNER_COLOR.neutral }
+            className={ style['button__spinner__icon'] }
             role="none"
             size={ size === BUTTON_SIZE.xs ? SPINNER_SIZE.xs : SPINNER_SIZE.sm } />
         </span>

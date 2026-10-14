@@ -36,10 +36,6 @@
 
       &--disabled {
         @include state.ods-is-disabled();
-
-        #{$zone}__icon {
-          color: state.$ods-state-is-disabled-text-color;
-        }
       }
 
       &--invalid#{$zone}--invalid {

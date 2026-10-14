@@ -4,7 +4,6 @@
   .tile {
     --ods-tile-border-radius: var(--ods-semantic-size-radius-container);
     --ods-tile-background-color-selected: var(--ods-semantic-color-surface-selected-subtle);
-    --ods-tile-background-color-disabled: var(--ods-semantic-color-surface-neutral-minimal);
     --ods-tile-border-color-selected : var(--ods-semantic-color-border-base);
     --ods-tile-border-color-hover : var(--ods-semantic-color-interaction-control-hover);
 
@@ -32,9 +31,6 @@
 
     &--disabled {
       @include state.ods-is-disabled();
-
-      box-shadow:  none;
-      background-color: var(--ods-tile-background-color-disabled);
     }
   }
 }

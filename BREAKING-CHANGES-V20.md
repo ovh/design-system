@@ -44,6 +44,7 @@ not the history of the branch.
 | [BC-09](#bc-09--card-color-defaults-to-neutral) | `@ovhcloud/ods-react` | `Card` `color` defaults to `neutral` | automatable |
 | [BC-10](#bc-10--button-radius-moves-to-the-control-family) | `@ovhcloud/ods-react` | `Button` radius is 4px at every size | manual |
 | [BC-11](#bc-11--accordion-takes-the-whole-container-radius) | `@ovhcloud/ods-react` | `Accordion` outer corners go 4px -> 8px | manual |
+| [BC-12](#bc-12---disabled-is-an-opacity-not-a-colour) | `@ovhcloud/ods-react` | disabled is dimmed with opacity, not repainted grey | manual |
 
 ---
 
@@ -380,14 +381,14 @@ migration guide cannot be written before it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface and minus three dead `Tile` tokens (see below), plus nothing - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
+| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
 | **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colours shift slightly even where nothing breaks. |
 | **Detection** | covered by the BC-01 / BC-02 greps |
 | **Codemod** | none needed beyond BC-01 / BC-02 |
 | **Source of truth** | `packages/ods-react/src/style/*.scss` |
 
 The mixins and SCSS variables exported by `@ovhcloud/ods-react/style` are unchanged - only the
-tokens they read.
+tokens they read - except for the disabled state, see BC-12.
 
 `Tile` loses `--ods-tile-border-width`, `--ods-tile-border-color` and `--ods-tile-background-color`.
 All three were declared but never read: `Tile` renders a `Card`, so its border, its background and
@@ -438,6 +439,26 @@ radius from the container rung, so the two no longer move together.
 
 The trigger and the content inherit the item's radius, so nothing else changes. A theme that widens
 `radius-container` now widens the accordion with it, at full rate rather than at half.
+
+---
+
+## BC-12 - disabled is an opacity, not a colour
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | A disabled component keeps the colours of its enabled state - variant, checked, selected - and is dimmed with `opacity: var(--ods-semantic-opacity-disabled)` instead of being repainted grey. The `ods-is-disabled()` mixin of `@ovhcloud/ods-react/style` sets that opacity and no longer sets `border-color`, `background-color` or `color`, and its three SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color` are removed. Seven component tokens that only painted a disabled state go with them: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch` and `--ods-tile-background-color-disabled`. |
+| **Impact** | Visual on every disabled component. A stylesheet that reads one of the three SCSS variables fails to compile. One that includes `ods-is-disabled()` gets the opacity instead of the grey, and disabled colours a consumer painted on top of an ODS component are now dimmed as well. An override of one of the seven component tokens is silently ignored. |
+| **Detection** | `grep -rnE 'ods-state-is-disabled-\|(checked\|selected)-disabled\|tab-border-color-disabled\|tile-background-color-disabled' src/` |
+| **Codemod** | **manual** - nothing maps 1:1, the grey has no opacity equivalent. Remove the variable reads and the token overrides; a consumer who wants a grey disabled state styles `:disabled` / `[data-disabled]` on its side. |
+| **Source of truth** | `packages/ods-react/src/style/_state.scss` |
+
+A disabled component dims once. The mixin resets `--ods-state-is-disabled-opacity` on its children,
+so a disabled part nested in it - the `Input` of a `Combobox`, the clear `Button` of an `Input` -
+does not multiply a second opacity on top. `ButtonGroup`, `Switch` and `Range` carry the opacity on
+their root when the whole group is disabled, rather than on each item.
+
+The theme's three disabled colour roles are still declared but no component reads them any more.
 
 ---
 

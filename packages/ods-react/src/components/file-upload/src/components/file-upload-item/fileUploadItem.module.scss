@@ -27,11 +27,7 @@
     }
 
     &[data-disabled] {
-      color: state.$ods-state-is-disabled-text-color;
-
-      #{$item}__icon:not(#{$item}__icon--error) {
-        color: state.$ods-state-is-disabled-text-color;
-      }
+      @include state.ods-is-disabled();
     }
 
     &__icon {

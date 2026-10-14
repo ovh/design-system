@@ -204,7 +204,7 @@ $field-chrome: 'div:has(> input:is([data-ods="input"], [data-ods="command-filter
     --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-surface-thumb);
   }
 
-  [data-ods='toggle-control'][data-state='checked']:not([data-disabled], [data-invalid]) {
+  [data-ods='toggle-control'][data-state='checked']:not([data-invalid]) {
     border-color: var(--ods-semantic-color-surface-control-solid);
     background-color: var(--ods-semantic-color-surface-control-solid);
   }
@@ -218,7 +218,7 @@ $field-chrome: 'div:has(> input:is([data-ods="input"], [data-ods="command-filter
     background-color: var(--ods-semantic-color-surface-track);
   }
 
-  [data-ods='range'] [data-part='range']:not([data-disabled]) {
+  [data-ods='range'] [data-part='range'] {
     background-color: var(--ods-semantic-color-surface-control-solid);
   }
 
@@ -281,12 +281,12 @@ $field-chrome: 'div:has(> input:is([data-ods="input"], [data-ods="command-filter
 
 /* Pagination and Button Group already fill with surface-selected-solid; only the ink was missing. */
 [data-ods-theme='aluminium'] {
-  [data-ods='pagination'] [data-selected]:not(:disabled),
-  [data-ods='button-group-item'][data-state='on']:not([data-disabled]) {
+  [data-ods='pagination'] [data-selected],
+  [data-ods='button-group-item'][data-state='on'] {
     color: var(--ods-semantic-color-content-on-selected-solid);
   }
 
-  [data-ods='datepicker-content'] [data-selected]:not([data-disabled]) {
+  [data-ods='datepicker-content'] [data-selected] {
     background-color: var(--ods-semantic-color-surface-selected-solid);
     color: var(--ods-semantic-color-content-on-selected-solid);
   }

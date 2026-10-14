@@ -14,9 +14,5 @@
         background-position: $background-position;
       }
     }
-
-    &--disabled {
-      opacity: var(--ods-semantic-opacity-disabled);
-    }
   }
 }

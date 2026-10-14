@@ -75,10 +75,6 @@
       &[data-state="open"] {
         transform: rotate(180deg);
       }
-
-      &--disabled {
-        color: var(--ods-semantic-color-content-disabled);
-      }
     }
   }
 }

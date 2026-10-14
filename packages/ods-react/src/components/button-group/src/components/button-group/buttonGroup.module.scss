@@ -1,6 +1,12 @@
+@use '../../../../../style/state';
+
 @layer ods-molecules {
   .button-group {
     display: flex;
     flex-direction: row;
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
   }
 }

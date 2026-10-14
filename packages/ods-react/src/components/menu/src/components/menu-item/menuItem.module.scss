@@ -7,7 +7,7 @@
     padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
     cursor: pointer;
 
-    &:hover,
+    &:not([data-disabled]):hover,
     &[data-highlighted],
     &[data-highlighted]:hover {
       background-color: var(--ods-semantic-color-interaction-highlight-hover);

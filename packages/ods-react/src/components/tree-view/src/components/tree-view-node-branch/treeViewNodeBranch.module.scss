@@ -35,8 +35,6 @@
 
       &[data-disabled] {
         @include state.ods-is-disabled();
-
-        background-color: transparent;
       }
 
       &[data-selected]:not(:has(.tree-view-node-branch__control__checkbox)) {

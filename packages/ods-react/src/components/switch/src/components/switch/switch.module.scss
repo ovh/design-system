@@ -1,3 +1,5 @@
+@use '../../../../../style/state';
+
 $ods-switch-height-sm: 24px;
 $ods-switch-height-md: 32px;
 
@@ -14,6 +16,10 @@ $ods-switch-height-md: 32px;
     justify-content: center;
     border-radius: var(--ods-switch-border-radius);
     background-color: var(--ods-switch-background-color);
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
 
     &--sm {
       height: $ods-switch-height-sm;

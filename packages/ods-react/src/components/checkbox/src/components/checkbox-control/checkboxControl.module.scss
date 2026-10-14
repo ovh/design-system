@@ -13,23 +13,25 @@
           border-color: var(--ods-semantic-color-interaction-control-hover);
         }
       }
+    }
 
-      // QUID DES BORDURES ET DU HOVER
-      &[data-state="checked"],
-      &[data-state="indeterminate"] {
-        border-color: var(--ods-semantic-color-border-selected);
-        background: var(--ods-semantic-color-surface-control-solid);
+    // QUID DES BORDURES ET DU HOVER
+    &[data-state="checked"],
+    &[data-state="indeterminate"] {
+      border-color: var(--ods-semantic-color-border-selected);
+      background: var(--ods-semantic-color-surface-control-solid);
 
+      &:not([data-disabled], [data-invalid]) {
         &[data-focus],
         &:hover {
           border-color: var(--ods-semantic-color-interaction-base-hover);
           background: var(--ods-semantic-color-interaction-base-hover);
         }
+      }
 
-        &[data-invalid] {
-          border-color: var(--ods-semantic-color-border-critical);
-          background-color: var(--ods-semantic-color-surface-critical);
-        }
+      &[data-invalid] {
+        border-color: var(--ods-semantic-color-border-critical);
+        background-color: var(--ods-semantic-color-surface-critical);
       }
     }
 

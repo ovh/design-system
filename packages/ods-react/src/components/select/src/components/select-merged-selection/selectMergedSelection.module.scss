@@ -3,10 +3,6 @@
     &__total {
       color: var(--ods-semantic-color-content-base);
       font-weight: 700;
-
-      &--disabled {
-        color: var(--ods-semantic-color-content-disabled);
-      }
     }
   }
 }

@@ -13,38 +13,33 @@
           border-color: var(--ods-semantic-color-interaction-control-hover);
         }
       }
+    }
 
-      // QUID DES BORDURES ET DU HOVER
-      &[data-state="checked"] {
-        border-color: var(--ods-semantic-color-border-selected);
-        background-color: var(--ods-semantic-color-surface-control-solid);
+    // QUID DES BORDURES ET DU HOVER
+    &[data-state="checked"] {
+      border-color: var(--ods-semantic-color-border-selected);
+      background-color: var(--ods-semantic-color-surface-control-solid);
 
-        &::before {
-          transform: scale(1);
-        }
+      &::before {
+        transform: scale(1);
+      }
 
+      &:not([data-disabled], [data-invalid]) {
         &[data-focus],
         &:hover {
           border-color: var(--ods-semantic-color-interaction-base-hover);
           background: var(--ods-semantic-color-interaction-base-hover);
         }
+      }
 
-        &[data-invalid] {
-          border-color: var(--ods-semantic-color-border-critical);
-          background-color: var(--ods-semantic-color-surface-critical);
-        }
+      &[data-invalid] {
+        border-color: var(--ods-semantic-color-border-critical);
+        background-color: var(--ods-semantic-color-surface-critical);
       }
     }
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      &[data-state="checked"] {
-        &::before {
-          transform: scale(1);
-          background-color: state.$ods-state-is-disabled-text-color;
-        }
-      }
     }
 
     &[data-focus] {

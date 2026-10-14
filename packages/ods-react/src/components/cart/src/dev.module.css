@@ -10,6 +10,6 @@
 }
 
 .custom-cart__product__price__old {
-  color: var(--ods-semantic-color-content-disabled);
+  opacity: var(--ods-semantic-opacity-disabled);
   text-decoration: line-through;
 }

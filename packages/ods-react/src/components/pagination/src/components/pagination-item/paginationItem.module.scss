@@ -4,9 +4,7 @@
   width: 40px;
 
   &[data-selected] {
-    &:not(:disabled) {
-      border-color: var(--ods-semantic-color-border-selected);
-      background-color: var(--ods-semantic-color-surface-selected-solid);
-    }
+    border-color: var(--ods-semantic-color-border-selected);
+    background-color: var(--ods-semantic-color-surface-selected-solid);
   }
 }

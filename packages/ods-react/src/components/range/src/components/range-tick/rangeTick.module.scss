@@ -38,10 +38,6 @@
     &__label {
       color: var(--ods-semantic-color-content-text);
       font-weight: 600;
-
-      &--disabled {
-        color: var(--ods-semantic-color-content-disabled);
-      }
     }
   }
 }

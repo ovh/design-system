@@ -23,7 +23,7 @@
       }
     }
 
-    &:hover {
+    &:not([data-disabled]):hover {
       border-color: var(--ods-semantic-color-interaction-control-hover);
       background-color: var(--surface-control-hover);
     }
@@ -42,11 +42,6 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      #{$input}__start,
-      #{$input}__end {
-        color: inherit;
-      }
     }
 
     &#{$input}[data-invalid] {

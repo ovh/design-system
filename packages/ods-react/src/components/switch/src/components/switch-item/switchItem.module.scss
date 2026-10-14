@@ -5,7 +5,6 @@
   .switch-item {
     --ods-switch-item-background-color: inherit;
     --ods-switch-item-background-color-checked: var(--ods-semantic-color-interaction-base-hover);
-    --ods-switch-item-background-color-checked-disabled: var(--ods-semantic-color-surface-neutral);
     --ods-switch-item-background-color-hover: var(--ods-semantic-color-interaction-highlight-hover);
     --ods-switch-item-text-color: var(--ods-semantic-color-content-text);
     --ods-switch-item-text-color-checked: var(--ods-semantic-color-content-on-solid);
@@ -22,7 +21,7 @@
     font-weight: 600;
     cursor: pointer;
 
-    &:hover {
+    &:not([data-disabled], [data-state="on"]):hover {
       background-color:  var(--ods-switch-item-background-color-hover);
     }
 
@@ -39,11 +38,6 @@
     &[data-state="on"] {
       background-color:  var(--ods-switch-item-background-color-checked);
       color:  var(--ods-switch-item-text-color-checked);
-
-      &[data-disabled] {
-        background-color: var(--ods-switch-item-background-color-checked-disabled);
-        color: var(--ods-switch-item-text-color-checked);
-      }
     }
   }
 }

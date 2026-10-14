@@ -33,16 +33,16 @@
           border-bottom-right-radius: 0;
         }
       }
-
-      #{$trigger}__icon {
-        transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
-        color: var(--ods-semantic-color-content-icon);
-        font-size: 1.25rem;
-      }
     }
 
     &--expand-icon-left {
       flex-flow: row-reverse;
+    }
+
+    &__icon {
+      transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
+      color: var(--ods-semantic-color-content-icon);
+      font-size: 1.25rem;
     }
 
     &__content {

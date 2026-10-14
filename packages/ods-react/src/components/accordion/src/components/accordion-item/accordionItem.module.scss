@@ -33,8 +33,6 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      opacity: var(--ods-semantic-opacity-disabled);
     }
   }
 }

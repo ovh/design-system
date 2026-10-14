@@ -263,12 +263,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   border-width: var(--ods-button-border-radius-width);
   border-style: solid;
 
-  &:not(:disabled) {
-    @if $color == 'critical' {
-      border-color: var(--ods-button-border-color-critical);
-      background-color: var(--ods-button-background-color-critical);
-      color: var(--ods-button-text-color-critical);
+  @if $color == 'critical' {
+    border-color: var(--ods-button-border-color-critical);
+    background-color: var(--ods-button-background-color-critical);
+    color: var(--ods-button-text-color-critical);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-critical-hover);
@@ -279,11 +279,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         border-color: var(--ods-button-border-color-critical-active);
         background-color: var(--ods-button-background-color-critical-active);
       }
-    } @else if $color == 'information' {
-      border-color: var(--ods-button-border-color-information);
-      background-color: var(--ods-button-background-color-information);
-      color: var(--ods-button-text-color-information);
+    }
+  } @else if $color == 'information' {
+    border-color: var(--ods-button-border-color-information);
+    background-color: var(--ods-button-background-color-information);
+    color: var(--ods-button-text-color-information);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-information-hover);
@@ -294,11 +296,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         border-color: var(--ods-button-border-color-information-active);
         background-color: var(--ods-button-background-color-information-active);
       }
-    } @else if $color == 'neutral' {
-      border-color: var(--ods-button-border-color-neutral);
-      background-color: var(--ods-button-background-color-neutral);
-      color: var(--ods-button-text-color-neutral);
+    }
+  } @else if $color == 'neutral' {
+    border-color: var(--ods-button-border-color-neutral);
+    background-color: var(--ods-button-background-color-neutral);
+    color: var(--ods-button-text-color-neutral);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-neutral-hover);
@@ -309,11 +313,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         border-color: var(--ods-button-border-color-neutral-active);
         background-color: var(--ods-button-background-color-neutral-active);
       }
-    } @else if $color == 'primary' {
-      border-color: var(--ods-button-border-color-primary);
-      background-color: var(--ods-button-background-color-primary);
-      color: var(--ods-button-text-color-primary);
+    }
+  } @else if $color == 'primary' {
+    border-color: var(--ods-button-border-color-primary);
+    background-color: var(--ods-button-background-color-primary);
+    color: var(--ods-button-text-color-primary);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-primary-hover);
@@ -324,11 +330,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         border-color: var(--ods-button-border-color-primary-active);
         background-color: var(--ods-button-background-color-primary-active);
       }
-    } @else if $color == 'success' {
-      border-color: var(--ods-button-border-color-success);
-      background-color: var(--ods-button-background-color-success);
-      color: var(--ods-button-text-color-success);
+    }
+  } @else if $color == 'success' {
+    border-color: var(--ods-button-border-color-success);
+    background-color: var(--ods-button-background-color-success);
+    color: var(--ods-button-text-color-success);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-success-hover);
@@ -339,11 +347,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         border-color: var(--ods-button-border-color-success-active);
         background-color: var(--ods-button-background-color-success-active);
       }
-    } @else if $color == 'warning' {
-      border-color: var(--ods-button-border-color-warning);
-      background-color: var(--ods-button-background-color-warning);
-      color: var(--ods-button-text-color-warning);
+    }
+  } @else if $color == 'warning' {
+    border-color: var(--ods-button-border-color-warning);
+    background-color: var(--ods-button-background-color-warning);
+    color: var(--ods-button-text-color-warning);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-warning-hover);
@@ -361,15 +371,11 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
 @mixin ods-button-variant-ghost($color) {
   border: var(--ods-button-border-radius-width) solid transparent;
 
-  &:disabled {
-    background-color: inherit;
-  }
+  @if $color == 'critical' {
+    background-color: var(--ods-button-background-color-critical-ghost);
+    color: var(--ods-button-text-color-critical-ghost);
 
-  &:not(:disabled) {
-    @if $color == 'critical' {
-      background-color: var(--ods-button-background-color-critical-ghost);
-      color: var(--ods-button-text-color-critical-ghost);
-
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-critical-ghost-hover);
@@ -380,10 +386,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-critical-ghost-active);
         color: var(--ods-button-text-color-critical-ghost-active);
       }
-    } @else if $color == 'information' {
-      background-color: var(--ods-button-background-color-information-ghost);
-      color: var(--ods-button-text-color-information-ghost);
+    }
+  } @else if $color == 'information' {
+    background-color: var(--ods-button-background-color-information-ghost);
+    color: var(--ods-button-text-color-information-ghost);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-information-ghost-hover);
@@ -394,10 +402,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-information-ghost-active);
         color: var(--ods-button-text-color-information-ghost-active);
       }
-    } @else if $color == 'neutral' {
-      background-color: var(--ods-button-background-color-neutral-ghost);
-      color: var(--ods-button-text-color-neutral-ghost);
+    }
+  } @else if $color == 'neutral' {
+    background-color: var(--ods-button-background-color-neutral-ghost);
+    color: var(--ods-button-text-color-neutral-ghost);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-neutral-ghost-hover);
@@ -408,10 +418,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-neutral-ghost-active);
         color: var(--ods-button-text-color-neutral-ghost-active);
       }
-    } @else if $color == 'primary' {
-      background-color: var(--ods-button-background-color-primary-ghost);
-      color: var(--ods-button-text-color-primary-ghost);
+    }
+  } @else if $color == 'primary' {
+    background-color: var(--ods-button-background-color-primary-ghost);
+    color: var(--ods-button-text-color-primary-ghost);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-primary-ghost-hover);
@@ -422,10 +434,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-primary-ghost-active);
         color: var(--ods-button-text-color-primary-ghost-active);
       }
-    } @else if $color == 'success' {
-      background-color: var(--ods-button-background-color-success-ghost);
-      color: var(--ods-button-text-color-success-ghost);
+    }
+  } @else if $color == 'success' {
+    background-color: var(--ods-button-background-color-success-ghost);
+    color: var(--ods-button-text-color-success-ghost);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-success-ghost-hover);
@@ -436,10 +450,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-success-ghost-active);
         color: var(--ods-button-text-color-success-ghost-active);
       }
-    } @else if $color == 'warning' {
-      background-color: var(--ods-button-background-color-warning-ghost);
-      color: var(--ods-button-text-color-warning-ghost);
+    }
+  } @else if $color == 'warning' {
+    background-color: var(--ods-button-background-color-warning-ghost);
+    color: var(--ods-button-text-color-warning-ghost);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         background-color: var(--ods-button-background-color-warning-ghost-hover);
@@ -458,12 +474,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   border-width: var(--ods-button-border-radius-width);
   border-style: solid;
 
-  &:not(:disabled) {
-    @if $color == 'critical' {
-      border-color: var(--ods-button-border-color-critical-outline);
-      background-color: var(--ods-button-background-color-critical-outline);
-      color: var(--ods-button-text-color-critical-outline);
+  @if $color == 'critical' {
+    border-color: var(--ods-button-border-color-critical-outline);
+    background-color: var(--ods-button-background-color-critical-outline);
+    color: var(--ods-button-text-color-critical-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-critical-outline-hover);
@@ -476,11 +492,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-critical-outline-active);
         color: var(--ods-button-text-color-critical-outline-active);
       }
-    } @else if $color == 'information' {
-      border-color: var(--ods-button-border-color-information-outline);
-      background-color: var(--ods-button-background-color-information-outline);
-      color: var(--ods-button-text-color-information-outline);
+    }
+  } @else if $color == 'information' {
+    border-color: var(--ods-button-border-color-information-outline);
+    background-color: var(--ods-button-background-color-information-outline);
+    color: var(--ods-button-text-color-information-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-information-outline-hover);
@@ -493,11 +511,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-information-outline-active);
         color: var(--ods-button-text-color-information-outline-active);
       }
-    } @else if $color == 'neutral' {
-      border-color: var(--ods-button-border-color-neutral-outline);
-      background-color: var(--ods-button-background-color-neutral-outline);
-      color: var(--ods-button-text-color-neutral-outline);
+    }
+  } @else if $color == 'neutral' {
+    border-color: var(--ods-button-border-color-neutral-outline);
+    background-color: var(--ods-button-background-color-neutral-outline);
+    color: var(--ods-button-text-color-neutral-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-neutral-outline-hover);
@@ -510,11 +530,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-neutral-outline-active);
         color: var(--ods-button-text-color-neutral-outline-active);
       }
-    } @else if $color == 'primary' {
-      border-color: var(--ods-button-border-color-primary-outline);
-      background-color: var(--ods-button-background-color-primary-outline);
-      color: var(--ods-button-text-color-primary-outline);
+    }
+  } @else if $color == 'primary' {
+    border-color: var(--ods-button-border-color-primary-outline);
+    background-color: var(--ods-button-background-color-primary-outline);
+    color: var(--ods-button-text-color-primary-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-primary-outline-hover);
@@ -527,11 +549,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-primary-outline-active);
         color: var(--ods-button-text-color-primary-outline-active);
       }
-    } @else if $color == 'success' {
-      border-color: var(--ods-button-border-color-success-outline);
-      background-color: var(--ods-button-background-color-success-outline);
-      color: var(--ods-button-text-color-success-outline);
+    }
+  } @else if $color == 'success' {
+    border-color: var(--ods-button-border-color-success-outline);
+    background-color: var(--ods-button-background-color-success-outline);
+    color: var(--ods-button-text-color-success-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-success-outline-hover);
@@ -544,11 +568,13 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-success-outline-active);
         color: var(--ods-button-text-color-success-outline-active);
       }
-    } @else if $color == 'warning' {
-      border-color: var(--ods-button-border-color-warning-outline);
-      background-color: var(--ods-button-background-color-warning-outline);
-      color: var(--ods-button-text-color-warning-outline);
+    }
+  } @else if $color == 'warning' {
+    border-color: var(--ods-button-border-color-warning-outline);
+    background-color: var(--ods-button-background-color-warning-outline);
+    color: var(--ods-button-text-color-warning-outline);
 
+    &:not(:disabled) {
       &:focus-visible,
       &:hover {
         border-color: var(--ods-button-border-color-warning-outline-hover);

@@ -81,17 +81,15 @@
       align-self: center;
       border: 0;
       border-radius: var(--ods-semantic-size-radius-container);
+      box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
+      background: $primary-color linear-gradient(86.59deg, rgb(255, 187, 0, 0) 82.69%, rgb(255, 187, 0, 0.75) 100%);
       padding: calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-gap-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-inset-inline) / 2);
+      color: var(--order-button-text-color);
       font-size: 16px;
       font-weight: 600;
 
       &:disabled {
-        background: var(--ods-semantic-color-surface-disabled);
-        color: var(--ods-semantic-color-content-disabled);
-
-        #{$button}__icon {
-          color: var(--ods-semantic-color-content-disabled);
-        }
+        @include style.ods-is-disabled();
       }
 
       &:focus-visible {
@@ -100,9 +98,6 @@
 
       &:not(:disabled) {
         transition: background ease .3s, box-shadow ease .3s;
-        box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
-        background: $primary-color linear-gradient(86.59deg, rgb(255, 187, 0, 0) 82.69%, rgb(255, 187, 0, 0.75) 100%);
-        color: var(--order-button-text-color);
         cursor: pointer;
 
         &:focus-visible,
@@ -125,14 +120,11 @@
             color: var(--order-button-color-active);
           }
         }
-
-        #{$button}__icon {
-          box-shadow: 3px 3px 6px 0 #82000040 inset, -3px -3px 6px 0 #ffd2d2b2 inset;
-        }
       }
 
       &__icon {
         border-radius: calc(var(--ods-semantic-size-radius-container) * .75);
+        box-shadow: 3px 3px 6px 0 #82000040 inset, -3px -3px 6px 0 #ffd2d2b2 inset;
         background-color: var(--order-button-text-color);
         padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
         color: $primary-color;

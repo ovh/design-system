@@ -1,3 +1,4 @@
+@use '../../../../../style/state';
 @use '../../../../../style/text';
 
 @layer ods-quarks {
@@ -5,7 +6,7 @@
     $text: &;
 
     &--disabled#{&} {
-      color: var(--ods-semantic-color-content-disabled);
+      @include state.ods-is-disabled();
     }
 
     &--blockquote {

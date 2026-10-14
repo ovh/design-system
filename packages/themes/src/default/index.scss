@@ -79,7 +79,8 @@
 
 
   /* Surfaces — form controls */
-  --ods-semantic-color-surface-control: var(--ods-palette-gray-300);
+
+  --ods-semantic-color-surface-control: var(--ods-palette-gray-50); // Il était à 300
       // TODO: Toggle activé, checbox et radio cochés/selectionnés, partie remplie du range
       // on constate qu'il nous manque peut etre un token pour la border des control selected
       --ods-semantic-color-surface-control-solid:  var(--ods-palette-accent-700);
@@ -295,6 +296,7 @@
 
 
   /* Interaction — form controls */
+  // Les borders des champs de formulaire sont en hover - la surface hover est manquante (cf. fin de fichier)
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-accent-400);
   // Pour info au repos c'est --ods-semantic-color-border-control
       // TODO: Halo autour des champs de formulaire (border ou shadow) ?
@@ -440,9 +442,10 @@
 
   /* ---------------------------------------------------------------------------- tier 2 - shadow */
 
-  --ods-semantic-shadow-control: 0 1px 2px 0 var(--ods-semantic-color-shadow-control);
-  --ods-semantic-shadow-raised: 0 1px 3px 0 var(--ods-semantic-color-shadow-raised), 0 1px 2px -1px var(--ods-semantic-color-shadow-raised);
-  --ods-semantic-shadow-overlay: 0 4px 6px -1px var(--ods-semantic-color-shadow-overlay), 0 2px 4px -2px var(--ods-semantic-color-shadow-overlay);
+//   --ods-semantic-shadow-control: 0 1px 2px 0 color-mix(in srgb, var(--ods-semantic-color-shadow-control) 20%, transparent);
+  --ods-semantic-shadow-control: none;
+  --ods-semantic-shadow-raised: 0 1px 3px 0 color-mix(in srgb, var(--ods-semantic-color-shadow-raised) 20%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-raised) 20%, transparent);
+  --ods-semantic-shadow-overlay: 0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent);
 
   /* ---------------------------------------------------------------------------- tier 2 - motion */
   
@@ -470,4 +473,12 @@
     --ods-semantic-motion-duration-medium: 0.01s;
     --ods-semantic-motion-duration-slow: 0.01s;
   }
+}
+
+
+// Missing :
+:root {
+    --surface-control-hover: var(--ods-palette-accent-50);
+
+    // Les box-shadow des champs de formulaire au hover / focus
 }

@@ -19,7 +19,7 @@
 
   #{$filled-group}:not(:nth-child(1 of #{$filled-group})) {
     margin-top: var(--ods-semantic-size-space-inset-block);
-    border-top: 1px solid var(--ods-semantic-color-border-neutral-subtle);
+    border-top: 1px solid var(--ods-semantic-color-border-neutral-minimal);
     padding-top: var(--ods-semantic-size-space-inset-block);
   }
 }

@@ -1,4 +1,4 @@
-import { MESSAGE_COLOR, MESSAGE_STATUS, MESSAGE_STATUSES, Message, MessageBody, MessageIcon, type MessageStatus } from '../../src';
+import { MESSAGE_COLOR, MESSAGE_EMPHASES, MESSAGE_STATUS, MESSAGE_STATUSES, Message, MessageBody, MessageIcon, type MessageEmphasis, type MessageStatus } from '../../src';
 
 export default {
   component: Message,
@@ -60,4 +60,44 @@ export const statuses = () => (
       ))
     }
   </>
+);
+
+export const emphases = () => (
+  <div style={{ display: 'flex', flexFlow: 'column', gap: '8px', alignItems: 'flex-start' }}>
+    {
+      MESSAGE_STATUSES.map((status) => (
+        <div
+          key={ status }
+          style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>
+          <Message
+            data-testid={ `${status}-default` }
+            status={ status }>
+            <MessageIcon name="circle-info" />
+            <MessageBody>{ status } default</MessageBody>
+          </Message>
+
+          {
+            MESSAGE_EMPHASES.map((emphasis) => (
+              <Message
+                data-testid={ `${status}-${emphasis}` }
+                emphasis={ emphasis }
+                key={ emphasis }
+                status={ status }>
+                <MessageIcon name="circle-info" />
+                <MessageBody>{ status } { emphasis }</MessageBody>
+              </Message>
+            ))
+          }
+
+          <Message
+            data-testid={ `${status}-unknown` }
+            emphasis={ 'critical' as MessageEmphasis }
+            status={ status }>
+            <MessageIcon name="circle-info" />
+            <MessageBody>{ status } unknown</MessageBody>
+          </Message>
+        </div>
+      ))
+    }
+  </div>
 );

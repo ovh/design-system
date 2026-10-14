@@ -16,6 +16,22 @@ describe('Toaster rendering', () => {
     expect(await page.waitForSelector('[data-ods="message"]')).not.toBeNull();
   });
 
+  it('should render a toast with the medium emphasis of Message', async() => {
+    await gotoStory(page, 'rendering/default');
+    await page.waitForSelector('[data-ods="toaster"]');
+
+    await triggerToast(page);
+
+    const message = await page.waitForSelector('[data-ods="message"]');
+    const style = await message!.evaluate((el: Element) => {
+      const computed = getComputedStyle(el);
+      return [computed.backgroundColor, computed.borderTopWidth, computed.borderTopStyle, computed.borderTopColor, computed.color];
+    });
+
+    // Information medium: page background, light information border, information text.
+    expect(style).toEqual(['rgb(255, 255, 255)', '1px', 'solid', 'rgb(190, 241, 255)', 'rgb(0, 80, 215)']);
+  });
+
   describe('status', () => {
     it('should announce a critical toast as an alert and the others as a status', async() => {
       await gotoStory(page, 'rendering/status');

@@ -6,55 +6,77 @@
 
     @include message.ods-message();
 
-    &--default {
-      &#{$message}--critical {
-        @include message.ods-message-variant-default('critical');
+    // medium is the status rendering itself, so it has no class of its own.
+
+    &--accent {
+      @include message.ods-message-emphasis-medium('primary');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('primary');
       }
 
-      &#{$message}--information {
-        @include message.ods-message-variant-default('information');
-      }
-
-      &#{$message}--neutral {
-        @include message.ods-message-variant-default('neutral');
-      }
-
-      &#{$message}--accent {
-        @include message.ods-message-variant-default('primary');
-      }
-
-      &#{$message}--success {
-        @include message.ods-message-variant-default('success');
-      }
-
-      &#{$message}--warning {
-        @include message.ods-message-variant-default('warning');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('primary');
       }
     }
 
-    &--light {
-      &#{$message}--critical {
-        @include message.ods-message-variant-light('critical');
+    &--critical {
+      @include message.ods-message-emphasis-medium('critical');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('critical');
       }
 
-      &#{$message}--information {
-        @include message.ods-message-variant-light('information');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('critical');
+      }
+    }
+
+    &--information {
+      @include message.ods-message-emphasis-medium('information');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('information');
       }
 
-      &#{$message}--neutral {
-        @include message.ods-message-variant-light('neutral');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('information');
+      }
+    }
+
+    &--neutral {
+      @include message.ods-message-emphasis-medium('neutral');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('neutral');
       }
 
-      &#{$message}--accent {
-        @include message.ods-message-variant-light('primary');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('neutral');
+      }
+    }
+
+    &--success {
+      @include message.ods-message-emphasis-medium('success');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('success');
       }
 
-      &#{$message}--success {
-        @include message.ods-message-variant-light('success');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('success');
+      }
+    }
+
+    &--warning {
+      @include message.ods-message-emphasis-medium('warning');
+
+      &#{$message}--high {
+        @include message.ods-message-emphasis-high('warning');
       }
 
-      &#{$message}--warning {
-        @include message.ods-message-variant-light('warning');
+      &#{$message}--low {
+        @include message.ods-message-emphasis-low('warning');
       }
     }
 

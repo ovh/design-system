@@ -37,15 +37,6 @@ $spinner-size-lg: 80px;
       height: $spinner-size-lg;
     }
 
-    // [Deprecated] color presets, will be removed in v21
-    &--neutral {
-      --ods-spinner-color: var(--ods-semantic-color-content-neutral);
-    }
-
-    &--primary {
-      --ods-spinner-color: var(--ods-semantic-color-content-accent);
-    }
-
     &__svg {
       /*
      * Component-level exception: the four looping indicators disagree on duration (0.8s, 900ms,

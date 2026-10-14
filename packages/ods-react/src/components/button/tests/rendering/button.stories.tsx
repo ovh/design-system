@@ -1,4 +1,4 @@
-import { BUTTON_COLOR, BUTTON_EMPHASES, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_STATUSES, Button, type ButtonEmphasis, type ButtonStatus } from '../../src';
+import { BUTTON_EMPHASES, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, BUTTON_STATUSES, Button, type ButtonEmphasis, type ButtonStatus } from '../../src';
 
 export default {
   component: Button,
@@ -63,19 +63,6 @@ export const emphasesXs = () => (
     <Button data-testid="emphasis-xs-high" emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.xs }>High</Button>
     <Button data-testid="emphasis-xs-low" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.xs }>Low</Button>
     <Button data-testid="emphasis-xs-medium" emphasis={ BUTTON_EMPHASIS.medium } size={ BUTTON_SIZE.xs }>Medium</Button>
-  </>
-);
-
-export const deprecatedColor = () => (
-  <>
-    <Button color={ BUTTON_COLOR.primary } data-testid="color-primary">Primary</Button>
-    <Button data-testid="status-brand" status={ BUTTON_STATUS.brand }>Brand</Button>
-    <Button color={ BUTTON_COLOR.critical } data-testid="color-critical-status-neutral" status={ BUTTON_STATUS.neutral }>Both</Button>
-    <Button data-testid="status-neutral" status={ BUTTON_STATUS.neutral }>Neutral</Button>
-    <Button color={ BUTTON_COLOR.information } data-testid="color-information">Information</Button>
-    <Button color={ BUTTON_COLOR.success } data-testid="color-success">Success</Button>
-    <Button color={ BUTTON_COLOR.warning } data-testid="color-warning">Warning</Button>
-    <Button data-testid="status-none" status={ 'none' as ButtonStatus }>None</Button>
   </>
 );
 

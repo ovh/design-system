@@ -1,4 +1,4 @@
-import { BUTTON_COLOR, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../button/src';
 import { Editable, EditableCancelTrigger, EditableDisplay, EditableEditTrigger, EditableInput, EditableSubmitTrigger } from '../../src';
 
 export default {
@@ -26,11 +26,11 @@ export const triggers = () => (
 
     <EditableEditTrigger data-testid="edit-default" />
     <EditableEditTrigger
-      color={ BUTTON_COLOR.success }
-      data-testid="edit-color" />
+      data-testid="edit-status"
+      status={ BUTTON_STATUS.critical } />
     <EditableSubmitTrigger
-      color={ BUTTON_COLOR.success }
-      data-testid="submit-color" />
+      data-testid="submit-status"
+      status={ BUTTON_STATUS.critical } />
     <EditableCancelTrigger data-testid="cancel-default" />
     <EditableCancelTrigger
       data-testid="cancel-status"
@@ -39,11 +39,6 @@ export const triggers = () => (
       data-testid="cancel-emphasis"
       emphasis={ BUTTON_EMPHASIS.high } />
 
-    <Button
-      color={ BUTTON_COLOR.success }
-      data-testid="button-color-success"
-      emphasis={ BUTTON_EMPHASIS.low }
-      size={ BUTTON_SIZE.sm } />
     <Button
       data-testid="button-status-brand"
       emphasis={ BUTTON_EMPHASIS.low }

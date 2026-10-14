@@ -50,16 +50,4 @@ describe('Tag rendering', () => {
       expect(warnings).toEqual([]);
     });
   });
-
-  describe('deprecated color', () => {
-    it('should render color primary as status accent, let status win and warn once', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
-
-      expect(await getStatusStyle(page, 'color-primary')).toBe(await getStatusStyle(page, 'status-accent'));
-      expect(await getStatusStyle(page, 'color-critical-status-success')).toBe(await getStatusStyle(page, 'status-success'));
-      expect(warnings).toEqual([
-        '[DEPRECATED]: The color prop of Tag is deprecated and will be removed in v21, use the status prop instead.',
-      ]);
-    });
-  });
 });

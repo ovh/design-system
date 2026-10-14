@@ -31,21 +31,4 @@ describe('Divider rendering', () => {
       expect(className).not.toContain('undefined');
     });
   });
-
-  describe('deprecated color', () => {
-    it('should keep the v19 rendering of the deprecated color prop and warn once', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
-
-      const getBackground = async(testId: string): Promise<string> => {
-        const divider = await page.waitForSelector(`[data-testid="${testId}"]`);
-        return divider!.evaluate((el: Element) => getComputedStyle(el).backgroundColor);
-      };
-
-      expect(await getBackground('color-primary')).toBe(await getBackground('default'));
-      expect(await getBackground('color-neutral')).not.toBe(await getBackground('default'));
-      expect(warnings).toEqual([
-        '[DEPRECATED]: The color prop of Divider is deprecated and will be removed in v21, override the background-color in CSS instead.',
-      ]);
-    });
-  });
 });

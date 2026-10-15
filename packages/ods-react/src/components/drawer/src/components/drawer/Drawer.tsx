@@ -1,6 +1,6 @@
 import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { type RootNode, useEnvironmentContext } from '@ark-ui/react/environment';
-import { type FC, type JSX, type PropsWithChildren, useLayoutEffect, useRef } from 'react';
+import { type FC, type JSX, type PropsWithChildren, useLayoutEffect, useRef, useState } from 'react';
 import { DrawerProvider, type DrawerRootProp } from '../../contexts/useDrawer';
 
 interface DrawerProp extends DrawerRootProp {}
@@ -162,15 +162,19 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
   open,
   positionerStyle,
 }): JSX.Element => {
+  const [contentId, setContentId] = useState<string>();
+
   return (
     <DrawerProvider
       backdrop={ backdrop }
       backdropStyle={ backdropStyle }
-      positionerStyle={ positionerStyle }>
+      positionerStyle={ positionerStyle }
+      setContentId={ setContentId }>
       <Dialog.Root
         closeOnEscape={ closeOnEscape }
         closeOnInteractOutside={ closeOnInteractOutside ?? backdrop === true }
         defaultOpen={ defaultOpen }
+        ids={ contentId ? { content: contentId } : undefined }
         modal={ backdrop === true }
         onOpenChange={ onOpenChange }
         open={ open }

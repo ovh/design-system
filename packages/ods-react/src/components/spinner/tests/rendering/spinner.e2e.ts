@@ -78,16 +78,5 @@ describe('Spinner rendering', () => {
       expect(await getFill(page, 'parent-custom-property')).toBe('rgb(0, 0, 255)');
       expect(warnings).toEqual([]);
     });
-
-    it('should keep the v19 fill with the deprecated color prop and warn once', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
-
-      expect(await getFill(page, 'color-neutral')).toBe(await resolveColor(page, 'var(--ods-theme-neutral-color)'));
-      expect(await getFill(page, 'color-primary')).toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
-      expect(await resolveColor(page, 'var(--ods-theme-neutral-color)')).not.toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
-      expect(warnings).toEqual([
-        '[DEPRECATED]: The color prop of Spinner is deprecated and will be removed in v21, set the --ods-spinner-color CSS custom property instead.',
-      ]);
-    });
   });
 });

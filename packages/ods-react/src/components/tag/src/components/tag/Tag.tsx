@@ -1,20 +1,16 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { warnDeprecated } from '../../../../../utils/deprecation';
 import { ICON_NAME, Icon, type IconName } from '../../../../icon/src';
-import { TAG_COLOR, type TagColor } from '../../constants/tag-color';
 import { TAG_SIZE, type TagSize } from '../../constants/tag-size';
 import { TAG_STATUS, type TagStatus } from '../../constants/tag-status';
 import style from './tag.module.scss';
 
 interface TagProp extends ComponentPropsWithRef<'button'> {
   /**
-   * @deprecated
-   * @type=TAG_COLOR
-   * The color preset to use.
-   * DEPRECATED: Use the `status` prop instead, color will be removed in v21.
+   * Removed in v20, use status. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
    */
-  color?: TagColor;
+  color?: never,
   /**
    * The icon to display on the right side.
    */
@@ -33,23 +29,16 @@ interface TagProp extends ComponentPropsWithRef<'button'> {
 const Tag: FC<TagProp> = forwardRef(({
   children,
   className,
-  color,
   icon = ICON_NAME.xmark,
   size = TAG_SIZE.md,
-  status,
+  status = TAG_STATUS.information,
   ...props
 }, ref): JSX.Element => {
-  if (color) {
-    warnDeprecated('Tag.color', '[DEPRECATED]: The color prop of Tag is deprecated and will be removed in v21, use the status prop instead.');
-  }
-
-  const tagStatus = status ?? (color === TAG_COLOR.primary ? TAG_STATUS.accent : color) ?? TAG_STATUS.information;
-
   return (
     <button
       className={ classNames(
         style['tag'],
-        style[`tag--${tagStatus}`],
+        style[`tag--${status}`],
         style[`tag--${size}`],
         className,
       )}

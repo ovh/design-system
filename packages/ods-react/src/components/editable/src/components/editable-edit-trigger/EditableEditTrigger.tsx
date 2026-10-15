@@ -36,8 +36,7 @@ const EditableEditTrigger: FC<EditableEditTriggerProp> = forwardRef(({
       : <Button
         emphasis={ BUTTON_EMPHASIS.low }
         size={ BUTTON_SIZE.sm }
-        // The internal status only applies when the integrator sets neither status nor color
-        status={ 'color' in props && props.color ? undefined : BUTTON_STATUS.brand }
+        status={ BUTTON_STATUS.brand }
         { ...sharedProps }
         { ...props }>
         <Icon name={ ICON_NAME.pen } />

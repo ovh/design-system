@@ -20,8 +20,9 @@ const Heading = ({ children, className, label, level }: { children?: ReactNode, 
         aria-label={ `Link to “${label}”` }
         className="doc__anchor"
         href={ `#${id}` }
-        onClick={ () => {
-          navigator.clipboard?.writeText(new URL(`#${id}`, window.location.href).href).catch(() => { /* http or denied: the hash still lands in the URL bar */ });
+        onClick={ (event) => {
+          // Read the href, not `id`: the article renames a repeated slug (see DocArticle).
+          navigator.clipboard?.writeText(event.currentTarget.href).catch(() => { /* http or denied: the hash still lands in the URL bar */ });
         } }>
         #
       </a>

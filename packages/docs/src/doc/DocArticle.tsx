@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { flashSearchTerms } from './searchHighlight';
+import { createUniqueSlugs } from './slug';
 
 interface TocEntry {
   id: string;
@@ -28,6 +29,23 @@ function toTocItems(entries: TocEntry[]): TocItem[] {
     }
   }
   return items;
+}
+
+/* Headings render their slug as id; a repeated label would give duplicate ids.
+   Rename the repeats in document order (same rule as the search index) and keep
+   each hover anchor in sync. The original slug is kept in data-slug, so the pass
+   is idempotent when lazy content mounts later. */
+function dedupeHeadingIds(container: HTMLElement): void {
+  const unique = createUniqueSlugs();
+  container.querySelectorAll<HTMLElement>('.doc__heading[id]').forEach((heading) => {
+    const slug = heading.dataset.slug ?? heading.id;
+    heading.dataset.slug = slug;
+    const id = unique(slug);
+    if (heading.id !== id) {
+      heading.id = id;
+      heading.parentElement?.querySelector<HTMLAnchorElement>('.doc__anchor')?.setAttribute('href', `#${id}`);
+    }
+  });
 }
 
 /* "On this page" — the page's own section titles, in the same TreeView as
@@ -151,6 +169,18 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setContainer(ref.current);
   }, []);
+
+  // Declared before the hash effect: its observer runs first, so a deep link to a
+  // renamed heading ("#related-sources-2") finds it.
+  useEffect(() => {
+    if (!container) {
+      return;
+    }
+    dedupeHeadingIds(container);
+    const observer = new MutationObserver(() => dedupeHeadingIds(container));
+    observer.observe(container, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [container]);
 
   /* Deep links to a section (#anchor): the MDX content mounts lazily, so the
      browser's native jump fires before the heading exists — honor the hash

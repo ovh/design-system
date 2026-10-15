@@ -1,5 +1,5 @@
 import { Fragment, useMemo } from 'react';
-import { BADGE_STATUS, Badge, ICON_NAME, Icon, Link, Table, TEXT_PRESET, Text } from '../../ods';
+import { BADGE_STATUS, Badge, ICON_NAME, Icon, Link, Table } from '../../ods';
 import { useAsyncValue } from '../../nav/useAsyncValue';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
@@ -86,10 +86,9 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
           <SectionHeading label="Enums" />
           { spec.enums.map((enumSpec) => (
             <Fragment key={ enumSpec.name }>
-              <Text as="h3" className="doc__heading" preset={ TEXT_PRESET.heading5 }>
-                { enumSpec.name }
+              <Heading label={ enumSpec.name } level={ 3 }>
                 { enumSpec.deprecated && <Badge status={ BADGE_STATUS.warning } size="sm">Deprecated</Badge> }
-              </Text>
+              </Heading>
               <ul className="tech__enum">
                 { enumSpec.members.map((member) => (
                   <li key={ member.name }><code className="tech__type">{ member.name } = "{ member.value }"</code></li>

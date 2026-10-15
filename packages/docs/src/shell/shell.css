@@ -290,6 +290,10 @@ body {
   --ods-theme-anchor-text-color: var(--ods-color-primary-500);
   --ods-theme-anchor-text-color-hover: var(--ods-color-primary-600);
   --ods-theme-anchor-text-color-visited: var(--ods-color-primary-700);
+
+  /* The brand color is compiled to a literal (#000e9c), unreadable on the dark
+     surface: the wordmark is white in dark mode. */
+  --ods-theme-brand-color: #ffffff;
 }
 
 /* ——— Narrow layout (keep in sync with NARROW_QUERY in Shell.tsx) ———

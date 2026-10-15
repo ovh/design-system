@@ -42,6 +42,7 @@ interface DrawerRootProp {
 
 interface DrawerProviderProp extends Pick<DrawerRootProp, 'backdrop' | 'backdropStyle' | 'positionerStyle'> {
   children: ReactNode,
+  setContentId: (value?: string) => void,
 }
 
 type DrawerContextType = Omit<DrawerProviderProp, 'children'>;
@@ -53,12 +54,14 @@ function DrawerProvider({
   backdropStyle,
   children,
   positionerStyle,
+  setContentId,
 }: DrawerProviderProp): JSX.Element {
   return (
     <DrawerContext.Provider value={{
       backdrop,
       backdropStyle,
       positionerStyle,
+      setContentId,
     }}>
       { children }
     </DrawerContext.Provider>

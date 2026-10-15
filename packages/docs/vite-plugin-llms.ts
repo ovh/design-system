@@ -9,7 +9,7 @@ import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
 import { categorizeTokens, splitPalettes } from './src/doc/ports/helpers/designTokens';
-import { slugify } from './src/doc/slug';
+import { createUniqueSlugs, slugify } from './src/doc/slug';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
 /* The llms invariant (CDC P1): the platform emits its llms output natively at
@@ -728,11 +728,21 @@ function sectionEntries(doc: { body: string }, route: string, title: string, fal
   if (introText.length > 40) {
     entries.push({ b: introText, r: route, s: fallbackLabel, t: title });
   }
+  // Same renaming of repeated slugs as the rendered page (DocArticle), counted
+  // over every heading level in document order.
+  const unique = createUniqueSlugs();
+  const ids = new Map<number, string>();
+  for (const match of withoutFences.matchAll(/^(#{2,4}) +(.+)$/gm)) {
+    const id = unique(slugify(match[2].trim()));
+    if (match[1] === '##') {
+      ids.set(ids.size, id);
+    }
+  }
   for (let i = 0; i + 1 < rest.length; i += 2) {
     const heading = rest[i].trim();
     const text = searchText(rest[i + 1]);
     if (text.length > 0) {
-      entries.push({ b: text, r: `${route}#${slugify(heading)}`, s: heading, t: title });
+      entries.push({ b: text, r: `${route}#${ids.get(i / 2) ?? slugify(heading)}`, s: heading, t: title });
     }
   }
   return entries;

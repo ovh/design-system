@@ -145,6 +145,41 @@ async function suite(browser, { base, version }) {
   }
   ok('5 index deep-links sampled', routes.length === 5, `${routes.length} sampled`);
 
+  // Repeated heading labels get unique ids (accessibility guide: one "Related
+  // Sources" per section), deep links reach the right one, and the Technical
+  // tab's enum names carry an id and an anchor too.
+  const repeatedPage = await ctx.newPage();
+  repeatedPage.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await repeatedPage.goto(`${root}/guides/accessibility#related-sources-2`, { waitUntil: 'domcontentloaded' });
+    await repeatedPage.waitForFunction(() => document.getElementById('related-sources-2') !== null, null, { timeout: 30000 });
+    const ids = await repeatedPage.$$eval('.doc__heading[id]', (els) => els.map((el) => el.id));
+    const duplicates = ids.filter((id, at) => ids.indexOf(id) !== at);
+    ok('heading ids are unique on a page with repeated labels', duplicates.length === 0, duplicates.join(','));
+    const anchorsMatch = await repeatedPage.$$eval('.doc__heading-row', (rows) => rows.every((row) => {
+      const heading = row.querySelector('.doc__heading');
+      return row.querySelector('.doc__anchor')?.getAttribute('href') === `#${heading?.id}`;
+    }));
+    ok('each hover anchor targets its own heading', anchorsMatch);
+    const all = await repeatedPage.$$eval('.doc__heading', (els) => els.filter((el) => el.textContent?.trim() === 'Related Sources').length);
+    ok('the guide repeats "Related Sources" (fixture still valid)', all > 1, `${all} found`);
+  } catch (error) {
+    ok('repeated heading labels', false, String(error).slice(0, 120));
+  }
+  await repeatedPage.close();
+
+  const technical = await ctx.newPage();
+  technical.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await technical.goto(`${root}/components/badge/technical`, { waitUntil: 'domcontentloaded' });
+    await technical.waitForSelector('#badge-size', { timeout: 30000 });
+    const href = await technical.locator('#badge-size').locator('xpath=..').locator('.doc__anchor').getAttribute('href');
+    ok('enum headings of the Technical tab carry an id and an anchor', href === '#badge-size', href ?? '(none)');
+  } catch (error) {
+    ok('enum headings of the Technical tab', false, String(error).slice(0, 120));
+  }
+  await technical.close();
+
   ok('zero pageerror', errors.length === 0, errors[0] ?? '');
   await ctx.close();
   return results;

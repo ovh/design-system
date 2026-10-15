@@ -46,8 +46,8 @@ Compare the public surface before / after:
 - `packages/ods-react/etc/public-api.api.txt` — every removed or changed line is a
   candidate break. A source change to exports **without** an update of this file is a P0;
   the fix is to regenerate it with `pnpm test:api:update` (`scripts/api-snapshot.sh`).
-- Component exports in `src/components/<name>/src/index.ts` (components, `*_COLOR(S)`,
-  `*_SIZE(S)`, `*_VARIANT(S)` constants, types).
+- Component exports in `src/components/<name>/src/index.ts` (components, `*_STATUS(ES)`,
+  `*_EMPHASIS` / `*_EMPHASES`, `*_SIZE(S)` constants, types).
 - Prop types and **runtime defaults** (a changed default is a break even if types match).
 - `data-ods` / `data-part` attributes and CSS class names consumers may target.
 - Emitted events / callback signatures.
@@ -90,6 +90,8 @@ Each deviation must point to an existing precedent (`path:line`). Typical checks
 - Root element carries `data-ods="<component>"`.
 - Conventional commits / PR title with a **lowercase** scope: `feat(badge)`, not
   `feat(Badge)`.
+- PRs are rebase-merged, so every commit lands in the CHANGELOG: a breaking commit carries a
+  `BREAKING CHANGE:` footer, never a `!` in its header (the changelog parser drops it).
 
 ## 5. Tests and documentation coverage
 
@@ -97,7 +99,8 @@ The reviewer cannot run the suites, so check statically:
 
 - New prop / variant ⇒ new or updated rendering story in `tests/rendering/*.stories.tsx`
   **and** an assertion in `tests/rendering/*.e2e.ts`.
-- New behaviour ⇒ a spec test.
+- New behaviour ⇒ a spec test (`tests/**/*.spec.ts`); a typing change ⇒ a type-level test
+  with `@ts-expect-error`.
 - Public change ⇒ docs updated (`packages/docs/src/content/components/<name>/` and the
   stories under `packages/docs/stories/`).
 

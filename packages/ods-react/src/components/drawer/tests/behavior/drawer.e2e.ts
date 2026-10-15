@@ -201,6 +201,21 @@ describe('Drawer behavior', () => {
       expect(await isFocusInDrawer(page)).toBe(false);
     });
 
+    it('should return the focus to the trigger when the content has a custom id', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-custom-content-id');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      expect(await page.$eval(CONTENT, (el) => el.id)).toBe('custom-content-id');
+      await page.focus('[data-testid="second"]');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      expect(await isFocusInDrawer(page)).toBe(false);
+    });
+
     it('should return the focus to the external opener of a controlled drawer', async() => {
       await gotoStory(page, 'behavior/no-backdrop-controlled');
       await page.waitForSelector('[data-testid="external"]');

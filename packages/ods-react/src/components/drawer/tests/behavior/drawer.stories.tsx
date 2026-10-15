@@ -14,13 +14,13 @@ const TallPage = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const DrawerWithFocusables = ({ children, ...props }: DrawerProp & { children?: ReactNode }) => (
+const DrawerWithFocusables = ({ children, contentId, ...props }: DrawerProp & { children?: ReactNode, contentId?: string }) => (
   <Drawer { ...props }>
     <DrawerTrigger data-testid="trigger">
       Trigger
     </DrawerTrigger>
 
-    <DrawerContent position={ DRAWER_POSITION.right }>
+    <DrawerContent id={ contentId } position={ DRAWER_POSITION.right }>
       <DrawerBody>
         <input data-testid="first" />
         <button data-testid="second" type="button">
@@ -87,6 +87,13 @@ export const noBackdrop = () => (
   <TallPage>
     <BackgroundButton />
     <DrawerWithFocusables />
+  </TallPage>
+);
+
+export const noBackdropCustomContentId = () => (
+  <TallPage>
+    <BackgroundButton />
+    <DrawerWithFocusables contentId="custom-content-id" />
   </TallPage>
 );
 

@@ -1,6 +1,6 @@
 import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { type RootNode, useEnvironmentContext } from '@ark-ui/react/environment';
-import { type FC, type JSX, type PropsWithChildren, useLayoutEffect, useRef } from 'react';
+import { type FC, type JSX, type PropsWithChildren, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { DrawerProvider, type DrawerRootProp } from '../../contexts/useDrawer';
 
 interface DrawerProp extends DrawerRootProp {}
@@ -162,15 +162,33 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
   open,
   positionerStyle,
 }): JSX.Element => {
+  const contentIdRef = useRef<string | undefined>(undefined);
+  const [, setRenderedContentId] = useState<string>();
+
+  // zag looks the content up by id (focus on open, Escape, outside click, focus return) with the
+  // ids its machine started with, before DrawerContent can give it its own: a getter gives it the
+  // current one, even for a drawer open on mount. The state re-renders the trigger aria-controls.
+  const [ids] = useState(() => ({
+    get content(): string | undefined {
+      return contentIdRef.current;
+    },
+  }));
+  const setContentId = useCallback((id?: string): void => {
+    contentIdRef.current = id;
+    setRenderedContentId(id);
+  }, []);
+
   return (
     <DrawerProvider
       backdrop={ backdrop }
       backdropStyle={ backdropStyle }
-      positionerStyle={ positionerStyle }>
+      positionerStyle={ positionerStyle }
+      setContentId={ setContentId }>
       <Dialog.Root
         closeOnEscape={ closeOnEscape }
         closeOnInteractOutside={ closeOnInteractOutside ?? backdrop === true }
         defaultOpen={ defaultOpen }
+        ids={ ids }
         modal={ backdrop === true }
         onOpenChange={ onOpenChange }
         open={ open }

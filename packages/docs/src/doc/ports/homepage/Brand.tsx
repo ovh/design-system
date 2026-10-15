@@ -1,11 +1,12 @@
-/* fill=currentColor: the wordmark takes the brand color in both themes
-   (the Storybook ThemeApplier plumbing is gone). */
-const Brand = () => {
+/* fill=currentColor: the wordmark takes the color of its class, the brand color (white in
+   dark mode) (the Storybook ThemeApplier plumbing is gone). */
+const Brand = ({ className }: { className?: string }) => {
   return (
     <>
       <h1 className="sr-only">OVHcloud Design System</h1>
       <svg
         aria-hidden
+        className={ className }
         fill="currentColor"
         height={ 64 }
         style={{ blockSize: 'auto', maxInlineSize: '100%' }}

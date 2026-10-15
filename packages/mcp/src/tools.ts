@@ -96,9 +96,14 @@ function commonPrefixLength(a: string, b: string): number {
 }
 
 /* Suggestion rank: substring either way, close spelling (edit distance), or a
-   shared stem ("datagrid" → "data-table" through the "data" prefix). */
+   shared stem ("datagrid" → "data-table" through the "data" prefix). A short slug
+   found inside a longer query ("tag" in "datagrid") ranks last: it is usually a
+   coincidence, not what the user meant. */
 function suggestionScore(target: string, candidate: string): number {
-  if (candidate.includes(target) || target.includes(candidate)) {
+  if (candidate.includes(target)) {
+    return 0;
+  }
+  if (target.includes(candidate) && candidate.length * 2 >= target.length) {
     return 0;
   }
   if (editDistance(target, candidate) <= 2) {
@@ -106,6 +111,9 @@ function suggestionScore(target: string, candidate: string): number {
   }
   if (commonPrefixLength(target, candidate) >= 4) {
     return 2;
+  }
+  if (target.includes(candidate)) {
+    return 3;
   }
   return Infinity;
 }

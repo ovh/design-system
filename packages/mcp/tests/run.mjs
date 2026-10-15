@@ -78,6 +78,8 @@ check('dash-insensitive slug resolves (datatable)', !/Unknown component/.test(da
 
 const fuzzy = await call('get_component', { slug: 'datagrid' });
 check('fuzzy suggestion (datagrid → data-table)', /Did you mean:.*data-table/.test(fuzzy), fuzzy.slice(0, 160));
+const suggested = (fuzzy.match(/Did you mean: ([^?]*)\?/)?.[1] ?? '').split(', ');
+check('a stem match ranks before a short slug found inside the query (data-table before tag)', suggested.indexOf('data-table') !== -1 && (suggested.indexOf('tag') === -1 || suggested.indexOf('data-table') < suggested.indexOf('tag')), suggested.join(','));
 
 const search = await call('search_docs', { query: 'form field validation error' });
 check('search_docs finds form-field', /form/i.test(search) && /fetch with:/.test(search), search.slice(0, 160));

@@ -116,6 +116,11 @@ Audit the comments added by the diff in both directions:
 - **Missing?** A non-trivial guard, exception, hard-coded value or ordering with no
   explanation is a finding.
 - Style matches the neighbouring files (language, tone, density).
+- **Exception: TSDoc on public props and exported types** is API documentation, not a code
+  comment: typedoc turns it into the prop tables of the docs
+  (`packages/docs/src/doc/tech/typedoc.ts`). Never flag it as a paraphrase; check instead
+  that it is true, and present on every new public prop (`@type=` and `@default-value=`
+  tags included when relevant).
 
 ## Summary comment
 

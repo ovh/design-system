@@ -1,6 +1,7 @@
 packages:
   - "packages/docs"
   - "packages/examples/*"
+  - "packages/mcp"
   - "packages/ods-react"
   - "packages/ods-react/src/components/*"
   - "packages/ods-recipes"

@@ -52,8 +52,8 @@ Compare the public surface before / after:
   exports **without** an update of this file is a P0, fixed by regenerating it with
   `pnpm test:api:update`. For the other packages (themes, recipes), compare their
   `src/index.ts` exports directly.
-- Component exports in `src/components/<name>/src/index.ts` (components, `*_STATUS(ES)`,
-  `*_EMPHASIS` / `*_EMPHASES`, `*_SIZE(S)` constants, types).
+- Component exports in `src/components/<name>/src/index.ts` (components, constants such as
+  `FOO_SIZE` / `FOO_SIZES`, types).
 - Prop types and **runtime defaults** (a changed default is a break even if types match).
 - `data-ods` / `data-part` attributes and CSS class names consumers may target.
 - Emitted events / callback signatures.
@@ -68,17 +68,21 @@ change that is not described in the PR body is a P0.
 
 - **Inventory** every `@deprecated` (TSDoc), `[Deprecated]` (SCSS) or "will be removed in
   next major" marker touched or introduced by the diff.
-- **In a major (v20)**: breaking changes are applied directly, with no deprecation
-  step and no alias. Everything already marked deprecated must be removed: a survivor is
-  a P1. A new `@deprecated` or compatibility alias introduced by the PR is a P1.
+- **Which release is targeted?** The PR is part of a major when the newest
+  `packages/docs/src/content/guides/migration-<N>-to-<N+1>.mdx` targets a version not yet
+  published (`version` in `packages/ods-react/package.json` is still below it), or when its
+  commits carry a `BREAKING CHANGE:` footer. Otherwise it is a minor or a patch.
+- **In a major**: breaking changes are applied directly, with no deprecation step and no
+  alias. Everything already marked deprecated must be removed: a survivor is a P1. A new
+  `@deprecated` or compatibility alias introduced by the PR is a P1.
 - **Easy migration is the price of a break.** Every breaking change must come with an
-  entry in the migration guide (`packages/docs/src/content/guides/migration-19-to-20.mdx`)
-  showing a **before / after** snippet an integrator can apply mechanically: renamed prop,
-  value mapping (old value → new value), replaced token. A break with no entry, or with an
-  entry that does not let the integrator migrate without reading the source, is a P0.
-- **In a minor**: any removal of public API is a P0 — it must be deprecated instead. A new
-  deprecation must name its removal version and keep resolving to a value consistent with
-  the new system (never an alias frozen on the old value).
+  entry in the migration guide of that major (`migration-<N>-to-<N+1>.mdx`) showing a
+  **before / after** snippet an integrator can apply mechanically: renamed prop, value
+  mapping (old value → new value), replaced token. A break with no entry, or with an entry
+  that does not let the integrator migrate without reading the source, is a P0.
+- **In a minor or a patch**: any removal of public API is a P0 — it must be deprecated
+  instead. A new deprecation must name its removal version and keep resolving to a value
+  consistent with the new system (never an alias frozen on the old value).
 - **Should be deprecated or deleted**: code made dead by the PR (tokens, SCSS variables,
   enums, exports declared but no longer read), dependencies no longer used.
 - **Traceability**: every deprecation or removal appears in the CHANGELOG. Missing = P2.

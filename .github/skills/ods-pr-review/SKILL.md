@@ -31,6 +31,9 @@ review on top: these angles replace it.
 | A component in `packages/ods-react/src/components/**` | 1, 2, 3, 4, 5, 6 |
 | Shared styles (`packages/ods-react/src/style/**`), themes, tokens, build config | 1, 2, 3, 5, 6 |
 | New package or tool | 1, 4, 5, 6 |
+| Anything else (recipes, docs, examples, scripts…) | 1, 6 |
+
+When several rows match, apply the union of their angles.
 
 ## 1. Correctness
 
@@ -44,8 +47,11 @@ review on top: these angles replace it.
 Compare the public surface before / after:
 
 - `packages/ods-react/etc/public-api.api.txt` — every removed or changed line is a
-  candidate break. A source change to exports **without** an update of this file is a P0;
-  the fix is to regenerate it with `pnpm test:api:update` (`scripts/api-snapshot.sh`).
+  candidate break. It only covers the `@ovhcloud/ods-react` declarations
+  (`scripts/api-snapshot.sh` reads `packages/ods-react/dist/src`): a change to those
+  exports **without** an update of this file is a P0, fixed by regenerating it with
+  `pnpm test:api:update`. For the other packages (themes, recipes), compare their
+  `src/index.ts` exports directly.
 - Component exports in `src/components/<name>/src/index.ts` (components, `*_STATUS(ES)`,
   `*_EMPHASIS` / `*_EMPHASES`, `*_SIZE(S)` constants, types).
 - Prop types and **runtime defaults** (a changed default is a break even if types match).

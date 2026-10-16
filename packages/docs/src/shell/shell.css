@@ -73,6 +73,12 @@ body {
   color: var(--ods-theme-brand-color);
 }
 
+/* The sidebar selects are sized by their grid cells (.shell__sidebar-selects), not by the
+   uniform field default. */
+.shell__topbar-select {
+  width: auto;
+}
+
 .shell__select-item {
   align-items: center;
   display: inline-flex;

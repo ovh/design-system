@@ -14,7 +14,7 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
   **Button** labels express explicitly what action will occur when the user interacts with it. Its aspect describes
   the importance and influence level.
 
-  This component exists in many ways : variants, sizes and colors.
+  This component exists in many ways : emphases, statuses and sizes.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
@@ -42,16 +42,16 @@ A button should not mimic a link. It can lead to confusion for users and assisti
 <BestPractices
   donts={[
     '- Don\'t use a Button as a link, use the Link component instead',
-    '- Don\'t show more than one primary button per view',
+    '- Don\'t show more than one high emphasis Button per view',
     '- Don\'t place two identical Buttons side by side (same label and style)',
     '- Don\'t use standalone decorative icons in Buttons unless the action is universally understood',
-    '- Don\'t use a ghost Button as the main call to action',
+    '- Don\'t use a low emphasis Button as the main call to action',
     '- Don\'t overload a Button with too much text or visual clutter',
   ]}
   dos={[
-    '- Use a primary Button to highlight the main action on a page or in a form',
-    '- Pair an outline Button for complementary actions (e.g., "Cancel", "Learn more")',
-    '- Maintain a clear visual hierarchy between Button types (primary, outline, ghost)',
+    '- Use a high emphasis Button to highlight the main action on a page or in a form',
+    '- Pair a medium emphasis Button for complementary actions (e.g., "Cancel", "Learn more")',
+    '- Maintain a clear visual hierarchy between Button emphases (high, medium, low)',
     '- Use icons when they add clarity to the action (e.g., arrow for "Next", trash for "Delete")',
     '- Choose the appropriate size based on context',
   ]}
@@ -83,11 +83,15 @@ An icon can be displayed on the left or right of the **Button** label. Icon-only
 - **Critical**: alerts users to high-priority actions or warnings that require immediate attention.
 - **Neutral**: secondary actions (such as clearing field or close button).
 
-<Heading label="Variant" level={ 3 } />
+<Heading label="Emphasis" level={ 3 } />
 
-- **Default**: primary actions, featuring a full background with a matching border to signify important emphasis.
-- **Outline**: secondary actions, featuring a transparent background with a visible border to signify less emphasis than primary buttons.
-- **Ghost**: tertiary or less prominent actions, blending into the background with minimal styling until hovered or focused to reduce visual dominance.
+The emphasis sets the visual weight of the **Button**, whatever its status.
+
+- **High**: primary actions, featuring a full background with a matching border to signify important emphasis.
+- **Medium** _(default)_: secondary actions, featuring a light background with a visible border to signify less emphasis than high **Buttons**.
+- **Low**: tertiary or less prominent actions, blending into the background with minimal styling until hovered or focused to reduce visual dominance.
+
+The action roles combine a status and an emphasis: a primary action is a brand **Button** with a high emphasis, a secondary action a medium one and a tertiary action a low one.
 
 <Heading label="Size" level={ 3 } />
 

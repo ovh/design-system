@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from './dev.module.css';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '.';
 
@@ -143,7 +143,7 @@ export const ItemDisabled = () => {
       </AccordionItem>
     </Accordion>
     <br />
-    <Button onClick={ () => setIsDisabled(!isDisabled) }>Toggle disabled</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setIsDisabled(!isDisabled) }>Toggle disabled</Button>
   </div>;
 };
 

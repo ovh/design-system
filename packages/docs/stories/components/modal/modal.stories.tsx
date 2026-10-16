@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import {
   Modal,
@@ -72,7 +72,7 @@ export const AnatomyTech: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Trigger Modal
           </Button>
         </ModalTrigger>
@@ -83,13 +83,13 @@ export const AnatomyTech: Story = {
 
 export const AccessibilityActions: Story = {
   globals: {
-    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -102,11 +102,11 @@ export const AccessibilityActions: Story = {
           </p>
 
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-            <Button variant={ BUTTON_VARIANT.ghost }>
+            <Button emphasis={ BUTTON_EMPHASIS.low }>
               Cancel
             </Button>
 
-            <Button status={ BUTTON_STATUS.critical }>
+            <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
               Delete
             </Button>
           </div>
@@ -118,13 +118,13 @@ export const AccessibilityActions: Story = {
 
 export const AccessibilityAriaLabelledBy: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -145,13 +145,13 @@ export const AccessibilityAriaLabelledBy: Story = {
 
 export const AccessibilityAriaLabel: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -170,13 +170,13 @@ export const AccessibilityAriaLabel: Story = {
 
 export const AccessibilityBadPracticesAria: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -195,7 +195,7 @@ export const AccessibilityBadPracticesAria: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -217,7 +217,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ openModal }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
           Trigger Modal
         </Button>
 
@@ -258,7 +258,7 @@ export const Default: Story = {
 
 export const NonDismissible: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -269,7 +269,7 @@ export const NonDismissible: Story = {
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -286,7 +286,7 @@ export const NonDismissible: Story = {
 
 export const NonEscapable: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -299,7 +299,7 @@ export const NonEscapable: Story = {
       closeOnEscape={ false }
       closeOnInteractOutside={ false }>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -316,13 +316,13 @@ export const NonEscapable: Story = {
 
 export const OverlayElements: Story = {
   globals: {
-    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -368,7 +368,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
-        <Button variant={ BUTTON_VARIANT.outline }>
+        <Button emphasis={ BUTTON_EMPHASIS.medium }>
           Trigger Modal
         </Button>
       </ModalTrigger>
@@ -398,7 +398,7 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexFlow: 'row', gap: '12px' }}>
       <Modal>
         <ModalTrigger asChild>
-          <Button>Default</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Default</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false }>
           <ModalHeader>Default</ModalHeader>
@@ -408,7 +408,7 @@ export const ThemeGenerator: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button>Non dismissible</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Non dismissible</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false } dismissible={ false }>
           <ModalHeader>Non dismissible</ModalHeader>
@@ -418,7 +418,7 @@ export const ThemeGenerator: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>Critical</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false } role="alertdialog">
           <ModalHeader>Critical</ModalHeader>

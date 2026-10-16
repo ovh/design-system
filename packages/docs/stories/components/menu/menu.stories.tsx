@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src/constants/icon-name';
 import { Icon } from '../../../../ods-react/src/components/icon/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, type MenuProp, MenuSubmenu, MenuTrigger } from '../../../../ods-react/src/components/menu/src';
@@ -38,7 +38,7 @@ export const AnatomyTech: Story = {
         flip: false,
       }}>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Menu trigger
         </Button>
       </MenuTrigger>
@@ -57,13 +57,13 @@ export const AnatomyTech: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Open menu
         </Button>
       </MenuTrigger>
@@ -78,7 +78,7 @@ export const Default: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, ICON_NAME, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, Button, ICON_NAME, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   parameters: {
@@ -96,7 +96,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ toggleMenu }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleMenu }>
           Toggle menu
         </Button>
 
@@ -117,13 +117,13 @@ import { useState } from 'react';`,
 
 export const Nested: Story = {
   globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Open menu
         </Button>
       </MenuTrigger>
@@ -144,13 +144,13 @@ export const Nested: Story = {
 
 export const Group: Story = {
   globals: {
-    imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Open menu
         </Button>
       </MenuTrigger>
@@ -172,13 +172,13 @@ export const Group: Story = {
 
 export const Disabled: Story = {
   globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Open menu
         </Button>
       </MenuTrigger>
@@ -199,7 +199,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           Account
         </Button>
       </MenuTrigger>
@@ -223,7 +223,7 @@ export const ThemeGenerator: Story = {
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
             Default
         </Button>
       </MenuTrigger>

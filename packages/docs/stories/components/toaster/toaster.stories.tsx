@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { Link } from '../../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
@@ -20,7 +20,7 @@ export default meta;
 
 export const Statuses: Story = {
   globals: {
-    imports: `import { BUTTON_STATUS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, BUTTON_STATUS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -34,34 +34,40 @@ export const Statuses: Story = {
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.critical }
           onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
           Critical toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
           Information toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.neutral }
           onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
           Neutral toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.brand }
           onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
           Accent toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
           Success toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
           Warning toast
         </Button>
@@ -72,7 +78,7 @@ export const Statuses: Story = {
 
 export const CustomContent: Story = {
   globals: {
-    imports: `import { ICON_NAME, TEXT_PRESET, Button, Link, Text, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, TEXT_PRESET, Button, Link, Text, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -85,6 +91,7 @@ export const CustomContent: Story = {
       <Toaster id="custom-content" />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.high }
         onClick={ () => toast(
           <div>
             <Text preset={ TEXT_PRESET.label }>
@@ -108,7 +115,7 @@ export const CustomContent: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -120,7 +127,7 @@ export const Default: Story = {
     <>
       <Toaster />
 
-      <Button onClick={ () => toast('Notification message') }>
+      <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Notification message') }>
         Trigger toast
       </Button>
     </>
@@ -129,7 +136,7 @@ export const Default: Story = {
 
 export const Dismissible: Story = {
   globals: {
-    imports: `import { Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -144,11 +151,11 @@ export const Dismissible: Story = {
         id="dismissible" />
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Button onClick={ () => toast('Non dismissible toast', { toasterId: 'dismissible' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Non dismissible toast', { toasterId: 'dismissible' }) }>
           Trigger non dismissible toast
         </Button>
 
-        <Button onClick={ () => toast('Dismissible toast', { dismissible: true, toasterId: 'dismissible' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Dismissible toast', { dismissible: true, toasterId: 'dismissible' }) }>
           Trigger dismissible toast
         </Button>
       </div>
@@ -158,7 +165,7 @@ export const Dismissible: Story = {
 
 export const Duration: Story = {
   globals: {
-    imports: `import { Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -173,11 +180,11 @@ export const Duration: Story = {
         id="duration" />
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Button onClick={ () => toast('Infinite toast', { toasterId: 'duration' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Infinite toast', { toasterId: 'duration' }) }>
           Trigger infinite toast
         </Button>
 
-        <Button onClick={ () => toast('3 seconds toast', { duration: 3000, toasterId: 'duration' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('3 seconds toast', { duration: 3000, toasterId: 'duration' }) }>
           Trigger 3 seconds toast
         </Button>
       </div>
@@ -187,7 +194,7 @@ export const Duration: Story = {
 
 export const Icon: Story = {
   globals: {
-    imports: `import { ICON_NAME, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -199,7 +206,8 @@ export const Icon: Story = {
     <>
       <Toaster id="icon" />
 
-      <Button onClick={ () => toast('Notification message with icon', {
+      <Button emphasis={ BUTTON_EMPHASIS.high }
+ onClick={ () => toast('Notification message with icon', {
         icon: ICON_NAME.circleInfo,
         toasterId: 'icon',
       })}>
@@ -226,7 +234,7 @@ export const Overview: Story = {
       <>
         <Toaster id="overview" />
 
-        <Button onClick={ createToast }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ createToast }>
           Trigger toast
         </Button>
       </>
@@ -236,7 +244,7 @@ export const Overview: Story = {
 
 export const Position: StoryObj = {
   globals: {
-    imports: `import { ICON_NAME, TOASTER_POSITION, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, TOASTER_POSITION, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -254,27 +262,27 @@ export const Position: StoryObj = {
         gridTemplateRows: 'repeat(2, 1fr)',
         gap: '20px',
       }}>
-        <Button onClick={ () => toast('Top Start', { toasterId: 'top-start' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top Start', { toasterId: 'top-start' }) }>
           Top Start
         </Button>
 
-        <Button onClick={ () => toast('Top', { toasterId: 'top' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top', { toasterId: 'top' }) }>
           Top
         </Button>
 
-        <Button onClick={ () => toast('Top End', { toasterId: 'top-end' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top End', { toasterId: 'top-end' }) }>
           Top End
         </Button>
 
-        <Button onClick={ () => toast('Bottom Start', { toasterId: 'bottom-start' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom Start', { toasterId: 'bottom-start' }) }>
           Bottom Start
         </Button>
 
-        <Button onClick={ () => toast('Bottom', { toasterId: 'bottom' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom', { toasterId: 'bottom' }) }>
           Bottom
         </Button>
 
-        <Button onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
           Bottom End
         </Button>
       </div>
@@ -295,34 +303,40 @@ export const ThemeGenerator: Story = {
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.critical }
           onClick={ () => toast.critical('Critical', { icon: ICON_NAME.circleXmark }) }>
           Critical toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.information('Information', { icon: ICON_NAME.circleInfo }) }>
           Information toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.neutral }
           onClick={ () => toast.neutral('Neutral', { icon: ICON_NAME.email }) }>
           Neutral toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           status={ BUTTON_STATUS.brand }
           onClick={ () => toast.accent('Accent', { icon: ICON_NAME.lightbulb }) }>
           Accent toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.success('Success', { icon: ICON_NAME.circleCheck }) }>
           Success toast
         </Button>
 
         <Button
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ () => toast.warning('Warning', { icon: ICON_NAME.triangleExclamation }) }>
           Warning toast
         </Button>

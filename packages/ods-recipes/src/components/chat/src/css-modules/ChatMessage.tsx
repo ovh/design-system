@@ -1,4 +1,4 @@
-import { Avatar, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, Clipboard, ClipboardTrigger, FileThumbnail, ICON_NAME, Icon, MESSAGE_BUBBLE_VARIANT, MessageBubble, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { Avatar, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, Clipboard, ClipboardTrigger, FileThumbnail, ICON_NAME, Icon, MESSAGE_BUBBLE_VARIANT, MessageBubble, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import classNames from 'classnames';
 import { type JSX } from 'react';
 import { type Message } from './fakeApi';
@@ -66,17 +66,17 @@ const ChatMessage = ({ message, previousAuthor }: { message: Message, previousAu
         <div className={ style['chat-message__actions'] }>
           <Button
             aria-label="Like"
+            emphasis={ BUTTON_EMPHASIS.low }
             status={ BUTTON_STATUS.neutral }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.thumbsUp } />
           </Button>
 
           <Button
             aria-label="Dislike"
+            emphasis={ BUTTON_EMPHASIS.low }
             status={ BUTTON_STATUS.neutral }
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
+            size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.thumbsDown } />
           </Button>
 
@@ -86,9 +86,9 @@ const ChatMessage = ({ message, previousAuthor }: { message: Message, previousAu
             <ClipboardTrigger className={ style['code__clipboard__trigger'] }>
               <Button
                 className={ style['code__clipboard__trigger__button'] }
+                emphasis={ BUTTON_EMPHASIS.low }
                 status={ BUTTON_STATUS.neutral }
-                size={ BUTTON_SIZE.sm }
-                variant={ BUTTON_VARIANT.ghost }>
+                size={ BUTTON_SIZE.sm }>
                 <Icon name={ ICON_NAME.fileCopy } />
               </Button>
             </ClipboardTrigger>

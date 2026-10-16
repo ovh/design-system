@@ -1,7 +1,7 @@
 import { usePaginationContext } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type FormEvent, type JSX, type ReactNode, forwardRef, useId } from 'react';
-import { BUTTON_SIZE, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import style from './paginationPageSelector.module.scss';
 
@@ -58,6 +58,7 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
         type={ INPUT_TYPE.number } />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.high }
         size={ BUTTON_SIZE.sm }
         type="submit">
         { submitLabel }

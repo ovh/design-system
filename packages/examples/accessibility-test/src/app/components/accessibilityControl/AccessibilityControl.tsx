@@ -1,4 +1,4 @@
-import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';
 import axe from 'axe-core';
 import classNames from 'classnames';
 import { type ReactElement, useReducer } from 'react';
@@ -82,6 +82,7 @@ function AccessibilityControl({ className }: Prop): ReactElement {
   return (
     <div className={ classNames(styles['accessibility-control'], className) }>
       <Button
+        emphasis={ BUTTON_EMPHASIS.high }
         onClick={ onRunControlClick }
         loading={ state.isControlling }>
         Run Controls

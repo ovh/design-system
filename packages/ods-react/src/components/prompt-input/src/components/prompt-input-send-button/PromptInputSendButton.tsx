@@ -1,5 +1,5 @@
 import { type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button, type ButtonProp } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 
@@ -18,8 +18,8 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
   return (
     <Button
       data-ods="prompt-input-send-button"
+      emphasis={ BUTTON_EMPHASIS.low }
       size={BUTTON_SIZE.sm}
-      variant={BUTTON_VARIANT.ghost}
       ref={ref}
       {...props}
       disabled={ isDisabled }

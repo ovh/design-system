@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../form-field/src';
 import { Input } from '../../src';
 
@@ -153,8 +153,8 @@ export const SlotsWithButton = () => (
     endContent={ (
       <Button
         aria-label="Copy value"
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        size={ BUTTON_SIZE.xs }>
         C
       </Button>
     ) }
@@ -170,8 +170,8 @@ export const GeometrySlotButton = () => (
     endContent={ (
       <Button
         aria-label="Copy value"
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        size={ BUTTON_SIZE.xs }>
         C
       </Button>
     ) } />
@@ -201,8 +201,8 @@ export const GeometrySlotStartButton = () => (
     startContent={ (
       <Button
         aria-label="Search"
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        size={ BUTTON_SIZE.xs }>
         S
       </Button>
     ) } />
@@ -226,8 +226,8 @@ export const GeometrySlotMixed = () => (
     startContent={ (
       <Button
         aria-label="Search"
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        size={ BUTTON_SIZE.xs }>
         S
       </Button>
     ) } />
@@ -244,8 +244,8 @@ export const GeometrySlotMixedClearable = () => (
     startContent={ (
       <Button
         aria-label="Search"
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        size={ BUTTON_SIZE.xs }>
         S
       </Button>
     ) } />

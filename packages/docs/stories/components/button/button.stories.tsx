@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_SIZE, BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASES, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -88,17 +88,17 @@ export const Size: StoryObj = {
   ),
 };
 
-export const Variant: StoryObj = {
+export const Emphasis: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Button variant={ BUTTON_VARIANT.default }>Default button</Button>
-      <Button variant={ BUTTON_VARIANT.outline }>Outline button</Button>
-      <Button variant={ BUTTON_VARIANT.ghost }>Ghost button</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>High button</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.medium }>Medium button</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.low }>Low button</Button>
     </>
   ),
 };
@@ -315,25 +315,25 @@ export const ThemeGenerator: StoryObj = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       { BUTTON_SIZES.map((size) => (
         <div key={ size } style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          { BUTTON_VARIANTS.map((variant) => (
-            <div key={`${String(size)}-${String(variant)}`} style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+          { BUTTON_EMPHASES.map((emphasis) => (
+            <div key={`${String(size)}-${String(emphasis)}`} style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
               { BUTTON_STATUSES.map((status) => (
-                <Button key={`${String(size)}-${String(variant)}-${String(status)}`} size={ size } variant={ variant } status={ status }>
-                  { `${String(variant)} ${String(status)}` }
+                <Button key={`${String(size)}-${String(emphasis)}-${String(status)}`} emphasis={ emphasis } size={ size } status={ status }>
+                  { `${String(emphasis)} ${String(status)}` }
                 </Button>
               )) }
             </div>
           )) }
           <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
-            { BUTTON_VARIANTS.map((variant) => (
-              <Button key={`disabled-${String(size)}-${String(variant)}`} size={ size } variant={ variant } disabled>
+            { BUTTON_EMPHASES.map((emphasis) => (
+              <Button key={`disabled-${String(size)}-${String(emphasis)}`} emphasis={ emphasis } size={ size } disabled>
                 Disabled
               </Button>
             )) }
           </div>
           <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
-            { BUTTON_VARIANTS.map((variant) => (
-              <Button key={`loading-${String(size)}-${String(variant)}`} size={ size } variant={ variant } loading>
+            { BUTTON_EMPHASES.map((emphasis) => (
+              <Button key={`loading-${String(size)}-${String(emphasis)}`} emphasis={ emphasis } size={ size } loading>
                 Loading
               </Button>
             )) }
@@ -342,7 +342,7 @@ export const ThemeGenerator: StoryObj = {
       )) }
 
       <div>
-        <Button>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
           <Icon name={ ICON_NAME.xmark } /> Close
         </Button>
       </div>

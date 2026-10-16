@@ -1,7 +1,7 @@
 import { Dialog } from '@ark-ui/react/dialog';
 import { type FC, type JSX, forwardRef } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, type ButtonProp } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, type ButtonProp } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MODAL_I18N, TRANSLATION } from '../../constants/modal-i18n';
 import { useModal } from '../../contexts/useModal';
@@ -20,10 +20,10 @@ const ModalCloseTrigger: FC<ModalCloseTriggerProp> = forwardRef(({
       <Button
         aria-label={ translate(MODAL_I18N.closeButton) }
         className={ className }
+        emphasis={ BUTTON_EMPHASIS.low }
         ref={ ref }
         size={ BUTTON_SIZE.xs }
         status={ BUTTON_STATUS.neutral }
-        variant={ BUTTON_VARIANT.ghost }
         { ...props }>
         <Icon name={ ICON_NAME.xmark } />
       </Button>

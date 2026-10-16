@@ -2,7 +2,7 @@ import { FileUpload } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { FILE_UPLOAD_I18N, TRANSLATION_FILE } from '../../constants/file-upload-i18n';
@@ -86,8 +86,8 @@ const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({
         <Button
           aria-label={ isInProgress ? translate(FILE_UPLOAD_I18N.cancelButton) : translate(FILE_UPLOAD_I18N.deleteButton) }
           className={ style['file-upload-item__delete'] }
-          size={ BUTTON_SIZE.xs }
-          variant={ BUTTON_VARIANT.ghost }>
+          emphasis={ BUTTON_EMPHASIS.low }
+          size={ BUTTON_SIZE.xs }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       </FileUpload.ItemDeleteTrigger>

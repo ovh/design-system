@@ -103,13 +103,13 @@ Base is optional.
 You can use Tailwind utilities alongside ODS components:
 
 ```tsx
-import { Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 function MyComponent() {
   return (
   <div>
       <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
+      <Button className="bg-color-primary" emphasis={ BUTTON_EMPHASIS.high }>Click me!</Button>
   </div>
   );
 }

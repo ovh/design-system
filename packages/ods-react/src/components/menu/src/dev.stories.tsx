@@ -3,7 +3,7 @@ import { Portal } from '@ark-ui/react/portal';
 import { type JSX, useState } from 'react';
 import style from './dev.module.css';
 import { BADGE_STATUS, Badge } from '../../badge/src';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { Checkbox, CheckboxControl, CheckboxLabel } from '../../checkbox/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';
@@ -276,7 +276,7 @@ export const SameWidth = () => (
 export const ViewsExample = (): JSX.Element => (
   <Menu>
     <MenuTrigger asChild>
-      <Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>
         Open menu
       </Button>
     </MenuTrigger>

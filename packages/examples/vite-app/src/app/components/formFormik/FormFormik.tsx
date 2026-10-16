@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -109,12 +109,12 @@ function FormFormik(): ReactElement {
 
       <div>
         <Button
-          type="reset"
-          variant="outline">
+          emphasis="medium"
+          type="reset">
           Reset button
         </Button>
 
-        <Button type="submit">
+        <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
           Submit button
         </Button>
       </div>

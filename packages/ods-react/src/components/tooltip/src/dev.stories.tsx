@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from './dev.module.css';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '.';
 
@@ -18,7 +18,7 @@ export const Controlled = () => {
 
   return (
     <>
-      <Button onClick={ toggleTooltip }>
+      <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleTooltip }>
         Toggle tooltip
       </Button>
 
@@ -54,7 +54,7 @@ export const CustomId = () => {
       <p>Custom ID + asChild</p>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button id="my-id2">
+          <Button emphasis={ BUTTON_EMPHASIS.high } id="my-id2">
             Trigger
           </Button>
         </TooltipTrigger>
@@ -67,7 +67,7 @@ export const CustomId = () => {
       <p>Dynamic ID</p>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button id={ triggerId }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } id={ triggerId }>
             Trigger
           </Button>
         </TooltipTrigger>
@@ -97,7 +97,7 @@ export const CustomStyle = () => (
 export const CustomTrigger = () => (
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>
         Custom Trigger
       </Button>
     </TooltipTrigger>

@@ -3,7 +3,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { useI18n } from '../../../../../hooks/useI18n';
 import { warnDeprecated } from '../../../../../utils/deprecation';
 import { type Locale } from '../../../../../utils/locales';
-import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MESSAGE_COLOR, type MessageColor } from '../../constants/message-color';
 import { MESSAGE_I18N, TRANSLATION } from '../../constants/message-i18n';
@@ -84,10 +84,10 @@ const Message: FC<MessageProp> = forwardRef(({
         <Button
           aria-label={ translate(MESSAGE_I18N.closeButton) }
           className={ style['message__close'] }
+          emphasis={ BUTTON_EMPHASIS.low }
           onClick={ onRemove }
           size={ BUTTON_SIZE.xs }
-          status={ BUTTON_STATUS.neutral }
-          variant={ BUTTON_VARIANT.ghost }>
+          status={ BUTTON_STATUS.neutral }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       }

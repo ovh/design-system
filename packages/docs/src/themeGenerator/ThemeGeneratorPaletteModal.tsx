@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useMemo, useState } from 'react';
-import { BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text, TreeView, TreeViewNode, TreeViewNodes } from '../ods';
+import { BUTTON_EMPHASIS, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text, TreeView, TreeViewNode, TreeViewNodes } from '../ods';
 import { PALETTES } from '../doc/ports/constants/designTokens';
 import { type ColorFamily, type PaletteResult, PALETTE_STEPS, formatPaletteAsCssVariables, generatePalette } from './paletteGenerator';
 import { ThemeGeneratorColorPicker } from './ThemeGeneratorColorPicker';
@@ -140,10 +140,10 @@ const ThemeGeneratorPaletteModal = ({ currentVariables, onApply, onClose, open }
           </div>
 
           <div className={ styles['theme-generator-palette-modal__actions'] }>
-            <Button onClick={ onClose } variant={ BUTTON_VARIANT.ghost }>
+            <Button emphasis={ BUTTON_EMPHASIS.low } onClick={ onClose }>
               Cancel
             </Button>
-            <Button onClick={ handleApply } variant={ BUTTON_VARIANT.default }>
+            <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ handleApply }>
               Apply to Custom
             </Button>
           </div>

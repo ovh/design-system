@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { BADGE_SIZE, BADGE_SIZES, BADGE_STATUS, BADGE_STATUSES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
+import { BADGE_EMPHASES, BADGE_EMPHASIS, BADGE_SIZE, BADGE_SIZES, BADGE_STATUS, BADGE_STATUSES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 
@@ -31,6 +31,39 @@ export const Status: Story = {
       <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
       <Badge status={ BADGE_STATUS.success }>Success</Badge>
       <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
+    </>
+  ),
+};
+
+export const Emphasis: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+        <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Critical</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.information }>Information</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.success }>Success</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.warning }>Warning</Badge>
+      </div>
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+        <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.critical }>Critical</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.information }>Information</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.success }>Success</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.warning }>Warning</Badge>
+      </div>
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+        <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.critical }>Critical</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.information }>Information</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Success</Badge>
+        <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
+      </div>
     </>
   ),
 };
@@ -166,13 +199,17 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       { BADGE_SIZES.map((size) => (
-        <div key={ size } style={{ display: 'flex', flexFlow: 'row', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
-          { BADGE_STATUSES.map((status) => (
-            <Badge key={`${String(size)}-${String(status)}`} size={ size } status={ status }>
-              { String(status) }
-            </Badge>
+        <div key={ size } style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          { BADGE_EMPHASES.map((emphasis) => (
+            <div key={`${String(size)}-${String(emphasis)}`} style={{ display: 'flex', flexFlow: 'row', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+              { BADGE_STATUSES.map((status) => (
+                <Badge key={`${String(size)}-${String(emphasis)}-${String(status)}`} emphasis={ emphasis } size={ size } status={ status }>
+                  { `${String(emphasis)} ${String(status)}` }
+                </Badge>
+              )) }
+            </div>
           )) }
         </div>
       )) }

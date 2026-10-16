@@ -5908,16 +5908,15 @@ export { SWITCH_SIZE, SWITCH_SIZES, type SwitchSize } from './constants/switch-s
 // ==================== components/table/src/components/table/Table.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
 import { TableSize } from '../../constants/table-size';
-import { TableVariant } from '../../constants/table-variant';
 interface TableProp extends ComponentPropsWithRef<'table'> {
     /**
      * The size preset to use.
      */
     size?: TableSize;
     /**
-     * The variant preset to use.
+     * Whether the body rows should alternate background colors.
      */
-    variant?: TableVariant;
+    striped?: boolean;
 }
 declare const Table: FC<TableProp>;
 export { Table, type TableProp, };
@@ -5932,19 +5931,9 @@ type TableSize = `${TABLE_SIZE}`;
 declare const TABLE_SIZES: readonly TABLE_SIZE[];
 export { TABLE_SIZE, TABLE_SIZES, type TableSize, };
 
-// ==================== components/table/src/constants/table-variant.d.ts ====================
-declare enum TABLE_VARIANT {
-    default = "default",
-    striped = "striped"
-}
-type TableVariant = `${TABLE_VARIANT}`;
-declare const TABLE_VARIANTS: readonly TABLE_VARIANT[];
-export { TABLE_VARIANT, TABLE_VARIANTS, type TableVariant, };
-
 // ==================== components/table/src/index.d.ts ====================
 export { Table, type TableProp } from './components/table/Table';
 export { TABLE_SIZE, TABLE_SIZES, type TableSize } from './constants/table-size';
-export { TABLE_VARIANT, TABLE_VARIANTS, type TableVariant } from './constants/table-variant';
 
 // ==================== components/tabs/src/components/tab-content/TabContent.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

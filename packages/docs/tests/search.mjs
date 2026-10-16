@@ -53,10 +53,22 @@ async function suite(browser, { base, version }) {
     ok('the flash highlight clears itself', cleared);
   }
 
-  // Mixed-language query: the strict all-terms pass finds nothing, the
-  // any-term fallback must still surface the cognate ("validation").
+  // Selecting a hit closes the palette programmatically: ⌘K must reopen it on
+  // an empty filter, not on the previous query and its results.
   await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
   await page.waitForSelector('[data-ods="command-filter"]', { timeout: 5000 });
+  const reopenedQuery = await page.locator('[data-ods="command-filter"]').inputValue();
+  ok('the palette reopens on an empty query after a selection', reopenedQuery === '', `"${reopenedQuery}"`);
+
+  // A term found only in a section heading (moved out of the body at build
+  // time) still finds that section.
+  await page.locator('[data-ods="command-filter"]').fill('textarea placement');
+  await page.waitForTimeout(900);
+  const placementHint = await page.locator('.shell__search-option--content .shell__search-option-hint').first().textContent();
+  ok('a heading-only term finds its section ("textarea placement")', placementHint === 'Placement', placementHint ?? '(no content hit)');
+
+  // Mixed-language query: the strict all-terms pass finds nothing, the
+  // any-term fallback must still surface the cognate ("validation").
   await page.locator('[data-ods="command-filter"]').fill('validation formulaire');
   await page.waitForTimeout(900);
   ok('fallback surfaces hits for a mixed FR/EN query', (await page.locator('.shell__search-option--content').count()) > 0);
@@ -145,6 +157,11 @@ async function suite(browser, { base, version }) {
   }
   ok('5 index deep-links sampled', routes.length === 5, `${routes.length} sampled`);
 
+  // A deprecated heading is "Previous Tokens (deprecated)" in the llms Markdown
+  // but renders "Previous tokens" plus a badge: the index must target the latter.
+  const previousTokens = index.find((entry) => entry.r.startsWith('/guides/design-tokens#previous-tokens'));
+  ok('a deprecated heading is indexed under its rendered anchor', previousTokens?.r === '/guides/design-tokens#previous-tokens', previousTokens?.r ?? '(no entry)');
+
   // Repeated heading labels get unique ids (accessibility guide: one "Related
   // Sources" per section), deep links reach the right one, and the Technical
   // tab's enum names carry an id and an anchor too.
@@ -167,6 +184,22 @@ async function suite(browser, { base, version }) {
     ok('repeated heading labels', false, String(error).slice(0, 120));
   }
   await repeatedPage.close();
+
+  // The ToC collects the ids after the dedupe pass: the second "Dependency" of
+  // the migration guide links to its own heading, not to the first one.
+  const toc = await ctx.newPage();
+  toc.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await toc.goto(`${root}/guides/migration-14-to-15`, { waitUntil: 'domcontentloaded' });
+    await toc.waitForFunction(() => document.getElementById('dependency-2') !== null, null, { timeout: 30000 });
+    await toc.locator('.doc-layout__toc-node', { hasText: /^Dependency$/ }).nth(1).click();
+    await toc.waitForTimeout(300);
+    const tocHash = await toc.evaluate(() => location.hash);
+    ok('the ToC links a repeated heading to its own id', tocHash === '#dependency-2', tocHash || '(no hash)');
+  } catch (error) {
+    ok('ToC of repeated headings', false, String(error).slice(0, 120));
+  }
+  await toc.close();
 
   const technical = await ctx.newPage();
   technical.on('pageerror', (e) => errors.push(e.message));

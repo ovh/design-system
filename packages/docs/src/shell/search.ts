@@ -38,10 +38,12 @@ function loadSearchIndex(): Promise<SearchEntry[]> {
    tokenization diverged from the scoring's, the bolded terms would not be the
    matched ones. Accents are folded first, as the build-time index does
    (vite-plugin-llms.ts searchText): "modèle" still yields "modele". */
-const tokenize = (query: string): string[] => query
+const fold = (text: string): string => text
   .normalize('NFD')
   .replace(/\p{M}/gu, '')
-  .toLowerCase()
+  .toLowerCase();
+
+const tokenize = (query: string): string[] => fold(query)
   .split(/[^a-z0-9]+/)
   .filter((term) => term.length >= 2);
 
@@ -52,7 +54,7 @@ function snippetAround(body: string, at: number): string {
   return `${start > 0 ? '…' : ''}${raw}${end < body.length ? '…' : ''}`;
 }
 
-/* Every term must appear (title or body); title hits dominate the ranking so
+/* Every term must appear (title, section heading or body); title hits dominate the ranking so
    "button" still puts the Button page first even though half the corpus
    mentions the word. When the strict pass finds nothing (typically a partly
    French query over the English corpus — "validation formulaire"), a second
@@ -78,6 +80,10 @@ function rank(entries: SearchEntry[], terms: string[], requireAll: boolean): Sea
   const hits: (SearchHit & { score: number })[] = [];
   for (const entry of entries) {
     const title = entry.t.toLowerCase();
+    // The build moves each `## heading` out of the body into s: match it too, so
+    // "textarea placement" finds the Placement section. Only on #section entries:
+    // the intro's s is a generic label ("Guide", "Overview").
+    const section = entry.r.includes('#') ? fold(entry.s) : '';
     const body = entry.b.toLowerCase();
     let score = 0;
     let snippetAt = -1;
@@ -86,8 +92,9 @@ function rank(entries: SearchEntry[], terms: string[], requireAll: boolean): Sea
 
     for (const term of terms) {
       const inTitle = title.includes(term);
+      const inSection = section.includes(term);
       const at = body.indexOf(term);
-      if (!inTitle && at < 0) {
+      if (!inTitle && !inSection && at < 0) {
         if (requireAll) {
           matched = 0;
           break;
@@ -98,6 +105,11 @@ function rank(entries: SearchEntry[], terms: string[], requireAll: boolean): Sea
       // 20 > 5 (the body-count cap): one title hit outranks any body density.
       if (inTitle) {
         score += 20;
+      }
+      // Between a title hit and the body-count cap: the section named after the
+      // term outranks the ones that only mention it.
+      if (inSection) {
+        score += 10;
       }
       if (at >= 0) {
         score += Math.min(body.split(term).length - 1, 5);

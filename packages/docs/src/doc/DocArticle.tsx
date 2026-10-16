@@ -62,6 +62,9 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
       return;
     }
     const collect = () => {
+      // This child effect runs before DocArticle's own dedupe pass, and an id
+      // rename is no childList mutation: dedupe first so the links get the final ids.
+      dedupeHeadingIds(container);
       const found = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
         id: el.id,
         label: el.textContent ?? '',

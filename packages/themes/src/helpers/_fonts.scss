@@ -30,9 +30,9 @@
   }
 }
 
-@mixin source-sans-pro-font-face($src) {
+@mixin source-sans-3-font-face($src) {
   @font-face {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-stretch: normal;
     font-weight: 200 900;
     font-style: normal;
@@ -41,9 +41,9 @@
   }
 }
 
-@mixin source-sans-pro-italic-font-face($src) {
+@mixin source-sans-3-italic-font-face($src) {
   @font-face {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-stretch: normal;
     font-weight: 200 900;
     font-style: italic;

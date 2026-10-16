@@ -9,7 +9,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change. On the theme side, the default font family is renamed to `'Source Sans 3'` (see **Typography**).
 
 <Heading label="If you stay on React 18" level={ 2 } />
 
@@ -88,6 +88,40 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+<Heading label="Typography" level={ 2 } />
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-theme-font-family` and `--ods-font-family-default` now start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-theme-font-family)`, or `'Source Sans 3'`, instead. In particular:
+
+- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines (to inherit the ODS default) or replace their value.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- The values exposed by `@ovhcloud/ods-themes/default/tokens` change the same way.
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-theme-font-family);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
 
 <Heading label="Deprecations" level={ 2 } />
 

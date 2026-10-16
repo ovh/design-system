@@ -3,5 +3,12 @@
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     padding: 0 var(--ods-accordion-padding-horizontal) var(--ods-accordion-padding-vertical);
+
+    &--high {
+      // Not on a disabled item, so its ods-is-disabled() background shows through.
+      &:not([data-disabled]) {
+        background-color: var(--ods-theme-background-color);
+      }
+    }
   }
 }

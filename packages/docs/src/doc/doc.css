@@ -215,3 +215,32 @@ body:not([data-theme="dark"]) [data-ods="code"] {
     overflow-x: auto;
   }
 }
+
+/* Hover anchors on section headings (Heading contract): invisible until the
+   heading row is hovered or the anchor is keyboard-focused. The anchor lives
+   beside the heading (see DocComponents), so the row carries the hover. */
+.doc__heading-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.doc__heading-row .doc__anchor {
+  opacity: 0;
+  transition: opacity .12s ease;
+  text-decoration: none;
+  color: var(--ods-color-neutral-400);
+}
+
+.doc__heading-row:hover .doc__anchor,
+.doc__anchor:focus-visible {
+  opacity: 1;
+}
+
+/* Flash highlight of the searched terms after a palette content hit
+   (CSS Custom Highlight API — no DOM impact, cleared after a short delay).
+   A translucent amber that reads on both the light and dark chrome. */
+::highlight(ods-search) {
+  background-color: rgba(255, 178, 41, .32);
+  color: inherit;
+}

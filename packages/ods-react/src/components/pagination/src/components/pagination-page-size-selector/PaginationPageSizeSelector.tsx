@@ -1,6 +1,7 @@
 import { usePaginationContext } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, useId } from 'react';
+import { warnOnce } from '../../../../../utils/warn';
 import { Select, SelectContent, SelectControl, type SelectItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
 import { defaultRenderTotalItemsLabel, usePagination } from '../../contexts/usePagination';
@@ -20,8 +21,12 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
   ...props
 }, ref): JSX.Element => {
   const { count: totalItems, pageSize } = usePaginationContext();
-  const { handlePageSizeChange } = usePagination();
+  const { getPageUrl, handlePageSizeChange, onPageSizeChange } = usePagination();
   const textId = useId();
+
+  if (getPageUrl && !onPageSizeChange) {
+    warnOnce('getPageUrl renders the pages as links, so the URL holds the number of items per page. This selector has no link to follow: please handle onPageSizeChange and navigate to the matching URL, otherwise picking a size does nothing.');
+  }
 
   function handleValueChange(detail: SelectValueChangeDetail): void {
     if (detail.value[0]) {
@@ -35,10 +40,12 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
       data-ods="pagination-page-size-selector"
       ref={ ref }
       { ...props }>
+      {/* Controlled rather than defaulted: the Select has to keep showing the size it was given,
+          which in link mode stays the URL's size until the application navigates. */}
       <Select
-        defaultValue={ [pageSize.toString()] }
         items={ PAGINATION_PER_PAGE_OPTIONS as SelectItem[] }
-        onValueChange={ handleValueChange }>
+        onValueChange={ handleValueChange }
+        value={ [pageSize.toString()] }>
         <SelectControl aria-labelledby={ textId } />
         <SelectContent />
       </Select>

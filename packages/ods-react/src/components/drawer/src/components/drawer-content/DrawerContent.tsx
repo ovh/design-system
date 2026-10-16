@@ -1,7 +1,7 @@
 import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
 import { DRAWER_POSITION } from '../../constants/drawer-position';
 import { useDrawer } from '../../contexts/useDrawer';
 import style from './drawerContent.module.scss';
@@ -25,7 +25,12 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { open } = useDialogContext();
-  const { backdrop, backdropStyle, positionerStyle } = useDrawer();
+  const { backdrop, backdropStyle, positionerStyle, setContentId } = useDrawer();
+
+  // zag finds the content by id (focus on open, Escape, focus return): a custom id must be its id too.
+  useEffect(() => {
+    setContentId(props.id);
+  }, [props.id, setContentId]);
 
   return (
     <Portal disabled={ !createPortal }>

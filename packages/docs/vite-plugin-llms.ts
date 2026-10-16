@@ -708,6 +708,11 @@ function searchText(body: string): string {
     .slice(0, 6000);
 }
 
+/* The llms Markdown suffixes deprecated headings with " (deprecated)" where the
+   page renders the bare label plus a badge (DesignTokens, TechnicalSpecification):
+   the anchor is the slug of the bare label. */
+const anchorSlug = (heading: string): string => slugify(heading.replace(/\s*\(deprecated\)$/i, ''));
+
 /* One index entry per `## section` of the doc (plus the intro), so a palette
    hit deep-links to the section itself instead of the top of the page. */
 function sectionEntries(doc: { body: string }, route: string, title: string, fallbackLabel: string): SearchEntry[] {
@@ -723,7 +728,7 @@ function sectionEntries(doc: { body: string }, route: string, title: string, fal
   const unique = createUniqueSlugs();
   const ids = new Map<number, string>();
   for (const match of withoutFences.matchAll(/^(#{2,4}) +(.+)$/gm)) {
-    const id = unique(slugify(match[2].trim()));
+    const id = unique(anchorSlug(match[2].trim()));
     if (match[1] === '##') {
       ids.set(ids.size, id);
     }
@@ -732,7 +737,7 @@ function sectionEntries(doc: { body: string }, route: string, title: string, fal
     const heading = rest[i].trim();
     const text = searchText(rest[i + 1]);
     if (text.length > 0) {
-      entries.push({ b: text, r: `${route}#${ids.get(i / 2) ?? slugify(heading)}`, s: heading, t: title });
+      entries.push({ b: text, r: `${route}#${ids.get(i / 2) ?? anchorSlug(heading)}`, s: heading, t: title });
     }
   }
   return entries;

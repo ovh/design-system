@@ -30,8 +30,9 @@ review on top: these angles replace it.
 | 1–3 files, targeted fix | 1, 6 |
 | A component in `packages/ods-react/src/components/**` | 1, 2, 3, 4, 5, 6 |
 | Shared styles (`packages/ods-react/src/style/**`), themes, tokens, build config | 1, 2, 3, 5, 6 |
+| The public surface of a published package (`@ovhcloud/ods-react`, `ods-recipes`, `ods-themes`): exports of its `src/index.ts`, exported types or constants, `package.json` exports | 1, 2, 3, 5, 6 |
 | New package or tool | 1, 4, 5, 6 |
-| Anything else (recipes, docs, examples, scripts…) | 1, 6 |
+| Anything matching no other row (docs, examples, scripts…) | 1, 6 |
 
 When several rows match, apply the union of their angles.
 

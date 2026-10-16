@@ -1,5 +1,5 @@
 ---
-name: ods-pr-review
+name: code-review
 description: Review a pull request on the OVHcloud Design System (ODS) monorepo. Use for any code review of changes under packages/ (ods-react components, themes, tokens, SCSS styles, docs, recipes). Checks correctness, public API breaking changes and semver, deprecations, code comments, repo conventions and test coverage.
 ---
 

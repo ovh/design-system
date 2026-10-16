@@ -1,4 +1,16 @@
 // DX lot 1: full-text palette search, View-as-Markdown links, heading anchors.
+// The page content scrolls in .shell__content: a section is in view once its
+// heading sits at the top of it.
+const isSectionInView = (id) => {
+  const scroller = document.querySelector('.shell__content');
+  const target = document.getElementById(id);
+  if (!scroller || !target) {
+    return false;
+  }
+  const offset = target.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+  return offset >= -2 && offset < scroller.clientHeight / 3;
+};
+
 async function suite(browser, { base, version }) {
   const root = `${base}/v${version}`;
   const results = [];
@@ -40,7 +52,7 @@ async function suite(browser, { base, version }) {
     const hash = new URL(page.url()).hash;
     ok('the hit deep-links to its section', hash.length > 1, page.url());
     if (hash.length > 1) {
-      const scrolledToSection = await page.evaluate(() => (document.querySelector('.shell__main')?.scrollTop ?? 0) > 0);
+      const scrolledToSection = await page.evaluate(isSectionInView, decodeURIComponent(hash.slice(1)));
       ok('the section is scrolled into view (SPA nav)', scrolledToSection);
     }
     // Flash highlight (CSS Custom Highlight API): painted on arrival…
@@ -53,10 +65,22 @@ async function suite(browser, { base, version }) {
     ok('the flash highlight clears itself', cleared);
   }
 
-  // Mixed-language query: the strict all-terms pass finds nothing, the
-  // any-term fallback must still surface the cognate ("validation").
+  // Selecting a hit closes the palette programmatically: ⌘K must reopen it on
+  // an empty filter, not on the previous query and its results.
   await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
   await page.waitForSelector('[data-ods="command-filter"]', { timeout: 5000 });
+  const reopenedQuery = await page.locator('[data-ods="command-filter"]').inputValue();
+  ok('the palette reopens on an empty query after a selection', reopenedQuery === '', `"${reopenedQuery}"`);
+
+  // A term found only in a section heading (moved out of the body at build
+  // time) still finds that section.
+  await page.locator('[data-ods="command-filter"]').fill('textarea placement');
+  await page.waitForTimeout(900);
+  const placementHint = await page.locator('.shell__search-option--content .shell__search-option-hint').first().textContent();
+  ok('a heading-only term finds its section ("textarea placement")', placementHint === 'Placement', placementHint ?? '(no content hit)');
+
+  // Mixed-language query: the strict all-terms pass finds nothing, the
+  // any-term fallback must still surface the cognate ("validation").
   await page.locator('[data-ods="command-filter"]').fill('validation formulaire');
   await page.waitForTimeout(900);
   ok('fallback surfaces hits for a mixed FR/EN query', (await page.locator('.shell__search-option--content').count()) > 0);
@@ -109,14 +133,15 @@ async function suite(browser, { base, version }) {
     const href = await anchor.getAttribute('href');
     ok('anchor href targets the heading id', Boolean(href?.startsWith('#')), href ?? '(none)');
 
-    // Deep link to a section: the lazy content must still honor the hash.
-    const targetId = await page.locator('h2[id]').first().getAttribute('id');
+    // Deep link to a section: the lazy content must still honor the hash. The
+    // last section, as the first one is in view without any scroll.
+    const targetId = await page.locator('h2[id]').last().getAttribute('id');
     const deep = await ctx.newPage();
     deep.on('pageerror', (e) => errors.push(e.message));
     await deep.goto(`${root}/components/button#${targetId}`, { waitUntil: 'domcontentloaded' });
     await deep.waitForSelector(`h2[id="${targetId}"]`, { state: 'attached', timeout: 30000 });
     await deep.waitForTimeout(1500);
-    const scrolled = await deep.evaluate(() => (document.querySelector('.shell__main')?.scrollTop ?? 0) > 0);
+    const scrolled = await deep.evaluate(isSectionInView, targetId);
     ok(`#hash deep link scrolls to the section (#${targetId})`, scrolled);
     await deep.close();
   } catch (error) {
@@ -167,6 +192,22 @@ async function suite(browser, { base, version }) {
     ok('repeated heading labels', false, String(error).slice(0, 120));
   }
   await repeatedPage.close();
+
+  // The ToC collects the ids after the dedupe pass: the second "Dependency" of
+  // the migration guide links to its own heading, not to the first one.
+  const toc = await ctx.newPage();
+  toc.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await toc.goto(`${root}/guides/migration-14-to-15`, { waitUntil: 'domcontentloaded' });
+    await toc.waitForFunction(() => document.getElementById('dependency-2') !== null, null, { timeout: 30000 });
+    await toc.locator('.doc-layout__toc-node', { hasText: /^Dependency$/ }).nth(1).click();
+    await toc.waitForTimeout(300);
+    const tocHash = await toc.evaluate(() => location.hash);
+    ok('the ToC links a repeated heading to its own id', tocHash === '#dependency-2', tocHash || '(no hash)');
+  } catch (error) {
+    ok('ToC of repeated headings', false, String(error).slice(0, 120));
+  }
+  await toc.close();
 
   const technical = await ctx.newPage();
   technical.on('pageerror', (e) => errors.push(e.message));

@@ -87,6 +87,14 @@ const SearchCommand = () => {
     };
   }, [query]);
 
+  // Selecting a result closes the palette through setOpen, not onOpenChange:
+  // reset the query on any close so ⌘K reopens on an empty filter.
+  useEffect(() => {
+    if (!open) {
+      setQuery('');
+    }
+  }, [open]);
+
   const go = (path: string) => {
     navigate(path);
     setOpen(false);
@@ -114,12 +122,7 @@ const SearchCommand = () => {
 
   return (
     <Command
-      onOpenChange={ ({ open: value }) => {
-        setOpen(value);
-        if (!value) {
-          setQuery('');
-        }
-      } }
+      onOpenChange={ ({ open: value }) => setOpen(value) }
       open={ open }>
       <CommandContent aria-label="Search the documentation">
         <CommandFilter

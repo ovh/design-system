@@ -36,7 +36,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-critical: var(--ods-semantic-color-surface-critical);
   --ods-button-background-color-critical-hover: var(--ods-semantic-color-interaction-critical-hover);
-  --ods-button-background-color-critical-active: var(--ods-semantic-color-interaction-critical-hover);
+  --ods-button-background-color-critical-active: var(--ods-semantic-color-interaction-critical-active);
   --ods-button-border-color-critical: var(--ods-semantic-color-border-critical);
   --ods-button-border-color-critical-hover: var(--ods-semantic-color-interaction-critical-hover);
   --ods-button-border-color-critical-active: var(--ods-semantic-color-interaction-critical-active);
@@ -65,7 +65,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-information: var(--ods-semantic-color-surface-information);
   --ods-button-background-color-information-hover: var(--ods-semantic-color-interaction-information-hover);
-  --ods-button-background-color-information-active: var(--ods-semantic-color-interaction-information-hover);
+  --ods-button-background-color-information-active: var(--ods-semantic-color-interaction-information-active);
   --ods-button-border-color-information: var(--ods-semantic-color-border-information);
   --ods-button-border-color-information-hover: var(--ods-semantic-color-interaction-information-hover);
   --ods-button-border-color-information-active: var(--ods-semantic-color-interaction-information-active);
@@ -95,7 +95,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-neutral: var(--ods-semantic-color-surface-neutral);
   --ods-button-background-color-neutral-hover: var(--ods-semantic-color-interaction-neutral-hover);
-  --ods-button-background-color-neutral-active: var(--ods-semantic-color-interaction-neutral-hover);
+  --ods-button-background-color-neutral-active: var(--ods-semantic-color-interaction-neutral-active);
   --ods-button-border-color-neutral: var(--ods-semantic-color-border-neutral);
   --ods-button-border-color-neutral-hover: var(--ods-semantic-color-interaction-neutral-hover);
   --ods-button-border-color-neutral-active: var(--ods-semantic-color-interaction-neutral-active);
@@ -125,7 +125,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-primary: var(--ods-semantic-color-surface-brand);
   --ods-button-background-color-primary-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-background-color-primary-active: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-background-color-primary-active: var(--ods-semantic-color-interaction-brand-active);
   --ods-button-border-color-primary: var(--ods-semantic-color-border-brand);
   --ods-button-border-color-primary-hover: var(--ods-semantic-color-interaction-brand-hover);
   --ods-button-border-color-primary-active: var(--ods-semantic-color-interaction-brand-active);
@@ -155,7 +155,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-success: var(--ods-semantic-color-surface-success);
   --ods-button-background-color-success-hover: var(--ods-semantic-color-interaction-success-hover);
-  --ods-button-background-color-success-active: var(--ods-semantic-color-interaction-success-hover);
+  --ods-button-background-color-success-active: var(--ods-semantic-color-interaction-success-active);
   --ods-button-border-color-success: var(--ods-semantic-color-border-success);
   --ods-button-border-color-success-hover: var(--ods-semantic-color-interaction-success-hover);
   --ods-button-border-color-success-active: var(--ods-semantic-color-interaction-success-active);
@@ -185,7 +185,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   /* --- */
   --ods-button-background-color-warning: var(--ods-semantic-color-surface-warning);
   --ods-button-background-color-warning-hover: var(--ods-semantic-color-interaction-warning-hover);
-  --ods-button-background-color-warning-active: var(--ods-semantic-color-interaction-warning-hover);
+  --ods-button-background-color-warning-active: var(--ods-semantic-color-interaction-warning-active);
   --ods-button-border-color-warning: var(--ods-semantic-color-border-warning);
   --ods-button-border-color-warning-hover: var(--ods-semantic-color-interaction-warning-hover);
   --ods-button-border-color-warning-active: var(--ods-semantic-color-interaction-warning-active);

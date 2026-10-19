@@ -1,13 +1,9 @@
 @use './breakpoint';
-@use './overlay';
 
-$ods-modal-border-radius: var(--ods-semantic-size-radius-overlay); // [Deprecated] will be removed in next major version
 $ods-modal-header-height: 32px;
-$ods-modal-margin: 16px; // [Deprecated] will be removed in next major version
 $ods-modal-margin-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 2);
 $ods-modal-margin-vertical: calc(var(--ods-semantic-size-space-inset-block) * 2);
 $ods-modal-size: 512px;
-$ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be removed in next major version
 
 @mixin ods-modal() {
   --ods-modal-border-radius: var(--ods-semantic-size-radius-overlay);

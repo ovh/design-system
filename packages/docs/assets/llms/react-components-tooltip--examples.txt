@@ -4,7 +4,7 @@ slug: tooltip
 category: component
 type: examples
 version: 19.7.3
-tokens: 1056
+tokens: 1057
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--examples.txt
 ---
 
@@ -203,7 +203,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
   <Tooltip
     open
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
-    positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+    positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <TooltipTrigger asChild>
       <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>

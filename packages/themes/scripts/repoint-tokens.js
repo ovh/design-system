@@ -309,10 +309,10 @@ const LEGACY = {
 /* --------------------------------------------------------------------- property -> kind */
 
 function kindOf(prop) {
-  if (/background|--ods-range-track|-fill-/.test(prop)) return 'surface';
+  if (/background|--ods-range-track|-fill-|^fill$/.test(prop)) return 'surface';
   if (/border-color|^border|outline-color|-border$|-ring/.test(prop)) return 'border';
   if (/box-shadow/.test(prop)) return 'shadow';
-  if (/color$|color-|^fill$|^color$/.test(prop)) return 'content';
+  if (/color$|color-|^color$/.test(prop)) return 'content';
   return 'other';
 }
 
@@ -407,12 +407,15 @@ function rewriteLine(line, carried, file, lineNo) {
     rows.push([file, lineNo, prop, from, `--ods-semantic-${role}`, rule]);
     return `--ods-semantic-${role}`;
   };
+  /* A colour inside a gradient is not the property's fill, so the property says nothing about it. */
+  const inGradient = (offset) => /gradient\(/.test(line.slice(0, offset));
   let out = line;
 
   out = out.replace(THEME_RE, (m, key, offset) => {
     const prop = propAt(line, offset, carried);
     if (key in THEME) return THEME[key] ? rename(prop, m, THEME[key], 'rename') : report(prop, m, 'UNMAPPED:removed');
-    const kind = kindOf(prop);
+    const kind = inGradient(offset) ? 'gradient' : kindOf(prop);
+    if (!['surface', 'border', 'content'].includes(kind)) return report(prop, m, `UNMAPPED:split:${kind}`);
     return rename(prop, m, splitRole(THEME_SPLIT[key], kind), `split:${kind}`);
   });
 
@@ -424,6 +427,7 @@ function rewriteLine(line, carried, file, lineNo) {
   out = out.replace(RAMP_RE, (m, family, rung, offset) => {
     const prop = propAt(line, offset, carried);
     if (!FAMILY[family]) return report(prop, m, 'UNKNOWN-FAMILY');
+    if (inGradient(offset)) return report(prop, m, 'UNMAPPED:gradient');
     const kind = kindOf(prop);
     const role = rampRole(kind, family, rung, prop);
     return role ? rename(prop, m, role, `ramp:${kind}`) : report(prop, m, `UNMAPPED:${kind}`);

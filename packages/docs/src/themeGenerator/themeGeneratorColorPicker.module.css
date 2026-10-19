@@ -80,7 +80,7 @@
   transform: translate(-50%, -50%);
   border: 2px solid var(--ods-semantic-color-surface-page);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--ods-color-neutral-500);
+  box-shadow: 0 0 0 1px var(--ods-semantic-color-border-neutral);
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -108,7 +108,7 @@
   transform: translate(-50%, -50%);
   border: 2px solid var(--ods-semantic-color-surface-page);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--ods-color-neutral-500);
+  box-shadow: 0 0 0 1px var(--ods-semantic-color-border-neutral);
   cursor: pointer;
   width: 10px;
   min-width: 10px;
@@ -120,10 +120,10 @@
   position: absolute;
   border-radius: var(--ods-semantic-size-radius-control);
   background-image:
-    linear-gradient(45deg, var(--ods-color-neutral-200) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--ods-color-neutral-200) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--ods-color-neutral-200) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--ods-color-neutral-200) 75%);
+    linear-gradient(45deg, var(--ods-palette-gray-200) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--ods-palette-gray-200) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--ods-palette-gray-200) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--ods-palette-gray-200) 75%);
   background-position: 0 0, 0 4px, 4px -4px, -4px 0;
   background-size: 8px 8px;
   width: 100%;

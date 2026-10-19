@@ -35,7 +35,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-message-bubble-text-color` | `var(--ods-message-bubble-error-text-color)` |
 | `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
-| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-minimal)` |
-| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-subtle)` |
 | `--ods-message-bubble-error-text-color` | `var(--ods-semantic-color-content-critical)` |

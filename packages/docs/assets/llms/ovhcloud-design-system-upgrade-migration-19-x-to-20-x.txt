@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 750
+tokens: 3867
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -21,11 +21,11 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change. On the theme side, the default font family is renamed to `'Source Sans 3'` (see **Typography**).
 
 ## If you stay on React 18
 
-Nothing to do. Installation, types and runtime keep working exactly as before.
+Nothing to do. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**).
 
 ## If you move to React 19
 
@@ -100,6 +100,278 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Typography
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
+
+- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines, v20 no longer reads them. To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` instead.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- The values exposed by `@ovhcloud/ods-themes/default/tokens` change the same way.
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-semantic-font-family-body);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Deprecations
+
+The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
+
+**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
+
+If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+
+### Badge
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+### Button
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
+
+**before**
+```tsx
+import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
+
+<Button color={ BUTTON_COLOR.primary }>Save</Button>
+<Button color={ BUTTON_COLOR.critical }>Delete</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
+
+<Button>Save</Button>
+<Button status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 rendering.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+```
+
+### Message
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+
+**before**
+```tsx
+import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message color={ MESSAGE_COLOR.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+### Modal
+
+The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- any other value: remove the prop.
+- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
+```
+
+### Tag
+
+- `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+**before**
+```tsx
+import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';
+
+<Tag color={ TAG_COLOR.primary }>Cloud</Tag>
+```
+
+**after**
+```tsx
+import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
+
+<Tag status={ TAG_STATUS.accent }>Cloud</Tag>
+```
+
+### Toaster
+
+- `toast.primary()`: use `toast.accent()`.
+- `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+**before**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.primary('Your export is ready');
+```
+
+**after**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.accent('Your export is ready');
+```
 
 ## Need help?
 

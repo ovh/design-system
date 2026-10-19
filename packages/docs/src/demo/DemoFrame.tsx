@@ -16,7 +16,7 @@ interface DemoFrameProp {
   /* Fires with the frame document once it has painted — for callers that
      measure the rendered DOM (the anatomy highlighter). */
   onReady?: (frameDocument: Document) => void;
-  /* Hot token overrides (theme generator use case), e.g. { '--ods-color-primary-500': '#ff0000' } */
+  /* Hot token overrides (theme generator use case), e.g. { '--ods-palette-brand-500': '#ff0000' } */
   tokens?: Record<string, string>;
 }
 

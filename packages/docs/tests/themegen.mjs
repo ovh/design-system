@@ -11,7 +11,7 @@ async function suite(browser, { base, version }) {
   await page.goto(`${base}/v${version}/tools/theme-generator`, { waitUntil: 'domcontentloaded' });
   await check('token tree renders', async () => {
     await page.waitForURL('**/tools/theme-generator', { timeout: 10000 });
-    await page.waitForFunction(() => document.body.textContent?.includes('--ods-theme-'), { timeout: 20000 });
+    await page.waitForFunction(() => document.body.textContent?.includes('--ods-semantic-'), { timeout: 20000 });
   });
   await check('component previews render inside the frame', async () => {
     const count = await page.waitForFunction(() => {
@@ -26,7 +26,7 @@ async function suite(browser, { base, version }) {
     await page.click('text=JSON');
     await page.waitForSelector('textarea', { timeout: 5000 });
     const vars = JSON.parse(await page.inputValue('textarea'));
-    vars['--ods-color-primary-500'] = '#ff0044';
+    vars['--ods-palette-brand-500'] = '#ff0044';
     await page.fill('textarea', JSON.stringify(vars));
     await page.getByRole('button', { exact: true, name: 'Apply' }).click();
     await page.waitForTimeout(800);
@@ -35,12 +35,12 @@ async function suite(browser, { base, version }) {
       const doc = f?.contentDocument;
       const probe = doc.createElement('div');
       doc.body.appendChild(probe);
-      const value = doc.defaultView.getComputedStyle(probe).getPropertyValue('--ods-color-primary-500').trim();
+      const value = doc.defaultView.getComputedStyle(probe).getPropertyValue('--ods-palette-brand-500').trim();
       probe.remove();
       return value;
     });
     if (applied !== '#ff0044') {
-      throw new Error(`--ods-color-primary-500 = ${applied}`);
+      throw new Error(`--ods-palette-brand-500 = ${applied}`);
     }
   });
   await check('closed drawers stay inert in previews', async () => {

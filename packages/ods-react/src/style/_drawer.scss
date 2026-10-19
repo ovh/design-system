@@ -2,7 +2,6 @@
 
 $animation-duration: var(--ods-semantic-motion-duration-slow);
 $drawer-size: 320px;
-$drawer-max-size: calc(100% - 48px); // [Deprecated] will be removed in next major version
 $drawer-max-height: calc(100% - calc(var(--ods-semantic-size-space-inset-block) * 6));
 $drawer-max-width: calc(100% - calc(var(--ods-semantic-size-space-inset-inline) * 6));
 

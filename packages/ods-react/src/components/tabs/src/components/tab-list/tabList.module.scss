@@ -6,7 +6,7 @@ $tab-list-border-bottom-size: 2px;
 
 @layer ods-molecules {
   .tab-list {
-    --ods-tab-list-background-color-switch: var(--ods-semantic-color-surface-neutral-minimal);
+    --ods-tab-list-background-color-switch: var(--ods-semantic-color-surface-segmented);
     --ods-tab-list-border-color: var(--ods-semantic-color-border-neutral-minimal);
     --ods-tab-list-border-radius-switch-md: calc(var(--ods-semantic-size-radius-container) * 1.25);
     --ods-tab-list-border-radius-switch-sm: calc(var(--ods-semantic-size-radius-container) * 0.75);
@@ -117,7 +117,7 @@ $tab-list-border-bottom-size: 2px;
       }
 
       &--switch {
-        background-color: var(--ods-semantic-color-surface-segmented);
+        background-color: var(--ods-tab-list-background-color-switch);
 
         &#{$container}--md {
           border-radius: var(--ods-tab-list-border-radius-switch-md);

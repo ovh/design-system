@@ -249,7 +249,7 @@
   --ods-semantic-color-shadow-raised: var(--ods-palette-gray-900);
   --ods-semantic-color-shadow-overlay: var(--ods-palette-gray-900);
   --ods-semantic-shadow-control: none;
-  --ods-semantic-shadow-raised: none;
+  --ods-semantic-shadow-raised: 0 0 #0000;
   --ods-semantic-shadow-overlay: 0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent);
 
   /* Motion */

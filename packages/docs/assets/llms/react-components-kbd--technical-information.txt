@@ -4,7 +4,7 @@ slug: kbd
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 209
+tokens: 207
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--technical-information.txt
 ---
 
@@ -20,8 +20,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-kbd-border-width` | `var(--ods-semantic-size-border-thickness)` |
-| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-kbd-border-width` | `var(--ods-semantic-border-thickness)` |
+| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-border-thickness) * 2)` |
 | `--ods-kbd-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-kbd-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |

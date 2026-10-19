@@ -15,10 +15,10 @@ interface IconDetailsProp {
   onClose: () => void;
 }
 
-const COLOR_VARIANTS = ['primary', 'critical', 'neutral', 'success', 'warning'];
+const COLOR_VARIANTS = ['brand', 'critical', 'neutral', 'success', 'warning'];
 
 /* The copy tooltips must clear the drawer overlay. */
-const OVERLAY_POSITIONER = { zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 2)' };
+const OVERLAY_POSITIONER = { zIndex: 'calc(var(--ods-semantic-z-index-drawer) + 1)' };
 
 const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
   const [color, setColor] = useState<string>();
@@ -58,7 +58,7 @@ const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
       <Card
         className={ styles['icon-details__preview'] }
         status={ CARD_STATUS.neutral }
-        style={{ color: color && `var(--ods-color-${color}-500)` }}>
+        style={{ color: color && `var(--ods-semantic-color-content-${color})` }}>
         <Icon name={ name } />
       </Card>
 
@@ -71,7 +71,7 @@ const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
             ) }
             key={ variant }
             onClick={ () => onColorVariantClick(variant) }
-            style={{ backgroundColor: `var(--ods-color-${variant}-500)` }}
+            style={{ backgroundColor: `var(--ods-semantic-color-surface-${variant})` }}
             title={ variant } />
         )) }
       </div>

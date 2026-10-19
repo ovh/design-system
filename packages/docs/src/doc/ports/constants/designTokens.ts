@@ -1,17 +1,13 @@
-const MONO_COLORS = Object.freeze([
-  'alpha',
-  'beta',
-  'new',
-  'promotion',
-]);
-
+/* The hue families of the palette, plus the two ramps a theme re-aims onto them. */
 const PALETTES = Object.freeze([
-  'critical',
-  'information',
-  'neutral',
-  'primary',
-  'success',
-  'warning',
+  'accent',
+  'blue',
+  'brand',
+  'gray',
+  'green',
+  'indigo',
+  'orange',
+  'red',
 ]);
 
 enum TOKEN_TYPE {
@@ -36,13 +32,13 @@ const TOKEN_TYPES = Object.freeze(Object.values(TOKEN_TYPE));
 
 enum TOKEN_CATEGORY {
   color = 'theme-color',
-  deprecated = 'deprecated',
-  fontFamily = 'font-family',
-  formElement = 'form-element',
-  outline = 'outline',
-  overlay = 'overlay',
+  elevation = 'elevation',
+  focus = 'focus',
+  font = 'font',
+  motion = 'motion',
+  other = 'other',
   palette = 'color-palette',
-  spacing = 'spacing',
+  size = 'size',
 }
 
 interface Token {
@@ -52,7 +48,6 @@ interface Token {
 }
 
 export {
-  MONO_COLORS,
   PALETTES,
   TOKEN_CATEGORY,
   TOKEN_TYPE,

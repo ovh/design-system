@@ -19,8 +19,8 @@ const BRAND_CSS: Record<Exclude<Brand, 'default'>, string> = {
 };
 
 const BRAND_ITEMS = [
-  { label: 'Default theme', value: 'default' },
-  { label: 'blue-jeans (debug)', value: 'blue-jeans' },
+  { label: 'Default theme (Aluminium)', value: 'default' },
+  { label: 'blue-jeans', value: 'blue-jeans' },
 ];
 
 function readStoredBrand(): Brand {
@@ -50,7 +50,7 @@ const BrandSelect = () => {
       items={ BRAND_ITEMS }
       onValueChange={ ({ value }) => setBrand((value[0] as Brand) ?? 'default') }
       value={ [brand] }>
-      <SelectControl />
+      <SelectControl aria-label="Theme" />
       <SelectContent />
     </Select>
   );

@@ -25,18 +25,17 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
-        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
-        'ods-border-radius-md': 'var(--ods-border-radius-md)',
-        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+        'ods-control': 'var(--ods-semantic-size-radius-control)',
+        'ods-container': 'var(--ods-semantic-size-radius-container)',
+        'ods-pill': 'var(--ods-semantic-size-radius-pill)',
       },
       colors: {
-        'ods-color-primary-500': 'var(--ods-color-primary-500)',
-        'ods-color-success-500': 'var(--ods-color-success-500)',
-        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+        'ods-brand': 'var(--ods-semantic-color-surface-brand)',
+        'ods-success': 'var(--ods-semantic-color-surface-success)',
+        'ods-warning': 'var(--ods-semantic-color-content-warning)',
       },
       fontFamily: {
-        'ods-font-family-default': 'var(--ods-font-family-default)',
+        'ods-body': 'var(--ods-semantic-font-family-body)',
       },
     },
   },
@@ -54,14 +53,13 @@ Create a `./.vscode/tailwind.json` containing the classes you want to expose for
 ```json
 {
     "customClasses": [
-      "ods-color-primary-500",
-      "ods-color-success-500",
-      "ods-color-critical-700",
-      "ods-border-radius-xs",
-      "ods-border-radius-sm",
-      "ods-border-radius-md",
-      "ods-border-radius-lg",
-      "ods-font-family-default",
+      "ods-brand",
+      "ods-success",
+      "ods-critical",
+      "ods-control",
+      "ods-container",
+      "ods-pill",
+      "ods-body",
     ]
   }
 ```
@@ -71,16 +69,15 @@ For Tailwind CSS v4, create a CSS file using the <ExternalLink href="https://tai
 
 ```css
 @theme {
-  --radius-ods-xs: var(--ods-border-radius-xs);
-  --radius-ods-sm: var(--ods-border-radius-sm);
-  --radius-ods-md: var(--ods-border-radius-md);
-  --radius-ods-lg: var(--ods-border-radius-lg);
+  --radius-ods-control: var(--ods-semantic-size-radius-control);
+  --radius-ods-container: var(--ods-semantic-size-radius-container);
+  --radius-ods-pill: var(--ods-semantic-size-radius-pill);
 
-  --color-ods-primary: var(--ods-color-primary-500);
-  --color-ods-success: var(--ods-color-success-500);
-  --color-ods-critical: var(--ods-color-critical-700);
+  --color-ods-brand: var(--ods-semantic-color-surface-brand);
+  --color-ods-success: var(--ods-semantic-color-surface-success);
+  --color-ods-critical: var(--ods-semantic-color-content-critical);
 
-  --font-ods-default: var(--ods-font-family-default);
+  --font-ods-body: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -108,8 +105,8 @@ import { Button } from '@ovhcloud/ods-react';
 function MyComponent() {
   return (
   <div>
-      <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
+      <p className="text-ods-critical">Click on the button!</p>
+      <Button className="bg-ods-brand">Click me!</Button>
   </div>
   );
 }
@@ -119,12 +116,12 @@ function MyComponent() {
 
 <Heading label="Color Usage" level={ 3 } />
 
-- Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+- Use semantic color names (e.g., `ods-brand`, `ods-success`) instead of generic colors
 - **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
 
 <Heading label="Spacing and Layout" level={ 3 } />
 
-- Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+- Use ODS border radius tokens (`rounded-ods-control`, `rounded-ods-container`, etc.)
 - Leverage ODS form element heights for consistent input sizing
 - **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
 

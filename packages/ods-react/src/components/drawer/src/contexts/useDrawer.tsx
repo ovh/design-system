@@ -7,7 +7,7 @@ interface DrawerOpenChangeDetail {
 
 interface DrawerRootProp {
   /**
-   * Whether a backdrop is displayed.
+   * Whether a backdrop is displayed. With a backdrop, the drawer behaves as a modal: focus is trapped, the rest of the page is inert and its scroll is locked.
    */
   backdrop?: boolean;
   /**
@@ -19,7 +19,7 @@ interface DrawerRootProp {
    */
   closeOnEscape?: boolean,
   /**
-   * Whether to close the drawer when the outside is clicked.
+   * Whether to close the drawer when the user clicks or moves the focus outside of it. Defaults to true when a backdrop is displayed, false otherwise.
    */
   closeOnInteractOutside?: boolean,
   /**
@@ -42,6 +42,7 @@ interface DrawerRootProp {
 
 interface DrawerProviderProp extends Pick<DrawerRootProp, 'backdrop' | 'backdropStyle' | 'positionerStyle'> {
   children: ReactNode,
+  setContentId: (value?: string) => void,
 }
 
 type DrawerContextType = Omit<DrawerProviderProp, 'children'>;
@@ -53,12 +54,14 @@ function DrawerProvider({
   backdropStyle,
   children,
   positionerStyle,
+  setContentId,
 }: DrawerProviderProp): JSX.Element {
   return (
     <DrawerContext.Provider value={{
       backdrop,
       backdropStyle,
       positionerStyle,
+      setContentId,
     }}>
       { children }
     </DrawerContext.Provider>

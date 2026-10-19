@@ -1,10 +1,10 @@
 .custom-code {
   background-color: var(--ods-semantic-color-surface-page);
-  color: var(--ods-semantic-color-content-on-brand-subtle);
+  color: var(--ods-semantic-color-content-on-brand);
 }
 
 .custom-code [data-part='trigger'] {
-  color: var(--ods-semantic-color-content-on-brand-subtle);
+  color: var(--ods-semantic-color-content-on-brand);
 }
 
 .custom-code [data-part='trigger']:hover {

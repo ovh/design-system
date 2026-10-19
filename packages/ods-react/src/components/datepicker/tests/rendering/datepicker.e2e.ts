@@ -56,5 +56,11 @@ describe('Datepicker rendering', () => {
       expect(await widthOf('narrow')).toBe(200);
       expect(await widthOf('override')).toBe(400);
     });
+
+    it('should fill its container with width: 100% on the root and the control', async() => {
+      await gotoStory(page, 'rendering/default-width');
+
+      expect(await widthOf('full')).toBe(600);
+    });
   });
 });

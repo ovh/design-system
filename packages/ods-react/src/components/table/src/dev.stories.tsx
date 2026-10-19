@@ -167,7 +167,7 @@ export const StickyHeader = () => {
   }, []);
 
   return (
-    <Table variant="striped">
+    <Table striped>
       <thead>
         <tr>
           <th className={ style['sticky-header'] } scope="col">Id</th>
@@ -188,9 +188,9 @@ export const StickyHeader = () => {
   );
 };
 
-export const Variant = () => (
+export const Striped = () => (
   <div style={ { display: 'flex', gap: '1rem' } }>
-    <Table variant="default">
+    <Table>
       <caption>
         Front-end web developer course 2021
       </caption>
@@ -224,7 +224,7 @@ export const Variant = () => (
         </tr>
       </tbody>
     </Table>
-    <Table variant="striped">
+    <Table striped>
       <caption>
         Front-end web developer course 2021
       </caption>

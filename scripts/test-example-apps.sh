@@ -41,7 +41,7 @@ FAILED=0
 
 # Server-side rendering: the ods-react bundle must import and render in plain Node
 echo "======== ssr: ods-react dist ========"
-log="$(mktemp -t "example-ssr")"
+log="$(mktemp "${TMPDIR:-/tmp}/example-ssr.XXXXXX")"
 if pnpm --filter @ovhcloud/ods-react run test:ssr >"$log" 2>&1; then
   echo "  ✅ OK"
   NAMES+=("ods-react ssr"); RESULTS+=("✅ OK")
@@ -62,7 +62,7 @@ for dir in "$EXAMPLES_DIR"/*/; do
   fi
 
   echo "======== build: $app ========"
-  log="$(mktemp -t "example-$app")"
+  log="$(mktemp "${TMPDIR:-/tmp}/example-$app.XXXXXX")"
   if pnpm -C "$dir" build >"$log" 2>&1; then
     echo "  ✅ OK"
     NAMES+=("$app"); RESULTS+=("✅ OK")

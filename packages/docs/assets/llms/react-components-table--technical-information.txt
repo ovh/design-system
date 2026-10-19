@@ -4,7 +4,7 @@ slug: table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 340
+tokens: 338
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
 ---
 
@@ -36,7 +36,7 @@ This component extends all the native `<table>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-table-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
 | `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
@@ -44,4 +44,4 @@ This component extends all the native `<table>` attributes.
 | `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-table-cell-padding-horizontal-lg` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
-| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-header)` |

@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: examples
 version: 19.7.3
-tokens: 181
+tokens: 190
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--examples.txt
 ---
 
@@ -14,8 +14,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
 
 ```tsx
 <>
-  <Spinner color={ SPINNER_COLOR.neutral } />
-  <Spinner color={ SPINNER_COLOR.primary } />
+  <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
+  <Spinner />
 </>
 ```
 

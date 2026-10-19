@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1737
+tokens: 1861
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -93,11 +93,17 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlight an item tied to the brand, without conveying any particular status.
+- **Neutral**: label an item without conveying any particular status or urgency.
 - **Information** _(default)_: display neutral or informational messages, such as updates, notifications, or general status.
 - **Success**: indicate positive outcomes or successful actions, such as completed tasks or achievements.
 - **Warning**: alert users to potential issues or cautionary information, signaling that attention is needed.
+- **Critical**: highlight severe issues or errors that require immediate attention.
+- **Alpha** and **Beta**: flag a feature or a product in an early, not yet stable, stage.
+- **New**: flag a recently released feature or product.
+- **Promotion**: highlight a commercial offer, such as a discount or a limited-time deal.
 
 ### Size
 
@@ -140,7 +146,7 @@ Since an icon-only **Badge** may lack detailed information, attach a tooltip and
   <TooltipTrigger asChild>
     <Badge
       aria-labelledby="tooltip-a11y"
-      color={ BADGE_COLOR.promotion }>
+      status={ BADGE_STATUS.promotion }>
       <Icon name={ ICON_NAME.tag } />
     </Badge>
   </TooltipTrigger>

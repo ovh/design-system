@@ -4,7 +4,7 @@ slug: divider
 category: component
 type: documentation
 version: 19.7.3
-tokens: 716
+tokens: 720
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--documentation.txt
 ---
 
@@ -67,8 +67,7 @@ It can be adjusted around the **Divider** to match the layout and visual rhythm 
 
 ### Color
 
-* **Light** (default): used on dark or colored backgrounds to maintain contrast
-* **Dark**: used on light backgrounds for clear, subtle separation
+The **Divider** uses the theme split color. If you need another color, for example a darker line on a light background, override its `background-color` in CSS.
 
 ### Orientation
 

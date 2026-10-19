@@ -197,12 +197,14 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-accordion-border-width` | `1px` |
 | `--ods-accordion-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
 | `--ods-accordion-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
-| `--ods-accordion-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-accordion-border-radius` | `var(--ods-semantic-size-radius-container)` |
 
 ## Accordion
 
@@ -480,8 +482,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-avatar-background-color` | `var( --ods-semantic-color-surface-base )` |
-| `--ods-avatar-text-color` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-avatar-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-avatar-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-avatar-border-radius` | `50%` |
 | `--ods-avatar-size` | `24px` |
 | `--ods-avatar-object-fit` | `cover` |
@@ -536,12 +538,13 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'critical' | 'information' | 'neutral' | 'primary' | 'success' | 'warning' | 'alpha' | 'beta' | 'new' | 'promotion'` | No | undefined | The color preset to use. |
+| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
 
 ## Examples
 
-- Color
+- Status
 - Default
 - Size
 - Accessibility Aria Label
@@ -642,11 +645,17 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlight an item tied to the brand, without conveying any particular status.
+- **Neutral**: label an item without conveying any particular status or urgency.
 - **Information** _(default)_: display neutral or informational messages, such as updates, notifications, or general status.
 - **Success**: indicate positive outcomes or successful actions, such as completed tasks or achievements.
 - **Warning**: alert users to potential issues or cautionary information, signaling that attention is needed.
+- **Critical**: highlight severe issues or errors that require immediate attention.
+- **Alpha** and **Beta**: flag a feature or a product in an early, not yet stable, stage.
+- **New**: flag a recently released feature or product.
+- **Promotion**: highlight a commercial offer, such as a discount or a limited-time deal.
 
 ### Size
 
@@ -689,7 +698,7 @@ Since an icon-only **Badge** may lack detailed information, attach a tooltip and
   <TooltipTrigger asChild>
     <Badge
       aria-labelledby="tooltip-a11y"
-      color={ BADGE_COLOR.promotion }>
+      status={ BADGE_STATUS.promotion }>
       <Icon name={ ICON_NAME.tag } />
     </Badge>
   </TooltipTrigger>
@@ -753,12 +762,13 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'critical' | 'information' | 'neutral' | 'primary' | 'success' | 'warning' | 'alpha' | 'beta' | 'new' | 'promotion'` | No | undefined | The color preset to use. |
+| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
 
-### BADGE_COLOR
+### BADGE_COLOR (deprecated)
 
 - `alpha` = `alpha`
 - `beta` = `beta`
@@ -777,11 +787,24 @@ This component extends all the native `<span>` attributes.
 - `md` = `md`
 - `sm` = `sm`
 
+### BADGE_STATUS
+
+- `accent` = `accent`
+- `alpha` = `alpha`
+- `beta` = `beta`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `new` = `new`
+- `promotion` = `promotion`
+- `success` = `success`
+- `warning` = `warning`
+
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
-| `--ods-badge-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-badge-border-radius` | `var(--ods-semantic-size-radius-full)` |
 | `--ods-badge-padding-horizontal-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 | `--ods-badge-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
 | `--ods-badge-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
@@ -789,44 +812,54 @@ This component extends all the native `<span>` attributes.
 | `--ods-badge-padding-horizontal-lg` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
 | `--ods-badge-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
 | `--ods-badge-background-color-alpha` | `var(--ods-semantic-color-surface-decorative-alpha)` |
-| `--ods-badge-text-color-alpha` | `var(--ods-semantic-color-content-on-decorative)` |
+| `--ods-badge-border-color-alpha` | `transparent` |
+| `--ods-badge-text-color-alpha` | `var(--ods-semantic-color-content-on-vivid)` |
 | `--ods-badge-background-color-beta` | `var(--ods-semantic-color-surface-decorative-beta)` |
-| `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-decorative)` |
-| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-badge-border-color-beta` | `transparent` |
+| `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-vivid)` |
+| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-badge-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-badge-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-badge-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-badge-background-color-new` | `var(--ods-semantic-color-surface-decorative-new)` |
-| `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-decorative)` |
-| `--ods-badge-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
-| `--ods-badge-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-badge-border-color-new` | `transparent` |
+| `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-vivid)` |
+| `--ods-badge-background-color-primary` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-badge-border-color-primary` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-badge-text-color-primary` | `var(--ods-semantic-color-content-on-accent)` |
 | `--ods-badge-background-color-promotion` | `var(--ods-semantic-color-surface-decorative-promotion)` |
-| `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-decorative)` |
-| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-badge-border-color-promotion` | `transparent` |
+| `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-vivid)` |
+| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-badge-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
-| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-badge-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
 
 ## Badge
 
 # Badge
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Badge color={ BADGE_COLOR.alpha }>Alpha</Badge>
-  <Badge color={ BADGE_COLOR.beta }>Beta</Badge>
-  <Badge color={ BADGE_COLOR.critical }>Critical</Badge>
-  <Badge color={ BADGE_COLOR.information }>Information</Badge>
-  <Badge color={ BADGE_COLOR.neutral }>Neutral</Badge>
-  <Badge color={ BADGE_COLOR.new }>New</Badge>
-  <Badge color={ BADGE_COLOR.primary }>Primary</Badge>
-  <Badge color={ BADGE_COLOR.promotion }>Promotion</Badge>
-  <Badge color={ BADGE_COLOR.success }>Success</Badge>
-  <Badge color={ BADGE_COLOR.warning }>Warning</Badge>
+  <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
+  <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
+  <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
+  <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
+  <Badge status={ BADGE_STATUS.information }>Information</Badge>
+  <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
+  <Badge status={ BADGE_STATUS.new }>New</Badge>
+  <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
+  <Badge status={ BADGE_STATUS.success }>Success</Badge>
+  <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
 </>
 ```
 
@@ -866,7 +899,7 @@ This component extends all the native `<span>` attributes.
   <TooltipTrigger asChild>
     <Badge
       aria-labelledby="tooltip-a11y"
-      color={ BADGE_COLOR.promotion }>
+      status={ BADGE_STATUS.promotion }>
       <Icon name={ ICON_NAME.tag } />
     </Badge>
   </TooltipTrigger>
@@ -1368,14 +1401,15 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## Examples
 
-- Color
+- Status
 - Default
 - Loading
 - Size
@@ -1476,9 +1510,9 @@ An icon can be displayed on the left or right of the **Button** label. Icon-only
 
 ## Variation
 
-### Color
+### Status
 
-- **Primary** _(default)_: used for main usage of **Buttons**, and linked to the brand graphical charter.
+- **Brand** _(default)_: used for main usage of **Buttons**, and linked to the brand graphical charter.
 - **Critical**: alerts users to high-priority actions or warnings that require immediate attention.
 - **Neutral**: secondary actions (such as clearing field or close button).
 
@@ -1561,14 +1595,15 @@ This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## Enums
 
-### BUTTON_COLOR
+### BUTTON_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
@@ -1583,6 +1618,12 @@ This component extends all the native `<button>` attributes.
 - `sm` = `sm`
 - `xs` = `xs`
 
+### BUTTON_STATUS
+
+- `brand` = `brand`
+- `critical` = `critical`
+- `neutral` = `neutral`
+
 ### BUTTON_VARIANT
 
 - `default` = `default`
@@ -1593,10 +1634,10 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-button-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
-| `--ods-button-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-button-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
-| `--ods-button-border-radius-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-button-border-radius-xs` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-radius-sm` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-radius-md` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-radius-width` | `var(--ods-semantic-border-thickness)` |
 | `--ods-button-column-gap-xs` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
 | `--ods-button-column-gap-sm` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
 | `--ods-button-column-gap-md` | `var(--ods-semantic-size-space-gap-inline)` |
@@ -1608,13 +1649,13 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-padding-vertical-md` | `var(--ods-semantic-size-space-inset-block)` |
 | `--ods-button-background-color-critical` | `var(--ods-semantic-color-surface-critical)` |
 | `--ods-button-background-color-critical-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
-| `--ods-button-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-active)` |
 | `--ods-button-border-color-critical` | `var(--ods-semantic-color-border-critical)` |
-| `--ods-button-border-color-critical-hover` | `var(--ods-semantic-color-border-critical-strong)` |
-| `--ods-button-border-color-critical-active` | `var(--ods-semantic-color-border-critical-strong)` |
-| `--ods-button-text-color-critical` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-critical-hover` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-critical-active` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-border-color-critical-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-border-color-critical-active` | `var(--ods-semantic-color-interaction-critical-active)` |
+| `--ods-button-text-color-critical` | `var(--ods-semantic-color-content-on-critical-solid)` |
+| `--ods-button-text-color-critical-hover` | `var(--ods-semantic-color-content-on-critical-solid)` |
+| `--ods-button-text-color-critical-active` | `var(--ods-semantic-color-content-on-critical-solid)` |
 | `--ods-button-background-color-critical-ghost` | `inherit` |
 | `--ods-button-background-color-critical-ghost-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
 | `--ods-button-background-color-critical-ghost-active` | `var(--ods-semantic-color-surface-critical-subtle)` |
@@ -1626,22 +1667,22 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-critical-ghost-active` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-button-background-color-critical-outline` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-button-background-color-critical-outline-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
-| `--ods-button-background-color-critical-outline-active` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-button-background-color-critical-outline-active` | `var(--ods-semantic-color-interaction-critical-subtle-active)` |
 | `--ods-button-border-color-critical-outline` | `var(--ods-semantic-color-border-critical)` |
-| `--ods-button-border-color-critical-outline-hover` | `var(--ods-semantic-color-border-critical-strong)` |
-| `--ods-button-border-color-critical-outline-active` | `var(--ods-semantic-color-border-critical-strong)` |
+| `--ods-button-border-color-critical-outline-hover` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-button-border-color-critical-outline-active` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-button-text-color-critical-outline` | `var(--ods-semantic-color-content-critical)` |
 | `--ods-button-text-color-critical-outline-hover` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-button-text-color-critical-outline-active` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-button-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
-| `--ods-button-background-color-information-hover` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-button-background-color-information-active` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-button-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-button-border-color-information-hover` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-button-border-color-information-active` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-button-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-button-text-color-information-hover` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-button-text-color-information-active` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-background-color-information` | `var(--ods-semantic-color-surface-information)` |
+| `--ods-button-background-color-information-hover` | `var(--ods-semantic-color-interaction-information-hover)` |
+| `--ods-button-background-color-information-active` | `var(--ods-semantic-color-interaction-information-active)` |
+| `--ods-button-border-color-information` | `var(--ods-semantic-color-border-information)` |
+| `--ods-button-border-color-information-hover` | `var(--ods-semantic-color-interaction-information-hover)` |
+| `--ods-button-border-color-information-active` | `var(--ods-semantic-color-interaction-information-active)` |
+| `--ods-button-text-color-information` | `var(--ods-semantic-color-content-on-information-solid)` |
+| `--ods-button-text-color-information-hover` | `var(--ods-semantic-color-content-on-information-solid)` |
+| `--ods-button-text-color-information-active` | `var(--ods-semantic-color-content-on-information-solid)` |
 | `--ods-button-background-color-information-ghost` | `inherit` |
 | `--ods-button-background-color-information-ghost-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
 | `--ods-button-background-color-information-ghost-active` | `var(--ods-semantic-color-surface-information-subtle)` |
@@ -1653,24 +1694,24 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-information-ghost-active` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-button-background-color-information-outline` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-button-background-color-information-outline-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
-| `--ods-button-background-color-information-outline-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-background-color-information-outline-active` | `var(--ods-semantic-color-interaction-information-subtle-active)` |
 | `--ods-button-border-color-information-outline` | `var(--ods-semantic-color-border-information)` |
-| `--ods-button-border-color-information-outline-hover` | `var(--ods-semantic-color-border-information-strong)` |
-| `--ods-button-border-color-information-outline-active` | `var(--ods-semantic-color-border-information-strong)` |
+| `--ods-button-border-color-information-outline-hover` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-button-border-color-information-outline-active` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-button-text-color-information-outline` | `var(--ods-semantic-color-content-information)` |
 | `--ods-button-text-color-information-outline-hover` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-button-text-color-information-outline-active` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-button-background-color-neutral` | `var(--ods-semantic-color-surface-neutral)` |
 | `--ods-button-background-color-neutral-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
-| `--ods-button-background-color-neutral-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
-| `--ods-button-border-color-neutral` | `var(--ods-semantic-color-border-strong)` |
-| `--ods-button-border-color-neutral-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
-| `--ods-button-border-color-neutral-active` | `var(--ods-semantic-color-border-neutral-strong)` |
-| `--ods-button-text-color-neutral` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-neutral-hover` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-neutral-active` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-background-color-neutral-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-button-border-color-neutral` | `var(--ods-semantic-color-border-neutral)` |
+| `--ods-button-border-color-neutral-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-border-color-neutral-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-button-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral-solid)` |
+| `--ods-button-text-color-neutral-hover` | `var(--ods-semantic-color-content-on-neutral-solid)` |
+| `--ods-button-text-color-neutral-active` | `var(--ods-semantic-color-content-on-neutral-solid)` |
 | `--ods-button-background-color-neutral-ghost` | `inherit` |
-| `--ods-button-background-color-neutral-ghost-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-button-background-color-neutral-ghost-hover` | `var(--ods-semantic-color-surface-neutral-subtle)` |
 | `--ods-button-background-color-neutral-ghost-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
 | `--ods-button-border-color-neutral-ghost` | `unset` |
 | `--ods-button-border-color-neutral-ghost-hover` | `unset` |
@@ -1679,50 +1720,50 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-neutral-ghost-hover` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-button-text-color-neutral-ghost-active` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-button-background-color-neutral-outline` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-button-background-color-neutral-outline-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
-| `--ods-button-background-color-neutral-outline-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
-| `--ods-button-border-color-neutral-outline` | `var(--ods-semantic-color-border-strong)` |
-| `--ods-button-border-color-neutral-outline-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
-| `--ods-button-border-color-neutral-outline-active` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-button-background-color-neutral-outline-hover` | `var(--ods-semantic-color-interaction-neutral-subtle-hover)` |
+| `--ods-button-background-color-neutral-outline-active` | `var(--ods-semantic-color-interaction-neutral-subtle-active)` |
+| `--ods-button-border-color-neutral-outline` | `var(--ods-semantic-color-border-neutral)` |
+| `--ods-button-border-color-neutral-outline-hover` | `var(--ods-semantic-color-border-neutral)` |
+| `--ods-button-border-color-neutral-outline-active` | `var(--ods-semantic-color-border-neutral)` |
 | `--ods-button-text-color-neutral-outline` | `var(--ods-semantic-color-content-neutral)` |
 | `--ods-button-text-color-neutral-outline-hover` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-button-text-color-neutral-outline-active` | `var(--ods-semantic-color-content-on-neutral)` |
-| `--ods-button-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
-| `--ods-button-background-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-button-background-color-primary-active` | `var(--ods-semantic-color-surface-selected-solid)` |
-| `--ods-button-border-color-primary` | `var(--ods-semantic-color-border-base)` |
-| `--ods-button-border-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-button-border-color-primary-active` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-button-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-primary-hover` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-primary-active` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-background-color-primary` | `var(--ods-semantic-color-surface-brand)` |
+| `--ods-button-background-color-primary-hover` | `var(--ods-semantic-color-interaction-brand-hover)` |
+| `--ods-button-background-color-primary-active` | `var(--ods-semantic-color-interaction-brand-active)` |
+| `--ods-button-border-color-primary` | `var(--ods-semantic-color-border-brand)` |
+| `--ods-button-border-color-primary-hover` | `var(--ods-semantic-color-interaction-brand-hover)` |
+| `--ods-button-border-color-primary-active` | `var(--ods-semantic-color-interaction-brand-active)` |
+| `--ods-button-text-color-primary` | `var(--ods-semantic-color-content-on-brand-solid)` |
+| `--ods-button-text-color-primary-hover` | `var(--ods-semantic-color-content-on-brand-solid)` |
+| `--ods-button-text-color-primary-active` | `var(--ods-semantic-color-content-on-brand-solid)` |
 | `--ods-button-background-color-primary-ghost` | `inherit` |
-| `--ods-button-background-color-primary-ghost-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
-| `--ods-button-background-color-primary-ghost-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-background-color-primary-ghost-hover` | `var(--ods-semantic-color-surface-brand-subtle)` |
+| `--ods-button-background-color-primary-ghost-active` | `var(--ods-semantic-color-surface-brand-subtle)` |
 | `--ods-button-border-color-primary-ghost` | `unset` |
 | `--ods-button-border-color-primary-ghost-hover` | `unset` |
 | `--ods-button-border-color-primary-ghost-active` | `unset` |
-| `--ods-button-text-color-primary-ghost` | `var(--ods-semantic-color-content-base)` |
-| `--ods-button-text-color-primary-ghost-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
-| `--ods-button-text-color-primary-ghost-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-text-color-primary-ghost` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-button-text-color-primary-ghost-hover` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-button-text-color-primary-ghost-active` | `var(--ods-semantic-color-content-on-brand)` |
 | `--ods-button-background-color-primary-outline` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-button-background-color-primary-outline-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
-| `--ods-button-background-color-primary-outline-active` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-button-border-color-primary-outline` | `var(--ods-semantic-color-border-base)` |
-| `--ods-button-border-color-primary-outline-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-button-border-color-primary-outline-active` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-button-text-color-primary-outline` | `var(--ods-semantic-color-content-base)` |
-| `--ods-button-text-color-primary-outline-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
-| `--ods-button-text-color-primary-outline-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-background-color-primary-outline-hover` | `var(--ods-semantic-color-surface-brand-subtle)` |
+| `--ods-button-background-color-primary-outline-active` | `var(--ods-semantic-color-surface-brand-subtle)` |
+| `--ods-button-border-color-primary-outline` | `var(--ods-semantic-color-border-brand)` |
+| `--ods-button-border-color-primary-outline-hover` | `var(--ods-semantic-color-border-brand)` |
+| `--ods-button-border-color-primary-outline-active` | `var(--ods-semantic-color-border-brand)` |
+| `--ods-button-text-color-primary-outline` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-button-text-color-primary-outline-hover` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-button-text-color-primary-outline-active` | `var(--ods-semantic-color-content-on-brand)` |
 | `--ods-button-background-color-success` | `var(--ods-semantic-color-surface-success)` |
 | `--ods-button-background-color-success-hover` | `var(--ods-semantic-color-interaction-success-hover)` |
-| `--ods-button-background-color-success-active` | `var(--ods-semantic-color-interaction-success-hover)` |
+| `--ods-button-background-color-success-active` | `var(--ods-semantic-color-interaction-success-active)` |
 | `--ods-button-border-color-success` | `var(--ods-semantic-color-border-success)` |
-| `--ods-button-border-color-success-hover` | `var(--ods-semantic-color-border-success-strong)` |
-| `--ods-button-border-color-success-active` | `var(--ods-semantic-color-border-success-strong)` |
-| `--ods-button-text-color-success` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-success-hover` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-button-text-color-success-active` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-border-color-success-hover` | `var(--ods-semantic-color-interaction-success-hover)` |
+| `--ods-button-border-color-success-active` | `var(--ods-semantic-color-interaction-success-active)` |
+| `--ods-button-text-color-success` | `var(--ods-semantic-color-content-on-success-solid)` |
+| `--ods-button-text-color-success-hover` | `var(--ods-semantic-color-content-on-success-solid)` |
+| `--ods-button-text-color-success-active` | `var(--ods-semantic-color-content-on-success-solid)` |
 | `--ods-button-background-color-success-ghost` | `inherit` |
 | `--ods-button-background-color-success-ghost-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
 | `--ods-button-background-color-success-ghost-active` | `var(--ods-semantic-color-surface-success-subtle)` |
@@ -1734,19 +1775,19 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-success-ghost-active` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-button-background-color-success-outline` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-button-background-color-success-outline-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
-| `--ods-button-background-color-success-outline-active` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-button-background-color-success-outline-active` | `var(--ods-semantic-color-interaction-success-subtle-active)` |
 | `--ods-button-border-color-success-outline` | `var(--ods-semantic-color-border-success)` |
-| `--ods-button-border-color-success-outline-hover` | `var(--ods-semantic-color-border-success-strong)` |
-| `--ods-button-border-color-success-outline-active` | `var(--ods-semantic-color-border-success-strong)` |
+| `--ods-button-border-color-success-outline-hover` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-button-border-color-success-outline-active` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-button-text-color-success-outline` | `var(--ods-semantic-color-content-success)` |
 | `--ods-button-text-color-success-outline-hover` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-button-text-color-success-outline-active` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-button-background-color-warning` | `var(--ods-semantic-color-surface-warning)` |
 | `--ods-button-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-hover)` |
-| `--ods-button-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-hover)` |
+| `--ods-button-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-active)` |
 | `--ods-button-border-color-warning` | `var(--ods-semantic-color-border-warning)` |
-| `--ods-button-border-color-warning-hover` | `var(--ods-semantic-color-border-warning)` |
-| `--ods-button-border-color-warning-active` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-border-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-hover)` |
+| `--ods-button-border-color-warning-active` | `var(--ods-semantic-color-interaction-warning-active)` |
 | `--ods-button-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
 | `--ods-button-text-color-warning-hover` | `var(--ods-semantic-color-content-on-warning-solid)` |
 | `--ods-button-text-color-warning-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
@@ -1758,31 +1799,30 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-border-color-warning-ghost-active` | `unset` |
 | `--ods-button-text-color-warning-ghost` | `var(--ods-semantic-color-content-warning)` |
 | `--ods-button-text-color-warning-ghost-hover` | `var(--ods-semantic-color-content-on-warning)` |
-| `--ods-button-text-color-warning-ghost-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-button-text-color-warning-ghost-active` | `var(--ods-semantic-color-content-on-warning)` |
 | `--ods-button-background-color-warning-outline` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-button-background-color-warning-outline-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
-| `--ods-button-background-color-warning-outline-active` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-button-background-color-warning-outline-active` | `var(--ods-semantic-color-interaction-warning-subtle-active)` |
 | `--ods-button-border-color-warning-outline` | `var(--ods-semantic-color-border-warning)` |
 | `--ods-button-border-color-warning-outline-hover` | `var(--ods-semantic-color-border-warning)` |
 | `--ods-button-border-color-warning-outline-active` | `var(--ods-semantic-color-border-warning)` |
 | `--ods-button-text-color-warning-outline` | `var(--ods-semantic-color-content-warning)` |
 | `--ods-button-text-color-warning-outline-hover` | `var(--ods-semantic-color-content-on-warning)` |
 | `--ods-button-text-color-warning-outline-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-spinner-color` | `currentcolor` |
 
 ## Button
 
 # Button
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Button color={ BUTTON_COLOR.critical }>Critical</Button>
-  <Button color={ BUTTON_COLOR.information }>Information</Button>
-  <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
-  <Button color={ BUTTON_COLOR.primary }>Primary</Button>
-  <Button color={ BUTTON_COLOR.success }>Success</Button>
-  <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
 </>
 ```
 
@@ -2135,7 +2175,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-button-group-item-background-color-checked-disabled` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Button Group
 
@@ -2252,11 +2292,12 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. |
+| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
+| `status` | `CARD_STATUS` | No | undefined | The status preset to use. |
 
 ## Examples
 
-- Color
+- Status
 - Default
 - Accessibility Grouping
 - Accessibility Alternative Grouping
@@ -2342,10 +2383,14 @@ All these elements are not mandatory in every **Card**.
 
 ## Variation
 
-### Color
+### Status
 
-- **Neutral**: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
-- **Primary**: displaying highlighted content with particular emphasis.
+- **Neutral** _(default)_: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
+- **Accent**: displaying highlighted content with particular emphasis.
+- **Information**: displaying content that informs the user, without conveying any particular urgency.
+- **Success**: displaying content related to a positive outcome or a completed action.
+- **Warning**: displaying content related to a potential issue that needs attention.
+- **Critical**: displaying content related to a severe issue that requires immediate attention.
 
 ## Navigation
 
@@ -2408,11 +2453,12 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. |
+| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
+| `status` | `CARD_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
 
-### CARD_COLOR
+### CARD_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
@@ -2421,16 +2467,26 @@ This component extends all the native `<div>` attributes.
 - `success` = `success`
 - `warning` = `warning`
 
+### CARD_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `success` = `success`
+- `warning` = `warning`
+
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
+| `--ods-card-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-card-border-radius` | `var(--ods-semantic-size-radius-container)` |
-| `--ods-card-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-card-border-width` | `var(--ods-semantic-border-thickness)` |
 | `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-card-border-color-primary` | `var(--ods-semantic-color-border-base)` |
+| `--ods-card-border-color-primary` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
 
@@ -2438,31 +2494,31 @@ This component extends all the native `<div>` attributes.
 
 # Card
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Card color={ CARD_COLOR.critical }>
+  <Card status={ CARD_STATUS.accent }>
+    <p>Accent</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.critical }>
     <p>Critical</p>
   </Card>
 
-  <Card color={ CARD_COLOR.information }>
+  <Card status={ CARD_STATUS.information }>
     <p>Information</p>
   </Card>
 
-  <Card color={ CARD_COLOR.neutral }>
+  <Card status={ CARD_STATUS.neutral }>
     <p>Neutral</p>
   </Card>
 
-  <Card color={ CARD_COLOR.primary }>
-    <p>Primary</p>
-  </Card>
-
-  <Card color={ CARD_COLOR.success }>
+  <Card status={ CARD_STATUS.success }>
     <p>Success</p>
   </Card>
 
-  <Card color={ CARD_COLOR.warning }>
+  <Card status={ CARD_STATUS.warning }>
     <p>Warning</p>
   </Card>
 </>
@@ -2857,8 +2913,8 @@ This component extends all the native `<div>` attributes.
 
   <CartExtraContent>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ods-theme-text-color)' }}>23% VAT / 2 years</span>
-      <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
+      <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ods-semantic-color-content-text)' }}>23% VAT / 2 years</span>
+      <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-semantic-color-content-text)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
     <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
@@ -2941,8 +2997,8 @@ This component extends all the native `<div>` attributes.
 
   <CartExtraContent>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ods-theme-text-color)' }}>23% VAT / 2 years</span>
-      <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
+      <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ods-semantic-color-content-text)' }}>23% VAT / 2 years</span>
+      <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-semantic-color-content-text)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
     <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
@@ -3133,6 +3189,12 @@ _No specific property._
 ## Types
 
 - `CheckboxCheckedState`: `boolean | "indeterminate"`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Checkbox
 
@@ -3428,6 +3490,12 @@ This component extends all the native `<button>` attributes.
 | `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
 | `value` | `string` | No | undefined | - |
 
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
+
 ## Clipboard
 
 # Clipboard
@@ -3638,12 +3706,12 @@ This component extends all the native `<div>` attributes.
 | `--ods-code-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-code-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
 | `--ods-code-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 1.5)` |
-| `--ods-code-primary-color` | `#fff` |
-| `--ods-code-secondary-color` | `#000` |
-| `--ods-code-trigger-background-color` | `#fff` |
+| `--ods-code-primary-color` | `var(--ods-semantic-color-content-on-code)` |
+| `--ods-code-secondary-color` | `var(--ods-semantic-color-surface-code)` |
+| `--ods-code-trigger-background-color` | `var(--ods-semantic-color-content-on-code)` |
 | `--ods-code-trigger-background-color-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
 | `--ods-code-trigger-background-color-hover` | `var(--ods-semantic-color-surface-neutral)` |
-| `--ods-code-trigger-outline-color` | `#fff` |
+| `--ods-code-trigger-outline-color` | `var(--ods-semantic-color-content-on-code)` |
 
 ## Code
 
@@ -4029,6 +4097,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-combobox-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-combobox-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-combobox-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Combobox
 
@@ -4674,12 +4743,14 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'email' | 'search' | 'time' | 'text' | 'url' | 'password'` | No | undefined | The input type. |
 | `value` | `string | number | readonly string[]` | No | undefined | The controlled filter query. When set, the built-in option filtering is fully disabled: the consumer owns the query state (via `onChange`) and is responsible for rendering only the matching options. |
 
@@ -4720,6 +4791,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-command-width` | `380px` |
 | `--ods-command-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-command-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Command
 
@@ -4870,7 +4942,7 @@ This component extends all the native `<div>` attributes.
     </Command.Content>
   </Command>
 
-  <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} />
+  <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)' }} />
 </>
 ```
 
@@ -6343,6 +6415,7 @@ This component extends all the native `<input>` attributes.
 |---|---|
 | `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 | `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Datepicker
 
@@ -6524,7 +6597,7 @@ _A **Divider** component is a spacer used to add white space between two element
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'neutral' | 'primary'` | No | undefined | - (deprecated) |
+| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
@@ -6602,8 +6675,7 @@ It can be adjusted around the **Divider** to match the layout and visual rhythm 
 
 ### Color
 
-* **Light** (default): used on dark or colored backgrounds to maintain contrast
-* **Dark**: used on light backgrounds for clear, subtle separation
+The **Divider** uses the theme split color. If you need another color, for example a darker line on a light background, override its `background-color` in CSS.
 
 ### Orientation
 
@@ -6628,7 +6700,7 @@ This component extends all the native `<hr>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'neutral' | 'primary'` | No | undefined | - (deprecated) |
+| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
@@ -6673,8 +6745,8 @@ This component extends all the native `<hr>` attributes.
 
 ```tsx
 <>
-  <Divider color={ DIVIDER_COLOR.neutral } />
-  <Divider color={ DIVIDER_COLOR.primary } />
+  <Divider />
+  <Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
 </>
 ```
 
@@ -6938,7 +7010,7 @@ This component extends all the native `<button>` attributes.
 |---|---|
 | `--ods-drawer-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
 | `--ods-drawer-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
-| `--ods-drawer-z-index` | `calc(calc(var(--ods-semantic-z-index-dropdown) + 1) + 1)` |
+| `--ods-drawer-z-index` | `var(--ods-semantic-z-index-drawer)` |
 
 ## Drawer
 
@@ -7669,9 +7741,10 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## File Thumbnail
 
@@ -8045,7 +8118,7 @@ This component extends all the native `<li>` attributes.
 | `file` | `File` | Yes | undefined | The current File object. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `progress` | `number` | No | undefined | The file upload progress. |
-| `uploadSuccessLabel` | `string` | No | undefined | - (deprecated) |
+| `uploadSuccessLabel` | `string` | No | undefined | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. (deprecated) |
 
 ## FileUploadList
 
@@ -8078,7 +8151,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
 | `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-file-upload-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-file-upload-padding-vertical` | `var(--ods-semantic-size-space-inset-block)` |
@@ -8669,7 +8743,7 @@ _No specific property._
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -8765,7 +8839,7 @@ _No specific property._
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             <MessageBody>
               { globalError }
@@ -8781,7 +8855,7 @@ _No specific property._
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account
@@ -9510,12 +9584,14 @@ _**Input** component is an **Input** field where users can type into_
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
 
 ## Examples
@@ -9914,12 +9990,14 @@ This component extends all the native `<input>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
 | `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `maskOption` | `object` | No | undefined | Masked display options. |
 | `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
 | `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
 
 ## Enums
@@ -9945,6 +10023,12 @@ This component extends all the native `<input>` attributes.
 - `text` = `text`
 - `time` = `time`
 - `url` = `url`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Input
 
@@ -10328,8 +10412,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-kbd-border-width` | `var(--ods-semantic-size-border-thickness)` |
-| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-kbd-border-width` | `var(--ods-semantic-border-thickness)` |
+| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-border-thickness) * 2)` |
 | `--ods-kbd-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-kbd-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
@@ -10537,6 +10621,7 @@ If a **Link** points to a file download, it should include the file type and siz
 |---|---|
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Link
 
@@ -11088,7 +11173,7 @@ _A Menu component provides a list of options or actions that appear when a user 
 | `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the menu. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'left' | 'right' | 'bottom' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `MENU_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
 
@@ -11230,7 +11315,7 @@ This component complies with the [Menu WAI-ARIA design pattern](https://www.w3.o
 | `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the menu. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'left' | 'right' | 'bottom' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `MENU_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
 
@@ -11282,6 +11367,12 @@ This component extends all the native `<button>` attributes.
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 | `value` | `string` | No | undefined | - |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Menu
 
@@ -11409,11 +11500,12 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. |
+| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
+| `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## Examples
@@ -11421,7 +11513,7 @@ _**Message** component helps to communicate with users providing feedback or inf
 - Accessibility Grouping
 - Accessibility Alternative Grouping
 - Accessibility Roles
-- Color
+- Status
 - Default
 - Multiline
 - Non Dismissible
@@ -11517,8 +11609,10 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlighting content tied to the brand, such as a new feature announcement, without conveying any particular status.
+- **Neutral**: conveying general content without any particular status or urgency.
 - **Information** _(default)_: informing users of specific content, providing global feedback to the user.
 - **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
@@ -11564,7 +11658,7 @@ When displaying multiple **Messages** together, they should be wrapped within an
   </li>
 
   <li>
-    <Message color={ MESSAGE_COLOR.warning }>
+    <Message status={ MESSAGE_STATUS.warning }>
       <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
       
@@ -11596,7 +11690,7 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
   </Message>
 
   <Message
-    color={ MESSAGE_COLOR.warning }
+    status={ MESSAGE_STATUS.warning }
     role="listitem">
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
@@ -11628,7 +11722,7 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
           </Button>
@@ -11638,7 +11732,7 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
           {
             alerts.map((alert) => (
               <Message
-                color={ MESSAGE_COLOR.critical }
+                status={ MESSAGE_STATUS.critical }
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
@@ -11680,11 +11774,12 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. |
+| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
+| `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## MessageBody
@@ -11702,7 +11797,7 @@ _No specific property._
 
 ## Enums
 
-### MESSAGE_COLOR
+### MESSAGE_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
@@ -11715,6 +11810,15 @@ _No specific property._
 
 - `closeButton` = `message.close.button`
 
+### MESSAGE_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `success` = `success`
+- `warning` = `warning`
+
 ### MESSAGE_VARIANT
 
 - `default` = `default`
@@ -11725,27 +11829,33 @@ _No specific property._
 | Variable | Default value |
 |---|---|
 | `--ods-message-close-button-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
-| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
-| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
-| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
-| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
-| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-message-border-color-critical-light` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-message-border-color-information-light` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-message-border-color-neutral-light` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-message-border-color-primary-light` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-message-border-color-success-light` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-message-border-color-warning-light` | `var(--ods-semantic-color-border-warning-subtle)` |
 | `--ods-message-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-message-text-color-critical-light` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-message-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-message-text-color-information-light` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-message-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-message-text-color-neutral-light` | `var(--ods-semantic-color-content-neutral)` |
-| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-accent)` |
 | `--ods-message-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-message-text-color-success-light` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-message-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
@@ -11770,7 +11880,7 @@ _No specific property._
   </li>
 
   <li>
-    <Message color={ MESSAGE_COLOR.warning }>
+    <Message status={ MESSAGE_STATUS.warning }>
       <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
       <MessageBody>
@@ -11796,7 +11906,7 @@ _No specific property._
   </Message>
 
   <Message
-    color={ MESSAGE_COLOR.warning }
+    status={ MESSAGE_STATUS.warning }
     role="listitem">
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
@@ -11822,7 +11932,7 @@ _No specific property._
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
           </Button>
@@ -11832,7 +11942,7 @@ _No specific property._
           {
             alerts.map((alert) => (
               <Message
-                color={ MESSAGE_COLOR.critical }
+                status={ MESSAGE_STATUS.critical }
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
@@ -11862,41 +11972,41 @@ _No specific property._
   }
 ```
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Message color={ MESSAGE_COLOR.critical }>
+  <Message status={ MESSAGE_STATUS.accent }>
+    <MessageIcon name={ ICON_NAME.lightbulb } />
+
+    <MessageBody>Accent message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.critical }>
     <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
     <MessageBody>Critical message</MessageBody>
   </Message>
 
-  <Message color={ MESSAGE_COLOR.information }>
+  <Message status={ MESSAGE_STATUS.information }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>Information message</MessageBody>
   </Message>
 
-  <Message color={ MESSAGE_COLOR.neutral }>
+  <Message status={ MESSAGE_STATUS.neutral }>
     <MessageIcon name={ ICON_NAME.email } />
 
     <MessageBody>Neutral message</MessageBody>
   </Message>
 
-  <Message color={ MESSAGE_COLOR.primary }>
-    <MessageIcon name={ ICON_NAME.lightbulb } />
-
-    <MessageBody>Primary message</MessageBody>
-  </Message>
-
-  <Message color={ MESSAGE_COLOR.success }>
+  <Message status={ MESSAGE_STATUS.success }>
     <MessageIcon name={ ICON_NAME.circleCheck } />
 
     <MessageBody>Success message</MessageBody>
   </Message>
 
-  <Message color={ MESSAGE_COLOR.warning }>
+  <Message status={ MESSAGE_STATUS.warning }>
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
     <MessageBody>Warning message</MessageBody>
@@ -12073,9 +12183,9 @@ This component extends all the native `<div>` attributes.
 | `--ods-message-bubble-text-color` | `var(--ods-message-bubble-error-text-color)` |
 | `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
-| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-minimal)` |
-| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-subtle)` |
 | `--ods-message-bubble-error-text-color` | `var(--ods-semantic-color-content-critical)` |
 
 ## Message Bubble
@@ -12294,7 +12404,7 @@ This component extends all the native `<div>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-meter-background-color-critical` | `var(--ods-semantic-color-surface-critical)` |
-| `--ods-meter-background-color-normal` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-meter-background-color-normal` | `var(--ods-semantic-color-surface-success)` |
 | `--ods-meter-background-color-warning` | `var(--ods-semantic-color-surface-warning)` |
 
 ## Meter
@@ -12601,7 +12711,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
     </Button>
   </ModalTrigger>
 
-  <ModalContent color={ MODAL_COLOR.critical }>
+  <ModalContent role="alertdialog">
     <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
     <ModalBody>
       <p id="modal-content">
@@ -12613,7 +12723,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
           Cancel
         </Button>
 
-        <Button color={ BUTTON_COLOR.critical }>
+        <Button status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>
@@ -12656,7 +12766,7 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'critical' | 'information' | 'neutral' | 'primary' | 'success' | 'warning'` | No | undefined | - (deprecated) |
+| `color` | `MODAL_COLOR` | No | undefined | The color preset to use. DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21. (deprecated) |
 | `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 
@@ -12696,12 +12806,12 @@ This component extends all the native `<button>` attributes.
 |---|---|
 | `--ods-modal-border-radius` | `var(--ods-semantic-size-radius-overlay)` |
 | `--ods-modal-header-height` | `32px` |
-| `--ods-modal-header-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
-| `--ods-modal-header-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
-| `--ods-modal-header-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-modal-header-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
-| `--ods-modal-header-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
-| `--ods-modal-header-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-modal-header-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-modal-header-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-modal-header-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-modal-header-background-color-primary` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-modal-header-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-modal-header-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
 | `--ods-modal-header-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
 | `--ods-modal-header-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-modal-body-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
@@ -12725,7 +12835,7 @@ This component extends all the native `<button>` attributes.
     </Button>
   </ModalTrigger>
 
-  <ModalContent color={ MODAL_COLOR.critical }>
+  <ModalContent role="alertdialog">
     <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
     <ModalBody>
       <p id="modal-content">
@@ -12737,7 +12847,7 @@ This component extends all the native `<button>` attributes.
           Cancel
         </Button>
 
-        <Button color={ BUTTON_COLOR.critical }>
+        <Button status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>
@@ -12962,10 +13072,10 @@ _A **Pagination** component allows users to navigate through large sets of data 
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | undefined | - (deprecated) |
+| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | - (deprecated) |
+| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## Examples
 
@@ -13139,10 +13249,10 @@ To ensure it is correctly recognized, an [aria-label](https://developer.mozilla.
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | undefined | - (deprecated) |
+| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | - (deprecated) |
+| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## PaginationPages
 
@@ -14258,14 +14368,14 @@ _**Popover** component is triggered by click and is used to provide additional i
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `autoFocus` | `boolean` | No | undefined | Whether to automatically set focus on the first focusable content within the popover when opened. |
-| `gutter` | `number` | No | undefined | - (deprecated) |
+| `gutter` | `number` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `onOpenChange` | `(detail: PopoverOpenChangeDetail) => void` | No | undefined | Callback fired when the popover open state changes. |
 | `onPositionChange` | `(detail: PopoverPositionChangeDetail) => void` | No | undefined | Callback fired when the popover position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the popover. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'left' | 'right' | 'bottom' | 'top' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `POPOVER_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| `sameWidth` | `boolean` | No | undefined | - (deprecated) |
+| `sameWidth` | `boolean` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the PopoverTrigger component. |
 
 ## Examples
@@ -14466,7 +14576,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
       <Divider style={{ width: '100%' }} />
 
       <Button
-        color={ BUTTON_COLOR.critical }
+        status={ BUTTON_STATUS.critical }
         role="menuitem"
         variant={ BUTTON_VARIANT.ghost }>
         Sign out
@@ -14488,14 +14598,14 @@ Update the content type on the **Popover Trigger**, which is set by default to `
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `autoFocus` | `boolean` | No | undefined | Whether to automatically set focus on the first focusable content within the popover when opened. |
-| `gutter` | `number` | No | undefined | - (deprecated) |
+| `gutter` | `number` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `onOpenChange` | `(detail: PopoverOpenChangeDetail) => void` | No | undefined | Callback fired when the popover open state changes. |
 | `onPositionChange` | `(detail: PopoverPositionChangeDetail) => void` | No | undefined | Callback fired when the popover position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the popover. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'left' | 'right' | 'bottom' | 'top' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `POPOVER_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| `sameWidth` | `boolean` | No | undefined | - (deprecated) |
+| `sameWidth` | `boolean` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the PopoverTrigger component. |
 
 ## PopoverContent
@@ -14710,7 +14820,7 @@ This component extends all the native `<button>` attributes.
       <Divider style={{ width: '100%' }} />
 
       <Button
-        color={ BUTTON_COLOR.critical }
+        status={ BUTTON_STATUS.critical }
         role="menuitem"
         variant={ BUTTON_VARIANT.ghost }>
         Sign out
@@ -14767,7 +14877,7 @@ This component extends all the native `<button>` attributes.
   <Popover
     open
     overlayConfig={{ position: POPOVER_POSITION.bottom }}
-    positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+    positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <PopoverTrigger asChild>
       <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
@@ -15156,10 +15266,11 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `accept` | `string` | No | undefined | Expected file type in file upload controls |
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## PromptInputRoot
@@ -15183,9 +15294,10 @@ _No specific property._
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## PromptInputTextControl
@@ -15210,6 +15322,7 @@ _No specific property._
 | `--ods-prompt-input-control-line-height` | `1.375em` |
 | `--ods-prompt-input-control-min-lines` | `1` |
 | `--ods-prompt-input-control-max-lines` | `5` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Prompt Input
 
@@ -15303,7 +15416,7 @@ _No specific property._
         >
           <PromptInputControls>
             <PromptInputFileUploadButton aria-label="Attach a file" />
-            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, rowGap: "var(--ods-theme-row-gap)" }}>
+            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, rowGap: "var(--ods-semantic-size-space-gap-block)" }}>
               <PromptInputTextControl aria-label="Ask someone about something…" />
               <Divider style={{ width: "100%" }} />
               <FormFieldHelper>
@@ -15537,6 +15650,12 @@ _No specific property._
 This component extends all the native `<input>` attributes.
 
 _No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Quantity
 
@@ -15816,9 +15935,10 @@ Use ARIA (Accessible Rich Internet Applications) live regions to announce filter
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## QueryFilterContent
@@ -15853,6 +15973,7 @@ _No specific property._
 | `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Query Filter
 
@@ -16098,6 +16219,12 @@ _No specific property._
 This component extends all the native `<span>` attributes.
 
 _No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Radio Group
 
@@ -16492,8 +16619,9 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
 | `--ods-range-track-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Range
 
@@ -16705,7 +16833,7 @@ _**Select** component is used to select one or more items from a list of values_
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `fitControlWidth` | `boolean` | No | undefined | - (deprecated) |
+| `fitControlWidth` | `boolean` | No | undefined | Use overlayConfig.sameWidth instead (deprecated) |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
 | `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
@@ -16876,7 +17004,7 @@ using either **FormField** or a native label tag.
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `fitControlWidth` | `boolean` | No | undefined | - (deprecated) |
+| `fitControlWidth` | `boolean` | No | undefined | Use overlayConfig.sameWidth instead (deprecated) |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
 | `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
@@ -16920,6 +17048,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Select
 
@@ -17396,8 +17525,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-skeleton-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-skeleton-background-color` | `var(--ods-semantic-color-surface-pending)` |
+| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
 | `--ods-skeleton-background-color-image` | `linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color))` |
 
 ## Skeleton
@@ -17436,7 +17565,7 @@ _A visual indicator that a process is happening in the background but the interf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'neutral' | 'primary'` | No | undefined | The color preset to use. |
+| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Examples
@@ -17514,9 +17643,14 @@ The **Spinner** component has a spinning animation to show to the user that the 
 
 ### Color
 
-* **Primary** (default): used in contexts where the **Spinner** is tied to the main brand action
-* **Neutral**: used for secondary or subtle loading indicators, and commonly displayed in disabled parent components to indicate background activity without drawing too much attention
-* **White**: designed for use on dark or colored backgrounds to ensure proper contrast and visibility
+The **Spinner** is primary by default, for contexts where it is tied to the main brand action.
+
+To use another color, set the `--ods-spinner-color` CSS custom property on the **Spinner**, through its `className`, or on a container of yours, for example:
+
+* `var(--ods-semantic-color-content-neutral)`: for secondary or subtle loading indicators, commonly displayed in disabled parent components to indicate background activity without drawing too much attention
+* `currentColor`: to follow the text color around the **Spinner**, for example on a dark or colored background
+
+Avoid a global `[data-ods="spinner"]` selector, which would also reach the Spinners displayed by other components (Button, Input, FileUpload). A container also reaches the loading Spinners of the **Input** and **FileUpload** placed inside it; only the **Button** Spinner keeps its own color, the text color of the button. In TypeScript, setting the custom property through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`), which a `className` avoids.
 
 ## Navigation
 
@@ -17580,12 +17714,12 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'neutral' | 'primary'` | No | undefined | The color preset to use. |
+| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Enums
 
-### SPINNER_COLOR
+### SPINNER_COLOR (deprecated)
 
 - `neutral` = `neutral`
 - `primary` = `primary`
@@ -17597,6 +17731,12 @@ This component extends all the native `<span>` attributes.
 - `sm` = `sm`
 - `xs` = `xs`
 
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-spinner-color` | `var(--ods-semantic-color-content-accent)` |
+
 ## Spinner
 
 # Spinner
@@ -17605,8 +17745,8 @@ This component extends all the native `<span>` attributes.
 
 ```tsx
 <>
-  <Spinner color={ SPINNER_COLOR.neutral } />
-  <Spinner color={ SPINNER_COLOR.primary } />
+  <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
+  <Spinner />
 </>
 ```
 
@@ -17843,11 +17983,11 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-switch-item-background-color` | `inherit` |
-| `--ods-switch-item-background-color-checked` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-switch-item-background-color-checked-disabled` | `var(--ods-semantic-color-surface-neutral)` |
-| `--ods-switch-item-background-color-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
-| `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-base)` |
+| `--ods-switch-item-background-color-checked` | `var(--ods-semantic-color-interaction-accent-hover)` |
+| `--ods-switch-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
+| `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-switch-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-switch-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-switch-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
@@ -18057,7 +18197,7 @@ This component extends all the native `<table>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-table-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
 | `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
@@ -18065,7 +18205,7 @@ This component extends all the native `<table>` attributes.
 | `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-table-cell-padding-horizontal-lg` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
-| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-header)` |
 
 ## Table
 
@@ -18548,7 +18688,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-segmented)` |
 | `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
 | `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-semantic-size-radius-container) * 1.25)` |
 | `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-semantic-size-radius-container) * 0.75)` |
@@ -18566,20 +18706,17 @@ _No specific property._
 | `--ods-tab-padding-vertical-md` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-tab-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
 | `--ods-tab-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
-| `--ods-tab-background-color-hover` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tab-background-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-tab-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
+| `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
-| `--ods-tab-border-color-disabled` | `var(--ods-semantic-color-border-neutral-minimal)` |
-| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-readonly)` |
-| `--ods-tab-border-color-selected` | `var(--ods-semantic-color-border-base)` |
-| `--ods-tab-border-color-selected-disabled` | `var(--ods-semantic-color-interaction-control-hover)` |
-| `--ods-tab-border-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-tab-border-color-selected` | `var(--ods-semantic-color-border-brand)` |
 | `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
-| `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-base)` |
-| `--ods-tab-text-color-selected` | `var(--ods-semantic-color-content-base)` |
+| `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-text)` |
+| `--ods-tab-text-color-selected` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Tabs
 
@@ -18847,15 +18984,14 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `as` | `T` | No | 'button' | Pass a component you may want to use as custom Tag component. Useful for example to render the tag as a link, either a plain anchor or the Link component of a routing library. |
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | 'xmark' | The glyph used by the removal affordance, displayed on the right side. Has no effect when `removable` is `false`. |
-| `removable` | `boolean` | No | true | Whether the Tag displays its removal affordance. Set it to `false` on a Tag that has nothing to remove, a navigating one for instance. |
+| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
 
 ## Examples
 
-- Color
+- Status
 - Custom Icon
 - Default
 - Disabled
@@ -18939,8 +19075,9 @@ Multiple **Tags** can be displayed:
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlighting labels tied to the brand, without conveying any particular status.
 - **Neutral**: displaying general labels or metadata without conveying any particular status or urgency.
 - **Information** _(default)_: displaying a general information for the user, without conveying any particular urgency.
 - **Success**: indicating positive statuses or successful outcomes, providing a visual cue for achievements or completed tasks.
@@ -19039,18 +19176,18 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 
 ## Tag
 
+This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `as` | `T` | No | 'button' | Pass a component you may want to use as custom Tag component. Useful for example to render the tag as a link, either a plain anchor or the Link component of a routing library. |
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | 'xmark' | The glyph used by the removal affordance, displayed on the right side. Has no effect when `removable` is `false`. |
-| `removable` | `boolean` | No | true | Whether the Tag displays its removal affordance. Set it to `false` on a Tag that has nothing to remove, a navigating one for instance. |
+| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
 
-### TAG_COLOR
+### TAG_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
@@ -19064,11 +19201,20 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 - `lg` = `lg`
 - `md` = `md`
 
+### TAG_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `success` = `success`
+- `warning` = `warning`
+
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
-| `--ods-tag-border-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-tag-border-width` | `calc(var(--ods-semantic-border-thickness) * 2)` |
 | `--ods-tag-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-tag-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-tag-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
@@ -19078,8 +19224,8 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 | `--ods-tag-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-tag-border-color-critical-active` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-tag-border-color-critical-hover` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-tag-background-color-critical` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-tag-background-color-critical` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-subtle-active)` |
 | `--ods-tag-background-color-critical-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
 | `--ods-tag-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-tag-text-color-critical-active` | `var(--ods-semantic-color-content-on-critical)` |
@@ -19087,35 +19233,35 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 | `--ods-tag-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-tag-border-color-information-active` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-tag-border-color-information-hover` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-tag-background-color-information` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-information-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-tag-background-color-information` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-information-active` | `var(--ods-semantic-color-interaction-information-subtle-active)` |
 | `--ods-tag-background-color-information-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
 | `--ods-tag-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-tag-text-color-information-active` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-tag-text-color-information-hover` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-tag-border-color-neutral` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tag-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-tag-border-color-neutral-active` | `var(--ods-semantic-color-border-control)` |
 | `--ods-tag-border-color-neutral-hover` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-tag-background-color-neutral` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-neutral-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
-| `--ods-tag-background-color-neutral-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-tag-background-color-neutral` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-neutral-active` | `var(--ods-semantic-color-interaction-neutral-subtle-active)` |
+| `--ods-tag-background-color-neutral-hover` | `var(--ods-semantic-color-interaction-neutral-subtle-hover)` |
 | `--ods-tag-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-tag-text-color-neutral-active` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-tag-text-color-neutral-hover` | `var(--ods-semantic-color-content-on-neutral)` |
-| `--ods-tag-border-color-primary` | `var(--ods-semantic-color-border-base)` |
-| `--ods-tag-border-color-primary-active` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-tag-border-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
-| `--ods-tag-background-color-primary` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-primary-active` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-tag-background-color-primary-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
-| `--ods-tag-text-color-primary` | `var(--ods-semantic-color-content-on-brand-subtle)` |
-| `--ods-tag-text-color-primary-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
-| `--ods-tag-text-color-primary-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-tag-border-color-primary` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-tag-border-color-primary-active` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-tag-border-color-primary-hover` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-tag-background-color-primary` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-primary-active` | `var(--ods-semantic-color-interaction-accent-subtle-active)` |
+| `--ods-tag-background-color-primary-hover` | `var(--ods-semantic-color-interaction-accent-subtle-hover)` |
+| `--ods-tag-text-color-primary` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-tag-text-color-primary-active` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-tag-text-color-primary-hover` | `var(--ods-semantic-color-content-on-accent)` |
 | `--ods-tag-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-tag-border-color-success-active` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-tag-border-color-success-hover` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-tag-background-color-success` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-success-active` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
+| `--ods-tag-background-color-success` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-success-active` | `var(--ods-semantic-color-interaction-success-subtle-active)` |
 | `--ods-tag-background-color-success-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
 | `--ods-tag-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-tag-text-color-success-active` | `var(--ods-semantic-color-content-on-success)` |
@@ -19123,27 +19269,28 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 | `--ods-tag-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
 | `--ods-tag-border-color-warning-active` | `var(--ods-semantic-color-border-warning-subtle)` |
 | `--ods-tag-border-color-warning-hover` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-tag-background-color-warning` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
+| `--ods-tag-background-color-warning` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-active)` |
 | `--ods-tag-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
-| `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
-| `--ods-tag-text-color-warning-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
-| `--ods-tag-text-color-warning-hover` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-tag-text-color-warning-active` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-tag-text-color-warning-hover` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Tag
 
 # Tag
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Tag color={ TAG_COLOR.critical }>Critical</Tag>
-  <Tag color={ TAG_COLOR.information }>Information</Tag>
-  <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
-  <Tag color={ TAG_COLOR.primary }>Primary</Tag>
-  <Tag color={ TAG_COLOR.success }>Success</Tag>
-  <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+  <Tag status={ TAG_STATUS.information }>Information</Tag>
+  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+  <Tag status={ TAG_STATUS.success }>Success</Tag>
+  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
 </>
 ```
 
@@ -19346,6 +19493,12 @@ _No specific property._
 - `paragraph` = `paragraph`
 - `small` = `small`
 - `span` = `span`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Text
 
@@ -19609,6 +19762,12 @@ This component extends all the native `<textarea>` attributes.
 |---|---|---|---|---|
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
+
 ## Textarea
 
 # Textarea
@@ -19820,15 +19979,12 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected-strong)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
-| `--ods-tile-border-width` | `var(--ods-semantic-size-border-thickness)` |
-| `--ods-tile-border-color` | `var(--ods-semantic-color-border-control)` |
-| `--ods-tile-background-color` | `var(--ods-semantic-color-surface-page)` |
-| `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
-| `--ods-tile-background-color-disabled` | `var(--ods-semantic-color-surface-neutral-recessed)` |
-| `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected-subtle)` |
+| `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-accent)` |
 | `--ods-tile-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 
 ## Tile
@@ -20294,7 +20450,7 @@ _**Toaster** component provides a section on the page where you'll be able to di
 
 ## Examples
 
-- Colors
+- Statuses
 - Custom Content
 - Default
 - Dismissible
@@ -20409,8 +20565,10 @@ Stacking direction depends on placement:
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlighting content tied to the brand, such as a new feature announcement, without conveying any particular status.
+- **Neutral**: conveying general content without any particular status or urgency.
 - **Information** _(default)_: informing users of specific content, providing global feedback to the user.
 - **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
@@ -20443,12 +20601,21 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 ## Enums
 
-### TOAST_COLOR
+### TOAST_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
 - `neutral` = `neutral`
 - `primary` = `primary`
+- `success` = `success`
+- `warning` = `warning`
+
+### TOAST_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
 - `success` = `success`
 - `warning` = `warning`
 
@@ -20471,46 +20638,43 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 # Toaster
 
-## Colors
+## Statuses
 
 ```tsx
 <>
-  <Toaster id="colors" />
+  <Toaster id="statuses" />
 
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
     <Button
-      color={ BUTTON_COLOR.critical }
-      onClick={ () => toast.critical('Critical', { toasterId: 'colors' }) }>
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
       Critical toast
     </Button>
 
     <Button
-      color={ BUTTON_COLOR.information }
-      onClick={ () => toast.information('Information', { toasterId: 'colors' }) }>
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
       Information toast
     </Button>
 
     <Button
-      color={ BUTTON_COLOR.neutral }
-      onClick={ () => toast.neutral('Neutral', { toasterId: 'colors' }) }>
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
       Neutral toast
     </Button>
 
     <Button
-      color={ BUTTON_COLOR.primary }
-      onClick={ () => toast.primary('Primary', { toasterId: 'colors' }) }>
-      Primary toast
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
     </Button>
 
     <Button
-      color={ BUTTON_COLOR.success }
-      onClick={ () => toast.success('Success', { toasterId: 'colors' }) }>
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
       Success toast
     </Button>
 
     <Button
-      color={ BUTTON_COLOR.warning }
-      onClick={ () => toast.warning('Warning', { toasterId: 'colors' }) }>
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
       Warning toast
     </Button>
   </div>
@@ -20844,13 +21008,13 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
-| `--ods-toggle-control-background-color-hover` | `var(--ods-semantic-color-surface-neutral-subtle)` |
-| `--ods-toggle-control-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-border-control)` |
-| `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-track)` |
+| `--ods-toggle-control-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-state-is-disabled-opacity` | `1` |
 
 ## Toggle
 
@@ -20969,7 +21133,7 @@ _**Tooltip** component is used to display contextual information when the user h
 | `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
 | `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'left' | 'left-end' | 'left-start' | 'right' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `TOOLTIP_POSITION` | No | undefined | The tooltip position around the trigger. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## Examples
@@ -21127,7 +21291,7 @@ If your UI includes an unlabeled or ambiguous element, consider attaching a **To
 | `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
 | `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'left' | 'left-end' | 'left-start' | 'right' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `TOOLTIP_POSITION` | No | undefined | The tooltip position around the trigger. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## TooltipContent
@@ -21362,7 +21526,7 @@ This component extends all the native `<button>` attributes.
   <Tooltip
     open
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
-    positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+    positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <TooltipTrigger asChild>
       <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
@@ -21573,6 +21737,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-tree-view-node-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tree-view-node-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-tree-view-node-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
@@ -22033,7 +22198,7 @@ _No specific property._
                       ) : null }
                       <Button
                         aria-label="Delete"
-                        color={ BUTTON_COLOR.critical }
+                        status={ BUTTON_STATUS.critical }
                         onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
                         onMouseDown={(e) => { e.stopPropagation(); }}
                         onKeyDown={(e) => { e.stopPropagation(); }}
@@ -23095,7 +23260,7 @@ When using a critical **Message**:
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             
 > { globalError }
@@ -23111,7 +23276,7 @@ When using a critical **Message**:
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account
@@ -23297,7 +23462,7 @@ Use when:
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -23858,39 +24023,39 @@ For structural elements, here are the expected values to apply:
   <tbody>
   <tr>
     <td>Background</td>
-    <td><code>--ods-theme-chart-background-color</code></td>
+    <td><code>--ods-semantic-color-chart-background</code></td>
     <td><code>#ffffff</code></td>
-    <td><code>--ods-theme-chart-background-color</code> (default: <code>#ffffff</code>)</td>
+    <td><code>--ods-semantic-color-chart-background</code> (default: <code>#ffffff</code>)</td>
   </tr>
   <tr>
     <td>Axis</td>
-    <td><code>--ods-theme-chart-axis-color</code></td>
+    <td><code>--ods-semantic-color-chart-axis</code></td>
     <td><code>#b3b3b3</code></td>
-    <td><code>--ods-theme-chart-axis-color</code> (default: <code>#b3b3b3</code>)</td>
+    <td><code>--ods-semantic-color-chart-axis</code> (default: <code>#b3b3b3</code>)</td>
   </tr>
   <tr>
     <td>Ticks (axis labels)</td>
-    <td><code>--ods-theme-chart-tick-color</code></td>
+    <td><code>--ods-semantic-color-chart-tick</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-tick-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-tick</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Legends</td>
-    <td><code>--ods-theme-chart-legend-color</code></td>
+    <td><code>--ods-semantic-color-chart-legend</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-legend-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-legend</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Grids</td>
-    <td><code>--ods-theme-chart-grid-color</code></td>
+    <td><code>--ods-semantic-color-chart-grid</code></td>
     <td><code>#cccccc</code></td>
-    <td><code>--ods-theme-chart-grid-color</code> (default: <code>#cccccc</code>)</td>
+    <td><code>--ods-semantic-color-chart-grid</code> (default: <code>#cccccc</code>)</td>
   </tr>
   <tr>
     <td>Reference Line</td>
-    <td><code>--ods-theme-chart-reference-line-color</code></td>
+    <td><code>--ods-semantic-color-chart-reference-line</code></td>
     <td><code>#bf0020</code></td>
-    <td><code>--ods-theme-chart-reference-line-color</code> (default: <code>#bf0020</code>)</td>
+    <td><code>--ods-semantic-color-chart-reference-line</code> (default: <code>#bf0020</code>)</td>
   </tr>
   </tbody>
 
@@ -23937,7 +24102,7 @@ To use one of the ODS fonts in your app, add the expected variables to the top o
 
 ```css
 html {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -23949,7 +24114,7 @@ If you want to use any of those on your own components, you can refer to the exh
 
 ```css
 .my-custom-title {
-  color: var(--ods-color-text);
+  color: var(--ods-semantic-color-content-text);
   ...
 }
 ```
@@ -24041,7 +24206,7 @@ Example of CSS variables:
 
 <style>
   .my-own-page-title {
-    color: var(--ods-color-primary-500);
+    color: var(--ods-semantic-color-content-brand);
   }
 </style>
 ```
@@ -24058,8 +24223,8 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 ```css
 .my-component {
-  color: var(--ods-color-primary-500);
-  border-radius: var(--ods-border-radius-sm);
+  color: var(--ods-semantic-color-content-brand);
+  border-radius: var(--ods-semantic-size-radius-control);
 }
 ```
 
@@ -24069,228 +24234,129 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-
-### Outline
-
-| Token | Value |
-|---|---|
-
-### Overlay
-
-| Token | Value |
-|---|---|
-
-### Spacing
-
-| Token | Value |
-|---|---|
-
-### Font Family
-
-| Token | Value |
-|---|---|
-
-### Form Element
-
-| Token | Value |
-|---|---|
-
-## Color Palettes
-
-| Token | Value |
-|---|---|
-
-| Token | Value |
-|---|---|
-
-## Previous Tokens (deprecated)
-
-The following tokens are deprecated and will be removed in a future major release. Non-spacing tokens have been renamed with the `--ods-theme` prefix; spacing tokens have been reduced to one base value (e.g. `--my-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);`).
-
-| Token | Value |
-|---|---|
-| `--ods-palette-blue-50` | `#e6faff` |
-| `--ods-palette-blue-100` | `#bef1ff` |
-| `--ods-palette-blue-200` | `#85d9fd` |
-| `--ods-palette-blue-300` | `#4bb2f6` |
-| `--ods-palette-blue-400` | `#157eea` |
-| `--ods-palette-blue-500` | `#0050d7` |
-| `--ods-palette-blue-600` | `#002dbe` |
-| `--ods-palette-blue-700` | `#000e9c` |
-| `--ods-palette-blue-800` | `#00185e` |
-| `--ods-palette-blue-900` | `#000d1f` |
-| `--ods-palette-gray-50` | `#f2f2f2` |
-| `--ods-palette-gray-100` | `#e6e6e6` |
-| `--ods-palette-gray-200` | `#cccccc` |
-| `--ods-palette-gray-300` | `#b3b3b3` |
-| `--ods-palette-gray-400` | `#999999` |
-| `--ods-palette-gray-500` | `#808080` |
-| `--ods-palette-gray-600` | `#666666` |
-| `--ods-palette-gray-700` | `#4d4d4d` |
-| `--ods-palette-gray-800` | `#333333` |
-| `--ods-palette-gray-900` | `#1a1a1a` |
-| `--ods-palette-green-50` | `#e7f7d7` |
-| `--ods-palette-green-100` | `#d2f2c2` |
-| `--ods-palette-green-200` | `#90cc7a` |
-| `--ods-palette-green-300` | `#64b347` |
-| `--ods-palette-green-400` | `#47991f` |
-| `--ods-palette-green-500` | `#2b8000` |
-| `--ods-palette-green-600` | `#267300` |
-| `--ods-palette-green-700` | `#226600` |
-| `--ods-palette-green-800` | `#1a4d00` |
-| `--ods-palette-green-900` | `#113300` |
-| `--ods-palette-orange-50` | `#fff7cc` |
-| `--ods-palette-orange-100` | `#feea86` |
-| `--ods-palette-orange-200` | `#fed265` |
-| `--ods-palette-orange-300` | `#ffbb43` |
-| `--ods-palette-orange-400` | `#ffa322` |
-| `--ods-palette-orange-500` | `#ff8b00` |
-| `--ods-palette-orange-600` | `#cc7000` |
-| `--ods-palette-orange-700` | `#995400` |
-| `--ods-palette-orange-800` | `#663800` |
-| `--ods-palette-orange-900` | `#4d2a00` |
-| `--ods-palette-red-50` | `#ffe6ec` |
-| `--ods-palette-red-100` | `#ffccd9` |
-| `--ods-palette-red-200` | `#ef99ab` |
-| `--ods-palette-red-300` | `#e67386` |
-| `--ods-palette-red-400` | `#cf334e` |
-| `--ods-palette-red-500` | `#bf0020` |
-| `--ods-palette-red-600` | `#a6001c` |
-| `--ods-palette-red-700` | `#800015` |
-| `--ods-palette-red-800` | `#660011` |
-| `--ods-palette-red-900` | `#4d000d` |
-| `--ods-palette-white` | `#ffffff` |
-| `--ods-palette-black` | `#000000` |
-| `--ods-palette-decorative-alpha` | `#fbfe47` |
-| `--ods-palette-decorative-beta` | `#47fe78` |
-| `--ods-palette-decorative-new` | `#47fffa` |
-| `--ods-palette-decorative-promotion` | `#ccff66` |
-| `--ods-palette-opacity-15` | `0.15` |
-| `--ods-palette-opacity-20` | `0.2` |
-| `--ods-palette-opacity-25` | `0.25` |
-| `--ods-palette-opacity-50` | `0.5` |
-| `--ods-palette-opacity-75` | `0.75` |
-| `--ods-palette-brand-50` | `var(--ods-palette-gray-50)` |
-| `--ods-palette-brand-100` | `var(--ods-palette-gray-100)` |
-| `--ods-palette-brand-200` | `var(--ods-palette-gray-200)` |
-| `--ods-palette-brand-300` | `var(--ods-palette-gray-300)` |
-| `--ods-palette-brand-400` | `var(--ods-palette-gray-400)` |
-| `--ods-palette-brand-500` | `var(--ods-palette-gray-500)` |
-| `--ods-palette-brand-600` | `var(--ods-palette-gray-600)` |
-| `--ods-palette-brand-700` | `var(--ods-palette-gray-700)` |
-| `--ods-palette-brand-800` | `var(--ods-palette-gray-800)` |
-| `--ods-palette-brand-900` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-surface-page` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-page` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-raised` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-surface-overlay` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-surface-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
-| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-400)` |
-| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-surface-critical-minimal` | `var(--ods-palette-red-100)` |
-| `--ods-semantic-color-surface-information-minimal` | `var(--ods-palette-blue-100)` |
-| `--ods-semantic-color-surface-success-minimal` | `var(--ods-palette-green-100)` |
-| `--ods-semantic-color-surface-warning-minimal` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-header` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-surface-code` | `var(--ods-palette-accent-900)` |
+| `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-200)` |
-| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-200)` |
-| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-surface-selected` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-interaction-option-hover` | `var(--ods-palette-brand-50)` |
-| `--ods-semantic-color-surface-selected-strong` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-brand-800)` |
-| `--ods-semantic-color-surface-selected-disabled` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-surface-disabled` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-neutral-recessed` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-surface-code` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-surface-brand-subtle` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-surface-accent-subtle` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-500)` |
+| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-surface-control` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-control-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-surface-thumb` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-black)` |
+| `--ods-semantic-color-surface-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-segmented` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-pending` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-surface-decorative-alpha` | `var(--ods-palette-decorative-alpha)` |
 | `--ods-semantic-color-surface-decorative-beta` | `var(--ods-palette-decorative-beta)` |
 | `--ods-semantic-color-surface-decorative-new` | `var(--ods-palette-decorative-new)` |
 | `--ods-semantic-color-surface-decorative-promotion` | `var(--ods-palette-decorative-promotion)` |
-| `--ods-semantic-color-content-text` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-content-heading` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-heading` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-text` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-icon` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-group-label` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-content-icon` | `var(--ods-palette-gray-600)` |
 | `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-content-disabled` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-content-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-content-visited` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-content-success` | `var(--ods-palette-green-500)` |
-| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
 | `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-orange-900)` |
-| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-brand-900)` |
-| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-700)` |
+| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-accent` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
 | `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
 | `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
-| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-content-on-brand-subtle` | `var(--ods-palette-brand-900)` |
+| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-information-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-success-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-content-on-decorative` | `var(--ods-palette-blue-900)` |
-| `--ods-semantic-color-border-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-border-selected` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-border-strong` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-400)` |
+| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-border-brand-subtle` | `var(--ods-palette-brand-300)` |
+| `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
+| `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-300)` |
 | `--ods-semantic-color-border-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-300)` |
 | `--ods-semantic-color-border-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-300)` |
 | `--ods-semantic-color-border-warning` | `var(--ods-palette-orange-400)` |
-| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-300)` |
-| `--ods-semantic-color-border-disabled` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-200)` |
-| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-200)` |
-| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-border-critical-strong` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-border-information-strong` | `var(--ods-palette-blue-700)` |
-| `--ods-semantic-color-border-success-strong` | `var(--ods-palette-green-700)` |
-| `--ods-semantic-color-border-warning-strong` | `var(--ods-palette-orange-700)` |
-| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-interaction-base-hover` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-700)` |
-| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-700)` |
-| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-500)` |
-| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-interaction-base-subtle-hover` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-interaction-base-subtle-active` | `var(--ods-palette-brand-200)` |
-| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
-| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
-| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-200)` |
+| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-300)` |
+| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-100)` |
 | `--ods-semantic-color-interaction-success-subtle-hover` | `var(--ods-palette-green-100)` |
-| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-200)` |
+| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-100)` |
 | `--ods-semantic-color-interaction-warning-subtle-hover` | `var(--ods-palette-orange-100)` |
-| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-focus` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-focus-inverse` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-neutral-active` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-brand-hover` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-active` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-visited` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-interaction-accent-hover` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-information-active` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-success-active` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-warning-active` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-400)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-chart-series-02` | `#ac246f` |
 | `--ods-semantic-color-chart-series-03` | `#00875a` |
 | `--ods-semantic-color-chart-series-04` | `#df3400` |
@@ -24300,6 +24366,15 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-color-chart-series-08` | `#6a2ecf` |
 | `--ods-semantic-color-chart-series-09` | `#374151` |
 | `--ods-semantic-color-chart-series-10` | `#4f8400` |
+| `--ods-semantic-color-shadow-control` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-raised` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-overlay` | `var(--ods-palette-gray-900)` |
+| `--ods-theme-brand-color` | `var(--ods-semantic-color-content-brand)` |
+
+### Size
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-size-space-inset-inline` | `8px` |
 | `--ods-semantic-size-space-inset-block` | `8px` |
 | `--ods-semantic-size-space-inset-block-compact` | `2px` |
@@ -24311,42 +24386,54 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-size-radius-control` | `4px` |
 | `--ods-semantic-size-radius-container` | `8px` |
 | `--ods-semantic-size-radius-overlay` | `4px` |
-| `--ods-semantic-size-radius-full` | `50%` |
 | `--ods-semantic-size-radius-pill` | `16px` |
+| `--ods-semantic-size-radius-full` | `calc(infinity * 1px)` |
+| `--ods-semantic-size-block-size-xxs` | `20px` |
 | `--ods-semantic-size-block-size-xs` | `24px` |
+| `--ods-semantic-size-block-size-sm` | `28px` |
 | `--ods-semantic-size-block-size-md` | `32px` |
 | `--ods-semantic-size-block-size-lg` | `40px` |
-| `--ods-semantic-size-border-thickness` | `1px` |
-| `--ods-semantic-size-border-thickness-strong` | `2px` |
-| `--ods-semantic-size-focus-thickness` | `2px` |
-| `--ods-semantic-size-focus-offset` | `2px` |
-| `--ods-semantic-size-focus-style` | `solid` |
-| `--ods-semantic-font-family-body` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-semantic-font-family-heading` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-semantic-font-family-code` | `'Source Code Pro', arial` |
-| `--ods-semantic-font-family-base` | `var(--ods-semantic-font-family-body)` |
+| `--ods-semantic-border-thickness` | `1px` |
+| `--ods-semantic-border-thickness-strong` | `2px` |
+
+### Font
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-font-family-heading` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-body` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-code` | `'Source Code Pro', monospace` |
 | `--ods-semantic-font-weight-regular` | `400` |
 | `--ods-semantic-font-weight-medium` | `600` |
 | `--ods-semantic-font-weight-bold` | `700` |
-| `--ods-semantic-font-size-xs` | `0.75rem` |
-| `--ods-semantic-font-size-sm` | `0.875rem` |
-| `--ods-semantic-font-size-md` | `1rem` |
-| `--ods-semantic-font-size-lg` | `1.125rem` |
-| `--ods-semantic-font-size-xl` | `1.25rem` |
-| `--ods-semantic-font-size-2xl` | `1.5rem` |
-| `--ods-semantic-font-size-3xl` | `1.75rem` |
-| `--ods-semantic-font-size-4xl` | `2.25rem` |
-| `--ods-semantic-font-line-height-none` | `1` |
-| `--ods-semantic-font-line-height-tight` | `1.2` |
-| `--ods-semantic-font-line-height-default` | `1.5` |
-| `--ods-semantic-font-size-icon-sm` | `1rem` |
-| `--ods-semantic-font-size-icon-md` | `1.25rem` |
-| `--ods-semantic-font-size-icon-lg` | `1.5rem` |
+
+### Focus
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-color-focus` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-border-focus-thickness` | `2px` |
+| `--ods-semantic-border-focus-offset` | `2px` |
+| `--ods-semantic-border-focus-style` | `solid` |
+
+### Elevation
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
 | `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
-| `--ods-semantic-shadow-control` | `0 1px 2px 0 rgb(0, 0, 0, .2)` |
-| `--ods-semantic-shadow-raised` | `0 1px 3px 0 rgb(0, 0, 0, .1), 0 1px 2px -1px rgb(0, 0, 0, .1)` |
-| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1)` |
+| `--ods-semantic-shadow-control` | `none` |
+| `--ods-semantic-shadow-raised` | `0 0 #0000` |
+| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent)` |
+| `--ods-semantic-z-index-sticky` | `100` |
+| `--ods-semantic-z-index-dropdown` | `200` |
+| `--ods-semantic-z-index-drawer` | `300` |
+| `--ods-semantic-z-index-modal` | `400` |
+
+### Motion
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-motion-duration-instant` | `0s` |
 | `--ods-semantic-motion-duration-fast` | `150ms` |
 | `--ods-semantic-motion-duration-medium` | `200ms` |
@@ -24354,12 +24441,131 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-motion-easing` | `ease-in-out` |
 | `--ods-semantic-motion-easing-enter` | `ease-out` |
 | `--ods-semantic-motion-easing-exit` | `ease-in` |
-| `--ods-semantic-z-index-sticky` | `100` |
-| `--ods-semantic-z-index-dropdown` | `200` |
-| `--ods-semantic-z-index-drawer` | `300` |
-| `--ods-semantic-z-index-modal` | `400` |
-| `--ods-semantic-z-index-toast` | `500` |
-| `--ods-semantic-z-index-tooltip` | `600` |
+
+## Color Palettes
+
+| Token | Value |
+|---|---|
+| `--ods-palette-accent-50` | `var(--ods-palette-indigo-50)` |
+| `--ods-palette-accent-100` | `var(--ods-palette-indigo-100)` |
+| `--ods-palette-accent-200` | `var(--ods-palette-indigo-200)` |
+| `--ods-palette-accent-300` | `var(--ods-palette-indigo-300)` |
+| `--ods-palette-accent-400` | `var(--ods-palette-indigo-400)` |
+| `--ods-palette-accent-500` | `var(--ods-palette-indigo-500)` |
+| `--ods-palette-accent-600` | `var(--ods-palette-indigo-600)` |
+| `--ods-palette-accent-700` | `var(--ods-palette-indigo-700)` |
+| `--ods-palette-accent-800` | `var(--ods-palette-indigo-800)` |
+| `--ods-palette-accent-900` | `var(--ods-palette-indigo-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-blue-50` | `#f3fdff` |
+| `--ods-palette-blue-100` | `#e6faff` |
+| `--ods-palette-blue-200` | `#bef1ff` |
+| `--ods-palette-blue-300` | `#85d9fd` |
+| `--ods-palette-blue-400` | `#4bb2f6` |
+| `--ods-palette-blue-500` | `#0050d7` |
+| `--ods-palette-blue-600` | `#002dbe` |
+| `--ods-palette-blue-700` | `#000e9c` |
+| `--ods-palette-blue-800` | `#00185e` |
+| `--ods-palette-blue-900` | `#000d1f` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-brand-50` | `var(--ods-palette-blue-50)` |
+| `--ods-palette-brand-100` | `var(--ods-palette-blue-100)` |
+| `--ods-palette-brand-200` | `var(--ods-palette-blue-200)` |
+| `--ods-palette-brand-300` | `var(--ods-palette-blue-300)` |
+| `--ods-palette-brand-400` | `var(--ods-palette-blue-400)` |
+| `--ods-palette-brand-500` | `var(--ods-palette-blue-500)` |
+| `--ods-palette-brand-600` | `var(--ods-palette-blue-600)` |
+| `--ods-palette-brand-700` | `var(--ods-palette-blue-700)` |
+| `--ods-palette-brand-800` | `var(--ods-palette-blue-800)` |
+| `--ods-palette-brand-900` | `var(--ods-palette-blue-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-gray-50` | `#f9f9f9` |
+| `--ods-palette-gray-100` | `#f2f2f2` |
+| `--ods-palette-gray-200` | `#e6e6e6` |
+| `--ods-palette-gray-300` | `#cccccc` |
+| `--ods-palette-gray-400` | `#b3b3b3` |
+| `--ods-palette-gray-500` | `#808080` |
+| `--ods-palette-gray-600` | `#666666` |
+| `--ods-palette-gray-700` | `#4d4d4d` |
+| `--ods-palette-gray-800` | `#333333` |
+| `--ods-palette-gray-900` | `#1a1a1a` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-green-50` | `#ecfdf5` |
+| `--ods-palette-green-100` | `#d1fae5` |
+| `--ods-palette-green-200` | `#a7f3d0` |
+| `--ods-palette-green-300` | `#6ee7b7` |
+| `--ods-palette-green-400` | `#34d399` |
+| `--ods-palette-green-500` | `#10b981` |
+| `--ods-palette-green-600` | `#059669` |
+| `--ods-palette-green-700` | `#047857` |
+| `--ods-palette-green-800` | `#065f46` |
+| `--ods-palette-green-900` | `#064e3b` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-indigo-50` | `#f4f5f9` |
+| `--ods-palette-indigo-100` | `#edf0f7` |
+| `--ods-palette-indigo-200` | `#d8dcf0` |
+| `--ods-palette-indigo-300` | `#bec5e3` |
+| `--ods-palette-indigo-400` | `#98a3cc` |
+| `--ods-palette-indigo-500` | `#3a4a87` |
+| `--ods-palette-indigo-600` | `#2b3870` |
+| `--ods-palette-indigo-700` | `#1e2858` |
+| `--ods-palette-indigo-800` | `#131a3f` |
+| `--ods-palette-indigo-900` | `#0a1028` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-orange-50` | `#fffbeb` |
+| `--ods-palette-orange-100` | `#fef3c7` |
+| `--ods-palette-orange-200` | `#fde68a` |
+| `--ods-palette-orange-300` | `#fcd34d` |
+| `--ods-palette-orange-400` | `#fbbf24` |
+| `--ods-palette-orange-500` | `#f59e0b` |
+| `--ods-palette-orange-600` | `#d97706` |
+| `--ods-palette-orange-700` | `#b45309` |
+| `--ods-palette-orange-800` | `#92400e` |
+| `--ods-palette-orange-900` | `#78350f` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-red-50` | `#fdecec` |
+| `--ods-palette-red-100` | `#fbd5d3` |
+| `--ods-palette-red-200` | `#f7aaa7` |
+| `--ods-palette-red-300` | `#f08581` |
+| `--ods-palette-red-400` | `#f2756f` |
+| `--ods-palette-red-500` | `#d9534f` |
+| `--ods-palette-red-600` | `#b3403c` |
+| `--ods-palette-red-700` | `#8a302d` |
+| `--ods-palette-red-800` | `#381312` |
+| `--ods-palette-red-900` | `#1c0a09` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-black` | `#000000` |
+| `--ods-palette-decorative-alpha` | `#fbfe47` |
+| `--ods-palette-decorative-beta` | `#47fe78` |
+| `--ods-palette-decorative-new` | `#47fffa` |
+| `--ods-palette-decorative-promotion` | `#ccff66` |
+| `--ods-palette-white` | `#ffffff` |
+
+### Opacity
+
+| Token | Value |
+|---|---|
+| `--ods-palette-opacity-15` | `0.15` |
+| `--ods-palette-opacity-20` | `0.2` |
+| `--ods-palette-opacity-25` | `0.25` |
+| `--ods-palette-opacity-50` | `0.5` |
+| `--ods-palette-opacity-75` | `0.75` |
 
 ## Tailwind CSS Integration
 
@@ -24389,18 +24595,17 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
-        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
-        'ods-border-radius-md': 'var(--ods-border-radius-md)',
-        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+        'ods-control': 'var(--ods-semantic-size-radius-control)',
+        'ods-container': 'var(--ods-semantic-size-radius-container)',
+        'ods-pill': 'var(--ods-semantic-size-radius-pill)',
       },
       colors: {
-        'ods-color-primary-500': 'var(--ods-color-primary-500)',
-        'ods-color-success-500': 'var(--ods-color-success-500)',
-        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+        'ods-brand': 'var(--ods-semantic-color-surface-brand)',
+        'ods-success': 'var(--ods-semantic-color-surface-success)',
+        'ods-warning': 'var(--ods-semantic-color-content-warning)',
       },
       fontFamily: {
-        'ods-font-family-default': 'var(--ods-font-family-default)',
+        'ods-body': 'var(--ods-semantic-font-family-body)',
       },
     },
   },
@@ -24418,14 +24623,13 @@ Create a `./.vscode/tailwind.json` containing the classes you want to expose for
 ```json
 {
     "customClasses": [
-      "ods-color-primary-500",
-      "ods-color-success-500",
-      "ods-color-critical-700",
-      "ods-border-radius-xs",
-      "ods-border-radius-sm",
-      "ods-border-radius-md",
-      "ods-border-radius-lg",
-      "ods-font-family-default",
+      "ods-brand",
+      "ods-success",
+      "ods-critical",
+      "ods-control",
+      "ods-container",
+      "ods-pill",
+      "ods-body",
     ]
   }
 ```
@@ -24435,16 +24639,15 @@ For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.co
 
 ```css
 @theme {
-  --radius-ods-xs: var(--ods-border-radius-xs);
-  --radius-ods-sm: var(--ods-border-radius-sm);
-  --radius-ods-md: var(--ods-border-radius-md);
-  --radius-ods-lg: var(--ods-border-radius-lg);
+  --radius-ods-control: var(--ods-semantic-size-radius-control);
+  --radius-ods-container: var(--ods-semantic-size-radius-container);
+  --radius-ods-pill: var(--ods-semantic-size-radius-pill);
 
-  --color-ods-primary: var(--ods-color-primary-500);
-  --color-ods-success: var(--ods-color-success-500);
-  --color-ods-critical: var(--ods-color-critical-700);
+  --color-ods-brand: var(--ods-semantic-color-surface-brand);
+  --color-ods-success: var(--ods-semantic-color-surface-success);
+  --color-ods-critical: var(--ods-semantic-color-content-critical);
 
-  --font-ods-default: var(--ods-font-family-default);
+  --font-ods-body: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -24472,8 +24675,8 @@ import { Button } from '@ovhcloud/ods-react';
 function MyComponent() {
   return (
   <div>
-      <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
+      <p className="text-ods-critical">Click on the button!</p>
+      <Button className="bg-ods-brand">Click me!</Button>
   </div>
   );
 }
@@ -24483,12 +24686,12 @@ function MyComponent() {
 
 ### Color Usage
 
-- Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+- Use semantic color names (e.g., `ods-brand`, `ods-success`) instead of generic colors
 - **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
 
 ### Spacing and Layout
 
-- Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+- Use ODS border radius tokens (`rounded-ods-control`, `rounded-ods-container`, etc.)
 - Leverage ODS form element heights for consistent input sizing
 - **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
 
@@ -27017,11 +27220,11 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change. On the theme side, the default font family is renamed to `'Source Sans 3'` (see **Typography**).
 
 ## If you stay on React 18
 
-Nothing to do. Installation, types and runtime keep working exactly as before.
+Nothing to do. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**).
 
 ## If you move to React 19
 
@@ -27096,6 +27299,278 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Typography
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
+
+- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines, v20 no longer reads them. To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` instead.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- The values exposed by `@ovhcloud/ods-themes/default/tokens` change the same way.
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-semantic-font-family-body);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Deprecations
+
+The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
+
+**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
+
+If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+
+### Badge
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+### Button
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
+
+**before**
+```tsx
+import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
+
+<Button color={ BUTTON_COLOR.primary }>Save</Button>
+<Button color={ BUTTON_COLOR.critical }>Delete</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
+
+<Button>Save</Button>
+<Button status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 rendering.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+```
+
+### Message
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+
+**before**
+```tsx
+import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message color={ MESSAGE_COLOR.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+### Modal
+
+The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- any other value: remove the prop.
+- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
+```
+
+### Tag
+
+- `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+**before**
+```tsx
+import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';
+
+<Tag color={ TAG_COLOR.primary }>Cloud</Tag>
+```
+
+**after**
+```tsx
+import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
+
+<Tag status={ TAG_STATUS.accent }>Cloud</Tag>
+```
+
+### Toaster
+
+- `toast.primary()`: use `toast.accent()`.
+- `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+**before**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.primary('Your export is ready');
+```
+
+**after**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.accent('Your export is ready');
+```
 
 ## Need help?
 

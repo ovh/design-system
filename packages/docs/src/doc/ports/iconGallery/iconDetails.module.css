@@ -48,5 +48,5 @@
 }
 
 .icon-details__colors__color--selected {
-  border: solid 2px var(--ods-color-neutral-900);
+  border: solid 2px var(--ods-semantic-color-border-selected-solid);
 }

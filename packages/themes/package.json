@@ -33,6 +33,11 @@
       "default": "./dist/blue-jeans/index.css"
     }
   },
+  "files": [
+    "assets",
+    "dist",
+    "src"
+  ],
   "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
@@ -47,7 +52,6 @@
   },
   "devDependencies": {
     "autoprefixer": "10.4.17",
-    "cssjson": "2.1.3",
     "postcss": "8.4.35",
     "postcss-cli": "11.0.1",
     "postcss-scss": "4.0.9",

@@ -39,13 +39,16 @@ not the history of the branch.
 | [BC-04](#bc-04--palette-rungs-000--025--075-retired) | `@ovhcloud/ods-themes` | palette rungs `000` / `025` / `075` retired | n/a (covered by BC-02) |
 | [BC-05](#bc-05--scss-variables-ods--removed) | `@ovhcloud/ods-themes` | SCSS `$ods-*` variables removed (140) | manual |
 | [BC-06](#bc-06--defaulttokensjson-content-replaced) | `@ovhcloud/ods-themes` | `./default/tokens` JSON content replaced | manual |
-| [BC-07](#bc-07--the-default-theme-is-brand-neutral) | `@ovhcloud/ods-themes` | the default theme is grey, not OVHcloud blue | manual |
+| [BC-07](#bc-07---the-default-theme-no-longer-looks-like-ovhcloud) | `@ovhcloud/ods-themes` | the default theme no longer looks like OVHcloud | partial |
 | [BC-08](#bc-08--tier-3-component-token-values-re-bound) | `@ovhcloud/ods-react` | tier-3 component token values re-bound | none needed |
 | [BC-09](#bc-09---card-defaults-to-neutral) | `@ovhcloud/ods-react` | `Card` defaults to `neutral` | automatable |
 | [BC-10](#bc-10--button-radius-moves-to-the-control-family) | `@ovhcloud/ods-react` | `Button` radius is 4px at every size | manual |
 | [BC-11](#bc-11--accordion-takes-the-whole-container-radius) | `@ovhcloud/ods-react` | `Accordion` outer corners go 4px -> 8px | manual |
 | [BC-12](#bc-12---disabled-is-an-opacity-not-a-colour) | `@ovhcloud/ods-react` | disabled is dimmed with opacity, not repainted grey | manual |
 | [BC-13](#bc-13---the-default-font-family-is-renamed-source-sans-3) | `@ovhcloud/ods-themes` | the default font family is renamed `'Source Sans 3'` | automatable |
+| [BC-14](#bc-14---form-fields-paint-their-own-background) | `@ovhcloud/ods-react` | form fields paint their own background | manual |
+| [BC-15](#bc-15---a-modal-always-stacks-above-a-drawer) | `@ovhcloud/ods-react` | a modal always stacks above a drawer | manual |
+| [BC-16](#bc-16---deprecated-scss-variables-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated SCSS variables of `./style` removed | manual |
 
 ---
 
@@ -59,6 +62,10 @@ not the history of the branch.
 | **Detection** | `grep -rn -- '--ods-theme-' src/` |
 | **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colours have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its `--tables` output. |
+
+One name survives: `--ods-theme-brand-color` is still declared, as an alias of
+`--ods-semantic-color-content-brand`, so a read of it keeps resolving. Its value moves from
+`primary-700` to the brand ink. The codemod renames it anyway, as listed below.
 
 ### 1:1 renames
 
@@ -347,7 +354,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves, but not one key survives: the 187 old names are out, and 255 new ones are in (184 `--ods-semantic-*`, 10 brand-ramp rungs, 61 `--ods-palette-*`). The generator also moved from `cssjson` to `postcss`, which fixes a bug that was silently dropping any declaration written after a comment (41 of 248 tokens on the new theme, a handful on the old one). |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves, but only one key survives (`--ods-theme-brand-color`, see BC-01): the other 186 old names are out, and 272 new ones are in (181 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. The generator also moved from `cssjson` to `postcss`, which fixes a bug that was silently dropping any declaration written after a comment (41 of 248 tokens on the new theme, a handful on the old one). |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |
@@ -355,23 +362,22 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 
 ---
 
-## BC-07 - the default theme is brand-neutral
+## BC-07 - the default theme no longer looks like OVHcloud
 
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/css` now ships an entirely greyscale theme. The brand ramp `--ods-palette-brand-*` aliases the grey family by default; OVHcloud blue is a brand file that re-aims it (`src/blue-jeans/`). |
-| **Impact** | The largest visible change of the major: an app that imports only the default theme loses its blue. |
-| **Detection** | visual |
-| **Codemod** | **manual** - the fix is an import, but which import depends on how the brand ends up being delivered. |
-| **Source of truth** | `packages/themes/src/default/index.scss` (`$brand-hue`), `packages/themes/src/blue-jeans/index.scss` |
+| **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the indigo family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a `:root` overlay that re-aims the accent ramp onto blue and overrides the roles that differ. |
+| **Impact** | The largest visible change of the major: an app that imports only the default theme changes colour almost everywhere. Loading `blue-jeans/css` *before* `default/css`, or a second copy of `default/css` injected later (a micro-frontend shipping its own), silently brings the default look back, because both declare their tokens on `:root` and the last one wins. |
+| **Detection** | `grep -rn 'ods-themes/default/css' src/` - every app that imports it alone |
+| **Codemod** | **partial** - add `import '@ovhcloud/ods-themes/blue-jeans/css'` right after the default import to keep the OVHcloud look. Where the theme is injected at runtime, the order has to be checked by hand. |
+| **Source of truth** | `packages/themes/src/default/index.scss`, `packages/themes/src/blue-jeans/index.scss` |
 
-**Open**: how a brand is delivered is not settled. Today `blue-jeans` exists as a whole-theme
-override loaded after the default one, and the docs app treats it as a debug switch. A Sass
-consumer can instead configure the core (`@use '…/default/index' with ($brand-hue: 'blue')`),
-which emits each token once. The override is exported from `package.json` (`./blue-jeans/css`).
-This entry needs rewriting once that decision lands, and the migration guide cannot be written
-before it.
+**Open**: how a brand is delivered is not settled. Today `blue-jeans` is a `:root` overlay that
+only works when loaded after the default theme, and the docs app treats it as a debug switch. The
+alternative, making the default theme the brand and dropping the overlay export, would make this
+entry disappear. It needs rewriting once that decision lands, and the migration guide cannot be
+written before it.
 
 ---
 
@@ -474,14 +480,54 @@ The theme's three disabled colour roles are still declared but no component read
 
 ---
 
+## BC-14 - form fields paint their own background
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The `ods-input()` mixin of `@ovhcloud/ods-react/style`, and every field built on it (`Input`, `Quantity`, `Textarea`, and the components that render an `Input`: `Combobox`, `Datepicker`, `Password`, `Phone Number`, `Timepicker`, ...), declares `background-color: var(--ods-semantic-color-surface-control)`. In 19.7.3 it declared no background, so a field showed whatever the browser or the ground behind it gave. |
+| **Impact** | Visual only. A field sitting on a tinted ground (a card, a message, a table header) now shows a white box instead of the tint. |
+| **Detection** | none to run - it applies to every field |
+| **Codemod** | **manual** - a consumer who wants the old transparency re-declares `--ods-semantic-color-surface-control: transparent` on the container. |
+| **Source of truth** | `packages/ods-react/src/style/_input.scss` |
+
+---
+
+## BC-15 - a modal always stacks above a drawer
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The overlays read their own z-index rung instead of offsets on the dropdown one. `ModalContent` puts its backdrop at `--ods-semantic-z-index-modal` minus one and its positioner at `--ods-semantic-z-index-modal`; `DrawerContent` does the same with `--ods-semantic-z-index-drawer`, which `--ods-drawer-z-index` already read. In 19.7.3 a modal, a drawer with a backdrop and a drawer without one all sat on the same layer, so the one opened last was on top. |
+| **Impact** | A drawer opened from a modal now opens underneath it. A consumer `positionerStyle` / `backdropStyle` that set a z-index relative to the old `--ods-theme-overlay-z-index` chain is now below the drawer and modal rungs. Visual only. |
+| **Detection** | `grep -rnE 'positionerStyle\|backdropStyle\|--ods-drawer-z-index' src/` |
+| **Codemod** | **manual** - restack against `--ods-semantic-z-index-drawer` / `-modal`, or pass a higher z-index through `positionerStyle` to the drawer that has to win. |
+| **Source of truth** | `packages/ods-react/src/components/modal/src/components/modal-content/ModalContent.tsx`, `packages/ods-react/src/components/drawer/src/components/drawer-content/DrawerContent.tsx` |
+
+---
+
+## BC-16 - deprecated SCSS variables of `@ovhcloud/ods-react/style` removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The five variables marked "[Deprecated] will be removed in next major version" are removed: `$ods-overlay-arrow-background-color`, `$ods-modal-border-radius`, `$ods-modal-margin`, `$ods-modal-z-index` and `$drawer-max-size`. |
+| **Impact** | A stylesheet that reads one of them fails to compile. |
+| **Detection** | `grep -rnE '\$(ods-overlay-arrow-background-color\|ods-modal-border-radius\|ods-modal-margin\|ods-modal-z-index\|drawer-max-size)\b' src/` |
+| **Codemod** | **manual** - read what they held instead: `--ods-semantic-color-surface-page`, `--ods-modal-border-radius`, `--ods-modal-margin-horizontal` / `-vertical`, `--ods-semantic-z-index-modal`, and `$drawer-max-width` / `$drawer-max-height`. |
+| **Source of truth** | `packages/ods-react/src/style/_overlay.scss`, `_modal.scss`, `_drawer.scss` |
+
+---
+
 ## Not inventoried yet
 
-- `packages/docs` is still on the old token names (116 files) and `packages/examples` on 3. Their
-  migration may surface tokens no one has mapped yet - in particular the `_none_` holes in BC-02.
-- Typography is not adopted: `ods-text-*` still carries literal sizes, so the `--ods-semantic-font-*`
-  tokens exist but nothing reads them. If that lands in this major it is another entry here.
+- A few `packages/docs` files still read the old names: the historical entries of `whats-new.mdx`
+  and `migration-19-to-20.mdx`, and the unused Storybook leftover `assets/css/preview.css`.
+- Font sizes are not adopted: `ods-text-*` still carries literal sizes and the theme has no
+  font-size family. If one lands in this major it is another entry here.
 - No visual-regression baseline has been taken against the new theme, so the list of value-only
   changes (BC-08) is qualitative.
-- Deduced tokens are marked `REVIEW` in `packages/themes/src/default/index.scss`. Any of them that
-  design rejects becomes a rename **after** this inventory was written, which is exactly the case
-  the "append-only" rule above is for.
+- Tokens deduced rather than delivered by design (the opacity rungs, still marked `REVIEW` in
+  `packages/themes/src/default/_variables.scss`, and the ten chart series colours) can still be
+  rejected. Any of them that design rejects becomes a rename **after** this inventory was written,
+  which is exactly the case the "append-only" rule above is for.

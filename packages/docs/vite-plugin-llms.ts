@@ -6,8 +6,8 @@ import guidesInventory from './src/content/guides/guides.json';
 import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
-import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
-import { categorizeTokens, splitPalettes } from './src/doc/ports/helpers/designTokens';
+import { TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
+import { categorizeTokens, splitPaletteTokens } from './src/doc/ports/helpers/designTokens';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
 /* The llms invariant (CDC P1): the platform emits its llms output natively at
@@ -157,37 +157,27 @@ function renderDesignTokens(): string | null {
     return null;
   }
   const byCategory = categorizeTokens(theme.root);
+  const { monoColors, opacities, palettes } = splitPaletteTokens(byCategory[TOKEN_CATEGORY.palette]);
 
-  // Same mono/palette split as the DesignTokens port.
-  const monoColors: Token[] = [];
-  const paletteColors: Token[] = [];
-  for (const token of byCategory[TOKEN_CATEGORY.palette]) {
-    const splits = token.name.split('-');
-    if (MONO_COLORS.includes(splits[splits.length - 1])) {
-      monoColors.push(token);
-    } else if (splits.length > 1 && /\d{3}$/.test(splits[splits.length - 1]) && PALETTES.includes(splits[splits.length - 2])) {
-      paletteColors.push(token);
-    }
-  }
-  const palettes = splitPalettes(paletteColors.sort((a, b) => a.name.localeCompare(b.name)));
-
+  // Same sections as the DesignTokens port.
   const SECTIONS: [string, TOKEN_CATEGORY][] = [
     ['Color', TOKEN_CATEGORY.color],
-    ['Outline', TOKEN_CATEGORY.outline],
-    ['Overlay', TOKEN_CATEGORY.overlay],
-    ['Spacing', TOKEN_CATEGORY.spacing],
-    ['Font Family', TOKEN_CATEGORY.fontFamily],
-    ['Form Element', TOKEN_CATEGORY.formElement],
+    ['Size', TOKEN_CATEGORY.size],
+    ['Font', TOKEN_CATEGORY.font],
+    ['Focus', TOKEN_CATEGORY.focus],
+    ['Elevation', TOKEN_CATEGORY.elevation],
+    ['Motion', TOKEN_CATEGORY.motion],
+    ['Other', TOKEN_CATEGORY.other],
   ];
   return [
     '## Theme Variables',
-    ...SECTIONS.map(([label, category]) => `### ${label}\n\n${tokensTable(byCategory[category])}`),
+    ...SECTIONS
+      .filter(([, category]) => byCategory[category].length > 0)
+      .map(([label, category]) => `### ${label}\n\n${tokensTable(byCategory[category])}`),
     '## Color Palettes',
     ...palettes.map((palette) => tokensTable(palette)),
-    tokensTable(monoColors.sort((a, b) => a.name.localeCompare(b.name))),
-    '## Previous Tokens (deprecated)',
-    'The following tokens are deprecated and will be removed in a future major release. Non-spacing tokens have been renamed with the `--ods-theme` prefix; spacing tokens have been reduced to one base value (e.g. `--my-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);`).',
-    tokensTable(byCategory[TOKEN_CATEGORY.deprecated]),
+    tokensTable(monoColors),
+    `### Opacity\n\n${tokensTable(opacities)}`,
   ].join('\n\n');
 }
 

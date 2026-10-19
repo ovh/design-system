@@ -4,7 +4,7 @@ slug: link
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 134
+tokens: 145
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
 ---
 
@@ -24,3 +24,4 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 |---|---|
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-state-is-disabled-opacity` | `1` |

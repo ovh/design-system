@@ -4,7 +4,7 @@ slug: select
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 774
+tokens: 794
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--technical-information.txt
 ---
 
@@ -18,7 +18,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `fitControlWidth` | `boolean` | No | undefined | - (deprecated) |
+| `fitControlWidth` | `boolean` | No | undefined | Use overlayConfig.sameWidth instead (deprecated) |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
 | `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
@@ -62,3 +62,4 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-state-is-disabled-opacity` | `1` |

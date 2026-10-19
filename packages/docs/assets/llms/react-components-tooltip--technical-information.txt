@@ -4,7 +4,7 @@ slug: tooltip
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 521
+tokens: 497
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--technical-information.txt
 ---
 
@@ -20,7 +20,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
 | `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
 | `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'left' | 'left-end' | 'left-start' | 'right' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `TOOLTIP_POSITION` | No | undefined | The tooltip position around the trigger. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## TooltipContent

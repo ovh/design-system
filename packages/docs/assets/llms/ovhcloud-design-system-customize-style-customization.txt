@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 627
+tokens: 629
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -85,7 +85,7 @@ Example of CSS variables:
 
 <style>
   .my-own-page-title {
-    color: var(--ods-color-primary-500);
+    color: var(--ods-semantic-color-content-brand);
   }
 </style>
 ```

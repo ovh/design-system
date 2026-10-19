@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6797
+tokens: 6798
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -342,7 +342,7 @@ When using a critical **Message**:
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             
 > { globalError }
@@ -358,7 +358,7 @@ When using a critical **Message**:
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account
@@ -544,7 +544,7 @@ Use when:
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>

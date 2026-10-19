@@ -1,13 +1,6 @@
-$ods-overlay-arrow-background-color: var(--ods-semantic-color-surface-page); // [Deprecated] will be removed in next major version
 $ods-overlay-arrow-size: 8px;
 $ods-overlay-base-z-index: var(--ods-semantic-z-index-dropdown);
 $ods-overlay-select-z-index: $ods-overlay-base-z-index;
-
-/*
- * REVIEW: this reverses the stacking order. The chain used to be base + 1 + 1, which put the
- * drawer ABOVE the modal; the token scale puts it below. Modal and Drawer can be open together,
- * so the change is observable.
- */
 $ods-overlay-modal-z-index: var(--ods-semantic-z-index-modal);
 $ods-overlay-drawer-z-index: var(--ods-semantic-z-index-drawer);
 

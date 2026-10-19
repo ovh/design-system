@@ -4,22 +4,19 @@ slug: button
 category: component
 type: examples
 version: 19.7.3
-tokens: 824
+tokens: 779
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
 ---
 
 # Button
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Button color={ BUTTON_COLOR.critical }>Critical</Button>
-  <Button color={ BUTTON_COLOR.information }>Information</Button>
-  <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
-  <Button color={ BUTTON_COLOR.primary }>Primary</Button>
-  <Button color={ BUTTON_COLOR.success }>Success</Button>
-  <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
 </>
 ```
 

@@ -17,6 +17,11 @@ async function getTokens(theme) {
     const root = {};
 
     postcss.parse(indexCSS).walkRules(':root', (rule) => {
+      /* A :root nested in an at-rule (reduced motion) is a conditional override, not the default. */
+      if (rule.parent.type !== 'root') {
+        return;
+      }
+
       rule.walkDecls(/^--/, (decl) => {
         /* Declared twice in one scope means the last one wins, exactly as the cascade would. */
         root[decl.prop] = decl.value;

@@ -760,7 +760,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6797
+tokens: 6798
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -1098,7 +1098,7 @@ When using a critical **Message**:
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             
 > { globalError }
@@ -1114,7 +1114,7 @@ When using a critical **Message**:
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account
@@ -1300,7 +1300,7 @@ Use when:
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -1790,7 +1790,7 @@ slug: ovhcloud-design-system-build-charts
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1030
+tokens: 1039
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-charts.txt
 ---
 
@@ -1872,39 +1872,39 @@ For structural elements, here are the expected values to apply:
   <tbody>
   <tr>
     <td>Background</td>
-    <td><code>--ods-theme-chart-background-color</code></td>
+    <td><code>--ods-semantic-color-chart-background</code></td>
     <td><code>#ffffff</code></td>
-    <td><code>--ods-theme-chart-background-color</code> (default: <code>#ffffff</code>)</td>
+    <td><code>--ods-semantic-color-chart-background</code> (default: <code>#ffffff</code>)</td>
   </tr>
   <tr>
     <td>Axis</td>
-    <td><code>--ods-theme-chart-axis-color</code></td>
+    <td><code>--ods-semantic-color-chart-axis</code></td>
     <td><code>#b3b3b3</code></td>
-    <td><code>--ods-theme-chart-axis-color</code> (default: <code>#b3b3b3</code>)</td>
+    <td><code>--ods-semantic-color-chart-axis</code> (default: <code>#b3b3b3</code>)</td>
   </tr>
   <tr>
     <td>Ticks (axis labels)</td>
-    <td><code>--ods-theme-chart-tick-color</code></td>
+    <td><code>--ods-semantic-color-chart-tick</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-tick-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-tick</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Legends</td>
-    <td><code>--ods-theme-chart-legend-color</code></td>
+    <td><code>--ods-semantic-color-chart-legend</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-legend-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-legend</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Grids</td>
-    <td><code>--ods-theme-chart-grid-color</code></td>
+    <td><code>--ods-semantic-color-chart-grid</code></td>
     <td><code>#cccccc</code></td>
-    <td><code>--ods-theme-chart-grid-color</code> (default: <code>#cccccc</code>)</td>
+    <td><code>--ods-semantic-color-chart-grid</code> (default: <code>#cccccc</code>)</td>
   </tr>
   <tr>
     <td>Reference Line</td>
-    <td><code>--ods-theme-chart-reference-line-color</code></td>
+    <td><code>--ods-semantic-color-chart-reference-line</code></td>
     <td><code>#bf0020</code></td>
-    <td><code>--ods-theme-chart-reference-line-color</code> (default: <code>#bf0020</code>)</td>
+    <td><code>--ods-semantic-color-chart-reference-line</code> (default: <code>#bf0020</code>)</td>
   </tr>
   </tbody>
 
@@ -1943,7 +1943,7 @@ slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
 version: 19.7.3
-tokens: 323
+tokens: 329
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
@@ -1962,7 +1962,7 @@ To use one of the ODS fonts in your app, add the expected variables to the top o
 
 ```css
 html {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -1974,7 +1974,7 @@ If you want to use any of those on your own components, you can refer to the exh
 
 ```css
 .my-custom-title {
-  color: var(--ods-color-text);
+  color: var(--ods-semantic-color-content-text);
   ...
 }
 ```
@@ -1996,7 +1996,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 627
+tokens: 629
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -2077,7 +2077,7 @@ Example of CSS variables:
 
 <style>
   .my-own-page-title {
-    color: var(--ods-color-primary-500);
+    color: var(--ods-semantic-color-content-brand);
   }
 </style>
 ```
@@ -2091,7 +2091,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4266
+tokens: 4691
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -2105,8 +2105,8 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 ```css
 .my-component {
-  color: var(--ods-color-primary-500);
-  border-radius: var(--ods-border-radius-sm);
+  color: var(--ods-semantic-color-content-brand);
+  border-radius: var(--ods-semantic-size-radius-control);
 }
 ```
 
@@ -2116,228 +2116,129 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-
-### Outline
-
-| Token | Value |
-|---|---|
-
-### Overlay
-
-| Token | Value |
-|---|---|
-
-### Spacing
-
-| Token | Value |
-|---|---|
-
-### Font Family
-
-| Token | Value |
-|---|---|
-
-### Form Element
-
-| Token | Value |
-|---|---|
-
-## Color Palettes
-
-| Token | Value |
-|---|---|
-
-| Token | Value |
-|---|---|
-
-## Previous Tokens (deprecated)
-
-The following tokens are deprecated and will be removed in a future major release. Non-spacing tokens have been renamed with the `--ods-theme` prefix; spacing tokens have been reduced to one base value (e.g. `--my-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);`).
-
-| Token | Value |
-|---|---|
-| `--ods-palette-blue-50` | `#e6faff` |
-| `--ods-palette-blue-100` | `#bef1ff` |
-| `--ods-palette-blue-200` | `#85d9fd` |
-| `--ods-palette-blue-300` | `#4bb2f6` |
-| `--ods-palette-blue-400` | `#157eea` |
-| `--ods-palette-blue-500` | `#0050d7` |
-| `--ods-palette-blue-600` | `#002dbe` |
-| `--ods-palette-blue-700` | `#000e9c` |
-| `--ods-palette-blue-800` | `#00185e` |
-| `--ods-palette-blue-900` | `#000d1f` |
-| `--ods-palette-gray-50` | `#f2f2f2` |
-| `--ods-palette-gray-100` | `#e6e6e6` |
-| `--ods-palette-gray-200` | `#cccccc` |
-| `--ods-palette-gray-300` | `#b3b3b3` |
-| `--ods-palette-gray-400` | `#999999` |
-| `--ods-palette-gray-500` | `#808080` |
-| `--ods-palette-gray-600` | `#666666` |
-| `--ods-palette-gray-700` | `#4d4d4d` |
-| `--ods-palette-gray-800` | `#333333` |
-| `--ods-palette-gray-900` | `#1a1a1a` |
-| `--ods-palette-green-50` | `#e7f7d7` |
-| `--ods-palette-green-100` | `#d2f2c2` |
-| `--ods-palette-green-200` | `#90cc7a` |
-| `--ods-palette-green-300` | `#64b347` |
-| `--ods-palette-green-400` | `#47991f` |
-| `--ods-palette-green-500` | `#2b8000` |
-| `--ods-palette-green-600` | `#267300` |
-| `--ods-palette-green-700` | `#226600` |
-| `--ods-palette-green-800` | `#1a4d00` |
-| `--ods-palette-green-900` | `#113300` |
-| `--ods-palette-orange-50` | `#fff7cc` |
-| `--ods-palette-orange-100` | `#feea86` |
-| `--ods-palette-orange-200` | `#fed265` |
-| `--ods-palette-orange-300` | `#ffbb43` |
-| `--ods-palette-orange-400` | `#ffa322` |
-| `--ods-palette-orange-500` | `#ff8b00` |
-| `--ods-palette-orange-600` | `#cc7000` |
-| `--ods-palette-orange-700` | `#995400` |
-| `--ods-palette-orange-800` | `#663800` |
-| `--ods-palette-orange-900` | `#4d2a00` |
-| `--ods-palette-red-50` | `#ffe6ec` |
-| `--ods-palette-red-100` | `#ffccd9` |
-| `--ods-palette-red-200` | `#ef99ab` |
-| `--ods-palette-red-300` | `#e67386` |
-| `--ods-palette-red-400` | `#cf334e` |
-| `--ods-palette-red-500` | `#bf0020` |
-| `--ods-palette-red-600` | `#a6001c` |
-| `--ods-palette-red-700` | `#800015` |
-| `--ods-palette-red-800` | `#660011` |
-| `--ods-palette-red-900` | `#4d000d` |
-| `--ods-palette-white` | `#ffffff` |
-| `--ods-palette-black` | `#000000` |
-| `--ods-palette-decorative-alpha` | `#fbfe47` |
-| `--ods-palette-decorative-beta` | `#47fe78` |
-| `--ods-palette-decorative-new` | `#47fffa` |
-| `--ods-palette-decorative-promotion` | `#ccff66` |
-| `--ods-palette-opacity-15` | `0.15` |
-| `--ods-palette-opacity-20` | `0.2` |
-| `--ods-palette-opacity-25` | `0.25` |
-| `--ods-palette-opacity-50` | `0.5` |
-| `--ods-palette-opacity-75` | `0.75` |
-| `--ods-palette-brand-50` | `var(--ods-palette-gray-50)` |
-| `--ods-palette-brand-100` | `var(--ods-palette-gray-100)` |
-| `--ods-palette-brand-200` | `var(--ods-palette-gray-200)` |
-| `--ods-palette-brand-300` | `var(--ods-palette-gray-300)` |
-| `--ods-palette-brand-400` | `var(--ods-palette-gray-400)` |
-| `--ods-palette-brand-500` | `var(--ods-palette-gray-500)` |
-| `--ods-palette-brand-600` | `var(--ods-palette-gray-600)` |
-| `--ods-palette-brand-700` | `var(--ods-palette-gray-700)` |
-| `--ods-palette-brand-800` | `var(--ods-palette-gray-800)` |
-| `--ods-palette-brand-900` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-surface-page` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-page` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-raised` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-surface-overlay` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-surface-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
-| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-400)` |
-| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-surface-critical-minimal` | `var(--ods-palette-red-100)` |
-| `--ods-semantic-color-surface-information-minimal` | `var(--ods-palette-blue-100)` |
-| `--ods-semantic-color-surface-success-minimal` | `var(--ods-palette-green-100)` |
-| `--ods-semantic-color-surface-warning-minimal` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-header` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-surface-code` | `var(--ods-palette-accent-900)` |
+| `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-200)` |
-| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-200)` |
-| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-surface-selected` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-interaction-option-hover` | `var(--ods-palette-brand-50)` |
-| `--ods-semantic-color-surface-selected-strong` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-brand-800)` |
-| `--ods-semantic-color-surface-selected-disabled` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-surface-disabled` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-neutral-recessed` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-surface-code` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-surface-brand-subtle` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-surface-accent-subtle` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-500)` |
+| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-surface-control` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-control-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-surface-thumb` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-black)` |
+| `--ods-semantic-color-surface-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-segmented` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-pending` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-surface-decorative-alpha` | `var(--ods-palette-decorative-alpha)` |
 | `--ods-semantic-color-surface-decorative-beta` | `var(--ods-palette-decorative-beta)` |
 | `--ods-semantic-color-surface-decorative-new` | `var(--ods-palette-decorative-new)` |
 | `--ods-semantic-color-surface-decorative-promotion` | `var(--ods-palette-decorative-promotion)` |
-| `--ods-semantic-color-content-text` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-content-heading` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-heading` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-text` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-icon` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-group-label` | `var(--ods-palette-gray-900)` |
-| `--ods-semantic-color-content-icon` | `var(--ods-palette-gray-600)` |
 | `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-content-disabled` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-content-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-content-visited` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-content-success` | `var(--ods-palette-green-500)` |
-| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
 | `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-orange-900)` |
-| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-brand-900)` |
-| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-700)` |
+| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-accent` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
 | `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
 | `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
-| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-content-on-brand-subtle` | `var(--ods-palette-brand-900)` |
+| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-information-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-success-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
-| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-content-on-decorative` | `var(--ods-palette-blue-900)` |
-| `--ods-semantic-color-border-base` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-border-selected` | `var(--ods-palette-brand-500)` |
-| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
-| `--ods-semantic-color-border-strong` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-400)` |
+| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-border-brand-subtle` | `var(--ods-palette-brand-300)` |
+| `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
+| `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-300)` |
 | `--ods-semantic-color-border-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-300)` |
 | `--ods-semantic-color-border-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-300)` |
 | `--ods-semantic-color-border-warning` | `var(--ods-palette-orange-400)` |
-| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-300)` |
-| `--ods-semantic-color-border-disabled` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-50)` |
-| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-200)` |
-| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-200)` |
-| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-200)` |
-| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-border-critical-strong` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-border-information-strong` | `var(--ods-palette-blue-700)` |
-| `--ods-semantic-color-border-success-strong` | `var(--ods-palette-green-700)` |
-| `--ods-semantic-color-border-warning-strong` | `var(--ods-palette-orange-700)` |
-| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-interaction-base-hover` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-700)` |
-| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-700)` |
-| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-700)` |
-| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-700)` |
-| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-500)` |
-| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-interaction-base-subtle-hover` | `var(--ods-palette-brand-100)` |
-| `--ods-semantic-color-interaction-base-subtle-active` | `var(--ods-palette-brand-200)` |
-| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
-| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-200)` |
-| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
-| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-200)` |
+| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-300)` |
+| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-100)` |
 | `--ods-semantic-color-interaction-success-subtle-hover` | `var(--ods-palette-green-100)` |
-| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-200)` |
+| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-100)` |
 | `--ods-semantic-color-interaction-warning-subtle-hover` | `var(--ods-palette-orange-100)` |
-| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-200)` |
-| `--ods-semantic-color-focus` | `var(--ods-palette-brand-700)` |
-| `--ods-semantic-color-focus-inverse` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-neutral-active` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-brand-hover` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-active` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-visited` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-interaction-accent-hover` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-information-active` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-success-active` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-warning-active` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-400)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-chart-series-02` | `#ac246f` |
 | `--ods-semantic-color-chart-series-03` | `#00875a` |
 | `--ods-semantic-color-chart-series-04` | `#df3400` |
@@ -2347,6 +2248,15 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-color-chart-series-08` | `#6a2ecf` |
 | `--ods-semantic-color-chart-series-09` | `#374151` |
 | `--ods-semantic-color-chart-series-10` | `#4f8400` |
+| `--ods-semantic-color-shadow-control` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-raised` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-overlay` | `var(--ods-palette-gray-900)` |
+| `--ods-theme-brand-color` | `var(--ods-semantic-color-content-brand)` |
+
+### Size
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-size-space-inset-inline` | `8px` |
 | `--ods-semantic-size-space-inset-block` | `8px` |
 | `--ods-semantic-size-space-inset-block-compact` | `2px` |
@@ -2358,42 +2268,54 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-size-radius-control` | `4px` |
 | `--ods-semantic-size-radius-container` | `8px` |
 | `--ods-semantic-size-radius-overlay` | `4px` |
-| `--ods-semantic-size-radius-full` | `50%` |
 | `--ods-semantic-size-radius-pill` | `16px` |
+| `--ods-semantic-size-radius-full` | `calc(infinity * 1px)` |
+| `--ods-semantic-size-block-size-xxs` | `20px` |
 | `--ods-semantic-size-block-size-xs` | `24px` |
+| `--ods-semantic-size-block-size-sm` | `28px` |
 | `--ods-semantic-size-block-size-md` | `32px` |
 | `--ods-semantic-size-block-size-lg` | `40px` |
-| `--ods-semantic-size-border-thickness` | `1px` |
-| `--ods-semantic-size-border-thickness-strong` | `2px` |
-| `--ods-semantic-size-focus-thickness` | `2px` |
-| `--ods-semantic-size-focus-offset` | `2px` |
-| `--ods-semantic-size-focus-style` | `solid` |
-| `--ods-semantic-font-family-body` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-semantic-font-family-heading` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-semantic-font-family-code` | `'Source Code Pro', arial` |
-| `--ods-semantic-font-family-base` | `var(--ods-semantic-font-family-body)` |
+| `--ods-semantic-border-thickness` | `1px` |
+| `--ods-semantic-border-thickness-strong` | `2px` |
+
+### Font
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-font-family-heading` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-body` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-code` | `'Source Code Pro', monospace` |
 | `--ods-semantic-font-weight-regular` | `400` |
 | `--ods-semantic-font-weight-medium` | `600` |
 | `--ods-semantic-font-weight-bold` | `700` |
-| `--ods-semantic-font-size-xs` | `0.75rem` |
-| `--ods-semantic-font-size-sm` | `0.875rem` |
-| `--ods-semantic-font-size-md` | `1rem` |
-| `--ods-semantic-font-size-lg` | `1.125rem` |
-| `--ods-semantic-font-size-xl` | `1.25rem` |
-| `--ods-semantic-font-size-2xl` | `1.5rem` |
-| `--ods-semantic-font-size-3xl` | `1.75rem` |
-| `--ods-semantic-font-size-4xl` | `2.25rem` |
-| `--ods-semantic-font-line-height-none` | `1` |
-| `--ods-semantic-font-line-height-tight` | `1.2` |
-| `--ods-semantic-font-line-height-default` | `1.5` |
-| `--ods-semantic-font-size-icon-sm` | `1rem` |
-| `--ods-semantic-font-size-icon-md` | `1.25rem` |
-| `--ods-semantic-font-size-icon-lg` | `1.5rem` |
+
+### Focus
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-color-focus` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-border-focus-thickness` | `2px` |
+| `--ods-semantic-border-focus-offset` | `2px` |
+| `--ods-semantic-border-focus-style` | `solid` |
+
+### Elevation
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
 | `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
-| `--ods-semantic-shadow-control` | `0 1px 2px 0 rgb(0, 0, 0, .2)` |
-| `--ods-semantic-shadow-raised` | `0 1px 3px 0 rgb(0, 0, 0, .1), 0 1px 2px -1px rgb(0, 0, 0, .1)` |
-| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px rgb(0, 0, 0, .1), 0 2px 4px -2px rgb(0, 0, 0, .1)` |
+| `--ods-semantic-shadow-control` | `none` |
+| `--ods-semantic-shadow-raised` | `0 0 #0000` |
+| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent)` |
+| `--ods-semantic-z-index-sticky` | `100` |
+| `--ods-semantic-z-index-dropdown` | `200` |
+| `--ods-semantic-z-index-drawer` | `300` |
+| `--ods-semantic-z-index-modal` | `400` |
+
+### Motion
+
+| Token | Value |
+|---|---|
 | `--ods-semantic-motion-duration-instant` | `0s` |
 | `--ods-semantic-motion-duration-fast` | `150ms` |
 | `--ods-semantic-motion-duration-medium` | `200ms` |
@@ -2401,12 +2323,131 @@ The following tokens are deprecated and will be removed in a future major releas
 | `--ods-semantic-motion-easing` | `ease-in-out` |
 | `--ods-semantic-motion-easing-enter` | `ease-out` |
 | `--ods-semantic-motion-easing-exit` | `ease-in` |
-| `--ods-semantic-z-index-sticky` | `100` |
-| `--ods-semantic-z-index-dropdown` | `200` |
-| `--ods-semantic-z-index-drawer` | `300` |
-| `--ods-semantic-z-index-modal` | `400` |
-| `--ods-semantic-z-index-toast` | `500` |
-| `--ods-semantic-z-index-tooltip` | `600` |
+
+## Color Palettes
+
+| Token | Value |
+|---|---|
+| `--ods-palette-accent-50` | `var(--ods-palette-indigo-50)` |
+| `--ods-palette-accent-100` | `var(--ods-palette-indigo-100)` |
+| `--ods-palette-accent-200` | `var(--ods-palette-indigo-200)` |
+| `--ods-palette-accent-300` | `var(--ods-palette-indigo-300)` |
+| `--ods-palette-accent-400` | `var(--ods-palette-indigo-400)` |
+| `--ods-palette-accent-500` | `var(--ods-palette-indigo-500)` |
+| `--ods-palette-accent-600` | `var(--ods-palette-indigo-600)` |
+| `--ods-palette-accent-700` | `var(--ods-palette-indigo-700)` |
+| `--ods-palette-accent-800` | `var(--ods-palette-indigo-800)` |
+| `--ods-palette-accent-900` | `var(--ods-palette-indigo-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-blue-50` | `#f3fdff` |
+| `--ods-palette-blue-100` | `#e6faff` |
+| `--ods-palette-blue-200` | `#bef1ff` |
+| `--ods-palette-blue-300` | `#85d9fd` |
+| `--ods-palette-blue-400` | `#4bb2f6` |
+| `--ods-palette-blue-500` | `#0050d7` |
+| `--ods-palette-blue-600` | `#002dbe` |
+| `--ods-palette-blue-700` | `#000e9c` |
+| `--ods-palette-blue-800` | `#00185e` |
+| `--ods-palette-blue-900` | `#000d1f` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-brand-50` | `var(--ods-palette-blue-50)` |
+| `--ods-palette-brand-100` | `var(--ods-palette-blue-100)` |
+| `--ods-palette-brand-200` | `var(--ods-palette-blue-200)` |
+| `--ods-palette-brand-300` | `var(--ods-palette-blue-300)` |
+| `--ods-palette-brand-400` | `var(--ods-palette-blue-400)` |
+| `--ods-palette-brand-500` | `var(--ods-palette-blue-500)` |
+| `--ods-palette-brand-600` | `var(--ods-palette-blue-600)` |
+| `--ods-palette-brand-700` | `var(--ods-palette-blue-700)` |
+| `--ods-palette-brand-800` | `var(--ods-palette-blue-800)` |
+| `--ods-palette-brand-900` | `var(--ods-palette-blue-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-gray-50` | `#f9f9f9` |
+| `--ods-palette-gray-100` | `#f2f2f2` |
+| `--ods-palette-gray-200` | `#e6e6e6` |
+| `--ods-palette-gray-300` | `#cccccc` |
+| `--ods-palette-gray-400` | `#b3b3b3` |
+| `--ods-palette-gray-500` | `#808080` |
+| `--ods-palette-gray-600` | `#666666` |
+| `--ods-palette-gray-700` | `#4d4d4d` |
+| `--ods-palette-gray-800` | `#333333` |
+| `--ods-palette-gray-900` | `#1a1a1a` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-green-50` | `#ecfdf5` |
+| `--ods-palette-green-100` | `#d1fae5` |
+| `--ods-palette-green-200` | `#a7f3d0` |
+| `--ods-palette-green-300` | `#6ee7b7` |
+| `--ods-palette-green-400` | `#34d399` |
+| `--ods-palette-green-500` | `#10b981` |
+| `--ods-palette-green-600` | `#059669` |
+| `--ods-palette-green-700` | `#047857` |
+| `--ods-palette-green-800` | `#065f46` |
+| `--ods-palette-green-900` | `#064e3b` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-indigo-50` | `#f4f5f9` |
+| `--ods-palette-indigo-100` | `#edf0f7` |
+| `--ods-palette-indigo-200` | `#d8dcf0` |
+| `--ods-palette-indigo-300` | `#bec5e3` |
+| `--ods-palette-indigo-400` | `#98a3cc` |
+| `--ods-palette-indigo-500` | `#3a4a87` |
+| `--ods-palette-indigo-600` | `#2b3870` |
+| `--ods-palette-indigo-700` | `#1e2858` |
+| `--ods-palette-indigo-800` | `#131a3f` |
+| `--ods-palette-indigo-900` | `#0a1028` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-orange-50` | `#fffbeb` |
+| `--ods-palette-orange-100` | `#fef3c7` |
+| `--ods-palette-orange-200` | `#fde68a` |
+| `--ods-palette-orange-300` | `#fcd34d` |
+| `--ods-palette-orange-400` | `#fbbf24` |
+| `--ods-palette-orange-500` | `#f59e0b` |
+| `--ods-palette-orange-600` | `#d97706` |
+| `--ods-palette-orange-700` | `#b45309` |
+| `--ods-palette-orange-800` | `#92400e` |
+| `--ods-palette-orange-900` | `#78350f` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-red-50` | `#fdecec` |
+| `--ods-palette-red-100` | `#fbd5d3` |
+| `--ods-palette-red-200` | `#f7aaa7` |
+| `--ods-palette-red-300` | `#f08581` |
+| `--ods-palette-red-400` | `#f2756f` |
+| `--ods-palette-red-500` | `#d9534f` |
+| `--ods-palette-red-600` | `#b3403c` |
+| `--ods-palette-red-700` | `#8a302d` |
+| `--ods-palette-red-800` | `#381312` |
+| `--ods-palette-red-900` | `#1c0a09` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-black` | `#000000` |
+| `--ods-palette-decorative-alpha` | `#fbfe47` |
+| `--ods-palette-decorative-beta` | `#47fe78` |
+| `--ods-palette-decorative-new` | `#47fffa` |
+| `--ods-palette-decorative-promotion` | `#ccff66` |
+| `--ods-palette-white` | `#ffffff` |
+
+### Opacity
+
+| Token | Value |
+|---|---|
+| `--ods-palette-opacity-15` | `0.15` |
+| `--ods-palette-opacity-20` | `0.2` |
+| `--ods-palette-opacity-25` | `0.25` |
+| `--ods-palette-opacity-50` | `0.5` |
+| `--ods-palette-opacity-75` | `0.75` |
 
 
 ## Tailwind CSS Integration
@@ -2417,7 +2458,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1262
+tokens: 1231
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -2447,18 +2488,17 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
-        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
-        'ods-border-radius-md': 'var(--ods-border-radius-md)',
-        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+        'ods-control': 'var(--ods-semantic-size-radius-control)',
+        'ods-container': 'var(--ods-semantic-size-radius-container)',
+        'ods-pill': 'var(--ods-semantic-size-radius-pill)',
       },
       colors: {
-        'ods-color-primary-500': 'var(--ods-color-primary-500)',
-        'ods-color-success-500': 'var(--ods-color-success-500)',
-        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+        'ods-brand': 'var(--ods-semantic-color-surface-brand)',
+        'ods-success': 'var(--ods-semantic-color-surface-success)',
+        'ods-warning': 'var(--ods-semantic-color-content-warning)',
       },
       fontFamily: {
-        'ods-font-family-default': 'var(--ods-font-family-default)',
+        'ods-body': 'var(--ods-semantic-font-family-body)',
       },
     },
   },
@@ -2476,14 +2516,13 @@ Create a `./.vscode/tailwind.json` containing the classes you want to expose for
 ```json
 {
     "customClasses": [
-      "ods-color-primary-500",
-      "ods-color-success-500",
-      "ods-color-critical-700",
-      "ods-border-radius-xs",
-      "ods-border-radius-sm",
-      "ods-border-radius-md",
-      "ods-border-radius-lg",
-      "ods-font-family-default",
+      "ods-brand",
+      "ods-success",
+      "ods-critical",
+      "ods-control",
+      "ods-container",
+      "ods-pill",
+      "ods-body",
     ]
   }
 ```
@@ -2493,16 +2532,15 @@ For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.co
 
 ```css
 @theme {
-  --radius-ods-xs: var(--ods-border-radius-xs);
-  --radius-ods-sm: var(--ods-border-radius-sm);
-  --radius-ods-md: var(--ods-border-radius-md);
-  --radius-ods-lg: var(--ods-border-radius-lg);
+  --radius-ods-control: var(--ods-semantic-size-radius-control);
+  --radius-ods-container: var(--ods-semantic-size-radius-container);
+  --radius-ods-pill: var(--ods-semantic-size-radius-pill);
 
-  --color-ods-primary: var(--ods-color-primary-500);
-  --color-ods-success: var(--ods-color-success-500);
-  --color-ods-critical: var(--ods-color-critical-700);
+  --color-ods-brand: var(--ods-semantic-color-surface-brand);
+  --color-ods-success: var(--ods-semantic-color-surface-success);
+  --color-ods-critical: var(--ods-semantic-color-content-critical);
 
-  --font-ods-default: var(--ods-font-family-default);
+  --font-ods-body: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -2530,8 +2568,8 @@ import { Button } from '@ovhcloud/ods-react';
 function MyComponent() {
   return (
   <div>
-      <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
+      <p className="text-ods-critical">Click on the button!</p>
+      <Button className="bg-ods-brand">Click me!</Button>
   </div>
   );
 }
@@ -2541,12 +2579,12 @@ function MyComponent() {
 
 ### Color Usage
 
-- Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+- Use semantic color names (e.g., `ods-brand`, `ods-success`) instead of generic colors
 - **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
 
 ### Spacing and Layout
 
-- Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+- Use ODS border radius tokens (`rounded-ods-control`, `rounded-ods-container`, etc.)
 - Leverage ODS form element heights for consistent input sizing
 - **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
 
@@ -5080,7 +5118,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 750
+tokens: 3867
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5097,11 +5135,11 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The component API has **no breaking change**: existing props, refs and composition keep working, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change. On the theme side, the default font family is renamed to `'Source Sans 3'` (see **Typography**).
 
 ## If you stay on React 18
 
-Nothing to do. Installation, types and runtime keep working exactly as before.
+Nothing to do. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**).
 
 ## If you move to React 19
 
@@ -5176,6 +5214,278 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Typography
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
+
+- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines, v20 no longer reads them. To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` instead.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- The values exposed by `@ovhcloud/ods-themes/default/tokens` change the same way.
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-semantic-font-family-body);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Deprecations
+
+The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
+
+**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
+
+If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+
+### Badge
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+### Button
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
+
+**before**
+```tsx
+import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
+
+<Button color={ BUTTON_COLOR.primary }>Save</Button>
+<Button color={ BUTTON_COLOR.critical }>Delete</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
+
+<Button>Save</Button>
+<Button status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 rendering.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+```
+
+### Message
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+
+**before**
+```tsx
+import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message color={ MESSAGE_COLOR.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+### Modal
+
+The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- any other value: remove the prop.
+- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
+```
+
+### Tag
+
+- `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+**before**
+```tsx
+import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';
+
+<Tag color={ TAG_COLOR.primary }>Cloud</Tag>
+```
+
+**after**
+```tsx
+import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
+
+<Tag status={ TAG_STATUS.accent }>Cloud</Tag>
+```
+
+### Toaster
+
+- `toast.primary()`: use `toast.accent()`.
+- `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+**before**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.primary('Your export is ready');
+```
+
+**after**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.accent('Your export is ready');
+```
 
 ## Need help?
 

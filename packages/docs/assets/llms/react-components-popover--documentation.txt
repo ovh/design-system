@@ -188,7 +188,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
       <Divider style={{ width: '100%' }} />
 
       <Button
-        color={ BUTTON_COLOR.critical }
+        status={ BUTTON_STATUS.critical }
         role="menuitem"
         variant={ BUTTON_VARIANT.ghost }>
         Sign out

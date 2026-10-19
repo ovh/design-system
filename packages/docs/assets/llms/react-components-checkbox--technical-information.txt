@@ -4,7 +4,7 @@ slug: checkbox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 517
+tokens: 543
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
 ---
 
@@ -54,3 +54,9 @@ _No specific property._
 ## Types
 
 - `CheckboxCheckedState`: `boolean | "indeterminate"`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |

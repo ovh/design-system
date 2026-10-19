@@ -1,7 +1,7 @@
 import { usePaginationContext } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type FormEvent, type JSX, type ReactNode, forwardRef, useId } from 'react';
-import { warnOnce } from '../../../../../utils/warn';
+import { warnDeprecated } from '../../../../../utils/deprecation';
 import { BUTTON_SIZE, Button } from '../../../../button/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import { usePagination } from '../../contexts/usePagination';
@@ -31,7 +31,7 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
   const textId = useId();
 
   if (getPageUrl && !onPageChange) {
-    warnOnce('getPageUrl renders the pages as links, so the URL holds the active page. This form has no link to follow: please handle onPageChange and navigate to the matching URL, otherwise submitting a page does nothing.');
+    warnDeprecated('PaginationPageSelector.onPageChange', 'getPageUrl renders the pages as links, so the URL holds the active page. This form has no link to follow: please handle onPageChange and navigate to the matching URL, otherwise submitting a page does nothing.');
   }
 
   function handleSubmit(event: FormEvent): void {

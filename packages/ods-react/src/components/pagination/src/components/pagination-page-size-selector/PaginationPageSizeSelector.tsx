@@ -1,7 +1,7 @@
 import { usePaginationContext } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, useId } from 'react';
-import { warnOnce } from '../../../../../utils/warn';
+import { warnDeprecated } from '../../../../../utils/deprecation';
 import { Select, SelectContent, SelectControl, type SelectItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
 import { defaultRenderTotalItemsLabel, usePagination } from '../../contexts/usePagination';
@@ -25,7 +25,7 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = forwardRe
   const textId = useId();
 
   if (getPageUrl && !onPageSizeChange) {
-    warnOnce('getPageUrl renders the pages as links, so the URL holds the number of items per page. This selector has no link to follow: please handle onPageSizeChange and navigate to the matching URL, otherwise picking a size does nothing.');
+    warnDeprecated('PaginationPageSizeSelector.onPageSizeChange', 'getPageUrl renders the pages as links, so the URL holds the number of items per page. This selector has no link to follow: please handle onPageSizeChange and navigate to the matching URL, otherwise picking a size does nothing.');
   }
 
   function handleValueChange(detail: SelectValueChangeDetail): void {

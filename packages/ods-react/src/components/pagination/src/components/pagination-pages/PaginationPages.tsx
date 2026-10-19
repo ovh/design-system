@@ -35,6 +35,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
   const isNextDisabled = isLink ? (disabled || !nextPage) : disabled;
   // A trigger that leads nowhere carries no href, so it is left a plain anchor: handing an
   // undefined destination to a routing library is at best meaningless, and next/link throws on it.
+  // An anchor without href has no role either, hence the explicit one, as for the active page.
   const prevLinkAs = isPrevDisabled ? undefined : linkAs;
   const nextLinkAs = isNextDisabled ? undefined : linkAs;
 
@@ -52,7 +53,8 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
                 ? <Link
                   as={ prevLinkAs }
                   className={ style['pagination-pages__trigger'] }
-                  disabled={ isPrevDisabled }>
+                  disabled={ isPrevDisabled }
+                  role={ isPrevDisabled ? 'link' : undefined }>
                   <Icon name={ ICON_NAME.chevronLeft } />
                 </Link>
                 : <Button disabled={ disabled } variant={ BUTTON_VARIANT.ghost }>
@@ -96,7 +98,8 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
                 ? <Link
                   as={ nextLinkAs }
                   className={ style['pagination-pages__trigger'] }
-                  disabled={ isNextDisabled }>
+                  disabled={ isNextDisabled }
+                  role={ isNextDisabled ? 'link' : undefined }>
                   <Icon name={ ICON_NAME.chevronRight } />
                 </Link>
                 : <Button disabled={ disabled } variant={ BUTTON_VARIANT.ghost }>

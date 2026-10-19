@@ -39,8 +39,11 @@ describe('Pagination rendering', () => {
       expect(current.length).toBe(1);
 
       const rendered = await current[0].evaluate((el: Element) => ({
+        ariaDisabled: el.getAttribute('aria-disabled'),
+        ariaLabel: el.getAttribute('aria-label'),
         hasHref: el.hasAttribute('href'),
         ods: el.getAttribute('data-ods'),
+        role: el.getAttribute('role'),
         tabIndex: (el as HTMLElement).tabIndex,
         tagName: el.tagName,
         textContent: el.textContent,
@@ -52,6 +55,10 @@ describe('Pagination rendering', () => {
       // Neither a link nor a button: it is not actionable, so it is not styled as one.
       expect(rendered.ods).toBeNull();
       expect(rendered.tabIndex).toBe(-1);
+      // Exposed as a disabled link, see PaginationCurrentPage.
+      expect(rendered.role).toBe('link');
+      expect(rendered.ariaDisabled).toBe('true');
+      expect(rendered.ariaLabel).toBe('page 1');
     });
 
     it('should underline the digits only, never the cell around them', async() => {
@@ -118,6 +125,7 @@ describe('Pagination rendering', () => {
         ariaDisabled: el.getAttribute('aria-disabled'),
         hasHref: el.hasAttribute('href'),
         ods: el.getAttribute('data-ods'),
+        role: el.getAttribute('role'),
         tabIndex: el.getAttribute('tabindex'),
         tagName: el.tagName,
       }));
@@ -125,6 +133,7 @@ describe('Pagination rendering', () => {
       expect(rendered?.tagName).toBe('A');
       expect(rendered?.ods).toBe('link');
       expect(rendered?.hasHref).toBe(false);
+      expect(rendered?.role).toBe('link');
       expect(rendered?.ariaDisabled).toBe('true');
       expect(rendered?.tabIndex).toBe('-1');
     });
@@ -137,12 +146,14 @@ describe('Pagination rendering', () => {
         ariaDisabled: el.getAttribute('aria-disabled'),
         href: el.getAttribute('href'),
         ods: el.getAttribute('data-ods'),
+        role: el.getAttribute('role'),
         tagName: el.tagName,
       }));
 
       expect(rendered?.tagName).toBe('A');
       expect(rendered?.ods).toBe('link');
       expect(rendered?.href).toBe('#page-2-size-10');
+      expect(rendered?.role).toBeNull();
       expect(rendered?.ariaDisabled).toBeNull();
     });
 

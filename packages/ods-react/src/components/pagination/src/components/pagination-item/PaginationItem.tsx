@@ -21,6 +21,8 @@ type PaginationCurrentPageProp = ComponentPropsWithRef<'span'> & Pick<ComponentP
  * The active page in link mode. It keeps the identity Ark puts on the item - `aria-current`,
  * `data-selected`, the label - but drops everything that would make it actionable: there is
  * nowhere to navigate to, so it reads as plain, emphasised text rather than as a link.
+ * It is exposed as a disabled link all the same, as a role-less element can carry neither the
+ * label nor `aria-current` to assistive technologies.
  * @internal
  */
 const PaginationCurrentPage: FC<PaginationCurrentPageProp> = forwardRef(({
@@ -32,8 +34,10 @@ const PaginationCurrentPage: FC<PaginationCurrentPageProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => (
   <span
+    aria-disabled="true"
     className={ classNames(style['pagination-item__current'], className) }
     ref={ ref }
+    role="link"
     { ...props }>
     { children }
   </span>

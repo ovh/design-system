@@ -27,6 +27,7 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
   const [selected, setSelected] = useState(names[0] ?? '');
   const [targets, setTargets] = useState<Rect[]>([]);
   const autoSelected = useRef(false);
+  const overlay = useRef<HTMLDivElement>(null);
 
   const Composed = useMemo(() => {
     const story = storiesModule?.AnatomyTech;
@@ -74,11 +75,19 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
     const measure = () => {
       raf = 0;
       const frameRect = iframe.getBoundingClientRect();
+      /* The overlay is positioned, so highlights are placed relative to it:
+         same viewport measurements, minus the overlay's own origin. */
+      const originRect = overlay.current?.getBoundingClientRect();
+      /* Rects inside the frame start at its content box, frameRect at its
+         border box — the DemoFrame's own 1px border sits between the two. */
+      const frameStyle = getComputedStyle(iframe);
+      const originLeft = frameRect.left + parseFloat(frameStyle.borderLeftWidth) - (originRect?.left ?? 0);
+      const originTop = frameRect.top + parseFloat(frameStyle.borderTopWidth) - (originRect?.top ?? 0);
       const next = [...frameDocument.querySelectorAll<HTMLElement>(`[data-ods="${kebab(selected)}"]`)]
         .filter((el) => el.offsetParent !== null)
         .map((el) => {
           const rect = el.getBoundingClientRect();
-          return { height: rect.height, left: frameRect.left + rect.left, top: frameRect.top + rect.top, width: rect.width };
+          return { height: rect.height, left: originLeft + rect.left, top: originTop + rect.top, width: rect.width };
         });
       // Skip no-op updates so measurement never feeds a render loop.
       setTargets((prev) => (JSON.stringify(prev) === JSON.stringify(next) ? prev : next));
@@ -92,8 +101,6 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
     const timer = window.setTimeout(schedule, 150);
     const observer = new ResizeObserver(schedule);
     observer.observe(frameDocument.body);
-    const scroller = iframe.closest<HTMLElement>('.shell__main') ?? window;
-    scroller.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     return () => {
       if (raf) {
@@ -101,7 +108,6 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
       }
       window.clearTimeout(timer);
       observer.disconnect();
-      scroller.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
     };
   }, [frameDocument, selected]);
@@ -142,13 +148,11 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
 
       <Divider orientation={ DIVIDER_ORIENTATION.vertical } />
 
-      <div className="anatomy__stage">
         <DemoFrame onReady={ onReady }>
           <Composed />
         </DemoFrame>
-      </div>
 
-      <div aria-hidden className="anatomy__overlay">
+      <div aria-hidden className="anatomy__overlay" ref={ overlay }>
         { targets.map((target, index) => (
           <div
             className="anatomy__highlight"

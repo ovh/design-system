@@ -4,7 +4,7 @@ slug: command
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1017
+tokens: 1021
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
 ---
 
@@ -90,5 +90,5 @@ This component extends all the native `<div>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-command-width` | `380px` |
-| `--ods-command-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-command-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
+| `--ods-command-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-command-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |

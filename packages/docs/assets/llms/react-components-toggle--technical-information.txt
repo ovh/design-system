@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 436
+tokens: 463
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -41,10 +41,10 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-toggle-control-background-color` | `var(--ods-color-neutral-200)` |
-| `--ods-toggle-control-background-color-hover` | `var(--ods-color-neutral-300)` |
-| `--ods-toggle-control-border-color` | `var(--ods-color-neutral-200)` |
-| `--ods-toggle-control-border-color-hover` | `var(--ods-color-neutral-300)` |
-| `--ods-toggle-control-label-off-text-color` | `var(--ods-color-neutral-700)` |
-| `--ods-toggle-control-label-on-text-color` | `var(--ods-color-neutral-000)` |
-| `--ods-toggle-control-thumb-background-color` | `var(--ods-color-neutral-000)` |
+| `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-toggle-control-background-color-hover` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-toggle-control-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-border-control)` |
+| `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-page)` |

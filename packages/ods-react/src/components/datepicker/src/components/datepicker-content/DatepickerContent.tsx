@@ -29,7 +29,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
   return (
     <Portal disabled={ !createPortal }>
       <DatePicker.Positioner style={{
-        zIndex: 'var(--ods-theme-overlay-z-index)',
+        zIndex: 'var(--ods-semantic-z-index-dropdown)',
         ...(positionerStyle || {}),
       }}>
         <DatePicker.Content

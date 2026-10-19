@@ -17,7 +17,7 @@ const RangeInput = (): JSX.Element => {
   }
 
   return (
-    <div className="grid grid-cols-[1fr_min-content] gap-x-[calc(var(--ods-theme-column-gap)_*_2)] items-baseline">
+    <div className="grid grid-cols-[1fr_min-content] gap-x-[calc(var(--ods-semantic-size-space-gap-inline)_*_2)] items-baseline">
       <Range
         max={ MAX }
         min={ MIN }

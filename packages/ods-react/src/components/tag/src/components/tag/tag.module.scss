@@ -8,34 +8,32 @@
 
     @include tag.ods-tag();
 
-    &:not(:disabled) {
-      &#{$tag}--accent {
-        @include tag.ods-tag-color('primary');
-      }
-
-      &#{$tag}--critical {
-        @include tag.ods-tag-color('critical');
-      }
-
-      &#{$tag}--information {
-        @include tag.ods-tag-color('information');
-      }
-
-      &#{$tag}--neutral {
-        @include tag.ods-tag-color('neutral');
-      }
-
-      &#{$tag}--success {
-        @include tag.ods-tag-color('success');
-      }
-
-      &#{$tag}--warning {
-        @include tag.ods-tag-color('warning');
-      }
-    }
-
     &:disabled {
       @include state.ods-is-disabled();
+    }
+
+    &#{$tag}--accent {
+      @include tag.ods-tag-color('primary');
+    }
+
+    &#{$tag}--critical {
+      @include tag.ods-tag-color('critical');
+    }
+
+    &#{$tag}--information {
+      @include tag.ods-tag-color('information');
+    }
+
+    &#{$tag}--neutral {
+      @include tag.ods-tag-color('neutral');
+    }
+
+    &#{$tag}--success {
+      @include tag.ods-tag-color('success');
+    }
+
+    &#{$tag}--warning {
+      @include tag.ods-tag-color('warning');
     }
 
     &--md {

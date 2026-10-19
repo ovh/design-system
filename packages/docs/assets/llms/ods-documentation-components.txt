@@ -170,7 +170,7 @@ slug: accordion
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 494
+tokens: 511
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
 ---
 
@@ -221,12 +221,12 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-accordion-border-color` | `var(--ods-color-neutral-200)` |
-| `--ods-accordion-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-accordion-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-accordion-border-width` | `1px` |
-| `--ods-accordion-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 3)` |
-| `--ods-accordion-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 3)` |
-| `--ods-accordion-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-accordion-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-accordion-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
+| `--ods-accordion-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 
 ---
 title: "Accordion"
@@ -520,7 +520,7 @@ slug: avatar
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 164
+tokens: 170
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--technical-information.txt
 ---
 
@@ -539,8 +539,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-avatar-background-color` | `var( --ods-color-primary-500 )` |
-| `--ods-avatar-text-color` | `var(--ods-color-neutral-000)` |
+| `--ods-avatar-background-color` | `var( --ods-semantic-color-surface-base )` |
+| `--ods-avatar-text-color` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-avatar-border-radius` | `50%` |
 | `--ods-avatar-size` | `24px` |
 | `--ods-avatar-object-fit` | `cover` |
@@ -835,7 +835,7 @@ slug: badge
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 711
+tokens: 827
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
 ---
 
@@ -875,33 +875,33 @@ This component extends all the native `<span>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-badge-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-badge-padding-horizontal-sm` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-badge-padding-vertical-sm` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-badge-padding-horizontal-md` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-badge-padding-vertical-md` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-badge-padding-horizontal-lg` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-badge-padding-vertical-lg` | `calc(var(--ods-theme-padding-vertical) * 0.75)` |
-| `--ods-badge-background-color-alpha` | `var(--ods-color-alpha)` |
-| `--ods-badge-text-color-alpha` | `var(--ods-color-primary-900)` |
-| `--ods-badge-background-color-beta` | `var(--ods-color-beta)` |
-| `--ods-badge-text-color-beta` | `var(--ods-color-primary-900)` |
-| `--ods-badge-background-color-critical` | `var(--ods-color-critical-100)` |
-| `--ods-badge-text-color-critical` | `var(--ods-color-critical-900)` |
-| `--ods-badge-background-color-information` | `var(--ods-color-information-100)` |
-| `--ods-badge-text-color-information` | `var(--ods-color-information-900)` |
-| `--ods-badge-background-color-neutral` | `var(--ods-color-neutral-100)` |
-| `--ods-badge-text-color-neutral` | `var(--ods-color-neutral-700)` |
-| `--ods-badge-background-color-new` | `var(--ods-color-new)` |
-| `--ods-badge-text-color-new` | `var(--ods-color-primary-900)` |
-| `--ods-badge-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-badge-text-color-primary` | `var(--ods-color-neutral-000)` |
-| `--ods-badge-background-color-promotion` | `var(--ods-color-promotion)` |
-| `--ods-badge-text-color-promotion` | `var(--ods-color-primary-800)` |
-| `--ods-badge-background-color-success` | `var(--ods-color-success-100)` |
-| `--ods-badge-text-color-success` | `var(--ods-color-success-900)` |
-| `--ods-badge-background-color-warning` | `var(--ods-color-warning-100)` |
-| `--ods-badge-text-color-warning` | `var(--ods-color-warning-900)` |
+| `--ods-badge-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-badge-padding-horizontal-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-badge-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-badge-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-badge-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-badge-padding-horizontal-lg` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-badge-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
+| `--ods-badge-background-color-alpha` | `var(--ods-semantic-color-surface-decorative-alpha)` |
+| `--ods-badge-text-color-alpha` | `var(--ods-semantic-color-content-on-decorative)` |
+| `--ods-badge-background-color-beta` | `var(--ods-semantic-color-surface-decorative-beta)` |
+| `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-decorative)` |
+| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-badge-background-color-new` | `var(--ods-semantic-color-surface-decorative-new)` |
+| `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-decorative)` |
+| `--ods-badge-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-badge-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-badge-background-color-promotion` | `var(--ods-semantic-color-surface-decorative-promotion)` |
+| `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-decorative)` |
+| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
 
 ---
 title: "Badge"
@@ -1189,7 +1189,7 @@ slug: breadcrumb
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 395
+tokens: 403
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--technical-information.txt
 ---
 
@@ -1232,8 +1232,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-link-column-gap` | `var(--ods-theme-column-gap)` |
-| `--ods-link-row-gap` | `var(--ods-theme-row-gap)` |
+| `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
 
 ---
 title: "Breadcrumb"
@@ -1713,7 +1713,7 @@ slug: button
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 3763
+tokens: 4399
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
 ---
 
@@ -1757,181 +1757,181 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-button-border-radius-xs` | `calc(var(--ods-theme-border-radius) / 4)` |
-| `--ods-button-border-radius-sm` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-button-border-radius-md` | `var(--ods-theme-border-radius)` |
-| `--ods-button-border-radius-width` | `var(--ods-theme-border-width)` |
-| `--ods-button-column-gap-xs` | `calc(var(--ods-theme-column-gap) * 0.75)` |
-| `--ods-button-column-gap-sm` | `calc(var(--ods-theme-column-gap) * 0.75)` |
-| `--ods-button-column-gap-md` | `var(--ods-theme-column-gap)` |
-| `--ods-button-padding-horizontal-xs` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-button-padding-vertical-xs` | `calc(var(--ods-theme-padding-vertical) * 0.75)` |
-| `--ods-button-padding-horizontal-sm` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-button-padding-vertical-sm` | `calc(var(--ods-theme-padding-vertical) * 0.75)` |
-| `--ods-button-padding-horizontal-md` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-button-padding-vertical-md` | `var(--ods-theme-padding-vertical)` |
-| `--ods-button-background-color-critical` | `var(--ods-color-critical-500)` |
-| `--ods-button-background-color-critical-hover` | `var(--ods-color-critical-700)` |
-| `--ods-button-background-color-critical-active` | `var(--ods-color-critical-800)` |
-| `--ods-button-border-color-critical` | `var(--ods-color-critical-500)` |
-| `--ods-button-border-color-critical-hover` | `var(--ods-color-critical-700)` |
-| `--ods-button-border-color-critical-active` | `var(--ods-color-critical-800)` |
-| `--ods-button-text-color-critical` | `var(--ods-color-critical-000)` |
-| `--ods-button-text-color-critical-hover` | `var(--ods-color-critical-000)` |
-| `--ods-button-text-color-critical-active` | `var(--ods-color-critical-000)` |
+| `--ods-button-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
+| `--ods-button-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-button-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-button-border-radius-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-button-column-gap-xs` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
+| `--ods-button-column-gap-sm` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
+| `--ods-button-column-gap-md` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-button-padding-horizontal-xs` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-button-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
+| `--ods-button-padding-horizontal-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-button-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
+| `--ods-button-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-button-padding-vertical-md` | `var(--ods-semantic-size-space-inset-block)` |
+| `--ods-button-background-color-critical` | `var(--ods-semantic-color-surface-critical)` |
+| `--ods-button-background-color-critical-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-border-color-critical` | `var(--ods-semantic-color-border-critical)` |
+| `--ods-button-border-color-critical-hover` | `var(--ods-semantic-color-border-critical-strong)` |
+| `--ods-button-border-color-critical-active` | `var(--ods-semantic-color-border-critical-strong)` |
+| `--ods-button-text-color-critical` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-critical-hover` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-critical-active` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-button-background-color-critical-ghost` | `inherit` |
-| `--ods-button-background-color-critical-ghost-hover` | `var(--ods-color-critical-100)` |
-| `--ods-button-background-color-critical-ghost-active` | `var(--ods-color-critical-200)` |
+| `--ods-button-background-color-critical-ghost-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-button-background-color-critical-ghost-active` | `var(--ods-semantic-color-surface-critical-subtle)` |
 | `--ods-button-border-color-critical-ghost` | `unset` |
 | `--ods-button-border-color-critical-ghost-hover` | `unset` |
 | `--ods-button-border-color-critical-ghost-active` | `unset` |
-| `--ods-button-text-color-critical-ghost` | `var(--ods-color-critical-500)` |
-| `--ods-button-text-color-critical-ghost-hover` | `var(--ods-color-critical-700)` |
-| `--ods-button-text-color-critical-ghost-active` | `var(--ods-color-critical-800)` |
-| `--ods-button-background-color-critical-outline` | `var(--ods-color-critical-000)` |
-| `--ods-button-background-color-critical-outline-hover` | `var(--ods-color-critical-100)` |
-| `--ods-button-background-color-critical-outline-active` | `var(--ods-color-critical-200)` |
-| `--ods-button-border-color-critical-outline` | `var(--ods-color-critical-500)` |
-| `--ods-button-border-color-critical-outline-hover` | `var(--ods-color-critical-700)` |
-| `--ods-button-border-color-critical-outline-active` | `var(--ods-color-critical-800)` |
-| `--ods-button-text-color-critical-outline` | `var(--ods-color-critical-500)` |
-| `--ods-button-text-color-critical-outline-hover` | `var(--ods-color-critical-700)` |
-| `--ods-button-text-color-critical-outline-active` | `var(--ods-color-critical-800)` |
-| `--ods-button-background-color-information` | `var(--ods-color-information-100)` |
-| `--ods-button-background-color-information-hover` | `var(--ods-color-information-200)` |
-| `--ods-button-background-color-information-active` | `var(--ods-color-information-300)` |
-| `--ods-button-border-color-information` | `var(--ods-color-information-100)` |
-| `--ods-button-border-color-information-hover` | `var(--ods-color-information-200)` |
-| `--ods-button-border-color-information-active` | `var(--ods-color-information-300)` |
-| `--ods-button-text-color-information` | `var(--ods-color-information-700)` |
-| `--ods-button-text-color-information-hover` | `var(--ods-color-information-700)` |
-| `--ods-button-text-color-information-active` | `var(--ods-color-information-700)` |
+| `--ods-button-text-color-critical-ghost` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-button-text-color-critical-ghost-hover` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-text-color-critical-ghost-active` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-background-color-critical-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-critical-outline-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-button-background-color-critical-outline-active` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-button-border-color-critical-outline` | `var(--ods-semantic-color-border-critical)` |
+| `--ods-button-border-color-critical-outline-hover` | `var(--ods-semantic-color-border-critical-strong)` |
+| `--ods-button-border-color-critical-outline-active` | `var(--ods-semantic-color-border-critical-strong)` |
+| `--ods-button-text-color-critical-outline` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-button-text-color-critical-outline-hover` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-text-color-critical-outline-active` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-button-background-color-information-hover` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-background-color-information-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-button-border-color-information-hover` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-button-border-color-information-active` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-button-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-text-color-information-hover` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-text-color-information-active` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-button-background-color-information-ghost` | `inherit` |
-| `--ods-button-background-color-information-ghost-hover` | `var(--ods-color-information-100)` |
-| `--ods-button-background-color-information-ghost-active` | `var(--ods-color-information-200)` |
+| `--ods-button-background-color-information-ghost-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
+| `--ods-button-background-color-information-ghost-active` | `var(--ods-semantic-color-surface-information-subtle)` |
 | `--ods-button-border-color-information-ghost` | `unset` |
 | `--ods-button-border-color-information-ghost-hover` | `unset` |
 | `--ods-button-border-color-information-ghost-active` | `unset` |
-| `--ods-button-text-color-information-ghost` | `var(--ods-color-information-500)` |
-| `--ods-button-text-color-information-ghost-hover` | `var(--ods-color-information-700)` |
-| `--ods-button-text-color-information-ghost-active` | `var(--ods-color-information-800)` |
-| `--ods-button-background-color-information-outline` | `var(--ods-color-information-000)` |
-| `--ods-button-background-color-information-outline-hover` | `var(--ods-color-information-100)` |
-| `--ods-button-background-color-information-outline-active` | `var(--ods-color-information-200)` |
-| `--ods-button-border-color-information-outline` | `var(--ods-color-information-500)` |
-| `--ods-button-border-color-information-outline-hover` | `var(--ods-color-information-700)` |
-| `--ods-button-border-color-information-outline-active` | `var(--ods-color-information-800)` |
-| `--ods-button-text-color-information-outline` | `var(--ods-color-information-500)` |
-| `--ods-button-text-color-information-outline-hover` | `var(--ods-color-information-700)` |
-| `--ods-button-text-color-information-outline-active` | `var(--ods-color-information-800)` |
-| `--ods-button-background-color-neutral` | `var(--ods-color-neutral-600)` |
-| `--ods-button-background-color-neutral-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-button-background-color-neutral-active` | `var(--ods-color-neutral-800)` |
-| `--ods-button-border-color-neutral` | `var(--ods-color-neutral-600)` |
-| `--ods-button-border-color-neutral-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-button-border-color-neutral-active` | `var(--ods-color-neutral-800)` |
-| `--ods-button-text-color-neutral` | `var(--ods-color-neutral-000)` |
-| `--ods-button-text-color-neutral-hover` | `var(--ods-color-neutral-000)` |
-| `--ods-button-text-color-neutral-active` | `var(--ods-color-neutral-000)` |
+| `--ods-button-text-color-information-ghost` | `var(--ods-semantic-color-content-information)` |
+| `--ods-button-text-color-information-ghost-hover` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-text-color-information-ghost-active` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-background-color-information-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-information-outline-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
+| `--ods-button-background-color-information-outline-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-border-color-information-outline` | `var(--ods-semantic-color-border-information)` |
+| `--ods-button-border-color-information-outline-hover` | `var(--ods-semantic-color-border-information-strong)` |
+| `--ods-button-border-color-information-outline-active` | `var(--ods-semantic-color-border-information-strong)` |
+| `--ods-button-text-color-information-outline` | `var(--ods-semantic-color-content-information)` |
+| `--ods-button-text-color-information-outline-hover` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-text-color-information-outline-active` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-button-background-color-neutral` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-button-background-color-neutral-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-background-color-neutral-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-border-color-neutral` | `var(--ods-semantic-color-border-strong)` |
+| `--ods-button-border-color-neutral-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-button-border-color-neutral-active` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-button-text-color-neutral` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-neutral-hover` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-neutral-active` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-button-background-color-neutral-ghost` | `inherit` |
-| `--ods-button-background-color-neutral-ghost-hover` | `var(--ods-color-neutral-100)` |
-| `--ods-button-background-color-neutral-ghost-active` | `var(--ods-color-neutral-200)` |
+| `--ods-button-background-color-neutral-ghost-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-button-background-color-neutral-ghost-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
 | `--ods-button-border-color-neutral-ghost` | `unset` |
 | `--ods-button-border-color-neutral-ghost-hover` | `unset` |
 | `--ods-button-border-color-neutral-ghost-active` | `unset` |
-| `--ods-button-text-color-neutral-ghost` | `var(--ods-color-neutral-600)` |
-| `--ods-button-text-color-neutral-ghost-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-button-text-color-neutral-ghost-active` | `var(--ods-color-neutral-800)` |
-| `--ods-button-background-color-neutral-outline` | `var(--ods-color-neutral-000)` |
-| `--ods-button-background-color-neutral-outline-hover` | `var(--ods-color-neutral-100)` |
-| `--ods-button-background-color-neutral-outline-active` | `var(--ods-color-neutral-200)` |
-| `--ods-button-border-color-neutral-outline` | `var(--ods-color-neutral-600)` |
-| `--ods-button-border-color-neutral-outline-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-button-border-color-neutral-outline-active` | `var(--ods-color-neutral-800)` |
-| `--ods-button-text-color-neutral-outline` | `var(--ods-color-neutral-600)` |
-| `--ods-button-text-color-neutral-outline-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-button-text-color-neutral-outline-active` | `var(--ods-color-neutral-800)` |
-| `--ods-button-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-button-background-color-primary-hover` | `var(--ods-color-primary-700)` |
-| `--ods-button-background-color-primary-active` | `var(--ods-color-primary-800)` |
-| `--ods-button-border-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-button-border-color-primary-hover` | `var(--ods-color-primary-700)` |
-| `--ods-button-border-color-primary-active` | `var(--ods-color-primary-800)` |
-| `--ods-button-text-color-primary` | `var(--ods-color-primary-000)` |
-| `--ods-button-text-color-primary-hover` | `var(--ods-color-primary-000)` |
-| `--ods-button-text-color-primary-active` | `var(--ods-color-primary-000)` |
+| `--ods-button-text-color-neutral-ghost` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-button-text-color-neutral-ghost-hover` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-text-color-neutral-ghost-active` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-background-color-neutral-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-neutral-outline-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-button-background-color-neutral-outline-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-button-border-color-neutral-outline` | `var(--ods-semantic-color-border-strong)` |
+| `--ods-button-border-color-neutral-outline-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-button-border-color-neutral-outline-active` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-button-text-color-neutral-outline` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-button-text-color-neutral-outline-hover` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-text-color-neutral-outline-active` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-button-background-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-button-background-color-primary-active` | `var(--ods-semantic-color-surface-selected-solid)` |
+| `--ods-button-border-color-primary` | `var(--ods-semantic-color-border-base)` |
+| `--ods-button-border-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-button-border-color-primary-active` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-button-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-primary-hover` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-primary-active` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-button-background-color-primary-ghost` | `inherit` |
-| `--ods-button-background-color-primary-ghost-hover` | `var(--ods-color-primary-100)` |
-| `--ods-button-background-color-primary-ghost-active` | `var(--ods-color-primary-200)` |
+| `--ods-button-background-color-primary-ghost-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
+| `--ods-button-background-color-primary-ghost-active` | `var(--ods-semantic-color-surface-information-subtle)` |
 | `--ods-button-border-color-primary-ghost` | `unset` |
 | `--ods-button-border-color-primary-ghost-hover` | `unset` |
 | `--ods-button-border-color-primary-ghost-active` | `unset` |
-| `--ods-button-text-color-primary-ghost` | `var(--ods-color-primary-500)` |
-| `--ods-button-text-color-primary-ghost-hover` | `var(--ods-color-primary-700)` |
-| `--ods-button-text-color-primary-ghost-active` | `var(--ods-color-primary-800)` |
-| `--ods-button-background-color-primary-outline` | `var(--ods-color-primary-000)` |
-| `--ods-button-background-color-primary-outline-hover` | `var(--ods-color-primary-100)` |
-| `--ods-button-background-color-primary-outline-active` | `var(--ods-color-primary-200)` |
-| `--ods-button-border-color-primary-outline` | `var(--ods-color-primary-500)` |
-| `--ods-button-border-color-primary-outline-hover` | `var(--ods-color-primary-700)` |
-| `--ods-button-border-color-primary-outline-active` | `var(--ods-color-primary-800)` |
-| `--ods-button-text-color-primary-outline` | `var(--ods-color-primary-500)` |
-| `--ods-button-text-color-primary-outline-hover` | `var(--ods-color-primary-700)` |
-| `--ods-button-text-color-primary-outline-active` | `var(--ods-color-primary-800)` |
-| `--ods-button-background-color-success` | `var(--ods-color-success-500)` |
-| `--ods-button-background-color-success-hover` | `var(--ods-color-success-700)` |
-| `--ods-button-background-color-success-active` | `var(--ods-color-success-800)` |
-| `--ods-button-border-color-success` | `var(--ods-color-success-500)` |
-| `--ods-button-border-color-success-hover` | `var(--ods-color-success-700)` |
-| `--ods-button-border-color-success-active` | `var(--ods-color-success-800)` |
-| `--ods-button-text-color-success` | `var(--ods-color-success-000)` |
-| `--ods-button-text-color-success-hover` | `var(--ods-color-success-000)` |
-| `--ods-button-text-color-success-active` | `var(--ods-color-success-000)` |
+| `--ods-button-text-color-primary-ghost` | `var(--ods-semantic-color-content-base)` |
+| `--ods-button-text-color-primary-ghost-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-text-color-primary-ghost-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-background-color-primary-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-primary-outline-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
+| `--ods-button-background-color-primary-outline-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-button-border-color-primary-outline` | `var(--ods-semantic-color-border-base)` |
+| `--ods-button-border-color-primary-outline-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-button-border-color-primary-outline-active` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-button-text-color-primary-outline` | `var(--ods-semantic-color-content-base)` |
+| `--ods-button-text-color-primary-outline-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-text-color-primary-outline-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-button-background-color-success` | `var(--ods-semantic-color-surface-success)` |
+| `--ods-button-background-color-success-hover` | `var(--ods-semantic-color-interaction-success-hover)` |
+| `--ods-button-background-color-success-active` | `var(--ods-semantic-color-interaction-success-hover)` |
+| `--ods-button-border-color-success` | `var(--ods-semantic-color-border-success)` |
+| `--ods-button-border-color-success-hover` | `var(--ods-semantic-color-border-success-strong)` |
+| `--ods-button-border-color-success-active` | `var(--ods-semantic-color-border-success-strong)` |
+| `--ods-button-text-color-success` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-success-hover` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-button-text-color-success-active` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-button-background-color-success-ghost` | `inherit` |
-| `--ods-button-background-color-success-ghost-hover` | `var(--ods-color-success-100)` |
-| `--ods-button-background-color-success-ghost-active` | `var(--ods-color-success-200)` |
+| `--ods-button-background-color-success-ghost-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
+| `--ods-button-background-color-success-ghost-active` | `var(--ods-semantic-color-surface-success-subtle)` |
 | `--ods-button-border-color-success-ghost` | `unset` |
 | `--ods-button-border-color-success-ghost-hover` | `unset` |
 | `--ods-button-border-color-success-ghost-active` | `unset` |
-| `--ods-button-text-color-success-ghost` | `var(--ods-color-success-500)` |
-| `--ods-button-text-color-success-ghost-hover` | `var(--ods-color-success-700)` |
-| `--ods-button-text-color-success-ghost-active` | `var(--ods-color-success-800)` |
-| `--ods-button-background-color-success-outline` | `var(--ods-color-success-000)` |
-| `--ods-button-background-color-success-outline-hover` | `var(--ods-color-success-100)` |
-| `--ods-button-background-color-success-outline-active` | `var(--ods-color-success-200)` |
-| `--ods-button-border-color-success-outline` | `var(--ods-color-success-500)` |
-| `--ods-button-border-color-success-outline-hover` | `var(--ods-color-success-700)` |
-| `--ods-button-border-color-success-outline-active` | `var(--ods-color-success-800)` |
-| `--ods-button-text-color-success-outline` | `var(--ods-color-success-500)` |
-| `--ods-button-text-color-success-outline-hover` | `var(--ods-color-success-700)` |
-| `--ods-button-text-color-success-outline-active` | `var(--ods-color-success-800)` |
-| `--ods-button-background-color-warning` | `var(--ods-color-warning-400)` |
-| `--ods-button-background-color-warning-hover` | `var(--ods-color-warning-500)` |
-| `--ods-button-background-color-warning-active` | `var(--ods-color-warning-600)` |
-| `--ods-button-border-color-warning` | `var(--ods-color-warning-400)` |
-| `--ods-button-border-color-warning-hover` | `var(--ods-color-warning-500)` |
-| `--ods-button-border-color-warning-active` | `var(--ods-color-warning-600)` |
-| `--ods-button-text-color-warning` | `var(--ods-color-warning-900)` |
-| `--ods-button-text-color-warning-hover` | `var(--ods-color-warning-900)` |
-| `--ods-button-text-color-warning-active` | `var(--ods-color-warning-900)` |
+| `--ods-button-text-color-success-ghost` | `var(--ods-semantic-color-content-success)` |
+| `--ods-button-text-color-success-ghost-hover` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-button-text-color-success-ghost-active` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-button-background-color-success-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-success-outline-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
+| `--ods-button-background-color-success-outline-active` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-button-border-color-success-outline` | `var(--ods-semantic-color-border-success)` |
+| `--ods-button-border-color-success-outline-hover` | `var(--ods-semantic-color-border-success-strong)` |
+| `--ods-button-border-color-success-outline-active` | `var(--ods-semantic-color-border-success-strong)` |
+| `--ods-button-text-color-success-outline` | `var(--ods-semantic-color-content-success)` |
+| `--ods-button-text-color-success-outline-hover` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-button-text-color-success-outline-active` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-button-background-color-warning` | `var(--ods-semantic-color-surface-warning)` |
+| `--ods-button-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-hover)` |
+| `--ods-button-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-hover)` |
+| `--ods-button-border-color-warning` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-border-color-warning-hover` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-border-color-warning-active` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-button-text-color-warning-hover` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-button-text-color-warning-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
 | `--ods-button-background-color-warning-ghost` | `inherit` |
-| `--ods-button-background-color-warning-ghost-hover` | `var(--ods-color-warning-100)` |
-| `--ods-button-background-color-warning-ghost-active` | `var(--ods-color-warning-200)` |
+| `--ods-button-background-color-warning-ghost-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
+| `--ods-button-background-color-warning-ghost-active` | `var(--ods-semantic-color-surface-warning-subtle)` |
 | `--ods-button-border-color-warning-ghost` | `unset` |
 | `--ods-button-border-color-warning-ghost-hover` | `unset` |
 | `--ods-button-border-color-warning-ghost-active` | `unset` |
-| `--ods-button-text-color-warning-ghost` | `var(--ods-color-warning-700)` |
-| `--ods-button-text-color-warning-ghost-hover` | `var(--ods-color-warning-800)` |
-| `--ods-button-text-color-warning-ghost-active` | `var(--ods-color-warning-900)` |
-| `--ods-button-background-color-warning-outline` | `var(--ods-color-warning-000)` |
-| `--ods-button-background-color-warning-outline-hover` | `var(--ods-color-warning-100)` |
-| `--ods-button-background-color-warning-outline-active` | `var(--ods-color-warning-200)` |
-| `--ods-button-border-color-warning-outline` | `var(--ods-color-warning-700)` |
-| `--ods-button-border-color-warning-outline-hover` | `var(--ods-color-warning-800)` |
-| `--ods-button-border-color-warning-outline-active` | `var(--ods-color-warning-900)` |
-| `--ods-button-text-color-warning-outline` | `var(--ods-color-warning-700)` |
-| `--ods-button-text-color-warning-outline-hover` | `var(--ods-color-warning-800)` |
-| `--ods-button-text-color-warning-outline-active` | `var(--ods-color-warning-900)` |
+| `--ods-button-text-color-warning-ghost` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-button-text-color-warning-ghost-hover` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-button-text-color-warning-ghost-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-button-background-color-warning-outline` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-button-background-color-warning-outline-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
+| `--ods-button-background-color-warning-outline-active` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-button-border-color-warning-outline` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-border-color-warning-outline-hover` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-border-color-warning-outline-active` | `var(--ods-semantic-color-border-warning)` |
+| `--ods-button-text-color-warning-outline` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-button-text-color-warning-outline-hover` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-button-text-color-warning-outline-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
 
 ---
 title: "Button"
@@ -2295,7 +2295,7 @@ slug: button-group
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 331
+tokens: 335
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--technical-information.txt
 ---
 
@@ -2334,7 +2334,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-button-group-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
+| `--ods-button-group-item-background-color-checked-disabled` | `var(--ods-semantic-color-surface-neutral)` |
 
 ---
 title: "Button Group"
@@ -2630,7 +2630,7 @@ slug: card
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 257
+tokens: 289
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
 ---
 
@@ -2659,14 +2659,14 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-card-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-card-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-card-border-color-critical` | `var(--ods-color-critical-200)` |
-| `--ods-card-border-color-information` | `var(--ods-color-information-200)` |
-| `--ods-card-border-color-neutral` | `var(--ods-color-neutral-200)` |
-| `--ods-card-border-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-card-border-color-success` | `var(--ods-color-success-200)` |
-| `--ods-card-border-color-warning` | `var(--ods-color-warning-200)` |
+| `--ods-card-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-card-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-card-border-color-primary` | `var(--ods-semantic-color-border-base)` |
+| `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
 
 ---
 title: "Card"
@@ -2935,7 +2935,7 @@ slug: cart
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 833
+tokens: 841
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--technical-information.txt
 ---
 
@@ -3017,11 +3017,11 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-cart-product-group-item-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-cart-product-group-item-padding-vertical` | `var(--ods-theme-padding-vertical)` |
+| `--ods-cart-product-group-item-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-cart-product-group-item-padding-vertical` | `var(--ods-semantic-size-space-inset-block)` |
 | `--ods-cart-handle-height` | `4px` |
-| `--ods-cart-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-cart-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-cart-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-cart-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 
 ---
 title: "Cart"
@@ -3029,7 +3029,7 @@ slug: cart
 category: component
 type: examples
 version: 19.7.3
-tokens: 1245
+tokens: 1254
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--examples.txt
 ---
 
@@ -3138,7 +3138,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--
       <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
-    <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+    <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
   </CartExtraContent>
 
   <CartTotal
@@ -3222,7 +3222,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--
       <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
-    <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+    <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
   </CartExtraContent>
 
   <CartTotal
@@ -3985,7 +3985,7 @@ slug: code
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 381
+tokens: 397
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
 ---
 
@@ -4009,14 +4009,14 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-code-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-code-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 1.5)` |
-| `--ods-code-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 1.5)` |
+| `--ods-code-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-code-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
+| `--ods-code-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 1.5)` |
 | `--ods-code-primary-color` | `#fff` |
 | `--ods-code-secondary-color` | `#000` |
 | `--ods-code-trigger-background-color` | `#fff` |
-| `--ods-code-trigger-background-color-active` | `var(--ods-color-neutral-700)` |
-| `--ods-code-trigger-background-color-hover` | `var(--ods-color-neutral-600)` |
+| `--ods-code-trigger-background-color-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-code-trigger-background-color-hover` | `var(--ods-semantic-color-surface-neutral)` |
 | `--ods-code-trigger-outline-color` | `#fff` |
 
 ---
@@ -4372,7 +4372,7 @@ slug: combobox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 989
+tokens: 1003
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
 ---
 
@@ -4433,11 +4433,11 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-combobox-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-combobox-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-combobox-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
+| `--ods-combobox-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-combobox-option-new-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-combobox-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-combobox-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-combobox-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
 
 ---
 title: "Combobox"
@@ -5076,7 +5076,7 @@ slug: command
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1017
+tokens: 1021
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
 ---
 
@@ -5162,8 +5162,8 @@ This component extends all the native `<div>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-command-width` | `380px` |
-| `--ods-command-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-command-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
+| `--ods-command-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-command-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
 
 ---
 title: "Command"
@@ -6778,7 +6778,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 984
+tokens: 988
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -6855,8 +6855,8 @@ This component extends all the native `<input>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 2)` |
+| `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
 
 ---
 title: "Datepicker"
@@ -7463,7 +7463,7 @@ slug: drawer
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 581
+tokens: 587
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
 ---
 
@@ -7520,9 +7520,9 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-drawer-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-drawer-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-drawer-z-index` | `calc(calc(var(--ods-theme-overlay-z-index) + 1) + 1)` |
+| `--ods-drawer-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-drawer-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-drawer-z-index` | `calc(calc(var(--ods-semantic-z-index-dropdown) + 1) + 1)` |
 
 ---
 title: "Drawer"
@@ -8290,7 +8290,7 @@ slug: file-thumbnail
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 342
+tokens: 345
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
 ---
 
@@ -8323,7 +8323,7 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-thumbnail-border-color` | `var(--ods-color-neutral-300)` |
+| `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-control)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
 
@@ -8694,7 +8694,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 822
+tokens: 833
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -8767,10 +8767,10 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-upload-item-background-color-hover` | `var(--ods-color-primary-050)` |
-| `--ods-file-upload-item-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-file-upload-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-file-upload-padding-vertical` | `var(--ods-theme-padding-vertical)` |
+| `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-file-upload-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-file-upload-padding-vertical` | `var(--ods-semantic-size-space-inset-block)` |
 
 ---
 title: "File Upload"
@@ -9278,7 +9278,7 @@ slug: form-field
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 254
+tokens: 265
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
 ---
 
@@ -9321,9 +9321,9 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-form-field-label-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-form-field-label-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-form-field-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
+| `--ods-form-field-label-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-form-field-label-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-form-field-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 
 ---
 title: "Form Field"
@@ -10275,7 +10275,7 @@ slug: input
 category: component
 type: overview
 version: 19.7.3
-tokens: 337
+tokens: 366
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
 ---
 
@@ -10300,6 +10300,10 @@ _**Input** component is an **Input** field where users can type into_
 
 - Clearable
 - Datalist
+- Content Adornments
+- Content Adornment With Button
+- Domain Availability Search
+- Login Form
 - Default
 - Disabled
 - Floating Number
@@ -10309,6 +10313,7 @@ _**Input** component is an **Input** field where users can type into_
 - Read Only
 - Types
 - Accessibility Form Field
+- Accessibility Content
 - Accessibility I18n
 
 ## Documentation pages
@@ -10323,7 +10328,7 @@ slug: input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1264
+tokens: 3222
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
 ---
 
@@ -10362,6 +10367,7 @@ The **Input** component can be used in addition with an **Autocomplete**.
 - Use the toggle mask button for sensitive inputs to let users show or hide the content
 - Include a search button within the Input if a specific action is expected (e.g., triggering a search)
 - Choose the appropriate input type (email, password, search, etc.) to support native validation
+- Use start or end content for a unit, a currency symbol or a fixed part of the value, so the user does not have to type it
 
 **Don't**
 
@@ -10370,12 +10376,16 @@ The **Input** component can be used in addition with an **Autocomplete**.
 - Don't leave an Input without a label
 - Don't overload the Input with multiple embedded actions (e.g., clear + search + toggle) since it creates visual clutter
 - Don't use an Input that is inappropriately sized for its content
+- Don't rely on start or end content to convey the field's purpose: it complements the label, it does not replace it
+- Don't give start or end content its own background or border, and don't make it taller than the field
 
 ### Best Practices in Context
 
 1. **Input**
 2. **Placeholder or input text**
 3. **Clearable button** - optional
+4. **Start content** - optional content before the value
+5. **End content** - optional content after the value
 
 ## Placement
 
@@ -10395,6 +10405,43 @@ A toggle mask button can be displayed within the **Input** to toggle the visibil
 
 A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
 
+Content can be placed inside the field, before the value with `startContent` and after it with `endContent`. This content is never part of the value: the user cannot edit it, it does not appear in `value` or `onChange`, and it is not submitted with the form.
+
+Any node is accepted, within the constraints described below. Typical cases include a unit such as `kg` or `%`, a currency symbol, a fixed part of the value such as a domain extension, an icon, or a small ghost button. When to reach for it is covered in **Dos & Don'ts** above.
+
+Both are placed with logical directions, so they follow the writing direction rather than a fixed side. The built-in action buttons always stay at the far end of the field, after the end content, so they remain at the same distance from the border whether or not decoration is present.
+
+The content must fit within the field's content height, so that it never makes the **Input** taller, and must not carry a background or a border of its own. Use `size="xs"` for a `Button`, the size the built-in actions use. For a control with its own surface adjoined to the field, such as a country selector or a calendar trigger, compose elements around the **Input** instead; see **Datepicker** and **Phone Number**.
+
+The **Input** does not disable, hide or otherwise alter the content it is given. When the content holds a control, pass that control its own `disabled` alongside the field's.
+
+## Content Adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content Adornments with Button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
+```
+
 ## Navigation
 
 ### Focus Management
@@ -10406,6 +10453,8 @@ If a clear button is present, it becomes focusable immediately after the **Input
 If a toggle mask button (show/hide password) is present, it becomes focusable after the clear button.
 
 If a search button is present, it becomes focusable after the other **Input** action buttons.
+
+If `startContent` or `endContent` holds a focusable element, it takes its natural place in the tab order: start content before the field, end content after the field and before the action buttons.
 
 If the **Input** field is read-only, it can still receive focus but cannot be edited.
 
@@ -10444,6 +10493,43 @@ using either **FormField** or a native label tag.
 
  Screen readers will announce the label, the field and its content.
 
+### Make start & end content audible
+
+The **Input** does not describe `startContent` or `endContent` for you: it never alters `aria-describedby`, so whatever you or the surrounding **FormField** put there is what screen readers announce.
+
+Content that carries meaning, such as a unit, a currency or a fixed part of the value, is therefore silent unless you reference it. Give it an id and point the field at it:
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Weight:
+  </FormFieldLabel>
+
+  <Input
+    aria-describedby="weight-unit"
+    defaultValue="42"
+    endContent={ <span id="weight-unit">kg</span> } />
+</FormField>
+```
+
+ Screen readers will announce the label, the field, its content and the unit.
+
+Only reference the parts that describe the value. A control inside the decoration announces itself when focus reaches it, and its action label must not become guidance about what to type:
+
+```tsx
+<Input aria-describedby="weight-unit"
+       endContent={
+         <>
+           <span id="weight-unit">kg</span>
+           <Button aria-label="Copy value" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>
+             <Icon name={ ICON_NAME.fileCopy } />
+           </Button>
+         </>
+       } />
+```
+
+Note that a value passed to `aria-describedby` **replaces** the one the **FormField** would supply, so include the helper and error ids yourself if you still need them.
+
 ### Override action context
 
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
@@ -10466,6 +10552,142 @@ To provide more context on the interactive elements, you can provide your own cu
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
+
+## Login Form
+
+```tsx
+{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
+
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
+
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
+    }
+
+    return (
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
+          <FormFieldLabel>
+            Admin email
+          </FormFieldLabel>
+
+          <Input
+            name="email"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
+            placeholder="you@example.com"
+            startContent={ <Icon name={ ICON_NAME.email } /> }
+            type={ INPUT_TYPE.email }
+            value={ email } />
+
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!errors.password }>
+          <FormFieldLabel>
+            Root password
+          </FormFieldLabel>
+
+          <Input
+            maskOption={{ enable: true }}
+            name="password"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
+            value={ password } />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
+        </FormField>
+
+        <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </div>
+      </form>
+    );
+  }
+```
+
+## Domain Availability Search
+
+```tsx
+{
+    const takenAddresses = ['admin', 'api', 'www'];
+    const [address, setAddress] = useState('');
+    const [isChecking, setIsChecking] = useState(false);
+    const [isTaken, setIsTaken] = useState(false);
+    const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+    useEffect(() => () => clearTimeout(checkTimer.current), []);
+
+    function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
+      const value = e.target.value;
+      const isLongEnough = value.length > 2;
+
+      clearTimeout(checkTimer.current);
+      setAddress(value);
+      setIsTaken(false);
+      setIsChecking(isLongEnough);
+
+      if (isLongEnough) {
+        checkTimer.current = setTimeout(() => {
+          setIsChecking(false);
+          setIsTaken(takenAddresses.includes(value.toLowerCase()));
+        }, 700);
+      }
+    }
+
+    return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  }
+```
 
 ---
 title: "Input"
@@ -10524,7 +10746,7 @@ slug: input
 category: component
 type: examples
 version: 19.7.3
-tokens: 449
+tokens: 1601
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--examples.txt
 ---
 
@@ -10552,6 +10774,169 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
     <option value="Vanilla"></option>
   </datalist>
 </>
+```
+
+## Content Adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content Adornment With Button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
+```
+
+## Domain Availability Search
+
+```tsx
+{
+    const takenAddresses = ['admin', 'api', 'www'];
+    const [address, setAddress] = useState('');
+    const [isChecking, setIsChecking] = useState(false);
+    const [isTaken, setIsTaken] = useState(false);
+    const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+    useEffect(() => () => clearTimeout(checkTimer.current), []);
+
+    function onAddressChange(e: ChangeEvent<HTMLInputElement>): void {
+      const value = e.target.value;
+      const isLongEnough = value.length > 2;
+
+      clearTimeout(checkTimer.current);
+      setAddress(value);
+      setIsTaken(false);
+      setIsChecking(isLongEnough);
+
+      if (isLongEnough) {
+        checkTimer.current = setTimeout(() => {
+          setIsChecking(false);
+          setIsTaken(takenAddresses.includes(value.toLowerCase()));
+        }, 700);
+      }
+    }
+
+    return (
+      <FormField invalid={ isTaken } style={{ maxWidth: '420px' }}>
+        <FormFieldLabel>
+          Public address
+        </FormFieldLabel>
+
+        <Input
+          endContent=".hosting.ovh.net"
+          loading={ isChecking }
+          name="address"
+          onChange={ onAddressChange }
+          placeholder="my-project"
+          startContent="https://"
+          value={ address } />
+
+        <FormFieldHelper>
+          <Text preset={ TEXT_PRESET.caption }>
+            Type at least 3 characters to check availability - "api" is already taken.
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          This address is already taken.
+        </FormFieldError>
+      </FormField>
+    );
+  }
+```
+
+## Login Form
+
+```tsx
+{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
+
+    // `noValidate` hands validation over to the form: the browser never blocks the submit,
+    // so the errors below are the only ones the user ever sees.
+    function onSubmit(event: FormEvent): void {
+      event.preventDefault();
+
+      setErrors({
+        email: email.length === 0 ? 'Enter the email address of the account admin.' : undefined,
+        password: password.length < 12 ? 'This password is too short.' : undefined,
+      });
+    }
+
+    return (
+      <form
+        noValidate
+        onSubmit={ onSubmit }
+        style={{ display: 'flex', flexFlow: 'column', maxWidth: '420px', rowGap: '16px' }}>
+        <FormField invalid={ !!errors.email }>
+          <FormFieldLabel>
+            Admin email
+          </FormFieldLabel>
+
+          <Input
+            name="email"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value) }
+            placeholder="you@example.com"
+            startContent={ <Icon name={ ICON_NAME.email } /> }
+            type={ INPUT_TYPE.email }
+            value={ email } />
+
+          <FormFieldError>
+            { errors.email }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!errors.password }>
+          <FormFieldLabel>
+            Root password
+          </FormFieldLabel>
+
+          <Input
+            maskOption={{ enable: true }}
+            name="password"
+            onChange={ (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value) }
+            value={ password } />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              At least 12 characters.
+            </Text>
+          </FormFieldHelper>
+
+          <FormFieldError>
+            { errors.password }
+          </FormFieldError>
+        </FormField>
+
+        <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </div>
+      </form>
+    );
+  }
 ```
 
 ## Default
@@ -10630,6 +11015,21 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
   </FormFieldLabel>
 
   <Input />
+</FormField>
+```
+
+## Accessibility Content
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Weight:
+  </FormFieldLabel>
+
+  <Input
+    aria-describedby="weight-unit"
+    defaultValue="42"
+    endContent={ <span id="weight-unit">kg</span> } />
 </FormField>
 ```
 
@@ -10741,7 +11141,7 @@ slug: kbd
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 182
+tokens: 209
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--technical-information.txt
 ---
 
@@ -10757,14 +11157,14 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-kbd-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-kbd-border-bottom-width` | `calc(var(--ods-theme-border-width) * 2)` |
-| `--ods-kbd-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-kbd-border-color` | `var(--ods-color-neutral-200)` |
-| `--ods-kbd-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-kbd-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-kbd-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-kbd-text-color` | `var(--ods-color-neutral-700)` |
+| `--ods-kbd-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-kbd-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-kbd-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-kbd-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-kbd-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-kbd-text-color` | `var(--ods-semantic-color-content-on-neutral)` |
 
 ---
 title: "Kbd"
@@ -10981,7 +11381,7 @@ slug: link
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 126
+tokens: 134
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
 ---
 
@@ -10999,8 +11399,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 
 | Variable | Default value |
 |---|---|
-| `--ods-link-column-gap` | `var(--ods-theme-column-gap)` |
-| `--ods-link-row-gap` | `var(--ods-theme-row-gap)` |
+| `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
 
 ---
 title: "Link"
@@ -12307,7 +12707,7 @@ slug: message
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1687
+tokens: 1776
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
 ---
 
@@ -12363,32 +12763,32 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-message-close-button-text-color-primary` | `var(--ods-color-neutral-000)` |
-| `--ods-message-background-color-critical` | `var(--ods-color-critical-075)` |
-| `--ods-message-background-color-critical-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-information` | `var(--ods-color-information-075)` |
-| `--ods-message-background-color-information-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-neutral` | `var(--ods-color-neutral-075)` |
-| `--ods-message-background-color-neutral-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-message-background-color-primary-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-success` | `var(--ods-color-success-075)` |
-| `--ods-message-background-color-success-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-background-color-warning` | `var(--ods-color-warning-075)` |
-| `--ods-message-background-color-warning-light` | `var(--ods-theme-background-color)` |
-| `--ods-message-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-message-text-color-critical` | `var(--ods-color-critical-700)` |
-| `--ods-message-text-color-critical-light` | `var(--ods-color-critical-600)` |
-| `--ods-message-text-color-information` | `var(--ods-color-information-700)` |
-| `--ods-message-text-color-information-light` | `var(--ods-color-information-600)` |
-| `--ods-message-text-color-neutral` | `var(--ods-color-neutral-700)` |
-| `--ods-message-text-color-neutral-light` | `var(--ods-color-neutral-600)` |
-| `--ods-message-text-color-primary` | `var(--ods-color-primary-000)` |
-| `--ods-message-text-color-primary-light` | `var(--ods-color-primary-600)` |
-| `--ods-message-text-color-success` | `var(--ods-color-success-700)` |
-| `--ods-message-text-color-success-light` | `var(--ods-color-success-600)` |
-| `--ods-message-text-color-warning` | `var(--ods-color-warning-700)` |
-| `--ods-message-text-color-warning-light` | `var(--ods-color-warning-600)` |
+| `--ods-message-close-button-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-message-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-text-color-critical-light` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-text-color-information-light` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-message-text-color-neutral-light` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-message-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-text-color-success-light` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-text-color-warning-light` | `var(--ods-semantic-color-content-warning)` |
 
 ---
 title: "Message"
@@ -12716,7 +13116,7 @@ slug: message-bubble
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 313
+tokens: 339
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--technical-information.txt
 ---
 
@@ -12745,12 +13145,12 @@ This component extends all the native `<div>` attributes.
 |---|---|
 | `--ods-message-bubble-background-color` | `var(--ods-message-bubble-error-background-color)` |
 | `--ods-message-bubble-text-color` | `var(--ods-message-bubble-error-text-color)` |
-| `--ods-message-bubble-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-message-bubble-padding` | `calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-message-bubble-human-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-message-bubble-ai-background-color` | `var(--ods-color-information-025)` |
-| `--ods-message-bubble-error-background-color` | `var(--ods-color-critical-025)` |
-| `--ods-message-bubble-error-text-color` | `var(--ods-color-critical-500)` |
+| `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
+| `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-message-bubble-error-text-color` | `var(--ods-semantic-color-content-critical)` |
 
 ---
 title: "Message Bubble"
@@ -12975,7 +13375,7 @@ slug: meter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 276
+tokens: 283
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--technical-information.txt
 ---
 
@@ -13002,9 +13402,9 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-meter-background-color-critical` | `var(--ods-theme-critical-color)` |
-| `--ods-meter-background-color-normal` | `var(--ods-theme-primary-color)` |
-| `--ods-meter-background-color-warning` | `var(--ods-theme-warning-color)` |
+| `--ods-meter-background-color-critical` | `var(--ods-semantic-color-surface-critical)` |
+| `--ods-meter-background-color-normal` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-meter-background-color-warning` | `var(--ods-semantic-color-surface-warning)` |
 
 ---
 title: "Meter"
@@ -13366,7 +13766,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1003
+tokens: 1045
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -13438,20 +13838,20 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-modal-border-radius` | `var(--ods-theme-overlay-border-radius)` |
+| `--ods-modal-border-radius` | `var(--ods-semantic-size-radius-overlay)` |
 | `--ods-modal-header-height` | `32px` |
-| `--ods-modal-header-background-color-critical` | `var(--ods-color-critical-075)` |
-| `--ods-modal-header-background-color-information` | `var(--ods-color-information-075)` |
-| `--ods-modal-header-background-color-neutral` | `var(--ods-color-neutral-075)` |
-| `--ods-modal-header-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-modal-header-background-color-success` | `var(--ods-color-success-075)` |
-| `--ods-modal-header-background-color-warning` | `var(--ods-color-warning-075)` |
-| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-header-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-body-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-margin-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-margin-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-modal-header-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-modal-header-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-modal-header-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-modal-header-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-modal-header-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-modal-header-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-header-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-margin-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-margin-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-modal-mobile-max-height` | `512px` |
 | `--ods-modal-mobile-max-width` | `512px` |
 
@@ -15806,7 +16206,7 @@ slug: progress-bar
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 121
+tokens: 123
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--technical-information.txt
 ---
 
@@ -15825,7 +16225,7 @@ This component extends all the native `<progress>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-progress-bar-border-radius` | `var(--ods-theme-border-radius)` |
+| `--ods-progress-bar-border-radius` | `var(--ods-semantic-size-radius-container)` |
 
 ---
 title: "Progress Bar"
@@ -16069,7 +16469,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1224
+tokens: 1229
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -16154,12 +16554,12 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-prompt-input-border-color` | `var(--ods-color-form-element-border-default)` |
-| `--ods-prompt-input-border-color-focus` | `var(--ods-color-form-element-border-focus-default)` |
-| `--ods-prompt-input-border-color-hover` | `var(--ods-color-form-element-border-hover-default)` |
-| `--ods-prompt-input-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-prompt-input-control-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-prompt-input-control-padding-horizontal` | `var(--ods-theme-input-padding-horizontal)` |
+| `--ods-prompt-input-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-prompt-input-border-color-focus` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-prompt-input-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-prompt-input-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-prompt-input-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-prompt-input-control-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-prompt-input-control-border-color` | `transparent` |
 | `--ods-prompt-input-control-line-height` | `1.375em` |
 | `--ods-prompt-input-control-min-lines` | `1` |
@@ -16802,7 +17202,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1034
+tokens: 1044
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -16873,10 +17273,10 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-query-filter-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-query-filter-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
+| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
 
 ---
 title: "Query Filter"
@@ -17550,7 +17950,7 @@ slug: range
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 514
+tokens: 519
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--technical-information.txt
 ---
 
@@ -17586,8 +17986,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-range-thumb-background-color` | `var(--ods-color-neutral-000)` |
-| `--ods-range-track-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-range-track-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 
 ---
 title: "Range"
@@ -18048,7 +18448,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
+| `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
 
 ---
 title: "Select"
@@ -18544,7 +18944,7 @@ slug: skeleton
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 143
+tokens: 154
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--technical-information.txt
 ---
 
@@ -18560,8 +18960,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-skeleton-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-skeleton-transition-background-color` | `var(--ods-color-neutral-100)` |
+| `--ods-skeleton-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-skeleton-background-color-image` | `linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color))` |
 
 ---
@@ -19039,7 +19439,7 @@ slug: switch
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 423
+tokens: 452
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--technical-information.txt
 ---
 
@@ -19077,14 +19477,14 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-switch-item-background-color` | `inherit` |
-| `--ods-switch-item-background-color-checked` | `var(--ods-color-primary-600)` |
-| `--ods-switch-item-background-color-checked-disabled` | `var(--ods-color-neutral-500)` |
-| `--ods-switch-item-background-color-hover` | `var(--ods-color-primary-100)` |
-| `--ods-switch-item-text-color` | `var(--ods-color-primary-500)` |
-| `--ods-switch-item-text-color-checked` | `var(--ods-theme-input-text-color-checked)` |
-| `--ods-switch-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-theme-border-radius) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
+| `--ods-switch-item-background-color-checked` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-switch-item-background-color-checked-disabled` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-switch-item-background-color-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
+| `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-base)` |
+| `--ods-switch-item-text-color-checked` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-switch-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
+| `--ods-switch-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 
 ---
 title: "Switch"
@@ -19294,7 +19694,7 @@ slug: table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 312
+tokens: 340
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
 ---
 
@@ -19326,15 +19726,15 @@ This component extends all the native `<table>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-table-striped-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-table-border-color` | `var(--ods-color-neutral-100)` |
-| `--ods-table-cell-padding-horizontal-sm` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-table-cell-padding-vertical-sm` | `var(--ods-theme-padding-vertical)` |
-| `--ods-table-cell-padding-horizontal-md` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-table-cell-padding-horizontal-lg` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-theme-padding-vertical) * 3)` |
-| `--ods-table-head-background-color` | `var(--ods-color-neutral-050)` |
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-table-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
+| `--ods-table-cell-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-table-cell-padding-horizontal-lg` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
+| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
 
 ---
 title: "Table"
@@ -19794,7 +20194,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1026
+tokens: 1112
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -19852,38 +20252,38 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tab-list-background-color-switch` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-list-border-color` | `var(--ods-color-neutral-100)` |
-| `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-theme-border-radius) * 1.25)` |
-| `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-theme-border-radius) * 0.75)` |
-| `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-semantic-size-radius-container) * 1.25)` |
+| `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-semantic-size-radius-container) * 0.75)` |
+| `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-list-border-width` | `2px` |
-| `--ods-tab-margin-horizontal-switch-md` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-margin-horizontal-switch-sm` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-margin-horizontal-switch-xs` | `calc(var(--ods-theme-padding-horizontal) / 4)` |
-| `--ods-tab-margin-vertical-switch-md` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-tab-margin-vertical-switch-sm` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-tab-margin-vertical-switch-xs` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-tab-padding-horizontal-md` | `calc(var(--ods-theme-padding-horizontal) * 1.5)` |
-| `--ods-tab-padding-horizontal-sm` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tab-padding-horizontal-xs` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-tab-padding-vertical-md` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tab-padding-vertical-sm` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-tab-padding-vertical-xs` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-background-color-hover` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-background-color-selected-switch` | `var(--ods-color-neutral-000)` |
-| `--ods-tab-background-color-selected-disabled-switch` | `var(--ods-color-neutral-500)` |
+| `--ods-tab-margin-horizontal-switch-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 4)` |
+| `--ods-tab-margin-vertical-switch-md` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-xs` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-tab-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
+| `--ods-tab-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-horizontal-xs` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-background-color-hover` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tab-background-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-neutral)` |
 | `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
-| `--ods-tab-border-color-disabled` | `var(--ods-color-neutral-100)` |
-| `--ods-tab-border-color-hover` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-border-color-selected` | `var(--ods-color-primary-500)` |
-| `--ods-tab-border-color-selected-disabled` | `var(--ods-color-neutral-500)` |
-| `--ods-tab-border-color-selected-disabled-switch` | `var(--ods-color-neutral-000)` |
-| `--ods-tab-border-radius-md` | `var(--ods-theme-border-radius)` |
-| `--ods-tab-border-radius-sm` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-tab-border-radius-xs` | `calc(var(--ods-theme-border-radius) / 4)` |
-| `--ods-tab-text-color-hover` | `var(--ods-color-primary-500)` |
-| `--ods-tab-text-color-selected` | `var(--ods-color-primary-500)` |
+| `--ods-tab-border-color-disabled` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-readonly)` |
+| `--ods-tab-border-color-selected` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tab-border-color-selected-disabled` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-tab-border-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
+| `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-base)` |
+| `--ods-tab-text-color-selected` | `var(--ods-semantic-color-content-base)` |
 
 ---
 title: "Tabs"
@@ -20158,7 +20558,7 @@ slug: tag
 category: component
 type: overview
 version: 19.7.3
-tokens: 1013
+tokens: 1126
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
 ---
 
@@ -20170,8 +20570,10 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `as` | `T` | No | 'button' | Pass a component you may want to use as custom Tag component. Useful for example to render the tag as a link, either a plain anchor or the Link component of a routing library. |
 | `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | 'xmark' | The glyph used by the removal affordance, displayed on the right side. Has no effect when `removable` is `false`. |
+| `removable` | `boolean` | No | true | Whether the Tag displays its removal affordance. Set it to `false` on a Tag that has nothing to remove, a navigating one for instance. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 
 ## Examples
@@ -20368,7 +20770,7 @@ slug: tag
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2155
+tokens: 2528
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
 ---
 
@@ -20376,12 +20778,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--t
 
 ## Tag
 
-This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `as` | `T` | No | 'button' | Pass a component you may want to use as custom Tag component. Useful for example to render the tag as a link, either a plain anchor or the Link component of a routing library. |
 | `color` | `TAG_COLOR` | No | undefined | The color preset to use. |
-| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
+| `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | No | 'xmark' | The glyph used by the removal affordance, displayed on the right side. Has no effect when `removable` is `false`. |
+| `removable` | `boolean` | No | true | Whether the Tag displays its removal affordance. Set it to `false` on a Tag that has nothing to remove, a navigating one for instance. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 
 ## Enums
@@ -20404,67 +20807,67 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-tag-border-width` | `calc(var(--ods-theme-border-width) * 2)` |
-| `--ods-tag-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-tag-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-tag-padding-horizontal-md` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tag-padding-vertical-md` | `calc(var(--ods-theme-padding-vertical) / 8)` |
-| `--ods-tag-padding-horizontal-lg` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tag-padding-vertical-lg` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-tag-border-color-critical` | `var(--ods-color-critical-100)` |
-| `--ods-tag-border-color-critical-active` | `var(--ods-color-critical-300)` |
-| `--ods-tag-border-color-critical-hover` | `var(--ods-color-critical-200)` |
-| `--ods-tag-background-color-critical` | `var(--ods-color-critical-000)` |
-| `--ods-tag-background-color-critical-active` | `var(--ods-color-critical-100)` |
-| `--ods-tag-background-color-critical-hover` | `var(--ods-color-critical-050)` |
-| `--ods-tag-text-color-critical` | `var(--ods-color-critical-900)` |
-| `--ods-tag-text-color-critical-active` | `var(--ods-color-critical-900)` |
-| `--ods-tag-text-color-critical-hover` | `var(--ods-color-critical-900)` |
-| `--ods-tag-border-color-information` | `var(--ods-color-information-100)` |
-| `--ods-tag-border-color-information-active` | `var(--ods-color-information-300)` |
-| `--ods-tag-border-color-information-hover` | `var(--ods-color-information-200)` |
-| `--ods-tag-background-color-information` | `var(--ods-color-information-000)` |
-| `--ods-tag-background-color-information-active` | `var(--ods-color-information-200)` |
-| `--ods-tag-background-color-information-hover` | `var(--ods-color-information-100)` |
-| `--ods-tag-text-color-information` | `var(--ods-color-information-900)` |
-| `--ods-tag-text-color-information-active` | `var(--ods-color-information-900)` |
-| `--ods-tag-text-color-information-hover` | `var(--ods-color-information-900)` |
-| `--ods-tag-border-color-neutral` | `var(--ods-color-neutral-100)` |
-| `--ods-tag-border-color-neutral-active` | `var(--ods-color-neutral-300)` |
-| `--ods-tag-border-color-neutral-hover` | `var(--ods-color-neutral-200)` |
-| `--ods-tag-background-color-neutral` | `var(--ods-color-neutral-000)` |
-| `--ods-tag-background-color-neutral-active` | `var(--ods-color-neutral-200)` |
-| `--ods-tag-background-color-neutral-hover` | `var(--ods-color-neutral-100)` |
-| `--ods-tag-text-color-neutral` | `var(--ods-color-neutral-700)` |
-| `--ods-tag-text-color-neutral-active` | `var(--ods-color-neutral-700)` |
-| `--ods-tag-text-color-neutral-hover` | `var(--ods-color-neutral-700)` |
-| `--ods-tag-border-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-tag-border-color-primary-active` | `var(--ods-color-primary-700)` |
-| `--ods-tag-border-color-primary-hover` | `var(--ods-color-primary-600)` |
-| `--ods-tag-background-color-primary` | `var(--ods-color-primary-000)` |
-| `--ods-tag-background-color-primary-active` | `var(--ods-color-primary-200)` |
-| `--ods-tag-background-color-primary-hover` | `var(--ods-color-primary-100)` |
-| `--ods-tag-text-color-primary` | `var(--ods-color-primary-900)` |
-| `--ods-tag-text-color-primary-active` | `var(--ods-color-primary-900)` |
-| `--ods-tag-text-color-primary-hover` | `var(--ods-color-primary-900)` |
-| `--ods-tag-border-color-success` | `var(--ods-color-success-100)` |
-| `--ods-tag-border-color-success-active` | `var(--ods-color-success-300)` |
-| `--ods-tag-border-color-success-hover` | `var(--ods-color-success-200)` |
-| `--ods-tag-background-color-success` | `var(--ods-color-success-000)` |
-| `--ods-tag-background-color-success-active` | `var(--ods-color-success-100)` |
-| `--ods-tag-background-color-success-hover` | `var(--ods-color-success-050)` |
-| `--ods-tag-text-color-success` | `var(--ods-color-success-900)` |
-| `--ods-tag-text-color-success-active` | `var(--ods-color-success-900)` |
-| `--ods-tag-text-color-success-hover` | `var(--ods-color-success-900)` |
-| `--ods-tag-border-color-warning` | `var(--ods-color-warning-100)` |
-| `--ods-tag-border-color-warning-active` | `var(--ods-color-warning-300)` |
-| `--ods-tag-border-color-warning-hover` | `var(--ods-color-warning-200)` |
-| `--ods-tag-background-color-warning` | `var(--ods-color-warning-000)` |
-| `--ods-tag-background-color-warning-active` | `var(--ods-color-warning-100)` |
-| `--ods-tag-background-color-warning-hover` | `var(--ods-color-warning-050)` |
-| `--ods-tag-text-color-warning` | `var(--ods-color-warning-900)` |
-| `--ods-tag-text-color-warning-active` | `var(--ods-color-warning-900)` |
-| `--ods-tag-text-color-warning-hover` | `var(--ods-color-warning-900)` |
+| `--ods-tag-border-width` | `calc(var(--ods-semantic-size-border-thickness) * 2)` |
+| `--ods-tag-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-tag-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-tag-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tag-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) / 8)` |
+| `--ods-tag-padding-horizontal-lg` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tag-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-tag-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-tag-border-color-critical-active` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-tag-border-color-critical-hover` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-tag-background-color-critical` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-critical-active` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-tag-background-color-critical-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-tag-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-tag-text-color-critical-active` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-tag-text-color-critical-hover` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-tag-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-tag-border-color-information-active` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-tag-border-color-information-hover` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-tag-background-color-information` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-information-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-tag-background-color-information-hover` | `var(--ods-semantic-color-interaction-information-subtle-hover)` |
+| `--ods-tag-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-tag-text-color-information-active` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-tag-text-color-information-hover` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-tag-border-color-neutral` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tag-border-color-neutral-active` | `var(--ods-semantic-color-border-control)` |
+| `--ods-tag-border-color-neutral-hover` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-tag-background-color-neutral` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-neutral-active` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-tag-background-color-neutral-hover` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-tag-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-tag-text-color-neutral-active` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-tag-text-color-neutral-hover` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-tag-border-color-primary` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tag-border-color-primary-active` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-tag-border-color-primary-hover` | `var(--ods-semantic-color-interaction-base-hover)` |
+| `--ods-tag-background-color-primary` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-primary-active` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-tag-background-color-primary-hover` | `var(--ods-semantic-color-interaction-base-subtle-hover)` |
+| `--ods-tag-text-color-primary` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-tag-text-color-primary-active` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-tag-text-color-primary-hover` | `var(--ods-semantic-color-content-on-brand-subtle)` |
+| `--ods-tag-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-tag-border-color-success-active` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-tag-border-color-success-hover` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-tag-background-color-success` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-success-active` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
+| `--ods-tag-background-color-success-hover` | `var(--ods-semantic-color-interaction-success-subtle-hover)` |
+| `--ods-tag-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-tag-text-color-success-active` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-tag-text-color-success-hover` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-tag-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-tag-border-color-warning-active` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-tag-border-color-warning-hover` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-tag-background-color-warning` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
+| `--ods-tag-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
+| `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-tag-text-color-warning-active` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-tag-text-color-warning-hover` | `var(--ods-semantic-color-content-on-warning-solid)` |
 
 ---
 title: "Tag"
@@ -21236,7 +21639,7 @@ slug: tile
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 304
+tokens: 340
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
 ---
 
@@ -21261,16 +21664,16 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
-| `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
-| `--ods-tile-background-color` | `var(--ods-theme-background-color)` |
-| `--ods-tile-background-color-selected` | `var(--ods-color-primary-025)` |
-| `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
-| `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected-strong)` |
+| `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tile-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-tile-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-tile-background-color` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-tile-background-color-disabled` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tile-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 
 ---
 title: "Tile"
@@ -22353,7 +22756,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 436
+tokens: 463
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -22390,13 +22793,13 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-toggle-control-background-color` | `var(--ods-color-neutral-200)` |
-| `--ods-toggle-control-background-color-hover` | `var(--ods-color-neutral-300)` |
-| `--ods-toggle-control-border-color` | `var(--ods-color-neutral-200)` |
-| `--ods-toggle-control-border-color-hover` | `var(--ods-color-neutral-300)` |
-| `--ods-toggle-control-label-off-text-color` | `var(--ods-color-neutral-700)` |
-| `--ods-toggle-control-label-on-text-color` | `var(--ods-color-neutral-000)` |
-| `--ods-toggle-control-thumb-background-color` | `var(--ods-color-neutral-000)` |
+| `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-toggle-control-background-color-hover` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-toggle-control-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-border-control)` |
+| `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-page)` |
 
 ---
 title: "Toggle"
@@ -23148,7 +23551,7 @@ slug: tree-view
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 525
+tokens: 539
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--technical-information.txt
 ---
 
@@ -23189,11 +23592,11 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tree-view-node-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-tree-view-node-column-gap` | `var(--ods-theme-column-gap)` |
-| `--ods-tree-view-node-row-gap` | `var(--ods-theme-row-gap)` |
-| `--ods-tree-view-node-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tree-view-node-padding-vertical` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
+| `--ods-tree-view-node-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-tree-view-node-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-tree-view-node-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-tree-view-node-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tree-view-node-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 
 ---
 title: "Tree View"

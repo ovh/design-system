@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1003
+tokens: 1045
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -76,19 +76,19 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-modal-border-radius` | `var(--ods-theme-overlay-border-radius)` |
+| `--ods-modal-border-radius` | `var(--ods-semantic-size-radius-overlay)` |
 | `--ods-modal-header-height` | `32px` |
-| `--ods-modal-header-background-color-critical` | `var(--ods-color-critical-075)` |
-| `--ods-modal-header-background-color-information` | `var(--ods-color-information-075)` |
-| `--ods-modal-header-background-color-neutral` | `var(--ods-color-neutral-075)` |
-| `--ods-modal-header-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-modal-header-background-color-success` | `var(--ods-color-success-075)` |
-| `--ods-modal-header-background-color-warning` | `var(--ods-color-warning-075)` |
-| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-header-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-body-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-margin-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-margin-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-modal-header-background-color-critical` | `var(--ods-semantic-color-surface-critical-minimal)` |
+| `--ods-modal-header-background-color-information` | `var(--ods-semantic-color-surface-information-minimal)` |
+| `--ods-modal-header-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-modal-header-background-color-primary` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-modal-header-background-color-success` | `var(--ods-semantic-color-surface-success-minimal)` |
+| `--ods-modal-header-background-color-warning` | `var(--ods-semantic-color-surface-warning-minimal)` |
+| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-header-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-margin-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-margin-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-modal-mobile-max-height` | `512px` |
 | `--ods-modal-mobile-max-width` | `512px` |

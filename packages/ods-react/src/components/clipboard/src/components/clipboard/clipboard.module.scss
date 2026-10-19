@@ -11,8 +11,11 @@
     position: relative;
     border-width: 0;
     border-style: solid;
-    border-radius: var(--ods-theme-input-border-radius);
-    padding-right: input.$ods-input-actions-padding-right;
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
+    // Input insets its actions inside a border this field does not draw, so the trigger pays that
+    // border width too and keeps the same gap on the end as above and below.
+    padding-right: calc(input.$ods-input-actions-padding-right + var(--ods-semantic-border-thickness));
     height: input.$ods-input-field-height;
 
     &:focus-within:not(:has(button:focus-within)) {

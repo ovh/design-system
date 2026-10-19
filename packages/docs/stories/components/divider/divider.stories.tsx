@@ -56,7 +56,7 @@ export const Color: Story = {
   render: ({}) => (
     <>
       <Divider />
-      <Divider style={{ backgroundColor: 'var(--ods-color-neutral-700)' }} />
+      <Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
     </>
   ),
 };

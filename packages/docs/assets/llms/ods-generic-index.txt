@@ -13,7 +13,7 @@
 - [Apply ODS Style](./ovhcloud-design-system-customize-apply-ods-style.txt) (~323 tokens)
 - [Charts](./ovhcloud-design-system-build-charts.txt) (~1030 tokens)
 - [Components](./recipes-components.txt) (~676 tokens)
-- [Design Tokens](./ovhcloud-design-system-customize-design-tokens.txt) (~2713 tokens)
+- [Design Tokens](./ovhcloud-design-system-customize-design-tokens.txt) (~4266 tokens)
 - [FAQ](./ovhcloud-design-system-f-a-q.txt) (~1517 tokens)
 - [formatPrice](./helpers-formatprice.txt) (~109 tokens)
 - [formatPrice](./helpers-formatprice--documentation.txt) (~253 tokens)

@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: examples
 version: 19.7.3
-tokens: 1245
+tokens: 1254
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--examples.txt
 ---
 
@@ -113,7 +113,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--
       <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
-    <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+    <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
   </CartExtraContent>
 
   <CartTotal
@@ -197,7 +197,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--
       <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
     </div>
 
-    <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+    <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
   </CartExtraContent>
 
   <CartTotal

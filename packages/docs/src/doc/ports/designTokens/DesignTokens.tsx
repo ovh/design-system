@@ -133,7 +133,7 @@ const DesignTokens = () => {
         Non spacing tokens have been renamed with the <code>--ods-theme</code> prefix.
         <br />
         Spacing tokens have been reduced to one base value, you should set your values based on this base, for example:
-        <code>--my-border-radius-sm: calc(var(--ods-theme-border-radius)) / 2;</code>.
+        <code>--my-border-radius-sm: calc(var(--ods-semantic-size-radius-container)) / 2;</code>.
       </p>
 
       <TokensTable tokens={ tokenByCategory[TOKEN_CATEGORY.deprecated] } />

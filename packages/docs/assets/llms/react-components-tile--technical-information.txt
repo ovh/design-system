@@ -4,7 +4,7 @@ slug: tile
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 304
+tokens: 340
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
 ---
 
@@ -29,13 +29,13 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-alt-container-background-color-selected` | `var(--ods-color-primary-075)` |
-| `--ods-tile-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-tile-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-tile-border-color` | `var(--ods-theme-input-border-color)` |
-| `--ods-tile-background-color` | `var(--ods-theme-background-color)` |
-| `--ods-tile-background-color-selected` | `var(--ods-color-primary-025)` |
-| `--ods-tile-background-color-disabled` | `var(--ods-color-neutral-050)` |
-| `--ods-tile-border-color-selected` | `var(--ods-color-primary-500)` |
-| `--ods-tile-border-color-hover` | `var(--ods-color-neutral-500)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected-strong)` |
+| `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tile-border-width` | `var(--ods-semantic-size-border-thickness)` |
+| `--ods-tile-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-tile-background-color` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-tile-background-color-disabled` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tile-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |

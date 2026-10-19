@@ -10,8 +10,8 @@ const ResetTheme: FC<ComponentPropsWithRef<'div'>> = forwardRef(({ children, cla
     { ...props }
     style={{
       ...lightThemeTokens.root as CSSProperties,
-      backgroundColor: 'var(--ods-theme-background-color)',
-      color: 'var(--ods-theme-text-color)',
+      backgroundColor: 'var(--ods-semantic-color-surface-page)',
+      color: 'var(--ods-semantic-color-content-text)',
       ...style,
     }}>
     { children }

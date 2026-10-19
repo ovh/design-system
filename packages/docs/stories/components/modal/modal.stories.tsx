@@ -34,7 +34,7 @@ export const AnatomyTech: Story = {
     <div style={{
       display: 'flex',
       flexFlow: 'column',
-      rowGap: 'var(--ods-theme-row-gap)',
+      rowGap: 'var(--ods-semantic-size-space-gap-block)',
       alignItems: 'start',
       zIndex: 0,
       position: 'relative'

@@ -10,25 +10,28 @@
       &:not([data-invalid]) {
         &[data-focus],
         &:hover {
-          border-color: var(--ods-theme-input-border-color-hover);
+          border-color: var(--ods-semantic-color-interaction-control-hover);
+        }
+      }
+    }
+
+    // QUID DES BORDURES ET DU HOVER
+    &[data-state="checked"],
+    &[data-state="indeterminate"] {
+      border-color: var(--ods-semantic-color-border-selected-solid);
+      background: var(--ods-semantic-color-surface-selected-solid);
+
+      &:not([data-disabled], [data-invalid]) {
+        &[data-focus],
+        &:hover {
+          border-color: var(--ods-semantic-color-interaction-accent-hover);
+          background: var(--ods-semantic-color-interaction-accent-hover);
         }
       }
 
-      &[data-state="checked"],
-      &[data-state="indeterminate"] {
-        border-color: var(--ods-theme-input-border-color-checked);
-        background: var(--ods-theme-input-background-color-checked);
-
-        &[data-focus],
-        &:hover {
-          border-color: var(--ods-theme-input-border-color-checked-hover);
-          background: var(--ods-theme-input-background-color-checked-hover);
-        }
-
-        &[data-invalid] {
-          border-color: var(--ods-theme-input-border-color-invalid);
-          background-color: var(--ods-theme-input-background-color-invalid);
-        }
+      &[data-invalid] {
+        border-color: var(--ods-semantic-color-border-critical);
+        background-color: var(--ods-semantic-color-surface-critical);
       }
     }
 
@@ -41,7 +44,7 @@
     }
 
     &[data-invalid] {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
 
     &__icon {

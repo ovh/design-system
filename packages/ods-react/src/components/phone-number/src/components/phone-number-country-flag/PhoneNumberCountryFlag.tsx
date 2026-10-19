@@ -4,12 +4,10 @@ import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-cou
 import style from './phoneNumberCountryFlag.module.scss';
 
 interface PhoneNumberCountryFlagProp extends ComponentPropsWithRef<'span'> {
-  disabled?: boolean,
   isoCode: PhoneNumberCountryIsoCode | string,
 }
 
 const PhoneNumberCountryFlag: FC<PhoneNumberCountryFlagProp> = ({
-  disabled,
   isoCode,
   ...props
 }): JSX.Element => {
@@ -18,7 +16,6 @@ const PhoneNumberCountryFlag: FC<PhoneNumberCountryFlagProp> = ({
       className={ classNames(
         style['phone-number-country-flag'],
         style[`phone-number-country-flag--${isoCode}`],
-        { [style['phone-number-country-flag--disabled']]: disabled },
       )}
       { ...props } />
   );

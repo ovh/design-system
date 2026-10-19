@@ -4,7 +4,7 @@ slug: avatar
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 164
+tokens: 170
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--technical-information.txt
 ---
 
@@ -23,8 +23,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-avatar-background-color` | `var( --ods-color-primary-500 )` |
-| `--ods-avatar-text-color` | `var(--ods-color-neutral-000)` |
+| `--ods-avatar-background-color` | `var( --ods-semantic-color-surface-base )` |
+| `--ods-avatar-text-color` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-avatar-border-radius` | `50%` |
 | `--ods-avatar-size` | `24px` |
 | `--ods-avatar-object-fit` | `cover` |

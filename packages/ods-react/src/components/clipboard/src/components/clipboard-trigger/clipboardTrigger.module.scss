@@ -5,11 +5,11 @@
     }
 
     &__tooltip {
-      --clipboard-trigger-tooltip-column-gap: calc(var(--ods-theme-column-gap) / 2);
+      --clipboard-trigger-tooltip-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 
       margin: 0;
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: var(--ods-semantic-font-weight-medium);
 
       &--success {
         display: flex;

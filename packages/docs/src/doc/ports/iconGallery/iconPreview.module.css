@@ -1,19 +1,19 @@
 .icon-preview {
   display: flex;
   flex-flow: column;
-  row-gap: var(--ods-theme-row-gap);
+  row-gap: var(--ods-semantic-size-space-gap-block);
   width: 80px;
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
 }
 
 .icon-preview--selected {
-  border-color: var(--ods-theme-border-color-selected);
-  background-color: var(--ods-theme-background-color-selected);
-  color: var(--ods-theme-text-color-selected);
+  border-color: var(--ods-semantic-color-border-selected-solid);
+  background-color: var(--ods-semantic-color-surface-selected-solid);
+  color: var(--ods-semantic-color-content-on-selected-solid);
 }
 
 .icon-preview--selected .icon-preview__name {
-  color: var(--ods-theme-text-color-selected);
+  color: var(--ods-semantic-color-content-on-selected-solid);
 }
 
 .icon-preview__name {

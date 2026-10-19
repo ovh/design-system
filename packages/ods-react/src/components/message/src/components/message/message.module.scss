@@ -4,7 +4,7 @@
   .message {
     $message: &;
 
-    --ods-message-close-button-text-color-primary: var(--ods-color-neutral-000);
+    --ods-message-close-button-text-color-primary: var(--ods-semantic-color-content-on-solid);
 
     @include message.ods-message();
 
@@ -23,12 +23,6 @@
 
       &#{$message}--accent {
         @include message.ods-message-variant-default('primary');
-
-        #{$message}__close {
-          &:not(:hover, :active, :focus-visible) {
-            color: var(--ods-message-close-button-text-color-primary);
-          }
-        }
       }
 
       &#{$message}--success {

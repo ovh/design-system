@@ -5,11 +5,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: range.$ods-range-label-padding-top;
-    color: var(--ods-theme-text-color);
-    font-weight: 600;
-
-    &--disabled {
-      color: var(--ods-theme-text-color-disabled);
-    }
+    color: var(--ods-semantic-color-content-text);
+    font-weight: var(--ods-semantic-font-weight-medium);
   }
 }

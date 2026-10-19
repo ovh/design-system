@@ -315,7 +315,7 @@ export const ZIndex: Story = {
       <Tooltip
         open
         overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
-        positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+        positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
         <TooltipTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>

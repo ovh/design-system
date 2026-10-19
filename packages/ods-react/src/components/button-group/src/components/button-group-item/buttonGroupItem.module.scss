@@ -2,8 +2,6 @@ $ods-button-group-item-z-index: 1;
 
 @layer ods-molecules {
   .button-group-item {
-    --ods-button-group-item-background-color-checked-disabled: var(--ods-color-neutral-500);
-
     z-index: $ods-button-group-item-z-index;
 
     &:first-child {
@@ -32,16 +30,8 @@ $ods-button-group-item-z-index: 1;
     }
 
     &[data-state="on"] {
-      &:not([data-disabled]) {
-        border-color: var(--ods-theme-background-color-selected);
-        background-color: var(--ods-theme-background-color-selected);
-      }
-
-      &[data-disabled] {
-        border-color: var(--ods-button-group-item-background-color-checked-disabled);
-        background-color: var(--ods-button-group-item-background-color-checked-disabled);
-        color: var(--ods-button-text-color-primary);
-      }
+      border-color: var(--ods-semantic-color-surface-selected-solid);
+      background-color: var(--ods-semantic-color-surface-selected-solid);
     }
 
     &[data-disabled] {

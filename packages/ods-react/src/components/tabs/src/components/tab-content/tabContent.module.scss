@@ -2,7 +2,7 @@
 
 @layer ods-molecules {
   .tab-content {
-    padding: var(--ods-theme-padding-vertical) 0;
+    padding: var(--ods-semantic-size-space-inset-block) 0;
 
     &:focus-visible {
       @include focus.ods-focus();

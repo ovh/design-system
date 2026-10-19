@@ -48,6 +48,24 @@ describe('Pagination navigation', () => {
       expect(await activate('prev-trigger')).toBe('#page-2-size-10');
     });
 
+    it('should hand linkAs the controls that lead somewhere, and only those', async() => {
+      await gotoStory(page, 'navigation/link-as');
+      await page.waitForSelector('[data-testid="link-as"]');
+
+      const rendered = await page.evaluate(() =>
+        [...document.querySelectorAll('[data-part="prev-trigger"], [data-part="item"], [data-part="next-trigger"]')]
+          .map((el) => ({ hasHref: el.hasAttribute('href'), part: el.getAttribute('data-part'), routed: el.hasAttribute('data-router-link') })));
+
+      // On the first page neither the previous trigger nor the active page has a destination.
+      expect(rendered[0]).toEqual({ hasHref: false, part: 'prev-trigger', routed: false });
+      expect(rendered[1]).toEqual({ hasHref: false, part: 'item', routed: false });
+      expect(rendered[rendered.length - 1]).toEqual({ hasHref: true, part: 'next-trigger', routed: true });
+
+      rendered.forEach(({ hasHref, routed }) => {
+        expect(routed).toBe(hasHref);
+      });
+    });
+
     it('should hit a page from anywhere in its cell, not only on the digits', async() => {
       await gotoStory(page, 'navigation/link');
       await page.waitForSelector('[data-testid="link"]');

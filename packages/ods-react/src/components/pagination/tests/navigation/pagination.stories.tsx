@@ -1,4 +1,4 @@
-import { type JSX, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, type JSX, forwardRef, useEffect, useState } from 'react';
 import { Pagination, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationPageUrlDetail } from '../../src';
 
 export default {
@@ -49,6 +49,23 @@ export const link = () => (
     data-testid="link"
     defaultPage={ 1 }
     getPageUrl={ getPageUrl }
+    totalItems={ 200 }>
+    <PaginationPages />
+  </Pagination>
+);
+
+// Stands for the link component of a routing library, and tags what it renders so that a test can
+// tell which controls were handed to it.
+const RouterLink = forwardRef<HTMLAnchorElement, ComponentPropsWithRef<'a'>>(function RouterLink(props, ref) {
+  return <a data-router-link="" ref={ ref } { ...props } />;
+});
+
+export const linkAs = () => (
+  <Pagination
+    data-testid="link-as"
+    defaultPage={ 1 }
+    getPageUrl={ getPageUrl }
+    linkAs={ RouterLink }
     totalItems={ 200 }>
     <PaginationPages />
   </Pagination>

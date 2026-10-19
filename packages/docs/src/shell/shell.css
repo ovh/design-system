@@ -23,11 +23,11 @@
   transform: translateY(-150%);
   transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
   z-index: calc(var(--ods-semantic-z-index-modal) + 1);
-  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-base);
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-brand);
   border-radius: var(--ods-semantic-size-radius-control);
   background: var(--ods-semantic-color-surface-page);
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
-  color: var(--ods-semantic-color-content-base);
+  color: var(--ods-semantic-color-content-brand);
 }
 
 .shell__skip:focus {
@@ -445,5 +445,5 @@ body {
 
 .shell__error-home {
   margin-top: var(--ods-semantic-size-space-gap-block);
-  color: var(--ods-semantic-color-content-base);
+  color: var(--ods-semantic-color-content-brand);
 }

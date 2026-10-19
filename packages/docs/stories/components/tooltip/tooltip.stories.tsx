@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { TOOLTIP_POSITION, Tooltip, type TooltipProp, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { excludeFromDemoControls } from '../../support/controls';
@@ -42,7 +42,7 @@ export const AnatomyTech: Story = {
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
-    imports: `import { ICON_NAME, Button, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, ICON_NAME, Button, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -60,7 +60,7 @@ import { useState } from 'react';`,
 
     return (
       <>
-        <Button onClick={ toggleTooltip }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleTooltip }>
           Toggle tooltip
         </Button>
 

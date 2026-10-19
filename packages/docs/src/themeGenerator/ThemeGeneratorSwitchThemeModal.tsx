@@ -1,5 +1,5 @@
 import { type JSX } from 'react';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text } from '../ods';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text } from '../ods';
 import styles from './themeGeneratorSwitchThemeModal.module.css';
 
 /* Confirmation before discarding an edited custom theme. */
@@ -27,11 +27,11 @@ const ThemeGeneratorSwitchThemeModal = ({ onCancel, onConfirm, open, targetTheme
           </Text>
 
           <div className={ styles['theme-generator-switch-theme-modal__actions'] }>
-            <Button onClick={ onCancel } variant={ BUTTON_VARIANT.outline }>
+            <Button emphasis={ BUTTON_EMPHASIS.medium } onClick={ onCancel }>
               Stay on Custom
             </Button>
 
-            <Button status={ BUTTON_STATUS.critical } onClick={ onConfirm }>
+            <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical } onClick={ onConfirm }>
               Switch to { targetLabel || 'theme' }
             </Button>
           </div>

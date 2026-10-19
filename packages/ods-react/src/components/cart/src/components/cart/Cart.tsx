@@ -3,7 +3,7 @@ import { type FC, type JSX, forwardRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { useDevice } from '../../../../../hooks/useDevice';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../button/src';
 import { CARD_STATUS, Card } from '../../../../card/src';
 import { CART_I18N, TRANSLATION } from '../../constants/cart-i18n';
 import { CartProvider, type CartRootProp, useCart } from '../../contexts/useCart';
@@ -37,6 +37,7 @@ const CartRoot: FC<CartProp> = forwardRef(({
         <Button
           aria-label={ isOpen ? translate(CART_I18N.reduceButton) : translate(CART_I18N.expandButton) }
           className={ style['cart__handle'] }
+          emphasis={ BUTTON_EMPHASIS.high }
           onClick={ toggleCart }
           { ...swipeHandler } />
       }

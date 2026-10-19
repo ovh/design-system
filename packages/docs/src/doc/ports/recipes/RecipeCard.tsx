@@ -6,7 +6,7 @@ import langTsx from '@shikijs/langs/tsx';
 import theme from '@shikijs/themes/nord';
 import Markdown from 'markdown-to-jsx';
 import { type ComponentType, memo, useMemo, useState } from 'react';
-import { BUTTON_VARIANT, Button } from '../../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../../ods-react/src/components/button/src';
 import { CARD_STATUS, Card } from '../../../../../ods-react/src/components/card/src';
 import { Code } from '../../../../../ods-react/src/components/code/src';
 import { ICON_NAME, Icon } from '../../../../../ods-react/src/components/icon/src';
@@ -78,8 +78,8 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onTogg
           <Button
             aria-expanded={ isOpen }
             aria-label={ isOpen ? `Collapse ${recipe.name}` : `Expand ${recipe.name}` }
-            onClick={ () => onToggle(recipe.name) }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            onClick={ () => onToggle(recipe.name) }>
             <Icon name={ isOpen ? ICON_NAME.chevronDown : ICON_NAME.chevronRight } />
           </Button>
         </div>

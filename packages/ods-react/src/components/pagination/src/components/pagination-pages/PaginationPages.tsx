@@ -1,7 +1,7 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { usePagination } from '../../contexts/usePagination';
 import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/PaginationButtonWithTooltip';
@@ -24,7 +24,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
       { ...props }>
       <PaginationButtonWithTooltip tooltip={ labelTooltipPrev }>
         <VendorPagination.PrevTrigger asChild>
-          <Button disabled={ disabled } variant={ BUTTON_VARIANT.ghost }>
+          <Button disabled={ disabled } emphasis={ BUTTON_EMPHASIS.low }>
             <Icon name={ ICON_NAME.chevronLeft } />
           </Button>
         </VendorPagination.PrevTrigger>
@@ -42,7 +42,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
                 key={ index }>
                 <Button
                   disabled
-                  variant={ BUTTON_VARIANT.ghost }>
+                  emphasis={ BUTTON_EMPHASIS.low }>
                   &#8230;
                 </Button>
               </VendorPagination.Ellipsis>
@@ -53,7 +53,7 @@ const PaginationPages: FC<PaginationPagesProp> = forwardRef(({
 
       <PaginationButtonWithTooltip tooltip={ labelTooltipNext }>
         <VendorPagination.NextTrigger asChild>
-          <Button disabled={ disabled } variant={ BUTTON_VARIANT.ghost }>
+          <Button disabled={ disabled } emphasis={ BUTTON_EMPHASIS.low }>
             <Icon name={ ICON_NAME.chevronRight } />
           </Button>
         </VendorPagination.NextTrigger>

@@ -442,7 +442,7 @@ You can use the `defaultValue` property to initialize the component with a value
 Example of uncontrolled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type FormEvent, useRef } from 'react';
 
 const UncontrolledForm = () => {
@@ -471,7 +471,7 @@ const UncontrolledForm = () => {
           name="input" />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -486,7 +486,7 @@ Controlled components will manage their `value` prop on their own and react to v
 Example of controlled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useState } from 'react';
 
 const ControlledForm = () => {
@@ -514,7 +514,7 @@ const ControlledForm = () => {
           value={ inputValue } />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -535,7 +535,7 @@ Regardless of the library used, you can also use a schema validator to manage yo
 These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { Controller, useForm } from 'react-hook-form';
 
 type FormData = {
@@ -583,7 +583,7 @@ const FormHookForm = () => {
           </FormField>
         )} />
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -596,7 +596,7 @@ const FormHookForm = () => {
 Here is another example using <ExternalLink href="https://formik.org">Formik</ExternalLink> library.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 
 type FormData = {
@@ -643,7 +643,7 @@ const FormFormik = () => {
         </Datepicker>
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>

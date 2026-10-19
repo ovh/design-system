@@ -1,5 +1,5 @@
 import { type ChangeEvent, type FC, type JSX, forwardRef, useRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../..//button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button, type ButtonProp } from '../../../..//button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputFileUploadButton.module.scss';
@@ -42,8 +42,8 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
         <Button
           className={className}
           data-ods="prompt-input-file-upload-button"
+          emphasis={ BUTTON_EMPHASIS.low }
           size={BUTTON_SIZE.sm}
-          variant={BUTTON_VARIANT.ghost}
           {...props}
           disabled={disabled || loading || props.disabled}
           onClick={() => inputRef.current?.click()}

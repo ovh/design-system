@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useRef, useState } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../ods-react/src/components/button/src';
 import { DIVIDER_SPACING, Divider } from '../../../../ods-react/src/components/divider/src';
 import { Editable, EditableActions, EditableCancelTrigger, EditableDisplay, EditableDisplayEmpty, EditableEditTrigger, EditableInput, EditableSubmitTrigger, type EditableProp } from '../../../../ods-react/src/components/editable/src';
 import { FormField } from '../../../../ods-react/src/components/form-field/src';
@@ -150,7 +150,7 @@ import { useState } from 'react';`,
 
 export const CustomActions: Story = {
   globals: {
-    imports: `import { BUTTON_SIZE, BUTTON_VARIANT, Button, Editable, EditableActions, EditableCancelTrigger, EditableDisplay, EditableDisplayEmpty, EditableEditTrigger, EditableInput, EditableSubmitTrigger, Input } from '@ovhcloud/ods-react';
+    imports: `import { BUTTON_EMPHASIS, BUTTON_SIZE, Button, Editable, EditableActions, EditableCancelTrigger, EditableDisplay, EditableDisplayEmpty, EditableEditTrigger, EditableInput, EditableSubmitTrigger, Input } from '@ovhcloud/ods-react';
 import { useRef, useState } from 'react';`,
   },
   parameters: {
@@ -184,17 +184,17 @@ import { useRef, useState } from 'react';`,
               editing
                 ? <>
                   <EditableSubmitTrigger asChild>
-                    <Button size={ BUTTON_SIZE.sm }>Submit</Button>
+                    <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>Submit</Button>
                   </EditableSubmitTrigger>
 
                   <EditableCancelTrigger asChild>
                     <Button
-                      size={ BUTTON_SIZE.sm }
-                      variant={ BUTTON_VARIANT.outline }>Cancel</Button>
+                      emphasis={ BUTTON_EMPHASIS.medium }
+                      size={ BUTTON_SIZE.sm }>Cancel</Button>
                   </EditableCancelTrigger>
                 </>
                 : <EditableEditTrigger asChild>
-                  <Button size={ BUTTON_SIZE.sm }>Edit</Button>
+                  <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>Edit</Button>
                 </EditableEditTrigger>
             )
           }

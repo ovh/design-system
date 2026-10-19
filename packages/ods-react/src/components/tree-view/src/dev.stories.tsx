@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { Button } from '../../button/src';
+import { BUTTON_EMPHASIS, Button } from '../../button/src';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { TreeView, type TreeViewItem, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '.';
@@ -538,7 +538,7 @@ export const InFormField = () => {
           </FormFieldError>
         ) }
       </FormField>
-      <Button onClick={ () => setIsInvalid((v) => !v) }>
+      <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setIsInvalid((v) => !v) }>
         Toggle validity
       </Button>
     </>

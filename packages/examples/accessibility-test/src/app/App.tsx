@@ -1,5 +1,5 @@
 import {
-  BUTTON_STATUS, BUTTON_VARIANT, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_STATUS, TAG_STATUS, TEXT_PRESET,
+  BUTTON_EMPHASIS, BUTTON_STATUS, CARD_STATUS, DRAWER_POSITION, ICON_NAME, MESSAGE_STATUS, TAG_STATUS, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Avatar,
   Badge,
@@ -306,46 +306,46 @@ function App(): ReactElement {
         <section>
           <h1>Button</h1>
 
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Clear
           </Button>
 
-          <Button loading>
+          <Button emphasis={ BUTTON_EMPHASIS.high } loading>
             Loading
           </Button>
 
-          <Button aria-label='Clear'>
+          <Button aria-label='Clear' emphasis={ BUTTON_EMPHASIS.high }>
             <Icon name={ ICON_NAME.xmark } />
           </Button>
 
-          <Button aria-labelledby="filter-btn">
+          <Button aria-labelledby="filter-btn" emphasis={ BUTTON_EMPHASIS.high }>
             <Icon name={ICON_NAME.filter} />
           </Button>
           <span id="filter-btn">Filter your search results</span>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical }>Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.neutral }>Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.brand }>Brand</Button>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical } variant={ BUTTON_VARIANT.ghost }>Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral } variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand } variant={ BUTTON_VARIANT.ghost }>Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.critical }>Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.neutral }>Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.brand }>Brand</Button>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical } variant={ BUTTON_VARIANT.outline }>Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral } variant={ BUTTON_VARIANT.outline }>Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand } variant={ BUTTON_VARIANT.outline }>Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.critical }>Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.neutral }>Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.brand }>Brand</Button>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical } size="sm">Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral } size="sm">Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand } size="sm">Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical } size="sm">Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.neutral } size="sm">Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.brand } size="sm">Brand</Button>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical } size="sm" variant={ BUTTON_VARIANT.ghost }>Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral } size="sm" variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand } size="sm" variant={ BUTTON_VARIANT.ghost }>Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.critical } size="sm">Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.neutral } size="sm">Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.low } status={ BUTTON_STATUS.brand } size="sm">Brand</Button>
           <br /><br />
-          <Button status={ BUTTON_STATUS.critical } size="sm" variant={ BUTTON_VARIANT.outline }>Critical</Button>
-          <Button status={ BUTTON_STATUS.neutral } size="sm" variant={ BUTTON_VARIANT.outline }>Neutral</Button>
-          <Button status={ BUTTON_STATUS.brand } size="sm" variant={ BUTTON_VARIANT.outline }>Brand</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.critical } size="sm">Critical</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.neutral } size="sm">Neutral</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.medium } status={ BUTTON_STATUS.brand } size="sm">Brand</Button>
         </section>
 
         <section>
@@ -596,7 +596,7 @@ function App(): ReactElement {
 
           <Command>
             <CommandTrigger asChild>
-              <Button>Open command</Button>
+              <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
             </CommandTrigger>
             <CommandContent aria-label="Command palette">
               <CommandFilter aria-label="Search command palette" placeholder="Search..." />
@@ -1124,7 +1124,7 @@ function App(): ReactElement {
 
           <Popover>
             <PopoverTrigger asChild>
-              <Button aria-label="Open menu">
+              <Button aria-label="Open menu" emphasis={ BUTTON_EMPHASIS.high }>
                 <Icon name={ ICON_NAME.ellipsisVertical } />
               </Button>
             </PopoverTrigger>
@@ -1135,10 +1135,10 @@ function App(): ReactElement {
               <div
                 role="menu"
                 style={{ display: 'flex', flexDirection: 'column' }}>
-                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
-                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+                <Button emphasis={BUTTON_EMPHASIS.low} role="menuitem">Button</Button>
+                <Button emphasis={BUTTON_EMPHASIS.low} role="menuitem">Button</Button>
                 <Divider style={{ width: '100%' }} />
-                <Button status={BUTTON_STATUS.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+                <Button emphasis={BUTTON_EMPHASIS.low} status={BUTTON_STATUS.critical} role="menuitem">Button</Button>
               </div>
             </PopoverContent>
           </Popover>

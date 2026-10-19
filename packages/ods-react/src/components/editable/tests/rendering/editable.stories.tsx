@@ -1,4 +1,4 @@
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../button/src';
+import { BUTTON_COLOR, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../button/src';
 import { Editable, EditableCancelTrigger, EditableDisplay, EditableEditTrigger, EditableInput, EditableSubmitTrigger } from '../../src';
 
 export default {
@@ -35,26 +35,39 @@ export const triggers = () => (
     <EditableCancelTrigger
       data-testid="cancel-status"
       status={ BUTTON_STATUS.critical } />
+    <EditableCancelTrigger
+      data-testid="cancel-emphasis"
+      emphasis={ BUTTON_EMPHASIS.high } />
 
     <Button
       color={ BUTTON_COLOR.success }
       data-testid="button-color-success"
-      size={ BUTTON_SIZE.sm }
-      variant={ BUTTON_VARIANT.ghost } />
+      emphasis={ BUTTON_EMPHASIS.low }
+      size={ BUTTON_SIZE.sm } />
     <Button
       data-testid="button-status-brand"
+      emphasis={ BUTTON_EMPHASIS.low }
       size={ BUTTON_SIZE.sm }
-      status={ BUTTON_STATUS.brand }
-      variant={ BUTTON_VARIANT.ghost } />
+      status={ BUTTON_STATUS.brand } />
     <Button
       data-testid="button-status-critical"
+      emphasis={ BUTTON_EMPHASIS.low }
       size={ BUTTON_SIZE.sm }
-      status={ BUTTON_STATUS.critical }
-      variant={ BUTTON_VARIANT.ghost } />
+      status={ BUTTON_STATUS.critical } />
     <Button
       data-testid="button-status-neutral"
+      emphasis={ BUTTON_EMPHASIS.low }
       size={ BUTTON_SIZE.sm }
-      status={ BUTTON_STATUS.neutral }
-      variant={ BUTTON_VARIANT.ghost } />
+      status={ BUTTON_STATUS.neutral } />
+    <Button
+      data-testid="button-status-brand-medium"
+      emphasis={ BUTTON_EMPHASIS.medium }
+      size={ BUTTON_SIZE.sm }
+      status={ BUTTON_STATUS.brand } />
+    <Button
+      data-testid="button-status-neutral-high"
+      emphasis={ BUTTON_EMPHASIS.high }
+      size={ BUTTON_SIZE.sm }
+      status={ BUTTON_STATUS.neutral } />
   </Editable>
 );

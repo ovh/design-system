@@ -1,7 +1,7 @@
 import { FileUpload, useFileUploadContext } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
 import { type FC, type JSX, useId, useMemo } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { FILE_UPLOAD_VARIANT, type FileUploadVariant } from '../../constants/file-upload-variant';
 import style from './fileUploadDropzone.module.scss';
@@ -87,8 +87,8 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
         <FileUpload.Trigger asChild>
           <Button
             aria-describedby={ hasRule ? ruleBlockId : '' }
-            size={ BUTTON_SIZE.md }
-            variant={ BUTTON_VARIANT.ghost }>
+            emphasis={ BUTTON_EMPHASIS.low }
+            size={ BUTTON_SIZE.md }>
             <Icon name={ ICON_NAME.upload } /> { triggerLabel }
           </Button>
         </FileUpload.Trigger>

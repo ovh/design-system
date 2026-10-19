@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as OdsComponents from '../../../ods-react/src/components/index';
 import * as ShikiTypescript from '@shikijs/langs/typescript';
 import * as ShikiNord from '@shikijs/themes/nord';
+import * as ReactRouterDom from 'react-router-dom';
 import { formatPrice, formatRelativeTime } from '../../../ods-react/src/utils/format';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { APP_ROOT } from '../appBase';
@@ -44,6 +45,8 @@ export default function Demo() {
 const EXTRA_MODULES: Record<string, unknown> = {
   '@shikijs/langs/typescript': ShikiTypescript,
   '@shikijs/themes/nord': ShikiNord,
+  // The docs' own router instance, so that a snippet reads and drives the sandbox page URL.
+  'react-router-dom': ReactRouterDom,
 };
 
 function evaluate(js: string): ComponentType {

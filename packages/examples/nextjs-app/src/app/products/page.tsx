@@ -13,8 +13,11 @@ interface ProductsPageProp {
    listing. */
 export default async function ProductsPage({ searchParams }: ProductsPageProp): Promise<JSX.Element> {
   const { page: rawPage, size: rawSize } = await searchParams;
-  const page = Number(rawPage ?? 1);
   const pageSize = Number(rawSize ?? 10);
+  const totalPages = Math.ceil(TOTAL_ITEMS / pageSize);
+  // Clamped: from an out of range page the previous link would count down through pages that do
+  // not exist either, see "Wiring link mode" in the Pagination documentation.
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), totalPages);
   const firstItem = (page - 1) * pageSize + 1;
   const lastItem = Math.min(firstItem + pageSize - 1, TOTAL_ITEMS);
 
@@ -23,7 +26,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProp): 
       <h1>Products</h1>
 
       <p>
-        Page { page } of { Math.ceil(TOTAL_ITEMS / pageSize) }, rendered on the server.
+        Page { page } of { totalPages }, rendered on the server.
       </p>
 
       <ul>

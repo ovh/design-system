@@ -19,8 +19,11 @@ function ProductList(): ReactElement {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   // The whole state of the pagination is read back from the URL, nothing is held beside it.
-  const page = Number(searchParams.get('page') ?? 1);
   const pageSize = Number(searchParams.get('size') ?? 10);
+  const totalPages = Math.ceil(TOTAL_ITEMS / pageSize);
+  // Clamped: from an out of range page the previous link would count down through pages that do
+  // not exist either, see "Wiring link mode" in the Pagination documentation.
+  const page = Math.min(Math.max(Number(searchParams.get('page')) || 1, 1), totalPages);
 
   /* The pages are links, so they navigate on their own. The two controls below are not, and have
      no href for the browser to follow: they report, and the application navigates to the URL
@@ -42,7 +45,7 @@ function ProductList(): ReactElement {
       <h1>Products</h1>
 
       <p>
-        Page { page } of { Math.ceil(TOTAL_ITEMS / pageSize) }, showing items { firstItem } to{ ' ' }
+        Page { page } of { totalPages }, showing items { firstItem } to{ ' ' }
         { lastItem }.
       </p>
 

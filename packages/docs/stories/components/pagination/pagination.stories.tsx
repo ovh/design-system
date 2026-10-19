@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { type ComponentPropsWithRef, useState } from 'react';
+import React, { type ComponentPropsWithRef, useMemo, useState } from 'react';
 import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, type PaginationPageUrlDetail, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { excludeFromDemoControls } from '../../support/controls';
@@ -123,6 +123,13 @@ import { useSearchParams } from 'react-router-dom';`,
   },
   render: ({}) => {
     const [searchParams] = useSearchParams();
+    const totalItems = 500;
+    // The URL can hold anything: a size that is not a positive integer falls back on 10, and the
+    // page is kept within the listing.
+    const size = Number(searchParams.get('size'));
+    const pageSize = Number.isSafeInteger(size) && size > 0 ? size : 10;
+    const requestedPage = Number(searchParams.get('page'));
+    const page = Number.isInteger(requestedPage) ? Math.min(Math.max(requestedPage, 1), Math.ceil(totalItems / pageSize)) : 1;
 
     function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
       return `?page=${page}&size=${pageSize}`;
@@ -132,9 +139,9 @@ import { useSearchParams } from 'react-router-dom';`,
       <Pagination
         aria-label="Products pagination"
         getPageUrl={ getPageUrl }
-        page={ Number(searchParams.get('page') ?? 1) }
-        pageSize={ Number(searchParams.get('size') ?? 10) }
-        totalItems={ 500 }>
+        page={ page }
+        pageSize={ pageSize }
+        totalItems={ totalItems }>
         <PaginationPages />
       </Pagination>
     );
@@ -144,7 +151,7 @@ import { useSearchParams } from 'react-router-dom';`,
 export const WithReactRouter: Story = {
   globals: {
     imports: `import { Pagination, type PaginationPageUrlDetail, PaginationPages } from '@ovhcloud/ods-react';
-import { type ComponentPropsWithRef } from 'react';
+import { type ComponentPropsWithRef, useMemo } from 'react';
 import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
   },
   tags: ['!dev'],
@@ -155,27 +162,36 @@ import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
   },
   render: ({}) => {
     const [searchParams] = useSearchParams();
+    const totalItems = 500;
+    // The URL can hold anything: a size that is not a positive integer falls back on 10, and the
+    // page is kept within the listing.
+    const size = Number(searchParams.get('size'));
+    const pageSize = Number.isSafeInteger(size) && size > 0 ? size : 10;
+    const requestedPage = Number(searchParams.get('page'));
+    const page = Number.isInteger(requestedPage) ? Math.min(Math.max(requestedPage, 1), Math.ceil(totalItems / pageSize)) : 1;
 
     function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
       return `?page=${page}&size=${pageSize}`;
     }
 
-    function PaginationLink({ href, ...props }: ComponentPropsWithRef<'a'>) {
+    // Created once: a new component on every render would remount the links, and lose the focus
+    // of the one just activated. In an application, declare it at module scope.
+    const PaginationLink = useMemo(() => function PaginationLink({ href, ...props }: ComponentPropsWithRef<'a'>) {
       return (
         <RouterLink
           to={ href ?? '' }
           { ...props } />
       );
-    }
+    }, []);
 
     return (
       <Pagination
         aria-label="Products pagination"
         getPageUrl={ getPageUrl }
         linkAs={ PaginationLink }
-        page={ Number(searchParams.get('page') ?? 1) }
-        pageSize={ Number(searchParams.get('size') ?? 10) }
-        totalItems={ 500 }>
+        page={ page }
+        pageSize={ pageSize }
+        totalItems={ totalItems }>
         <PaginationPages />
       </Pagination>
     );
@@ -196,8 +212,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom';`,
   render: ({}) => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const page = Number(searchParams.get('page') ?? 1);
-    const pageSize = Number(searchParams.get('size') ?? 10);
+    const totalItems = 500;
+    // The URL can hold anything: a size that is not a positive integer falls back on 10, and the
+    // page is kept within the listing.
+    const size = Number(searchParams.get('size'));
+    const pageSize = Number.isSafeInteger(size) && size > 0 ? size : 10;
+    const requestedPage = Number(searchParams.get('page'));
+    const page = Number.isInteger(requestedPage) ? Math.min(Math.max(requestedPage, 1), Math.ceil(totalItems / pageSize)) : 1;
 
     function getPageUrl({ page, pageSize }: PaginationPageUrlDetail) {
       return `?page=${page}&size=${pageSize}`;
@@ -222,7 +243,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';`,
         onPageSizeChange={ handlePageSizeChange }
         page={ page }
         pageSize={ pageSize }
-        totalItems={ 500 }>
+        totalItems={ totalItems }>
         <PaginationPageSizeSelector />
 
         <PaginationPages />

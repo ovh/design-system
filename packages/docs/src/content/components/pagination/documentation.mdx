@@ -129,7 +129,7 @@ Three consequences follow from the URL being in charge:
 
 - **`onPageChange` does not fire when a link is followed.** The browser already did the work, and the new page is in the URL. It still fires for the controls that are not links, which have no href to follow: navigate to the matching URL from there. The same goes for `onPageSizeChange`.
 -  **Never derive `page` from a callback during a click.** There is nothing to derive it from any more, which is the point: were the component to move mid-click, it would rewrite the previous / next href before the browser followed it, and the user would land one page further than the link they clicked.
-- **Clamp the page read from the URL.** A URL can hold any number, and the component renders the page it is given. On a listing of 20 pages, `?page=99` leaves the bar without an active page and its "Previous" link pointing to page 98, then 97, down to 21: a trail of pages that do not exist, which crawlers follow. Bring the page back between 1 and the last page before passing it.
+- **Validate what you read from the URL.** A URL can hold anything, and the component renders what it is given. On a listing of 20 pages, `?page=99` leaves the bar without an active page and its "Previous" link pointing to page 98, then 97, down to 21: a trail of pages that do not exist, which crawlers follow. Fall back on a default size when the size is not a positive integer, and bring the page back between 1 and the last page before passing them.
 
 <Heading label="The controls that are not links" level={ 4 } />
 

@@ -11,6 +11,5 @@ export { Message };
 export { MessageBody, MessageIcon };
 export type { MessageProp, MessageBodyProp, MessageIconProp };
 export { MESSAGE_I18N } from './constants/message-i18n';
-export { MESSAGE_COLOR, MESSAGE_COLORS, type MessageColor } from './constants/message-color';
 export { MESSAGE_EMPHASIS, MESSAGE_EMPHASES, type MessageEmphasis } from './constants/message-emphasis';
 export { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from './constants/message-status';

@@ -5,10 +5,10 @@
 import type { BadgeProp } from '../../src/components/badge/src';
 
 describe('emphasis prop typings', () => {
-  it('should accept every emphasis, next to status and the deprecated color', () => {
+  it('should accept every emphasis, next to status', () => {
     const high: BadgeProp = { emphasis: 'high', status: 'critical' };
     const medium: BadgeProp = { emphasis: 'medium' };
-    const low: BadgeProp = { color: 'primary', emphasis: 'low' };
+    const low: BadgeProp = { emphasis: 'low', status: 'accent' };
 
     expect([high, medium, low]).toHaveLength(3);
   });

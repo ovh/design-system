@@ -5,10 +5,10 @@
 import type { MESSAGE_EMPHASIS, MessageEmphasis, MessageProp } from '../../src/components/message/src';
 
 describe('Message emphasis prop typings', () => {
-  it('should accept every emphasis, next to status and the deprecated color', () => {
+  it('should accept every emphasis, next to status', () => {
     const high: MessageProp = { emphasis: 'high', status: 'critical' };
     const medium: MessageProp = { emphasis: 'medium' };
-    const low: MessageProp = { color: 'primary', emphasis: 'low' };
+    const low: MessageProp = { emphasis: 'low', status: 'accent' };
 
     expect([high, medium, low]).toHaveLength(3);
   });

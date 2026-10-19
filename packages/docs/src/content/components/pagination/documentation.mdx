@@ -125,10 +125,11 @@ In link mode the URL holds the state of the **Pagination**, the active page and 
 <Canvas story="Links" />
 
 
-Two consequences follow from the URL being in charge:
+Three consequences follow from the URL being in charge:
 
 - **`onPageChange` does not fire when a link is followed.** The browser already did the work, and the new page is in the URL. It still fires for the controls that are not links, which have no href to follow: navigate to the matching URL from there. The same goes for `onPageSizeChange`.
 -  **Never derive `page` from a callback during a click.** There is nothing to derive it from any more, which is the point: were the component to move mid-click, it would rewrite the previous / next href before the browser followed it, and the user would land one page further than the link they clicked.
+- **Clamp the page read from the URL.** A URL can hold any number, and the component renders the page it is given. On a listing of 20 pages, `?page=99` leaves the bar without an active page and its "Previous" link pointing to page 98, then 97, down to 21: a trail of pages that do not exist, which crawlers follow. Bring the page back between 1 and the last page before passing it.
 
 <Heading label="The controls that are not links" level={ 4 } />
 
@@ -154,7 +155,7 @@ A single page application does want more, as a full document load would throw it
 
 When tabbing through the page, focus moves sequentially through all interactive elements in the **Pagination** component.
 
-The current page is not interactive, whether it is a Button or a link.
+In link mode the current page is plain text, out of the tab order. In Button mode it remains a focusable Button that does nothing when activated.
 
 Navigation controls that lead nowhere (e.g., “Previous” on the first page) are skipped in the tab order.
 

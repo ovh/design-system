@@ -174,6 +174,7 @@ import { Link as RouterLink, useSearchParams } from 'react-router-dom';`,
         getPageUrl={ getPageUrl }
         linkAs={ PaginationLink }
         page={ Number(searchParams.get('page') ?? 1) }
+        pageSize={ Number(searchParams.get('size') ?? 10) }
         totalItems={ 500 }>
         <PaginationPages />
       </Pagination>

@@ -1,5 +1,4 @@
-// The rhythm of the whole bar, shared with the pagination items.
-$ods-pagination-trigger-size: 40px;
+@use '../../../../../style/button';
 
 @layer ods-molecules {
   .pagination-pages {
@@ -13,8 +12,8 @@ $ods-pagination-trigger-size: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $ods-pagination-trigger-size;
-      height: $ods-pagination-trigger-size;
+      width: button.$ods-button-size-md;
+      height: button.$ods-button-size-md;
     }
 
     &__trigger {
@@ -24,8 +23,8 @@ $ods-pagination-trigger-size: 40px;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        min-width: $ods-pagination-trigger-size;
-        height: $ods-pagination-trigger-size;
+        min-width: button.$ods-button-size-md;
+        height: button.$ods-button-size-md;
         content: "";
       }
     }
@@ -35,8 +34,8 @@ $ods-pagination-trigger-size: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $ods-pagination-trigger-size;
-      height: $ods-pagination-trigger-size;
+      width: button.$ods-button-size-md;
+      height: button.$ods-button-size-md;
       color: var(--ods-theme-text-color-disabled);
     }
   }

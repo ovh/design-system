@@ -1,12 +1,10 @@
+@use '../../../../../style/button';
 @use '../../../../../style/link';
-
-// The cell size of the whole bar, shared by the page buttons, the page links and the ellipsis.
-$ods-pagination-item-size: 40px;
 
 .pagination-item {
   display: flex;
   justify-content: center;
-  width: $ods-pagination-item-size;
+  width: button.$ods-button-size-md;
 
   &[data-selected] {
     &:not(:disabled) {
@@ -22,8 +20,8 @@ $ods-pagination-item-size: 40px;
   &--link {
     align-items: center;
     width: auto;
-    min-width: $ods-pagination-item-size;
-    height: $ods-pagination-item-size;
+    min-width: button.$ods-button-size-md;
+    height: button.$ods-button-size-md;
   }
 
   &__link {
@@ -33,8 +31,8 @@ $ods-pagination-item-size: 40px;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
-      min-width: $ods-pagination-item-size;
-      height: $ods-pagination-item-size;
+      min-width: button.$ods-button-size-md;
+      height: button.$ods-button-size-md;
       content: "";
     }
   }

@@ -50,8 +50,8 @@ const PaginationItem: FC<PaginationItemProp> = ({
   const { getPageUrl, linkAs } = usePagination();
   const isCurrentPage = currentPage === page.value;
 
-  // Link mode. The item is a cell holding the rhythm of the bar around a link that hugs its
-  // digits, see paginationItem.module.scss.
+  // Link mode. The item is a cell the size of a page button around a link that hugs its digits,
+  // see paginationItem.module.scss.
   if (getPageUrl) {
     return (
       <span className={ classNames(style['pagination-item'], style['pagination-item--link']) }>

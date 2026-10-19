@@ -59,10 +59,10 @@ The **Spinner** is primary by default, for contexts where it is tied to the main
 
 To use another color, set the `--ods-spinner-color` CSS custom property on the **Spinner**, through its `className`, or on a container of yours, for example:
 
-* `var(--ods-theme-neutral-color)`: for secondary or subtle loading indicators, commonly displayed in disabled parent components to indicate background activity without drawing too much attention
+* `var(--ods-semantic-color-content-neutral)`: for secondary or subtle loading indicators, commonly displayed in disabled parent components to indicate background activity without drawing too much attention
 * `currentColor`: to follow the text color around the **Spinner**, for example on a dark or colored background
 
-Avoid a global `[data-ods="spinner"]` selector, which would also reach the Spinners displayed by other components (Button, Input, FileUpload). A container also reaches the loading Spinners of the **Input** (when enabled) and **FileUpload** placed inside it; only the **Button** and disabled **Input** Spinners keep their neutral color. In TypeScript, setting the custom property through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`), which a `className` avoids.
+Avoid a global `[data-ods="spinner"]` selector, which would also reach the Spinners displayed by other components (Button, Input, FileUpload). A container also reaches the loading Spinners of the **Input** and **FileUpload** placed inside it; only the **Button** Spinner keeps its own color, the text color of the button. In TypeScript, setting the custom property through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`), which a `className` avoids.
 
 <Heading label="Navigation" level={ 2 } />
 
@@ -83,7 +83,7 @@ Explanations:
 - `aria-live="polite"` ensures that the loading message is announced when necessary without interrupting.
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends.
 
 <Message status="information" dismissible={false} style={{ width: '100%' }}>
   <MessageIcon name="circle-info" />
@@ -99,9 +99,9 @@ If the **Spinner** is associated with a specific loading action, it should be ex
 <Canvas story="AccessibilityAriaLabel" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce the label, the spinner and its current state.
 
 <Canvas story="AccessibilityAriaLabelledBy" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce the label, the spinner and its current state.

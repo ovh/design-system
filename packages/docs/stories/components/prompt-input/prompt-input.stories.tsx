@@ -242,7 +242,7 @@ import { useState } from 'react';`,
         >
           <PromptInputControls>
             <PromptInputFileUploadButton aria-label="Attach a file" />
-            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, rowGap: "var(--ods-theme-row-gap)" }}>
+            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, rowGap: "var(--ods-semantic-size-space-gap-block)" }}>
               <PromptInputTextControl aria-label="Ask someone about something…" />
               <Divider style={{ width: "100%" }} />
               <FormFieldHelper>

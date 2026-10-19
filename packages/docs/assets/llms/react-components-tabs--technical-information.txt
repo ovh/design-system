@@ -4,7 +4,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1026
+tokens: 1112
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -62,35 +62,35 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tab-list-background-color-switch` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-list-border-color` | `var(--ods-color-neutral-100)` |
-| `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-theme-border-radius) * 1.25)` |
-| `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-theme-border-radius) * 0.75)` |
-| `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-theme-border-radius) / 2)` |
+| `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-semantic-size-radius-container) * 1.25)` |
+| `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-semantic-size-radius-container) * 0.75)` |
+| `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-list-border-width` | `2px` |
-| `--ods-tab-margin-horizontal-switch-md` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-margin-horizontal-switch-sm` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-margin-horizontal-switch-xs` | `calc(var(--ods-theme-padding-horizontal) / 4)` |
-| `--ods-tab-margin-vertical-switch-md` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-tab-margin-vertical-switch-sm` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-tab-margin-vertical-switch-xs` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-tab-padding-horizontal-md` | `calc(var(--ods-theme-padding-horizontal) * 1.5)` |
-| `--ods-tab-padding-horizontal-sm` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tab-padding-horizontal-xs` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-tab-padding-vertical-md` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-tab-padding-vertical-sm` | `calc(var(--ods-theme-padding-horizontal) * 0.75)` |
-| `--ods-tab-padding-vertical-xs` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-tab-background-color-hover` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-background-color-selected-switch` | `var(--ods-color-neutral-000)` |
-| `--ods-tab-background-color-selected-disabled-switch` | `var(--ods-color-neutral-500)` |
+| `--ods-tab-margin-horizontal-switch-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 4)` |
+| `--ods-tab-margin-vertical-switch-md` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-xs` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-tab-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
+| `--ods-tab-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-horizontal-xs` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-background-color-hover` | `var(--ods-semantic-color-surface-neutral-recessed)` |
+| `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tab-background-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-neutral)` |
 | `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
-| `--ods-tab-border-color-disabled` | `var(--ods-color-neutral-100)` |
-| `--ods-tab-border-color-hover` | `var(--ods-color-neutral-050)` |
-| `--ods-tab-border-color-selected` | `var(--ods-color-primary-500)` |
-| `--ods-tab-border-color-selected-disabled` | `var(--ods-color-neutral-500)` |
-| `--ods-tab-border-color-selected-disabled-switch` | `var(--ods-color-neutral-000)` |
-| `--ods-tab-border-radius-md` | `var(--ods-theme-border-radius)` |
-| `--ods-tab-border-radius-sm` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-tab-border-radius-xs` | `calc(var(--ods-theme-border-radius) / 4)` |
-| `--ods-tab-text-color-hover` | `var(--ods-color-primary-500)` |
-| `--ods-tab-text-color-selected` | `var(--ods-color-primary-500)` |
+| `--ods-tab-border-color-disabled` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-readonly)` |
+| `--ods-tab-border-color-selected` | `var(--ods-semantic-color-border-base)` |
+| `--ods-tab-border-color-selected-disabled` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-tab-border-color-selected-disabled-switch` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
+| `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-base)` |
+| `--ods-tab-text-color-selected` | `var(--ods-semantic-color-content-base)` |

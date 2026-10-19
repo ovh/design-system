@@ -18,7 +18,7 @@ interface IconDetailsProp {
 const COLOR_VARIANTS = ['primary', 'critical', 'neutral', 'success', 'warning'];
 
 /* The copy tooltips must clear the drawer overlay. */
-const OVERLAY_POSITIONER = { zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)' };
+const OVERLAY_POSITIONER = { zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 2)' };
 
 const IconDetails = ({ aliases, name, nameKey, onClose }: IconDetailsProp) => {
   const [color, setColor] = useState<string>();

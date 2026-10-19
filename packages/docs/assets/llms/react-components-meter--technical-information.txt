@@ -4,7 +4,7 @@ slug: meter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 276
+tokens: 283
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--technical-information.txt
 ---
 
@@ -31,6 +31,6 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-meter-background-color-critical` | `var(--ods-theme-critical-color)` |
-| `--ods-meter-background-color-normal` | `var(--ods-theme-primary-color)` |
-| `--ods-meter-background-color-warning` | `var(--ods-theme-warning-color)` |
+| `--ods-meter-background-color-critical` | `var(--ods-semantic-color-surface-critical)` |
+| `--ods-meter-background-color-normal` | `var(--ods-semantic-color-surface-base)` |
+| `--ods-meter-background-color-warning` | `var(--ods-semantic-color-surface-warning)` |

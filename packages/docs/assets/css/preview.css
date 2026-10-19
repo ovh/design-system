@@ -44,7 +44,7 @@ body > #storybook-docs {
 pre * {
   line-height: 19px;
   color: #fff;
-  font-family: var(--ods-font-family-code);
+  font-family: var(--ods-semantic-font-family-code);
   font-size: 13px;
 }
 

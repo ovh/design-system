@@ -4181,7 +4181,6 @@ export { PhoneNumberControl, type PhoneNumberControlProp, };
 import { ComponentPropsWithRef, FC } from 'react';
 import { PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 interface PhoneNumberCountryFlagProp extends ComponentPropsWithRef<'span'> {
-    disabled?: boolean;
     isoCode: PhoneNumberCountryIsoCode | string;
 }
 declare const PhoneNumberCountryFlag: FC<PhoneNumberCountryFlagProp>;
@@ -5591,7 +5590,6 @@ export { SelectGroup, type SelectGroupProp, };
 // ==================== components/select/src/components/select-merged-selection/SelectMergedSelection.d.ts ====================
 import { FC } from 'react';
 interface SelectMergedSelectionProp {
-    disabled?: boolean;
     multipleSelectionLabel?: string;
     total: number;
 }

@@ -7,5 +7,5 @@
 }
 
 .custom-radio-label {
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }

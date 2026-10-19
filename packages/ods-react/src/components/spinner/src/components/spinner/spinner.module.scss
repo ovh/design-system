@@ -19,7 +19,7 @@ $spinner-size-lg: 80px;
     height: 100%;
     // No default declared on .spinner: an override set in another layer (Button, Input) or on an ancestor
     // must win whatever the CSS loading order, the fallback gives the v19 primary rendering.
-    fill: var(--ods-spinner-color, var(--ods-theme-primary-color));
+    fill: var(--ods-spinner-color, var(--ods-semantic-color-content-accent));
 
     &--xs {
       height: $spinner-size-xs;
@@ -39,15 +39,20 @@ $spinner-size-lg: 80px;
 
     // [Deprecated] color presets, will be removed in v21
     &--neutral {
-      --ods-spinner-color: var(--ods-theme-neutral-color);
+      --ods-spinner-color: var(--ods-semantic-color-content-neutral);
     }
 
     &--primary {
-      --ods-spinner-color: var(--ods-theme-primary-color);
+      --ods-spinner-color: var(--ods-semantic-color-content-accent);
     }
 
     &__svg {
-      animation: rotate 0.8s infinite linear;
+      /*
+     * Component-level exception: the four looping indicators disagree on duration (0.8s, 900ms,
+     * 1.5s, 2s) and a rotation is tuned to its own diameter, so the semantic ladder has no loop
+     * rung at all and each of them keeps its literal duration.
+     */
+    animation: rotate 0.8s infinite linear;
       height: 100%;
     }
   }

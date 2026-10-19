@@ -92,7 +92,6 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
           ({ values }) => (
             <PhoneNumberCountryFlag
               aria-label={ values[0].split('').join(' ').toUpperCase() }
-              disabled={ disabled }
               isoCode={ values[0] } />
           )}
         id={ customId } />

@@ -1,14 +1,15 @@
 @layer ods-organisms {
   .cart {
     --ods-cart-handle-height: 4px;
-    --ods-cart-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-    --ods-cart-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+    --ods-cart-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 2);
+    --ods-cart-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) * 2);
 
     display: inline-flex;
     position: relative;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 2);
-    box-shadow: 0 2px 8px 0 rgb(0, 14, 156, 0.2);
+    row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
+    box-shadow: var(--ods-semantic-shadow-overlay);
+    background: var(--ods-semantic-color-surface-overlay);
     padding: var(--ods-cart-padding-vertical) var(--ods-cart-padding-horizontal);
 
     &__handle {

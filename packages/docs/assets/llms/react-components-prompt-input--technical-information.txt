@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1224
+tokens: 1229
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -89,12 +89,12 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-prompt-input-border-color` | `var(--ods-color-form-element-border-default)` |
-| `--ods-prompt-input-border-color-focus` | `var(--ods-color-form-element-border-focus-default)` |
-| `--ods-prompt-input-border-color-hover` | `var(--ods-color-form-element-border-hover-default)` |
-| `--ods-prompt-input-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-prompt-input-control-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 2)` |
-| `--ods-prompt-input-control-padding-horizontal` | `var(--ods-theme-input-padding-horizontal)` |
+| `--ods-prompt-input-border-color` | `var(--ods-semantic-color-border-control)` |
+| `--ods-prompt-input-border-color-focus` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-prompt-input-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
+| `--ods-prompt-input-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-prompt-input-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-prompt-input-control-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-prompt-input-control-border-color` | `transparent` |
 | `--ods-prompt-input-control-line-height` | `1.375em` |
 | `--ods-prompt-input-control-min-lines` | `1` |

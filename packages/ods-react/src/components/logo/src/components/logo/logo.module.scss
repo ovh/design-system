@@ -4,7 +4,7 @@ $logo-size-lg: 40px;
 
 @layer ods-quarks {
   .logo {
-    fill: var(--ods-theme-brand-color);
+    fill: var(--ods-semantic-color-content-brand);
 
     &--sm {
       height: $logo-size-sm;

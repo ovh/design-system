@@ -4,27 +4,25 @@
   $primary-color: #ff0004;
   $button: &;
 
-  --ods-recipe-order-button-color-active: var(--ods-color-critical-700);
-  --ods-recipe-order-button-color-hover: var(--ods-color-critical-500);
+  --ods-recipe-order-button-color-active: var(--ods-semantic-color-content-on-critical);
+  --ods-recipe-order-button-color-hover: var(--ods-semantic-color-content-critical);
   --ods-recipe-order-button-text-color: #fff;
 
   display: flex;
   flex-flow: row;
-  column-gap: calc(var(--ods-theme-column-gap) * 2);
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) * 2);
   align-items: center;
   border: 0;
-  border-radius: var(--ods-theme-border-radius);
-  padding: calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-column-gap) * 2) calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-padding-horizontal) / 2);
+  border-radius: var(--ods-semantic-size-radius-container);
+  box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
+  background: $primary-color linear-gradient(86.59deg, rgb(255, 187, 0, 0) 82.69%, rgb(255, 187, 0, 0.75) 100%);
+  padding: calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-gap-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-inset-inline) / 2);
+  color: var(--ods-recipe-order-button-text-color);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-medium);
 
   &:disabled {
-    background: var(--ods-theme-background-color-disabled);
-    color: var(--ods-theme-text-color-disabled);
-
-    #{$button}__icon {
-      color: var(--ods-theme-text-color-disabled);
-    }
+    @include style.ods-is-disabled();
   }
 
   &:focus-visible {
@@ -33,9 +31,6 @@
 
   &:not(:disabled) {
     transition: background ease .3s, box-shadow ease .3s;
-    box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
-    background: $primary-color linear-gradient(86.59deg, rgb(255, 187, 0, 0) 82.69%, rgb(255, 187, 0, 0.75) 100%);
-    color: var(--ods-recipe-order-button-text-color);
     cursor: pointer;
 
     &:focus-visible,
@@ -58,16 +53,13 @@
         color: var(--ods-recipe-order-button-color-active);
       }
     }
-
-    #{$button}__icon {
-      box-shadow: 3px 3px 6px 0 #82000040 inset, -3px -3px 6px 0 #ffd2d2b2 inset;
-    }
   }
 
   &__icon {
-    border-radius: calc(var(--ods-theme-border-radius) * .75);
+    border-radius: calc(var(--ods-semantic-size-radius-container) * .75);
+    box-shadow: 3px 3px 6px 0 #82000040 inset, -3px -3px 6px 0 #ffd2d2b2 inset;
     background-color: var(--ods-recipe-order-button-text-color);
-    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
     color: $primary-color;
     font-size: 18px;
   }

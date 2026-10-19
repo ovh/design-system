@@ -65,7 +65,7 @@ const sampleColumns: DataTableColumnDef<Person>[] = [
 export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'flex', flexDirection: 'column', rowGap: 'var(--ods-theme-row-gap)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: 'var(--ods-semantic-size-space-gap-block)' }}>
       <DataTable
         columns={ sampleColumns }
         data={ sampleData }>

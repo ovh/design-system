@@ -20,6 +20,7 @@ import { Shell, type ShellContext } from './shell/Shell';
 const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 const ThemeGenerator = lazy(() => import('./themeGenerator/ThemeGenerator').then((m) => ({ default: m.ThemeGenerator })));
+const ComponentGallery = lazy(() => import('./componentGallery/ComponentGallery').then((m) => ({ default: m.ComponentGallery })));
 
 const ComponentRoute = () => {
   const { key } = useParams();
@@ -142,6 +143,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         path: '/tools/theme-generator',
+      },
+      {
+        element: (
+          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
+            <ComponentGallery />
+          </Suspense>
+        ),
+        path: '/tools/component-gallery',
       },
       { element: <Navigate replace to="/" />, path: '*' },
     ],

@@ -8,5 +8,5 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #ffffff;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }

@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 984
+tokens: 988
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -81,5 +81,5 @@ This component extends all the native `<input>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) / 2)` |
-| `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 2)` |
+| `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |

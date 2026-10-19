@@ -1,11 +1,13 @@
+@use '../../../../../style/state';
+
 $ods-switch-height-sm: 24px;
 $ods-switch-height-md: 32px;
 
 @layer ods-atoms {
   .switch {
-    --ods-switch-background-color: var(--ods-color-neutral-100);
-    --ods-switch-border-radius: calc(var(--ods-theme-border-radius) * 2);
-    --ods-switch-column-gap: calc(var(--ods-theme-column-gap) / 2);
+    --ods-switch-background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    --ods-switch-border-radius: calc(var(--ods-semantic-size-radius-container) * 2);
+    --ods-switch-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 
     box-sizing: border-box;
     display: inline-flex;
@@ -14,6 +16,10 @@ $ods-switch-height-md: 32px;
     justify-content: center;
     border-radius: var(--ods-switch-border-radius);
     background-color: var(--ods-switch-background-color);
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
 
     &--sm {
       height: $ods-switch-height-sm;

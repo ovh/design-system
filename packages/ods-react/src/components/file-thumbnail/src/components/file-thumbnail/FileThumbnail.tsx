@@ -126,10 +126,7 @@ const FileThumbnail: FC<FileThumbnailProp> = forwardRef(({
               </Text>
             </div>
             : <Text
-              className={ classNames(
-                style['file-thumbnail__file__size'],
-                { [ style[ 'file-thumbnail__file__size--disabled' ] ]: disabled },
-              )}
+              className={ style['file-thumbnail__file__size'] }
               disabled={ disabled }
               preset={ TEXT_PRESET.caption }>
               { formatBytes(file.size, locale) }

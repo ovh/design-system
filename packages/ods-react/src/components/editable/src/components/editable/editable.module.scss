@@ -2,7 +2,7 @@
   .editable {
     display: inline-flex;
     flex-flow: row;
-    column-gap: var(--ods-theme-column-gap);
+    column-gap: var(--ods-semantic-size-space-gap-inline);
     align-items: flex-start;
   }
 }

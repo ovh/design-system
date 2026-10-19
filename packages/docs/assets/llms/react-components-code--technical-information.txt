@@ -4,7 +4,7 @@ slug: code
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 381
+tokens: 397
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
 ---
 
@@ -28,12 +28,12 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-code-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-code-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 1.5)` |
-| `--ods-code-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 1.5)` |
+| `--ods-code-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-code-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
+| `--ods-code-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 1.5)` |
 | `--ods-code-primary-color` | `#fff` |
 | `--ods-code-secondary-color` | `#000` |
 | `--ods-code-trigger-background-color` | `#fff` |
-| `--ods-code-trigger-background-color-active` | `var(--ods-color-neutral-700)` |
-| `--ods-code-trigger-background-color-hover` | `var(--ods-color-neutral-600)` |
+| `--ods-code-trigger-background-color-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-code-trigger-background-color-hover` | `var(--ods-semantic-color-surface-neutral)` |
 | `--ods-code-trigger-outline-color` | `#fff` |

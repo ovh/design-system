@@ -28,7 +28,7 @@
   cursor: pointer;
   padding: 4px 8px;
   color: #FFFFFF;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-clipboard-trigger:hover {

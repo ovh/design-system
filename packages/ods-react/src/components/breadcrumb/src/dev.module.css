@@ -8,5 +8,5 @@
 
 .custom-breadcrumb-link {
   color: #2b8000;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }

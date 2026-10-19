@@ -1,7 +1,7 @@
 .data-grid-with-query-filter {
   display: flex;
   flex-flow: column;
-  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
 
   &__toolbar {
     display: flex;
@@ -13,7 +13,7 @@
 
     &__filters {
       display: flex;
-      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
       align-items: center;
 
       &__tags {

@@ -15,6 +15,7 @@ import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
 import { ChartColorCards } from './ports/chartColorCards/ChartColorCards';
+import { cx } from './ports/cx';
 import { DesignTokens } from './ports/designTokens/DesignTokens';
 import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
@@ -33,7 +34,11 @@ const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9
 const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
   const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
   return (
-    <Text as={ `h${level}` } className="doc__heading" id={ slugify(label) } preset={ presets[level] }>
+    <Text
+      as={ `h${level}` }
+      className={ cx('doc__heading', `doc__heading--level-${level}`) }
+      id={ slugify(label) }
+      preset={ presets[level] }>
       { label }{ children }
     </Text>
   );

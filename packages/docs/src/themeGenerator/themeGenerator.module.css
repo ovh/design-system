@@ -1,9 +1,9 @@
 .theme-generator {
   display: grid;
   grid-template-rows: max-content 1fr;
-  border: solid 1px var(--ods-color-neutral-200);
-  border-radius: var(--ods-border-radius-md);
-  background-color: var(--ods-theme-background-color);
+  border: solid 1px var(--ods-semantic-color-border-neutral-subtle);
+  border-radius: var(--ods-semantic-size-radius-container);
+  background-color: var(--ods-semantic-color-surface-page);
   height: calc(100dvh - 130px);
   overflow: hidden;
 }
@@ -21,7 +21,7 @@
   column-gap: 8px;
   align-items: center;
   justify-content: space-between;
-  border-bottom: solid 1px var(--ods-color-neutral-200);
+  border-bottom: solid 1px var(--ods-semantic-color-border-neutral-subtle);
   padding: 4px 8px;
 }
 

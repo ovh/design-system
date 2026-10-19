@@ -247,7 +247,7 @@ export const WithOnSelect: Story = {
         </Command.Content>
       </Command>
 
-      <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} />
+      <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)' }} />
     </>
   ),
 };
@@ -316,7 +316,7 @@ export const AnatomyTech: Story = {
     <div style={{
       display: 'flex',
       flexFlow: 'column',
-      rowGap: 'var(--ods-theme-row-gap)',
+      rowGap: 'var(--ods-semantic-size-space-gap-block)',
       alignItems: 'start',
       zIndex: 0,
       position: 'relative'

@@ -93,11 +93,11 @@ These are unchanged by the React version — they apply the same way on React 18
 
 The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
 
-`--ods-theme-font-family` and `--ods-font-family-default` now start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
 
-If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-theme-font-family)`, or `'Source Sans 3'`, instead. In particular:
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
 
-- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines (to inherit the ODS default) or replace their value.
+- **Every theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`, even if you never changed the font: remove these two lines, v20 no longer reads them. To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` instead.
 - **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
 - The values exposed by `@ovhcloud/ods-themes/default/tokens` change the same way.
 
@@ -111,7 +111,7 @@ body {
 **after**
 ```css
 body {
-  font-family: var(--ods-theme-font-family);
+  font-family: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -191,7 +191,8 @@ import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
 <Heading label="Card" level={ 3 } />
 
 - `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
-- `color="primary"`: use `status="accent"`. `accent` is the default, so the rendering of a Card without `color` is unchanged.
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 rendering.
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
 - `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
 
@@ -229,7 +230,7 @@ import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
 import { Divider } from '@ovhcloud/ods-react';
 
 <Divider />
-<Divider style={{ backgroundColor: 'var(--ods-color-neutral-700)' }} />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
 ```
 
 <Heading label="Message" level={ 3 } />
@@ -294,9 +295,9 @@ The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `
 
 - No `color`: nothing to do, the Spinner stays primary.
 - `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
-- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-theme-neutral-color)` in CSS.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
 - To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
-- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input (when enabled) and FileUpload placed inside it; only the Button and disabled Input Spinners keep their neutral color.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
 - In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
 
 **before**
@@ -315,7 +316,7 @@ import { Spinner } from '@ovhcloud/ods-react';
 
 ```css
 .my-spinner {
-  --ods-spinner-color: var(--ods-theme-neutral-color);
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
 }
 ```
 

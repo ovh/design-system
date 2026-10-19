@@ -5,7 +5,7 @@
   resize: both;
   letter-spacing: 2px;
   color: #ffffff;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-textarea::placeholder {

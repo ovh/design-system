@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use '../../../../../style/range';
+@use '../../../../../style/state';
 
 @layer ods-atoms {
   .range {
@@ -8,6 +9,10 @@
     --range-padding-left: 0;
 
     padding: (math.div(range.$ods-range-thumb-size, 2) - math.div(range.$ods-range-track-height, 2)) var(--range-padding-right) var(--range-padding-bottom) var(--range-padding-left);
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
 
     &__control {
       display: flex;

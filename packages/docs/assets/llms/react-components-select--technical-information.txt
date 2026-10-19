@@ -61,4 +61,4 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
+| `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |

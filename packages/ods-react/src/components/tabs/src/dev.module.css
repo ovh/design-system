@@ -16,7 +16,7 @@
   background-color: #cd5ac3;
   color: #fff;
   font-size: 1.2em;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-tabs-tablist-tab {

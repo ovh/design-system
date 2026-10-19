@@ -114,7 +114,7 @@ In v19, **Select** and **Combobox** filled their container, and any field placed
 }
 ```
 
-For **Input**, **Password** and **Datepicker**, pass a `className` to the component (`Input`, `Password`, `DatepickerControl`) instead: their root carries no `data-ods` attribute (`[data-ods="input"]`, `[data-ods="password"]` and `[data-ods="datepicker-control"]` target the native `<input>`, not the root).
+For **Input** and **Password**, pass a `className` that sets `width: 100%` to the component instead: their root carries no `data-ods` attribute (`[data-ods="input"]` and `[data-ods="password"]` target the native `<input>`, not the root). For **Datepicker**, pass it to both `Datepicker` and `DatepickerControl`: the `Datepicker` root is an inline block sized by its content, so a percentage on the control alone does not fill the container (and `[data-ods="datepicker-control"]` also targets the native `<input>`).
 
 To change the default width of every field at once, override the theme token:
 

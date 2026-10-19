@@ -19,11 +19,14 @@ function ProductList(): ReactElement {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   // The whole state of the pagination is read back from the URL, nothing is held beside it.
-  const pageSize = Number(searchParams.get('size') ?? 10);
+  // The URL can hold anything: a size that is not a positive integer falls back on 10, and the
+  // page is kept within the listing, as from an out of range page the previous link would count
+  // down through pages that do not exist either. See "Wiring link mode" in the Pagination docs.
+  const size = Number(searchParams.get('size'));
+  const pageSize = Number.isSafeInteger(size) && size > 0 ? size : 10;
   const totalPages = Math.ceil(TOTAL_ITEMS / pageSize);
-  // Clamped: from an out of range page the previous link would count down through pages that do
-  // not exist either, see "Wiring link mode" in the Pagination documentation.
-  const page = Math.min(Math.max(Number(searchParams.get('page')) || 1, 1), totalPages);
+  const requestedPage = Number(searchParams.get('page'));
+  const page = Number.isInteger(requestedPage) ? Math.min(Math.max(requestedPage, 1), totalPages) : 1;
 
   /* The pages are links, so they navigate on their own. The two controls below are not, and have
      no href for the browser to follow: they report, and the application navigates to the URL

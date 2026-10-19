@@ -1,8 +1,10 @@
 import { Select as VendorSelect, createListCollection } from '@ark-ui/react/select';
+import classNames from 'classnames';
 import { type FC, type JSX, forwardRef, useMemo } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { type SelectGroupItem, type SelectOptionItem, SelectProvider, type SelectRootProp } from '../../contexts/useSelect';
 import { isGroup } from '../../controller/select';
+import style from './select.module.scss';
 
 interface SelectProp extends SelectRootProp {}
 
@@ -57,7 +59,7 @@ const Select: FC<SelectProp> = forwardRef(({
       positionerStyle={ positionerStyle }
       readOnly={ readOnly }>
       <VendorSelect.Root
-        className={ className }
+        className={ classNames(style['select'], className) }
         collection={ collection }
         data-ods="select"
         defaultOpen={ defaultOpen }

@@ -12,4 +12,5 @@ const Accordion = Object.assign(AccordionRoot, {
 export { Accordion };
 export { AccordionContent, AccordionItem, AccordionTrigger };
 export type { AccordionProp, AccordionChangeDetail, AccordionContentProp, AccordionItemProp, AccordionTriggerProp };
+export { ACCORDION_EMPHASIS, ACCORDION_EMPHASES, type AccordionEmphasis } from './constants/accordion-emphasis';
 export { EXPAND_ICON_POSITION, EXPAND_ICON_POSITIONS, type ExpandIconPosition } from './constants/expand-icon-position';

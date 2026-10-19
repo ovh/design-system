@@ -44,17 +44,20 @@ function readPinnedVersion(): string | undefined {
    tarball (dist/llms): reading it guarantees the documentation matches the
    exact ODS version the project uses, with zero network access.
    No published release up to 19.7.x contains dist/llms (it ships from the first
-   docs-platform release onward): for those, the walk finds nothing and the
-   bundled snapshot is used.
+   docs-platform release onward): for those, the bundled snapshot is used.
+   The walk stops at the nearest installed ods-react, the one Node resolves for
+   the project: an ancestor's newer copy is shadowed by it, so its docs would not
+   match the project's version.
    The walk starts from ODS_PROJECT_DIR, then CLAUDE_PROJECT_DIR (set by Claude
    Code), then the working directory: some clients spawn the server from their
    own directory rather than from the project. */
 function findProjectLlms(): string | null {
   let dir = resolve(process.env.ODS_PROJECT_DIR ?? process.env.CLAUDE_PROJECT_DIR ?? process.cwd());
   for (;;) {
-    const candidate = join(dir, 'node_modules', '@ovhcloud', 'ods-react', 'dist', 'llms');
-    if (existsSync(join(candidate, 'llms-index.json'))) {
-      return candidate;
+    const pkg = join(dir, 'node_modules', '@ovhcloud', 'ods-react');
+    if (existsSync(join(pkg, 'package.json'))) {
+      const candidate = join(pkg, 'dist', 'llms');
+      return existsSync(join(candidate, 'llms-index.json')) ? candidate : null;
     }
     const parent = dirname(dir);
     if (parent === dir) {

@@ -153,6 +153,26 @@ const legacyDoc = asText(await legacy.callTool({ arguments: { slug: 'button' }, 
 check('pre-platform ods-react (no dist/llms) → bundled fallback', /_source: bundled/.test(legacyDoc), legacyDoc.split('\n')[0]);
 await legacy.close();
 
+// …even when an ancestor installs a newer ods-react with docs: the project's
+// own (legacy) copy shadows it, so the ancestor's docs would not match.
+const { cpSync } = await import('node:fs');
+const ancestorDir = mkdtempSync(join(tmpdir(), 'ods-mcp-ancestor-'));
+mkdirSync(join(ancestorDir, 'node_modules/@ovhcloud/ods-react/dist'), { recursive: true });
+writeFileSync(join(ancestorDir, 'node_modules/@ovhcloud/ods-react/package.json'), '{"name":"@ovhcloud/ods-react","version":"20.0.0"}');
+cpSync(resolve(PKG, 'content/llms'), join(ancestorDir, 'node_modules/@ovhcloud/ods-react/dist/llms'), { recursive: true });
+const childDir = join(ancestorDir, 'app');
+mkdirSync(join(childDir, 'node_modules/@ovhcloud/ods-react/dist'), { recursive: true });
+writeFileSync(join(childDir, 'node_modules/@ovhcloud/ods-react/package.json'), '{"name":"@ovhcloud/ods-react","version":"19.7.3"}');
+const shadowed = new Client({ name: 'ods-mcp-harness-shadowed', version: '0.0.0' });
+await shadowed.connect(new StdioClientTransport({
+  args: [resolve(PKG, 'dist/index.js')],
+  command: process.execPath,
+  cwd: childDir,
+}));
+const shadowedDoc = asText(await shadowed.callTool({ arguments: { slug: 'button' }, name: 'get_component' }));
+check('legacy project ods-react shadows an ancestor copy → bundled fallback', /_source: bundled/.test(shadowedDoc), shadowedDoc.split('\n')[0]);
+await shadowed.close();
+
 // …and from a directory with no node_modules, from the bundled snapshot.
 const bare = new Client({ name: 'ods-mcp-harness-bare', version: '0.0.0' });
 await bare.connect(new StdioClientTransport({

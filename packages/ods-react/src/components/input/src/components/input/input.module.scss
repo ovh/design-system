@@ -17,7 +17,7 @@
       &:not(:has(:is(a, button, [role="button"]):focus-within)) {
         @include focus.ods-focus();
 
-        &:not([data-readonly]) {
+        &:not([data-invalid], [data-readonly]) {
           border-color: var(--ods-semantic-color-interaction-control-hover);
         }
       }

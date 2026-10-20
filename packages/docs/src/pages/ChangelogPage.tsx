@@ -6,7 +6,7 @@ import changelog from '../../../../CHANGELOG.md?raw';
    compile, so it renders through markdown-to-jsx — the same engine the old
    Storybook Markdown block used. */
 const ChangelogPage = () => (
-  <article className="doc">
+  <article className="doc doc--block">
     <Markdown>{ changelog }</Markdown>
   </article>
 );

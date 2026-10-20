@@ -40,7 +40,7 @@ async function suite(browser, { base, version }) {
     const hash = new URL(page.url()).hash;
     ok('the hit deep-links to its section', hash.length > 1, page.url());
     if (hash.length > 1) {
-      const scrolledToSection = await page.evaluate(() => (document.querySelector('.shell__main')?.scrollTop ?? 0) > 0);
+      const scrolledToSection = await page.evaluate(() => (document.querySelector('.shell__content')?.scrollTop ?? 0) > 0);
       ok('the section is scrolled into view (SPA nav)', scrolledToSection);
     }
     // Flash highlight (CSS Custom Highlight API): painted on arrival…
@@ -128,7 +128,7 @@ async function suite(browser, { base, version }) {
     await deep.goto(`${root}/components/button#${targetId}`, { waitUntil: 'domcontentloaded' });
     await deep.waitForSelector(`h2[id="${targetId}"]`, { state: 'attached', timeout: 30000 });
     await deep.waitForTimeout(1500);
-    const scrolled = await deep.evaluate(() => (document.querySelector('.shell__main')?.scrollTop ?? 0) > 0);
+    const scrolled = await deep.evaluate(() => (document.querySelector('.shell__content')?.scrollTop ?? 0) > 0);
     ok(`#hash deep link scrolls to the section (#${targetId})`, scrolled);
     await deep.close();
   } catch (error) {
@@ -157,10 +157,10 @@ async function suite(browser, { base, version }) {
   }
   ok('5 index deep-links sampled', routes.length === 5, `${routes.length} sampled`);
 
-  // A deprecated heading is "Previous Tokens (deprecated)" in the llms Markdown
-  // but renders "Previous tokens" plus a badge: the index must target the latter.
-  const previousTokens = index.find((entry) => entry.r.startsWith('/guides/design-tokens#previous-tokens'));
-  ok('a deprecated heading is indexed under its rendered anchor', previousTokens?.r === '/guides/design-tokens#previous-tokens', previousTokens?.r ?? '(no entry)');
+  // The llms Markdown suffixes a deprecated heading with " (deprecated)" while the page renders
+  // the bare label plus a badge: no indexed anchor may carry that suffix.
+  const leakedSuffix = index.find((entry) => /deprecated/i.test(entry.r.split('#')[1] ?? ''));
+  ok('no indexed anchor carries the "(deprecated)" suffix', !leakedSuffix, leakedSuffix?.r ?? '');
 
   // Repeated heading labels get unique ids (accessibility guide: one "Related
   // Sources" per section), deep links reach the right one, and the Technical

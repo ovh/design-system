@@ -6,7 +6,8 @@
 
 .component-gallery__toolbar {
   display: flex;
-  column-gap: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
 }
 
@@ -26,57 +27,63 @@
 }
 
 /* Everything below renders inside the demo frame, which mirrors the parent's stylesheets. */
-.component-gallery__component {
+.component-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.component-gallery__item {
   display: flex;
+  min-width: 0;
+}
+
+.component-gallery__card {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   row-gap: 16px;
-  border-bottom: 1px solid var(--ods-semantic-color-border-neutral-minimal);
-  padding-block: 24px;
-}
-
-.component-gallery__component:first-child {
-  padding-top: 0;
-}
-
-.component-gallery__component:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.component-gallery__header {
-  display: flex;
-  column-gap: 12px;
-  align-items: baseline;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 16px;
 }
 
 .component-gallery__title {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
   font-family: var(--ods-semantic-font-family-heading);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
-.component-gallery__story {
+/* A Default view can be wide or tall (Markdown, tables): it scrolls inside the card instead of
+   stretching the grid row. */
+.component-gallery__preview {
   display: flex;
-  flex-direction: column;
-  row-gap: 8px;
-}
-
-.component-gallery__story-name {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ods-semantic-color-content-placeholder);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.component-gallery__story-demo {
+  flex: 1;
+  /* safe: a preview larger than the card starts at the scroll origin instead of overflowing
+     before it, where scrolling cannot reach. */
+  align-items: safe center;
+  justify-content: safe center;
   border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
   border-radius: var(--ods-semantic-size-radius-container);
-  background-color: var(--ods-semantic-color-surface-raised);
+  min-height: 180px;
+  max-height: 360px;
   padding: 16px;
-  overflow-x: auto;
+  overflow: auto;
+}
+
+/* A story rendering several elements (Markdown) keeps its document flow instead of becoming
+   columns of the centering row. */
+.component-gallery__preview:has(> :nth-child(2)) {
+  display: block;
+}
+
+/* Full-width lines with no width of their own would collapse to nothing in the centering row. */
+.component-gallery__preview > :is([data-ods="divider"], [data-ods="skeleton"]) {
+  flex: 1;
 }
 
 .component-gallery__error {

@@ -1,53 +1,74 @@
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import { type CSSProperties, type ChangeEvent, useMemo, useState } from 'react';
-import { DIVIDER_SPACING, Divider } from '../../../../../ods-react/src/components/divider/src';
-import { FormField, FormFieldLabel } from '../../../../../ods-react/src/components/form-field/src';
+import { type CSSProperties, useMemo, useState } from 'react';
 import { ICON_NAME } from '../../../../../ods-react/src/components/icon/src';
-import { INPUT_TYPE, Input } from '../../../../../ods-react/src/components/input/src';
 import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../../../ods-react/src/components/message/src';
+import { GalleryToolbar } from '../../../componentGallery/GalleryToolbar';
 import { RecipeCard, type Recipe } from './RecipeCard';
 import styles from './recipes.module.css';
+
+/* The categories the gallery toolbar filters on, one per recipe (same idea as the Component Gallery:
+   the grouping lives here, and a recipe missing from it lands in "Other" instead of vanishing). */
+const CATEGORIES: Record<string, string[]> = {
+  'AI & conversation': ['chat'],
+  'Commerce': ['feature-list-product-card', 'media-product-card', 'order-button'],
+  'Data display': ['dashboard-card', 'data-grid', 'data-grid-with-query-filter', 'feature-list'],
+  'Feedback & status': ['status-message', 'status-modal'],
+  'Form elements': ['config-tile', 'email-field', 'range-input'],
+};
+const OTHER_CATEGORY = 'Other';
+
+const categoryOf = (key: string): string => Object.entries(CATEGORIES).find(([, keys]) => keys.includes(key))?.[0] ?? OTHER_CATEGORY;
+
+interface RecipeEntry {
+  category: string;
+  key: string;
+  recipe: Recipe;
+}
 
 /* Searchable grid of ready-to-use UI patterns, from @ovhcloud/ods-recipes. */
 const Recipes = ({ component, searchable = false }: { component?: string, searchable?: boolean }) => {
   const [search, setSearch] = useState('');
-  const [openRecipeName, setOpenRecipeName] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
 
-  const recipes = useMemo((): Recipe[] => {
+  const entries = useMemo((): RecipeEntry[] => {
     const map = odsRecipeJson.component as Record<string, Recipe>;
     const keys = (odsRecipeJson.list?.components ?? []) as string[];
-    const all = keys.map((key) => map[key]).filter(Boolean);
-    return component ? all.filter((recipe) => (recipe.odsComponents?.indexOf(component) ?? -1) > -1) : all;
+    return keys
+      .filter((key) => map[key])
+      .map((key) => ({ category: categoryOf(key), key, recipe: map[key] }))
+      .filter(({ recipe }) => !component || (recipe.odsComponents?.indexOf(component) ?? -1) > -1);
   }, [component]);
+
+  const categoryItems = useMemo(
+    () => [...new Set(entries.map((entry) => entry.category))]
+      .sort((a, b) => (a === OTHER_CATEGORY ? 1 : b === OTHER_CATEGORY ? -1 : a.localeCompare(b)))
+      .map((category) => ({ label: category, value: category })),
+    [entries],
+  );
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
-    if (!term) {
-      return recipes;
-    }
-    return recipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(term) || recipe.tags?.some((tag) => tag.toLowerCase().includes(term)));
-  }, [recipes, search]);
+    return entries
+      .filter((entry) => !categories.length || categories.includes(entry.category))
+      .filter(({ recipe }) => !term || recipe.name.toLowerCase().includes(term) || recipe.tags?.some((tag) => tag.toLowerCase().includes(term)));
+  }, [categories, entries, search]);
 
-  if (!recipes.length) {
+  if (!entries.length) {
     return <p>No recipe defined for now.</p>;
   }
 
   return (
     <div className={ styles.recipes }>
       { searchable && (
-        <>
-          <FormField className={ styles['recipes__search'] }>
-            <FormFieldLabel>Filter recipes:</FormFieldLabel>
-            <Input
-              clearable
-              onChange={ (event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value) }
-              placeholder="Keyword..."
-              type={ INPUT_TYPE.text }
-              value={ search } />
-          </FormField>
-          <Divider spacing={ DIVIDER_SPACING._48 } />
-        </>
+        <GalleryToolbar
+          categories={ categories }
+          categoryItems={ categoryItems }
+          filter={ search }
+          noun="recipes"
+          onCategoriesChange={ setCategories }
+          onFilterChange={ setSearch }
+          shown={ filtered.length }
+          total={ entries.length } />
       ) }
 
       <div
@@ -56,17 +77,13 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
         // cards clip the recipe previews).
         style={ component ? { '--recipes-columns': Math.min(filtered.length, 2) } as CSSProperties : undefined }>
         { filtered.length > 0 ? (
-          filtered.map((recipe) => (
-            <RecipeCard
-              isOpen={ openRecipeName === recipe.name }
-              key={ recipe.name }
-              onToggle={ (name) => setOpenRecipeName((prev) => (prev === name ? '' : name)) }
-              recipe={ recipe } />
+          filtered.map(({ key, recipe }) => (
+            <RecipeCard key={ key } path={ `/recipes/${key}` } recipe={ recipe } />
           ))
         ) : (
           <Message className={ styles['recipes__grid__empty'] } status={ MESSAGE_STATUS.information } dismissible={ false }>
             <MessageIcon name={ ICON_NAME.circleInfo } />
-            <MessageBody>No recipe found for "{ search }"</MessageBody>
+            <MessageBody>No recipe matches your filters</MessageBody>
           </Message>
         ) }
       </div>

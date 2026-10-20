@@ -6,13 +6,12 @@ import langTsx from '@shikijs/langs/tsx';
 import theme from '@shikijs/themes/nord';
 import Markdown from 'markdown-to-jsx';
 import { type ComponentType, memo, useMemo, useState } from 'react';
-import { BUTTON_VARIANT, Button } from '../../../../../ods-react/src/components/button/src';
+import { Link as RouterLink } from 'react-router-dom';
 import { CARD_STATUS, Card } from '../../../../../ods-react/src/components/card/src';
 import { Code } from '../../../../../ods-react/src/components/code/src';
-import { ICON_NAME, Icon } from '../../../../../ods-react/src/components/icon/src';
 import { Select, SelectContent, SelectControl, type SelectItem, type SelectValueChangeDetail } from '../../../../../ods-react/src/components/select/src';
 import { TABS_SIZE, TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '../../../../../ods-react/src/components/tabs/src';
-import { cx } from '../cx';
+import { Link } from '../../../ods';
 import { ResetTheme } from './ResetTheme';
 import styles from './recipeCard.module.css';
 
@@ -35,13 +34,29 @@ const extRank = (ext: string): number => {
   return index === -1 ? TAB_ORDER_EXTS.length : index;
 };
 
-const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onToggle: (name: string) => void, recipe: Recipe }) => {
-  const [mode, setMode] = useState<Source>(SOURCE.cssModules);
-
+/* The recipe rendered live, on the forced light theme. */
+const RecipePreview = ({ recipe }: { recipe: Recipe }) => {
   const Preview = useMemo(
     () => (RECIPES as unknown as Record<string, ComponentRecipe>)[recipe.reactTag]?.CssModule as ComponentType | null,
     [recipe.reactTag],
   );
+
+  return (
+    <div className={ styles['recipe-card__inner__canvas'] }>
+      <ResetTheme>
+        <div className={ styles['recipe-card__inner__canvas__preview'] }>
+          { Preview && <Preview /> }
+        </div>
+      </ResetTheme>
+    </div>
+  );
+};
+
+/* The recipe's source: one tab per file, and a styling-mode switch when several exist. The README
+   is a tab unless the caller shows it elsewhere (withReadme={ false }). */
+const RecipeSource = ({ recipe, withReadme = true }: { recipe: Recipe, withReadme?: boolean }) => {
+  const [mode, setMode] = useState<Source>(SOURCE.cssModules);
+
   const styleModeItems = useMemo(
     () => STYLE_MODE_ITEMS.filter((item) => !!(recipe.source as Record<string, unknown>)[item.value]),
     [recipe],
@@ -64,70 +79,59 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: { isOpen: boolean, onTogg
         return (extRank(a.ext ?? '') - extRank(b.ext ?? '')) || a.filename.localeCompare(b.filename);
       });
     const readme = (recipe.source as Record<string, string>)[SOURCE.readMe];
-    if (readme) {
+    if (withReadme && readme) {
       files.push({ code: readme, filename: 'README', isMarkdown: true, lang: langTsx });
     }
     return files;
-  }, [mode, recipe]);
+  }, [mode, recipe, withReadme]);
 
   return (
-    <div className={ cx(styles['recipe-card'], isOpen && styles['recipe-card--open']) }>
-      <Card className={ styles['recipe-card__inner'] } status={ CARD_STATUS.neutral }>
-        <div className={ styles['recipe-card__inner__header'] }>
-          <span className={ styles['recipe-card__inner__header__title'] }>{ recipe.name }</span>
-          <Button
-            aria-expanded={ isOpen }
-            aria-label={ isOpen ? `Collapse ${recipe.name}` : `Expand ${recipe.name}` }
-            onClick={ () => onToggle(recipe.name) }
-            variant={ BUTTON_VARIANT.ghost }>
-            <Icon name={ isOpen ? ICON_NAME.chevronDown : ICON_NAME.chevronRight } />
-          </Button>
-        </div>
-
-        <div className={ styles['recipe-card__inner__canvas'] }>
-          <ResetTheme>
-            <div className={ styles['recipe-card__inner__canvas__preview'] }>
-              { Preview && <Preview /> }
+    <div className={ styles['recipe-card__inner__code'] }>
+      { tabs.length > 0 ? (
+        <Tabs defaultValue={ tabs[0]?.filename } size={ TABS_SIZE.xs } variant={ TABS_VARIANT.switch }>
+          <ResetTheme style={{ backgroundColor: 'transparent' }}>
+            <div className={ styles['recipe-card__inner__code__toolbar'] }>
+              <TabList>
+                { tabs.map((tab) => <Tab key={ tab.filename } value={ tab.filename }>{ tab.filename }</Tab>) }
+              </TabList>
+              { styleModeItems.length > 1 && (
+                <Select items={ styleModeItems } onValueChange={ (detail: SelectValueChangeDetail) => setMode(detail.value[0] as Source) } value={ [mode] }>
+                  <SelectControl />
+                  <SelectContent />
+                </Select>
+              ) }
             </div>
           </ResetTheme>
-        </div>
 
-        { isOpen && (
-          <div className={ styles['recipe-card__inner__code'] }>
-            { tabs.length > 0 ? (
-              <Tabs defaultValue={ tabs[0]?.filename } size={ TABS_SIZE.xs } variant={ TABS_VARIANT.switch }>
-                <ResetTheme style={{ backgroundColor: 'transparent' }}>
-                  <div className={ styles['recipe-card__inner__code__toolbar'] }>
-                    <TabList>
-                      { tabs.map((tab) => <Tab key={ tab.filename } value={ tab.filename }>{ tab.filename }</Tab>) }
-                    </TabList>
-                    { styleModeItems.length > 1 && (
-                      <Select items={ styleModeItems } onValueChange={ (detail: SelectValueChangeDetail) => setMode(detail.value[0] as Source) } value={ [mode] }>
-                        <SelectControl />
-                        <SelectContent />
-                      </Select>
-                    ) }
-                  </div>
-                </ResetTheme>
-
-                { tabs.map((tab) => (
-                  <TabContent className={ styles['recipe-card__inner__code__panel'] } key={ tab.filename } value={ tab.filename }>
-                    { tab.isMarkdown ? (
-                      <div className={ styles['recipe-card__inner__code__panel__markdown'] }><Markdown>{ tab.code }</Markdown></div>
-                    ) : (
-                      <Code canCopy className={ styles['recipe-card__inner__code__panel__editor'] } highlighter={{ language: tab.lang, theme }}>{ tab.code }</Code>
-                    ) }
-                  </TabContent>
-                )) }
-              </Tabs>
-            ) : <p>No source code available for this mode.</p> }
-          </div>
-        ) }
-      </Card>
+          { tabs.map((tab) => (
+            <TabContent className={ styles['recipe-card__inner__code__panel'] } key={ tab.filename } value={ tab.filename }>
+              { tab.isMarkdown ? (
+                <div className={ styles['recipe-card__inner__code__panel__markdown'] }><Markdown>{ tab.code }</Markdown></div>
+              ) : (
+                <Code canCopy className={ styles['recipe-card__inner__code__panel__editor'] } highlighter={{ language: tab.lang, theme }}>{ tab.code }</Code>
+              ) }
+            </TabContent>
+          )) }
+        </Tabs>
+      ) : <p>No source code available for this mode.</p> }
     </div>
   );
-});
+};
+
+/* Gallery card: the recipe's name links to its page, with the live preview below. The code lives on
+   the page itself. */
+const RecipeCard = memo(({ path, recipe }: { path: string, recipe: Recipe }) => (
+  <div className={ styles['recipe-card'] }>
+    <Card className={ styles['recipe-card__inner'] } status={ CARD_STATUS.neutral }>
+      <h2 className={ styles['recipe-card__inner__header'] }>
+        <Link as={ RouterLink } to={ path }>{ recipe.name }</Link>
+      </h2>
+
+      <RecipePreview recipe={ recipe } />
+    </Card>
+  </div>
+));
 
 RecipeCard.displayName = 'RecipeCard';
 
-export { RecipeCard, type Recipe };
+export { RecipeCard, RecipePreview, RecipeSource, type Recipe };

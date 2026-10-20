@@ -114,7 +114,7 @@ if (deepLink && deepLink.startsWith('/')) {
     || flattenPages().find((page) => {
       const legacyTitles = page.kind === 'component' ? [`React Components/${page.title}`, `Components/${page.title}`]
         : page.kind === 'helper' ? [`Helpers/${page.title}`]
-        : page.kind === 'recipe' ? [`Recipes/${page.title}`]
+        : page.kind === 'recipe' ? [`Recipes/${page.title}`, ...(page.id === 'recipes/components' ? ['Recipes/Components'] : [])]
         : [`OVHcloud Design System/${page.section ?? ''}/${page.title}`];
       return legacyTitles.some((title) => sanitize(title) === slug);
     });

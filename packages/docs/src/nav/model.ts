@@ -201,6 +201,24 @@ const COMPONENT_PAGES: [key: string, title: string, badge?: Badge][] = [
   ['tree-view', 'Tree View'],
 ];
 
+/* One page per recipe of @ovhcloud/ods-recipes: [key, title]. Listed here rather than read from the
+   package, whose JSON carries every recipe source and would land in the main bundle. */
+const RECIPE_PAGES: [string, string][] = [
+  ['chat', 'Chat'],
+  ['config-tile', 'Config Tile'],
+  ['dashboard-card', 'Dashboard Card'],
+  ['data-grid', 'Data Grid'],
+  ['data-grid-with-query-filter', 'Data Grid With Query Filter'],
+  ['email-field', 'Email Field'],
+  ['feature-list', 'Feature List'],
+  ['feature-list-product-card', 'Feature List Product Card'],
+  ['media-product-card', 'Media Product Card'],
+  ['order-button', 'Order Button'],
+  ['range-input', 'Range Input'],
+  ['status-message', 'Status Message'],
+  ['status-modal', 'Status Modal'],
+];
+
 /* API reference — its own tree; Components and Helpers sit at the top level. */
 const REFERENCE_NAV: (NavSection | NavPage)[] = [
   {
@@ -226,7 +244,16 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     id: 'recipes',
     title: 'Recipes',
     children: [
-      { badge: 'beta', icon: ICON_NAME.file, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Components' },
+      // Same shape as Components: the gallery of every recipe first, then one page per recipe.
+      // The gallery keeps the historical id and route (linked from the homepage and the guides).
+      { icon: ICON_NAME.grid, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Recipe Gallery' },
+      ...RECIPE_PAGES.map(([key, title]): NavPage => ({
+        icon: ICON_NAME.file,
+        id: `recipes/${key}`,
+        kind: 'recipe',
+        path: `/recipes/${key}`,
+        title,
+      })),
     ],
   },
   {

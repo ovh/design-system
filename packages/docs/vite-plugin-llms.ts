@@ -492,11 +492,28 @@ function helperDocs(helper: typeof HELPERS[number]): Doc[] {
   return [overview, documentation];
 }
 
+/* The nav model lists one page per recipe (RECIPE_PAGES) without importing the package's JSON:
+   a recipe added to or removed from @ovhcloud/ods-recipes must show up there too. */
+function checkRecipeInvariants(recipeKeys: string[]): void {
+  const model = readFileSync(resolve(here, 'src/nav/model.ts'), 'utf8');
+  const block = /const RECIPE_PAGES[^=]*=\s*\[([\s\S]*?)\n\];/.exec(model)?.[1];
+  const listed = block ? [...block.matchAll(/\[\s*'([^']+)'\s*,/g)].map((match) => match[1]) : [];
+  if (!listed.length) {
+    throw new Error('llms: RECIPE_PAGES not found in src/nav/model.ts — the recipe drift check cannot run, update its parsing in vite-plugin-llms.ts');
+  }
+  const missing = recipeKeys.filter((key) => !listed.includes(key));
+  const unknown = listed.filter((key) => !recipeKeys.includes(key));
+  if (missing.length || unknown.length) {
+    throw new Error(`llms: recipe drift between src/nav/model.ts and @ovhcloud/ods-recipes — missing from RECIPE_PAGES: [${missing.join(', ')}], not in the package: [${unknown.join(', ')}]`);
+  }
+}
+
 function recipesDoc(): Doc | null {
   const data = readJson('../ods-recipes/dist/ods-recipes.json') as { component: Record<string, { description?: string, name: string, odsComponents: string[], tags: string[] }> } | null;
   if (!data?.component) {
     return null;
   }
+  checkRecipeInvariants(Object.keys(data.component));
   const sections = Object.values(data.component).map((recipe) => [
     `## ${recipe.name}`,
     recipe.description ?? '',

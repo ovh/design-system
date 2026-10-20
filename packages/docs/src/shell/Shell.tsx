@@ -92,11 +92,13 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     </RouterLink>
 
     <div className="shell__upper-controls">
-      <BrandSelect />
+      <div className="shell__version-select">
+        <VersionSelect />
+      </div>
 
       <div className="shell__sidebar-selects">
+        <BrandSelect />
         <ThemeSelect />
-        <VersionSelect />
       </div>
 
       <button className="shell__search-hint" onClick={onSearch} type="button">

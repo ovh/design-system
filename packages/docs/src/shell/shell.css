@@ -89,8 +89,16 @@ body {
 
 .shell__sidebar-selects {
   display: grid;
-  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
   gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+}
+
+.shell__version-select {
+  display: flex;
+  justify-content: center;
+  /* Pulls the version up under the logo, cancelling most of the sidebar gap. */
+  margin-top: calc(var(--ods-semantic-size-space-gap-block) * -1.5);
+  margin-bottom: var(--ods-semantic-size-space-gap-block);
 }
 
 .shell__sidebar-selects [data-ods="select-control"] {
@@ -103,20 +111,27 @@ body {
 
 .shell__search-hint {
   display: flex;
-  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
   align-items: center;
+
+  /* Mirrors the ODS input (style/_input.scss) the palette's filter is made of. */
+  box-sizing: border-box;
   border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
   box-shadow: var(--ods-semantic-shadow-control);
   background-color: var(--ods-semantic-color-surface-control);
-  padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
-  height: var(--ods-semantic-size-block-size-md);
-  color: var(--ods-semantic-color-content-neutral);
+  padding: var(--ods-semantic-size-space-inset-block-compact) var(--ods-semantic-size-space-inset-inline);
+  min-height: var(--ods-semantic-size-block-size-md);
+  color: var(--ods-semantic-color-content-placeholder);
   font-family: inherit;
-  font-size: .85rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
+.shell__search-hint > svg,
+.shell__search-hint > [data-ods="icon"] {
+  color: var(--ods-semantic-color-content-text);
+}
 
 .shell__search-hint:hover {
   border-color: var(--ods-semantic-color-interaction-control-hover);

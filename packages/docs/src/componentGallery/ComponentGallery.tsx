@@ -3,20 +3,10 @@ import { Component, type ComponentType, type JSX, type ReactNode, useState } fro
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
 import { flattenPages } from '../nav/model';
-import { Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
+import { Card, Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
 import styles from './componentGallery.module.css';
 
 const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx', { eager: true }) as Record<string, Record<string, unknown>>;
-
-/* ThemeGenerator is each component's size x variant x color x state fixture. The others fill what
-   some fixtures leave out: the Tabs and Table variants, Divider orientation, Logo sizes, the
-   invalid Checkbox... */
-const VARIATION_STORIES = ['ThemeGenerator', 'Variant', 'Color', 'Size', 'Sizes', 'Orientation', 'Types', 'States', 'Disabled', 'Readonly', 'ReadOnly', 'Invalid', 'Loading', 'Error', 'Selected'];
-
-interface GalleryStory {
-  Story: ComponentType;
-  name: string;
-}
 
 /* The "big categories" the toolbar filters on. The nav model is a flat component list, so the
    grouping lives here; a component missing from it lands in "Other" instead of vanishing. */
@@ -36,11 +26,10 @@ interface GalleryEntry {
   category: string;
   key: string;
   path?: string;
-  stories: GalleryStory[];
+  /* The component's Default story: its first impression, shown on the card. */
+  Preview?: ComponentType;
   title: string;
 }
-
-const humanize = (name: string): string => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
 
 const COMPONENT_PAGES = new Map(flattenPages().filter((page) => page.kind === 'component').map((page) => [page.id, page]));
 
@@ -55,7 +44,7 @@ const GALLERY: GalleryEntry[] = Object.entries(STORY_MODULES)
       category: categoryOf(key),
       key,
       path: page?.path,
-      stories: VARIATION_STORIES.flatMap((name) => (composed[name] ? [{ Story: composed[name], name }] : [])),
+      Preview: composed['Default'],
       title: page?.title ?? key,
     };
   })
@@ -103,13 +92,16 @@ const ComponentGallery = (): JSX.Element => {
           type={ INPUT_TYPE.search }
           value={ filter } />
 
+        { /* ComboboxControl puts aria-label on its wrapper, not on its input: name the input through its id. */ }
+        <label className="sr-only" htmlFor="component-gallery-category">Filter by category</label>
         <Combobox
+          allowCustomValue={ false }
           items={ CATEGORY_ITEMS }
           multiple
           onValueChange={ ({ value }) => setCategories(value) }
           value={ categories }>
           <ComboboxControl
-            aria-label="Filter by category"
+            id="component-gallery-category"
             placeholder="All categories" />
           <ComboboxContent />
         </Combobox>
@@ -121,26 +113,25 @@ const ComponentGallery = (): JSX.Element => {
 
       { shown.length ? (
         <DemoFrame pageSurface>
-          { shown.map(({ key, path, stories, title }) => (
-            <section className={ styles['component-gallery__component'] } key={ key }>
-              <header className={ styles['component-gallery__header'] }>
-                <h2 className={ styles['component-gallery__title'] }>{ title }</h2>
-                { path && <Link as={ RouterLink } to={ path }>Documentation</Link> }
-              </header>
+          <ul className={ styles['component-gallery__grid'] }>
+            { shown.map(({ Preview, key, path, title }) => (
+              <li className={ styles['component-gallery__item'] } key={ key }>
+                <Card className={ styles['component-gallery__card'] }>
+                  <h2 className={ styles['component-gallery__title'] }>
+                    { path ? <Link as={ RouterLink } to={ path }>{ title }</Link> : title }
+                  </h2>
 
-              { stories.map(({ Story, name }) => (
-                <div className={ styles['component-gallery__story'] } key={ name }>
-                  <h3 className={ styles['component-gallery__story-name'] }>{ humanize(name) }</h3>
-
-                  <div className={ styles['component-gallery__story-demo'] }>
-                    <StoryBoundary label={ `${title} / ${humanize(name)}` }>
-                      <Story />
-                    </StoryBoundary>
+                  <div className={ styles['component-gallery__preview'] }>
+                    { Preview && (
+                      <StoryBoundary label={ `${title} / Default` }>
+                        <Preview />
+                      </StoryBoundary>
+                    ) }
                   </div>
-                </div>
-              )) }
-            </section>
-          )) }
+                </Card>
+              </li>
+            )) }
+          </ul>
         </DemoFrame>
       ) : (
         <p className={ styles['component-gallery__empty'] }>No component matches “{ filter }”.</p>

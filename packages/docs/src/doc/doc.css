@@ -121,6 +121,10 @@
   color: var(--ods-semantic-color-content-brand);
 }
 
+article.doc {
+  max-width: 90ch;
+}
+
 /* Readable line length for the prose; demos, code, tables and layout blocks
    keep the full article width. */
 .doc :is(p, ul, ol, blockquote) {

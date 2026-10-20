@@ -21,6 +21,18 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Card>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </Card>
+  ),
+};
+
 export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
   globals: {
@@ -53,18 +65,6 @@ export const Status: Story = {
         <p>Warning</p>
       </Card>
     </>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Card } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Card>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-    </Card>
   ),
 };
 
@@ -128,7 +128,6 @@ export const AccessibilityAlternativeGrouping: Story = {
     </div>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   name: 'ThemeGenerator',

@@ -115,9 +115,9 @@ import { useState } from 'react';`,
   },
 };
 
-export const Nested: Story = {
+export const Disabled: Story = {
   globals: {
-    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -128,15 +128,9 @@ export const Nested: Story = {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        <MenuItem value='new'>New</MenuItem>
-        <MenuItem value='open'>Open</MenuItem>
-        <MenuSubmenu>
-          <MenuTrigger>Share</MenuTrigger>
-          <MenuContent>
-            <MenuItem value='email'>Email</MenuItem>
-            <MenuItem value='message'>Message</MenuItem>
-          </MenuContent>
-        </MenuSubmenu>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem disabled value="settings">Settings</MenuItem>
+        <MenuItem value="logout">Logout</MenuItem>
       </MenuContent>
     </Menu>
   ),
@@ -170,9 +164,9 @@ export const Group: Story = {
   ),
 };
 
-export const Disabled: Story = {
+export const Nested: Story = {
   globals: {
-    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_EMPHASIS, Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -183,9 +177,15 @@ export const Disabled: Story = {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem disabled value="settings">Settings</MenuItem>
-        <MenuItem value="logout">Logout</MenuItem>
+        <MenuItem value='new'>New</MenuItem>
+        <MenuItem value='open'>Open</MenuItem>
+        <MenuSubmenu>
+          <MenuTrigger>Share</MenuTrigger>
+          <MenuContent>
+            <MenuItem value='email'>Email</MenuItem>
+            <MenuItem value='message'>Message</MenuItem>
+          </MenuContent>
+        </MenuSubmenu>
       </MenuContent>
     </Menu>
   ),

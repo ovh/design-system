@@ -54,38 +54,6 @@ export const Overview: Story = {
   ),
 };
 
-export const Controlled: Story = {
-  globals: {
-    imports: `import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => {
-    const [value, setValue] = useState('tab1');
-
-    const handleValueChange = (event: TabsValueChangeEvent) => {
-      setValue(event.value);
-    };
-
-    return (
-      <Tabs
-        onValueChange={ handleValueChange }
-        value={ value }>
-        <TabList>
-          <Tab value="tab1">Tab 1</Tab>
-          <Tab value="tab2">Tab 2</Tab>
-          <Tab value="tab3">Tab 3</Tab>
-        </TabList>
-      </Tabs>
-    );
-  },
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
@@ -102,40 +70,21 @@ export const Default: Story = {
   ),
 };
 
-export const Disabled: Story = {
+export const Variant: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs defaultValue="tab1">
+    <Tabs
+      defaultValue="tab1"
+      variant={ TABS_VARIANT.switch }>
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
-        <Tab value="tab2" disabled>Tab 2</Tab>
+        <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
     </Tabs>
-  ),
-};
-
-export const Overflow: Story = {
-  globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <div style={{ width: '300px' }}>
-      <Tabs defaultValue="tab1">
-        <TabList>
-          <Tab value="tab1">Tab 1</Tab>
-          <Tab value="tab2">Tab 2</Tab>
-          <Tab value="tab3">Tab 3</Tab>
-          <Tab value="tab4">Tab 4</Tab>
-          <Tab value="tab5">Tab 5</Tab>
-          <Tab value="tab6">Tab 6</Tab>
-        </TabList>
-      </Tabs>
-    </div>
   ),
 };
 
@@ -185,21 +134,40 @@ export const Size: Story = {
   ),
 };
 
-export const Variant: Story = {
+export const Disabled: Story = {
   globals: {
-    imports: `import { TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs
-      defaultValue="tab1"
-      variant={ TABS_VARIANT.switch }>
+    <Tabs defaultValue="tab1">
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
-        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab2" disabled>Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
     </Tabs>
+  ),
+};
+
+export const Overflow: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ width: '300px' }}>
+      <Tabs defaultValue="tab1">
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+          <Tab value="tab4">Tab 4</Tab>
+          <Tab value="tab5">Tab 5</Tab>
+          <Tab value="tab6">Tab 6</Tab>
+        </TabList>
+      </Tabs>
+    </div>
   ),
 };
 
@@ -258,7 +226,6 @@ export const WithContent: Story = {
   ),
 };
 
-
 export const ProductDetail: Story = {
   globals: {
     imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';`,
@@ -293,6 +260,37 @@ export const ProductDetail: Story = {
   ),
 };
 
+export const Controlled: Story = {
+  globals: {
+    imports: `import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [value, setValue] = useState('tab1');
+
+    const handleValueChange = (event: TabsValueChangeEvent) => {
+      setValue(event.value);
+    };
+
+    return (
+      <Tabs
+        onValueChange={ handleValueChange }
+        value={ value }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    );
+  },
+};
 
 export const ControlledWithNavigation: Story = {
   globals: {

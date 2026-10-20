@@ -42,6 +42,34 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
 export const Collapsed: Story = {
   globals: {
     imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
@@ -200,34 +228,6 @@ export const CustomCollapseThreshold: Story = {
   ),
 };
 
-export const Default: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Breadcrumb>
-      <BreadcrumbItem>
-        <BreadcrumbLink aria-label="Home" href="#">
-          <Icon name={ ICON_NAME.home } />
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Parent
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Current
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-    </Breadcrumb>
-  ),
-};
-
 export const NoCollapse: Story = {
   globals: {
     imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
@@ -344,7 +344,6 @@ export const AccessibilityWithAriaLabel: Story = {
     </Breadcrumb>
   ),
 }
-
 
 export const ThemeGenerator: Story = {
   parameters: {

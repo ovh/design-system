@@ -13,6 +13,27 @@ const meta: Meta<BadgeProp> = {
 
 export default meta;
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Badge>
+      My badge
+    </Badge>
+  ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Badge>
+      Badge
+    </Badge>
+  ),
+};
+
 export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
@@ -65,27 +86,6 @@ export const Emphasis: Story = {
         <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
       </div>
     </>
-  ),
-};
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Badge>
-      Badge
-    </Badge>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Badge } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Badge>
-      My badge
-    </Badge>
   ),
 };
 

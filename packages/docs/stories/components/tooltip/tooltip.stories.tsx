@@ -39,6 +39,44 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip>
+      <TooltipTrigger>
+        Show tooltip
+      </TooltipTrigger>
+
+      <TooltipContent>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+  ),
+};
+
+export const CustomTrigger: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon
+          name={ ICON_NAME.circleQuestion }
+          style={{ fontSize: '24px' }} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+  ),
+};
+
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
@@ -78,44 +116,6 @@ import { useState } from 'react';`,
       </>
     );
   },
-};
-
-export const CustomTrigger: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Icon
-          name={ ICON_NAME.circleQuestion }
-          style={{ fontSize: '24px' }} />
-      </TooltipTrigger>
-
-      <TooltipContent>
-        This is the tooltip content
-      </TooltipContent>
-    </Tooltip>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Tooltip>
-      <TooltipTrigger>
-        Show tooltip
-      </TooltipTrigger>
-
-      <TooltipContent>
-        This is the tooltip content
-      </TooltipContent>
-    </Tooltip>
-  ),
 };
 
 export const Grid: StoryObj = {
@@ -233,52 +233,6 @@ export const Overview: Story = {
   ),
 };
 
-export const AccessibilityTooltip: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Icon
-          aria-label="Open tooltip"
-          name={ ICON_NAME.circleInfo }
-          role="img"
-          style={{ fontSize: '24px' }} />
-      </TooltipTrigger>
-
-      <TooltipContent>
-        Some additional context.
-      </TooltipContent>
-    </Tooltip>
-  ),
-};
-
-export const ThemeGenerator: Story = {
-  parameters: {
-    layout: 'fullscreen',
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleQuestion } style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-        <TooltipContent createPortal={ false }>This is the tooltip content</TooltipContent>
-      </Tooltip>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-        <TooltipContent createPortal={ false } withArrow>This is the tooltip content</TooltipContent>
-      </Tooltip>
-    </div>
-  ),
-};
-
 export const ZIndex: Story = {
   globals: {
     imports: `import { ICON_NAME, Icon, TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
@@ -337,5 +291,51 @@ export const ZIndex: Story = {
         </TooltipContent>
       </Tooltip>
     </>
+  ),
+};
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleQuestion } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+        <TooltipContent createPortal={ false }>This is the tooltip content</TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+        <TooltipContent createPortal={ false } withArrow>This is the tooltip content</TooltipContent>
+      </Tooltip>
+    </div>
+  ),
+};
+
+export const AccessibilityTooltip: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon
+          aria-label="Open tooltip"
+          name={ ICON_NAME.circleInfo }
+          role="img"
+          style={{ fontSize: '24px' }} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        Some additional context.
+      </TooltipContent>
+    </Tooltip>
   ),
 };

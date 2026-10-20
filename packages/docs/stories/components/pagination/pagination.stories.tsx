@@ -16,15 +16,13 @@ const meta: Meta<PaginationProp> = {
 
 export default meta;
 
-export const AccessibilityLabel: Story = {
+export const Default: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Pagination
-      aria-label="Pagination"
-      totalItems={ 5000 }>
+    <Pagination totalItems={ 5000 }>
       <PaginationPages />
     </Pagination>
   ),
@@ -68,18 +66,6 @@ import { useState } from 'react';`,
       </Pagination>
     );
   },
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Pagination totalItems={ 5000 }>
-      <PaginationPages />
-    </Pagination>
-  ),
 };
 
 export const Disabled: Story = {
@@ -296,34 +282,6 @@ export const LinksVsButtons: Story = {
   ),
 };
 
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Pagination totalItems={ 100 }>
-      <PaginationPageSizeSelector />
-      <PaginationPages />
-      <PaginationPageSelector />
-    </Pagination>
-  ),
-};
-
-export const PageSizeSelection: Story = {
-  globals: {
-    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Pagination totalItems={ 500 }>
-      <PaginationPageSizeSelector />
-
-      <PaginationPages />
-    </Pagination>
-  ),
-};
-
 export const SiblingCount: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
@@ -338,6 +296,20 @@ export const SiblingCount: Story = {
     </Pagination>
   ),
 }
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Pagination totalItems={ 100 }>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+      <PaginationPageSelector />
+    </Pagination>
+  ),
+};
 
 export const WithTooltipLabels: Story = {
   globals: {
@@ -362,6 +334,34 @@ export const WithTooltipLabels: Story = {
         <PaginationPages />
       </Pagination>
     </div>
+  ),
+};
+
+export const PageSizeSelection: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination totalItems={ 500 }>
+      <PaginationPageSizeSelector />
+
+      <PaginationPages />
+    </Pagination>
+  ),
+};
+
+export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      aria-label="Pagination"
+      totalItems={ 5000 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
 

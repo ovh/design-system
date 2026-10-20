@@ -1,0 +1,17 @@
+/* A plain bulleted list, flowing into as many 10rem+ columns as fit (at most three). */
+.recipe-page__components {
+  columns: 3 10rem;
+  column-gap: 24px;
+  margin: 0 0 2rem;
+  padding-left: 1.25em;
+}
+
+.recipe-page__components li {
+  break-inside: avoid;
+  padding-block: 2px;
+}
+
+/* Preview and source sit between headings: the same 1rem rhythm as a doc canvas. */
+.recipe-page__block {
+  margin: 1rem 0;
+}

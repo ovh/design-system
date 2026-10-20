@@ -218,4 +218,4 @@ const MDX_COMPONENTS = {
   pre: CodeFence,
 };
 
-export { ExternalLink, Heading, MDX_COMPONENTS };
+export { BestPractices, ExternalLink, Heading, MDX_COMPONENTS };

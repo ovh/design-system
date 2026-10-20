@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { composeModule } from '../demo/composeModule';
 import { extractStorySources, storyTitle } from '../demo/extractSource';
+import { DocArticle } from '../doc/DocArticle';
+import { Heading } from '../doc/Heading';
 import { Recipes, hasRecipesFor } from '../doc/ports/recipes/Recipes';
 
 interface ComponentPageProp {
@@ -19,7 +21,7 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
   const showRecipes = useMemo(() => hasRecipesFor(component), [component]);
 
   return (
-    <section>
+    <DocArticle>
       <p data-testid="demo-count">{ demos.length } démos composées</p>
       { demos.map(({ Component, name }) => {
         const source = sources[name];
@@ -27,6 +29,7 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
         return (
           <DemoCanvas
             dark={ dark }
+            heading
             key={ name }
             sandboxCode={ source ? buildSandboxSnippet(source, imports) : undefined }
             source={ source }
@@ -39,11 +42,11 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
 
       { showRecipes && (
         <>
-          <h2>Recipes</h2>
+          <Heading label="Related Recipes" level={ 2 } />
           <Recipes component={ component } />
         </>
       ) }
-    </section>
+    </DocArticle>
   );
 };
 

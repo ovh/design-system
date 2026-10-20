@@ -3,6 +3,7 @@ import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../ods-react/src/comp
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { APP_ROOT } from '../appBase';
 import { CodeBlock } from '../doc/CodeBlock';
+import { slugify } from '../doc/slug';
 import { encodeSnippet } from '../sandbox/shareCode';
 import { DemoFrame } from './DemoFrame';
 import { buildSandboxSnippet } from './sandboxSnippet';
@@ -11,9 +12,11 @@ import './demoCanvas.css';
 /* One unified card: a demo on a tinted surface, a toolbar, and the source
    below (collapsible, shown by default). Used by both the doc <Canvas> and
    the Examples tab so every demo looks the same. */
-const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
+const DemoCanvas = ({ children, dark, heading, sandboxCode, source, title, tokens }: {
   children: ReactNode;
   dark?: boolean;
+  /** Render the title as an h2 with a slug id, so the page ToC lists it. */
+  heading?: boolean;
   sandboxCode?: string;
   source?: string;
   title?: string;
@@ -26,7 +29,9 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
     <div className="canvas">
       { hasToolbar && (
       <div className="canvas__toolbar">
-        { title && <span className="canvas__title">{ title }</span> }
+        { title && (heading
+          ? <h2 className="canvas__title doc__heading" id={ slugify(title) }>{ title }</h2>
+          : <span className="canvas__title">{ title }</span>) }
         <div className="canvas__actions">
           { sandboxCode && (
             <Button

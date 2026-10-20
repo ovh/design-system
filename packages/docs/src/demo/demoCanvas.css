@@ -22,6 +22,11 @@
   font-weight: 600;
 }
 
+/* Title rendered as a ToC heading: drop the doc heading's block margins. */
+.canvas__toolbar .canvas__title.doc__heading {
+  margin-block: 0;
+}
+
 .canvas__actions {
   display: flex;
   gap: 4px;

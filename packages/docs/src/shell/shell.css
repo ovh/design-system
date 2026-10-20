@@ -201,6 +201,10 @@ body {
   letter-spacing: .04em;
 }
 
+.shell__tree-label--tight {
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+}
+
 .shell__tree-label--section {
   font-weight: var(--ods-semantic-font-weight-semibold);
 }

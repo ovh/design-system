@@ -11,16 +11,13 @@ const meta: Meta<IconProp> = {
 
 export default meta;
 
-export const AccessibilityInformative: Story = {
+export const Default: Story = {
   globals: {
     imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Icon
-      aria-label="home"
-      name={ ICON_NAME.home }
-      role="img" />
+    <Icon name={ ICON_NAME.home } />
   ),
 };
 
@@ -55,16 +52,6 @@ export const Decorative: Story = {
   ),
 };
 
-export const Default: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Icon name={ ICON_NAME.home } />
-  ),
-};
-
 export const Informative: Story = {
   globals: {
     imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
@@ -74,6 +61,19 @@ export const Informative: Story = {
     <Icon
       aria-label="Help"
       name={ ICON_NAME.circleQuestion }
+      role="img" />
+  ),
+};
+
+export const AccessibilityInformative: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Icon
+      aria-label="home"
+      name={ ICON_NAME.home }
       role="img" />
   ),
 };
@@ -136,7 +136,6 @@ export const AccessibilityRating: Story = {
     </>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

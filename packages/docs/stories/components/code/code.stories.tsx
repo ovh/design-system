@@ -48,6 +48,24 @@ export const Overview: Story = {
   ),
 };
 
+export const Multiline: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Code>
+      { `function isTargetInElement(event, element) {
+  if (!element) {
+    return false;
+  }
+
+    return element.contains(event.target) || event.composedPath().includes(element);
+  }` }
+    </Code>
+  ),
+};
+
 export const CanCopy: Story = {
   globals: {
     imports: `import { Code } from '@ovhcloud/ods-react';`,
@@ -92,25 +110,6 @@ import theme from '@shikijs/themes/nord';`,
     </Code>
   ),
 };
-
-export const Multiline: Story = {
-  globals: {
-    imports: `import { Code } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Code>
-      { `function isTargetInElement(event, element) {
-  if (!element) {
-    return false;
-  }
-
-    return element.contains(event.target) || event.composedPath().includes(element);
-  }` }
-    </Code>
-  ),
-};
-
 
 export const ThemeGenerator: Story = {
   parameters: {

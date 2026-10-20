@@ -126,40 +126,6 @@ export const DisabledItem: Story = {
   ),
 };
 
-export const InFormField: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Pick a language:
-      </FormFieldLabel>
-
-      <RadioGroup>
-        <Radio value="html">
-          <RadioControl />
-
-          <RadioLabel>HTML</RadioLabel>
-        </Radio>
-
-        <Radio value="css">
-          <RadioControl />
-
-          <RadioLabel>CSS</RadioLabel>
-        </Radio>
-
-        <Radio value="js">
-          <RadioControl />
-
-          <RadioLabel>JavaScript</RadioLabel>
-        </Radio>
-      </RadioGroup>
-    </FormField>
-  ),
-};
-
 export const Invalid: Story = {
   globals: {
     imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
@@ -217,6 +183,40 @@ export const Orientation: Story = {
         <RadioLabel>JavaScript</RadioLabel>
       </Radio>
     </RadioGroup>
+  ),
+};
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Pick a language:
+      </FormFieldLabel>
+
+      <RadioGroup>
+        <Radio value="html">
+          <RadioControl />
+
+          <RadioLabel>HTML</RadioLabel>
+        </Radio>
+
+        <Radio value="css">
+          <RadioControl />
+
+          <RadioLabel>CSS</RadioLabel>
+        </Radio>
+
+        <Radio value="js">
+          <RadioControl />
+
+          <RadioLabel>JavaScript</RadioLabel>
+        </Radio>
+      </RadioGroup>
+    </FormField>
   ),
 };
 

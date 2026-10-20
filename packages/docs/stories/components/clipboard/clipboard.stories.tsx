@@ -54,6 +54,34 @@ export const Overview: Story = {
   ),
 };
 
+export const Disabled: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Clipboard value="Disabled" disabled>
+      <ClipboardControl />
+
+      <ClipboardTrigger />
+    </Clipboard>
+  ),
+};
+
+export const Loading: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Clipboard value="Loading" >
+      <ClipboardControl loading />
+
+      <ClipboardTrigger />
+    </Clipboard>
+  ),
+};
+
 export const Masked: Story = {
   globals: {
     imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
@@ -84,34 +112,6 @@ export const CustomLabels: Story = {
   ),
 };
 
-export const Loading: Story = {
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Clipboard value="Loading" >
-      <ClipboardControl loading />
-
-      <ClipboardTrigger />
-    </Clipboard>
-  ),
-};
-
-export const Disabled: Story = {
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Clipboard value="Disabled" disabled>
-      <ClipboardControl />
-
-      <ClipboardTrigger />
-    </Clipboard>
-  ),
-};
-
 export const AccessibilityFormField: Story = {
   globals: {
     imports: `import { Clipboard, ClipboardControl, ClipboardTrigger, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
@@ -131,7 +131,6 @@ export const AccessibilityFormField: Story = {
     </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

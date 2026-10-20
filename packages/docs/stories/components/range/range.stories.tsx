@@ -24,46 +24,6 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Controlled: Story = {
-  globals: {
-    imports: `import { Range, type RangeValueChangeDetail } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => {
-    const [draggingValue, setDraggingValue] = useState<number>();
-    const [value, setValue] = useState<number>();
-
-    function onDragging(detail: RangeValueChangeDetail) {
-      setDraggingValue(detail.value[0]);
-    }
-
-    function onValueChange(detail: RangeValueChangeDetail) {
-      setValue(detail.value[0]);
-    }
-
-    return (
-      <>
-        <p>
-          <span>Final value: { value }</span>
-          <br />
-          <span>Dragged value: { draggingValue }</span>
-        </p>
-
-        <Range
-          onDragging={ onDragging }
-          onValueChange={ onValueChange }
-          value={ draggingValue ? [draggingValue] : undefined } />
-      </>
-    );
-  },
-};
-
 export const Default: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
   globals: {
@@ -95,23 +55,6 @@ export const Disabled: Story = {
         defaultValue={ [50, 75] }
         disabled />
     </>
-  ),
-};
-
-export const InFormField: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Range:
-      </FormFieldLabel>
-
-      <Range />
-    </FormField>
   ),
 };
 
@@ -148,17 +91,6 @@ export const MaxMin: Story = {
         max={ 75 }
         min={ 25 } />
     </>
-  ),
-};
-
-export const Overview: Story = {
-  decorators: [(story) => <div style={{ width: '160px' }}>{ story() }</div>],
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Range defaultValue={ [50] } />
   ),
 };
 
@@ -200,6 +132,17 @@ export const Ticks: Story = {
   ),
 };
 
+export const Overview: Story = {
+  decorators: [(story) => <div style={{ width: '160px' }}>{ story() }</div>],
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Range defaultValue={ [50] } />
+  ),
+};
+
 export const TicksLabels: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
   globals: {
@@ -232,6 +175,63 @@ export const TicksLabels: Story = {
           { label: 'Excellent', value: 5 },
         ]} />
     </>
+  ),
+};
+
+export const Controlled: Story = {
+  globals: {
+    imports: `import { Range, type RangeValueChangeDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [draggingValue, setDraggingValue] = useState<number>();
+    const [value, setValue] = useState<number>();
+
+    function onDragging(detail: RangeValueChangeDetail) {
+      setDraggingValue(detail.value[0]);
+    }
+
+    function onValueChange(detail: RangeValueChangeDetail) {
+      setValue(detail.value[0]);
+    }
+
+    return (
+      <>
+        <p>
+          <span>Final value: { value }</span>
+          <br />
+          <span>Dragged value: { draggingValue }</span>
+        </p>
+
+        <Range
+          onDragging={ onDragging }
+          onValueChange={ onValueChange }
+          value={ draggingValue ? [draggingValue] : undefined } />
+      </>
+    );
+  },
+};
+
+export const InFormField: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Range:
+      </FormFieldLabel>
+
+      <Range />
+    </FormField>
   ),
 };
 
@@ -286,7 +286,6 @@ import { useState } from 'react';`,
     );
   },
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

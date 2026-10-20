@@ -65,41 +65,6 @@ export const Disabled: Story = {
   ),
 };
 
-export const InFormField: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Text preset={ TEXT_PRESET.label }>
-        Notification settings:
-      </Text>
-
-      <FormField>
-        <Toggle>
-          <ToggleControl />
-
-          <ToggleLabel>
-            General Information
-          </ToggleLabel>
-        </Toggle>
-      </FormField>
-
-      <FormField>
-        <Toggle>
-          <ToggleControl />
-
-          <ToggleLabel>
-            Promotions
-          </ToggleLabel>
-        </Toggle>
-      </FormField>
-    </>
-  ),
-};
-
 export const Invalid: Story = {
   globals: {
     imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`,
@@ -140,6 +105,41 @@ export const WithLabels: Story = {
   ),
 };
 
+export const InFormField: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Text preset={ TEXT_PRESET.label }>
+        Notification settings:
+      </Text>
+
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+
+          <ToggleLabel>
+            General Information
+          </ToggleLabel>
+        </Toggle>
+      </FormField>
+
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+
+          <ToggleLabel>
+            Promotions
+          </ToggleLabel>
+        </Toggle>
+      </FormField>
+    </>
+  ),
+};
+
 export const AccessibilityLabel: Story = {
   globals: {
     imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
@@ -171,7 +171,6 @@ export const AccessibilityAriaLabel: Story = {
     </Toggle>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

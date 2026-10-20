@@ -14,49 +14,6 @@ const meta: Meta<TextareaProp> = {
 
 export default meta;
 
-export const AccessibilityDescribedBy: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Description:
-      </FormFieldLabel>
-
-      <Textarea />
-
-      <FormFieldHelper>
-        Enter a brief description
-      </FormFieldHelper>
-    </FormField>
-  ),
-};
-
-export const AccessibilityFormField: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Description:
-      </FormFieldLabel>
-
-      <Textarea />
-    </FormField>
-  ),
-};
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Textarea placeholder="Textarea" />
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Textarea } from '@ovhcloud/ods-react';`,
@@ -74,6 +31,35 @@ export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Textarea disabled />
+  ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Textarea placeholder="Textarea" />
+  ),
+};
+
+export const ReadOnly: Story = {
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Textarea
+      defaultValue="Readonly"
+      readOnly />
+  ),
+};
+
+export const Resizable: Story = {
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Textarea style={{ resize: 'both' }} />
   ),
 };
 
@@ -134,28 +120,41 @@ export const Overview: Story = {
   ),
 };
 
-export const ReadOnly: Story = {
+export const AccessibilityDescribedBy: Story = {
   globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Textarea
-      defaultValue="Readonly"
-      readOnly />
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+
+      <FormFieldHelper>
+        Enter a brief description
+      </FormFieldHelper>
+    </FormField>
   ),
 };
 
-export const Resizable: Story = {
+export const AccessibilityFormField: Story = {
   globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Textarea style={{ resize: 'both' }} />
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+    </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

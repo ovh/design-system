@@ -30,35 +30,6 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Controlled: Story = {
-  globals: {
-    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const [values, setValues] = useState(['hourly']);
-
-    return (
-      <ButtonGroup
-        onValueChange={ ({ value }) => setValues(value) }
-        value={ values }>
-        <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-        <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-        <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-        <ButtonGroupItem value="custom">
-          <Icon name={ ICON_NAME.calendar } /> Custom
-        </ButtonGroupItem>
-      </ButtonGroup>
-    );
-  },
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`,
@@ -108,6 +79,35 @@ export const DisabledItem: Story = {
       </ButtonGroupItem>
     </ButtonGroup>
   ),
+};
+
+export const Controlled: Story = {
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [values, setValues] = useState(['hourly']);
+
+    return (
+      <ButtonGroup
+        onValueChange={ ({ value }) => setValues(value) }
+        value={ values }>
+        <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+        <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+        <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+        <ButtonGroupItem value="custom">
+          <Icon name={ ICON_NAME.calendar } /> Custom
+        </ButtonGroupItem>
+      </ButtonGroup>
+    );
+  },
 };
 
 export const Multiple: Story = {

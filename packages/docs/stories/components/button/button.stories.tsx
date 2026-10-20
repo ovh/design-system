@@ -22,6 +22,18 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      My button
+    </Button>
+  ),
+};
+
 export const Status: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
@@ -34,18 +46,6 @@ export const Status: StoryObj = {
       <Button status={ BUTTON_STATUS.critical }>Critical</Button>
       <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
     </>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Button>
-      My button
-    </Button>
   ),
 };
 
@@ -270,7 +270,6 @@ import { useState } from 'react';`,
   },
 };
 
-
 export const AccessibilityRoleAlert: Story = {
   globals: {
     imports: `import { Button } from '@ovhcloud/ods-react';
@@ -304,7 +303,6 @@ import { useState } from 'react';`,
     );
   },
 };
-
 
 export const ThemeGenerator: StoryObj = {
   parameters: {

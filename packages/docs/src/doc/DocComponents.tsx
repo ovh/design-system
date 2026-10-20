@@ -3,6 +3,7 @@ import { type ComponentType, type ReactElement, type ReactNode, useMemo } from '
 import { useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
+import { Card } from '../../../ods-react/src/components/card/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -84,18 +85,20 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
   return (
     <div className="doc__overview">
       <div className="doc__identity-desc">{ children }</div>
-      <dl className="doc__identity">
-        <div><dt>Name</dt><dd>{ name }</dd></div>
-        { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
-        <div>
-          <dt>Links</dt>
-          <dd className="doc__identity-links">
-            { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
-            <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
-            { previousVersionUrl && <Link href={ previousVersionUrl } target="_blank">Previous major version <Icon name={ ICON_NAME.externalLink } /></Link> }
-          </dd>
-        </div>
-      </dl>
+      <Card className="doc__identity">
+        <dl>
+          <div><dt>Name</dt><dd>{ name }</dd></div>
+          { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
+          <div>
+            <dt>Links</dt>
+            <dd className="doc__identity-links">
+              { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
+              <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
+              { previousVersionUrl && <Link href={ previousVersionUrl } target="_blank">Previous major version <Icon name={ ICON_NAME.externalLink } /></Link> }
+            </dd>
+          </div>
+        </dl>
+      </Card>
     </div>
   );
 };

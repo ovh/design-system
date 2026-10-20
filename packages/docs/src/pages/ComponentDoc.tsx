@@ -67,45 +67,47 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
 
   return (
     <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
-      { tabs.length > 1 && (
-        <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
-          <TabList>
-            { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
-          </TabList>
-        </Tabs>
-      ) }
+      <div className="doc-page">
+        { tabs.length > 1 && (
+          <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
+            <TabList>
+              { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
+            </TabList>
+          </Tabs>
+        ) }
 
-      { currentTab === 'documentation' && Doc && (
-        stories
-          ? (
-            <Suspense fallback={ <DocSkeleton /> }>
+        { currentTab === 'documentation' && Doc && (
+          stories
+            ? (
+              <Suspense fallback={ <DocSkeleton /> }>
+                <DocArticle>
+                  <MDXProvider components={ MDX_COMPONENTS }>
+                    <Doc />
+                  </MDXProvider>
+                </DocArticle>
+              </Suspense>
+            )
+            : <DocSkeleton />
+        ) }
+
+        { currentTab === 'gallery' && Gallery && <Gallery /> }
+
+        { currentTab === 'technical' && (
+          <DocArticle>
+            <TechnicalSpecification component={ componentKey } />
+          </DocArticle>
+        ) }
+
+        { currentTab === 'examples' && (
+          stories
+            ? (
               <DocArticle>
-                <MDXProvider components={ MDX_COMPONENTS }>
-                  <Doc />
-                </MDXProvider>
+                <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
               </DocArticle>
-            </Suspense>
-          )
-          : <DocSkeleton />
-      ) }
-
-      { currentTab === 'gallery' && Gallery && <Gallery /> }
-
-      { currentTab === 'technical' && (
-        <DocArticle>
-          <TechnicalSpecification component={ componentKey } />
-        </DocArticle>
-      ) }
-
-      { currentTab === 'examples' && (
-        stories
-          ? (
-            <DocArticle>
-              <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
-            </DocArticle>
-          )
-          : <DocSkeleton />
-      ) }
+            )
+            : <DocSkeleton />
+        ) }
+      </div>
     </PageStoriesProvider>
   );
 };

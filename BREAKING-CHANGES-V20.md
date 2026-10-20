@@ -63,9 +63,8 @@ not the history of the branch.
 | **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colours have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its `--tables` output. |
 
-One name survives: `--ods-theme-brand-color` is still declared, as an alias of
-`--ods-semantic-color-content-brand`, so a read of it keeps resolving. Its value moves from
-`primary-700` to the brand ink. The codemod renames it anyway, as listed below.
+`--ods-theme-brand-color` is the only rename that keeps its value: `--ods-semantic-brand-color`
+points at `brand-700`, the rung that `primary-700` became.
 
 ### 1:1 renames
 
@@ -83,7 +82,7 @@ One name survives: `--ods-theme-brand-color` is still declared, as an alias of
 | `--ods-theme-border-color-drag-over` | `--ods-semantic-color-border-drag-over` |
 | `--ods-theme-border-color-readonly` | `--ods-semantic-color-border-readonly` |
 | `--ods-theme-border-color-selected` | `--ods-semantic-color-border-selected-solid` |
-| `--ods-theme-brand-color` | `--ods-semantic-color-content-brand` |
+| `--ods-theme-brand-color` | `--ods-semantic-brand-color` |
 | `--ods-theme-heading-text-color` | `--ods-semantic-color-content-heading` |
 | `--ods-theme-progress-background-color` | `--ods-semantic-color-surface-control-solid` |
 | `--ods-theme-split-background-color` | `--ods-semantic-color-surface-neutral-minimal` |
@@ -354,7 +353,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves, but only one key survives (`--ods-theme-brand-color`, see BC-01): the other 186 old names are out, and 272 new ones are in (181 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. The generator also moved from `cssjson` to `postcss`, which fixes a bug that was silently dropping any declaration written after a comment (41 of 248 tokens on the new theme, a handful on the old one). |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves, but no key survives: the 187 old names are out, and 273 new ones are in (182 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. The generator also moved from `cssjson` to `postcss`, which fixes a bug that was silently dropping any declaration written after a comment (41 of 248 tokens on the new theme, a handful on the old one). |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |

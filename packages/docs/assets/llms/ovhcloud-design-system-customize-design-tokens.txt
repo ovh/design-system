@@ -164,7 +164,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-shadow-control` | `var(--ods-palette-gray-900)` |
 | `--ods-semantic-color-shadow-raised` | `var(--ods-palette-gray-900)` |
 | `--ods-semantic-color-shadow-overlay` | `var(--ods-palette-gray-900)` |
-| `--ods-theme-brand-color` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-semantic-brand-color` | `var(--ods-palette-brand-700)` |
 
 ### Size
 

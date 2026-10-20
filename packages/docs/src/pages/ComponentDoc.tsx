@@ -99,7 +99,11 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
 
       { currentTab === 'examples' && (
         stories
-          ? <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } title={ page.title } tokens={ tokens } />
+          ? (
+            <DocArticle>
+              <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
+            </DocArticle>
+          )
           : <DocSkeleton />
       ) }
     </PageStoriesProvider>

@@ -2,6 +2,7 @@ import { composeStories } from '@storybook/react';
 import { Component, type ComponentType, type JSX, type ReactNode, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
+import { storyTitle } from '../demo/extractSource';
 import { flattenPages } from '../nav/model';
 import { Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
 import styles from './componentGallery.module.css';
@@ -39,8 +40,6 @@ interface GalleryEntry {
   stories: GalleryStory[];
   title: string;
 }
-
-const humanize = (name: string): string => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
 
 const COMPONENT_PAGES = new Map(flattenPages().filter((page) => page.kind === 'component').map((page) => [page.id, page]));
 
@@ -130,10 +129,10 @@ const ComponentGallery = (): JSX.Element => {
 
               { stories.map(({ Story, name }) => (
                 <div className={ styles['component-gallery__story'] } key={ name }>
-                  <h3 className={ styles['component-gallery__story-name'] }>{ humanize(name) }</h3>
+                  <h3 className={ styles['component-gallery__story-name'] }>{ storyTitle(name) }</h3>
 
                   <div className={ styles['component-gallery__story-demo'] }>
-                    <StoryBoundary label={ `${title} / ${humanize(name)}` }>
+                    <StoryBoundary label={ `${title} / ${storyTitle(name)}` }>
                       <Story />
                     </StoryBoundary>
                   </div>

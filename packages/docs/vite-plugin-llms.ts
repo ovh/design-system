@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
 import guidesInventory from './src/content/guides/guides.json';
 import helpersInventory from './src/content/helpers/helpers.json';
-import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
+import { EXCLUDED_STORIES, compareStoryNames, extractStorySources, storyTitle } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
@@ -83,7 +83,6 @@ function discoverGuides(): GuideEntry[] {
 const HELPERS = helpersInventory;
 
 const titleize = (kebab: string): string => kebab.split('-').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
-const humanize = (storyName: string): string => storyName.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
 
 /* ------------------------------------------------------------------ *
  * Source readers
@@ -370,10 +369,12 @@ function componentDocs(component: string): { docs: Doc[], pages: Record<string, 
     type: 'documentation',
   });
 
-  const publicStories = Object.entries(stories).filter(([name]) => !EXCLUDED_STORIES.has(name));
+  const publicStories = Object.entries(stories)
+    .filter(([name]) => !EXCLUDED_STORIES.has(name))
+    .sort(([a], [b]) => compareStoryNames(a, b));
   const examples = publicStories.length
     ? makeDoc({
-      body: `# ${title}\n\n${publicStories.map(([name, source]) => `## ${humanize(name)}\n\n\`\`\`tsx\n${source}\n\`\`\``).join('\n\n')}`,
+      body: `# ${title}\n\n${publicStories.map(([name, source]) => `## ${storyTitle(name)}\n\n\`\`\`tsx\n${source}\n\`\`\``).join('\n\n')}`,
       category: 'component',
       filename: `react-components-${component}--examples.txt`,
       slug: component,
@@ -417,7 +418,7 @@ function componentDocs(component: string): { docs: Doc[], pages: Record<string, 
       `# ${title}`,
       intro,
       mainProps.length ? `## Props\n\n${propsTable(mainProps)}` : '',
-      publicStories.length ? `## Examples\n\n${publicStories.map(([name]) => `- ${humanize(name)}`).join('\n')}` : '',
+      publicStories.length ? `## Examples\n\n${publicStories.map(([name]) => `- ${storyTitle(name)}`).join('\n')}` : '',
       '## Documentation pages',
       [
         `- [Documentation](./${documentation.filename})`,

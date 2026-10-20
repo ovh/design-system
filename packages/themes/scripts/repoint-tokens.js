@@ -58,7 +58,7 @@ const THEME = {
   'border-color-drag-over': 'color-border-drag-over',
   'border-color-readonly': 'color-border-readonly',
   'border-color-selected': 'color-border-selected-solid',
-  'brand-color': 'color-content-brand',
+  'brand-color': 'brand-color',
   'heading-text-color': 'color-content-heading',
   'progress-background-color': 'color-surface-control-solid',
   'split-background-color': 'color-surface-neutral-minimal',

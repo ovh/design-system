@@ -267,8 +267,8 @@
   --ods-semantic-z-index-drawer: 300;
   --ods-semantic-z-index-modal: 400;
 
-  /* Public aliases */
-  --ods-theme-brand-color: var(--ods-semantic-color-content-brand);
+  /* Brand */
+  --ods-semantic-brand-color: var(--ods-palette-brand-700);
 }
 
 @media (prefers-reduced-motion: reduce) {

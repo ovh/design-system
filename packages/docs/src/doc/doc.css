@@ -173,7 +173,8 @@
   max-width: var(--doc-content-max-width);
   display: grid;
   gap: 40px;
-  grid-template-columns: minmax(0, 1fr) 200px;
+  grid-template-columns: minmax(0, 90ch) 200px;
+  justify-content: center;
   margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
 
   &:first-child {

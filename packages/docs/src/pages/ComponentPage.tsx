@@ -22,7 +22,6 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
 
   return (
     <DocArticle>
-      <p data-testid="demo-count">{ demos.length } démos composées</p>
       { demos.map(({ Component, name }) => {
         const source = sources[name];
         const imports = (storiesModule[name] as { globals?: { imports?: string } } | undefined)?.globals?.imports;

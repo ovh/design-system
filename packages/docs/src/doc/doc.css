@@ -1,3 +1,8 @@
+/* Page content column: centered in the main pane, never wider than this. */
+:root {
+  --doc-content-max-width: 1200px;
+}
+
 .doc__heading {
   margin-top: calc(var(--ods-semantic-size-space-inset-block) * 5);
   margin-bottom: calc(var(--ods-semantic-size-space-inset-block) * 1);
@@ -38,13 +43,14 @@
 }
 
 .doc__identity {
-  border: 1px solid var(--ods-semantic-color-border-neutral-subtle);
-  border-radius: 4px;
-  display: grid;
   flex: 0 0 220px;
+  padding: 16px;
+}
+
+.doc__identity dl {
+  display: grid;
   gap: 12px;
   margin: 0;
-  padding: 16px;
 }
 
 .doc__identity dt {
@@ -115,6 +121,12 @@
   color: var(--ods-semantic-color-content-brand);
 }
 
+/* Readable line length for the prose; demos, code, tables and layout blocks
+   keep the full article width. */
+.doc :is(p, ul, ol, blockquote) {
+  max-width: 80ch;
+}
+
 /* Raw markdown links (the changelog renders through markdown-to-jsx as bare
    <a> tags) have no ODS Link styling and fall back to the UA default #0000ee —
    unreadable on the dark surface. Theme only these class-less anchors with the
@@ -143,8 +155,15 @@
   }
 }
 
+.doc-page {
+  margin-inline: auto;
+  max-width: var(--doc-content-max-width);
+}
+
 .doc-layout {
   align-items: start;
+  margin-inline: auto;
+  max-width: var(--doc-content-max-width);
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(0, 1fr) 200px;
@@ -156,12 +175,16 @@
 }
 
 .doc-layout__toc {
+  background-color: var(--ods-semantic-color-surface-raised);
+  border-radius: var(--ods-semantic-size-radius-container);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   font-size: .85rem;
   gap: 6px;
   max-height: calc(100dvh - 120px);
   overflow-y: auto;
+  padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
   position: sticky;
   z-index: var(--ods-semantic-z-index-sticky);
   top: 8px;

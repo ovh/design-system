@@ -90,7 +90,6 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-information-outline: var(--ods-semantic-color-content-information);
   --ods-button-text-color-information-outline-hover: var(--ods-semantic-color-content-on-information);
   --ods-button-text-color-information-outline-active: var(--ods-semantic-color-content-on-information);
-  // ---
 
   /* --- */
   --ods-button-background-color-neutral: var(--ods-semantic-color-surface-neutral);
@@ -103,7 +102,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-neutral-hover: var(--ods-semantic-color-content-on-neutral-solid);
   --ods-button-text-color-neutral-active: var(--ods-semantic-color-content-on-neutral-solid);
   --ods-button-background-color-neutral-ghost: inherit;
-  --ods-button-background-color-neutral-ghost-hover: var(--ods-semantic-color-surface-neutral-subtle);
+  --ods-button-background-color-neutral-ghost-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
   --ods-button-background-color-neutral-ghost-active: var(--ods-semantic-color-surface-neutral-subtle);
   --ods-button-border-color-neutral-ghost: unset;
   --ods-button-border-color-neutral-ghost-hover: unset;
@@ -120,7 +119,6 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-neutral-outline: var(--ods-semantic-color-content-neutral);
   --ods-button-text-color-neutral-outline-hover: var(--ods-semantic-color-content-on-neutral);
   --ods-button-text-color-neutral-outline-active: var(--ods-semantic-color-content-on-neutral);
-  // ---
 
   /* --- */
   --ods-button-background-color-primary: var(--ods-semantic-color-surface-brand);
@@ -133,7 +131,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-primary-hover: var(--ods-semantic-color-content-on-brand-solid);
   --ods-button-text-color-primary-active: var(--ods-semantic-color-content-on-brand-solid);
   --ods-button-background-color-primary-ghost: inherit;
-  --ods-button-background-color-primary-ghost-hover: var(--ods-semantic-color-surface-brand-subtle);
+  --ods-button-background-color-primary-ghost-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
   --ods-button-background-color-primary-ghost-active: var(--ods-semantic-color-surface-brand-subtle);
   --ods-button-border-color-primary-ghost: unset;
   --ods-button-border-color-primary-ghost-hover: unset;
@@ -142,15 +140,14 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-primary-ghost-hover: var(--ods-semantic-color-content-on-brand);
   --ods-button-text-color-primary-ghost-active: var(--ods-semantic-color-content-on-brand);
   --ods-button-background-color-primary-outline: var(--ods-semantic-color-surface-page);
-  --ods-button-background-color-primary-outline-hover: var(--ods-semantic-color-surface-brand-subtle);
-  --ods-button-background-color-primary-outline-active: var(--ods-semantic-color-surface-brand-subtle);
+  --ods-button-background-color-primary-outline-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
+  --ods-button-background-color-primary-outline-active: var(--ods-semantic-color-interaction-brand-subtle-active);
   --ods-button-border-color-primary-outline: var(--ods-semantic-color-border-brand);
   --ods-button-border-color-primary-outline-hover: var(--ods-semantic-color-border-brand);
-  --ods-button-border-color-primary-outline-active: var(--ods-semantic-color-border-brand); 
+  --ods-button-border-color-primary-outline-active: var(--ods-semantic-color-border-brand);
   --ods-button-text-color-primary-outline: var(--ods-semantic-color-content-brand);
   --ods-button-text-color-primary-outline-hover: var(--ods-semantic-color-content-on-brand);
   --ods-button-text-color-primary-outline-active: var(--ods-semantic-color-content-on-brand);
-  // ---
 
   /* --- */
   --ods-button-background-color-success: var(--ods-semantic-color-surface-success);
@@ -180,7 +177,6 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-success-outline: var(--ods-semantic-color-content-success);
   --ods-button-text-color-success-outline-hover: var(--ods-semantic-color-content-on-success);
   --ods-button-text-color-success-outline-active: var(--ods-semantic-color-content-on-success);
-  // ---
 
   /* --- */
   --ods-button-background-color-warning: var(--ods-semantic-color-surface-warning);
@@ -209,8 +205,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-border-color-warning-outline-active: var(--ods-semantic-color-border-warning);
   --ods-button-text-color-warning-outline: var(--ods-semantic-color-content-warning);
   --ods-button-text-color-warning-outline-hover: var(--ods-semantic-color-content-on-warning);
-  --ods-button-text-color-warning-outline-active: var(--ods-semantic-color-content-on-warning-solid);
-  // ---
+  --ods-button-text-color-warning-outline-active: var(--ods-semantic-color-content-on-warning);
 
   box-sizing: border-box;
   display: inline-flex;

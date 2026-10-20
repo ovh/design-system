@@ -82,17 +82,13 @@ $ods-palette-orange-900: #78350f;
  */
 $ods-palette-white: #ffffff;
 $ods-palette-black: #000000;
-
-// TODO: Maybe remove
 $ods-palette-decorative-alpha: #fbfe47;
 $ods-palette-decorative-beta: #47fe78;
 $ods-palette-decorative-new: #47fffa;
 $ods-palette-decorative-promotion: #ccff66;
 
 /*
- * REVIEW: deduced. The alpha values measured in use, named by position the way the colour
- * families are. The percentage ladder proposed in the opacity ticket (0 4 8 12 16 24 32 48 64
- * 80 100) contains none of these, so adopting it would change every alpha in the system.
+ * Opacity
  */
 $ods-palette-opacity-15: 0.15;
 $ods-palette-opacity-20: 0.2;

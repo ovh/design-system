@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { type Plugin } from 'vite';
 import guidesInventory from './src/content/guides/guides.json';
 import helpersInventory from './src/content/helpers/helpers.json';
-import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource';
+import { extractStorySources, orderStories } from './src/demo/extractSource';
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
@@ -380,7 +380,7 @@ function componentDocs(component: string): { docs: Doc[], pages: Record<string, 
     type: 'documentation',
   });
 
-  const publicStories = Object.entries(stories).filter(([name]) => !EXCLUDED_STORIES.has(name));
+  const publicStories = orderStories(Object.keys(stories)).map((name) => [name, stories[name]] as const);
   const examples = publicStories.length
     ? makeDoc({
       body: `# ${title}\n\n${publicStories.map(([name, source]) => `## ${humanize(name)}\n\n\`\`\`tsx\n${source}\n\`\`\``).join('\n\n')}`,

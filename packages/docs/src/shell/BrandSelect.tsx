@@ -19,7 +19,7 @@ const BRAND_CSS: Record<Exclude<Brand, 'default'>, string> = {
 };
 
 const BRAND_ITEMS = [
-  { label: 'Default theme (Aluminium)', value: 'default' },
+  { customRendererData: { suffix: ' (default)' }, label: 'Aluminium', value: 'default' },
   { label: 'blue-jeans', value: 'blue-jeans' },
 ];
 
@@ -49,9 +49,13 @@ const BrandSelect = () => {
       data-testid="brand-select"
       items={ BRAND_ITEMS }
       onValueChange={ ({ value }) => setBrand((value[0] as Brand) ?? 'default') }
+      overlayConfig={ { sameWidth: false } }
       value={ [brand] }>
       <SelectControl aria-label="Theme" />
-      <SelectContent />
+      <SelectContent
+        customOptionRenderer={ ({ customData, label }) => (
+          <span>{ label }{ (customData as { suffix?: string } | undefined)?.suffix }</span>
+        ) } />
     </Select>
   );
 };

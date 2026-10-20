@@ -88,13 +88,17 @@ function detectCurrentChannel(): string {
   return currentVersion === (versions as string[])[0] ? 'latest' : currentVersion;
 }
 
+// The newest release only appears as the "latest" channel, labelled with its version; the
+// " (latest)" flag shows in the dropdown only.
+const [LATEST_VERSION, ...OLDER_VERSIONS] = versions as string[];
 const VERSION_ITEMS = [
-  { label: `latest (${(versions as string[])[0]})`, value: 'latest' },
-  ...(versions as string[]).map((v) => ({ label: `v${v}`, value: v })),
+  { customRendererData: { suffix: ' (latest)' }, label: `v${LATEST_VERSION}`, value: 'latest' },
+  ...OLDER_VERSIONS.map((v) => ({ label: `v${v}`, value: v })),
 ];
 
 const VersionSelect = () => {
-  const current = detectCurrentChannel();
+  const channel = detectCurrentChannel();
+  const current = channel === LATEST_VERSION ? 'latest' : channel;
 
   return (
     <Select
@@ -107,9 +111,13 @@ const VersionSelect = () => {
           window.location.href = target === 'latest' ? `${BASE_URL}/latest/` : `${BASE_URL}/v${target}/`;
         }
       } }
+      overlayConfig={ { sameWidth: false } }
       value={ [current] }>
       <SelectControl />
-      <SelectContent />
+      <SelectContent
+        customOptionRenderer={ ({ customData, label }) => (
+          <span>{ label }{ (customData as { suffix?: string } | undefined)?.suffix }</span>
+        ) } />
     </Select>
   );
 };

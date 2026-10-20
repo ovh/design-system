@@ -4,23 +4,6 @@
   row-gap: 16px;
 }
 
-.component-gallery__toolbar {
-  display: flex;
-  column-gap: 12px;
-  align-items: center;
-}
-
-.component-gallery__filter {
-  width: 320px;
-  max-width: 100%;
-}
-
-.component-gallery__count {
-  margin-left: auto;
-  color: var(--ods-semantic-color-content-placeholder);
-  font-variant-numeric: tabular-nums;
-}
-
 .component-gallery__empty {
   margin: 0;
 }

@@ -1,0 +1,16 @@
+.gallery-toolbar {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.gallery-toolbar__filter {
+  width: 320px;
+  max-width: 100%;
+}
+
+.gallery-toolbar__count {
+  margin-left: auto;
+  color: var(--ods-semantic-color-content-placeholder);
+  font-variant-numeric: tabular-nums;
+}

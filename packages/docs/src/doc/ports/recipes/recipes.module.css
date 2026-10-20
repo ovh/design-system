@@ -1,15 +1,21 @@
 .recipes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
   margin: 0 auto;
-}
-
-.recipes__search {
-  margin: 24px 0;
+  width: 100%;
 }
 
 .recipes__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+@media (width <= 720px) {
+  .recipes__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Component page: as many usable cards per row as the article holds. A card needs 349px for the

@@ -188,7 +188,8 @@ const Shell = () => {
   const currentPage = pages.find((page) => page.path === location.pathname)
     ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
   // Doc pages center their content column: the topbar follows it.
-  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper';
+  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
+    || (currentPage?.kind === 'recipe' && currentPage.id !== 'recipes/components');
   // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
   // keep it, since it holds the navigation drawer button.
   const isWelcome = location.pathname === '/' && !isNarrow;

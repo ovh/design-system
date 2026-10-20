@@ -135,6 +135,11 @@
   max-width: var(--doc-block-width);
 }
 
+/* Grid pages (the Recipe Gallery) use the full width instead of the reading column. */
+article.doc.doc--wide {
+  max-width: none;
+}
+
 /* Readable line length for the prose; demos, code, tables and layout blocks
    keep the full article width. */
 .doc :is(p, ul, ol, blockquote) {

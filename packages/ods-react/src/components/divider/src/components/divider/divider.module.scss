@@ -14,7 +14,7 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
 
     // [Deprecated] will be removed in v21
     &--primary {
-      background-color: var(--ods-semantic-color-surface-neutral-minimal);
+      background-color: var(--ods-semantic-color-border-neutral-minimal);
     }
 
     &--vertical {

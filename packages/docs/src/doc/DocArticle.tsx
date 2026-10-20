@@ -80,13 +80,13 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   }, [container]);
 
   /* Scroll-spy: select the heading the reader is currently on. Reads the
-     scroll container (the shell main pane) and picks the last heading that
+     scroll container (the shell content pane) and picks the last heading that
      crossed the trigger line near the top. */
   useEffect(() => {
     if (!container || entries.length < 2) {
       return;
     }
-    const scroller = container.closest<HTMLElement>('.shell__main') ?? document.documentElement;
+    const scroller = container.closest<HTMLElement>('.shell__content') ?? document.documentElement;
     const TRIGGER = 120;
     let frame = 0;
 

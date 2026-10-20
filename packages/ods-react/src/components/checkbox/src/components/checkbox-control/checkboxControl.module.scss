@@ -15,7 +15,6 @@
       }
     }
 
-    // QUID DES BORDURES ET DU HOVER
     &[data-state="checked"],
     &[data-state="indeterminate"] {
       border-color: var(--ods-semantic-color-border-selected-solid);

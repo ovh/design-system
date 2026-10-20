@@ -122,6 +122,21 @@ function dedent(code: string): string {
    emission skip them, from this single list. */
 const EXCLUDED_STORIES = new Set(['AnatomyTech', 'Overview', 'ThemeGenerator', 'Demo']);
 
+const isAccessibilityStory = (name: string): boolean => name.startsWith('Accessibility');
+
+/* Demo order, as the Storybook examples pages had it: Default first, then the
+   prop showcases, then the accessibility ones — each group keeping the order
+   of the stories file. Takes the names in source order (an ES module namespace
+   lists its exports alphabetically, so never feed it Object.keys(module)). */
+function orderStories(names: string[]): string[] {
+  const rank = (name: string) => (name === 'Default' ? 0 : isAccessibilityStory(name) ? 2 : 1);
+  return names
+    .filter((name) => !EXCLUDED_STORIES.has(name))
+    .map((name, index) => ({ index, name }))
+    .sort((a, b) => (rank(a.name) - rank(b.name)) || (a.index - b.index))
+    .map(({ name }) => name);
+}
+
 function extractStorySources(fileSource: string): Record<string, string> {
   const sources: Record<string, string> = {};
   const storyRe = /export const (\w+)(?::[^=]+)?=\s*(?:{|\()/g;
@@ -150,4 +165,4 @@ function extractStorySources(fileSource: string): Record<string, string> {
   return sources;
 }
 
-export { EXCLUDED_STORIES, extractStorySources };
+export { EXCLUDED_STORIES, extractStorySources, isAccessibilityStory, orderStories };

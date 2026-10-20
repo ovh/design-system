@@ -16,6 +16,7 @@
 }
 
 .component-gallery__count {
+  margin-left: auto;
   color: var(--ods-semantic-color-content-placeholder);
   font-variant-numeric: tabular-nums;
 }
@@ -53,11 +54,6 @@
   color: var(--ods-semantic-color-content-heading);
   font-family: var(--ods-semantic-font-family-heading);
   font-size: 1.5rem;
-}
-
-.component-gallery__doc-link {
-  color: var(--ods-semantic-color-content-placeholder);
-  font-size: 0.875rem;
 }
 
 .component-gallery__story {

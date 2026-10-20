@@ -5,6 +5,7 @@ export { BADGE_SIZE, BADGE_STATUS, Badge } from '../../ods-react/src/components/
 export { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../ods-react/src/components/button/src';
 export { CARD_STATUS, Card } from '../../ods-react/src/components/card/src';
 export { Clipboard, ClipboardControl, ClipboardTrigger } from '../../ods-react/src/components/clipboard/src';
+export { Combobox, ComboboxContent, ComboboxControl } from '../../ods-react/src/components/combobox/src';
 export { DIVIDER_ORIENTATION, DIVIDER_SPACING, Divider } from '../../ods-react/src/components/divider/src';
 export { Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '../../ods-react/src/components/drawer/src';
 export { FormField, FormFieldLabel } from '../../ods-react/src/components/form-field/src';

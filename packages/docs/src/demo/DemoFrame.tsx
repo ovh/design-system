@@ -175,7 +175,7 @@ const FrameRealm = ({ children }: { children: ReactNode }) => {
 
 /* An anchor with a query-only href (the Pagination link mode builds them) resolves against the
    <base> below, so following it would load the whole docs app inside the frame. A demo reads the
-   docs router's URL, so the navigation is handed to that router instead, the way a routing
+   URL of the router it runs under, so the navigation is handed to that router instead, the way a routing
    library's link does it. A click a link already handled (a router link) is left alone. */
 const FrameLinks = () => {
   const { document: frameDocument } = useContext(FrameContext);

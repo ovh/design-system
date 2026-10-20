@@ -12,65 +12,6 @@ const meta: Meta<MeterProp> = {
 
 export default meta;
 
-export const AccessibilityAriaLabel: Story = {
-  globals: {
-    imports: `import { Meter } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Meter
-      aria-label="Gauge"
-      low={ 40 }
-      value={ 35 } />
-  ),
-};
-
-export const AccessibilityAriaLabelledby: Story = {
-  globals: {
-    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Text
-        id="meter-label"
-        preset={ TEXT_PRESET.label }>
-        Gauge:
-      </Text>
-
-      <Meter
-        aria-labelledby="meter-label"
-        low={ 40 }
-        value={ 35 } />
-    </>
-  ),
-};
-
-export const AccessibilityAriaValuetext: Story = {
-  globals: {
-    imports: `import { Meter } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Meter
-      aria-label="Gauge"
-      aria-valuetext="35 files uploaded"
-      low={ 40 }
-      value={ 35 } />
-  ),
-};
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <div style={{ width: '200px' }}>
-      <Meter
-        low={ 40 }
-        value={ 35 } />
-    </div>
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Meter } from '@ovhcloud/ods-react';`,
@@ -78,6 +19,32 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Meter />
+  ),
+};
+
+export const Thresholds: Story = {
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <p>Value under low threshold:</p>
+      <Meter
+        low={ 40 }
+        value={ 35 } />
+
+      <p>Value between both thresholds:</p>
+      <Meter
+        high={ 80 }
+        low={ 40 }
+        value={ 60 } />
+
+      <p>Value above high threshold:</p>
+      <Meter
+        high={ 80 }
+        value={ 90 } />
+    </>
   ),
 };
 
@@ -112,6 +79,51 @@ export const Optimum: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ width: '200px' }}>
+      <Meter
+        low={ 40 }
+        value={ 35 } />
+    </div>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Meter
+      aria-label="Gauge"
+      low={ 40 }
+      value={ 35 } />
+  ),
+};
+
+export const AccessibilityAriaLabelledby: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Text
+        id="meter-label"
+        preset={ TEXT_PRESET.label }>
+        Gauge:
+      </Text>
+
+      <Meter
+        aria-labelledby="meter-label"
+        low={ 40 }
+        value={ 35 } />
+    </>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   render: ({}) => (
@@ -121,32 +133,19 @@ export const Overview: Story = {
   ),
 };
 
-export const Thresholds: Story = {
+export const AccessibilityAriaValuetext: Story = {
   globals: {
     imports: `import { Meter } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <>
-      <p>Value under low threshold:</p>
-      <Meter
-        low={ 40 }
-        value={ 35 } />
-
-      <p>Value between both thresholds:</p>
-      <Meter
-        high={ 80 }
-        low={ 40 }
-        value={ 60 } />
-
-      <p>Value above high threshold:</p>
-      <Meter
-        high={ 80 }
-        value={ 90 } />
-    </>
+    <Meter
+      aria-label="Gauge"
+      aria-valuetext="35 files uploaded"
+      low={ 40 }
+      value={ 35 } />
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

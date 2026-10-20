@@ -23,6 +23,21 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Tag>
+      My tag
+    </Tag>
+  ),
+};
+
 export const Status: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
@@ -44,43 +59,6 @@ export const Status: Story = {
   ),
 };
 
-export const CustomIcon: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
-  globals: {
-    imports: `import { ICON_NAME, Tag } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <>
-      <Tag icon={ null }>
-        No Icon
-      </Tag>
-
-      <Tag icon={ ICON_NAME.star }>
-        Custom Icon
-      </Tag>
-    </>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Tag>
-      My tag
-    </Tag>
-  ),
-};
-
 export const Disabled: Story = {
   globals: {
     imports: `import { Tag } from '@ovhcloud/ods-react';`,
@@ -91,18 +69,6 @@ export const Disabled: Story = {
   },
   render: ({}) => (
     <Tag disabled>
-      My tag
-    </Tag>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Tag>
       My tag
     </Tag>
   ),
@@ -121,6 +87,40 @@ export const Size: Story = {
     <>
       <Tag size={ TAG_SIZE.md }>MD tag</Tag>
       <Tag size={ TAG_SIZE.lg }>LG tag</Tag>
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Tag>
+      My tag
+    </Tag>
+  ),
+};
+
+export const CustomIcon: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Tag } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <>
+      <Tag icon={ null }>
+        No Icon
+      </Tag>
+
+      <Tag icon={ ICON_NAME.star }>
+        Custom Icon
+      </Tag>
     </>
   ),
 };
@@ -180,7 +180,6 @@ export const AccessibilityAriaLabel: Story = {
     </Tag>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

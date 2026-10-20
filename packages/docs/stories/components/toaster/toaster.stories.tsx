@@ -18,94 +18,6 @@ const meta: Meta<ToasterProp> = {
 
 export default meta;
 
-export const Statuses: Story = {
-  globals: {
-    imports: `import { BUTTON_STATUS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Toaster id="statuses" />
-
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Button
-          status={ BUTTON_STATUS.critical }
-          onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
-          Critical toast
-        </Button>
-
-        <Button
-          onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
-          Information toast
-        </Button>
-
-        <Button
-          status={ BUTTON_STATUS.neutral }
-          onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
-          Neutral toast
-        </Button>
-
-        <Button
-          status={ BUTTON_STATUS.brand }
-          onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
-          Accent toast
-        </Button>
-
-        <Button
-          onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
-          Success toast
-        </Button>
-
-        <Button
-          onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
-          Warning toast
-        </Button>
-      </div>
-    </>
-  ),
-};
-
-export const CustomContent: Story = {
-  globals: {
-    imports: `import { ICON_NAME, TEXT_PRESET, Button, Link, Text, Toaster, toast } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Toaster id="custom-content" />
-
-      <Button
-        onClick={ () => toast(
-          <div>
-            <Text preset={ TEXT_PRESET.label }>
-              Toast title
-            </Text>
-
-            <Text>
-              Toast text helps users providing feedback or information.
-            </Text>
-
-            <Link>
-              Some Link
-            </Link>
-          </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
-        )}>
-        Trigger toast
-      </Button>
-    </>
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Button, Toaster, toast } from '@ovhcloud/ods-react';`,
@@ -209,31 +121,6 @@ export const Icon: Story = {
   ),
 };
 
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => {
-    const [count, setCount] = useState(1);
-
-    function createToast(): void {
-      toast(`Toast message ${count}`, { toasterId: 'overview' });
-      setCount((c) => c + 1);
-    }
-
-    return (
-      <>
-        <Toaster id="overview" />
-
-        <Button onClick={ createToast }>
-          Trigger toast
-        </Button>
-      </>
-    );
-  },
-};
-
 export const Position: StoryObj = {
   globals: {
     imports: `import { ICON_NAME, TOASTER_POSITION, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
@@ -276,6 +163,119 @@ export const Position: StoryObj = {
 
         <Button onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
           Bottom End
+        </Button>
+      </div>
+    </>
+  ),
+};
+
+export const CustomContent: Story = {
+  globals: {
+    imports: `import { ICON_NAME, TEXT_PRESET, Button, Link, Text, Toaster, toast } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Toaster id="custom-content" />
+
+      <Button
+        onClick={ () => toast(
+          <div>
+            <Text preset={ TEXT_PRESET.label }>
+              Toast title
+            </Text>
+
+            <Text>
+              Toast text helps users providing feedback or information.
+            </Text>
+
+            <Link>
+              Some Link
+            </Link>
+          </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
+        )}>
+        Trigger toast
+      </Button>
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => {
+    const [count, setCount] = useState(1);
+
+    function createToast(): void {
+      toast(`Toast message ${count}`, { toasterId: 'overview' });
+      setCount((c) => c + 1);
+    }
+
+    return (
+      <>
+        <Toaster id="overview" />
+
+        <Button onClick={ createToast }>
+          Trigger toast
+        </Button>
+      </>
+    );
+  },
+};
+
+export const Statuses: Story = {
+  globals: {
+    imports: `import { BUTTON_STATUS, Button, Toaster, toast } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Toaster id="statuses" />
+
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+        <Button
+          status={ BUTTON_STATUS.critical }
+          onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+          Critical toast
+        </Button>
+
+        <Button
+          onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+          Information toast
+        </Button>
+
+        <Button
+          status={ BUTTON_STATUS.neutral }
+          onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+          Neutral toast
+        </Button>
+
+        <Button
+          status={ BUTTON_STATUS.brand }
+          onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+          Accent toast
+        </Button>
+
+        <Button
+          onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+          Success toast
+        </Button>
+
+        <Button
+          onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+          Warning toast
         </Button>
       </div>
     </>

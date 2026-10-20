@@ -16,47 +16,13 @@ const meta: Meta<SwitchProp> = {
 
 export default meta;
 
-export const AccessibilityAriaLabel: Story = {
+export const Default: Story = {
   globals: {
     imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Switch aria-label="Select an item">
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-  ),
-};
-
-export const AccessibilityAriaLabelledby: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start' }}>{ story() }</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, Switch, SwitchItem, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Text
-        id="switch-label"
-        preset={ TEXT_PRESET.label }>
-        Select an item:
-      </Text>
-
-      <Switch aria-labelledby="switch-label">
-        <SwitchItem value="item-1">Item 1</SwitchItem>
-        <SwitchItem value="item-2">Item 2</SwitchItem>
-        <SwitchItem value="item-3">Item 3</SwitchItem>
-      </Switch>
-    </>
-  ),
-};
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Switch defaultValue="item-1">
+    <Switch>
       <SwitchItem value="item-1">Item 1</SwitchItem>
       <SwitchItem value="item-2">Item 2</SwitchItem>
       <SwitchItem value="item-3">Item 3</SwitchItem>
@@ -78,13 +44,10 @@ export const Checked: Story = {
   ),
 };
 
-export const Default: Story = {
-  globals: {
-    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
-  },
+export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Switch>
+    <Switch defaultValue="item-1">
       <SwitchItem value="item-1">Item 1</SwitchItem>
       <SwitchItem value="item-2">Item 2</SwitchItem>
       <SwitchItem value="item-3">Item 3</SwitchItem>
@@ -99,20 +62,6 @@ export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Switch disabled>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Switch defaultValue="item-1">
       <SwitchItem value="item-1">Item 1</SwitchItem>
       <SwitchItem value="item-2">Item 2</SwitchItem>
       <SwitchItem value="item-3">Item 3</SwitchItem>
@@ -143,6 +92,56 @@ export const Sizes: Story = {
   ),
 };
 
+export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Switch aria-label="Select an item">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Switch defaultValue="item-1">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+  ),
+};
+
+export const AccessibilityAriaLabelledby: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Switch, SwitchItem, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Text
+        id="switch-label"
+        preset={ TEXT_PRESET.label }>
+        Select an item:
+      </Text>
+
+      <Switch aria-labelledby="switch-label">
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+    </>
+  ),
+};
 
 export const ThemeGenerator: Story = {
   parameters: {

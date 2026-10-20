@@ -25,6 +25,38 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input />
+  ),
+};
+
+export const Disabled: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input disabled />
+  ),
+};
+
+export const ReadOnly: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input
+      defaultValue="Readonly"
+      readOnly />
+  ),
+};
+
 export const Clearable: Story = {
   globals: {
     imports: `import { Input } from '@ovhcloud/ods-react';`,
@@ -34,6 +66,58 @@ export const Clearable: Story = {
     <Input
       clearable
       defaultValue="Clearable" />
+  ),
+};
+
+export const Loading: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input loading />
+  ),
+};
+
+export const Masked: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input maskOption={{ enable: true }} />
+  ),
+};
+
+export const Types: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px', alignItems: 'start' }}>{ story() }</div>],
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+      <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+      <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+      <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+      <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+      <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+      <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
+    </>
+  ),
+};
+
+export const FloatingNumber: Story = {
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input
+      defaultValue="9.99"
+      step="any"
+      type={ INPUT_TYPE.number } />
   ),
 };
 
@@ -54,6 +138,22 @@ export const Datalist: Story = {
         <option value="Vanilla"></option>
       </datalist>
     </>
+  ),
+};
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Name:
+      </FormFieldLabel>
+
+      <Input />
+    </FormField>
   ),
 };
 
@@ -90,6 +190,16 @@ export const ContentAdornmentWithButton: Story = {
           <Icon name={ ICON_NAME.fileCopy } />
         </Button>
       ) } />
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Input placeholder="Input" />
   ),
 };
 
@@ -243,116 +353,6 @@ import { type ChangeEvent, type FormEvent, useState } from 'react';`,
       </form>
     );
   },
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input />
-  ),
-};
-
-export const Disabled: Story = {
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input disabled />
-  ),
-};
-
-export const FloatingNumber: Story = {
-  globals: {
-    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input
-      defaultValue="9.99"
-      step="any"
-      type={ INPUT_TYPE.number } />
-  ),
-};
-
-export const InFormField: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Name:
-      </FormFieldLabel>
-
-      <Input />
-    </FormField>
-  ),
-};
-
-export const Loading: Story = {
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input loading />
-  ),
-};
-
-export const Masked: Story = {
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input maskOption={{ enable: true }} />
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Input placeholder="Input" />
-  ),
-};
-
-export const ReadOnly: Story = {
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input
-      defaultValue="Readonly"
-      readOnly />
-  ),
-};
-
-export const Types: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px', alignItems: 'start' }}>{ story() }</div>],
-  globals: {
-    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
-      <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
-      <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
-      <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
-      <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
-      <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
-      <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
-    </>
-  ),
 };
 
 export const AccessibilityFormField: Story = {

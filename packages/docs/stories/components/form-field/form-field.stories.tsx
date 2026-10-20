@@ -65,6 +65,57 @@ export const Default: Story = {
   ),
 };
 
+export const Label: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea name="textarea" />
+    </FormField>
+  ),
+};
+
+export const LabelSubLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, FormFieldLabelSubLabel, Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Description
+        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
+      </FormFieldLabel>
+
+      <Textarea name="textarea" />
+    </FormField>
+  ),
+};
+
+export const Helper: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, FormFieldHelper, Text, Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <Textarea name="textarea" />
+
+      <FormFieldHelper>
+        <Text preset={ TEXT_PRESET.caption }>
+          Helper text
+        </Text>
+      </FormFieldHelper>
+    </FormField>
+  ),
+};
+
 export const Error: Story = {
   globals: {
     imports: `import { FormField, FormFieldError, Textarea } from '@ovhcloud/ods-react';`,
@@ -479,57 +530,6 @@ export const GuideFormSimple: Story = {
   ),
 };
 
-export const Helper: Story = {
-  globals: {
-    imports: `import { TEXT_PRESET, FormField, FormFieldHelper, Text, Textarea } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <Textarea name="textarea" />
-
-      <FormFieldHelper>
-        <Text preset={ TEXT_PRESET.caption }>
-          Helper text
-        </Text>
-      </FormFieldHelper>
-    </FormField>
-  ),
-};
-
-export const Label: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Description:
-      </FormFieldLabel>
-
-      <Textarea name="textarea" />
-    </FormField>
-  ),
-};
-
-export const LabelSubLabel: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, FormFieldLabelSubLabel, Textarea } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Description
-        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
-      </FormFieldLabel>
-
-      <Textarea name="textarea" />
-    </FormField>
-  ),
-};
-
 export const Overview: Story = {
   parameters: {
     layout: 'centered',
@@ -590,7 +590,6 @@ export const AccessibilityLabel: Story = {
     </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

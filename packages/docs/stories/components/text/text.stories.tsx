@@ -32,48 +32,6 @@ export const Default: Story = {
   ),
 };
 
-export const Disabled: Story = {
-  globals: {
-    imports: `import { Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Text disabled>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </Text>
-  ),
-};
-
-export const FigCaption: Story = {
-  globals: {
-    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <figure>
-      <img alt="OVHcloud logo"
-           src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
-           style={{ height: '100px' }} />
-
-      <figcaption>
-        <Text preset={ TEXT_PRESET.caption }>
-          My picture title
-        </Text>
-      </figcaption>
-    </figure>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-  ),
-};
-
 export const Preset: Story = {
   globals: {
     imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
@@ -98,17 +56,25 @@ export const Preset: Story = {
   ),
 };
 
-export const ReuseStyle: Story = {
+export const Disabled: Story = {
   globals: {
-    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+    imports: `import { Text } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Text
-      as="span"
-      preset={ TEXT_PRESET.heading5 }>
-      I am a &lt;span&gt; using the heading5 preset style.
+    <Text disabled>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </Text>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
   ),
 };
 
@@ -144,6 +110,39 @@ export const TableCaption: Story = {
   ),
 };
 
+export const FigCaption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <figure>
+      <img alt="OVHcloud logo"
+           src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+           style={{ height: '100px' }} />
+
+      <figcaption>
+        <Text preset={ TEXT_PRESET.caption }>
+          My picture title
+        </Text>
+      </figcaption>
+    </figure>
+  ),
+};
+
+export const ReuseStyle: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Text
+      as="span"
+      preset={ TEXT_PRESET.heading5 }>
+      I am a &lt;span&gt; using the heading5 preset style.
+    </Text>
+  ),
+};
 
 export const ThemeGenerator: Story = {
   parameters: {

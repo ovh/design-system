@@ -15,15 +15,13 @@ const meta: Meta<PaginationProp> = {
 
 export default meta;
 
-export const AccessibilityLabel: Story = {
+export const Default: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Pagination
-      aria-label="Pagination"
-      totalItems={ 5000 }>
+    <Pagination totalItems={ 5000 }>
       <PaginationPages />
     </Pagination>
   ),
@@ -69,18 +67,6 @@ import { useState } from 'react';`,
   },
 };
 
-export const Default: Story = {
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Pagination totalItems={ 5000 }>
-      <PaginationPages />
-    </Pagination>
-  ),
-};
-
 export const Disabled: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
@@ -109,6 +95,21 @@ export const ItemsPerPage: Story = {
   ),
 };
 
+export const SiblingCount: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      defaultPage={ 5 }
+      siblingCount={ 2 }
+      totalItems={ 500 }>
+      <PaginationPages />
+    </Pagination>
+  ),
+}
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -119,6 +120,21 @@ export const Overview: Story = {
       <PaginationPageSizeSelector />
       <PaginationPages />
       <PaginationPageSelector />
+    </Pagination>
+  ),
+};
+
+export const WithTooltipLabels: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      labelTooltipPrev="Go to previous page"
+      labelTooltipNext="Go to next page"
+      totalItems={ 500 }>
+      <PaginationPages />
     </Pagination>
   ),
 };
@@ -137,31 +153,15 @@ export const PageSizeSelection: Story = {
   ),
 };
 
-export const SiblingCount: Story = {
+export const AccessibilityLabel: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
-      defaultPage={ 5 }
-      siblingCount={ 2 }
-      totalItems={ 500 }>
-      <PaginationPages />
-    </Pagination>
-  ),
-}
-
-export const WithTooltipLabels: Story = {
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Pagination
-      labelTooltipPrev="Go to previous page"
-      labelTooltipNext="Go to next page"
-      totalItems={ 500 }>
+      aria-label="Pagination"
+      totalItems={ 5000 }>
       <PaginationPages />
     </Pagination>
   ),

@@ -18,6 +18,16 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Spinner />
+  ),
+};
+
 export const Color: Story = {
   globals: {
     imports: `import { Spinner } from '@ovhcloud/ods-react';`,
@@ -28,16 +38,6 @@ export const Color: Story = {
       <Spinner style={{ '--ods-spinner-color': 'var(--ods-theme-neutral-color)' } as React.CSSProperties} />
       <Spinner />
     </>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Spinner />
   ),
 };
 
@@ -105,7 +105,6 @@ export const AccessibilityAriaLabelledBy: Story = {
     </div>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

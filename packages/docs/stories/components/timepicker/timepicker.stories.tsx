@@ -15,23 +15,15 @@ const meta: Meta<TimepickerProp> = {
 
 export default meta;
 
-export const AccessibilityLabel: Story = {
+export const Default: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Starting time:
-      </FormFieldLabel>
-
-      <Timepicker withSeconds>
-        <TimepickerControl />
-
-        <TimepickerTimezoneList />
-      </Timepicker>
-    </FormField>
+    <Timepicker>
+      <TimepickerControl />
+    </Timepicker>
   ),
 };
 
@@ -42,18 +34,6 @@ export const AnatomyTech: Story = {
       <TimepickerControl />
 
       <TimepickerTimezoneList />
-    </Timepicker>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Timepicker>
-      <TimepickerControl />
     </Timepicker>
   ),
 };
@@ -79,38 +59,6 @@ export const Disabled: Story = {
   ),
 };
 
-export const InFormField: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Timepicker:
-      </FormFieldLabel>
-
-      <Timepicker>
-        <TimepickerControl />
-      </Timepicker>
-    </FormField>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Timepicker defaultValue="12:00">
-      <TimepickerControl />
-
-      <TimepickerTimezoneList />
-    </Timepicker>
-  ),
-};
-
 export const Readonly: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
@@ -129,6 +77,41 @@ export const Readonly: Story = {
         <TimepickerTimezoneList />
       </Timepicker>
     </>
+  ),
+};
+
+export const WithSeconds: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker withSeconds>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Timepicker defaultValue="12:00">
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
   ),
 };
 
@@ -159,27 +142,43 @@ export const TimezoneList: Story = {
   ),
 };
 
-export const WithSeconds: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+export const InFormField: Story = {
   globals: {
-    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <>
-      <Timepicker withSeconds>
+    <FormField>
+      <FormFieldLabel>
+        Timepicker:
+      </FormFieldLabel>
+
+      <Timepicker>
         <TimepickerControl />
       </Timepicker>
+    </FormField>
+  ),
+};
+
+export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Starting time:
+      </FormFieldLabel>
 
       <Timepicker withSeconds>
         <TimepickerControl />
 
         <TimepickerTimezoneList />
       </Timepicker>
-    </>
+    </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

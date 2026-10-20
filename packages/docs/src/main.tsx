@@ -118,7 +118,12 @@ if (deepLink && deepLink.startsWith('/')) {
         : [`OVHcloud Design System/${page.section ?? ''}/${page.title}`];
       return legacyTitles.some((title) => sanitize(title) === slug);
     });
-  const path = full === 'react-components-icon--gallery' ? '/components/icon/gallery' : target?.path ?? '/';
+  // Pages whose place in the tree changed since Storybook: their old slug no longer derives from it.
+  const moved: Record<string, string> = {
+    'ovhcloud-design-system-tools-component-gallery': '/tools/component-gallery',
+    'react-components-icon--gallery': '/components/icon/gallery',
+  };
+  const path = moved[full] ?? moved[slug] ?? target?.path ?? '/';
   bounced.delete('path');
   const rest = bounced.toString();
   history.replaceState(null, '', `${BASENAME}${path}${rest ? `?${rest}` : ''}${window.location.hash}`);

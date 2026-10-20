@@ -55,6 +55,7 @@ body {
   gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
   border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
+  background-color: var(--ods-semantic-color-surface-raised);
   height: 100%;
   overflow-y: auto;
 }

@@ -240,14 +240,14 @@ const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => 
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-semantic-color-surface-page); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; background: var(--ods-semantic-color-surface-raised); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"
         style={ ready
           // no height here: FrameAutoSize owns it imperatively — a height in
           // the React style prop would clobber it on every parent re-render.
-          ? { ...(bare ? { border: 'none' } : { border: '1px solid #C4D9E6', borderRadius: '4px' }), width: '100%', colorScheme: 'auto', display: 'block' }
+          ? { ...(bare ? { border: 'none' } : { border: 'var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle)', borderRadius: '4px' }), width: '100%', colorScheme: 'auto', display: 'block' }
           : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
         <StyleSync />
         <FrameAutoSize active={ ready } />

@@ -36,20 +36,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-t
   }
 ```
 
-## Non Dismissible
-
-```tsx
-{
-    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail
-        dismissible={ false }
-        file={ fakeFile } />
-    );
-  }
-```
-
 ## Error
 
 ```tsx
@@ -59,6 +45,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-t
     return (
       <FileThumbnail
         error="Something went wrong"
+        file={ fakeFile } />
+    );
+  }
+```
+
+## Non dismissible
+
+```tsx
+{
+    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        dismissible={ false }
         file={ fakeFile } />
     );
   }

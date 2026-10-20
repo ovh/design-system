@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: overview
 version: 19.7.3
-tokens: 801
+tokens: 802
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox.txt
 ---
 
@@ -44,19 +44,19 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 
 - Default
 - Clearable
-- Custom Filter
-- Disabled
-- Readonly
-- Group
-- In Form Field
-- Invalid
 - Controlled
-- Highlight
-- Custom Options
+- Custom filter
+- Custom options
+- Disabled
 - Empty
+- Group
+- Highlight
+- In form field
+- Invalid
 - Multiple
-- Accessibility Form Field
-- Accessibility I18n
+- Readonly
+- Accessibility - Form field
+- Accessibility - I18n
 
 ## Documentation pages
 

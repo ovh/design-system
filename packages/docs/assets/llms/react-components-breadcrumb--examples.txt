@@ -4,11 +4,35 @@ slug: breadcrumb
 category: component
 type: examples
 version: 19.7.3
-tokens: 1077
+tokens: 1078
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--examples.txt
 ---
 
 # Breadcrumb
+
+## Default
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink aria-label="Home" href="#">
+      <Icon name={ ICON_NAME.home } />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Parent
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Current
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
 
 ## Collapsed
 
@@ -58,7 +82,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadc
 </Breadcrumb>
 ```
 
-## Custom After Before Collapse
+## Custom after before collapse
 
 ```tsx
 <Breadcrumb
@@ -108,7 +132,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadc
 </Breadcrumb>
 ```
 
-## Custom Collapse Threshold
+## Custom collapse threshold
 
 ```tsx
 <Breadcrumb collapseThreshold={ 7 }>
@@ -156,31 +180,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadc
 </Breadcrumb>
 ```
 
-## Default
-
-```tsx
-<Breadcrumb>
-  <BreadcrumbItem>
-    <BreadcrumbLink aria-label="Home" href="#">
-      <Icon name={ ICON_NAME.home } />
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Parent
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Current
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
-```
-
-## No Collapse
+## No collapse
 
 ```tsx
 <Breadcrumb noCollapse>
@@ -228,7 +228,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadc
 </Breadcrumb>
 ```
 
-## Accessibility With Aria Label
+## Accessibility - With aria label
 
 ```tsx
 <Breadcrumb aria-label="Breadcrumb">

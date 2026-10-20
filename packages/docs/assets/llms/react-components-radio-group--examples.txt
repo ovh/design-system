@@ -34,7 +34,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
 </RadioGroup>
 ```
 
-## Disabled Group
+## Disabled group
 
 ```tsx
 <RadioGroup disabled>
@@ -58,7 +58,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
 </RadioGroup>
 ```
 
-## Disabled Item
+## Disabled item
 
 ```tsx
 <RadioGroup>
@@ -84,7 +84,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
 </RadioGroup>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>

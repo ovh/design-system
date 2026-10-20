@@ -4,28 +4,11 @@ slug: badge
 category: component
 type: examples
 version: 19.7.3
-tokens: 457
+tokens: 459
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--examples.txt
 ---
 
 # Badge
-
-## Status
-
-```tsx
-<>
-  <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
-  <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
-  <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
-  <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
-  <Badge status={ BADGE_STATUS.information }>Information</Badge>
-  <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
-  <Badge status={ BADGE_STATUS.new }>New</Badge>
-  <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
-  <Badge status={ BADGE_STATUS.success }>Success</Badge>
-  <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
-</>
-```
 
 ## Default
 
@@ -45,7 +28,39 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
 </>
 ```
 
-## Accessibility Aria Label
+## Status
+
+```tsx
+<>
+  <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
+  <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
+  <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
+  <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
+  <Badge status={ BADGE_STATUS.information }>Information</Badge>
+  <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
+  <Badge status={ BADGE_STATUS.new }>New</Badge>
+  <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
+  <Badge status={ BADGE_STATUS.success }>Success</Badge>
+  <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
+</>
+```
+
+## Accessibility - Alternative grouping
+
+```tsx
+<div
+  role="list"
+  style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+  <Badge role="listitem">
+    Item 1
+  </Badge>
+  <Badge role="listitem">
+    Item 2
+  </Badge>
+</div>
+```
+
+## Accessibility - Aria label
 
 ```tsx
 <Badge>
@@ -56,25 +71,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
 </Badge>
 ```
 
-## Accessibility With Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Badge
-      aria-labelledby="tooltip-a11y"
-      status={ BADGE_STATUS.promotion }>
-      <Icon name={ ICON_NAME.tag } />
-    </Badge>
-  </TooltipTrigger>
-
-  <TooltipContent id="tooltip-a11y">
-    Promotion valid from November 22 to 26
-  </TooltipContent>
-</Tooltip>
-```
-
-## Accessibility Grouping
+## Accessibility - Grouping
 
 ```tsx
 <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
@@ -91,17 +88,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
 </ul>
 ```
 
-## Accessibility Alternative Grouping
+## Accessibility - With tooltip
 
 ```tsx
-<div
-  role="list"
-  style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
-  <Badge role="listitem">
-    Item 1
-  </Badge>
-  <Badge role="listitem">
-    Item 2
-  </Badge>
-</div>
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      status={ BADGE_STATUS.promotion }>
+      <Icon name={ ICON_NAME.tag } />
+    </Badge>
+  </TooltipTrigger>
+
+  <TooltipContent id="tooltip-a11y">
+    Promotion valid from November 22 to 26
+  </TooltipContent>
+</Tooltip>
 ```

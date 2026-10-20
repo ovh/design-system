@@ -4,7 +4,7 @@ slug: timepicker
 category: component
 type: overview
 version: 19.7.3
-tokens: 622
+tokens: 623
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker.txt
 ---
 
@@ -33,13 +33,13 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Readonly
-- Timezone List
-- With Seconds
+- Timezone list
+- With seconds
+- Accessibility - Label
 
 ## Documentation pages
 

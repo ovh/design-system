@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: overview
 version: 19.7.3
-tokens: 429
+tokens: 430
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover.txt
 ---
 
@@ -29,13 +29,13 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ## Examples
 
-- Controlled
-- Custom Trigger
 - Default
+- Controlled
+- Custom trigger
 - Grid
-- Accessibility With Menu
-- Same Width
-- ZIndex
+- Same width
+- Z index
+- Accessibility - With menu
 
 ## Documentation pages
 

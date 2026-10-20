@@ -26,12 +26,12 @@ _A list of <DocLink to="/components/link">Links</DocLink> showing the current pa
 
 ## Examples
 
-- Collapsed
-- Custom After Before Collapse
-- Custom Collapse Threshold
 - Default
-- No Collapse
-- Accessibility With Aria Label
+- Collapsed
+- Custom after before collapse
+- Custom collapse threshold
+- No collapse
+- Accessibility - With aria label
 
 ## Documentation pages
 

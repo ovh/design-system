@@ -4,11 +4,19 @@ slug: card
 category: component
 type: examples
 version: 19.7.3
-tokens: 420
+tokens: 421
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--examples.txt
 ---
 
 # Card
+
+## Default
+
+```tsx
+<Card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+</Card>
+```
 
 ## Status
 
@@ -40,15 +48,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--
 </>
 ```
 
-## Default
+## Accessibility - Alternative grouping
 
 ```tsx
-<Card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-</Card>
+<div role="list" style={{ display: 'flex', gap: '16px' }}>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+</div>
 ```
 
-## Accessibility Grouping
+## Accessibility - Grouping
 
 ```tsx
 <ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
@@ -65,19 +80,4 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--
     </Card>
   </li>
 </ul>
-```
-
-## Accessibility Alternative Grouping
-
-```tsx
-<div role="list" style={{ display: 'flex', gap: '16px' }}>
-  <Card role="listitem" style={{ padding: '8px' }}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  </Card>
-  <Card role="listitem" style={{ padding: '8px' }}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  </Card>
-</div>
 ```

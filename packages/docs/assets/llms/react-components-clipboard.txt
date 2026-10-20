@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: overview
 version: 19.7.3
-tokens: 292
+tokens: 293
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard.txt
 ---
 
@@ -26,11 +26,11 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 ## Examples
 
 - Default
-- Masked
-- Custom Labels
-- Loading
+- Custom labels
 - Disabled
-- Accessibility Form Field
+- Loading
+- Masked
+- Accessibility - Form field
 
 ## Documentation pages
 

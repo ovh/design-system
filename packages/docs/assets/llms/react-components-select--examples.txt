@@ -10,28 +10,24 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 
 # Select
 
-## Accessibility Form Field
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Select a Web hosting
-  </FormFieldLabel>
+<Select items={[
+  { label: 'Dog', value:'dog' },
+  { label: 'Cat', value:'cat' },
+  { label: 'Hamster', value:'hamster' },
+  { label: 'Parrot', value:'parrot' },
+  { label: 'Spider', value:'spider' },
+  { label: 'Goldfish', value:'goldfish' },
+]}>
+  <SelectControl />
 
-  <Select
-    items={[
-      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
-      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
-      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
-    ]}>
-    <SelectControl />
-
-    <SelectContent />
-  </Select>
-</FormField>
+  <SelectContent />
+</Select>
 ```
 
-## Custom Renderer
+## Custom renderer
 
 ```tsx
 {
@@ -138,23 +134,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
       </Select>
     );
   }
-```
-
-## Default
-
-```tsx
-<Select items={[
-  { label: 'Dog', value:'dog' },
-  { label: 'Cat', value:'cat' },
-  { label: 'Hamster', value:'hamster' },
-  { label: 'Parrot', value:'parrot' },
-  { label: 'Spider', value:'spider' },
-  { label: 'Goldfish', value:'goldfish' },
-]}>
-  <SelectControl />
-
-  <SelectContent />
-</Select>
 ```
 
 ## Disabled
@@ -283,7 +262,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 </Select>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -373,4 +352,25 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 
   <SelectContent />
 </Select>
+```
+
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Select a Web hosting
+  </FormFieldLabel>
+
+  <Select
+    items={[
+      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+    ]}>
+    <SelectControl />
+
+    <SelectContent />
+  </Select>
+</FormField>
 ```

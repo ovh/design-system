@@ -4,7 +4,7 @@ slug: button
 category: component
 type: overview
 version: 19.7.3
-tokens: 353
+tokens: 359
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button.txt
 ---
 
@@ -24,20 +24,20 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 ## Examples
 
-- Status
 - Default
 - Loading
 - Size
+- Status
 - Variant
-- Accessibility Explicit Text Content
-- Accessibility Icon Only
-- Accessibility Bad Practice Icon Only
-- Accessibility Labelled By
-- Accessibility Bad Practice Labelled By
-- Accessibility Bad Practices Role Status
-- Accessibility Role Status
-- Accessibility Bad Practices Role Alert
-- Accessibility Role Alert
+- Accessibility - Explicit text content
+- Accessibility - Icon only
+- Accessibility - Labelled by
+- Accessibility - Role alert
+- Accessibility - Role status
+- Accessibility - Bad practice : Icon only
+- Accessibility - Bad practice : Labelled by
+- Accessibility - Bad practice : Role alert
+- Accessibility - Bad practice : Role status
 
 ## Documentation pages
 

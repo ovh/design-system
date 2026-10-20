@@ -4,7 +4,7 @@ slug: link
 category: component
 type: overview
 version: 19.7.3
-tokens: 197
+tokens: 199
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link.txt
 ---
 
@@ -23,10 +23,10 @@ _**Link** is a component that enables redirection to a new page, section, websit
 
 - Default
 - Disabled
-- With Icon
-- Accessibility Icon Only Link
-- Accessibility In ANew Tab
-- Accessibility File Download
+- With icon
+- Accessibility - File download
+- Accessibility - Icon only link
+- Accessibility - In a new tab
 
 ## Documentation pages
 

@@ -10,6 +10,19 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 
 # Button Group
 
+## Default
+
+```tsx
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+  <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+  <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name={ ICON_NAME.calendar } /> Custom
+  </ButtonGroupItem>
+</ButtonGroup>
+```
+
 ## Controlled
 
 ```tsx
@@ -31,19 +44,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
   }
 ```
 
-## Default
-
-```tsx
-<ButtonGroup>
-  <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-  <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-  <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-  <ButtonGroupItem value="custom">
-    <Icon name={ ICON_NAME.calendar } /> Custom
-  </ButtonGroupItem>
-</ButtonGroup>
-```
-
 ## Disabled
 
 ```tsx
@@ -57,7 +57,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </ButtonGroup>
 ```
 
-## Disabled Item
+## Disabled item
 
 ```tsx
 <ButtonGroup>

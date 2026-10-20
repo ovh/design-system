@@ -23,9 +23,9 @@ _**Avatar** is a visual representation of a user or entity, supporting multiple 
 
 - Default
 - Initials
-- With Image
-- With Fallback
-- With Icon
+- With fallback
+- With icon
+- With image
 
 ## Documentation pages
 

@@ -4,7 +4,7 @@ slug: quantity
 category: component
 type: overview
 version: 19.7.3
-tokens: 389
+tokens: 390
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity.txt
 ---
 
@@ -30,14 +30,14 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Max
 - Min
 - Readonly
 - Step
+- Accessibility - Label
 
 ## Documentation pages
 

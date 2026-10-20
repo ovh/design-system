@@ -27,8 +27,8 @@ _**Code** component highlights strings or small blocks of **Code** so it makes t
 ## Examples
 
 - Default
-- Can Copy
-- Custom Labels
+- Can copy
+- Custom labels
 - Highlighter
 - Multiline
 

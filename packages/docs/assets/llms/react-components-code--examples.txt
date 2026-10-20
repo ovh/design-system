@@ -18,7 +18,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--
 </Code>
 ```
 
-## Can Copy
+## Can copy
 
 ```tsx
 <Code canCopy>
@@ -26,7 +26,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--
 </Code>
 ```
 
-## Custom Labels
+## Custom labels
 
 ```tsx
 <Code

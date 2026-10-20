@@ -58,7 +58,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
   }
 ```
 
-## Nested
+## Disabled
 
 ```tsx
 <Menu>
@@ -68,15 +68,9 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value='new'>New</MenuItem>
-    <MenuItem value='open'>Open</MenuItem>
-    <MenuSubmenu>
-      <MenuTrigger>Share</MenuTrigger>
-      <MenuContent>
-        <MenuItem value='email'>Email</MenuItem>
-        <MenuItem value='message'>Message</MenuItem>
-      </MenuContent>
-    </MenuSubmenu>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem disabled value="settings">Settings</MenuItem>
+    <MenuItem value="logout">Logout</MenuItem>
   </MenuContent>
 </Menu>
 ```
@@ -105,7 +99,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
 </Menu>
 ```
 
-## Disabled
+## Nested
 
 ```tsx
 <Menu>
@@ -115,9 +109,15 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value="profile">Profile</MenuItem>
-    <MenuItem disabled value="settings">Settings</MenuItem>
-    <MenuItem value="logout">Logout</MenuItem>
+    <MenuItem value='new'>New</MenuItem>
+    <MenuItem value='open'>Open</MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>Share</MenuTrigger>
+      <MenuContent>
+        <MenuItem value='email'>Email</MenuItem>
+        <MenuItem value='message'>Message</MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
   </MenuContent>
 </Menu>
 ```

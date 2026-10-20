@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: overview
 version: 19.7.3
-tokens: 1053
+tokens: 1055
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
 ---
 
@@ -23,14 +23,14 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 ## Examples
 
-- Status
-- Custom Icon
 - Default
+- Custom icon
 - Disabled
 - Size
-- Accessibility List
-- Accessibility Aria Roles
-- Accessibility Aria Label
+- Status
+- Accessibility - Aria label
+- Accessibility - Aria roles
+- Accessibility - List
 
 ## Documentation pages
 

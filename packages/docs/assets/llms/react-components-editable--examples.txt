@@ -10,7 +10,35 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editab
 
 # Editable
 
-## Complex Form Element
+## Default
+
+```tsx
+{
+    const [value, setValue] = useState('Double click to edit');
+    const bufferValue = useRef(value);
+
+    return (
+      <Editable
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
+        <EditableDisplay>
+          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
+        </EditableDisplay>
+
+        <EditableInput>
+          <Input
+            autoFocus
+            defaultValue={ value }
+            onChange={ (e) => bufferValue.current = e.target.value } />
+        </EditableInput>
+
+        <EditableActions />
+      </Editable>
+    );
+  }
+```
+
+## Complex form element
 
 ```tsx
 {
@@ -96,7 +124,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editab
   }
 ```
 
-## Custom Actions
+## Custom actions
 
 ```tsx
 {
@@ -139,34 +167,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editab
             )
           }
         </EditableActions>
-      </Editable>
-    );
-  }
-```
-
-## Default
-
-```tsx
-{
-    const [value, setValue] = useState('Double click to edit');
-    const bufferValue = useRef(value);
-
-    return (
-      <Editable
-        onCancel={ () => bufferValue.current = value }
-        onSubmit={ () => setValue(bufferValue.current) }>
-        <EditableDisplay>
-          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
-        </EditableDisplay>
-
-        <EditableInput>
-          <Input
-            autoFocus
-            defaultValue={ value }
-            onChange={ (e) => bufferValue.current = e.target.value } />
-        </EditableInput>
-
-        <EditableActions />
       </Editable>
     );
   }

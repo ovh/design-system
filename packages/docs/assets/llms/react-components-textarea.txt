@@ -4,7 +4,7 @@ slug: textarea
 category: component
 type: overview
 version: 19.7.3
-tokens: 157
+tokens: 158
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea.txt
 ---
 
@@ -20,13 +20,13 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
 
 ## Examples
 
-- Accessibility Described By
-- Accessibility Form Field
 - Default
 - Disabled
-- In Form Field
-- Read Only
+- In form field
+- Read only
 - Resizable
+- Accessibility - Described by
+- Accessibility - Form field
 
 ## Documentation pages
 

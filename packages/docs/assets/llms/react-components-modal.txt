@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: overview
 version: 19.7.3
-tokens: 480
+tokens: 482
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal.txt
 ---
 
@@ -29,15 +29,15 @@ _A **Modal** component is used to overlay with important content the main view o
 
 ## Examples
 
-- Accessibility Actions
-- Accessibility Aria Labelled By
-- Accessibility Aria Label
-- Accessibility Bad Practices Aria
-- Controlled
 - Default
-- Non Dismissible
-- Non Escapable
-- Overlay Elements
+- Controlled
+- Non dismissible
+- Non escapable
+- Overlay elements
+- Accessibility - Actions
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
+- Accessibility - Bad practice : Aria
 
 ## Documentation pages
 

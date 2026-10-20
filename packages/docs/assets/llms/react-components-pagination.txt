@@ -31,14 +31,14 @@ _A **Pagination** component allows users to navigate through large sets of data 
 
 ## Examples
 
-- Accessibility Label
-- Controlled
 - Default
+- Controlled
 - Disabled
-- Items Per Page
-- Page Size Selection
-- Sibling Count
-- With Tooltip Labels
+- Items per page
+- Page size selection
+- Sibling count
+- With tooltip labels
+- Accessibility - Label
 
 ## Documentation pages
 

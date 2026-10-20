@@ -4,7 +4,7 @@ slug: drawer
 category: component
 type: overview
 version: 19.7.3
-tokens: 349
+tokens: 350
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
 ---
 
@@ -25,13 +25,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 ## Examples
 
+- Default
 - Backdrop
 - Controlled
-- Default
-- Overlay Elements
+- Overlay elements
 - Position
-- Accessibility Aria Labelled By
-- Accessibility Aria Label
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
 
 ## Documentation pages
 

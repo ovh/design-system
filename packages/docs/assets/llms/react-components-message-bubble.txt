@@ -23,9 +23,9 @@ _The **Message Bubble** component is designed to display messages in a conversat
 ## Examples
 
 - Default
-- Variant
 - Error
 - Typing
+- Variant
 
 ## Documentation pages
 

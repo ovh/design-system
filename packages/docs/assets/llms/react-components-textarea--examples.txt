@@ -4,39 +4,11 @@ slug: textarea
 category: component
 type: examples
 version: 19.7.3
-tokens: 359
+tokens: 360
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--examples.txt
 ---
 
 # Textarea
-
-## Accessibility Described By
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-
-  <FormFieldHelper>
-    Enter a brief description
-  </FormFieldHelper>
-</FormField>
-```
-
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-</FormField>
-```
 
 ## Default
 
@@ -50,7 +22,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
 <Textarea disabled />
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 {
@@ -89,7 +61,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
   }
 ```
 
-## Read Only
+## Read only
 
 ```tsx
 <Textarea
@@ -101,4 +73,32 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
 
 ```tsx
 <Textarea style={{ resize: 'both' }} />
+```
+
+## Accessibility - Described by
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+
+  <FormFieldHelper>
+    Enter a brief description
+  </FormFieldHelper>
+</FormField>
+```
+
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+</FormField>
 ```

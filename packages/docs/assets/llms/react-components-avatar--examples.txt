@@ -24,13 +24,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar
 </Avatar>
 ```
 
-## With Image
-
-```tsx
-<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
-```
-
-## With Fallback
+## With fallback
 
 ```tsx
 <Avatar
@@ -38,10 +32,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar
   src="https://invalid-url.example.com/avatar.png" />
 ```
 
-## With Icon
+## With icon
 
 ```tsx
 <Avatar>
   <Icon name={ ICON_NAME.sparkle } />
 </Avatar>
+```
+
+## With image
+
+```tsx
+<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
 ```

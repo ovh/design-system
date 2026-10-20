@@ -4,11 +4,17 @@ slug: spinner
 category: component
 type: examples
 version: 19.7.3
-tokens: 190
+tokens: 192
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--examples.txt
 ---
 
 # Spinner
+
+## Default
+
+```tsx
+<Spinner />
+```
 
 ## Color
 
@@ -17,12 +23,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
   <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
   <Spinner />
 </>
-```
-
-## Default
-
-```tsx
-<Spinner />
 ```
 
 ## Size
@@ -36,7 +36,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
 </>
 ```
 
-## Accessibility Aria Busy Aria Live
+## Accessibility - Aria busy aria live
 
 ```tsx
 <div
@@ -46,13 +46,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
 </div>
 ```
 
-## Accessibility Aria Label
+## Accessibility - Aria label
 
 ```tsx
 <Spinner aria-label="Loading user profile" />
 ```
 
-## Accessibility Aria Labelled By
+## Accessibility - Aria labelled by
 
 ```tsx
 <div>

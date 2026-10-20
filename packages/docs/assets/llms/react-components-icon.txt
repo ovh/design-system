@@ -4,7 +4,7 @@ slug: icon
 category: component
 type: overview
 version: 19.7.3
-tokens: 984
+tokens: 987
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon.txt
 ---
 
@@ -20,13 +20,13 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 ## Examples
 
-- Accessibility Informative
-- Decorative
 - Default
+- Decorative
 - Informative
-- Accessibility Bad Practice Decorative
-- Accessibility Bad Practice Rating
-- Accessibility Rating
+- Accessibility - Informative
+- Accessibility - Rating
+- Accessibility - Bad practice : Decorative
+- Accessibility - Bad practice : Rating
 
 ## Documentation pages
 

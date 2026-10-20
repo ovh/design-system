@@ -20,17 +20,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
 </Clipboard>
 ```
 
-## Masked
-
-```tsx
-<Clipboard value="Masked" >
-  <ClipboardControl maskOption={{ enable: true }} />
-
-  <ClipboardTrigger />
-</Clipboard>
-```
-
-## Custom Labels
+## Custom labels
 
 ```tsx
 <Clipboard value="Custom labels">
@@ -39,16 +29,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
   <ClipboardTrigger
     labelCopy="Click to copy"
     labelCopySuccess="Successfully copied" />
-</Clipboard>
-```
-
-## Loading
-
-```tsx
-<Clipboard value="Loading" >
-  <ClipboardControl loading />
-
-  <ClipboardTrigger />
 </Clipboard>
 ```
 
@@ -62,7 +42,27 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
 </Clipboard>
 ```
 
-## Accessibility Form Field
+## Loading
+
+```tsx
+<Clipboard value="Loading" >
+  <ClipboardControl loading />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Masked
+
+```tsx
+<Clipboard value="Masked" >
+  <ClipboardControl maskOption={{ enable: true }} />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Accessibility - Form field
 
 ```tsx
 <FormField>

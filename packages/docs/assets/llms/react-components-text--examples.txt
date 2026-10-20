@@ -26,7 +26,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
 </Text>
 ```
 
-## Fig Caption
+## Fig caption
 
 ```tsx
 <figure>
@@ -62,7 +62,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
 </>
 ```
 
-## Reuse Style
+## Reuse style
 
 ```tsx
 <Text
@@ -72,7 +72,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
 </Text>
 ```
 
-## Table Caption
+## Table caption
 
 ```tsx
 <table style={{

@@ -4,7 +4,7 @@ slug: skeleton
 category: component
 type: examples
 version: 19.7.3
-tokens: 53
+tokens: 54
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--examples.txt
 ---
 
@@ -16,7 +16,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skelet
 <Skeleton />
 ```
 
-## Accessibility Loading
+## Accessibility - Loading
 
 ```tsx
 <div aria-busy="true">
@@ -24,7 +24,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skelet
 </div>
 ```
 
-## Accessibility Bad Practice Loading
+## Accessibility - Bad practice : Loading
 
 ```tsx
 <div>

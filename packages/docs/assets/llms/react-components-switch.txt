@@ -4,7 +4,7 @@ slug: switch
 category: component
 type: overview
 version: 19.7.3
-tokens: 263
+tokens: 264
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch.txt
 ---
 
@@ -24,12 +24,12 @@ _A **Switch** allows users to quickly and easily switch between several states, 
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Checked
 - Default
+- Checked
 - Disabled
 - Sizes
+- Accessibility - Aria label
+- Accessibility - Aria labelledby
 
 ## Documentation pages
 

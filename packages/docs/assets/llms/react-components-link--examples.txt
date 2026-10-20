@@ -4,7 +4,7 @@ slug: link
 category: component
 type: examples
 version: 19.7.3
-tokens: 310
+tokens: 312
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--examples.txt
 ---
 
@@ -28,7 +28,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 </Link>
 ```
 
-## With Icon
+## With icon
 
 ```tsx
 <>
@@ -44,28 +44,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 </>
 ```
 
-## Accessibility Icon Only Link
-
-```tsx
-<Link
-  aria-label="Go to homepage"
-  href="https://www.ovhcloud.com">
-  <Icon name={ ICON_NAME.home } />
-</Link>
-```
-
-## Accessibility In ANew Tab
-
-```tsx
-<Link
-  aria-label="Visit Example (opens in a new tab)"
-  href="https://www.ovhcloud.com"
-  target="_blank">
-  <Icon name={ ICON_NAME.externalLink } />
-</Link>
-```
-
-## Accessibility File Download
+## Accessibility - File download
 
 ```tsx
 <>
@@ -81,4 +60,25 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
     <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
   </Link>
 </>
+```
+
+## Accessibility - Icon only link
+
+```tsx
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com">
+  <Icon name={ ICON_NAME.home } />
+</Link>
+```
+
+## Accessibility - In a new tab
+
+```tsx
+<Link
+  aria-label="Visit Example (opens in a new tab)"
+  href="https://www.ovhcloud.com"
+  target="_blank">
+  <Icon name={ ICON_NAME.externalLink } />
+</Link>
 ```

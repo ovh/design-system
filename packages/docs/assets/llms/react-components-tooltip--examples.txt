@@ -4,11 +4,25 @@ slug: tooltip
 category: component
 type: examples
 version: 19.7.3
-tokens: 1057
+tokens: 1058
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--examples.txt
 ---
 
 # Tooltip
+
+## Default
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
 
 ## Controlled
 
@@ -42,7 +56,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
   }
 ```
 
-## Custom Trigger
+## Custom trigger
 
 ```tsx
 <Tooltip>
@@ -50,20 +64,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
     <Icon
       name={ ICON_NAME.circleQuestion }
       style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
-```
-
-## Default
-
-```tsx
-<Tooltip>
-  <TooltipTrigger>
-    Show tooltip
   </TooltipTrigger>
 
   <TooltipContent>
@@ -152,25 +152,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
 </>
 ```
 
-## Accessibility Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      aria-label="Open tooltip"
-      name={ ICON_NAME.circleInfo }
-      role="img"
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    Some additional context.
-  </TooltipContent>
-</Tooltip>
-```
-
-## ZIndex
+## Z index
 
 ```tsx
 <>
@@ -225,4 +207,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
     </TooltipContent>
   </Tooltip>
 </>
+```
+
+## Accessibility - Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    Some additional context.
+  </TooltipContent>
+</Tooltip>
 ```

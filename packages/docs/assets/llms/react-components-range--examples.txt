@@ -4,11 +4,21 @@ slug: range
 category: component
 type: examples
 version: 19.7.3
-tokens: 772
+tokens: 773
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--examples.txt
 ---
 
 # Range
+
+## Default
+
+```tsx
+<>
+  <Range />
+
+  <Range defaultValue={ [50, 75] } />
+</>
+```
 
 ## Controlled
 
@@ -42,16 +52,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
   }
 ```
 
-## Default
-
-```tsx
-<>
-  <Range />
-
-  <Range defaultValue={ [50, 75] } />
-</>
-```
-
 ## Disabled
 
 ```tsx
@@ -66,7 +66,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -78,7 +78,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
 </FormField>
 ```
 
-## Max Min
+## Max min
 
 ```tsx
 <>
@@ -138,7 +138,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
 </>
 ```
 
-## Ticks Labels
+## Ticks labels
 
 ```tsx
 <>
@@ -163,19 +163,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
 </>
 ```
 
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Volume
-  </FormFieldLabel>
-
-  <Range defaultValue={ [50] } />
-</FormField>
-```
-
-## Accessibility Descriptive Sub Label
+## Accessibility - Descriptive sub label
 
 ```tsx
 {
@@ -201,4 +189,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
       </FormField>
     );
   }
+```
+
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Volume
+  </FormFieldLabel>
+
+  <Range defaultValue={ [50] } />
+</FormField>
 ```

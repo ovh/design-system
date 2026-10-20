@@ -16,10 +16,10 @@ _The **Text** component is used to display and style text content within an appl
 
 - Default
 - Disabled
-- Fig Caption
+- Fig caption
 - Preset
-- Reuse Style
-- Table Caption
+- Reuse style
+- Table caption
 
 ## Documentation pages
 

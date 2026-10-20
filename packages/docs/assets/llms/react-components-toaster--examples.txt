@@ -10,50 +10,19 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 
 # Toaster
 
-## Statuses
+## Default
 
 ```tsx
 <>
-  <Toaster id="statuses" />
+  <Toaster />
 
-  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button
-      status={ BUTTON_STATUS.critical }
-      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
-      Critical toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
-      Information toast
-    </Button>
-
-    <Button
-      status={ BUTTON_STATUS.neutral }
-      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
-      Neutral toast
-    </Button>
-
-    <Button
-      status={ BUTTON_STATUS.brand }
-      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
-      Accent toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
-      Success toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
-      Warning toast
-    </Button>
-  </div>
+  <Button onClick={ () => toast('Notification message') }>
+    Trigger toast
+  </Button>
 </>
 ```
 
-## Custom Content
+## Custom content
 
 ```tsx
 <>
@@ -75,18 +44,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
         </Link>
       </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
     )}>
-    Trigger toast
-  </Button>
-</>
-```
-
-## Default
-
-```tsx
-<>
-  <Toaster />
-
-  <Button onClick={ () => toast('Notification message') }>
     Trigger toast
   </Button>
 </>
@@ -186,6 +143,49 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 
     <Button onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
       Bottom End
+    </Button>
+  </div>
+</>
+```
+
+## Statuses
+
+```tsx
+<>
+  <Toaster id="statuses" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+      Critical toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+      Information toast
+    </Button>
+
+    <Button
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+      Neutral toast
+    </Button>
+
+    <Button
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+      Success toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+      Warning toast
     </Button>
   </div>
 </>

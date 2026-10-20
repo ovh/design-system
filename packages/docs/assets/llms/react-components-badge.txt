@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: overview
 version: 19.7.3
-tokens: 219
+tokens: 221
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
 ---
 
@@ -22,13 +22,13 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 ## Examples
 
-- Status
 - Default
 - Size
-- Accessibility Aria Label
-- Accessibility With Tooltip
-- Accessibility Grouping
-- Accessibility Alternative Grouping
+- Status
+- Accessibility - Alternative grouping
+- Accessibility - Aria label
+- Accessibility - Grouping
+- Accessibility - With tooltip
 
 ## Documentation pages
 

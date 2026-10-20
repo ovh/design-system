@@ -121,6 +121,13 @@
   color: var(--ods-semantic-color-content-brand);
 }
 
+/* An article rendered without DocArticle (the changelog) on a doc page, whose
+   topbar aligns on the centered block: the article aligns on it too. */
+.doc--block {
+  margin-inline: auto;
+  max-width: var(--doc-block-width);
+}
+
 /* Readable line length for the prose; demos, code, tables and layout blocks
    keep the full article width. */
 .doc :is(p, ul, ol, blockquote) {

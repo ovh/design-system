@@ -29,7 +29,7 @@
 }
 
 .canvas__demo {
-  background-color: var(--ods-semantic-color-surface-page);
+  background-color: var(--ods-semantic-color-surface-raised);
   padding: 24px;
 }
 

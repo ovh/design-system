@@ -240,12 +240,12 @@ body {
   padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }
 
-/* Doc pages center their content column (--doc-content-max-width, doc.css):
+/* Doc pages center their content column (--doc-block-width, doc.css):
    the topbar items line up with its edges once the pane is wider than it. */
 .shell__topbar--doc {
   padding-inline: max(
     calc(var(--ods-semantic-size-space-inset-inline) * 3),
-    calc((100% - var(--doc-content-max-width)) / 2)
+    calc((100% - var(--doc-block-width)) / 2)
   );
 }
 

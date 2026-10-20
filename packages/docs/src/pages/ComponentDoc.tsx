@@ -69,7 +69,7 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
     <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
       <div className="doc-page">
         { tabs.length > 1 && (
-          <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
+          <Tabs className="doc-page__tabs" onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
             <TabList>
               { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
             </TabList>

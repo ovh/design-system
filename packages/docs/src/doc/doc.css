@@ -1,6 +1,13 @@
-/* Page content column: centered in the main pane, never wider than this. */
 :root {
+  /* Cap of a component page (.doc-page): only the icon Gallery tab and the loading skeleton reach
+     it, the tabs and the articles stop at --doc-block-width. */
   --doc-content-max-width: 1200px;
+  --doc-article-width: 90ch;
+  --doc-layout-gap: 40px;
+  --doc-toc-width: 200px;
+  /* The centered block the topbar and the tabs align on. ch resolves on each element reading it:
+     they all use the body font. */
+  --doc-block-width: calc(var(--doc-article-width) + var(--doc-layout-gap) + var(--doc-toc-width));
 }
 
 .doc__heading {
@@ -167,13 +174,18 @@
   max-width: var(--doc-content-max-width);
 }
 
+.doc-page__tabs {
+  margin-inline: auto;
+  max-width: var(--doc-block-width);
+}
+
 .doc-layout {
   align-items: start;
   margin-inline: auto;
-  max-width: var(--doc-content-max-width);
+  max-width: var(--doc-block-width);
   display: grid;
-  gap: 40px;
-  grid-template-columns: minmax(0, 90ch) 200px;
+  gap: var(--doc-layout-gap);
+  grid-template-columns: minmax(0, var(--doc-article-width)) var(--doc-toc-width);
   justify-content: center;
   margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
 
@@ -221,7 +233,7 @@
 
 @media (max-width: 1100px) {
   .doc-layout {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, var(--doc-article-width));
   }
 
   .doc-layout__toc {

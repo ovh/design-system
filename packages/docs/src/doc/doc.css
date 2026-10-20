@@ -1,6 +1,8 @@
 /* Page content column: centered in the main pane, never wider than this. */
 :root {
   --doc-content-max-width: 1200px;
+  /* Article column + gap + ToC: the centered block the topbar and the tabs align on. */
+  --doc-block-width: calc(90ch + 40px + 200px);
 }
 
 .doc__heading {
@@ -164,10 +166,15 @@ article.doc {
   max-width: var(--doc-content-max-width);
 }
 
+.doc-page__tabs {
+  margin-inline: auto;
+  max-width: var(--doc-block-width);
+}
+
 .doc-layout {
   align-items: start;
   margin-inline: auto;
-  max-width: var(--doc-content-max-width);
+  max-width: var(--doc-block-width);
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(0, 90ch) 200px;
@@ -218,7 +225,7 @@ article.doc {
 
 @media (max-width: 1100px) {
   .doc-layout {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 90ch);
   }
 
   .doc-layout__toc {

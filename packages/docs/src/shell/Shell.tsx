@@ -187,6 +187,8 @@ const Shell = () => {
   // still highlight their page in the tree.
   const currentPage = pages.find((page) => page.path === location.pathname)
     ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
+  // Doc pages center their content column: the topbar follows it.
+  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper';
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
@@ -247,7 +249,7 @@ const Shell = () => {
       ) }
 
       <div className="shell__main">
-        <header className="shell__topbar">
+        <header className={ isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
           { isNarrow && (
             <Button
               aria-label="Open navigation"

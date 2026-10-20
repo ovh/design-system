@@ -491,10 +491,29 @@ body {
   font-size: .78rem;
 }
 
-/* Topbar "View as Markdown": never shrinks under a long page title. */
+/* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
+   long page title. */
 .shell__llms-link {
+  display: inline-flex;
   flex: none;
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) * .75);
+  align-items: center;
+  margin-inline-start: auto;
+  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-brand-minor);
+  border-radius: var(--ods-semantic-size-radius-control);
+  /* The raised surface, not the control one: the docs dark theme does not darken the latter,
+     which would leave the light link text on a white ground. */
+  background-color: var(--ods-semantic-color-surface-raised);
+  padding: calc(var(--ods-semantic-size-space-inset-block) * .75) calc(var(--ods-semantic-size-space-inset-inline) * .75);
+  min-height: var(--ods-semantic-size-block-size-md);
+  line-height: 1;
   white-space: nowrap;
+  color: var(--ods-semantic-color-content-brand-minor);
+  text-decoration: none;
+}
+
+.shell__llms-link:hover {
+  border-color: var(--ods-semantic-color-interaction-brand-hover);
 }
 
 /* Matched terms inside a search snippet. */

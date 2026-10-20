@@ -131,10 +131,9 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
-/* Direct link to the current page's llms markdown — the exact file the AI
-   toolchain consumes. A URL rather than a copy button: it can be read,
-   shared, curl'ed or handed to an assistant as-is. Hidden on pages that emit
-   no llms document (the route mapping and its exclusions: llmsFile.ts). */
+/* Opens the current page's llms markdown — the exact file the AI toolchain
+   consumes — in a new tab. Hidden on pages that emit no llms document (the
+   route mapping and its exclusions: llmsFile.ts). */
 const MarkdownLink = ({ pathname }: { pathname: string }) => {
   const file = llmsFileFor(pathname);
 
@@ -142,23 +141,27 @@ const MarkdownLink = ({ pathname }: { pathname: string }) => {
     return null;
   }
 
+  const href = new URL(`llms/${file}`, APP_ROOT).href;
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
+        { /* A link, not a button: the URL can be read, shared, curl'ed or handed to an assistant
+             as-is. It only borrows the outline button look (shell.css). */ }
         <Link
-          aria-label="View this page as Markdown"
           className="shell__llms-link"
           data-testid="view-as-markdown"
-          href={ new URL(`llms/${file}`, APP_ROOT).href }
+          href={ href }
           rel="noreferrer"
           target="_blank">
           { /* Same icon as the AI Agents nav section: this IS the machine-
                readable face of the page. */ }
           <Icon name={ ICON_NAME.robot } />
+          View as Markdown
         </Link>
       </TooltipTrigger>
       <TooltipContent>
-        View this page as Markdown
+        Opens the Markdown version of this page, made for LLMs, in a new tab
       </TooltipContent>
     </Tooltip>
   );

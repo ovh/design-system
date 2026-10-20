@@ -50,12 +50,15 @@ const HighlightedSnippet = ({ query, text }: { query: string, text: string }) =>
   );
 };
 
+// Hidden pages stay reachable by URL, but out of the results.
+const HIDDEN_PATHS = new Set(flattenPages().filter((page) => page.hidden).map((page) => page.path));
+
 const SearchCommand = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [docHits, setDocHits] = useState<SearchHit[]>([]);
   const navigate = useNavigate();
-  const pages = flattenPages();
+  const pages = flattenPages().filter((page) => !page.hidden);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -79,7 +82,7 @@ const SearchCommand = () => {
     let stale = false;
     loadSearchIndex().then((index) => {
       if (!stale) {
-        setDocHits(searchDocs(index, wanted));
+        setDocHits(searchDocs(index.filter((entry) => !HIDDEN_PATHS.has(entry.r.split('#')[0])), wanted));
       }
     });
     return () => {

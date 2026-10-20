@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import imageFile from '../../../../assets/ods_bg.png';
 import { BASENAME } from '../../../appBase';
 import { ExternalLink } from '../../DocComponents';
 import { BADGE_STATUS, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
@@ -11,10 +10,7 @@ const Homepage = () => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className={ styles.homepage }
-      data-page="homepage"
-      style={{ backgroundImage: `url(${imageFile})` }}>
+    <div className={ styles.homepage } data-page="homepage">
       <div className={ styles['homepage__content'] }>
         <div className={ styles['homepage__heading'] }>
           <Brand className={ styles['homepage__brand'] } />

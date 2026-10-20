@@ -31,7 +31,7 @@ async function suite(browser, { base, version }) {
   // Full-text search: a term that appears in NO page title must surface
   // content hits, and selecting one must navigate.
   await page.goto(`${root}/`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('.shell__topbar');
+  await page.waitForSelector('#main-content');
   await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
   await page.waitForSelector('[data-ods="command-filter"]', { timeout: 5000 });
   await page.locator('[data-ods="command-filter"]').fill('aria-describedby');

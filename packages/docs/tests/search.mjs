@@ -204,6 +204,11 @@ async function suite(browser, { base, version }) {
   }
   ok('5 index deep-links sampled', routes.length === 5, `${routes.length} sampled`);
 
+  // The llms Markdown suffixes a deprecated heading with " (deprecated)" while the page renders
+  // the bare label plus a badge: no indexed anchor may carry that suffix.
+  const leakedSuffix = index.find((entry) => /deprecated/i.test(entry.r.split('#')[1] ?? ''));
+  ok('no indexed anchor carries the "(deprecated)" suffix', !leakedSuffix, leakedSuffix?.r ?? '');
+
   // Repeated heading labels get unique ids (accessibility guide: one "Related
   // Sources" per section), deep links reach the right one, and the Technical
   // tab's enum names carry an id and an anchor too.

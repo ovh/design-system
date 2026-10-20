@@ -4,7 +4,7 @@
 $ods-button-border-radius-xs: var(--ods-semantic-size-radius-control);
 $ods-button-border-radius-sm: var(--ods-semantic-size-radius-control);
 $ods-button-border-radius-md: var(--ods-semantic-size-radius-control);
-$ods-button-border-radius-width: var(--ods-semantic-border-thickness);
+$ods-button-border-width: var(--ods-semantic-border-thickness);
 $ods-button-column-gap-xs: calc(var(--ods-semantic-size-space-gap-inline) * 0.75);
 $ods-button-column-gap-sm: calc(var(--ods-semantic-size-space-gap-inline) * 0.75);
 $ods-button-column-gap-md: var(--ods-semantic-size-space-gap-inline);
@@ -22,7 +22,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-border-radius-xs: #{$ods-button-border-radius-xs};
   --ods-button-border-radius-sm: #{$ods-button-border-radius-sm};
   --ods-button-border-radius-md: #{$ods-button-border-radius-md};
-  --ods-button-border-radius-width: #{$ods-button-border-radius-width};
+  --ods-button-border-width: #{$ods-button-border-width};
   --ods-button-column-gap-xs: #{$ods-button-column-gap-xs};
   --ods-button-column-gap-sm: #{$ods-button-column-gap-sm};
   --ods-button-column-gap-md: #{$ods-button-column-gap-md};
@@ -254,7 +254,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
 }
 
 @mixin ods-button-variant-default($color) {
-  border-width: var(--ods-button-border-radius-width);
+  border-width: var(--ods-button-border-width);
   border-style: solid;
 
   @if $color == 'critical' {
@@ -363,7 +363,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
 }
 
 @mixin ods-button-variant-ghost($color) {
-  border: var(--ods-button-border-radius-width) solid transparent;
+  border: var(--ods-button-border-width) solid transparent;
 
   @if $color == 'critical' {
     background-color: var(--ods-button-background-color-critical-ghost);
@@ -465,7 +465,7 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
 }
 
 @mixin ods-button-variant-outline($color) {
-  border-width: var(--ods-button-border-radius-width);
+  border-width: var(--ods-button-border-width);
   border-style: solid;
 
   @if $color == 'critical' {

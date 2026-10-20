@@ -225,6 +225,7 @@ body {
 .shell__topbar {
   display: flex;
   align-items: center;
+  background-color: var(--ods-semantic-color-surface-raised);
   border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }

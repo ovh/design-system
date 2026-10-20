@@ -13,6 +13,9 @@ interface DemoFrameProp {
   bare?: boolean;
   children: ReactNode;
   dark?: boolean;
+  /* Leaves the body on the page surface instead of the raised one — for
+     callers that paint their own raised surface inside the frame. */
+  pageSurface?: boolean;
   /* Fires with the frame document once it has painted — for callers that
      measure the rendered DOM (the anatomy highlighter). */
   onReady?: (frameDocument: Document) => void;
@@ -196,7 +199,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -211,7 +214,7 @@ const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => 
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; background: var(--ods-semantic-color-surface-raised); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; background: var(--ods-semantic-color-surface-${ pageSurface ? 'page' : 'raised' }); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

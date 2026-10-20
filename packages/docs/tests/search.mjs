@@ -99,7 +99,7 @@ async function suite(browser, { base, version }) {
   // View as Markdown: the topbar link targets the page's llms document.
   await page.goto(`${root}/components/button`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="view-as-markdown"]', { timeout: 10000 });
-  const mdHref = await page.locator('[data-testid="view-as-markdown"]').getAttribute('href');
+  const mdHref = await page.locator('[data-testid="view-as-markdown"]').getAttribute('data-href');
   ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref ?? ''), mdHref ?? '(none)');
   const mdRes = await page.request.get(mdHref);
   const md = mdRes.ok() ? await mdRes.text() : '';

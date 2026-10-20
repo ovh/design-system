@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Divider } from '../../../ods-react/src/components/divider/src';
@@ -131,10 +131,9 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
-/* Direct link to the current page's llms markdown — the exact file the AI
-   toolchain consumes. A URL rather than a copy button: it can be read,
-   shared, curl'ed or handed to an assistant as-is. Hidden on pages that emit
-   no llms document (the route mapping and its exclusions: llmsFile.ts). */
+/* Opens the current page's llms markdown — the exact file the AI toolchain
+   consumes — in a new tab. Hidden on pages that emit no llms document (the
+   route mapping and its exclusions: llmsFile.ts). */
 const MarkdownLink = ({ pathname }: { pathname: string }) => {
   const file = llmsFileFor(pathname);
 
@@ -142,23 +141,26 @@ const MarkdownLink = ({ pathname }: { pathname: string }) => {
     return null;
   }
 
+  const href = new URL(`llms/${file}`, APP_ROOT).href;
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Link
-          aria-label="View this page as Markdown"
+        <Button
           className="shell__llms-link"
+          data-href={ href }
           data-testid="view-as-markdown"
-          href={ new URL(`llms/${file}`, APP_ROOT).href }
-          rel="noreferrer"
-          target="_blank">
+          onClick={ () => window.open(href, '_blank', 'noopener,noreferrer') }
+          size={ BUTTON_SIZE.sm }
+          variant={ BUTTON_VARIANT.outline }>
           { /* Same icon as the AI Agents nav section: this IS the machine-
                readable face of the page. */ }
           <Icon name={ ICON_NAME.robot } />
-        </Link>
+          View as Markdown
+        </Button>
       </TooltipTrigger>
       <TooltipContent>
-        View this page as Markdown
+        Opens the Markdown version of this page, made for LLMs, in a new tab
       </TooltipContent>
     </Tooltip>
   );

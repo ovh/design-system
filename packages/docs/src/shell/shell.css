@@ -484,9 +484,11 @@ body {
   font-size: .78rem;
 }
 
-/* Topbar "View as Markdown": never shrinks under a long page title. */
+/* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
+   long page title. */
 .shell__llms-link {
   flex: none;
+  margin-inline-start: auto;
   white-space: nowrap;
 }
 

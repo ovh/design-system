@@ -3,7 +3,7 @@ import { Component, type ComponentType, type JSX, type ReactNode, useState } fro
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
 import { flattenPages } from '../nav/model';
-import { INPUT_TYPE, Input } from '../ods';
+import { Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
 import styles from './componentGallery.module.css';
 
 const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx', { eager: true }) as Record<string, Record<string, unknown>>;
@@ -18,7 +18,22 @@ interface GalleryStory {
   name: string;
 }
 
+/* The "big categories" the toolbar filters on. The nav model is a flat component list, so the
+   grouping lives here; a component missing from it lands in "Other" instead of vanishing. */
+const CATEGORIES: Record<string, string[]> = {
+  'Actions': ['button', 'button-group', 'clipboard', 'link'],
+  'Data display': ['accordion', 'avatar', 'card', 'cart', 'code', 'data-table', 'divider', 'file-thumbnail', 'icon', 'kbd', 'logo', 'markdown', 'medium', 'table', 'text', 'tile'],
+  'Feedback & status': ['badge', 'message', 'message-bubble', 'meter', 'progress-bar', 'skeleton', 'spinner', 'tag'],
+  'Form elements': ['checkbox', 'combobox', 'datepicker', 'editable', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'],
+  'Navigation': ['breadcrumb', 'command', 'menu', 'pagination', 'tabs', 'tree-view'],
+  'Overlays': ['drawer', 'modal', 'popover', 'toaster', 'tooltip'],
+};
+const OTHER_CATEGORY = 'Other';
+
+const categoryOf = (key: string): string => Object.entries(CATEGORIES).find(([, keys]) => keys.includes(key))?.[0] ?? OTHER_CATEGORY;
+
 interface GalleryEntry {
+  category: string;
   key: string;
   path?: string;
   stories: GalleryStory[];
@@ -37,6 +52,7 @@ const GALLERY: GalleryEntry[] = Object.entries(STORY_MODULES)
     const composed = composeStories(module as Parameters<typeof composeStories>[0]) as Record<string, ComponentType>;
 
     return {
+      category: categoryOf(key),
       key,
       path: page?.path,
       stories: VARIATION_STORIES.flatMap((name) => (composed[name] ? [{ Story: composed[name], name }] : [])),
@@ -44,6 +60,10 @@ const GALLERY: GalleryEntry[] = Object.entries(STORY_MODULES)
     };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
+
+const CATEGORY_ITEMS = [...new Set(GALLERY.map((entry) => entry.category))]
+  .sort((a, b) => (a === OTHER_CATEGORY ? 1 : b === OTHER_CATEGORY ? -1 : a.localeCompare(b)))
+  .map((category) => ({ label: category, value: category }));
 
 /* One story throwing must not blank the whole frame: the page is only useful seen as a whole. */
 class StoryBoundary extends Component<{ children: ReactNode, label: string }, { failed: boolean }> {
@@ -63,10 +83,12 @@ class StoryBoundary extends Component<{ children: ReactNode, label: string }, { 
 
 const ComponentGallery = (): JSX.Element => {
   const [filter, setFilter] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
   const needle = filter.trim().toLowerCase();
-  const shown = needle
-    ? GALLERY.filter((entry) => entry.key.includes(needle) || entry.title.toLowerCase().includes(needle))
-    : GALLERY;
+  // No category selected means every category.
+  const shown = GALLERY
+    .filter((entry) => !categories.length || categories.includes(entry.category))
+    .filter((entry) => !needle || entry.key.includes(needle) || entry.title.toLowerCase().includes(needle));
 
   return (
     <div className={ styles['component-gallery'] }>
@@ -81,6 +103,17 @@ const ComponentGallery = (): JSX.Element => {
           type={ INPUT_TYPE.search }
           value={ filter } />
 
+        <Combobox
+          items={ CATEGORY_ITEMS }
+          multiple
+          onValueChange={ ({ value }) => setCategories(value) }
+          value={ categories }>
+          <ComboboxControl
+            aria-label="Filter by category"
+            placeholder="All categories" />
+          <ComboboxContent />
+        </Combobox>
+
         <span className={ styles['component-gallery__count'] }>
           { shown.length } / { GALLERY.length }
         </span>
@@ -92,7 +125,7 @@ const ComponentGallery = (): JSX.Element => {
             <section className={ styles['component-gallery__component'] } key={ key }>
               <header className={ styles['component-gallery__header'] }>
                 <h2 className={ styles['component-gallery__title'] }>{ title }</h2>
-                { path && <RouterLink className={ styles['component-gallery__doc-link'] } to={ path }>Documentation</RouterLink> }
+                { path && <Link as={ RouterLink } to={ path }>Documentation</Link> }
               </header>
 
               { stories.map(({ Story, name }) => (

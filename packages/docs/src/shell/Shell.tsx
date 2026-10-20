@@ -40,13 +40,14 @@ const useNarrow = () => {
 
 /* One sidebar tree. Selection is bound to the active page id; a tree that
    doesn't contain it simply shows nothing selected. */
-const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
+const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
   currentId?: string;
   expanded: string[];
   nodes: (NavSection | NavPage)[];
   onNavigate: (id: string) => void;
+  sectionIcons?: boolean;
 }) => {
-  const items = toTreeItems(nodes);
+  const items = toTreeItems(nodes, sectionIcons);
   return (
     <TreeView
       defaultExpandedValue={ expanded }
@@ -61,7 +62,7 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', sectionIcons && 'shell__tree-label--tight'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
@@ -112,7 +113,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     </div>
     
     <nav aria-label="Documentation" className="shell__nav">
-      <NavTree currentId={ currentId } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
+      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } sectionIcons />
       <Divider className="shell__tree-divider" />
       <Text className="shell__tree-dividerd" preset={ TEXT_PRESET.paragraph }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />

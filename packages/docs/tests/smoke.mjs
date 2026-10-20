@@ -16,6 +16,10 @@ async function suite(browser, { base, version }) {
       throw new Error('no app content');
     }
   });
+  await check('the legacy Storybook URL of the moved Component Gallery lands on it', async () => {
+    await page.goto(`${base}/v${version}/?path=/docs/ovhcloud-design-system-tools-component-gallery--documentation`, { waitUntil: 'domcontentloaded' });
+    await page.waitForURL('**/tools/component-gallery', { timeout: 10000 });
+  });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });

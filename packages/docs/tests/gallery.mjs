@@ -46,7 +46,7 @@ async function suite(browser, { base, version }) {
   });
 
   await page.goto(`${base}/v${version}/tools/component-gallery`, { waitUntil: 'domcontentloaded' });
-  const category = page.locator('#component-gallery-category');
+  const category = page.getByRole('combobox', { name: 'Filter by category' });
   await check('the category filter input is named', async () => {
     await category.waitFor({ timeout: 15000 });
     const name = await page.getByRole('combobox', { name: 'Filter by category' }).count();
@@ -74,7 +74,7 @@ async function suite(browser, { base, version }) {
       throw new Error(`the grid overflows by ${overflow}px`);
     }
     // The toolbar wraps rather than squeezing its controls: the name filter keeps its 320px.
-    const filterWidth = await page.locator('input[type=search]').first().evaluate((input) => input.closest('[class*="component-gallery__filter"]')?.getBoundingClientRect().width ?? 0);
+    const filterWidth = await page.locator('input[type=search]').first().evaluate((input) => input.closest('[class*="gallery-toolbar__filter"]')?.getBoundingClientRect().width ?? 0);
     if (filterWidth < 320) {
       throw new Error(`the name filter is squeezed to ${Math.round(filterWidth)}px`);
     }

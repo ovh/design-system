@@ -43,8 +43,8 @@
 
       &:not([data-disabled], [data-invalid]) {
         &:hover, &[data-focus] {
-          border-color: var(--ods-semantic-color-interaction-accent-hover);
-          background-color: var(--ods-semantic-color-interaction-accent-hover);
+          border-color: var(--ods-semantic-color-interaction-selected-solid-highlight);
+          background: var(--ods-semantic-color-interaction-selected-solid-highlight);
         }
       }
 

@@ -273,7 +273,7 @@ body {
   overflow: auto;
 }
 
-/* The home route is full-bleed (its background reaches the edges). */
+/* The home route drops the content padding: the Welcome page lays out its own (homepage.module.css). */
 .shell__content--flush {
   padding: 0;
 }

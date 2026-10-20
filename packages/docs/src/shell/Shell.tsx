@@ -189,6 +189,9 @@ const Shell = () => {
     ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper';
+  // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
+  // keep it, since it holds the navigation drawer button.
+  const isWelcome = location.pathname === '/' && !isNarrow;
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
@@ -249,20 +252,22 @@ const Shell = () => {
       ) }
 
       <div className="shell__main">
-        <header className={ isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
-          { isNarrow && (
-            <Button
-              aria-label="Open navigation"
-              className="shell__menu-button"
-              emphasis={ BUTTON_EMPHASIS.low }
-              status={ BUTTON_STATUS.neutral }
-              onClick={ () => setNavOpen(true) }>
-              <Icon name={ ICON_NAME.hamburgerMenu } />
-            </Button>
-          ) }
-          <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
-          <MarkdownLink pathname={ location.pathname } />
-        </header>
+        { !isWelcome && (
+          <header className={ isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
+            { isNarrow && (
+              <Button
+                aria-label="Open navigation"
+                className="shell__menu-button"
+                emphasis={ BUTTON_EMPHASIS.low }
+                status={ BUTTON_STATUS.neutral }
+                onClick={ () => setNavOpen(true) }>
+                <Icon name={ ICON_NAME.hamburgerMenu } />
+              </Button>
+            ) }
+            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
+            <MarkdownLink pathname={ location.pathname } />
+          </header>
+        ) }
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />

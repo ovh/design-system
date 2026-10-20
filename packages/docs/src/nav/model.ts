@@ -45,6 +45,8 @@ function storiesOf(id: string): StoriesLoader | undefined {
 
 interface NavPage {
   badge?: Badge;
+  /* Routed, but left out of the sidebar and the search palette. */
+  hidden?: boolean;
   icon?: ICON_NAME;
   id: string;
   kind: 'component' | 'guide' | 'helper' | 'recipe' | 'tool';
@@ -65,7 +67,7 @@ interface NavSection {
    old Storybook storySort; the single "OVHcloud Design System" root was
    dropped (the brand logo already says it). */
 const GUIDES_NAV: (NavSection | NavPage)[] = [
-  { icon: ICON_NAME.home, id: 'guides/welcome', kind: 'guide', path: '/', title: 'Welcome' },
+  { hidden: true, icon: ICON_NAME.home, id: 'guides/welcome', kind: 'guide', path: '/', title: 'Welcome' },
   { icon: ICON_NAME.arrowRight, id: 'guides/get-started', kind: 'guide', path: '/guides/get-started', title: 'Get Started' },
   {
     icon: ICON_NAME.magicWand,
@@ -129,7 +131,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
       },
     ],
   },
-  { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
+  { hidden: true, icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
 ];
 
@@ -258,7 +260,7 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
    selection maps straight to a route. Icons mark the pages (leaves); the
    sections are already marked by their chevron. */
 function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
-  return nodes.map((node) => (isPage(node)
+  return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
     ? { customRendererData: { badge: node.badge, icon: node.icon }, id: node.id, name: node.title }
     : { children: toTreeItems(node.children, sectionIcons), customRendererData: sectionIcons ? { icon: node.icon } : {}, id: node.id, name: node.title }));
 }

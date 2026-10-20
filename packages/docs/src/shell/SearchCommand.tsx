@@ -55,7 +55,7 @@ const SearchCommand = () => {
   const [query, setQuery] = useState('');
   const [docHits, setDocHits] = useState<SearchHit[]>([]);
   const navigate = useNavigate();
-  const pages = flattenPages();
+  const pages = flattenPages().filter((page) => !page.hidden);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {

@@ -40,6 +40,44 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const CustomTrigger: Story = {
+  globals: {
+    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Custom Trigger
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {
@@ -79,35 +117,35 @@ import { useState } from 'react';`,
   },
 };
 
-export const CustomTrigger: Story = {
-  globals: {
-    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button>
-          Custom Trigger
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent>
-        This is the popover content
-      </PopoverContent>
-    </Popover>
-  ),
-};
-
-export const Default: Story = {
+export const SameWidth: Story = {
   globals: {
     imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Popover>
+    <Popover overlayConfig={{ sameWidth: true }}>
       <PopoverTrigger>
-        Show popover
+        Show popover that will take this width as reference
+      </PopoverTrigger>
+
+      <PopoverContent>
+        The popover content
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Show popover
+        </Button>
       </PopoverTrigger>
 
       <PopoverContent>
@@ -212,115 +250,6 @@ export const Grid: StoryObj = {
   ),
 };
 
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button>
-          Show popover
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent>
-        This is the popover content
-      </PopoverContent>
-    </Popover>
-  ),
-};
-
-export const AccessibilityWithMenu: Story = {
-  globals: {
-    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Popover>
-      <PopoverTrigger
-        aria-haspopup="menu"
-        asChild>
-        <Button>
-          <Icon name={ ICON_NAME.ellipsisVertical } />
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent
-        aria-label="Profile menu"
-        withArrow>
-        <div
-          role="menu"
-          style={{ display: 'flex', flexDirection: 'column' }}>
-          <Button
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
-            Information
-          </Button>
-
-          <Button
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
-            Notifications
-          </Button>
-
-          <Divider style={{ width: '100%' }} />
-
-          <Button
-            status={ BUTTON_STATUS.critical }
-            role="menuitem"
-            variant={ BUTTON_VARIANT.ghost }>
-            Sign out
-          </Button>
-        </div>
-      </PopoverContent>
-    </Popover>
-  ),
-};
-
-export const SameWidth: Story = {
-  globals: {
-    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Popover overlayConfig={{ sameWidth: true }}>
-      <PopoverTrigger>
-        Show popover that will take this width as reference
-      </PopoverTrigger>
-
-      <PopoverContent>
-        The popover content
-      </PopoverContent>
-    </Popover>
-  ),
-};
-
-export const ThemeGenerator: Story = {
-  parameters: {
-    layout: 'fullscreen',
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button>Default</Button>
-        </PopoverTrigger>
-        <PopoverContent createPortal={ false }>This is the popover content</PopoverContent>
-      </Popover>
-
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button>With Arrow</Button>
-        </PopoverTrigger>
-        <PopoverContent createPortal={ false } withArrow>This is the popover content</PopoverContent>
-      </Popover>
-    </div>
-  ),
-};
-
 export const ZIndex: Story = {
   globals: {
     imports: `import { ICON_NAME, Icon, POPOVER_POSITION, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
@@ -379,5 +308,76 @@ export const ZIndex: Story = {
         </PopoverContent>
       </Popover>
     </>
+  ),
+};
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>Default</Button>
+        </PopoverTrigger>
+        <PopoverContent createPortal={ false }>This is the popover content</PopoverContent>
+      </Popover>
+
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>With Arrow</Button>
+        </PopoverTrigger>
+        <PopoverContent createPortal={ false } withArrow>This is the popover content</PopoverContent>
+      </Popover>
+    </div>
+  ),
+};
+
+export const AccessibilityWithMenu: Story = {
+  globals: {
+    imports: `import { BUTTON_STATUS, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover>
+      <PopoverTrigger
+        aria-haspopup="menu"
+        asChild>
+        <Button>
+          <Icon name={ ICON_NAME.ellipsisVertical } />
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent
+        aria-label="Profile menu"
+        withArrow>
+        <div
+          role="menu"
+          style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Information
+          </Button>
+
+          <Button
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Notifications
+          </Button>
+
+          <Divider style={{ width: '100%' }} />
+
+          <Button
+            status={ BUTTON_STATUS.critical }
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Sign out
+          </Button>
+        </div>
+      </PopoverContent>
+    </Popover>
   ),
 };

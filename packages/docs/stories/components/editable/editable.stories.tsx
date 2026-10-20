@@ -46,10 +46,10 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const ComplexFormElement: Story = {
+export const Default: Story = {
   globals: {
-    imports: `import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, FormField, Input, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
+    imports: `import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, Input } from '@ovhcloud/ods-react';
+import { useRef, useState } from 'react';`,
   },
   parameters: {
     docs: {
@@ -58,52 +58,22 @@ import { useState } from 'react';`,
   },
   tags: ['!dev'],
   render: ({}) => {
-    const [displayValue, setDisplayValue] = useState('');
-    const [accountValue, setAccountValue] = useState('');
-    const [domainValue, setDomainValue] = useState('');
-
-    function onCancel(): void {
-      const [account, domain] = displayValue.split('@ovhcloud');
-
-      setAccountValue(account || '');
-      setDomainValue(domain || '');
-    }
+    const [value, setValue] = useState('Double click to edit');
+    const bufferValue = useRef(value);
 
     return (
       <Editable
-        onCancel={ onCancel }
-        onSubmit={ () => setDisplayValue(`${accountValue}@ovhcloud${domainValue}`) }>
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
         <EditableDisplay>
-          { displayValue || <EditableDisplayEmpty>Account name</EditableDisplayEmpty> }
+          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
         </EditableDisplay>
 
         <EditableInput>
-          <FormField style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', columnGap: '8px' }}>
-            <Input
-              name="account-name"
-              onChange={ (e) => setAccountValue(e.target.value) }
-              pattern="^([a-zA-Z0-9]|([._\-](?![._\-])))*[a-zA-Z0-9]$"
-              placeholder="Account name"
-              value={ accountValue } />
-
-            <span>
-              @ovhcloud
-            </span>
-
-            <Select
-              items={[
-                { label: '.fr', value: '.fr' },
-                { label: '.com', value: '.com' },
-                { label: '.dev', value: '.dev' },
-              ]}
-              name="domain"
-              onValueChange={ ({ value }) => setDomainValue(value[0]) }
-              value={ domainValue ? [domainValue] : [] }>
-              <SelectControl placeholder="Select domain" />
-
-              <SelectContent />
-            </Select>
-          </FormField>
+          <Input
+            autoFocus
+            defaultValue={ value }
+            onChange={ (e) => bufferValue.current = e.target.value } />
         </EditableInput>
 
         <EditableActions />
@@ -204,10 +174,10 @@ import { useRef, useState } from 'react';`,
   },
 };
 
-export const Default: Story = {
+export const ComplexFormElement: Story = {
   globals: {
-    imports: `import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, Input } from '@ovhcloud/ods-react';
-import { useRef, useState } from 'react';`,
+    imports: `import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, FormField, Input, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
   },
   parameters: {
     docs: {
@@ -216,22 +186,52 @@ import { useRef, useState } from 'react';`,
   },
   tags: ['!dev'],
   render: ({}) => {
-    const [value, setValue] = useState('Double click to edit');
-    const bufferValue = useRef(value);
+    const [displayValue, setDisplayValue] = useState('');
+    const [accountValue, setAccountValue] = useState('');
+    const [domainValue, setDomainValue] = useState('');
+
+    function onCancel(): void {
+      const [account, domain] = displayValue.split('@ovhcloud');
+
+      setAccountValue(account || '');
+      setDomainValue(domain || '');
+    }
 
     return (
       <Editable
-        onCancel={ () => bufferValue.current = value }
-        onSubmit={ () => setValue(bufferValue.current) }>
+        onCancel={ onCancel }
+        onSubmit={ () => setDisplayValue(`${accountValue}@ovhcloud${domainValue}`) }>
         <EditableDisplay>
-          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
+          { displayValue || <EditableDisplayEmpty>Account name</EditableDisplayEmpty> }
         </EditableDisplay>
 
         <EditableInput>
-          <Input
-            autoFocus
-            defaultValue={ value }
-            onChange={ (e) => bufferValue.current = e.target.value } />
+          <FormField style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', columnGap: '8px' }}>
+            <Input
+              name="account-name"
+              onChange={ (e) => setAccountValue(e.target.value) }
+              pattern="^([a-zA-Z0-9]|([._\-](?![._\-])))*[a-zA-Z0-9]$"
+              placeholder="Account name"
+              value={ accountValue } />
+
+            <span>
+              @ovhcloud
+            </span>
+
+            <Select
+              items={[
+                { label: '.fr', value: '.fr' },
+                { label: '.com', value: '.com' },
+                { label: '.dev', value: '.dev' },
+              ]}
+              name="domain"
+              onValueChange={ ({ value }) => setDomainValue(value[0]) }
+              value={ domainValue ? [domainValue] : [] }>
+              <SelectControl placeholder="Select domain" />
+
+              <SelectContent />
+            </Select>
+          </FormField>
         </EditableInput>
 
         <EditableActions />

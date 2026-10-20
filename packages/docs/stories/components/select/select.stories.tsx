@@ -47,28 +47,239 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const AccessibilityFormField: Story = {
+export const Default: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Select a Web hosting
-      </FormFieldLabel>
+    <Select items={[
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}>
+      <SelectControl />
 
+      <SelectContent />
+    </Select>
+  ),
+};
+
+export const Group: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Select
+      items={[
+        {
+          label: 'Europe',
+          options: [
+            { label: 'France', value: 'fr' },
+            { label: 'Germany', value: 'de' },
+            { label: 'Italy', value: 'it' },
+          ]
+        },
+        {
+          label: 'Asia',
+          options: [
+            { label: 'China', value: 'cn' },
+            { label: 'Japan', value: 'jp' },
+            { label: 'Russia', value: 'ru' },
+          ]
+        },
+        {
+          label: 'North America',
+          options: [
+            { label: 'Canada', value: 'ca' },
+            { label: 'Mexico', value: 'mx' },
+            { label: 'United States of America', value: 'us' },
+          ]
+        },
+      ]}>
+      <SelectControl />
+
+      <SelectContent />
+    </Select>
+  ),
+};
+
+export const Multiple: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
       <Select
         items={[
-          { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
-          { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
-          { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
-        ]}>
-        <SelectControl />
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}
+        multiple>
+        <Text
+          htmlFor="multiple"
+          preset={ TEXT_PRESET.label }>
+          Default multiple selection
+        </Text>
+
+        <SelectControl
+          id="multiple"
+          placeholder="Select one or more pets" />
 
         <SelectContent />
       </Select>
-    </FormField>
+
+      <Select
+        items={[
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}
+        multiple="merge">
+        <Text
+          htmlFor="multiple-merged"
+          preset={ TEXT_PRESET.label }>
+          Merged multiple selection
+        </Text>
+
+        <SelectControl
+          id="multiple-merged"
+          placeholder="Select one or more pets" />
+
+        <SelectContent />
+      </Select>
+    </>
+  ),
+};
+
+export const Disabled: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Select
+        disabled
+        items={[
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}>
+        <Text
+          htmlFor="disabled"
+          preset={ TEXT_PRESET.label }>
+          Disabled
+        </Text>
+
+        <SelectControl
+          id="disabled"
+          placeholder="Select one or more pets" />
+
+        <SelectContent />
+      </Select>
+
+      <Select
+        items={[
+          { label: 'Dog', value:'dog', disabled: true },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot', disabled: true },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}>
+        <Text
+          htmlFor="disabled-options"
+          preset={ TEXT_PRESET.label }>
+          Disabled options
+        </Text>
+
+        <SelectControl
+          id="disabled-options"
+          placeholder="Select one or more pets" />
+
+        <SelectContent />
+      </Select>
+
+      <Select
+        items={[
+          {
+            label: 'Europe',
+            options: [
+              { label: 'France', value: 'fr' },
+              { label: 'Germany', value: 'de', disabled: true },
+              { label: 'Italy', value: 'it' },
+            ]
+          },
+          {
+            disabled: true,
+            label: 'Asia',
+            options: [
+              { label: 'China', value: 'cn', disabled: true },
+              { label: 'Japan', value: 'jp', disabled: true },
+              { label: 'Russia', value: 'ru', disabled: true },
+            ]
+          },
+          {
+            label: 'North America',
+            options: [
+              { label: 'Canada', value: 'ca' },
+              { label: 'Mexico', value: 'mx' },
+              { label: 'United States of America', value: 'us' },
+            ]
+          },
+        ]}>
+        <Text
+          htmlFor="disabled-group"
+          preset={ TEXT_PRESET.label }>
+          Disabled group or group option
+        </Text>
+
+        <SelectControl id="disabled-group" />
+
+        <SelectContent />
+      </Select>
+    </>
+  ),
+};
+
+export const Readonly: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Select
+      items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}
+      readOnly>
+      <SelectControl placeholder="Select one or more pets" />
+
+      <SelectContent />
+    </Select>
   ),
 };
 
@@ -188,162 +399,6 @@ export const CustomRenderer: Story = {
   },
 };
 
-export const Default: Story = {
-  globals: {
-    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Select items={[
-      { label: 'Dog', value:'dog' },
-      { label: 'Cat', value:'cat' },
-      { label: 'Hamster', value:'hamster' },
-      { label: 'Parrot', value:'parrot' },
-      { label: 'Spider', value:'spider' },
-      { label: 'Goldfish', value:'goldfish' },
-    ]}>
-      <SelectControl />
-
-      <SelectContent />
-    </Select>
-  ),
-};
-
-export const Disabled: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Select
-        disabled
-        items={[
-          { label: 'Dog', value:'dog' },
-          { label: 'Cat', value:'cat' },
-          { label: 'Hamster', value:'hamster' },
-          { label: 'Parrot', value:'parrot' },
-          { label: 'Spider', value:'spider' },
-          { label: 'Goldfish', value:'goldfish' },
-        ]}>
-        <Text
-          htmlFor="disabled"
-          preset={ TEXT_PRESET.label }>
-          Disabled
-        </Text>
-
-        <SelectControl
-          id="disabled"
-          placeholder="Select one or more pets" />
-
-        <SelectContent />
-      </Select>
-
-      <Select
-        items={[
-          { label: 'Dog', value:'dog', disabled: true },
-          { label: 'Cat', value:'cat' },
-          { label: 'Hamster', value:'hamster' },
-          { label: 'Parrot', value:'parrot', disabled: true },
-          { label: 'Spider', value:'spider' },
-          { label: 'Goldfish', value:'goldfish' },
-        ]}>
-        <Text
-          htmlFor="disabled-options"
-          preset={ TEXT_PRESET.label }>
-          Disabled options
-        </Text>
-
-        <SelectControl
-          id="disabled-options"
-          placeholder="Select one or more pets" />
-
-        <SelectContent />
-      </Select>
-
-      <Select
-        items={[
-          {
-            label: 'Europe',
-            options: [
-              { label: 'France', value: 'fr' },
-              { label: 'Germany', value: 'de', disabled: true },
-              { label: 'Italy', value: 'it' },
-            ]
-          },
-          {
-            disabled: true,
-            label: 'Asia',
-            options: [
-              { label: 'China', value: 'cn', disabled: true },
-              { label: 'Japan', value: 'jp', disabled: true },
-              { label: 'Russia', value: 'ru', disabled: true },
-            ]
-          },
-          {
-            label: 'North America',
-            options: [
-              { label: 'Canada', value: 'ca' },
-              { label: 'Mexico', value: 'mx' },
-              { label: 'United States of America', value: 'us' },
-            ]
-          },
-        ]}>
-        <Text
-          htmlFor="disabled-group"
-          preset={ TEXT_PRESET.label }>
-          Disabled group or group option
-        </Text>
-
-        <SelectControl id="disabled-group" />
-
-        <SelectContent />
-      </Select>
-    </>
-  ),
-};
-
-export const Group: Story = {
-  globals: {
-    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Select
-      items={[
-        {
-          label: 'Europe',
-          options: [
-            { label: 'France', value: 'fr' },
-            { label: 'Germany', value: 'de' },
-            { label: 'Italy', value: 'it' },
-          ]
-        },
-        {
-          label: 'Asia',
-          options: [
-            { label: 'China', value: 'cn' },
-            { label: 'Japan', value: 'jp' },
-            { label: 'Russia', value: 'ru' },
-          ]
-        },
-        {
-          label: 'North America',
-          options: [
-            { label: 'Canada', value: 'ca' },
-            { label: 'Mexico', value: 'mx' },
-            { label: 'United States of America', value: 'us' },
-          ]
-        },
-      ]}>
-      <SelectControl />
-
-      <SelectContent />
-    </Select>
-  ),
-};
-
 export const InFormField: Story = {
   globals: {
     imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
@@ -369,63 +424,6 @@ export const InFormField: Story = {
   ),
 };
 
-export const Multiple: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Select
-        items={[
-          { label: 'Dog', value:'dog' },
-          { label: 'Cat', value:'cat' },
-          { label: 'Hamster', value:'hamster' },
-          { label: 'Parrot', value:'parrot' },
-          { label: 'Spider', value:'spider' },
-          { label: 'Goldfish', value:'goldfish' },
-        ]}
-        multiple>
-        <Text
-          htmlFor="multiple"
-          preset={ TEXT_PRESET.label }>
-          Default multiple selection
-        </Text>
-
-        <SelectControl
-          id="multiple"
-          placeholder="Select one or more pets" />
-
-        <SelectContent />
-      </Select>
-
-      <Select
-        items={[
-          { label: 'Dog', value:'dog' },
-          { label: 'Cat', value:'cat' },
-          { label: 'Hamster', value:'hamster' },
-          { label: 'Parrot', value:'parrot' },
-          { label: 'Spider', value:'spider' },
-          { label: 'Goldfish', value:'goldfish' },
-        ]}
-        multiple="merge">
-        <Text
-          htmlFor="multiple-merged"
-          preset={ TEXT_PRESET.label }>
-          Merged multiple selection
-        </Text>
-
-        <SelectControl
-          id="multiple-merged"
-          placeholder="Select one or more pets" />
-
-        <SelectContent />
-      </Select>
-    </>
-  ),
-};
-
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -447,29 +445,30 @@ export const Overview: Story = {
   ),
 };
 
-export const Readonly: Story = {
+export const AccessibilityFormField: Story = {
   globals: {
-    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Select
-      items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}
-      readOnly>
-      <SelectControl placeholder="Select one or more pets" />
+    <FormField>
+      <FormFieldLabel>
+        Select a Web hosting
+      </FormFieldLabel>
 
-      <SelectContent />
-    </Select>
+      <Select
+        items={[
+          { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+          { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+          { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+        ]}>
+        <SelectControl />
+
+        <SelectContent />
+      </Select>
+    </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

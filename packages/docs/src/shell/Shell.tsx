@@ -7,7 +7,10 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { APP_ROOT } from '../appBase';
+import { llmsFileFor } from '../doc/llmsFile';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
@@ -115,6 +118,39 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
+/* Direct link to the current page's llms markdown — the exact file the AI
+   toolchain consumes. A URL rather than a copy button: it can be read,
+   shared, curl'ed or handed to an assistant as-is. Hidden on pages that emit
+   no llms document (the route mapping and its exclusions: llmsFile.ts). */
+const MarkdownLink = ({ pathname }: { pathname: string }) => {
+  const file = llmsFileFor(pathname);
+
+  if (!file) {
+    return null;
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Link
+          aria-label="View this page as Markdown"
+          className="shell__llms-link"
+          data-testid="view-as-markdown"
+          href={ new URL(`llms/${file}`, APP_ROOT).href }
+          rel="noreferrer"
+          target="_blank">
+          { /* Same icon as the AI Agents nav section: this IS the machine-
+               readable face of the page. */ }
+          <Icon name={ ICON_NAME.robot } />
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent>
+        View this page as Markdown
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 const Shell = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -207,6 +243,7 @@ const Shell = () => {
             </Button>
           ) }
           <Text as="h1" preset={ TEXT_PRESET.heading4 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
+          <MarkdownLink pathname={ location.pathname } />
         </header>
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>

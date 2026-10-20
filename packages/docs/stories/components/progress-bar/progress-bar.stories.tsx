@@ -28,16 +28,6 @@ export const Default: Story = {
   ),
 };
 
-export const Indeterminate: StoryObj = {
-  globals: {
-    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <ProgressBar value="indeterminate" />
-  ),
-};
-
 export const Max: StoryObj = {
   globals: {
     imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
@@ -47,13 +37,6 @@ export const Max: StoryObj = {
     <ProgressBar
       max="500"
       value="50" />
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <ProgressBar value="50" />
   ),
 };
 
@@ -67,6 +50,23 @@ export const Value: StoryObj = {
   ),
 };
 
+export const Overview: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ProgressBar value="50" />
+  ),
+};
+
+export const Indeterminate: StoryObj = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <ProgressBar value="indeterminate" />
+  ),
+};
+
 export const AccessibilityLabel: Story = {
   globals: {
     imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
@@ -76,7 +76,6 @@ export const AccessibilityLabel: Story = {
     <ProgressBar aria-label="Converting" />
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

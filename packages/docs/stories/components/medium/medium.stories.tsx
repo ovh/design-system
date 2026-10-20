@@ -22,26 +22,6 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Caption: Story = {
-  globals: {
-    imports: `import { TEXT_PRESET, Medium, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <figure>
-      <Medium
-        alt="NASA Computer room"
-        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-
-      <figcaption>
-        <Text preset={ TEXT_PRESET.caption }>
-          © Copyright National Aeronautics and Space Administration
-        </Text>
-      </figcaption>
-    </figure>
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Medium } from '@ovhcloud/ods-react';`,
@@ -50,19 +30,6 @@ export const Default: Story = {
   render: ({}) => (
     <Medium
       alt="NASA Computer room"
-      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Medium
-      alt="NASA Computer room"
-      height={ 100 }
       src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
   ),
 };
@@ -80,6 +47,19 @@ export const Height: Story = {
   ),
 };
 
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Medium
+      alt="NASA Computer room"
+      height={ 100 }
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+  ),
+};
+
 export const Width: Story = {
   globals: {
     imports: `import { Medium } from '@ovhcloud/ods-react';`,
@@ -90,6 +70,26 @@ export const Width: Story = {
       alt="NASA Computer room"
       src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
       width={ 300 } />
+  ),
+};
+
+export const Caption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Medium, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <figure>
+      <Medium
+        alt="NASA Computer room"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+
+      <figcaption>
+        <Text preset={ TEXT_PRESET.caption }>
+          © Copyright National Aeronautics and Space Administration
+        </Text>
+      </figcaption>
+    </figure>
   ),
 };
 

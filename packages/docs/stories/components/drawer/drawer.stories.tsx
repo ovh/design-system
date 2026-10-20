@@ -54,70 +54,6 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const Backdrop: Story = {
-  globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Drawer backdrop>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer
-        </Button>
-      </DrawerTrigger>
-
-      <DrawerContent>
-        <DrawerBody>
-          My drawer content
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-  ),
-};
-
-export const Controlled: Story = {
-  globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: DrawerOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openDrawer() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button onClick={ openDrawer }>
-          Trigger Drawer
-        </Button>
-
-        <Drawer
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <DrawerContent>
-            <DrawerBody>
-              Content
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </>
-    );
-  },
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
@@ -140,13 +76,13 @@ export const Default: Story = {
   ),
 };
 
-export const OverlayElements: Story = {
+export const Backdrop: Story = {
   globals: {
-    imports: `import { Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Drawer>
+    <Drawer backdrop>
       <DrawerTrigger asChild>
         <Button>
           Trigger Drawer
@@ -154,51 +90,6 @@ export const OverlayElements: Story = {
       </DrawerTrigger>
 
       <DrawerContent>
-        <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-          <Select items={[
-            { label: 'Dog', value:'dog' },
-            { label: 'Cat', value:'cat' },
-            { label: 'Hamster', value:'hamster' },
-            { label: 'Parrot', value:'parrot' },
-            { label: 'Spider', value:'spider' },
-            { label: 'Goldfish', value:'goldfish' },
-          ]}>
-            <SelectControl />
-
-            <SelectContent createPortal={ false } />
-          </Select>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Icon
-                name={ ICON_NAME.circleQuestion }
-                style={{ fontSize: '24px' }} />
-            </TooltipTrigger>
-
-            <TooltipContent createPortal={ false }>
-              This is the tooltip content
-            </TooltipContent>
-          </Tooltip>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer
-        </Button>
-      </DrawerTrigger>
-
-      <DrawerContent position={ DRAWER_POSITION.left}>
         <DrawerBody>
           My drawer content
         </DrawerBody>
@@ -275,6 +166,114 @@ export const Position: Story = {
   ),
 }
 
+export const OverlayElements: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent>
+        <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+          <Select items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}>
+            <SelectControl />
+
+            <SelectContent createPortal={ false } />
+          </Select>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon
+                name={ ICON_NAME.circleQuestion }
+                style={{ fontSize: '24px' }} />
+            </TooltipTrigger>
+
+            <TooltipContent createPortal={ false }>
+              This is the tooltip content
+            </TooltipContent>
+          </Tooltip>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent position={ DRAWER_POSITION.left}>
+        <DrawerBody>
+          My drawer content
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
+export const Controlled: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, type DrawerOpenChangeDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: DrawerOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openDrawer() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button onClick={ openDrawer }>
+          Trigger Drawer
+        </Button>
+
+        <Drawer
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <DrawerContent>
+            <DrawerBody>
+              Content
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    );
+  },
+};
 
 export const AccessibilityAriaLabelledBy: Story = {
   globals: {
@@ -329,7 +328,6 @@ export const AccessibilityAriaLabel: Story = {
     </Drawer>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

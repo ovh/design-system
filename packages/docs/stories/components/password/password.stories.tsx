@@ -16,19 +16,13 @@ const meta: Meta<PasswordProp> = {
 
 export default meta;
 
-export const AccessibilityLabel: Story = {
+export const Default: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, Password } from '@ovhcloud/ods-react';`,
+    imports: `import { Password } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Password:
-      </FormFieldLabel>
-
-      <Password />
-    </FormField>
+    <Password />
   ),
 };
 
@@ -36,6 +30,28 @@ export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Password />
+  ),
+};
+
+export const Disabled: Story = {
+  globals: {
+    imports: `import { Password } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Password disabled />
+  ),
+};
+
+export const ReadOnly: Story = {
+  globals: {
+    imports: `import { Password } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Password
+      defaultValue="Readonly"
+      readOnly />
   ),
 };
 
@@ -51,23 +67,13 @@ export const Clearable: Story = {
   ),
 };
 
-export const Default: Story = {
+export const Loading: Story = {
   globals: {
     imports: `import { Password } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Password />
-  ),
-};
-
-export const Disabled: Story = {
-  globals: {
-    imports: `import { Password } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Password disabled />
+    <Password loading />
   ),
 };
 
@@ -87,16 +93,6 @@ export const InFormField: Story = {
   ),
 };
 
-export const Loading: Story = {
-  globals: {
-    imports: `import { Password } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Password loading />
-  ),
-};
-
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -107,15 +103,19 @@ export const Overview: Story = {
   ),
 };
 
-export const ReadOnly: Story = {
+export const AccessibilityLabel: Story = {
   globals: {
-    imports: `import { Password } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Password } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Password
-      defaultValue="Readonly"
-      readOnly />
+    <FormField>
+      <FormFieldLabel>
+        Password:
+      </FormFieldLabel>
+
+      <Password />
+    </FormField>
   ),
 };
 
@@ -158,7 +158,6 @@ export const AccessibilityI18n: Story = {
     </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

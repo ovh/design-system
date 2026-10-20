@@ -180,6 +180,101 @@ export const Multiple: Story = {
   }
 }
 
+export const Disabled: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        disabled
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
+export const CustomRender: Story = {
+  globals: {
+    imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item }>
+              { ({ item, isBranch, isExpanded }) => (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
+                  <span>{ item.name }</span>
+                </span>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
 export const DefaultExpandedValue: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
@@ -328,51 +423,6 @@ import { useState } from 'react';`,
   }
 }
 
-export const Disabled: Story = {
-  globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        disabled
-        items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-}
-
 export const DisabledItems: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
@@ -410,56 +460,6 @@ export const DisabledItems: Story = {
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-}
-
-export const CustomRender: Story = {
-  globals: {
-    imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item }>
-              { ({ item, isBranch, isExpanded }) => (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
-                  <span>{ item.name }</span>
-                </span>
-              ) }
-            </TreeViewNode>
           )) }
         </TreeViewNodes>
       </TreeView>
@@ -633,7 +633,6 @@ import { useRef, useState } from 'react';`,
     );
   }
 }
-
 
 export const ThemeGenerator: Story = {
   parameters: {

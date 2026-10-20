@@ -11,29 +11,6 @@ const meta: Meta<LogoProp> = {
 
 export default meta;
 
-export const AccessibilityLink: Story = {
-  globals: {
-    imports: `import { Logo } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <a
-      aria-label="Return to the OVHcloud home page"
-      href="https://www.ovhcloud.com">
-      <Logo />
-    </a>
-  ),
-};
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <div data-ods="logo-story">
-      <Logo />
-    </div>
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Logo } from '@ovhcloud/ods-react';`,
@@ -44,13 +21,12 @@ export const Default: Story = {
   ),
 };
 
-export const Overview: Story = {
+export const AnatomyTech: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => (
-    <Logo />
+    <div data-ods="logo-story">
+      <Logo />
+    </div>
   ),
 };
 
@@ -69,11 +45,11 @@ export const Size: StoryObj = {
   ),
 };
 
-export const ThemeGenerator: StoryObj = {
-  parameters: {
-    layout: 'fullscreen',
-  },
+export const Overview: Story = {
   tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
   render: ({}) => (
     <Logo />
   ),
@@ -90,5 +66,29 @@ export const Variant: StoryObj = {
       <Logo variant={ LOGO_VARIANT.default } />
       <Logo variant={ LOGO_VARIANT.emblem } />
     </>
+  ),
+};
+
+export const ThemeGenerator: StoryObj = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Logo />
+  ),
+};
+
+export const AccessibilityLink: Story = {
+  globals: {
+    imports: `import { Logo } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <a
+      aria-label="Return to the OVHcloud home page"
+      href="https://www.ovhcloud.com">
+      <Logo />
+    </a>
   ),
 };

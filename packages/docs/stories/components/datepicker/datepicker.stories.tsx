@@ -39,27 +39,6 @@ export const AnatomyTech: Story = {
   ),
 };
 
-export const DateFormatter: Story = {
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => (
-    <Datepicker
-      dateFormatter={ ({ date }) => `${date.getFullYear()}` }
-      placeholder="yyyy">
-      <DatepickerControl />
-
-      <DatepickerContent />
-    </Datepicker>
-  ),
-};
-
 export const Default: Story = {
   globals: {
     imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
@@ -109,33 +88,34 @@ export const Disabled: Story = {
   ),
 };
 
-export const InFormField: Story = {
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Label:
-      </FormFieldLabel>
-
-      <Datepicker>
-        <DatepickerControl />
-
-        <DatepickerContent />
-      </Datepicker>
-    </FormField>
-  ),
-};
-
-export const MaxView: Story = {
+export const Readonly: Story = {
   globals: {
     imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Datepicker maxView="day">
+    <Datepicker readOnly>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+  ),
+};
+
+export const DateFormatter: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <Datepicker
+      dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+      placeholder="yyyy">
       <DatepickerControl />
 
       <DatepickerContent />
@@ -152,6 +132,20 @@ export const MinMax: Story = {
     <Datepicker
       max={ new Date(Date.now() + (86400000 * 10)) }
       min={ new Date(Date.now() - (86400000 * 10)) }>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+  ),
+};
+
+export const MaxView: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Datepicker maxView="day">
       <DatepickerControl />
 
       <DatepickerContent />
@@ -187,17 +181,23 @@ export const Overview: Story = {
   ),
 };
 
-export const Readonly: Story = {
+export const InFormField: Story = {
   globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Datepicker readOnly>
-      <DatepickerControl />
+    <FormField>
+      <FormFieldLabel>
+        Label:
+      </FormFieldLabel>
 
-      <DatepickerContent />
-    </Datepicker>
+      <Datepicker>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
   ),
 };
 
@@ -273,7 +273,6 @@ export const AccessibilityI18n: Story = {
     </FormField>
   )
 }
-
 
 export const ThemeGenerator: Story = {
   parameters: {

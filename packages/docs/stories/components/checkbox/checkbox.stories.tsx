@@ -70,69 +70,6 @@ export const Disabled: Story = {
   ),
 };
 
-export const InFormField: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Text preset={ TEXT_PRESET.label }>
-        Legal considerations:
-      </Text>
-
-      <FormField>
-        <Checkbox>
-          <CheckboxControl />
-
-          <CheckboxLabel>
-            I agree to the terms and conditions.
-          </CheckboxLabel>
-        </Checkbox>
-      </FormField>
-
-      <FormField>
-        <Checkbox>
-          <CheckboxControl />
-
-          <CheckboxLabel>
-            I agree to receive marketing communications.
-          </CheckboxLabel>
-        </Checkbox>
-      </FormField>
-    </>
-  ),
-};
-
-export const Group: Story = {
-  globals: {
-    imports: `import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <CheckboxGroup
-      defaultValue={ ['marketing'] }
-      name="acknowledgments">
-      <Checkbox value="term">
-        <CheckboxControl />
-
-        <CheckboxLabel>
-          I agree to the terms and conditions.
-        </CheckboxLabel>
-      </Checkbox>
-
-      <Checkbox value="marketing">
-        <CheckboxControl />
-
-        <CheckboxLabel>
-          I agree to receive marketing communications.
-        </CheckboxLabel>
-      </Checkbox>
-    </CheckboxGroup>
-  ),
-};
-
 export const Invalid: Story = {
   globals: {
     imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
@@ -140,22 +77,6 @@ export const Invalid: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Checkbox invalid>
-      <CheckboxControl />
-
-      <CheckboxLabel>
-        Checkbox
-      </CheckboxLabel>
-    </Checkbox>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Checkbox>
       <CheckboxControl />
 
       <CheckboxLabel>
@@ -205,6 +126,84 @@ export const States: Story = {
   ),
 };
 
+export const Group: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <CheckboxGroup
+      defaultValue={ ['marketing'] }
+      name="acknowledgments">
+      <Checkbox value="term">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to the terms and conditions.
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox value="marketing">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to receive marketing communications.
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checkbox
+      </CheckboxLabel>
+    </Checkbox>
+  ),
+};
+
+export const InFormField: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Text preset={ TEXT_PRESET.label }>
+        Legal considerations:
+      </Text>
+
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+
+          <CheckboxLabel>
+            I agree to the terms and conditions.
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+
+          <CheckboxLabel>
+            I agree to receive marketing communications.
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+    </>
+  ),
+};
 
 export const ThemeGenerator: Story = {
   parameters: {

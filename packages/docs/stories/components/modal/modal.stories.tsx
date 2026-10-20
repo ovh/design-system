@@ -81,6 +81,173 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Default: Story = {
+  globals: {
+    imports: `import { Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger>
+        Trigger Modal
+      </ModalTrigger>
+      <ModalContent>
+        <ModalHeader>My modal header</ModalHeader>
+        <ModalBody>
+          My modal content
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
+export const Controlled: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: ModalOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openModal() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button onClick={ openModal }>
+          Trigger Modal
+        </Button>
+
+        <Modal
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <ModalContent>
+            <ModalHeader>Controlled modal</ModalHeader>
+            <ModalBody>
+              Content
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  },
+};
+
+export const NonDismissible: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent dismissible={ false }>
+        <ModalHeader>Non dismissible</ModalHeader>
+        <ModalBody>
+          My modal content
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
+export const NonEscapable: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <Modal
+      closeOnEscape={ false }
+      closeOnInteractOutside={ false }>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalHeader>Non escapable</ModalHeader>
+        <ModalBody>
+          My modal content
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
+export const OverlayElements: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalHeader>Overlay elements</ModalHeader>
+        <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+          <Select items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}>
+            <SelectControl />
+
+            <SelectContent createPortal={ false } />
+          </Select>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon
+                name={ ICON_NAME.circleQuestion }
+                style={{ fontSize: '24px' }} />
+            </TooltipTrigger>
+
+            <TooltipContent createPortal={ false }>
+              This is the tooltip content
+            </TooltipContent>
+          </Tooltip>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
 export const AccessibilityActions: Story = {
   globals: {
     imports: `import { BUTTON_STATUS, BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
@@ -187,173 +354,6 @@ export const AccessibilityBadPracticesAria: Story = {
           <p id="modal-content">
             Are you sure you want to delete this item? This action cannot be undone.
           </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-};
-
-export const Controlled: Story = {
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: ModalOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openModal() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button onClick={ openModal }>
-          Trigger Modal
-        </Button>
-
-        <Modal
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <ModalContent>
-            <ModalHeader>Controlled modal</ModalHeader>
-            <ModalBody>
-              Content
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </>
-    );
-  },
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Modal>
-      <ModalTrigger>
-        Trigger Modal
-      </ModalTrigger>
-      <ModalContent>
-        <ModalHeader>My modal header</ModalHeader>
-        <ModalBody>
-          My modal content
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-};
-
-export const NonDismissible: Story = {
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => (
-    <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent dismissible={ false }>
-        <ModalHeader>Non dismissible</ModalHeader>
-        <ModalBody>
-          My modal content
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-};
-
-export const NonEscapable: Story = {
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => (
-    <Modal
-      closeOnEscape={ false }
-      closeOnInteractOutside={ false }>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent>
-        <ModalHeader>Non escapable</ModalHeader>
-        <ModalBody>
-          My modal content
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-};
-
-export const OverlayElements: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent>
-        <ModalHeader>Overlay elements</ModalHeader>
-        <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-          <Select items={[
-            { label: 'Dog', value:'dog' },
-            { label: 'Cat', value:'cat' },
-            { label: 'Hamster', value:'hamster' },
-            { label: 'Parrot', value:'parrot' },
-            { label: 'Spider', value:'spider' },
-            { label: 'Goldfish', value:'goldfish' },
-          ]}>
-            <SelectControl />
-
-            <SelectContent createPortal={ false } />
-          </Select>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Icon
-                name={ ICON_NAME.circleQuestion }
-                style={{ fontSize: '24px' }} />
-            </TooltipTrigger>
-
-            <TooltipContent createPortal={ false }>
-              This is the tooltip content
-            </TooltipContent>
-          </Tooltip>
         </ModalBody>
       </ModalContent>
     </Modal>

@@ -15,25 +15,17 @@ const meta: Meta<QuantityProp> = {
 
 export default meta;
 
-export const AccessibilityLabel: Story = {
+export const Default: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Number of CPUs:
-      </FormFieldLabel>
-
-      <Quantity
-        max={ 10 }
-        min={ 0 }>
-        <QuantityControl>
-          <QuantityInput />
-        </QuantityControl>
-      </Quantity>
-    </FormField>
+    <Quantity>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
   ),
 };
 
@@ -43,20 +35,6 @@ export const AnatomyTech: Story = {
     <Quantity
       defaultValue="0"
       min={ 0 }>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Quantity>
       <QuantityControl>
         <QuantityInput />
       </QuantityControl>
@@ -78,23 +56,17 @@ export const Disabled: Story = {
   ),
 };
 
-export const InFormField: Story = {
+export const Readonly: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Set a quantity:
-      </FormFieldLabel>
-
-      <Quantity>
-        <QuantityControl>
-          <QuantityInput />
-        </QuantityControl>
-      </Quantity>
-    </FormField>
+    <Quantity readOnly>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
   ),
 };
 
@@ -126,6 +98,20 @@ export const Min: Story = {
   ),
 };
 
+export const Step: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Quantity step={ 10 }>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -142,34 +128,47 @@ export const Overview: Story = {
   ),
 };
 
-export const Readonly: Story = {
+export const InFormField: Story = {
   globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Quantity readOnly>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
+    <FormField>
+      <FormFieldLabel>
+        Set a quantity:
+      </FormFieldLabel>
+
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
   ),
 };
 
-export const Step: Story = {
+export const AccessibilityLabel: Story = {
   globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Quantity step={ 10 }>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
+    <FormField>
+      <FormFieldLabel>
+        Number of CPUs:
+      </FormFieldLabel>
+
+      <Quantity
+        max={ 10 }
+        min={ 0 }>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

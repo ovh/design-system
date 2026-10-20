@@ -17,6 +17,146 @@ const meta: Meta<MessageProp> = {
 
 export default meta;
 
+export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Default message
+      </MessageBody>
+    </Message>
+  ),
+};
+
+export const Status: Story = {
+  decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Message status={ MESSAGE_STATUS.accent }>
+        <MessageIcon name={ ICON_NAME.lightbulb } />
+
+        <MessageBody>Accent message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.critical }>
+        <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+        <MessageBody>Critical message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.information }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+
+        <MessageBody>Information message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.neutral }>
+        <MessageIcon name={ ICON_NAME.email } />
+
+        <MessageBody>Neutral message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.success }>
+        <MessageIcon name={ ICON_NAME.circleCheck } />
+
+        <MessageBody>Success message</MessageBody>
+      </Message>
+
+      <Message status={ MESSAGE_STATUS.warning }>
+        <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+        <MessageBody>Warning message</MessageBody>
+      </Message>
+    </>
+  ),
+};
+
+export const Variant: Story = {
+  decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_VARIANT, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Message variant={ MESSAGE_VARIANT.default }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+
+        <MessageBody>
+          Default variant Message
+        </MessageBody>
+      </Message>
+
+      <Message variant={ MESSAGE_VARIANT.light }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+
+        <MessageBody>
+          Light variant Message
+        </MessageBody>
+      </Message>
+    </>
+  ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Message
+      </MessageBody>
+    </Message>
+  ),
+};
+
+export const Multiline: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+      </MessageBody>
+    </Message>
+  ),
+};
+
+export const NonDismissible: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message dismissible={ false }>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Default message
+      </MessageBody>
+    </Message>
+  ),
+};
+
 export const AccessibilityGrouping: Story = {
   globals: {
     imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
@@ -74,6 +214,22 @@ export const AccessibilityAlternativeGrouping: Story = {
         </MessageBody>
       </Message>
     </div>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Message
+      </MessageBody>
+    </Message>
   ),
 };
 
@@ -140,163 +296,6 @@ import { useState } from 'react';`,
     );
   },
 };
-
-export const AnatomyTech: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Message>
-      <MessageIcon name={ ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        Message
-      </MessageBody>
-    </Message>
-  ),
-};
-
-export const Status: Story = {
-  decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Message status={ MESSAGE_STATUS.accent }>
-        <MessageIcon name={ ICON_NAME.lightbulb } />
-
-        <MessageBody>Accent message</MessageBody>
-      </Message>
-
-      <Message status={ MESSAGE_STATUS.critical }>
-        <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-
-        <MessageBody>Critical message</MessageBody>
-      </Message>
-
-      <Message status={ MESSAGE_STATUS.information }>
-        <MessageIcon name={ ICON_NAME.circleInfo } />
-
-        <MessageBody>Information message</MessageBody>
-      </Message>
-
-      <Message status={ MESSAGE_STATUS.neutral }>
-        <MessageIcon name={ ICON_NAME.email } />
-
-        <MessageBody>Neutral message</MessageBody>
-      </Message>
-
-      <Message status={ MESSAGE_STATUS.success }>
-        <MessageIcon name={ ICON_NAME.circleCheck } />
-
-        <MessageBody>Success message</MessageBody>
-      </Message>
-
-      <Message status={ MESSAGE_STATUS.warning }>
-        <MessageIcon name={ ICON_NAME.triangleExclamation } />
-
-        <MessageBody>Warning message</MessageBody>
-      </Message>
-    </>
-  ),
-};
-
-export const Default: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Message>
-      <MessageIcon name={ ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        Default message
-      </MessageBody>
-    </Message>
-  ),
-};
-
-export const Multiline: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Message>
-      <MessageIcon name={ ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
-      </MessageBody>
-    </Message>
-  ),
-};
-
-export const NonDismissible: Story = {
-  globals: {
-    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Message dismissible={ false }>
-      <MessageIcon name={ ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        Default message
-      </MessageBody>
-    </Message>
-  ),
-};
-
-export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <Message>
-      <MessageIcon name={ ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        Message
-      </MessageBody>
-    </Message>
-  ),
-};
-
-export const Variant: Story = {
-  decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_VARIANT, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Message variant={ MESSAGE_VARIANT.default }>
-        <MessageIcon name={ ICON_NAME.circleInfo } />
-
-        <MessageBody>
-          Default variant Message
-        </MessageBody>
-      </Message>
-
-      <Message variant={ MESSAGE_VARIANT.light }>
-        <MessageIcon name={ ICON_NAME.circleInfo } />
-
-        <MessageBody>
-          Light variant Message
-        </MessageBody>
-      </Message>
-    </>
-  ),
-};
-
 
 export const ThemeGenerator: Story = {
   parameters: {

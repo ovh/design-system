@@ -45,6 +45,27 @@ export const Default: Story = {
   },
 };
 
+export const Progress: Story = {
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        file={ fakeFile }
+        progress={ 45 }/>
+    );
+  },
+};
+
 export const Disabled: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
@@ -87,6 +108,20 @@ export const NonDismissible: Story = {
   },
 };
 
+export const Overview: Story = {
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail file={ fakeFile } />
+    );
+  },
+};
+
 export const Error: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
@@ -104,41 +139,6 @@ export const Error: Story = {
       <FileThumbnail
         error="Something went wrong"
         file={ fakeFile } />
-    );
-  },
-};
-
-export const Overview: Story = {
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail file={ fakeFile } />
-    );
-  },
-};
-
-export const Progress: Story = {
-  globals: {
-    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
-  },
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail
-        file={ fakeFile }
-        progress={ 45 }/>
     );
   },
 };

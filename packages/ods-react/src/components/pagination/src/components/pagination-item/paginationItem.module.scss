@@ -1,10 +1,12 @@
-.pagination-item {
-  display: flex;
-  justify-content: center;
-  width: 40px;
+@layer ods-molecules {
+  .pagination-item {
+    display: flex;
+    justify-content: center;
+    width: 40px;
 
-  &[data-selected] {
-    border-color: var(--ods-semantic-color-border-selected-solid);
-    background: var(--ods-semantic-color-surface-selected-solid);
+    &[data-selected] {
+      border-color: var(--ods-semantic-color-border-selected-solid);
+      background: var(--ods-semantic-color-surface-selected-solid);
+    }
   }
 }

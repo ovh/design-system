@@ -87,7 +87,7 @@ const ComponentGallery = (): JSX.Element => {
       </div>
 
       { shown.length ? (
-        <DemoFrame>
+        <DemoFrame pageSurface>
           { shown.map(({ key, path, stories, title }) => (
             <section className={ styles['component-gallery__component'] } key={ key }>
               <header className={ styles['component-gallery__header'] }>

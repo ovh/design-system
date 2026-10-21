@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4691
+tokens: 4769
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -71,6 +71,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
 | `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
 | `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-brand-minor` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-accent` | `var(--ods-palette-accent-600)` |
 | `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
 | `--ods-semantic-color-content-success` | `var(--ods-palette-green-700)` |
@@ -78,7 +79,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-content-critical` | `var(--ods-palette-red-600)` |
 | `--ods-semantic-color-content-on-selected` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-600)` |
-| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
 | `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
@@ -99,10 +100,11 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
-| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-400)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-brand-minor` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
 | `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-300)` |
@@ -116,6 +118,8 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-50)` |
 | `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
@@ -132,6 +136,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-interaction-brand-active` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-brand-visited` | `var(--ods-palette-brand-700)` |
 | `--ods-semantic-color-interaction-accent-hover` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-accent-active` | `var(--ods-palette-accent-600)` |
 | `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-600)` |
 | `--ods-semantic-color-interaction-information-active` | `var(--ods-palette-blue-600)` |
 | `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-600)` |
@@ -142,7 +147,9 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
 | `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
-| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-400)` |
+| `--ods-semantic-color-interaction-selected-solid-highlight` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-selected-solid-active` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
@@ -181,9 +188,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-size-radius-overlay` | `4px` |
 | `--ods-semantic-size-radius-pill` | `16px` |
 | `--ods-semantic-size-radius-full` | `calc(infinity * 1px)` |
-| `--ods-semantic-size-block-size-xxs` | `20px` |
 | `--ods-semantic-size-block-size-xs` | `24px` |
-| `--ods-semantic-size-block-size-sm` | `28px` |
 | `--ods-semantic-size-block-size-md` | `32px` |
 | `--ods-semantic-size-block-size-lg` | `40px` |
 | `--ods-semantic-border-thickness` | `1px` |

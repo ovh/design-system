@@ -4,7 +4,7 @@ slug: card
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 396
+tokens: 398
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
 ---
 
@@ -17,7 +17,7 @@ This component extends all the native `<div>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
-| `status` | `CARD_STATUS` | No | undefined | The status preset to use. |
+| `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Enums
 

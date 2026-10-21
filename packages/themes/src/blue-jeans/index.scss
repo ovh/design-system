@@ -64,12 +64,15 @@
   --ods-semantic-color-content-group-label: var(--ods-palette-brand-800);
 
   /* Content - status inks on the page */
+  --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-500);
   --ods-semantic-color-content-accent: var(--ods-palette-accent-500);
   --ods-semantic-color-content-success: #2b8000;
   --ods-semantic-color-content-warning: #995400;
   --ods-semantic-color-content-critical: #bf0020;
 
   /* Content - inks on a tinted surface */
+
+  --ods-semantic-color-content-on-brand: var(--ods-palette-brand-700);
   --ods-semantic-color-content-on-selected: var(--ods-palette-accent-500);
   --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-700);
   --ods-semantic-color-content-on-accent: var(--ods-palette-accent-900);
@@ -90,6 +93,7 @@
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-500);
 
   /* Borders - statuses */
+  --ods-semantic-color-border-brand-minor: var(--ods-palette-brand-500);
   --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-500);
   --ods-semantic-color-border-success-subtle: #90cc7a;
   --ods-semantic-color-border-success: #2b8000;
@@ -99,6 +103,8 @@
   --ods-semantic-color-border-critical: #bf0020;
 
   /* Interaction - on a tinted / transparent surface */
+  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-200);
   --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-300);
   --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-200);

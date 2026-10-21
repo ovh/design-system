@@ -314,3 +314,17 @@ tables with the correct attributes and a global caption to provide users with co
 Please follow the <ExternalLink href="https://www.w3.org/TR/WCAG20-TECHS/H63">W3C technique</ExternalLink> for integrating them correctly.
 
 We also recommend referring to the <ExternalLink href="https://www.w3.org/WAI/tutorials/tables/">WCAG guidelines</ExternalLink> for building accessible `Data Tables`.
+
+<Heading label="Sortable columns" level={ 3 } />
+
+Each sortable column header renders a button named after the header content, and the sorted column exposes its direction with `aria-sort`.
+
+The button also carries a description, "Sortable column" by default, that screen readers announce when the button receives the focus.
+It is a description rather than part of the name, because screen readers repeat the column header name in every cell of the column.
+
+The description follows the `locale` prop. To reword it, use the `i18n` prop:
+
+<Canvas story="AccessibilityI18n" />
+
+<Icon name="circle-check"
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the header button with its description, and the sort direction of the sorted column.

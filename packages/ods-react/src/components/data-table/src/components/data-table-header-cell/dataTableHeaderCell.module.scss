@@ -1,3 +1,5 @@
+@use '../../../../../style/focus';
+
 @layer ods-organisms {
   .data-table-header-cell {
     &--sortable {
@@ -10,6 +12,20 @@
       column-gap: var(--ods-theme-column-gap);
       justify-content: space-between;
       text-align: left;
+    }
+
+    &__sort-button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      width: 100%;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+
+      &:focus-visible {
+        @include focus.ods-focus();
+      }
     }
 
     &__sort-icon {

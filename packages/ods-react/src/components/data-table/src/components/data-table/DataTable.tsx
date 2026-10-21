@@ -13,7 +13,9 @@ const DataTable = forwardRef(<T,>({
   enableRowSelection,
   enableSorting = true,
   getRowId,
+  i18n,
   loading,
+  locale,
   manualSorting,
   onColumnPinningChange,
   onColumnVisibilityChange,
@@ -31,7 +33,9 @@ const DataTable = forwardRef(<T,>({
       enableRowSelection={ enableRowSelection }
       enableSorting={ enableSorting }
       getRowId={ getRowId }
+      i18n={ i18n }
       loading={ loading }
+      locale={ locale }
       manualSorting={ manualSorting }
       onColumnPinningChange={ onColumnPinningChange }
       onColumnVisibilityChange={ onColumnVisibilityChange }

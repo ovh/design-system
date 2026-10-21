@@ -1,7 +1,9 @@
 import { type Header, type SortDirection, flexRender } from '@tanstack/react-table';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type JSX } from 'react';
+import { type ComponentPropsWithRef, type JSX, useId } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
 import { ICON_NAME, Icon } from '../../../../icon/src';
+import { DATA_TABLE_I18N, TRANSLATION } from '../../constants/data-table-i18n';
 import { useDataTable } from '../../contexts/useDataTable';
 import { getColumnStyle } from '../../controller/dataTable';
 import style from './dataTableHeaderCell.module.scss';
@@ -26,9 +28,12 @@ const DataTableHeaderCell = <T,>({
   header,
   ...props
 }: DataTableHeaderCellProp<T>): JSX.Element => {
-  const { stickyHeader, table } = useDataTable();
+  const { i18n, locale, stickyHeader, table } = useDataTable();
+  const { translate } = useI18n(TRANSLATION, locale, i18n);
+  const descriptionId = useId();
   const canSort = (table.options.enableSorting && header.column.getCanSort()) ?? false;
   const isSorted = header.column.getIsSorted();
+  const content = flexRender(header.column.columnDef.header, header.getContext());
 
   function handleClick(): void {
     if (canSort) {
@@ -50,19 +55,41 @@ const DataTableHeaderCell = <T,>({
         ...props.style,
         ...getColumnStyle<T>(header.column, stickyHeader),
       }}>
-      <div className={ style['data-table-header-cell__content'] }>
-        { flexRender(header.column.columnDef.header, header.getContext()) }
+      {
+        canSort ? (
+          <>
+            {/* Its clicks, keyboard ones included, bubble to the cell handler, which also covers the padding */}
+            <button
+              aria-describedby={ descriptionId }
+              className={ classNames(
+                style['data-table-header-cell__content'],
+                style['data-table-header-cell__sort-button'],
+              )}
+              type="button">
+              { content }
 
-        {
-          canSort &&
-          <Icon
-            className={ classNames(
-              style['data-table-header-cell__sort-icon'],
-              { [style['data-table-header-cell__sort-icon--sorted']]: isSorted },
-            )}
-            name={ getSortIconName(isSorted) } />
-        }
-      </div>
+              <Icon
+                aria-hidden="true"
+                className={ classNames(
+                  style['data-table-header-cell__sort-icon'],
+                  { [style['data-table-header-cell__sort-icon--sorted']]: isSorted },
+                )}
+                name={ getSortIconName(isSorted) } />
+            </button>
+
+            {/* A description, not part of the name: the column header name is read in every cell of the column */}
+            <span
+              hidden
+              id={ descriptionId }>
+              { translate(DATA_TABLE_I18N.sortableColumn) }
+            </span>
+          </>
+        ) : (
+          <div className={ style['data-table-header-cell__content'] }>
+            { content }
+          </div>
+        )
+      }
     </th>
   );
 };

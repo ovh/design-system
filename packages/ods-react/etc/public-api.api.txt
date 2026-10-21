@@ -1514,9 +1514,29 @@ declare const DataTable: <T>(props: DataTableProp<T> & {
 }) => JSX.Element;
 export { DataTable, type DataTableProp, };
 
+// ==================== components/data-table/src/constants/data-table-i18n.d.ts ====================
+declare enum DATA_TABLE_I18N {
+    sortableColumn = "dataTable.column.sortable"
+}
+declare const TRANSLATION: {
+    "dataTable.column.sortable": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+};
+export { DATA_TABLE_I18N, TRANSLATION, };
+
 // ==================== components/data-table/src/contexts/useDataTable.d.ts ====================
 import { Table } from '@tanstack/react-table';
 import { ComponentPropsWithRef, JSX, ReactNode } from 'react';
+import { Locale } from '../../../../utils/locales';
+import { DATA_TABLE_I18N } from '../constants/data-table-i18n';
 type OnChangeFn<T> = (updaterOrValue: T | ((old: T) => T)) => void;
 type DataTableCell<T> = {
     column: DataTableColumn<T>;
@@ -1610,9 +1630,17 @@ type DataTableRootProp<T> = ComponentPropsWithRef<'table'> & {
      */
     getRowId?: (originalRow: T, index: number, parent?: DataTableRow<T>) => string;
     /**
+     * Internal translations override.
+     */
+    i18n?: Partial<Record<DATA_TABLE_I18N, string>>;
+    /**
      * Whether the table data are in a loading state. This will replace each cell with a Skeleton.
      */
     loading?: boolean;
+    /**
+     * The locale used for the translation of the internal elements.
+     */
+    locale?: Locale;
     /**
      * Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side.
      */
@@ -1646,10 +1674,10 @@ type DataTableRootProp<T> = ComponentPropsWithRef<'table'> & {
 interface DataTableProviderProp<T> extends DataTableRootProp<T> {
     children: ReactNode;
 }
-interface DataTableContextType<T> extends Pick<DataTableProviderProp<T>, 'loading' | 'stickyHeader'> {
+interface DataTableContextType<T> extends Pick<DataTableProviderProp<T>, 'i18n' | 'loading' | 'locale' | 'stickyHeader'> {
     table: Table<T>;
 }
-declare function DataTableProvider<T>({ children, columns, data, enableMultiRowSelection, enableRowSelection, enableSorting, getRowId, loading, manualSorting, onColumnPinningChange, onColumnVisibilityChange, onRowSelectionChange, onSortingChange, state, stickyHeader, }: DataTableProviderProp<T>): JSX.Element;
+declare function DataTableProvider<T>({ children, columns, data, enableMultiRowSelection, enableRowSelection, enableSorting, getRowId, i18n, loading, locale, manualSorting, onColumnPinningChange, onColumnVisibilityChange, onRowSelectionChange, onSortingChange, state, stickyHeader, }: DataTableProviderProp<T>): JSX.Element;
 declare function useDataTable<T>(): DataTableContextType<T>;
 export { type DataTableCell, type DataTableCellContext, type DataTableColumn, type DataTableColumnDef, type DataTableColumnPinningState, type DataTableColumnVisibilityState, type DataTableHeader, type DataTableHeaderContext, DataTableProvider, type DataTableRootProp, type DataTableRow, type DataTableRowSelectionState, type DataTableSortingState, type DataTableState, type DataTableTable, useDataTable, };
 
@@ -1674,6 +1702,7 @@ declare const DataTable: (<T>(props: DataTableProp<T> & {
 export { DataTable };
 export { DataTableBody, DataTableEmpty, DataTableHead };
 export type { DataTableProp, DataTableBodyProp, DataTableEmptyProp, DataTableHeadProp };
+export { DATA_TABLE_I18N } from './constants/data-table-i18n';
 export { type DataTableCell, type DataTableCellContext, type DataTableColumn, type DataTableColumnDef, type DataTableColumnPinningState, type DataTableColumnVisibilityState, type DataTableHeader, type DataTableHeaderContext, type DataTableRow, type DataTableRowSelectionState, type DataTableSortingState, type DataTableState, type DataTableTable, } from './contexts/useDataTable';
 
 // ==================== components/datepicker/src/components/datepicker-content/DatepickerContent.d.ts ====================

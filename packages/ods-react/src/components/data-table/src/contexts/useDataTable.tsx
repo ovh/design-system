@@ -1,9 +1,11 @@
 import { type Table, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useId, useMemo } from 'react';
 import { useContext } from '../../../../utils/context';
+import { type Locale } from '../../../../utils/locales';
 import { DataTableCellCheckbox } from '../components/data-table-cell-checkbox/DataTableCellCheckbox';
 import { DataTableCellRadio } from '../components/data-table-cell-radio/DataTableCellRadio';
 import { DataTableHeaderCellCheckbox } from '../components/data-table-header-cell-checkbox/DataTableHeaderCellCheckbox';
+import { type DATA_TABLE_I18N } from '../constants/data-table-i18n';
 
 type OnChangeFn<T> = (updaterOrValue: T | ((old: T) => T)) => void;
 
@@ -112,9 +114,17 @@ type DataTableRootProp<T> = ComponentPropsWithRef<'table'> & {
    */
   getRowId?: (originalRow: T, index: number, parent?: DataTableRow<T>) => string
   /**
+   * Internal translations override.
+   */
+  i18n?: Partial<Record<DATA_TABLE_I18N, string>>;
+  /**
    * Whether the table data are in a loading state. This will replace each cell with a Skeleton.
    */
   loading?: boolean;
+  /**
+   * The locale used for the translation of the internal elements.
+   */
+  locale?: Locale;
   /**
    * Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side.
    */
@@ -150,7 +160,7 @@ interface DataTableProviderProp<T> extends DataTableRootProp<T> {
   children: ReactNode;
 }
 
-interface DataTableContextType<T> extends Pick<DataTableProviderProp<T>, 'loading' | 'stickyHeader'> {
+interface DataTableContextType<T> extends Pick<DataTableProviderProp<T>, 'i18n' | 'loading' | 'locale' | 'stickyHeader'> {
   table: Table<T>;
 }
 
@@ -166,7 +176,9 @@ function DataTableProvider<T>({
   enableRowSelection,
   enableSorting,
   getRowId,
+  i18n,
   loading,
+  locale,
   manualSorting,
   onColumnPinningChange,
   onColumnVisibilityChange,
@@ -213,7 +225,9 @@ function DataTableProvider<T>({
 
   return (
     <DataTableContext.Provider value={{
+      i18n,
       loading,
+      locale,
       stickyHeader,
       table,
     }}>

@@ -60,8 +60,8 @@
 
     &__tag {
       &--focused {
-        border-color: var(--ods-tag-border-color-information-hover);
-        background-color: var(--ods-tag-background-color-information-hover);
+        border-color: var(--ods-tag-border-color-primary-hover);
+        background-color: var(--ods-tag-background-color-primary-hover);
       }
     }
 

@@ -20,7 +20,7 @@ const BRAND_CSS: Record<Exclude<Brand, 'default'>, string> = {
 
 const BRAND_ITEMS = [
   { customRendererData: { suffix: ' (default)' }, label: 'Aluminium', value: 'default' },
-  { label: 'blue-jeans', value: 'blue-jeans' },
+  { label: 'Blue Jeans', value: 'blue-jeans' },
 ];
 
 function readStoredBrand(): Brand {

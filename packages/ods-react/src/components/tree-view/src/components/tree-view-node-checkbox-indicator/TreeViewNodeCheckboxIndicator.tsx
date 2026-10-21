@@ -1,6 +1,8 @@
-import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
+import { useTreeViewNodeContext } from '@ark-ui/react/tree-view';
 import { type FC, type JSX } from 'react';
-import { Checkbox, CheckboxControl } from '../../../../checkbox/src';
+import { ICON_NAME, Icon } from '../../../../icon/src';
+import { getNodeCheckedDataState } from '../../controller/tree-view';
+import style from './treeViewNodeCheckboxIndicator.module.scss';
 
 interface TreeViewNodeCheckboxIndicatorProp {
   isDisabled: boolean;
@@ -9,22 +11,28 @@ interface TreeViewNodeCheckboxIndicatorProp {
 const TreeViewNodeCheckboxIndicator: FC<TreeViewNodeCheckboxIndicatorProp> = ({
   isDisabled,
 }): JSX.Element => {
+  const { checked } = useTreeViewNodeContext();
+
   return (
-    <VendorTreeView.NodeCheckboxIndicator
-      fallback={ (
-        <Checkbox checked={ false } disabled={ isDisabled }>
-          <CheckboxControl />
-        </Checkbox>
-      )}
-      indeterminate={ (
-        <Checkbox checked="indeterminate" disabled={ isDisabled }>
-          <CheckboxControl />
-        </Checkbox>
-      )}>
-      <Checkbox checked disabled={ isDisabled }>
-        <CheckboxControl />
-      </Checkbox>
-    </VendorTreeView.NodeCheckboxIndicator>
+    <span
+      aria-hidden="true"
+      className={ style['tree-view-node-checkbox-indicator'] }
+      data-disabled={ isDisabled ? true : undefined }
+      data-state={ getNodeCheckedDataState(checked) }>
+      {
+        checked === true &&
+        <Icon
+          className={ style['tree-view-node-checkbox-indicator__icon'] }
+          name={ ICON_NAME.check } />
+      }
+
+      {
+        checked === 'indeterminate' &&
+        <Icon
+          className={ style['tree-view-node-checkbox-indicator__icon'] }
+          name={ ICON_NAME.minus } />
+      }
+    </span>
   );
 };
 

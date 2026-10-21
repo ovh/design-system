@@ -35,7 +35,8 @@
 
 .canvas__demo {
   background-color: var(--ods-semantic-color-surface-raised);
-  padding: 24px;
+  /* + the frame's own 16px inset: 24px around the demo. */
+  padding: 8px;
 }
 
 .canvas__code {
@@ -63,6 +64,6 @@
   }
 
   .canvas__demo {
-    padding: 16px;
+    padding: 0;
   }
 }

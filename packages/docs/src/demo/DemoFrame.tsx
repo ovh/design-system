@@ -13,6 +13,10 @@ interface DemoFrameProp {
   bare?: boolean;
   children: ReactNode;
   dark?: boolean;
+  /* Pads the body by 16px. Popups keep 8px off the frame viewport edges
+     (floating-ui shift padding): a demo flush with the frame left edge had
+     its dropdowns pushed 8px off their trigger. */
+  inset?: boolean;
   /* Leaves the body on the page surface instead of the raised one — for
      callers that paint their own raised surface inside the frame. */
   pageSurface?: boolean;
@@ -235,7 +239,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -250,7 +254,7 @@ const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoF
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; background: var(--ods-semantic-color-surface-${ pageSurface ? 'page' : 'raised' }); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0;${ inset ? ' padding: 16px;' : '' } background: var(--ods-semantic-color-surface-${ pageSurface ? 'page' : 'raised' }); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

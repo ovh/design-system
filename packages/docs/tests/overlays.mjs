@@ -5,9 +5,10 @@
 import { makeChecker } from './helpers.mjs';
 
 const CASES = [
-  { component: 'select', trigger: '[data-part="trigger"]' },
-  { component: 'combobox', trigger: 'input:not([disabled])' },
-  { component: 'menu', trigger: '[data-part="trigger"]' },
+  { alignedPopup: true, component: 'select', trigger: '[data-part="trigger"]' },
+  // The combobox popup aligns on its control, not on the inner input.
+  { alignedPopup: false, component: 'combobox', trigger: 'input:not([disabled])' },
+  { alignedPopup: true, component: 'menu', trigger: '[data-part="trigger"]' },
 ];
 
 async function suite(browser, { base, version }) {
@@ -15,9 +16,9 @@ async function suite(browser, { base, version }) {
   const check = makeChecker(results);
   const page = await browser.newPage({ viewport: { height: 800, width: 1280 } });
 
-  for (const { component, trigger } of CASES) {
+  for (const { alignedPopup, component, trigger } of CASES) {
     await page.goto(`${base}/v${version}/components/${component}/examples`, { waitUntil: 'domcontentloaded' });
-    await check(`${component}: frame and page stay put while the dropdown is used`, async () => {
+    await check(`${component}: the dropdown opens on its trigger, frame and page stay put`, async () => {
       await page.waitForFunction((sel) => [...document.querySelectorAll('iframe')].some((f) => f.contentDocument?.querySelector(sel)), trigger, { timeout: 30000 });
       await page.waitForTimeout(1000);
       const frames = await page.$$('iframe');
@@ -44,6 +45,15 @@ async function suite(browser, { base, version }) {
       const box = await (await (await frame.contentFrame()).$(trigger)).boundingBox();
       await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
       await page.waitForTimeout(500);
+      // A demo flush with the frame edge had its popup shifted 8px off the
+      // trigger (floating-ui keeps popups 8px inside the frame viewport).
+      const offset = await (await frame.contentFrame()).evaluate((sel) => {
+        const popup = [...document.querySelectorAll('[data-part="positioner"]')].find((el) => el.querySelector('[data-state="open"]'));
+        return popup ? Math.round(popup.getBoundingClientRect().left - document.querySelector(sel).getBoundingClientRect().left) : null;
+      }, trigger);
+      if (alignedPopup && offset !== 0) {
+        throw new Error(`popup ${offset}px off its trigger`);
+      }
       const steps = [['open', await snapshot()]];
       for (let i = 0; i < 5; i++) {
         await page.keyboard.press('ArrowDown');

@@ -25,6 +25,7 @@ const PromptInput = Object.assign(PromptInputRoot, {
 export { PromptInput };
 export { PromptInputControls, PromptInputFileUploadButton, PromptInputFiles, PromptInputSendButton, PromptInputTextControl };
 export type { PromptInputProp, PromptInputControlsProp, PromptInputFileUploadButtonProp, PromptInputFilesProp, PromptInputSendButtonProp, PromptInputTextControlProp };
+export { PROMPT_INPUT_I18N } from './constants/prompt-input-i18n';
 export {
   type PromptInputRootProp,
   type PromptInputInputSubmitDetails,

@@ -101,7 +101,13 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 
 <Heading label="Button labelling" level={ 3 } />
 
-- The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
+- The file upload button and the send button only display an icon. They are announced as "Attach a file" and "Send" by default, translated with the `locale` prop (or the browser language).
+
+- To adapt these names to your context, override them for the whole component with the `i18n` prop of **PromptInput**:
+
+<Canvas story="AccessibilityI18n" />
+
+- Or set an `aria-label` on a given button, which takes precedence over the translations:
 
 <Canvas story="AccessibilityButtonsLabels" />
 

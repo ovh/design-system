@@ -1,32 +1,32 @@
 @use '../../../../../style/input';
 
-$ods-code-primary-color: var(--ods-semantic-color-content-on-code);
-$ods-code-secondary-color: var(--ods-semantic-color-surface-code);
+$ods-code-text-color: var(--ods-semantic-color-content-on-code);
+$ods-code-background-color: var(--ods-semantic-color-surface-code);
 
 @layer ods-organisms {
   .code {
     --ods-code-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
     --ods-code-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
     --ods-code-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) * 1.5);
-    --ods-code-primary-color: #{$ods-code-primary-color};
-    --ods-code-secondary-color: #{$ods-code-secondary-color};
-    --ods-code-trigger-background-color: #{$ods-code-primary-color};
-    --ods-code-trigger-background-color-active: var(--ods-semantic-color-interaction-neutral-hover);
-    --ods-code-trigger-background-color-hover: var(--ods-semantic-color-surface-neutral);
-    --ods-code-trigger-outline-color: #{$ods-code-primary-color};
+    --ods-code-background-color: #{$ods-code-background-color};
+    --ods-code-text-color: #{$ods-code-text-color};
+    --ods-code-trigger-background-color-active: var(--ods-semantic-color-interaction-neutral-active);
+    --ods-code-trigger-background-color-hover: var(--ods-semantic-color-interaction-neutral-hover);
+    --ods-code-trigger-color: #{$ods-code-text-color};
+    --ods-code-trigger-outline-color: #{$ods-code-text-color};
 
     display: inline-flex;
     flex-flow: row;
     column-gap: var(--ods-semantic-size-space-gap-inline);
     justify-content: space-between;
     border-radius: var(--ods-code-border-radius);
-    background-color: var(--ods-code-secondary-color);
+    background-color: var(--ods-code-background-color);
     padding: var(--ods-code-padding-vertical) var(--ods-code-padding-horizontal);
     height: auto;
     min-height: input.$ods-input-field-height;
 
     &--unthemed {
-      color: var(--ods-code-primary-color);
+      color: var(--ods-code-text-color);
     }
 
     &__preformat {
@@ -49,7 +49,7 @@ $ods-code-secondary-color: var(--ods-semantic-color-surface-code);
 
       &__trigger {
         &__button {
-          color: var(--ods-code-trigger-background-color);
+          color: var(--ods-code-trigger-color);
 
           &:focus-visible,
           &:hover {

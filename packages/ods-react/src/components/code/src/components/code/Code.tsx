@@ -115,10 +115,10 @@ const Code: FC<CodeProp> = forwardRef(({
         ...props.style,
         ...(shouldHighlight
           ? {
-            ['--ods-code-secondary-color']: theme.colors && theme.colors['editor.background'],
-            ['--ods-code-trigger-background-color']: theme.colors && theme.colors['button.secondaryForeground'],
+            ['--ods-code-background-color']: theme.colors && theme.colors['editor.background'],
             ['--ods-code-trigger-background-color-active']: theme.colors && theme.colors['button.secondaryHoverBackground'],
             ['--ods-code-trigger-background-color-hover']: theme.colors && theme.colors['button.secondaryHoverBackground'],
+            ['--ods-code-trigger-color']: theme.colors && theme.colors['button.secondaryForeground'],
             ['--ods-code-trigger-outline-color']: theme.colors && theme.colors['button.secondaryForeground'],
           } as CSSProperties
           : {}),

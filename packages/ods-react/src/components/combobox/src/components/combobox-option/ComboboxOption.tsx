@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, useEffect, useRef } from 'react';
+import { scrollIntoParentView } from '../../../../../utils/element';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
@@ -29,7 +30,7 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
 
   useEffect(() => {
     if (optionRef.current && isHighlighted) {
-      optionRef.current.scrollIntoView({ block: 'nearest' });
+      scrollIntoParentView(optionRef.current);
     }
   }, [isHighlighted, optionRef]);
 

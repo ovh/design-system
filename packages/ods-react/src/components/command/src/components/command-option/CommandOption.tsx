@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, isValidElement, useEffect, useId, useImperativeHandle, useRef } from 'react';
+import { scrollIntoParentView } from '../../../../../utils/element';
 import { useCommand } from '../../contexts/useCommand';
 import style from './commandOption.module.scss';
 
@@ -71,7 +72,9 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
 
   useEffect(() => {
     if (isHighlighted) {
-      nodeRef.current?.scrollIntoView({ block: 'nearest' });
+      if (nodeRef.current) {
+        scrollIntoParentView(nodeRef.current);
+      }
     }
   }, [isHighlighted]);
 

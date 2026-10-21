@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, useEffect, useRef } from 'react';
+import { scrollIntoParentView } from '../../../../../utils/element';
 import { type QueryFilterItem, useQueryFilter } from '../../contexts/useQueryFilter';
 import { QueryFilterHighlight } from '../query-filter-highlight/QueryFilterHighlight';
 import style from './queryFilterOption.module.scss';
@@ -29,7 +30,7 @@ const QueryFilterOption: FC<QueryFilterOptionProp> = ({
 
   useEffect(() => {
     if (optionRef.current && isHighlighted) {
-      optionRef.current.scrollIntoView({ block: 'nearest' });
+      scrollIntoParentView(optionRef.current);
     }
   }, [isHighlighted, optionRef]);
 

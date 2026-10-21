@@ -77,7 +77,7 @@
         }
 
         &[data-focus] {
-          background-color: var(--ods-button-background-color-primary-ghost-hover);
+          background-color: var(--ods-semantic-color-interaction-highlight);
           color: var(--ods-button-text-color-primary-ghost-hover);
 
           &:focus-visible {

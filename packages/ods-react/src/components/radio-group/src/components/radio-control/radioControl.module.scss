@@ -24,10 +24,15 @@
       }
 
       &:not([data-disabled], [data-invalid]) {
-        &[data-focus],
-        &:hover {
+        &:hover,
+        &[data-focus] {
           border-color: var(--ods-semantic-color-interaction-selected-solid-highlight);
           background: var(--ods-semantic-color-interaction-selected-solid-highlight);
+        }
+
+        &:active {
+          border-color: var(--ods-semantic-color-interaction-selected-solid-active);
+          background: var(--ods-semantic-color-interaction-selected-solid-active);
         }
       }
 

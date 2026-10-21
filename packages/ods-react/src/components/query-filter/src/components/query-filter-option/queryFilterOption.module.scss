@@ -1,3 +1,4 @@
+@use '../../../../../style/focus';
 @use '../../../../../style/state';
 
 @layer ods-organisms {
@@ -19,6 +20,10 @@
 
     &--highlighted {
       background-color: var(--ods-semantic-color-interaction-highlight);
+    }
+
+    [role="listbox"]:not(:hover) &--highlighted {
+      @include focus.ods-highlight-indicator();
     }
 
     &__new-item {

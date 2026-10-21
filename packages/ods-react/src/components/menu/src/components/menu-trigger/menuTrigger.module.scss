@@ -31,6 +31,10 @@
       background-color: var(--ods-semantic-color-interaction-highlight);
     }
 
+    [role="menu"]:not(:hover) &[data-highlighted] {
+      @include focus.ods-highlight-indicator();
+    }
+
     &__label {
       display: inline-flex;
       align-items: center;

@@ -1,9 +1,7 @@
-# NodeJS
+# Troubleshooting
 
-If you have error like this:
-```bash
-../../../node_modules/@jest/types/build/Config.d.ts:300:38 - error TS2694: Namespace 'NodeJS' has no exported member 'Global'.
-300     extraGlobals: Array<keyof NodeJS.Global>;
-```
-It is a well known issue with jest in combination with a node types version >= 16:
-[https://github.com/facebook/jest/issues/11640#issuecomment-874184215](https://github.com/facebook/jest/issues/11640#issuecomment-874184215)
+Common integration issues (TypeScript resolution, overlays, icons, refs, server-side rendering) and their fixes are
+listed in the [Troubleshooting guide](https://ovh.github.io/design-system/latest/guides/troubleshooting) of the documentation.
+
+If your issue is not listed, check the [F.A.Q.](https://ovh.github.io/design-system/latest/guides/faq) or
+[open an issue on GitHub](https://github.com/ovh/design-system/issues).

@@ -50,13 +50,25 @@ const SandboxRoute = () => {
 };
 
 /* Sections that left their guide keep their old #anchor working: the previous
-   majors of What's new got a page each (v12 and earlier share the last one). */
+   majors of What's new got a page each (v12 and earlier share the last one), the
+   troubleshooting entries left the F.A.Q. */
+const TROUBLESHOOTING_ANCHORS = new Set([
+  'ts2307-cannot-find-module-ovhcloud-ods-react-or-its-corresponding-type-declarations',
+  'my-popover-tooltip-is-not-displayed-correctly',
+  'overlay-elements-are-not-displayed-correctly-in-a-drawer-modal',
+  'icons-are-not-displayed',
+  'warning-function-components-cannot-be-given-refs',
+]);
+
 function movedGuide(key: string | undefined, hash: string): string | undefined {
   const anchor = hash.slice(1);
   if (key === 'whats-new') {
     const major = anchor === 'february-2022' ? 12 : Number(/^v(\d+)-/.exec(anchor)?.[1]);
     const target = major && flattenPages().find((p) => p.id === `guides/whats-new-v${Math.max(major, 12)}`);
     return target ? target.path : undefined;
+  }
+  if (key === 'faq' && TROUBLESHOOTING_ANCHORS.has(anchor)) {
+    return '/guides/troubleshooting';
   }
   return undefined;
 }

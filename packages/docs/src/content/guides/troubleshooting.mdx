@@ -1,0 +1,100 @@
+*Common issues met when integrating ODS, and how to fix them. If yours is not listed, check the <DocLink to="/guides/faq">F.A.Q.</DocLink> or <ExternalLink href="https://github.com/ovh/design-system/issues">open an issue on GitHub</ExternalLink>.*
+
+<Heading label="TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations." level={ 2 } />
+
+Check that you're using the `bundler` <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">module resolution</ExternalLink> in your `tsconfig.json`.
+
+```typescript
+"moduleResolution": "bundler"
+```
+
+<Heading label="My popover/tooltip is not displayed correctly" level={ 2 } />
+
+Check that you're not using a `Fragment` as your trigger.
+
+The following will **not** work properly:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <>
+      <Component1 />
+      <Component2 />
+    </>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...
+  </TooltipContent>
+</Tooltip>
+```
+
+Replace the `Fragment` with an actual node:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <MyTrigger>
+      ...
+    </MyTrigger>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...
+  </TooltipContent>
+</Tooltip>
+```
+
+<Heading label="Overlay elements are not displayed correctly in a drawer/modal" level={ 2 } />
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components.
+This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correctly render inside a modal/drawer, add the `createPortal={ false }` attribute to the
+`Content` component of the overlay element.
+
+See <DocLink to="/components/drawer">Drawer example</DocLink>
+and <DocLink to="/components/modal">Modal example</DocLink>.
+
+<Heading label="Icons are not displayed" level={ 2 } />
+
+Ensure you did import the fonts in your application, check the <DocLink to="/guides/get-started">get started</DocLink>
+page to read more about how to achieve this.
+
+<Heading label="Warning: Function components cannot be given refs" level={ 2 } />
+
+When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+
+```text
+Warning: Function components cannot be given refs.
+Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+```
+
+This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+```tsx
+import { Link } from '@ovhcloud/ods-react';
+import { forwardRef, useRef } from 'react';
+
+const DummyLink = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+
+const MyApp = () => {
+  const linkRef = useRef(null);
+
+  return (
+    <div>
+      ...
+      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
+    </div>
+  );
+};
+```
+
+<Heading label="Error during server-side rendering (Next.js App Router)" level={ 2 } />
+
+ODS components rely on React state, effects and browser APIs, so they cannot render as React Server Components.
+Use them from client components, marked with the `'use client'` directive, and keep the theme imports in your root layout.
+
+See <DocLink to="/guides/get-started">Get Started</DocLink> for the full setup.

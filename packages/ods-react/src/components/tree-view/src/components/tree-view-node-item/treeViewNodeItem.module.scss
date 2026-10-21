@@ -22,6 +22,11 @@
       &:not([data-disabled]):hover {
         background-color: var(--ods-semantic-color-interaction-selected-highlight);
       }
+
+      // Keep the selection fill under keyboard focus.
+      &[data-focus]:focus-visible {
+        background-color: var(--ods-semantic-color-interaction-selected-highlight);
+      }
     }
 
     &[data-disabled="true"] {
@@ -33,6 +38,11 @@
       color: var(--ods-semantic-color-content-on-selected);
 
       &:not([data-disabled]):hover {
+        background-color: var(--ods-semantic-color-interaction-selected-highlight);
+      }
+
+      // Keep the selection fill under keyboard focus.
+      &[data-focus]:focus-visible {
         background-color: var(--ods-semantic-color-interaction-selected-highlight);
       }
     }

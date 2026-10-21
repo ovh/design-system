@@ -242,7 +242,7 @@ export const AccessibilityWithMenu: Story = {
       <PopoverTrigger
         aria-haspopup="menu"
         asChild>
-        <Button>
+        <Button aria-label="Profile">
           <Icon name={ ICON_NAME.ellipsisVertical } />
         </Button>
       </PopoverTrigger>

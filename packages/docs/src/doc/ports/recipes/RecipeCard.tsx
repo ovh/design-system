@@ -34,6 +34,9 @@ const extRank = (ext: string): number => {
   return index === -1 ? TAB_ORDER_EXTS.length : index;
 };
 
+/* Recipes designed to sit on a raised surface (a card, a panel) rather than on the page. */
+const RAISED_RECIPES = new Set(['Chat', 'DataGrid', 'DataGridWithQueryFilter', 'EmailField', 'OrderButton', 'RangeInput']);
+
 /* The recipe rendered live, on the forced light theme. */
 const RecipePreview = ({ recipe }: { recipe: Recipe }) => {
   const Preview = useMemo(
@@ -43,7 +46,7 @@ const RecipePreview = ({ recipe }: { recipe: Recipe }) => {
 
   return (
     <div className={ styles['recipe-card__inner__canvas'] }>
-      <ResetTheme>
+      <ResetTheme style={ RAISED_RECIPES.has(recipe.reactTag) ? { backgroundColor: 'var(--ods-semantic-color-surface-raised)' } : undefined }>
         <div className={ styles['recipe-card__inner__canvas__preview'] }>
           { Preview && <Preview /> }
         </div>

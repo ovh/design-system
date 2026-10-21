@@ -12,7 +12,7 @@ const FormFieldLabel: FC<FormFieldLabelProp> = forwardRef(({
   id,
   ...props
 }, ref): JSX.Element => {
-  const { id: forId, setLabelId } = useFormField();
+  const { fieldId, id: defaultFieldId, setLabelId } = useFormField();
   const defaultId = useId();
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
@@ -24,7 +24,7 @@ const FormFieldLabel: FC<FormFieldLabelProp> = forwardRef(({
     <Text
       className={ classNames(style['form-field-label'], className) }
       data-ods="form-field-label"
-      htmlFor={ forId }
+      htmlFor={ fieldId === null ? undefined : (fieldId ?? defaultFieldId) }
       id={ computedId }
       preset={ TEXT_PRESET.label }
       ref={ ref }

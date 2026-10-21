@@ -2662,7 +2662,7 @@ export { FormField, type FormFieldProp, };
 import { JSX, ReactNode } from 'react';
 type FormFieldRootProp = {
     /**
-     * The field id.
+     * The id given to the wrapped field, generated when omitted. An id set on the field itself takes precedence.
      */
     id?: string;
     /**
@@ -2676,15 +2676,25 @@ interface FormFieldProviderProp extends FormFieldRootProp {
 type FormFieldContextType = Omit<FormFieldProviderProp, 'children'> & {
     ariaDescribedBy?: string;
     errorId?: string;
+    /**
+     * The id of the labelable element the field actually renders, `null` when it has none.
+     */
+    fieldId?: string | null;
     helperId?: string;
     labelId?: string;
     setErrorId?: (value?: string) => void;
+    setFieldId?: (value?: string | null) => void;
     setHelperId?: (value?: string) => void;
     setLabelId?: (value?: string) => void;
 };
 declare function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProviderProp): JSX.Element;
 declare function useFormField(): FormFieldContextType;
-export { type FormFieldContextType, FormFieldProvider, type FormFieldRootProp, useFormField, };
+/**
+ * Registers the id of the element the FormFieldLabel must target. Pass `null` when the field
+ * renders no labelable element, it then has to read `labelId` itself.
+ */
+declare function useFormFieldId(fieldId: string | null): void;
+export { type FormFieldContextType, FormFieldProvider, type FormFieldRootProp, useFormField, useFormFieldId, };
 
 // ==================== components/form-field/src/index.d.ts ====================
 import { FormFieldProp } from './components/form-field/FormField';
@@ -2701,7 +2711,7 @@ declare const FormField: import('react').FC<FormFieldProp> & {
 export { FormField };
 export { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel };
 export type { FormFieldProp, FormFieldErrorProp, FormFieldHelperProp, FormFieldLabelProp, FormFieldLabelSubLabelProp };
-export { useFormField } from './contexts/useFormField';
+export { useFormField, useFormFieldId } from './contexts/useFormField';
 
 // ==================== components/icon/src/components/icon/Icon.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

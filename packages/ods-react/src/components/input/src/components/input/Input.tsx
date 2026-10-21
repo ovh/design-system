@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { useFormField } from '../../../../form-field/src';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
 import { INPUT_MASK_STATE } from '../../constants/input-mask-state';
 import { INPUT_TYPE } from '../../constants/input-type';
 import { InputProvider, type InputRootProp } from '../../contexts/useInput';
@@ -34,6 +34,8 @@ const Input: FC<InputProp> = forwardRef(({
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
   const isInvalid = invalid || fieldContext?.invalid;
   const inputId = id || fieldContext?.id || defaultId;
+
+  useFormFieldId(inputId);
 
   useImperativeHandle(ref, () => inputRef.current!, [inputRef]);
 

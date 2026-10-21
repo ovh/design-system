@@ -183,7 +183,8 @@
   /* Interaction - lists and selection -> Select, combobox, Treeview */
   --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-50);
   --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-200);
-  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-600);
+  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-800);
+  --ods-semantic-color-interaction-selected-solid-active: var(--ods-palette-accent-800);
 
   /* Interaction - form controls */
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-accent-400);

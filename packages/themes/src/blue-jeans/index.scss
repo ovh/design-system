@@ -134,6 +134,8 @@
   --ods-semantic-color-interaction-critical-active: #660011;
 
   /* Interaction - lists and selection */
+  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-600);
+  --ods-semantic-color-interaction-selected-solid-active: var(--ods-palette-accent-600);
   --ods-semantic-color-interaction-highlight: var(--ods-palette-white);
 
   /* Interaction - form controls */

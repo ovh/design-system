@@ -3,7 +3,7 @@ import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
 import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Navigate, RouterProvider, createBrowserRouter, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter, useLocation, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import { BASENAME } from './appBase';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import guidesInventory from './content/guides/guides.json';
@@ -49,10 +49,27 @@ const SandboxRoute = () => {
   );
 };
 
+/* Sections that left their guide keep their old #anchor working: the previous
+   majors of What's new got a page each (v12 and earlier share the last one). */
+function movedGuide(key: string | undefined, hash: string): string | undefined {
+  const anchor = hash.slice(1);
+  if (key === 'whats-new') {
+    const major = anchor === 'february-2022' ? 12 : Number(/^v(\d+)-/.exec(anchor)?.[1]);
+    const target = major && flattenPages().find((p) => p.id === `guides/whats-new-v${Math.max(major, 12)}`);
+    return target ? target.path : undefined;
+  }
+  return undefined;
+}
+
 const GuideRoute = () => {
   const { key } = useParams();
+  const { hash } = useLocation();
   const page = flattenPages().find((p) => p.id === `guides/${key}`);
+  const moved = movedGuide(key, hash);
 
+  if (moved) {
+    return <Navigate replace to={ `${moved}${hash}` } />;
+  }
   if (!page) {
     return <Navigate replace to="/" />;
   }

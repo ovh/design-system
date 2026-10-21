@@ -12,6 +12,7 @@ const DataTable = Object.assign(DataTableRoot, {
 export { DataTable };
 export { DataTableBody, DataTableEmpty, DataTableHead };
 export type { DataTableProp, DataTableBodyProp, DataTableEmptyProp, DataTableHeadProp };
+export { DATA_TABLE_I18N } from './constants/data-table-i18n';
 export {
   type DataTableCell,
   type DataTableCellContext,

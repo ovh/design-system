@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead, type DataTableProp, type DataTableSortingState } from '../../../../ods-react/src/components/data-table/src';
+import { DATA_TABLE_I18N, DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead, type DataTableProp, type DataTableSortingState } from '../../../../ods-react/src/components/data-table/src';
 import { PAGINATION_PER_PAGE, Pagination } from '../../../../ods-react/src/components/pagination/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { excludeFromDemoControls } from '../../support/controls';
@@ -61,6 +61,50 @@ const sampleColumns: DataTableColumnDef<Person>[] = [
   { id: 'email', header: 'Email', accessorKey: 'email' },
   { id: 'role', header: 'Role', accessorKey: 'role' },
 ];
+
+export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { DATA_TABLE_I18N, DataTable, DataTableBody, type DataTableColumnDef, DataTableHead } from '@ovhcloud/ods-react';
+import { useMemo } from 'react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  },
+};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

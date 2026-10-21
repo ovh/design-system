@@ -1,4 +1,4 @@
-import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead } from '../../src';
+import { DATA_TABLE_I18N, DataTable, DataTableBody, type DataTableColumnDef, DataTableHead } from '../../src';
 
 export default {
   component: DataTable,
@@ -53,10 +53,46 @@ const sampleColumns: DataTableColumnDef<Person>[] = [
   { id: 'role', header: 'Role', accessorKey: 'role' },
 ];
 
+export const notSortable = () => (
+  <DataTable
+    columns={ sampleColumns }
+    data={ sampleData }
+    data-testid="not-sortable"
+    enableSorting={ false }>
+    <DataTableHead />
+
+    <DataTableBody />
+  </DataTable>
+);
+
 export const render = () => (
   <DataTable
     columns={ sampleColumns }
     data={ sampleData }>
+    <DataTableHead />
+
+    <DataTableBody />
+  </DataTable>
+);
+
+export const sortable = () => (
+  <DataTable
+    columns={ sampleColumns }
+    data={ sampleData }
+    data-testid="sortable"
+    locale="en">
+    <DataTableHead />
+
+    <DataTableBody />
+  </DataTable>
+);
+
+export const sortableTranslated = () => (
+  <DataTable
+    columns={ sampleColumns }
+    data={ sampleData }
+    data-testid="sortable-translated"
+    i18n={{ [DATA_TABLE_I18N.sortableColumn]: 'Activate to sort' }}>
     <DataTableHead />
 
     <DataTableBody />

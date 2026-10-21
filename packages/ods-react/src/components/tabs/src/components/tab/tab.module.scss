@@ -21,6 +21,7 @@
     // --ods-tab-background-color-hover: var(--ods-semantic-color-surface-neutral-minimal);
     --ods-tab-background-color-hover: var(--ods-semantic-color-interaction-highlight);
     --ods-tab-background-color-selected-switch: var(--ods-semantic-color-surface-raised);
+    --ods-tab-border-color-selected-switch: var(--ods-semantic-color-border-control);
     --ods-tab-border-color: var(--ods-tab-list-border-color);
     --ods-tab-border-color-hover: var(--ods-semantic-color-border-neutral-strong);
     --ods-tab-border-color-selected: var(--ods-semantic-color-border-brand);
@@ -103,6 +104,12 @@
         box-shadow: var(--ods-semantic-shadow-control);
         background-color: var(--ods-tab-background-color-selected-switch);
         color: var(--ods-semantic-color-content-on-selected);
+
+        // `outline`, not box-shadow: shadow-control may be `none`.
+        &:not(:focus-visible) {
+          outline: var(--ods-semantic-border-thickness) solid var(--ods-tab-border-color-selected-switch);
+          outline-offset: calc(var(--ods-semantic-border-thickness) * -1);
+        }
       }
 
       &#{$tab}--md {

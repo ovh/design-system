@@ -6846,6 +6846,18 @@ interface TreeViewNodeCheckboxIndicatorProp {
 declare const TreeViewNodeCheckboxIndicator: FC<TreeViewNodeCheckboxIndicatorProp>;
 export { TreeViewNodeCheckboxIndicator };
 
+// ==================== components/tree-view/src/components/tree-view-node-checkbox/TreeViewNodeCheckbox.d.ts ====================
+import { ComponentPropsWithRef, FC } from 'react';
+interface TreeViewNodeCheckboxProp extends ComponentPropsWithRef<'span'> {
+    isDisabled: boolean;
+}
+/**
+ * Click target of a node in multiple mode. The treeitem carries the checked state, so this
+ * element has no role of its own and its box is decorative.
+ */
+declare const TreeViewNodeCheckbox: FC<TreeViewNodeCheckboxProp>;
+export { TreeViewNodeCheckbox };
+
 // ==================== components/tree-view/src/components/tree-view-node-item/TreeViewNodeItem.d.ts ====================
 import { ComponentPropsWithRef, FC, ReactNode } from 'react';
 import { TreeViewCustomRendererArg, TreeViewItem } from '../../contexts/useTreeView';
@@ -6972,13 +6984,21 @@ declare function useTreeView(): TreeViewContextType;
 export { type TreeViewContextType, type TreeViewCustomRendererArg, type TreeViewExpandedChangeDetail, type TreeViewItem, TreeViewProvider, type TreeViewRootProp, type TreeViewValueChangeDetail, useTreeView, };
 
 // ==================== components/tree-view/src/controller/tree-view.d.ts ====================
-import { createTreeCollection } from '@ark-ui/react/tree-view';
+import { TreeViewNodeState, createTreeCollection } from '@ark-ui/react/tree-view';
 import { KeyboardEvent, RefObject } from 'react';
 import { TreeViewItem } from '../contexts/useTreeView';
+type NodeCheckedState = TreeViewNodeState['checked'];
 declare function createCollectionFromItems(items: Array<TreeViewItem>): ReturnType<typeof createTreeCollection<TreeViewItem>>;
+declare function getNodeAriaChecked(checked: NodeCheckedState): 'true' | 'false' | 'mixed';
+declare function getNodeCheckedDataState(checked: NodeCheckedState): 'checked' | 'unchecked' | 'indeterminate';
 declare function normalizeSelectedOnChange(selected: string | string[], multiple?: boolean): string | string[];
 declare function toggleNodeCheckboxOnSpace<T extends Element>(e: KeyboardEvent<T>, multiple: boolean | undefined, isDisabled: boolean, checkboxRef: RefObject<HTMLSpanElement | null>): void;
-export { createCollectionFromItems, normalizeSelectedOnChange, toggleNodeCheckboxOnSpace, };
+/**
+ * Props to spread on a vendor part to drop some of its attributes: the vendor keeps its own value
+ * when a prop is `undefined`, `null` removes the attribute.
+ */
+declare function withoutVendorAttributes(...names: string[]): Record<string, undefined>;
+export { createCollectionFromItems, getNodeAriaChecked, getNodeCheckedDataState, normalizeSelectedOnChange, toggleNodeCheckboxOnSpace, withoutVendorAttributes, };
 
 // ==================== components/tree-view/src/index.d.ts ====================
 import { TreeViewProp } from './components/tree-view/TreeView';

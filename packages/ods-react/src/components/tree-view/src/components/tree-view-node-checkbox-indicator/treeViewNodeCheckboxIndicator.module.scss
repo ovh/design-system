@@ -1,0 +1,36 @@
+@use '../../../../../style/checkbox';
+@use '../../../../../style/state';
+
+@layer ods-molecules {
+  .tree-view-node-checkbox-indicator {
+    @include checkbox.ods-checkbox();
+
+    flex-shrink: 0;
+    align-self: center;
+
+    &:not([data-disabled]) {
+      &:hover {
+        border-color: var(--ods-theme-input-border-color-hover);
+      }
+
+      &[data-state="checked"],
+      &[data-state="indeterminate"] {
+        border-color: var(--ods-theme-input-border-color-checked);
+        background: var(--ods-theme-input-background-color-checked);
+
+        &:hover {
+          border-color: var(--ods-theme-input-border-color-checked-hover);
+          background: var(--ods-theme-input-background-color-checked-hover);
+        }
+      }
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+
+    &__icon {
+      display: block;
+    }
+  }
+}

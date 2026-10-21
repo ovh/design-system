@@ -1,6 +1,8 @@
-import { createTreeCollection } from '@ark-ui/react/tree-view';
+import { type TreeViewNodeState, createTreeCollection } from '@ark-ui/react/tree-view';
 import { type KeyboardEvent, type RefObject } from 'react';
 import { type TreeViewItem } from '../contexts/useTreeView';
+
+type NodeCheckedState = TreeViewNodeState['checked'];
 
 function createCollectionFromItems(items: Array<TreeViewItem>): ReturnType<typeof createTreeCollection<TreeViewItem>> {
   return createTreeCollection<TreeViewItem>({
@@ -9,6 +11,20 @@ function createCollectionFromItems(items: Array<TreeViewItem>): ReturnType<typeo
     nodeToValue: (node) => node.id,
     rootNode: { children: items, id: 'ROOT', name: 'ROOT' },
   });
+}
+
+function getNodeAriaChecked(checked: NodeCheckedState): 'true' | 'false' | 'mixed' {
+  if (checked === 'indeterminate') {
+    return 'mixed';
+  }
+  return checked ? 'true' : 'false';
+}
+
+function getNodeCheckedDataState(checked: NodeCheckedState): 'checked' | 'unchecked' | 'indeterminate' {
+  if (checked === 'indeterminate') {
+    return 'indeterminate';
+  }
+  return checked ? 'checked' : 'unchecked';
 }
 
 function normalizeSelectedOnChange(selected: string | string[], multiple?: boolean): string | string[] {
@@ -34,8 +50,19 @@ function toggleNodeCheckboxOnSpace<T extends Element>(
   }
 }
 
+/**
+ * Props to spread on a vendor part to drop some of its attributes: the vendor keeps its own value
+ * when a prop is `undefined`, `null` removes the attribute.
+ */
+function withoutVendorAttributes(...names: string[]): Record<string, undefined> {
+  return Object.fromEntries(names.map((name) => [name, null])) as unknown as Record<string, undefined>;
+}
+
 export {
   createCollectionFromItems,
+  getNodeAriaChecked,
+  getNodeCheckedDataState,
   normalizeSelectedOnChange,
   toggleNodeCheckboxOnSpace,
+  withoutVendorAttributes,
 };

@@ -12,6 +12,13 @@
   gap: 16px;
 }
 
+/* Component page: as many usable cards per row as the article holds. A card needs 349px for the
+   300px Query Filter control and its padding: two cards fit the full 90ch article, one fills a
+   narrower one, and a single recipe always takes the whole row. */
+.recipes__grid--related {
+  grid-template-columns: repeat(auto-fit, minmax(min(349px, 100%), 1fr));
+}
+
 .recipes__grid__empty {
   display: flex;
   grid-column: 1 / -1;

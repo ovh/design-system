@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useMemo } from 'react';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, type QueryFilterProp, QueryFilterTags } from '../../../../ods-react/src/components/query-filter/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
@@ -186,6 +187,106 @@ export const Overview: Story = {
       </div>
     </QueryFilter>
   ),
+};
+
+export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, QueryFilter, QueryFilterContent, QueryFilterControl, QueryFilterTags } from '@ovhcloud/ods-react';
+import { useMemo } from 'react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Filter instances:
+        </FormFieldLabel>
+
+        <QueryFilter
+          filterOption={ filterOption }
+          filterProperty={ filterProperty }>
+          <QueryFilterControl />
+
+          <QueryFilterContent />
+
+          <QueryFilterTags />
+        </QueryFilter>
+      </FormField>
+    );
+  },
+};
+
+export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { QueryFilter, QueryFilterContent, QueryFilterControl, QueryFilterTags } from '@ovhcloud/ods-react';
+import { useMemo } from 'react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+      </QueryFilter>
+    );
+  },
 };
 
 export const ThemeGenerator: Story = {

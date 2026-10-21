@@ -5,7 +5,7 @@ const PALETTES = Object.freeze([
   'brand',
   'gray',
   'green',
-  'indigo',
+  'navy',
   'orange',
   'red',
 ]);

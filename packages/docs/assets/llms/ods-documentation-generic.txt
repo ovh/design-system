@@ -2326,16 +2326,16 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-| `--ods-palette-accent-50` | `var(--ods-palette-indigo-50)` |
-| `--ods-palette-accent-100` | `var(--ods-palette-indigo-100)` |
-| `--ods-palette-accent-200` | `var(--ods-palette-indigo-200)` |
-| `--ods-palette-accent-300` | `var(--ods-palette-indigo-300)` |
-| `--ods-palette-accent-400` | `var(--ods-palette-indigo-400)` |
-| `--ods-palette-accent-500` | `var(--ods-palette-indigo-500)` |
-| `--ods-palette-accent-600` | `var(--ods-palette-indigo-600)` |
-| `--ods-palette-accent-700` | `var(--ods-palette-indigo-700)` |
-| `--ods-palette-accent-800` | `var(--ods-palette-indigo-800)` |
-| `--ods-palette-accent-900` | `var(--ods-palette-indigo-900)` |
+| `--ods-palette-accent-50` | `var(--ods-palette-navy-50)` |
+| `--ods-palette-accent-100` | `var(--ods-palette-navy-100)` |
+| `--ods-palette-accent-200` | `var(--ods-palette-navy-200)` |
+| `--ods-palette-accent-300` | `var(--ods-palette-navy-300)` |
+| `--ods-palette-accent-400` | `var(--ods-palette-navy-400)` |
+| `--ods-palette-accent-500` | `var(--ods-palette-navy-500)` |
+| `--ods-palette-accent-600` | `var(--ods-palette-navy-600)` |
+| `--ods-palette-accent-700` | `var(--ods-palette-navy-700)` |
+| `--ods-palette-accent-800` | `var(--ods-palette-navy-800)` |
+| `--ods-palette-accent-900` | `var(--ods-palette-navy-900)` |
 
 | Token | Value |
 |---|---|
@@ -2370,7 +2370,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-palette-gray-200` | `#e6e6e6` |
 | `--ods-palette-gray-300` | `#cccccc` |
 | `--ods-palette-gray-400` | `#b3b3b3` |
-| `--ods-palette-gray-500` | `#808080` |
+| `--ods-palette-gray-500` | `#757575` |
 | `--ods-palette-gray-600` | `#666666` |
 | `--ods-palette-gray-700` | `#4d4d4d` |
 | `--ods-palette-gray-800` | `#333333` |
@@ -2391,16 +2391,16 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-| `--ods-palette-indigo-50` | `#f4f5f9` |
-| `--ods-palette-indigo-100` | `#edf0f7` |
-| `--ods-palette-indigo-200` | `#d8dcf0` |
-| `--ods-palette-indigo-300` | `#bec5e3` |
-| `--ods-palette-indigo-400` | `#98a3cc` |
-| `--ods-palette-indigo-500` | `#3a4a87` |
-| `--ods-palette-indigo-600` | `#2b3870` |
-| `--ods-palette-indigo-700` | `#1e2858` |
-| `--ods-palette-indigo-800` | `#131a3f` |
-| `--ods-palette-indigo-900` | `#0a1028` |
+| `--ods-palette-navy-50` | `#f4f5f8` |
+| `--ods-palette-navy-100` | `#edf0f5` |
+| `--ods-palette-navy-200` | `#d6deea` |
+| `--ods-palette-navy-300` | `#bbc7db` |
+| `--ods-palette-navy-400` | `#6c82a6` |
+| `--ods-palette-navy-500` | `#374f76` |
+| `--ods-palette-navy-600` | `#283d61` |
+| `--ods-palette-navy-700` | `#1a2d4b` |
+| `--ods-palette-navy-800` | `#101e35` |
+| `--ods-palette-navy-900` | `#091222` |
 
 | Token | Value |
 |---|---|
@@ -2422,7 +2422,7 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-palette-red-200` | `#f7aaa7` |
 | `--ods-palette-red-300` | `#f08581` |
 | `--ods-palette-red-400` | `#f2756f` |
-| `--ods-palette-red-500` | `#d9534f` |
+| `--ods-palette-red-500` | `#ca4b47` |
 | `--ods-palette-red-600` | `#b3403c` |
 | `--ods-palette-red-700` | `#8a302d` |
 | `--ods-palette-red-800` | `#381312` |

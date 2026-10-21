@@ -8,7 +8,7 @@ import { EXCLUDED_STORIES, compareStoryNames, extractStorySources, storyTitle } 
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
-import { categorizeTokens, declaredTokens, splitPaletteTokens } from './src/doc/ports/helpers/designTokens';
+import { categorizeTokens, declaredTokens } from './src/doc/ports/helpers/designTokens';
 import { createUniqueSlugs, slugify } from './src/doc/slug';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
@@ -156,9 +156,8 @@ function renderDesignTokens(): string | null {
     return null;
   }
   const byCategory = categorizeTokens(declaredTokens({ refs: theme.refs, root: theme.root }));
-  const { monoColors, opacities, palettes } = splitPaletteTokens(byCategory[TOKEN_CATEGORY.palette]);
-
-  // Same sections as the DesignTokens port.
+  // Same sections as the DesignTokens port. The palette is left out: the page
+  // shows it as colors only, its tokens are theme internals.
   const SECTIONS: [string, TOKEN_CATEGORY][] = [
     ['Color', TOKEN_CATEGORY.color],
     ['Size', TOKEN_CATEGORY.size],
@@ -173,10 +172,6 @@ function renderDesignTokens(): string | null {
     ...SECTIONS
       .filter(([, category]) => byCategory[category].length > 0)
       .map(([label, category]) => `### ${label}\n\n${tokensTable(byCategory[category])}`),
-    '## Color Palettes',
-    ...palettes.map((palette) => tokensTable(palette)),
-    tokensTable(monoColors),
-    `### Opacity\n\n${tokensTable(opacities)}`,
   ].join('\n\n');
 }
 

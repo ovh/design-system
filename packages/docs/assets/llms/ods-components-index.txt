@@ -14,7 +14,7 @@
 
 - [Overview](./react-components-avatar.txt) (~183 tokens)
 - [Documentation](./react-components-avatar--documentation.txt) (~745 tokens)
-- [Technical Information](./react-components-avatar--technical-information.txt) (~171 tokens)
+- [Technical Information](./react-components-avatar--technical-information.txt) (~180 tokens)
 - [Examples](./react-components-avatar--examples.txt) (~111 tokens)
 
 ## Badge
@@ -35,7 +35,7 @@
 
 - [Overview](./react-components-button.txt) (~353 tokens)
 - [Documentation](./react-components-button--documentation.txt) (~1520 tokens)
-- [Technical Information](./react-components-button--technical-information.txt) (~4531 tokens)
+- [Technical Information](./react-components-button--technical-information.txt) (~4587 tokens)
 - [Examples](./react-components-button--examples.txt) (~779 tokens)
 
 ## Button Group
@@ -47,9 +47,9 @@
 
 ## Card
 
-- [Overview](./react-components-card.txt) (~200 tokens)
+- [Overview](./react-components-card.txt) (~202 tokens)
 - [Documentation](./react-components-card--documentation.txt) (~1442 tokens)
-- [Technical Information](./react-components-card--technical-information.txt) (~396 tokens)
+- [Technical Information](./react-components-card--technical-information.txt) (~398 tokens)
 - [Examples](./react-components-card--examples.txt) (~420 tokens)
 
 ## Cart
@@ -210,7 +210,7 @@
 
 - [Overview](./react-components-message.txt) (~329 tokens)
 - [Documentation](./react-components-message--documentation.txt) (~2049 tokens)
-- [Technical Information](./react-components-message--technical-information.txt) (~2017 tokens)
+- [Technical Information](./react-components-message--technical-information.txt) (~1992 tokens)
 - [Examples](./react-components-message--examples.txt) (~1108 tokens)
 
 ## Message Bubble
@@ -231,7 +231,7 @@
 
 - [Overview](./react-components-modal.txt) (~480 tokens)
 - [Documentation](./react-components-modal--documentation.txt) (~1652 tokens)
-- [Technical Information](./react-components-modal--technical-information.txt) (~1060 tokens)
+- [Technical Information](./react-components-modal--technical-information.txt) (~903 tokens)
 - [Examples](./react-components-modal--examples.txt) (~1153 tokens)
 
 ## Pagination
@@ -343,7 +343,7 @@
 
 - [Overview](./react-components-tabs.txt) (~305 tokens)
 - [Documentation](./react-components-tabs--documentation.txt) (~1179 tokens)
-- [Technical Information](./react-components-tabs--technical-information.txt) (~1025 tokens)
+- [Technical Information](./react-components-tabs--technical-information.txt) (~1047 tokens)
 - [Examples](./react-components-tabs--examples.txt) (~1404 tokens)
 
 ## Tag

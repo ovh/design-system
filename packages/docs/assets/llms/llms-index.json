@@ -59,7 +59,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 171,
+          "tokens": 180,
           "url": "./react-components-avatar--technical-information.txt"
         },
         "examples": {
@@ -137,7 +137,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 4531,
+          "tokens": 4587,
           "url": "./react-components-button--technical-information.txt"
         },
         "examples": {
@@ -179,7 +179,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 200,
+          "tokens": 202,
           "url": "./react-components-card.txt"
         },
         "documentation": {
@@ -189,7 +189,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 396,
+          "tokens": 398,
           "url": "./react-components-card--technical-information.txt"
         },
         "examples": {
@@ -787,7 +787,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2017,
+          "tokens": 1992,
           "url": "./react-components-message--technical-information.txt"
         },
         "examples": {
@@ -865,7 +865,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1060,
+          "tokens": 903,
           "url": "./react-components-modal--technical-information.txt"
         },
         "examples": {
@@ -1281,7 +1281,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1025,
+          "tokens": 1047,
           "url": "./react-components-tabs--technical-information.txt"
         },
         "examples": {
@@ -1587,7 +1587,7 @@
       "slug": "ovhcloud-design-system-customize-design-tokens",
       "title": "Design Tokens",
       "type": "overview",
-      "tokens": 4691,
+      "tokens": 4769,
       "url": "./ovhcloud-design-system-customize-design-tokens.txt"
     },
     {

@@ -31,9 +31,9 @@ This component extends all the native `<div>` attributes.
 | `--ods-code-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-code-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
 | `--ods-code-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 1.5)` |
-| `--ods-code-primary-color` | `var(--ods-semantic-color-content-on-code)` |
-| `--ods-code-secondary-color` | `var(--ods-semantic-color-surface-code)` |
-| `--ods-code-trigger-background-color` | `var(--ods-semantic-color-content-on-code)` |
-| `--ods-code-trigger-background-color-active` | `var(--ods-semantic-color-interaction-neutral-hover)` |
-| `--ods-code-trigger-background-color-hover` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-code-background-color` | `var(--ods-semantic-color-surface-code)` |
+| `--ods-code-text-color` | `var(--ods-semantic-color-content-on-code)` |
+| `--ods-code-trigger-background-color-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-code-trigger-background-color-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-code-trigger-color` | `var(--ods-semantic-color-content-on-code)` |
 | `--ods-code-trigger-outline-color` | `var(--ods-semantic-color-content-on-code)` |

@@ -123,6 +123,19 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     title: 'Upgrade',
     children: [
       { icon: ICON_NAME.sparkle, id: 'guides/whats-new', kind: 'guide', path: '/guides/whats-new', title: "What's new" },
+      {
+        id: 'previous-whats-new',
+        title: "What's new in previous versions",
+        children: [
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v18', kind: 'guide', path: '/guides/whats-new-v18', title: 'v18' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v17', kind: 'guide', path: '/guides/whats-new-v17', title: 'v17' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v16', kind: 'guide', path: '/guides/whats-new-v16', title: 'v16' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v15', kind: 'guide', path: '/guides/whats-new-v15', title: 'v15' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v14', kind: 'guide', path: '/guides/whats-new-v14', title: 'v14' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v13', kind: 'guide', path: '/guides/whats-new-v13', title: 'v13' },
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v12', kind: 'guide', path: '/guides/whats-new-v12', title: 'v12 and earlier' },
+        ],
+      },
       { icon: ICON_NAME.list, id: 'guides/changelog', kind: 'guide', path: '/guides/changelog', title: 'Changelog' },
       { icon: ICON_NAME.sync, id: 'guides/migration-19-to-20', kind: 'guide', path: '/guides/migration-19-to-20', title: 'Migration 19.x to 20.x' },
       {

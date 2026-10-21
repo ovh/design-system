@@ -23,7 +23,7 @@ For a major or minor version, create a new `release/X.Y` branch. For a patch, us
 
 ### 2. Add a "What's New" entry
 
-Edit `packages/docs/src/content/guides/whats-new.mdx`, add a short description of the release, and commit it. Your working tree must be clean before the next step.
+Edit `packages/docs/src/content/guides/whats-new.mdx` (the current major version; previous majors have their own `whats-new-vX.mdx` page), add a short description of the release, and commit it. Your working tree must be clean before the next step.
 
 ### 3. Bump the version
 
@@ -78,7 +78,14 @@ Then add a migration guide for the version you are going to release:
 
 1. Write the guide in `packages/docs/src/content/guides/migration-X-to-Y.mdx` (plain MDX, no imports or Meta needed — guide files are picked up automatically).
 2. Register the page in the navigation model, `packages/docs/src/nav/model.ts` (Upgrade section, like the existing `guides/migration-*` entries).
-3. Add a `GUIDE_META` entry for it in `packages/docs/vite-plugin-llms.ts` so it lands in the generated LLM documentation (the build fails with a "guide inventory drift" error until the entry exists).
+3. Add an entry for it in `packages/docs/src/content/guides/guides.json` so it lands in the generated LLM documentation (the build fails with a guide inventory drift error until the entry exists).
+
+Also move the release notes of the previous major version out of the current "What's New" page:
+
+1. Move all the `vX.*` entries of `packages/docs/src/content/guides/whats-new.mdx` to a new `whats-new-vX.mdx` page, and update the intro line of both pages.
+2. Register that page in `packages/docs/src/nav/model.ts` (under *What's new in previous versions*), in `packages/docs/src/content/guides/guides.json`, and in `packages/docs/tests/sweep.mjs`.
+
+Links to the old `whats-new#vX-…` anchors are redirected to the new page automatically.
 
 Then, you have to generate a major version from your branch.
 

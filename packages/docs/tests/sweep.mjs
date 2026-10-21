@@ -3,7 +3,8 @@
 // frame-heavy pages (staggered frame loads + idle sandbox preload).
 const GUIDES = ['get-started', 'accessibility', 'internationalization', 'forms', 'charts',
   'apply-ods-style', 'style-customization', 'design-tokens', 'tailwind',
-  'whats-new', 'changelog', 'migration-19-to-20', 'migration-to-v19', 'migration-12-to-13', 'migration-13-to-14',
+  'whats-new', 'whats-new-v18', 'whats-new-v17', 'whats-new-v16', 'whats-new-v15', 'whats-new-v14',
+  'whats-new-v13', 'whats-new-v12', 'changelog', 'migration-19-to-20', 'migration-to-v19', 'migration-12-to-13', 'migration-13-to-14',
   'migration-14-to-15', 'migration-15-to-16', 'migration-16-to-17', 'migration-17-to-18',
   'faq', 'llm-documentation', 'mcp-server'];
 // derived from the migrated content: grows with every imported component

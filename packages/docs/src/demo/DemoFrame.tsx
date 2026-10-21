@@ -73,17 +73,42 @@ const StyleSync = () => {
     if (!frameDocument) {
       return;
     }
+    // Incremental: wiping and re-cloning every sheet on each head mutation
+    // made the frame reload all its <link>s whenever a lazy chunk preloaded
+    // (a hundred-odd mutations), flashing the demo unstyled — popups then
+    // laid out at their raw size for a few frames. Clones are kept per source
+    // node; only added, removed or edited sheets are touched.
+    const clones = new Map<Element, Element>();
+    frameDocument.head.querySelectorAll(`[${SYNC_MARKER}]`).forEach((node) => node.remove());
     const copyStyles = () => {
-      frameDocument.head.querySelectorAll(`[${SYNC_MARKER}]`).forEach((node) => node.remove());
       // dev: Vite injects <style>; build: extracted stylesheets arrive as <link>
-      document.head.querySelectorAll('style, link[rel="stylesheet"]').forEach((el) => {
-        const clone = frameDocument.importNode(el, true);
-        if (clone instanceof HTMLLinkElement) {
-          clone.href = (el as HTMLLinkElement).href;
+      const sources = [...document.head.querySelectorAll('style, link[rel="stylesheet"]')];
+      clones.forEach((clone, source) => {
+        if (!sources.includes(source)) {
+          clone.remove();
+          clones.delete(source);
         }
-        clone.setAttribute(SYNC_MARKER, '');
-        frameDocument.head.appendChild(clone);
       });
+      // Walks backwards so a new clone lands before the next synced one:
+      // the frame keeps the parent's cascade order.
+      let next: Element | null = null;
+      for (let i = sources.length - 1; i >= 0; i--) {
+        const source = sources[i];
+        let clone = clones.get(source);
+        if (!clone) {
+          clone = frameDocument.importNode(source, true);
+          if (clone instanceof HTMLLinkElement) {
+            clone.href = (source as HTMLLinkElement).href;
+          }
+          clone.setAttribute(SYNC_MARKER, '');
+          frameDocument.head.insertBefore(clone, next);
+          clones.set(source, clone);
+        } else if (source instanceof HTMLStyleElement && clone.textContent !== source.textContent) {
+          // Vite HMR rewrites the <style> content in place.
+          clone.textContent = source.textContent;
+        }
+        next = clone;
+      }
     };
     copyStyles();
     const observer = new MutationObserver(copyStyles);
@@ -112,11 +137,19 @@ const FrameAutoSize = ({ active }: { active: boolean }) => {
       return;
     }
     let raf = 0;
-    // Overlays size themselves to the frame viewport: measuring them in a
-    // 100px-tall frame yields a squashed modal (chicken-and-egg). When an
-    // open overlay is detected, jump to a comfortable stage height first —
-    // the overlay then lays itself out inside it.
+    // Overlays size and place themselves against the frame viewport. Growing
+    // the frame only once one opens made every open/close resize it: the page
+    // below jumped, the scroll container clamped when the demo sat at the
+    // bottom, and the popup was placed twice (flipped in the short frame,
+    // then re-placed). Ark keeps a positioner mounted for every floating part
+    // even when closed, so popup-capable demos are detected up front and get
+    // their stage from first paint — opening or closing never resizes them.
     const OVERLAY_STAGE = 420;
+    // Tooltips are a line or two of text: a full stage would be mostly void.
+    const TOOLTIP_STAGE = 160;
+    // Bottom edge of the tallest overlay seen so far: kept once closed so a
+    // popup taller than the stage resizes the frame once, not on every toggle.
+    let overlayBottom = 0;
     const measure = () => {
       raf = 0;
       // body, not documentElement: the html element stretches to the iframe
@@ -125,20 +158,23 @@ const FrameAutoSize = ({ active }: { active: boolean }) => {
       // (sub-pixel rounding and late layout were producing inner scrollbars).
       const body = frameDocument.body;
       let height = Math.max(body.offsetHeight, body.scrollHeight) + 1;
-      let hasOpenOverlay = false;
-      // Ark flags every open floating part with data-state="open"; the
-      // positioner itself is always mounted (fixed, viewport-sized), so
-      // presence alone is a false positive.
-      frameDocument.querySelectorAll('[data-part][data-state="open"]').forEach((el) => {
-        const rect = (el as HTMLElement).getBoundingClientRect();
-        if (rect.height > 0) {
-          hasOpenOverlay = true;
-          height = Math.max(height, rect.bottom + 16);
-        }
-      });
-      if (hasOpenOverlay) {
-        height = Math.max(height, OVERLAY_STAGE);
+      const positioners = frameDocument.querySelectorAll('[data-part="positioner"]');
+      if (positioners.length) {
+        const tooltipsOnly = [...positioners].every((el) => el.getAttribute('data-scope') === 'tooltip');
+        height = Math.max(height, tooltipsOnly ? TOOLTIP_STAGE : OVERLAY_STAGE);
       }
+      // Only floating parts count: data-state="open" also flags in-flow
+      // parts (accordion items, tree branches, triggers) already covered by
+      // the body measure.
+      positioners.forEach((positioner) => {
+        positioner.querySelectorAll('[data-state="open"]').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.height > 0) {
+            overlayBottom = Math.max(overlayBottom, rect.bottom + 16);
+          }
+        });
+      });
+      height = Math.max(height, overlayBottom);
       iframe.style.height = `${Math.max(Math.ceil(height), 60)}px`;
     };
     const schedule = () => {

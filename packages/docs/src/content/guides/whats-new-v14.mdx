@@ -1,0 +1,90 @@
+*Release notes of v14. For the current major version, see <DocLink to="/guides/whats-new">What's new</DocLink>.*
+
+<Heading label="v14.1.0" level={ 2 } />
+
+<Heading label="New features:" level={ 3 } />
+
+* **CDK**
+* Manage surface position when located on the edge.
+* The surface can now be centered at the top or bottom of the trigger. See CDK Documentation using version selector.
+
+We added the following components:
+
+**Form Field**
+
+<DocLink to="/components/form-field">See Documentation</DocLink>
+
+**Switch**
+
+<DocLink to="/components/switch">See Documentation</DocLink>
+
+<Heading label="Features changes:" level={ 3 } />
+
+* **Pagination**
+
+* Add tooltip to the arrows.
+
+* Can now show pages according to a numbers of items shown by page.
+
+> For more information, check our documentation <DocLink to="/components/pagination">See Documentation</DocLink>
+
+* **Location-tile**
+
+* Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+
+> For more information, check our replacement guide using version selector.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+* **Radio**:
+
+* Radio button is now unfocusable when disabled
+
+* **Input**:
+
+* cursor is set to not-allowed when disabled
+
+<Heading label="v14.0.0" level={ 2 } />
+
+As it is a major version, you have to do the <DocLink to="/guides/migration-13-to-14">migration guide 13.x to 14.x</DocLink>
+
+<Heading label="New features:" level={ 3 } />
+
+We added the following components:
+
+* **Progress Bar**: <DocLink to="/components/progress-bar">See Documentation</DocLink>
+* **Popover**: <DocLink to="/components/popover">See Documentation</DocLink>
+* **Tooltip**: <DocLink to="/components/tooltip">See Documentation</DocLink>
+
+Components version 2:
+
+* **Input V2**: <DocLink to="/components/input">See Documentation</DocLink>
+* new properties have been added
+* `loading`: it displays a Spinner
+* `clearable`: it clears the input value on click
+* `masked`: it indicates if the input value is hidden or not (to be used with password type)
+* new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <DocLink to="/components/select">See Documentation</DocLink>
+
+**Quantity** component accepts four digits in the input field:
+
+<DocLink to="/components/quantity">See Documentation</DocLink>
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+
+See CDK Documentation using version selector.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+* **Tile**:
+* `hoverable` attribute has been added to avoid double focus
+* `interactive` attribute has been removed
+> ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+* **Link**:
+* add missing color for active state
+* fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%

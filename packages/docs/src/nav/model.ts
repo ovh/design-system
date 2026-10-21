@@ -153,6 +153,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
       },
     ],
   },
+  { icon: ICON_NAME.lifeBuoy, id: 'guides/troubleshooting', kind: 'guide', path: '/guides/troubleshooting', title: 'Troubleshooting' },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
 ];
 

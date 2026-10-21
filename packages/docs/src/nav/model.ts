@@ -48,6 +48,9 @@ interface NavPage {
   /* Routed, but left out of the sidebar and the search palette. */
   hidden?: boolean;
   icon?: ICON_NAME;
+  /* Icon kept for the search palette only: the Components, Recipes and
+     Helpers lists read better as plain names in the sidebar. */
+  iconInTree?: false;
   id: string;
   kind: 'component' | 'guide' | 'helper' | 'recipe' | 'tool';
   path: string;
@@ -232,6 +235,7 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
       ...COMPONENT_PAGES.map(([key, title, badge]): NavPage => ({
         badge,
         icon: ICON_NAME.box,
+        iconInTree: false,
         id: `components/${key}`,
         kind: 'component',
         path: `/components/${key}`,
@@ -250,6 +254,7 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
       { icon: ICON_NAME.grid, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Recipe Gallery' },
       ...RECIPE_PAGES.map(([key, title]): NavPage => ({
         icon: ICON_NAME.file,
+        iconInTree: false,
         id: `recipes/${key}`,
         kind: 'recipe',
         path: `/recipes/${key}`,
@@ -262,8 +267,8 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     id: 'helpers',
     title: 'Helpers',
     children: [
-      { icon: ICON_NAME.file, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', stories: storiesOf('helpers/format-price'), title: 'formatPrice' },
-      { badge: 'new', icon: ICON_NAME.file, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', stories: storiesOf('helpers/format-relative-time'), title: 'formatRelativeTime' },
+      { icon: ICON_NAME.file, iconInTree: false, id: 'helpers/format-price', kind: 'helper', path: '/helpers/format-price', stories: storiesOf('helpers/format-price'), title: 'formatPrice' },
+      { badge: 'new', icon: ICON_NAME.file, iconInTree: false, id: 'helpers/format-relative-time', kind: 'helper', path: '/helpers/format-relative-time', stories: storiesOf('helpers/format-relative-time'), title: 'formatRelativeTime' },
     ],
   },
 ];
@@ -289,7 +294,7 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
    sections are already marked by their chevron. */
 function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
   return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
-    ? { customRendererData: { badge: node.badge, icon: node.icon }, id: node.id, name: node.title }
+    ? { customRendererData: { badge: node.badge, icon: node.iconInTree === false ? undefined : node.icon }, id: node.id, name: node.title }
     : { children: toTreeItems(node.children, sectionIcons), customRendererData: sectionIcons ? { icon: node.icon } : {}, id: node.id, name: node.title }));
 }
 

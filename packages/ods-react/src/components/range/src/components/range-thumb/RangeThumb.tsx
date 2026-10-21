@@ -67,7 +67,6 @@ const RangeThumb: FC<RangeThumbProp> = ({
         <Slider.Thumb
           aria-describedby={ fieldContext?.ariaDescribedBy }
           aria-invalid={ invalid }
-          aria-labelledby={ index === 0 ? fieldContext?.labelId : undefined }
           className={ classNames(
             style['range-thumb'],
             { [style['range-thumb--invalid']]: invalid },

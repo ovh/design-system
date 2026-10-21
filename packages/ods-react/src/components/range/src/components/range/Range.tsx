@@ -1,7 +1,7 @@
 import { Slider } from '@ark-ui/react/slider';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
-import { useFormField } from '../../../../form-field/src';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
 import { THUMB_SIZE } from '../../constants/thumb';
 import { RangeProvider, type RangeRootProp, type RangeValueChangeDetail, useRange } from '../../contexts/useRange';
 import { RangeBounds } from '../range-bounds/RangeBounds';
@@ -13,6 +13,8 @@ import style from './range.module.scss';
 interface RangeProp extends Omit<ComponentPropsWithRef<'div'>, 'aria-label' | 'aria-labelledby' | 'defaultValue'>, RangeRootProp {}
 
 const RangeRoot: FC<RangeProp> = forwardRef(({
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   className,
   defaultValue,
   displayBounds = true,
@@ -43,6 +45,17 @@ const RangeRoot: FC<RangeProp> = forwardRef(({
     return 1;
   }, [defaultValue, value]);
 
+  const thumbLabelledBy = useMemo(() => {
+    const labelId = fieldContext?.labelId;
+
+    if (ariaLabelledBy || ariaLabel || !labelId) {
+      return ariaLabelledBy;
+    }
+    return Array.from({ length: nbThumb }, () => labelId);
+  }, [ariaLabel, ariaLabelledBy, fieldContext?.labelId, nbThumb]);
+
+  useFormFieldId(null);
+
   useImperativeHandle(ref, () => rangeRef.current!, [rangeRef]);
 
   useEffect(() => {
@@ -55,8 +68,8 @@ const RangeRoot: FC<RangeProp> = forwardRef(({
 
   return (
     <Slider.Root
-      aria-label={ props['aria-label'] }
-      aria-labelledby={ props['aria-labelledby'] }
+      aria-label={ ariaLabel }
+      aria-labelledby={ thumbLabelledBy }
       className={ classNames(style['range'], className) }
       data-ods="range"
       defaultValue={ defaultValue }

@@ -14,4 +14,4 @@ const FormField = Object.assign(FormFieldRoot, {
 export { FormField };
 export { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel };
 export type { FormFieldProp, FormFieldErrorProp, FormFieldHelperProp, FormFieldLabelProp, FormFieldLabelSubLabelProp };
-export { useFormField } from './contexts/useFormField';
+export { useFormField, useFormFieldId } from './contexts/useFormField';

@@ -1,6 +1,7 @@
 import { RadioGroup as VendorRadioGroup } from '@ark-ui/react/radio-group';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
 import style from './radioGroup.module.scss';
 
 interface RadioValueChangeDetail {
@@ -45,9 +46,13 @@ const RadioGroup: FC<RadioGroupProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
+
+  useFormFieldId(null);
+
   return (
     <VendorRadioGroup.Root
-      aria-labelledby={ props['aria-labelledby'] || '' }
+      aria-labelledby={ props['aria-labelledby'] || (fieldContext?.labelId ?? '') }
       className={ classNames(style['radio-group'], className) }
       data-ods="radio-group"
       defaultValue={ defaultValue }

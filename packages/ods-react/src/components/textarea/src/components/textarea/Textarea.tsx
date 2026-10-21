@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { useFormField } from '../../../../form-field/src';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
 import style from './textarea.module.scss';
 
 interface TextareaProp extends ComponentPropsWithRef<'textarea'> {
@@ -17,6 +17,9 @@ const Textarea: FC<TextareaProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const textareaId = id || fieldContext?.id;
+
+  useFormFieldId(textareaId ?? null);
 
   return (
     <textarea
@@ -25,7 +28,7 @@ const Textarea: FC<TextareaProp> = forwardRef(({
       className={ classNames(style['textarea'], className) }
       data-invalid={ (invalid || fieldContext?.invalid) ? true : undefined }
       data-ods="textarea"
-      id={ id || fieldContext?.id }
+      id={ textareaId }
       ref={ ref }
       { ...props } />
   );

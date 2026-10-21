@@ -30,8 +30,8 @@
 
 .canvas__demo {
   background-color: var(--ods-semantic-color-surface-raised);
-  /* 24px with the 4px the frame body keeps for the focus rings */
-  padding: 20px;
+  /* + the frame's own 16px inset: 24px around the demo. */
+  padding: 8px;
 }
 
 .canvas__code {
@@ -59,7 +59,7 @@
   }
 
   .canvas__demo {
-    /* 16px with the 4px the frame body keeps for the focus rings */
-    padding: 12px;
+    /* The frame's own 16px inset is the whole room on a narrow screen. */
+    padding: 0;
   }
 }

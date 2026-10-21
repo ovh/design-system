@@ -2128,7 +2128,6 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
 | `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-surface-brand-subtle` | `var(--ods-palette-brand-100)` |
 | `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
 | `--ods-semantic-color-surface-accent-subtle` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-surface-accent` | `var(--ods-palette-accent-500)` |

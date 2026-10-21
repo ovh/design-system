@@ -55,6 +55,37 @@ export const Disabled = () => (
 );
 ```
 
+#### README.md
+
+The `src/README.md` file is the content of the recipe page in the documentation. Write it in this shape:
+
+```markdown
+# Recipe Name
+
+One sentence that sums up the recipe, shown above the live preview.
+Then the rest of the description: what the recipe is made of, and when to use it.
+
+## Do's & don'ts
+
+### Do
+
+- One guideline per item.
+
+### Don't
+
+- One pitfall per item.
+
+## Any other section
+```
+
+- The `# Title` is not displayed, the page already shows the recipe name.
+- The first sentence of the first paragraph becomes the page's summary line, so keep it short and self-contained.
+- The `## Do's & don'ts` section, with its `### Do` and `### Don't` lists, is displayed in two columns, like on component pages.
+- Any other `##` section is displayed under the page's "Overview", in the same order.
+- The recipe name and the ODS components it uses are emphasized automatically: no need to put them in bold.
+- The "Components used" list is built from the recipe's code, not from the README.
+- A README left as `TODO` is treated as empty: the page then only shows the preview, the components and the source.
+
 #### index.ts
 
 The file `index.ts` contains the metadata of the recipe (used by our documentation system), when adding a new recipe

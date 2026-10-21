@@ -84,6 +84,9 @@
   /* Content - status inks on the page */
   --ods-semantic-color-content-neutral: var(--ods-palette-gray-600);
   --ods-semantic-color-content-brand: var(--ods-palette-brand-500);
+
+  /* Minor brand button at rest: drawn with the control inks in this theme. */
+  --ods-semantic-color-content-brand-minor: var(--ods-palette-accent-800);
   --ods-semantic-color-content-accent: var(--ods-palette-accent-600);
   --ods-semantic-color-content-information: var(--ods-palette-blue-500);
   --ods-semantic-color-content-success: var(--ods-palette-green-700);
@@ -93,7 +96,7 @@
   /* Content - inks on a tinted surface */
   --ods-semantic-color-content-on-selected: var(--ods-palette-accent-700);
   --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-600);
-  --ods-semantic-color-content-on-brand: var(--ods-palette-brand-800);
+  --ods-semantic-color-content-on-brand: var(--ods-palette-accent-800);
   --ods-semantic-color-content-on-accent: var(--ods-palette-accent-500);
   --ods-semantic-color-content-on-information: var(--ods-palette-blue-500);
   --ods-semantic-color-content-on-success: var(--ods-palette-green-800);
@@ -127,8 +130,10 @@
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-700);
 
   /* Borders - statuses -> Buttons */
-  --ods-semantic-color-border-brand-subtle: var(--ods-palette-brand-300);
   --ods-semantic-color-border-brand: var(--ods-palette-brand-500);
+
+  /* Minor brand button at rest: the control border step. */
+  --ods-semantic-color-border-brand-minor: var(--ods-palette-gray-500);
   --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-300);
   --ods-semantic-color-border-accent: var(--ods-palette-accent-500);
   --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-300);
@@ -146,8 +151,8 @@
   /* Interaction - on a tinted / transparent surface */
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
   --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-100);
-  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-50);
+  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-50);
   --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-100);
   --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-100);
   --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);

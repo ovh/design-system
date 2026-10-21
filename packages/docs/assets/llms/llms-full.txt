@@ -24308,7 +24308,6 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | `--ods-semantic-color-border-control` | `var(--ods-palette-gray-400)` |
 | `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
-| `--ods-semantic-color-border-brand-subtle` | `var(--ods-palette-brand-300)` |
 | `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
 | `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
 | `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |

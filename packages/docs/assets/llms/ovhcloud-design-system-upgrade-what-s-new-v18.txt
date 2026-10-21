@@ -1,0 +1,618 @@
+---
+title: "What's new in v18"
+slug: ovhcloud-design-system-upgrade-what-s-new-v18
+category: generic
+type: overview
+version: 19.7.3
+tokens: 4770
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v18.txt
+---
+
+# What's new in v18
+
+*Release notes of v18. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v18.6.4
+
+### Bug fixes:
+
+**Clipboard**
+- Container now inherent parent width.
+
+**Code**
+- Now correctly render large text with fixed height.
+
+**Combobox**
+- Clicking an item now correctly select it on Safari.
+
+**File Upload**
+- Allow same file to be uploaded again after cancellation.
+
+**Phone Number**
+- Add following country codes: `bq`, `gf`, `gp`, `io`, `pm`, `re`, `sj`, `sx`.
+
+## v18.6.3
+
+### Bug fixes:
+
+**Pagination**
+- Now handles very large number of pages correctly.
+
+## v18.6.2
+
+### Bug fixes:
+
+**Combobox**
+- Ensure "Add new entry" option is visible when no items are present.
+- Hide "Add new entry" option when input is cleared.
+- Prevent duplicates when using value or default value in allow multiple mode.
+
+## v18.6.1
+
+### Bug fixes:
+
+**Clipboard**
+- Remove spacing between actions and copy button.
+
+**Input**
+- Add spacing between value and actions.
+
+## v18.6.0
+
+### New components:
+
+**Combobox**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/combobox)
+
+### Feature updates:
+
+**Badge**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_BADGE_ICON_ALIGNMENT` has been added.
+
+**Clipboard**
+- New attribute `isMasked` has been added.
+
+**Icon**
+- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the [accessibility best practices](https://ovh.github.io/design-system/v19.7.3/components/icon) instead.
+
+### Bug fixes:
+
+**Button**
+- Ensure button height stays the same for all variants.
+- Fix `sm` height on all variants.
+
+**Modal**
+- Backdrop is no longer removed when pressing `Escape` on non-dismissible modal.
+
+### Documentation improvements:
+
+- Add new dedicated page about design tokens under the `Design and Style` section.
+- Update the accessibility section of the [Icon](https://ovh.github.io/design-system/v19.7.3/components/icon) component, with best practices and examples.
+
+## v18.5.3
+
+### Feature updates:
+
+**Select**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_SELECT_STRATEGY` and `ODS_SELECT_STRATEGIES` are now available.
+
+## v18.5.2
+
+### Feature updates:
+
+**Code**
+- Add tooltip message on copy button.
+- New attribute `labelCopy` added.
+- New attribute `labelCopySuccess` added.
+
+**Design Tokens**
+- Add new design token `--ods-form-element-input-height`. Useful when trying to use any input (ods-input, ods-datepicker, ods-select, ...) default height.
+
+**Modal**
+- New part `dialog-content` added that let you customize the content of the modal (ie, between header and actions).
+
+**Phone Number**
+- Pressing a letter while focusing the country selector will now move to the first matching country.
+
+### Bug fixes:
+
+**Code**
+- Spacing will now be correctly preserved.
+
+**Input**
+- Fix disabled style.
+
+**Phone Number**
+- Countries are now correctly sorted when locale get changed.
+
+**Spinner**
+- Spinner now use inline svg instead of svg file. This should remove some of the `eval` warnings on build.
+
+**Tabs**
+- Tabs bottom border now takes the whole width on horizontal overflow context.
+
+### Documentation improvements:
+
+- Add more documentation about managing overlays on a modal.
+
+## v18.5.1
+
+### Feature updates:
+
+**Clipboard**
+- New `ariaLabel` prop has been added.
+- New `ariaLabelledby` prop has been added.
+- New `name` prop has been added.
+
+**Datepicker**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_DATEPICKER_STRATEGY` and `ODS_DATEPICKER_STRATEGIES` are now available.
+
+**Medium**
+- Now expose an `image` part.
+
+**Password**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+**Textarea**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+### Bug fixes:
+
+**Accordion**
+- Clickable elements in the slots now behaves as expected when using the React component.
+
+**Checkbox**
+- Fix focus style on error state.
+
+**Code**
+- Copy button is now correctly positioned on the right side.
+
+**Datepicker**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Input**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Password**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Phone Number**
+- Reset now correctly reset the flag, when `countries` is set.
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Popover**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+**Radio**
+- Fix focus style on error state.
+
+**Tooltip**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+### Documentation improvements:
+
+- Headings link url are now static, which means you can safely bookmark / share them.
+- Fix the `Open canvas in new tab` action in the toolbar on Demo pages.
+- Accessibility tabs has been removed from Demo pages, as it was giving wrong information (as demo are custom made and not valid use case).
+
+## v18.5.0
+
+### New components:
+
+**Drawer**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/drawer)
+
+### Feature updates:
+
+**Accordion**
+- Update internal logic to use the native behavior of `details` / `summary` tags.
+- Interactive elements can now be used inside the accordion without toggling it.
+- New methods `close`, `open` and `toggle` have been added.
+- Add some documentation about usage with React state.
+
+**Link**
+- Link will now display an ellipsis by default.
+- New part `label` has been added to allow label customization.
+
+**Modal**
+- Update default width and height.
+- Update dimensions on mobile-size screen.
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Range**
+- Range can now display ticks.
+- New attribute `ticks` has been added.
+- Thumb hitbox has been improved.
+
+**Select**
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Tooltip**
+- Tooltip now stays open for a short time on trigger leave, which allows user to
+move over it and keep it open (and for example select its content).
+
+### Documentation improvements:
+
+- Add new guide about using components events.
+- Add new guide about using components methods.
+- Update Properties array in the technical page to more clearly display which props are required.
+- Update form-field caption examples.
+- Fix FAQ broken link.
+
+## v18.4.1
+
+### Feature updates:
+
+**Tabs**
+- Apply new style on unselected tab text.
+- Apply new hovering style.
+
+**Toggle**
+- Expose new method `toggle`.
+
+### Bug fixes:
+
+**Toggle**
+- Fix toggle style when selected and in an error state.
+
+### Miscellaneous:
+
+We did integrate [react-testing-library](https://testing-library.com/docs/react-testing-library/intro)
+to our React wrapper test suites, so that we can replicate more easily issues integrators may encounter.
+
+## v18.4.0
+
+### Changes on form elements:
+
+This version is focused on implementing [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) to our form elements.
+
+This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
+
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), [Formik](https://formik.org) and [React Hook Form](https://react-hook-form.com) on our tests and playgrounds.
+
+The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
+
+We won't go through an exhaustive list of changes, here are the most important ones for each form element:
+- Consistent behavior regarding blur and error state.
+- Consistent event triggering (check the guide about event lifecycle).
+- New event `odsInvalid` triggered when component internal validity change.
+- New methods available: `checkValidity`, `getValidationMessage`, `getValidity`, `reportValidity`, `willValidate`.
+- New interface `OdsFormElement` available with this methods.
+- Tons of unit & e2e tests have been added.
+
+### Feature updates:
+
+**Checkbox**
+- New `hasError` prop has been added.
+- New style when on error.
+
+**Clipboard**
+- Now expose an `input` part.
+- Input now inherit component length.
+
+**Datepicker**
+- `defaultValue` now accepts Date or string.
+- `max` now accepts Date or string.
+- `min` now accepts Date or string.
+- Added a new helper method `formatDate`.
+- Added a new helper method `parseDate`.
+
+**Input**
+- New input type `search` has been added.
+
+**Phone Number**
+- New `customValidityMessage` prop has been added.
+
+**Radio**
+- New `hasError` prop has been added.
+- New style when on error.
+
+**Range**
+- Now triggers an odsChange on thumb release, not on every move.
+
+**Select**
+- Add a new method `updateCustomRenderer` if you need to update the custom template used.
+
+**Switch**
+- Events are now send from `ods-switch` and not from `ods-switch-item` anymore. You may need to move your handlers if you were defining some on items.
+- New `hasError` prop to enforce error state.
+- Focus style has been updated.
+- New style when on error.
+
+**Toggle**
+- New `hasError` prop to enforce error state.
+- New style when on error.
+
+### Documentation improvements:
+
+- New Guide section, with a first one about form management.
+- Added new control to visualize ValidityState on each form elements Demo page.
+- Storybook update popup has been disabled.
+
+## v18.3.1
+
+### Feature updates:
+
+**Icon**
+- New icon "columns" has been added.
+
+**Link**
+- Update hover & visited color to a lighter one.
+
+**Select**
+- Update hover style to differentiate it from selected option.
+
+**Text**
+- `caption` preset does not use a `caption` tag anymore, as these is tight to table usage only.
+- New examples have been added regarding `caption` and `figcaption` usage.
+
+### Bug fixes:
+
+**Breadcrumb**
+- Separator is now always correctly aligned, regardless of the number of items.
+
+**Modal**
+- Dialog content height is now correct on Safari
+
+## v18.3.0
+
+### Feature updates:
+
+**All form elements**
+- Apply new style on readonly state.
+
+**Breadcrumb**
+- A new part `last` is now available to customize the last item (which differ from other link items).
+
+**Input**
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the [Technical information](https://ovh.github.io/design-system/v19.7.3/components/input) page.
+- New attribute `list` has been added.
+- New slot `list` is now available.
+
+**Message**
+- Message can now be rendered without the close button, as a static message.
+- New attribute `isDismissible` has been added.
+
+**Popover**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_POPOVER_STRATEGY` and `ODS_POPOVER_STRATEGIES` are now available.
+
+**Tooltip**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_TOOLTIP_STRATEGY` and `ODS_TOOLTIP_STRATEGIES` are now available.
+
+### Bug fixes:
+
+**All form elements**
+- Pressing `Enter` on an action button (like the clear button) does not trigger a form submit anymore.
+
+**Badge**
+- Now use the expected border-radius style.
+
+**Breadcrumb**
+- Last attribute is now correctly reset on items changes.
+
+**Modal**
+- `odsClose` event is no more emitted on component unmount. If you were relying on that, please reach out to us so we can find a better approach.
+- Content is now wrapped by a div to prevent flex weird rendering.
+- Modal height can now be customized using the `dialog` part.
+
+**Range**
+- Apply correct style to hovered thumb on error state.
+
+**Select**
+- Options are now correctly updated on change.
+- Disable state is now correctly updated on change.
+
+### Internal changes:
+
+We now use an `ods-button` instead of a native one for all our internal actions.
+Ex: input clear, message close, modal close, ...
+This shouldn't have any impacts.
+
+## v18.2.0
+
+### Feature updates:
+
+**Button**
+- New color style `neutral` and new size `xs`are now available.
+- New color `neutral` added to `ODS_BUTTON_COLOR`.
+- New size `xs` added to `ODS_BUTTON_SIZE`.
+
+**Spinner**
+- New size `xs` is now available.
+- New size `xs` added to `ODS_SPINNER_SIZE`.
+
+### Bug fixes:
+
+**Modal**
+
+- No `odsClose` event emitted anymore on element DOM disconnection if modal was already closed.
+
+**Password / Phone Number / Quantity / Timepicker**
+
+- Setting a `width: 100%` to the ods element now correctly apply it to the underneath elements.
+
+## v18.1.0
+
+### Documentation improvements:
+
+The Documentation has been partially rewritten, so you may notice a few changes:
+- some style has been updated
+- broken links have been fixed
+- components documentation has been migrated from `typedoc` to `custom-element-manifest`
+
+### Feature updates:
+
+**Button**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_BUTTON_ICON_ALIGNMENT` has been added.
+
+**Icon**
+
+- New icons `bill` and `box` have been added.
+- `globe` icon has been updated.
+
+**Link**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_LINK_ICON_ALIGNMENT` has been added.
+
+**Select**
+
+- Apply new style to multi-select counter.
+
+**Table**
+
+- Update header color to neutral-050.
+
+**Text**
+
+- No more default margin on any presets.
+
+### Bug fixes:
+
+**All**
+
+- Components now correctly inherits font-family.
+
+**Modal**
+
+- Prevent undefined element when using with react testing library.
+
+**Phone Number**
+
+- Locale fallback has been moved from french to english (fallback that is applied if no locale or a wrong locale is set and the locale of your browser is not managed).
+
+## v18.0.0
+
+As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-17-to-18)
+
+### Project changes:
+
+From the beginning of the project to the latest v17 version, our vision of the project has greatly evolved.
+Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
+
+With this new version we've tried to tackle most of the known issues to offer a better end-user experience:
+- components are now behaving more like native html elements
+- components are now easier to use and to customize
+- no more invasive `console.log`, we only print meaningful warnings when needed
+- enum values can now be used directly instead of importing it
+- events are now normalized for all components
+- release process will be shorter
+
+On top of that, the v18 does bring new features:
+- new components: file-upload and timepicker
+- latest design applied on all components
+- now sync with figma changes
+- a new set of icons
+- a reworked documentation
+
+To achieve all this, we had to rewrite almost the whole library.
+
+This is a major version change with tons of breaking changes.
+But this aims to be the last time.
+
+To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting
+the changes and some migration examples.
+
+### ODS libraries
+
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
+
+There is now only two library published that you should include:
+- `@ovhcloud/ods-components` that contain all web-components, react and vue wrappers and the sass mixins
+- `@ovhcloud/ods-themes` that contain the design tokens and the assets (fonts and icons)
+
+The CDK has been removed and we do not plan on publishing it again. If you were using part of it, please reach
+out to us so that we can get more information about your usage.
+
+All common libs have been and we do not plan on publishing them again. If you were using part of them, please reach
+out to us so that we can get more information about your usage.
+
+The `blue-jeans` theme has been replaced by the default theme of `@ovhcloud/ods-themes`.
+
+### ODS dependencies upgrade
+
+The new version comes with the following upgrade on major library:
+- Stencil bumps from `4.12.0` to `4.16.0`
+- `node-sass` is not supported anymore and was replaced by `sass` (`1.71.0`)
+- Typescript bumps from `4.7.4` to `5.3.3`
+- Storybook bumps from `6.4.19` to `8.0.4`
+
+### Style customization
+
+Although the ODS component comes with the expected design, you can now apply your own style directly on some part
+of the web-component shadow DOM, thanks to the [part selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+
+For example, you can add style on the native `input` element of an `ods-input` component through the following code:
+
+```html
+<style>
+  .my-input::part(input) {
+    width: 300px;
+  }
+</style>
+
+<ods-input class="my-input" ... />
+```
+
+Most of the component exposes one or more part like this, you can find more information on each component documentation page.
+
+### Sass helpers
+
+In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins
+that you can use to apply on a native element to get the same ODS rendering.
+
+For example, if you need to make an anchor tag looks like an `ods-link`:
+
+```css
+@import '@ovhcloud/ods-components/style';
+
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+
+```html
+<a class="my-link" ...>...</a>
+```
+
+This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always
+render an anchor and that provide no custom templating.
+
+Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend
+to use the web-component by default.
+
+### New components:
+
+**File Upload**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/file-upload)
+
+**Timepicker**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/timepicker)
+
+### Component changes:
+
+Please check the [migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-17-to-18) regarding all the component changes.

@@ -1,0 +1,395 @@
+---
+title: "What's new in v16"
+slug: ovhcloud-design-system-upgrade-what-s-new-v16
+category: generic
+type: overview
+version: 19.7.3
+tokens: 2305
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v16.txt
+---
+
+# What's new in v16
+
+*Release notes of v16. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v16.6.0
+
+### Feature update:
+
+**Breadcrumb**
+
+* Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
+* Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
+* Update `OdsHTMLAnchorElementRel` type
+
+**Chip**
+
+* Added `odsChipRemoval` event
+* If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
+* If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
+
+### Bug fixes:
+
+**Button**
+
+* Fix position of end slot when start slot is empty in `OsdsButton`
+
+**Datagrid**
+
+* If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
+
+**Pagination**
+
+* Add `itemPerPage` in payload event `odsChange`
+* Watch `totalPages` & update it
+
+**Phone Number**
+
+* Fix shadow of flag icon in the select that was cut behind overflow
+
+**Components**
+
+* Some components were missing from package.json of components: `medium`, `range`, `toggle`
+
+## v16.5.0
+
+### Feature update:
+
+**Documentation**
+
+* Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
+* Removing Starter documentation, as it is deprecated for now.
+
+### Bug fixes:
+
+**Datagrid**
+
+* `OsdsDatagrid` now emits the event `onBottomScroll`.
+* `OsdsDatagrid` now supports React Formatters.
+* Row change has been fixed.
+
+**Modal**
+
+* `OsdsModal` is now using a `HTMLDialogElement`,
+
+**Phone Number**
+
+* Flags have been fixed to be displayed with proper width & height.
+
+**Select**
+
+* Enhanced React support for `OsdsSelect`.
+
+**Documentation**
+
+* Documentation errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
+
+## v16.4.0
+
+### New component:
+
+**Datagrid**
+
+* See Documentation using version selector
+
+### Bug fixes:
+
+**Phone number**
+
+* Now consistently triggers `odsValueChange` event on type.
+
+**Documentation**
+
+* The release list now correctly displays the name of the latest version.
+
+### Feature update:
+
+**Component Generator**
+
+* Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
+
+## v16.3.2
+
+### New component:
+
+**Medium**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/medium)
+
+### Bug fixes:
+
+**Phone number**
+
+* Emit event when the value is valid
+
+**Accordion**
+
+* Can't open when the component is disabled
+
+**Quantity**
+
+* Change the value onblur to be valid with step
+
+**Modal**
+
+* Add event open & close (odsModalOpen, odsModalClose)
+
+## v16.3.1
+
+### Bug fixes:
+
+**Datepicker**
+
+* The siblings months days are now updated after the datepicker was updated
+
+**Select**
+
+* Keyboard navigation correction
+
+## v16.3.0
+
+### Component changes:
+
+**Button**
+
+* Each variant now display correctly when using circle button
+> ⚠️️ **Breaking change**
+* Circle button may render differently regarding the variant you're using
+
+**Datepicker**
+
+* Component now close itself when value is selected
+* You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
+
+**Flag**
+
+* Component has been refactored internally, but this should not have any impacts
+
+**Icon**
+
+* Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+
+**Menu**
+
+* Now correctly work when used with React
+
+**Select**
+
+* On Safari the component is displayed correctly when using flex
+
+**Textarea**
+
+* On Safari the component is displayed correctly when using flex
+
+**Tile**
+
+* On Safari the component is displayed correctly when using flex
+
+### Project changes:
+
+* The whole project is now built using Stenciljs v4.7
+> ⚠️️ **Breaking change**
+* We don't generate the bundle `custom-elements-bundle` anymore
+
+## v16.2.1
+
+### Component changes:
+
+**Datepicker**
+
+* New attribute `locale` to manage internationalization, accepted locales are for now:
+
+- French
+- English
+- German
+- Spanish
+- Italian
+- Polish
+- Portuguese
+- Dutch
+
+**Text**
+
+* Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+
+**Datepicker**
+
+* Add missing constants and types exports
+
+**Modal**
+
+* Is now correctly destroyed on page change
+
+**Popover**
+
+* Now correctly work when used with React
+
+**Select**
+
+* Selected value is now correctly updated on cnange (ex: translation change)
+
+## v16.2.0
+
+### New component:
+
+**Datepicker**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/datepicker)
+
+### Component changes:
+
+**Clipboard**
+
+* Added tooltip confirmation message on paste
+
+### Bug fixes:
+
+**Textarea**
+
+* Correctly emit `odsValueChange` event on value change.
+
+### Documentation changes:
+
+* Improve typedoc documentation
+
+## v16.1.1
+
+### Documentation fixes:
+
+* Component specification pages now displays correct information
+* Tile sandbox now uses correct list of commands
+
+## v16.1.0
+
+### New component:
+
+**Phone Number**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/phone-number)
+
+### Component changes:
+
+**Input**
+
+* New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
+
+**Progress Bar**
+
+> ⚠️️ **Breaking change**
+
+* `max` and `value` attributes are now `number` and won`t accept `string\` anymore.
+
+### Bug fixes:
+
+**Code**
+
+* Contrasted version have now the right color.
+
+### Project changes:
+
+* The whole project is now built using node 18.
+
+## v16.0.1
+
+Fixes CI build issues when deploying Storybook.
+
+## v16.0.0
+
+As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-15-to-16)
+
+⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
+
+⚠️We're currently working on improving the Documentation but didn't want to delay the release much more ⚠️
+
+⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
+
+### Project changes:
+
+This version embed the whole new project architecture (initiated with the v15).
+
+We now have seperations between:
+
+* `cdk` (@ovhcloud/ods-cdk) which provides public non component related utilities.
+* `common` libs (@ovhcloud/ods-common-\[core|stencil|testing|theming]) which provides internal helpers.
+* `components` (@ovhcloud/ods-components or @ovhcloud/ods-component-`<component-name>`) which provide the agnostic components and their React, Vue wrapped versions.
+* `examples` (@ovhcloud/ods-starter-\[react|react-vite|vue-vite]) which contains application examples that use some ODS components.
+* `shared-dependencies` to share common dependencies internally accross projects.
+* `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
+* `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
+
+### Component changes:
+
+**All Components**
+
+* `@ovhcloud/ods-stencil` package does not exists anymore.
+
+* Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
+
+* All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
+
+* All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
+
+* All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
+
+* Constants/Enums have been renamed to follow new naming convention:
+* All constants are now in UPPER\_SNAKE\_CASE.
+* All objects are now in singular form.
+* All lists are now in plural form.
+
+Ex:
+`OdsSpinnerSize` is now `ODS_SPINNER_SIZE`.
+`OdsSpinnerSizeList` is now `ODS_SPINNER_SIZES`.
+`OdsSpinnerSizeUnion` has been removed.
+
+* Exported types follow also the same naming convention, thus most of them are now in singular form.
+
+Ex:
+`OdsSpinnerAttributes` is now `OdsSpinnerAttribute`.
+
+* A lot of empty types who were exported previously have been removed.
+
+Ex:
+`OdsSpinnerEvents` have been removed, as the component does not handle any events.
+`OdsSpinnerMethods` have been removed, as the component does not expose any methods.
+
+### New component:
+
+**Clipboard**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/clipboard)
+
+**Menu**
+
+See documentation using version selector
+
+**Modal**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/modal)
+
+**Search Bar**
+
+See documentation using version selector
+
+### Features changes:
+
+**Button**
+
+* Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
+
+### Bug fixes:
+
+**Button**
+
+* Main slot is now correctly aligned vertically (visible when using icon).
+
+**Flag**
+
+* Flags are now correctly displayed in the documentation.
+
+**Link**
+
+* Outline is now correctly updated on viewport change.

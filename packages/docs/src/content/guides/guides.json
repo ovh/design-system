@@ -27,6 +27,7 @@
     { "mdx": "migration-15-to-16", "slug": "ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x", "title": "15.x to 16.x" },
     { "mdx": "migration-16-to-17", "slug": "ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x", "title": "16.x to 17.x" },
     { "mdx": "migration-17-to-18", "slug": "ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x", "title": "17.x to 18.x" },
+    { "mdx": "troubleshooting", "slug": "ovhcloud-design-system-troubleshooting", "title": "Troubleshooting" },
     { "mdx": "faq", "slug": "ovhcloud-design-system-f-a-q", "title": "FAQ" },
     { "mdx": "roadmap", "slug": "ovhcloud-design-system-roadmap", "title": "Roadmap" }
   ]

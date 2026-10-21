@@ -6,7 +6,7 @@ const GUIDES = ['get-started', 'accessibility', 'internationalization', 'forms',
   'whats-new', 'whats-new-v18', 'whats-new-v17', 'whats-new-v16', 'whats-new-v15', 'whats-new-v14',
   'whats-new-v13', 'whats-new-v12', 'changelog', 'migration-19-to-20', 'migration-to-v19', 'migration-12-to-13', 'migration-13-to-14',
   'migration-14-to-15', 'migration-15-to-16', 'migration-16-to-17', 'migration-17-to-18',
-  'faq', 'roadmap', 'llm-documentation'];
+  'troubleshooting', 'faq', 'roadmap', 'llm-documentation'];
 // derived from the migrated content: grows with every imported component
 import { readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';

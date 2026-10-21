@@ -7,7 +7,7 @@ Whether it’s a small fix or a new feature, every contribution helps improve th
 We appreciate the time and effort of anyone who chooses to take part.
 
 Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality.
-Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
+Additionally, if you're interested in proposing a new feature, please reach out to us first to avoid duplicating effort, as we may already be working on a similar development.
 
 ## Project installation
 

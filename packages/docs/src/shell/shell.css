@@ -215,6 +215,11 @@ body {
   font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
+.shell__tree-label--gallery {
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+  font-weight: var(--ods-semantic-font-weight-bold);
+}
+
 /* Layout only — the look is the ODS Link's own. */
 .shell__github {
   display: inline-flex;

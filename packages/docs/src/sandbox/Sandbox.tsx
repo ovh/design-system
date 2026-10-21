@@ -336,7 +336,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
               </Message>
             ) }
             <PreviewRouter>
-              <DemoFrame dark={ dark } tokens={ tokens }>
+              <DemoFrame dark={ dark } inset tokens={ tokens }>
                 { Component
                   ? <DemoBoundary key={ Demo?.compileId } onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
                   : null }

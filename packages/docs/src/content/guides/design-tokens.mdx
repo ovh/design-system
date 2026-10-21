@@ -11,6 +11,25 @@ Design tokens are available as CSS custom properties (variables) and can be used
 }
 ```
 
+<Heading label="Token types" level={2} />
+
+Two types of tokens are meant to be used in your code:
+
+- **Semantic**, `--ods-semantic-<category>-<role>` (e.g. `--ods-semantic-color-content-text`): values with a role, to style your own components and pages.
+- **Component**, `--ods-<component>-<property>` (e.g. `--ods-button-background-color-brand-high`): values of a single ODS component, to customize it.
+
+**Semantic** tokens give a role to a value: the color of a text, of a surface, of a border, the radius of a control, the duration of an animation…
+Their name reads from the most generic to the most specific part, for example `--ods-semantic-color-surface-selected-solid` is a `color`, used as a `surface`, for a `selected` element, on a `solid` background.
+
+**Component** tokens are declared by each component and default to semantic tokens.
+Override them to adjust one component without affecting the others, see <DocLink to="/guides/style-customization">Style Customization</DocLink>.
+
+<Heading label="Which type should I use?" level={2} />
+
+Prefer **semantic** tokens in your application: they follow the theme, so your components stay consistent with ODS ones when the theme changes.
+
+Use **component** tokens only to customize an ODS component; never read them to style something else, as their value may change from one version to another.
+
 <Heading label="What is guaranteed" level={2} />
 
 The `--ods-semantic-*` tokens are the public surface of the theme: read them in your CSS, re-declare them in a theme. Their names and their meaning do not change during a major version; their values belong to the theme. The `--ods-palette-*` ramps are public too, as the input of a theme: a brand re-declares the `--ods-palette-brand-*` and `--ods-palette-accent-*` ramps. The tables below list every token of the default theme.

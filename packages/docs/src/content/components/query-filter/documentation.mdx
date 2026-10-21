@@ -99,6 +99,26 @@ Pressing <Kbd>Backspace</Kbd> deletes characters in the input field
 
 <Heading label="Accessibility" level={ 2 } />
 
+<Heading label="Always provide an explicit label" level={ 3 } />
+
+Every **Query Filter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either **FormField** or a native label tag.
+
+<Canvas story="AccessibilityFormField" />
+
+<Icon name="circle-check"
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field and its content.
+
+When the design has no visible label, for example in a toolbar above a table, pass an `aria-label` to the **QueryFilterControl**:
+it is applied to the field itself.
+
+<Canvas story="AccessibilityAriaLabel" />
+
+<Icon name="circle-check"
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field and its content.
+
+<Heading label="Announce filter changes" level={ 3 } />
+
 Use ARIA (Accessible Rich Internet Applications) live regions to announce filtering changes. For example:
 - When a filter is added: `aria-live` region could say "Filter 'Status: Active' has been applied.".
 - When a filter is removed: `aria-live` region could say "Filter 'Status: Active' has been removed.".

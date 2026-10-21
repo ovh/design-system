@@ -25,6 +25,8 @@ interface QueryFilterControlProp extends ComponentPropsWithRef<'div'> {
 }
 
 const QueryFilterControl: FC<QueryFilterControlProp> = forwardRef(({
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   className,
   clearable,
   id,
@@ -132,6 +134,8 @@ const QueryFilterControl: FC<QueryFilterControlProp> = forwardRef(({
         aria-autocomplete="list"
         aria-controls={ contentId }
         aria-expanded={ isOpen ? 'true' : 'false' }
+        aria-label={ ariaLabel }
+        aria-labelledby={ ariaLabelledBy }
         autoCapitalize="none"
         autoComplete="off"
         autoCorrect="off"

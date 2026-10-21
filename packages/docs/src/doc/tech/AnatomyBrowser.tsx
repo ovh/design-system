@@ -148,7 +148,7 @@ const AnatomyBrowser = ({ names }: { names: string[] }) => {
 
       <Divider orientation={ DIVIDER_ORIENTATION.vertical } />
 
-        <DemoFrame onReady={ onReady }>
+        <DemoFrame inset onReady={ onReady }>
           <Composed />
         </DemoFrame>
 

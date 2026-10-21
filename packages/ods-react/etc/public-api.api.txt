@@ -4810,7 +4810,7 @@ export { PromptInputControls, type PromptInputControlsProp };
 
 // ==================== components/prompt-input/src/components/prompt-input-file-upload-button/PromptInputFileUploadButton.d.ts ====================
 import { FC } from 'react';
-import { ButtonProp } from '../../../..//button/src';
+import { ButtonProp } from '../../../../button/src';
 interface PromptInputFileUploadButtonProp extends ButtonProp {
     /**
      * Expected file type in file upload controls
@@ -4856,8 +4856,39 @@ interface PromptInputProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultVal
 declare const PromptInput: FC<PromptInputProp>;
 export { PromptInput, type PromptInputProp, };
 
+// ==================== components/prompt-input/src/constants/prompt-input-i18n.d.ts ====================
+declare enum PROMPT_INPUT_I18N {
+    fileUploadButton = "promptInput.fileUpload.button",
+    sendButton = "promptInput.send.button"
+}
+declare const TRANSLATION: {
+    "promptInput.fileUpload.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "promptInput.send.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+};
+export { PROMPT_INPUT_I18N, TRANSLATION, };
+
 // ==================== components/prompt-input/src/contexts/usePromptInput.d.ts ====================
 import { JSX, MutableRefObject, ReactNode } from 'react';
+import { Locale } from '../../../../utils/locales';
+import { PROMPT_INPUT_I18N } from '../constants/prompt-input-i18n';
 interface PromptInputInputSubmitDetails {
     inputValue: string;
 }
@@ -4881,6 +4912,10 @@ interface PromptInputRootProp {
      */
     fileCollection?: File[];
     /**
+     * Internal translations override.
+     */
+    i18n?: Partial<Record<PROMPT_INPUT_I18N, string>>;
+    /**
      * The controlled textarea value.
      */
     value?: string;
@@ -4888,6 +4923,10 @@ interface PromptInputRootProp {
      * Whether the component is in loading state.
      */
     loading?: boolean;
+    /**
+     * The locale used for the translation of the internal elements.
+     */
+    locale?: Locale;
     /**
      * The name of the textarea form element. Useful for form submission.
      */
@@ -4938,6 +4977,7 @@ declare const PromptInput: import('react').FC<PromptInputProp> & {
 export { PromptInput };
 export { PromptInputControls, PromptInputFileUploadButton, PromptInputFiles, PromptInputSendButton, PromptInputTextControl };
 export type { PromptInputProp, PromptInputControlsProp, PromptInputFileUploadButtonProp, PromptInputFilesProp, PromptInputSendButtonProp, PromptInputTextControlProp };
+export { PROMPT_INPUT_I18N } from './constants/prompt-input-i18n';
 export { type PromptInputRootProp, type PromptInputInputSubmitDetails, type PromptInputValueChangeDetails, type PromptInputFileChangeDetails, } from './contexts/usePromptInput';
 
 // ==================== components/quantity/src/components/quantity-control/QuantityControl.d.ts ====================

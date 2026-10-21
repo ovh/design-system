@@ -1,6 +1,8 @@
 import { type ChangeEvent, type FC, type JSX, forwardRef, useRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../..//button/src';
+import { useI18n } from '../../../../../hooks/useI18n';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
+import { PROMPT_INPUT_I18N, TRANSLATION } from '../../constants/prompt-input-i18n';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputFileUploadButton.module.scss';
 
@@ -17,7 +19,8 @@ interface PromptInputFileUploadButtonProp extends ButtonProp {
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
   ({ accept, className, multiple, ...props }, ref): JSX.Element => {
-    const { disabled, loading, onFileChange } = usePromptInput();
+    const { disabled, i18n, loading, locale, onFileChange } = usePromptInput();
+    const { translate } = useI18n(TRANSLATION, locale, i18n);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -40,6 +43,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           type="file"
         />
         <Button
+          aria-label={translate(PROMPT_INPUT_I18N.fileUploadButton)}
           className={className}
           data-ods="prompt-input-file-upload-button"
           size={BUTTON_SIZE.sm}

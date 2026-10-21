@@ -2,6 +2,8 @@
 
 import { type JSX, type MutableRefObject, type ReactNode, createContext, useEffect, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
+import { type Locale } from '../../../../utils/locales';
+import { type PROMPT_INPUT_I18N } from '../constants/prompt-input-i18n';
 
 interface PromptInputInputSubmitDetails {
   inputValue: string;
@@ -29,6 +31,10 @@ interface PromptInputRootProp {
    */
   fileCollection?: File[];
   /**
+   * Internal translations override.
+   */
+  i18n?: Partial<Record<PROMPT_INPUT_I18N, string>>,
+  /**
    * The controlled textarea value.
    */
   value?: string,
@@ -36,6 +42,10 @@ interface PromptInputRootProp {
    * Whether the component is in loading state.
    */
   loading?: boolean;
+  /**
+   * The locale used for the translation of the internal elements.
+   */
+  locale?: Locale,
   /**
    * The name of the textarea form element. Useful for form submission.
    */

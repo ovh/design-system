@@ -8,6 +8,7 @@ import {
 } from "../../../../ods-react/src/components/form-field/src";
 import { FileThumbnail } from "../../../../ods-react/src/components/file-thumbnail/src";
 import {
+  PROMPT_INPUT_I18N,
   PromptInput,
   PromptInputControls,
   PromptInputFiles,
@@ -27,6 +28,8 @@ const meta: Meta<PromptInputProp> = {
   argTypes: excludeFromDemoControls([
     "defaultValue",
     "fileCollection",
+    "i18n",
+    "locale",
     "name",
     "onInputSubmit",
     "onValueChange",
@@ -288,6 +291,28 @@ export const AccessibilityButtonsLabels: Story = {
         <PromptInputFileUploadButton aria-label="Attach file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />
         <PromptInputSendButton aria-label="Send request" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PROMPT_INPUT_I18N, PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput
+      i18n={{
+        [PROMPT_INPUT_I18N.fileUploadButton]: "Attach a log file",
+        [PROMPT_INPUT_I18N.sendButton]: "Send to support",
+      }}
+    >
+      <PromptInputControls>
+        <PromptInputFileUploadButton />
+        <PromptInputTextControl aria-label="Describe your issue" />
+        <PromptInputSendButton />
       </PromptInputControls>
     </PromptInput>
   ),

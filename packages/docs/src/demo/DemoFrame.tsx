@@ -14,6 +14,11 @@ interface DemoFrameProp {
   bare?: boolean;
   children: ReactNode;
   dark?: boolean;
+  /* Pads the body by 16px instead of 4px. Popups keep 8px off the frame
+     viewport edges (floating-ui shift padding): a demo flush with the frame
+     left edge had its dropdowns pushed 8px off their trigger. The 4px keep
+     the focus rings whole. */
+  inset?: boolean;
   /* Leaves the body on the page surface instead of the raised one — for
      callers that paint their own raised surface inside the frame. */
   pageSurface?: boolean;
@@ -264,7 +269,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -278,10 +283,10 @@ const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoF
         // Closed drawers become invisible click-swallowing panels; only
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
-        // The body keeps 4px of padding for the ODS focus ring (2px + 2px offset), which the html
-        // overflow would clip on a story flush with the frame edge; .canvas__demo gives it back.
+        // The body keeps at least 4px of padding for the ODS focus ring (2px + 2px offset), which the
+        // html overflow would clip on a story flush with the frame edge (16px with inset).
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; padding: 4px; background: ${ pageSurface ? 'var(--ods-semantic-color-surface-page)' : 'var(--ods-semantic-color-surface-raised)' }; color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; padding: ${ inset ? 16 : 4 }px; background: ${ pageSurface ? 'var(--ods-semantic-color-surface-page)' : 'var(--ods-semantic-color-surface-raised)' }; color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

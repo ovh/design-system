@@ -2,50 +2,76 @@ import { ICON_NAME, Icon, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTri
 import { type JSX } from 'react';
 import style from './index.module.scss';
 
-const FEATURES = [
-  { label: 'Memory: up to 1.5 TB' },
-  { label: 'SLA: 99.99%' },
-  { label: 'Guaranteed public bandwidth from 5 Gbps to 25 Gbps', tooltipContent: 'Except for our Asia-Pacific regions.' },
-  { label: '25 Gbps private bandwidth included' },
-  { label: 'OVHcloud Link Aggregation' },
-];
+const FEATURES = {
+  items: [
+    { label: '4 x 1 GB databases' },
+    { label: '8 GB Web Cloud Databases', tooltipContent: 'Some details.' },
+  ],
+  title: 'Database',
+  tooltipContent: 'Some details.',
+};
 
 const FeatureList = (): JSX.Element => {
   return (
-    <ul className={ style['feature-list'] }>
-      {
-        FEATURES.map(({ label, tooltipContent }, idx) => (
-          <li
-            className={ style['feature-list__item'] }
-            key={ idx }>
-            <Icon
-              className={ style['feature-list__item__icon'] }
-              name={ ICON_NAME.check } />
+    <div className={ style['feature-list'] }>
+      <div>
+        <Text
+          as="span"
+          preset={ TEXT_PRESET.label }>
+          { FEATURES.title }
+        </Text>
 
-            <div>
-              <Text preset={ TEXT_PRESET.span }>
-                { label }
-              </Text>
+        {
+          !!FEATURES.tooltipContent &&
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon
+                className={ style['feature-list__tooltip-trigger'] }
+                name={ ICON_NAME.circleQuestion } />
+            </TooltipTrigger>
 
-              {
-                !!tooltipContent &&
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Icon
-                      className={ style['feature-list__item__tooltip-trigger'] }
-                      name={ ICON_NAME.circleQuestion } />
-                  </TooltipTrigger>
+            <TooltipContent>
+              { FEATURES.tooltipContent }
+            </TooltipContent>
+          </Tooltip>
+        }
+      </div>
 
-                  <TooltipContent>
-                    { tooltipContent }
-                  </TooltipContent>
-                </Tooltip>
-              }
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+      <ul className={ style['feature-list__items'] }>
+        {
+          FEATURES.items.map(({ label, tooltipContent }, idx) => (
+            <li
+              className={ style['feature-list__items__item'] }
+              key={ idx }>
+              <Icon
+                className={ style['feature-list__items__item__icon'] }
+                name={ ICON_NAME.check } />
+
+              <div>
+                <Text preset={ TEXT_PRESET.span }>
+                  { label }
+                </Text>
+
+                {
+                  !!tooltipContent &&
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Icon
+                        className={ style['feature-list__tooltip-trigger'] }
+                        name={ ICON_NAME.circleQuestion } />
+                    </TooltipTrigger>
+
+                    <TooltipContent>
+                      { tooltipContent }
+                    </TooltipContent>
+                  </Tooltip>
+                }
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   );
 };
 

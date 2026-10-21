@@ -70,7 +70,7 @@ body {
   display: flex;
   margin: auto;
   width: 150px;
-  color: var(--ods-semantic-brand-color);
+  color: var(--ods-semantic-color-brand);
 }
 
 .shell__select-item {
@@ -360,7 +360,7 @@ body {
   --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
   --ods-semantic-color-focus: var(--ods-palette-brand-500);
-  --ods-semantic-brand-color: var(--ods-palette-white);
+  --ods-semantic-color-brand: var(--ods-palette-white);
 
   /* The selected surfaces are dark tints here, so the text on them inverts too:
      the light-theme bindings are near-black. */

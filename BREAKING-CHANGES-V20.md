@@ -64,7 +64,7 @@ not the history of the branch.
 | **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colours have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its `--tables` output. |
 
-`--ods-theme-brand-color` is the only rename that keeps its value: `--ods-semantic-brand-color`
+`--ods-theme-brand-color` is the only rename that keeps its value: `--ods-semantic-color-brand`
 points at `brand-700`, the rung that `primary-700` became.
 
 ### 1:1 renames
@@ -83,7 +83,7 @@ points at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-border-color-drag-over` | `--ods-semantic-color-border-drag-over` |
 | `--ods-theme-border-color-readonly` | `--ods-semantic-color-border-readonly` |
 | `--ods-theme-border-color-selected` | `--ods-semantic-color-border-selected-solid` |
-| `--ods-theme-brand-color` | `--ods-semantic-brand-color` |
+| `--ods-theme-brand-color` | `--ods-semantic-color-brand` |
 | `--ods-theme-heading-text-color` | `--ods-semantic-color-content-heading` |
 | `--ods-theme-progress-background-color` | `--ods-semantic-color-surface-control-solid` |
 | `--ods-theme-split-background-color` | `--ods-semantic-color-surface-neutral-minimal` |

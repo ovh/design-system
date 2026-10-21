@@ -137,7 +137,7 @@ function categoryOf(name: string): TOKEN_CATEGORY {
   if (name === '--ods-semantic-color-focus' || name.startsWith('--ods-semantic-border-focus-')) {
     return TOKEN_CATEGORY.focus;
   }
-  if (name.startsWith('--ods-semantic-color-') || name === '--ods-semantic-brand-color') {
+  if (name.startsWith('--ods-semantic-color-')) {
     return TOKEN_CATEGORY.color;
   }
   if (name.startsWith('--ods-semantic-size-') || name.startsWith('--ods-semantic-border-')) {

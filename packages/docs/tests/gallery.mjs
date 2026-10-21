@@ -1,6 +1,6 @@
 // Icon gallery: deep link, alias + case-insensitive filtering, detail drawer.
 // Component gallery: the category filter, the toolbar and the card grid on a phone screen, and the
-// previews.
+// previews. Related recipes: two usable cards per row, or one.
 import { makeChecker } from './helpers.mjs';
 
 async function suite(browser, { base, version }) {
@@ -99,6 +99,21 @@ async function suite(browser, { base, version }) {
       throw new Error(errors.join(' | ') || 'no preview');
     }
   });
+  // Related recipes (Button has five): two cards per row in the full-width article, one in a narrower
+  // one (just over the breakpoint where the ToC comes back), never a card too narrow for a Query Filter.
+  for (const [width, perRow] of [[1440, 2], [1150, 1]]) {
+    await check(`related recipes show ${perRow} usable card(s) per row at ${width}px`, async () => {
+      await page.setViewportSize({ height: 900, width });
+      await page.goto(`${base}/v${version}/components/button/examples`, { waitUntil: 'domcontentloaded' });
+      const cards = page.locator('[class*="recipes__grid--related"] > *');
+      await cards.first().waitFor({ timeout: 15000 });
+      const boxes = await cards.evaluateAll((all) => all.map((card) => card.getBoundingClientRect()).map(({ top, width: cardWidth }) => ({ top: Math.round(top), width: cardWidth })));
+      const firstRow = boxes.filter((box) => box.top === boxes[0].top).length;
+      if (firstRow !== perRow || boxes.some((box) => box.width < 349)) {
+        throw new Error(`${firstRow} per row, widths ${boxes.map((box) => Math.round(box.width)).join(', ')}`);
+      }
+    });
+  }
 
   results.push(pageErrors.length === 0 ? 'OK  zero pageerror' : `KO  ${pageErrors.length} pageerror(s)`);
   await page.close();

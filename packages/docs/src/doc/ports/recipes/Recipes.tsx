@@ -50,7 +50,7 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
         </>
       ) }
 
-      <div className={ styles['recipes__grid'] }>
+      <div className={ component ? `${styles['recipes__grid']} ${styles['recipes__grid--related']}` : styles['recipes__grid'] }>
         { filtered.length > 0 ? (
           filtered.map((recipe) => (
             <RecipeCard

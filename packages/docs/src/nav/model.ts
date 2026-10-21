@@ -45,6 +45,10 @@ function storiesOf(id: string): StoriesLoader | undefined {
 
 interface NavPage {
   badge?: Badge;
+  /* The gallery heading a reference list (Component Gallery, Recipe Gallery):
+     emphasized in the sidebar, and named just "Gallery" there since its
+     section already says which one. The page, tab and search keep the title. */
+  gallery?: true;
   /* Routed, but left out of the sidebar and the search palette. */
   hidden?: boolean;
   icon?: ICON_NAME;
@@ -230,7 +234,7 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     title: 'Components',
     children: [
       // Kept as a 'tool' page (same id and route) — only its place in the tree changed.
-      { icon: ICON_NAME.grid, id: 'tools/component-gallery', kind: 'tool', path: '/tools/component-gallery', title: 'Component Gallery' },
+      { gallery: true, icon: ICON_NAME.grid, id: 'tools/component-gallery', kind: 'tool', path: '/tools/component-gallery', title: 'Component Gallery' },
       ...COMPONENT_PAGES.map(([key, title, badge]): NavPage => ({
         badge,
         icon: ICON_NAME.box,
@@ -250,7 +254,7 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     children: [
       // Same shape as Components: the gallery of every recipe first, then one page per recipe.
       // The gallery keeps the historical id and route (linked from the homepage and the guides).
-      { icon: ICON_NAME.grid, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Recipe Gallery' },
+      { gallery: true, icon: ICON_NAME.grid, id: 'recipes/components', kind: 'recipe', path: '/recipes/components', title: 'Recipe Gallery' },
       ...RECIPE_PAGES.map(([key, title]): NavPage => ({
         icon: ICON_NAME.file,
         iconInTree: false,
@@ -291,9 +295,9 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
 /* TreeView items derived from the model; leaf ids = page ids so a tree
    selection maps straight to a route. Icons mark the pages (leaves); the
    sections are already marked by their chevron. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, gallery?: true, icon?: ICON_NAME }, id: string, name: string }[] {
   return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
-    ? { customRendererData: { badge: node.badge, icon: node.iconInTree === false ? undefined : node.icon }, id: node.id, name: node.title }
+    ? { customRendererData: { badge: node.badge, gallery: node.gallery, icon: node.iconInTree === false ? undefined : node.icon }, id: node.id, name: node.gallery ? 'Gallery' : node.title }
     : { children: toTreeItems(node.children, sectionIcons), customRendererData: sectionIcons ? { icon: node.icon } : {}, id: node.id, name: node.title }));
 }
 

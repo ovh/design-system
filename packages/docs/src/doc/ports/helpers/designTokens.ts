@@ -105,7 +105,7 @@ function rungOf(token: Token): number {
   return parseInt(token.name.match(PALETTE_RUNG)?.[2] || '0', 10);
 }
 
-/* Splits the palette into its hue ramps, the one-off colours and the opacity rungs. */
+/* Splits the palette into its hue ramps, the one-off colors and the opacity rungs. */
 function splitPaletteTokens(tokens: Token[]): { monoColors: Token[], opacities: Token[], palettes: Token[][] } {
   const monoColors: Token[] = [];
   const opacities: Token[] = [];

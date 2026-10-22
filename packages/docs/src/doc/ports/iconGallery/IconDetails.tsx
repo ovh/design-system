@@ -6,7 +6,7 @@ import { cx } from '../cx';
 import styles from './iconDetails.module.css';
 
 /* Drawer content of the icon gallery: name + aliases, a preview tintable with
-   the semantic colours, the copyable icon value and the usage snippets. */
+   the semantic colors, the copyable icon value and the usage snippets. */
 
 interface IconDetailsProp {
   aliases?: string[];

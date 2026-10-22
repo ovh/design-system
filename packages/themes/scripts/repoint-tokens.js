@@ -7,7 +7,7 @@
  * styles, so neither can be deleted without rewriting the references in the same change:
  *
  *   --ods-theme-*            the 72 role tokens. A direct rename, one destination each, except
- *                            the six --ods-theme-<colour>-color variants, which served as fill,
+ *                            the six --ods-theme-<color>-color variants, which served as fill,
  *                            border AND text and therefore split three ways.
  *   --ods-color-<f>-<rung>   the tier-1 ramp aliases. There is no rename for these: a ramp step
  *                            carries no role, so the destination depends on what the declaring
@@ -42,7 +42,7 @@ const WRITE = process.argv.includes('--write');
  * because --ods-theme-text-color is a strict prefix of --ods-theme-text-color-disabled and a
  * naive pass would corrupt it.
  *
- * `null` means the role is gone with nothing to take over - the disabled colours, now an opacity
+ * `null` means the role is gone with nothing to take over - the disabled colors, now an opacity
  * (BC-12 in BREAKING-CHANGES-V20.md) - so the site is reported, not rewritten.
  */
 const THEME = {
@@ -122,7 +122,7 @@ const THEME = {
 };
 
 /*
- * The six that split. Each was used as a fill, as a border and as a text colour, so the single
+ * The six that split. Each was used as a fill, as a border and as a text color, so the single
  * historical name becomes one of three depending on the declaring property. This is the only
  * part of the role rename that is not mechanical, and the report lists every site.
  */
@@ -220,7 +220,7 @@ function rampRole(kind, family, rung, prop) {
   }
 
   if (kind === 'content') {
-    /* The decorative badges carry their own text colour, whatever rung they were written with. */
+    /* The decorative badges carry their own text color, whatever rung they were written with. */
     if (/alpha|beta|-new|promotion/.test(prop)) return 'color-content-on-vivid';
     if (rung === '000') return 'color-content-on-solid';
     if (f === 'neutral') {
@@ -234,7 +234,7 @@ function rampRole(kind, family, rung, prop) {
       /*
        * Everything darker is brand text sitting on a brand-tinted ground - a ghost hover fill, a
        * light message, a tag. An interaction token would be wrong here: this text is static, and
-       * binding it to a hover role would make it move when the hover colour is re-themed.
+       * binding it to a hover role would make it move when the hover color is re-themed.
        */
       if (['600', '700', '800', '900'].includes(rung)) return 'color-content-on-brand';
     }
@@ -251,7 +251,7 @@ function rampRole(kind, family, rung, prop) {
   return null;
 }
 
-/* The named tier-1 colours that were never ramps. */
+/* The named tier-1 colors that were never ramps. */
 const NAMED = {
   alpha: 'color-surface-decorative-alpha',
   beta: 'color-surface-decorative-beta',
@@ -261,7 +261,7 @@ const NAMED = {
   heading: 'color-content-heading',
   /*
    * Dangling today: two dev-module rules read --ods-color-text-secondary and nothing declares it,
-   * so they currently render with an inherited colour. Pointed at the closest real role.
+   * so they currently render with an inherited color. Pointed at the closest real role.
    */
   'text-secondary': 'color-content-placeholder',
 
@@ -407,7 +407,7 @@ function rewriteLine(line, carried, file, lineNo) {
     rows.push([file, lineNo, prop, from, `--ods-semantic-${role}`, rule]);
     return `--ods-semantic-${role}`;
   };
-  /* A colour inside a gradient is not the property's fill, so the property says nothing about it. */
+  /* A color inside a gradient is not the property's fill, so the property says nothing about it. */
   const inGradient = (offset) => /gradient\(/.test(line.slice(0, offset));
   let out = line;
 

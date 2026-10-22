@@ -44,7 +44,7 @@ not the history of the branch.
 | [BC-09](#bc-09---card-defaults-to-neutral) | `@ovhcloud/ods-react` | `Card` defaults to `neutral` | automatable |
 | [BC-10](#bc-10--button-radius-moves-to-the-control-family) | `@ovhcloud/ods-react` | `Button` radius is 4px at every size | manual |
 | [BC-11](#bc-11--accordion-takes-the-whole-container-radius) | `@ovhcloud/ods-react` | `Accordion` outer corners go 4px -> 8px | manual |
-| [BC-12](#bc-12---disabled-is-an-opacity-not-a-colour) | `@ovhcloud/ods-react` | disabled is dimmed with opacity, not repainted grey | manual |
+| [BC-12](#bc-12---disabled-is-an-opacity-not-a-color) | `@ovhcloud/ods-react` | disabled is dimmed with opacity, not repainted grey | manual |
 | [BC-13](#bc-13---the-default-font-family-is-renamed-source-sans-3) | `@ovhcloud/ods-themes` | the default font family is renamed `'Source Sans 3'` | automatable |
 | [BC-14](#bc-14---form-fields-paint-their-own-background) | `@ovhcloud/ods-react` | form fields paint their own background | manual |
 | [BC-15](#bc-15---a-modal-always-stacks-above-a-drawer) | `@ovhcloud/ods-react` | a modal always stacks above a drawer | manual |
@@ -61,7 +61,7 @@ not the history of the branch.
 | **Change** | The 72 role tokens named `--ods-theme-*` are deleted and replaced by `--ods-semantic-*`. No alias, no deprecation window. |
 | **Impact** | Any `var(--ods-theme-…)` in consumer CSS resolves to nothing. Fails visually, never loudly: the declaration is dropped and the property falls back to its inherited or initial value. |
 | **Detection** | `grep -rn -- '--ods-theme-' src/` |
-| **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colours have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
+| **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colors have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its `--tables` output. |
 
 `--ods-theme-brand-color` is the only rename that keeps its value: `--ods-semantic-color-brand`
@@ -143,7 +143,7 @@ A codemod must match longest-first: `--ods-theme-text-color` is a strict prefix 
 
 ### The 6 that split by declaring property
 
-`--ods-theme-<role>-color` served as a fill, a border and a text colour at once. The destination
+`--ods-theme-<role>-color` served as a fill, a border and a text color at once. The destination
 depends on the property it is declared in, so a rename table is not enough - the codemod has to
 know which declaration it sits in.
 
@@ -237,7 +237,7 @@ Destinations are shown without their `--ods-semantic-color-` prefix.
 | 800 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-on-warning` | `content-on-neutral` |
 | 900 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-on-warning-solid` | `content-on-neutral` |
 
-`_none_` is a real hole, not an omission: light text colours have no role in the semantic layer.
+`_none_` is a real hole, not an omission: light text colors have no role in the semantic layer.
 Those sites must be reported for a human to decide.
 
 Five context rules sit on top of the tables:
@@ -285,7 +285,7 @@ Five context rules sit on top of the tables:
 | `--ods-color-form-element-text-placeholder-default` | `--ods-semantic-color-content-placeholder` |
 
 `--ods-color-text-secondary` was already dangling before v20 - it was read but never declared, so
-those sites were rendering with an inherited colour. The destination above is the closest real
+those sites were rendering with an inherited color. The destination above is the closest real
 role, not a value-preserving rename. The three `*-disabled-default` tokens have no destination, for
 the same reason as in BC-01.
 
@@ -368,7 +368,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the navy family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a `:root` overlay that re-aims the accent ramp onto blue and overrides the roles that differ. |
-| **Impact** | The largest visible change of the major: an app that imports only the default theme changes colour almost everywhere. Loading `blue-jeans/css` *before* `default/css`, or a second copy of `default/css` injected later (a micro-frontend shipping its own), silently brings the default look back, because both declare their tokens on `:root` and the last one wins. |
+| **Impact** | The largest visible change of the major: an app that imports only the default theme changes color almost everywhere. Loading `blue-jeans/css` *before* `default/css`, or a second copy of `default/css` injected later (a micro-frontend shipping its own), silently brings the default look back, because both declare their tokens on `:root` and the last one wins. |
 | **Detection** | `grep -rn 'ods-themes/default/css' src/` - every app that imports it alone |
 | **Codemod** | **partial** - add `import '@ovhcloud/ods-themes/blue-jeans/css'` right after the default import to keep the OVHcloud look. Where the theme is injected at runtime, the order has to be checked by hand. |
 | **Source of truth** | `packages/themes/src/default/index.scss`, `packages/themes/src/blue-jeans/index.scss` |
@@ -387,7 +387,7 @@ written before it.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens and nine dead `Modal` / `Message` / `Tabs` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
-| **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colours shift slightly even where nothing breaks. |
+| **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colors shift slightly even where nothing breaks. |
 | **Detection** | covered by the BC-01 / BC-02 greps |
 | **Codemod** | none needed beyond BC-01 / BC-02 |
 | **Source of truth** | `packages/ods-react/src/style/*.scss` |
@@ -414,7 +414,7 @@ the theme roles directly. Overriding any of them has no effect.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | `<Card>` without a `status` or `color` prop was `primary`, it is now `neutral`. |
-| **Impact** | Every card that relied on the default changes colour. No type error, no runtime warning. |
+| **Impact** | Every card that relied on the default changes color. No type error, no runtime warning. |
 | **Detection** | `grep -rn '<Card' src/` and look for the ones with neither `status` nor `color` |
 | **Codemod** | **automatable** - add `status="accent"` to every `<Card>` that has neither `status` nor `color`, for a consumer who wants the old look. Worth offering as an opt-in step rather than applying by default: the new default is the intended one. |
 | **Source of truth** | `packages/ods-react/src/components/card/src/components/card/Card.tsx` |
@@ -453,13 +453,13 @@ The trigger and the content inherit the item's radius, so nothing else changes. 
 
 ---
 
-## BC-12 - disabled is an opacity, not a colour
+## BC-12 - disabled is an opacity, not a color
 
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | A disabled component keeps the colours of its enabled state - variant, checked, selected - and is dimmed with `opacity: var(--ods-semantic-opacity-disabled)` instead of being repainted grey. The `ods-is-disabled()` mixin of `@ovhcloud/ods-react/style` sets that opacity and no longer sets `border-color`, `background-color` or `color`, and its three SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color` are removed. Seven component tokens that only painted a disabled state go with them: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch` and `--ods-tile-background-color-disabled`. |
-| **Impact** | Visual on every disabled component. A stylesheet that reads one of the three SCSS variables fails to compile. One that includes `ods-is-disabled()` gets the opacity instead of the grey, and disabled colours a consumer painted on top of an ODS component are now dimmed as well. An override of one of the seven component tokens is silently ignored. |
+| **Change** | A disabled component keeps the colors of its enabled state - variant, checked, selected - and is dimmed with `opacity: var(--ods-semantic-opacity-disabled)` instead of being repainted grey. The `ods-is-disabled()` mixin of `@ovhcloud/ods-react/style` sets that opacity and no longer sets `border-color`, `background-color` or `color`, and its three SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color` are removed. Seven component tokens that only painted a disabled state go with them: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch` and `--ods-tile-background-color-disabled`. |
+| **Impact** | Visual on every disabled component. A stylesheet that reads one of the three SCSS variables fails to compile. One that includes `ods-is-disabled()` gets the opacity instead of the grey, and disabled colors a consumer painted on top of an ODS component are now dimmed as well. An override of one of the seven component tokens is silently ignored. |
 | **Detection** | `grep -rnE 'ods-state-is-disabled-\|(checked\|selected)-disabled\|tab-border-color-disabled\|tile-background-color-disabled' src/` |
 | **Codemod** | **manual** - nothing maps 1:1, the grey has no opacity equivalent. Remove the variable reads and the token overrides; a consumer who wants a grey disabled state styles `:disabled` / `[data-disabled]` on its side. |
 | **Source of truth** | `packages/ods-react/src/style/_state.scss` |
@@ -469,7 +469,7 @@ so a disabled part nested in it - the `Input` of a `Combobox`, the clear `Button
 does not multiply a second opacity on top. `ButtonGroup`, `Switch` and `Range` carry the opacity on
 their root when the whole group is disabled, rather than on each item.
 
-The theme's three disabled colour roles are still declared but no component reads them any more.
+The theme's three disabled color roles are still declared but no component reads them any more.
 
 ---
 
@@ -529,7 +529,7 @@ The theme's three disabled colour roles are still declared but no component read
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | Three `Code` custom properties are renamed after what they hold: `--ods-code-primary-color` (the text ink) becomes `--ods-code-text-color`, `--ods-code-secondary-color` (the block background) becomes `--ods-code-background-color`, and `--ods-code-trigger-background-color` (the copy button ink, not a background) becomes `--ods-code-trigger-color`. |
-| **Impact** | An override of an old name is silently ignored: the block keeps the theme colours. Nothing fails to compile. |
+| **Impact** | An override of an old name is silently ignored: the block keeps the theme colors. Nothing fails to compile. |
 | **Detection** | `grep -rnE -- '--ods-code-(primary-color\|secondary-color\|trigger-background-color)\b' src/` |
 | **Codemod** | **automatable** - three 1:1 renames. `--ods-code-trigger-background-color-hover` and `-active` keep their names: they are backgrounds. |
 | **Source of truth** | `packages/ods-react/src/components/code/src/components/code/code.module.scss` |
@@ -545,6 +545,6 @@ The theme's three disabled colour roles are still declared but no component read
 - No visual-regression baseline has been taken against the new theme, so the list of value-only
   changes (BC-08) is qualitative.
 - Tokens deduced rather than delivered by design (the opacity rungs, still marked `REVIEW` in
-  `packages/themes/src/default/_variables.scss`, and the ten chart series colours) can still be
+  `packages/themes/src/default/_variables.scss`, and the ten chart series colors) can still be
   rejected. Any of them that design rejects becomes a rename **after** this inventory was written,
   which is exactly the case the "append-only" rule above is for.

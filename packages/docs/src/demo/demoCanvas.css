@@ -5,7 +5,7 @@
   overflow: hidden;
 }
 
-/* Toolbar (grey) sits above the demo (background surface); the colour change
+/* Toolbar (grey) sits above the demo (background surface); the color change
    separates them, so no border is needed between the two. */
 .canvas__toolbar {
   align-items: center;

@@ -8,7 +8,7 @@ import styles from './componentGallery.module.css';
 
 const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx', { eager: true }) as Record<string, Record<string, unknown>>;
 
-/* ThemeGenerator is each component's size x variant x colour x state fixture. The others fill what
+/* ThemeGenerator is each component's size x variant x color x state fixture. The others fill what
    some fixtures leave out: the Tabs and Table variants, Divider orientation, Logo sizes, the
    invalid Checkbox... */
 const VARIATION_STORIES = ['ThemeGenerator', 'Variant', 'Color', 'Size', 'Sizes', 'Orientation', 'Types', 'States', 'Disabled', 'Readonly', 'ReadOnly', 'Invalid', 'Loading', 'Error', 'Selected'];

@@ -1,17 +1,11 @@
-/*
- * Six hue families, ten stops each, pivot at 500. Values come from MDS / Figma.
- *
- * blue and gray gained a 50 and every light rung moved up one step, so the old 400s (#157eea and
- * #999999) have no destination and are gone. Any theme or app that named a light stop by number is
- * now one rung lighter than it was.
- *
- * navy is the MDS navy ramp; its 50 to 400 take MDS 025, 050, 075, 100 and 300.
- *
- * 500 is the first accessible stop: gray-500 and red-500 are darkened to reach 4.5:1 on white.
- * green and orange keep their hue and rely on a dark ink.
- *
- * red-800 and red-900 are derived, not delivered.
- */
+// Six hue families, ten stops each, pivot at 500. Values come from MDS / Figma.
+// blue and gray gained a 50 and every light rung moved up one step, so the old 400s (#157eea and
+// #999999) have no destination and are gone. Any theme or app that named a light stop by number is
+// now one rung lighter than it was.
+// navy is the MDS navy ramp; its 50 to 400 take MDS 025, 050, 075, 100 and 300.
+// 500 is the first accessible stop: gray-500 and red-500 are darkened to reach 4.5:1 on white.
+// green and orange keep their hue and rely on a dark ink.
+// red-800 and red-900 are derived, not delivered.
 $ods-palette-blue-50: #f3fdff;
 $ods-palette-blue-100: #e6faff;
 $ods-palette-blue-200: #bef1ff;
@@ -73,14 +67,8 @@ $ods-palette-orange-700: #b45309;
 $ods-palette-orange-800: #92400e;
 $ods-palette-orange-900: #78350f;
 
-/*
- * One-off colors.
- *
- * A nuance that belongs to a single brand does NOT live here - it lives in that brand's own file.
- * `twilight` is the example: it is the blue-jeans prose colour and nothing else, so it is declared
- * in src/blue-jeans/index.scss. Keeping it here would have made every build carry a colour only
- * one of them can use.
- */
+// One-off colors. A nuance of a single brand lives in that brand's file, as blue-jeans does with
+// its `twilight`.
 $ods-palette-white: #ffffff;
 $ods-palette-black: #000000;
 $ods-palette-decorative-alpha: #fbfe47;
@@ -88,24 +76,9 @@ $ods-palette-decorative-beta: #47fe78;
 $ods-palette-decorative-new: #47fffa;
 $ods-palette-decorative-promotion: #ccff66;
 
-/*
- * Opacity
- */
+// Opacity
 $ods-palette-opacity-15: 0.15;
 $ods-palette-opacity-20: 0.2;
 $ods-palette-opacity-25: 0.25;
 $ods-palette-opacity-50: 0.5;
 $ods-palette-opacity-75: 0.75;
-
-/*
- * Breakpoints are the one family that cannot be a custom property: a media query is evaluated
- * before custom properties resolve, so `@media (width >= var(--x))` is invalid. They exist only
- * as build-time variables, which also means a second theme cannot rebind them without a
- * rebuild. Do not expose them as custom properties - it would silently never work.
- */
-$ods-breakpoint-sub-mobile: 360px;
-$ods-breakpoint-mobile: 576px;
-$ods-breakpoint-tablet: 768px;
-$ods-breakpoint-desktop: 992px;
-$ods-breakpoint-large-screen: 1200px;
-$ods-breakpoint-widescreen: 1400px;

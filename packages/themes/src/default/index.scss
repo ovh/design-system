@@ -128,7 +128,7 @@
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-300);
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-700);
 
-  /* Borders - statuses -> Buttons */
+  /* Borders - statuses */
   --ods-semantic-color-border-brand: var(--ods-palette-brand-500);
 
   /* Minor brand button at rest: the control border step. */
@@ -180,7 +180,7 @@
   --ods-semantic-color-interaction-critical-hover: var(--ods-palette-red-600);
   --ods-semantic-color-interaction-critical-active: var(--ods-palette-red-600);
 
-  /* Interaction - lists and selection -> Select, combobox, Treeview */
+  /* Interaction - lists and selection */
   --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-50);
   --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-200);
   --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-800);
@@ -256,6 +256,7 @@
   --ods-semantic-color-shadow-raised: var(--ods-palette-gray-900);
   --ods-semantic-color-shadow-overlay: var(--ods-palette-gray-900);
   --ods-semantic-shadow-control: none;
+  // Not `none`: Tile appends it to a shadow list.
   --ods-semantic-shadow-raised: 0 0 #0000;
   --ods-semantic-shadow-overlay: 0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent);
 

@@ -1,6 +1,6 @@
 .token-preview {
   --preview-background-color: var(--ods-semantic-color-surface-selected);
-  --preview-border-color: var(--ods-semantic-color-border-neutral-subtle);  /* Need an --ods-theme-border-color */
+  --preview-border-color: var(--ods-semantic-color-border-neutral-subtle);
   --preview-size: 24px;
   --preview-spacing-background-color: var(--ods-semantic-color-surface-success-subtle);
 

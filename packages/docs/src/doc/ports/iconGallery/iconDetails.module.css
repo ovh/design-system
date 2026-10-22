@@ -19,8 +19,6 @@
   column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 }
 
-/* Surfaces read from the neutral ramp, which the shell remaps in dark — the
-   Storybook original hardcoded #fff / #000 and was unreadable there. */
 .icon-details__preview {
   display: flex;
   align-items: center;

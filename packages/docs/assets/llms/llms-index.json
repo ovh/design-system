@@ -1463,7 +1463,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 446,
+          "tokens": 425,
           "url": "./react-components-toggle--technical-information.txt"
         },
         "examples": {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 6970,
+      "tokens": 7005,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

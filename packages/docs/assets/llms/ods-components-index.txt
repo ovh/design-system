@@ -392,7 +392,7 @@
 
 - [Overview](./react-components-toggle.txt) (~306 tokens)
 - [Documentation](./react-components-toggle--documentation.txt) (~971 tokens)
-- [Technical Information](./react-components-toggle--technical-information.txt) (~446 tokens)
+- [Technical Information](./react-components-toggle--technical-information.txt) (~425 tokens)
 - [Examples](./react-components-toggle--examples.txt) (~277 tokens)
 
 ## Tooltip

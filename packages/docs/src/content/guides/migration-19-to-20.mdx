@@ -87,7 +87,7 @@ These are unchanged by the React version — they apply the same way on React 18
 
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
-- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). They are server-side rendered like any client component, the Markdown component included: no `next/dynamic` with `{ ssr: false }` is needed.
 
 <Heading label="Typography" level={ 2 } />
 

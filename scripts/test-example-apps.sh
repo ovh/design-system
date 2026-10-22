@@ -7,6 +7,8 @@
 #   Vite (vite-app, accessibility-test, react-router-app)
 #   Webpack: 5.108/babel 8/TS 6 (webpack-app) · 5.90/babel 7/TS 5.3 (webpack-app-legacy)
 #   Next.js SSR: 16 (nextjs-app) · 15 (nextjs-app-legacy)
+# Before the apps, the ods-react dist is imported and rendered in plain Node
+# (packages/ods-react/scripts/test-ssr.mjs) to catch browser-only code at load time.
 # The -legacy apps are deliberately frozen on an older integrator toolchain; do
 # not bump their dependencies with the tree.
 # React 18 is NOT exercised: v20 targets React 19. The peerDependencies range
@@ -37,6 +39,21 @@ NAMES=()
 RESULTS=()
 FAILED=0
 
+# Server-side rendering: the ods-react bundle must import and render in plain Node
+echo "======== ssr: ods-react dist ========"
+log="$(mktemp "${TMPDIR:-/tmp}/example-ssr.XXXXXX")"
+if pnpm --filter @ovhcloud/ods-react run test:ssr >"$log" 2>&1; then
+  echo "  ✅ OK"
+  NAMES+=("ods-react ssr"); RESULTS+=("✅ OK")
+  rm -f "$log"
+else
+  echo "  ❌ FAILED — last lines:"
+  tail -15 "$log" | sed 's/^/    /'
+  echo "  full log kept at: $log"
+  NAMES+=("ods-react ssr"); RESULTS+=("❌ FAILED")
+  FAILED=1
+fi
+
 for dir in "$EXAMPLES_DIR"/*/; do
   app="$(basename "$dir")"
   # Only include apps that define a "build" script
@@ -45,7 +62,7 @@ for dir in "$EXAMPLES_DIR"/*/; do
   fi
 
   echo "======== build: $app ========"
-  log="$(mktemp -t "example-$app")"
+  log="$(mktemp "${TMPDIR:-/tmp}/example-$app.XXXXXX")"
   if pnpm -C "$dir" build >"$log" 2>&1; then
     echo "  ✅ OK"
     NAMES+=("$app"); RESULTS+=("✅ OK")
@@ -67,7 +84,7 @@ done; fi
 echo "================================================="
 
 if [ "$FAILED" -ne 0 ]; then
-  echo "✗ At least one example app does not build — integration regression."
+  echo "✗ At least one check failed (SSR of the ods-react dist or an example app build) — integration regression."
   exit 1
 fi
 echo "✓ Every example app builds."

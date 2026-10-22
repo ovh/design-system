@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
+import { TABS_MOUNT_STRATEGY, TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
 
@@ -354,6 +354,39 @@ import { useState } from 'react';`,
       </div>
     );
   },
+};
+
+export const MountStrategy: Story = {
+  globals: {
+    imports: `import { TABS_MOUNT_STRATEGY, Tab, TabContent, TabList, Tabs } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tabs defaultValue="overview" mountStrategy={ TABS_MOUNT_STRATEGY.lazy }>
+      <TabList>
+        <Tab value="overview">Overview</Tab>
+        <Tab value="metrics">Metrics</Tab>
+        <Tab value="search">Search</Tab>
+        <Tab value="faq">FAQ</Tab>
+      </TabList>
+
+      <TabContent value="overview" style={{ padding: '16px 0' }}>
+        <p>Rendered on load, as it is the selected tab.</p>
+      </TabContent>
+
+      <TabContent value="metrics" style={{ padding: '16px 0' }}>
+        <p>Rendered the first time this tab is shown, then kept.</p>
+      </TabContent>
+
+      <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.unmount } value="search" style={{ padding: '16px 0' }}>
+        <input aria-label="Search" placeholder="Type, switch tab, come back: the value is reset" />
+      </TabContent>
+
+      <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.keep } value="faq" style={{ padding: '16px 0' }}>
+        <p>Always rendered, so it stays in the server-rendered HTML and can be indexed.</p>
+      </TabContent>
+    </Tabs>
+  ),
 };
 
 export const ThemeGenerator: Story = {

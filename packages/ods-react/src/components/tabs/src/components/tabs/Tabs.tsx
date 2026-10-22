@@ -1,5 +1,6 @@
 import { Tabs as VendorTabs } from '@ark-ui/react/tabs';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
+import { MOUNT_STRATEGY } from '../../../../../utils/mount-strategy';
 import { TABS_SIZE } from '../../constants/tabs-size';
 import { TABS_VARIANT } from '../../constants/tabs-variant';
 import { TabsProvider, type TabsRootProp } from '../../contexts/useTabs';
@@ -10,6 +11,7 @@ const Tabs: FC<TabsProp> = forwardRef(({
   children,
   className,
   defaultValue,
+  mountStrategy = MOUNT_STRATEGY.keep,
   onValueChange,
   size = TABS_SIZE.md,
   value,
@@ -25,6 +27,7 @@ const Tabs: FC<TabsProp> = forwardRef(({
 
   return (
     <TabsProvider
+      mountStrategy={ mountStrategy }
       size={ size }
       variant={ variant }
       withArrows={ withArrows }>

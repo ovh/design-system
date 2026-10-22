@@ -4,8 +4,6 @@
   .message {
     $message: &;
 
-    --ods-message-close-button-text-color-primary: var(--ods-semantic-color-content-on-solid);
-
     @include message.ods-message();
 
     &--default {

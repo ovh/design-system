@@ -48,7 +48,7 @@ not the history of the branch.
 | [BC-13](#bc-13---the-default-font-family-is-renamed-source-sans-3) | `@ovhcloud/ods-themes` | the default font family is renamed `'Source Sans 3'` | automatable |
 | [BC-14](#bc-14---form-fields-paint-their-own-background) | `@ovhcloud/ods-react` | form fields paint their own background | manual |
 | [BC-15](#bc-15---a-modal-always-stacks-above-a-drawer) | `@ovhcloud/ods-react` | a modal always stacks above a drawer | manual |
-| [BC-16](#bc-16---deprecated-scss-variables-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated SCSS variables of `./style` removed | manual |
+| [BC-16](#bc-16---deprecated-and-unused-scss-exports-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated and 2 unused SCSS exports of `./style` removed | manual |
 
 ---
 
@@ -385,19 +385,24 @@ written before it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
+| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens and seven dead `Modal` / `Message` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
 | **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colours shift slightly even where nothing breaks. |
 | **Detection** | covered by the BC-01 / BC-02 greps |
 | **Codemod** | none needed beyond BC-01 / BC-02 |
 | **Source of truth** | `packages/ods-react/src/style/*.scss` |
 
 The mixins and SCSS variables exported by `@ovhcloud/ods-react/style` are unchanged - only the
-tokens they read - except for the disabled state, see BC-12.
+tokens they read - except for the disabled state (BC-12) and the removals of BC-16.
 
 `Tile` loses `--ods-tile-border-width`, `--ods-tile-border-color` and `--ods-tile-background-color`.
 All three were declared but never read: `Tile` renders a `Card`, so its border, its background and
 its elevation come from `--ods-card-*`. Overriding them never did anything, and overriding the
 `--ods-card-*` equivalents still works.
+
+`Modal` loses the six `--ods-modal-header-background-color-*`, only read by the `ods-modal-color()`
+mixin that nothing has called since 19.5.0 (see BC-16). `Message` loses
+`--ods-message-close-button-text-color-primary`, which the close button no longer reads. Overriding
+any of them has no effect.
 
 ---
 
@@ -505,15 +510,15 @@ The theme's three disabled colour roles are still declared but no component read
 
 ---
 
-## BC-16 - deprecated SCSS variables of `@ovhcloud/ods-react/style` removed
+## BC-16 - deprecated and unused SCSS exports of `@ovhcloud/ods-react/style` removed
 
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The five variables marked "[Deprecated] will be removed in next major version" are removed: `$ods-overlay-arrow-background-color`, `$ods-modal-border-radius`, `$ods-modal-margin`, `$ods-modal-z-index` and `$drawer-max-size`. |
+| **Change** | The five variables marked "[Deprecated] will be removed in next major version" are removed: `$ods-overlay-arrow-background-color`, `$ods-modal-border-radius`, `$ods-modal-margin`, `$ods-modal-z-index` and `$drawer-max-size`. Two unused exports go with them: the `ods-modal-color()` mixin, which nothing has called since 19.5.0, and `$ods-overlay-select-z-index`, which nothing reads. |
 | **Impact** | A stylesheet that reads one of them fails to compile. |
-| **Detection** | `grep -rnE '\$(ods-overlay-arrow-background-color\|ods-modal-border-radius\|ods-modal-margin\|ods-modal-z-index\|drawer-max-size)\b' src/` |
-| **Codemod** | **manual** - read what they held instead: `--ods-semantic-color-surface-page`, `--ods-modal-border-radius`, `--ods-modal-margin-horizontal` / `-vertical`, `--ods-semantic-z-index-modal`, and `$drawer-max-width` / `$drawer-max-height`. |
+| **Detection** | `grep -rnE '\$(ods-overlay-arrow-background-color\|ods-modal-border-radius\|ods-modal-margin\|ods-modal-z-index\|drawer-max-size\|ods-overlay-select-z-index)\b\|ods-modal-color\(' src/` |
+| **Codemod** | **manual** - read what they held instead: `--ods-semantic-color-surface-page`, `--ods-modal-border-radius`, `--ods-modal-margin-horizontal` / `-vertical`, `--ods-semantic-z-index-modal`, `$drawer-max-width` / `$drawer-max-height`, and `$ods-overlay-base-z-index` for `$ods-overlay-select-z-index`. Drop the `ods-modal-color()` includes: the header background they painted belongs to a `color` the Modal no longer renders. |
 | **Source of truth** | `packages/ods-react/src/style/_overlay.scss`, `_modal.scss`, `_drawer.scss` |
 
 ---

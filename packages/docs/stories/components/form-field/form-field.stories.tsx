@@ -1,4 +1,3 @@
-import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
 import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
@@ -10,6 +9,7 @@ import {
   FormFieldLabel,
   FormFieldLabelSubLabel,
 } from '../../../../ods-react/src/components/form-field/src';
+import { Input } from '../../../../ods-react/src/components/input/src';
 import { MESSAGE_STATUS, Message, MessageBody } from '../../../../ods-react/src/components/message/src';
 import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '../../../../ods-react/src/components/phone-number/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';

@@ -492,8 +492,9 @@ its elevation come from `--ods-card-*`. Overriding them never did anything, and 
 mixin that nothing has called since 19.5.0 (see BC-16). `Message` loses
 `--ods-message-close-button-text-color-primary`, which the close button no longer reads. `Tabs`
 loses `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected`: the selected tab reads
-the theme roles directly. `Toggle` loses `--ods-toggle-control-background-color-hover`: an
-unchecked toggle no longer changes its background on hover. Overriding any of them has no effect.
+the theme roles directly. `Toggle` loses `--ods-toggle-control-background-color-hover`, as an
+unchecked toggle no longer changes its background on hover, and `--ods-toggle-control-border-color`,
+as the border reads the theme role directly. Overriding any of them has no effect.
 
 ---
 

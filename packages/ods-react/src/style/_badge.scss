@@ -53,7 +53,7 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   flex-flow: row;
   gap: 0.25rem;
   align-items: center;
-  border-width: 1px;
+  border-width: var(--ods-semantic-border-thickness);
   border-style: solid;
   border-radius: var(--ods-badge-border-radius);
 }

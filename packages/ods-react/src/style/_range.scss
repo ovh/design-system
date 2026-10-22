@@ -9,7 +9,7 @@ $ods-range-label-padding-top: var(--ods-semantic-size-space-inset-block);
 
   box-sizing: border-box;
   border: 1px solid var(--ods-semantic-color-border-control);
-  border-radius: 50%;
+  border-radius: var(--ods-semantic-size-radius-full);
   background-color: var(--ods-range-thumb-background-color);
   width: $ods-range-thumb-size;
   height: $ods-range-thumb-size;

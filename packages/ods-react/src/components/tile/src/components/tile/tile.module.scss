@@ -24,7 +24,7 @@
     }
 
     &--selected {
-      outline: 1px solid var( --ods-tile-border-color-selected);
+      outline: var(--ods-semantic-border-thickness) solid var( --ods-tile-border-color-selected);
       border-color: var( --ods-tile-border-color-selected);
       box-shadow: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-tile-border-color-selected), var(--ods-semantic-shadow-raised);
       background-color: var(--ods-tile-background-color-selected);

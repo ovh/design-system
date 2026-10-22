@@ -20,6 +20,18 @@ async function getStatusStyle(page: Page, testId: string): Promise<string> {
   }, STATUS_STYLE_PROPERTIES);
 }
 
+/* The color a token resolves to, in the form getComputedStyle returns. */
+async function getTokenColor(page: Page, token: string): Promise<string> {
+  return page.evaluate((name: string) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, token);
+}
+
 async function gotoStoryAndCollectDeprecations(page: Page, story: string): Promise<string[]> {
   const warnings: string[] = [];
   const onConsole = (message: ConsoleMessage): void => {
@@ -37,6 +49,7 @@ async function gotoStoryAndCollectDeprecations(page: Page, story: string): Promi
 
 export {
   getStatusStyle,
+  getTokenColor,
   gotoStory,
   gotoStoryAndCollectDeprecations,
 };

@@ -5,6 +5,16 @@ export default {
   title: 'Tests rendering',
 };
 
+export const checked = () => (
+  <RadioGroup defaultValue="checked">
+    <Radio value="checked">
+      <RadioControl data-testid="checked" />
+
+      <RadioLabel>Checked</RadioLabel>
+    </Radio>
+  </RadioGroup>
+);
+
 export const render = () => (
   <RadioGroup data-testid="render">
     <Radio value="html">

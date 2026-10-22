@@ -143,6 +143,22 @@ describe('Input rendering', () => {
     });
   });
 
+  describe('invalid', () => {
+    it('should keep the critical border when the field is focused', async() => {
+      await gotoStory(page, 'rendering/slots-in-form-field');
+
+      const input = await page.waitForSelector('[data-testid="slots-in-form-field"]');
+      const borderColor = (): Promise<string | undefined> => input!.evaluate((el: Element) => getComputedStyle(el.parentElement!).borderColor);
+      const atRest = await borderColor();
+
+      // Keyboard focus: a click would leave the pointer on the field, and the hover border is
+      // another rule.
+      await input!.focus();
+
+      expect(await borderColor()).toBe(atRest);
+    });
+  });
+
   // These numbers are the in-field spacing contract, resolved from the default theme:
   // --ods-semantic-size-space-inset-inline 8px, --ods-semantic-size-space-inset-block-compact 2px,
   // column-gap 4px, $ods-input-actions-padding-right 2px, min-height 32px, xs button 24px.

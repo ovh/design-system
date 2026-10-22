@@ -4,7 +4,7 @@ slug: data-table
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2693
+tokens: 3080
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--documentation.txt
 ---
 
@@ -319,3 +319,48 @@ tables with the correct attributes and a global caption to provide users with co
 Please follow the [W3C technique](https://www.w3.org/TR/WCAG20-TECHS/H63) for integrating them correctly.
 
 We also recommend referring to the [WCAG guidelines](https://www.w3.org/WAI/tutorials/tables/) for building accessible `Data Tables`.
+
+### Sortable columns
+
+Each sortable column header renders a button named after the header content, and the sorted column exposes its direction with `aria-sort`.
+
+The button also carries a description, "Sortable column" by default, that screen readers announce when the button receives the focus.
+It is a description rather than part of the name, because screen readers repeat the column header name in every cell of the column.
+
+The description follows the `locale` prop. To reword it, use the `i18n` prop:
+
+```tsx
+{
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
+ Screen readers will announce the header button with its description, and the sort direction of the sorted column.

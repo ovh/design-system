@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: examples
 version: 19.7.3
-tokens: 1048
+tokens: 1142
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--examples.txt
 ---
 
@@ -135,6 +135,23 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt
     <PromptInputFileUploadButton aria-label="Attach file" />
     <PromptInputTextControl aria-label="Ask someone about something…" />
     <PromptInputSendButton aria-label="Send request" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Accessibility I18n
+
+```tsx
+<PromptInput
+  i18n={{
+    [PROMPT_INPUT_I18N.fileUploadButton]: "Attach a log file",
+    [PROMPT_INPUT_I18N.sendButton]: "Send to support",
+  }}
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl aria-label="Describe your issue" />
+    <PromptInputSendButton />
   </PromptInputControls>
 </PromptInput>
 ```

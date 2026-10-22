@@ -5101,7 +5101,9 @@ This component extends all the native `<div>` attributes.
 | `enableRowSelection` | `boolean | (row: DataTableRow<T>) => boolean` | No | undefined | Whether the row selection is enabled. |
 | `enableSorting` | `boolean` | No | undefined | Whether the column sorting is enabled. |
 | `getRowId` | `(originalRow: T, index: number, parent: DataTableRow<T>) => string` | No | undefined | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `loading` | `boolean` | No | undefined | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `manualSorting` | `boolean` | No | undefined | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
 | `onColumnPinningChange` | `OnChangeFn<DataTableColumnPinningState>` | No | undefined | Callback fired when the pinned columns changes. |
 | `onColumnVisibilityChange` | `OnChangeFn<DataTableColumnVisibilityState>` | No | undefined | Callback fired when the column visibility changes. |
@@ -5112,6 +5114,7 @@ This component extends all the native `<div>` attributes.
 
 ## Examples
 
+- Accessibility I18n
 - Default
 - Empty
 - Pagination Example
@@ -5442,6 +5445,51 @@ Please follow the [W3C technique](https://www.w3.org/TR/WCAG20-TECHS/H63) for in
 
 We also recommend referring to the [WCAG guidelines](https://www.w3.org/WAI/tutorials/tables/) for building accessible `Data Tables`.
 
+### Sortable columns
+
+Each sortable column header renders a button named after the header content, and the sorted column exposes its direction with `aria-sort`.
+
+The button also carries a description, "Sortable column" by default, that screen readers announce when the button receives the focus.
+It is a description rather than part of the name, because screen readers repeat the column header name in every cell of the column.
+
+The description follows the `locale` prop. To reword it, use the `i18n` prop:
+
+```tsx
+{
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
+ Screen readers will announce the header button with its description, and the sort direction of the sorted column.
+
 ## Data Table
 
 # Data Table
@@ -5457,7 +5505,9 @@ We also recommend referring to the [WCAG guidelines](https://www.w3.org/WAI/tuto
 | `enableRowSelection` | `boolean | (row: DataTableRow<T>) => boolean` | No | undefined | Whether the row selection is enabled. |
 | `enableSorting` | `boolean` | No | undefined | Whether the column sorting is enabled. |
 | `getRowId` | `(originalRow: T, index: number, parent: DataTableRow<T>) => string` | No | undefined | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `loading` | `boolean` | No | undefined | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `manualSorting` | `boolean` | No | undefined | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
 | `onColumnPinningChange` | `OnChangeFn<DataTableColumnPinningState>` | No | undefined | Callback fired when the pinned columns changes. |
 | `onColumnVisibilityChange` | `OnChangeFn<DataTableColumnVisibilityState>` | No | undefined | Callback fired when the column visibility changes. |
@@ -5484,9 +5534,51 @@ This component extends all the native `<thead>` attributes.
 
 _No specific property._
 
+## Enums
+
+### DATA_TABLE_I18N
+
+- `sortableColumn` = `dataTable.column.sortable`
+
 ## Data Table
 
 # Data Table
+
+## Accessibility I18n
+
+```tsx
+{
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
 
 ## Default
 
@@ -8517,7 +8609,7 @@ _A **Form Field** component is used to wrap several form components with logic, 
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `id` | `string` | No | undefined | The field id. |
+| `id` | `string` | No | undefined | The id given to the wrapped field, generated when omitted. An id set on the field itself takes precedence. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 
 ## Examples
@@ -8630,6 +8722,28 @@ The **Form Field** component handles by itself the accessibility requirements by
 
  Screen readers will announce the label, the field, its content and the helper text.
 
+### Field id
+
+You don't need to set any id: the **Form Field** gives one to the field it wraps, then links the label, the helper text
+and the error message to it.
+
+When you need a specific id (for an anchor, an end-to-end test or an external reference), set it either on the
+**Form Field** or directly on the field. An id set on the field takes precedence, and the label follows it:
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Email:
+  </FormFieldLabel>
+
+  {/* The label targets "email" */}
+  <Input id="email" />
+</FormField>
+```
+
+**Radio Group** and **Range** have no single element for the label to target: the label names the radio group, or each
+thumb of the range, instead.
+
 ## Form Field
 
 # Form Field
@@ -8640,7 +8754,7 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `id` | `string` | No | undefined | The field id. |
+| `id` | `string` | No | undefined | The id given to the wrapped field, generated when omitted. An id set on the field itself takes precedence. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 
 ## FormFieldError
@@ -14543,7 +14657,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button>
+    <Button aria-label="Profile">
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -14787,7 +14901,7 @@ This component extends all the native `<button>` attributes.
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button>
+    <Button aria-label="Profile">
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -15060,7 +15174,9 @@ _The **Prompt Input** component is a composable text input with a submit button,
 | `defaultValue` | `string` | No | undefined | The initial textarea value. Use when you don't need to control the value of the textarea. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `fileCollection` | `File[]` | No | undefined | Array of the files associated with the prompt input. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `name` | `string` | No | undefined | The name of the textarea form element. Useful for form submission. |
 | `onFileChange` | `(detail: PromptInputFileChangeDetails) => void` | No | undefined | Callback fired when a file change is triggered on the file-upload button. |
 | `onInputSubmit` | `(detail: PromptInputInputSubmitDetails) => void` | No | undefined | Callback fired when the prompt input is submitted. |
@@ -15078,6 +15194,7 @@ _The **Prompt Input** component is a composable text input with a submit button,
 - In Form Field
 - Accessibility Aria Label
 - Accessibility Buttons Labels
+- Accessibility I18n
 - Accessibility Loading State
 
 ## Documentation pages
@@ -15196,7 +15313,26 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 
 ### Button labelling
 
-- The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
+- The file upload button and the send button only display an icon. They are announced as "Attach a file" and "Send" by default, translated with the `locale` prop (or the browser language).
+
+- To adapt these names to your context, override them for the whole component with the `i18n` prop of **PromptInput**:
+
+```tsx
+<PromptInput
+  i18n={{
+    [PROMPT_INPUT_I18N.fileUploadButton]: "Attach a log file",
+    [PROMPT_INPUT_I18N.sendButton]: "Send to support",
+  }}
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl aria-label="Describe your issue" />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
+```
+
+- Or set an `aria-label` on a given button, which takes precedence over the translations:
 
 ```tsx
 <PromptInput>
@@ -15233,7 +15369,9 @@ This component extends all the native `<div>` attributes.
 | `defaultValue` | `string` | No | undefined | The initial textarea value. Use when you don't need to control the value of the textarea. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `fileCollection` | `File[]` | No | undefined | Array of the files associated with the prompt input. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `name` | `string` | No | undefined | The name of the textarea form element. Useful for form submission. |
 | `onFileChange` | `(detail: PromptInputFileChangeDetails) => void` | No | undefined | Callback fired when a file change is triggered on the file-upload button. |
 | `onInputSubmit` | `(detail: PromptInputInputSubmitDetails) => void` | No | undefined | Callback fired when the prompt input is submitted. |
@@ -15274,7 +15412,9 @@ _No specific property._
 | `defaultValue` | `string` | No | undefined | The initial textarea value. Use when you don't need to control the value of the textarea. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `fileCollection` | `File[]` | No | undefined | Array of the files associated with the prompt input. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `name` | `string` | No | undefined | The name of the textarea form element. Useful for form submission. |
 | `onFileChange` | `(detail: PromptInputFileChangeDetails) => void` | No | undefined | Callback fired when a file change is triggered on the file-upload button. |
 | `onInputSubmit` | `(detail: PromptInputInputSubmitDetails) => void` | No | undefined | Callback fired when the prompt input is submitted. |
@@ -15300,6 +15440,13 @@ _No specific property._
 |---|---|---|---|---|
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `placeholder` | `string` | No | undefined | - |
+
+## Enums
+
+### PROMPT_INPUT_I18N
+
+- `fileUploadButton` = `promptInput.fileUpload.button`
+- `sendButton` = `promptInput.send.button`
 
 ## CSS Variables
 
@@ -15446,6 +15593,23 @@ _No specific property._
     <PromptInputFileUploadButton aria-label="Attach file" />
     <PromptInputTextControl aria-label="Ask someone about something…" />
     <PromptInputSendButton aria-label="Send request" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Accessibility I18n
+
+```tsx
+<PromptInput
+  i18n={{
+    [PROMPT_INPUT_I18N.fileUploadButton]: "Attach a log file",
+    [PROMPT_INPUT_I18N.sendButton]: "Send to support",
+  }}
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl aria-label="Describe your issue" />
+    <PromptInputSendButton />
   </PromptInputControls>
 </PromptInput>
 ```
@@ -15781,6 +15945,8 @@ _No specific property._
 ## Examples
 
 - Default
+- Accessibility Form Field
+- Accessibility Aria Label
 
 ## Documentation pages
 
@@ -15887,6 +16053,100 @@ Pressing `Escape` closes the suggestions panel.
 Pressing `Backspace` deletes characters in the input field
 
 ## Accessibility
+
+### Always provide an explicit label
+
+Every **Query Filter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either **FormField** or a native label tag.
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Filter instances:
+        </FormFieldLabel>
+
+        <QueryFilter
+          filterOption={ filterOption }
+          filterProperty={ filterProperty }>
+          <QueryFilterControl />
+
+          <QueryFilterContent />
+
+          <QueryFilterTags />
+        </QueryFilter>
+      </FormField>
+    );
+  }
+```
+
+ Screen readers will announce the label, the field and its content.
+
+When the design has no visible label, for example in a toolbar above a table, pass an `aria-label` to the **QueryFilterControl**:
+it is applied to the field itself.
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+      </QueryFilter>
+    );
+  }
+```
+
+ Screen readers will announce the label, the field and its content.
+
+### Announce filter changes
 
 Use ARIA (Accessible Rich Internet Applications) live regions to announce filtering changes. For example:
 - When a filter is added: `aria-live` region could say "Filter 'Status: Active' has been applied.".
@@ -16032,6 +16292,90 @@ _No specific property._
         <QueryFilterClear>
           Clear all
         </QueryFilterClear>
+      </QueryFilter>
+    );
+  }
+```
+
+## Accessibility Form Field
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Filter instances:
+        </FormFieldLabel>
+
+        <QueryFilter
+          filterOption={ filterOption }
+          filterProperty={ filterProperty }>
+          <QueryFilterControl />
+
+          <QueryFilterContent />
+
+          <QueryFilterTags />
+        </QueryFilter>
+      </FormField>
+    );
+  }
+```
+
+## Accessibility Aria Label
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
       </QueryFilter>
     );
   }
@@ -21655,7 +21999,9 @@ Only one node in the Tree View is focusable at a time.
 
 Focus remains on a single visible node and moves predictably with keyboard navigation.
 
-If a node contains interactive elements (e.g., a checkbox or link), those elements can receive focus.
+If a node renders interactive content of its own (e.g., a link), that element can receive focus.
+
+In multiple selection mode, the node itself carries the checked state: its checkbox is only a visual cue and never receives focus.
 
 ### General Keyboard Shortcuts
 

@@ -163,6 +163,16 @@ export default [
     },
   },
 
+  // MCP server — the SDK only exposes its modules through the `./*` wildcard
+  // export, which the import resolver does not follow: TypeScript (NodeNext)
+  // already checks these paths at build time.
+  {
+    files: ['packages/mcp/src/**/*.ts'],
+    rules: {
+      'import/no-unresolved': ['error', { ignore: ['^@modelcontextprotocol/sdk/'] }],
+    },
+  },
+
   // Dev stories — linted with relaxed rules, but keep the barrel-import guard
   {
     files: ['**/src/dev.stories.tsx'],

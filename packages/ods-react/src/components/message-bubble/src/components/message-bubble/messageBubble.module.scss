@@ -39,7 +39,7 @@
 
       /* Component-level exception, as for Spinner: a bounce is tuned to its own travel. */
       animation: message-bubble-bounce 900ms infinite var(--ods-semantic-motion-easing);
-      border-radius: 50%;
+      border-radius: var(--ods-semantic-size-radius-full);
       background-color: currentcolor;
       width: 8px;
       height: 8px;

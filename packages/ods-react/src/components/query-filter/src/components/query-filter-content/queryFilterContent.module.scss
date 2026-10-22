@@ -4,7 +4,7 @@
 
     box-sizing: border-box;
     margin: 0;
-    border: 1px solid var(--ods-semantic-color-interaction-control-hover);
+    border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-interaction-control-hover);
     background: var(--ods-semantic-color-surface-control);
     padding: 0;
     max-height: 400px;

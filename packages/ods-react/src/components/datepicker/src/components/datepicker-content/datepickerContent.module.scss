@@ -52,7 +52,7 @@
           &::after {
             position: absolute;
             bottom: 3px;
-            border-radius: 50%;
+            border-radius: var(--ods-semantic-size-radius-full);
             background-color: var(--ods-button-background-color-primary);
             width: 4px;
             height: 4px;

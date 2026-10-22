@@ -1,7 +1,7 @@
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { useMemo } from 'react';
 import { TOKEN_CATEGORY } from '../constants/designTokens';
-import { categorizeTokens, splitPaletteTokens } from '../helpers/designTokens';
+import { categorizeTokens, declaredTokens, splitPaletteTokens } from '../helpers/designTokens';
 import { Heading } from '../../DocComponents';
 import { ColorPalette } from './colorPalette/ColorPalette';
 import { TokensTable } from './tokensTable/TokensTable';
@@ -18,8 +18,8 @@ const SECTIONS: [string, TOKEN_CATEGORY][] = [
 
 const DesignTokens = () => {
   const tokenByCategory = useMemo(() => {
-    return categorizeTokens(lightThemeTokens.root);
-  }, [lightThemeTokens.root]);
+    return categorizeTokens(declaredTokens(lightThemeTokens));
+  }, []);
 
   const { monoColors, opacities, palettes } = useMemo(() => {
     return splitPaletteTokens(tokenByCategory[TOKEN_CATEGORY.palette]);

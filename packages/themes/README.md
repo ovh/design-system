@@ -39,13 +39,10 @@ You'll find the value of each icon content in the `style.css` file in the icomoo
 
 /!\ Please check also the icon tags list on the storybook icon story (`storybook/src/constants/iconTags.ts`).
 
-## How to update theme-generated variables?
+## How to update the theme values?
 
-In each theme, there is a list of variables that come from FIGMA. This list is generated and should not be updated manually.
+The palette values are in `src/default/_variables.scss`, transcribed by hand from MDS / Figma. The
+semantic roles, which point at the palette, are in `src/default/index.scss`.
 
-If some changes have been done on the FIGMA side, you can sync those back using the `design-tokens` workflow on the CI tool.
-
-At the end of the workflow you can download the generated archive and replace the `_variables.scss` file content
-with the newly generated list.
-
-/!\ The list may not be correctly sorted, so you may need to manually reorder it.
+`pnpm build:prod` regenerates `dist/default/tokens.json`, and `pnpm tokens:resolve` prints what
+each token resolves to.

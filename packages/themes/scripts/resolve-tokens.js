@@ -2,22 +2,17 @@
 
 /*
  * Resolves every custom property declared by a compiled theme stylesheet down to a literal,
- * following var() chains across scopes.
+ * following var() chains across scopes. A text diff of the theme cannot tell a value change from a
+ * re-pointing (`#4d4d4d` becoming `var(--ods-palette-gray-700)`); the resolved output can.
  *
- * This is the acceptance gate for the token refactor phases: de-interpolating a role token
- * changes the emitted CSS text (`#4d4d4d` becomes `var(--ods-color-neutral-700)`) while it must
- * not change what the token resolves to. A text diff cannot tell those two apart, so the
- * snapshot compared across a phase is the resolved output of this script.
+ * It also reports a var() to a property nothing declares, without fallback, as DANGLING, and a
+ * reference loop as CYCLE.
  *
- * Two things it reports that a text diff also cannot:
- *   - NAME SET  - a token that appeared or disappeared (T1).
- *   - DANGLING  - a var() reference to a property nothing declares, and no fallback.
+ * Unlike a plain :root read it is axis-aware: declarations are keyed by the selector and at-rule
+ * context they were found in, so a block under an attribute selector or a media query is visible
+ * instead of silently dropped.
  *
- * Unlike generate-token-lists.js it is axis-aware: declarations are keyed by the selector and
- * at-rule context they were found in, so a scheme block under an attribute selector or a media
- * query is visible instead of silently dropped.
- *
- * Usage: node scripts/resolve-tokens.js <compiled.css> [more.css ...]
+ * Usage: node scripts/resolve-tokens.js [compiled.css ...]   (default: dist/default/index.css)
  */
 
 const postcss = require('postcss');
@@ -107,8 +102,7 @@ function splitArguments(text) {
  *
  * `lookup` resolves a property name against the scope chain; `seen` carries the names already
  * being resolved on this path so a mutually referential pair is reported rather than recursed into
- * forever - CSS treats those as invalid at computed-value time, and they are a real hazard for the
- * compat shim, which cannot serve both a reader and a writer of the same name.
+ * forever - CSS treats those as invalid at computed-value time.
  */
 function resolveValue(value, lookup, seen) {
   let output = '';
@@ -190,16 +184,8 @@ function resolveScopes(scopes) {
   return resolved;
 }
 
-(async function main() {
-  const files = process.argv.slice(2);
-
-  if (!files.length) {
-    console.error('Usage: node scripts/resolve-tokens.js <compiled.css> [more.css ...]');
-    process.exitCode = 1;
-
-    return;
-  }
-
+async function main() {
+  const files = process.argv.length > 2 ? process.argv.slice(2) : ['dist/default/index.css'];
   const output = {};
 
   for (const file of files) {
@@ -214,4 +200,13 @@ function resolveScopes(scopes) {
   }
 
   console.log(JSON.stringify(output, null, 2));
-}());
+}
+
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = { CYCLE, DANGLING, resolveValue };

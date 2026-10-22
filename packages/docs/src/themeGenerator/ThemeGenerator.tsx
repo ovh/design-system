@@ -3,7 +3,7 @@ import { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
 import { DemoFrame } from '../demo/DemoFrame';
-import { resolveTokenValues } from '../doc/ports/helpers/designTokens';
+import { declaredTokens, resolveTokenValues } from '../doc/ports/helpers/designTokens';
 import { ThemeGeneratorJSONModal } from './ThemeGeneratorJSONModal';
 import { ThemeGeneratorPaletteModal } from './ThemeGeneratorPaletteModal';
 import { ThemeGeneratorPreview } from './ThemeGeneratorPreview';
@@ -32,7 +32,7 @@ const ThemeGenerator = (): JSX.Element => {
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  const rootTokens = useMemo(() => resolveTokenValues(lightThemeTokens.root), []);
+  const rootTokens = useMemo(() => resolveTokenValues(declaredTokens(lightThemeTokens)), []);
 
   useEffect(() => {
     if (selectedTheme === 'custom') {

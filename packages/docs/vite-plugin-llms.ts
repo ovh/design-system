@@ -7,7 +7,7 @@ import { EXCLUDED_STORIES, extractStorySources } from './src/demo/extractSource'
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
-import { categorizeTokens, splitPaletteTokens } from './src/doc/ports/helpers/designTokens';
+import { categorizeTokens, declaredTokens, splitPaletteTokens } from './src/doc/ports/helpers/designTokens';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
 /* The llms invariant (CDC P1): the platform emits its llms output natively at
@@ -152,11 +152,11 @@ function tokensTable(tokens: Token[]): string {
 }
 
 function renderDesignTokens(): string | null {
-  const theme = readJson('../themes/dist/default/tokens.json') as { root?: Record<string, string> } | null;
+  const theme = readJson('../themes/dist/default/tokens.json') as { refs?: Record<string, string>, root?: Record<string, string> } | null;
   if (!theme?.root) {
     return null;
   }
-  const byCategory = categorizeTokens(theme.root);
+  const byCategory = categorizeTokens(declaredTokens({ refs: theme.refs, root: theme.root }));
   const { monoColors, opacities, palettes } = splitPaletteTokens(byCategory[TOKEN_CATEGORY.palette]);
 
   // Same sections as the DesignTokens port.

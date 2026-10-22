@@ -24,6 +24,12 @@ function guessTokenType(name: string): TOKEN_TYPE {
   return TOKEN_TYPES.find((type) => name.includes(`-${type}`)) || TOKEN_TYPE.unknown;
 }
 
+/* tokens.json publishes resolved values in `root` and the var() references in `refs`: this gives
+   back each token as the theme declares it. */
+function declaredTokens(tokens: { refs?: Record<string, string>, root: Record<string, string> }): Record<string, string> {
+  return { ...tokens.root, ...tokens.refs };
+}
+
 /**
  * Resolves CSS variable references (var()) and calc() expressions to their actual values
  */
@@ -214,6 +220,7 @@ function getInputTypeForToken(token: Token): INPUT_TYPE {
 
 export {
   categorizeTokens,
+  declaredTokens,
   getInputTypeForToken,
   guessTokenType,
   INPUT_TYPE,

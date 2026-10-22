@@ -354,7 +354,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves, but no key survives: the 187 old names are out, and 273 new ones are in (182 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. The generator also moved from `cssjson` to `postcss`, which fixes a bug that was silently dropping any declaration written after a comment (41 of 248 tokens on the new theme, a handful on the old one). |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 276 new ones are in (185 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, a literal as in 19.7.3. A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |

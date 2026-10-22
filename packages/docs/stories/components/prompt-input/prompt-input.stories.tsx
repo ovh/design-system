@@ -126,7 +126,7 @@ export const Overview: Story = {
           ))}
         </PromptInputFiles>
         <PromptInputControls>
-          <PromptInputFileUploadButton aria-label="Attach a file" multiple />
+          <PromptInputFileUploadButton multiple />
           <PromptInputTextControl
             aria-label="Ask someone about something…"
             placeholder="Ask someone about something…"

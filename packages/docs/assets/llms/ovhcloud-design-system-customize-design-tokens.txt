@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4883
+tokens: 4084
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -22,6 +22,25 @@ Design tokens are available as CSS custom properties (variables) and can be used
   border-radius: var(--ods-semantic-size-radius-control);
 }
 ```
+
+## Token types
+
+Two types of tokens are meant to be used in your code:
+
+- **Semantic**, `--ods-semantic-<category>-<role>` (e.g. `--ods-semantic-color-content-text`): values with a role, to style your own components and pages.
+- **Component**, `--ods-<component>-<property>` (e.g. `--ods-button-background-color-primary`): values of a single ODS component, to customize it.
+
+**Semantic** tokens give a role to a value: the color of a text, of a surface, of a border, the radius of a control, the duration of an animation…
+Their name reads from the most generic to the most specific part, for example `--ods-semantic-color-surface-selected-solid` is a `color`, used as a `surface`, for a `selected` element, on a `solid` background.
+
+**Component** tokens are declared by each component and default to semantic tokens.
+Override them to adjust one component without affecting the others, see [Style Customization](https://ovh.github.io/design-system/v19.7.3/guides/style-customization).
+
+## Which type should I use?
+
+Prefer **semantic** tokens in your application: they follow the theme, so your components stay consistent with ODS ones when the theme changes.
+
+Use **component** tokens only to customize an ODS component; never read them to style something else, as their value may change from one version to another.
 
 ## What is guaranteed
 
@@ -243,128 +262,3 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-motion-easing` | `ease-in-out` |
 | `--ods-semantic-motion-easing-enter` | `ease-out` |
 | `--ods-semantic-motion-easing-exit` | `ease-in` |
-
-## Color Palettes
-
-| Token | Value |
-|---|---|
-| `--ods-palette-accent-50` | `var(--ods-palette-navy-50)` |
-| `--ods-palette-accent-100` | `var(--ods-palette-navy-100)` |
-| `--ods-palette-accent-200` | `var(--ods-palette-navy-200)` |
-| `--ods-palette-accent-300` | `var(--ods-palette-navy-300)` |
-| `--ods-palette-accent-400` | `var(--ods-palette-navy-400)` |
-| `--ods-palette-accent-500` | `var(--ods-palette-navy-500)` |
-| `--ods-palette-accent-600` | `var(--ods-palette-navy-600)` |
-| `--ods-palette-accent-700` | `var(--ods-palette-navy-700)` |
-| `--ods-palette-accent-800` | `var(--ods-palette-navy-800)` |
-| `--ods-palette-accent-900` | `var(--ods-palette-navy-900)` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-blue-50` | `#f3fdff` |
-| `--ods-palette-blue-100` | `#e6faff` |
-| `--ods-palette-blue-200` | `#bef1ff` |
-| `--ods-palette-blue-300` | `#85d9fd` |
-| `--ods-palette-blue-400` | `#4bb2f6` |
-| `--ods-palette-blue-500` | `#0050d7` |
-| `--ods-palette-blue-600` | `#002dbe` |
-| `--ods-palette-blue-700` | `#000e9c` |
-| `--ods-palette-blue-800` | `#00185e` |
-| `--ods-palette-blue-900` | `#000d1f` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-brand-50` | `var(--ods-palette-blue-50)` |
-| `--ods-palette-brand-100` | `var(--ods-palette-blue-100)` |
-| `--ods-palette-brand-200` | `var(--ods-palette-blue-200)` |
-| `--ods-palette-brand-300` | `var(--ods-palette-blue-300)` |
-| `--ods-palette-brand-400` | `var(--ods-palette-blue-400)` |
-| `--ods-palette-brand-500` | `var(--ods-palette-blue-500)` |
-| `--ods-palette-brand-600` | `var(--ods-palette-blue-600)` |
-| `--ods-palette-brand-700` | `var(--ods-palette-blue-700)` |
-| `--ods-palette-brand-800` | `var(--ods-palette-blue-800)` |
-| `--ods-palette-brand-900` | `var(--ods-palette-blue-900)` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-gray-50` | `#f9f9f9` |
-| `--ods-palette-gray-100` | `#f2f2f2` |
-| `--ods-palette-gray-200` | `#e6e6e6` |
-| `--ods-palette-gray-300` | `#cccccc` |
-| `--ods-palette-gray-400` | `#b3b3b3` |
-| `--ods-palette-gray-500` | `#757575` |
-| `--ods-palette-gray-600` | `#666666` |
-| `--ods-palette-gray-700` | `#4d4d4d` |
-| `--ods-palette-gray-800` | `#333333` |
-| `--ods-palette-gray-900` | `#1a1a1a` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-green-50` | `#ecfdf5` |
-| `--ods-palette-green-100` | `#d1fae5` |
-| `--ods-palette-green-200` | `#a7f3d0` |
-| `--ods-palette-green-300` | `#6ee7b7` |
-| `--ods-palette-green-400` | `#34d399` |
-| `--ods-palette-green-500` | `#10b981` |
-| `--ods-palette-green-600` | `#059669` |
-| `--ods-palette-green-700` | `#047857` |
-| `--ods-palette-green-800` | `#065f46` |
-| `--ods-palette-green-900` | `#064e3b` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-navy-50` | `#f4f5f8` |
-| `--ods-palette-navy-100` | `#edf0f5` |
-| `--ods-palette-navy-200` | `#d6deea` |
-| `--ods-palette-navy-300` | `#bbc7db` |
-| `--ods-palette-navy-400` | `#6c82a6` |
-| `--ods-palette-navy-500` | `#374f76` |
-| `--ods-palette-navy-600` | `#283d61` |
-| `--ods-palette-navy-700` | `#1a2d4b` |
-| `--ods-palette-navy-800` | `#101e35` |
-| `--ods-palette-navy-900` | `#091222` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-orange-50` | `#fffbeb` |
-| `--ods-palette-orange-100` | `#fef3c7` |
-| `--ods-palette-orange-200` | `#fde68a` |
-| `--ods-palette-orange-300` | `#fcd34d` |
-| `--ods-palette-orange-400` | `#fbbf24` |
-| `--ods-palette-orange-500` | `#f59e0b` |
-| `--ods-palette-orange-600` | `#d97706` |
-| `--ods-palette-orange-700` | `#b45309` |
-| `--ods-palette-orange-800` | `#92400e` |
-| `--ods-palette-orange-900` | `#78350f` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-red-50` | `#fdecec` |
-| `--ods-palette-red-100` | `#fbd5d3` |
-| `--ods-palette-red-200` | `#f7aaa7` |
-| `--ods-palette-red-300` | `#f08581` |
-| `--ods-palette-red-400` | `#f2756f` |
-| `--ods-palette-red-500` | `#ca4b47` |
-| `--ods-palette-red-600` | `#b3403c` |
-| `--ods-palette-red-700` | `#8a302d` |
-| `--ods-palette-red-800` | `#381312` |
-| `--ods-palette-red-900` | `#1c0a09` |
-
-| Token | Value |
-|---|---|
-| `--ods-palette-black` | `#000000` |
-| `--ods-palette-decorative-alpha` | `#fbfe47` |
-| `--ods-palette-decorative-beta` | `#47fe78` |
-| `--ods-palette-decorative-new` | `#47fffa` |
-| `--ods-palette-decorative-promotion` | `#ccff66` |
-| `--ods-palette-white` | `#ffffff` |
-
-### Opacity
-
-| Token | Value |
-|---|---|
-| `--ods-palette-opacity-15` | `0.15` |
-| `--ods-palette-opacity-20` | `0.2` |
-| `--ods-palette-opacity-25` | `0.25` |
-| `--ods-palette-opacity-50` | `0.5` |
-| `--ods-palette-opacity-75` | `0.75` |

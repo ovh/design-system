@@ -386,7 +386,7 @@ written before it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens and seven dead `Modal` / `Message` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
+| **Change** | The `--ods-<component>-*` names are all but untouched - the set of custom properties `ods-react` declares is identical to 19.7.3, minus two stray `--ods-theme-*` locals that went with the old surface, minus three dead `Tile` tokens and nine dead `Modal` / `Message` / `Tabs` tokens (see below) and minus seven disabled-state tokens, plus one internal reset (both BC-12) - but their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Several bindings also changed role, mostly to give `active` states their own `interaction-*-subtle-active` rather than reusing the hover one. |
 | **Impact** | A consumer overriding a component token by name keeps working. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colours shift slightly even where nothing breaks. |
 | **Detection** | covered by the BC-01 / BC-02 greps |
 | **Codemod** | none needed beyond BC-01 / BC-02 |
@@ -402,8 +402,9 @@ its elevation come from `--ods-card-*`. Overriding them never did anything, and 
 
 `Modal` loses the six `--ods-modal-header-background-color-*`, only read by the `ods-modal-color()`
 mixin that nothing has called since 19.5.0 (see BC-16). `Message` loses
-`--ods-message-close-button-text-color-primary`, which the close button no longer reads. Overriding
-any of them has no effect.
+`--ods-message-close-button-text-color-primary`, which the close button no longer reads. `Tabs`
+loses `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected`: the selected tab reads
+the theme roles directly. Overriding any of them has no effect.
 
 ---
 

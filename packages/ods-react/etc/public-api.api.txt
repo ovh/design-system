@@ -4045,7 +4045,7 @@ declare const PAGINATION_PER_PAGE_OPTIONS: readonly {
 export { PAGINATION_PER_PAGE, PAGINATION_PER_PAGE_OPTIONS, };
 
 // ==================== components/pagination/src/contexts/usePagination.d.ts ====================
-import { ComponentPropsWithRef, JSX, ReactNode } from 'react';
+import { ComponentPropsWithRef, ElementType, JSX, ReactNode } from 'react';
 /** @internal DEPRECATED: remove on next major version */
 type PaginationTotalItemsLabelRenderer = (params: {
     totalItems: number;
@@ -4059,6 +4059,10 @@ interface PaginationPageChangeDetail {
 interface PaginationPageSizeChangeDetail {
     pageSize: number;
 }
+interface PaginationPageUrlDetail {
+    page: number;
+    pageSize: number;
+}
 interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
     /**
      * The initial active page. Use when you don't need to control the active page of the pagination.
@@ -4069,6 +4073,13 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      */
     disabled?: boolean;
     /**
+     * Build the URL of a given page.
+     * Providing it turns the pages and the previous / next triggers into links, so that they can be
+     * crawled, opened in a new tab and restored on reload. They then look like the Link component,
+     * as they navigate, instead of the Button component.
+     */
+    getPageUrl?: (detail: PaginationPageUrlDetail) => string;
+    /**
      * The tooltip label on the "next page" button.
      */
     labelTooltipNext?: string;
@@ -4076,6 +4087,14 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      * The tooltip label on the "previous page" button.
      */
     labelTooltipPrev?: string;
+    /**
+     * \@default-value='a'
+     * Pass a component you may want to use to render the page links.
+     * Only used along `getPageUrl`. Useful to hand the navigation over to a routing library, which
+     * a plain anchor would bypass with a full page load: the component receives the built URL as
+     * `href` and maps it to whatever prop it expects.
+     */
+    linkAs?: ElementType;
     /**
      * Callback fired when the active page changes.
      */
@@ -4090,6 +4109,8 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
     page?: number;
     /**
      * The number of items per page.
+     * Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then
+     * what holds the size: the component renders it instead of keeping a size of its own.
      */
     pageSize?: number;
     /**
@@ -4114,7 +4135,7 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      */
     withPageSizeSelector?: boolean;
 }
-interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'labelTooltipNext' | 'labelTooltipPrev' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
+interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
     children: ReactNode;
 }
 type PaginationContextType = Omit<PaginationProviderProp, 'children'> & {
@@ -4123,9 +4144,9 @@ type PaginationContextType = Omit<PaginationProviderProp, 'children'> & {
     handlePageSizeChange: (value: string) => void;
     itemsPerPage: number;
 };
-declare function PaginationProvider({ children, defaultPage, disabled, labelTooltipNext, labelTooltipPrev, onPageChange, onPageSizeChange, page, pageSize, totalItems, }: PaginationProviderProp): JSX.Element;
+declare function PaginationProvider({ children, defaultPage, disabled, getPageUrl, labelTooltipNext, labelTooltipPrev, linkAs, onPageChange, onPageSizeChange, page, pageSize, totalItems, }: PaginationProviderProp): JSX.Element;
 declare function usePagination(): PaginationContextType;
-export { defaultRenderTotalItemsLabel, type PaginationContextType, type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, PaginationProvider, type PaginationRootProp, type PaginationTotalItemsLabelRenderer, usePagination, };
+export { defaultRenderTotalItemsLabel, type PaginationContextType, type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, type PaginationPageUrlDetail, PaginationProvider, type PaginationRootProp, type PaginationTotalItemsLabelRenderer, usePagination, };
 
 // ==================== components/pagination/src/index.d.ts ====================
 export { Pagination, type PaginationProp } from './components/pagination/Pagination';
@@ -4133,7 +4154,7 @@ export { PaginationPageSelector, type PaginationPageSelectorProp } from './compo
 export { PaginationPageSizeSelector, type PaginationPageSizeSelectorProp } from './components/pagination-page-size-selector/PaginationPageSizeSelector';
 export { PaginationPages, type PaginationPagesProp } from './components/pagination-pages/PaginationPages';
 export { PAGINATION_PER_PAGE } from './constants/pagination-per-page';
-export { type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail } from './contexts/usePagination';
+export { type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, type PaginationPageUrlDetail } from './contexts/usePagination';
 
 // ==================== components/password/src/components/password/Password.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

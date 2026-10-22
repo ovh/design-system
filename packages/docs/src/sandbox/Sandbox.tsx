@@ -3,6 +3,8 @@ import * as React from 'react';
 import * as OdsComponents from '../../../ods-react/src/components/index';
 import * as ShikiTypescript from '@shikijs/langs/typescript';
 import * as ShikiNord from '@shikijs/themes/nord';
+import * as ReactRouterDom from 'react-router-dom';
+import { MemoryRouter, UNSAFE_LocationContext, UNSAFE_RouteContext } from 'react-router-dom';
 import { formatPrice, formatRelativeTime } from '../../../ods-react/src/utils/format';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
 import { APP_ROOT } from '../appBase';
@@ -44,6 +46,8 @@ export default function Demo() {
 const EXTRA_MODULES: Record<string, unknown> = {
   '@shikijs/langs/typescript': ShikiTypescript,
   '@shikijs/themes/nord': ShikiNord,
+  // The docs' own instance, whose contexts PreviewRouter provides.
+  'react-router-dom': ReactRouterDom,
 };
 
 function evaluate(js: string): ComponentType {
@@ -83,6 +87,18 @@ class DemoBoundary extends React.Component<{ children: React.ReactNode, onError:
     return this.state.failed ? null : this.props.children;
   }
 }
+
+/* The preview runs under a router of its own: a snippet that reads or drives the URL (the Pagination
+   link mode) would otherwise rewrite the sandbox page URL, and drop the `code` it is loaded from.
+   React Router refuses a router inside another one, so the docs router's location and route are
+   reset around it. */
+const PreviewRouter = ({ children }: { children: React.ReactNode }) => (
+  <UNSAFE_LocationContext.Provider value={ null! }>
+    <UNSAFE_RouteContext.Provider value={{ isDataRoute: false, matches: [], outlet: null }}>
+      <MemoryRouter>{ children }</MemoryRouter>
+    </UNSAFE_RouteContext.Provider>
+  </UNSAFE_LocationContext.Provider>
+);
 
 const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: string, tokens: Record<string, string> }) => {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -319,11 +335,13 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
                 <MessageBody>{ runtimeError }</MessageBody>
               </Message>
             ) }
-            <DemoFrame dark={ dark } tokens={ tokens }>
-              { Component
-                ? <DemoBoundary key={ Demo?.compileId } onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
-                : null }
-            </DemoFrame>
+            <PreviewRouter>
+              <DemoFrame dark={ dark } tokens={ tokens }>
+                { Component
+                  ? <DemoBoundary key={ Demo?.compileId } onError={ (e) => setRuntimeError(e.message) }><Component /></DemoBoundary>
+                  : null }
+              </DemoFrame>
+            </PreviewRouter>
           </div>
         </Splitter.Panel>
       </Splitter.Root>

@@ -61,7 +61,7 @@ not the history of the branch.
 | **Change** | The 72 role tokens named `--ods-theme-*` are deleted and replaced by `--ods-semantic-*`. No alias, no deprecation window. |
 | **Impact** | Any `var(--ods-theme-…)` in consumer CSS resolves to nothing. Fails visually, never loudly: the declaration is dropped and the property falls back to its inherited or initial value. |
 | **Detection** | `grep -rn -- '--ods-theme-' src/` |
-| **Codemod** | **automatable** - 63 of the 72 are a 1:1 rename and 6 split three ways, see below. The 3 disabled colors have no destination: disabled is now an opacity (BC-12), so those sites are reported. |
+| **Codemod** | **automatable** - 62 of the 72 are a 1:1 rename and 6 split three ways, see below. The 4 disabled colors have no destination: disabled is now an opacity (BC-12), so those sites are reported. A few renames depend on what the site paints: the note under each table lists them with the roles ODS picked. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its `--tables` output. |
 
 `--ods-theme-brand-color` is the only rename that keeps its value: `--ods-semantic-color-brand`
@@ -69,6 +69,7 @@ points at `brand-700`, the rung that `primary-700` became.
 
 ### 1:1 renames
 
+<!-- repoint-tokens:bc01-renames -->
 | before | after |
 | --- | --- |
 | `--ods-theme-anchor-text-color` | `--ods-semantic-color-content-brand` |
@@ -86,13 +87,13 @@ points at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-brand-color` | `--ods-semantic-color-brand` |
 | `--ods-theme-heading-text-color` | `--ods-semantic-color-content-heading` |
 | `--ods-theme-progress-background-color` | `--ods-semantic-color-surface-control-solid` |
-| `--ods-theme-split-background-color` | `--ods-semantic-color-surface-neutral-minimal` |
+| `--ods-theme-split-background-color` | `--ods-semantic-color-border-neutral-minimal` |
 | `--ods-theme-split-border-color` | `--ods-semantic-color-border-neutral-minimal` |
 | `--ods-theme-text-color` | `--ods-semantic-color-content-text` |
 | `--ods-theme-text-color-disabled` | _none_ |
 | `--ods-theme-text-color-selected` | `--ods-semantic-color-content-on-selected-solid` |
-| `--ods-theme-track-background-color` | `--ods-semantic-color-surface-neutral-minimal` |
-| `--ods-theme-track-background-color-disabled` | `--ods-semantic-color-surface-neutral` |
+| `--ods-theme-track-background-color` | `--ods-semantic-color-surface-track` |
+| `--ods-theme-track-background-color-disabled` | _none_ |
 | `--ods-theme-outline-color` | `--ods-semantic-color-focus` |
 | `--ods-theme-outline-offset` | `--ods-semantic-border-focus-offset` |
 | `--ods-theme-outline-style` | `--ods-semantic-border-focus-style` |
@@ -112,11 +113,11 @@ points at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-font-family` | `--ods-semantic-font-family-body` |
 | `--ods-theme-font-family-code` | `--ods-semantic-font-family-code` |
 | `--ods-theme-input-background-color-checked` | `--ods-semantic-color-surface-selected-solid` |
-| `--ods-theme-input-background-color-checked-hover` | `--ods-semantic-color-interaction-accent-hover` |
+| `--ods-theme-input-background-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
 | `--ods-theme-input-background-color-invalid` | `--ods-semantic-color-surface-critical` |
 | `--ods-theme-input-border-color` | `--ods-semantic-color-border-control` |
 | `--ods-theme-input-border-color-checked` | `--ods-semantic-color-border-selected-solid` |
-| `--ods-theme-input-border-color-checked-hover` | `--ods-semantic-color-interaction-accent-hover` |
+| `--ods-theme-input-border-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
 | `--ods-theme-input-border-color-hover` | `--ods-semantic-color-interaction-control-hover` |
 | `--ods-theme-input-border-color-invalid` | `--ods-semantic-color-border-critical` |
 | `--ods-theme-input-border-radius` | `--ods-semantic-size-radius-control` |
@@ -138,6 +139,13 @@ points at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-chart-grid-color` | `--ods-semantic-color-chart-grid` |
 | `--ods-theme-chart-reference-line-color` | `--ods-semantic-color-chart-reference-line` |
 
+Depends on the site:
+
+- `--ods-theme-background-color`: per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.
+- `--ods-theme-heading-text-color`: a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.
+- `--ods-theme-overlay-z-index`: an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.
+<!-- /repoint-tokens:bc01-renames -->
+
 A codemod must match longest-first: `--ods-theme-text-color` is a strict prefix of
 `--ods-theme-text-color-disabled`, and a naive pass corrupts the longer one.
 
@@ -147,6 +155,7 @@ A codemod must match longest-first: `--ods-theme-text-color` is a strict prefix 
 depends on the property it is declared in, so a rename table is not enough - the codemod has to
 know which declaration it sits in.
 
+<!-- repoint-tokens:bc01-split -->
 | before | in a `background` / `fill` | in a `border-color` / `outline-color` | in a `color` |
 | --- | --- | --- | --- |
 | `--ods-theme-critical-color` | `--ods-semantic-color-surface-critical` | `--ods-semantic-color-border-critical` | `--ods-semantic-color-content-critical` |
@@ -156,12 +165,16 @@ know which declaration it sits in.
 | `--ods-theme-success-color` | `--ods-semantic-color-surface-success` | `--ods-semantic-color-border-success` | `--ods-semantic-color-content-success` |
 | `--ods-theme-warning-color` | `--ods-semantic-color-surface-warning` | `--ods-semantic-color-border-warning` | `--ods-semantic-color-content-warning` |
 
+Depends on the site:
+
+- `--ods-theme-primary-color`: in a `color`, an icon or a caret reads `content-icon`.
+<!-- /repoint-tokens:bc01-split -->
+
 Used anywhere else (a `box-shadow`, a `linear-gradient`, an inline `style`), there is no
 mechanical answer: report the site and let the consumer choose.
 
-One caveat on that table: only the `color` column was exercised by the internal migration - all
-8 split sites in `repoint-report.csv` are `split:content` - so the other two columns are a
-proposal that no rendered pixel has validated.
+One caveat on that table: only the `color` column was exercised by the ODS migration (8 sites), so
+the other two columns are a proposal that no rendered pixel has validated.
 
 ---
 
@@ -187,6 +200,8 @@ should emit.
 Destinations are shown without their `--ods-semantic-color-` prefix.
 
 #### surface properties (`background`, `fill`)
+
+<!-- repoint-tokens:bc02-surface -->
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
@@ -197,30 +212,84 @@ Destinations are shown without their `--ods-semantic-color-` prefix.
 | 200 | `surface-information-subtle` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-subtle` |
 | 300 | `surface-information-subtle` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-subtle` |
 | 400 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
-| 500 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `interaction-warning-hover` | `surface-neutral` |
-| 600 | `interaction-brand-hover` | `interaction-information-hover` | `interaction-critical-hover` | `interaction-success-hover` | `interaction-warning-hover` | `surface-neutral` |
-| 700 | `interaction-brand-hover` | `interaction-information-hover` | `interaction-critical-hover` | `interaction-success-hover` | `interaction-warning-hover` | `interaction-neutral-hover` |
-| 800 | `surface-selected-solid` | `interaction-information-hover` | `interaction-critical-hover` | `interaction-success-hover` | `interaction-warning-hover` | `interaction-neutral-hover` |
-| 900 | `surface-selected-solid` | `interaction-information-hover` | `interaction-critical-hover` | `interaction-success-hover` | `interaction-warning-hover` | `surface-code` |
+| 500 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
+| 600 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
+| 700 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
+| 800 | `surface-selected-solid` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
+| 900 | `surface-selected-solid` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-code` |
 
-#### border properties (`border-color`, `outline-color`)
+On a `-hover` / `-active` declaration:
+
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
-| 025 | `border-drag-over` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-readonly` |
-| 050 | `border-drag-over` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-readonly` |
-| 075 | `border-drag-over` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-readonly` |
-| 100 | `border-drag-over` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 025 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 050 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 075 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 100 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 200 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 300 | `interaction-accent-subtle-hover` / `-active` | `interaction-information-subtle-hover` / `-active` | `interaction-critical-subtle-hover` / `-active` | `interaction-success-subtle-hover` / `-active` | `interaction-warning-subtle-hover` / `-active` | `interaction-neutral-subtle-hover` / `-active` |
+| 400 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 500 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 600 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 700 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 800 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 900 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+
+Depends on the site:
+
+- every family, 000: white: per site, as `--ods-theme-background-color` in BC-01.
+- primary, 025-300 on a `-hover` / `-active`: ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, Tabs).
+- primary, 200-300: `primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.
+- neutral, 700-900: `surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.
+<!-- /repoint-tokens:bc02-surface -->
+
+#### border properties (`border-color`, `outline-color`)
+
+<!-- repoint-tokens:bc02-border -->
+| rung | primary | information | critical | success | warning | neutral |
+| --- | --- | --- | --- | --- | --- | --- |
+| 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
+| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
 | 200 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-subtle` |
 | 300 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-control` |
-| 400 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `interaction-control-hover` |
-| 500 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `interaction-control-hover` |
-| 600 | `interaction-brand-hover` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
-| 700 | `interaction-brand-hover` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral-strong` |
-| 800 | `interaction-brand-hover` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral-strong` |
-| 900 | `interaction-brand-hover` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral-strong` |
+| 400 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+| 500 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+| 600 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+| 700 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+| 800 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+| 900 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
+
+On a `-hover` / `-active` declaration:
+
+| rung | primary | information | critical | success | warning | neutral |
+| --- | --- | --- | --- | --- | --- | --- |
+| 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
+| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 200 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-subtle` |
+| 300 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-control` |
+| 400 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 500 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 600 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 700 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 800 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 900 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+
+Depends on the site:
+
+- every family, 000: white: per site, as `--ods-theme-background-color` in BC-01.
+- primary, 025-300: `primary` was also the brand: a brand or accent line reads `border-accent-subtle` rather than the information family.
+<!-- /repoint-tokens:bc02-border -->
 
 #### content properties (`color`)
+
+<!-- repoint-tokens:bc02-content -->
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `content-on-solid` | `content-on-solid` | `content-on-solid` | `content-on-solid` | `content-on-solid` | `content-on-solid` |
@@ -235,20 +304,26 @@ Destinations are shown without their `--ods-semantic-color-` prefix.
 | 600 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-warning` | `content-neutral` |
 | 700 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-warning` | `content-on-neutral` |
 | 800 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-on-warning` | `content-on-neutral` |
-| 900 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-on-warning-solid` | `content-on-neutral` |
+| 900 | `content-on-brand` | `content-on-information` | `content-on-critical` | `content-on-success` | `content-on-warning` | `content-on-neutral` |
+
+Depends on the site:
+
+- warning, 800-900: text on a solid warning fill reads `content-on-warning-solid`.
+<!-- /repoint-tokens:bc02-content -->
 
 `_none_` is a real hole, not an omission: light text colors have no role in the semantic layer.
 Those sites must be reported for a human to decide.
 
-Five context rules sit on top of the tables:
+Four context rules sit on top of the tables:
 
-- **hover / active declarations** take the interaction role instead of the rest one. On `primary`
-  `025`-`100` that is `interaction-accent-subtle-hover`, and on the four status families the
-  `025`-`100` band becomes `interaction-<family>-subtle-hover`.
-- **A dark status border** (`600`-`900`) keeps the plain `border-<family>` at rest and takes
-  `interaction-<family>-hover` on hover, except `warning`, which holds `border-warning`.
-- **`warning` sits one rung lighter than its siblings** (fill `400`, hover `500`): it is the only
-  role carrying dark text, and orange darkens out of contrast fast.
+- **The state comes from the name of the declaring property.** A `-hover` or `-active`
+  declaration takes the interaction role of its rung (second table of each kind), any other
+  declaration the static role. A `:hover` selector is not read: in
+  `.x:hover { background-color: var(--ods-color-critical-100) }` the codemod writes the static
+  `surface-critical-subtle`, and the site has to be moved to `interaction-critical-subtle-hover` by
+  hand.
+- **A warning border** holds `border-warning` in every state: a dark ring around a light warning
+  fill would read as an error.
 - A `color` on `600` in the `neutral` family is `content-placeholder` when the declaring property
   is a placeholder, `content-neutral` otherwise.
 - Any property named after a decorative badge (`alpha`, `beta`, `new`, `promotion`) takes
@@ -256,6 +331,7 @@ Five context rules sit on top of the tables:
 
 ### Named and flat tokens
 
+<!-- repoint-tokens:bc02-named -->
 | before | after |
 | --- | --- |
 | `--ods-color-alpha` | `--ods-semantic-color-surface-decorative-alpha` |
@@ -272,10 +348,10 @@ Five context rules sit on top of the tables:
 | `--ods-color-text-disabled-default` | _none_ |
 | `--ods-color-element-background-selected` | `--ods-semantic-color-surface-selected-solid` |
 | `--ods-color-element-text-selected` | `--ods-semantic-color-content-on-selected-solid` |
-| `--ods-color-form-element-background-default` | `--ods-semantic-color-surface-page` |
-| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-surface-page` |
-| `--ods-color-form-element-background-focus-default` | `--ods-semantic-color-surface-page` |
-| `--ods-color-form-element-background-critical` | `--ods-semantic-color-surface-page` |
+| `--ods-color-form-element-background-default` | `--ods-semantic-color-surface-control` |
+| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-surface-control` |
+| `--ods-color-form-element-background-focus-default` | `--ods-semantic-color-surface-control` |
+| `--ods-color-form-element-background-critical` | `--ods-semantic-color-surface-control` |
 | `--ods-color-form-element-background-selected-critical` | `--ods-semantic-color-surface-critical` |
 | `--ods-color-form-element-border-default` | `--ods-semantic-color-border-control` |
 | `--ods-color-form-element-border-hover-default` | `--ods-semantic-color-interaction-control-hover` |
@@ -283,6 +359,7 @@ Five context rules sit on top of the tables:
 | `--ods-color-form-element-border-critical` | `--ods-semantic-color-border-critical` |
 | `--ods-color-form-element-text-default` | `--ods-semantic-color-content-text` |
 | `--ods-color-form-element-text-placeholder-default` | `--ods-semantic-color-content-placeholder` |
+<!-- /repoint-tokens:bc02-named -->
 
 `--ods-color-text-secondary` was already dangling before v20 - it was read but never declared, so
 those sites were rendering with an inherited color. The destination above is the closest real

@@ -22,6 +22,7 @@
  *   node scripts/repoint-tokens.js --report [path...]   write the report, change nothing
  *   node scripts/repoint-tokens.js --write [path...]    apply, and write the report
  *   node scripts/repoint-tokens.js --tables             print the BREAKING-CHANGES-V20.md tables
+ *   node scripts/repoint-tokens.js --tables --update    rewrite them in BREAKING-CHANGES-V20.md
  *
  * Paths are relative to the repo root and default to the ods-react and ods-recipes sources.
  */
@@ -61,13 +62,13 @@ const THEME = {
   'brand-color': 'color-brand',
   'heading-text-color': 'color-content-heading',
   'progress-background-color': 'color-surface-control-solid',
-  'split-background-color': 'color-surface-neutral-minimal',
+  'split-background-color': 'color-border-neutral-minimal',
   'split-border-color': 'color-border-neutral-minimal',
   'text-color': 'color-content-text',
   'text-color-disabled': null,
   'text-color-selected': 'color-content-on-selected-solid',
-  'track-background-color': 'color-surface-neutral-minimal',
-  'track-background-color-disabled': 'color-surface-neutral',
+  'track-background-color': 'color-surface-track',
+  'track-background-color-disabled': null,
 
   'outline-color': 'color-focus',
   'outline-offset': 'border-focus-offset',
@@ -93,11 +94,11 @@ const THEME = {
   'font-family-code': 'font-family-code',
 
   'input-background-color-checked': 'color-surface-selected-solid',
-  'input-background-color-checked-hover': 'color-interaction-accent-hover',
+  'input-background-color-checked-hover': 'color-interaction-selected-solid-highlight',
   'input-background-color-invalid': 'color-surface-critical',
   'input-border-color': 'color-border-control',
   'input-border-color-checked': 'color-border-selected-solid',
-  'input-border-color-checked-hover': 'color-interaction-accent-hover',
+  'input-border-color-checked-hover': 'color-interaction-selected-solid-highlight',
   'input-border-color-hover': 'color-interaction-control-hover',
   'input-border-color-invalid': 'color-border-critical',
   'input-border-radius': 'size-radius-control',
@@ -148,75 +149,55 @@ const FAMILY = {
 };
 
 /*
- * (kind, family, rung) -> role. `null` means "no destination, report it".
+ * (kind, family, rung, prop) -> role. `null` means "no destination, report it".
  *
- * The shape differs per family because the roles do: `brand` has a selected ladder where the
- * status families have a single subtle one.
+ * The state comes from the name of the declaring property: a `-hover` or `-active` declaration
+ * takes the interaction role of its rung, any other the static one. A `:hover` selector is not
+ * read, so `.x:hover { background-color: ... }` gets the static role.
  */
 function rampRole(kind, family, rung, prop) {
   const f = FAMILY[family];
-  const hover = /-hover$|-active$/.test(prop);
+  const state = /-hover$/.test(prop) ? 'hover' : (/-active$/.test(prop) ? 'active' : 'rest');
+  const light = ['025', '050', '075', '100', '200', '300'].includes(rung);
 
   if (kind === 'surface') {
     if (rung === '000') return 'color-surface-page';
+    if (state !== 'rest') {
+      if (f === 'brand') return light ? `color-interaction-accent-subtle-${state}` : `color-interaction-brand-${state}`;
+      return light ? `color-interaction-${f}-subtle-${state}` : `color-interaction-${f}-${state}`;
+    }
     if (f === 'neutral') {
       if (['025', '050', '075', '100'].includes(rung)) return 'color-surface-neutral-minimal';
       if (['200', '300'].includes(rung)) return 'color-surface-neutral-subtle';
-      if (['400', '500', '600'].includes(rung)) return 'color-surface-neutral';
-      if (['700', '800'].includes(rung)) return 'color-interaction-neutral-hover';
       if (rung === '900') return 'color-surface-code';
+      return 'color-surface-neutral';
     }
     if (f === 'brand') {
-      if (['025', '050', '075', '100'].includes(rung)) return hover ? 'color-interaction-accent-subtle-hover' : 'color-surface-selected';
+      if (['025', '050', '075', '100'].includes(rung)) return 'color-surface-selected';
       if (['200', '300'].includes(rung)) return 'color-surface-information-subtle';
-      if (['400', '500'].includes(rung)) return 'color-surface-brand';
-      if (['600', '700'].includes(rung)) return 'color-interaction-brand-hover';
       if (['800', '900'].includes(rung)) return 'color-surface-selected-solid';
+      return 'color-surface-brand';
     }
-    /* information, critical, success, warning */
-    if (['025', '050', '075', '100'].includes(rung)) {
-      return hover ? `color-interaction-${f}-subtle-hover` : `color-surface-${f}-subtle`;
-    }
-    if (['200', '300'].includes(rung)) return `color-surface-${f}-subtle`;
-    /*
-     * warning ships one rung lighter than the others - 400 at rest, 500 on hover - because it is
-     * the only role carrying dark text and orange darkens out of contrast fast. Its roles keep
-     * that offset, so the rest rung here is 400 and anything above it is the hover.
-     */
-    if (f === 'warning') {
-      if (rung === '400') return 'color-surface-warning';
-      return 'color-interaction-warning-hover';
-    }
-    if (['400', '500'].includes(rung)) return `color-surface-${f}`;
-    if (['600', '700', '800', '900'].includes(rung)) return `color-interaction-${f}-hover`;
+    return light ? `color-surface-${f}-subtle` : `color-surface-${f}`;
   }
 
   if (kind === 'border') {
     if (rung === '000') return 'color-surface-page';
     if (f === 'neutral') {
-      if (['025', '050', '075'].includes(rung)) return 'color-border-readonly';
-      if (rung === '100') return 'color-border-neutral-minimal';
+      if (state !== 'rest' && !light) return 'color-interaction-control-hover';
+      if (['025', '050', '075', '100'].includes(rung)) return 'color-border-neutral-minimal';
       if (rung === '200') return 'color-border-neutral-subtle';
       if (rung === '300') return 'color-border-control';
-      if (['400', '500'].includes(rung)) return 'color-interaction-control-hover';
-      if (rung === '600') return 'color-border-neutral';
-      if (['700', '800', '900'].includes(rung)) return 'color-border-neutral-strong';
+      return 'color-border-neutral';
     }
     if (f === 'brand') {
-      if (['025', '050', '075', '100'].includes(rung)) return 'color-border-drag-over';
-      if (['200', '300'].includes(rung)) return 'color-border-information-subtle';
-      if (['400', '500'].includes(rung)) return 'color-border-brand';
-      if (['600', '700', '800', '900'].includes(rung)) return 'color-interaction-brand-hover';
+      if (light) return 'color-border-information-subtle';
+      return state === 'rest' ? 'color-border-brand' : `color-interaction-brand-${state}`;
     }
-    if (['025', '050', '075', '100', '200', '300'].includes(rung)) return `color-border-${f}-subtle`;
-    /*
-     * The border family has no dark rung, so a dark border keeps the plain one at rest and takes
-     * interaction-<f>-hover on hover. Warning would jump to a dark ring around a light fill, so it
-     * holds its rest value either way.
-     */
-    if (f === 'warning') return 'color-border-warning';
-    if (['400', '500'].includes(rung)) return `color-border-${f}`;
-    if (['600', '700', '800', '900'].includes(rung)) return hover ? `color-interaction-${f}-hover` : `color-border-${f}`;
+    if (light) return `color-border-${f}-subtle`;
+    /* A dark ring around a light warning fill would read as an error: warning holds its border. */
+    if (f === 'warning' || state === 'rest') return `color-border-${f}`;
+    return `color-interaction-${f}-${state}`;
   }
 
   if (kind === 'content') {
@@ -239,10 +220,8 @@ function rampRole(kind, family, rung, prop) {
       if (['600', '700', '800', '900'].includes(rung)) return 'color-content-on-brand';
     }
     if (f === 'warning') {
-      /* warning is the one family whose solid fill carries dark text rather than white. */
       if (['500', '600', '700'].includes(rung)) return 'color-content-warning';
-      if (rung === '800') return 'color-content-on-warning';
-      if (rung === '900') return 'color-content-on-warning-solid';
+      if (['800', '900'].includes(rung)) return 'color-content-on-warning';
     }
     if (['400', '500'].includes(rung)) return `color-content-${f}`;
     if (['600', '700', '800', '900'].includes(rung)) return `color-content-on-${f}`;
@@ -250,6 +229,36 @@ function rampRole(kind, family, rung, prop) {
 
   return null;
 }
+
+/*
+ * What a table cannot settle: the destination depends on what the site paints. The rewrite keeps
+ * the table's answer, --tables prints these under the tables so a reviewer picks per site.
+ */
+const NOTES = {
+  theme: {
+    'background-color': 'per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.',
+    'heading-text-color': 'a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.',
+    'overlay-z-index': 'an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.',
+  },
+  split: {
+    'primary-color': 'in a `color`, an icon or a caret reads `content-icon`.',
+  },
+  ramp: {
+    surface: [
+      ['every family', '000', 'white: per site, as `--ods-theme-background-color` in BC-01.'],
+      ['primary', '025-300 on a `-hover` / `-active`', 'ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, Tabs).'],
+      ['primary', '200-300', '`primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.'],
+      ['neutral', '700-900', '`surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.'],
+    ],
+    border: [
+      ['every family', '000', 'white: per site, as `--ods-theme-background-color` in BC-01.'],
+      ['primary', '025-300', '`primary` was also the brand: a brand or accent line reads `border-accent-subtle` rather than the information family.'],
+    ],
+    content: [
+      ['warning', '800-900', 'text on a solid warning fill reads `content-on-warning-solid`.'],
+    ],
+  },
+};
 
 /* The named tier-1 colors that were never ramps. */
 const NAMED = {
@@ -276,10 +285,10 @@ const NAMED = {
   'text-disabled-default': null,
   'element-background-selected': 'color-surface-selected-solid',
   'element-text-selected': 'color-content-on-selected-solid',
-  'form-element-background-default': 'color-surface-page',
-  'form-element-background-hover-default': 'color-surface-page',
-  'form-element-background-focus-default': 'color-surface-page',
-  'form-element-background-critical': 'color-surface-page',
+  'form-element-background-default': 'color-surface-control',
+  'form-element-background-hover-default': 'color-surface-control',
+  'form-element-background-focus-default': 'color-surface-control',
+  'form-element-background-critical': 'color-surface-control',
   'form-element-background-selected-critical': 'color-surface-critical',
   'form-element-border-default': 'color-border-control',
   'form-element-border-hover-default': 'color-interaction-control-hover',
@@ -334,7 +343,7 @@ function destinations() {
   for (const kind of ['surface', 'border', 'content']) {
     for (const family of Object.keys(FAMILY)) {
       for (const rung of ['000', '025', '050', '075', '100', '200', '300', '400', '500', '600', '700', '800', '900']) {
-        ['color', 'color-hover', 'placeholder-color', 'alpha-color'].forEach((prop) => out.add(rampRole(kind, family, rung, prop)));
+        ['color', 'color-hover', 'color-active', 'placeholder-color', 'alpha-color'].forEach((prop) => out.add(rampRole(kind, family, rung, prop)));
       }
     }
   }
@@ -359,20 +368,45 @@ if (process.argv.includes('--tables')) {
   const cell = (role) => (role ? `\`--ods-semantic-${role}\`` : '_none_');
   const short = (role) => (role ? `\`${role.replace(/^color-/, '')}\`` : '_none_');
   const table = (head, body) => [`| ${head.join(' | ')} |`, `| ${head.map(() => '---').join(' | ')} |`, ...body.map((r) => `| ${r.join(' | ')} |`)].join('\n');
+  const notes = (items) => (items.length ? `\n\nDepends on the site:\n\n${items.map((item) => `- ${item}`).join('\n')}` : '');
+  const stateCell = (kind, family, rung) => {
+    const hover = rampRole(kind, family, rung, 'color-hover');
+    const active = rampRole(kind, family, rung, 'color-active');
+    if (hover === active) return short(hover);
+    return active === hover.replace(/-hover$/, '-active') ? `${short(hover)} / \`-active\`` : `${short(hover)} / ${short(active)}`;
+  };
+  const ramp = (kind, withState) => [
+    table(['rung', ...Object.keys(FAMILY)], RUNGS.map((rung) => [rung, ...Object.keys(FAMILY).map((f) => short(rampRole(kind, f, rung, '')))])),
+    ...(withState ? ['\nOn a `-hover` / `-active` declaration:\n', table(['rung', ...Object.keys(FAMILY)], RUNGS.map((rung) => [rung, ...Object.keys(FAMILY).map((f) => stateCell(kind, f, rung))]))] : []),
+  ].join('\n') + notes(NOTES.ramp[kind].map(([family, rungs, text]) => `${family}, ${rungs}: ${text}`));
 
-  console.log('### BC-01 renames\n');
-  console.log(table(['before', 'after'], Object.entries(THEME).map(([k, v]) => [`\`--ods-theme-${k}\``, cell(v)])));
-  console.log('\n### BC-01 split\n');
-  console.log(table(['before', 'in a `background` / `fill`', 'in a `border-color` / `outline-color`', 'in a `color`'],
-    Object.entries(THEME_SPLIT).map(([k, f]) => [`\`--ods-theme-${k}\``, ...['surface', 'border', 'content'].map((kind) => cell(splitRole(f, kind)))])));
-  for (const kind of ['surface', 'border', 'content']) {
-    console.log(`\n### BC-02 ramp, ${kind}\n`);
-    console.log(table(['rung', ...Object.keys(FAMILY)], RUNGS.map((rung) => [rung, ...Object.keys(FAMILY).map((f) => short(rampRole(kind, f, rung, '')))])));
+  const BLOCKS = {
+    'bc01-renames': table(['before', 'after'], Object.entries(THEME).map(([k, v]) => [`\`--ods-theme-${k}\``, cell(v)]))
+      + notes(Object.entries(NOTES.theme).map(([k, text]) => `\`--ods-theme-${k}\`: ${text}`)),
+    'bc01-split': table(['before', 'in a `background` / `fill`', 'in a `border-color` / `outline-color`', 'in a `color`'],
+      Object.entries(THEME_SPLIT).map(([k, f]) => [`\`--ods-theme-${k}\``, ...['surface', 'border', 'content'].map((kind) => cell(splitRole(f, kind)))]))
+      + notes(Object.entries(NOTES.split).map(([k, text]) => `\`--ods-theme-${k}\`: ${text}`)),
+    'bc02-surface': ramp('surface', true),
+    'bc02-border': ramp('border', true),
+    'bc02-content': ramp('content', false),
+    'bc02-named': table(['before', 'after'], Object.entries(NAMED).map(([k, v]) => [`\`--ods-color-${k}\``, cell(v)])),
+  };
+
+  if (process.argv.includes('--update')) {
+    const doc = path.join(REPO, 'BREAKING-CHANGES-V20.md');
+    let text = fs.readFileSync(doc, 'utf8');
+    for (const [id, body] of Object.entries(BLOCKS)) {
+      const re = new RegExp(`(<!-- repoint-tokens:${id} -->\\n)[\\s\\S]*?(\\n<!-- /repoint-tokens:${id} -->)`);
+      if (!re.test(text)) {
+        console.error(`BREAKING-CHANGES-V20.md has no <!-- repoint-tokens:${id} --> block`);
+        process.exit(4);
+      }
+      text = text.replace(re, (m, open, close) => `${open}${body}${close}`);
+    }
+    fs.writeFileSync(doc, text);
+  } else {
+    Object.entries(BLOCKS).forEach(([id, body]) => console.log(`<!-- repoint-tokens:${id} -->\n${body}\n<!-- /repoint-tokens:${id} -->\n`));
   }
-  console.log('\n### BC-02 named\n');
-  console.log(table(['before', 'after'], Object.entries(NAMED).map(([k, v]) => [`\`--ods-color-${k}\``, cell(v)])));
-  console.log('\n### BC-03\n');
-  console.log(table(['before', 'after'], Object.entries(LEGACY).map(([k, v]) => [`\`--ods-${k}\``, cell(v)])));
   process.exit(0);
 }
 

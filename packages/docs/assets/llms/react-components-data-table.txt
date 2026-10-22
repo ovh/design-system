@@ -33,7 +33,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-t
 
 ## Examples
 
-- Accessibility I18n
 - Default
 - Empty
 - Pagination example
@@ -43,6 +42,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-t
 - Sorting disabled columns
 - State controlled
 - Visibility example
+- Accessibility - I18n
 
 ## Documentation pages
 

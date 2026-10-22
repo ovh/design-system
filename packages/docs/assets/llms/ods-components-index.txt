@@ -343,7 +343,7 @@
 
 - [Overview](./react-components-tabs.txt) (~305 tokens)
 - [Documentation](./react-components-tabs--documentation.txt) (~1179 tokens)
-- [Technical Information](./react-components-tabs--technical-information.txt) (~1047 tokens)
+- [Technical Information](./react-components-tabs--technical-information.txt) (~1007 tokens)
 - [Examples](./react-components-tabs--examples.txt) (~1404 tokens)
 
 ## Tag

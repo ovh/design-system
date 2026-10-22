@@ -4,7 +4,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1047
+tokens: 1007
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -85,10 +85,8 @@ _No specific property._
 | `--ods-tab-border-color-selected-switch` | `var(--ods-semantic-color-border-control)` |
 | `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
 | `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
-| `--ods-tab-border-color-selected` | `var(--ods-semantic-color-border-brand)` |
 | `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
 | `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-text)` |
-| `--ods-tab-text-color-selected` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-state-is-disabled-opacity` | `1` |

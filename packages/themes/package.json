@@ -46,6 +46,7 @@
     "build:watch": "sass --watch src:dist --no-source-map --pkg-importer=node",
     "clean": "rimraf dist",
     "generate:tokens": "node scripts/generate-token-lists.js",
+    "lint:css": "node scripts/check-retired-tokens.js && node scripts/repoint-tokens.js --tables > /dev/null",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
     "tokens:resolve": "sass src:dist --no-source-map --pkg-importer=node && node scripts/resolve-tokens.js",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"

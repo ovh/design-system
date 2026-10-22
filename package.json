@@ -17,7 +17,7 @@
     "clean": "lerna run clean",
     "doc": "lerna run --concurrency 2 doc",
     "docs": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-docs run start",
-    "lint": "pnpm lint:ts && pnpm lint:scss",
+    "lint": "pnpm lint:ts && pnpm lint:scss && pnpm lint:css",
     "lint:css": "lerna run --concurrency 2 lint:css",
     "lint:scss": "lerna run --concurrency 2 lint:scss",
     "lint:ts": "lerna run --concurrency 2 lint:ts",

@@ -174,7 +174,9 @@ export const Overview: Story = {
     <QueryFilter
       filterOption={ filterOption }
       filterProperty={ filterProperty }>
-      <QueryFilterControl style={{ alignSelf: 'end', width: '300px' }} />
+      <QueryFilterControl
+        aria-label="Filter instances"
+        style={{ alignSelf: 'end', width: '300px' }} />
 
       <QueryFilterContent />
 

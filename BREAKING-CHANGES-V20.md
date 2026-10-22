@@ -537,8 +537,8 @@ The theme's three disabled colour roles are still declared but no component read
 
 ## Not inventoried yet
 
-- A few `packages/docs` files still read the old names: the historical entries of `whats-new.mdx`
-  and `migration-19-to-20.mdx`, and the unused Storybook leftover `assets/css/preview.css`.
+- A few `packages/docs` files still mention the old names: the historical entries of
+  `whats-new.mdx` and `migration-19-to-20.mdx`.
 - Font sizes are not adopted: `ods-text-*` still carries literal sizes and the theme has no
   font-size family. If one lands in this major it is another entry here.
 - No visual-regression baseline has been taken against the new theme, so the list of value-only

@@ -15,6 +15,7 @@ interface CardProp extends ComponentPropsWithRef<'div'> {
   color?: CardColor,
   /**
    * @type=CARD_STATUS
+   * \@default-value=CARD_STATUS.neutral
    * The status preset to use.
    */
   status?: CardStatus,

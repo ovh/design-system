@@ -18,7 +18,7 @@
     color: var(--ods-switch-item-text-color);
     font-family: inherit;
     font-size: 1rem;
-    font-weight: var(--ods-semantic-font-weight-medium);
+    font-weight: var(--ods-semantic-font-weight-semibold);
     cursor: pointer;
 
     &:not([data-disabled], [data-state="on"]):hover {

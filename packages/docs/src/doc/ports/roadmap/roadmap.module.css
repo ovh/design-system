@@ -24,7 +24,7 @@
   writing-mode: vertical-rl;
   text-align: center;
   color: var(--roadmap-components-color);
-  font-weight: var(--ods-semantic-font-weight-medium);
+  font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
 .roadmap__section--components {

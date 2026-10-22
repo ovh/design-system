@@ -19,7 +19,7 @@
   padding: calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-gap-inline) * 2) calc(var(--ods-semantic-size-space-inset-block) / 2) calc(var(--ods-semantic-size-space-inset-inline) / 2);
   color: var(--ods-recipe-order-button-text-color);
   font-size: 16px;
-  font-weight: var(--ods-semantic-font-weight-medium);
+  font-weight: var(--ods-semantic-font-weight-semibold);
 
   &:disabled {
     @include style.ods-is-disabled();

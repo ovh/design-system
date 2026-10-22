@@ -10,7 +10,7 @@
     min-height: input.$ods-input-field-height;
     color: var(--ods-semantic-color-content-group-label);
     font-size: 1rem;
-    font-weight: var(--ods-semantic-font-weight-medium);
+    font-weight: var(--ods-semantic-font-weight-semibold);
 
     &--disabled {
       @include state.ods-is-disabled();

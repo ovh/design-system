@@ -186,7 +186,7 @@ body {
 }
 
 .shell__tree-label--section {
-  font-weight: var(--ods-semantic-font-weight-medium);
+  font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
 /* Layout only — the look is the ODS Link's own. */

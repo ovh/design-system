@@ -73,7 +73,7 @@
 @mixin ods-text-label() {
   color: var(--ods-semantic-color-content-text);
   font-size: font.px-to-rem(16px);
-  font-weight: var(--ods-semantic-font-weight-medium);
+  font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
 @mixin ods-text-paragraph() {

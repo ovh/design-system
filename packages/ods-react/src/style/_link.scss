@@ -1,6 +1,6 @@
 @use './focus';
 
-$ods-link-font-weight: var(--ods-semantic-font-weight-medium);
+$ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
 
 @mixin ods-link() {
   --ods-link-column-gap: var(--ods-semantic-size-space-gap-inline);

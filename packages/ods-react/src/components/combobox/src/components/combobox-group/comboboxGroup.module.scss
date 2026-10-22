@@ -14,7 +14,7 @@
       padding: 0 var(--ods-semantic-size-space-inset-inline);
       min-height: var(--ods-semantic-size-block-size-md);
       color: var(--ods-semantic-color-content-group-label);
-      font-weight: var(--ods-semantic-font-weight-medium);
+      font-weight: var(--ods-semantic-font-weight-semibold);
 
       &--disabled {
         @include state.ods-is-disabled();

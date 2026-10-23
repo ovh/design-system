@@ -4,54 +4,11 @@ import style from './index.module.scss';
 
 const FEATURES = [{
   items: [
-    { label: 'Unlimited websites', tooltipContent: 'Some details.' },
-    { label: 'High power level' },
-    { label: '1 domain name free for the first', tooltipContent: 'Some details.' },
-    { label: '500 GB SSD storage', tooltipContent: 'Some details.' },
-    { label: '1,000 email addresses', tooltipContent: 'Some details.' },
-  ],
-  title: '',
-}, {
-  items: [
-    { label: 'WordPress' },
-    { label: 'Joomla!' },
-    { label: 'Drupal' },
-    { label: 'Prestashop' },
-  ],
-  title: '1-click CMS',
-  tooltipContent: 'Some details.',
-}, {
-  items: [
     { label: '4 x 1 GB databases' },
     { label: '8 GB Web Cloud Databases', tooltipContent: 'Some details.' },
   ],
   title: 'Database',
   tooltipContent: 'Some details.',
-}, {
-  items: [
-    { label: 'Unlimited free SSL', tooltipContent: 'Some details.' },
-    { label: 'Anti-DDoS protection' },
-    { label: 'Anti-virus and anti-spam' },
-    { label: 'Daily backups', tooltipContent: 'Some details.' },
-  ],
-  title: 'Security',
-}, {
-  items: [
-    { label: '99.9% observed availability' },
-    { label: 'Guaranteed resources', tooltipContent: 'Some details.' },
-    { label: 'Unlimited traffic' },
-    { label: 'Service continuity', tooltipContent: 'Some details.' },
-    { label: 'Boost option to withstand temporary traffic spikes', tooltipContent: 'Some details.' },
-  ],
-  title: 'Performance',
-}, {
-  items: [
-    { label: 'Git' },
-    { label: 'Standard support' },
-    { label: 'SSH access' },
-    { label: 'CDN Basic' },
-  ],
-  title: 'Support and additional services',
 }];
 
 const HOSTING_ITEMS = [
@@ -184,31 +141,28 @@ const FeatureListProductCard = (): JSX.Element => {
             <li
               className={ style['feature-list-product-card__features__section'] }
               key={ idx }>
-              {
-                title &&
-                <div className={ style['feature-list-product-card__features__section__item'] }>
-                  <Text
-                    as="span"
-                    preset={ TEXT_PRESET.label }>
-                    { title }
-                  </Text>
+              <div className={ style['feature-list-product-card__features__section__item'] }>
+                <Text
+                  as="span"
+                  preset={ TEXT_PRESET.label }>
+                  { title }
+                </Text>
 
-                  {
-                    !!tooltipContent &&
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Icon
-                          className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
-                          name={ ICON_NAME.circleQuestion } />
-                      </TooltipTrigger>
+                {
+                  !!tooltipContent &&
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Icon
+                        className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
+                        name={ ICON_NAME.circleQuestion } />
+                    </TooltipTrigger>
 
-                      <TooltipContent>
-                        { tooltipContent }
-                      </TooltipContent>
-                    </Tooltip>
-                  }
-                </div>
-              }
+                    <TooltipContent>
+                      { tooltipContent }
+                    </TooltipContent>
+                  </Tooltip>
+                }
+              </div>
 
               <ul className={ style['feature-list-product-card__features__section__items'] }>
                 {

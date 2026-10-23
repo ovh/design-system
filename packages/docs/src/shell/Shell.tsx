@@ -58,11 +58,11 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
         { items.map((item) => (
           <TreeViewNode item={ item } key={ item.id }>
             { ({ customData, isBranch, item: node }) => {
-              const data = customData as { badge?: 'beta' | 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
+              const data = customData as { badge?: 'beta' | 'deprecated' | 'new', gallery?: true, icon?: Parameters<typeof Icon>[0]['name'] };
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', sectionIcons && 'shell__tree-label--tight'].filter(Boolean).join(' ') }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', sectionIcons && 'shell__tree-label--tight', data?.gallery && 'shell__tree-label--gallery'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
@@ -187,7 +187,8 @@ const Shell = () => {
   const currentPage = pages.find((page) => page.path === location.pathname)
     ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
   // Doc pages center their content column: the topbar follows it.
-  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper';
+  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
+    || (currentPage?.kind === 'recipe' && !currentPage.gallery);
   // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
   // keep it, since it holds the navigation drawer button.
   const isWelcome = location.pathname === '/' && !isNarrow;

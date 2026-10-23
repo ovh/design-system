@@ -1,14 +1,15 @@
 .recipes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
   margin: 0 auto;
+  width: 100%;
 }
 
-.recipes__search {
-  margin: 24px 0;
-}
-
+/* Two columns, one when two 420px tracks and the gap no longer fit. */
 .recipes__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(420px, calc((100% - 16px) / 2))), 1fr));
   gap: 16px;
 }
 

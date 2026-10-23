@@ -3,7 +3,8 @@ import { Component, type ComponentType, type JSX, type ReactNode, useState } fro
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
 import { flattenPages } from '../nav/model';
-import { Card, Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
+import { Card, Link } from '../ods';
+import { GalleryToolbar } from './GalleryToolbar';
 import styles from './componentGallery.module.css';
 
 const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx', { eager: true }) as Record<string, Record<string, unknown>>;
@@ -81,32 +82,15 @@ const ComponentGallery = (): JSX.Element => {
 
   return (
     <div className={ styles['component-gallery'] }>
-      <div className={ styles['component-gallery__toolbar'] }>
-        <Input
-          aria-label="Filter components"
-          className={ styles['component-gallery__filter'] }
-          clearable
-          onChange={ (event) => setFilter(event.target.value) }
-          onClear={ () => setFilter('') }
-          placeholder={ `Filter ${GALLERY.length} components` }
-          type={ INPUT_TYPE.search }
-          value={ filter } />
-
-        <Combobox
-          items={ CATEGORY_ITEMS }
-          multiple
-          onValueChange={ ({ value }) => setCategories(value) }
-          value={ categories }>
-          <ComboboxControl
-            aria-label="Filter by category"
-            placeholder="All categories" />
-          <ComboboxContent />
-        </Combobox>
-
-        <span className={ styles['component-gallery__count'] }>
-          { shown.length } / { GALLERY.length }
-        </span>
-      </div>
+      <GalleryToolbar
+        categories={ categories }
+        categoryItems={ CATEGORY_ITEMS }
+        filter={ filter }
+        noun="components"
+        onCategoriesChange={ setCategories }
+        onFilterChange={ setFilter }
+        shown={ shown.length }
+        total={ GALLERY.length } />
 
       { shown.length ? (
         <DemoFrame pageSurface>

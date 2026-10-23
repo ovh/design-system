@@ -492,16 +492,31 @@ function helperDocs(helper: typeof HELPERS[number]): Doc[] {
   return [overview, documentation];
 }
 
+interface RecipeData {
+  description?: string;
+  name: string;
+  odsComponents: string[];
+  source: Record<string, unknown>;
+  tags: string[];
+}
+
+function readRecipes(): Record<string, RecipeData> | null {
+  return (readJson('../ods-recipes/dist/ods-recipes.json') as { component?: Record<string, RecipeData> } | null)?.component ?? null;
+}
+
+/* Types and constants (BUTTON_SIZE, type Foo) are not components. */
+const componentNames = (names: string[]): string[] => names.filter((name) => !name.startsWith('type ') && !/^[A-Z0-9_]+$/.test(name));
+
 function recipesDoc(): Doc | null {
-  const data = readJson('../ods-recipes/dist/ods-recipes.json') as { component: Record<string, { description?: string, name: string, odsComponents: string[], tags: string[] }> } | null;
-  if (!data?.component) {
+  const recipes = readRecipes();
+  if (!recipes) {
     return null;
   }
-  const sections = Object.values(data.component).map((recipe) => [
+  const sections = Object.values(recipes).map((recipe) => [
     `## ${recipe.name}`,
     recipe.description ?? '',
     recipe.tags?.length ? `Tags: ${recipe.tags.join(', ')}` : '',
-    recipe.odsComponents?.length ? `ODS components used: ${recipe.odsComponents.filter((name) => !name.startsWith('type ') && !/^[A-Z0-9_]+$/.test(name)).join(', ')}` : '',
+    recipe.odsComponents?.length ? `ODS components used: ${componentNames(recipe.odsComponents).join(', ')}` : '',
   ].filter(Boolean).join('\n\n'));
   return makeDoc({
     body: `# Components\n\nProven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: ${BASE_URL}/recipes/components\n\n${sections.join('\n\n')}`,
@@ -781,14 +796,12 @@ function buildSearchIndex(): SearchEntry[] {
       }
     }
   }
-  // Recipes: their llms doc is one aggregate rendered by the single
-  // /recipes/components page, so it is indexed as ONE page-level entry (no
-  // #section: the recipe cards carry no heading ids to land on).
-  const recipes = recipesDoc();
-  if (recipes) {
-    const text = searchText(recipes.body.replace(/```[\s\S]*?```/g, ' '));
+  // One entry per recipe page: its README (a "TODO" placeholder says nothing), tags and components.
+  for (const [key, recipe] of Object.entries(readRecipes() ?? {})) {
+    const readme = String(recipe.source['README.md'] ?? '').replace(/```[\s\S]*?```/g, ' ').replace(/\bTODO\b/g, ' ');
+    const text = searchText([readme, (recipe.tags ?? []).join(' '), componentNames(recipe.odsComponents ?? []).join(' ')].join('\n\n'));
     if (text.length > 0) {
-      entries.push({ b: text, r: '/recipes/components', s: 'Recipes', t: recipes.title });
+      entries.push({ b: text, r: `/recipes/${key}`, s: 'Recipe', t: recipe.name });
     }
   }
   return entries;

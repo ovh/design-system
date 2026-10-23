@@ -160,6 +160,47 @@ describe('Combobox behaviour', () => {
     });
   });
 
+  describe('scrolling', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/page-bottom');
+      await page.waitForSelector('[data-ods="combobox"]');
+    });
+
+    it('should scroll the page to keep the highlighted option visible on keyboard navigation', async() => {
+      await openContent(page);
+      // Keep the pointer off the list, as the page scroll would bring options under it.
+      await page.mouse.move(0, 0);
+      const itemCount = (await getItems(page)).length;
+
+      await Array.from({ length: itemCount }).reduce<Promise<void>>(
+        (previous) => previous.then(() => page.keyboard.press('ArrowDown')),
+        Promise.resolve(),
+      );
+      await page.waitForSelector('[role="option"]:last-child[aria-selected="true"]');
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+
+      const bottom = await page.$eval('[role="option"]:last-child', (el) => el.getBoundingClientRect().bottom);
+      expect(bottom).toBeLessThanOrEqual(await page.evaluate(() => window.innerHeight));
+    });
+
+    it('should not scroll the page when hovering a partly visible option', async() => {
+      await openContent(page);
+      const scrollY = await page.evaluate(() => window.scrollY);
+      const top = await page.evaluate(() => {
+        const options = Array.from(document.querySelectorAll('[role="option"]'));
+        const partlyVisible = options.find((el) => el.getBoundingClientRect().bottom > window.innerHeight);
+        return partlyVisible?.getBoundingClientRect().top;
+      });
+
+      expect(top).toBeLessThan(await page.evaluate(() => window.innerHeight));
+      await page.mouse.move(20, top! + 2);
+      await page.waitForSelector('[role="option"][aria-selected="true"]');
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+
+      expect(await page.evaluate(() => window.scrollY)).toBe(scrollY);
+    });
+  });
+
   describe('filtering', () => {
     describe('default', () => {
       beforeEach(async() => {

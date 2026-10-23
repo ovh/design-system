@@ -78,34 +78,6 @@ function highlightText(text: string, searchText: string, markWrapper: MarkWrappe
     part.toLowerCase() === searchText ? markWrapper({ key: idx, part }) : part);
 }
 
-// Native scrollIntoView also scrolls every scrollable ancestor, up to the page
-// (and the host page when rendered in an iframe): highlighting an option on
-// hover would then move the page under the pointer. This one only scrolls the
-// closest scroll container (auto or scroll overflow, even if the list is
-// short enough not to overflow: walking past it would reach the page again),
-// with the "nearest" block alignment.
-function scrollIntoParentView(element: HTMLElement): void {
-  const view = element.ownerDocument.defaultView;
-  let container = element.parentElement;
-
-  while (container && !/auto|scroll/.test(view?.getComputedStyle(container).overflowY ?? '')) {
-    container = container.parentElement;
-  }
-
-  if (!container || container.scrollHeight <= container.clientHeight) {
-    return;
-  }
-
-  const containerRect = container.getBoundingClientRect();
-  const elementRect = element.getBoundingClientRect();
-
-  if (elementRect.top < containerRect.top) {
-    container.scrollTop -= containerRect.top - elementRect.top;
-  } else if (elementRect.bottom > containerRect.bottom) {
-    container.scrollTop += elementRect.bottom - containerRect.bottom;
-  }
-}
-
 function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
   if (!text || !searchTerm) {
     return [text];
@@ -121,5 +93,4 @@ export {
   getElementText,
   getValidChildren,
   highlightNode,
-  scrollIntoParentView,
 };

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, useEffect, useRef } from 'react';
-import { scrollIntoParentView } from '../../../../../utils/element';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
@@ -27,10 +26,13 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
     selectItem,
   } = useCombobox();
   const optionRef = useRef<HTMLDivElement>(null);
+  const isHoveredRef = useRef(false);
 
+  // An option under the pointer is already visible: scrolling on hover would
+  // only move the page under the pointer and highlight another option.
   useEffect(() => {
-    if (optionRef.current && isHighlighted) {
-      scrollIntoParentView(optionRef.current);
+    if (optionRef.current && isHighlighted && !isHoveredRef.current) {
+      optionRef.current.scrollIntoView({ block: 'nearest' });
     }
   }, [isHighlighted, optionRef]);
 
@@ -52,7 +54,13 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
         className,
       )}
       onClick={ onClick }
-      onPointerEnter={ () => highlightOption(item) }
+      onPointerEnter={ () => {
+        isHoveredRef.current = true;
+        highlightOption(item);
+      } }
+      onPointerLeave={ () => {
+        isHoveredRef.current = false;
+      } }
       ref={ optionRef }
       role="option"
       tabIndex={ -1 }

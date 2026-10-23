@@ -497,10 +497,11 @@ a number in 19.7.3 now hold a `var()` string: `$ods-button-size-xs` (`24px`), `$
 (`0.3s`) and `$ods-link-font-weight` (`600`). A plain use compiles and renders as before, Sass
 arithmetic does not: `ods.$animation-duration * 2` fails with "Undefined operation", and
 `ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. The fix is to move
-the operation into `calc()`: `calc(#{ods.$animation-duration} * 2)`. To find them:
+the operation into `calc()`: `calc(#{ods.$animation-duration} * 2)`. To find them, with a namespace
+or without one (`@use ... as *`), knowing that it also lists an `$animation-duration` of your own:
 
 ```sh
-grep -rnE '\.\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+grep -rnE '\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
 ```
 
 `$ods-input-actions-padding-right` goes from `4px` to `2px`: the action buttons of a field sit as
@@ -730,7 +731,7 @@ goes under the v20 modal.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | A 19.x custom theme, Theme Generator exports included, declares `--ods-theme-*` and `--ods-color-*`, which v20 neither declares nor reads. A v20 theme re-declares the brand and accent ramps, `--ods-palette-brand-*` and `--ods-palette-accent-*` (`50` to `900`), on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`. |
-| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design, except `--ods-semantic-color-chart-series-01`, which reads accent `500` and follows the accent ramp. The brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
+| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design, except `--ods-semantic-color-chart-series-01`, which reads accent `500` and follows the accent ramp. Over `default/css` alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. `blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
 | **Detection** | `grep -rnE -- "--ods-(theme\|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/`: it finds a theme written as CSS, as the JSON the 19.x Theme Generator exports, or as that object kept in a JS or TS file |
 | **Codemod** | **manual** - move the brand colors onto the two ramps, then re-declare the roles the ramps do not reach. |
 | **Source of truth** | `packages/themes/src/default/index.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/index.scss` (a theme written this way) |

@@ -10,6 +10,10 @@
 
     &:disabled:has(> #{$button}__spinner) {
       -webkit-text-fill-color: transparent;
+
+      > :not(#{$button}__spinner) {
+        opacity: 0;
+      }
     }
 
     &--xs {

@@ -17,6 +17,12 @@ export const isLoading = () => (
   <Button
     data-testid="is-loading"
     loading={ true }>
+    <svg
+      height="16"
+      viewBox="0 0 16 16"
+      width="16">
+      <rect height="16" width="16" />
+    </svg>
     Is Loading
   </Button>
 );

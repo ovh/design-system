@@ -252,7 +252,8 @@ On a `-hover` / `-active` declaration:
 Depends on the site:
 
 - every family, 000: white: per site, as `--ods-theme-background-color` in BC-01.
-- primary, 025-300 on a `-hover` / `-active`: ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, Tabs).
+- primary, 025-300 on a `-hover` / `-active`: ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, File Upload).
+- neutral, 025-100 on a `-hover` / `-active`: the Tab hover reads `interaction-highlight`, as the list-like items do.
 - primary, 200-300: `primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.
 - neutral, 700-900: `surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.
 <!-- /repoint-tokens:bc02-surface -->
@@ -287,17 +288,18 @@ On a `-hover` / `-active` declaration:
 | 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
 | 200 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-subtle` |
 | 300 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-control` |
-| 400 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
-| 500 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
-| 600 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
-| 700 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
-| 800 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
-| 900 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `border-warning` | `interaction-control-hover` |
+| 400 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-control-hover` |
+| 500 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-control-hover` |
+| 600 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 700 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 800 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
+| 900 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-neutral-hover` / `-active` |
 
 Depends on the site:
 
 - every family, 000: white: per site, as `--ods-theme-background-color` in BC-01.
 - primary, 025-300: `primary` was also the brand: a brand or accent line reads `border-accent-subtle` rather than the information family.
+- neutral, 400-500 on a `-hover` / `-active`: `interaction-control-hover` is the hover of the fields, read by the Accordion and the Tile. It has no pressed rung, so an `-active` declaration gets it too.
 <!-- /repoint-tokens:bc02-border -->
 
 #### content properties (`color`)
@@ -327,7 +329,7 @@ Depends on the site:
 `_none_` is a real hole, not an omission: light text colors have no role in the semantic layer.
 Those sites must be reported for a human to decide.
 
-Four context rules sit on top of the tables:
+Three context rules sit on top of the tables:
 
 - **The state comes from the name of the declaring property.** A `-hover` or `-active`
   declaration takes the interaction role of its rung (second table of each kind), any other
@@ -335,8 +337,6 @@ Four context rules sit on top of the tables:
   `.x:hover { background-color: var(--ods-color-critical-100) }` the codemod writes the static
   `surface-critical-subtle`, and the site has to be moved to `interaction-critical-subtle-hover` by
   hand.
-- **A warning border** holds `border-warning` in every state: a dark ring around a light warning
-  fill would read as an error.
 - A `color` on `600` in the `neutral` family is `content-placeholder` when the declaring property
   is a placeholder, `content-neutral` otherwise.
 - Any property named after a decorative badge (`alpha`, `beta`, `new`, `promotion`) takes

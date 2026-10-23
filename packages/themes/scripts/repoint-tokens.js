@@ -184,7 +184,8 @@ function rampRole(kind, family, rung, prop) {
   if (kind === 'border') {
     if (rung === '000') return 'color-surface-page';
     if (f === 'neutral') {
-      if (state !== 'rest' && !light) return 'color-interaction-control-hover';
+      if (state !== 'rest' && ['400', '500'].includes(rung)) return 'color-interaction-control-hover';
+      if (state !== 'rest' && !light) return `color-interaction-neutral-${state}`;
       if (['025', '050', '075', '100'].includes(rung)) return 'color-border-neutral-minimal';
       if (rung === '200') return 'color-border-neutral-subtle';
       if (rung === '300') return 'color-border-control';
@@ -195,8 +196,7 @@ function rampRole(kind, family, rung, prop) {
       return state === 'rest' ? 'color-border-brand' : `color-interaction-brand-${state}`;
     }
     if (light) return `color-border-${f}-subtle`;
-    /* A dark ring around a light warning fill would read as an error: warning holds its border. */
-    if (f === 'warning' || state === 'rest') return `color-border-${f}`;
+    if (state === 'rest') return `color-border-${f}`;
     return `color-interaction-${f}-${state}`;
   }
 
@@ -246,13 +246,15 @@ const NOTES = {
   ramp: {
     surface: [
       ['every family', '000', 'white: per site, as `--ods-theme-background-color` in BC-01.'],
-      ['primary', '025-300 on a `-hover` / `-active`', 'ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, Tabs).'],
+      ['primary', '025-300 on a `-hover` / `-active`', 'ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, File Upload).'],
+      ['neutral', '025-100 on a `-hover` / `-active`', 'the Tab hover reads `interaction-highlight`, as the list-like items do.'],
       ['primary', '200-300', '`primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.'],
       ['neutral', '700-900', '`surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.'],
     ],
     border: [
       ['every family', '000', 'white: per site, as `--ods-theme-background-color` in BC-01.'],
       ['primary', '025-300', '`primary` was also the brand: a brand or accent line reads `border-accent-subtle` rather than the information family.'],
+      ['neutral', '400-500 on a `-hover` / `-active`', '`interaction-control-hover` is the hover of the fields, read by the Accordion and the Tile. It has no pressed rung, so an `-active` declaration gets it too.'],
     ],
     content: [
       ['warning', '800-900', 'text on a solid warning fill reads `content-on-warning-solid`.'],

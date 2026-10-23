@@ -31,6 +31,7 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
 }, ref): JSX.Element | null => {
   const { filter, highlightItem, highlightedValue, registerHandler, registerItem, unregisterHandler, unregisterItem } = useCommand();
   const nodeRef = useRef<HTMLDivElement | null>(null);
+  const isHoveredRef = useRef(false);
   const id = useId();
   const itemId = props?.id || id;
   const isDisabled = props['aria-disabled'] === true || props['aria-disabled'] === 'true';
@@ -69,8 +70,10 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
     return (): void => unregisterItem(itemId);
   }, [itemId, unregisterItem]);
 
+  // An option under the pointer is already visible: scrolling on hover would
+  // only move the page under the pointer and highlight another option.
   useEffect(() => {
-    if (isHighlighted) {
+    if (isHighlighted && !isHoveredRef.current) {
       nodeRef.current?.scrollIntoView({ block: 'nearest' });
     }
   }, [isHighlighted]);
@@ -94,10 +97,15 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
         props.onClick?.(e);
       } }
       onPointerEnter={ (e) => {
+        isHoveredRef.current = true;
         if (!isDisabled) {
           highlightItem(itemId);
         }
         props.onPointerEnter?.(e);
+      } }
+      onPointerLeave={ (e) => {
+        isHoveredRef.current = false;
+        props.onPointerLeave?.(e);
       } }
       ref={ nodeRef }
       role="option">

@@ -26,9 +26,12 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
     selectItem,
   } = useCombobox();
   const optionRef = useRef<HTMLDivElement>(null);
+  const isHoveredRef = useRef(false);
 
+  // An option under the pointer is already visible: scrolling on hover would
+  // only move the page under the pointer and highlight another option.
   useEffect(() => {
-    if (optionRef.current && isHighlighted) {
+    if (optionRef.current && isHighlighted && !isHoveredRef.current) {
       optionRef.current.scrollIntoView({ block: 'nearest' });
     }
   }, [isHighlighted, optionRef]);
@@ -51,7 +54,13 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
         className,
       )}
       onClick={ onClick }
-      onPointerEnter={ () => highlightOption(item) }
+      onPointerEnter={ () => {
+        isHoveredRef.current = true;
+        highlightOption(item);
+      } }
+      onPointerLeave={ () => {
+        isHoveredRef.current = false;
+      } }
       ref={ optionRef }
       role="option"
       tabIndex={ -1 }

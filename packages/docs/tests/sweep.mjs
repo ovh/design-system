@@ -14,6 +14,10 @@ const COMPONENTS = readdirSync(resolve(dirname(fileURLToPath(import.meta.url)), 
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
   .sort();
+const RECIPES = readdirSync(resolve(dirname(fileURLToPath(import.meta.url)), '../../ods-recipes/src/components'), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
 
 async function suite(browser, { base, version }) {
   const routes = [
@@ -21,6 +25,7 @@ async function suite(browser, { base, version }) {
     ...GUIDES.map((g) => `/guides/${g}`),
     '/helpers/format-price', '/helpers/format-relative-time',
     '/recipes/components',
+    ...RECIPES.map((r) => `/recipes/${r}`),
     ...COMPONENTS.flatMap((c) => [`/components/${c}`, `/components/${c}/technical`, `/components/${c}/examples`]),
     '/components/icon/gallery',
     '/tools/sandbox', '/tools/theme-generator',

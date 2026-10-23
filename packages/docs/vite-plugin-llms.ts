@@ -796,14 +796,12 @@ function buildSearchIndex(): SearchEntry[] {
       }
     }
   }
-  // Recipes: their llms doc is one aggregate rendered by the single
-  // /recipes/components page, so it is indexed as ONE page-level entry (no
-  // #section: the recipe cards carry no heading ids to land on).
-  const recipes = recipesDoc();
-  if (recipes) {
-    const text = searchText(recipes.body.replace(/```[\s\S]*?```/g, ' '));
+  // One entry per recipe page: its README (a "TODO" placeholder says nothing), tags and components.
+  for (const [key, recipe] of Object.entries(readRecipes() ?? {})) {
+    const readme = String(recipe.source['README.md'] ?? '').replace(/```[\s\S]*?```/g, ' ').replace(/\bTODO\b/g, ' ');
+    const text = searchText([readme, (recipe.tags ?? []).join(' '), componentNames(recipe.odsComponents ?? []).join(' ')].join('\n\n'));
     if (text.length > 0) {
-      entries.push({ b: text, r: '/recipes/components', s: 'Recipes', t: recipes.title });
+      entries.push({ b: text, r: `/recipes/${key}`, s: 'Recipe', t: recipe.name });
     }
   }
   return entries;

@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 833
+tokens: 841
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--technical-information.txt
 ---
 
@@ -86,8 +86,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-cart-product-group-item-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-cart-product-group-item-padding-vertical` | `var(--ods-theme-padding-vertical)` |
+| `--ods-cart-product-group-item-padding-horizontal` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-cart-product-group-item-padding-vertical` | `var(--ods-semantic-size-space-inset-block)` |
 | `--ods-cart-handle-height` | `4px` |
-| `--ods-cart-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-cart-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-cart-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-cart-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |

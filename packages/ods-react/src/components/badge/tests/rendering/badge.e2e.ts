@@ -41,6 +41,17 @@ describe('Badge rendering', () => {
       expect(lgHeight).toBeGreaterThan(smHeight);
       expect(lgHeight).toBeGreaterThan(mdHeight);
     });
+
+    it('should add the border to the 19.7.3 heights of sm and lg', async() => {
+      await gotoStory(page, 'rendering/sizes');
+
+      const heights = await Promise.all(['sm', 'md', 'lg'].map(async(size) => {
+        const badge = await page.waitForSelector(`[data-testid="size-${size}"]`);
+        return badge!.evaluate((el: Element) => el.getBoundingClientRect().height);
+      }));
+
+      expect(heights).toEqual([22, 24, 30]);
+    });
   });
 
   describe('statuses', () => {

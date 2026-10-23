@@ -5,7 +5,7 @@
   background: linear-gradient(45deg, #ff6b6b, #ffa5a5);
   text-transform: uppercase;
   color: #000;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-button:hover {
@@ -14,6 +14,6 @@
 }
 
 .custom-button-critical {
-  --ods-theme-border-color-critical: #c47e01;
-  --ods-theme-background-color-critical: #ffa400;
+  --ods-button-border-color-critical: #c47e01;
+  --ods-button-background-color-critical: #ffa400;
 }

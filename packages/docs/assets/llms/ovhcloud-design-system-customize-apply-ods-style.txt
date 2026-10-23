@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
 version: 19.7.3
-tokens: 323
+tokens: 329
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
@@ -23,7 +23,7 @@ To use one of the ODS fonts in your app, add the expected variables to the top o
 
 ```css
 html {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -35,7 +35,7 @@ If you want to use any of those on your own components, you can refer to the exh
 
 ```css
 .my-custom-title {
-  color: var(--ods-color-text);
+  color: var(--ods-semantic-color-content-text);
   ...
 }
 ```

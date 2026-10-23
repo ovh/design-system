@@ -5,7 +5,7 @@ import { PALETTES } from '../doc/ports/constants/designTokens';
    color, via Ant Design's perceptually-uniform color algorithm (the seed maps
    to step 500). */
 
-const PALETTE_STEPS = Object.freeze(['000', '100', '200', '300', '400', '500', '600', '700', '800', '900']);
+const PALETTE_STEPS = Object.freeze(['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']);
 
 type ColorFamily = typeof PALETTES[number];
 
@@ -16,7 +16,7 @@ interface PaletteResult {
 function formatPaletteAsCssVariables(family: ColorFamily, palette: PaletteResult): Record<string, string> {
   const result: Record<string, string> = {};
   for (const [step, hex] of Object.entries(palette)) {
-    result[`--ods-color-${family}-${step}`] = hex;
+    result[`--ods-palette-${family}-${step}`] = hex;
   }
   return result;
 }

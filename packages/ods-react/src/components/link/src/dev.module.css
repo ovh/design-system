@@ -9,7 +9,7 @@
   padding: 4px 8px;
   text-decoration: none;
   color: #e74c3c;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-link:hover {

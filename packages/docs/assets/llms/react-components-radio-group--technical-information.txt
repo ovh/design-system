@@ -4,7 +4,7 @@ slug: radio-group
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 366
+tokens: 391
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--technical-information.txt
 ---
 
@@ -45,3 +45,9 @@ _No specific property._
 This component extends all the native `<span>` attributes.
 
 _No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |

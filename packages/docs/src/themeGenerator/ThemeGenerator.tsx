@@ -3,7 +3,7 @@ import { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
 import { DemoFrame } from '../demo/DemoFrame';
-import { resolveTokenValues } from '../doc/ports/helpers/designTokens';
+import { declaredTokens, resolveTokenValues } from '../doc/ports/helpers/designTokens';
 import { ThemeGeneratorJSONModal } from './ThemeGeneratorJSONModal';
 import { ThemeGeneratorPaletteModal } from './ThemeGeneratorPaletteModal';
 import { ThemeGeneratorPreview } from './ThemeGeneratorPreview';
@@ -22,8 +22,8 @@ const ThemeGenerator = (): JSX.Element => {
   // Side-by-side panes need width: narrow viewports start stacked instead.
   const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>(() => window.matchMedia('(max-width: 1000px)').matches ? 'vertical' : 'horizontal');
   const [selectedTheme, setSelectedTheme] = useState('default');
-  const [editedVariables, setEditedVariables] = useState<Record<string, string>>({});
-  const [debouncedVariables, setDebouncedVariables] = useState<Record<string, string>>({});
+  const [overrides, setOverrides] = useState<Record<string, string>>({});
+  const [debouncedOverrides, setDebouncedOverrides] = useState<Record<string, string>>({});
   const [isCustomTheme, setIsCustomTheme] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [pendingTheme, setPendingTheme] = useState<string | null>(null);
@@ -32,17 +32,20 @@ const ThemeGenerator = (): JSX.Element => {
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  const rootTokens = useMemo(() => resolveTokenValues(lightThemeTokens.root), []);
+  const declared = useMemo(() => declaredTokens(lightThemeTokens), []);
+  // Only the edited entries are injected and exported: the theme keeps its var() chains, so an
+  // edited ramp reaches every role that reads it.
+  const variables = useMemo(() => resolveTokenValues({ ...declared, ...overrides }), [declared, overrides]);
 
   useEffect(() => {
     if (selectedTheme === 'custom') {
       setIsCustomTheme(true);
       return;
     }
-    setEditedVariables(rootTokens);
-    setDebouncedVariables(rootTokens);
+    setOverrides({});
+    setDebouncedOverrides({});
     setIsCustomTheme(false);
-  }, [selectedTheme, rootTokens]);
+  }, [selectedTheme]);
 
   // Typing in a color picker fires continuously: the preview only re-themes
   // after a 150ms settle.
@@ -50,13 +53,13 @@ const ThemeGenerator = (): JSX.Element => {
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
     }
-    debounceTimerRef.current = setTimeout(() => setDebouncedVariables(editedVariables), 150);
+    debounceTimerRef.current = setTimeout(() => setDebouncedOverrides(overrides), 150);
     return () => {
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
       }
     };
-  }, [editedVariables]);
+  }, [overrides]);
 
   useEffect(() => {
     const onChange = (): void => setFullscreen(!!document.fullscreenElement);
@@ -85,14 +88,14 @@ const ThemeGenerator = (): JSX.Element => {
     setIsConfirmOpen(false);
   }
 
-  function handlePaletteApply(variables: Record<string, string>): void {
-    setEditedVariables((prev) => ({ ...prev, ...variables }));
+  function handlePaletteApply(palette: Record<string, string>): void {
+    setOverrides((prev) => ({ ...prev, ...palette }));
     setSelectedTheme('custom');
     setIsCustomTheme(true);
   }
 
   function handleJsonReplace(next: Record<string, string>): void {
-    setEditedVariables(next);
+    setOverrides(next);
     setSelectedTheme('custom');
     setIsCustomTheme(true);
   }
@@ -108,7 +111,7 @@ const ThemeGenerator = (): JSX.Element => {
   }
 
   function onVariableChange(name: string, value: string): void {
-    setEditedVariables((prev) => ({ ...prev, [name]: value }));
+    setOverrides((prev) => ({ ...prev, [name]: value }));
     if (!isCustomTheme) {
       setSelectedTheme('custom');
       setIsCustomTheme(true);
@@ -161,7 +164,7 @@ const ThemeGenerator = (): JSX.Element => {
         <Splitter.Panel id="tree-view" style={{ overflow: 'auto' }}>
           <ThemeGeneratorTreeView
             onVariableChange={ onVariableChange }
-            variables={ editedVariables } />
+            variables={ variables } />
         </Splitter.Panel>
 
         <Splitter.ResizeTrigger aria-label="Resize" asChild id="tree-view:preview">
@@ -171,7 +174,7 @@ const ThemeGenerator = (): JSX.Element => {
         </Splitter.ResizeTrigger>
 
         <Splitter.Panel id="preview" style={{ overflow: 'auto' }}>
-          <DemoFrame bare tokens={ debouncedVariables }>
+          <DemoFrame bare tokens={ debouncedOverrides }>
             <ThemeGeneratorPreview />
           </DemoFrame>
         </Splitter.Panel>
@@ -184,7 +187,7 @@ const ThemeGenerator = (): JSX.Element => {
         targetTheme={ pendingTheme } />
 
       <ThemeGeneratorPaletteModal
-        currentVariables={ editedVariables }
+        currentVariables={ variables }
         onApply={ handlePaletteApply }
         onClose={ () => setIsPaletteOpen(false) }
         open={ isPaletteOpen } />
@@ -193,7 +196,7 @@ const ThemeGenerator = (): JSX.Element => {
         onClose={ () => setIsJsonOpen(false) }
         onReplace={ handleJsonReplace }
         open={ isJsonOpen }
-        variables={ editedVariables } />
+        variables={ overrides } />
     </div>
   );
 };

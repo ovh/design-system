@@ -1,8 +1,8 @@
 @layer ods-atoms {
   .avatar {
-    --ods-avatar-background-color: var( --ods-color-primary-500 );
-    --ods-avatar-text-color: var(--ods-color-neutral-000);
-    --ods-avatar-border-radius: 50%;
+    --ods-avatar-background-color: var(--ods-semantic-color-surface-neutral-subtle);
+    --ods-avatar-text-color: var(--ods-semantic-color-content-heading);
+    --ods-avatar-border-radius: var(--ods-semantic-size-radius-full);
     --ods-avatar-size: 24px;
     --ods-avatar-object-fit: cover;
 
@@ -15,7 +15,7 @@
     height: var(--ods-avatar-size);
     overflow: hidden;
     color: var(--ods-avatar-text-color);
-    font-weight: bold;
+    font-weight: var(--ods-semantic-font-weight-bold);
 
     &__image {
       width: 100%;

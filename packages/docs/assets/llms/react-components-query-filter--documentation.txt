@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: documentation
 version: 19.7.3
-tokens: 785
+tokens: 1358
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--documentation.txt
 ---
 
@@ -105,6 +105,100 @@ Pressing `Escape` closes the suggestions panel.
 Pressing `Backspace` deletes characters in the input field
 
 ## Accessibility
+
+### Always provide an explicit label
+
+Every **Query Filter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either **FormField** or a native label tag.
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Filter instances:
+        </FormFieldLabel>
+
+        <QueryFilter
+          filterOption={ filterOption }
+          filterProperty={ filterProperty }>
+          <QueryFilterControl />
+
+          <QueryFilterContent />
+
+          <QueryFilterTags />
+        </QueryFilter>
+      </FormField>
+    );
+  }
+```
+
+ Screen readers will announce the label, the field and its content.
+
+When the design has no visible label, for example in a toolbar above a table, pass an `aria-label` to the **QueryFilterControl**:
+it is applied to the field itself.
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+      </QueryFilter>
+    );
+  }
+```
+
+ Screen readers will announce the label, the field and its content.
+
+### Announce filter changes
 
 Use ARIA (Accessible Rich Internet Applications) live regions to announce filtering changes. For example:
 - When a filter is added: `aria-live` region could say "Filter 'Status: Active' has been applied.".

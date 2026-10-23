@@ -1,6 +1,6 @@
 @layer ods-molecules {
   .form-field-error {
-    color: var(--ods-theme-input-text-color-invalid);
-    font-weight: 600;
+    color: var(--ods-semantic-color-content-critical);
+    font-weight: var(--ods-semantic-font-weight-semibold);
   }
 }

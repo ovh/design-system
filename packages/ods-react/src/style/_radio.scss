@@ -5,18 +5,18 @@ $ods-radio-size: 16px;
   box-sizing: border-box;
   display: inline-flex;
   margin: 0;
-  border: solid var(--ods-theme-input-border-width) var(--ods-theme-input-border-color);
-  border-radius: 50%;
+  border: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-control);
+  border-radius: var(--ods-semantic-size-radius-full);
   width: $ods-radio-size;
   height: $ods-radio-size;
   cursor: pointer;
 
   &::before {
     transform: scale(0);
-    transition: 120ms all ease-in-out;
+    transition: var(--ods-semantic-motion-duration-fast) all var(--ods-semantic-motion-easing);
     margin: auto;
-    border-radius: 50%;
-    background-color: var(--ods-theme-background-color);
+    border-radius: var(--ods-semantic-size-radius-full);
+    background-color: var(--ods-semantic-color-surface-page);
     width: 4px;
     height: 4px;
     content: "";

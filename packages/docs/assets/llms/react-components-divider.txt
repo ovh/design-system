@@ -4,7 +4,7 @@ slug: divider
 category: component
 type: overview
 version: 19.7.3
-tokens: 197
+tokens: 223
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider.txt
 ---
 
@@ -16,7 +16,7 @@ _A **Divider** component is a spacer used to add white space between two element
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'neutral' | 'primary'` | No | undefined | - (deprecated) |
+| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 

@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1034
+tokens: 1111
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -42,9 +42,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. |
+| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 | `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## QueryFilterContent
@@ -75,7 +76,8 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-theme-input-padding-horizontal) * 3)` |
-| `--ods-query-filter-control-column-gap` | `calc(var(--ods-theme-column-gap) / 2)` |
-| `--ods-query-filter-control-row-gap` | `calc(var(--ods-theme-row-gap) / 2)` |
-| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-theme-input-padding-vertical) / 2)` |
+| `--ods-query-filter-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
+| `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
+| `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
+| `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
+| `--ods-state-is-disabled-opacity` | `1` |

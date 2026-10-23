@@ -1,0 +1,89 @@
+.component-gallery {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.component-gallery__toolbar {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.component-gallery__filter {
+  width: 320px;
+  max-width: 100%;
+}
+
+.component-gallery__count {
+  color: var(--ods-semantic-color-content-placeholder);
+  font-variant-numeric: tabular-nums;
+}
+
+.component-gallery__empty {
+  margin: 0;
+}
+
+/* Everything below renders inside the demo frame, which mirrors the parent's stylesheets. */
+.component-gallery__component {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  border-bottom: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  padding-block: 24px;
+}
+
+.component-gallery__component:first-child {
+  padding-top: 0;
+}
+
+.component-gallery__component:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.component-gallery__header {
+  display: flex;
+  column-gap: 12px;
+  align-items: baseline;
+}
+
+.component-gallery__title {
+  margin: 0;
+  color: var(--ods-semantic-color-content-heading);
+  font-family: var(--ods-semantic-font-family-heading);
+  font-size: 1.5rem;
+}
+
+.component-gallery__doc-link {
+  color: var(--ods-semantic-color-content-placeholder);
+  font-size: 0.875rem;
+}
+
+.component-gallery__story {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.component-gallery__story-name {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ods-semantic-color-content-placeholder);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.component-gallery__story-demo {
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  border-radius: var(--ods-semantic-size-radius-container);
+  background-color: var(--ods-semantic-color-surface-page);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.component-gallery__error {
+  margin: 0;
+  color: var(--ods-semantic-color-content-placeholder);
+}

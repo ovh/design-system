@@ -10,40 +10,40 @@
       &:not([data-invalid]) {
         &[data-focus],
         &:hover {
-          border-color: var(--ods-theme-input-border-color-hover);
+          border-color: var(--ods-semantic-color-interaction-control-hover);
+        }
+      }
+    }
+
+    &[data-state="checked"] {
+      border-color: var(--ods-semantic-color-border-selected-solid);
+      background: var(--ods-semantic-color-surface-selected-solid);
+
+      &::before {
+        transform: scale(1);
+      }
+
+      &:not([data-disabled], [data-invalid]) {
+        &:hover,
+        &[data-focus] {
+          border-color: var(--ods-semantic-color-interaction-selected-solid-highlight);
+          background: var(--ods-semantic-color-interaction-selected-solid-highlight);
+        }
+
+        &:active {
+          border-color: var(--ods-semantic-color-interaction-selected-solid-active);
+          background: var(--ods-semantic-color-interaction-selected-solid-active);
         }
       }
 
-      &[data-state="checked"] {
-        border-color: var(--ods-theme-input-border-color-checked);
-        background-color: var(--ods-theme-input-background-color-checked);
-
-        &::before {
-          transform: scale(1);
-        }
-
-        &[data-focus],
-        &:hover {
-          border-color: var(--ods-theme-input-border-color-checked-hover);
-          background: var(--ods-theme-input-background-color-checked-hover);
-        }
-
-        &[data-invalid] {
-          border-color: var(--ods-theme-input-border-color-invalid);
-          background-color: var(--ods-theme-input-background-color-invalid);
-        }
+      &[data-invalid] {
+        border-color: var(--ods-semantic-color-border-critical);
+        background-color: var(--ods-semantic-color-surface-critical);
       }
     }
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      &[data-state="checked"] {
-        &::before {
-          transform: scale(1);
-          background-color: state.$ods-state-is-disabled-text-color;
-        }
-      }
     }
 
     &[data-focus] {
@@ -51,7 +51,7 @@
     }
 
     &[data-invalid] {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
   }
 }

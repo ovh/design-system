@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: examples
 version: 19.7.3
-tokens: 1221
+tokens: 1228
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--examples.txt
 ---
 
@@ -157,7 +157,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button>
+    <Button aria-label="Profile">
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -183,7 +183,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
       <Divider style={{ width: '100%' }} />
 
       <Button
-        color={ BUTTON_COLOR.critical }
+        status={ BUTTON_STATUS.critical }
         role="menuitem"
         variant={ BUTTON_VARIANT.ghost }>
         Sign out
@@ -240,7 +240,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
   <Popover
     open
     overlayConfig={{ position: POPOVER_POSITION.bottom }}
-    positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+    positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <PopoverTrigger asChild>
       <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>

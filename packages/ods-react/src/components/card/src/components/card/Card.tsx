@@ -15,6 +15,7 @@ interface CardProp extends ComponentPropsWithRef<'div'> {
   color?: CardColor,
   /**
    * @type=CARD_STATUS
+   * \@default-value=CARD_STATUS.neutral
    * The status preset to use.
    */
   status?: CardStatus,
@@ -31,7 +32,7 @@ const Card: FC<CardProp> = forwardRef(({
     warnDeprecated('Card.color', '[DEPRECATED]: The color prop of Card is deprecated and will be removed in v21, use the status prop instead.');
   }
 
-  const cardStatus = status ?? (color === CARD_COLOR.primary ? CARD_STATUS.accent : color) ?? CARD_STATUS.accent;
+  const cardStatus = status ?? (color === CARD_COLOR.primary ? CARD_STATUS.accent : color) ?? CARD_STATUS.neutral;
 
   return (
     <div

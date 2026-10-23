@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1003
+tokens: 903
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -38,7 +38,7 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `'critical' | 'information' | 'neutral' | 'primary' | 'success' | 'warning'` | No | undefined | - (deprecated) |
+| `color` | `MODAL_COLOR` | No | undefined | The color preset to use. DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21. (deprecated) |
 | `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 
@@ -76,19 +76,13 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-modal-border-radius` | `var(--ods-theme-overlay-border-radius)` |
+| `--ods-modal-border-radius` | `var(--ods-semantic-size-radius-overlay)` |
 | `--ods-modal-header-height` | `32px` |
-| `--ods-modal-header-background-color-critical` | `var(--ods-color-critical-075)` |
-| `--ods-modal-header-background-color-information` | `var(--ods-color-information-075)` |
-| `--ods-modal-header-background-color-neutral` | `var(--ods-color-neutral-075)` |
-| `--ods-modal-header-background-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-modal-header-background-color-success` | `var(--ods-color-success-075)` |
-| `--ods-modal-header-background-color-warning` | `var(--ods-color-warning-075)` |
-| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-header-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-body-padding-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
-| `--ods-modal-margin-horizontal` | `calc(var(--ods-theme-padding-horizontal) * 2)` |
-| `--ods-modal-margin-vertical` | `calc(var(--ods-theme-padding-vertical) * 2)` |
+| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-header-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-margin-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-margin-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-modal-mobile-max-height` | `512px` |
 | `--ods-modal-mobile-max-width` | `512px` |

@@ -8,10 +8,6 @@
 
     &__filled {
       @include range.ods-range-track(true);
-
-      &[data-disabled] {
-        background-color: var(--ods-theme-track-background-color-disabled);
-      }
     }
   }
 }

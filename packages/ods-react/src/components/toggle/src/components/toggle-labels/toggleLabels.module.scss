@@ -7,14 +7,14 @@
     line-height: 1;
     font-family: inherit;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: var(--ods-semantic-font-weight-bold);
     pointer-events: none;
 
     &__label-on,
     &__label-off {
       display: none;
       position: absolute;
-      transition: color 0.2s;
+      transition: color var(--ods-semantic-motion-duration-medium);
     }
 
     &__label-on {
@@ -23,10 +23,6 @@
 
       &--checked {
         display: flex;
-      }
-
-      &--disabled {
-        color: var(--ods-theme-text-color-disabled);
       }
     }
 
@@ -38,10 +34,6 @@
 
       &--unchecked {
         display: flex;
-      }
-
-      &--disabled {
-        color: var(--ods-theme-text-color-disabled);
       }
     }
   }

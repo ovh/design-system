@@ -4,7 +4,7 @@ slug: card
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1346
+tokens: 1442
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--documentation.txt
 ---
 
@@ -81,10 +81,14 @@ All these elements are not mandatory in every **Card**.
 
 ## Variation
 
-### Color
+### Status
 
-- **Neutral**: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
-- **Primary**: displaying highlighted content with particular emphasis.
+- **Neutral** _(default)_: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
+- **Accent**: displaying highlighted content with particular emphasis.
+- **Information**: displaying content that informs the user, without conveying any particular urgency.
+- **Success**: displaying content related to a positive outcome or a completed action.
+- **Warning**: displaying content related to a potential issue that needs attention.
+- **Critical**: displaying content related to a severe issue that requires immediate attention.
 
 ## Navigation
 

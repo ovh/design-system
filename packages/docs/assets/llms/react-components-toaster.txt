@@ -4,7 +4,7 @@ slug: toaster
 category: component
 type: overview
 version: 19.7.3
-tokens: 273
+tokens: 274
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster.txt
 ---
 
@@ -24,7 +24,7 @@ _**Toaster** component provides a section on the page where you'll be able to di
 
 ## Examples
 
-- Colors
+- Statuses
 - Custom Content
 - Default
 - Dismissible

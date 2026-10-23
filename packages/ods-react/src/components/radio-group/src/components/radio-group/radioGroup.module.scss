@@ -4,13 +4,13 @@
 
     &[data-orientation="horizontal"] {
       flex-flow: row;
-      column-gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-semantic-size-space-gap-inline);
       align-items: center;
     }
 
     &[data-orientation="vertical"] {
       flex-flow: column;
-      row-gap: var(--ods-theme-row-gap);
+      row-gap: var(--ods-semantic-size-space-gap-block);
     }
   }
 }

@@ -72,7 +72,7 @@ describe('Spinner rendering', () => {
     it('should fill with primary by default and with the --ods-spinner-color custom property, without any warning', async() => {
       const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/color');
 
-      expect(await getFill(page, 'default')).toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
+      expect(await getFill(page, 'default')).toBe(await resolveColor(page, 'var(--ods-semantic-color-content-accent)'));
       expect(await getFill(page, 'current-color')).toBe('rgb(255, 0, 0)');
       expect(await getFill(page, 'custom-property')).toBe('rgb(0, 128, 0)');
       expect(await getFill(page, 'parent-custom-property')).toBe('rgb(0, 0, 255)');
@@ -82,9 +82,9 @@ describe('Spinner rendering', () => {
     it('should keep the v19 fill with the deprecated color prop and warn once', async() => {
       const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/deprecated-color');
 
-      expect(await getFill(page, 'color-neutral')).toBe(await resolveColor(page, 'var(--ods-theme-neutral-color)'));
-      expect(await getFill(page, 'color-primary')).toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
-      expect(await resolveColor(page, 'var(--ods-theme-neutral-color)')).not.toBe(await resolveColor(page, 'var(--ods-theme-primary-color)'));
+      expect(await getFill(page, 'color-neutral')).toBe(await resolveColor(page, 'var(--ods-semantic-color-content-neutral)'));
+      expect(await getFill(page, 'color-primary')).toBe(await resolveColor(page, 'var(--ods-semantic-color-content-accent)'));
+      expect(await resolveColor(page, 'var(--ods-semantic-color-content-neutral)')).not.toBe(await resolveColor(page, 'var(--ods-semantic-color-content-accent)'));
       expect(warnings).toEqual([
         '[DEPRECATED]: The color prop of Spinner is deprecated and will be removed in v21, set the --ods-spinner-color CSS custom property instead.',
       ]);

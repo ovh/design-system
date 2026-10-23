@@ -2,7 +2,7 @@
 
 @layer ods-molecules {
   .breadcrumb-ellipsis {
-    font-weight: 600;
+    font-weight: var(--ods-semantic-font-weight-semibold);
 
     &__button {
       @include link.ods-link();
@@ -11,8 +11,8 @@
       background-color: transparent;
       padding: 0;
       line-height: 1;
-      color: var(--ods-theme-text-color);
-      font-weight: 600;
+      color: var(--ods-semantic-color-content-text);
+      font-weight: var(--ods-semantic-font-weight-semibold);
     }
   }
 }

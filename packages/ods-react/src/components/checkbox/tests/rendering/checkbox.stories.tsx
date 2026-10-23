@@ -5,6 +5,16 @@ export default {
   title: 'Tests rendering',
 };
 
+export const checked = () => (
+  <Checkbox defaultChecked>
+    <CheckboxControl data-testid="checked" />
+
+    <CheckboxLabel>
+      Checked
+    </CheckboxLabel>
+  </Checkbox>
+);
+
 export const customStyle = () => (
   <Checkbox
     data-testid="custom-style"

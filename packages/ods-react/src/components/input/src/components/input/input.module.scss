@@ -11,20 +11,21 @@
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: calc(var(--ods-theme-column-gap) / 2);
+    column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 
     &:focus-within {
       &:not(:has(:is(a, button, [role="button"]):focus-within)) {
         @include focus.ods-focus();
 
-        &:not([data-readonly]) {
-          border-color: var(--ods-theme-input-border-color-hover);
+        &:not([data-invalid], [data-readonly]) {
+          border-color: var(--ods-semantic-color-interaction-control-hover);
         }
       }
     }
 
-    &:hover {
-      border-color: var(--ods-theme-input-border-color-hover);
+    &:not([data-disabled]):hover {
+      border-color: var(--ods-semantic-color-interaction-control-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight);
     }
 
     &:not([data-disabled])[data-readonly] {
@@ -41,11 +42,6 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      #{$input}__start,
-      #{$input}__end {
-        color: inherit;
-      }
     }
 
     &#{$input}[data-invalid] {
@@ -60,10 +56,10 @@
     &__end {
       display: inline-flex;
       flex: none;
-      column-gap: calc(var(--ods-theme-column-gap) / 2);
+      column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
       align-items: center;
       white-space: nowrap;
-      color: input.$ods-input-placeholder-color;
+      color: input.$ods-input-icon-color;
     }
 
     &__field {

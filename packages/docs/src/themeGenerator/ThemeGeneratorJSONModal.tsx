@@ -2,7 +2,7 @@ import { type JSX, useEffect, useMemo, useState } from 'react';
 import { BUTTON_VARIANT, Button, Modal, ModalBody, ModalContent, TEXT_PRESET, Text, Textarea } from '../ods';
 import styles from './themeGeneratorJSONModal.module.css';
 
-/* Import/export of the whole variable set as JSON. */
+/* Import/export of the edited variables as JSON. */
 
 interface ThemeGeneratorJSONProp {
   onClose: () => void;
@@ -47,7 +47,7 @@ const ThemeGeneratorJSONModal = ({ onClose, onReplace, open, variables }: ThemeG
       <ModalContent className={ styles['theme-generator-json-modal'] }>
         <ModalBody>
           <Text preset={ TEXT_PRESET.heading4 }>
-            Theme variables (JSON)
+            Edited variables (JSON)
           </Text>
 
           <Textarea

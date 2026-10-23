@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 750
+tokens: 8119
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -21,11 +21,13 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The component props keep working: existing props, refs and composition are unchanged, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+
+The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
 ## If you stay on React 18
 
-Nothing to do. Installation, types and runtime keep working exactly as before.
+Nothing to do for React. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -100,6 +102,559 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Default theme
+
+`@ovhcloud/ods-themes/default/css` now ships a neutral look: a grey page, and an accent ramp on navy for selection, text, headings and form controls. The OVHcloud look is a separate overlay, `@ovhcloud/ods-themes/blue-jeans/css`, to load **after** the default theme.
+
+To find the imports in your code:
+
+```sh
+grep -rn "ods-themes/default/css" src/
+```
+
+**before**
+```ts
+import '@ovhcloud/ods-themes/default/css';
+```
+
+**after**, to keep the OVHcloud look
+```ts
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+```
+
+The order matters: both declare their tokens on `:root`, and the last one loaded wins. A second copy of the default theme loaded later, for instance by a micro-frontend that ships its own, brings the neutral look back.
+
+## Theme tokens
+
+The `--ods-theme-*`, `--ods-color-*` and remaining legacy tokens (`--ods-border-radius-*`, `--ods-border-width-*`, `--ods-outline-*`, `--ods-font-family-*`, `--ods-form-element-input-height`) are removed, without alias. A `var()` that reads one of them silently resolves to nothing: the property falls back to its inherited or initial value.
+
+To find them in your code:
+
+```sh
+grep -rnE -- '--ods-(theme|color|border-radius|border-width|outline|font-family|form-element)-' src/
+```
+
+**before**
+```css
+.my-panel {
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+  border-radius: var(--ods-border-radius-md);
+}
+```
+
+**after**
+```css
+.my-panel {
+  background-color: var(--ods-semantic-color-surface-raised);
+  color: var(--ods-semantic-color-content-text);
+  border-radius: var(--ods-semantic-size-radius-container);
+}
+```
+
+The tables of the inventory give the destination of every token. Most are a 1:1 rename; a few depend on the site:
+
+- `--ods-theme-background-color` becomes `--ods-semantic-color-surface-page` for the page, `-surface-raised` for a card or a panel, `-surface-overlay` for a popover, a modal or a drawer, and `-surface-control` for a field.
+- `--ods-theme-<status>-color` splits by property: `--ods-semantic-color-surface-<status>` in a `background`, `-border-<status>` in a `border-color`, `-content-<status>` in a `color`. `primary` becomes `brand`.
+- A `--ods-color-<family>-<rung>` has no name to rename to: the role depends on the property, and on the state when the custom property that reads it ends with `-hover` or `-active`.
+- The disabled colors (`*-disabled`) have no replacement: a disabled component is now dimmed with an opacity.
+- `--ods-theme-overlay-z-index` becomes `--ods-semantic-z-index-dropdown`, and its value goes from 99 to 200 (see **Layers**).
+
+The `--ods-palette-*` ramps are published, but a rung number does not give back the v19 color: blue and gray `100` to `400` are lighter, gray `500` is darker, and green, orange and red are new ramps. Point at the semantic role rather than at the palette.
+
+If you read the Sass variables of `@ovhcloud/ods-themes` by path, most are gone: read the custom properties instead. The breakpoints are still exported by `@ovhcloud/ods-react/style`.
+
+The path is the only way to these variables, so the import finds every file that reads them:
+
+```sh
+grep -rnE "ods-themes/src/default/_?variables" src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-themes/src/default/variables' as theme;
+
+.my-banner {
+  background-color: theme.$ods-color-primary-100;
+
+  @media (width >= theme.$ods-breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-banner {
+  background-color: var(--ods-semantic-color-surface-selected);
+
+  @media (width >= ods.$ods-breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+```
+
+## Custom themes
+
+A v19 custom theme, including any Theme Generator export, declares `--ods-theme-*` and `--ods-color-*`. v20 neither declares nor reads these names, so such a theme has **no effect**, without any warning.
+
+To find them in your code:
+
+```sh
+grep -rnE -- "--ods-(theme|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/
+```
+
+In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` and `--ods-palette-accent-*`, from 50 to 900) on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`.
+
+**before**
+```css
+:root {
+  --ods-color-primary-500: #7a00cc;
+  --ods-theme-primary-color: var(--ods-color-primary-500);
+}
+```
+
+**after**
+```css
+:root {
+  --ods-palette-brand-500: #7a00cc;
+  /* and the other brand and accent rungs, from 50 to 900 */
+}
+```
+
+The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+## Design tokens JSON
+
+`@ovhcloud/ods-themes/default/tokens` keeps its shape, but every key changes: it lists the `--ods-semantic-*` and `--ods-palette-*` tokens. `root` gives the value each token resolves to, and `refs` the `var()` reference of the tokens that point at another one.
+
+To find the imports in your code:
+
+```sh
+grep -rn "ods-themes/default/tokens" src/
+```
+
+**before**
+```ts
+import tokens from '@ovhcloud/ods-themes/default/tokens';
+
+const brand = tokens.root['--ods-theme-primary-color'];
+```
+
+**after**
+```ts
+import tokens from '@ovhcloud/ods-themes/default/tokens';
+
+const brand = tokens.root['--ods-semantic-color-surface-brand'];
+```
+
+## Component tokens and style variables
+
+The `--ods-<component>-*` custom properties keep their names, with the exceptions below. An override of a removed name is ignored without any warning; a read of a removed SCSS variable fails the build with "Undefined variable".
+
+- `--ods-button-border-radius-width` is renamed `--ods-button-border-width`, and the SCSS variable `$ods-button-border-radius-width` of `@ovhcloud/ods-react/style` is renamed `$ods-button-border-width`.
+- On Code, `--ods-code-primary-color` is renamed `--ods-code-text-color`, `--ods-code-secondary-color` is renamed `--ods-code-background-color`, and `--ods-code-trigger-background-color` is renamed `--ods-code-trigger-color`.
+- The tokens that only painted a disabled state are removed, since a disabled component is now dimmed with an opacity: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch`, `--ods-tile-background-color-disabled`, and the SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color`. For a grey disabled state, style `:disabled` or `[data-disabled]` yourself.
+- The tokens that nothing read in 19.7.3 are removed: `--ods-tile-background-color`, `--ods-tile-border-color` and `--ods-tile-border-width` (the Tile renders a Card: override the `--ods-card-*` tokens instead), and the six `--ods-modal-header-background-color-*`.
+- `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected` are removed: the selected Tab reads `--ods-semantic-color-border-selected-solid` and `--ods-semantic-color-content-on-selected`, so override those on `[data-ods="tab"]`.
+- `--ods-message-close-button-text-color-primary` is removed: the close button of the Message is a neutral ghost Button, so override `--ods-button-text-color-neutral-ghost` on `[data-ods="message"] [data-ods="button"]`.
+- `--ods-toggle-control-background-color-hover` is removed: the unchecked Toggle no longer changes its background on hover. `--ods-toggle-control-border-color` is removed too: the Toggle border reads `--ods-semantic-color-border-control`, so override that one on `[data-ods="toggle"]`.
+- The SCSS variables deprecated in v19 are removed: `$ods-modal-z-index` (read `$ods-overlay-modal-z-index`), `$ods-modal-border-radius` (read `var(--ods-semantic-size-radius-overlay)`), `$ods-modal-margin` (read `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`), `$ods-overlay-arrow-background-color` (read `var(--ods-semantic-color-surface-overlay)`) and `$drawer-max-size` (read `$drawer-max-width` or `$drawer-max-height`). So are the unused `ods-modal-color()` mixin and `$ods-overlay-select-z-index` (read `$ods-overlay-base-z-index`).
+
+To find them in your code:
+
+```sh
+grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-color|trigger-background-color)([^-a-z]|$)|(checked|selected)-disabled|tab-border-color-disabled|ods-tile-(background-color|border-color|border-width)(-disabled)?([^-a-z]|$)|ods-modal-header-background-color|close-button-text-color-primary|ods-tab-(border|text)-color-selected([^-a-z]|$)|toggle-control-(background-color-hover|border-color)([^-a-z]|$)|\$ods-state-is-disabled-|\$ods-modal-(z-index|border-radius|margin)([^-a-z]|$)|ods-overlay-(arrow-background-color|select-z-index)|drawer-max-size|ods-modal-color\(' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-button {
+  --ods-button-border-radius-width: 2px;
+}
+
+.my-code {
+  --ods-code-secondary-color: #f5f5f5;
+}
+
+.my-layer {
+  z-index: ods.$ods-modal-z-index;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-button {
+  --ods-button-border-width: 2px;
+}
+
+.my-code {
+  --ods-code-background-color: #f5f5f5;
+}
+
+.my-layer {
+  z-index: ods.$ods-overlay-modal-z-index;
+}
+```
+
+Six SCSS variables of `@ovhcloud/ods-react/style` held a number in 19.7.3 and now hold a `var()`: `$ods-button-size-xs` (`24px`), `$ods-button-size-sm` (`32px`), `$ods-button-size-md` (`40px`), `$ods-badge-height-md` (`24px`), `$animation-duration` (`0.3s`) and `$ods-link-font-weight` (`600`). A plain use renders as before, but Sass cannot compute with them: `ods.$animation-duration * 2` fails the build with "Undefined operation", and `ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. Move the operation into `calc()`.
+
+To find them in your code, with a namespace or without one (`@use ... as *`). The search also lists an `$animation-duration` that your own code declares:
+
+```sh
+grep -rnE '\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: ods.$ods-button-size-md + 8px;
+  transition: opacity ods.$animation-duration * 2;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: calc(#{ods.$ods-button-size-md} + 8px);
+  transition: opacity calc(#{ods.$animation-duration} * 2);
+}
+```
+
+Two more changes need no code change: `$ods-input-actions-padding-right` goes from `4px` to `2px`, so the action buttons of a field sit as close to its border as its block inset, and `./style` gains the `ods-highlight-indicator()` mixin.
+
+## Layers
+
+Each kind of overlay now has its own layer, and a modal is always above a drawer. In v19 they all sat around the same value, so the one opened last was on top:
+
+- lists, popovers, tooltips and toasts: `99` in v19, `--ods-semantic-z-index-dropdown` (`200`) in v20;
+- drawers: `101` in v19, `--ods-semantic-z-index-drawer` (`300`, backdrop `299`) in v20;
+- modals: `101` (backdrop `100`) in v19, `--ods-semantic-z-index-modal` (`400`, backdrop `399`) in v20;
+- `$ods-overlay-modal-z-index` and `$ods-overlay-drawer-z-index` go from `100` and `101` to `400` and `300`: their order flips.
+
+A layer of yours stacked on `--ods-theme-overlay-z-index` or on these SCSS variables, or with a literal z-index between `102` and `399` meant to clear the ODS overlays, now lands somewhere else.
+
+To find them in your code:
+
+```sh
+grep -rnE -- '--ods-theme-overlay-z-index|\$ods-overlay-[a-z]+-z-index|z-index:|zIndex' src/
+```
+
+**before**
+```css
+.my-floating-panel {
+  z-index: calc(var(--ods-theme-overlay-z-index) + 2);
+}
+```
+
+**after**
+```css
+.my-floating-panel {
+  z-index: calc(var(--ods-semantic-z-index-modal) + 1);
+}
+```
+
+To have a drawer win over a modal, pass a higher `z-index` to the drawer through its `positionerStyle`.
+
+## Default rendering
+
+These changes need no code change: the new rendering is intended. To keep the v19 one, add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
+
+- **Badge**: a pill with a border, where v19 had 4px corners and no border. The border adds to the size: `sm` is 22px tall instead of 20px, `lg` 30px instead of 28px, and every size is 2px wider. Keep v19, sizes included: `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+- **Card and Tile**: a `--ods-semantic-color-surface-raised` background, where v19 had none. Keep v19: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`.
+- **Card without `status`**: neutral, where v19 was primary. Keep v19: `status="accent"`.
+- **Accordion**: a `--ods-semantic-color-surface-raised` background and 8px outer corners, where v19 had no background and 4px corners. Keep v19: `[data-ods="accordion"] { --ods-accordion-background-color: transparent; --ods-accordion-border-radius: 4px; }`.
+- **Button**: 4px corners at every size, where v19 had 2px (`xs`), 4px (`sm`) and 8px (`md`). Keep v19: `[data-ods="button"] { --ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px; }`.
+- **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.
+- **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
+- **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the primary hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-primary*` instead.
+- **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
+- **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
+- **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
+
+## Typography
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
+
+- **A theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`. v20 reads neither, nor any other name of such a theme (see **Custom themes**). To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading`.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- `@ovhcloud/ods-themes/default/tokens` exposes the font under its new name, in `--ods-semantic-font-family-body` (see **Design tokens JSON**).
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-semantic-font-family-body);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Deprecations
+
+The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
+
+**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
+
+If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+
+### Badge
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+### Button
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
+
+**before**
+```tsx
+import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
+
+<Button color={ BUTTON_COLOR.primary }>Save</Button>
+<Button color={ BUTTON_COLOR.critical }>Delete</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
+
+<Button>Save</Button>
+<Button status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+```
+
+### Message
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+
+**before**
+```tsx
+import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message color={ MESSAGE_COLOR.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+### Modal
+
+The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- any other value: remove the prop.
+- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
+```
+
+### Tag
+
+- `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+**before**
+```tsx
+import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';
+
+<Tag color={ TAG_COLOR.primary }>Cloud</Tag>
+```
+
+**after**
+```tsx
+import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
+
+<Tag status={ TAG_STATUS.accent }>Cloud</Tag>
+```
+
+### Toaster
+
+- `toast.primary()`: use `toast.accent()`.
+- `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+**before**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.primary('Your export is ready');
+```
+
+**after**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.accent('Your export is ready');
+```
 
 ## Need help?
 

@@ -4,7 +4,7 @@ slug: tree-view
 category: component
 type: documentation
 version: 19.7.3
-tokens: 886
+tokens: 917
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--documentation.txt
 ---
 
@@ -83,7 +83,9 @@ Only one node in the Tree View is focusable at a time.
 
 Focus remains on a single visible node and moves predictably with keyboard navigation.
 
-If a node contains interactive elements (e.g., a checkbox or link), those elements can receive focus.
+If a node renders interactive content of its own (e.g., a link), that element can receive focus.
+
+In multiple selection mode, the node itself carries the checked state: its checkbox is only a visual cue and never receives focus.
 
 ### General Keyboard Shortcuts
 

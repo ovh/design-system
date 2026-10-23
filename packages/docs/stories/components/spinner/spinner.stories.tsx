@@ -25,7 +25,7 @@ export const Color: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Spinner style={{ '--ods-spinner-color': 'var(--ods-theme-neutral-color)' } as React.CSSProperties} />
+      <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
       <Spinner />
     </>
   ),
@@ -117,7 +117,7 @@ export const ThemeGenerator: Story = {
       <Spinner />
       <Spinner size={ SPINNER_SIZE.sm } />
       <Spinner size={ SPINNER_SIZE.lg } />
-      <Spinner style={{ '--ods-spinner-color': 'var(--ods-theme-neutral-color)' } as React.CSSProperties} />
+      <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
       <Spinner />
     </div>
   ),

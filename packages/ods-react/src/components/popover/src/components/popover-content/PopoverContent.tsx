@@ -60,7 +60,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
   return (
     <Portal disabled={ !createPortal }>
       <Popover.Positioner style={{
-        zIndex: 'var(--ods-theme-overlay-z-index)',
+        zIndex: 'var(--ods-semantic-z-index-dropdown)',
         ...(positionerStyle || {}),
       }}>
         <Popover.Content

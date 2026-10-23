@@ -4,7 +4,7 @@ slug: textarea
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 63
+tokens: 89
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--technical-information.txt
 ---
 
@@ -17,3 +17,9 @@ This component extends all the native `<textarea>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |

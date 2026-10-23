@@ -4,7 +4,6 @@
   flex-direction: column;
   gap: 0.5rem;
   align-items: flex-start;
-  background-color: var(--ods-theme-background-color);
   padding: 1rem;
   inline-size: 100%;
   min-inline-size: 12.5rem;

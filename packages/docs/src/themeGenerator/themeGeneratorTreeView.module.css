@@ -19,5 +19,5 @@
 
 .theme-generator-tree-view__item-name {
   flex: 1;
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
 }

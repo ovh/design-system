@@ -1,6 +1,23 @@
 .doc__heading {
-  margin: 2rem 0 .75rem;
-  scroll-margin-top: 1rem;
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 5);
+  margin-bottom: calc(var(--ods-semantic-size-space-inset-block) * 1);
+  scroll-margin-top: calc(var(--ods-semantic-size-space-inset-block) * 1.5);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+}
+.doc__heading--level-3 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 4);
+}
+
+.doc__heading--level-4 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 3);
+}
+
+.doc__heading--level-5 {
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
 }
 
 .doc__canvas {
@@ -8,7 +25,7 @@
 }
 
 .doc__missing {
-  color: var(--ods-color-warning-500);
+  color: var(--ods-semantic-color-content-warning);
   font-family: monospace;
 }
 
@@ -21,7 +38,7 @@
 }
 
 .doc__identity {
-  border: 1px solid var(--ods-color-neutral-200);
+  border: 1px solid var(--ods-semantic-color-border-neutral-subtle);
   border-radius: 4px;
   display: grid;
   flex: 0 0 220px;
@@ -31,7 +48,7 @@
 }
 
 .doc__identity dt {
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
   font-size: .75rem;
   letter-spacing: .05em;
   text-transform: uppercase;
@@ -70,13 +87,13 @@
 }
 
 .doc__best-practices-col--do {
-  background: color-mix(in srgb, var(--ods-color-success-075, #e6f7ee) 60%, transparent);
-  border-top-color: var(--ods-color-success-500);
+  background: color-mix(in srgb, var(--ods-semantic-color-surface-success-subtle, #e6f7ee) 60%, transparent);
+  border-top-color: var(--ods-semantic-color-border-success);
 }
 
 .doc__best-practices-col--dont {
-  background: color-mix(in srgb, var(--ods-color-critical-075, #fdeaea) 60%, transparent);
-  border-top-color: var(--ods-color-critical-500);
+  background: color-mix(in srgb, var(--ods-semantic-color-surface-critical-subtle, #fdeaea) 60%, transparent);
+  border-top-color: var(--ods-semantic-color-border-critical);
 }
 
 .doc__best-practices-col ul {
@@ -95,7 +112,7 @@
 }
 
 .doc__link {
-  color: var(--ods-color-primary-500);
+  color: var(--ods-semantic-color-content-brand);
 }
 
 /* Raw markdown links (the changelog renders through markdown-to-jsx as bare
@@ -104,11 +121,11 @@
    anchor token so they stay legible in both modes; ODS Link instances carry a
    class and are left untouched. */
 .doc a:not([class]) {
-  color: var(--ods-theme-anchor-text-color);
+  color: var(--ods-semantic-color-content-brand);
 }
 
 .doc a:not([class]):hover {
-  color: var(--ods-theme-anchor-text-color-hover);
+  color: var(--ods-semantic-color-interaction-brand-hover);
 }
 
 @media (max-width: 720px) {
@@ -131,6 +148,11 @@
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(0, 1fr) 200px;
+  margin-top: calc(var(--ods-semantic-size-space-inset-block) * 2);
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .doc-layout__toc {
@@ -141,11 +163,12 @@
   max-height: calc(100dvh - 120px);
   overflow-y: auto;
   position: sticky;
+  z-index: var(--ods-semantic-z-index-sticky);
   top: 8px;
 }
 
 .doc-layout__toc-title {
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .04em;
@@ -192,7 +215,7 @@
 /* Light mode: a border marks the block boundary on the light surface (the
    background itself comes from the shiki theme — see CodeBlock.tsx). */
 body:not([data-theme="dark"]) [data-ods="code"] {
-  border: 1px solid var(--ods-color-neutral-200);
+  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
 }
 
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———

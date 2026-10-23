@@ -1,14 +1,15 @@
-$ods-state-is-disabled-background-color: var(--ods-theme-background-color-disabled);
-$ods-state-is-disabled-border-color: var(--ods-theme-border-color-disabled);
-$ods-state-is-disabled-text-color: var(--ods-theme-text-color-disabled);
-$ods-state-is-readonly-background-color: var(--ods-theme-background-color-readonly);
-$ods-state-is-readonly-border-color: var(--ods-theme-border-color-readonly);
+$ods-state-is-readonly-background-color: var(--ods-semantic-color-surface-readonly);
+$ods-state-is-readonly-border-color: var(--ods-semantic-color-border-readonly);
 
+// A disabled control dims once: the disabled parts it embeds (an Input in a Combobox, a Button in
+// an Input) read the reset below instead of stacking a second opacity on top of it.
 @mixin ods-is-disabled() {
-  border-color: $ods-state-is-disabled-border-color;
-  background-color: $ods-state-is-disabled-background-color;
-  color : $ods-state-is-disabled-text-color;
+  opacity: var(--ods-state-is-disabled-opacity, var(--ods-semantic-opacity-disabled));
   cursor: not-allowed;
+
+  > * {
+    --ods-state-is-disabled-opacity: 1;
+  }
 }
 
 @mixin ods-is-readonly() {

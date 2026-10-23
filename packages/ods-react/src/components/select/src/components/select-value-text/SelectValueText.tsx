@@ -16,12 +16,11 @@ const SelectValueText: FC<SelectValueTextProp> = ({
   placeholder,
 }): JSX.Element => {
   const { multiple } = useSelect();
-  const { disabled, selectedItems, value, valueAsString } = useSelectContext();
+  const { selectedItems, value, valueAsString } = useSelectContext();
 
   if (multiple === 'merge' && value.length) {
     return (
       <SelectMergedSelection
-        disabled={ disabled }
         multipleSelectionLabel={ multipleSelectionLabel }
         total={ value.length } />
     );

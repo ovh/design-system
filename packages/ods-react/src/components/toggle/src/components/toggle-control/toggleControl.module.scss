@@ -5,27 +5,26 @@
   .toggle-control {
     $control: &;
 
-    --ods-toggle-control-background-color: var(--ods-color-neutral-200);
-    --ods-toggle-control-background-color-hover: var(--ods-color-neutral-300);
-    --ods-toggle-control-border-color: var(--ods-color-neutral-200);
-    --ods-toggle-control-border-color-hover: var(--ods-color-neutral-300);
-    --ods-toggle-control-label-off-text-color: var(--ods-color-neutral-700);
-    --ods-toggle-control-label-on-text-color: var(--ods-color-neutral-000);
-    --ods-toggle-control-thumb-background-color: var(--ods-color-neutral-000);
+    --ods-toggle-control-background-color: var(--ods-semantic-color-surface-track);
+    --ods-toggle-control-border-color-hover: var(--ods-semantic-color-interaction-control-hover);
+    --ods-toggle-control-label-off-text-color: var(--ods-semantic-color-content-text);
+    --ods-toggle-control-label-on-text-color: var(--ods-semantic-color-content-on-solid);
+    --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-surface-raised);
 
     box-sizing: border-box;
     display: inline-block;
     position: relative;
-    border: 1px solid var(--ods-toggle-control-border-color);
+    border: 1px solid var(--ods-semantic-color-border-control);
     border-radius: 1rem;
     background-color: var(--ods-toggle-control-background-color);
     width: 48px;
     height: 24px;
 
-    &:hover,
-    &[data-focus] {
-      border-color: var(--ods-toggle-control-border-color-hover);
-      background-color: var(--ods-toggle-control-background-color-hover);
+    &:not([data-disabled]) {
+      &:hover,
+      &[data-focus] {
+        border-color: var(--ods-toggle-control-border-color-hover);
+      }
     }
 
     &[data-focus] {
@@ -34,28 +33,27 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      border-color: state.$ods-state-is-disabled-background-color;
     }
 
     &[data-state="checked"] {
-      &:not([data-disabled]) {
-        transition: background-color 0.2s ease, border-color 0.2s ease;
-        border-color: var(--ods-theme-input-border-color-checked);
-        background-color: var(--ods-theme-input-background-color-checked);
+      transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
+      border-color: var(--ods-semantic-color-border-selected-solid);
+      background: var(--ods-semantic-color-surface-selected-solid);
 
+      &:not([data-disabled], [data-invalid]) {
         &:hover, &[data-focus] {
-          border-color: var(--ods-theme-input-border-color-checked-hover);
-          background-color: var(--ods-theme-input-background-color-checked-hover);
-
-          &[data-invalid] {
-            border-color: var(--ods-theme-input-border-color-invalid);
-          }
+          border-color: var(--ods-semantic-color-interaction-selected-solid-highlight);
+          background: var(--ods-semantic-color-interaction-selected-solid-highlight);
         }
 
-        &[data-invalid] {
-          background-color: var(--ods-theme-input-background-color-invalid);
+        &:active {
+          border-color: var(--ods-semantic-color-interaction-selected-solid-active);
+          background: var(--ods-semantic-color-interaction-selected-solid-active);
         }
+      }
+
+      &[data-invalid] {
+        background-color: var(--ods-semantic-color-surface-critical);
       }
 
       #{$control}__thumb {
@@ -64,7 +62,7 @@
     }
 
     &#{$control}[data-invalid] {
-      border-color: var(--ods-theme-input-border-color-invalid);
+      border-color: var(--ods-semantic-color-border-critical);
     }
 
     &__thumb {
@@ -72,16 +70,17 @@
       bottom: 1px;
       left: 1px;
       transform: translateX(0);
-      transition: transform 0.4s ease;
+      transition: transform var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing);
       z-index: 2;
       margin: auto;
       border-radius: 16px;
+      box-shadow: var(--ods-semantic-shadow-control);
       background-color: var(--ods-toggle-control-thumb-background-color);
       width: 20px;
       height: 20px;
 
       &:not([data-disabled]) {
-        box-shadow: rgb(0, 0, 0, 0.25) 0 1px 1px 0;
+        box-shadow: var(--ods-semantic-shadow-control);
       }
     }
   }

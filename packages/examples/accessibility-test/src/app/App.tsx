@@ -469,11 +469,11 @@ function App(): ReactElement {
 
             <CartExtraContent>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '14px', fontWeight: 400, color: 'var(--ods-theme-heading-text-color)' }}>23% VAT / 2 years</span>
-                <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-heading-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
+                <span style={{ fontSize: '14px', fontWeight: 400, color: 'var(--ods-semantic-color-content-heading)' }}>23% VAT / 2 years</span>
+                <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-semantic-color-content-heading)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
               </div>
 
-              <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+              <Divider style={{ marginTop: 'calc(var(--ods-semantic-size-space-inset-block) * 2)' }} />
             </CartExtraContent>
 
             <CartTotal

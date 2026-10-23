@@ -1,5 +1,5 @@
 @layer ods-organisms {
   .combobox-highlight {
-    font-weight: 600;
+    font-weight: var(--ods-semantic-font-weight-semibold);
   }
 }

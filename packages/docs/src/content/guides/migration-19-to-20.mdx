@@ -9,7 +9,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component props keep working: existing props, refs and composition are unchanged, and deprecated APIs keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component props keep working: existing props, refs and composition are unchanged, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is <ExternalLink href="https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md">BREAKING-CHANGES-V20.md</ExternalLink>.
 
@@ -154,6 +154,12 @@ The `--ods-palette-*` ramps are published, but a rung number does not give back 
 
 If you read the Sass variables of `@ovhcloud/ods-themes` by path, most are gone: read the custom properties instead. The breakpoints are still exported by `@ovhcloud/ods-react/style`.
 
+The path is the only way to these variables, so the import finds every file that reads them:
+
+```sh
+grep -rnE "ods-themes/src/default/_?variables" src/
+```
+
 **before**
 ```scss
 @use '@ovhcloud/ods-themes/src/default/variables' as theme;
@@ -187,7 +193,7 @@ A v19 custom theme, including any Theme Generator export, declares `--ods-theme-
 To find them in your code:
 
 ```sh
-grep -rnE -- '--ods-(theme|color)-[a-z0-9-]+[[:space:]]*:' src/
+grep -rnE -- "--ods-(theme|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/
 ```
 
 In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` and `--ods-palette-accent-*`, from 50 to 900) on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`.
@@ -208,7 +214,7 @@ In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` 
 }
 ```
 
-The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose. Re-declare these `--ods-semantic-*` roles to change them. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. The brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 
 <Heading label="Design tokens JSON" level={ 2 } />
 
@@ -241,14 +247,16 @@ The `--ods-<component>-*` custom properties keep their names, with the exception
 - `--ods-button-border-radius-width` is renamed `--ods-button-border-width`, and the SCSS variable `$ods-button-border-radius-width` of `@ovhcloud/ods-react/style` is renamed `$ods-button-border-width`.
 - On Code, `--ods-code-primary-color` is renamed `--ods-code-text-color`, `--ods-code-secondary-color` is renamed `--ods-code-background-color`, and `--ods-code-trigger-background-color` is renamed `--ods-code-trigger-color`.
 - The tokens that only painted a disabled state are removed, since a disabled component is now dimmed with an opacity: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch`, `--ods-tile-background-color-disabled`, and the SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color`. For a grey disabled state, style `:disabled` or `[data-disabled]` yourself.
-- The tokens that nothing read any more are removed: `--ods-tile-background-color`, `--ods-tile-border-color` and `--ods-tile-border-width` (the Tile renders a Card: override the `--ods-card-*` tokens instead), the six `--ods-modal-header-background-color-*`, `--ods-message-close-button-text-color-primary`, `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected`.
-- `--ods-toggle-control-background-color-hover` is removed: the unchecked Toggle no longer changes its background on hover. `--ods-toggle-control-border-color` is removed too: the Toggle border reads `--ods-semantic-color-border-control`.
+- The tokens that nothing read in 19.7.3 are removed: `--ods-tile-background-color`, `--ods-tile-border-color` and `--ods-tile-border-width` (the Tile renders a Card: override the `--ods-card-*` tokens instead), and the six `--ods-modal-header-background-color-*`.
+- `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected` are removed: the selected Tab reads `--ods-semantic-color-border-selected-solid` and `--ods-semantic-color-content-on-selected`, so override those on `[data-ods="tab"]`.
+- `--ods-message-close-button-text-color-primary` is removed: the close button of the Message is a neutral ghost Button, so override `--ods-button-text-color-neutral-ghost` on `[data-ods="message"] [data-ods="button"]`.
+- `--ods-toggle-control-background-color-hover` is removed: the unchecked Toggle no longer changes its background on hover. `--ods-toggle-control-border-color` is removed too: the Toggle border reads `--ods-semantic-color-border-control`, so override that one on `[data-ods="toggle"]`.
 - The SCSS variables deprecated in v19 are removed: `$ods-modal-z-index` (read `$ods-overlay-modal-z-index`), `$ods-modal-border-radius` (read `var(--ods-semantic-size-radius-overlay)`), `$ods-modal-margin` (read `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`), `$ods-overlay-arrow-background-color` (read `var(--ods-semantic-color-surface-overlay)`) and `$drawer-max-size` (read `$drawer-max-width` or `$drawer-max-height`). So are the unused `ods-modal-color()` mixin and `$ods-overlay-select-z-index` (read `$ods-overlay-base-z-index`).
 
 To find them in your code:
 
 ```sh
-grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-color|trigger-background-color)([^-a-z]|$)|(checked|selected)-disabled|tab-border-color-disabled|ods-tile-(background-color|border-color|border-width)|ods-modal-header-background-color|close-button-text-color-primary|ods-tab-(border|text)-color-selected([^-a-z]|$)|toggle-control-(background-color-hover|border-color)([^-a-z]|$)|ods-state-is-disabled-|ods-modal-(z-index|border-radius|margin)([^-a-z]|$)|ods-overlay-(arrow-background-color|select-z-index)|drawer-max-size|ods-modal-color\(' src/
+grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-color|trigger-background-color)([^-a-z]|$)|(checked|selected)-disabled|tab-border-color-disabled|ods-tile-(background-color|border-color|border-width)(-disabled)?([^-a-z]|$)|ods-modal-header-background-color|close-button-text-color-primary|ods-tab-(border|text)-color-selected([^-a-z]|$)|toggle-control-(background-color-hover|border-color)([^-a-z]|$)|\$ods-state-is-disabled-|\$ods-modal-(z-index|border-radius|margin)([^-a-z]|$)|ods-overlay-(arrow-background-color|select-z-index)|drawer-max-size|ods-modal-color\(' src/
 ```
 
 **before**
@@ -284,6 +292,36 @@ grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-c
   z-index: ods.$ods-overlay-modal-z-index;
 }
 ```
+
+Six SCSS variables of `@ovhcloud/ods-react/style` held a number in 19.7.3 and now hold a `var()`: `$ods-button-size-xs` (`24px`), `$ods-button-size-sm` (`32px`), `$ods-button-size-md` (`40px`), `$ods-badge-height-md` (`24px`), `$animation-duration` (`0.3s`) and `$ods-link-font-weight` (`600`). A plain use renders as before, but Sass cannot compute with them: `ods.$animation-duration * 2` fails the build with "Undefined operation", and `ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. Move the operation into `calc()`.
+
+To find them in your code:
+
+```sh
+grep -rnE '\.\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: ods.$ods-button-size-md + 8px;
+  transition: opacity ods.$animation-duration * 2;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: calc(#{ods.$ods-button-size-md} + 8px);
+  transition: opacity calc(#{ods.$animation-duration} * 2);
+}
+```
+
+Two more changes need no code change: `$ods-input-actions-padding-right` goes from `4px` to `2px`, so the action buttons of a field sit as close to its border as its block inset, and `./style` gains the `ods-highlight-indicator()` mixin.
 
 <Heading label="Layers" level={ 2 } />
 
@@ -322,12 +360,15 @@ To have a drawer win over a modal, pass a higher `z-index` to the drawer through
 
 These changes need no code change: the new rendering is intended. To keep the v19 one, add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
 
-- **Badge**: a pill with a border, where v19 had 4px corners and no border. Keep v19: `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+- **Badge**: a pill with a border, where v19 had 4px corners and no border. The border adds to the size: `sm` is 22px tall instead of 20px, `lg` 30px instead of 28px, and every size is 2px wider. Keep v19, sizes included: `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
 - **Card and Tile**: a `--ods-semantic-color-surface-raised` background, where v19 had none. Keep v19: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`.
 - **Card without `status`**: neutral, where v19 was primary. Keep v19: `status="accent"`.
 - **Accordion**: a `--ods-semantic-color-surface-raised` background and 8px outer corners, where v19 had no background and 4px corners. Keep v19: `[data-ods="accordion"] { --ods-accordion-background-color: transparent; --ods-accordion-border-radius: 4px; }`.
 - **Button**: 4px corners at every size, where v19 had 2px (`xs`), 4px (`sm`) and 8px (`md`). Keep v19: `[data-ods="button"] { --ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px; }`.
-- **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox and the Select control.
+- **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.
+- **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
+- **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the primary hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-primary*` instead.
+- **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
 

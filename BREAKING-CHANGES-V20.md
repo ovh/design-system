@@ -36,7 +36,7 @@ not the history of the branch.
 | [BC-02](#bc-02---ods-color--removed-102-tokens) | `@ovhcloud/ods-themes` | `--ods-color-*` removed (102) | partial |
 | [BC-03](#bc-03--13-remaining-legacy-tokens-removed) | `@ovhcloud/ods-themes` | 13 remaining legacy tokens removed | automatable, map to confirm |
 | [BC-04](#bc-04--palette-rungs-000--025--075-retired) | `@ovhcloud/ods-themes` | palette rungs `000` / `025` / `075` retired | n/a (covered by BC-02) |
-| [BC-05](#bc-05--scss-variables-ods--removed) | `@ovhcloud/ods-themes` | SCSS `$ods-*` variables removed (140) | manual |
+| [BC-05](#bc-05--scss-variables-ods--removed) | `@ovhcloud/ods-themes` | SCSS `$ods-*` variables removed (161) | manual |
 | [BC-06](#bc-06--defaulttokensjson-content-replaced) | `@ovhcloud/ods-themes` | `./default/tokens` JSON content replaced | manual |
 | [BC-07](#bc-07---the-default-theme-no-longer-looks-like-ovhcloud) | `@ovhcloud/ods-themes` | the default theme no longer looks like OVHcloud | partial |
 | [BC-08](#bc-08--tier-3-component-token-values-re-bound) | `@ovhcloud/ods-react` | tier-3 component token values re-bound | none needed |
@@ -50,7 +50,7 @@ not the history of the branch.
 | [BC-16](#bc-16---deprecated-and-unused-scss-exports-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated and 2 unused SCSS exports of `./style` removed | manual |
 | [BC-17](#bc-17---code-custom-properties-renamed) | `@ovhcloud/ods-react` | 3 `Code` custom properties renamed | automatable |
 | [BC-18](#bc-18---button-border-width-token-renamed) | `@ovhcloud/ods-react` | `Button` border width token renamed | automatable |
-| [BC-19](#bc-19---card-tile-accordion-and-badge-change-their-default-look) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion` and `Badge` change their default look | manual |
+| [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, the `Combobox` tags and the transitions render differently by default | manual |
 | [BC-20](#bc-20---a-19x-custom-theme-no-longer-applies) | `@ovhcloud/ods-themes` | a 19.x custom theme no longer applies | manual |
 
 ## The v20 token contract
@@ -185,11 +185,15 @@ Depends on the site:
 - `--ods-theme-primary-color`: in a `color`, an icon or a caret reads `content-icon`.
 <!-- /repoint-tokens:bc01-split -->
 
-Used anywhere else (a `box-shadow`, a `linear-gradient`, an inline `style`), there is no
-mechanical answer: report the site and let the consumer choose.
+Used anywhere else (a `box-shadow`, a `linear-gradient`), there is no mechanical answer: report the
+site and let the consumer choose. An inline `style` is rewritten like a stylesheet, from the name
+of its property.
 
-One caveat on that table: only the `color` column was exercised by the ODS migration (8 sites), so
-the other two columns are a proposal that no rendered pixel has validated.
+One caveat on that table: run on the ODS sources before the migration, it sends 28 sites through
+it, 23 in a `color`, 4 in a `background` or a `fill` and 1 in a `border`, and on 3 of the 5
+outside `color` ODS picked another role than the table: the normal Meter fill reads
+`surface-success`, the Spinner fill `content-accent`, and the blockquote border of `_text.scss`
+`border-neutral-minimal`. A site outside `color` is worth a look before taking the table's answer.
 
 ---
 
@@ -433,7 +437,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | 161 of the 207 SCSS variables of `src/default/_variables.scss` are gone: the whole `$ods-color-*` ramp, `$ods-color-brand-*`, the flat form-element variables, the breakpoints, the named palette colors and the dimension variables listed in BC-03. 46 palette variables keep their name, but only 10 keep their value (blue `500`-`900`, gray `600`-`900`, white, see BC-04). 25 are new: the `50` rungs, the navy ramp, black, the four decorative colors and the opacity rungs. |
 | **Impact** | No export condition forwards the file, in 19.7.3 as in v20: only a consumer who resolved `src/default/_variables.scss` by path reaches it. A removed variable fails at build time; a kept one that changed value does not fail at all. |
-| **Detection** | `grep -rnE '\$ods-(color\|palette\|breakpoint)-' src/` |
+| **Detection** | `grep -rnE "ods-themes/src/default/_?variables" src/`: the path is the only way to these variables, so the import finds every file that reads them |
 | **Codemod** | **manual** - a SCSS variable is compile-time, so the right answer is usually "stop using it, read the custom property instead". The breakpoints are still exported by `@ovhcloud/ods-react/style`, under the same names. |
 | **Source of truth** | `packages/themes/src/default/_variables.scss` |
 
@@ -444,7 +448,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 276 new ones are in (185 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, a literal as in 19.7.3. A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 276 new ones are in (185 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |
@@ -475,13 +479,32 @@ stays the `blue-jeans` overlay, loaded after it.
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | Most `--ods-<component>-*` names are kept, and their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Removed: two stray `--ods-theme-*` locals, the dead tokens listed below, the seven disabled-state tokens of BC-12 and the renames of BC-17 and BC-18. Added: `--ods-card-background-color` and `--ods-accordion-background-color`, the ten `--ods-badge-border-color-*` (all three in BC-19), the six `--ods-message-border-color-*-light`, `--ods-tab-border-color-selected-switch`, an internal reset (BC-12) and the new names of BC-17 and BC-18. Several bindings also changed role, mostly to give `active` states their own `interaction-*-active`: the pressed rung is kept on purpose, even where the default theme gives it the hover value, so that a theme can tell them apart. |
 | **Impact** | A consumer overriding a component token by name keeps working, except for a removed or renamed name, whose override is silently ignored. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-primary: var(--ods-color-primary-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colors shift slightly even where nothing breaks. |
-| **Detection** | covered by the BC-01 / BC-02 greps |
-| **Codemod** | none needed beyond BC-01 / BC-02 |
+| **Detection** | the BC-01 / BC-02 greps for a value that reads a removed token, and the two commands below for the removed names and the `./style` arithmetic |
+| **Codemod** | none needed beyond BC-01 / BC-02 for the values; the removed names are listed below with their replacement |
 | **Source of truth** | `packages/ods-react/src/style/*.scss` |
 
-The mixins and SCSS variables exported by `@ovhcloud/ods-react/style` are unchanged - only the
-tokens they read - except for the disabled state (BC-12), the removals of BC-16 and the rename of
-BC-18.
+The 25 removed component properties (this entry, BC-12, BC-17 and BC-18) and the 11 removed
+`./style` exports (BC-12, BC-16 and BC-18) are found by:
+
+```sh
+grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-color|trigger-background-color)([^-a-z]|$)|(checked|selected)-disabled|tab-border-color-disabled|ods-tile-(background-color|border-color|border-width)(-disabled)?([^-a-z]|$)|ods-modal-header-background-color|close-button-text-color-primary|ods-tab-(border|text)-color-selected([^-a-z]|$)|toggle-control-(background-color-hover|border-color)([^-a-z]|$)|\$ods-state-is-disabled-|\$ods-modal-(z-index|border-radius|margin)([^-a-z]|$)|ods-overlay-(arrow-background-color|select-z-index)|drawer-max-size|ods-modal-color\(' src/
+```
+
+The mixins and SCSS variables exported by `@ovhcloud/ods-react/style` keep their names, except for
+the disabled state (BC-12), the removals of BC-16 and the rename of BC-18. Six variables that held
+a number in 19.7.3 now hold a `var()` string: `$ods-button-size-xs` (`24px`), `$ods-button-size-sm`
+(`32px`), `$ods-button-size-md` (`40px`), `$ods-badge-height-md` (`24px`), `$animation-duration`
+(`0.3s`) and `$ods-link-font-weight` (`600`). A plain use compiles and renders as before, Sass
+arithmetic does not: `ods.$animation-duration * 2` fails with "Undefined operation", and
+`ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. The fix is to move
+the operation into `calc()`: `calc(#{ods.$animation-duration} * 2)`. To find them:
+
+```sh
+grep -rnE '\.\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+```
+
+`$ods-input-actions-padding-right` goes from `4px` to `2px`: the action buttons of a field sit as
+close to its border as its block inset. `./style` also gains the `ods-highlight-indicator()` mixin.
 
 `Tile` loses `--ods-tile-border-width`, `--ods-tile-border-color` and `--ods-tile-background-color`.
 All three were declared but never read: `Tile` renders a `Card`, so its border, its background and
@@ -489,12 +512,20 @@ its elevation come from `--ods-card-*`. Overriding them never did anything, and 
 `--ods-card-*` equivalents still works.
 
 `Modal` loses the six `--ods-modal-header-background-color-*`, only read by the `ods-modal-color()`
-mixin that nothing has called since 19.5.0 (see BC-16). `Message` loses
-`--ods-message-close-button-text-color-primary`, which the close button no longer reads. `Tabs`
-loses `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected`: the selected tab reads
-the theme roles directly. `Toggle` loses `--ods-toggle-control-background-color-hover`, as an
-unchecked toggle no longer changes its background on hover, and `--ods-toggle-control-border-color`,
-as the border reads the theme role directly. Overriding any of them has no effect.
+mixin that nothing has called since 19.5.0 (see BC-16). Overriding them never did anything.
+
+Three removed tokens did paint something in 19.7.3, and an override of them is now ignored:
+
+- `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected` painted the selected tab.
+  The selected tab now reads `--ods-semantic-color-border-selected-solid` and
+  `--ods-semantic-color-content-on-selected`: override those on `[data-ods="tab"]`.
+- `--ods-message-close-button-text-color-primary` painted the close button of a primary Message.
+  The close button is now a neutral ghost `Button`: override `--ods-button-text-color-neutral-ghost`
+  on `[data-ods="message"] [data-ods="button"]`.
+
+`Toggle` loses `--ods-toggle-control-background-color-hover`, as an unchecked toggle no longer
+changes its background on hover, and `--ods-toggle-control-border-color`, as the border reads
+`--ods-semantic-color-border-control`: override that one on `[data-ods="toggle"]`.
 
 ---
 
@@ -585,7 +616,7 @@ state.
 | **Change** | The `ods-input()` mixin of `@ovhcloud/ods-react/style`, and every field built on it (`Input`, `Quantity`, `Textarea`, and the components that render an `Input`: `Combobox`, `Datepicker`, `Password`, `Phone Number`, `Timepicker`, ...), declares `background-color: var(--ods-semantic-color-surface-control)`. In 19.7.3 it declared no background, so a field showed whatever the browser or the ground behind it gave. |
 | **Impact** | Visual only. A field sitting on a tinted ground (a card, a message, a table header) now shows a white box instead of the tint. |
 | **Detection** | none to run - it applies to every field |
-| **Codemod** | **manual** - a consumer who wants the old transparency re-declares `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`: the open lists of `Select`, `Combobox` and `Query Filter` paint the same role and would turn transparent too. In that container, it also clears the `Checkbox` and the `Select` control. |
+| **Codemod** | **manual** - a consumer who wants the old transparency re-declares `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`: the open lists of `Select`, `Combobox` and `Query Filter` paint the same role and would turn transparent too. In that container, it also clears the `Checkbox`, the `Select` control, the outline `Button` (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container. |
 | **Source of truth** | `packages/ods-react/src/style/_input.scss` |
 
 ---
@@ -622,7 +653,7 @@ goes under the v20 modal.
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | The five variables marked "[Deprecated] will be removed in next major version" are removed: `$ods-overlay-arrow-background-color`, `$ods-modal-border-radius`, `$ods-modal-margin`, `$ods-modal-z-index` and `$drawer-max-size`. Two unused exports go with them: the `ods-modal-color()` mixin, which nothing has called since 19.5.0, and `$ods-overlay-select-z-index`, which nothing reads. |
 | **Impact** | A stylesheet that reads one of them fails to compile. |
-| **Detection** | `grep -rnE '\$(ods-overlay-arrow-background-color\|ods-modal-border-radius\|ods-modal-margin\|ods-modal-z-index\|drawer-max-size\|ods-overlay-select-z-index)\b\|ods-modal-color\(' src/` |
+| **Detection** | `grep -rnE '\$(ods-overlay-arrow-background-color\|ods-modal-border-radius\|ods-modal-margin\|ods-modal-z-index\|drawer-max-size\|ods-overlay-select-z-index)([^-a-z0-9]\|$)\|ods-modal-color\(' src/` |
 | **Codemod** | **manual** - read what they held instead: `--ods-semantic-color-surface-overlay` (the color the overlays and their arrows paint), `--ods-semantic-size-radius-overlay`, `$ods-modal-margin-horizontal` / `-vertical`, `--ods-semantic-z-index-modal`, `$drawer-max-width` / `$drawer-max-height`, and `$ods-overlay-base-z-index` for `$ods-overlay-select-z-index`. The `--ods-modal-*` custom properties would not do: they are only declared inside a `ModalContent`. Drop the `ods-modal-color()` includes: the header background they painted belongs to a `color` the Modal no longer renders. |
 | **Source of truth** | `packages/ods-react/src/style/_overlay.scss`, `_modal.scss`, `_drawer.scss` |
 
@@ -633,7 +664,7 @@ goes under the v20 modal.
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | Three `Code` custom properties are renamed after what they hold: `--ods-code-primary-color` (the text ink) becomes `--ods-code-text-color`, `--ods-code-secondary-color` (the block background) becomes `--ods-code-background-color`, and `--ods-code-trigger-background-color` (the copy button ink, not a background) becomes `--ods-code-trigger-color`. |
 | **Impact** | An override of an old name is silently ignored: the block keeps the theme colors. Nothing fails to compile. |
-| **Detection** | `grep -rnE -- '--ods-code-(primary-color\|secondary-color\|trigger-background-color)\b' src/` |
+| **Detection** | `grep -rnE -- '--ods-code-(primary-color\|secondary-color\|trigger-background-color)([^-a-z0-9]\|$)' src/` |
 | **Codemod** | **automatable** - three 1:1 renames. `--ods-code-trigger-background-color-hover` and `-active` keep their names: they are backgrounds. |
 | **Source of truth** | `packages/ods-react/src/components/code/src/components/code/code.module.scss` |
 
@@ -652,16 +683,44 @@ goes under the v20 modal.
 
 ---
 
-## BC-19 - `Card`, `Tile`, `Accordion` and `Badge` change their default look
+## BC-19 - default rendering changes
 
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | `Card` (and `Tile`, which renders one) and `Accordion` paint `--ods-semantic-color-surface-raised` where 19.7.3 painted no background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`. `Badge` becomes a pill with a border, read from the new `--ods-badge-border-color-<color>`. |
+| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border, the selected `Tab` fills, the tags of a multiple `Combobox` turn `accent`, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
 | **Impact** | Visual only. On a tinted ground, a card or an accordion now shows a white box. `status="accent"`, which brings back the 19.7.3 color of a `Card` without status (BC-09), does not bring back its transparency. |
-| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>` and `<Badge>` |
-| **Codemod** | **manual** - to keep the 19.7.3 look, add outside any `@layer`: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`, `[data-ods="accordion"] { --ods-accordion-background-color: transparent; }` and `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`. |
-| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss` |
+| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>` and multiple `<Combobox>` |
+| **Codemod** | **manual** - add the rules below to the consumer stylesheet, outside any `@layer`. |
+| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/themes/src/default/index.scss` (motion) |
+
+- **Card, Tile and Accordion** paint `--ods-semantic-color-surface-raised` where 19.7.3 painted no
+  background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`.
+  Keep 19.7.3: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`
+  and `[data-ods="accordion"] { --ods-accordion-background-color: transparent; }`.
+- **Badge** becomes a pill with a border, read from the new `--ods-badge-border-color-<color>`.
+  The border adds to the height: `sm` renders 22px tall instead of 20px, `lg` 30px instead of 28px,
+  `md` stays at 24px, and every size is 2px wider. Keep 19.7.3, sizes included:
+  `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+- **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected` where 19.7.3 left it
+  transparent, and the selected segment of a switch gets an outline,
+  `--ods-tab-border-color-selected-switch`. Keep 19.7.3:
+  `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`.
+  Hovering a switch segment now paints `--ods-tab-background-color-hover`, the token the default
+  tabs already painted on hover, so no rule removes it without changing those too.
+- **Combobox**: the tags of a multiple Combobox are `accent`, where 19.7.3 rendered the `Tag`
+  default, `information`, and the focused tag reads `--ods-tag-border-color-primary-hover` and
+  `--ods-tag-background-color-primary-hover` instead of the information ones. An override of the
+  information `Tag` tokens aimed at these tags no longer reaches them: override the
+  `--ods-tag-*-primary*` tokens instead.
+- **Motion**: the transitions read the motion tokens, and a few of them change. The Toggle thumb
+  goes from `0.4s ease` to `--ods-semantic-motion-duration-slow` (300ms) `ease-in-out`, its checked
+  background and border from `0.2s ease` to `-medium` (200ms) `ease-in-out`, the Radio dot from
+  120ms to `-fast` (150ms), and the TreeView and TabList transitions from `ease` to `ease-in-out`.
+  Under `prefers-reduced-motion: reduce`, the default theme also brings `-fast`, `-medium` and
+  `-slow` down to `0.01s` for every component that reads them. Keep the full durations for those
+  users with your own block, loaded after the theme:
+  `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`.
 
 ---
 
@@ -671,8 +730,8 @@ goes under the v20 modal.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | A 19.x custom theme, Theme Generator exports included, declares `--ods-theme-*` and `--ods-color-*`, which v20 neither declares nor reads. A v20 theme re-declares the brand and accent ramps, `--ods-palette-brand-*` and `--ods-palette-accent-*` (`50` to `900`), on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`. |
-| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design. They also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
-| **Detection** | `grep -rnE -- '--ods-(theme\|color)-[a-z0-9-]+[[:space:]]*:' src/` |
+| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design, except `--ods-semantic-color-chart-series-01`, which reads accent `500` and follows the accent ramp. The brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
+| **Detection** | `grep -rnE -- "--ods-(theme\|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/`: it finds a theme written as CSS, as the JSON the 19.x Theme Generator exports, or as that object kept in a JS or TS file |
 | **Codemod** | **manual** - move the brand colors onto the two ramps, then re-declare the roles the ramps do not reach. |
 | **Source of truth** | `packages/themes/src/default/index.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/index.scss` (a theme written this way) |
 
@@ -686,6 +745,6 @@ goes under the v20 modal.
   font-size family. If one lands in this major it is another entry here.
 - No visual-regression baseline has been taken against the new theme, so the list of value-only
   changes (BC-08) is qualitative.
-- Tokens deduced rather than delivered by design (the opacity rungs and the ten chart series
-  colors) can still be rejected. Any of them that design rejects becomes a rename **after** this inventory was written,
-  which is exactly the case the "append-only" rule above is for.
+- The opacity rungs and the ten chart series colors were deduced rather than delivered by design.
+  The token contract holds their names for the whole v20 line: design can still change their
+  values, not their names.

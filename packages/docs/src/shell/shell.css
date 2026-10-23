@@ -317,7 +317,7 @@ body {
   --ods-semantic-color-surface-page: var(--docs-dark-ground);
   --ods-semantic-color-surface-raised: var(--docs-dark-ground);
   --ods-semantic-color-surface-overlay: var(--docs-dark-ground);
-  /* --ods-semantic-color-content-text: var(--docs-dark-ink); */
+  --ods-semantic-color-content-text: var(--docs-dark-ink);
   --ods-semantic-color-content-heading: var(--docs-dark-ink);
 
   /* --- tier 2: every role bound to gray. */
@@ -352,6 +352,7 @@ body {
   --ods-semantic-color-content-base: var(--ods-palette-brand-500);
   --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
   --ods-semantic-color-content-brand: var(--ods-palette-brand-500);
+  --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-500);
   --ods-semantic-color-border-base: var(--ods-palette-brand-500);
   --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);

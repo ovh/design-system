@@ -51,8 +51,3 @@
   border-radius: 0 0 8px 8px;
   width: 100%;
 }
-
-.recipe-card__inner__code__panel__markdown {
-  border: 1px solid var(--ods-semantic-color-border-neutral-subtle);
-  padding: 16px;
-}

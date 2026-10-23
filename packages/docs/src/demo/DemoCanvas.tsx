@@ -57,7 +57,7 @@ const DemoCanvas = ({ children, dark, heading, sandboxCode, source, title, token
       ) }
 
       <div className="canvas__demo">
-        <DemoFrame bare dark={ dark } tokens={ tokens }>
+        <DemoFrame bare dark={ dark } inset tokens={ tokens }>
           { children }
         </DemoFrame>
       </div>

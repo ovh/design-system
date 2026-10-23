@@ -27769,7 +27769,7 @@ In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` 
 }
 ```
 
-The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. The brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 
 ## Design tokens JSON
 
@@ -27850,10 +27850,10 @@ grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-c
 
 Six SCSS variables of `@ovhcloud/ods-react/style` held a number in 19.7.3 and now hold a `var()`: `$ods-button-size-xs` (`24px`), `$ods-button-size-sm` (`32px`), `$ods-button-size-md` (`40px`), `$ods-badge-height-md` (`24px`), `$animation-duration` (`0.3s`) and `$ods-link-font-weight` (`600`). A plain use renders as before, but Sass cannot compute with them: `ods.$animation-duration * 2` fails the build with "Undefined operation", and `ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. Move the operation into `calc()`.
 
-To find them in your code:
+To find them in your code, with a namespace or without one (`@use ... as *`). The search also lists an `$animation-duration` that your own code declares:
 
 ```sh
-grep -rnE '\.\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+grep -rnE '\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
 ```
 
 **before**

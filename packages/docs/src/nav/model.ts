@@ -1,3 +1,4 @@
+import odsRecipeJson from '@ovhcloud/ods-recipes/json';
 import { ICON_NAME } from '../../../ods-react/src/components/icon/src';
 
 /* Navigation model of the docs app — the single source the sidebar tree, the
@@ -208,23 +209,9 @@ const COMPONENT_PAGES: [key: string, title: string, badge?: Badge][] = [
   ['tree-view', 'Tree View'],
 ];
 
-/* One page per recipe of @ovhcloud/ods-recipes: [key, title]. Listed here rather than read from the
-   package, whose JSON carries every recipe source and would land in the main bundle. */
-const RECIPE_PAGES: [string, string][] = [
-  ['chat', 'Chat'],
-  ['config-tile', 'Config Tile'],
-  ['dashboard-card', 'Dashboard Card'],
-  ['data-grid', 'Data Grid'],
-  ['data-grid-with-query-filter', 'Data Grid With Query Filter'],
-  ['email-field', 'Email Field'],
-  ['feature-list', 'Feature List'],
-  ['feature-list-product-card', 'Feature List Product Card'],
-  ['media-product-card', 'Media Product Card'],
-  ['order-button', 'Order Button'],
-  ['range-input', 'Range Input'],
-  ['status-message', 'Status Message'],
-  ['status-modal', 'Status Modal'],
-];
+/* One page per recipe of @ovhcloud/ods-recipes: [key, title]. */
+const RECIPE_PAGES = ((odsRecipeJson.list?.components ?? []) as string[])
+  .map((key): [string, string] => [key, (odsRecipeJson.component as Record<string, { name: string }>)[key].name]);
 
 /* API reference — its own tree; Components and Helpers sit at the top level. */
 const REFERENCE_NAV: (NavSection | NavPage)[] = [

@@ -66,7 +66,7 @@ async function suite(browser, { base, version }) {
     await page.click('text=JSON');
     await page.waitForSelector('textarea', { timeout: 5000 });
     const keys = Object.keys(JSON.parse(await page.inputValue('textarea')));
-    await page.getByRole('button', { exact: true, name: 'Close' }).click();
+    await page.getByRole('dialog').getByText('Close', { exact: true }).click();
     if (keys.join() !== '--ods-palette-brand-500') {
       throw new Error(`exported ${keys.length} entries: ${keys.slice(0, 3).join(', ')}`);
     }

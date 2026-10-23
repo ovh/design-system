@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: examples
 version: 19.7.3
-tokens: 277
+tokens: 278
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--examples.txt
 ---
 
@@ -26,7 +26,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 </Toggle>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <>
@@ -64,7 +64,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 </Toggle>
 ```
 
-## With Label
+## With label
 
 ```tsx
 <Toggle>
@@ -76,7 +76,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 </Toggle>
 ```
 
-## With Labels
+## With labels
 
 ```tsx
 <Toggle withLabels>
@@ -84,19 +84,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 </Toggle>
 ```
 
-## Accessibility Label
-
-```tsx
-<Toggle>
-  <ToggleControl />
-
-  <ToggleLabel>
-    Enable dark mode
-  </ToggleLabel>
-</Toggle>
-```
-
-## Accessibility Aria Label
+## Accessibility - Aria label
 
 ```tsx
 <Toggle aria-label="Enable dark mode">
@@ -104,6 +92,18 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 
   <ToggleLabel>
     Dark mode
+  </ToggleLabel>
+</Toggle>
+```
+
+## Accessibility - Label
+
+```tsx
+<Toggle>
+  <ToggleControl />
+
+  <ToggleLabel>
+    Enable dark mode
   </ToggleLabel>
 </Toggle>
 ```

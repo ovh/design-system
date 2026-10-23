@@ -4,7 +4,7 @@ slug: skeleton
 category: component
 type: overview
 version: 19.7.3
-tokens: 109
+tokens: 111
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton.txt
 ---
 
@@ -15,8 +15,8 @@ _**Skeleton** component indicates that data is loading. It improves the perceive
 ## Examples
 
 - Default
-- Accessibility Loading
-- Accessibility Bad Practice Loading
+- Accessibility - Loading
+- Accessibility - Bad practice : Loading
 
 ## Documentation pages
 

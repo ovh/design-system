@@ -16,6 +16,7 @@
 }
 
 .component-gallery__count {
+  margin-left: auto;
   color: var(--ods-semantic-color-content-placeholder);
   font-variant-numeric: tabular-nums;
 }
@@ -25,62 +26,50 @@
 }
 
 /* Everything below renders inside the demo frame, which mirrors the parent's stylesheets. */
-.component-gallery__component {
+.component-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.component-gallery__item {
   display: flex;
+  min-width: 0;
+}
+
+.component-gallery__card {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   row-gap: 16px;
-  border-bottom: 1px solid var(--ods-semantic-color-border-neutral-minimal);
-  padding-block: 24px;
-}
-
-.component-gallery__component:first-child {
-  padding-top: 0;
-}
-
-.component-gallery__component:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.component-gallery__header {
-  display: flex;
-  column-gap: 12px;
-  align-items: baseline;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 16px;
 }
 
 .component-gallery__title {
   margin: 0;
   color: var(--ods-semantic-color-content-heading);
   font-family: var(--ods-semantic-font-family-heading);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
-.component-gallery__doc-link {
-  color: var(--ods-semantic-color-content-placeholder);
-  font-size: 0.875rem;
-}
-
-.component-gallery__story {
+/* A Default view can be wide or tall (tables, overlays): it scrolls inside the card instead of
+   stretching the grid row. */
+.component-gallery__preview {
   display: flex;
-  flex-direction: column;
-  row-gap: 8px;
-}
-
-.component-gallery__story-name {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ods-semantic-color-content-placeholder);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.component-gallery__story-demo {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
   border-radius: var(--ods-semantic-size-radius-container);
-  background-color: var(--ods-semantic-color-surface-page);
+  min-height: 180px;
+  max-height: 360px;
   padding: 16px;
-  overflow-x: auto;
+  overflow: auto;
 }
 
 .component-gallery__error {

@@ -3,6 +3,7 @@ import { type ComponentType, type ReactElement, type ReactNode, useMemo } from '
 import { useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
+import { Card } from '../../../ods-react/src/components/card/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -10,12 +11,12 @@ import { CodeBlock } from './CodeBlock';
 import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
 import { ChartColorCards } from './ports/chartColorCards/ChartColorCards';
-import { cx } from './ports/cx';
 import { DesignTokens } from './ports/designTokens/DesignTokens';
 import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
@@ -28,21 +29,6 @@ import './doc.css';
    NOTHING. */
 
 const anatomyImages = import.meta.glob('../../assets/components/*/anatomy.png', { eager: true, import: 'default', query: '?url' }) as Record<string, string>;
-
-const slugify = (label: string): string => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-const Heading = ({ children, label, level }: { children?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
-  const presets = { 2: TEXT_PRESET.heading4, 3: TEXT_PRESET.heading5, 4: TEXT_PRESET.heading6 } as const;
-  return (
-    <Text
-      as={ `h${level}` }
-      className={ cx('doc__heading', `doc__heading--level-${level}`) }
-      id={ slugify(label) }
-      preset={ presets[level] }>
-      { label }{ children }
-    </Text>
-  );
-};
 
 const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'shown' | 'none', story: string }) => {
   const page = usePageStories();
@@ -98,18 +84,20 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
   return (
     <div className="doc__overview">
       <div className="doc__identity-desc">{ children }</div>
-      <dl className="doc__identity">
-        <div><dt>Name</dt><dd>{ name }</dd></div>
-        { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
-        <div>
-          <dt>Links</dt>
-          <dd className="doc__identity-links">
-            { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
-            <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
-            { previousVersionUrl && <Link href={ previousVersionUrl } target="_blank">Previous major version <Icon name={ ICON_NAME.externalLink } /></Link> }
-          </dd>
-        </div>
-      </dl>
+      <Card className="doc__identity">
+        <dl>
+          <div><dt>Name</dt><dd>{ name }</dd></div>
+          { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
+          <div>
+            <dt>Links</dt>
+            <dd className="doc__identity-links">
+              { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
+              <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
+              { previousVersionUrl && <Link href={ previousVersionUrl } target="_blank">Previous major version <Icon name={ ICON_NAME.externalLink } /></Link> }
+            </dd>
+          </div>
+        </dl>
+      </Card>
     </div>
   );
 };

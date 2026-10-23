@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: examples
 version: 19.7.3
-tokens: 819
+tokens: 820
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--examples.txt
 ---
 
@@ -75,7 +75,46 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
   }
 ```
 
-## Accessibility Form Field
+## Accessibility - Aria label
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+      </QueryFilter>
+    );
+  }
+```
+
+## Accessibility - Form field
 
 ```tsx
 {
@@ -116,45 +155,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
           <QueryFilterTags />
         </QueryFilter>
       </FormField>
-    );
-  }
-```
-
-## Accessibility Aria Label
-
-```tsx
-{
-    const filterProperty = useMemo(() => ({
-      label: 'Properties',
-      options: [{ label: 'States', value: 'states' }],
-    }), []);
-
-    const filterOption = useMemo(() => ({
-      states: {
-        operator: {
-          label: 'Operators',
-          options: [{ label: 'equals', value: '=' }],
-        },
-        value: {
-          label: 'State Values',
-          options: [
-            { label: 'Running', value: 'running' },
-            { label: 'Stopped', value: 'stopped' },
-          ],
-        },
-      },
-    }), []);
-
-    return (
-      <QueryFilter
-        filterOption={ filterOption }
-        filterProperty={ filterProperty }>
-        <QueryFilterControl aria-label="Filter instances" />
-
-        <QueryFilterContent />
-
-        <QueryFilterTags />
-      </QueryFilter>
     );
   }
 ```

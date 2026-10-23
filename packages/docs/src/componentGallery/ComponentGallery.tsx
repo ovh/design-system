@@ -3,29 +3,33 @@ import { Component, type ComponentType, type JSX, type ReactNode, useState } fro
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
 import { flattenPages } from '../nav/model';
-import { INPUT_TYPE, Input } from '../ods';
+import { Card, Combobox, ComboboxContent, ComboboxControl, INPUT_TYPE, Input, Link } from '../ods';
 import styles from './componentGallery.module.css';
 
 const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx', { eager: true }) as Record<string, Record<string, unknown>>;
 
-/* ThemeGenerator is each component's size x variant x color x state fixture. The others fill what
-   some fixtures leave out: the Tabs and Table variants, Divider orientation, Logo sizes, the
-   invalid Checkbox... */
-const VARIATION_STORIES = ['ThemeGenerator', 'Variant', 'Color', 'Size', 'Sizes', 'Orientation', 'Types', 'States', 'Disabled', 'Readonly', 'ReadOnly', 'Invalid', 'Loading', 'Error', 'Selected'];
+/* The "big categories" the toolbar filters on. The nav model is a flat component list, so the
+   grouping lives here; a component missing from it lands in "Other" instead of vanishing. */
+const CATEGORIES: Record<string, string[]> = {
+  'Actions': ['button', 'button-group', 'clipboard', 'link'],
+  'Data display': ['accordion', 'avatar', 'card', 'cart', 'code', 'data-table', 'divider', 'file-thumbnail', 'icon', 'kbd', 'logo', 'markdown', 'medium', 'table', 'text', 'tile'],
+  'Feedback & status': ['badge', 'message', 'message-bubble', 'meter', 'progress-bar', 'skeleton', 'spinner', 'tag'],
+  'Form elements': ['checkbox', 'combobox', 'datepicker', 'editable', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'],
+  'Navigation': ['breadcrumb', 'command', 'menu', 'pagination', 'tabs', 'tree-view'],
+  'Overlays': ['drawer', 'modal', 'popover', 'toaster', 'tooltip'],
+};
+const OTHER_CATEGORY = 'Other';
 
-interface GalleryStory {
-  Story: ComponentType;
-  name: string;
-}
+const categoryOf = (key: string): string => Object.entries(CATEGORIES).find(([, keys]) => keys.includes(key))?.[0] ?? OTHER_CATEGORY;
 
 interface GalleryEntry {
+  category: string;
   key: string;
   path?: string;
-  stories: GalleryStory[];
+  /* The component's Default story: its first impression, shown on the card. */
+  Preview?: ComponentType;
   title: string;
 }
-
-const humanize = (name: string): string => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
 
 const COMPONENT_PAGES = new Map(flattenPages().filter((page) => page.kind === 'component').map((page) => [page.id, page]));
 
@@ -37,13 +41,18 @@ const GALLERY: GalleryEntry[] = Object.entries(STORY_MODULES)
     const composed = composeStories(module as Parameters<typeof composeStories>[0]) as Record<string, ComponentType>;
 
     return {
+      category: categoryOf(key),
       key,
       path: page?.path,
-      stories: VARIATION_STORIES.flatMap((name) => (composed[name] ? [{ Story: composed[name], name }] : [])),
+      Preview: composed['Default'],
       title: page?.title ?? key,
     };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
+
+const CATEGORY_ITEMS = [...new Set(GALLERY.map((entry) => entry.category))]
+  .sort((a, b) => (a === OTHER_CATEGORY ? 1 : b === OTHER_CATEGORY ? -1 : a.localeCompare(b)))
+  .map((category) => ({ label: category, value: category }));
 
 /* One story throwing must not blank the whole frame: the page is only useful seen as a whole. */
 class StoryBoundary extends Component<{ children: ReactNode, label: string }, { failed: boolean }> {
@@ -63,10 +72,12 @@ class StoryBoundary extends Component<{ children: ReactNode, label: string }, { 
 
 const ComponentGallery = (): JSX.Element => {
   const [filter, setFilter] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
   const needle = filter.trim().toLowerCase();
-  const shown = needle
-    ? GALLERY.filter((entry) => entry.key.includes(needle) || entry.title.toLowerCase().includes(needle))
-    : GALLERY;
+  // No category selected means every category.
+  const shown = GALLERY
+    .filter((entry) => !categories.length || categories.includes(entry.category))
+    .filter((entry) => !needle || entry.key.includes(needle) || entry.title.toLowerCase().includes(needle));
 
   return (
     <div className={ styles['component-gallery'] }>
@@ -81,33 +92,43 @@ const ComponentGallery = (): JSX.Element => {
           type={ INPUT_TYPE.search }
           value={ filter } />
 
+        <Combobox
+          items={ CATEGORY_ITEMS }
+          multiple
+          onValueChange={ ({ value }) => setCategories(value) }
+          value={ categories }>
+          <ComboboxControl
+            aria-label="Filter by category"
+            placeholder="All categories" />
+          <ComboboxContent />
+        </Combobox>
+
         <span className={ styles['component-gallery__count'] }>
           { shown.length } / { GALLERY.length }
         </span>
       </div>
 
       { shown.length ? (
-        <DemoFrame>
-          { shown.map(({ key, path, stories, title }) => (
-            <section className={ styles['component-gallery__component'] } key={ key }>
-              <header className={ styles['component-gallery__header'] }>
-                <h2 className={ styles['component-gallery__title'] }>{ title }</h2>
-                { path && <RouterLink className={ styles['component-gallery__doc-link'] } to={ path }>Documentation</RouterLink> }
-              </header>
+        <DemoFrame pageSurface>
+          <ul className={ styles['component-gallery__grid'] }>
+            { shown.map(({ Preview, key, path, title }) => (
+              <li className={ styles['component-gallery__item'] } key={ key }>
+                <Card className={ styles['component-gallery__card'] }>
+                  <h2 className={ styles['component-gallery__title'] }>
+                    { path ? <Link as={ RouterLink } to={ path }>{ title }</Link> : title }
+                  </h2>
 
-              { stories.map(({ Story, name }) => (
-                <div className={ styles['component-gallery__story'] } key={ name }>
-                  <h3 className={ styles['component-gallery__story-name'] }>{ humanize(name) }</h3>
-
-                  <div className={ styles['component-gallery__story-demo'] }>
-                    <StoryBoundary label={ `${title} / ${humanize(name)}` }>
-                      <Story />
-                    </StoryBoundary>
+                  <div className={ styles['component-gallery__preview'] }>
+                    { Preview && (
+                      <StoryBoundary label={ `${title} / Default` }>
+                        <Preview />
+                      </StoryBoundary>
+                    ) }
                   </div>
-                </div>
-              )) }
-            </section>
-          )) }
+                </Card>
+              </li>
+            )) }
+          </ul>
         </DemoFrame>
       ) : (
         <p className={ styles['component-gallery__empty'] }>No component matches “{ filter }”.</p>

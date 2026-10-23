@@ -30,7 +30,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
 </FormField>
 ```
 
-## Guide Form Critical
+## Guide form critical
 
 ```tsx
 {
@@ -83,7 +83,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   }
 ```
 
-## Guide Form Error
+## Guide form error
 
 ```tsx
 {
@@ -197,7 +197,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   }
 ```
 
-## Guide Form Grouped Field
+## Guide form grouped field
 
 ```tsx
 {
@@ -283,7 +283,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   }
 ```
 
-## Guide Form Mandatory
+## Guide form mandatory
 
 ```tsx
 {
@@ -385,7 +385,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   }
 ```
 
-## Guide Form Simple
+## Guide form simple
 
 ```tsx
 <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
@@ -438,7 +438,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
 </FormField>
 ```
 
-## Label Sub Label
+## Label sub label
 
 ```tsx
 <FormField>
@@ -451,7 +451,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
 </FormField>
 ```
 
-## Accessibility Label
+## Accessibility - Label
 
 ```tsx
 <FormField>

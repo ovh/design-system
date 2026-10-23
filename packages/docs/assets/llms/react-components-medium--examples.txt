@@ -10,6 +10,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
 
 # Medium
 
+## Default
+
+```tsx
+<Medium
+  alt="NASA Computer room"
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+```
+
 ## Caption
 
 ```tsx
@@ -24,14 +32,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
     </Text>
   </figcaption>
 </figure>
-```
-
-## Default
-
-```tsx
-<Medium
-  alt="NASA Computer room"
-  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
 ```
 
 ## Height

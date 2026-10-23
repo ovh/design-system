@@ -4,7 +4,7 @@ slug: logo
 category: component
 type: overview
 version: 19.7.3
-tokens: 134
+tokens: 135
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo.txt
 ---
 
@@ -19,10 +19,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo.t
 
 ## Examples
 
-- Accessibility Link
 - Default
 - Size
 - Variant
+- Accessibility - Link
 
 ## Documentation pages
 

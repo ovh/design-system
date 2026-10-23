@@ -1,10 +1,6 @@
 /* Full-bleed inside the shell: the home route removes the content padding
    (shell__content--flush). */
 .homepage {
-  background-attachment: fixed;
-  background-position: 65% center;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-block-size: 100%;
 }
 
@@ -57,10 +53,6 @@
 }
 
 @media screen and (width < 600px) {
-  .homepage {
-    background-position: 75% center;
-  }
-
   .homepage__content {
     padding: 2.5rem;
   }

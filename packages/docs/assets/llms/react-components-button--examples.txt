@@ -4,21 +4,11 @@ slug: button
 category: component
 type: examples
 version: 19.7.3
-tokens: 779
+tokens: 785
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
 ---
 
 # Button
-
-## Status
-
-```tsx
-<>
-  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
-  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
-  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
-</>
-```
 
 ## Default
 
@@ -46,6 +36,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </>
 ```
 
+## Status
+
+```tsx
+<>
+  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
+</>
+```
+
 ## Variant
 
 ```tsx
@@ -56,7 +56,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </>
 ```
 
-## Accessibility Explicit Text Content
+## Accessibility - Explicit text content
 
 ```tsx
 <Button>
@@ -64,7 +64,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </Button>
 ```
 
-## Accessibility Icon Only
+## Accessibility - Icon only
 
 ```tsx
 <Button aria-label='Clear'>
@@ -72,15 +72,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </Button>
 ```
 
-## Accessibility Bad Practice Icon Only
-
-```tsx
-<Button>
-  <Icon name={ ICON_NAME.xmark } />
-</Button>
-```
-
-## Accessibility Labelled By
+## Accessibility - Labelled by
 
 ```tsx
 <>
@@ -91,42 +83,33 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </>
 ```
 
-## Accessibility Bad Practice Labelled By
-
-```tsx
-<>
-  <Button>
-    <Icon name={ ICON_NAME.filter } />
-  </Button>
-  <span>Filter your search results</span>
-</>
-```
-
-## Accessibility Bad Practices Role Status
+## Accessibility - Role alert
 
 ```tsx
 {
-    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     const handleClick = () => {
-      setMessage('Copied to clipboard.');
+      setError('A critical error occurred while saving!');
     };
 
     return (
       <>
         <Button onClick={ handleClick }>
-          Copy
+          Save
         </Button>
 
-        <span style={{ marginLeft: '1rem' }}>
-          { message }
+        <span
+          role="alert"
+          style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
         </span>
       </>
     );
   }
 ```
 
-## Accessibility Role Status
+## Accessibility - Role status
 
 ```tsx
 {
@@ -153,7 +136,26 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
   }
 ```
 
-## Accessibility Bad Practices Role Alert
+## Accessibility - Bad practice : Icon only
+
+```tsx
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
+```
+
+## Accessibility - Bad practice : Labelled by
+
+```tsx
+<>
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
+  <span>Filter your search results</span>
+</>
+```
+
+## Accessibility - Bad practice : Role alert
 
 ```tsx
 {
@@ -177,26 +179,24 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
   }
 ```
 
-## Accessibility Role Alert
+## Accessibility - Bad practice : Role status
 
 ```tsx
 {
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleClick = () => {
-      setError('A critical error occurred while saving!');
+      setMessage('Copied to clipboard.');
     };
 
     return (
       <>
         <Button onClick={ handleClick }>
-          Save
+          Copy
         </Button>
 
-        <span
-          role="alert"
-          style={{ marginLeft: '1rem', color: 'red' }}>
-          { error }
+        <span style={{ marginLeft: '1rem' }}>
+          { message }
         </span>
       </>
     );

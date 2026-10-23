@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/react';
 import { type ComponentType } from 'react';
-import { EXCLUDED_STORIES } from './extractSource';
+import { EXCLUDED_STORIES, compareStoryNames } from './extractSource';
 
 interface ComposedDemo {
   Component: ComponentType;
@@ -17,7 +17,8 @@ function composeModule(storiesModule: Record<string, unknown>): ComposedDemo[] {
 
   return Object.entries(composed)
     .filter(([name]) => !EXCLUDED_STORIES.has(name))
-    .map(([name, Component]) => ({ Component, name }));
+    .map(([name, Component]) => ({ Component, name }))
+    .sort((a, b) => compareStoryNames(a.name, b.name));
 }
 
 export { composeModule, type ComposedDemo };

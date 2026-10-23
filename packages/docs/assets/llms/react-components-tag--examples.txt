@@ -4,26 +4,21 @@ slug: tag
 category: component
 type: examples
 version: 19.7.3
-tokens: 301
+tokens: 303
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--examples.txt
 ---
 
 # Tag
 
-## Status
+## Default
 
 ```tsx
-<>
-  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
-  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
-  <Tag status={ TAG_STATUS.information }>Information</Tag>
-  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
-  <Tag status={ TAG_STATUS.success }>Success</Tag>
-  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
-</>
+<Tag>
+  My tag
+</Tag>
 ```
 
-## Custom Icon
+## Custom icon
 
 ```tsx
 <>
@@ -35,14 +30,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
     Custom Icon
   </Tag>
 </>
-```
-
-## Default
-
-```tsx
-<Tag>
-  My tag
-</Tag>
 ```
 
 ## Disabled
@@ -62,25 +49,28 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
 </>
 ```
 
-## Accessibility List
+## Status
 
 ```tsx
-<ul>
-  <li>
-    <Tag>Design</Tag>
-  </li>
-
-  <li>
-    <Tag>Development</Tag>
-  </li>
-
-  <li>
-    <Tag>Accessibility</Tag>
-  </li>
-</ul>
+<>
+  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+  <Tag status={ TAG_STATUS.information }>Information</Tag>
+  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+  <Tag status={ TAG_STATUS.success }>Success</Tag>
+  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
+</>
 ```
 
-## Accessibility Aria Roles
+## Accessibility - Aria label
+
+```tsx
+<Tag aria-label="Remove my tag">
+  My tag
+</Tag>
+```
+
+## Accessibility - Aria roles
 
 ```tsx
 <div role="list">
@@ -98,10 +88,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
 </div>
 ```
 
-## Accessibility Aria Label
+## Accessibility - List
 
 ```tsx
-<Tag aria-label="Remove my tag">
-  My tag
-</Tag>
+<ul>
+  <li>
+    <Tag>Design</Tag>
+  </li>
+
+  <li>
+    <Tag>Development</Tag>
+  </li>
+
+  <li>
+    <Tag>Accessibility</Tag>
+  </li>
+</ul>
 ```

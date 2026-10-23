@@ -18,19 +18,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
 </MessageBubble>
 ```
 
-## Variant
-
-```tsx
-<>
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human }>
-    This is a human message
-  </MessageBubble>
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai }>
-    This is an AI message
-  </MessageBubble>
-</>
-```
-
 ## Error
 
 ```tsx
@@ -43,4 +30,17 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
 
 ```tsx
 <MessageBubble typing />
+```
+
+## Variant
+
+```tsx
+<>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human }>
+    This is a human message
+  </MessageBubble>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai }>
+    This is an AI message
+  </MessageBubble>
+</>
 ```

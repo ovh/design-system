@@ -4,7 +4,7 @@ slug: meter
 category: component
 type: overview
 version: 19.7.3
-tokens: 261
+tokens: 263
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.txt
 ---
 
@@ -23,12 +23,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Accessibility Aria Valuetext
 - Default
 - Optimum
 - Thresholds
+- Accessibility - Aria label
+- Accessibility - Aria labelledby
+- Accessibility - Aria valuetext
 
 ## Documentation pages
 

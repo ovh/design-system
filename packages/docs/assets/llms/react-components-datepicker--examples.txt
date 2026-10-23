@@ -4,28 +4,28 @@ slug: datepicker
 category: component
 type: examples
 version: 19.7.3
-tokens: 590
+tokens: 591
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--examples.txt
 ---
 
 # Datepicker
 
-## Date Formatter
+## Default
 
 ```tsx
-<Datepicker
-  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
-  placeholder="yyyy">
+<Datepicker>
   <DatepickerControl />
 
   <DatepickerContent />
 </Datepicker>
 ```
 
-## Default
+## Date formatter
 
 ```tsx
-<Datepicker>
+<Datepicker
+  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+  placeholder="yyyy">
   <DatepickerControl />
 
   <DatepickerContent />
@@ -62,7 +62,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -78,7 +78,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </FormField>
 ```
 
-## Max View
+## Max view
 
 ```tsx
 <Datepicker maxView="day">
@@ -88,7 +88,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </Datepicker>
 ```
 
-## Min Max
+## Min max
 
 ```tsx
 <Datepicker
@@ -100,7 +100,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </Datepicker>
 ```
 
-## Min View
+## Min view
 
 ```tsx
 <Datepicker minView="month">
@@ -120,23 +120,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </Datepicker>
 ```
 
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Start date:
-  </FormFieldLabel>
-
-  <Datepicker>
-    <DatepickerControl />
-
-    <DatepickerContent />
-  </Datepicker>
-</FormField>
-```
-
-## Accessibility Date Format
+## Accessibility - Date format
 
 ```tsx
 <FormField>
@@ -158,7 +142,23 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Start date:
+  </FormFieldLabel>
+
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```
+
+## Accessibility - I18n
 
 ```tsx
 <FormField>

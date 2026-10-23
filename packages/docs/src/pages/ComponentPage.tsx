@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { composeModule } from '../demo/composeModule';
-import { extractStorySources } from '../demo/extractSource';
+import { extractStorySources, storyTitle } from '../demo/extractSource';
+import { DocArticle } from '../doc/DocArticle';
+import { Heading } from '../doc/Heading';
 import { Recipes, hasRecipesFor } from '../doc/ports/recipes/Recipes';
 
 interface ComponentPageProp {
@@ -13,31 +15,24 @@ interface ComponentPageProp {
   tokens: Record<string, string>;
 }
 
-/* CamelCase story export → readable title (AccessibilityIconOnly →
-   "Accessibility icon only"). */
-const humanize = (name: string): string => {
-  const spaced = name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
-  return spaced.charAt(0).toUpperCase() + spaced.slice(1).toLowerCase();
-};
-
 const ComponentPage = ({ component, dark, rawSource, storiesModule, title, tokens }: ComponentPageProp) => {
   const demos = useMemo(() => composeModule(storiesModule), [storiesModule]);
   const sources = useMemo(() => extractStorySources(rawSource), [rawSource]);
   const showRecipes = useMemo(() => hasRecipesFor(component), [component]);
 
   return (
-    <section>
-      <p data-testid="demo-count">{ demos.length } démos composées</p>
+    <DocArticle>
       { demos.map(({ Component, name }) => {
         const source = sources[name];
         const imports = (storiesModule[name] as { globals?: { imports?: string } } | undefined)?.globals?.imports;
         return (
           <DemoCanvas
             dark={ dark }
+            heading
             key={ name }
             sandboxCode={ source ? buildSandboxSnippet(source, imports) : undefined }
             source={ source }
-            title={ humanize(name) }
+            title={ storyTitle(name) }
             tokens={ tokens }>
             <Component />
           </DemoCanvas>
@@ -46,11 +41,11 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, title, token
 
       { showRecipes && (
         <>
-          <h2>Recipes</h2>
+          <Heading label="Related Recipes" level={ 2 } />
           <Recipes component={ component } />
         </>
       ) }
-    </section>
+    </DocArticle>
   );
 };
 

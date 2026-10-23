@@ -4,7 +4,7 @@ slug: phone-number
 category: component
 type: overview
 version: 19.7.3
-tokens: 1368
+tokens: 1369
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number.txt
 ---
 
@@ -33,17 +33,17 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 ## Examples
 
-- Accessibility Label
-- Clearable
-- Country List
 - Default
+- Clearable
+- Country list
 - Disabled
-- In Form Field
+- In form field
 - Loading
 - Locale
 - Readonly
-- Accessibility Form Field
-- Accessibility I18n
+- Accessibility - Form field
+- Accessibility - I18n
+- Accessibility - Label
 
 ## Documentation pages
 

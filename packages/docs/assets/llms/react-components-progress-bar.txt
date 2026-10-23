@@ -4,7 +4,7 @@ slug: progress-bar
 category: component
 type: overview
 version: 19.7.3
-tokens: 191
+tokens: 192
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar.txt
 ---
 
@@ -25,7 +25,7 @@ _A horizontal bar indicating the current completion status of a long-running tas
 - Indeterminate
 - Max
 - Value
-- Accessibility Label
+- Accessibility - Label
 
 ## Documentation pages
 

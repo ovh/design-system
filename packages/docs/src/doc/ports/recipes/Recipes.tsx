@@ -1,5 +1,5 @@
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import { type ChangeEvent, useMemo, useState } from 'react';
+import { type CSSProperties, type ChangeEvent, useMemo, useState } from 'react';
 import { DIVIDER_SPACING, Divider } from '../../../../../ods-react/src/components/divider/src';
 import { FormField, FormFieldLabel } from '../../../../../ods-react/src/components/form-field/src';
 import { ICON_NAME } from '../../../../../ods-react/src/components/icon/src';
@@ -50,7 +50,11 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
         </>
       ) }
 
-      <div className={ styles['recipes__grid'] }>
+      <div
+        className={ component ? `${styles['recipes__grid']} ${styles['recipes__grid--related']}` : styles['recipes__grid'] }
+        // Related recipes share the row: 1 → 100%, 2 and more → 50% (narrower
+        // cards clip the recipe previews).
+        style={ component ? { '--recipes-columns': Math.min(filtered.length, 2) } as CSSProperties : undefined }>
         { filtered.length > 0 ? (
           filtered.map((recipe) => (
             <RecipeCard

@@ -8,7 +8,7 @@ const PORT = Number(process.env.DOCS_TEST_PORT ?? 8124);
 const wanted = process.argv.slice(2);
 // 'sandbox' replays every open-in-sandbox snippet through Monaco (minutes):
 // opt-in only — `node tests/run.mjs sandbox`.
-const DEFAULT_SUITES = ['snippets', 'smoke', 'sweep', 'themegen', 'gallery'];
+const DEFAULT_SUITES = ['snippets', 'smoke', 'sweep', 'themegen', 'gallery', 'search'];
 const SUITES = wanted.length ? wanted : DEFAULT_SUITES;
 
 const { simRoot, version } = setupSim();

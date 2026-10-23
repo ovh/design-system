@@ -33,16 +33,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-t
 
 ## Examples
 
-- Accessibility I18n
 - Default
 - Empty
-- Pagination Example
-- Pinned Columns
-- State Controlled
-- Sorting Custom Function
-- Sorting Disabled Columns
-- Sorting Controlled
-- Visibility Example
+- Pagination example
+- Pinned columns
+- Sorting controlled
+- Sorting custom function
+- Sorting disabled columns
+- State controlled
+- Visibility example
+- Accessibility - I18n
 
 ## Documentation pages
 

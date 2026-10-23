@@ -21,8 +21,8 @@ _A component to display data in a tabular format._
 
 ## Examples
 
-- Custom Caption
 - Default
+- Custom caption
 - Size
 - Variant
 

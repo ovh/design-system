@@ -45,6 +45,8 @@ function storiesOf(id: string): StoriesLoader | undefined {
 
 interface NavPage {
   badge?: Badge;
+  /* Routed, but left out of the sidebar and the search palette. */
+  hidden?: boolean;
   icon?: ICON_NAME;
   id: string;
   kind: 'component' | 'guide' | 'helper' | 'recipe' | 'tool';
@@ -65,52 +67,28 @@ interface NavSection {
    old Storybook storySort; the single "OVHcloud Design System" root was
    dropped (the brand logo already says it). */
 const GUIDES_NAV: (NavSection | NavPage)[] = [
-  { icon: ICON_NAME.home, id: 'guides/welcome', kind: 'guide', path: '/', title: 'Welcome' },
+  { hidden: true, icon: ICON_NAME.home, id: 'guides/welcome', kind: 'guide', path: '/', title: 'Welcome' },
   { icon: ICON_NAME.arrowRight, id: 'guides/get-started', kind: 'guide', path: '/guides/get-started', title: 'Get Started' },
-  {
-    icon: ICON_NAME.pen,
-    id: 'build',
-    title: 'Build',
-    children: [
-      { icon: ICON_NAME.file, id: 'guides/accessibility', kind: 'guide', path: '/guides/accessibility', title: 'Accessibility' },
-      { icon: ICON_NAME.file, id: 'guides/internationalization', kind: 'guide', path: '/guides/internationalization', title: 'Internationalization' },
-      { icon: ICON_NAME.file, id: 'guides/forms', kind: 'guide', path: '/guides/forms', title: 'Forms' },
-      { icon: ICON_NAME.file, id: 'guides/charts', kind: 'guide', path: '/guides/charts', title: 'Charts' },
-    ],
-  },
   {
     icon: ICON_NAME.magicWand,
     id: 'customize',
     title: 'Customize',
     children: [
-      { icon: ICON_NAME.file, id: 'guides/apply-ods-style', kind: 'guide', path: '/guides/apply-ods-style', title: 'Apply ODS Style' },
-      { icon: ICON_NAME.file, id: 'guides/style-customization', kind: 'guide', path: '/guides/style-customization', title: 'Style Customization' },
-      { icon: ICON_NAME.file, id: 'guides/design-tokens', kind: 'guide', path: '/guides/design-tokens', title: 'Design Tokens' },
-      { icon: ICON_NAME.file, id: 'guides/tailwind', kind: 'guide', path: '/guides/tailwind', title: 'Tailwind CSS Integration' },
+      { icon: ICON_NAME.theme, id: 'guides/apply-ods-style', kind: 'guide', path: '/guides/apply-ods-style', title: 'Apply ODS Style' },
+      { icon: ICON_NAME.resize, id: 'guides/style-customization', kind: 'guide', path: '/guides/style-customization', title: 'Style Customization' },
+      { icon: ICON_NAME.diamondsFull, id: 'guides/design-tokens', kind: 'guide', path: '/guides/design-tokens', title: 'Design Tokens' },
+      { icon: ICON_NAME.gridAlt, id: 'guides/tailwind', kind: 'guide', path: '/guides/tailwind', title: 'Tailwind CSS Integration' },
     ],
   },
   {
-    icon: ICON_NAME.arrowUp,
-    id: 'upgrade',
-    title: 'Upgrade',
+    icon: ICON_NAME.pen,
+    id: 'build',
+    title: 'Guides',
     children: [
-      { icon: ICON_NAME.file, id: 'guides/whats-new', kind: 'guide', path: '/guides/whats-new', title: "What's new" },
-      { icon: ICON_NAME.list, id: 'guides/changelog', kind: 'guide', path: '/guides/changelog', title: 'Changelog' },
-      { icon: ICON_NAME.file, id: 'guides/migration-19-to-20', kind: 'guide', path: '/guides/migration-19-to-20', title: 'Migration 19.x to 20.x' },
-      { icon: ICON_NAME.file, id: 'guides/migration-to-v19', kind: 'guide', path: '/guides/migration-to-v19', title: 'Migration to v19' },
-      {
-        icon: ICON_NAME.refresh,
-        id: 'previous-migrations',
-        title: 'Previous Migrations',
-        children: [
-          { icon: ICON_NAME.file, id: 'guides/migration-12-to-13', kind: 'guide', path: '/guides/migration-12-to-13', title: '12.x to 13.x' },
-          { icon: ICON_NAME.file, id: 'guides/migration-13-to-14', kind: 'guide', path: '/guides/migration-13-to-14', title: '13.x to 14.x' },
-          { icon: ICON_NAME.file, id: 'guides/migration-14-to-15', kind: 'guide', path: '/guides/migration-14-to-15', title: '14.x to 15.x' },
-          { icon: ICON_NAME.file, id: 'guides/migration-15-to-16', kind: 'guide', path: '/guides/migration-15-to-16', title: '15.x to 16.x' },
-          { icon: ICON_NAME.file, id: 'guides/migration-16-to-17', kind: 'guide', path: '/guides/migration-16-to-17', title: '16.x to 17.x' },
-          { icon: ICON_NAME.file, id: 'guides/migration-17-to-18', kind: 'guide', path: '/guides/migration-17-to-18', title: '17.x to 18.x' },
-        ],
-      },
+      { icon: ICON_NAME.accessibility, id: 'guides/accessibility', kind: 'guide', path: '/guides/accessibility', title: 'Accessibility' },
+      { icon: ICON_NAME.globe, id: 'guides/internationalization', kind: 'guide', path: '/guides/internationalization', title: 'Internationalization' },
+      { icon: ICON_NAME.keyboard, id: 'guides/forms', kind: 'guide', path: '/guides/forms', title: 'Forms' },
+      { icon: ICON_NAME.analysis, id: 'guides/charts', kind: 'guide', path: '/guides/charts', title: 'Charts' },
     ],
   },
   {
@@ -120,7 +98,6 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     children: [
       { icon: ICON_NAME.chevronLeftUnderscore, id: 'tools/sandbox', kind: 'tool', path: '/tools/sandbox', title: 'Code Sandbox' },
       { badge: 'beta', icon: ICON_NAME.magicWand, id: 'tools/theme-generator', kind: 'tool', path: '/tools/theme-generator', title: 'Theme Generator' },
-      { icon: ICON_NAME.grid, id: 'tools/component-gallery', kind: 'tool', path: '/tools/component-gallery', title: 'Component Gallery' },
     ],
   },
   {
@@ -128,11 +105,34 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     id: 'ai-agents',
     title: 'AI Agents',
     children: [
-      { icon: ICON_NAME.file, id: 'guides/llm-documentation', kind: 'guide', path: '/guides/llm-documentation', title: 'LLM Documentation' },
+      { icon: ICON_NAME.brain, id: 'guides/llm-documentation', kind: 'guide', path: '/guides/llm-documentation', title: 'LLM Documentation' },
     ],
   },
+  {
+    icon: ICON_NAME.arrowUpRight,
+    id: 'upgrade',
+    title: 'Upgrade',
+    children: [
+      { icon: ICON_NAME.sparkle, id: 'guides/whats-new', kind: 'guide', path: '/guides/whats-new', title: "What's new" },
+      { icon: ICON_NAME.list, id: 'guides/changelog', kind: 'guide', path: '/guides/changelog', title: 'Changelog' },
+      { icon: ICON_NAME.sync, id: 'guides/migration-19-to-20', kind: 'guide', path: '/guides/migration-19-to-20', title: 'Migration 19.x to 20.x' },
+      {
+        id: 'previous-migrations',
+        title: 'Previous Migrations',
+        children: [
+          { icon: ICON_NAME.file, id: 'guides/migration-12-to-13', kind: 'guide', path: '/guides/migration-12-to-13', title: '12.x to 13.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-13-to-14', kind: 'guide', path: '/guides/migration-13-to-14', title: '13.x to 14.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-14-to-15', kind: 'guide', path: '/guides/migration-14-to-15', title: '14.x to 15.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-15-to-16', kind: 'guide', path: '/guides/migration-15-to-16', title: '15.x to 16.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-16-to-17', kind: 'guide', path: '/guides/migration-16-to-17', title: '16.x to 17.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-17-to-18', kind: 'guide', path: '/guides/migration-17-to-18', title: '17.x to 18.x' },
+          { icon: ICON_NAME.file, id: 'guides/migration-to-v19', kind: 'guide', path: '/guides/migration-to-v19', title: 'Migration to v19' },
+        ],
+      },
+    ],
+  },
+  { hidden: true, icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
-  { icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
 ];
 
 /* Component pages, one line per component: [folder key, title, status badge].
@@ -207,15 +207,19 @@ const REFERENCE_NAV: (NavSection | NavPage)[] = [
     icon: ICON_NAME.grid,
     id: 'components',
     title: 'Components',
-    children: COMPONENT_PAGES.map(([key, title, badge]): NavPage => ({
-      badge,
-      icon: ICON_NAME.box,
-      id: `components/${key}`,
-      kind: 'component',
-      path: `/components/${key}`,
-      stories: storiesOf(`components/${key}`),
-      title,
-    })),
+    children: [
+      // Kept as a 'tool' page (same id and route) — only its place in the tree changed.
+      { icon: ICON_NAME.grid, id: 'tools/component-gallery', kind: 'tool', path: '/tools/component-gallery', title: 'Component Gallery' },
+      ...COMPONENT_PAGES.map(([key, title, badge]): NavPage => ({
+        badge,
+        icon: ICON_NAME.box,
+        id: `components/${key}`,
+        kind: 'component',
+        path: `/components/${key}`,
+        stories: storiesOf(`components/${key}`),
+        title,
+      })),
+    ],
   },
   {
     icon: ICON_NAME.lightbulb,
@@ -255,10 +259,10 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
 /* TreeView items derived from the model; leaf ids = page ids so a tree
    selection maps straight to a route. Icons mark the pages (leaves); the
    sections are already marked by their chevron. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
-  return nodes.map((node) => (isPage(node)
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME }, id: string, name: string }[] {
+  return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
     ? { customRendererData: { badge: node.badge, icon: node.icon }, id: node.id, name: node.title }
-    : { children: toTreeItems(node.children), customRendererData: {}, id: node.id, name: node.title }));
+    : { children: toTreeItems(node.children, sectionIcons), customRendererData: sectionIcons ? { icon: node.icon } : {}, id: node.id, name: node.title }));
 }
 
 export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type PageStoriesData, type StoriesLoader };

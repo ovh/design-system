@@ -55,6 +55,7 @@ body {
   gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
   border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
+  background-color: var(--ods-semantic-color-surface-raised);
   height: 100%;
   overflow-y: auto;
 }
@@ -88,8 +89,16 @@ body {
 
 .shell__sidebar-selects {
   display: grid;
-  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
   gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+}
+
+.shell__version-select {
+  display: flex;
+  justify-content: center;
+  /* Pulls the version up under the logo, cancelling most of the sidebar gap. */
+  margin-top: calc(var(--ods-semantic-size-space-gap-block) * -1.5);
+  margin-bottom: var(--ods-semantic-size-space-gap-block);
 }
 
 .shell__sidebar-selects [data-ods="select-control"] {
@@ -102,20 +111,27 @@ body {
 
 .shell__search-hint {
   display: flex;
-  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
   align-items: center;
+
+  /* Mirrors the ODS input (style/_input.scss) the palette's filter is made of. */
+  box-sizing: border-box;
   border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
   box-shadow: var(--ods-semantic-shadow-control);
   background-color: var(--ods-semantic-color-surface-control);
-  padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
-  height: var(--ods-semantic-size-block-size-md);
-  color: var(--ods-semantic-color-content-neutral);
+  padding: var(--ods-semantic-size-space-inset-block-compact) var(--ods-semantic-size-space-inset-inline);
+  min-height: var(--ods-semantic-size-block-size-md);
+  color: var(--ods-semantic-color-content-placeholder);
   font-family: inherit;
-  font-size: .85rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
+.shell__search-hint > svg,
+.shell__search-hint > [data-ods="icon"] {
+  color: var(--ods-semantic-color-content-text);
+}
 
 .shell__search-hint:hover {
   border-color: var(--ods-semantic-color-interaction-control-hover);
@@ -185,6 +201,10 @@ body {
   letter-spacing: .04em;
 }
 
+.shell__tree-label--tight {
+  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+}
+
 .shell__tree-label--section {
   font-weight: var(--ods-semantic-font-weight-semibold);
 }
@@ -209,8 +229,18 @@ body {
 .shell__topbar {
   display: flex;
   align-items: center;
+  background-color: var(--ods-semantic-color-surface-raised);
   border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
+}
+
+/* Doc pages center their content column (--doc-block-width, doc.css):
+   the topbar items line up with its edges once the pane is wider than it. */
+.shell__topbar--doc {
+  padding-inline: max(
+    calc(var(--ods-semantic-size-space-inset-inline) * 3),
+    calc((100% - var(--doc-block-width)) / 2)
+  );
 }
 
 .shell__dark {
@@ -447,4 +477,35 @@ body {
 .shell__error-home {
   margin-top: var(--ods-semantic-size-space-gap-block);
   color: var(--ods-semantic-color-content-brand);
+}
+
+/* Full-text results in the palette: the matched excerpt under the title. */
+.shell__search-option--content {
+  flex-wrap: wrap;
+}
+
+.shell__search-snippet {
+  flex-basis: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* neutral-700: neutral-500 measured 3.95:1 at this size, under WCAG AA 4.5:1 */
+  color: var(--ods-color-neutral-700);
+  font-size: .78rem;
+}
+
+/* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
+   long page title. */
+.shell__llms-link {
+  flex: none;
+  margin-inline-start: auto;
+  white-space: nowrap;
+}
+
+/* Matched terms inside a search snippet. */
+.shell__search-mark {
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
 }

@@ -28,9 +28,9 @@ _A Menu component provides a list of options or actions that appear when a user 
 
 - Default
 - Controlled
-- Nested
-- Group
 - Disabled
+- Group
+- Nested
 
 ## Documentation pages
 

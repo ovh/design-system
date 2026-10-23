@@ -4,7 +4,7 @@ slug: input
 category: component
 type: overview
 version: 19.7.3
-tokens: 472
+tokens: 473
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
 ---
 
@@ -29,23 +29,23 @@ _**Input** component is an **Input** field where users can type into_
 
 ## Examples
 
-- Clearable
-- Datalist
-- Content Adornments
-- Content Adornment With Button
-- Domain Availability Search
-- Login Form
 - Default
+- Clearable
+- Content adornments
+- Content adornment with button
+- Datalist
 - Disabled
-- Floating Number
-- In Form Field
+- Domain availability search
+- Floating number
+- In form field
 - Loading
+- Login form
 - Masked
-- Read Only
+- Read only
 - Types
-- Accessibility Form Field
-- Accessibility Content
-- Accessibility I18n
+- Accessibility - Content
+- Accessibility - Form field
+- Accessibility - I18n
 
 ## Documentation pages
 

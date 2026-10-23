@@ -23,11 +23,11 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 ## Examples
 
 - Default
-- Multiple
-- Disabled
-- Item Disabled
 - Controlled
-- Expand Icon Position Example
+- Disabled
+- Expand icon position example
+- Item disabled
+- Multiple
 
 ## Documentation pages
 
@@ -225,6 +225,101 @@ This component extends all the native `<button>` attributes.
 </Accordion>
 ```
 
+## Controlled
+
+```tsx
+{
+    const [value, setValue] = useState(['0']);
+
+    return (
+      <Accordion value={ value } onChange={ (detail) => setValue(detail.value) }>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    );
+  }
+```
+
+## Disabled
+
+```tsx
+<Accordion disabled>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!
+    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Expand icon position example
+
+```tsx
+<>
+  <Accordion>
+    <AccordionItem value="0">
+      <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.right }>
+        Icon on the right (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+  <br />
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.left }>
+        Icon on the left
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</>
+```
+
+## Item disabled
+
+```tsx
+<Accordion>
+  <AccordionItem value="0" disabled>
+    <AccordionTrigger>
+      Hello World!
+    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      Hello World!
+    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
 ## Multiple
 
 ```tsx
@@ -277,101 +372,6 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Disabled
-
-```tsx
-<Accordion disabled>
-  <AccordionItem value="0">
-    <AccordionTrigger>
-      Hello World!
-    </AccordionTrigger>
-    <AccordionContent>
-      Lorem ipsum dolor sit amet.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
-
-## Item Disabled
-
-```tsx
-<Accordion>
-  <AccordionItem value="0" disabled>
-    <AccordionTrigger>
-      Hello World!
-    </AccordionTrigger>
-    <AccordionContent>
-      Lorem ipsum dolor sit amet.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="1">
-    <AccordionTrigger>
-      Hello World!
-    </AccordionTrigger>
-    <AccordionContent>
-      Lorem ipsum dolor sit amet.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
-
-## Controlled
-
-```tsx
-{
-    const [value, setValue] = useState(['0']);
-
-    return (
-      <Accordion value={ value } onChange={ (detail) => setValue(detail.value) }>
-        <AccordionItem value="0">
-          <AccordionTrigger>
-            Hello World!
-          </AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            Hello World!
-          </AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    );
-  }
-```
-
-## Expand Icon Position Example
-
-```tsx
-<>
-  <Accordion>
-    <AccordionItem value="0">
-      <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.right }>
-        Icon on the right (default)
-      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-  <br />
-  <Accordion>
-    <AccordionItem value="1">
-      <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.left }>
-        Icon on the left
-      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-</>
-```
-
 ## Avatar
 
 # Avatar
@@ -389,9 +389,9 @@ _**Avatar** is a visual representation of a user or entity, supporting multiple 
 
 - Default
 - Initials
-- With Image
-- With Fallback
-- With Icon
+- With fallback
+- With icon
+- With image
 
 ## Documentation pages
 
@@ -506,13 +506,7 @@ This component extends all the native `<div>` attributes.
 </Avatar>
 ```
 
-## With Image
-
-```tsx
-<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
-```
-
-## With Fallback
+## With fallback
 
 ```tsx
 <Avatar
@@ -520,12 +514,18 @@ This component extends all the native `<div>` attributes.
   src="https://invalid-url.example.com/avatar.png" />
 ```
 
-## With Icon
+## With icon
 
 ```tsx
 <Avatar>
   <Icon name={ ICON_NAME.sparkle } />
 </Avatar>
+```
+
+## With image
+
+```tsx
+<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
 ```
 
 ## Badge
@@ -544,13 +544,13 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 ## Examples
 
-- Status
 - Default
 - Size
-- Accessibility Aria Label
-- Accessibility With Tooltip
-- Accessibility Grouping
-- Accessibility Alternative Grouping
+- Status
+- Accessibility - Alternative grouping
+- Accessibility - Aria label
+- Accessibility - Grouping
+- Accessibility - With tooltip
 
 ## Documentation pages
 
@@ -846,23 +846,6 @@ This component extends all the native `<span>` attributes.
 
 # Badge
 
-## Status
-
-```tsx
-<>
-  <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
-  <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
-  <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
-  <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
-  <Badge status={ BADGE_STATUS.information }>Information</Badge>
-  <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
-  <Badge status={ BADGE_STATUS.new }>New</Badge>
-  <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
-  <Badge status={ BADGE_STATUS.success }>Success</Badge>
-  <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -881,7 +864,39 @@ This component extends all the native `<span>` attributes.
 </>
 ```
 
-## Accessibility Aria Label
+## Status
+
+```tsx
+<>
+  <Badge status={ BADGE_STATUS.accent }>Accent</Badge>
+  <Badge status={ BADGE_STATUS.alpha }>Alpha</Badge>
+  <Badge status={ BADGE_STATUS.beta }>Beta</Badge>
+  <Badge status={ BADGE_STATUS.critical }>Critical</Badge>
+  <Badge status={ BADGE_STATUS.information }>Information</Badge>
+  <Badge status={ BADGE_STATUS.neutral }>Neutral</Badge>
+  <Badge status={ BADGE_STATUS.new }>New</Badge>
+  <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
+  <Badge status={ BADGE_STATUS.success }>Success</Badge>
+  <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
+</>
+```
+
+## Accessibility - Alternative grouping
+
+```tsx
+<div
+  role="list"
+  style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+  <Badge role="listitem">
+    Item 1
+  </Badge>
+  <Badge role="listitem">
+    Item 2
+  </Badge>
+</div>
+```
+
+## Accessibility - Aria label
 
 ```tsx
 <Badge>
@@ -892,25 +907,7 @@ This component extends all the native `<span>` attributes.
 </Badge>
 ```
 
-## Accessibility With Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Badge
-      aria-labelledby="tooltip-a11y"
-      status={ BADGE_STATUS.promotion }>
-      <Icon name={ ICON_NAME.tag } />
-    </Badge>
-  </TooltipTrigger>
-
-  <TooltipContent id="tooltip-a11y">
-    Promotion valid from November 22 to 26
-  </TooltipContent>
-</Tooltip>
-```
-
-## Accessibility Grouping
+## Accessibility - Grouping
 
 ```tsx
 <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
@@ -927,19 +924,22 @@ This component extends all the native `<span>` attributes.
 </ul>
 ```
 
-## Accessibility Alternative Grouping
+## Accessibility - With tooltip
 
 ```tsx
-<div
-  role="list"
-  style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
-  <Badge role="listitem">
-    Item 1
-  </Badge>
-  <Badge role="listitem">
-    Item 2
-  </Badge>
-</div>
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      status={ BADGE_STATUS.promotion }>
+      <Icon name={ ICON_NAME.tag } />
+    </Badge>
+  </TooltipTrigger>
+
+  <TooltipContent id="tooltip-a11y">
+    Promotion valid from November 22 to 26
+  </TooltipContent>
+</Tooltip>
 ```
 
 ## Breadcrumb
@@ -962,12 +962,12 @@ _A list of <DocLink to="/components/link">Links</DocLink> showing the current pa
 
 ## Examples
 
-- Collapsed
-- Custom After Before Collapse
-- Custom Collapse Threshold
 - Default
-- No Collapse
-- Accessibility With Aria Label
+- Collapsed
+- Custom after before collapse
+- Custom collapse threshold
+- No collapse
+- Accessibility - With aria label
 
 ## Documentation pages
 
@@ -1143,6 +1143,30 @@ _No specific property._
 
 # Breadcrumb
 
+## Default
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink aria-label="Home" href="#">
+      <Icon name={ ICON_NAME.home } />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Parent
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Current
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
 ## Collapsed
 
 ```tsx
@@ -1191,7 +1215,7 @@ _No specific property._
 </Breadcrumb>
 ```
 
-## Custom After Before Collapse
+## Custom after before collapse
 
 ```tsx
 <Breadcrumb
@@ -1241,7 +1265,7 @@ _No specific property._
 </Breadcrumb>
 ```
 
-## Custom Collapse Threshold
+## Custom collapse threshold
 
 ```tsx
 <Breadcrumb collapseThreshold={ 7 }>
@@ -1289,31 +1313,7 @@ _No specific property._
 </Breadcrumb>
 ```
 
-## Default
-
-```tsx
-<Breadcrumb>
-  <BreadcrumbItem>
-    <BreadcrumbLink aria-label="Home" href="#">
-      <Icon name={ ICON_NAME.home } />
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Parent
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Current
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
-```
-
-## No Collapse
+## No collapse
 
 ```tsx
 <Breadcrumb noCollapse>
@@ -1361,7 +1361,7 @@ _No specific property._
 </Breadcrumb>
 ```
 
-## Accessibility With Aria Label
+## Accessibility - With aria label
 
 ```tsx
 <Breadcrumb aria-label="Breadcrumb">
@@ -1409,20 +1409,20 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 ## Examples
 
-- Status
 - Default
 - Loading
 - Size
+- Status
 - Variant
-- Accessibility Explicit Text Content
-- Accessibility Icon Only
-- Accessibility Bad Practice Icon Only
-- Accessibility Labelled By
-- Accessibility Bad Practice Labelled By
-- Accessibility Bad Practices Role Status
-- Accessibility Role Status
-- Accessibility Bad Practices Role Alert
-- Accessibility Role Alert
+- Accessibility - Explicit text content
+- Accessibility - Icon only
+- Accessibility - Labelled by
+- Accessibility - Role alert
+- Accessibility - Role status
+- Accessibility - Bad practice : Icon only
+- Accessibility - Bad practice : Labelled by
+- Accessibility - Bad practice : Role alert
+- Accessibility - Bad practice : Role status
 
 ## Documentation pages
 
@@ -1816,16 +1816,6 @@ This component extends all the native `<button>` attributes.
 
 # Button
 
-## Status
-
-```tsx
-<>
-  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
-  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
-  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -1852,6 +1842,16 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Status
+
+```tsx
+<>
+  <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+  <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+  <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
+</>
+```
+
 ## Variant
 
 ```tsx
@@ -1862,7 +1862,7 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility Explicit Text Content
+## Accessibility - Explicit text content
 
 ```tsx
 <Button>
@@ -1870,7 +1870,7 @@ This component extends all the native `<button>` attributes.
 </Button>
 ```
 
-## Accessibility Icon Only
+## Accessibility - Icon only
 
 ```tsx
 <Button aria-label='Clear'>
@@ -1878,15 +1878,7 @@ This component extends all the native `<button>` attributes.
 </Button>
 ```
 
-## Accessibility Bad Practice Icon Only
-
-```tsx
-<Button>
-  <Icon name={ ICON_NAME.xmark } />
-</Button>
-```
-
-## Accessibility Labelled By
+## Accessibility - Labelled by
 
 ```tsx
 <>
@@ -1897,42 +1889,33 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility Bad Practice Labelled By
-
-```tsx
-<>
-  <Button>
-    <Icon name={ ICON_NAME.filter } />
-  </Button>
-  <span>Filter your search results</span>
-</>
-```
-
-## Accessibility Bad Practices Role Status
+## Accessibility - Role alert
 
 ```tsx
 {
-    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     const handleClick = () => {
-      setMessage('Copied to clipboard.');
+      setError('A critical error occurred while saving!');
     };
 
     return (
       <>
         <Button onClick={ handleClick }>
-          Copy
+          Save
         </Button>
 
-        <span style={{ marginLeft: '1rem' }}>
-          { message }
+        <span
+          role="alert"
+          style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
         </span>
       </>
     );
   }
 ```
 
-## Accessibility Role Status
+## Accessibility - Role status
 
 ```tsx
 {
@@ -1959,7 +1942,26 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Accessibility Bad Practices Role Alert
+## Accessibility - Bad practice : Icon only
+
+```tsx
+<Button>
+  <Icon name={ ICON_NAME.xmark } />
+</Button>
+```
+
+## Accessibility - Bad practice : Labelled by
+
+```tsx
+<>
+  <Button>
+    <Icon name={ ICON_NAME.filter } />
+  </Button>
+  <span>Filter your search results</span>
+</>
+```
+
+## Accessibility - Bad practice : Role alert
 
 ```tsx
 {
@@ -1983,26 +1985,24 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Accessibility Role Alert
+## Accessibility - Bad practice : Role status
 
 ```tsx
 {
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleClick = () => {
-      setError('A critical error occurred while saving!');
+      setMessage('Copied to clipboard.');
     };
 
     return (
       <>
         <Button onClick={ handleClick }>
-          Save
+          Copy
         </Button>
 
-        <span
-          role="alert"
-          style={{ marginLeft: '1rem', color: 'red' }}>
-          { error }
+        <span style={{ marginLeft: '1rem' }}>
+          { message }
         </span>
       </>
     );
@@ -2026,10 +2026,10 @@ This component extends all the native `<button>` attributes.
 
 ## Examples
 
-- Controlled
 - Default
+- Controlled
 - Disabled
-- Disabled Item
+- Disabled item
 - Multiple
 - Size
 
@@ -2181,6 +2181,19 @@ This component extends all the native `<button>` attributes.
 
 # Button Group
 
+## Default
+
+```tsx
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+  <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+  <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name={ ICON_NAME.calendar } /> Custom
+  </ButtonGroupItem>
+</ButtonGroup>
+```
+
 ## Controlled
 
 ```tsx
@@ -2202,19 +2215,6 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<ButtonGroup>
-  <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-  <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-  <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-  <ButtonGroupItem value="custom">
-    <Icon name={ ICON_NAME.calendar } /> Custom
-  </ButtonGroupItem>
-</ButtonGroup>
-```
-
 ## Disabled
 
 ```tsx
@@ -2228,7 +2228,7 @@ This component extends all the native `<button>` attributes.
 </ButtonGroup>
 ```
 
-## Disabled Item
+## Disabled item
 
 ```tsx
 <ButtonGroup>
@@ -2297,10 +2297,10 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 ## Examples
 
-- Status
 - Default
-- Accessibility Grouping
-- Accessibility Alternative Grouping
+- Status
+- Accessibility - Alternative grouping
+- Accessibility - Grouping
 
 ## Documentation pages
 
@@ -2494,6 +2494,14 @@ This component extends all the native `<div>` attributes.
 
 # Card
 
+## Default
+
+```tsx
+<Card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+</Card>
+```
+
 ## Status
 
 ```tsx
@@ -2524,15 +2532,22 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
-## Default
+## Accessibility - Alternative grouping
 
 ```tsx
-<Card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-</Card>
+<div role="list" style={{ display: 'flex', gap: '16px' }}>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+</div>
 ```
 
-## Accessibility Grouping
+## Accessibility - Grouping
 
 ```tsx
 <ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
@@ -2549,21 +2564,6 @@ This component extends all the native `<div>` attributes.
     </Card>
   </li>
 </ul>
-```
-
-## Accessibility Alternative Grouping
-
-```tsx
-<div role="list" style={{ display: 'flex', gap: '16px' }}>
-  <Card role="listitem" style={{ padding: '8px' }}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  </Card>
-  <Card role="listitem" style={{ padding: '8px' }}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-  </Card>
-</div>
 ```
 
 ## Cart
@@ -3045,8 +3045,8 @@ _**Checkbox** are used for a list of options where the user may make a choice by
 
 - Default
 - Disabled
-- In Form Field
 - Group
+- In form field
 - Invalid
 - States
 
@@ -3220,7 +3220,31 @@ _No specific property._
 </Checkbox>
 ```
 
-## In Form Field
+## Group
+
+```tsx
+<CheckboxGroup
+  defaultValue={ ['marketing'] }
+  name="acknowledgments">
+  <Checkbox value="term">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to the terms and conditions.
+    </CheckboxLabel>
+  </Checkbox>
+
+  <Checkbox value="marketing">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to receive marketing communications.
+    </CheckboxLabel>
+  </Checkbox>
+</CheckboxGroup>
+```
+
+## In form field
 
 ```tsx
 <>
@@ -3248,30 +3272,6 @@ _No specific property._
     </Checkbox>
   </FormField>
 </>
-```
-
-## Group
-
-```tsx
-<CheckboxGroup
-  defaultValue={ ['marketing'] }
-  name="acknowledgments">
-  <Checkbox value="term">
-    <CheckboxControl />
-
-    <CheckboxLabel>
-      I agree to the terms and conditions.
-    </CheckboxLabel>
-  </Checkbox>
-
-  <Checkbox value="marketing">
-    <CheckboxControl />
-
-    <CheckboxLabel>
-      I agree to receive marketing communications.
-    </CheckboxLabel>
-  </Checkbox>
-</CheckboxGroup>
 ```
 
 ## Invalid
@@ -3336,11 +3336,11 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 ## Examples
 
 - Default
-- Masked
-- Custom Labels
-- Loading
+- Custom labels
 - Disabled
-- Accessibility Form Field
+- Loading
+- Masked
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -3510,17 +3510,7 @@ This component extends all the native `<button>` attributes.
 </Clipboard>
 ```
 
-## Masked
-
-```tsx
-<Clipboard value="Masked" >
-  <ClipboardControl maskOption={{ enable: true }} />
-
-  <ClipboardTrigger />
-</Clipboard>
-```
-
-## Custom Labels
+## Custom labels
 
 ```tsx
 <Clipboard value="Custom labels">
@@ -3529,16 +3519,6 @@ This component extends all the native `<button>` attributes.
   <ClipboardTrigger
     labelCopy="Click to copy"
     labelCopySuccess="Successfully copied" />
-</Clipboard>
-```
-
-## Loading
-
-```tsx
-<Clipboard value="Loading" >
-  <ClipboardControl loading />
-
-  <ClipboardTrigger />
 </Clipboard>
 ```
 
@@ -3552,7 +3532,27 @@ This component extends all the native `<button>` attributes.
 </Clipboard>
 ```
 
-## Accessibility Form Field
+## Loading
+
+```tsx
+<Clipboard value="Loading" >
+  <ClipboardControl loading />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Masked
+
+```tsx
+<Clipboard value="Masked" >
+  <ClipboardControl maskOption={{ enable: true }} />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -3589,8 +3589,8 @@ _**Code** component highlights strings or small blocks of **Code** so it makes t
 ## Examples
 
 - Default
-- Can Copy
-- Custom Labels
+- Can copy
+- Custom labels
 - Highlighter
 - Multiline
 
@@ -3725,7 +3725,7 @@ This component extends all the native `<div>` attributes.
 </Code>
 ```
 
-## Can Copy
+## Can copy
 
 ```tsx
 <Code canCopy>
@@ -3733,7 +3733,7 @@ This component extends all the native `<div>` attributes.
 </Code>
 ```
 
-## Custom Labels
+## Custom labels
 
 ```tsx
 <Code
@@ -3808,19 +3808,19 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 
 - Default
 - Clearable
-- Custom Filter
-- Disabled
-- Readonly
-- Group
-- In Form Field
-- Invalid
 - Controlled
-- Highlight
-- Custom Options
+- Custom filter
+- Custom options
+- Disabled
 - Empty
+- Group
+- Highlight
+- In form field
+- Invalid
 - Multiple
-- Accessibility Form Field
-- Accessibility I18n
+- Readonly
+- Accessibility - Form field
+- Accessibility - I18n
 
 ## Documentation pages
 
@@ -4141,131 +4141,6 @@ This component extends all the native `<div>` attributes.
 </Combobox>
 ```
 
-## Custom Filter
-
-```tsx
-<Combobox
-  customFilter={ (label, inputValue) => {
-    const reversedLabel = label.split('').reverse().join('');
-    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
-  }}
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Search from right to left in each word" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Disabled
-
-```tsx
-<Combobox
-  disabled
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Readonly
-
-```tsx
-<Combobox
-  defaultValue={ ['parrot'] }
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}
-  readOnly>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Group
-
-```tsx
-<Combobox
-  items={[
-    {
-      label: 'Europe',
-      options: [
-        { label: 'France', value: 'fr' },
-        { label: 'Germany', value: 'de' },
-        { label: 'Italy', value: 'it' },
-      ],
-    },
-    {
-      label: 'Asia',
-      options: [
-        { label: 'China', value: 'cn' },
-        { label: 'Japan', value: 'jp' },
-        { label: 'Russia', value: 'ru' },
-      ],
-    },
-    { label: 'World', value: 'world' },
-  ]}>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Combobox
-  </FormFieldLabel>
-
-  <Combobox
-    items={[
-      { label: 'Dog', value: 'dog' },
-      { label: 'Cat', value: 'cat' },
-    ]}>
-    <ComboboxControl />
-
-    <ComboboxContent />
-  </Combobox>
-</FormField>
-```
-
-## Invalid
-
-```tsx
-<Combobox
-  invalid
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-  ]}>
-  <ComboboxControl />
-
-  <ComboboxContent />
-</Combobox>
-```
-
 ## Controlled
 
 ```tsx
@@ -4297,11 +4172,14 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Highlight
+## Custom filter
 
 ```tsx
 <Combobox
-  highlightResults
+  customFilter={ (label, inputValue) => {
+    const reversedLabel = label.split('').reverse().join('');
+    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+  }}
   items={[
     { label: 'Dog', value: 'dog' },
     { label: 'Cat', value: 'cat' },
@@ -4310,13 +4188,13 @@ This component extends all the native `<div>` attributes.
     { label: 'Spider', value: 'spider' },
     { label: 'Goldfish', value: 'goldfish' },
   ]}>
-  <ComboboxControl />
+  <ComboboxControl placeholder="Search from right to left in each word" />
 
   <ComboboxContent />
 </Combobox>
 ```
 
-## Custom Options
+## Custom options
 
 ```tsx
 {
@@ -4354,10 +4232,112 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
+## Disabled
+
+```tsx
+<Combobox
+  disabled
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
 ## Empty
 
 ```tsx
 <Combobox items={ [] }>
+  <ComboboxControl />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Group
+
+```tsx
+<Combobox
+  items={[
+    {
+      label: 'Europe',
+      options: [
+        { label: 'France', value: 'fr' },
+        { label: 'Germany', value: 'de' },
+        { label: 'Italy', value: 'it' },
+      ],
+    },
+    {
+      label: 'Asia',
+      options: [
+        { label: 'China', value: 'cn' },
+        { label: 'Japan', value: 'jp' },
+        { label: 'Russia', value: 'ru' },
+      ],
+    },
+    { label: 'World', value: 'world' },
+  ]}>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Highlight
+
+```tsx
+<Combobox
+  highlightResults
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## In form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Combobox
+  </FormFieldLabel>
+
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+    ]}>
+    <ComboboxControl />
+
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+## Invalid
+
+```tsx
+<Combobox
+  invalid
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+  ]}>
   <ComboboxControl />
 
   <ComboboxContent />
@@ -4383,7 +4363,27 @@ This component extends all the native `<div>` attributes.
 </Combobox>
 ```
 
-## Accessibility Form Field
+## Readonly
+
+```tsx
+<Combobox
+  defaultValue={ ['parrot'] }
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}
+  readOnly>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -4407,7 +4407,7 @@ This component extends all the native `<div>` attributes.
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -4459,15 +4459,15 @@ _The **Command** component provides a fast and efficient way to search, filter, 
 
 - Default
 - Controlled
-- Controlled Filtering
-- With Shortcuts
-- With On Select
-- Without Filter
-- Empty State
-- Accessibility Labels
-- Accessibility Filter Label
-- Accessibility Group Names
-- Accessibility Disabled Option
+- Controlled filtering
+- Empty state
+- With on select
+- Without filter
+- With shortcuts
+- Accessibility - Disabled option
+- Accessibility - Filter label
+- Accessibility - Group names
+- Accessibility - Labels
 
 ## Documentation pages
 
@@ -4857,7 +4857,7 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Controlled Filtering
+## Controlled filtering
 
 ```tsx
 {
@@ -4891,7 +4891,7 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## With Shortcuts
+## Empty state
 
 ```tsx
 <Command>
@@ -4901,27 +4901,13 @@ This component extends all the native `<div>` attributes.
   <Command.Content>
     <Command.Filter placeholder="Search..." />
     <Command.List>
-      <Command.Group heading="File">
-        <Command.Option>
-          New file
-          <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
-            <Kbd>⌘</Kbd>+<Kbd>n</Kbd>
-          </kbd>
-        </Command.Option>
-        <Command.Option>
-          Open file
-        </Command.Option>
-        <Command.Option>
-          Save file
-        </Command.Option>
-      </Command.Group>
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
 </Command>
 ```
 
-## With On Select
+## With on select
 
 ```tsx
 <>
@@ -4946,7 +4932,7 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
-## Without Filter
+## Without filter
 
 ```tsx
 <Command>
@@ -4980,7 +4966,7 @@ This component extends all the native `<div>` attributes.
 </Command>
 ```
 
-## Empty State
+## With shortcuts
 
 ```tsx
 <Command>
@@ -4990,13 +4976,27 @@ This component extends all the native `<div>` attributes.
   <Command.Content>
     <Command.Filter placeholder="Search..." />
     <Command.List>
+      <Command.Group heading="File">
+        <Command.Option>
+          New file
+          <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
+            <Kbd>⌘</Kbd>+<Kbd>n</Kbd>
+          </kbd>
+        </Command.Option>
+        <Command.Option>
+          Open file
+        </Command.Option>
+        <Command.Option>
+          Save file
+        </Command.Option>
+      </Command.Group>
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
   </Command.Content>
 </Command>
 ```
 
-## Accessibility Labels
+## Accessibility - Disabled option
 
 ```tsx
 <Command>
@@ -5005,11 +5005,15 @@ This component extends all the native `<div>` attributes.
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
-    <Command.List aria-label="Command palette">
+    <Command.List>
       <Command.Group heading="Actions">
         <Command.Option>New file</Command.Option>
         <Command.Option>Open file</Command.Option>
-        <Command.Option>Save file</Command.Option>
+        <Command.Option aria-disabled="true">Save file</Command.Option>
+      </Command.Group>
+      <Command.Group heading="Help">
+        <Command.Option>Some help</Command.Option>
+        <Command.Option>Some more help</Command.Option>
       </Command.Group>
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
@@ -5017,7 +5021,7 @@ This component extends all the native `<div>` attributes.
 </Command>
 ```
 
-## Accessibility Filter Label
+## Accessibility - Filter label
 
 ```tsx
 <Command>
@@ -5038,7 +5042,7 @@ This component extends all the native `<div>` attributes.
 </Command>
 ```
 
-## Accessibility Group Names
+## Accessibility - Group names
 
 ```tsx
 <Command>
@@ -5062,7 +5066,7 @@ This component extends all the native `<div>` attributes.
 </Command>
 ```
 
-## Accessibility Disabled Option
+## Accessibility - Labels
 
 ```tsx
 <Command>
@@ -5071,15 +5075,11 @@ This component extends all the native `<div>` attributes.
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
-    <Command.List>
+    <Command.List aria-label="Command palette">
       <Command.Group heading="Actions">
         <Command.Option>New file</Command.Option>
         <Command.Option>Open file</Command.Option>
-        <Command.Option aria-disabled="true">Save file</Command.Option>
-      </Command.Group>
-      <Command.Group heading="Help">
-        <Command.Option>Some help</Command.Option>
-        <Command.Option>Some more help</Command.Option>
+        <Command.Option>Save file</Command.Option>
       </Command.Group>
       <Command.Empty>No results found.</Command.Empty>
     </Command.List>
@@ -5114,16 +5114,16 @@ This component extends all the native `<div>` attributes.
 
 ## Examples
 
-- Accessibility I18n
 - Default
 - Empty
-- Pagination Example
-- Pinned Columns
-- State Controlled
-- Sorting Custom Function
-- Sorting Disabled Columns
-- Sorting Controlled
-- Visibility Example
+- Pagination example
+- Pinned columns
+- Sorting controlled
+- Sorting custom function
+- Sorting disabled columns
+- State controlled
+- Visibility example
+- Accessibility - I18n
 
 ## Documentation pages
 
@@ -5544,42 +5544,6 @@ _No specific property._
 
 # Data Table
 
-## Accessibility I18n
-
-```tsx
-{
-    type Member = {
-      firstName: string;
-      lastName: string;
-      role: string;
-    }
-
-    const data: Member[] = useMemo(() => [
-      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
-      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
-      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
-    ], []);
-
-    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
-      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
-      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
-      { id: 'role', header: 'Role', accessorKey: 'role' },
-    ], []);
-
-    return (
-      <DataTable
-        columns={ columns }
-        data={ data }
-        i18n={{
-          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
-        }}>
-        <DataTableHead />
-        <DataTableBody />
-      </DataTable>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -5679,7 +5643,7 @@ _No specific property._
   }
 ```
 
-## Pagination Example
+## Pagination example
 
 ```tsx
 {
@@ -5742,7 +5706,7 @@ _No specific property._
   }
 ```
 
-## Pinned Columns
+## Pinned columns
 
 ```tsx
 {
@@ -5815,212 +5779,7 @@ _No specific property._
   }
 ```
 
-## State Controlled
-
-```tsx
-{
-    type Person = {
-      firstName: string;
-      lastName: string;
-      age: number;
-      email: string;
-      role: string;
-      uuid: string;
-    }
-
-    const sampleData: Person[] = useMemo(() => [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        age: 30,
-        email: 'john.doe@domain2.com',
-        role: 'Admin',
-        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        age: 25,
-        email: 'jane.smith@domain1.com',
-        role: 'User',
-        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
-      },
-      {
-        firstName: 'Bob',
-        lastName: 'Johnson',
-        age: 35,
-        email: 'bob.johnson@domain3.com',
-        role: 'Manager',
-        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
-      },
-    ], []);
-
-    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
-      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
-      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
-      { id: 'age', header: 'Age', accessorKey: 'age' },
-      { id: 'email', header: 'Email', accessorKey: 'email' },
-      { id: 'role', header: 'Role', accessorKey: 'role' },
-    ], []);
-
-    const [sortingState, setSortingState] = useState([{
-      id: 'role',
-      desc: true,
-    }]);
-
-    return (
-      <DataTable
-        columns={ sampleColumns }
-        data={ sampleData }
-        onSortingChange={ setSortingState }
-        state={{
-          sorting: sortingState,
-        }}>
-        <Text preset={ TEXT_PRESET.caption } as="caption">Controlled sorted table</Text>
-
-        <DataTableHead />
-
-        <DataTableBody />
-      </DataTable>
-    );
-  }
-```
-
-## Sorting Custom Function
-
-```tsx
-{
-    type Person = {
-      firstName: string;
-      lastName: string;
-      age: number;
-      email: string;
-      role: string;
-      uuid: string;
-    }
-
-    const sampleData: Person[] = useMemo(() => [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        age: 30,
-        email: 'john.doe@domain2.com',
-        role: 'Admin',
-        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        age: 25,
-        email: 'jane.smith@domain1.com',
-        role: 'User',
-        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
-      },
-      {
-        firstName: 'Bob',
-        lastName: 'Johnson',
-        age: 35,
-        email: 'bob.johnson@domain3.com',
-        role: 'Manager',
-        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
-      },
-    ], []);
-
-    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
-      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
-      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
-      { id: 'age', header: 'Age', accessorKey: 'age' },
-      {
-        id: 'email',
-        header: 'Email',
-        accessorKey: 'email',
-        sortingFn: (rowA, rowB, columnId) => {
-          const valueA = rowA.getValue<string>(columnId).split('@')[1].split('.')[0];
-          const valueB = rowB.getValue<string>(columnId).split('@')[1].split('.')[0];
-
-          return valueA.localeCompare(valueB);
-        },
-      },
-      { id: 'role', header: 'Role', accessorKey: 'role' },
-    ], []);
-
-    return (
-      <DataTable
-        columns={ sampleColumns }
-        data={ sampleData }>
-        <Text preset={ TEXT_PRESET.caption } as="caption">Email sorted by domain</Text>
-
-        <DataTableHead />
-
-        <DataTableBody />
-      </DataTable>
-    );
-  }
-```
-
-## Sorting Disabled Columns
-
-```tsx
-{
-    type Person = {
-      firstName: string;
-      lastName: string;
-      age: number;
-      email: string;
-      role: string;
-      uuid: string;
-    }
-
-    const sampleData: Person[] = useMemo(() => [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        age: 30,
-        email: 'john.doe@domain2.com',
-        role: 'Admin',
-        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        age: 25,
-        email: 'jane.smith@domain1.com',
-        role: 'User',
-        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
-      },
-      {
-        firstName: 'Bob',
-        lastName: 'Johnson',
-        age: 35,
-        email: 'bob.johnson@domain3.com',
-        role: 'Manager',
-        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
-      },
-    ], []);
-
-    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
-      { id: 'firstName', header: 'First Name', accessorKey: 'firstName', enableSorting: false },
-      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
-      { id: 'age', header: 'Age', accessorKey: 'age' },
-      { id: 'email', header: 'Email', accessorKey: 'email' },
-      { id: 'role', header: 'Role', accessorKey: 'role', enableSorting: false },
-    ], []);
-
-    return (
-      <DataTable
-        columns={ sampleColumns }
-        data={ sampleData }>
-        <Text preset={ TEXT_PRESET.caption } as="caption">Sort disabled on some columns</Text>
-
-        <DataTableHead />
-
-        <DataTableBody />
-      </DataTable>
-    );
-  }
-```
-
-## Sorting Controlled
+## Sorting controlled
 
 ```tsx
 {
@@ -6094,7 +5853,212 @@ _No specific property._
   }
 ```
 
-## Visibility Example
+## Sorting custom function
+
+```tsx
+{
+    type Person = {
+      firstName: string;
+      lastName: string;
+      age: number;
+      email: string;
+      role: string;
+      uuid: string;
+    }
+
+    const sampleData: Person[] = useMemo(() => [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        email: 'john.doe@domain2.com',
+        role: 'Admin',
+        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
+      },
+      {
+        firstName: 'Jane',
+        lastName: 'Smith',
+        age: 25,
+        email: 'jane.smith@domain1.com',
+        role: 'User',
+        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
+      },
+      {
+        firstName: 'Bob',
+        lastName: 'Johnson',
+        age: 35,
+        email: 'bob.johnson@domain3.com',
+        role: 'Manager',
+        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
+      },
+    ], []);
+
+    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'age', header: 'Age', accessorKey: 'age' },
+      {
+        id: 'email',
+        header: 'Email',
+        accessorKey: 'email',
+        sortingFn: (rowA, rowB, columnId) => {
+          const valueA = rowA.getValue<string>(columnId).split('@')[1].split('.')[0];
+          const valueB = rowB.getValue<string>(columnId).split('@')[1].split('.')[0];
+
+          return valueA.localeCompare(valueB);
+        },
+      },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ sampleColumns }
+        data={ sampleData }>
+        <Text preset={ TEXT_PRESET.caption } as="caption">Email sorted by domain</Text>
+
+        <DataTableHead />
+
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
+## Sorting disabled columns
+
+```tsx
+{
+    type Person = {
+      firstName: string;
+      lastName: string;
+      age: number;
+      email: string;
+      role: string;
+      uuid: string;
+    }
+
+    const sampleData: Person[] = useMemo(() => [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        email: 'john.doe@domain2.com',
+        role: 'Admin',
+        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
+      },
+      {
+        firstName: 'Jane',
+        lastName: 'Smith',
+        age: 25,
+        email: 'jane.smith@domain1.com',
+        role: 'User',
+        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
+      },
+      {
+        firstName: 'Bob',
+        lastName: 'Johnson',
+        age: 35,
+        email: 'bob.johnson@domain3.com',
+        role: 'Manager',
+        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
+      },
+    ], []);
+
+    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName', enableSorting: false },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'age', header: 'Age', accessorKey: 'age' },
+      { id: 'email', header: 'Email', accessorKey: 'email' },
+      { id: 'role', header: 'Role', accessorKey: 'role', enableSorting: false },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ sampleColumns }
+        data={ sampleData }>
+        <Text preset={ TEXT_PRESET.caption } as="caption">Sort disabled on some columns</Text>
+
+        <DataTableHead />
+
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
+## State controlled
+
+```tsx
+{
+    type Person = {
+      firstName: string;
+      lastName: string;
+      age: number;
+      email: string;
+      role: string;
+      uuid: string;
+    }
+
+    const sampleData: Person[] = useMemo(() => [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        email: 'john.doe@domain2.com',
+        role: 'Admin',
+        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
+      },
+      {
+        firstName: 'Jane',
+        lastName: 'Smith',
+        age: 25,
+        email: 'jane.smith@domain1.com',
+        role: 'User',
+        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
+      },
+      {
+        firstName: 'Bob',
+        lastName: 'Johnson',
+        age: 35,
+        email: 'bob.johnson@domain3.com',
+        role: 'Manager',
+        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
+      },
+    ], []);
+
+    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'age', header: 'Age', accessorKey: 'age' },
+      { id: 'email', header: 'Email', accessorKey: 'email' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    const [sortingState, setSortingState] = useState([{
+      id: 'role',
+      desc: true,
+    }]);
+
+    return (
+      <DataTable
+        columns={ sampleColumns }
+        data={ sampleData }
+        onSortingChange={ setSortingState }
+        state={{
+          sorting: sortingState,
+        }}>
+        <Text preset={ TEXT_PRESET.caption } as="caption">Controlled sorted table</Text>
+
+        <DataTableHead />
+
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
+## Visibility example
 
 ```tsx
 {
@@ -6160,6 +6124,42 @@ _No specific property._
   }
 ```
 
+## Accessibility - I18n
+
+```tsx
+{
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
 ## Datepicker
 
 # Datepicker
@@ -6198,17 +6198,17 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 
 ## Examples
 
-- Date Formatter
 - Default
+- Date formatter
 - Disabled
-- In Form Field
-- Max View
-- Min Max
-- Min View
+- In form field
+- Max view
+- Min max
+- Min view
 - Readonly
-- Accessibility Form Field
-- Accessibility Date Format
-- Accessibility I18n
+- Accessibility - Date format
+- Accessibility - Form field
+- Accessibility - I18n
 
 ## Documentation pages
 
@@ -6513,22 +6513,22 @@ This component extends all the native `<input>` attributes.
 
 # Datepicker
 
-## Date Formatter
+## Default
 
 ```tsx
-<Datepicker
-  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
-  placeholder="yyyy">
+<Datepicker>
   <DatepickerControl />
 
   <DatepickerContent />
 </Datepicker>
 ```
 
-## Default
+## Date formatter
 
 ```tsx
-<Datepicker>
+<Datepicker
+  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+  placeholder="yyyy">
   <DatepickerControl />
 
   <DatepickerContent />
@@ -6565,7 +6565,7 @@ This component extends all the native `<input>` attributes.
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -6581,7 +6581,7 @@ This component extends all the native `<input>` attributes.
 </FormField>
 ```
 
-## Max View
+## Max view
 
 ```tsx
 <Datepicker maxView="day">
@@ -6591,7 +6591,7 @@ This component extends all the native `<input>` attributes.
 </Datepicker>
 ```
 
-## Min Max
+## Min max
 
 ```tsx
 <Datepicker
@@ -6603,7 +6603,7 @@ This component extends all the native `<input>` attributes.
 </Datepicker>
 ```
 
-## Min View
+## Min view
 
 ```tsx
 <Datepicker minView="month">
@@ -6623,23 +6623,7 @@ This component extends all the native `<input>` attributes.
 </Datepicker>
 ```
 
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Start date:
-  </FormFieldLabel>
-
-  <Datepicker>
-    <DatepickerControl />
-
-    <DatepickerContent />
-  </Datepicker>
-</FormField>
-```
-
-## Accessibility Date Format
+## Accessibility - Date format
 
 ```tsx
 <FormField>
@@ -6661,7 +6645,23 @@ This component extends all the native `<input>` attributes.
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Start date:
+  </FormFieldLabel>
+
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```
+
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -6889,13 +6889,13 @@ This component extends all the native `<hr>` attributes.
 
 ## Examples
 
+- Default
 - Backdrop
 - Controlled
-- Default
-- Overlay Elements
+- Overlay elements
 - Position
-- Accessibility Aria Labelled By
-- Accessibility Aria Label
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
 
 ## Documentation pages
 
@@ -7108,6 +7108,24 @@ This component extends all the native `<button>` attributes.
 
 # Drawer
 
+## Default
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
 ## Backdrop
 
 ```tsx
@@ -7160,25 +7178,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<Drawer>
-  <DrawerTrigger asChild>
-    <Button>
-      Trigger Drawer
-    </Button>
-  </DrawerTrigger>
-
-  <DrawerContent>
-    <DrawerBody>
-      My drawer content
-    </DrawerBody>
-  </DrawerContent>
-</Drawer>
-```
-
-## Overlay Elements
+## Overlay elements
 
 ```tsx
 <Drawer>
@@ -7281,7 +7281,27 @@ This component extends all the native `<button>` attributes.
  </>
 ```
 
-## Accessibility Aria Labelled By
+## Accessibility - Aria label
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-label="My drawer">
+    <DrawerBody id="drawer-content">
+      The drawer content
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Accessibility - Aria labelled by
 
 ```tsx
 <Drawer>
@@ -7307,26 +7327,6 @@ This component extends all the native `<button>` attributes.
 </Drawer>
 ```
 
-## Accessibility Aria Label
-
-```tsx
-<Drawer>
-  <DrawerTrigger asChild>
-    <Button>
-      Trigger Drawer
-    </Button>
-  </DrawerTrigger>
-
-  <DrawerContent
-    aria-describedby="drawer-content"
-    aria-label="My drawer">
-    <DrawerBody id="drawer-content">
-      The drawer content
-    </DrawerBody>
-  </DrawerContent>
-</Drawer>
-```
-
 ## Editable
 
 # Editable
@@ -7345,10 +7345,10 @@ This component extends all the native `<button>` attributes.
 
 ## Examples
 
-- Complex Form Element
-- Controlled
-- Custom Actions
 - Default
+- Complex form element
+- Controlled
+- Custom actions
 
 ## Documentation pages
 
@@ -7527,7 +7527,35 @@ _No specific property._
 
 # Editable
 
-## Complex Form Element
+## Default
+
+```tsx
+{
+    const [value, setValue] = useState('Double click to edit');
+    const bufferValue = useRef(value);
+
+    return (
+      <Editable
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
+        <EditableDisplay>
+          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
+        </EditableDisplay>
+
+        <EditableInput>
+          <Input
+            autoFocus
+            defaultValue={ value }
+            onChange={ (e) => bufferValue.current = e.target.value } />
+        </EditableInput>
+
+        <EditableActions />
+      </Editable>
+    );
+  }
+```
+
+## Complex form element
 
 ```tsx
 {
@@ -7613,7 +7641,7 @@ _No specific property._
   }
 ```
 
-## Custom Actions
+## Custom actions
 
 ```tsx
 {
@@ -7661,34 +7689,6 @@ _No specific property._
   }
 ```
 
-## Default
-
-```tsx
-{
-    const [value, setValue] = useState('Double click to edit');
-    const bufferValue = useRef(value);
-
-    return (
-      <Editable
-        onCancel={ () => bufferValue.current = value }
-        onSubmit={ () => setValue(bufferValue.current) }>
-        <EditableDisplay>
-          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
-        </EditableDisplay>
-
-        <EditableInput>
-          <Input
-            autoFocus
-            defaultValue={ value }
-            onChange={ (e) => bufferValue.current = e.target.value } />
-        </EditableInput>
-
-        <EditableActions />
-      </Editable>
-    );
-  }
-```
-
 ## File Thumbnail
 
 # File Thumbnail
@@ -7710,8 +7710,8 @@ _No specific property._
 
 - Default
 - Disabled
-- Non Dismissible
 - Error
+- Non dismissible
 - Progress
 
 ## Documentation pages
@@ -7868,20 +7868,6 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Non Dismissible
-
-```tsx
-{
-    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail
-        dismissible={ false }
-        file={ fakeFile } />
-    );
-  }
-```
-
 ## Error
 
 ```tsx
@@ -7891,6 +7877,20 @@ This component extends all the native `<div>` attributes.
     return (
       <FileThumbnail
         error="Something went wrong"
+        file={ fakeFile } />
+    );
+  }
+```
+
+## Non dismissible
+
+```tsx
+{
+    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        dismissible={ false }
         file={ fakeFile } />
     );
   }
@@ -7940,17 +7940,17 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 
 ## Examples
 
-- Accept
-- Accessibility File Button
-- Compact
-- Custom Labels
 - Default
+- Accept
+- Compact
+- Custom labels
 - Disabled
-- Max File
-- Max Size
+- In form field
+- Max file
+- Max size
 - Upload
-- In Form Field
-- Accessibility Form Field
+- Accessibility - File button
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -8253,6 +8253,28 @@ _No specific property._
 
 # File Upload
 
+## Default
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  }
+```
+
 ## Accept
 
 ```tsx
@@ -8291,35 +8313,6 @@ _No specific property._
   }
 ```
 
-## Accessibility File Button
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload
-        onFileAccept={ ({ files }) => setFiles(files) }
-        variant={ FILE_UPLOAD_VARIANT.compact }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                i18n={{
-                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
-                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
-                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
-                }}
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
 ## Compact
 
 ```tsx
@@ -8344,7 +8337,7 @@ _No specific property._
   }
 ```
 
-## Custom Labels
+## Custom labels
 
 ```tsx
 {
@@ -8377,28 +8370,6 @@ _No specific property._
   }
 ```
 
-## Default
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
 ## Disabled
 
 ```tsx
@@ -8409,7 +8380,37 @@ _No specific property._
 </FileUpload>
 ```
 
-## Max File
+## In form field
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+        <FormField>
+          <FormFieldLabel>
+            Files:
+          </FormFieldLabel>
+
+          <FileUpload
+            onFileAccept={ ({ files }) => setFiles(files) }
+            variant={ FILE_UPLOAD_VARIANT.compact }>
+            <FileUploadList>
+              {
+                files.map((file: File, idx) => (
+                  <FileUploadItem
+                    file={ file }
+                    key={ idx } />
+                ))
+              }
+            </FileUploadList>
+          </FileUpload>
+        </FormField>
+    );
+  }
+```
+
+## Max file
 
 ```tsx
 {
@@ -8447,7 +8448,7 @@ _No specific property._
   }
 ```
 
-## Max Size
+## Max size
 
 ```tsx
 {
@@ -8539,37 +8540,36 @@ _No specific property._
   }
 ```
 
-## In Form Field
+## Accessibility - File button
 
 ```tsx
 {
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-        <FormField>
-          <FormFieldLabel>
-            Files:
-          </FormFieldLabel>
-
-          <FileUpload
-            onFileAccept={ ({ files }) => setFiles(files) }
-            variant={ FILE_UPLOAD_VARIANT.compact }>
-            <FileUploadList>
-              {
-                files.map((file: File, idx) => (
-                  <FileUploadItem
-                    file={ file }
-                    key={ idx } />
-                ))
-              }
-            </FileUploadList>
-          </FileUpload>
-        </FormField>
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
     );
   }
 ```
 
-## Accessibility Form Field
+## Accessibility - Form field
 
 ```tsx
 {
@@ -8616,15 +8616,15 @@ _A **Form Field** component is used to wrap several form components with logic, 
 
 - Default
 - Error
-- Guide Form Critical
-- Guide Form Error
-- Guide Form Grouped Field
-- Guide Form Mandatory
-- Guide Form Simple
+- Guide form critical
+- Guide form error
+- Guide form grouped field
+- Guide form mandatory
+- Guide form simple
 - Helper
 - Label
-- Label Sub Label
-- Accessibility Label
+- Label sub label
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -8813,7 +8813,7 @@ _No specific property._
 </FormField>
 ```
 
-## Guide Form Critical
+## Guide form critical
 
 ```tsx
 {
@@ -8866,7 +8866,7 @@ _No specific property._
   }
 ```
 
-## Guide Form Error
+## Guide form error
 
 ```tsx
 {
@@ -8980,7 +8980,7 @@ _No specific property._
   }
 ```
 
-## Guide Form Grouped Field
+## Guide form grouped field
 
 ```tsx
 {
@@ -9066,7 +9066,7 @@ _No specific property._
   }
 ```
 
-## Guide Form Mandatory
+## Guide form mandatory
 
 ```tsx
 {
@@ -9168,7 +9168,7 @@ _No specific property._
   }
 ```
 
-## Guide Form Simple
+## Guide form simple
 
 ```tsx
 <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
@@ -9221,7 +9221,7 @@ _No specific property._
 </FormField>
 ```
 
-## Label Sub Label
+## Label sub label
 
 ```tsx
 <FormField>
@@ -9234,7 +9234,7 @@ _No specific property._
 </FormField>
 ```
 
-## Accessibility Label
+## Accessibility - Label
 
 ```tsx
 <FormField>
@@ -9264,13 +9264,13 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 ## Examples
 
-- Accessibility Informative
-- Decorative
 - Default
+- Decorative
 - Informative
-- Accessibility Bad Practice Decorative
-- Accessibility Bad Practice Rating
-- Accessibility Rating
+- Accessibility - Informative
+- Accessibility - Rating
+- Accessibility - Bad practice : Decorative
+- Accessibility - Bad practice : Rating
 
 ## Documentation pages
 
@@ -9610,22 +9610,13 @@ This component extends all the native `<span>` attributes.
 
 # Icon
 
-## Accessibility Informative
-
-```tsx
-<Icon
-  aria-label="home"
-  name={ ICON_NAME.home }
-  role="img" />
-```
-
-## Decorative
+## Default
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
 ```
 
-## Default
+## Decorative
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
@@ -9640,31 +9631,16 @@ This component extends all the native `<span>` attributes.
   role="img" />
 ```
 
-## Accessibility Bad Practice Decorative
+## Accessibility - Informative
 
 ```tsx
-<Icon name={ ICON_NAME.home } />
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
+  role="img" />
 ```
 
-## Accessibility Bad Practice Rating
-
-```tsx
-<>
-  <label htmlFor="rating">
-    Rating
-  </label>
-
-  <div id="rating">
-    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
-    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
-    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
-    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
-    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
-  </div>
-</>
-```
-
-## Accessibility Rating
+## Accessibility - Rating
 
 ```tsx
 <>
@@ -9683,6 +9659,30 @@ This component extends all the native `<span>` attributes.
     <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
     <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
     <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
+  </div>
+</>
+```
+
+## Accessibility - Bad practice : Decorative
+
+```tsx
+<Icon name={ ICON_NAME.home } />
+```
+
+## Accessibility - Bad practice : Rating
+
+```tsx
+<>
+  <label htmlFor="rating">
+    Rating
+  </label>
+
+  <div id="rating">
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+    <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
   </div>
 </>
 ```
@@ -9710,23 +9710,23 @@ _**Input** component is an **Input** field where users can type into_
 
 ## Examples
 
-- Clearable
-- Datalist
-- Content Adornments
-- Content Adornment With Button
-- Domain Availability Search
-- Login Form
 - Default
+- Clearable
+- Content adornments
+- Content adornment with button
+- Datalist
 - Disabled
-- Floating Number
-- In Form Field
+- Domain availability search
+- Floating number
+- In form field
 - Loading
+- Login form
 - Masked
-- Read Only
+- Read only
 - Types
-- Accessibility Form Field
-- Accessibility Content
-- Accessibility I18n
+- Accessibility - Content
+- Accessibility - Form field
+- Accessibility - I18n
 
 ## Documentation pages
 
@@ -10148,12 +10148,45 @@ This component extends all the native `<input>` attributes.
 
 # Input
 
+## Default
+
+```tsx
+<Input />
+```
+
 ## Clearable
 
 ```tsx
 <Input
   clearable
   defaultValue="Clearable" />
+```
+
+## Content adornments
+
+```tsx
+<>
+  <Input startContent="https://" />
+  <Input endContent="kg" />
+  <Input
+    endContent=".com"
+    startContent="https://" />
+</>
+```
+
+## Content adornment with button
+
+```tsx
+<Input
+  defaultValue="Some value"
+  endContent={ (
+    <Button
+      aria-label="Copy value"
+      size={ BUTTON_SIZE.xs }
+      variant={ BUTTON_VARIANT.ghost }>
+      <Icon name={ ICON_NAME.fileCopy } />
+    </Button>
+  ) } />
 ```
 
 ## Datalist
@@ -10172,34 +10205,13 @@ This component extends all the native `<input>` attributes.
 </>
 ```
 
-## Content Adornments
+## Disabled
 
 ```tsx
-<>
-  <Input startContent="https://" />
-  <Input endContent="kg" />
-  <Input
-    endContent=".com"
-    startContent="https://" />
-</>
+<Input disabled />
 ```
 
-## Content Adornment With Button
-
-```tsx
-<Input
-  defaultValue="Some value"
-  endContent={ (
-    <Button
-      aria-label="Copy value"
-      size={ BUTTON_SIZE.xs }
-      variant={ BUTTON_VARIANT.ghost }>
-      <Icon name={ ICON_NAME.fileCopy } />
-    </Button>
-  ) } />
-```
-
-## Domain Availability Search
+## Domain availability search
 
 ```tsx
 {
@@ -10257,7 +10269,34 @@ This component extends all the native `<input>` attributes.
   }
 ```
 
-## Login Form
+## Floating number
+
+```tsx
+<Input
+  defaultValue="9.99"
+  step="any"
+  type={ INPUT_TYPE.number } />
+```
+
+## In form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Name:
+  </FormFieldLabel>
+
+  <Input />
+</FormField>
+```
+
+## Loading
+
+```tsx
+<Input loading />
+```
+
+## Login form
 
 ```tsx
 {
@@ -10335,52 +10374,13 @@ This component extends all the native `<input>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<Input />
-```
-
-## Disabled
-
-```tsx
-<Input disabled />
-```
-
-## Floating Number
-
-```tsx
-<Input
-  defaultValue="9.99"
-  step="any"
-  type={ INPUT_TYPE.number } />
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Name:
-  </FormFieldLabel>
-
-  <Input />
-</FormField>
-```
-
-## Loading
-
-```tsx
-<Input loading />
-```
-
 ## Masked
 
 ```tsx
 <Input maskOption={{ enable: true }} />
 ```
 
-## Read Only
+## Read only
 
 ```tsx
 <Input
@@ -10402,19 +10402,7 @@ This component extends all the native `<input>` attributes.
 </>
 ```
 
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Name:
-  </FormFieldLabel>
-
-  <Input />
-</FormField>
-```
-
-## Accessibility Content
+## Accessibility - Content
 
 ```tsx
 <FormField>
@@ -10429,7 +10417,19 @@ This component extends all the native `<input>` attributes.
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Name:
+  </FormFieldLabel>
+
+  <Input />
+</FormField>
+```
+
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -10562,10 +10562,10 @@ _**Link** is a component that enables redirection to a new page, section, websit
 
 - Default
 - Disabled
-- With Icon
-- Accessibility Icon Only Link
-- Accessibility In ANew Tab
-- Accessibility File Download
+- With icon
+- Accessibility - File download
+- Accessibility - Icon only link
+- Accessibility - In a new tab
 
 ## Documentation pages
 
@@ -10759,7 +10759,7 @@ If a **Link** points to a file download, it should include the file type and siz
 </Link>
 ```
 
-## With Icon
+## With icon
 
 ```tsx
 <>
@@ -10775,28 +10775,7 @@ If a **Link** points to a file download, it should include the file type and siz
 </>
 ```
 
-## Accessibility Icon Only Link
-
-```tsx
-<Link
-  aria-label="Go to homepage"
-  href="https://www.ovhcloud.com">
-  <Icon name={ ICON_NAME.home } />
-</Link>
-```
-
-## Accessibility In ANew Tab
-
-```tsx
-<Link
-  aria-label="Visit Example (opens in a new tab)"
-  href="https://www.ovhcloud.com"
-  target="_blank">
-  <Icon name={ ICON_NAME.externalLink } />
-</Link>
-```
-
-## Accessibility File Download
+## Accessibility - File download
 
 ```tsx
 <>
@@ -10814,6 +10793,27 @@ If a **Link** points to a file download, it should include the file type and siz
 </>
 ```
 
+## Accessibility - Icon only link
+
+```tsx
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com">
+  <Icon name={ ICON_NAME.home } />
+</Link>
+```
+
+## Accessibility - In a new tab
+
+```tsx
+<Link
+  aria-label="Visit Example (opens in a new tab)"
+  href="https://www.ovhcloud.com"
+  target="_blank">
+  <Icon name={ ICON_NAME.externalLink } />
+</Link>
+```
+
 ## Logo
 
 # Logo
@@ -10827,10 +10827,10 @@ If a **Link** points to a file download, it should include the file type and siz
 
 ## Examples
 
-- Accessibility Link
 - Default
 - Size
 - Variant
+- Accessibility - Link
 
 ## Documentation pages
 
@@ -10961,16 +10961,6 @@ This component extends all the native `<svg>` attributes.
 
 # Logo
 
-## Accessibility Link
-
-```tsx
-<a
-  aria-label="Return to the OVHcloud home page"
-  href="https://www.ovhcloud.com">
-  <Logo />
-</a>
-```
-
 ## Default
 
 ```tsx
@@ -10996,6 +10986,16 @@ This component extends all the native `<svg>` attributes.
 </>
 ```
 
+## Accessibility - Link
+
+```tsx
+<a
+  aria-label="Return to the OVHcloud home page"
+  href="https://www.ovhcloud.com">
+  <Logo />
+</a>
+```
+
 ## Markdown
 
 # Markdown
@@ -11009,9 +11009,9 @@ This component extends all the native `<svg>` attributes.
 
 ## Examples
 
-- Code Highlighter
-- Custom Component
 - Default
+- Code highlighter
+- Custom component
 
 ## Documentation pages
 
@@ -11075,7 +11075,30 @@ allowing developers to adapt the rendering to specific use cases.
 
 # Markdown
 
-## Code Highlighter
+## Default
+
+```tsx
+<Markdown content={`# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+> Blockquotes
+
+\`Inline code\`
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+
+| Column 1 | Column 2 |
+| --- | --- |
+| Value 1 | Value 2 |
+`} />
+```
+
+## Code highlighter
 
 ```tsx
 <Markdown
@@ -11100,7 +11123,7 @@ console.log('Hello World!');
 `} />
 ```
 
-## Custom Component
+## Custom component
 
 ```tsx
 <Markdown
@@ -11110,37 +11133,14 @@ console.log('Hello World!');
   content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
 ```
 
-## Default
-
-```tsx
-<Markdown content={`# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
-> Blockquotes
-
-\`Inline code\`
-\`\`\`
-// print something in the console
-console.log('Hello World!');
-\`\`\`
-
-| Column 1 | Column 2 |
-| --- | --- |
-| Value 1 | Value 2 |
-`} />
-```
-
 ## Medium
 
 # Medium
 
 ## Examples
 
-- Caption
 - Default
+- Caption
 - Height
 - Width
 
@@ -11231,6 +11231,14 @@ _No specific property._
 
 # Medium
 
+## Default
+
+```tsx
+<Medium
+  alt="NASA Computer room"
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+```
+
 ## Caption
 
 ```tsx
@@ -11245,14 +11253,6 @@ _No specific property._
     </Text>
   </figcaption>
 </figure>
-```
-
-## Default
-
-```tsx
-<Medium
-  alt="NASA Computer room"
-  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
 ```
 
 ## Height
@@ -11295,9 +11295,9 @@ _A Menu component provides a list of options or actions that appear when a user 
 
 - Default
 - Controlled
-- Nested
-- Group
 - Disabled
+- Group
+- Nested
 
 ## Documentation pages
 
@@ -11540,7 +11540,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Nested
+## Disabled
 
 ```tsx
 <Menu>
@@ -11550,15 +11550,9 @@ This component extends all the native `<button>` attributes.
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value='new'>New</MenuItem>
-    <MenuItem value='open'>Open</MenuItem>
-    <MenuSubmenu>
-      <MenuTrigger>Share</MenuTrigger>
-      <MenuContent>
-        <MenuItem value='email'>Email</MenuItem>
-        <MenuItem value='message'>Message</MenuItem>
-      </MenuContent>
-    </MenuSubmenu>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem disabled value="settings">Settings</MenuItem>
+    <MenuItem value="logout">Logout</MenuItem>
   </MenuContent>
 </Menu>
 ```
@@ -11587,7 +11581,7 @@ This component extends all the native `<button>` attributes.
 </Menu>
 ```
 
-## Disabled
+## Nested
 
 ```tsx
 <Menu>
@@ -11597,9 +11591,15 @@ This component extends all the native `<button>` attributes.
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value="profile">Profile</MenuItem>
-    <MenuItem disabled value="settings">Settings</MenuItem>
-    <MenuItem value="logout">Logout</MenuItem>
+    <MenuItem value='new'>New</MenuItem>
+    <MenuItem value='open'>Open</MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>Share</MenuTrigger>
+      <MenuContent>
+        <MenuItem value='email'>Email</MenuItem>
+        <MenuItem value='message'>Message</MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
   </MenuContent>
 </Menu>
 ```
@@ -11624,14 +11624,14 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 ## Examples
 
-- Accessibility Grouping
-- Accessibility Alternative Grouping
-- Accessibility Roles
-- Status
 - Default
 - Multiline
-- Non Dismissible
+- Non dismissible
+- Status
 - Variant
+- Accessibility - Alternative grouping
+- Accessibility - Grouping
+- Accessibility - Roles
 
 ## Documentation pages
 
@@ -11978,33 +11978,107 @@ _No specific property._
 
 # Message
 
-## Accessibility Grouping
+## Default
 
 ```tsx
-<ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
-  <li>
-    <Message>
-      <MessageIcon name={ ICON_NAME.circleCheck } />
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
 
-      <MessageBody>
-        Your changes have been saved.
-      </MessageBody>
-    </Message>
-  </li>
-
-  <li>
-    <Message status={ MESSAGE_STATUS.warning }>
-      <MessageIcon name={ ICON_NAME.triangleExclamation } />
-
-      <MessageBody>
-        Some fields need your attention.
-      </MessageBody>
-    </Message>
-  </li>
-</ul>
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
 ```
 
-## Accessibility Alternative Grouping
+## Multiline
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+  </MessageBody>
+</Message>
+```
+
+## Non dismissible
+
+```tsx
+<Message dismissible={ false }>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Status
+
+```tsx
+<>
+  <Message status={ MESSAGE_STATUS.accent }>
+    <MessageIcon name={ ICON_NAME.lightbulb } />
+
+    <MessageBody>Accent message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.critical }>
+    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+    <MessageBody>Critical message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.information }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>Information message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.neutral }>
+    <MessageIcon name={ ICON_NAME.email } />
+
+    <MessageBody>Neutral message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.success }>
+    <MessageIcon name={ ICON_NAME.circleCheck } />
+
+    <MessageBody>Success message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.warning }>
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+    <MessageBody>Warning message</MessageBody>
+  </Message>
+</>
+```
+
+## Variant
+
+```tsx
+<>
+  <Message variant={ MESSAGE_VARIANT.default }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Default variant Message
+    </MessageBody>
+  </Message>
+
+  <Message variant={ MESSAGE_VARIANT.light }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Light variant Message
+    </MessageBody>
+  </Message>
+</>
+```
+
+## Accessibility - Alternative grouping
 
 ```tsx
 <div
@@ -12030,7 +12104,33 @@ _No specific property._
 </div>
 ```
 
-## Accessibility Roles
+## Accessibility - Grouping
+
+```tsx
+<ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
+  <li>
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleCheck } />
+
+      <MessageBody>
+        Your changes have been saved.
+      </MessageBody>
+    </Message>
+  </li>
+
+  <li>
+    <Message status={ MESSAGE_STATUS.warning }>
+      <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+      <MessageBody>
+        Some fields need your attention.
+      </MessageBody>
+    </Message>
+  </li>
+</ul>
+```
+
+## Accessibility - Roles
 
 ```tsx
 {
@@ -12085,106 +12185,6 @@ _No specific property._
   }
 ```
 
-## Status
-
-```tsx
-<>
-  <Message status={ MESSAGE_STATUS.accent }>
-    <MessageIcon name={ ICON_NAME.lightbulb } />
-
-    <MessageBody>Accent message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.critical }>
-    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-
-    <MessageBody>Critical message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.information }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>Information message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.neutral }>
-    <MessageIcon name={ ICON_NAME.email } />
-
-    <MessageBody>Neutral message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.success }>
-    <MessageIcon name={ ICON_NAME.circleCheck } />
-
-    <MessageBody>Success message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.warning }>
-    <MessageIcon name={ ICON_NAME.triangleExclamation } />
-
-    <MessageBody>Warning message</MessageBody>
-  </Message>
-</>
-```
-
-## Default
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Multiline
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
-  </MessageBody>
-</Message>
-```
-
-## Non Dismissible
-
-```tsx
-<Message dismissible={ false }>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Variant
-
-```tsx
-<>
-  <Message variant={ MESSAGE_VARIANT.default }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Default variant Message
-    </MessageBody>
-  </Message>
-
-  <Message variant={ MESSAGE_VARIANT.light }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Light variant Message
-    </MessageBody>
-  </Message>
-</>
-```
-
 ## Message Bubble
 
 # Message Bubble
@@ -12202,9 +12202,9 @@ _The **Message Bubble** component is designed to display messages in a conversat
 ## Examples
 
 - Default
-- Variant
 - Error
 - Typing
+- Variant
 
 ## Documentation pages
 
@@ -12313,19 +12313,6 @@ This component extends all the native `<div>` attributes.
 </MessageBubble>
 ```
 
-## Variant
-
-```tsx
-<>
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human }>
-    This is a human message
-  </MessageBubble>
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai }>
-    This is an AI message
-  </MessageBubble>
-</>
-```
-
 ## Error
 
 ```tsx
@@ -12338,6 +12325,19 @@ This component extends all the native `<div>` attributes.
 
 ```tsx
 <MessageBubble typing />
+```
+
+## Variant
+
+```tsx
+<>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human }>
+    This is a human message
+  </MessageBubble>
+  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai }>
+    This is an AI message
+  </MessageBubble>
+</>
 ```
 
 ## Meter
@@ -12357,12 +12357,12 @@ This component extends all the native `<div>` attributes.
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Accessibility Aria Valuetext
 - Default
 - Optimum
 - Thresholds
+- Accessibility - Aria label
+- Accessibility - Aria labelledby
+- Accessibility - Aria valuetext
 
 ## Documentation pages
 
@@ -12524,42 +12524,6 @@ This component extends all the native `<div>` attributes.
 
 # Meter
 
-## Accessibility Aria Label
-
-```tsx
-<Meter
-  aria-label="Gauge"
-  low={ 40 }
-  value={ 35 } />
-```
-
-## Accessibility Aria Labelledby
-
-```tsx
-<>
-  <Text
-    id="meter-label"
-    preset={ TEXT_PRESET.label }>
-    Gauge:
-  </Text>
-
-  <Meter
-    aria-labelledby="meter-label"
-    low={ 40 }
-    value={ 35 } />
-</>
-```
-
-## Accessibility Aria Valuetext
-
-```tsx
-<Meter
-  aria-label="Gauge"
-  aria-valuetext="35 files uploaded"
-  low={ 40 }
-  value={ 35 } />
-```
-
 ## Default
 
 ```tsx
@@ -12615,6 +12579,42 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
+## Accessibility - Aria label
+
+```tsx
+<Meter
+  aria-label="Gauge"
+  low={ 40 }
+  value={ 35 } />
+```
+
+## Accessibility - Aria labelledby
+
+```tsx
+<>
+  <Text
+    id="meter-label"
+    preset={ TEXT_PRESET.label }>
+    Gauge:
+  </Text>
+
+  <Meter
+    aria-labelledby="meter-label"
+    low={ 40 }
+    value={ 35 } />
+</>
+```
+
+## Accessibility - Aria valuetext
+
+```tsx
+<Meter
+  aria-label="Gauge"
+  aria-valuetext="35 files uploaded"
+  low={ 40 }
+  value={ 35 } />
+```
+
 ## Modal
 
 # Modal
@@ -12638,15 +12638,15 @@ _A **Modal** component is used to overlay with important content the main view o
 
 ## Examples
 
-- Accessibility Actions
-- Accessibility Aria Labelled By
-- Accessibility Aria Label
-- Accessibility Bad Practices Aria
-- Controlled
 - Default
-- Non Dismissible
-- Non Escapable
-- Overlay Elements
+- Controlled
+- Non dismissible
+- Non escapable
+- Overlay elements
+- Accessibility - Actions
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
+- Accessibility - Bad practice : Aria
 
 ## Documentation pages
 
@@ -12932,97 +12932,17 @@ This component extends all the native `<button>` attributes.
 
 # Modal
 
-## Accessibility Actions
+## Default
 
 ```tsx
 <Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal
-    </Button>
+  <ModalTrigger>
+    Trigger Modal
   </ModalTrigger>
-
-  <ModalContent role="alertdialog">
-    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-    <ModalBody>
-      <p id="modal-content">
-        Are you sure you want to delete this item?
-      </p>
-
-      <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        <Button variant={ BUTTON_VARIANT.ghost }>
-          Cancel
-        </Button>
-
-        <Button status={ BUTTON_STATUS.critical }>
-          Delete
-        </Button>
-      </div>
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Accessibility Aria Labelled By
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-labelledby="modal-title">
-    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-    <ModalBody>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.
-      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Accessibility Aria Label
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-label="Modal Content">
-    <ModalHeader>Modal header</ModalHeader>
-    <ModalBody id="modal-content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Accessibility Bad Practices Aria
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
   <ModalContent>
-    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalHeader>My modal header</ModalHeader>
     <ModalBody>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.
-      </p>
+      My modal content
     </ModalBody>
   </ModalContent>
 </Modal>
@@ -13063,23 +12983,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<Modal>
-  <ModalTrigger>
-    Trigger Modal
-  </ModalTrigger>
-  <ModalContent>
-    <ModalHeader>My modal header</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Non Dismissible
+## Non dismissible
 
 ```tsx
 <Modal>
@@ -13098,7 +13002,7 @@ This component extends all the native `<button>` attributes.
 </Modal>
 ```
 
-## Non Escapable
+## Non escapable
 
 ```tsx
 <Modal
@@ -13119,7 +13023,7 @@ This component extends all the native `<button>` attributes.
 </Modal>
 ```
 
-## Overlay Elements
+## Overlay elements
 
 ```tsx
 <Modal>
@@ -13161,6 +13065,102 @@ This component extends all the native `<button>` attributes.
 </Modal>
 ```
 
+## Accessibility - Actions
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent role="alertdialog">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item?
+      </p>
+
+      <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
+        <Button variant={ BUTTON_VARIANT.ghost }>
+          Cancel
+        </Button>
+
+        <Button status={ BUTTON_STATUS.critical }>
+          Delete
+        </Button>
+      </div>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility - Aria label
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-label="Modal Content">
+    <ModalHeader>Modal header</ModalHeader>
+    <ModalBody id="modal-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility - Aria labelled by
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title">
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.
+      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Accessibility - Bad practice : Aria
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.
+      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
 ## Pagination
 
 # Pagination
@@ -13186,14 +13186,14 @@ _A **Pagination** component allows users to navigate through large sets of data 
 
 ## Examples
 
-- Accessibility Label
-- Controlled
 - Default
+- Controlled
 - Disabled
-- Items Per Page
-- Page Size Selection
-- Sibling Count
-- With Tooltip Labels
+- Items per page
+- Page size selection
+- Sibling count
+- With tooltip labels
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -13404,12 +13404,10 @@ This component extends all the native `<div>` attributes.
 
 # Pagination
 
-## Accessibility Label
+## Default
 
 ```tsx
-<Pagination
-  aria-label="Pagination"
-  totalItems={ 5000 }>
+<Pagination totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```
@@ -13435,14 +13433,6 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<Pagination totalItems={ 5000 }>
-  <PaginationPages />
-</Pagination>
-```
-
 ## Disabled
 
 ```tsx
@@ -13453,7 +13443,7 @@ This component extends all the native `<div>` attributes.
 </Pagination>
 ```
 
-## Items Per Page
+## Items per page
 
 ```tsx
 <Pagination
@@ -13463,7 +13453,7 @@ This component extends all the native `<div>` attributes.
 </Pagination>
 ```
 
-## Page Size Selection
+## Page size selection
 
 ```tsx
 <Pagination totalItems={ 500 }>
@@ -13473,7 +13463,7 @@ This component extends all the native `<div>` attributes.
 </Pagination>
 ```
 
-## Sibling Count
+## Sibling count
 
 ```tsx
 <Pagination
@@ -13484,13 +13474,23 @@ This component extends all the native `<div>` attributes.
 </Pagination>
 ```
 
-## With Tooltip Labels
+## With tooltip labels
 
 ```tsx
 <Pagination
   labelTooltipPrev="Go to previous page"
   labelTooltipNext="Go to next page"
   totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Accessibility - Label
+
+```tsx
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```
@@ -13515,15 +13515,15 @@ _**Password** component is an <DocLink to="/components/input">Input</DocLink> fi
 
 ## Examples
 
-- Accessibility Label
-- Clearable
 - Default
+- Clearable
 - Disabled
-- In Form Field
+- In form field
 - Loading
-- Read Only
-- Accessibility Form Field
-- Accessibility I18n
+- Read only
+- Accessibility - Form field
+- Accessibility - I18n
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -13683,16 +13683,10 @@ This component extends all the native `<input>` attributes.
 
 # Password
 
-## Accessibility Label
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Password:
-  </FormFieldLabel>
-
-  <Password />
-</FormField>
+<Password />
 ```
 
 ## Clearable
@@ -13703,19 +13697,13 @@ This component extends all the native `<input>` attributes.
   defaultValue="Clearable" />
 ```
 
-## Default
-
-```tsx
-<Password />
-```
-
 ## Disabled
 
 ```tsx
 <Password disabled />
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -13733,7 +13721,7 @@ This component extends all the native `<input>` attributes.
 <Password loading />
 ```
 
-## Read Only
+## Read only
 
 ```tsx
 <Password
@@ -13741,7 +13729,7 @@ This component extends all the native `<input>` attributes.
   readOnly />
 ```
 
-## Accessibility Form Field
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -13753,7 +13741,7 @@ This component extends all the native `<input>` attributes.
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -13765,6 +13753,18 @@ This component extends all the native `<input>` attributes.
     [INPUT_I18N.maskButtonHide]: 'Hide the password',
     [INPUT_I18N.maskButtonShow]: 'Show the password',
   }} />
+</FormField>
+```
+
+## Accessibility - Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Password:
+  </FormFieldLabel>
+
+  <Password />
 </FormField>
 ```
 
@@ -13795,17 +13795,17 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 ## Examples
 
-- Accessibility Label
-- Clearable
-- Country List
 - Default
+- Clearable
+- Country list
 - Disabled
-- In Form Field
+- In form field
 - Loading
 - Locale
 - Readonly
-- Accessibility Form Field
-- Accessibility I18n
+- Accessibility - Form field
+- Accessibility - I18n
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -14283,20 +14283,12 @@ _No specific property._
 
 # Phone Number
 
-## Accessibility Label
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
+<PhoneNumber>
+  <PhoneNumberControl />
+</PhoneNumber>
 ```
 
 ## Clearable
@@ -14315,7 +14307,7 @@ _No specific property._
 </>
 ```
 
-## Country List
+## Country list
 
 ```tsx
 <>
@@ -14337,14 +14329,6 @@ _No specific property._
 </>
 ```
 
-## Default
-
-```tsx
-<PhoneNumber>
-  <PhoneNumberControl />
-</PhoneNumber>
-```
-
 ## Disabled
 
 ```tsx
@@ -14361,7 +14345,7 @@ _No specific property._
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -14427,7 +14411,7 @@ _No specific property._
 </>
 ```
 
-## Accessibility Form Field
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -14443,7 +14427,7 @@ _No specific property._
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -14460,6 +14444,22 @@ _No specific property._
     <PhoneNumberCountryList />
 
     <PhoneNumberControl clearable />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility - Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
   </PhoneNumber>
 </FormField>
 ```
@@ -14487,13 +14487,13 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ## Examples
 
-- Controlled
-- Custom Trigger
 - Default
+- Controlled
+- Custom trigger
 - Grid
-- Accessibility With Menu
-- Same Width
-- ZIndex
+- Same width
+- Z index
+- Accessibility - With menu
 
 ## Documentation pages
 
@@ -14754,6 +14754,20 @@ This component extends all the native `<button>` attributes.
 
 # Popover
 
+## Default
+
+```tsx
+<Popover>
+  <PopoverTrigger>
+    Show popover
+  </PopoverTrigger>
+
+  <PopoverContent>
+    This is the popover content
+  </PopoverContent>
+</Popover>
+```
+
 ## Controlled
 
 ```tsx
@@ -14784,7 +14798,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Custom Trigger
+## Custom trigger
 
 ```tsx
 <Popover>
@@ -14792,20 +14806,6 @@ This component extends all the native `<button>` attributes.
     <Button>
       Custom Trigger
     </Button>
-  </PopoverTrigger>
-
-  <PopoverContent>
-    This is the popover content
-  </PopoverContent>
-</Popover>
-```
-
-## Default
-
-```tsx
-<Popover>
-  <PopoverTrigger>
-    Show popover
   </PopoverTrigger>
 
   <PopoverContent>
@@ -14894,50 +14894,7 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility With Menu
-
-```tsx
-<Popover>
-  <PopoverTrigger
-    aria-haspopup="menu"
-    asChild>
-    <Button aria-label="Profile">
-      <Icon name={ ICON_NAME.ellipsisVertical } />
-    </Button>
-  </PopoverTrigger>
-
-  <PopoverContent
-    aria-label="Profile menu"
-    withArrow>
-    <div
-      role="menu"
-      style={{ display: 'flex', flexDirection: 'column' }}>
-      <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Information
-      </Button>
-
-      <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Notifications
-      </Button>
-
-      <Divider style={{ width: '100%' }} />
-
-      <Button
-        status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Sign out
-      </Button>
-    </div>
-  </PopoverContent>
-</Popover>
-```
-
-## Same Width
+## Same width
 
 ```tsx
 <Popover overlayConfig={{ sameWidth: true }}>
@@ -14951,7 +14908,7 @@ This component extends all the native `<button>` attributes.
 </Popover>
 ```
 
-## ZIndex
+## Z index
 
 ```tsx
 <>
@@ -15008,6 +14965,49 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility - With menu
+
+```tsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild>
+    <Button aria-label="Profile">
+      <Icon name={ ICON_NAME.ellipsisVertical } />
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow>
+    <div
+      role="menu"
+      style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Information
+      </Button>
+
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Notifications
+      </Button>
+
+      <Divider style={{ width: '100%' }} />
+
+      <Button
+        status={ BUTTON_STATUS.critical }
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Sign out
+      </Button>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
 ## Progress Bar
 
 # Progress Bar
@@ -15027,7 +15027,7 @@ _A horizontal bar indicating the current completion status of a long-running tas
 - Indeterminate
 - Max
 - Value
-- Accessibility Label
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -15155,7 +15155,7 @@ This component extends all the native `<progress>` attributes.
 <ProgressBar value="50" />
 ```
 
-## Accessibility Label
+## Accessibility - Label
 
 ```tsx
 <ProgressBar aria-label="Converting" />
@@ -15188,14 +15188,14 @@ _The **Prompt Input** component is a composable text input with a submit button,
 
 - Default
 - Disabled
-- Read Only
+- In form field
 - Loading
-- With Files
-- In Form Field
-- Accessibility Aria Label
-- Accessibility Buttons Labels
-- Accessibility I18n
-- Accessibility Loading State
+- Read only
+- With files
+- Accessibility - Aria label
+- Accessibility - Buttons labels
+- Accessibility - I18n
+- Accessibility - Loading state
 
 ## Documentation pages
 
@@ -15492,54 +15492,7 @@ _No specific property._
 </PromptInput>
 ```
 
-## Read Only
-
-```tsx
-<PromptInput readOnly defaultValue="This is a read-only prompt input.">
-  <PromptInputControls>
-    <PromptInputFileUploadButton aria-label="Attach a file" />
-    <PromptInputTextControl aria-label="Ask someone about something…" />
-    <PromptInputSendButton aria-label="Send message" />
-  </PromptInputControls>
-</PromptInput>
-```
-
-## Loading
-
-```tsx
-<PromptInput defaultValue='"Someone" is processing your request…' loading>
-  <PromptInputControls>
-    <PromptInputFileUploadButton aria-label="Attach a file" />
-    <PromptInputTextControl aria-label="Ask someone about something…" />
-    <PromptInputSendButton aria-label="Send message" />
-  </PromptInputControls>
-</PromptInput>
-```
-
-## With Files
-
-```tsx
-{
-    const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", { type: "application/pdf" });
-    const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
-
-    return (
-      <PromptInput fileCollection={[fakePdfFile, fakeTextFile]}>
-        <PromptInputFiles>
-          <FileThumbnail file={fakePdfFile} progress={45} />
-          <FileThumbnail file={fakeTextFile} />
-        </PromptInputFiles>
-        <PromptInputControls>
-          <PromptInputFileUploadButton aria-label="Attach a file" />
-          <PromptInputTextControl aria-label="Ask someone about something…" />
-          <PromptInputSendButton aria-label="Send message" />
-        </PromptInputControls>
-      </PromptInput>
-    );
-  }
-```
-
-## In Form Field
+## In form field
 
 ```tsx
 {
@@ -15574,7 +15527,54 @@ _No specific property._
   }
 ```
 
-## Accessibility Aria Label
+## Loading
+
+```tsx
+<PromptInput defaultValue='"Someone" is processing your request…' loading>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Read only
+
+```tsx
+<PromptInput readOnly defaultValue="This is a read-only prompt input.">
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## With files
+
+```tsx
+{
+    const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", { type: "application/pdf" });
+    const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
+
+    return (
+      <PromptInput fileCollection={[fakePdfFile, fakeTextFile]}>
+        <PromptInputFiles>
+          <FileThumbnail file={fakePdfFile} progress={45} />
+          <FileThumbnail file={fakeTextFile} />
+        </PromptInputFiles>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <PromptInputTextControl aria-label="Ask someone about something…" />
+          <PromptInputSendButton aria-label="Send message" />
+        </PromptInputControls>
+      </PromptInput>
+    );
+  }
+```
+
+## Accessibility - Aria label
 
 ```tsx
 <PromptInput>
@@ -15585,7 +15585,7 @@ _No specific property._
 </PromptInput>
 ```
 
-## Accessibility Buttons Labels
+## Accessibility - Buttons labels
 
 ```tsx
 <PromptInput>
@@ -15597,7 +15597,7 @@ _No specific property._
 </PromptInput>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <PromptInput
@@ -15614,7 +15614,7 @@ _No specific property._
 </PromptInput>
 ```
 
-## Accessibility Loading State
+## Accessibility - Loading state
 
 ```tsx
 <PromptInput loading>
@@ -15650,14 +15650,14 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Max
 - Min
 - Readonly
 - Step
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -15818,24 +15818,6 @@ _No specific property._
 
 # Quantity
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Number of CPUs:
-  </FormFieldLabel>
-
-  <Quantity
-    max={ 10 }
-    min={ 0 }>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -15856,7 +15838,7 @@ _No specific property._
 </Quantity>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -15912,6 +15894,24 @@ _No specific property._
 </Quantity>
 ```
 
+## Accessibility - Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Number of CPUs:
+  </FormFieldLabel>
+
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
 ## Query Filter
 
 # Query Filter
@@ -15945,8 +15945,8 @@ _No specific property._
 ## Examples
 
 - Default
-- Accessibility Form Field
-- Accessibility Aria Label
+- Accessibility - Aria label
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -16297,7 +16297,46 @@ _No specific property._
   }
 ```
 
-## Accessibility Form Field
+## Accessibility - Aria label
+
+```tsx
+{
+    const filterProperty = useMemo(() => ({
+      label: 'Properties',
+      options: [{ label: 'States', value: 'states' }],
+    }), []);
+
+    const filterOption = useMemo(() => ({
+      states: {
+        operator: {
+          label: 'Operators',
+          options: [{ label: 'equals', value: '=' }],
+        },
+        value: {
+          label: 'State Values',
+          options: [
+            { label: 'Running', value: 'running' },
+            { label: 'Stopped', value: 'stopped' },
+          ],
+        },
+      },
+    }), []);
+
+    return (
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl aria-label="Filter instances" />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+      </QueryFilter>
+    );
+  }
+```
+
+## Accessibility - Form field
 
 ```tsx
 {
@@ -16342,45 +16381,6 @@ _No specific property._
   }
 ```
 
-## Accessibility Aria Label
-
-```tsx
-{
-    const filterProperty = useMemo(() => ({
-      label: 'Properties',
-      options: [{ label: 'States', value: 'states' }],
-    }), []);
-
-    const filterOption = useMemo(() => ({
-      states: {
-        operator: {
-          label: 'Operators',
-          options: [{ label: 'equals', value: '=' }],
-        },
-        value: {
-          label: 'State Values',
-          options: [
-            { label: 'Running', value: 'running' },
-            { label: 'Stopped', value: 'stopped' },
-          ],
-        },
-      },
-    }), []);
-
-    return (
-      <QueryFilter
-        filterOption={ filterOption }
-        filterProperty={ filterProperty }>
-        <QueryFilterControl aria-label="Filter instances" />
-
-        <QueryFilterContent />
-
-        <QueryFilterTags />
-      </QueryFilter>
-    );
-  }
-```
-
 ## Radio Group
 
 # Radio Group
@@ -16401,9 +16401,9 @@ _A **Radio** button allows users to select only one option from a number of choi
 ## Examples
 
 - Default
-- Disabled Group
-- Disabled Item
-- In Form Field
+- Disabled group
+- Disabled item
+- In form field
 - Invalid
 - Orientation
 
@@ -16591,7 +16591,7 @@ _No specific property._
 </RadioGroup>
 ```
 
-## Disabled Group
+## Disabled group
 
 ```tsx
 <RadioGroup disabled>
@@ -16615,7 +16615,7 @@ _No specific property._
 </RadioGroup>
 ```
 
-## Disabled Item
+## Disabled item
 
 ```tsx
 <RadioGroup>
@@ -16641,7 +16641,7 @@ _No specific property._
 </RadioGroup>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -16751,16 +16751,16 @@ _**Range** component is used to allow users to visually select one or more value
 
 ## Examples
 
-- Controlled
 - Default
+- Controlled
 - Disabled
-- In Form Field
-- Max Min
+- In form field
+- Max min
 - Step
 - Ticks
-- Ticks Labels
-- Accessibility Form Field
-- Accessibility Descriptive Sub Label
+- Ticks labels
+- Accessibility - Descriptive sub label
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -16964,6 +16964,16 @@ This component extends all the native `<div>` attributes.
 
 # Range
 
+## Default
+
+```tsx
+<>
+  <Range />
+
+  <Range defaultValue={ [50, 75] } />
+</>
+```
+
 ## Controlled
 
 ```tsx
@@ -16996,16 +17006,6 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<>
-  <Range />
-
-  <Range defaultValue={ [50, 75] } />
-</>
-```
-
 ## Disabled
 
 ```tsx
@@ -17020,7 +17020,7 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -17032,7 +17032,7 @@ This component extends all the native `<div>` attributes.
 </FormField>
 ```
 
-## Max Min
+## Max min
 
 ```tsx
 <>
@@ -17092,7 +17092,7 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
-## Ticks Labels
+## Ticks labels
 
 ```tsx
 <>
@@ -17117,19 +17117,7 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Volume
-  </FormFieldLabel>
-
-  <Range defaultValue={ [50] } />
-</FormField>
-```
-
-## Accessibility Descriptive Sub Label
+## Accessibility - Descriptive sub label
 
 ```tsx
 {
@@ -17155,6 +17143,18 @@ This component extends all the native `<div>` attributes.
       </FormField>
     );
   }
+```
+
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Volume
+  </FormFieldLabel>
+
+  <Range defaultValue={ [50] } />
+</FormField>
 ```
 
 ## Select
@@ -17186,14 +17186,14 @@ _**Select** component is used to select one or more items from a list of values_
 
 ## Examples
 
-- Accessibility Form Field
-- Custom Renderer
 - Default
+- Custom renderer
 - Disabled
 - Group
-- In Form Field
+- In form field
 - Multiple
 - Readonly
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -17391,28 +17391,24 @@ This component extends all the native `<button>` attributes.
 
 # Select
 
-## Accessibility Form Field
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Select a Web hosting
-  </FormFieldLabel>
+<Select items={[
+  { label: 'Dog', value:'dog' },
+  { label: 'Cat', value:'cat' },
+  { label: 'Hamster', value:'hamster' },
+  { label: 'Parrot', value:'parrot' },
+  { label: 'Spider', value:'spider' },
+  { label: 'Goldfish', value:'goldfish' },
+]}>
+  <SelectControl />
 
-  <Select
-    items={[
-      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
-      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
-      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
-    ]}>
-    <SelectControl />
-
-    <SelectContent />
-  </Select>
-</FormField>
+  <SelectContent />
+</Select>
 ```
 
-## Custom Renderer
+## Custom renderer
 
 ```tsx
 {
@@ -17519,23 +17515,6 @@ This component extends all the native `<button>` attributes.
       </Select>
     );
   }
-```
-
-## Default
-
-```tsx
-<Select items={[
-  { label: 'Dog', value:'dog' },
-  { label: 'Cat', value:'cat' },
-  { label: 'Hamster', value:'hamster' },
-  { label: 'Parrot', value:'parrot' },
-  { label: 'Spider', value:'spider' },
-  { label: 'Goldfish', value:'goldfish' },
-]}>
-  <SelectControl />
-
-  <SelectContent />
-</Select>
 ```
 
 ## Disabled
@@ -17664,7 +17643,7 @@ This component extends all the native `<button>` attributes.
 </Select>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -17756,6 +17735,27 @@ This component extends all the native `<button>` attributes.
 </Select>
 ```
 
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Select a Web hosting
+  </FormFieldLabel>
+
+  <Select
+    items={[
+      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+    ]}>
+    <SelectControl />
+
+    <SelectContent />
+  </Select>
+</FormField>
+```
+
 ## Skeleton
 
 # Skeleton
@@ -17765,8 +17765,8 @@ _**Skeleton** component indicates that data is loading. It improves the perceive
 ## Examples
 
 - Default
-- Accessibility Loading
-- Accessibility Bad Practice Loading
+- Accessibility - Loading
+- Accessibility - Bad practice : Loading
 
 ## Documentation pages
 
@@ -17876,7 +17876,7 @@ _No specific property._
 <Skeleton />
 ```
 
-## Accessibility Loading
+## Accessibility - Loading
 
 ```tsx
 <div aria-busy="true">
@@ -17884,7 +17884,7 @@ _No specific property._
 </div>
 ```
 
-## Accessibility Bad Practice Loading
+## Accessibility - Bad practice : Loading
 
 ```tsx
 <div>
@@ -17907,12 +17907,12 @@ _A visual indicator that a process is happening in the background but the interf
 
 ## Examples
 
-- Color
 - Default
+- Color
 - Size
-- Accessibility Aria Busy Aria Live
-- Accessibility Aria Label
-- Accessibility Aria Labelled By
+- Accessibility - Aria busy aria live
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
 
 ## Documentation pages
 
@@ -18078,6 +18078,12 @@ This component extends all the native `<span>` attributes.
 
 # Spinner
 
+## Default
+
+```tsx
+<Spinner />
+```
+
 ## Color
 
 ```tsx
@@ -18085,12 +18091,6 @@ This component extends all the native `<span>` attributes.
   <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
   <Spinner />
 </>
-```
-
-## Default
-
-```tsx
-<Spinner />
 ```
 
 ## Size
@@ -18104,7 +18104,7 @@ This component extends all the native `<span>` attributes.
 </>
 ```
 
-## Accessibility Aria Busy Aria Live
+## Accessibility - Aria busy aria live
 
 ```tsx
 <div
@@ -18114,13 +18114,13 @@ This component extends all the native `<span>` attributes.
 </div>
 ```
 
-## Accessibility Aria Label
+## Accessibility - Aria label
 
 ```tsx
 <Spinner aria-label="Loading user profile" />
 ```
 
-## Accessibility Aria Labelled By
+## Accessibility - Aria labelled by
 
 ```tsx
 <div>
@@ -18150,12 +18150,12 @@ _A **Switch** allows users to quickly and easily switch between several states, 
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Checked
 - Default
+- Checked
 - Disabled
 - Sizes
+- Accessibility - Aria label
+- Accessibility - Aria labelledby
 
 ## Documentation pages
 
@@ -18333,48 +18333,20 @@ This component extends all the native `<button>` attributes.
 
 # Switch
 
-## Accessibility Aria Label
+## Default
 
 ```tsx
-<Switch aria-label="Select an item">
+<Switch>
   <SwitchItem value="item-1">Item 1</SwitchItem>
   <SwitchItem value="item-2">Item 2</SwitchItem>
   <SwitchItem value="item-3">Item 3</SwitchItem>
 </Switch>
-```
-
-## Accessibility Aria Labelledby
-
-```tsx
-<>
-  <Text
-    id="switch-label"
-    preset={ TEXT_PRESET.label }>
-    Select an item:
-  </Text>
-
-  <Switch aria-labelledby="switch-label">
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-</>
 ```
 
 ## Checked
 
 ```tsx
 <Switch defaultValue="item-1">
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Default
-
-```tsx
-<Switch>
   <SwitchItem value="item-1">Item 1</SwitchItem>
   <SwitchItem value="item-2">Item 2</SwitchItem>
   <SwitchItem value="item-3">Item 3</SwitchItem>
@@ -18409,6 +18381,34 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility - Aria label
+
+```tsx
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Accessibility - Aria labelledby
+
+```tsx
+<>
+  <Text
+    id="switch-label"
+    preset={ TEXT_PRESET.label }>
+    Select an item:
+  </Text>
+
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+</>
+```
+
 ## Table
 
 # Table
@@ -18424,8 +18424,8 @@ _A component to display data in a tabular format._
 
 ## Examples
 
-- Custom Caption
 - Default
+- Custom caption
 - Size
 - Variant
 
@@ -18548,14 +18548,12 @@ This component extends all the native `<table>` attributes.
 
 # Table
 
-## Custom Caption
+## Default
 
 ```tsx
 <Table>
   <caption>
-    <Text preset={ TEXT_PRESET.caption }>
-      Front-end web developer course 2021
-    </Text>
+    Front-end web developer course 2021
   </caption>
   <thead>
   <tr>
@@ -18589,12 +18587,14 @@ This component extends all the native `<table>` attributes.
 </Table>
 ```
 
-## Default
+## Custom caption
 
 ```tsx
 <Table>
   <caption>
-    Front-end web developer course 2021
+    <Text preset={ TEXT_PRESET.caption }>
+      Front-end web developer course 2021
+    </Text>
   </caption>
   <thead>
   <tr>
@@ -18834,16 +18834,16 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 
 ## Examples
 
-- Controlled
 - Default
+- Controlled
+- Controlled with navigation
 - Disabled
 - Overflow
+- Product detail
 - Size
 - Variant
-- With Arrows
-- With Content
-- Product Detail
-- Controlled With Navigation
+- With arrows
+- With content
 
 ## Documentation pages
 
@@ -19058,6 +19058,18 @@ _No specific property._
 
 # Tabs
 
+## Default
+
+```tsx
+<Tabs defaultValue="tab1">
+  <TabList>
+    <Tab value="tab1">Tab 1</Tab>
+    <Tab value="tab2">Tab 2</Tab>
+    <Tab value="tab3">Tab 3</Tab>
+  </TabList>
+</Tabs>
+```
+
 ## Controlled
 
 ```tsx
@@ -19082,16 +19094,58 @@ _No specific property._
   }
 ```
 
-## Default
+## Controlled with navigation
 
 ```tsx
-<Tabs defaultValue="tab1">
-  <TabList>
-    <Tab value="tab1">Tab 1</Tab>
-    <Tab value="tab2">Tab 2</Tab>
-    <Tab value="tab3">Tab 3</Tab>
-  </TabList>
-</Tabs>
+{
+    const tabs = [
+      { value: 'account', label: 'Account' },
+      { value: 'security', label: 'Security' },
+      { value: 'notifications', label: 'Notifications' },
+      { value: 'billing', label: 'Billing' },
+    ];
+    const [active, setActive] = useState('account');
+    const currentIndex = tabs.findIndex((t) => t.value === active);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Tabs
+          value={ active }
+          onValueChange={ (e: TabsValueChangeEvent) => setActive(e.value) }>
+          <TabList>
+            { tabs.map((tab) => (
+              <Tab key={ tab.value } value={ tab.value }>
+                { tab.label }
+              </Tab>
+            )) }
+          </TabList>
+
+          { tabs.map((tab) => (
+            <TabContent
+              key={ tab.value }
+              style={{ padding: '16px 0' }}
+              value={ tab.value }>
+              <p>{ tab.label } settings</p>
+            </TabContent>
+          )) }
+        </Tabs>
+
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            disabled={ currentIndex === 0 }
+            onClick={ () => setActive(tabs[currentIndex - 1].value) }>
+            ← Previous
+          </button>
+
+          <button
+            disabled={ currentIndex === tabs.length - 1 }
+            onClick={ () => setActive(tabs[currentIndex + 1].value) }>
+            Next →
+          </button>
+        </div>
+      </div>
+    );
+  }
 ```
 
 ## Disabled
@@ -19121,6 +19175,36 @@ _No specific property._
     </TabList>
   </Tabs>
 </div>
+```
+
+## Product detail
+
+```tsx
+<Tabs defaultValue="description">
+  <TabList>
+    <Tab value="description">Description</Tab>
+    <Tab value="specifications">Specifications</Tab>
+    <Tab value="reviews">Reviews</Tab>
+  </TabList>
+
+  <TabContent value="description" style={{ padding: '16px 0' }}>
+    <p>A high-performance cloud server with 32 vCPUs, 128 GB RAM, and NVMe storage.</p>
+  </TabContent>
+
+  <TabContent value="specifications" style={{ padding: '16px 0' }}>
+    <ul>
+      <li>CPU: 32 vCPUs</li>
+      <li>RAM: 128 GB DDR4</li>
+      <li>Storage: 2 × 960 GB NVMe SSD</li>
+      <li>Network: 1 Gbps</li>
+    </ul>
+  </TabContent>
+
+  <TabContent value="reviews" style={{ padding: '16px 0' }}>
+    <p>Rating: 4.8 / 5 based on 142 reviews</p>
+    <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
+  </TabContent>
+</Tabs>
 ```
 
 ## Size
@@ -19179,7 +19263,7 @@ _No specific property._
 </Tabs>
 ```
 
-## With Arrows
+## With arrows
 
 ```tsx
 <Tabs
@@ -19205,7 +19289,7 @@ _No specific property._
 </Tabs>
 ```
 
-## With Content
+## With content
 
 ```tsx
 <Tabs defaultValue="tab1">
@@ -19226,90 +19310,6 @@ _No specific property._
 </Tabs>
 ```
 
-## Product Detail
-
-```tsx
-<Tabs defaultValue="description">
-  <TabList>
-    <Tab value="description">Description</Tab>
-    <Tab value="specifications">Specifications</Tab>
-    <Tab value="reviews">Reviews</Tab>
-  </TabList>
-
-  <TabContent value="description" style={{ padding: '16px 0' }}>
-    <p>A high-performance cloud server with 32 vCPUs, 128 GB RAM, and NVMe storage.</p>
-  </TabContent>
-
-  <TabContent value="specifications" style={{ padding: '16px 0' }}>
-    <ul>
-      <li>CPU: 32 vCPUs</li>
-      <li>RAM: 128 GB DDR4</li>
-      <li>Storage: 2 × 960 GB NVMe SSD</li>
-      <li>Network: 1 Gbps</li>
-    </ul>
-  </TabContent>
-
-  <TabContent value="reviews" style={{ padding: '16px 0' }}>
-    <p>Rating: 4.8 / 5 based on 142 reviews</p>
-    <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
-  </TabContent>
-</Tabs>
-```
-
-## Controlled With Navigation
-
-```tsx
-{
-    const tabs = [
-      { value: 'account', label: 'Account' },
-      { value: 'security', label: 'Security' },
-      { value: 'notifications', label: 'Notifications' },
-      { value: 'billing', label: 'Billing' },
-    ];
-    const [active, setActive] = useState('account');
-    const currentIndex = tabs.findIndex((t) => t.value === active);
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Tabs
-          value={ active }
-          onValueChange={ (e: TabsValueChangeEvent) => setActive(e.value) }>
-          <TabList>
-            { tabs.map((tab) => (
-              <Tab key={ tab.value } value={ tab.value }>
-                { tab.label }
-              </Tab>
-            )) }
-          </TabList>
-
-          { tabs.map((tab) => (
-            <TabContent
-              key={ tab.value }
-              style={{ padding: '16px 0' }}
-              value={ tab.value }>
-              <p>{ tab.label } settings</p>
-            </TabContent>
-          )) }
-        </Tabs>
-
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <button
-            disabled={ currentIndex === 0 }
-            onClick={ () => setActive(tabs[currentIndex - 1].value) }>
-            ← Previous
-          </button>
-
-          <button
-            disabled={ currentIndex === tabs.length - 1 }
-            onClick={ () => setActive(tabs[currentIndex + 1].value) }>
-            Next →
-          </button>
-        </div>
-      </div>
-    );
-  }
-```
-
 ## Tag
 
 # Tag
@@ -19327,14 +19327,14 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 ## Examples
 
-- Status
-- Custom Icon
 - Default
+- Custom icon
 - Disabled
 - Size
-- Accessibility List
-- Accessibility Aria Roles
-- Accessibility Aria Label
+- Status
+- Accessibility - Aria label
+- Accessibility - Aria roles
+- Accessibility - List
 
 ## Documentation pages
 
@@ -19617,20 +19617,15 @@ This component extends all the native `<button>` attributes.
 
 # Tag
 
-## Status
+## Default
 
 ```tsx
-<>
-  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
-  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
-  <Tag status={ TAG_STATUS.information }>Information</Tag>
-  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
-  <Tag status={ TAG_STATUS.success }>Success</Tag>
-  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
-</>
+<Tag>
+  My tag
+</Tag>
 ```
 
-## Custom Icon
+## Custom icon
 
 ```tsx
 <>
@@ -19642,14 +19637,6 @@ This component extends all the native `<button>` attributes.
     Custom Icon
   </Tag>
 </>
-```
-
-## Default
-
-```tsx
-<Tag>
-  My tag
-</Tag>
 ```
 
 ## Disabled
@@ -19669,25 +19656,28 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility List
+## Status
 
 ```tsx
-<ul>
-  <li>
-    <Tag>Design</Tag>
-  </li>
-
-  <li>
-    <Tag>Development</Tag>
-  </li>
-
-  <li>
-    <Tag>Accessibility</Tag>
-  </li>
-</ul>
+<>
+  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+  <Tag status={ TAG_STATUS.information }>Information</Tag>
+  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+  <Tag status={ TAG_STATUS.success }>Success</Tag>
+  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
+</>
 ```
 
-## Accessibility Aria Roles
+## Accessibility - Aria label
+
+```tsx
+<Tag aria-label="Remove my tag">
+  My tag
+</Tag>
+```
+
+## Accessibility - Aria roles
 
 ```tsx
 <div role="list">
@@ -19705,12 +19695,22 @@ This component extends all the native `<button>` attributes.
 </div>
 ```
 
-## Accessibility Aria Label
+## Accessibility - List
 
 ```tsx
-<Tag aria-label="Remove my tag">
-  My tag
-</Tag>
+<ul>
+  <li>
+    <Tag>Design</Tag>
+  </li>
+
+  <li>
+    <Tag>Development</Tag>
+  </li>
+
+  <li>
+    <Tag>Accessibility</Tag>
+  </li>
+</ul>
 ```
 
 ## Text
@@ -19723,10 +19723,10 @@ _The **Text** component is used to display and style text content within an appl
 
 - Default
 - Disabled
-- Fig Caption
+- Fig caption
 - Preset
-- Reuse Style
-- Table Caption
+- Reuse style
+- Table caption
 
 ## Documentation pages
 
@@ -19856,7 +19856,7 @@ _No specific property._
 </Text>
 ```
 
-## Fig Caption
+## Fig caption
 
 ```tsx
 <figure>
@@ -19892,7 +19892,7 @@ _No specific property._
 </>
 ```
 
-## Reuse Style
+## Reuse style
 
 ```tsx
 <Text
@@ -19902,7 +19902,7 @@ _No specific property._
 </Text>
 ```
 
-## Table Caption
+## Table caption
 
 ```tsx
 <table style={{
@@ -19944,13 +19944,13 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
 
 ## Examples
 
-- Accessibility Described By
-- Accessibility Form Field
 - Default
 - Disabled
-- In Form Field
-- Read Only
+- In form field
+- Read only
 - Resizable
+- Accessibility - Described by
+- Accessibility - Form field
 
 ## Documentation pages
 
@@ -20108,34 +20108,6 @@ This component extends all the native `<textarea>` attributes.
 
 # Textarea
 
-## Accessibility Described By
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-
-  <FormFieldHelper>
-    Enter a brief description
-  </FormFieldHelper>
-</FormField>
-```
-
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -20148,7 +20120,7 @@ This component extends all the native `<textarea>` attributes.
 <Textarea disabled />
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 {
@@ -20187,7 +20159,7 @@ This component extends all the native `<textarea>` attributes.
   }
 ```
 
-## Read Only
+## Read only
 
 ```tsx
 <Textarea
@@ -20199,6 +20171,34 @@ This component extends all the native `<textarea>` attributes.
 
 ```tsx
 <Textarea style={{ resize: 'both' }} />
+```
+
+## Accessibility - Described by
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+
+  <FormFieldHelper>
+    Enter a brief description
+  </FormFieldHelper>
+</FormField>
+```
+
+## Accessibility - Form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+</FormField>
 ```
 
 ## Tile
@@ -20217,8 +20217,8 @@ This component extends all the native `<textarea>` attributes.
 - Default
 - Disabled
 - Selected
-- With Checkbox
-- With Radio Group
+- With checkbox
+- With radio group
 
 ## Documentation pages
 
@@ -20351,7 +20351,7 @@ _No specific property._
 </Tile>
 ```
 
-## With Checkbox
+## With checkbox
 
 ```tsx
 {
@@ -20372,7 +20372,7 @@ _No specific property._
   }
 ```
 
-## With Radio Group
+## With radio group
 
 ```tsx
 {
@@ -20436,13 +20436,13 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Readonly
-- Timezone List
-- With Seconds
+- Timezone list
+- With seconds
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -20660,22 +20660,6 @@ _No specific property._
 
 # Timepicker
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Starting time:
-  </FormFieldLabel>
-
-  <Timepicker withSeconds>
-    <TimepickerControl />
-
-    <TimepickerTimezoneList />
-  </Timepicker>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -20700,7 +20684,7 @@ _No specific property._
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -20730,7 +20714,7 @@ _No specific property._
 </>
 ```
 
-## Timezone List
+## Timezone list
 
 ```tsx
 <>
@@ -20752,7 +20736,7 @@ _No specific property._
 </>
 ```
 
-## With Seconds
+## With seconds
 
 ```tsx
 <>
@@ -20766,6 +20750,22 @@ _No specific property._
     <TimepickerTimezoneList />
   </Timepicker>
 </>
+```
+
+## Accessibility - Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Starting time:
+  </FormFieldLabel>
+
+  <Timepicker withSeconds>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</FormField>
 ```
 
 ## Toaster
@@ -20786,13 +20786,13 @@ _**Toaster** component provides a section on the page where you'll be able to di
 
 ## Examples
 
-- Statuses
-- Custom Content
 - Default
+- Custom content
 - Dismissible
 - Duration
 - Icon
 - Position
+- Statuses
 
 ## Documentation pages
 
@@ -20974,50 +20974,19 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 # Toaster
 
-## Statuses
+## Default
 
 ```tsx
 <>
-  <Toaster id="statuses" />
+  <Toaster />
 
-  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button
-      status={ BUTTON_STATUS.critical }
-      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
-      Critical toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
-      Information toast
-    </Button>
-
-    <Button
-      status={ BUTTON_STATUS.neutral }
-      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
-      Neutral toast
-    </Button>
-
-    <Button
-      status={ BUTTON_STATUS.brand }
-      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
-      Accent toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
-      Success toast
-    </Button>
-
-    <Button
-      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
-      Warning toast
-    </Button>
-  </div>
+  <Button onClick={ () => toast('Notification message') }>
+    Trigger toast
+  </Button>
 </>
 ```
 
-## Custom Content
+## Custom content
 
 ```tsx
 <>
@@ -21039,18 +21008,6 @@ The **Toaster** component handles by itself the accessibility requirements.
         </Link>
       </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
     )}>
-    Trigger toast
-  </Button>
-</>
-```
-
-## Default
-
-```tsx
-<>
-  <Toaster />
-
-  <Button onClick={ () => toast('Notification message') }>
     Trigger toast
   </Button>
 </>
@@ -21155,6 +21112,49 @@ The **Toaster** component handles by itself the accessibility requirements.
 </>
 ```
 
+## Statuses
+
+```tsx
+<>
+  <Toaster id="statuses" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+      Critical toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+      Information toast
+    </Button>
+
+    <Button
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+      Neutral toast
+    </Button>
+
+    <Button
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+      Success toast
+    </Button>
+
+    <Button
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+      Warning toast
+    </Button>
+  </div>
+</>
+```
+
 ## Toggle
 
 # Toggle
@@ -21176,12 +21176,12 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Invalid
-- With Label
-- With Labels
-- Accessibility Label
-- Accessibility Aria Label
+- With label
+- With labels
+- Accessibility - Aria label
+- Accessibility - Label
 
 ## Documentation pages
 
@@ -21371,7 +21371,7 @@ _No specific property._
 </Toggle>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <>
@@ -21409,7 +21409,7 @@ _No specific property._
 </Toggle>
 ```
 
-## With Label
+## With label
 
 ```tsx
 <Toggle>
@@ -21421,7 +21421,7 @@ _No specific property._
 </Toggle>
 ```
 
-## With Labels
+## With labels
 
 ```tsx
 <Toggle withLabels>
@@ -21429,19 +21429,7 @@ _No specific property._
 </Toggle>
 ```
 
-## Accessibility Label
-
-```tsx
-<Toggle>
-  <ToggleControl />
-
-  <ToggleLabel>
-    Enable dark mode
-  </ToggleLabel>
-</Toggle>
-```
-
-## Accessibility Aria Label
+## Accessibility - Aria label
 
 ```tsx
 <Toggle aria-label="Enable dark mode">
@@ -21449,6 +21437,18 @@ _No specific property._
 
   <ToggleLabel>
     Dark mode
+  </ToggleLabel>
+</Toggle>
+```
+
+## Accessibility - Label
+
+```tsx
+<Toggle>
+  <ToggleControl />
+
+  <ToggleLabel>
+    Enable dark mode
   </ToggleLabel>
 </Toggle>
 ```
@@ -21473,12 +21473,12 @@ _**Tooltip** component is used to display contextual information when the user h
 
 ## Examples
 
-- Controlled
-- Custom Trigger
 - Default
+- Controlled
+- Custom trigger
 - Grid
-- Accessibility Tooltip
-- ZIndex
+- Z index
+- Accessibility - Tooltip
 
 ## Documentation pages
 
@@ -21668,6 +21668,20 @@ This component extends all the native `<button>` attributes.
 
 # Tooltip
 
+## Default
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
 ## Controlled
 
 ```tsx
@@ -21700,7 +21714,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Custom Trigger
+## Custom trigger
 
 ```tsx
 <Tooltip>
@@ -21708,20 +21722,6 @@ This component extends all the native `<button>` attributes.
     <Icon
       name={ ICON_NAME.circleQuestion }
       style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
-```
-
-## Default
-
-```tsx
-<Tooltip>
-  <TooltipTrigger>
-    Show tooltip
   </TooltipTrigger>
 
   <TooltipContent>
@@ -21810,25 +21810,7 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      aria-label="Open tooltip"
-      name={ ICON_NAME.circleInfo }
-      role="img"
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    Some additional context.
-  </TooltipContent>
-</Tooltip>
-```
-
-## ZIndex
+## Z index
 
 ```tsx
 <>
@@ -21885,6 +21867,24 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility - Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    Some additional context.
+  </TooltipContent>
+</Tooltip>
+```
+
 ## Tree View
 
 # Tree View
@@ -21906,15 +21906,15 @@ This component extends all the native `<button>` attributes.
 ## Examples
 
 - Default
-- Multiple
-- Default Expanded Value
 - Controlled
-- Controlled Multiple
+- Controlled multiple
+- Custom render
+- Default expanded value
 - Disabled
-- Disabled Items
-- Custom Render
-- In Form Field
-- Dynamic Children
+- Disabled items
+- Dynamic children
+- In form field
+- Multiple
 
 ## Documentation pages
 
@@ -22122,82 +22122,6 @@ _No specific property._
   }
 ```
 
-## Multiple
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        items={ items }
-        multiple>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    )
-  }
-```
-
-## Default Expanded Value
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        defaultExpandedValue={["src", "components"]}
-        items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
 ## Controlled
 
 ```tsx
@@ -22241,7 +22165,7 @@ _No specific property._
   }
 ```
 
-## Controlled Multiple
+## Controlled multiple
 
 ```tsx
 {
@@ -22285,82 +22209,7 @@ _No specific property._
   }
 ```
 
-## Disabled
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        disabled
-        items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
-## Disabled Items
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts', disabled: true },
-          {
-            id: 'components',
-            name: 'components',
-            disabled: true,
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json', disabled: true },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
-## Custom Render
+## Custom render
 
 ```tsx
 {
@@ -22403,7 +22252,7 @@ _No specific property._
   }
 ```
 
-## In Form Field
+## Default expanded value
 
 ```tsx
 {
@@ -22428,21 +22277,95 @@ _No specific property._
       { id: 'readme.md', name: 'README.md' },
     ];
     return (
-      <FormField>
-        <FormFieldLabel>Choose a file</FormFieldLabel>
-        <TreeView items={ items }>
-          <TreeViewNodes>
-            { items.map((item) => (
-              <TreeViewNode key={ item.id } item={ item } />
-            )) }
-          </TreeViewNodes>
-        </TreeView>
-      </FormField>
+      <TreeView
+        defaultExpandedValue={["src", "components"]}
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
     );
   }
 ```
 
-## Dynamic Children
+## Disabled
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        disabled
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
+## Disabled items
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts', disabled: true },
+          {
+            id: 'components',
+            name: 'components',
+            disabled: true,
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json', disabled: true },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
+## Dynamic children
 
 ```tsx
 {
@@ -22552,6 +22475,83 @@ _No specific property._
         </TreeView>
       </div>
     );
+  }
+```
+
+## In form field
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <FormField>
+        <FormFieldLabel>Choose a file</FormFieldLabel>
+        <TreeView items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+      </FormField>
+    );
+  }
+```
+
+## Multiple
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        items={ items }
+        multiple>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    )
   }
 ```
 

@@ -25,11 +25,11 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 ## Examples
 
 - Default
-- Multiple
-- Disabled
-- Item Disabled
 - Controlled
-- Expand Icon Position Example
+- Disabled
+- Expand icon position example
+- Item disabled
+- Multiple
 
 ## Documentation pages
 

@@ -12,6 +12,18 @@
   gap: 16px;
 }
 
+/* Component page: as many columns as recipes, capped at 2 (set inline). */
+.recipes__grid--related {
+  grid-template-columns: repeat(var(--recipes-columns), minmax(0, 1fr));
+}
+
+/* Narrow layout (≤1000px, cf. shell.css): one recipe per row. */
+@media (max-width: 1000px) {
+  .recipes__grid--related {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .recipes__grid__empty {
   display: flex;
   grid-column: 1 / -1;

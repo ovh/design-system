@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: examples
 version: 19.7.3
-tokens: 1769
+tokens: 1770
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--examples.txt
 ---
 
@@ -48,131 +48,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 </Combobox>
 ```
 
-## Custom Filter
-
-```tsx
-<Combobox
-  customFilter={ (label, inputValue) => {
-    const reversedLabel = label.split('').reverse().join('');
-    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
-  }}
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Search from right to left in each word" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Disabled
-
-```tsx
-<Combobox
-  disabled
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Readonly
-
-```tsx
-<Combobox
-  defaultValue={ ['parrot'] }
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}
-  readOnly>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## Group
-
-```tsx
-<Combobox
-  items={[
-    {
-      label: 'Europe',
-      options: [
-        { label: 'France', value: 'fr' },
-        { label: 'Germany', value: 'de' },
-        { label: 'Italy', value: 'it' },
-      ],
-    },
-    {
-      label: 'Asia',
-      options: [
-        { label: 'China', value: 'cn' },
-        { label: 'Japan', value: 'jp' },
-        { label: 'Russia', value: 'ru' },
-      ],
-    },
-    { label: 'World', value: 'world' },
-  ]}>
-  <ComboboxControl placeholder="Combobox" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Combobox
-  </FormFieldLabel>
-
-  <Combobox
-    items={[
-      { label: 'Dog', value: 'dog' },
-      { label: 'Cat', value: 'cat' },
-    ]}>
-    <ComboboxControl />
-
-    <ComboboxContent />
-  </Combobox>
-</FormField>
-```
-
-## Invalid
-
-```tsx
-<Combobox
-  invalid
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-  ]}>
-  <ComboboxControl />
-
-  <ComboboxContent />
-</Combobox>
-```
-
 ## Controlled
 
 ```tsx
@@ -204,11 +79,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
   }
 ```
 
-## Highlight
+## Custom filter
 
 ```tsx
 <Combobox
-  highlightResults
+  customFilter={ (label, inputValue) => {
+    const reversedLabel = label.split('').reverse().join('');
+    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+  }}
   items={[
     { label: 'Dog', value: 'dog' },
     { label: 'Cat', value: 'cat' },
@@ -217,13 +95,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
     { label: 'Spider', value: 'spider' },
     { label: 'Goldfish', value: 'goldfish' },
   ]}>
-  <ComboboxControl />
+  <ComboboxControl placeholder="Search from right to left in each word" />
 
   <ComboboxContent />
 </Combobox>
 ```
 
-## Custom Options
+## Custom options
 
 ```tsx
 {
@@ -261,10 +139,112 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
   }
 ```
 
+## Disabled
+
+```tsx
+<Combobox
+  disabled
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
 ## Empty
 
 ```tsx
 <Combobox items={ [] }>
+  <ComboboxControl />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Group
+
+```tsx
+<Combobox
+  items={[
+    {
+      label: 'Europe',
+      options: [
+        { label: 'France', value: 'fr' },
+        { label: 'Germany', value: 'de' },
+        { label: 'Italy', value: 'it' },
+      ],
+    },
+    {
+      label: 'Asia',
+      options: [
+        { label: 'China', value: 'cn' },
+        { label: 'Japan', value: 'jp' },
+        { label: 'Russia', value: 'ru' },
+      ],
+    },
+    { label: 'World', value: 'world' },
+  ]}>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Highlight
+
+```tsx
+<Combobox
+  highlightResults
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## In form field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Combobox
+  </FormFieldLabel>
+
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+    ]}>
+    <ComboboxControl />
+
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+## Invalid
+
+```tsx
+<Combobox
+  invalid
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+  ]}>
   <ComboboxControl />
 
   <ComboboxContent />
@@ -290,7 +270,27 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 </Combobox>
 ```
 
-## Accessibility Form Field
+## Readonly
+
+```tsx
+<Combobox
+  defaultValue={ ['parrot'] }
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}
+  readOnly>
+  <ComboboxControl placeholder="Combobox" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -314,7 +314,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <FormField>

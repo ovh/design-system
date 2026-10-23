@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: overview
 version: 19.7.3
-tokens: 212
+tokens: 214
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner.txt
 ---
 
@@ -21,12 +21,12 @@ _A visual indicator that a process is happening in the background but the interf
 
 ## Examples
 
-- Color
 - Default
+- Color
 - Size
-- Accessibility Aria Busy Aria Live
-- Accessibility Aria Label
-- Accessibility Aria Labelled By
+- Accessibility - Aria busy aria live
+- Accessibility - Aria label
+- Accessibility - Aria labelled by
 
 ## Documentation pages
 

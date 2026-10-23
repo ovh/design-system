@@ -4,26 +4,18 @@ slug: phone-number
 category: component
 type: examples
 version: 19.7.3
-tokens: 620
+tokens: 621
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--examples.txt
 ---
 
 # Phone Number
 
-## Accessibility Label
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
+<PhoneNumber>
+  <PhoneNumberControl />
+</PhoneNumber>
 ```
 
 ## Clearable
@@ -42,7 +34,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## Country List
+## Country list
 
 ```tsx
 <>
@@ -64,14 +56,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## Default
-
-```tsx
-<PhoneNumber>
-  <PhoneNumberControl />
-</PhoneNumber>
-```
-
 ## Disabled
 
 ```tsx
@@ -88,7 +72,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## In Form Field
+## In form field
 
 ```tsx
 <FormField>
@@ -154,7 +138,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## Accessibility Form Field
+## Accessibility - Form field
 
 ```tsx
 <FormField>
@@ -170,7 +154,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </FormField>
 ```
 
-## Accessibility I18n
+## Accessibility - I18n
 
 ```tsx
 <FormField>
@@ -187,6 +171,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
     <PhoneNumberCountryList />
 
     <PhoneNumberControl clearable />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility - Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
   </PhoneNumber>
 </FormField>
 ```

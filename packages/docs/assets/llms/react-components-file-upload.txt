@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: overview
 version: 19.7.3
-tokens: 563
+tokens: 564
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload.txt
 ---
 
@@ -36,17 +36,17 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 
 ## Examples
 
-- Accept
-- Accessibility File Button
-- Compact
-- Custom Labels
 - Default
+- Accept
+- Compact
+- Custom labels
 - Disabled
-- Max File
-- Max Size
+- In form field
+- Max file
+- Max size
 - Upload
-- In Form Field
-- Accessibility Form Field
+- Accessibility - File button
+- Accessibility - Form field
 
 ## Documentation pages
 

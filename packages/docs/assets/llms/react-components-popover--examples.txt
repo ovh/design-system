@@ -10,6 +10,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 
 # Popover
 
+## Default
+
+```tsx
+<Popover>
+  <PopoverTrigger>
+    Show popover
+  </PopoverTrigger>
+
+  <PopoverContent>
+    This is the popover content
+  </PopoverContent>
+</Popover>
+```
+
 ## Controlled
 
 ```tsx
@@ -40,7 +54,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
   }
 ```
 
-## Custom Trigger
+## Custom trigger
 
 ```tsx
 <Popover>
@@ -48,20 +62,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
     <Button>
       Custom Trigger
     </Button>
-  </PopoverTrigger>
-
-  <PopoverContent>
-    This is the popover content
-  </PopoverContent>
-</Popover>
-```
-
-## Default
-
-```tsx
-<Popover>
-  <PopoverTrigger>
-    Show popover
   </PopoverTrigger>
 
   <PopoverContent>
@@ -150,50 +150,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 </>
 ```
 
-## Accessibility With Menu
-
-```tsx
-<Popover>
-  <PopoverTrigger
-    aria-haspopup="menu"
-    asChild>
-    <Button aria-label="Profile">
-      <Icon name={ ICON_NAME.ellipsisVertical } />
-    </Button>
-  </PopoverTrigger>
-
-  <PopoverContent
-    aria-label="Profile menu"
-    withArrow>
-    <div
-      role="menu"
-      style={{ display: 'flex', flexDirection: 'column' }}>
-      <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Information
-      </Button>
-
-      <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Notifications
-      </Button>
-
-      <Divider style={{ width: '100%' }} />
-
-      <Button
-        status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
-        Sign out
-      </Button>
-    </div>
-  </PopoverContent>
-</Popover>
-```
-
-## Same Width
+## Same width
 
 ```tsx
 <Popover overlayConfig={{ sameWidth: true }}>
@@ -207,7 +164,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 </Popover>
 ```
 
-## ZIndex
+## Z index
 
 ```tsx
 <>
@@ -262,4 +219,47 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
     </PopoverContent>
   </Popover>
 </>
+```
+
+## Accessibility - With menu
+
+```tsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild>
+    <Button aria-label="Profile">
+      <Icon name={ ICON_NAME.ellipsisVertical } />
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow>
+    <div
+      role="menu"
+      style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Information
+      </Button>
+
+      <Button
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Notifications
+      </Button>
+
+      <Divider style={{ width: '100%' }} />
+
+      <Button
+        status={ BUTTON_STATUS.critical }
+        role="menuitem"
+        variant={ BUTTON_VARIANT.ghost }>
+        Sign out
+      </Button>
+    </div>
+  </PopoverContent>
+</Popover>
 ```

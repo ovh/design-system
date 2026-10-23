@@ -10,14 +10,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
 
 # Table
 
-## Custom Caption
+## Default
 
 ```tsx
 <Table>
   <caption>
-    <Text preset={ TEXT_PRESET.caption }>
-      Front-end web developer course 2021
-    </Text>
+    Front-end web developer course 2021
   </caption>
   <thead>
   <tr>
@@ -51,12 +49,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
 </Table>
 ```
 
-## Default
+## Custom caption
 
 ```tsx
 <Table>
   <caption>
-    Front-end web developer course 2021
+    <Text preset={ TEXT_PRESET.caption }>
+      Front-end web developer course 2021
+    </Text>
   </caption>
   <thead>
   <tr>

@@ -26,9 +26,9 @@ _A **Radio** button allows users to select only one option from a number of choi
 ## Examples
 
 - Default
-- Disabled Group
-- Disabled Item
-- In Form Field
+- Disabled group
+- Disabled item
+- In form field
 - Invalid
 - Orientation
 

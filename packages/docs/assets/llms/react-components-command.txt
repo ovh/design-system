@@ -4,7 +4,7 @@ slug: command
 category: component
 type: overview
 version: 19.7.3
-tokens: 492
+tokens: 494
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command.txt
 ---
 
@@ -31,15 +31,15 @@ _The **Command** component provides a fast and efficient way to search, filter, 
 
 - Default
 - Controlled
-- Controlled Filtering
-- With Shortcuts
-- With On Select
-- Without Filter
-- Empty State
-- Accessibility Labels
-- Accessibility Filter Label
-- Accessibility Group Names
-- Accessibility Disabled Option
+- Controlled filtering
+- Empty state
+- With on select
+- Without filter
+- With shortcuts
+- Accessibility - Disabled option
+- Accessibility - Filter label
+- Accessibility - Group names
+- Accessibility - Labels
 
 ## Documentation pages
 

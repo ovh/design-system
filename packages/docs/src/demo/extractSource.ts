@@ -122,6 +122,42 @@ function dedent(code: string): string {
    emission skip them, from this single list. */
 const EXCLUDED_STORIES = new Set(['AnatomyTech', 'Overview', 'ThemeGenerator', 'Demo']);
 
+/* Example order, shared by the Examples tab and the llms emission: "Default"
+   first, "Accessibility*" stories last (the bad practices behind all the
+   others), everything else alphabetical. */
+const storyRank = (name: string): number => {
+  if (name === 'Default') {
+    return 0;
+  }
+  if (name.startsWith('AccessibilityBadPractice')) {
+    return 3;
+  }
+  return name.startsWith('Accessibility') ? 2 : 1;
+};
+
+const compareStoryNames = (a: string, b: string): number => storyRank(a) - storyRank(b) || a.localeCompare(b);
+
+/* Visible example title from the story export name, shared by the Examples
+   tab, the gallery and the llms emission. Sentence case; "Accessibility*"
+   stories read "Accessibility - Label", and bad practices
+   "Accessibility - Bad practice : Label" (AccessibilityBadPracticeIconOnly). */
+const storyTitle = (name: string): string => {
+  const words = (value: string): string => {
+    const spaced = value.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
+    return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+  };
+  const accessibility = /^Accessibility(.+)$/.exec(name);
+
+  if (!accessibility) {
+    return words(name);
+  }
+
+  const badPractice = /^BadPractices?(.+)$/.exec(accessibility[1]);
+  return badPractice
+    ? `Accessibility - Bad practice : ${words(badPractice[1])}`
+    : `Accessibility - ${words(accessibility[1])}`;
+};
+
 function extractStorySources(fileSource: string): Record<string, string> {
   const sources: Record<string, string> = {};
   const storyRe = /export const (\w+)(?::[^=]+)?=\s*(?:{|\()/g;
@@ -150,4 +186,4 @@ function extractStorySources(fileSource: string): Record<string, string> {
   return sources;
 }
 
-export { EXCLUDED_STORIES, extractStorySources };
+export { EXCLUDED_STORIES, compareStoryNames, extractStorySources, storyTitle };

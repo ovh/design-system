@@ -1,5 +1,8 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { flashSearchTerms } from './searchHighlight';
+import { createUniqueSlugs } from './slug';
 
 interface TocEntry {
   id: string;
@@ -28,6 +31,23 @@ function toTocItems(entries: TocEntry[]): TocItem[] {
   return items;
 }
 
+/* Headings render their slug as id; a repeated label would give duplicate ids.
+   Rename the repeats in document order (same rule as the search index) and keep
+   each hover anchor in sync. The original slug is kept in data-slug, so the pass
+   is idempotent when lazy content mounts later. */
+function dedupeHeadingIds(container: HTMLElement): void {
+  const unique = createUniqueSlugs();
+  container.querySelectorAll<HTMLElement>('.doc__heading[id]').forEach((heading) => {
+    const slug = heading.dataset.slug ?? heading.id;
+    heading.dataset.slug = slug;
+    const id = unique(slug);
+    if (heading.id !== id) {
+      heading.id = id;
+      heading.parentElement?.querySelector<HTMLAnchorElement>('.doc__anchor')?.setAttribute('href', `#${id}`);
+    }
+  });
+}
+
 /* "On this page" — the page's own section titles, in the same TreeView as
    the sidebar. Headings render with slugified ids (Heading contract); the
    MDX content mounts lazily, so the list is (re)collected through a
@@ -42,6 +62,9 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
       return;
     }
     const collect = () => {
+      // This child effect runs before DocArticle's own dedupe pass, and an id
+      // rename is no childList mutation: dedupe first so the links get the final ids.
+      dedupeHeadingIds(container);
       const found = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
         id: el.id,
         label: el.textContent ?? '',
@@ -57,13 +80,13 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   }, [container]);
 
   /* Scroll-spy: select the heading the reader is currently on. Reads the
-     scroll container (the shell main pane) and picks the last heading that
+     scroll container (the shell content pane) and picks the last heading that
      crossed the trigger line near the top. */
   useEffect(() => {
     if (!container || entries.length < 2) {
       return;
     }
-    const scroller = container.closest<HTMLElement>('.shell__main') ?? document.documentElement;
+    const scroller = container.closest<HTMLElement>('.shell__content') ?? document.documentElement;
     const TRIGGER = 120;
     let frame = 0;
 
@@ -144,10 +167,83 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
 const DocArticle = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
+  const honoredHash = useRef<string>('');
 
   useEffect(() => {
     setContainer(ref.current);
   }, []);
+
+  // Declared before the hash effect: its observer runs first, so a deep link to a
+  // renamed heading ("#related-sources-2") finds it.
+  useEffect(() => {
+    if (!container) {
+      return;
+    }
+    dedupeHeadingIds(container);
+    const observer = new MutationObserver(() => dedupeHeadingIds(container));
+    observer.observe(container, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [container]);
+
+  /* Deep links to a section (#anchor): the MDX content mounts lazily, so the
+     browser's native jump fires before the heading exists — honor the hash
+     once the target actually lands in the DOM. Re-armed on every router
+     location change so SPA navigations (palette hits, in-content links) land
+     on their section too, not only full page loads. */
+  const location = useLocation();
+  useEffect(() => {
+    const wanted = location.hash.slice(1);
+    if (!container || !wanted) {
+      return;
+    }
+    const stamp = `${location.pathname}#${wanted}@${location.key}`;
+    if (honoredHash.current === stamp) {
+      return;
+    }
+    const jump = () => {
+      const target = document.getElementById(wanted);
+      if (target) {
+        honoredHash.current = stamp;
+        target.scrollIntoView();
+        observer.disconnect();
+      }
+    };
+    const observer = new MutationObserver(jump);
+    observer.observe(container, { childList: true, subtree: true });
+    jump();
+    return () => observer.disconnect();
+  }, [container, location]);
+
+  /* Palette content hits carry the query in the router state: once the lazy
+     content has settled (and the anchor target exists when there is one),
+     flash-highlight the searched terms so the eye lands on the match. */
+  useEffect(() => {
+    const terms = (location.state as { highlight?: string[] } | null)?.highlight;
+    if (!container || !terms?.length) {
+      return;
+    }
+    let done = false;
+    let clear: (() => void) | undefined;
+    const tryFlash = () => {
+      if (done) {
+        return;
+      }
+      const wanted = location.hash.slice(1);
+      // The 100-char floor tells the article apart from its loading skeleton.
+      if ((!wanted || document.getElementById(wanted)) && (container.textContent ?? '').length > 100) {
+        done = true;
+        observer.disconnect();
+        clear = flashSearchTerms(container, terms);
+      }
+    };
+    const observer = new MutationObserver(tryFlash);
+    observer.observe(container, { childList: true, subtree: true });
+    tryFlash();
+    return () => {
+      observer.disconnect();
+      clear?.();
+    };
+  }, [container, location]);
 
   return (
     <div className="doc-layout">

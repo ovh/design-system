@@ -4,7 +4,7 @@ slug: message
 category: component
 type: overview
 version: 19.7.3
-tokens: 329
+tokens: 330
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message.txt
 ---
 
@@ -26,14 +26,14 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 ## Examples
 
-- Accessibility Grouping
-- Accessibility Alternative Grouping
-- Accessibility Roles
-- Status
 - Default
 - Multiline
-- Non Dismissible
+- Non dismissible
+- Status
 - Variant
+- Accessibility - Alternative grouping
+- Accessibility - Grouping
+- Accessibility - Roles
 
 ## Documentation pages
 

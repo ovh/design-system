@@ -4,18 +4,16 @@ slug: pagination
 category: component
 type: examples
 version: 19.7.3
-tokens: 319
+tokens: 320
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--examples.txt
 ---
 
 # Pagination
 
-## Accessibility Label
+## Default
 
 ```tsx
-<Pagination
-  aria-label="Pagination"
-  totalItems={ 5000 }>
+<Pagination totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```
@@ -41,14 +39,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
   }
 ```
 
-## Default
-
-```tsx
-<Pagination totalItems={ 5000 }>
-  <PaginationPages />
-</Pagination>
-```
-
 ## Disabled
 
 ```tsx
@@ -59,7 +49,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 </Pagination>
 ```
 
-## Items Per Page
+## Items per page
 
 ```tsx
 <Pagination
@@ -69,7 +59,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 </Pagination>
 ```
 
-## Page Size Selection
+## Page size selection
 
 ```tsx
 <Pagination totalItems={ 500 }>
@@ -79,7 +69,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 </Pagination>
 ```
 
-## Sibling Count
+## Sibling count
 
 ```tsx
 <Pagination
@@ -90,13 +80,23 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 </Pagination>
 ```
 
-## With Tooltip Labels
+## With tooltip labels
 
 ```tsx
 <Pagination
   labelTooltipPrev="Go to previous page"
   labelTooltipNext="Go to next page"
   totalItems={ 500 }>
+  <PaginationPages />
+</Pagination>
+```
+
+## Accessibility - Label
+
+```tsx
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```

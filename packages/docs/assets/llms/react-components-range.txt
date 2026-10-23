@@ -4,7 +4,7 @@ slug: range
 category: component
 type: overview
 version: 19.7.3
-tokens: 562
+tokens: 563
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range.txt
 ---
 
@@ -34,16 +34,16 @@ _**Range** component is used to allow users to visually select one or more value
 
 ## Examples
 
-- Controlled
 - Default
+- Controlled
 - Disabled
-- In Form Field
-- Max Min
+- In form field
+- Max min
 - Step
 - Ticks
-- Ticks Labels
-- Accessibility Form Field
-- Accessibility Descriptive Sub Label
+- Ticks labels
+- Accessibility - Descriptive sub label
+- Accessibility - Form field
 
 ## Documentation pages
 

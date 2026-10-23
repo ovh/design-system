@@ -75,7 +75,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 219,
+          "tokens": 221,
           "url": "./react-components-badge.txt"
         },
         "documentation": {
@@ -90,7 +90,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 457,
+          "tokens": 459,
           "url": "./react-components-badge--examples.txt"
         }
       }
@@ -116,7 +116,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1077,
+          "tokens": 1078,
           "url": "./react-components-breadcrumb--examples.txt"
         }
       }
@@ -127,7 +127,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 353,
+          "tokens": 359,
           "url": "./react-components-button.txt"
         },
         "documentation": {
@@ -142,7 +142,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 779,
+          "tokens": 785,
           "url": "./react-components-button--examples.txt"
         }
       }
@@ -179,7 +179,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 202,
+          "tokens": 203,
           "url": "./react-components-card.txt"
         },
         "documentation": {
@@ -194,7 +194,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 420,
+          "tokens": 421,
           "url": "./react-components-card--examples.txt"
         }
       }
@@ -257,7 +257,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 292,
+          "tokens": 293,
           "url": "./react-components-clipboard.txt"
         },
         "documentation": {
@@ -309,7 +309,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 801,
+          "tokens": 802,
           "url": "./react-components-combobox.txt"
         },
         "documentation": {
@@ -324,7 +324,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1769,
+          "tokens": 1770,
           "url": "./react-components-combobox--examples.txt"
         }
       }
@@ -335,7 +335,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 492,
+          "tokens": 494,
           "url": "./react-components-command.txt"
         },
         "documentation": {
@@ -350,7 +350,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1963,
+          "tokens": 1965,
           "url": "./react-components-command--examples.txt"
         }
       }
@@ -376,7 +376,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 3903,
+          "tokens": 3904,
           "url": "./react-components-data-table--examples.txt"
         }
       }
@@ -387,7 +387,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 827,
+          "tokens": 828,
           "url": "./react-components-datepicker.txt"
         },
         "documentation": {
@@ -402,7 +402,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 590,
+          "tokens": 591,
           "url": "./react-components-datepicker--examples.txt"
         }
       }
@@ -439,7 +439,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 349,
+          "tokens": 350,
           "url": "./react-components-drawer.txt"
         },
         "documentation": {
@@ -454,7 +454,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 980,
+          "tokens": 981,
           "url": "./react-components-drawer--examples.txt"
         }
       }
@@ -517,7 +517,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 563,
+          "tokens": 564,
           "url": "./react-components-file-upload.txt"
         },
         "documentation": {
@@ -532,7 +532,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1940,
+          "tokens": 1941,
           "url": "./react-components-file-upload--examples.txt"
         }
       }
@@ -569,7 +569,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 984,
+          "tokens": 987,
           "url": "./react-components-icon.txt"
         },
         "documentation": {
@@ -584,7 +584,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 437,
+          "tokens": 440,
           "url": "./react-components-icon--examples.txt"
         }
       }
@@ -595,7 +595,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 472,
+          "tokens": 473,
           "url": "./react-components-input.txt"
         },
         "documentation": {
@@ -610,7 +610,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1601,
+          "tokens": 1602,
           "url": "./react-components-input--examples.txt"
         }
       }
@@ -647,7 +647,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 197,
+          "tokens": 199,
           "url": "./react-components-link.txt"
         },
         "documentation": {
@@ -662,7 +662,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 310,
+          "tokens": 312,
           "url": "./react-components-link--examples.txt"
         }
       }
@@ -673,7 +673,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 134,
+          "tokens": 135,
           "url": "./react-components-logo.txt"
         },
         "documentation": {
@@ -777,7 +777,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 329,
+          "tokens": 330,
           "url": "./react-components-message.txt"
         },
         "documentation": {
@@ -792,7 +792,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1108,
+          "tokens": 1109,
           "url": "./react-components-message--examples.txt"
         }
       }
@@ -829,7 +829,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 261,
+          "tokens": 263,
           "url": "./react-components-meter.txt"
         },
         "documentation": {
@@ -844,7 +844,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 296,
+          "tokens": 297,
           "url": "./react-components-meter--examples.txt"
         }
       }
@@ -855,7 +855,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 480,
+          "tokens": 482,
           "url": "./react-components-modal.txt"
         },
         "documentation": {
@@ -870,7 +870,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1153,
+          "tokens": 1156,
           "url": "./react-components-modal--examples.txt"
         }
       }
@@ -896,7 +896,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 319,
+          "tokens": 320,
           "url": "./react-components-pagination--examples.txt"
         }
       }
@@ -907,7 +907,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 332,
+          "tokens": 334,
           "url": "./react-components-password.txt"
         },
         "documentation": {
@@ -922,7 +922,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 233,
+          "tokens": 235,
           "url": "./react-components-password--examples.txt"
         }
       }
@@ -933,7 +933,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 1368,
+          "tokens": 1369,
           "url": "./react-components-phone-number.txt"
         },
         "documentation": {
@@ -948,7 +948,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 620,
+          "tokens": 621,
           "url": "./react-components-phone-number--examples.txt"
         }
       }
@@ -959,7 +959,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 429,
+          "tokens": 430,
           "url": "./react-components-popover.txt"
         },
         "documentation": {
@@ -985,7 +985,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 191,
+          "tokens": 192,
           "url": "./react-components-progress-bar.txt"
         },
         "documentation": {
@@ -1000,7 +1000,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 77,
+          "tokens": 78,
           "url": "./react-components-progress-bar--examples.txt"
         }
       }
@@ -1011,7 +1011,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 509,
+          "tokens": 511,
           "url": "./react-components-prompt-input.txt"
         },
         "documentation": {
@@ -1026,7 +1026,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1142,
+          "tokens": 1144,
           "url": "./react-components-prompt-input--examples.txt"
         }
       }
@@ -1037,7 +1037,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 389,
+          "tokens": 390,
           "url": "./react-components-quantity.txt"
         },
         "documentation": {
@@ -1063,7 +1063,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 685,
+          "tokens": 686,
           "url": "./react-components-query-filter.txt"
         },
         "documentation": {
@@ -1078,7 +1078,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 819,
+          "tokens": 820,
           "url": "./react-components-query-filter--examples.txt"
         }
       }
@@ -1115,7 +1115,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 562,
+          "tokens": 563,
           "url": "./react-components-range.txt"
         },
         "documentation": {
@@ -1130,7 +1130,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 772,
+          "tokens": 773,
           "url": "./react-components-range--examples.txt"
         }
       }
@@ -1167,7 +1167,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 109,
+          "tokens": 111,
           "url": "./react-components-skeleton.txt"
         },
         "documentation": {
@@ -1182,7 +1182,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 53,
+          "tokens": 54,
           "url": "./react-components-skeleton--examples.txt"
         }
       }
@@ -1193,7 +1193,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 212,
+          "tokens": 214,
           "url": "./react-components-spinner.txt"
         },
         "documentation": {
@@ -1208,7 +1208,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 190,
+          "tokens": 192,
           "url": "./react-components-spinner--examples.txt"
         }
       }
@@ -1219,7 +1219,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 263,
+          "tokens": 264,
           "url": "./react-components-switch.txt"
         },
         "documentation": {
@@ -1234,7 +1234,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 408,
+          "tokens": 409,
           "url": "./react-components-switch--examples.txt"
         }
       }
@@ -1297,7 +1297,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 1053,
+          "tokens": 1055,
           "url": "./react-components-tag.txt"
         },
         "documentation": {
@@ -1312,7 +1312,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 301,
+          "tokens": 303,
           "url": "./react-components-tag--examples.txt"
         }
       }
@@ -1349,7 +1349,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 157,
+          "tokens": 158,
           "url": "./react-components-textarea.txt"
         },
         "documentation": {
@@ -1364,7 +1364,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 359,
+          "tokens": 360,
           "url": "./react-components-textarea--examples.txt"
         }
       }
@@ -1401,7 +1401,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 622,
+          "tokens": 623,
           "url": "./react-components-timepicker.txt"
         },
         "documentation": {
@@ -1453,7 +1453,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 306,
+          "tokens": 307,
           "url": "./react-components-toggle.txt"
         },
         "documentation": {
@@ -1468,7 +1468,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 277,
+          "tokens": 278,
           "url": "./react-components-toggle--examples.txt"
         }
       }
@@ -1479,7 +1479,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 325,
+          "tokens": 326,
           "url": "./react-components-tooltip.txt"
         },
         "documentation": {
@@ -1494,7 +1494,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1057,
+          "tokens": 1058,
           "url": "./react-components-tooltip--examples.txt"
         }
       }

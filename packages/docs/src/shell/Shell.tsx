@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
-import { BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
+import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Divider } from '../../../ods-react/src/components/divider/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { APP_ROOT } from '../appBase';
+import { llmsFileFor } from '../doc/llmsFile';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
@@ -37,13 +40,14 @@ const useNarrow = () => {
 
 /* One sidebar tree. Selection is bound to the active page id; a tree that
    doesn't contain it simply shows nothing selected. */
-const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
+const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
   currentId?: string;
   expanded: string[];
   nodes: (NavSection | NavPage)[];
   onNavigate: (id: string) => void;
+  sectionIcons?: boolean;
 }) => {
-  const items = toTreeItems(nodes);
+  const items = toTreeItems(nodes, sectionIcons);
   return (
     <TreeView
       defaultExpandedValue={ expanded }
@@ -58,7 +62,7 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ isBranch ? 'shell__tree-label shell__tree-label--section' : 'shell__tree-label' }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', sectionIcons && 'shell__tree-label--tight'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
@@ -89,11 +93,13 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     </RouterLink>
 
     <div className="shell__upper-controls">
-      <BrandSelect />
+      <div className="shell__version-select">
+        <VersionSelect />
+      </div>
 
       <div className="shell__sidebar-selects">
+        <BrandSelect />
         <ThemeSelect />
-        <VersionSelect />
       </div>
 
       <button className="shell__search-hint" onClick={onSearch} type="button">
@@ -107,7 +113,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     </div>
     
     <nav aria-label="Documentation" className="shell__nav">
-      <NavTree currentId={ currentId } expanded={ ['tools'] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
+      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } sectionIcons />
       <Divider className="shell__tree-divider" />
       <Text className="shell__tree-dividerd" preset={ TEXT_PRESET.paragraph }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
@@ -123,6 +129,41 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
 
 const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
+};
+
+/* Opens the current page's llms markdown — the exact file the AI toolchain
+   consumes — in a new tab. Hidden on pages that emit no llms document (the
+   route mapping and its exclusions: llmsFile.ts). */
+const MarkdownLink = ({ pathname }: { pathname: string }) => {
+  const file = llmsFileFor(pathname);
+
+  if (!file) {
+    return null;
+  }
+
+  const href = new URL(`llms/${file}`, APP_ROOT).href;
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          className="shell__llms-link"
+          data-href={ href }
+          data-testid="view-as-markdown"
+          onClick={ () => window.open(href, '_blank', 'noopener,noreferrer') }
+          size={ BUTTON_SIZE.sm }
+          variant={ BUTTON_VARIANT.outline }>
+          { /* Same icon as the AI Agents nav section: this IS the machine-
+               readable face of the page. */ }
+          <Icon name={ ICON_NAME.robot } />
+          View as Markdown
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        Opens the Markdown version of this page, made for LLMs, in a new tab
+      </TooltipContent>
+    </Tooltip>
+  );
 };
 
 const Shell = () => {
@@ -145,6 +186,11 @@ const Shell = () => {
   // still highlight their page in the tree.
   const currentPage = pages.find((page) => page.path === location.pathname)
     ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
+  // Doc pages center their content column: the topbar follows it.
+  const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper';
+  // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
+  // keep it, since it holds the navigation drawer button.
+  const isWelcome = location.pathname === '/' && !isNarrow;
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
@@ -205,19 +251,22 @@ const Shell = () => {
       ) }
 
       <div className="shell__main">
-        <header className="shell__topbar">
-          { isNarrow && (
-            <Button
-              aria-label="Open navigation"
-              className="shell__menu-button"
-              status={ BUTTON_STATUS.neutral }
-              onClick={ () => setNavOpen(true) }
-              variant={ BUTTON_VARIANT.ghost }>
-              <Icon name={ ICON_NAME.hamburgerMenu } />
-            </Button>
-          ) }
-          <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
-        </header>
+        { !isWelcome && (
+          <header className={ isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
+            { isNarrow && (
+              <Button
+                aria-label="Open navigation"
+                className="shell__menu-button"
+                status={ BUTTON_STATUS.neutral }
+                onClick={ () => setNavOpen(true) }
+                variant={ BUTTON_VARIANT.ghost }>
+                <Icon name={ ICON_NAME.hamburgerMenu } />
+              </Button>
+            ) }
+            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
+            <MarkdownLink pathname={ location.pathname } />
+          </header>
+        ) }
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />

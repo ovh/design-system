@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: overview
 version: 19.7.3
-tokens: 306
+tokens: 307
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle.txt
 ---
 
@@ -27,12 +27,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 
 - Default
 - Disabled
-- In Form Field
+- In form field
 - Invalid
-- With Label
-- With Labels
-- Accessibility Label
-- Accessibility Aria Label
+- With label
+- With labels
+- Accessibility - Aria label
+- Accessibility - Label
 
 ## Documentation pages
 

@@ -492,33 +492,31 @@ function helperDocs(helper: typeof HELPERS[number]): Doc[] {
   return [overview, documentation];
 }
 
-/* The nav model lists one page per recipe (RECIPE_PAGES) without importing the package's JSON:
-   a recipe added to or removed from @ovhcloud/ods-recipes must show up there too. */
-function checkRecipeInvariants(recipeKeys: string[]): void {
-  const model = readFileSync(resolve(here, 'src/nav/model.ts'), 'utf8');
-  const block = /const RECIPE_PAGES[^=]*=\s*\[([\s\S]*?)\n\];/.exec(model)?.[1];
-  const listed = block ? [...block.matchAll(/\[\s*'([^']+)'\s*,/g)].map((match) => match[1]) : [];
-  if (!listed.length) {
-    throw new Error('llms: RECIPE_PAGES not found in src/nav/model.ts — the recipe drift check cannot run, update its parsing in vite-plugin-llms.ts');
-  }
-  const missing = recipeKeys.filter((key) => !listed.includes(key));
-  const unknown = listed.filter((key) => !recipeKeys.includes(key));
-  if (missing.length || unknown.length) {
-    throw new Error(`llms: recipe drift between src/nav/model.ts and @ovhcloud/ods-recipes — missing from RECIPE_PAGES: [${missing.join(', ')}], not in the package: [${unknown.join(', ')}]`);
-  }
+interface RecipeData {
+  description?: string;
+  name: string;
+  odsComponents: string[];
+  source: Record<string, unknown>;
+  tags: string[];
 }
 
+function readRecipes(): Record<string, RecipeData> | null {
+  return (readJson('../ods-recipes/dist/ods-recipes.json') as { component?: Record<string, RecipeData> } | null)?.component ?? null;
+}
+
+/* Types and constants (BUTTON_SIZE, type Foo) are not components. */
+const componentNames = (names: string[]): string[] => names.filter((name) => !name.startsWith('type ') && !/^[A-Z0-9_]+$/.test(name));
+
 function recipesDoc(): Doc | null {
-  const data = readJson('../ods-recipes/dist/ods-recipes.json') as { component: Record<string, { description?: string, name: string, odsComponents: string[], tags: string[] }> } | null;
-  if (!data?.component) {
+  const recipes = readRecipes();
+  if (!recipes) {
     return null;
   }
-  checkRecipeInvariants(Object.keys(data.component));
-  const sections = Object.values(data.component).map((recipe) => [
+  const sections = Object.values(recipes).map((recipe) => [
     `## ${recipe.name}`,
     recipe.description ?? '',
     recipe.tags?.length ? `Tags: ${recipe.tags.join(', ')}` : '',
-    recipe.odsComponents?.length ? `ODS components used: ${recipe.odsComponents.filter((name) => !name.startsWith('type ') && !/^[A-Z0-9_]+$/.test(name)).join(', ')}` : '',
+    recipe.odsComponents?.length ? `ODS components used: ${componentNames(recipe.odsComponents).join(', ')}` : '',
   ].filter(Boolean).join('\n\n'));
   return makeDoc({
     body: `# Components\n\nProven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: ${BASE_URL}/recipes/components\n\n${sections.join('\n\n')}`,

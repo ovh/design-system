@@ -166,7 +166,7 @@ const RecipePage = ({ recipeKey }: { recipeKey: string }) => {
 
       <Heading label="Source code" level={ 2 } />
       <div className={ styles['recipe-page__block'] }>
-        <RecipeSource recipe={ recipe } withReadme={ false } />
+        <RecipeSource recipe={ recipe } />
       </div>
     </DocArticle>
   );

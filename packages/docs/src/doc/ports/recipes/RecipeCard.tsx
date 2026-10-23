@@ -4,7 +4,6 @@ import langCss from '@shikijs/langs/css';
 import langScss from '@shikijs/langs/scss';
 import langTsx from '@shikijs/langs/tsx';
 import theme from '@shikijs/themes/nord';
-import Markdown from 'markdown-to-jsx';
 import { type ComponentType, memo, useMemo, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { CARD_STATUS, Card } from '../../../../../ods-react/src/components/card/src';
@@ -17,7 +16,7 @@ import styles from './recipeCard.module.css';
 
 type Recipe = ComponentMetadataWithSources;
 type ShikiLang = typeof langCss | typeof langScss | typeof langTsx;
-interface CodeTab { code: string; ext?: string; filename: string; isMarkdown?: boolean; lang: ShikiLang }
+interface CodeTab { code: string; ext?: string; filename: string; lang: ShikiLang }
 
 const STYLE_MODE_ITEMS: SelectItem<Record<string, Source>>[] = [
   { label: 'CSS Modules', value: SOURCE.cssModules },
@@ -55,9 +54,8 @@ const RecipePreview = ({ recipe }: { recipe: Recipe }) => {
   );
 };
 
-/* The recipe's source: one tab per file, and a styling-mode switch when several exist. The README
-   is a tab unless the caller shows it elsewhere (withReadme={ false }). */
-const RecipeSource = ({ recipe, withReadme = true }: { recipe: Recipe, withReadme?: boolean }) => {
+/* The recipe's source: one tab per file, and a styling-mode switch when several exist. */
+const RecipeSource = ({ recipe }: { recipe: Recipe }) => {
   const [mode, setMode] = useState<Source>(SOURCE.cssModules);
 
   const styleModeItems = useMemo(
@@ -69,7 +67,7 @@ const RecipeSource = ({ recipe, withReadme = true }: { recipe: Recipe, withReadm
     if (!modeSource) {
       return [];
     }
-    const files: CodeTab[] = Object.entries(modeSource as Record<string, string>)
+    return Object.entries(modeSource as Record<string, string>)
       .map(([filename, code]) => ({ code, ext: extOf(filename), filename, lang: langOf(filename) }))
       .sort((a, b) => {
         // index.tsx is the entry point: always the first (and default) tab.
@@ -81,12 +79,7 @@ const RecipeSource = ({ recipe, withReadme = true }: { recipe: Recipe, withReadm
         }
         return (extRank(a.ext ?? '') - extRank(b.ext ?? '')) || a.filename.localeCompare(b.filename);
       });
-    const readme = (recipe.source as Record<string, string>)[SOURCE.readMe];
-    if (withReadme && readme) {
-      files.push({ code: readme, filename: 'README', isMarkdown: true, lang: langTsx });
-    }
-    return files;
-  }, [mode, recipe, withReadme]);
+  }, [mode, recipe]);
 
   return (
     <div className={ styles['recipe-card__inner__code'] }>
@@ -108,11 +101,7 @@ const RecipeSource = ({ recipe, withReadme = true }: { recipe: Recipe, withReadm
 
           { tabs.map((tab) => (
             <TabContent className={ styles['recipe-card__inner__code__panel'] } key={ tab.filename } value={ tab.filename }>
-              { tab.isMarkdown ? (
-                <div className={ styles['recipe-card__inner__code__panel__markdown'] }><Markdown>{ tab.code }</Markdown></div>
-              ) : (
-                <Code canCopy className={ styles['recipe-card__inner__code__panel__editor'] } highlighter={{ language: tab.lang, theme }}>{ tab.code }</Code>
-              ) }
+              <Code canCopy className={ styles['recipe-card__inner__code__panel__editor'] } highlighter={{ language: tab.lang, theme }}>{ tab.code }</Code>
             </TabContent>
           )) }
         </Tabs>

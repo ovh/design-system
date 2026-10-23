@@ -6,8 +6,10 @@ import { makeChecker } from './helpers.mjs';
 
 const CASES = [
   { alignedPopup: true, component: 'select', trigger: '[data-part="trigger"]' },
-  // The combobox popup aligns on its control, not on the inner input.
-  { alignedPopup: false, component: 'combobox', trigger: 'input:not([disabled])' },
+  // The combobox popup aligns on its control, not on the inner input. Its
+  // highlighted option is kept in view (WCAG 2.4.11), so keyboard navigation
+  // scrolls the page when the list runs below the fold, by design.
+  { alignedPopup: false, component: 'combobox', keyboardScrollsPage: true, trigger: 'input:not([disabled])' },
   { alignedPopup: true, component: 'menu', trigger: '[data-part="trigger"]' },
 ];
 
@@ -16,7 +18,7 @@ async function suite(browser, { base, version }) {
   const check = makeChecker(results);
   const page = await browser.newPage({ viewport: { height: 800, width: 1280 } });
 
-  for (const { alignedPopup, component, trigger } of CASES) {
+  for (const { alignedPopup, component, keyboardScrollsPage, trigger } of CASES) {
     await page.goto(`${base}/v${version}/components/${component}/examples`, { waitUntil: 'domcontentloaded' });
     await check(`${component}: the dropdown opens on its trigger, frame and page stay put`, async () => {
       await page.waitForFunction((sel) => [...document.querySelectorAll('iframe')].some((f) => f.contentDocument?.querySelector(sel)), trigger, { timeout: 30000 });
@@ -54,18 +56,24 @@ async function suite(browser, { base, version }) {
       if (alignedPopup && offset !== 0) {
         throw new Error(`popup ${offset}px off its trigger`);
       }
-      const steps = [['open', await snapshot()]];
+      const steps = [['open', await snapshot(), before]];
       for (let i = 0; i < 5; i++) {
         await page.keyboard.press('ArrowDown');
         await page.waitForTimeout(80);
       }
-      steps.push(['navigated', await snapshot()]);
+      const navigated = await snapshot();
+      // Where the page may scroll while navigating, only the frame height must
+      // hold, and closing must not scroll it any further.
+      const heightOf = (state) => state.split(',')[0];
+      steps.push(keyboardScrollsPage
+        ? ['navigated', heightOf(navigated), heightOf(before)]
+        : ['navigated', navigated, before]);
       await page.keyboard.press('Escape');
       await page.waitForTimeout(500);
-      steps.push(['closed', await snapshot()]);
-      const moved = steps.find(([, state]) => state !== before);
+      steps.push(['closed', await snapshot(), keyboardScrollsPage ? navigated : before]);
+      const moved = steps.find(([, state, expected]) => state !== expected);
       if (moved) {
-        throw new Error(`${before} → ${moved[1]} once ${moved[0]}`);
+        throw new Error(`${moved[2]} → ${moved[1]} once ${moved[0]}`);
       }
     });
   }

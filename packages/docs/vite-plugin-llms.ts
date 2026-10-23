@@ -8,7 +8,7 @@ import { EXCLUDED_STORIES, compareStoryNames, extractStorySources, storyTitle } 
 import { LOCALES } from '../ods-react/src/utils/locales';
 import { CHART_SERIES_COLORS } from './src/doc/ports/constants/chartColors';
 import { TOKEN_CATEGORY, type Token } from './src/doc/ports/constants/designTokens';
-import { categorizeTokens, declaredTokens, splitPaletteTokens } from './src/doc/ports/helpers/designTokens';
+import { categorizeTokens, declaredTokens } from './src/doc/ports/helpers/designTokens';
 import { createUniqueSlugs, slugify } from './src/doc/slug';
 import { parseHelper, parseTechnicalSpec, type PropRow } from './src/doc/tech/typedoc';
 
@@ -141,6 +141,56 @@ function checkComponentInvariants(componentKeys: string[]): void {
   }
 }
 
+/* Every component page follows the same outline, so readers (and the llms
+   output) find a section at the same place on every page: the identity card,
+   the "Dos & Don'ts" (level 3, under Usage) and the level-2 sections below,
+   in this order. Placement and Variation are optional. A page that cannot
+   have a section yet is listed in COMPONENT_SECTION_GAPS, which only shrinks. */
+const COMPONENT_SECTIONS = ['Overview', 'Usage', 'Placement', 'Behavior', 'Variation', 'Navigation', 'Accessibility'];
+const OPTIONAL_COMPONENT_SECTIONS = new Set(['Placement', 'Variation']);
+const COMPONENT_SECTION_GAPS: Record<string, string[]> = {
+  card: ['Behavior'],
+  divider: ['Behavior'],
+  drawer: ["Dos & Don'ts"],
+  'file-thumbnail': ["Dos & Don'ts"],
+  logo: ['Behavior'],
+  markdown: ["Dos & Don'ts"],
+  medium: ['Behavior'],
+  'message-bubble': ['Navigation', 'Accessibility'],
+};
+
+function checkComponentStructure(componentKeys: string[]): void {
+  const errors: string[] = [];
+
+  for (const key of componentKeys) {
+    const mdx = readFileSync(resolve(here, `src/content/components/${key}/documentation.mdx`), 'utf8');
+    const headings = (level: number): string[] => [...mdx.matchAll(new RegExp(`<Heading label="([^"]+)" level=\\{ ?${level} ?\\}`, 'g'))].map((match) => match[1]);
+    const sections = headings(2).filter((label) => COMPONENT_SECTIONS.includes(label));
+    const gaps = COMPONENT_SECTION_GAPS[key] ?? [];
+    const missing = [
+      ...COMPONENT_SECTIONS.filter((label) => !OPTIONAL_COMPONENT_SECTIONS.has(label) && !sections.includes(label)),
+      ...(headings(3).includes("Dos & Don'ts") ? [] : ["Dos & Don'ts"]),
+      ...(mdx.includes('<IdentityCard') ? [] : ['IdentityCard']),
+    ];
+    const unexpected = missing.filter((label) => !gaps.includes(label));
+    const filled = gaps.filter((label) => !missing.includes(label));
+    const ordered = [...sections].sort((a, b) => COMPONENT_SECTIONS.indexOf(a) - COMPONENT_SECTIONS.indexOf(b));
+
+    if (unexpected.length) {
+      errors.push(`'${key}' misses [${unexpected.join(', ')}]`);
+    }
+    if (filled.length) {
+      errors.push(`'${key}' now has [${filled.join(', ')}]: remove it from COMPONENT_SECTION_GAPS`);
+    }
+    if (sections.join() !== ordered.join()) {
+      errors.push(`'${key}' sections are out of order: [${sections.join(', ')}], expected [${ordered.join(', ')}]`);
+    }
+  }
+  if (errors.length) {
+    throw new Error(`llms: component page structure (see COMPONENT_SECTIONS in vite-plugin-llms.ts):\n- ${errors.join('\n- ')}`);
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * Design tokens, rendered from the same theme data as the page
  * (packages/themes build output + the shared categorize/split helpers).
@@ -156,9 +206,8 @@ function renderDesignTokens(): string | null {
     return null;
   }
   const byCategory = categorizeTokens(declaredTokens({ refs: theme.refs, root: theme.root }));
-  const { monoColors, opacities, palettes } = splitPaletteTokens(byCategory[TOKEN_CATEGORY.palette]);
-
-  // Same sections as the DesignTokens port.
+  // Same sections as the DesignTokens port. The palette is left out: the page
+  // shows it as colors only, its tokens are theme internals.
   const SECTIONS: [string, TOKEN_CATEGORY][] = [
     ['Color', TOKEN_CATEGORY.color],
     ['Size', TOKEN_CATEGORY.size],
@@ -173,10 +222,6 @@ function renderDesignTokens(): string | null {
     ...SECTIONS
       .filter(([, category]) => byCategory[category].length > 0)
       .map(([label, category]) => `### ${label}\n\n${tokensTable(byCategory[category])}`),
-    '## Color Palettes',
-    ...palettes.map((palette) => tokensTable(palette)),
-    tokensTable(monoColors),
-    `### Opacity\n\n${tokensTable(opacities)}`,
   ].join('\n\n');
 }
 
@@ -624,6 +669,7 @@ function generate(outDir: string, withRootSummary = true): number {
     .map((entry) => entry.name)
     .sort();
   checkComponentInvariants(componentKeys);
+  checkComponentStructure(componentKeys);
 
   const components = componentKeys.map((key) => ({ key, title: titleize(key), ...componentDocs(key) }));
   const componentFiles = components.flatMap((comp) => comp.docs);

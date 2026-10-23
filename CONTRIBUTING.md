@@ -7,7 +7,7 @@ Whether it’s a small fix or a new feature, every contribution helps improve th
 We appreciate the time and effort of anyone who chooses to take part.
 
 Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality.
-Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
+Additionally, if you're interested in proposing a new feature, please reach out to us first to avoid duplicating effort, as we may already be working on a similar development.
 
 ## Project installation
 
@@ -62,6 +62,10 @@ pnpm new:component
 
 This will generate all the component resources and the documentation files in the docs package
 (stories in `packages/docs/stories/components/<component-name>/`, documentation page in `packages/docs/src/content/components/<component-name>/documentation.mdx`), and registers the page in the docs navigation (`packages/docs/src/nav/model.ts`).
+
+Keep the generated outline of the documentation page: an identity card, then the `Overview`, `Usage` (with its `Dos & Don'ts`),
+`Placement`, `Behavior`, `Variation`, `Navigation` and `Accessibility` sections, in this order (`Placement` and `Variation` are optional).
+The documentation build fails when a component page drifts from it (see `checkComponentStructure` in `packages/docs/vite-plugin-llms.ts`).
 
 ## Working on an existing component
 

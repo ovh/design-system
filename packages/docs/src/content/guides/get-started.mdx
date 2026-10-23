@@ -4,7 +4,8 @@ All OVHcloud Design System packages are available on <ExternalLink href="https:/
 
 <Heading label="Installation" level={ 2 } />
 
-Include **ODS** in your projects like any other npm/pnpm module:
+Include **ODS** in your projects like any other npm/pnpm module.
+`react` and `react-dom` (`v18.2+` or `v19+`) are peer dependencies: they must already be installed in your project.
 
 ```bash
 npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
@@ -60,8 +61,6 @@ const App = () => {
 };
 ```
 
-Components are compatible with React `v18.2+`, `v19+`.
-
 <Heading label="Import components constants" level={ 2 } />
 
 All enums, interfaces, events are available directly from the `ods-react` lib
@@ -84,10 +83,12 @@ import '@ovhcloud/ods-themes/default/fonts';
 
 via Sass import:
 
-```css
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/default/fonts';
+```scss
+@use 'pkg:@ovhcloud/ods-themes/default/css';
+@use 'pkg:@ovhcloud/ods-themes/default/fonts';
 ```
+
+`pkg:` URLs require the <ExternalLink href="https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/">Node.js package importer</ExternalLink> (Sass `v1.71+`), enabled with `importers: [new NodePackageImporter()]` in your Sass options.
 
 <Message dismissible={ false } style={{ width: '100%' }}>
   <MessageIcon name="circle-info" />
@@ -98,9 +99,39 @@ via Sass import:
   </MessageBody>
 </Message>
 
-<Heading label="Typescript" level={ 2 } />
+<Heading label="Server-side rendering" level={ 2 } />
 
-To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.
+ODS components rely on React state, effects and browser APIs: they render on the server, but cannot be used as React Server Components.
+
+With the Next.js App Router, import the theme in your root layout and use the components from client components, marked with the `'use client'` directive:
+
+```tsx
+// app/layout.tsx
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{ children }</body>
+    </html>
+  );
+}
+```
+
+```tsx
+// app/page.tsx
+'use client';
+import { Link } from '@ovhcloud/ods-react';
+
+export default function Home() {
+  return <Link href="#">My ODS Link</Link>;
+}
+```
+
+<Heading label="TypeScript" level={ 2 } />
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">TypeScript 5.0</ExternalLink>.
 
 ```typescript
 "moduleResolution": "bundler"

@@ -4909,7 +4909,7 @@ slug: command
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1936
+tokens: 1955
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--documentation.txt
 ---
 
@@ -4925,6 +4925,7 @@ The **Command** component is a modal-like overlay that allows users to quickly f
 |---|---|
 | Name | Command |
 | Also known as | Command Menu, Command Palette, Spotlight, Quick Actions |
+| Design | https://ovh.github.io/design-system/latest/components/command |
 | Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/command |
 
 ## Usage
@@ -22118,9 +22119,9 @@ When disabled, **Tile** does not respond to user interaction and cannot be selec
 
 **Tile** can contain any type of content, including interactive elements.
 
-### Navigation
+## Navigation
 
-#### Focus Management
+### Focus Management
 
 **Tile** follows standard keyboard navigation patterns defined by its usage context.
 

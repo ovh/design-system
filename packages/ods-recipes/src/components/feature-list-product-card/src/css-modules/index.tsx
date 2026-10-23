@@ -141,31 +141,28 @@ const FeatureListProductCard = (): JSX.Element => {
             <li
               className={ style['feature-list-product-card__features__section'] }
               key={ idx }>
-              {
-                title &&
-                <div className={ style['feature-list-product-card__features__section__item'] }>
-                  <Text
-                    as="span"
-                    preset={ TEXT_PRESET.label }>
-                    { title }
-                  </Text>
+              <div className={ style['feature-list-product-card__features__section__item'] }>
+                <Text
+                  as="span"
+                  preset={ TEXT_PRESET.label }>
+                  { title }
+                </Text>
 
-                  {
-                    !!tooltipContent &&
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Icon
-                          className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
-                          name={ ICON_NAME.circleQuestion } />
-                      </TooltipTrigger>
+                {
+                  !!tooltipContent &&
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Icon
+                        className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
+                        name={ ICON_NAME.circleQuestion } />
+                    </TooltipTrigger>
 
-                      <TooltipContent>
-                        { tooltipContent }
-                      </TooltipContent>
-                    </Tooltip>
-                  }
-                </div>
-              }
+                    <TooltipContent>
+                      { tooltipContent }
+                    </TooltipContent>
+                  </Tooltip>
+                }
+              </div>
 
               <ul className={ style['feature-list-product-card__features__section__items'] }>
                 {

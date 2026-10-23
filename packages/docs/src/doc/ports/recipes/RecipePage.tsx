@@ -72,9 +72,9 @@ const splitDosDonts = (readme: string): ReadmeParts | null => {
 const hasContent = (readme: string): boolean => /\S/.test(readme.replace(/^#.*$/gm, '').replace(/\bTODO\b/gi, ''));
 
 /* The one-line summary shown above the preview, like the intro line of a component page: the first
-   sentence of the README's first paragraph (recipes carry no description of their own). When that
-   paragraph sits right under the README's title, it leaves the Overview (all of it, or just the
-   sentence when the paragraph goes on) so the text is not said twice. */
+   sentence of the paragraph right under the README's title (recipes carry no description of their
+   own). It leaves the Overview (all of the paragraph, or just the sentence when the paragraph goes
+   on) so the text is not said twice. */
 const summaryOf = (readme: string): { readme: string, summary: string } => {
   if (!hasContent(readme)) {
     return { readme: '', summary: '' };
@@ -93,9 +93,9 @@ const summaryOf = (readme: string): { readme: string, summary: string } => {
   const summary = sentence?.[1] ?? paragraph;
   const rest = sentence?.[2]?.trim() ?? '';
   const previous = lines.slice(0, first).reverse().find((line) => line.trim() !== '') ?? '';
-  // Under a sub-heading ("### Information"), removing it would leave the heading empty.
+  // A paragraph under a sub-heading ("### Information") describes that section, not the recipe.
   if (!/^# /.test(previous)) {
-    return { readme, summary };
+    return { readme, summary: '' };
   }
   return { readme: [...lines.slice(0, first), ...(rest ? [rest] : []), ...lines.slice(last + 1)].join('\n'), summary };
 };

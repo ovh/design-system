@@ -10,7 +10,7 @@
 
 .custom-checkbox-label {
   color: #4b0082;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-checkbox-group {

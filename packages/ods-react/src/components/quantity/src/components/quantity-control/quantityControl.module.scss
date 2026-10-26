@@ -6,6 +6,8 @@
     display: inline-grid;
     grid-template-columns: max-content 1fr max-content;
     align-items: center;
+    border-radius: var(--ods-semantic-size-radius-control);
+    box-shadow: var(--ods-semantic-shadow-control);
     width: calc(button.$ods-button-size-sm * 2 + 50px);
 
     &__decrement {

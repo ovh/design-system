@@ -1,9 +1,9 @@
 .icon-gallery {
   display: flex;
   flex-flow: column;
-  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  row-gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
   align-items: center;
-  margin-top: calc(var(--ods-theme-row-gap) * 2);
+  margin-top: calc(var(--ods-semantic-size-space-gap-block) * 2);
 }
 
 .icon-gallery__search {
@@ -14,7 +14,7 @@
 .icon-gallery__list {
   display: flex;
   flex-flow: row wrap;
-  gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
   justify-content: center;
   margin: 0;
   padding: 0;

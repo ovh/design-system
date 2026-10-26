@@ -74,8 +74,8 @@ All these elements are not mandatory in every **Card**.
 
 <Heading label="Status" level={ 3 } />
 
-- **Accent** _(default)_: displaying highlighted content with particular emphasis.
-- **Neutral**: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
+- **Neutral** _(default)_: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
+- **Accent**: displaying highlighted content with particular emphasis.
 - **Information**: displaying content that informs the user, without conveying any particular urgency.
 - **Success**: displaying content related to a positive outcome or a completed action.
 - **Warning**: displaying content related to a potential issue that needs attention.
@@ -96,7 +96,7 @@ If multiple **Cards** are displayed together (e.g., a collection of products, ar
 <Canvas story="AccessibilityGrouping" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements.
 Screen readers will announce the list and the number of items.
 
 <Heading label="Alternative approach with ARIA roles" level={ 3 } />
@@ -106,4 +106,4 @@ When modifying the HTML structure is not possible, use <ExternalLink href="https
 <Canvas story="AccessibilityAlternativeGrouping" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.

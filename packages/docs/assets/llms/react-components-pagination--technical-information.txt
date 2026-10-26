@@ -4,7 +4,7 @@ slug: pagination
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 573
+tokens: 639
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
 ---
 
@@ -23,10 +23,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | undefined | - (deprecated) |
+| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | - (deprecated) |
+| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## PaginationPages
 

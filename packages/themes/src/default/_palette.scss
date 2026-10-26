@@ -1,0 +1,78 @@
+// The palette as custom properties: the hue families, the one-off colors and the opacity rungs.
+// A theme does not edit it: index.scss aims the brand and accent ramps at a family, and a brand
+// overlay re-aims them. A partial, so that `sass src:dist` does not ship a palette.css of its own.
+@use './variables' as var;
+
+:root {
+  --ods-palette-blue-50: #{var.$ods-palette-blue-50};
+  --ods-palette-blue-100: #{var.$ods-palette-blue-100};
+  --ods-palette-blue-200: #{var.$ods-palette-blue-200};
+  --ods-palette-blue-300: #{var.$ods-palette-blue-300};
+  --ods-palette-blue-400: #{var.$ods-palette-blue-400};
+  --ods-palette-blue-500: #{var.$ods-palette-blue-500};
+  --ods-palette-blue-600: #{var.$ods-palette-blue-600};
+  --ods-palette-blue-700: #{var.$ods-palette-blue-700};
+  --ods-palette-blue-800: #{var.$ods-palette-blue-800};
+  --ods-palette-blue-900: #{var.$ods-palette-blue-900};
+  --ods-palette-gray-50: #{var.$ods-palette-gray-50};
+  --ods-palette-gray-100: #{var.$ods-palette-gray-100};
+  --ods-palette-gray-200: #{var.$ods-palette-gray-200};
+  --ods-palette-gray-300: #{var.$ods-palette-gray-300};
+  --ods-palette-gray-400: #{var.$ods-palette-gray-400};
+  --ods-palette-gray-500: #{var.$ods-palette-gray-500};
+  --ods-palette-gray-600: #{var.$ods-palette-gray-600};
+  --ods-palette-gray-700: #{var.$ods-palette-gray-700};
+  --ods-palette-gray-800: #{var.$ods-palette-gray-800};
+  --ods-palette-gray-900: #{var.$ods-palette-gray-900};
+  --ods-palette-green-50: #{var.$ods-palette-green-50};
+  --ods-palette-green-100: #{var.$ods-palette-green-100};
+  --ods-palette-green-200: #{var.$ods-palette-green-200};
+  --ods-palette-green-300: #{var.$ods-palette-green-300};
+  --ods-palette-green-400: #{var.$ods-palette-green-400};
+  --ods-palette-green-500: #{var.$ods-palette-green-500};
+  --ods-palette-green-600: #{var.$ods-palette-green-600};
+  --ods-palette-green-700: #{var.$ods-palette-green-700};
+  --ods-palette-green-800: #{var.$ods-palette-green-800};
+  --ods-palette-green-900: #{var.$ods-palette-green-900};
+  --ods-palette-navy-50: #{var.$ods-palette-navy-50};
+  --ods-palette-navy-100: #{var.$ods-palette-navy-100};
+  --ods-palette-navy-200: #{var.$ods-palette-navy-200};
+  --ods-palette-navy-300: #{var.$ods-palette-navy-300};
+  --ods-palette-navy-400: #{var.$ods-palette-navy-400};
+  --ods-palette-navy-500: #{var.$ods-palette-navy-500};
+  --ods-palette-navy-600: #{var.$ods-palette-navy-600};
+  --ods-palette-navy-700: #{var.$ods-palette-navy-700};
+  --ods-palette-navy-800: #{var.$ods-palette-navy-800};
+  --ods-palette-navy-900: #{var.$ods-palette-navy-900};
+  --ods-palette-orange-50: #{var.$ods-palette-orange-50};
+  --ods-palette-orange-100: #{var.$ods-palette-orange-100};
+  --ods-palette-orange-200: #{var.$ods-palette-orange-200};
+  --ods-palette-orange-300: #{var.$ods-palette-orange-300};
+  --ods-palette-orange-400: #{var.$ods-palette-orange-400};
+  --ods-palette-orange-500: #{var.$ods-palette-orange-500};
+  --ods-palette-orange-600: #{var.$ods-palette-orange-600};
+  --ods-palette-orange-700: #{var.$ods-palette-orange-700};
+  --ods-palette-orange-800: #{var.$ods-palette-orange-800};
+  --ods-palette-orange-900: #{var.$ods-palette-orange-900};
+  --ods-palette-red-50: #{var.$ods-palette-red-50};
+  --ods-palette-red-100: #{var.$ods-palette-red-100};
+  --ods-palette-red-200: #{var.$ods-palette-red-200};
+  --ods-palette-red-300: #{var.$ods-palette-red-300};
+  --ods-palette-red-400: #{var.$ods-palette-red-400};
+  --ods-palette-red-500: #{var.$ods-palette-red-500};
+  --ods-palette-red-600: #{var.$ods-palette-red-600};
+  --ods-palette-red-700: #{var.$ods-palette-red-700};
+  --ods-palette-red-800: #{var.$ods-palette-red-800};
+  --ods-palette-red-900: #{var.$ods-palette-red-900};
+  --ods-palette-white: #{var.$ods-palette-white};
+  --ods-palette-black: #{var.$ods-palette-black};
+  --ods-palette-decorative-alpha: #{var.$ods-palette-decorative-alpha};
+  --ods-palette-decorative-beta: #{var.$ods-palette-decorative-beta};
+  --ods-palette-decorative-new: #{var.$ods-palette-decorative-new};
+  --ods-palette-decorative-promotion: #{var.$ods-palette-decorative-promotion};
+  --ods-palette-opacity-15: #{var.$ods-palette-opacity-15};
+  --ods-palette-opacity-20: #{var.$ods-palette-opacity-20};
+  --ods-palette-opacity-25: #{var.$ods-palette-opacity-25};
+  --ods-palette-opacity-50: #{var.$ods-palette-opacity-50};
+  --ods-palette-opacity-75: #{var.$ods-palette-opacity-75};
+}

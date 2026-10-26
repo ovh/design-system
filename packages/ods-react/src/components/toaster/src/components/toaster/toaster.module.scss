@@ -38,8 +38,8 @@ $toaster-padding: 24px;
     &__toast {
       display: flex;
       position: absolute;
-      transition: opacity var(--ods-theme-transition-duration) ease-out,
-        transform var(--ods-theme-transition-duration) ease-out;
+      transition: opacity var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter),
+        transform var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
 
       &--bottom,
       &--bottom-end,
@@ -59,30 +59,30 @@ $toaster-padding: 24px;
 
       &--bottom {
         justify-content: center;
-        animation: ods-toast-slide-in-bottom var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-bottom var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
 
       &--bottom-end {
         justify-content: flex-end;
-        animation: ods-toast-slide-in-end var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-end var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
 
       &--bottom-start {
-        animation: ods-toast-slide-in-start var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-start var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
 
       &--top {
         justify-content: center;
-        animation: ods-toast-slide-in-top var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-top var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
 
       &--top-end {
         justify-content: flex-end;
-        animation: ods-toast-slide-in-end var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-end var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
 
       &--top-start {
-        animation: ods-toast-slide-in-start var(--ods-theme-transition-duration) ease-out;
+        animation: ods-toast-slide-in-start var(--ods-semantic-motion-duration-slow) var(--ods-semantic-motion-easing-enter);
       }
     }
   }

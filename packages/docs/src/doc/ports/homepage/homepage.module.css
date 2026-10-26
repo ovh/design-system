@@ -23,7 +23,7 @@
 }
 
 .homepage__brand {
-  color: var(--ods-theme-brand-color);
+  color: var(--ods-semantic-color-brand);
 }
 
 .homepage__features {

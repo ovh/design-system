@@ -1,8 +1,8 @@
 .token-preview {
-  --preview-background-color: var(--ods-color-primary-100);
-  --preview-border-color: var(--ods-color-neutral-200);  /* Need an --ods-theme-border-color */
+  --preview-background-color: var(--ods-semantic-color-surface-selected);
+  --preview-border-color: var(--ods-semantic-color-border-neutral-subtle);
   --preview-size: 24px;
-  --preview-spacing-background-color: var(--ods-color-success-200);
+  --preview-spacing-background-color: var(--ods-semantic-color-surface-success-subtle);
 
   display: flex;
   justify-content: center;
@@ -74,8 +74,8 @@
 
 .preview-z-index__back {
   border: 1px solid var(--preview-border-color);
-  border-radius: calc(var(--ods-theme-border-radius) / 2);
-  background-color: var(--ods-theme-backdrop-background-color);
+  border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
+  background-color: var(--ods-semantic-color-surface-backdrop);
   width: 18px;
   height: 18px;
 }
@@ -85,7 +85,7 @@
   right: 0;
   bottom: 0;
   border: 1px solid var(--preview-border-color);
-  border-radius: calc(var(--ods-theme-border-radius) / 2);
+  border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
   background-color: var(--preview-background-color);
   width: 18px;
   height: 18px;

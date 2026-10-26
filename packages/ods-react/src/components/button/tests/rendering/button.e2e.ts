@@ -32,6 +32,17 @@ describe('Button rendering', () => {
 
       expect(isDisabled).toBe(true);
     });
+
+    it('should hide its content but the spinner', async() => {
+      await gotoStory(page, 'rendering/is-loading');
+
+      const button = await page.waitForSelector('[data-testid="is-loading"]');
+      const textFillColor = await button?.evaluate((el: Element) => getComputedStyle(el).webkitTextFillColor);
+      const childOpacities = await button?.evaluate((el: Element) => Array.from(el.children, (child) => getComputedStyle(child).opacity));
+
+      expect(textFillColor).toBe('rgba(0, 0, 0, 0)');
+      expect(childOpacities).toEqual(['1', '0']);
+    });
   });
 
   describe('sizes', () => {

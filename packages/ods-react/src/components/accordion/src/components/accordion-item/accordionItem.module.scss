@@ -7,6 +7,7 @@
     border-width: var(--ods-accordion-border-width);
     border-style: solid;
     border-color: var(--ods-accordion-border-color);
+    background-color: var(--ods-accordion-background-color);
 
     &:not(:first-child) {
       margin-top: -1px;
@@ -33,8 +34,6 @@
 
     &[data-disabled] {
       @include state.ods-is-disabled();
-
-      opacity: 0.5;
     }
   }
 }

@@ -27,20 +27,32 @@
     },
     "./default/tokens": {
       "default": "./dist/default/tokens.json"
+    },
+    "./blue-jeans/css": {
+      "sass": "./src/blue-jeans/index.scss",
+      "default": "./dist/blue-jeans/index.css"
     }
   },
+  "files": [
+    "assets",
+    "dist",
+    "src"
+  ],
   "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
-    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map && npm run generate:tokens",
+    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && npm run build:css && npm run generate:tokens",
+    "build:css": "postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
+    "build:watch": "sass --watch src:dist --no-source-map --pkg-importer=node",
     "clean": "rimraf dist",
     "generate:tokens": "node scripts/generate-token-lists.js",
+    "lint:css": "node scripts/check-retired-tokens.js && node scripts/repoint-tokens.js --tables > /dev/null",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
+    "tokens:resolve": "sass src:dist --no-source-map --pkg-importer=node && node scripts/resolve-tokens.js",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"
   },
   "devDependencies": {
     "autoprefixer": "10.4.17",
-    "cssjson": "2.1.3",
     "postcss": "8.4.35",
     "postcss-cli": "11.0.1",
     "postcss-scss": "4.0.9",

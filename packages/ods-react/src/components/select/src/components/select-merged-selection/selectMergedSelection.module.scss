@@ -1,12 +1,8 @@
 @layer ods-molecules {
   .select-merged-selection {
     &__total {
-      color: var(--ods-theme-primary-color);
-      font-weight: 700;
-
-      &--disabled {
-        color: var(--ods-theme-text-color-disabled);
-      }
+      color: var(--ods-semantic-color-content-text);
+      font-weight: var(--ods-semantic-font-weight-bold);
     }
   }
 }

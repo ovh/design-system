@@ -5,7 +5,7 @@ import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { Input } from '../../../../input/src';
 import { POPOVER_POSITION } from '../../../../popover/src';
-import { Tag } from '../../../../tag/src';
+import { TAG_STATUS, Tag } from '../../../../tag/src';
 import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
 import { isAtInputStart } from '../../controller/combobox';
 import style from './comboboxControl.module.scss';
@@ -191,6 +191,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
             disabled={ disabled || readOnly }
             key={ item.value }
             onClick={ () => removeTag(item) }
+            status={ TAG_STATUS.accent }
             tabIndex={ -1 }
             value={ item.value }>
             { item.label }

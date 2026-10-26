@@ -21,11 +21,11 @@ interface ThemeGeneratorTreeViewProp {
 
 const EDITABLE_CATEGORIES = [
   { category: TOKEN_CATEGORY.color, label: 'Color' },
-  { category: TOKEN_CATEGORY.spacing, label: 'Spacing' },
-  { category: TOKEN_CATEGORY.outline, label: 'Outline' },
-  { category: TOKEN_CATEGORY.overlay, label: 'Overlay' },
-  { category: TOKEN_CATEGORY.fontFamily, label: 'Font Family' },
-  { category: TOKEN_CATEGORY.formElement, label: 'Form Element' },
+  { category: TOKEN_CATEGORY.size, label: 'Size' },
+  { category: TOKEN_CATEGORY.font, label: 'Font' },
+  { category: TOKEN_CATEGORY.focus, label: 'Focus' },
+  { category: TOKEN_CATEGORY.elevation, label: 'Elevation' },
+  { category: TOKEN_CATEGORY.motion, label: 'Motion' },
 ];
 
 const ThemeGeneratorTreeView = ({ onVariableChange, variables }: ThemeGeneratorTreeViewProp) => {

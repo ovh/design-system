@@ -1,12 +1,18 @@
+@use '../../../../../style/focus';
+
 @layer ods-molecules {
   .menu-submenu {
-    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
     cursor: pointer;
 
     &:hover,
     &[data-highlighted],
     &[data-highlighted]:hover {
-      background-color: var(--ods-theme-input-option-background-color-hover);
+      background-color: var(--ods-semantic-color-interaction-highlight);
+    }
+
+    [role="menu"]:not(:hover) &[data-highlighted] {
+      @include focus.ods-highlight-indicator();
     }
   }
 }

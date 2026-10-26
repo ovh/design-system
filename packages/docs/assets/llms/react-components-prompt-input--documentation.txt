@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1282
+tokens: 1415
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--documentation.txt
 ---
 
@@ -116,7 +116,26 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 
 ### Button labelling
 
-- The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
+- The file upload button and the send button only display an icon. They are announced as "Attach a file" and "Send" by default, translated with the `locale` prop (or the browser language).
+
+- To adapt these names to your context, override them for the whole component with the `i18n` prop of **PromptInput**:
+
+```tsx
+<PromptInput
+  i18n={{
+    [PROMPT_INPUT_I18N.fileUploadButton]: "Attach a log file",
+    [PROMPT_INPUT_I18N.sendButton]: "Send to support",
+  }}
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl aria-label="Describe your issue" />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
+```
+
+- Or set an `aria-label` on a given button, which takes precedence over the translations:
 
 ```tsx
 <PromptInput>

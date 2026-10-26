@@ -760,7 +760,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6797
+tokens: 6798
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -1098,7 +1098,7 @@ When using a critical **Message**:
         {
           !!globalError &&
           <Message
-            color={ MESSAGE_COLOR.critical }
+            status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
             
 > { globalError }
@@ -1114,7 +1114,7 @@ When using a critical **Message**:
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
             Delete account
@@ -1300,7 +1300,7 @@ Use when:
             Cancel
           </Button>
 
-          <Button color={ BUTTON_COLOR.critical }>
+          <Button status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -1790,7 +1790,7 @@ slug: ovhcloud-design-system-build-charts
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1030
+tokens: 1039
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-charts.txt
 ---
 
@@ -1872,39 +1872,39 @@ For structural elements, here are the expected values to apply:
   <tbody>
   <tr>
     <td>Background</td>
-    <td><code>--ods-theme-chart-background-color</code></td>
+    <td><code>--ods-semantic-color-chart-background</code></td>
     <td><code>#ffffff</code></td>
-    <td><code>--ods-theme-chart-background-color</code> (default: <code>#ffffff</code>)</td>
+    <td><code>--ods-semantic-color-chart-background</code> (default: <code>#ffffff</code>)</td>
   </tr>
   <tr>
     <td>Axis</td>
-    <td><code>--ods-theme-chart-axis-color</code></td>
+    <td><code>--ods-semantic-color-chart-axis</code></td>
     <td><code>#b3b3b3</code></td>
-    <td><code>--ods-theme-chart-axis-color</code> (default: <code>#b3b3b3</code>)</td>
+    <td><code>--ods-semantic-color-chart-axis</code> (default: <code>#b3b3b3</code>)</td>
   </tr>
   <tr>
     <td>Ticks (axis labels)</td>
-    <td><code>--ods-theme-chart-tick-color</code></td>
+    <td><code>--ods-semantic-color-chart-tick</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-tick-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-tick</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Legends</td>
-    <td><code>--ods-theme-chart-legend-color</code></td>
+    <td><code>--ods-semantic-color-chart-legend</code></td>
     <td><code>#4d4d4d</code></td>
-    <td><code>--ods-theme-chart-legend-color</code> (default: <code>#4d4d4d</code>)</td>
+    <td><code>--ods-semantic-color-chart-legend</code> (default: <code>#4d4d4d</code>)</td>
   </tr>
   <tr>
     <td>Grids</td>
-    <td><code>--ods-theme-chart-grid-color</code></td>
+    <td><code>--ods-semantic-color-chart-grid</code></td>
     <td><code>#cccccc</code></td>
-    <td><code>--ods-theme-chart-grid-color</code> (default: <code>#cccccc</code>)</td>
+    <td><code>--ods-semantic-color-chart-grid</code> (default: <code>#cccccc</code>)</td>
   </tr>
   <tr>
     <td>Reference Line</td>
-    <td><code>--ods-theme-chart-reference-line-color</code></td>
+    <td><code>--ods-semantic-color-chart-reference-line</code></td>
     <td><code>#bf0020</code></td>
-    <td><code>--ods-theme-chart-reference-line-color</code> (default: <code>#bf0020</code>)</td>
+    <td><code>--ods-semantic-color-chart-reference-line</code> (default: <code>#bf0020</code>)</td>
   </tr>
   </tbody>
 
@@ -1943,7 +1943,7 @@ slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
 version: 19.7.3
-tokens: 323
+tokens: 329
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
@@ -1962,7 +1962,7 @@ To use one of the ODS fonts in your app, add the expected variables to the top o
 
 ```css
 html {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -1974,7 +1974,7 @@ If you want to use any of those on your own components, you can refer to the exh
 
 ```css
 .my-custom-title {
-  color: var(--ods-color-text);
+  color: var(--ods-semantic-color-content-text);
   ...
 }
 ```
@@ -1996,7 +1996,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 627
+tokens: 629
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -2077,7 +2077,7 @@ Example of CSS variables:
 
 <style>
   .my-own-page-title {
-    color: var(--ods-color-primary-500);
+    color: var(--ods-semantic-color-content-brand);
   }
 </style>
 ```
@@ -2091,7 +2091,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2713
+tokens: 4883
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -2105,10 +2105,14 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 ```css
 .my-component {
-  color: var(--ods-color-primary-500);
-  border-radius: var(--ods-border-radius-sm);
+  color: var(--ods-semantic-color-content-brand);
+  border-radius: var(--ods-semantic-size-radius-control);
 }
 ```
+
+## What is guaranteed
+
+The `--ods-semantic-*` tokens are the public surface of the theme: read them in your CSS, re-declare them in a theme. Their names and their meaning do not change during a major version; their values belong to the theme. The `--ods-palette-*` ramps are public too, as the input of a theme: a brand re-declares the `--ods-palette-brand-*` and `--ods-palette-accent-*` ramps. The tables below list every token of the default theme.
 
 ## Theme Variables
 
@@ -2116,248 +2120,341 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
 | Token | Value |
 |---|---|
-| `--ods-theme-anchor-text-color` | `#0050d7` |
-| `--ods-theme-anchor-text-color-hover` | `#002dbe` |
-| `--ods-theme-anchor-text-color-visited` | `#000e9c` |
-| `--ods-theme-background-color` | `#fff` |
-| `--ods-theme-background-color-disabled` | `#e6e6e6` |
-| `--ods-theme-background-color-drag-over` | `var(--ods-color-primary-100)` |
-| `--ods-theme-background-color-readonly` | `#f2f2f2` |
-| `--ods-theme-background-color-selected` | `#00185e` |
-| `--ods-theme-border-color-disabled` | `#cccccc` |
-| `--ods-theme-border-color-drag-over` | `var(--ods-color-primary-100)` |
-| `--ods-theme-border-color-readonly` | `#f2f2f2` |
-| `--ods-theme-border-color-selected` | `#00185e` |
-| `--ods-theme-brand-color` | `#000e9c` |
-| `--ods-theme-heading-text-color` | `#00185e` |
-| `--ods-theme-progress-background-color` | `var(--ods-color-primary-500)` |
-| `--ods-theme-split-background-color` | `#e6e6e6` |
-| `--ods-theme-split-border-color` | `#e6e6e6` |
-| `--ods-theme-text-color` | `#4d5592` |
-| `--ods-theme-text-color-disabled` | `#808080` |
-| `--ods-theme-text-color-selected` | `#ffffff` |
-| `--ods-theme-track-background-color` | `var(--ods-color-neutral-100)` |
-| `--ods-theme-track-background-color-disabled` | `var(--ods-color-neutral-500)` |
-| `--ods-theme-critical-color` | `var(--ods-color-critical-500)` |
-| `--ods-theme-information-color` | `var(--ods-color-information-500)` |
-| `--ods-theme-neutral-color` | `var(--ods-color-neutral-500)` |
-| `--ods-theme-primary-color` | `var(--ods-color-primary-500)` |
-| `--ods-theme-success-color` | `var(--ods-color-success-500)` |
-| `--ods-theme-warning-color` | `var(--ods-color-warning-500)` |
-| `--ods-theme-chart-background-color` | `var(--ods-theme-background-color)` |
-| `--ods-theme-chart-axis-color` | `var(--ods-color-neutral-300)` |
-| `--ods-theme-chart-tick-color` | `var(--ods-color-neutral-700)` |
-| `--ods-theme-chart-legend-color` | `var(--ods-color-neutral-700)` |
-| `--ods-theme-chart-grid-color` | `var(--ods-color-neutral-200)` |
-| `--ods-theme-chart-reference-line-color` | `var(--ods-theme-critical-color)` |
+| `--ods-semantic-color-surface-page` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-raised` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-overlay` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-header` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-surface-code` | `var(--ods-palette-accent-900)` |
+| `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
+| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-surface-accent-subtle` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-500)` |
+| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-surface-control` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-control-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-thumb` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-segmented` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-pending` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-decorative-alpha` | `var(--ods-palette-decorative-alpha)` |
+| `--ods-semantic-color-surface-decorative-beta` | `var(--ods-palette-decorative-beta)` |
+| `--ods-semantic-color-surface-decorative-new` | `var(--ods-palette-decorative-new)` |
+| `--ods-semantic-color-surface-decorative-promotion` | `var(--ods-palette-decorative-promotion)` |
+| `--ods-semantic-color-content-heading` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-text` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-icon` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-group-label` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-brand-minor` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-accent` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
+| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
+| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-information-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-success-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-brand-minor` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
+| `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-300)` |
+| `--ods-semantic-color-border-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-300)` |
+| `--ods-semantic-color-border-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-300)` |
+| `--ods-semantic-color-border-warning` | `var(--ods-palette-orange-400)` |
+| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-300)` |
+| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-success-subtle-hover` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-hover` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-neutral-active` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-brand-hover` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-active` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-visited` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-interaction-accent-hover` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-accent-active` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-information-active` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-success-active` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-warning-active` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-interaction-selected-solid-highlight` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-selected-solid-active` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-chart-series-02` | `#ac246f` |
+| `--ods-semantic-color-chart-series-03` | `#00875a` |
+| `--ods-semantic-color-chart-series-04` | `#df3400` |
+| `--ods-semantic-color-chart-series-05` | `#25327c` |
+| `--ods-semantic-color-chart-series-06` | `#a61e20` |
+| `--ods-semantic-color-chart-series-07` | `#006d77` |
+| `--ods-semantic-color-chart-series-08` | `#6a2ecf` |
+| `--ods-semantic-color-chart-series-09` | `#374151` |
+| `--ods-semantic-color-chart-series-10` | `#4f8400` |
+| `--ods-semantic-color-shadow-control` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-raised` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-overlay` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-brand` | `var(--ods-palette-brand-700)` |
 
-### Outline
+### Size
 
 | Token | Value |
 |---|---|
-| `--ods-theme-outline-color` | `#000e9c` |
-| `--ods-theme-outline-offset` | `2px` |
-| `--ods-theme-outline-style` | `solid` |
-| `--ods-theme-outline-width` | `2px` |
+| `--ods-semantic-size-space-inset-inline` | `8px` |
+| `--ods-semantic-size-space-inset-block` | `8px` |
+| `--ods-semantic-size-space-inset-block-compact` | `2px` |
+| `--ods-semantic-size-space-gap-inline` | `8px` |
+| `--ods-semantic-size-space-gap-block` | `8px` |
+| `--ods-semantic-size-space-gap-group` | `16px` |
+| `--ods-semantic-size-space-gap-section` | `32px` |
+| `--ods-semantic-size-radius-none` | `0` |
+| `--ods-semantic-size-radius-control` | `4px` |
+| `--ods-semantic-size-radius-container` | `8px` |
+| `--ods-semantic-size-radius-overlay` | `4px` |
+| `--ods-semantic-size-radius-pill` | `16px` |
+| `--ods-semantic-size-radius-full` | `calc(infinity * 1px)` |
+| `--ods-semantic-size-block-size-sm` | `24px` |
+| `--ods-semantic-size-block-size-md` | `32px` |
+| `--ods-semantic-size-block-size-lg` | `40px` |
+| `--ods-semantic-border-thickness` | `1px` |
+| `--ods-semantic-border-thickness-strong` | `2px` |
 
-### Overlay
-
-| Token | Value |
-|---|---|
-| `--ods-theme-backdrop-background-color` | `#0050d7` |
-| `--ods-theme-backdrop-opacity` | `0.75` |
-| `--ods-theme-overlay-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-theme-overlay-box-shadow` | `0 2px 8px rgb(0, 14, 156, 0.2)` |
-| `--ods-theme-overlay-z-index` | `99` |
-
-### Spacing
-
-| Token | Value |
-|---|---|
-| `--ods-theme-border-radius` | `8px` |
-| `--ods-theme-border-width` | `1px` |
-| `--ods-theme-column-gap` | `8px` |
-| `--ods-theme-padding-horizontal` | `8px` |
-| `--ods-theme-padding-vertical` | `8px` |
-| `--ods-theme-row-gap` | `8px` |
-| `--ods-theme-transition-duration` | `300ms` |
-
-### Font Family
+### Font
 
 | Token | Value |
 |---|---|
-| `--ods-theme-font-family` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-theme-font-family-code` | `'Source Code Pro', arial` |
+| `--ods-semantic-font-family-heading` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-body` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-code` | `'Source Code Pro', monospace` |
+| `--ods-semantic-font-weight-regular` | `400` |
+| `--ods-semantic-font-weight-semibold` | `600` |
+| `--ods-semantic-font-weight-bold` | `700` |
 
-### Form Element
+### Focus
 
 | Token | Value |
 |---|---|
-| `--ods-theme-input-background-color-checked` | `#0050d7` |
-| `--ods-theme-input-background-color-checked-hover` | `#000e9c` |
-| `--ods-theme-input-background-color-invalid` | `#bf0020` |
-| `--ods-theme-input-border-color` | `#b3b3b3` |
-| `--ods-theme-input-border-color-checked` | `#0050d7` |
-| `--ods-theme-input-border-color-checked-hover` | `#000e9c` |
-| `--ods-theme-input-border-color-hover` | `#808080` |
-| `--ods-theme-input-border-color-invalid` | `#bf0020` |
-| `--ods-theme-input-border-radius` | `calc(var(--ods-theme-border-radius) / 2)` |
-| `--ods-theme-input-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-theme-input-min-height` | `32px` |
-| `--ods-theme-input-option-background-color-hover` | `#bef1ff` |
-| `--ods-theme-input-option-background-color-selected` | `#e6faff` |
-| `--ods-theme-input-option-background-color-selected-hover` | `#bef1ff` |
-| `--ods-theme-input-padding-horizontal` | `var(--ods-theme-padding-horizontal)` |
-| `--ods-theme-input-padding-vertical` | `calc(var(--ods-theme-padding-vertical) / 4)` |
-| `--ods-theme-input-placeholder-text-color` | `#666666` |
-| `--ods-theme-input-text-color` | `var(--ods-theme-text-color)` |
-| `--ods-theme-input-text-color-checked` | `var(--ods-theme-background-color)` |
-| `--ods-theme-input-text-color-invalid` | `#bf0020` |
+| `--ods-semantic-color-focus` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-border-focus-thickness` | `2px` |
+| `--ods-semantic-border-focus-offset` | `2px` |
+| `--ods-semantic-border-focus-style` | `solid` |
+
+### Elevation
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
+| `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
+| `--ods-semantic-shadow-control` | `none` |
+| `--ods-semantic-shadow-raised` | `0 0 #0000` |
+| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent)` |
+| `--ods-semantic-z-index-sticky` | `100` |
+| `--ods-semantic-z-index-dropdown` | `200` |
+| `--ods-semantic-z-index-drawer` | `300` |
+| `--ods-semantic-z-index-modal` | `400` |
+
+### Motion
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-motion-duration-instant` | `0s` |
+| `--ods-semantic-motion-duration-fast` | `150ms` |
+| `--ods-semantic-motion-duration-medium` | `200ms` |
+| `--ods-semantic-motion-duration-slow` | `300ms` |
+| `--ods-semantic-motion-easing` | `ease-in-out` |
+| `--ods-semantic-motion-easing-enter` | `ease-out` |
+| `--ods-semantic-motion-easing-exit` | `ease-in` |
 
 ## Color Palettes
 
 | Token | Value |
 |---|---|
-| `--ods-color-critical-000` | `#ffffff` |
-| `--ods-color-critical-025` | `#fff3f5` |
-| `--ods-color-critical-050` | `#ffe6ec` |
-| `--ods-color-critical-075` | `#ffd9e3` |
-| `--ods-color-critical-100` | `#ffccd9` |
-| `--ods-color-critical-200` | `#ef99ab` |
-| `--ods-color-critical-300` | `#e67386` |
-| `--ods-color-critical-400` | `#cf334e` |
-| `--ods-color-critical-500` | `#bf0020` |
-| `--ods-color-critical-600` | `#a6001c` |
-| `--ods-color-critical-700` | `#800015` |
-| `--ods-color-critical-800` | `#660011` |
-| `--ods-color-critical-900` | `#4d000d` |
+| `--ods-palette-accent-50` | `var(--ods-palette-navy-50)` |
+| `--ods-palette-accent-100` | `var(--ods-palette-navy-100)` |
+| `--ods-palette-accent-200` | `var(--ods-palette-navy-200)` |
+| `--ods-palette-accent-300` | `var(--ods-palette-navy-300)` |
+| `--ods-palette-accent-400` | `var(--ods-palette-navy-400)` |
+| `--ods-palette-accent-500` | `var(--ods-palette-navy-500)` |
+| `--ods-palette-accent-600` | `var(--ods-palette-navy-600)` |
+| `--ods-palette-accent-700` | `var(--ods-palette-navy-700)` |
+| `--ods-palette-accent-800` | `var(--ods-palette-navy-800)` |
+| `--ods-palette-accent-900` | `var(--ods-palette-navy-900)` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-information-000` | `#ffffff` |
-| `--ods-color-information-025` | `#f3fdff` |
-| `--ods-color-information-050` | `#e6faff` |
-| `--ods-color-information-075` | `#cef5ff` |
-| `--ods-color-information-100` | `#bef1ff` |
-| `--ods-color-information-200` | `#85d9fd` |
-| `--ods-color-information-300` | `#4bb2f6` |
-| `--ods-color-information-400` | `#157eea` |
-| `--ods-color-information-500` | `#0050d7` |
-| `--ods-color-information-600` | `#002dbe` |
-| `--ods-color-information-700` | `#000e9c` |
-| `--ods-color-information-800` | `#00185e` |
-| `--ods-color-information-900` | `#000d1f` |
+| `--ods-palette-blue-50` | `#f3fdff` |
+| `--ods-palette-blue-100` | `#e6faff` |
+| `--ods-palette-blue-200` | `#bef1ff` |
+| `--ods-palette-blue-300` | `#85d9fd` |
+| `--ods-palette-blue-400` | `#4bb2f6` |
+| `--ods-palette-blue-500` | `#0050d7` |
+| `--ods-palette-blue-600` | `#002dbe` |
+| `--ods-palette-blue-700` | `#000e9c` |
+| `--ods-palette-blue-800` | `#00185e` |
+| `--ods-palette-blue-900` | `#000d1f` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-neutral-000` | `#ffffff` |
-| `--ods-color-neutral-025` | `#f9f9f9` |
-| `--ods-color-neutral-050` | `#f2f2f2` |
-| `--ods-color-neutral-075` | `#ececec` |
-| `--ods-color-neutral-100` | `#e6e6e6` |
-| `--ods-color-neutral-200` | `#cccccc` |
-| `--ods-color-neutral-300` | `#b3b3b3` |
-| `--ods-color-neutral-400` | `#999999` |
-| `--ods-color-neutral-500` | `#808080` |
-| `--ods-color-neutral-600` | `#666666` |
-| `--ods-color-neutral-700` | `#4d4d4d` |
-| `--ods-color-neutral-800` | `#333333` |
-| `--ods-color-neutral-900` | `#1a1a1a` |
+| `--ods-palette-brand-50` | `var(--ods-palette-blue-50)` |
+| `--ods-palette-brand-100` | `var(--ods-palette-blue-100)` |
+| `--ods-palette-brand-200` | `var(--ods-palette-blue-200)` |
+| `--ods-palette-brand-300` | `var(--ods-palette-blue-300)` |
+| `--ods-palette-brand-400` | `var(--ods-palette-blue-400)` |
+| `--ods-palette-brand-500` | `var(--ods-palette-blue-500)` |
+| `--ods-palette-brand-600` | `var(--ods-palette-blue-600)` |
+| `--ods-palette-brand-700` | `var(--ods-palette-blue-700)` |
+| `--ods-palette-brand-800` | `var(--ods-palette-blue-800)` |
+| `--ods-palette-brand-900` | `var(--ods-palette-blue-900)` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-primary-000` | `#ffffff` |
-| `--ods-color-primary-025` | `#f3fdff` |
-| `--ods-color-primary-050` | `#e6faff` |
-| `--ods-color-primary-075` | `#cef5ff` |
-| `--ods-color-primary-100` | `#bef1ff` |
-| `--ods-color-primary-200` | `#85d9fd` |
-| `--ods-color-primary-300` | `#4bb2f6` |
-| `--ods-color-primary-400` | `#157eea` |
-| `--ods-color-primary-500` | `#0050d7` |
-| `--ods-color-primary-600` | `#002dbe` |
-| `--ods-color-primary-700` | `#000e9c` |
-| `--ods-color-primary-800` | `#00185e` |
-| `--ods-color-primary-900` | `#000d1f` |
+| `--ods-palette-gray-50` | `#f9f9f9` |
+| `--ods-palette-gray-100` | `#f2f2f2` |
+| `--ods-palette-gray-200` | `#e6e6e6` |
+| `--ods-palette-gray-300` | `#cccccc` |
+| `--ods-palette-gray-400` | `#b3b3b3` |
+| `--ods-palette-gray-500` | `#757575` |
+| `--ods-palette-gray-600` | `#666666` |
+| `--ods-palette-gray-700` | `#4d4d4d` |
+| `--ods-palette-gray-800` | `#333333` |
+| `--ods-palette-gray-900` | `#1a1a1a` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-success-000` | `#ffffff` |
-| `--ods-color-success-025` | `#f3fbeb` |
-| `--ods-color-success-050` | `#e7f7d7` |
-| `--ods-color-success-075` | `#ddf5d1` |
-| `--ods-color-success-100` | `#d2f2c2` |
-| `--ods-color-success-200` | `#90cc7a` |
-| `--ods-color-success-300` | `#64b347` |
-| `--ods-color-success-400` | `#47991f` |
-| `--ods-color-success-500` | `#2b8000` |
-| `--ods-color-success-600` | `#267300` |
-| `--ods-color-success-700` | `#226600` |
-| `--ods-color-success-800` | `#1a4d00` |
-| `--ods-color-success-900` | `#113300` |
+| `--ods-palette-green-50` | `#ecfdf5` |
+| `--ods-palette-green-100` | `#d1fae5` |
+| `--ods-palette-green-200` | `#a7f3d0` |
+| `--ods-palette-green-300` | `#6ee7b7` |
+| `--ods-palette-green-400` | `#34d399` |
+| `--ods-palette-green-500` | `#10b981` |
+| `--ods-palette-green-600` | `#059669` |
+| `--ods-palette-green-700` | `#047857` |
+| `--ods-palette-green-800` | `#065f46` |
+| `--ods-palette-green-900` | `#064e3b` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-warning-000` | `#ffffff` |
-| `--ods-color-warning-025` | `#fffbe5` |
-| `--ods-color-warning-050` | `#fff7cc` |
-| `--ods-color-warning-075` | `#feefa4` |
-| `--ods-color-warning-100` | `#feea86` |
-| `--ods-color-warning-200` | `#fed265` |
-| `--ods-color-warning-300` | `#ffbb43` |
-| `--ods-color-warning-400` | `#ffa322` |
-| `--ods-color-warning-500` | `#ff8b00` |
-| `--ods-color-warning-600` | `#cc7000` |
-| `--ods-color-warning-700` | `#995400` |
-| `--ods-color-warning-800` | `#663800` |
-| `--ods-color-warning-900` | `#4d2a00` |
+| `--ods-palette-navy-50` | `#f4f5f8` |
+| `--ods-palette-navy-100` | `#edf0f5` |
+| `--ods-palette-navy-200` | `#d6deea` |
+| `--ods-palette-navy-300` | `#bbc7db` |
+| `--ods-palette-navy-400` | `#6c82a6` |
+| `--ods-palette-navy-500` | `#374f76` |
+| `--ods-palette-navy-600` | `#283d61` |
+| `--ods-palette-navy-700` | `#1a2d4b` |
+| `--ods-palette-navy-800` | `#101e35` |
+| `--ods-palette-navy-900` | `#091222` |
 
 | Token | Value |
 |---|---|
-| `--ods-color-alpha` | `#fbfe47` |
-| `--ods-color-beta` | `#47fe78` |
-| `--ods-color-new` | `#47fffa` |
-| `--ods-color-promotion` | `#ccff66` |
-
-## Previous Tokens (deprecated)
-
-The following tokens are deprecated and will be removed in a future major release. Non-spacing tokens have been renamed with the `--ods-theme` prefix; spacing tokens have been reduced to one base value (e.g. `--my-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);`).
+| `--ods-palette-orange-50` | `#fffbeb` |
+| `--ods-palette-orange-100` | `#fef3c7` |
+| `--ods-palette-orange-200` | `#fde68a` |
+| `--ods-palette-orange-300` | `#fcd34d` |
+| `--ods-palette-orange-400` | `#fbbf24` |
+| `--ods-palette-orange-500` | `#f59e0b` |
+| `--ods-palette-orange-600` | `#d97706` |
+| `--ods-palette-orange-700` | `#b45309` |
+| `--ods-palette-orange-800` | `#92400e` |
+| `--ods-palette-orange-900` | `#78350f` |
 
 | Token | Value |
 |---|---|
-| `--ods-border-radius-xs` | `2px` |
-| `--ods-border-radius-sm` | `4px` |
-| `--ods-border-radius-md` | `8px` |
-| `--ods-border-radius-lg` | `16px` |
-| `--ods-border-width-sm` | `1px` |
-| `--ods-border-width-md` | `2px` |
-| `--ods-color-background-disabled-default` | `#e6e6e6` |
-| `--ods-color-background-readonly-default` | `#f2f2f2` |
-| `--ods-color-border-disabled-default` | `#cccccc` |
-| `--ods-color-border-readonly-default` | `#f2f2f2` |
-| `--ods-color-element-background-selected` | `#00185e` |
-| `--ods-color-element-text-selected` | `#ffffff` |
-| `--ods-color-form-element-background-critical` | `#ffffff` |
-| `--ods-color-form-element-background-default` | `#ffffff` |
-| `--ods-color-form-element-background-focus-default` | `#ffffff` |
-| `--ods-color-form-element-background-hover-default` | `#ffffff` |
-| `--ods-color-form-element-background-selected-critical` | `#bf0020` |
-| `--ods-color-form-element-border-critical` | `#bf0020` |
-| `--ods-color-form-element-border-default` | `#b3b3b3` |
-| `--ods-color-form-element-border-focus-default` | `#808080` |
-| `--ods-color-form-element-border-hover-default` | `#808080` |
-| `--ods-color-form-element-text-default` | `#4d5592` |
-| `--ods-color-form-element-text-placeholder-default` | `#666666` |
-| `--ods-color-heading` | `#00185e` |
-| `--ods-color-text` | `#4d5592` |
-| `--ods-color-text-disabled-default` | `#808080` |
-| `--ods-font-family-code` | `'Source Code Pro', arial` |
-| `--ods-font-family-default` | `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
-| `--ods-form-element-input-height` | `32px` |
-| `--ods-outline-color-default` | `#000e9c` |
-| `--ods-outline-offset` | `2px` |
-| `--ods-outline-style-default` | `solid` |
-| `--ods-outline-width` | `2px` |
+| `--ods-palette-red-50` | `#fdecec` |
+| `--ods-palette-red-100` | `#fbd5d3` |
+| `--ods-palette-red-200` | `#f7aaa7` |
+| `--ods-palette-red-300` | `#f08581` |
+| `--ods-palette-red-400` | `#f2756f` |
+| `--ods-palette-red-500` | `#ca4b47` |
+| `--ods-palette-red-600` | `#b3403c` |
+| `--ods-palette-red-700` | `#8a302d` |
+| `--ods-palette-red-800` | `#381312` |
+| `--ods-palette-red-900` | `#1c0a09` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-black` | `#000000` |
+| `--ods-palette-decorative-alpha` | `#fbfe47` |
+| `--ods-palette-decorative-beta` | `#47fe78` |
+| `--ods-palette-decorative-new` | `#47fffa` |
+| `--ods-palette-decorative-promotion` | `#ccff66` |
+| `--ods-palette-white` | `#ffffff` |
+
+### Opacity
+
+| Token | Value |
+|---|---|
+| `--ods-palette-opacity-15` | `0.15` |
+| `--ods-palette-opacity-20` | `0.2` |
+| `--ods-palette-opacity-25` | `0.25` |
+| `--ods-palette-opacity-50` | `0.5` |
+| `--ods-palette-opacity-75` | `0.75` |
 
 
 ## Tailwind CSS Integration
@@ -2368,7 +2465,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1262
+tokens: 1231
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -2398,18 +2495,17 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
-        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
-        'ods-border-radius-md': 'var(--ods-border-radius-md)',
-        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+        'ods-control': 'var(--ods-semantic-size-radius-control)',
+        'ods-container': 'var(--ods-semantic-size-radius-container)',
+        'ods-pill': 'var(--ods-semantic-size-radius-pill)',
       },
       colors: {
-        'ods-color-primary-500': 'var(--ods-color-primary-500)',
-        'ods-color-success-500': 'var(--ods-color-success-500)',
-        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+        'ods-brand': 'var(--ods-semantic-color-surface-brand)',
+        'ods-success': 'var(--ods-semantic-color-surface-success)',
+        'ods-warning': 'var(--ods-semantic-color-content-warning)',
       },
       fontFamily: {
-        'ods-font-family-default': 'var(--ods-font-family-default)',
+        'ods-body': 'var(--ods-semantic-font-family-body)',
       },
     },
   },
@@ -2427,14 +2523,13 @@ Create a `./.vscode/tailwind.json` containing the classes you want to expose for
 ```json
 {
     "customClasses": [
-      "ods-color-primary-500",
-      "ods-color-success-500",
-      "ods-color-critical-700",
-      "ods-border-radius-xs",
-      "ods-border-radius-sm",
-      "ods-border-radius-md",
-      "ods-border-radius-lg",
-      "ods-font-family-default",
+      "ods-brand",
+      "ods-success",
+      "ods-critical",
+      "ods-control",
+      "ods-container",
+      "ods-pill",
+      "ods-body",
     ]
   }
 ```
@@ -2444,16 +2539,15 @@ For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.co
 
 ```css
 @theme {
-  --radius-ods-xs: var(--ods-border-radius-xs);
-  --radius-ods-sm: var(--ods-border-radius-sm);
-  --radius-ods-md: var(--ods-border-radius-md);
-  --radius-ods-lg: var(--ods-border-radius-lg);
+  --radius-ods-control: var(--ods-semantic-size-radius-control);
+  --radius-ods-container: var(--ods-semantic-size-radius-container);
+  --radius-ods-pill: var(--ods-semantic-size-radius-pill);
 
-  --color-ods-primary: var(--ods-color-primary-500);
-  --color-ods-success: var(--ods-color-success-500);
-  --color-ods-critical: var(--ods-color-critical-700);
+  --color-ods-brand: var(--ods-semantic-color-surface-brand);
+  --color-ods-success: var(--ods-semantic-color-surface-success);
+  --color-ods-critical: var(--ods-semantic-color-content-critical);
 
-  --font-ods-default: var(--ods-font-family-default);
+  --font-ods-body: var(--ods-semantic-font-family-body);
 }
 ```
 
@@ -2481,8 +2575,8 @@ import { Button } from '@ovhcloud/ods-react';
 function MyComponent() {
   return (
   <div>
-      <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
+      <p className="text-ods-critical">Click on the button!</p>
+      <Button className="bg-ods-brand">Click me!</Button>
   </div>
   );
 }
@@ -2492,12 +2586,12 @@ function MyComponent() {
 
 ### Color Usage
 
-- Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+- Use semantic color names (e.g., `ods-brand`, `ods-success`) instead of generic colors
 - **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
 
 ### Spacing and Layout
 
-- Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+- Use ODS border radius tokens (`rounded-ods-control`, `rounded-ods-container`, etc.)
 - Leverage ODS form element heights for consistent input sizing
 - **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
 
@@ -5031,7 +5125,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 750
+tokens: 8119
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5048,11 +5142,13 @@ The peer dependency range is unchanged:
 }
 ```
 
-The public API of the components is **unchanged**: same props, same refs, same composition. There is **no code change required** on your side — whether you stay on React 18 or move to React 19.
+The component props keep working: existing props, refs and composition are unchanged, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+
+The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
 ## If you stay on React 18
 
-Nothing to do. Installation, types and runtime keep working exactly as before.
+Nothing to do for React. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -5127,6 +5223,559 @@ These are unchanged by the React version — they apply the same way on React 18
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
 - **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+
+## Default theme
+
+`@ovhcloud/ods-themes/default/css` now ships a neutral look: a grey page, and an accent ramp on navy for selection, text, headings and form controls. The OVHcloud look is a separate overlay, `@ovhcloud/ods-themes/blue-jeans/css`, to load **after** the default theme.
+
+To find the imports in your code:
+
+```sh
+grep -rn "ods-themes/default/css" src/
+```
+
+**before**
+```ts
+import '@ovhcloud/ods-themes/default/css';
+```
+
+**after**, to keep the OVHcloud look
+```ts
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+```
+
+The order matters: both declare their tokens on `:root`, and the last one loaded wins. A second copy of the default theme loaded later, for instance by a micro-frontend that ships its own, brings the neutral look back.
+
+## Theme tokens
+
+The `--ods-theme-*`, `--ods-color-*` and remaining legacy tokens (`--ods-border-radius-*`, `--ods-border-width-*`, `--ods-outline-*`, `--ods-font-family-*`, `--ods-form-element-input-height`) are removed, without alias. A `var()` that reads one of them silently resolves to nothing: the property falls back to its inherited or initial value.
+
+To find them in your code:
+
+```sh
+grep -rnE -- '--ods-(theme|color|border-radius|border-width|outline|font-family|form-element)-' src/
+```
+
+**before**
+```css
+.my-panel {
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+  border-radius: var(--ods-border-radius-md);
+}
+```
+
+**after**
+```css
+.my-panel {
+  background-color: var(--ods-semantic-color-surface-raised);
+  color: var(--ods-semantic-color-content-text);
+  border-radius: var(--ods-semantic-size-radius-container);
+}
+```
+
+The tables of the inventory give the destination of every token. Most are a 1:1 rename; a few depend on the site:
+
+- `--ods-theme-background-color` becomes `--ods-semantic-color-surface-page` for the page, `-surface-raised` for a card or a panel, `-surface-overlay` for a popover, a modal or a drawer, and `-surface-control` for a field.
+- `--ods-theme-<status>-color` splits by property: `--ods-semantic-color-surface-<status>` in a `background`, `-border-<status>` in a `border-color`, `-content-<status>` in a `color`. `primary` becomes `brand`.
+- A `--ods-color-<family>-<rung>` has no name to rename to: the role depends on the property, and on the state when the custom property that reads it ends with `-hover` or `-active`.
+- The disabled colors (`*-disabled`) have no replacement: a disabled component is now dimmed with an opacity.
+- `--ods-theme-overlay-z-index` becomes `--ods-semantic-z-index-dropdown`, and its value goes from 99 to 200 (see **Layers**).
+
+The `--ods-palette-*` ramps are published, but a rung number does not give back the v19 color: blue and gray `100` to `400` are lighter, gray `500` is darker, and green, orange and red are new ramps. Point at the semantic role rather than at the palette.
+
+If you read the Sass variables of `@ovhcloud/ods-themes` by path, most are gone: read the custom properties instead. The breakpoints are still exported by `@ovhcloud/ods-react/style`.
+
+The path is the only way to these variables, so the import finds every file that reads them:
+
+```sh
+grep -rnE "ods-themes/src/default/_?variables" src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-themes/src/default/variables' as theme;
+
+.my-banner {
+  background-color: theme.$ods-color-primary-100;
+
+  @media (width >= theme.$ods-breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-banner {
+  background-color: var(--ods-semantic-color-surface-selected);
+
+  @media (width >= ods.$ods-breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+```
+
+## Custom themes
+
+A v19 custom theme, including any Theme Generator export, declares `--ods-theme-*` and `--ods-color-*`. v20 neither declares nor reads these names, so such a theme has **no effect**, without any warning.
+
+To find them in your code:
+
+```sh
+grep -rnE -- "--ods-(theme|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/
+```
+
+In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` and `--ods-palette-accent-*`, from 50 to 900) on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`.
+
+**before**
+```css
+:root {
+  --ods-color-primary-500: #7a00cc;
+  --ods-theme-primary-color: var(--ods-color-primary-500);
+}
+```
+
+**after**
+```css
+:root {
+  --ods-palette-brand-500: #7a00cc;
+  /* and the other brand and accent rungs, from 50 to 900 */
+}
+```
+
+The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+## Design tokens JSON
+
+`@ovhcloud/ods-themes/default/tokens` keeps its shape, but every key changes: it lists the `--ods-semantic-*` and `--ods-palette-*` tokens. `root` gives the value each token resolves to, and `refs` the `var()` reference of the tokens that point at another one.
+
+To find the imports in your code:
+
+```sh
+grep -rn "ods-themes/default/tokens" src/
+```
+
+**before**
+```ts
+import tokens from '@ovhcloud/ods-themes/default/tokens';
+
+const brand = tokens.root['--ods-theme-primary-color'];
+```
+
+**after**
+```ts
+import tokens from '@ovhcloud/ods-themes/default/tokens';
+
+const brand = tokens.root['--ods-semantic-color-surface-brand'];
+```
+
+## Component tokens and style variables
+
+The `--ods-<component>-*` custom properties keep their names, with the exceptions below. An override of a removed name is ignored without any warning; a read of a removed SCSS variable fails the build with "Undefined variable".
+
+- `--ods-button-border-radius-width` is renamed `--ods-button-border-width`, and the SCSS variable `$ods-button-border-radius-width` of `@ovhcloud/ods-react/style` is renamed `$ods-button-border-width`.
+- On Code, `--ods-code-primary-color` is renamed `--ods-code-text-color`, `--ods-code-secondary-color` is renamed `--ods-code-background-color`, and `--ods-code-trigger-background-color` is renamed `--ods-code-trigger-color`.
+- The tokens that only painted a disabled state are removed, since a disabled component is now dimmed with an opacity: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch`, `--ods-tile-background-color-disabled`, and the SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color`. For a grey disabled state, style `:disabled` or `[data-disabled]` yourself.
+- The tokens that nothing read in 19.7.3 are removed: `--ods-tile-background-color`, `--ods-tile-border-color` and `--ods-tile-border-width` (the Tile renders a Card: override the `--ods-card-*` tokens instead), and the six `--ods-modal-header-background-color-*`.
+- `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected` are removed: the selected Tab reads `--ods-semantic-color-border-selected-solid` and `--ods-semantic-color-content-on-selected`, so override those on `[data-ods="tab"]`.
+- `--ods-message-close-button-text-color-primary` is removed: the close button of the Message is a neutral ghost Button, so override `--ods-button-text-color-neutral-ghost` on `[data-ods="message"] [data-ods="button"]`.
+- `--ods-toggle-control-background-color-hover` is removed: the unchecked Toggle no longer changes its background on hover. `--ods-toggle-control-border-color` is removed too: the Toggle border reads `--ods-semantic-color-border-control`, so override that one on `[data-ods="toggle"]`.
+- The SCSS variables deprecated in v19 are removed: `$ods-modal-z-index` (read `$ods-overlay-modal-z-index`), `$ods-modal-border-radius` (read `var(--ods-semantic-size-radius-overlay)`), `$ods-modal-margin` (read `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`), `$ods-overlay-arrow-background-color` (read `var(--ods-semantic-color-surface-overlay)`) and `$drawer-max-size` (read `$drawer-max-width` or `$drawer-max-height`). So are the unused `ods-modal-color()` mixin and `$ods-overlay-select-z-index` (read `$ods-overlay-base-z-index`).
+
+To find them in your code:
+
+```sh
+grep -rnE -- 'ods-button-border-radius-width|ods-code-(primary-color|secondary-color|trigger-background-color)([^-a-z]|$)|(checked|selected)-disabled|tab-border-color-disabled|ods-tile-(background-color|border-color|border-width)(-disabled)?([^-a-z]|$)|ods-modal-header-background-color|close-button-text-color-primary|ods-tab-(border|text)-color-selected([^-a-z]|$)|toggle-control-(background-color-hover|border-color)([^-a-z]|$)|\$ods-state-is-disabled-|\$ods-modal-(z-index|border-radius|margin)([^-a-z]|$)|ods-overlay-(arrow-background-color|select-z-index)|drawer-max-size|ods-modal-color\(' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-button {
+  --ods-button-border-radius-width: 2px;
+}
+
+.my-code {
+  --ods-code-secondary-color: #f5f5f5;
+}
+
+.my-layer {
+  z-index: ods.$ods-modal-z-index;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-button {
+  --ods-button-border-width: 2px;
+}
+
+.my-code {
+  --ods-code-background-color: #f5f5f5;
+}
+
+.my-layer {
+  z-index: ods.$ods-overlay-modal-z-index;
+}
+```
+
+Six SCSS variables of `@ovhcloud/ods-react/style` held a number in 19.7.3 and now hold a `var()`: `$ods-button-size-xs` (`24px`), `$ods-button-size-sm` (`32px`), `$ods-button-size-md` (`40px`), `$ods-badge-height-md` (`24px`), `$animation-duration` (`0.3s`) and `$ods-link-font-weight` (`600`). A plain use renders as before, but Sass cannot compute with them: `ods.$animation-duration * 2` fails the build with "Undefined operation", and `ods.$ods-badge-height-md + 4px` compiles without an error to an invalid value. Move the operation into `calc()`.
+
+To find them in your code, with a namespace or without one (`@use ... as *`). The search also lists an `$animation-duration` that your own code declares:
+
+```sh
+grep -rnE '\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|ods-link-font-weight)([^-a-z0-9]|$)' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: ods.$ods-button-size-md + 8px;
+  transition: opacity ods.$animation-duration * 2;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-panel {
+  min-height: calc(#{ods.$ods-button-size-md} + 8px);
+  transition: opacity calc(#{ods.$animation-duration} * 2);
+}
+```
+
+Two more changes need no code change: `$ods-input-actions-padding-right` goes from `4px` to `2px`, so the action buttons of a field sit as close to its border as its block inset, and `./style` gains the `ods-highlight-indicator()` mixin.
+
+## Layers
+
+Each kind of overlay now has its own layer, and a modal is always above a drawer. In v19 they all sat around the same value, so the one opened last was on top:
+
+- lists, popovers, tooltips and toasts: `99` in v19, `--ods-semantic-z-index-dropdown` (`200`) in v20;
+- drawers: `101` in v19, `--ods-semantic-z-index-drawer` (`300`, backdrop `299`) in v20;
+- modals: `101` (backdrop `100`) in v19, `--ods-semantic-z-index-modal` (`400`, backdrop `399`) in v20;
+- `$ods-overlay-modal-z-index` and `$ods-overlay-drawer-z-index` go from `100` and `101` to `400` and `300`: their order flips.
+
+A layer of yours stacked on `--ods-theme-overlay-z-index` or on these SCSS variables, or with a literal z-index between `102` and `399` meant to clear the ODS overlays, now lands somewhere else.
+
+To find them in your code:
+
+```sh
+grep -rnE -- '--ods-theme-overlay-z-index|\$ods-overlay-[a-z]+-z-index|z-index:|zIndex' src/
+```
+
+**before**
+```css
+.my-floating-panel {
+  z-index: calc(var(--ods-theme-overlay-z-index) + 2);
+}
+```
+
+**after**
+```css
+.my-floating-panel {
+  z-index: calc(var(--ods-semantic-z-index-modal) + 1);
+}
+```
+
+To have a drawer win over a modal, pass a higher `z-index` to the drawer through its `positionerStyle`.
+
+## Default rendering
+
+These changes need no code change: the new rendering is intended. To keep the v19 one, add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
+
+- **Badge**: a pill with a border, where v19 had 4px corners and no border. The border adds to the size: `sm` is 22px tall instead of 20px, `lg` 30px instead of 28px, and every size is 2px wider. Keep v19, sizes included: `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+- **Card and Tile**: a `--ods-semantic-color-surface-raised` background, where v19 had none. Keep v19: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`.
+- **Card without `status`**: neutral, where v19 was primary. Keep v19: `status="accent"`.
+- **Accordion**: a `--ods-semantic-color-surface-raised` background and 8px outer corners, where v19 had no background and 4px corners. Keep v19: `[data-ods="accordion"] { --ods-accordion-background-color: transparent; --ods-accordion-border-radius: 4px; }`.
+- **Button**: 4px corners at every size, where v19 had 2px (`xs`), 4px (`sm`) and 8px (`md`). Keep v19: `[data-ods="button"] { --ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px; }`.
+- **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.
+- **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
+- **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the primary hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-primary*` instead.
+- **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
+- **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
+- **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
+
+## Typography
+
+The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
+
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+
+If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
+
+- **A theme exported from the v19 Theme Generator** contains `--ods-theme-font-family` and `--ods-font-family-default` with `'Source Sans Pro'`. v20 reads neither, nor any other name of such a theme (see **Custom themes**). To change the font, set `--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading`.
+- **If you load `@ovhcloud/ods-themes/default/css` with your own `@font-face`** declared as `'Source Sans Pro'`, rename it `'Source Sans 3'`, or load `@ovhcloud/ods-themes/default/fonts` instead.
+- `@ovhcloud/ods-themes/default/tokens` exposes the font under its new name, in `--ods-semantic-font-family-body` (see **Design tokens JSON**).
+
+**before**
+```css
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+}
+```
+
+**after**
+```css
+body {
+  font-family: var(--ods-semantic-font-family-body);
+}
+```
+
+To find the occurrences in your code:
+
+```sh
+grep -rniE "source.?sans.?pro" src/
+```
+
+If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Deprecations
+
+The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
+
+**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
+
+If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+
+### Badge
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+### Button
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
+
+**before**
+```tsx
+import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
+
+<Button color={ BUTTON_COLOR.primary }>Save</Button>
+<Button color={ BUTTON_COLOR.critical }>Delete</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
+
+<Button>Save</Button>
+<Button status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+```
+
+### Message
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+
+**before**
+```tsx
+import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message color={ MESSAGE_COLOR.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+### Modal
+
+The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- any other value: remove the prop.
+- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
+```
+
+### Tag
+
+- `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+**before**
+```tsx
+import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';
+
+<Tag color={ TAG_COLOR.primary }>Cloud</Tag>
+```
+
+**after**
+```tsx
+import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
+
+<Tag status={ TAG_STATUS.accent }>Cloud</Tag>
+```
+
+### Toaster
+
+- `toast.primary()`: use `toast.accent()`.
+- `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+**before**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.primary('Your export is ready');
+```
+
+**after**
+```tsx
+import { toast } from '@ovhcloud/ods-react';
+
+toast.accent('Your export is ready');
+```
 
 ## Need help?
 

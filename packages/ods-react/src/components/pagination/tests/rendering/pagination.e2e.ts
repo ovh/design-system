@@ -19,4 +19,15 @@ describe('Pagination rendering', () => {
       expect(height).toBe(42);
     });
   });
+
+  describe('cascade layers', () => {
+    it('should let an unlayered rule of the integrator win over the page items', async() => {
+      await gotoStory(page, 'rendering/unlayered-rule');
+
+      const item = await page.waitForSelector('[data-testid="unlayered-rule"] [data-part="item"]');
+      const width = await item?.evaluate((el: Element) => el.getBoundingClientRect().width);
+
+      expect(width).toBe(52);
+    });
+  });
 });

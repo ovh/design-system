@@ -13,7 +13,7 @@ const config: StorybookConfig = {
     ${head}
     <style>
       html, body {
-        font-family: var(--ods-theme-font-family);
+        font-family: var(--ods-semantic-font-family-body);
       }
     </style>
   `,

@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: examples
 version: 19.7.3
-tokens: 457
+tokens: 891
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--examples.txt
 ---
 
@@ -24,6 +24,34 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
   <Badge status={ BADGE_STATUS.promotion }>Promotion</Badge>
   <Badge status={ BADGE_STATUS.success }>Success</Badge>
   <Badge status={ BADGE_STATUS.warning }>Warning</Badge>
+</>
+```
+
+## Emphasis
+
+```tsx
+<>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
 </>
 ```
 

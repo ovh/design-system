@@ -37,8 +37,8 @@
 
     &[data-state="checked"] {
       transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
-      border-color: var(--ods-semantic-color-border-selected-solid);
-      background: var(--ods-semantic-color-surface-selected-solid);
+      border-color: var(--ods-semantic-color-border-control-solid);
+      background: var(--ods-semantic-color-surface-control-solid);
 
       &:not([data-disabled], [data-invalid]) {
         &:hover, &[data-focus] {

@@ -25,7 +25,7 @@
 
     &:not([data-disabled]):hover {
       border-color: var(--ods-semantic-color-interaction-control-hover);
-      background-color: var(--ods-semantic-color-interaction-highlight);
+      background-color: var(--ods-semantic-color-control-highlight);
     }
 
     &:not([data-disabled])[data-readonly] {

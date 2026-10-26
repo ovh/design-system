@@ -131,7 +131,7 @@ at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-input-background-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
 | `--ods-theme-input-background-color-invalid` | `--ods-semantic-color-surface-critical` |
 | `--ods-theme-input-border-color` | `--ods-semantic-color-border-control` |
-| `--ods-theme-input-border-color-checked` | `--ods-semantic-color-border-selected-solid` |
+| `--ods-theme-input-border-color-checked` | `--ods-semantic-color-border-control-solid` |
 | `--ods-theme-input-border-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
 | `--ods-theme-input-border-color-hover` | `--ods-semantic-color-interaction-control-hover` |
 | `--ods-theme-input-border-color-invalid` | `--ods-semantic-color-border-critical` |
@@ -366,7 +366,7 @@ Three context rules sit on top of the tables:
 | `--ods-color-element-background-selected` | `--ods-semantic-color-surface-selected-solid` |
 | `--ods-color-element-text-selected` | `--ods-semantic-color-content-on-selected-solid` |
 | `--ods-color-form-element-background-default` | `--ods-semantic-color-surface-control` |
-| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-surface-control` |
+| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-control-highlight` |
 | `--ods-color-form-element-background-focus-default` | `--ods-semantic-color-surface-control` |
 | `--ods-color-form-element-background-critical` | `--ods-semantic-color-surface-control` |
 | `--ods-color-form-element-background-selected-critical` | `--ods-semantic-color-surface-critical` |

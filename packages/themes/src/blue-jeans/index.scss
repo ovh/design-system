@@ -1,16 +1,38 @@
 /* An overlay on the default theme, at the same :root specificity: load it after default/css. */
 :root {
-  /* Palette - brand */
-  --ods-palette-brand-50: var(--ods-palette-blue-50);
-  --ods-palette-brand-100: var(--ods-palette-blue-100);
-  --ods-palette-brand-200: var(--ods-palette-blue-200);
-  --ods-palette-brand-300: var(--ods-palette-blue-300);
-  --ods-palette-brand-400: var(--ods-palette-blue-400);
-  --ods-palette-brand-500: var(--ods-palette-blue-500);
-  --ods-palette-brand-600: var(--ods-palette-blue-600);
-  --ods-palette-brand-700: var(--ods-palette-blue-700);
-  --ods-palette-brand-800: var(--ods-palette-blue-800);
-  --ods-palette-brand-900: var(--ods-palette-blue-900);
+  /* Palette - hue families */
+  --ods-palette-green-50: #e7f7d7;
+  --ods-palette-green-100: #d2f2c2;
+  --ods-palette-green-200: #90cc7a;
+  --ods-palette-green-300: #64b347;
+  --ods-palette-green-400: #47991f;
+  --ods-palette-green-500: #2b8000;
+  --ods-palette-green-600: #267300;
+  --ods-palette-green-700: #226600;
+  --ods-palette-green-800: #1a4d00;
+  --ods-palette-green-900: #113300;
+  --ods-palette-orange-50: #fff7cc;
+  --ods-palette-orange-100: #feea86;
+  --ods-palette-orange-200: #fed265;
+  --ods-palette-orange-300: #ffbb43;
+  --ods-palette-orange-400: #ffa322;
+  --ods-palette-orange-500: #ff8b00;
+  --ods-palette-orange-600: #cc7000;
+  --ods-palette-orange-700: #995400;
+  --ods-palette-orange-800: #663800;
+  --ods-palette-orange-900: #4d2a00;
+  --ods-palette-red-50: #ffe6ec;
+  --ods-palette-red-100: #ffccd9;
+  --ods-palette-red-200: #ef99ab;
+  --ods-palette-red-300: #e67386;
+  --ods-palette-red-400: #cf334e;
+  --ods-palette-red-500: #bf0020;
+  --ods-palette-red-600: #a6001c;
+  --ods-palette-red-700: #800015;
+  --ods-palette-red-800: #660011;
+  --ods-palette-red-900: #4d000d;
+
+  /* Palette - one-off colors */
   --ods-palette-twilight: #4d5592;
 
   /* Palette - accent. This brand has a single primary family: accent follows brand onto blue. */
@@ -38,16 +60,13 @@
   --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
-  --ods-semantic-color-surface-information-subtle: #cef5ff;
-  --ods-semantic-color-surface-success-subtle: #ddf5d1;
-  --ods-semantic-color-surface-success: #2b8000;
-  --ods-semantic-color-surface-warning-subtle: #feefa4;
-  --ods-semantic-color-surface-warning: #ffa322;
-  --ods-semantic-color-surface-critical-subtle: #ffd9e3;
-  --ods-semantic-color-surface-critical: #bf0020;
+  --ods-semantic-color-surface-accent-subtle: var(--ods-semantic-color-surface-information-subtle);
+  --ods-semantic-color-surface-information-subtle: var(--ods-palette-blue-200);
+  --ods-semantic-color-surface-success-subtle: var(--ods-palette-green-50);
+  --ods-semantic-color-surface-warning: var(--ods-palette-orange-400);
 
   /* Surfaces - form controls */
-  --ods-semantic-color-surface-control-solid: var(--ods-palette-accent-800);
+  --ods-semantic-color-surface-control-solid: var(--ods-palette-accent-500);
   --ods-semantic-color-surface-segmented: var(--ods-palette-gray-100);
 
   /* Surfaces - states */
@@ -56,7 +75,6 @@
   --ods-semantic-color-surface-drag-over: var(--ods-palette-accent-200);
 
   /* Content - text */
-  --ods-semantic-color-content-heading: var(--ods-palette-brand-800);
   --ods-semantic-color-content-text: var(--ods-palette-twilight);
   --ods-semantic-color-content-icon: var(--ods-palette-brand-500);
   --ods-semantic-color-content-group-label: var(--ods-palette-brand-800);
@@ -64,56 +82,46 @@
   /* Content - status inks on the page */
   --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-500);
   --ods-semantic-color-content-accent: var(--ods-palette-accent-500);
-  --ods-semantic-color-content-success: #2b8000;
-  --ods-semantic-color-content-warning: #995400;
-  --ods-semantic-color-content-critical: #bf0020;
+  --ods-semantic-color-content-success: var(--ods-palette-green-500);
+  --ods-semantic-color-content-critical: var(--ods-palette-red-500);
 
   /* Content - inks on a tinted surface */
-
   --ods-semantic-color-content-on-brand: var(--ods-palette-brand-700);
-  --ods-semantic-color-content-on-selected: var(--ods-palette-accent-500);
+  --ods-semantic-color-content-on-selected: var(--ods-semantic-color-content-text);
   --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-700);
-  --ods-semantic-color-content-on-accent: var(--ods-palette-accent-900);
+  --ods-semantic-color-content-on-accent: var(--ods-semantic-color-content-on-information);
   --ods-semantic-color-content-on-information: var(--ods-palette-blue-700);
-  --ods-semantic-color-content-on-success: #226600;
-  --ods-semantic-color-content-on-warning: #4d2a00;
-  --ods-semantic-color-content-on-critical: #800015;
+  --ods-semantic-color-content-on-success: var(--ods-palette-green-700);
+  --ods-semantic-color-content-on-warning: var(--ods-palette-orange-900);
 
   /* Content - inks on a solid surface */
-  --ods-semantic-color-content-on-warning-solid: #4d2a00;
+  --ods-semantic-color-content-on-warning-solid: var(--ods-palette-orange-900);
 
   /* Borders - neutral lines */
   --ods-semantic-color-border-neutral: var(--ods-palette-gray-600);
 
   /* Borders - form controls */
+  --ods-semantic-color-border-control: var(--ods-palette-gray-400);
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-100);
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-800);
 
   /* Borders - statuses */
   --ods-semantic-color-border-brand-minor: var(--ods-palette-brand-500);
-  --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-500);
-  --ods-semantic-color-border-success-subtle: #90cc7a;
-  --ods-semantic-color-border-success: #2b8000;
-  --ods-semantic-color-border-warning-subtle: #fed265;
-  --ods-semantic-color-border-warning: #ffa322;
-  --ods-semantic-color-border-critical-subtle: #ef99ab;
-  --ods-semantic-color-border-critical: #bf0020;
+  --ods-semantic-color-border-accent-subtle: var(--ods-semantic-color-border-information-subtle);
+  --ods-semantic-color-border-success-subtle: var(--ods-palette-green-200);
+  --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-200);
+  --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-200);
 
   /* Interaction - on a tinted / transparent surface */
   --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-200);
   --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-300);
-  --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-200);
-  --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-300);
-  --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);
-  --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-100);
-  --ods-semantic-color-interaction-success-subtle-hover: #d2f2c2;
-  --ods-semantic-color-interaction-success-subtle-active: #90cc7a;
-  --ods-semantic-color-interaction-warning-subtle-hover: #feea86;
-  --ods-semantic-color-interaction-warning-subtle-active: #fed265;
-  --ods-semantic-color-interaction-critical-subtle-hover: #ffccd9;
-  --ods-semantic-color-interaction-critical-subtle-active: #ef99ab;
+  --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-semantic-color-interaction-information-subtle-hover);
+  --ods-semantic-color-interaction-accent-subtle-active: var(--ods-semantic-color-interaction-information-subtle-active);
+  --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-200);
+  --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-200);
+  --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-200);
 
   /* Interaction - on a solid surface */
   --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
@@ -124,19 +132,19 @@
   --ods-semantic-color-interaction-accent-active: var(--ods-palette-accent-800);
   --ods-semantic-color-interaction-information-hover: var(--ods-palette-blue-700);
   --ods-semantic-color-interaction-information-active: var(--ods-palette-blue-800);
-  --ods-semantic-color-interaction-success-hover: #226600;
-  --ods-semantic-color-interaction-success-active: #1a4d00;
-  --ods-semantic-color-interaction-warning-hover: #ff8b00;
-  --ods-semantic-color-interaction-warning-active: #cc7000;
-  --ods-semantic-color-interaction-critical-hover: #800015;
-  --ods-semantic-color-interaction-critical-active: #660011;
+  --ods-semantic-color-interaction-success-hover: var(--ods-palette-green-700);
+  --ods-semantic-color-interaction-success-active: var(--ods-palette-green-800);
+  --ods-semantic-color-interaction-warning-hover: var(--ods-palette-orange-500);
+  --ods-semantic-color-interaction-critical-hover: var(--ods-palette-red-700);
+  --ods-semantic-color-interaction-critical-active: var(--ods-palette-red-800);
 
   /* Interaction - lists and selection */
-  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-900);
-  --ods-semantic-color-interaction-selected-solid-active: var(--ods-palette-accent-900);
+  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-700);
+  --ods-semantic-color-interaction-selected-solid-active: var(--ods-palette-accent-700);
 
   /* Interaction - form controls */
-  --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-700);
+  --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
+  --ods-semantic-color-control-highlight: var(--ods-semantic-color-surface-control);
 
   /* Focus */
   --ods-semantic-color-focus: var(--ods-palette-blue-700);
@@ -144,4 +152,18 @@
   /* Shadow */
   --ods-semantic-color-shadow-overlay: var(--ods-palette-blue-700);
   --ods-semantic-shadow-overlay: 0 2px 8px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent);
+}
+
+/* Components */
+@layer ods-atoms {
+  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  :root [data-ods='avatar'] {
+    --ods-avatar-background-color: var(--ods-semantic-color-surface-brand);
+    --ods-avatar-text-color: var(--ods-semantic-color-content-on-brand-solid);
+  }
+
+  :root [data-ods='badge'] {
+    --ods-badge-border-radius: 4px;
+    --ods-semantic-border-thickness: 0;
+  }
 }

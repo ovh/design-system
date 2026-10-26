@@ -2043,9 +2043,10 @@ interface DrawerRootProp {
 }
 interface DrawerProviderProp extends Pick<DrawerRootProp, 'backdrop' | 'backdropStyle' | 'positionerStyle'> {
     children: ReactNode;
+    setContentId: (value?: string) => void;
 }
 type DrawerContextType = Omit<DrawerProviderProp, 'children'>;
-declare function DrawerProvider({ backdrop, backdropStyle, children, positionerStyle, }: DrawerProviderProp): JSX.Element;
+declare function DrawerProvider({ backdrop, backdropStyle, children, positionerStyle, setContentId, }: DrawerProviderProp): JSX.Element;
 declare function useDrawer(): DrawerContextType;
 export { type DrawerContextType, type DrawerOpenChangeDetail, DrawerProvider, type DrawerRootProp, useDrawer, };
 

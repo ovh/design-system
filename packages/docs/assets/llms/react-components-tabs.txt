@@ -4,7 +4,7 @@ slug: tabs
 category: component
 type: overview
 version: 19.7.3
-tokens: 305
+tokens: 397
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs.txt
 ---
 
@@ -17,6 +17,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `defaultValue` | `string` | No | undefined | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | 'keep' | When the content of the inactive panels is rendered: always ('keep'), from the first time it is shown ('lazy') or only while it is shown ('unmount'). Each TabContent can override it. SEO: only 'keep' puts the content of the inactive panels in the server-rendered HTML, so it can be indexed. |
 | `onValueChange` | `(event: TabsValueChangeEvent) => void` | No | undefined | Callback fired when the state of selected tab changes. |
 | `size` | `'md' | 'sm' | 'xs'` | No | undefined | The size preset to use. |
 | `value` | `string` | No | undefined | The controlled value of the selected tab. |
@@ -35,6 +36,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 - With Content
 - Product Detail
 - Controlled With Navigation
+- Mount Strategy
 
 ## Documentation pages
 

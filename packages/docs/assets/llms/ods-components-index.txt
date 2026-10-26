@@ -334,17 +334,17 @@
 
 ## Table
 
-- [Overview](./react-components-table.txt) (~147 tokens)
-- [Documentation](./react-components-table--documentation.txt) (~780 tokens)
-- [Technical Information](./react-components-table--technical-information.txt) (~338 tokens)
-- [Examples](./react-components-table--examples.txt) (~1234 tokens)
+- [Overview](./react-components-table.txt) (~152 tokens)
+- [Documentation](./react-components-table--documentation.txt) (~771 tokens)
+- [Technical Information](./react-components-table--technical-information.txt) (~325 tokens)
+- [Examples](./react-components-table--examples.txt) (~1219 tokens)
 
 ## Tabs
 
-- [Overview](./react-components-tabs.txt) (~305 tokens)
-- [Documentation](./react-components-tabs--documentation.txt) (~1179 tokens)
-- [Technical Information](./react-components-tabs--technical-information.txt) (~1007 tokens)
-- [Examples](./react-components-tabs--examples.txt) (~1404 tokens)
+- [Overview](./react-components-tabs.txt) (~397 tokens)
+- [Documentation](./react-components-tabs--documentation.txt) (~1918 tokens)
+- [Technical Information](./react-components-tabs--technical-information.txt) (~1192 tokens)
+- [Examples](./react-components-tabs--examples.txt) (~1651 tokens)
 
 ## Tag
 

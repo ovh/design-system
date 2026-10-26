@@ -4,7 +4,7 @@ slug: table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 338
+tokens: 325
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
 ---
 
@@ -17,7 +17,7 @@ This component extends all the native `<table>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
-| `variant` | `'default' | 'striped'` | No | undefined | The variant preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
 
 ## Enums
 
@@ -26,11 +26,6 @@ This component extends all the native `<table>` attributes.
 - `lg` = `lg`
 - `md` = `md`
 - `sm` = `sm`
-
-### TABLE_VARIANT
-
-- `default` = `default`
-- `striped` = `striped`
 
 ## CSS Variables
 

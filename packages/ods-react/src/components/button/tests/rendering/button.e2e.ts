@@ -1,26 +1,40 @@
 import 'jest-puppeteer';
-import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { type Page } from 'puppeteer';
+import { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
 import { BUTTON_EMPHASES } from '../../src/constants/button-emphasis';
 import { BUTTON_STATUSES } from '../../src/constants/button-status';
 
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
-const WHITE = 'rgb(255, 255, 255)';
-const STATUS_COLORS = {
-  brand: 'rgb(0, 80, 215)',
-  critical: 'rgb(191, 0, 32)',
-  neutral: 'rgb(102, 102, 102)',
+
+type Variant = 'default' | 'ghost' | 'outline';
+
+// The semantic roles (background-color | border-color | color) each v19 variant mixin reads, per status.
+// null: transparent.
+const VARIANT_ROLES: Record<'brand' | 'critical' | 'neutral', Record<Variant, (string | null)[]>> = {
+  brand: {
+    default: ['surface-brand', 'border-brand', 'content-on-brand-solid'],
+    ghost: [null, null, 'content-brand-minor'],
+    outline: ['surface-control', 'border-brand-minor', 'content-brand-minor'],
+  },
+  critical: {
+    default: ['surface-critical', 'border-critical', 'content-on-critical-solid'],
+    ghost: [null, null, 'content-critical'],
+    outline: ['surface-control', 'border-critical', 'content-critical'],
+  },
+  neutral: {
+    default: ['surface-neutral', 'border-neutral', 'content-on-neutral-solid'],
+    ghost: [null, null, 'content-neutral'],
+    outline: ['surface-control', 'border-neutral', 'content-neutral'],
+  },
 };
 
-// The v19 rendering (background-color | border-color | color) of each status, per v19 variant
-function getV19Style(status: keyof typeof STATUS_COLORS, variant: 'default' | 'ghost' | 'outline'): string {
-  const color = STATUS_COLORS[status];
-  const styles = {
-    default: `${color} | ${color} | ${WHITE}`,
-    ghost: `${TRANSPARENT} | ${TRANSPARENT} | ${color}`,
-    outline: `${WHITE} | ${color} | ${color}`,
-  };
+// The rendering (background-color | border-color | color) of each status, per v19 variant mixin
+async function getVariantStyle(page: Page, status: keyof typeof VARIANT_ROLES, variant: Variant): Promise<string> {
+  const colors = await Promise.all(VARIANT_ROLES[status][variant].map((role) => {
+    return role ? getTokenColor(page, `--ods-semantic-color-${role}`) : TRANSPARENT;
+  }));
 
-  return styles[variant];
+  return colors.join(' | ');
 }
 
 describe('Button rendering', () => {
@@ -185,16 +199,17 @@ describe('Button rendering', () => {
 
       const pairs = BUTTON_STATUSES.flatMap((status) => BUTTON_EMPHASES.map((emphasis) => ({ emphasis, status })));
       const styles = await Promise.all(pairs.map(({ emphasis, status }) => getStatusStyle(page, `emphasis-${status}-${emphasis}`)));
+      const variantStyles = await Promise.all(pairs.map(({ emphasis, status }) => getVariantStyle(page, status, v19Variants[emphasis])));
 
       expect(pairs.map(({ emphasis, status }, index) => `${status} ${emphasis}: ${styles[index]}`))
-        .toEqual(pairs.map(({ emphasis, status }) => `${status} ${emphasis}: ${getV19Style(status, v19Variants[emphasis])}`));
+        .toEqual(pairs.map(({ emphasis, status }, index) => `${status} ${emphasis}: ${variantStyles[index]}`));
       expect(warnings).toEqual([]);
     });
 
     it('should render as medium (the v19 outline) by default', async() => {
       await gotoStory(page, 'rendering/emphases');
 
-      expect(await getStatusStyle(page, 'emphasis-none')).toBe(getV19Style('brand', 'outline'));
+      expect(await getStatusStyle(page, 'emphasis-none')).toBe(await getVariantStyle(page, 'brand', 'outline'));
       expect(await getStatusStyle(page, 'emphasis-none')).toBe(await getStatusStyle(page, 'emphasis-brand-medium'));
     });
 

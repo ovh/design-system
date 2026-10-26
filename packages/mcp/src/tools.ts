@@ -336,22 +336,19 @@ async function registerTools(server: McpServer): Promise<void> {
 
   server.registerTool('get_tokens', {
     annotations: annotations(false),
-    description: 'Get the ODS design tokens (CSS custom properties of the default theme): colors, spacing, fonts, radii… Filter by substring, e.g. "color-critical", "spacing", "font".',
+    description: 'Get the ODS design tokens of the default theme: the --ods-semantic-* roles (color, size, font, motion…) and the --ods-palette-* ramps they point at, each with its resolved value and, for a reference, its var(). Filter by substring, e.g. "content-critical", "surface", "radius", "font".',
     inputSchema: z.object({
       filter: z.string().max(MAX_INPUT).optional().describe('Substring matched against token names; omit to list everything'),
     }).strict(),
     title: 'Get ODS design tokens',
   }, async({ filter }) => {
-    const tokens = await readBundledJson<Record<string, Record<string, string>>>('tokens.json');
+    // @ovhcloud/ods-themes/default/tokens: `root` maps every token to its resolved value, `refs`
+    // gives the declared var() of the tokens that point at another one.
+    const { refs = {}, root } = await readBundledJson<{ refs?: Record<string, string>, root: Record<string, string> }>('tokens.json');
     const needle = filter?.toLowerCase().trim();
-    const lines: string[] = [];
-    for (const [group, values] of Object.entries(tokens)) {
-      for (const [name, value] of Object.entries(values)) {
-        if (!needle || name.toLowerCase().includes(needle)) {
-          lines.push(`${name}: ${value};${group === 'root' ? '' : ` /* ${group} */`}`);
-        }
-      }
-    }
+    const lines = Object.entries(root)
+      .filter(([name]) => !needle || name.toLowerCase().includes(needle))
+      .map(([name, value]) => `${name}: ${value};${refs[name] ? ` /* ${refs[name]} */` : ''}`);
     if (lines.length === 0) {
       return fail(`No token matching "${filter}".`);
     }

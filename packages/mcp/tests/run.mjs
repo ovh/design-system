@@ -108,8 +108,15 @@ check('list_icons chevron', /chevron-down/.test(icons), icons.slice(0, 160));
 const iconAlias = await call('list_icons', { filter: 'expand' });
 check('list_icons matches aliases', /chevron/.test(iconAlias), iconAlias.slice(0, 160));
 
-const tokens = await call('get_tokens', { filter: 'color-critical' });
-check('get_tokens color-critical', /--ods-color-critical-500/.test(tokens), tokens.slice(0, 160));
+// tokens.json gives each token its resolved value (root) and, when it points at another token,
+// its declared var() (refs): one line per token, carrying both.
+const servedTokens = JSON.parse(readFileSync(resolve(PKG, 'content/tokens.json'), 'utf8'));
+const critical = '--ods-semantic-color-content-critical';
+const tokens = await call('get_tokens', { filter: 'content-critical' });
+check('get_tokens content-critical gives the resolved value and the reference', servedTokens.refs[critical] !== undefined && tokens.includes(`${critical}: ${servedTokens.root[critical]}; /* ${servedTokens.refs[critical]} */`), tokens.slice(0, 160));
+const tokenCount = Object.keys(servedTokens.root).length;
+const allTokens = await call('get_tokens');
+check(`get_tokens lists each token once (${tokenCount})`, allTokens.startsWith(`${tokenCount} token(s):`), allTokens.slice(0, 120));
 
 const recipes = await call('get_recipe');
 check(`get_recipe lists ${recipeCount} recipes`, new RegExp(`${recipeCount} recipes`).test(recipes), recipes.slice(0, 120));

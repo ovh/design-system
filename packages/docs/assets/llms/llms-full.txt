@@ -24996,6 +24996,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-control` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-control-solid` | `var(--ods-semantic-color-surface-control-solid)` |
 | `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
@@ -25045,6 +25046,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-interaction-selected-solid-highlight` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-interaction-selected-solid-active` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-control-highlight` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |

@@ -7,8 +7,8 @@
     @include checkbox.ods-checkbox();
 
     &:checked {
-      border-color: var(--ods-semantic-color-border-selected-solid);
-      background: var(--ods-semantic-color-surface-selected-solid);
+      border-color: var(--ods-semantic-color-border-control-solid);
+      background: var(--ods-semantic-color-surface-control-solid);
 
       &::before {
         @include icon.ods-icon();

@@ -1,4 +1,10 @@
 @mixin ods-focus() {
-  outline: var(--ods-theme-outline-style) var(--ods-theme-outline-width) var(--ods-theme-outline-color);
-  outline-offset: var(--ods-theme-outline-offset);
+  outline: var(--ods-semantic-border-focus-style) var(--ods-semantic-border-focus-thickness) var(--ods-semantic-color-focus);
+  outline-offset: var(--ods-semantic-border-focus-offset);
+}
+
+// Keyboard indicator of a list's pointed option. Apply it while the list is not
+// hovered: `[role="listbox"]:not(:hover) &[data-highlighted]`.
+@mixin ods-highlight-indicator() {
+  box-shadow: inset 0 0 0 var(--ods-semantic-border-focus-thickness) var(--ods-semantic-color-focus);
 }

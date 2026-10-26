@@ -7,7 +7,7 @@ const ON_LABEL = 'ON';
 const OFF_LABEL = 'OFF';
 
 const ToggleLabels: FC = (): JSX.Element => {
-  const { checked: isChecked, disabled, focused } = useSwitchContext();
+  const { checked: isChecked, focused } = useSwitchContext();
 
   return (
     <span className={ style['toggle-labels'] }>
@@ -15,7 +15,6 @@ const ToggleLabels: FC = (): JSX.Element => {
         className={ classNames(
           style['toggle-labels__label-on'],
           { [style['toggle-labels__label-on--checked']]: isChecked },
-          { [style['toggle-labels__label-on--disabled']]: disabled },
         )}>
         { ON_LABEL }
       </span>
@@ -24,7 +23,6 @@ const ToggleLabels: FC = (): JSX.Element => {
         className={ classNames(
           style['toggle-labels__label-off' ],
           { [style['toggle-labels__label-off--unchecked']]: !isChecked },
-          { [style['toggle-labels__label-off--disabled']]: disabled },
           { [style['toggle-labels__label-off--focused']]: focused },
         )}>
         { OFF_LABEL }

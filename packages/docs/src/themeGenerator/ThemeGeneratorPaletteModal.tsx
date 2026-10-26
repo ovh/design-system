@@ -8,7 +8,7 @@ import styles from './themeGeneratorPaletteModal.module.css';
 /* Palette generator: pick a seed per color family, preview the 10 generated
    steps, apply them to the custom theme. */
 
-const ODS_COLOR_PREFIX = '--ods-color';
+const ODS_COLOR_PREFIX = '--ods-palette';
 
 function buildColorVar(family: string, step?: string): string {
   return step ? `${ODS_COLOR_PREFIX}-${family}-${step}` : `${ODS_COLOR_PREFIX}-${family}`;

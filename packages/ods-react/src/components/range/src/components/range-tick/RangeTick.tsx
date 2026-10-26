@@ -18,7 +18,7 @@ const RangeTick: FC<RangeTickProp> = ({
   singleMode,
   tick,
 }): JSX.Element => {
-  const { disabled, setRootPadding } = useRange();
+  const { setRootPadding } = useRange();
   const tickRef = useRef<HTMLSpanElement>(null);
   const isNumber = typeof tick === 'number';
 
@@ -68,10 +68,7 @@ const RangeTick: FC<RangeTickProp> = ({
       value={ isNumber ? tick : tick.value }>
       {
         !isNumber &&
-        <span className={ classNames(
-          style['range-tick__label'],
-          { [style['range-tick__label--disabled']]: disabled },
-        )}>
+        <span className={ style['range-tick__label'] }>
           { tick.label }
         </span>
       }

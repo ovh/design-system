@@ -69,8 +69,8 @@ const MenuContent: FC<MenuContentProp> = forwardRef(({
     <Portal disabled={ !shouldCreatePortal }>
       <Menu.Positioner style={{
         zIndex: isSubmenu
-          ? 'calc(var(--ods-theme-overlay-z-index) + 1)'
-          : 'var(--ods-theme-overlay-z-index)',
+          ? 'calc(var(--ods-semantic-z-index-dropdown) + 1)'
+          : 'var(--ods-semantic-z-index-dropdown)',
         ...(!isSubmenu ? (positionerStyle || {}) : {}),
       }}>
         <Menu.Content

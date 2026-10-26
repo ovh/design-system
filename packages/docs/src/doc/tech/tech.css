@@ -16,7 +16,7 @@
 }
 
 .tech__type {
-  font-family: var(--ods-theme-font-family-code, monospace);
+  font-family: var(--ods-semantic-font-family-code, monospace);
   font-size: .85em;
   white-space: pre-wrap;
   word-break: break-word;
@@ -31,19 +31,21 @@
 }
 
 .tech__empty {
-  color: var(--ods-color-neutral-500);
+  color: var(--ods-semantic-color-content-neutral);
 }
 
 .tech__extends {
-  color: var(--ods-color-neutral-600);
+  color: var(--ods-semantic-color-content-neutral);
   margin: 8px 0 12px;
 }
 
 .anatomy {
-  align-items: start;
+  /* Containing block for the highlight overlay. */
   display: grid;
-  gap: 16px;
+  position: relative;
   grid-template-columns: 200px auto 1fr;
+  gap: 16px;
+  align-items: start;
   margin-bottom: 24px;
 }
 
@@ -63,11 +65,11 @@
 }
 
 .anatomy__tree-icon {
-  color: var(--ods-theme-neutral-color);
+  color: var(--ods-semantic-color-content-neutral);
 }
 
 .anatomy__tree-icon--active {
-  color: var(--ods-theme-primary-color);
+  color: var(--ods-semantic-color-content-brand);
 }
 
 /* The story renders in a DemoFrame (iframe) so overlay parts lay out exactly
@@ -76,20 +78,21 @@
   min-width: 0;
 }
 
-/* Highlights ride a fixed layer in viewport coordinates: they sit over the
-   iframe, offset by its position (measured inside the frame). */
+/* Highlights ride a layer stretched over the anatomy panel: they sit over the
+   iframe, offset by its position (measured inside the frame). Absolute, not
+   fixed, so the scrolling content area clips them instead of letting them
+   ride over the topbar. */
 .anatomy__overlay {
+  position: absolute;
   inset: 0;
-  pointer-events: none;
-  position: fixed;
   z-index: 40;
+  pointer-events: none;
 }
 
 .anatomy__highlight {
-  border-radius: 2px;
-  outline: 2px dashed #c54600;
   position: absolute;
-  transition: all .12s ease;
+  outline: 2px dashed #c54600;
+  border-radius: 2px;
 }
 
 /* Narrow layout (≤1000px, cf. shell.css): the anatomy panel stacks (tree above

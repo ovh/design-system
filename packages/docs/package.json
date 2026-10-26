@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "pnpm generate:versions && vite build",
-    "build:storybook": "pnpm build && rm -rf ../storybook/dist && mkdir -p ../storybook && cp -r dist ../storybook/dist",
+    "build:storybook": "pnpm build && pnpm check:llms && rm -rf ../storybook/dist && mkdir -p ../storybook && cp -r dist ../storybook/dist",
+    "check:llms": "test -z \"$(git status --porcelain -- assets/llms)\" || { git status --short -- assets/llms; echo 'assets/llms is out of date: run pnpm doc at the root, then pnpm build in packages/docs, and commit packages/docs/assets/llms.'; exit 1; }",
     "generate:versions": "node scripts/generate-version-list.cjs 'assets/ods-versions.json'",
     "preview": "vite preview --port 6100",
     "start": "vite --port 6100",

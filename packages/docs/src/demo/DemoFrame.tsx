@@ -16,7 +16,7 @@ interface DemoFrameProp {
   /* Fires with the frame document once it has painted — for callers that
      measure the rendered DOM (the anatomy highlighter). */
   onReady?: (frameDocument: Document) => void;
-  /* Hot token overrides (theme generator use case), e.g. { '--ods-color-primary-500': '#ff0000' } */
+  /* Hot token overrides (theme generator use case), e.g. { '--ods-palette-brand-500': '#ff0000' } */
   tokens?: Record<string, string>;
 }
 
@@ -211,7 +211,7 @@ const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => 
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-theme-background-color); color: var(--ods-theme-text-color); font-family: var(--ods-theme-font-family); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } body { margin: 0; padding: 16px; background: var(--ods-semantic-color-surface-page); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

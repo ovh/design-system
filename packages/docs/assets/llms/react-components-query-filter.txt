@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: overview
 version: 19.7.3
-tokens: 672
+tokens: 685
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter.txt
 ---
 
@@ -39,6 +39,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
 ## Examples
 
 - Default
+- Accessibility Form Field
+- Accessibility Aria Label
 
 ## Documentation pages
 

@@ -4,7 +4,7 @@ slug: menu
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 744
+tokens: 740
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
 ---
 
@@ -19,7 +19,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
 | `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the menu. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `'left' | 'right' | 'bottom' | 'bottom-end' | 'bottom-start' | 'left-end' | 'left-start' | 'right-end' | 'right-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | - (deprecated) |
+| `position` | `MENU_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
 
@@ -71,3 +71,9 @@ This component extends all the native `<button>` attributes.
 |---|---|---|---|---|
 | `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 | `value` | `string` | No | undefined | - |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `1` |

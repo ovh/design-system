@@ -5,6 +5,12 @@ export default {
   title: 'Tests rendering',
 };
 
+export const checked = () => (
+  <Toggle defaultChecked>
+    <ToggleControl data-testid="checked" />
+  </Toggle>
+);
+
 export const customStyle = () => (
   <Toggle
     data-testid="custom-style"

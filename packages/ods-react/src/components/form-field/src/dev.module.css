@@ -13,7 +13,7 @@
   letter-spacing: 1px;
   color: #495057;
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 .custom-form-field-helper {
@@ -30,5 +30,5 @@
   background-color: #fadbd8;
   padding: 4px 8px;
   color: #e74c3c;
-  font-weight: bold;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }

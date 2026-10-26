@@ -122,14 +122,14 @@ If a **Badge** contains only an icon, it must include an <ExternalLink href="htt
 <Canvas story="AccessibilityAriaLabel" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the aria-label instead of ignoring the **Badge**.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce the aria-label instead of ignoring the **Badge**.
 
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when extra context is needed:
 
 <Canvas story="AccessibilityWithTooltip" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
 
 <Heading label="Structuring groups of Badges with lists" level={ 3 } />
 
@@ -138,7 +138,7 @@ When displaying multiple **Badges** together, they should be wrapped within an u
 <Canvas story="AccessibilityGrouping" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements.
 Screen readers will announce the list, the number of items and the **Badges** content.
 
 <Heading label="Alternative approach with ARIA roles" level={ 3 } />
@@ -148,4 +148,4 @@ When modifying the HTML structure is not possible, use <ExternalLink href="https
 <Canvas story="AccessibilityAlternativeGrouping" />
 
 <Icon name="circle-check"
-      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

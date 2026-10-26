@@ -8,6 +8,14 @@
 
     position: relative;
 
+    &:disabled:has(> #{$button}__spinner) {
+      -webkit-text-fill-color: transparent;
+
+      > :not(#{$button}__spinner) {
+        opacity: 0;
+      }
+    }
+
     &--xs {
       @include button.ods-button-size('xs');
     }
@@ -113,10 +121,9 @@
       inset: 0;
       align-items: center;
       justify-content: center;
-      background-color: var(--ods-theme-background-color-disabled);
 
       &-icon {
-        --ods-spinner-color: var(--ods-theme-neutral-color);
+        --ods-spinner-color: currentcolor;
       }
     }
   }

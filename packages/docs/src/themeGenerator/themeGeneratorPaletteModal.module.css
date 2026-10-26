@@ -39,12 +39,12 @@
 
 .theme-generator-palette-modal__preview__tree-view__tree-item__name {
   flex: 1;
-  color: var(--ods-theme-text-color);
+  color: var(--ods-semantic-color-content-text);
 }
 
 .theme-generator-palette-modal__preview__tree-view__tree-item__error {
   padding-left: 8px;
-  color: var(--ods-color-critical-500);
+  color: var(--ods-semantic-color-content-critical);
   font-size: 12px;
 }
 
@@ -52,6 +52,6 @@
   display: flex;
   gap: 8px;
   justify-content: flex-end;
-  border-top: 1px solid var(--ods-color-neutral-200);
+  border-top: 1px solid var(--ods-semantic-color-border-neutral-subtle);
   padding-top: 16px;
 }

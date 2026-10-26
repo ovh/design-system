@@ -16,3 +16,13 @@ export const render = () => (
   <Pagination
     totalItems={20} data-testid="render" />
 );
+
+export const unlayeredRule = () => (
+  <>
+    <style>{ ':where([data-scope="pagination"][data-part="item"]) { width: 52px; }' }</style>
+
+    <Pagination
+      data-testid="unlayered-rule"
+      totalItems={20} />
+  </>
+);

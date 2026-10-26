@@ -4,7 +4,7 @@ slug: toaster
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 277
+tokens: 323
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--technical-information.txt
 ---
 
@@ -23,12 +23,21 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 
 ## Enums
 
-### TOAST_COLOR
+### TOAST_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
 - `neutral` = `neutral`
 - `primary` = `primary`
+- `success` = `success`
+- `warning` = `warning`
+
+### TOAST_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
 - `success` = `success`
 - `warning` = `warning`
 

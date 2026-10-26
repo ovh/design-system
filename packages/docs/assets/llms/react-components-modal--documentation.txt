@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1654
+tokens: 1652
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--documentation.txt
 ---
 
@@ -176,7 +176,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
     </Button>
   </ModalTrigger>
 
-  <ModalContent color={ MODAL_COLOR.critical }>
+  <ModalContent role="alertdialog">
     <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
     <ModalBody>
       <p id="modal-content">
@@ -188,7 +188,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
           Cancel
         </Button>
 
-        <Button color={ BUTTON_COLOR.critical }>
+        <Button status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>

@@ -4,7 +4,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1993
+tokens: 2049
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -90,8 +90,10 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlighting content tied to the brand, such as a new feature announcement, without conveying any particular status.
+- **Neutral**: conveying general content without any particular status or urgency.
 - **Information** _(default)_: informing users of specific content, providing global feedback to the user.
 - **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
@@ -137,7 +139,7 @@ When displaying multiple **Messages** together, they should be wrapped within an
   </li>
 
   <li>
-    <Message color={ MESSAGE_COLOR.warning }>
+    <Message status={ MESSAGE_STATUS.warning }>
       <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
       
@@ -169,7 +171,7 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
   </Message>
 
   <Message
-    color={ MESSAGE_COLOR.warning }
+    status={ MESSAGE_STATUS.warning }
     role="listitem">
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
@@ -201,7 +203,7 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
           </Button>
 
           <Button
-            color={ BUTTON_COLOR.critical }
+            status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
           </Button>
@@ -211,7 +213,7 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
           {
             alerts.map((alert) => (
               <Message
-                color={ MESSAGE_COLOR.critical }
+                status={ MESSAGE_STATUS.critical }
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 

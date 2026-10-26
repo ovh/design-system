@@ -4,7 +4,7 @@ slug: card
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 257
+tokens: 398
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
 ---
 
@@ -16,11 +16,12 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. |
+| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
+| `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Enums
 
-### CARD_COLOR
+### CARD_COLOR (deprecated)
 
 - `critical` = `critical`
 - `information` = `information`
@@ -29,15 +30,25 @@ This component extends all the native `<div>` attributes.
 - `success` = `success`
 - `warning` = `warning`
 
+### CARD_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `success` = `success`
+- `warning` = `warning`
+
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
-| `--ods-card-border-radius` | `var(--ods-theme-border-radius)` |
-| `--ods-card-border-width` | `var(--ods-theme-border-width)` |
-| `--ods-card-border-color-critical` | `var(--ods-color-critical-200)` |
-| `--ods-card-border-color-information` | `var(--ods-color-information-200)` |
-| `--ods-card-border-color-neutral` | `var(--ods-color-neutral-200)` |
-| `--ods-card-border-color-primary` | `var(--ods-color-primary-500)` |
-| `--ods-card-border-color-success` | `var(--ods-color-success-200)` |
-| `--ods-card-border-color-warning` | `var(--ods-color-warning-200)` |
+| `--ods-card-background-color` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-card-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-card-border-width` | `var(--ods-semantic-border-thickness)` |
+| `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-card-border-color-primary` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |

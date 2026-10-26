@@ -1,7 +1,7 @@
 $accessibility-header-height: 60px;
 
 body {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-semantic-font-family-body);
 }
 
 .app {
@@ -13,7 +13,7 @@ body {
     right: 0;
     left: 0;
     z-index: 9999;
-    background-color: var(--ods-color-neutral-100);
+    background-color: var(--ods-semantic-color-surface-neutral-minimal);
     height: $accessibility-header-height;
   }
 }

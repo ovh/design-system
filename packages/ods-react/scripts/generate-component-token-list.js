@@ -20,7 +20,8 @@ function getAllEntries(obj) {
 async function getCssVariables(filePath) {
   try {
     const cssContent = await fs.readFile(path.resolve(process.cwd(), filePath), { encoding: 'utf-8' });
-    const jsonContent = cssJson.toJSON(cssContent);
+    // cssjson folds the declaration that follows a comment into the comment node, losing it.
+    const jsonContent = cssJson.toJSON(cssContent.replace(/\/\*[\s\S]*?\*\//g, ''));
 
     return getAllEntries(jsonContent).filter((entry) => {
       if (Array.isArray(entry) && entry.length) {

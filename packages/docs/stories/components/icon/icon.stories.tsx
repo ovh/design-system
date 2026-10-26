@@ -29,7 +29,7 @@ export const AnatomyTech: Story = {
   render: ({}) => (
     <Icon
       name="home"
-      style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
+      style={{ fontSize: '2rem', color: 'var(--ods-semantic-color-content-brand)' }} />
   ),
 };
 
@@ -41,7 +41,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Icon
       name="home"
-      style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
+      style={{ fontSize: '2rem', color: 'var(--ods-semantic-color-content-brand)' }} />
   ),
 };
 

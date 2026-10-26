@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1350
+tokens: 1374
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--documentation.txt
 ---
 
@@ -75,8 +75,9 @@ Multiple **Tags** can be displayed:
 
 ## Variation
 
-### Color
+### Status
 
+- **Accent**: highlighting labels tied to the brand, without conveying any particular status.
 - **Neutral**: displaying general labels or metadata without conveying any particular status or urgency.
 - **Information** _(default)_: displaying a general information for the user, without conveying any particular urgency.
 - **Success**: indicating positive statuses or successful outcomes, providing a visual cue for achievements or completed tasks.

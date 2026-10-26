@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { type FC } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { BUTTON_SIZE, BUTTON_STATUS, BUTTON_VARIANT, Button } from '../../../../button/src';
@@ -40,10 +39,7 @@ const InputActions: FC<InputActionsProps> = ({
     <div className={ style['input-actions'] }>
       { loading && (
         <Spinner
-          className={ classNames(
-            style['input-actions__loading'],
-            { [style['input-actions__loading--disabled']]: disabled },
-          )}
+          className={ style['input-actions__loading'] }
           role="none"
           size={ SPINNER_SIZE.xs } />
       )}

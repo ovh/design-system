@@ -4,22 +4,22 @@ slug: tag
 category: component
 type: examples
 version: 19.7.3
-tokens: 298
+tokens: 301
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--examples.txt
 ---
 
 # Tag
 
-## Color
+## Status
 
 ```tsx
 <>
-  <Tag color={ TAG_COLOR.critical }>Critical</Tag>
-  <Tag color={ TAG_COLOR.information }>Information</Tag>
-  <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
-  <Tag color={ TAG_COLOR.primary }>Primary</Tag>
-  <Tag color={ TAG_COLOR.success }>Success</Tag>
-  <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+  <Tag status={ TAG_STATUS.accent }>Accent</Tag>
+  <Tag status={ TAG_STATUS.critical }>Critical</Tag>
+  <Tag status={ TAG_STATUS.information }>Information</Tag>
+  <Tag status={ TAG_STATUS.neutral }>Neutral</Tag>
+  <Tag status={ TAG_STATUS.success }>Success</Tag>
+  <Tag status={ TAG_STATUS.warning }>Warning</Tag>
 </>
 ```
 

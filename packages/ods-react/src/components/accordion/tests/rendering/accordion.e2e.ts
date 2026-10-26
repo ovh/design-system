@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
 import { ACCORDION_EMPHASES } from '../../src/constants/accordion-emphasis';
 
 type Styles = Record<string, Record<string, string>>;
@@ -69,30 +69,36 @@ describe('Accordion rendering', () => {
       expect(warnings).toEqual([]);
     });
 
-    it('should render medium as v19: borders only, transparent background', () => {
+    it('should render medium as the default rendering: borders on the raised surface', async() => {
+      const background = await getTokenColor(page, '--ods-semantic-color-surface-raised');
+      const borderColor = await getTokenColor(page, '--ods-semantic-color-border-neutral-subtle');
+      const borderColorHover = await getTokenColor(page, '--ods-semantic-color-interaction-control-hover');
+
       MODES.forEach((mode) => {
         const open = styles[`medium-${mode}-item-open`];
         const closed = styles[`medium-${mode}-item-closed`];
 
-        expect(open['border-top-color']).toBe('rgb(128, 128, 128)');
-        expect(closed['border-top-color']).toBe('rgb(204, 204, 204)');
+        expect(open['border-top-color']).toBe(borderColorHover);
+        expect(closed['border-top-color']).toBe(borderColor);
         expect(closed['border-left-width']).toBe('1px');
         expect(closed['margin-top']).toBe('-1px');
-        expect(open['background-color']).toBe(TRANSPARENT);
+        expect(open['background-color']).toBe(background);
         expect(styles[`medium-${mode}-trigger-open`]['background-color']).toBe(TRANSPARENT);
         expect(styles[`medium-${mode}-content-open`]['background-color']).toBe(TRANSPARENT);
         expect(styles[`medium-${mode}-content-open`]['padding-top']).toBe('0px');
       });
     });
 
-    it('should render high with a tinted trigger, the content on a white surface and the medium borders', () => {
+    it('should render high with a tinted trigger, the content on a white surface and the medium borders', async() => {
+      const tint = await getTokenColor(page, '--ods-semantic-color-surface-neutral-minimal');
+
       MODES.forEach((mode) => {
         ['item-open', 'item-closed', 'item-disabled'].forEach((part) => {
           expect(styles[`high-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
         });
 
-        expect(styles[`high-${mode}-trigger-open`]['background-color']).toBe('rgb(230, 230, 230)');
-        expect(styles[`high-${mode}-trigger-closed`]['background-color']).toBe('rgb(230, 230, 230)');
+        expect(styles[`high-${mode}-trigger-open`]['background-color']).toBe(tint);
+        expect(styles[`high-${mode}-trigger-closed`]['background-color']).toBe(tint);
         expect(styles[`high-${mode}-trigger-disabled`]['background-color']).toBe(TRANSPARENT);
         expect(styles[`high-${mode}-content-open`]['background-color']).toBe('rgb(255, 255, 255)');
         expect(styles[`high-${mode}-content-open`]['padding-top']).toBe(styles[`medium-${mode}-content-open`]['padding-top']);

@@ -5,9 +5,9 @@
     padding: 0 var(--ods-accordion-padding-horizontal) var(--ods-accordion-padding-vertical);
 
     &--high {
-      // Not on a disabled item, so its ods-is-disabled() background shows through.
+      // Not on a disabled item, which keeps the medium rendering, dimmed.
       &:not([data-disabled]) {
-        background-color: var(--ods-theme-background-color);
+        background-color: var(--ods-semantic-color-surface-raised);
       }
     }
   }

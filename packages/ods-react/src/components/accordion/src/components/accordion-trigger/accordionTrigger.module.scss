@@ -35,11 +35,10 @@
       }
     }
 
-    // Tinted header, like the neutral Modal header. Not on a disabled item, so its
-    // ods-is-disabled() background shows through.
+    // Tinted header. Not on a disabled item, which keeps the medium rendering, dimmed.
     &--high:not(:disabled) {
       border-radius: inherit;
-      background-color: var(--ods-color-neutral-100);
+      background-color: var(--ods-semantic-color-surface-neutral-minimal);
 
       &[data-state="open"] {
         border-bottom-left-radius: 0;

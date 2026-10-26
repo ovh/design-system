@@ -1,6 +1,7 @@
 import { EnvironmentProvider } from '@ark-ui/react/environment';
 import { type ReactNode, useContext, useEffect, useState } from 'react';
 import Frame, { FrameContext } from 'react-frame-component';
+import { useNavigate } from 'react-router-dom';
 import { APP_ROOT } from '../appBase';
 import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 // Vite inlines the css text; url() references are rebased at import time.
@@ -172,6 +173,34 @@ const FrameRealm = ({ children }: { children: ReactNode }) => {
   return <EnvironmentProvider value={ frameDocument }>{ children }</EnvironmentProvider>;
 };
 
+/* An anchor with a query-only href (the Pagination link mode demos build them) resolves against the
+   <base> below, so following it would load the whole docs app inside the frame. A demo reads the
+   URL of the router it runs under, so the navigation is handed to that router instead, the way a routing
+   library's link does it. A click a link already handled (a router link) is left alone. */
+const FrameLinks = () => {
+  const { document: frameDocument } = useContext(FrameContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!frameDocument) {
+      return;
+    }
+    const onClick = (event: MouseEvent) => {
+      const anchor = (event.target as Element | null)?.closest?.('a[href^="?"]');
+      if (!anchor || event.defaultPrevented || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
+        || (anchor.getAttribute('target') ?? '_self') !== '_self') {
+        return;
+      }
+      event.preventDefault();
+      navigate({ search: anchor.getAttribute('href')! });
+    };
+    frameDocument.addEventListener('click', onClick);
+    return () => frameDocument.removeEventListener('click', onClick);
+  }, [frameDocument, navigate]);
+
+  return null;
+};
+
 const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${APP_ROOT.href}"></head><body><div id="mount"></div></body></html>`;
 
 /* Flips ready once the frame content has painted with its fonts, so the
@@ -223,6 +252,7 @@ const DemoFrame = ({ bare, children, dark, onReady, tokens }: DemoFrameProp) => 
         <StyleSync />
         <FrameAutoSize active={ ready } />
         <FrameEnv dark={ dark } tokens={ tokens } />
+        <FrameLinks />
         <FrameReady onReady={ (frameDocument) => { setReady(true); onReady?.(frameDocument); } } />
         <FrameRealm>{ children }</FrameRealm>
       </Frame>

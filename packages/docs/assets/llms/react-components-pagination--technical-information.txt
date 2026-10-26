@@ -4,7 +4,7 @@ slug: pagination
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 639
+tokens: 1000
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
 ---
 
@@ -17,12 +17,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 |---|---|---|---|---|
 | `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `getPageUrl` | `(detail: PaginationPageUrlDetail) => string` | No | undefined | Build the URL of a given page. Providing it turns the pages and the previous / next triggers into links, so that they can be crawled, opened in a new tab and restored on reload. They then look like the Link component, as they navigate, instead of the Button component. Read the page and the size back from the URL and pass them as `page` (or `defaultPage` when every navigation loads a new document) and `pageSize`. |
 | `labelTooltipNext` | `string` | No | undefined | The tooltip label on the "next page" button. |
 | `labelTooltipPrev` | `string` | No | undefined | The tooltip label on the "previous page" button. |
-| `onPageChange` | `(detail: PaginationPageChangeDetail) => void` | No | undefined | Callback fired when the active page changes. |
-| `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when the page size changes. |
+| `linkAs` | `ElementType` | No | 'a' | Pass a component to render the pages and the previous / next triggers that have a destination (the active page and the triggers at the bounds stay plain elements), so it always receives `href`. Only used along `getPageUrl`. Useful to hand the navigation over to a routing library, which a plain anchor would bypass with a full page load: the component receives the built URL as `href` and maps it to whatever prop it expects. |
+| `onPageChange` | `(detail: PaginationPageChangeDetail) => void` | No | undefined | Callback fired when the active page changes. Along `getPageUrl`, following a link does not fire it, as the URL already holds the new page: only PaginationPageSelector reports, and the application navigates to the matching URL. |
+| `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when a page size is picked. Along `getPageUrl` the size is reported but not applied: navigate to the matching URL and pass the new `pageSize` back. |
 | `page` | `number` | No | undefined | The controlled active page |
-| `pageSize` | `number` | No | undefined | The number of items per page. |
+| `pageSize` | `number` | No | undefined | The number of items per page. Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then what holds the size: the component renders it instead of keeping a size of its own. |
 | `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |

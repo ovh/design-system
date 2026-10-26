@@ -18,7 +18,7 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
   withPageSizeSelector,
   ...props
 }, ref): JSX.Element => {
-  const { currentPage, handlePageChange, itemsPerPage } = usePagination();
+  const { currentPage, getPageUrl, handlePageChange, itemsPerPage } = usePagination();
 
   useEffect(() => {
     if (!children) {
@@ -32,11 +32,13 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
       count={ totalItems }
       data-ods="pagination"
       defaultPage={ defaultPage }
+      getPageUrl={ getPageUrl }
       onPageChange={ handlePageChange }
       page={ currentPage }
       pageSize={ itemsPerPage }
       ref={ ref }
       siblingCount={ siblingCount }
+      type={ getPageUrl ? 'link' : 'button' }
       { ...props }>
       {/* [Deprecated] remove non children default render on next major release */}
       {
@@ -57,8 +59,10 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
 const Pagination: FC<PaginationProp> = forwardRef(({
   defaultPage,
   disabled,
+  getPageUrl,
   labelTooltipNext,
   labelTooltipPrev,
+  linkAs,
   onPageChange,
   onPageSizeChange,
   page,
@@ -70,8 +74,10 @@ const Pagination: FC<PaginationProp> = forwardRef(({
     <PaginationProvider
       defaultPage={ defaultPage }
       disabled={ disabled }
+      getPageUrl={ getPageUrl }
       labelTooltipNext={ labelTooltipNext }
       labelTooltipPrev={ labelTooltipPrev }
+      linkAs={ linkAs }
       onPageChange={ onPageChange }
       onPageSizeChange={ onPageSizeChange }
       page={ page }

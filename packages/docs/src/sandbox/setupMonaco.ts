@@ -57,6 +57,8 @@ function setupMonaco(): typeof monaco {
     // runtime shim exposes them (Sandbox EXTRA_MODULES); default export only.
     { content: "declare module '@shikijs/langs/typescript' { const lang: any; export default lang; }", filePath: 'file:///node_modules/@shikijs/langs/typescript.d.ts' },
     { content: "declare module '@shikijs/themes/nord' { const theme: any; export default theme; }", filePath: 'file:///node_modules/@shikijs/themes/nord.d.ts' },
+    // Same for the router the Pagination link mode stories import: the members they use only.
+    { content: "declare module 'react-router-dom' { import type { ComponentPropsWithRef, ComponentType } from 'react'; export const Link: ComponentType<ComponentPropsWithRef<'a'> & { to: string }>; export function useNavigate(): (to: string) => void; export function useSearchParams(): [URLSearchParams, (next: URLSearchParams) => void]; }", filePath: 'file:///node_modules/react-router-dom/index.d.ts' },
   ];
   // dist/src/index.d.ts lands at node_modules/@ovhcloud/ods-react/index.d.ts,
   // which is exactly where NodeJs resolution looks the bare specifier up.

@@ -21,3 +21,11 @@ export const focus = () => (
     Focus
   </Link>
 );
+
+export const withoutOnClick = () => (
+  <Link
+    data-testid="without-on-click"
+    href="#">
+    Without onClick
+  </Link>
+);

@@ -7,33 +7,31 @@ import { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from '../../src/
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 type Rendering = { background: string, border: string, icon: string, text: string };
-type SpecRoles = { high: [string, string], medium: [string, string] };
+type SpecRoles = { high: [string, string, string], medium: [string, string, string], low: string };
 
-// The semantic roles each emphasis reads: high is [background, text], medium is [border, text] on the raised surface. Low uses the medium text.
+// The semantic roles each emphasis reads. High and medium are [background, border, text], both lined with the subtle
+// status border: high on the subtle status surface, medium on the raised surface. Low has a transparent background and
+// border, and the status text.
 const SPEC: Record<MessageStatus, SpecRoles> = {
-  [MESSAGE_STATUS.accent]: { high: ['surface-accent-subtle', 'content-on-accent'], medium: ['border-accent-subtle', 'content-accent'] },
-  [MESSAGE_STATUS.critical]: { high: ['surface-critical-subtle', 'content-on-critical'], medium: ['border-critical-subtle', 'content-critical'] },
-  [MESSAGE_STATUS.information]: { high: ['surface-information-subtle', 'content-on-information'], medium: ['border-information-subtle', 'content-information'] },
-  [MESSAGE_STATUS.neutral]: { high: ['surface-neutral-minimal', 'content-on-neutral'], medium: ['border-neutral-subtle', 'content-neutral'] },
-  [MESSAGE_STATUS.success]: { high: ['surface-success-subtle', 'content-on-success'], medium: ['border-success-subtle', 'content-success'] },
-  [MESSAGE_STATUS.warning]: { high: ['surface-warning-subtle', 'content-on-warning'], medium: ['border-warning-subtle', 'content-warning'] },
+  [MESSAGE_STATUS.accent]: { high: ['surface-accent-subtle', 'border-accent-subtle', 'content-on-accent'], low: 'content-accent', medium: ['surface-raised', 'border-accent-subtle', 'content-accent'] },
+  [MESSAGE_STATUS.critical]: { high: ['surface-critical-subtle', 'border-critical-subtle', 'content-on-critical'], low: 'content-critical', medium: ['surface-raised', 'border-critical-subtle', 'content-critical'] },
+  [MESSAGE_STATUS.information]: { high: ['surface-information-subtle', 'border-information-subtle', 'content-on-information'], low: 'content-information', medium: ['surface-raised', 'border-information-subtle', 'content-information'] },
+  [MESSAGE_STATUS.neutral]: { high: ['surface-neutral-subtle', 'border-neutral-subtle', 'content-on-neutral'], low: 'content-neutral', medium: ['surface-raised', 'border-neutral-subtle', 'content-neutral'] },
+  [MESSAGE_STATUS.success]: { high: ['surface-success-subtle', 'border-success-subtle', 'content-on-success'], low: 'content-success', medium: ['surface-raised', 'border-success-subtle', 'content-success'] },
+  [MESSAGE_STATUS.warning]: { high: ['surface-warning-subtle', 'border-warning-subtle', 'content-on-warning'], low: 'content-warning', medium: ['surface-raised', 'border-warning-subtle', 'content-warning'] },
 };
 
 async function getExpectedRendering(page: Page, status: MessageStatus, emphasis: MessageEmphasis): Promise<Rendering> {
-  const { high, medium } = SPEC[status];
+  const { high, low, medium } = SPEC[status];
   const color = (role: string): Promise<string> => getTokenColor(page, `--ods-semantic-color-${role}`);
 
   switch (emphasis) {
-    case MESSAGE_EMPHASIS.high: {
-      const [background, text] = await Promise.all(high.map(color));
-      return { background, border: 'none', icon: text, text };
-    }
     case MESSAGE_EMPHASIS.low: {
-      const text = await color(medium[1]);
-      return { background: TRANSPARENT, border: 'none', icon: text, text };
+      const text = await color(low);
+      return { background: TRANSPARENT, border: `1px solid ${TRANSPARENT}`, icon: text, text };
     }
     default: {
-      const [background, border, text] = await Promise.all([color('surface-raised'), color(medium[0]), color(medium[1])]);
+      const [background, border, text] = await Promise.all((emphasis === MESSAGE_EMPHASIS.high ? high : medium).map(color));
       return { background, border: `1px solid ${border}`, icon: text, text };
     }
   }

@@ -10,6 +10,7 @@
     &[data-selected] {
       border-color: var(--ods-semantic-color-border-selected-solid);
       background: var(--ods-semantic-color-surface-selected-solid);
+      color: var(--ods-semantic-color-content-on-selected-solid);
     }
 
     // Link mode. The link hugs its digits, so that the Link underline stays the width of the page

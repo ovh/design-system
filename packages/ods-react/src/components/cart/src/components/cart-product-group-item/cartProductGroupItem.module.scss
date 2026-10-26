@@ -12,7 +12,7 @@
     flex-flow: column;
     column-gap: var(--ods-semantic-size-space-gap-inline);
     justify-content: space-between;
-    background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    background-color: var(--ods-semantic-color-surface-muted);
     padding: var(--ods-cart-product-group-item-padding-vertical) var(--ods-cart-product-group-item-padding-horizontal);
 
     &:last-child {

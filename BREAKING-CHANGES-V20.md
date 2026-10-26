@@ -150,7 +150,7 @@ at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-input-padding-vertical` | `--ods-semantic-size-space-inset-block-compact` |
 | `--ods-theme-input-placeholder-text-color` | `--ods-semantic-color-content-placeholder` |
 | `--ods-theme-input-text-color` | `--ods-semantic-color-content-text` |
-| `--ods-theme-input-text-color-checked` | `--ods-semantic-color-content-on-solid` |
+| `--ods-theme-input-text-color-checked` | `--ods-semantic-color-content-on-control-solid` |
 | `--ods-theme-input-text-color-invalid` | `--ods-semantic-color-content-critical` |
 | `--ods-theme-chart-background-color` | `--ods-semantic-color-chart-background` |
 | `--ods-theme-chart-axis-color` | `--ods-semantic-color-chart-axis` |

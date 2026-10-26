@@ -111,7 +111,7 @@ const THEME = {
   'input-padding-vertical': 'size-space-inset-block-compact',
   'input-placeholder-text-color': 'color-content-placeholder',
   'input-text-color': 'color-content-text',
-  'input-text-color-checked': 'color-content-on-solid',
+  'input-text-color-checked': 'color-content-on-control-solid',
   'input-text-color-invalid': 'color-content-critical',
 
   'chart-background-color': 'color-chart-background',

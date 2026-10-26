@@ -1,20 +1,25 @@
 @mixin ods-message() {
   --ods-message-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
-  // High emphasis: the subtle status surface, no border, the text role made for that surface. Neutral reads the minimal
-  // surface instead, as its subtle one is the page surface: high would look like low on the page.
+  // High emphasis: the subtle status surface, lined with the subtle status border, with the text role made for that surface.
   --ods-message-background-color-critical-high: var(--ods-semantic-color-surface-critical-subtle);
+  --ods-message-border-color-critical-high: var(--ods-semantic-color-border-critical-subtle);
   --ods-message-text-color-critical-high: var(--ods-semantic-color-content-on-critical);
   --ods-message-background-color-information-high: var(--ods-semantic-color-surface-information-subtle);
+  --ods-message-border-color-information-high: var(--ods-semantic-color-border-information-subtle);
   --ods-message-text-color-information-high: var(--ods-semantic-color-content-on-information);
-  --ods-message-background-color-neutral-high: var(--ods-semantic-color-surface-neutral-minimal);
+  --ods-message-background-color-neutral-high: var(--ods-semantic-color-surface-neutral-subtle);
+  --ods-message-border-color-neutral-high: var(--ods-semantic-color-border-neutral-subtle);
   --ods-message-text-color-neutral-high: var(--ods-semantic-color-content-on-neutral);
   --ods-message-background-color-accent-high: var(--ods-semantic-color-surface-accent-subtle);
+  --ods-message-border-color-accent-high: var(--ods-semantic-color-border-accent-subtle);
   --ods-message-text-color-accent-high: var(--ods-semantic-color-content-on-accent);
   --ods-message-background-color-success-high: var(--ods-semantic-color-surface-success-subtle);
+  --ods-message-border-color-success-high: var(--ods-semantic-color-border-success-subtle);
   --ods-message-text-color-success-high: var(--ods-semantic-color-content-on-success);
   --ods-message-background-color-warning-high: var(--ods-semantic-color-surface-warning-subtle);
+  --ods-message-border-color-warning-high: var(--ods-semantic-color-border-warning-subtle);
   --ods-message-text-color-warning-high: var(--ods-semantic-color-content-on-warning);
-  // Medium emphasis (default): the raised surface, the subtle status border, the status text role.
+  // Medium emphasis (default): the raised surface, lined with the subtle status border, with the status text role.
   --ods-message-background-color-critical-medium: var(--ods-semantic-color-surface-raised);
   --ods-message-border-color-critical-medium: var(--ods-semantic-color-border-critical-subtle);
   --ods-message-text-color-critical-medium: var(--ods-semantic-color-content-critical);
@@ -33,7 +38,7 @@
   --ods-message-background-color-warning-medium: var(--ods-semantic-color-surface-raised);
   --ods-message-border-color-warning-medium: var(--ods-semantic-color-border-warning-subtle);
   --ods-message-text-color-warning-medium: var(--ods-semantic-color-content-warning);
-  // Low emphasis: transparent background, no border, the medium text role.
+  // Low emphasis: transparent background and border, the status text role.
   --ods-message-text-color-critical-low: var(--ods-semantic-color-content-critical);
   --ods-message-text-color-information-low: var(--ods-semantic-color-content-information);
   --ods-message-text-color-neutral-low: var(--ods-semantic-color-content-neutral);
@@ -51,27 +56,27 @@
 
 @mixin ods-message-emphasis-high($color) {
   @if $color == 'critical' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-critical-high);
     background-color: var(--ods-message-background-color-critical-high);
     color: var(--ods-message-text-color-critical-high);
   } @else if $color == 'information' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-information-high);
     background-color: var(--ods-message-background-color-information-high);
     color: var(--ods-message-text-color-information-high);
   } @else if $color == 'neutral' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-neutral-high);
     background-color: var(--ods-message-background-color-neutral-high);
     color: var(--ods-message-text-color-neutral-high);
   } @else if $color == 'accent' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-accent-high);
     background-color: var(--ods-message-background-color-accent-high);
     color: var(--ods-message-text-color-accent-high);
   } @else if $color == 'success' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-success-high);
     background-color: var(--ods-message-background-color-success-high);
     color: var(--ods-message-text-color-success-high);
   } @else if $color == 'warning' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-warning-high);
     background-color: var(--ods-message-background-color-warning-high);
     color: var(--ods-message-text-color-warning-high);
   } @else if $color == 'primary' {
@@ -115,27 +120,27 @@
 
 @mixin ods-message-emphasis-low($color) {
   @if $color == 'critical' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-critical-low);
   } @else if $color == 'information' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-information-low);
   } @else if $color == 'neutral' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-neutral-low);
   } @else if $color == 'accent' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-accent-low);
   } @else if $color == 'success' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-success-low);
   } @else if $color == 'warning' {
-    border: none;
+    border: solid var(--ods-semantic-border-thickness) transparent;
     background-color: transparent;
     color: var(--ods-message-text-color-warning-low);
   } @else if $color == 'primary' {

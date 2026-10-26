@@ -5,6 +5,6 @@
 }
 
 .product-details {
-  background-color: var(--ods-semantic-color-surface-neutral-minimal);
+  background-color: var(--ods-semantic-color-surface-muted);
   padding-top: 24px;
 }

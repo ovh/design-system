@@ -19,6 +19,7 @@
     &[data-state="indeterminate"] {
       border-color: var(--ods-semantic-color-border-control-solid);
       background: var(--ods-semantic-color-surface-control-solid);
+      color: var(--ods-semantic-color-content-on-control-solid);
 
       &:not([data-disabled], [data-invalid]) {
         &:hover,
@@ -36,6 +37,7 @@
       &[data-invalid] {
         border-color: var(--ods-semantic-color-border-critical);
         background-color: var(--ods-semantic-color-surface-critical);
+        color: var(--ods-semantic-color-content-on-critical-solid);
       }
     }
 

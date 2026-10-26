@@ -6,18 +6,18 @@ import { BADGE_STATUS, BADGE_STATUSES } from '../../src/constants/badge-status';
 
 // Statuses without a high or low value yet: they keep their medium rendering in both.
 const PROMOTIONAL_STATUSES = [BADGE_STATUS.alpha, BADGE_STATUS.beta, BADGE_STATUS.new, BADGE_STATUS.promotion];
-const FILLED_STATUSES = [BADGE_STATUS.critical, BADGE_STATUS.information, BADGE_STATUS.neutral, BADGE_STATUS.success, BADGE_STATUS.warning];
-const TEXT_ONLY_STATUSES = [BADGE_STATUS.accent, ...FILLED_STATUSES];
+const FILLED_STATUSES = [BADGE_STATUS.accent, BADGE_STATUS.critical, BADGE_STATUS.information, BADGE_STATUS.neutral, BADGE_STATUS.success, BADGE_STATUS.warning];
+const TEXT_ONLY_STATUSES = FILLED_STATUSES;
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
-type Colors = { background: string, text: string };
+type Colors = { background: string, border: string, text: string };
 
 async function getColors(page: Page, testId: string): Promise<Colors> {
   const element = await page.waitForSelector(`[data-testid="${testId}"]`);
 
   return element!.evaluate((el: Element) => {
     const style = getComputedStyle(el);
-    return { background: style.backgroundColor, text: style.color };
+    return { background: style.backgroundColor, border: style.borderTopColor, text: style.color };
   });
 }
 
@@ -108,18 +108,15 @@ describe('Badge rendering', () => {
       expect(unfilledStatuses).toEqual([]);
     });
 
-    it('should render low as text only, without background', async() => {
+    it('should render low as text only, without background nor border', async() => {
       const lowColors = await Promise.all(TEXT_ONLY_STATUSES.map((status) => getColors(page, `${status}-${BADGE_EMPHASIS.low}`)));
-      const invalidStatuses = TEXT_ONLY_STATUSES.filter((_, index) => lowColors[index].background !== TRANSPARENT);
+      const invalidStatuses = TEXT_ONLY_STATUSES.filter((_, index) => lowColors[index].background !== TRANSPARENT || lowColors[index].border !== TRANSPARENT);
 
       expect(invalidStatuses).toEqual([]);
     });
 
     it('should keep the medium rendering where high or low has no value yet', async() => {
-      const pairs = [
-        [BADGE_STATUS.accent, BADGE_EMPHASIS.high],
-        ...PROMOTIONAL_STATUSES.flatMap((status) => [[status, BADGE_EMPHASIS.high], [status, BADGE_EMPHASIS.low]]),
-      ];
+      const pairs = PROMOTIONAL_STATUSES.flatMap((status) => [[status, BADGE_EMPHASIS.high], [status, BADGE_EMPHASIS.low]]);
       const styles = await Promise.all(pairs.map(([status, emphasis]) => getStatusStyle(page, `${status}-${emphasis}`)));
       const mediumStyles = await Promise.all(pairs.map(([status]) => getStatusStyle(page, `${status}-${BADGE_EMPHASIS.medium}`)));
 

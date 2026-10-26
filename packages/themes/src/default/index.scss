@@ -39,6 +39,9 @@
   --ods-semantic-color-surface-selected: var(--ods-palette-accent-100);
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-700);
 
+  /* Surfaces - structure */
+  --ods-semantic-color-surface-muted: var(--ods-palette-gray-100);
+
   /* Surfaces - statuses */
   --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-50);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-100);
@@ -105,6 +108,7 @@
   /* Content - inks on a solid surface */
   --ods-semantic-color-content-on-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-selected-solid: var(--ods-palette-white);
+  --ods-semantic-color-content-on-control-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-neutral-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-brand-solid: var(--ods-palette-white);
   --ods-semantic-color-content-on-accent-solid: var(--ods-palette-white);
@@ -116,6 +120,11 @@
   /* Content - inks on a specific surface */
   --ods-semantic-color-content-on-code: var(--ods-palette-white);
   --ods-semantic-color-content-on-vivid: var(--ods-palette-blue-900);
+
+  /* Borders - structure */
+  --ods-semantic-color-border-separator: var(--ods-palette-gray-200);
+  --ods-semantic-color-border-track: var(--ods-palette-gray-200);
+  --ods-semantic-color-border-container: var(--ods-palette-gray-300);
 
   /* Borders - neutral lines */
   --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-200);
@@ -151,8 +160,8 @@
   /* Interaction - on a tinted / transparent surface */
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
   --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-100);
-  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-50);
-  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-50);
+  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-brand-100);
+  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-brand-100);
   --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-100);
   --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-100);
   --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-100);
@@ -190,6 +199,7 @@
   --ods-semantic-color-interaction-control-highlight: var(--ods-palette-accent-50);
   --ods-semantic-color-interaction-control-solid-hover: var(--ods-palette-accent-800);
   --ods-semantic-color-interaction-control-solid-active: var(--ods-palette-accent-800);
+  --ods-semantic-color-interaction-track-hover: var(--ods-palette-gray-300);
 
   /* Charts */
   --ods-semantic-color-chart-background: var(--ods-semantic-color-surface-page);

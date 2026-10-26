@@ -39,6 +39,10 @@
       &[data-invalid] {
         border-color: var(--ods-semantic-color-border-critical);
         background-color: var(--ods-semantic-color-surface-critical);
+
+        &::before {
+          background-color: var(--ods-semantic-color-content-on-critical-solid);
+        }
       }
     }
 

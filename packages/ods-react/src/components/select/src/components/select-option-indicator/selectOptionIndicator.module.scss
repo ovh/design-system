@@ -9,6 +9,7 @@
     &:checked {
       border-color: var(--ods-semantic-color-border-control-solid);
       background: var(--ods-semantic-color-surface-control-solid);
+      color: var(--ods-semantic-color-content-on-control-solid);
 
       &::before {
         @include icon.ods-icon();

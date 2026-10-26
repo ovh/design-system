@@ -32,6 +32,7 @@ $ods-button-group-item-z-index: 1;
     &[data-state="on"] {
       border-color: var(--ods-semantic-color-surface-selected-solid);
       background-color: var(--ods-semantic-color-surface-selected-solid);
+      color: var(--ods-semantic-color-content-on-selected-solid);
     }
 
     &[data-disabled] {

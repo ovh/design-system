@@ -5,6 +5,10 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
 @mixin ods-link() {
   --ods-link-column-gap: var(--ods-semantic-size-space-gap-inline);
   --ods-link-row-gap: var(--ods-semantic-size-space-gap-block);
+  --ods-link-text-color: var(--ods-semantic-color-content-brand);
+  // Same value as at rest: the hover signal is the underline, not a colour change.
+  --ods-link-text-color-hover: var(--ods-semantic-color-content-brand);
+  --ods-link-text-color-visited: var(--ods-semantic-color-interaction-brand-visited);
 
   display: inline-flex;
   position: relative;
@@ -13,7 +17,7 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
   align-items: center;
   width: max-content;
   text-decoration: none;
-  color: var(--ods-semantic-color-content-brand);
+  color: var(--ods-link-text-color);
   font-weight: $ods-link-font-weight;
   cursor: pointer;
 
@@ -31,9 +35,13 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
     will-change: transform;
   }
 
+  &:visited {
+    color: var(--ods-link-text-color-visited);
+  }
+
   &:hover,
   &:focus-visible {
-    color: var(--ods-semantic-color-interaction-brand-hover);
+    color: var(--ods-link-text-color-hover);
 
     &::after {
       transform: scaleX(1);
@@ -42,9 +50,5 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
 
   &:focus-visible {
     @include focus.ods-focus();
-  }
-
-  &:visited {
-    color: var(--ods-semantic-color-interaction-brand-visited);
   }
 }

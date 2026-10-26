@@ -153,9 +153,11 @@ const FrameAutoSize = ({ active }: { active: boolean }) => {
     const OVERLAY_STAGE = 420;
     // Tooltips are a line or two of text: a full stage would be mostly void.
     const TOOLTIP_STAGE = 160;
-    // Bottom edge of the tallest overlay seen so far: kept once closed so a
-    // popup taller than the stage resizes the frame once, not on every toggle.
-    let overlayBottom = 0;
+    // Bottom edge of the tallest overlay seen so far, per positioner: kept
+    // once closed so a popup taller than the stage resizes the frame once, not
+    // on every toggle. Entries go with their positioner — a gallery filter or
+    // sandbox recompile reuses the frame and must not inherit a gone popup.
+    const overlayBottoms = new Map<Element, number>();
     const measure = () => {
       raf = 0;
       // body, not documentElement: the html element stretches to the iframe
@@ -169,18 +171,29 @@ const FrameAutoSize = ({ active }: { active: boolean }) => {
         const tooltipsOnly = [...positioners].every((el) => el.getAttribute('data-scope') === 'tooltip');
         height = Math.max(height, tooltipsOnly ? TOOLTIP_STAGE : OVERLAY_STAGE);
       }
+      overlayBottoms.forEach((_, positioner) => {
+        if (![...positioners].includes(positioner)) {
+          overlayBottoms.delete(positioner);
+        }
+      });
       // Only floating parts count: data-state="open" also flags in-flow
       // parts (accordion items, tree branches, triggers) already covered by
-      // the body measure.
+      // the body measure. Dialogs (drawer, modal) are skipped: they size and
+      // place themselves from the frame viewport, so their bottom tracks the
+      // frame height — counting it grew the frame on every reopen. The stage
+      // is their room.
       positioners.forEach((positioner) => {
+        if (positioner.getAttribute('data-scope') === 'dialog') {
+          return;
+        }
         positioner.querySelectorAll('[data-state="open"]').forEach((el) => {
           const rect = el.getBoundingClientRect();
           if (rect.height > 0) {
-            overlayBottom = Math.max(overlayBottom, rect.bottom + 16);
+            overlayBottoms.set(positioner, Math.max(overlayBottoms.get(positioner) ?? 0, rect.bottom + 16));
           }
         });
       });
-      height = Math.max(height, overlayBottom);
+      height = Math.max(height, ...overlayBottoms.values());
       iframe.style.height = `${Math.max(Math.ceil(height), 60)}px`;
     };
     const schedule = () => {

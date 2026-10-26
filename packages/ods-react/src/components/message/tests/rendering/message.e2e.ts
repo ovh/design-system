@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
 import { MESSAGE_EMPHASES, MESSAGE_EMPHASIS, type MessageEmphasis } from '../../src/constants/message-emphasis';
 import { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from '../../src/constants/message-status';
 
@@ -8,38 +8,35 @@ const PAGE_BACKGROUND = 'rgb(255, 255, 255)';
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 type Rendering = { background: string, border: string, icon: string, text: string };
-type SpecColors = { high: [string, string], medium: [string, string] };
+type SpecRoles = { high: [string, string], medium: [string, string] };
 
-// Default theme values of the spec: high is [background, text], medium is [border, text]. Low uses the medium text.
-const INFORMATION_SPEC: SpecColors = { high: ['#e6faff', '#000e9c'], medium: ['#bef1ff', '#0050d7'] };
-const SPEC: Record<MessageStatus, SpecColors> = {
-  [MESSAGE_STATUS.accent]: INFORMATION_SPEC,
-  [MESSAGE_STATUS.critical]: { high: ['#ffccd9', '#800015'], medium: ['#ef99ab', '#bf0020'] },
-  [MESSAGE_STATUS.information]: INFORMATION_SPEC,
-  [MESSAGE_STATUS.neutral]: { high: ['#cccccc', '#4d4d4d'], medium: ['#cccccc', '#808080'] },
-  [MESSAGE_STATUS.success]: { high: ['#d2f2c2', '#1a4d00'], medium: ['#90cc7a', '#2b8000'] },
-  [MESSAGE_STATUS.warning]: { high: ['#feea86', '#663800'], medium: ['#fed265', '#995400'] },
+// The semantic roles each emphasis reads: high is [background, text], medium is [border, text] on the raised surface. Low uses the medium text.
+const SPEC: Record<MessageStatus, SpecRoles> = {
+  [MESSAGE_STATUS.accent]: { high: ['surface-accent-subtle', 'content-on-accent'], medium: ['border-accent-subtle', 'content-accent'] },
+  [MESSAGE_STATUS.critical]: { high: ['surface-critical-subtle', 'content-on-critical'], medium: ['border-critical-subtle', 'content-critical'] },
+  [MESSAGE_STATUS.information]: { high: ['surface-information-subtle', 'content-on-information'], medium: ['border-information-subtle', 'content-information'] },
+  [MESSAGE_STATUS.neutral]: { high: ['surface-neutral-subtle', 'content-on-neutral'], medium: ['border-neutral-subtle', 'content-neutral'] },
+  [MESSAGE_STATUS.success]: { high: ['surface-success-subtle', 'content-on-success'], medium: ['border-success-subtle', 'content-success'] },
+  [MESSAGE_STATUS.warning]: { high: ['surface-warning-subtle', 'content-on-warning'], medium: ['border-warning-subtle', 'content-warning'] },
 };
 
-// Pending design answer (ODS-2335): the spec neutral medium and low text (#808080 on white) is 3.95:1, under AA.
-const AA_EXCEPTIONS = [`${MESSAGE_STATUS.neutral}-${MESSAGE_EMPHASIS.medium}`, `${MESSAGE_STATUS.neutral}-${MESSAGE_EMPHASIS.low}`];
-
-function toRgb(hex: string): string {
-  const [r, g, b] = hex.slice(1).match(/../g)!.map((channel) => parseInt(channel, 16));
-
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
-function getExpectedRendering(status: MessageStatus, emphasis: MessageEmphasis): Rendering {
+async function getExpectedRendering(page: Page, status: MessageStatus, emphasis: MessageEmphasis): Promise<Rendering> {
   const { high, medium } = SPEC[status];
+  const color = (role: string): Promise<string> => getTokenColor(page, `--ods-semantic-color-${role}`);
 
   switch (emphasis) {
-    case MESSAGE_EMPHASIS.high:
-      return { background: toRgb(high[0]), border: 'none', icon: toRgb(high[1]), text: toRgb(high[1]) };
-    case MESSAGE_EMPHASIS.low:
-      return { background: TRANSPARENT, border: 'none', icon: toRgb(medium[1]), text: toRgb(medium[1]) };
-    default:
-      return { background: PAGE_BACKGROUND, border: `1px solid ${toRgb(medium[0])}`, icon: toRgb(medium[1]), text: toRgb(medium[1]) };
+    case MESSAGE_EMPHASIS.high: {
+      const [background, text] = await Promise.all(high.map(color));
+      return { background, border: 'none', icon: text, text };
+    }
+    case MESSAGE_EMPHASIS.low: {
+      const text = await color(medium[1]);
+      return { background: TRANSPARENT, border: 'none', icon: text, text };
+    }
+    default: {
+      const [background, border, text] = await Promise.all([color('surface-raised'), color(medium[0]), color(medium[1])]);
+      return { background, border: `1px solid ${border}`, icon: text, text };
+    }
   }
 }
 
@@ -144,20 +141,14 @@ describe('Message rendering', () => {
       expect(unknownStyles).toEqual(mediumStyles);
     });
 
-    it('should apply the spec colors to the background, border, text and icon of every status and emphasis', async() => {
+    it('should apply the spec roles to the background, border, text and icon of every status and emphasis', async() => {
       const renderings = await Promise.all(PAIRS.map(([status, emphasis]) => getRendering(page, `${status}-${emphasis}`)));
+      const expectations = await Promise.all(PAIRS.map(([status, emphasis]) => getExpectedRendering(page, status, emphasis)));
       const mismatches = PAIRS
-        .map(([status, emphasis], index) => ({ actual: renderings[index], expected: getExpectedRendering(status, emphasis), testId: `${status}-${emphasis}` }))
+        .map(([status, emphasis], index) => ({ actual: renderings[index], expected: expectations[index], testId: `${status}-${emphasis}` }))
         .filter(({ actual, expected }) => JSON.stringify(actual) !== JSON.stringify(expected));
 
       expect(mismatches).toEqual([]);
-    });
-
-    it('should render accent as information in every emphasis', async() => {
-      const accentStyles = await Promise.all(MESSAGE_EMPHASES.map((emphasis) => getStatusStyle(page, `${MESSAGE_STATUS.accent}-${emphasis}`)));
-      const informationStyles = await Promise.all(MESSAGE_EMPHASES.map((emphasis) => getStatusStyle(page, `${MESSAGE_STATUS.information}-${emphasis}`)));
-
-      expect(accentStyles).toEqual(informationStyles);
     });
 
     it('should render the same close button in every status and emphasis', async() => {
@@ -167,7 +158,7 @@ describe('Message rendering', () => {
     });
 
     it('should keep an AA text contrast (4.5:1) for every status and emphasis', async() => {
-      const testIds = PAIRS.map(([status, emphasis]) => `${status}-${emphasis}`).filter((testId) => !AA_EXCEPTIONS.includes(testId));
+      const testIds = PAIRS.map(([status, emphasis]) => `${status}-${emphasis}`);
       const ratios = await Promise.all(testIds.map(async(testId) => getContrastRatio(await getRendering(page, testId))));
       const failures = testIds
         .map((testId, index) => `${testId}: ${ratios[index].toFixed(2)}`)

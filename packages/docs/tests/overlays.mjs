@@ -53,6 +53,11 @@ async function suite(browser, { base, version }) {
         const popup = [...document.querySelectorAll('[data-part="positioner"]')].find((el) => el.querySelector('[data-state="open"]'));
         return popup ? Math.round(popup.getBoundingClientRect().left - document.querySelector(sel).getBoundingClientRect().left) : null;
       }, trigger);
+      // Checked first for every case: with no open popup, unchanged snapshots
+      // would pass without exercising an overlay.
+      if (offset === null) {
+        throw new Error('no open popup after clicking the trigger');
+      }
       if (alignedPopup && offset !== 0) {
         throw new Error(`popup ${offset}px off its trigger`);
       }
@@ -77,6 +82,33 @@ async function suite(browser, { base, version }) {
       }
     });
   }
+  // Drawers place themselves from the frame viewport: their bottom tracks the
+  // frame height, and counting it as overlay overflow grew the frame on every
+  // reopen.
+  await page.goto(`${base}/v${version}/components/drawer/examples`, { waitUntil: 'domcontentloaded' });
+  await check('drawer: reopening keeps the frame height', async () => {
+    const trigger = '[data-scope="dialog"][data-part="trigger"]';
+    await page.waitForFunction((sel) => [...document.querySelectorAll('iframe')].some((f) => f.contentDocument?.querySelector(sel)), trigger, { timeout: 30000 });
+    await page.waitForTimeout(1000);
+    let frame;
+    for (const candidate of await page.$$('iframe')) {
+      if (!frame && await (await candidate.contentFrame())?.$(trigger)) {
+        frame = candidate;
+      }
+    }
+    const heightOf = () => frame.evaluate((el) => el.style.height);
+    const heights = [await heightOf()];
+    for (let i = 0; i < 3; i++) {
+      await (await frame.contentFrame()).click(trigger);
+      await page.waitForTimeout(500);
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(500);
+      heights.push(await heightOf());
+    }
+    if (new Set(heights).size > 1) {
+      throw new Error(`frame height ${heights.join(' → ')}`);
+    }
+  });
   await page.close();
   return results;
 }

@@ -93,7 +93,7 @@ const THEME = {
   'font-family': 'font-family-body',
   'font-family-code': 'font-family-code',
 
-  'input-background-color-checked': 'color-surface-selected-solid',
+  'input-background-color-checked': 'color-surface-control-solid',
   'input-background-color-checked-hover': 'color-interaction-selected-solid-highlight',
   'input-background-color-invalid': 'color-surface-critical',
   'input-border-color': 'color-border-control',

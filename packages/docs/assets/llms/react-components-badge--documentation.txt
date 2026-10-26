@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1861
+tokens: 2439
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -104,6 +104,40 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 - **Alpha** and **Beta**: flag a feature or a product in an early, not yet stable, stage.
 - **New**: flag a recently released feature or product.
 - **Promotion**: highlight a commercial offer, such as a discount or a limited-time deal.
+
+### Emphasis
+
+- **High**: filled background, for a status that must stand out at a glance.
+- **Medium** _(default)_: light background, for statuses that inform without competing with the content around them.
+- **Low**: colored text only, without background, for dense contexts such as tables or lists. The label must carry the meaning on its own, as the color is the only status cue.
+
+The **Accent** status is already filled in medium, so its high emphasis looks the same. The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their medium look in every emphasis.
+
+```tsx
+<>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.medium } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
+  <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.critical }>Critical</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.information }>Information</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.neutral }>Neutral</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Success</Badge>
+    <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
+  </div>
+</>
+```
 
 ### Size
 

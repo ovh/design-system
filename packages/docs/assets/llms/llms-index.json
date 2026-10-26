@@ -75,22 +75,22 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 219,
+          "tokens": 258,
           "url": "./react-components-badge.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1861,
+          "tokens": 2439,
           "url": "./react-components-badge--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1091,
+          "tokens": 1523,
           "url": "./react-components-badge--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 457,
+          "tokens": 891,
           "url": "./react-components-badge--examples.txt"
         }
       }
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 8363,
+      "tokens": 8562,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

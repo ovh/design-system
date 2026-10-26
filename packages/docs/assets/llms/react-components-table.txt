@@ -4,7 +4,7 @@ slug: table
 category: component
 type: overview
 version: 19.7.3
-tokens: 147
+tokens: 152
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table.txt
 ---
 
@@ -17,14 +17,14 @@ _A component to display data in a tabular format._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
-| `variant` | `'default' | 'striped'` | No | undefined | The variant preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
 
 ## Examples
 
 - Custom Caption
 - Default
 - Size
-- Variant
+- Striped
 
 ## Documentation pages
 

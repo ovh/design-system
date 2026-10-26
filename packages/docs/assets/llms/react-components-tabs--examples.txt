@@ -4,7 +4,7 @@ slug: tabs
 category: component
 type: examples
 version: 19.7.3
-tokens: 1404
+tokens: 1651
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--examples.txt
 ---
 
@@ -260,4 +260,33 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
       </div>
     );
   }
+```
+
+## Mount Strategy
+
+```tsx
+<Tabs defaultValue="overview" mountStrategy={ TABS_MOUNT_STRATEGY.lazy }>
+  <TabList>
+    <Tab value="overview">Overview</Tab>
+    <Tab value="metrics">Metrics</Tab>
+    <Tab value="search">Search</Tab>
+    <Tab value="faq">FAQ</Tab>
+  </TabList>
+
+  <TabContent value="overview" style={{ padding: '16px 0' }}>
+    <p>Rendered on load, as it is the selected tab.</p>
+  </TabContent>
+
+  <TabContent value="metrics" style={{ padding: '16px 0' }}>
+    <p>Rendered the first time this tab is shown, then kept.</p>
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.unmount } value="search" style={{ padding: '16px 0' }}>
+    <input aria-label="Search" placeholder="Type, switch tab, come back: the value is reset" />
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.keep } value="faq" style={{ padding: '16px 0' }}>
+    <p>Always rendered, so it stays in the server-rendered HTML and can be indexed.</p>
+  </TabContent>
+</Tabs>
 ```

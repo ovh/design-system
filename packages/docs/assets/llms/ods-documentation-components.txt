@@ -20060,7 +20060,7 @@ slug: table
 category: component
 type: overview
 version: 19.7.3
-tokens: 147
+tokens: 152
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table.txt
 ---
 
@@ -20073,14 +20073,14 @@ _A component to display data in a tabular format._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
-| `variant` | `'default' | 'striped'` | No | undefined | The variant preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
 
 ## Examples
 
 - Custom Caption
 - Default
 - Size
-- Variant
+- Striped
 
 ## Documentation pages
 
@@ -20094,7 +20094,7 @@ slug: table
 category: component
 type: documentation
 version: 19.7.3
-tokens: 780
+tokens: 771
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--documentation.txt
 ---
 
@@ -20150,10 +20150,9 @@ When an element is too large in a cell, the row height will adjust based on this
 - **Medium** _(default)_: default size of presenting data in a **Table**.
 - **Large**: presenting extensive data sets with more detailed information, often featuring more columns and rows to provide comprehensive visibility of the data.
 
-### Variant
+### Striped
 
-- **Default**: provides default UI for the component, without distinctive background colors on rows/colors.
-- **Striped**: improving readability by using alternating row colors to distinguish between consecutive rows of data, making it easier for users to follow and interpret the information. We recommend to use this variant when there are more than 10 rows in the **Table**.
+By default, the **Table** has no distinctive background colors on rows. Set the `striped` prop to improve readability by using alternating row colors to distinguish between consecutive rows of data, making it easier for users to follow and interpret the information. We recommend using it when there are more than 10 rows in the **Table**.
 
 ## Navigation
 
@@ -20171,7 +20170,7 @@ slug: table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 338
+tokens: 325
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
 ---
 
@@ -20184,7 +20183,7 @@ This component extends all the native `<table>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
-| `variant` | `'default' | 'striped'` | No | undefined | The variant preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
 
 ## Enums
 
@@ -20193,11 +20192,6 @@ This component extends all the native `<table>` attributes.
 - `lg` = `lg`
 - `md` = `md`
 - `sm` = `sm`
-
-### TABLE_VARIANT
-
-- `default` = `default`
-- `striped` = `striped`
 
 ## CSS Variables
 
@@ -20219,7 +20213,7 @@ slug: table
 category: component
 type: examples
 version: 19.7.3
-tokens: 1234
+tokens: 1219
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--examples.txt
 ---
 
@@ -20416,11 +20410,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
 </>
 ```
 
-## Variant
+## Striped
 
 ```tsx
 <>
-  <Table variant={ TABLE_VARIANT.default }>
+  <Table>
     <caption>
       Front-end web developer course 2021
     </caption>
@@ -20455,7 +20449,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
     </tbody>
   </Table>
 
-  <Table variant={ TABLE_VARIANT.striped }>
+  <Table striped>
     <caption>
       Front-end web developer course 2021
     </caption>
@@ -20501,7 +20495,7 @@ slug: tabs
 category: component
 type: overview
 version: 19.7.3
-tokens: 305
+tokens: 397
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs.txt
 ---
 
@@ -20514,6 +20508,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `defaultValue` | `string` | No | undefined | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | 'keep' | When the content of the inactive panels is rendered: always ('keep'), from the first time it is shown ('lazy') or only while it is shown ('unmount'). Each TabContent can override it. SEO: only 'keep' puts the content of the inactive panels in the server-rendered HTML, so it can be indexed. |
 | `onValueChange` | `(event: TabsValueChangeEvent) => void` | No | undefined | Callback fired when the state of selected tab changes. |
 | `size` | `'md' | 'sm' | 'xs'` | No | undefined | The size preset to use. |
 | `value` | `string` | No | undefined | The controlled value of the selected tab. |
@@ -20532,6 +20527,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 - With Content
 - Product Detail
 - Controlled With Navigation
+- Mount Strategy
 
 ## Documentation pages
 
@@ -20545,7 +20541,7 @@ slug: tabs
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1179
+tokens: 1918
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--documentation.txt
 ---
 
@@ -20624,6 +20620,72 @@ When at the last tab, the right button is displayed but disabled.
 
 Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
 
+### Panel content rendering
+
+By default, the content of every panel is rendered, and inactive panels are hidden. Use the `mountStrategy` prop on **Tabs** to choose when the content of inactive panels is rendered:
+
+- `keep` (default): the content of every panel is always rendered, inactive panels are only hidden.
+- `lazy`: the content of a panel is rendered the first time its **Tab** is selected, then kept like `keep`.
+- `unmount`: the content of a panel is rendered only while its **Tab** is selected, and removed when another **Tab** is selected.
+
+Each **TabContent** can set its own `mountStrategy`, which overrides the **Tabs** one for this panel only.
+
+The panel element itself (with its `id`, `role="tabpanel"` and `aria-labelledby`) is always rendered, only its content depends on the strategy.
+
+```tsx
+<Tabs defaultValue="overview" mountStrategy={ TABS_MOUNT_STRATEGY.lazy }>
+  <TabList>
+    <Tab value="overview">Overview</Tab>
+    <Tab value="metrics">Metrics</Tab>
+    <Tab value="search">Search</Tab>
+    <Tab value="faq">FAQ</Tab>
+  </TabList>
+
+  <TabContent value="overview" style={{ padding: '16px 0' }}>
+    <p>Rendered on load, as it is the selected tab.</p>
+  </TabContent>
+
+  <TabContent value="metrics" style={{ padding: '16px 0' }}>
+    <p>Rendered the first time this tab is shown, then kept.</p>
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.unmount } value="search" style={{ padding: '16px 0' }}>
+    <input aria-label="Search" placeholder="Type, switch tab, come back: the value is reset" />
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.keep } value="faq" style={{ padding: '16px 0' }}>
+    <p>Always rendered, so it stays in the server-rendered HTML and can be indexed.</p>
+  </TabContent>
+</Tabs>
+```
+
+**SEO**: only `keep` puts the content of the inactive panels in the server-rendered HTML. With `lazy` and `unmount`, this content is not indexed by search engines, as they do not load content that requires a user interaction. Use them only for heavy content that does not need to be indexed, like dashboards, charts or iframes.
+
+**State loss**: with `unmount`, the content of a panel is removed each time it is hidden. Its state is lost (input values, scroll position, component state, ...) and it is rendered again from scratch the next time it is shown. Use `lazy` if this state must be kept.
+
+If you come from another library, here is how its props translate to `mountStrategy`:
+
+  <thead>
+    <tr>
+      <th>Other libraries</th>
+      <th>ODS mountStrategy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`keepMounted` (MUI, Base UI, Mantine), `forceMount` (Radix), `unmount={ false }` (Headless UI)</td>
+      <td>`keep`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` (Ark UI, Chakra UI)</td>
+      <td>`lazy`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` + `unmountOnExit` (Ark UI, Chakra UI), `unmount` (Headless UI)</td>
+      <td>`unmount`</td>
+    </tr>
+  </tbody>
+
 ## Variation
 
 ### Default (standard Tabs)
@@ -20671,7 +20733,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1007
+tokens: 1192
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -20684,6 +20746,7 @@ This component extends all the native `<div>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `defaultValue` | `string` | No | undefined | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | 'keep' | When the content of the inactive panels is rendered: always ('keep'), from the first time it is shown ('lazy') or only while it is shown ('unmount'). Each TabContent can override it. SEO: only 'keep' puts the content of the inactive panels in the server-rendered HTML, so it can be indexed. |
 | `onValueChange` | `(event: TabsValueChangeEvent) => void` | No | undefined | Callback fired when the state of selected tab changes. |
 | `size` | `'md' | 'sm' | 'xs'` | No | undefined | The size preset to use. |
 | `value` | `string` | No | undefined | The controlled value of the selected tab. |
@@ -20704,6 +20767,7 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | undefined | When the content of this panel is rendered while it is inactive. Overrides the Tabs mountStrategy for this panel only. SEO: with 'lazy' or 'unmount', the content of this panel is in the server-rendered HTML only if it is the selected one. |
 | `value` | `string` | Yes | undefined | The value of the tab content item. |
 
 ## TabList
@@ -20713,6 +20777,12 @@ This component extends all the native `<div>` attributes.
 _No specific property._
 
 ## Enums
+
+### TABS_MOUNT_STRATEGY
+
+- `keep` = `keep`
+- `lazy` = `lazy`
+- `unmount` = `unmount`
 
 ### TABS_SIZE
 
@@ -20764,7 +20834,7 @@ slug: tabs
 category: component
 type: examples
 version: 19.7.3
-tokens: 1404
+tokens: 1651
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--examples.txt
 ---
 
@@ -21020,6 +21090,35 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
       </div>
     );
   }
+```
+
+## Mount Strategy
+
+```tsx
+<Tabs defaultValue="overview" mountStrategy={ TABS_MOUNT_STRATEGY.lazy }>
+  <TabList>
+    <Tab value="overview">Overview</Tab>
+    <Tab value="metrics">Metrics</Tab>
+    <Tab value="search">Search</Tab>
+    <Tab value="faq">FAQ</Tab>
+  </TabList>
+
+  <TabContent value="overview" style={{ padding: '16px 0' }}>
+    <p>Rendered on load, as it is the selected tab.</p>
+  </TabContent>
+
+  <TabContent value="metrics" style={{ padding: '16px 0' }}>
+    <p>Rendered the first time this tab is shown, then kept.</p>
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.unmount } value="search" style={{ padding: '16px 0' }}>
+    <input aria-label="Search" placeholder="Type, switch tab, come back: the value is reset" />
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.keep } value="faq" style={{ padding: '16px 0' }}>
+    <p>Always rendered, so it stays in the server-rendered HTML and can be indexed.</p>
+  </TabContent>
+</Tabs>
 ```
 
 

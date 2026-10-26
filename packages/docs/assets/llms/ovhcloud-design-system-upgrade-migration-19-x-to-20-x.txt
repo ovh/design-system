@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 8119
+tokens: 8363
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -21,7 +21,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component props keep working: existing props, refs and composition are unchanged, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
@@ -417,6 +417,34 @@ grep -rniE "source.?sans.?pro" src/
 ```
 
 If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Breaking changes
+
+These changes require a code update: each one comes with its before and after.
+
+### Table
+
+The `variant` prop is removed in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are removed with it.
+
+- `variant="default"` (or `TABLE_VARIANT.default`): remove the prop.
+- `variant="striped"` (or `TABLE_VARIANT.striped`): use `striped`.
+- `TableVariant` (e.g. in the props of a wrapper component): use `TableProp['striped']`.
+
+To find the usages to migrate: `grep -rnE "TABLE_VARIANTS?\b|TableVariant\b|<Table[^>]*variant=" src/`.
+
+**before**
+```tsx
+import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';
+
+<Table variant={ TABLE_VARIANT.striped }>...</Table>
+```
+
+**after**
+```tsx
+import { Table } from '@ovhcloud/ods-react';
+
+<Table striped>...</Table>
+```
 
 ## Deprecations
 

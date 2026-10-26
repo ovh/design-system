@@ -3,5 +3,15 @@
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     padding: 0 var(--ods-accordion-padding-horizontal) var(--ods-accordion-padding-vertical);
+
+    // Tinted details: the content takes the fill, the trigger stays on the item surface. Not on a
+    // disabled item, which keeps the medium rendering, dimmed.
+    &--high:not([data-disabled]) {
+      // The inner edge of the item border, so that no item background shows at the rounded corners.
+      border-bottom-left-radius: var(--ods-accordion-item-inner-radius-bottom);
+      border-bottom-right-radius: var(--ods-accordion-item-inner-radius-bottom);
+      background-color: var(--ods-semantic-color-surface-muted);
+      padding-top: var(--ods-accordion-padding-vertical);
+    }
   }
 }

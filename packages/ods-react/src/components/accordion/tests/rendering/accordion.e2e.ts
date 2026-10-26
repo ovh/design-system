@@ -101,19 +101,19 @@ describe('Accordion rendering', () => {
       });
     });
 
-    it('should render high with a tinted trigger, the content on the item surface and the medium borders', async() => {
-      const tint = await getTokenColor(page, '--ods-semantic-color-surface-neutral-minimal');
+    it('should render high with the trigger on the item surface, a tinted content and the medium borders', async() => {
+      const tint = await getTokenColor(page, '--ods-semantic-color-surface-muted');
 
       MODES.forEach((mode) => {
         ['item-open', 'item-closed', 'item-disabled'].forEach((part) => {
           expect(styles[`high-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
         });
 
-        expect(styles[`high-${mode}-trigger-open`]['background-color']).toBe(tint);
-        expect(styles[`high-${mode}-trigger-closed`]['background-color']).toBe(tint);
-        expect(styles[`high-${mode}-trigger-disabled`]['background-color']).toBe(TRANSPARENT);
-        expect(styles[`high-${mode}-content-open`]['background-color']).toBe(TRANSPARENT);
-        expect(styles[`high-${mode}-content-open`]['padding-top']).toBe(styles[`medium-${mode}-content-open`]['padding-top']);
+        ['trigger-open', 'trigger-closed', 'trigger-disabled'].forEach((part) => {
+          expect(styles[`high-${mode}-${part}`]['background-color']).toBe(TRANSPARENT);
+        });
+        expect(styles[`high-${mode}-content-open`]['background-color']).toBe(tint);
+        expect(styles[`high-${mode}-content-open`]['padding-top']).toBe(styles[`high-${mode}-trigger-open`]['padding-top']);
       });
 
       expect(styles['high-multiple-content-disabled']['background-color']).toBe(TRANSPARENT);

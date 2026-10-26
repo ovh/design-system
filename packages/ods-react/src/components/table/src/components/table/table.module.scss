@@ -2,7 +2,7 @@
 
 @layer ods-organisms {
   .table {
-    --ods-table-striped-background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    --ods-table-striped-background-color: var(--ods-semantic-color-surface-muted);
 
     &--sm {
       @include table.ods-table('sm');

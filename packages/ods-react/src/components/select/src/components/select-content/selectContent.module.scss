@@ -37,7 +37,7 @@
     }
 
     [role="group"]:not(:last-child) {
-      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-neutral-minimal);
+      border-bottom: solid var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-separator);
     }
   }
 }

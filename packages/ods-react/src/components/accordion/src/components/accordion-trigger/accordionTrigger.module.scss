@@ -35,18 +35,6 @@
       }
     }
 
-    // Tinted header. Not on a disabled item, which keeps the medium rendering, dimmed.
-    &--high:not(:disabled) {
-      // The inner edge of the item border, so that no item background shows at the rounded corners.
-      border-radius: var(--ods-accordion-item-inner-radius-top) var(--ods-accordion-item-inner-radius-top) var(--ods-accordion-item-inner-radius-bottom) var(--ods-accordion-item-inner-radius-bottom);
-      background-color: var(--ods-semantic-color-surface-neutral-minimal);
-
-      &[data-state="open"] {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-    }
-
     &--expand-icon-left {
       flex-flow: row-reverse;
     }

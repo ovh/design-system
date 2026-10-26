@@ -1,5 +1,5 @@
 @mixin ods-table($size) {
-  --ods-table-border-color: var(--ods-semantic-color-border-neutral-minimal);
+  --ods-table-border-color: var(--ods-semantic-color-border-separator);
   --ods-table-cell-padding-horizontal-sm: var(--ods-semantic-size-space-inset-inline);
   --ods-table-cell-padding-vertical-sm: var(--ods-semantic-size-space-inset-block);
   --ods-table-cell-padding-horizontal-md: var(--ods-semantic-size-space-inset-inline);

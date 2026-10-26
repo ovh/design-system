@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { Tag } from '../../../../tag/src';
+import { TAG_STATUS, Tag } from '../../../../tag/src';
 import { useQueryFilter } from '../../contexts/useQueryFilter';
 import style from './queryFilterTags.module.scss';
 
@@ -27,7 +27,8 @@ const QueryFilterTags: FC<QueryFilterTagsProp> = forwardRef(({
           <li key={ tag.id }>
             <Tag
               className={ style['query-filter-tags__tag'] }
-              onClick={ () => removeTag(tag.id) }>
+              onClick={ () => removeTag(tag.id) }
+              status={ TAG_STATUS.accent }>
               { tag.label }
             </Tag>
           </li>

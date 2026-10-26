@@ -56,6 +56,9 @@
   /* Surfaces - selection */
   --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-800);
 
+  /* Surfaces - structure */
+  --ods-semantic-color-surface-muted: var(--ods-palette-gray-100);
+
   /* Surfaces - statuses */
   --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
@@ -162,6 +165,25 @@
 
   :root [data-ods='badge'] {
     --ods-badge-border-radius: 4px;
-    --ods-semantic-border-thickness: 0;
+    // high is the v19 tinted fill without a border.
+    --ods-badge-border-color-accent-high: transparent;
+    --ods-badge-border-color-critical-high: transparent;
+    --ods-badge-border-color-information-high: transparent;
+    --ods-badge-border-color-neutral-high: transparent;
+    --ods-badge-border-color-success-high: transparent;
+    --ods-badge-border-color-warning-high: transparent;
+  }
+}
+
+@layer ods-molecules {
+  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  :root [data-ods='message'] {
+    // high is the v19 tinted fill without a border.
+    --ods-message-border-color-accent-high: transparent;
+    --ods-message-border-color-critical-high: transparent;
+    --ods-message-border-color-information-high: transparent;
+    --ods-message-border-color-neutral-high: transparent;
+    --ods-message-border-color-success-high: transparent;
+    --ods-message-border-color-warning-high: transparent;
   }
 }

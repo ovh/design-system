@@ -2,9 +2,8 @@
 
 @layer ods-atoms {
   .accordion-item {
-    // Inner radius of the first and last items, read by the high trigger. Reset on every item, so
-    // that a nested Accordion does not inherit the corners of its parent item.
-    --ods-accordion-item-inner-radius-top: 0;
+    // Inner radius of the last item, read by the high content. Reset on every item, so that a
+    // nested Accordion does not inherit the corners of its parent item.
     --ods-accordion-item-inner-radius-bottom: 0;
 
     display: grid;
@@ -19,8 +18,6 @@
     }
 
     &:first-child {
-      --ods-accordion-item-inner-radius-top: calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width));
-
       border-top-left-radius: var(--ods-accordion-border-radius);
       border-top-right-radius: var(--ods-accordion-border-radius);
     }

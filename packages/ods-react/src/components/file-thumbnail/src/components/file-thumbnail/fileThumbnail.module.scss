@@ -3,7 +3,7 @@
 
 @layer ods-molecules {
   .file-thumbnail {
-    --ods-file-thumbnail-border-color: var(--ods-semantic-color-border-neutral-subtle);
+    --ods-file-thumbnail-border-color: var(--ods-semantic-color-border-container);
     --ods-file-thumbnail-object-fit: contain;
     --ods-file-thumbnail-preview-size: 32px;
 

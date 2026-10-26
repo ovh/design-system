@@ -5,7 +5,7 @@ $ods-switch-height-md: 32px;
 
 @layer ods-atoms {
   .switch {
-    --ods-switch-background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    --ods-switch-background-color: var(--ods-semantic-color-surface-muted);
     --ods-switch-border-radius: calc(var(--ods-semantic-size-radius-container) * 2);
     --ods-switch-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
 

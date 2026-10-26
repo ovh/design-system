@@ -3,8 +3,8 @@
     --ods-kbd-border-width: var(--ods-semantic-border-thickness);
     --ods-kbd-border-bottom-width: calc(var(--ods-semantic-border-thickness) * 2);
     --ods-kbd-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
-    --ods-kbd-border-color: var(--ods-semantic-color-border-neutral-subtle);
-    --ods-kbd-background-color: var(--ods-semantic-color-surface-neutral-minimal);
+    --ods-kbd-border-color: var(--ods-semantic-color-border-container);
+    --ods-kbd-background-color: var(--ods-semantic-color-surface-muted);
     --ods-kbd-padding-vertical: calc(var(--ods-semantic-size-space-inset-block) / 4);
     --ods-kbd-padding-horizontal: calc(var(--ods-semantic-size-space-inset-inline) / 2);
     --ods-kbd-text-color: var(--ods-semantic-color-content-on-neutral);

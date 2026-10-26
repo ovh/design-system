@@ -16,7 +16,7 @@
 
       &:focus-visible,
       &:hover {
-        color: var(--ods-semantic-color-content-brand);
+        color: var(--ods-link-text-color);
 
         &::after {
           transform: scaleX(0);

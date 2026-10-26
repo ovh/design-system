@@ -242,8 +242,10 @@ const DemoFrame = ({ bare, children, dark, onReady, pageSurface, tokens }: DemoF
         // Closed drawers become invisible click-swallowing panels; only
         // visibility:hidden (immune to inline styles, removes hit-testing)
         // neutralizes them here. Real fix belongs upstream.
+        // The body keeps 4px of padding for the ODS focus ring (2px + 2px offset), which the html
+        // overflow would clip on a story flush with the frame edge; .canvas__demo gives it back.
         head={
-          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; background: var(--ods-semantic-color-surface-${ pageSurface ? 'page' : 'raised' }); color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
+          <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; padding: 4px; background: ${ pageSurface ? 'var(--ods-semantic-color-surface-page)' : 'var(--ods-semantic-color-surface-raised)' }; color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"

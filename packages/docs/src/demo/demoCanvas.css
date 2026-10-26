@@ -30,7 +30,8 @@
 
 .canvas__demo {
   background-color: var(--ods-semantic-color-surface-raised);
-  padding: 24px;
+  /* 24px with the 4px the frame body keeps for the focus rings */
+  padding: 20px;
 }
 
 .canvas__code {
@@ -58,6 +59,7 @@
   }
 
   .canvas__demo {
-    padding: 16px;
+    /* 16px with the 4px the frame body keeps for the focus rings */
+    padding: 12px;
   }
 }

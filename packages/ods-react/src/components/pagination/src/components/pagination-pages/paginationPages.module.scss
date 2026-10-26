@@ -1,7 +1,44 @@
+@use '../../../../../style/button';
+
 @layer ods-molecules {
   .pagination-pages {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    // Link mode. The cell holds the slot of a page button around a trigger that hugs its chevron,
+    // the way an icon only Link does. Same mechanism as a page, see paginationItem.module.scss.
+    &__cell {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: button.$ods-button-size-md;
+      height: button.$ods-button-size-md;
+    }
+
+    &__trigger {
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        min-width: button.$ods-button-size-md;
+        height: button.$ods-button-size-md;
+        content: "";
+      }
+    }
+
+    // Link mode. The ellipsis is a gap between two ranges of pages, not a page: plain muted text.
+    &__ellipsis {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: button.$ods-button-size-md;
+      height: button.$ods-button-size-md;
+      color: var(--ods-semantic-color-content-placeholder);
+    }
   }
 }

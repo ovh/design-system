@@ -236,10 +236,10 @@
 
 ## Pagination
 
-- [Overview](./react-components-pagination.txt) (~514 tokens)
-- [Documentation](./react-components-pagination--documentation.txt) (~1428 tokens)
-- [Technical Information](./react-components-pagination--technical-information.txt) (~639 tokens)
-- [Examples](./react-components-pagination--examples.txt) (~319 tokens)
+- [Overview](./react-components-pagination.txt) (~909 tokens)
+- [Documentation](./react-components-pagination--documentation.txt) (~4207 tokens)
+- [Technical Information](./react-components-pagination--technical-information.txt) (~1000 tokens)
+- [Examples](./react-components-pagination--examples.txt) (~1702 tokens)
 
 ## Password
 

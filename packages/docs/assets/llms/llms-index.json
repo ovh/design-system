@@ -881,22 +881,22 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 514,
+          "tokens": 909,
           "url": "./react-components-pagination.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1428,
+          "tokens": 4207,
           "url": "./react-components-pagination--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 639,
+          "tokens": 1000,
           "url": "./react-components-pagination--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 319,
+          "tokens": 1702,
           "url": "./react-components-pagination--examples.txt"
         }
       }

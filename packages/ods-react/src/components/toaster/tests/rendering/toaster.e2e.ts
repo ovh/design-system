@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { gotoStory } from '../../../../helpers/test';
+import { getTokenColor, gotoStory } from '../../../../helpers/test';
 
 async function triggerToast(page: Page): Promise<void> {
   await page.click('#trigger');
@@ -28,8 +28,10 @@ describe('Toaster rendering', () => {
       return [computed.backgroundColor, computed.borderTopWidth, computed.borderTopStyle, computed.borderTopColor, computed.color];
     });
 
-    // Information medium: page background, light information border, information text.
-    expect(style).toEqual(['rgb(255, 255, 255)', '1px', 'solid', 'rgb(190, 241, 255)', 'rgb(0, 80, 215)']);
+    // Information medium: raised surface, subtle information border, information text.
+    const [background, border, text] = await Promise.all(['surface-raised', 'border-information-subtle', 'content-information']
+      .map((role) => getTokenColor(page, `--ods-semantic-color-${role}`)));
+    expect(style).toEqual([background, '1px', 'solid', border, text]);
   });
 
   describe('status', () => {

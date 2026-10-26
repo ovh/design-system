@@ -477,17 +477,17 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 - `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
 - `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
-- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (page background with a light colored border). Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (white background with a light colored border). Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
 - `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
 - New `low` emphasis: colored text and icon only, without background nor border.
 - Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.
 - If one of your wrappers declares its own `emphasis` prop on top of `MessageProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Message is now read as the emphasis preset.
 
-**The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status now uses the **Information** colors (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. With the default theme:
+**The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status reads the accent roles (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. Each emphasis reads these semantic roles, `<status>` being `accent`, `critical`, `information`, `neutral`, `success` or `warning`:
 
-- **High** (background / text and icon): critical `#ffccd9` / `#800015`, information and accent `#e6faff` / `#000e9c`, neutral `#cccccc` / `#4d4d4d`, success `#d2f2c2` / `#1a4d00`, warning `#feea86` / `#663800`. In v19 `default`: a `075` background and a `700` text.
-- **Medium** (white background, border / text and icon): critical `#ef99ab` / `#bf0020`, information and accent `#bef1ff` / `#0050d7`, neutral `#cccccc` / `#808080`, success `#90cc7a` / `#2b8000`, warning `#fed265` / `#995400`. In v19 `light`: the border had the text color, a `600` step.
-- **Low** (transparent background, no border, text and icon): the **Medium** text color.
+- **High**: background `--ods-semantic-color-surface-<status>-subtle`, text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
+- **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
+- **Low**: transparent background, no border, the **Medium** text and icon role.
 
 **Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `primary` (the accent status), `success` or `warning`:
 
@@ -497,12 +497,11 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 - `--ods-message-background-color-<status>` and `--ods-message-text-color-<status>`: use `--ods-message-background-color-<status>-high` and `--ods-message-text-color-<status>-high`.
 - `--ods-message-background-color-<status>-light` and `--ods-message-text-color-<status>-light`: use `--ods-message-background-color-<status>-medium` and `--ods-message-text-color-<status>-medium`.
 - The `medium` border has its own `--ods-message-border-color-<status>-medium` custom property (it used the text color in v19), and `low` its `--ods-message-text-color-<status>-low` one.
-- `--ods-message-close-button-text-color-primary` is removed: the close button no longer has a specific color on the accent status.
 
 To find the usages to migrate in your code:
 
 ```sh
-grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-|--ods-message-close-button" src/
+grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
 grep -rnE "<Message([[:space:]]|>|$)" src/
 ```
 

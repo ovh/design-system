@@ -4,7 +4,7 @@ slug: message
 category: component
 type: examples
 version: 19.7.3
-tokens: 1128
+tokens: 1172
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--examples.txt
 ---
 
@@ -196,23 +196,31 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
 </Message>
 ```
 
-## Variant
+## Emphasis
 
 ```tsx
 <>
-  <Message variant={ MESSAGE_VARIANT.default }>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Default variant Message
+      High emphasis Message
     </MessageBody>
   </Message>
 
-  <Message variant={ MESSAGE_VARIANT.light }>
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Light variant Message
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
     </MessageBody>
   </Message>
 </>

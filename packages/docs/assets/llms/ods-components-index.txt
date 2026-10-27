@@ -208,10 +208,10 @@
 
 ## Message
 
-- [Overview](./react-components-message.txt) (~329 tokens)
-- [Documentation](./react-components-message--documentation.txt) (~2136 tokens)
-- [Technical Information](./react-components-message--technical-information.txt) (~1992 tokens)
-- [Examples](./react-components-message--examples.txt) (~1128 tokens)
+- [Overview](./react-components-message.txt) (~345 tokens)
+- [Documentation](./react-components-message--documentation.txt) (~2320 tokens)
+- [Technical Information](./react-components-message--technical-information.txt) (~2164 tokens)
+- [Examples](./react-components-message--examples.txt) (~1172 tokens)
 
 ## Message Bubble
 

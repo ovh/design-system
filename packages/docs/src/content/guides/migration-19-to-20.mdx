@@ -477,7 +477,7 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 - `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
 - `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
-- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (white background with a light colored border). Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
 - `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
 - New `low` emphasis: colored text and icon only, without background nor border.
 - Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.
@@ -485,7 +485,7 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 **The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status reads the accent roles (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. Each emphasis reads these semantic roles, `<status>` being `accent`, `critical`, `information`, `neutral`, `success` or `warning`:
 
-- **High**: background `--ods-semantic-color-surface-<status>-subtle`, text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
+- **High**: background `--ods-semantic-color-surface-<status>-subtle` (`--ods-semantic-color-surface-neutral-minimal` for neutral), text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
 - **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
 - **Low**: transparent background, no border, the **Medium** text and icon role.
 
@@ -511,7 +511,7 @@ Review each match of the second search that sets neither `variant` nor `emphasis
 ```tsx
 import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
 
-// tinted background in v19, medium (white with a border) in v20
+// tinted background in v19, medium (raised surface with a border) in v20
 <Message status={ MESSAGE_STATUS.success }>
   <MessageBody>Your changes have been saved.</MessageBody>
 </Message>

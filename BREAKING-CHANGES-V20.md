@@ -128,11 +128,11 @@ at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-font-family` | `--ods-semantic-font-family-body` |
 | `--ods-theme-font-family-code` | `--ods-semantic-font-family-code` |
 | `--ods-theme-input-background-color-checked` | `--ods-semantic-color-surface-control-solid` |
-| `--ods-theme-input-background-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
+| `--ods-theme-input-background-color-checked-hover` | `--ods-semantic-color-interaction-control-solid-hover` |
 | `--ods-theme-input-background-color-invalid` | `--ods-semantic-color-surface-critical` |
 | `--ods-theme-input-border-color` | `--ods-semantic-color-border-control` |
 | `--ods-theme-input-border-color-checked` | `--ods-semantic-color-border-control-solid` |
-| `--ods-theme-input-border-color-checked-hover` | `--ods-semantic-color-interaction-selected-solid-highlight` |
+| `--ods-theme-input-border-color-checked-hover` | `--ods-semantic-color-interaction-control-solid-hover` |
 | `--ods-theme-input-border-color-hover` | `--ods-semantic-color-interaction-control-hover` |
 | `--ods-theme-input-border-color-invalid` | `--ods-semantic-color-border-critical` |
 | `--ods-theme-input-border-radius` | `--ods-semantic-size-radius-control` |
@@ -366,7 +366,7 @@ Three context rules sit on top of the tables:
 | `--ods-color-element-background-selected` | `--ods-semantic-color-surface-selected-solid` |
 | `--ods-color-element-text-selected` | `--ods-semantic-color-content-on-selected-solid` |
 | `--ods-color-form-element-background-default` | `--ods-semantic-color-surface-control` |
-| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-control-highlight` |
+| `--ods-color-form-element-background-hover-default` | `--ods-semantic-color-interaction-control-highlight` |
 | `--ods-color-form-element-background-focus-default` | `--ods-semantic-color-surface-control` |
 | `--ods-color-form-element-background-critical` | `--ods-semantic-color-surface-control` |
 | `--ods-color-form-element-background-selected-critical` | `--ods-semantic-color-surface-critical` |
@@ -461,7 +461,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the navy family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a `:root` overlay that re-aims the accent ramp onto blue and overrides the roles that differ. |
+| **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the navy family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a `:root` overlay that re-aims the accent ramp onto blue, redeclares the green, orange and red families with their v19 values and overrides the roles that differ. |
 | **Impact** | The largest visible change of the major: an app that imports only the default theme changes color almost everywhere. Loading `blue-jeans/css` *before* `default/css`, or a second copy of `default/css` injected later (a micro-frontend shipping its own), silently brings the default look back, because both declare their tokens on `:root` and the last one wins. |
 | **Detection** | `grep -rn 'ods-themes/default/css' src/` - every app that imports it alone |
 | **Codemod** | **partial** - add `import '@ovhcloud/ods-themes/blue-jeans/css'` right after the default import to keep the OVHcloud look. Where the theme is injected at runtime, the order has to be checked by hand. |

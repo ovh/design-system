@@ -1,6 +1,7 @@
 // The palette as custom properties: the hue families, the one-off colors and the opacity rungs.
-// A theme does not edit it: index.scss aims the brand and accent ramps at a family, and a brand
-// overlay re-aims them. A partial, so that `sass src:dist` does not ship a palette.css of its own.
+// index.scss aims the brand and accent ramps at a family; a brand overlay re-aims them and may
+// redeclare a whole hue family. A partial, so that `sass src:dist` does not ship a palette.css of
+// its own.
 @use './variables' as var;
 
 :root {

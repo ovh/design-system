@@ -184,12 +184,12 @@
   /* Interaction - lists and selection */
   --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-50);
   --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-200);
-  --ods-semantic-color-interaction-selected-solid-highlight: var(--ods-palette-accent-800);
-  --ods-semantic-color-interaction-selected-solid-active: var(--ods-palette-accent-800);
 
   /* Interaction - form controls */
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-accent-700);
-  --ods-semantic-color-control-highlight: var(--ods-palette-accent-50);
+  --ods-semantic-color-interaction-control-highlight: var(--ods-palette-accent-50);
+  --ods-semantic-color-interaction-control-solid-hover: var(--ods-palette-accent-800);
+  --ods-semantic-color-interaction-control-solid-active: var(--ods-palette-accent-800);
 
   /* Charts */
   --ods-semantic-color-chart-background: var(--ods-semantic-color-surface-page);

@@ -31,7 +31,7 @@
 
     &:not([data-disabled], [data-readonly]):hover {
       border-color: var(--ods-semantic-color-interaction-control-hover);
-      background-color: var(--ods-semantic-color-control-highlight);
+      background-color: var(--ods-semantic-color-interaction-control-highlight);
     }
 
     &:not([data-disabled])[data-readonly] {

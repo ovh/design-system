@@ -23,13 +23,13 @@
       &:not([data-disabled], [data-invalid]) {
         &:hover,
         &[data-focus] {
-          border-color: var(--ods-semantic-color-interaction-selected-solid-highlight);
-          background: var(--ods-semantic-color-interaction-selected-solid-highlight);
+          border-color: var(--ods-semantic-color-interaction-control-solid-hover);
+          background: var(--ods-semantic-color-interaction-control-solid-hover);
         }
 
         &:active {
-          border-color: var(--ods-semantic-color-interaction-selected-solid-active);
-          background: var(--ods-semantic-color-interaction-selected-solid-active);
+          border-color: var(--ods-semantic-color-interaction-control-solid-active);
+          background: var(--ods-semantic-color-interaction-control-solid-active);
         }
       }
 

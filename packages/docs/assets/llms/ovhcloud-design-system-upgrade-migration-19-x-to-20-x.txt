@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 11209
+tokens: 11843
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -21,7 +21,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**). Moving to React 19 requires no ODS-related code change.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
@@ -94,6 +94,53 @@ Then reinstall and verify a single version is resolved:
 npm ls @types/react
 # or: pnpm why @types/react
 ```
+
+## Form fields share one default width
+
+Every form field now ships the same default width, so mixed fields line up in a form out of the box:
+
+- **Input** (including the password type)
+- **Password**
+- **Textarea**
+- **Clipboard**
+- **Select**
+- **Combobox**
+- **Datepicker** (input and calendar trigger together)
+- **PhoneNumber** (country select and input together)
+- **Timepicker** (time input and timezone select together)
+
+The default is **280px**, capped at **100%** of the container so narrow layouts never overflow.
+
+In v19, **Select** and **Combobox** filled their container, and any field placed inside a **FormField** stretched to its width. This is no longer the case. No prop, ref or composition has changed.
+
+**To get the v19 behavior back**, set `width: 100%` on the **root** of the field. Never set it on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`: the root now carries the width and the control only fills it.
+
+```css
+[data-ods="select"]:not([data-ods="pagination-page-size-selector"] *),
+[data-ods="combobox"],
+[data-ods="phone-number"],
+[data-ods="timepicker"],
+[data-ods="clipboard"]:has(input),
+[data-ods="textarea"] {
+  width: 100%;
+}
+```
+
+The two exclusions keep the fields ODS sizes by their content as they are: the page size Select of **Pagination**, and a **Clipboard** made of its trigger alone. Without them, this rule, declared outside the ODS layers, would override their own sizing.
+
+For **Input** and **Password**, pass a `className` that sets `width: 100%` to the component instead: their root carries no `data-ods` attribute (`[data-ods="input"]` and `[data-ods="password"]` target the native `<input>`, not the root). For **Datepicker**, pass it to both `Datepicker` and `DatepickerControl`: the `Datepicker` root is an inline block sized by its content, so a percentage on the control alone does not fill the container (and `[data-ods="datepicker-control"]` also targets the native `<input>`).
+
+To change the default width of every field at once, override the theme token:
+
+```css
+:root {
+  --ods-semantic-size-inline-size-field: 320px;
+}
+```
+
+**Quantity** and **QueryFilter** keep their own size and are not affected.
+
+`PhoneNumberControl` no longer declares `width: inherit`: it flexes into the space the country select leaves, so an explicit width set on the control is now overridden by its `flex-grow`. Size the **PhoneNumber** root instead.
 
 ## Bundler & framework notes
 

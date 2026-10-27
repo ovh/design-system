@@ -9,7 +9,7 @@ import { CART_I18N, TRANSLATION } from '../../constants/cart-i18n';
 import { type CartProductRootProp, useCart } from '../../contexts/useCart';
 import style from './cartProductGroup.module.scss';
 
-interface CartProductGroupProp extends Omit<AccordionProp, 'defaultValue'>, CartProductRootProp {
+interface CartProductGroupProp extends Omit<AccordionProp, 'defaultValue' | 'emphasis'>, CartProductRootProp {
   /**
    * The controlled open state of the product group.
    */

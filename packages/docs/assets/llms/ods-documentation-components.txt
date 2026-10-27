@@ -12864,7 +12864,7 @@ slug: message
 category: component
 type: overview
 version: 19.7.3
-tokens: 329
+tokens: 345
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message.txt
 ---
 
@@ -12878,11 +12878,11 @@ _**Message** component helps to communicate with users providing feedback or inf
 |---|---|---|---|---|
 | `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+| `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
 | `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## Examples
 
@@ -12893,7 +12893,7 @@ _**Message** component helps to communicate with users providing feedback or inf
 - Default
 - Multiline
 - Non Dismissible
-- Variant
+- Emphasis
 
 ## Documentation pages
 
@@ -12907,7 +12907,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2136
+tokens: 2320
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -12960,7 +12960,7 @@ There are four different subtypes of standard **Messages**, in order of priority
 
 - Write Message in a clear, concise, and affirmative tone that aligns with the user's task
 - Place Message in a visible and relevant area of the page, ideally close to the triggering element if any or top of the section
-- Use the correct variant (e.g., information, success, warning, error) to match the context and urgency
+- Use the correct status (e.g., information, success, warning, critical) and emphasis to match the context and urgency
 - Use non-dismissible Message for critical warnings or errors that require immediate resolution
 - Allow content selection (e.g., to copy error messages)
 
@@ -13002,10 +13002,41 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
 - **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
 
-### Variant
+### Emphasis
 
-- **Default**: conveying mild to important information, ensuring the message is seen by the user.
-- **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
+- **High**: tinted background, for important information that must be seen by the user.
+- **Medium** _(default)_: light background with a colored border, for information that should be noticed without competing with the content around it.
+- **Low**: colored text and icon only, without background nor border, for non-urgent information in a subtle and less prominent manner.
+
+The close button looks the same in every emphasis.
+
+```tsx
+<>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      High emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
+    </MessageBody>
+  </Message>
+</>
+```
 
 ## Navigation
 
@@ -13155,7 +13186,7 @@ slug: message
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1992
+tokens: 2164
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
 ---
 
@@ -13169,11 +13200,11 @@ This component extends all the native `<div>` attributes.
 |---|---|---|---|---|
 | `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+| `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
 | `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## MessageBody
 
@@ -13199,6 +13230,12 @@ _No specific property._
 - `success` = `success`
 - `warning` = `warning`
 
+### MESSAGE_EMPHASIS
+
+- `high` = `high`
+- `low` = `low`
+- `medium` = `medium`
+
 ### MESSAGE_I18N
 
 - `closeButton` = `message.close.button`
@@ -13212,46 +13249,47 @@ _No specific property._
 - `success` = `success`
 - `warning` = `warning`
 
-### MESSAGE_VARIANT
-
-- `default` = `default`
-- `light` = `light`
-
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
-| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
-| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
-| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-accent-subtle)` |
-| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
-| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
-| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-message-border-color-critical-light` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-message-border-color-information-light` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-message-border-color-neutral-light` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-message-border-color-primary-light` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-message-border-color-success-light` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-message-border-color-warning-light` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-message-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-message-text-color-critical-light` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-message-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-message-text-color-information-light` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-message-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
-| `--ods-message-text-color-neutral-light` | `var(--ods-semantic-color-content-neutral)` |
-| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-accent)` |
-| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-accent)` |
-| `--ods-message-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-message-text-color-success-light` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-message-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
-| `--ods-message-text-color-warning-light` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-background-color-critical-high` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-message-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-background-color-information-high` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-text-color-information-high` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-message-background-color-primary-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-message-text-color-primary-high` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-message-background-color-success-high` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-message-text-color-success-high` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-background-color-warning-high` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-message-text-color-warning-high` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-message-background-color-critical-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-critical-medium` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-message-text-color-critical-medium` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-message-background-color-information-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-information-medium` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-message-text-color-information-medium` | `var(--ods-semantic-color-content-information)` |
+| `--ods-message-background-color-neutral-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-message-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-background-color-primary-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-primary-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-message-text-color-primary-medium` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-background-color-success-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-success-medium` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-message-text-color-success-medium` | `var(--ods-semantic-color-content-success)` |
+| `--ods-message-background-color-warning-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-warning-medium` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-message-text-color-warning-medium` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-text-color-critical-low` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-message-text-color-information-low` | `var(--ods-semantic-color-content-information)` |
+| `--ods-message-text-color-neutral-low` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-text-color-primary-low` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-text-color-success-low` | `var(--ods-semantic-color-content-success)` |
+| `--ods-message-text-color-warning-low` | `var(--ods-semantic-color-content-warning)` |
 
 ---
 title: "Message"
@@ -13259,7 +13297,7 @@ slug: message
 category: component
 type: examples
 version: 19.7.3
-tokens: 1128
+tokens: 1172
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--examples.txt
 ---
 
@@ -13451,23 +13489,31 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
 </Message>
 ```
 
-## Variant
+## Emphasis
 
 ```tsx
 <>
-  <Message variant={ MESSAGE_VARIANT.default }>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Default variant Message
+      High emphasis Message
     </MessageBody>
   </Message>
 
-  <Message variant={ MESSAGE_VARIANT.light }>
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Light variant Message
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
     </MessageBody>
   </Message>
 </>

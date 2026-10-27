@@ -11855,11 +11855,11 @@ _**Message** component helps to communicate with users providing feedback or inf
 |---|---|---|---|---|
 | `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+| `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
 | `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## Examples
 
@@ -11870,7 +11870,7 @@ _**Message** component helps to communicate with users providing feedback or inf
 - Default
 - Multiline
 - Non Dismissible
-- Variant
+- Emphasis
 
 ## Documentation pages
 
@@ -11929,7 +11929,7 @@ There are four different subtypes of standard **Messages**, in order of priority
 
 - Write Message in a clear, concise, and affirmative tone that aligns with the user's task
 - Place Message in a visible and relevant area of the page, ideally close to the triggering element if any or top of the section
-- Use the correct variant (e.g., information, success, warning, error) to match the context and urgency
+- Use the correct status (e.g., information, success, warning, critical) and emphasis to match the context and urgency
 - Use non-dismissible Message for critical warnings or errors that require immediate resolution
 - Allow content selection (e.g., to copy error messages)
 
@@ -11971,10 +11971,41 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
 - **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
 
-### Variant
+### Emphasis
 
-- **Default**: conveying mild to important information, ensuring the message is seen by the user.
-- **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
+- **High**: tinted background, for important information that must be seen by the user.
+- **Medium** _(default)_: light background with a colored border, for information that should be noticed without competing with the content around it.
+- **Low**: colored text and icon only, without background nor border, for non-urgent information in a subtle and less prominent manner.
+
+The close button looks the same in every emphasis.
+
+```tsx
+<>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      High emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
+    </MessageBody>
+  </Message>
+</>
+```
 
 ## Navigation
 
@@ -12130,11 +12161,11 @@ This component extends all the native `<div>` attributes.
 |---|---|---|---|---|
 | `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+| `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
 | `onRemove` | `() => void` | No | undefined | Callback fired when the close button is pressed. |
 | `status` | `MESSAGE_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'light'` | No | undefined | The variant preset to use. |
 
 ## MessageBody
 
@@ -12160,6 +12191,12 @@ _No specific property._
 - `success` = `success`
 - `warning` = `warning`
 
+### MESSAGE_EMPHASIS
+
+- `high` = `high`
+- `low` = `low`
+- `medium` = `medium`
+
 ### MESSAGE_I18N
 
 - `closeButton` = `message.close.button`
@@ -12173,46 +12210,47 @@ _No specific property._
 - `success` = `success`
 - `warning` = `warning`
 
-### MESSAGE_VARIANT
-
-- `default` = `default`
-- `light` = `light`
-
 ## CSS Variables
 
 | Variable | Default value |
 |---|---|
-| `--ods-message-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
-| `--ods-message-background-color-critical-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
-| `--ods-message-background-color-information-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-minimal)` |
-| `--ods-message-background-color-neutral-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-primary` | `var(--ods-semantic-color-surface-accent-subtle)` |
-| `--ods-message-background-color-primary-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
-| `--ods-message-background-color-success-light` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
-| `--ods-message-background-color-warning-light` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-message-border-color-critical-light` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-message-border-color-information-light` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-message-border-color-neutral-light` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-message-border-color-primary-light` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-message-border-color-success-light` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-message-border-color-warning-light` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-message-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-message-text-color-critical-light` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-message-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-message-text-color-information-light` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-message-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
-| `--ods-message-text-color-neutral-light` | `var(--ods-semantic-color-content-neutral)` |
-| `--ods-message-text-color-primary` | `var(--ods-semantic-color-content-on-accent)` |
-| `--ods-message-text-color-primary-light` | `var(--ods-semantic-color-content-on-accent)` |
-| `--ods-message-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-message-text-color-success-light` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-message-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
-| `--ods-message-text-color-warning-light` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-background-color-critical-high` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-message-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-message-background-color-information-high` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-text-color-information-high` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-message-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-message-background-color-primary-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-message-text-color-primary-high` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-message-background-color-success-high` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-message-text-color-success-high` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-message-background-color-warning-high` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-message-text-color-warning-high` | `var(--ods-semantic-color-content-on-warning)` |
+| `--ods-message-background-color-critical-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-critical-medium` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-message-text-color-critical-medium` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-message-background-color-information-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-information-medium` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-message-text-color-information-medium` | `var(--ods-semantic-color-content-information)` |
+| `--ods-message-background-color-neutral-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-message-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-background-color-primary-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-primary-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-message-text-color-primary-medium` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-background-color-success-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-success-medium` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-message-text-color-success-medium` | `var(--ods-semantic-color-content-success)` |
+| `--ods-message-background-color-warning-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-warning-medium` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-message-text-color-warning-medium` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-message-text-color-critical-low` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-message-text-color-information-low` | `var(--ods-semantic-color-content-information)` |
+| `--ods-message-text-color-neutral-low` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-message-text-color-primary-low` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-text-color-success-low` | `var(--ods-semantic-color-content-success)` |
+| `--ods-message-text-color-warning-low` | `var(--ods-semantic-color-content-warning)` |
 
 ## Message
 
@@ -12404,23 +12442,31 @@ _No specific property._
 </Message>
 ```
 
-## Variant
+## Emphasis
 
 ```tsx
 <>
-  <Message variant={ MESSAGE_VARIANT.default }>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Default variant Message
+      High emphasis Message
     </MessageBody>
   </Message>
 
-  <Message variant={ MESSAGE_VARIANT.light }>
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
     <MessageIcon name={ ICON_NAME.circleInfo } />
 
     <MessageBody>
-      Light variant Message
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
     </MessageBody>
   </Message>
 </>
@@ -27919,7 +27965,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before (review the Button default rendering, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before (review the Button default rendering and migrate the Message `variant`, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -28375,6 +28421,69 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 <Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
 ```
 
+### Message
+
+**The `variant` prop of the Message is removed, replaced by `emphasis`, and every Message changes rendering.** `MESSAGE_VARIANT`, `MESSAGE_VARIANTS` and the `MessageVariant` type are removed with it, without deprecation period: TypeScript reports each usage, and in untyped JavaScript a `variant` attribute is ignored (and forwarded to the DOM).
+
+- `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
+- `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
+- New `low` emphasis: colored text and icon only, without background nor border.
+- Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.
+- If one of your wrappers declares its own `emphasis` prop on top of `MessageProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Message is now read as the emphasis preset.
+
+**The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status reads the accent roles (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. Each emphasis reads these semantic roles, `<status>` being `accent`, `critical`, `information`, `neutral`, `success` or `warning`:
+
+- **High**: background `--ods-semantic-color-surface-<status>-subtle` (`--ods-semantic-color-surface-neutral-minimal` for neutral), text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
+- **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
+- **Low**: transparent background, no border, the **Medium** text and icon role.
+
+**Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `primary` (the accent status), `success` or `warning`:
+
+- `ods-message-variant-default(<status>)`: use `ods-message-emphasis-high(<status>)`.
+- `ods-message-variant-light(<status>)`: use `ods-message-emphasis-medium(<status>)`.
+- New `ods-message-emphasis-low(<status>)`.
+- `--ods-message-background-color-<status>` and `--ods-message-text-color-<status>`: use `--ods-message-background-color-<status>-high` and `--ods-message-text-color-<status>-high`.
+- `--ods-message-background-color-<status>-light` and `--ods-message-text-color-<status>-light`: use `--ods-message-background-color-<status>-medium` and `--ods-message-text-color-<status>-medium`.
+- The `medium` border has its own `--ods-message-border-color-<status>-medium` custom property (it used the text color in v19), and `low` its `--ods-message-text-color-<status>-low` one.
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
+grep -rnE "<Message([[:space:]]|>|$)" src/
+```
+
+Review each match of the second search that sets neither `variant` nor `emphasis`, on its first line or on the following ones: its rendering changes from a tinted background to `medium`. This search misses Messages imported under another name (`import { Message as OdsMessage }`): search for those names too.
+
+**before**
+```tsx
+import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
+
+// tinted background in v19, medium (raised surface with a border) in v20
+<Message status={ MESSAGE_STATUS.success }>
+  <MessageBody>Your changes have been saved.</MessageBody>
+</Message>
+
+<Message status={ MESSAGE_STATUS.warning } variant={ MESSAGE_VARIANT.light }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message emphasis={ MESSAGE_EMPHASIS.high } status={ MESSAGE_STATUS.success }>
+  <MessageBody>Your changes have been saved.</MessageBody>
+</Message>
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
 ### Table
 
 The `variant` prop is removed in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are removed with it.
@@ -28415,7 +28524,7 @@ grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?
 
 If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
 
-The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see **Breaking changes**).
 
 ### Badge
 
@@ -28524,6 +28633,7 @@ import { Divider } from '@ovhcloud/ods-react';
 - `color="primary"`: use `status="accent"`.
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+- `variant` (or `MESSAGE_VARIANT`): removed in v20, see **Breaking changes**.
 
 **before**
 ```tsx

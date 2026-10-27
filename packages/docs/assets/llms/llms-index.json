@@ -777,22 +777,22 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 329,
+          "tokens": 345,
           "url": "./react-components-message.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2136,
+          "tokens": 2320,
           "url": "./react-components-message--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1992,
+          "tokens": 2164,
           "url": "./react-components-message--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 1128,
+          "tokens": 1172,
           "url": "./react-components-message--examples.txt"
         }
       }
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 9353,
+      "tokens": 10609,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

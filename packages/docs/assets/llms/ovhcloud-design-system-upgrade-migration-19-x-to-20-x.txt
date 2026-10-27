@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 9353
+tokens: 10609
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -27,7 +27,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before (review the Button default rendering, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before (review the Button default rendering and migrate the Message `variant`, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -483,6 +483,69 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 <Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
 ```
 
+### Message
+
+**The `variant` prop of the Message is removed, replaced by `emphasis`, and every Message changes rendering.** `MESSAGE_VARIANT`, `MESSAGE_VARIANTS` and the `MessageVariant` type are removed with it, without deprecation period: TypeScript reports each usage, and in untyped JavaScript a `variant` attribute is ignored (and forwarded to the DOM).
+
+- `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
+- `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
+- New `low` emphasis: colored text and icon only, without background nor border.
+- Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.
+- If one of your wrappers declares its own `emphasis` prop on top of `MessageProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Message is now read as the emphasis preset.
+
+**The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status reads the accent roles (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. Each emphasis reads these semantic roles, `<status>` being `accent`, `critical`, `information`, `neutral`, `success` or `warning`:
+
+- **High**: background `--ods-semantic-color-surface-<status>-subtle` (`--ods-semantic-color-surface-neutral-minimal` for neutral), text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
+- **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
+- **Low**: transparent background, no border, the **Medium** text and icon role.
+
+**Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `primary` (the accent status), `success` or `warning`:
+
+- `ods-message-variant-default(<status>)`: use `ods-message-emphasis-high(<status>)`.
+- `ods-message-variant-light(<status>)`: use `ods-message-emphasis-medium(<status>)`.
+- New `ods-message-emphasis-low(<status>)`.
+- `--ods-message-background-color-<status>` and `--ods-message-text-color-<status>`: use `--ods-message-background-color-<status>-high` and `--ods-message-text-color-<status>-high`.
+- `--ods-message-background-color-<status>-light` and `--ods-message-text-color-<status>-light`: use `--ods-message-background-color-<status>-medium` and `--ods-message-text-color-<status>-medium`.
+- The `medium` border has its own `--ods-message-border-color-<status>-medium` custom property (it used the text color in v19), and `low` its `--ods-message-text-color-<status>-low` one.
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
+grep -rnE "<Message([[:space:]]|>|$)" src/
+```
+
+Review each match of the second search that sets neither `variant` nor `emphasis`, on its first line or on the following ones: its rendering changes from a tinted background to `medium`. This search misses Messages imported under another name (`import { Message as OdsMessage }`): search for those names too.
+
+**before**
+```tsx
+import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
+
+// tinted background in v19, medium (raised surface with a border) in v20
+<Message status={ MESSAGE_STATUS.success }>
+  <MessageBody>Your changes have been saved.</MessageBody>
+</Message>
+
+<Message status={ MESSAGE_STATUS.warning } variant={ MESSAGE_VARIANT.light }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
+**after**
+```tsx
+import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
+
+<Message emphasis={ MESSAGE_EMPHASIS.high } status={ MESSAGE_STATUS.success }>
+  <MessageBody>Your changes have been saved.</MessageBody>
+</Message>
+
+<Message status={ MESSAGE_STATUS.warning }>
+  <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+```
+
 ### Table
 
 The `variant` prop is removed in favor of a `striped` boolean prop (default `false`): `variant` only ever had two values (`default` and `striped`). `TABLE_VARIANT`, `TABLE_VARIANTS` and the `TableVariant` type are removed with it.
@@ -523,7 +586,7 @@ grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?
 
 If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
 
-The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names.
+The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see **Breaking changes**).
 
 ### Badge
 
@@ -632,6 +695,7 @@ import { Divider } from '@ovhcloud/ods-react';
 - `color="primary"`: use `status="accent"`.
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
+- `variant` (or `MESSAGE_VARIANT`): removed in v20, see **Breaking changes**.
 
 **before**
 ```tsx

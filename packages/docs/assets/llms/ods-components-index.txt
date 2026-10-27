@@ -5,10 +5,10 @@
 
 ## Accordion
 
-- [Overview](./react-components-accordion.txt) (~287 tokens)
-- [Documentation](./react-components-accordion--documentation.txt) (~1061 tokens)
-- [Technical Information](./react-components-accordion--technical-information.txt) (~541 tokens)
-- [Examples](./react-components-accordion--examples.txt) (~926 tokens)
+- [Overview](./react-components-accordion.txt) (~324 tokens)
+- [Documentation](./react-components-accordion--documentation.txt) (~1689 tokens)
+- [Technical Information](./react-components-accordion--technical-information.txt) (~659 tokens)
+- [Examples](./react-components-accordion--examples.txt) (~1342 tokens)
 
 ## Avatar
 
@@ -209,7 +209,7 @@
 ## Message
 
 - [Overview](./react-components-message.txt) (~329 tokens)
-- [Documentation](./react-components-message--documentation.txt) (~2069 tokens)
+- [Documentation](./react-components-message--documentation.txt) (~2136 tokens)
 - [Technical Information](./react-components-message--technical-information.txt) (~1992 tokens)
 - [Examples](./react-components-message--examples.txt) (~1128 tokens)
 

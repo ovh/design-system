@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6887
+tokens: 6900
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -344,9 +344,9 @@ When using a critical **Message**:
           <Message
             status={ MESSAGE_STATUS.critical }
             onRemove={ () => setGlobalError('') }>
-            
-> { globalError }
-
+            <MessageBody>
+              { globalError }
+            </MessageBody>
           </Message>
         }
 

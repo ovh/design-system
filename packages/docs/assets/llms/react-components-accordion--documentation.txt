@@ -4,7 +4,7 @@ slug: accordion
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1061
+tokens: 1689
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
 ---
 
@@ -87,9 +87,82 @@ The **Icon** helps the user to know if the **Accordion** is collapsed or expande
   * Collapsed : chevron points right
   * Expanded : chevron points down
 
-The Header part of this component acts like a button, with hover, focus and active styles.
+The Header part of this component acts like a button, with hover, focus and active styles. With the `low` emphasis, hovering only changes the cursor, as there is no border or background to highlight.
 
 Same behavior and styling applies to both Desktop and Mobile modes.
+
+## Variation
+
+### Emphasis
+
+The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
+
+- **High**: the header sits on a tinted surface that sets it apart from the panel, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **Medium** _(default)_: items are outlined by borders, on the raised surface.
+- **Low**: no border nor background: spacing separates the items. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
+
+Every emphasis supports the disabled state, the multiple mode and both expand icon positions. The keyboard focus stays visible on the header in every emphasis.
+
+```tsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.high }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.medium }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.low }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+```
 
 ## Navigation
 

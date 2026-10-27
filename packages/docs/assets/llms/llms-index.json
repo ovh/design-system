@@ -23,22 +23,22 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 287,
+          "tokens": 324,
           "url": "./react-components-accordion.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1061,
+          "tokens": 1689,
           "url": "./react-components-accordion--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 541,
+          "tokens": 659,
           "url": "./react-components-accordion--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 926,
+          "tokens": 1342,
           "url": "./react-components-accordion--examples.txt"
         }
       }
@@ -782,7 +782,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2069,
+          "tokens": 2136,
           "url": "./react-components-message--documentation.txt"
         },
         "technical-information": {
@@ -1559,7 +1559,7 @@
       "slug": "ovhcloud-design-system-build-forms",
       "title": "Forms",
       "type": "overview",
-      "tokens": 6887,
+      "tokens": 6900,
       "url": "./ovhcloud-design-system-build-forms.txt"
     },
     {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 9144,
+      "tokens": 9353,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

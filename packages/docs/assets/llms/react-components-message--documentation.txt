@@ -4,7 +4,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2069
+tokens: 2136
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -132,9 +132,9 @@ When displaying multiple **Messages** together, they should be wrapped within an
     <Message>
       <MessageIcon name={ ICON_NAME.circleCheck } />
 
-      
-> Your changes have been saved.
-
+      <MessageBody>
+        Your changes have been saved.
+      </MessageBody>
     </Message>
   </li>
 
@@ -142,9 +142,9 @@ When displaying multiple **Messages** together, they should be wrapped within an
     <Message status={ MESSAGE_STATUS.warning }>
       <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
-      
-> Some fields need your attention.
-
+      <MessageBody>
+        Some fields need your attention.
+      </MessageBody>
     </Message>
   </li>
 </ul>
@@ -165,9 +165,9 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
   <Message role="listitem">
     <MessageIcon name={ ICON_NAME.circleCheck } />
 
-    
-> Your changes have been saved.
-
+    <MessageBody>
+      Your changes have been saved.
+    </MessageBody>
   </Message>
 
   <Message
@@ -175,9 +175,9 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
     role="listitem">
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
-    
-> Some fields need your attention.
-
+    <MessageBody>
+      Some fields need your attention.
+    </MessageBody>
   </Message>
 </div>
 ```
@@ -218,9 +218,9 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
-                
-> Alert: { alert }
-
+                <MessageBody >
+                  Alert: { alert }
+                </MessageBody>
               </Message>
             ))
           }
@@ -232,9 +232,9 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
               <Message key={ status }>
                 <MessageIcon name={ ICON_NAME.circleInfo } />
 
-                
-> Status: { status }
-
+                <MessageBody >
+                  Status: { status }
+                </MessageBody>
               </Message>
             ))
           }

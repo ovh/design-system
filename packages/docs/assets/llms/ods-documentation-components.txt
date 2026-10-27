@@ -10,7 +10,7 @@ slug: accordion
 category: component
 type: overview
 version: 19.7.3
-tokens: 287
+tokens: 324
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion.txt
 ---
 
@@ -24,6 +24,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 |---|---|---|---|---|
 | `defaultValue` | `string[]` | No | undefined | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `emphasis` | `ACCORDION_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of all the accordion items. |
 | `multiple` | `boolean` | No | undefined | Whether multiple accordion items can be expanded at the same time. |
 | `onChange` | `(detail: AccordionChangeDetail) => void` | No | undefined | Callback fired when the state of expanded/collapsed accordion items changes. |
 | `value` | `string[]` | No | undefined | The controlled value of the expanded accordion items. |
@@ -35,6 +36,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 - Disabled
 - Item Disabled
 - Controlled
+- Emphasis
 - Expand Icon Position Example
 
 ## Documentation pages
@@ -49,7 +51,7 @@ slug: accordion
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1061
+tokens: 1689
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
 ---
 
@@ -132,9 +134,82 @@ The **Icon** helps the user to know if the **Accordion** is collapsed or expande
   * Collapsed : chevron points right
   * Expanded : chevron points down
 
-The Header part of this component acts like a button, with hover, focus and active styles.
+The Header part of this component acts like a button, with hover, focus and active styles. With the `low` emphasis, hovering only changes the cursor, as there is no border or background to highlight.
 
 Same behavior and styling applies to both Desktop and Mobile modes.
+
+## Variation
+
+### Emphasis
+
+The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
+
+- **High**: the header sits on a tinted surface that sets it apart from the panel, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **Medium** _(default)_: items are outlined by borders, on the raised surface.
+- **Low**: no border nor background: spacing separates the items. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
+
+Every emphasis supports the disabled state, the multiple mode and both expand icon positions. The keyboard focus stays visible on the header in every emphasis.
+
+```tsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.high }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.medium }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.low }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+```
 
 ## Navigation
 
@@ -170,7 +245,7 @@ slug: accordion
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 541
+tokens: 659
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
 ---
 
@@ -184,6 +259,7 @@ This component extends all the native `<div>` attributes.
 |---|---|---|---|---|
 | `defaultValue` | `string[]` | No | undefined | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `emphasis` | `ACCORDION_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of all the accordion items. |
 | `multiple` | `boolean` | No | undefined | Whether multiple accordion items can be expanded at the same time. |
 | `onChange` | `(detail: AccordionChangeDetail) => void` | No | undefined | Callback fired when the state of expanded/collapsed accordion items changes. |
 | `value` | `string[]` | No | undefined | The controlled value of the expanded accordion items. |
@@ -212,6 +288,12 @@ This component extends all the native `<button>` attributes.
 
 ## Enums
 
+### ACCORDION_EMPHASIS
+
+- `high` = `high`
+- `low` = `low`
+- `medium` = `medium`
+
 ### EXPAND_ICON_POSITION
 
 - `left` = `left`
@@ -221,6 +303,8 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-accordion-item-inner-radius-top` | `calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width))` |
+| `--ods-accordion-item-inner-radius-bottom` | `calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width))` |
 | `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
@@ -236,7 +320,7 @@ slug: accordion
 category: component
 type: examples
 version: 19.7.3
-tokens: 926
+tokens: 1342
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--examples.txt
 ---
 
@@ -374,6 +458,69 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accord
       </Accordion>
     );
   }
+```
+
+## Emphasis
+
+```tsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.high }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.medium }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.low }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
 ```
 
 ## Expand Icon Position Example
@@ -12760,7 +12907,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2069
+tokens: 2136
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -12888,9 +13035,9 @@ When displaying multiple **Messages** together, they should be wrapped within an
     <Message>
       <MessageIcon name={ ICON_NAME.circleCheck } />
 
-      
-> Your changes have been saved.
-
+      <MessageBody>
+        Your changes have been saved.
+      </MessageBody>
     </Message>
   </li>
 
@@ -12898,9 +13045,9 @@ When displaying multiple **Messages** together, they should be wrapped within an
     <Message status={ MESSAGE_STATUS.warning }>
       <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
-      
-> Some fields need your attention.
-
+      <MessageBody>
+        Some fields need your attention.
+      </MessageBody>
     </Message>
   </li>
 </ul>
@@ -12921,9 +13068,9 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
   <Message role="listitem">
     <MessageIcon name={ ICON_NAME.circleCheck } />
 
-    
-> Your changes have been saved.
-
+    <MessageBody>
+      Your changes have been saved.
+    </MessageBody>
   </Message>
 
   <Message
@@ -12931,9 +13078,9 @@ When modifying the HTML structure is not possible, use [role="list"](https://dev
     role="listitem">
     <MessageIcon name={ ICON_NAME.triangleExclamation } />
 
-    
-> Some fields need your attention.
-
+    <MessageBody>
+      Some fields need your attention.
+    </MessageBody>
   </Message>
 </div>
 ```
@@ -12974,9 +13121,9 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
                 key={ alert }>
                 <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
-                
-> Alert: { alert }
-
+                <MessageBody >
+                  Alert: { alert }
+                </MessageBody>
               </Message>
             ))
           }
@@ -12988,9 +13135,9 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
               <Message key={ status }>
                 <MessageIcon name={ ICON_NAME.circleInfo } />
 
-                
-> Status: { status }
-
+                <MessageBody >
+                  Status: { status }
+                </MessageBody>
               </Message>
             ))
           }

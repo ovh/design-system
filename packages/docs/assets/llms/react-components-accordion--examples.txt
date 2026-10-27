@@ -4,7 +4,7 @@ slug: accordion
 category: component
 type: examples
 version: 19.7.3
-tokens: 926
+tokens: 1342
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--examples.txt
 ---
 
@@ -142,6 +142,69 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accord
       </Accordion>
     );
   }
+```
+
+## Emphasis
+
+```tsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.high }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        High emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.medium }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Medium emphasis (default)
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion defaultValue={ ['0'] } emphasis={ ACCORDION_EMPHASIS.low }>
+    <AccordionItem value="0">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        Low emphasis
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
 ```
 
 ## Expand Icon Position Example

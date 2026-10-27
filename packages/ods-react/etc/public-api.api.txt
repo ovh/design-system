@@ -654,7 +654,7 @@ export { CartProductGroupItem, type CartProductGroupItemProp, };
 import { FC } from 'react';
 import { AccordionProp } from '../../../../accordion/src';
 import { CartProductRootProp } from '../../contexts/useCart';
-interface CartProductGroupProp extends Omit<AccordionProp, 'defaultValue'>, CartProductRootProp {
+interface CartProductGroupProp extends Omit<AccordionProp, 'defaultValue' | 'emphasis'>, CartProductRootProp {
     /**
      * The controlled open state of the product group.
      */

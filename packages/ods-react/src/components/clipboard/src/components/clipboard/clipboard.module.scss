@@ -5,7 +5,6 @@
 @layer ods-molecules {
   .clipboard {
     @include state.ods-is-readonly();
-    @include input.ods-input-width();
 
     box-sizing: border-box;
     display: inline-flex;
@@ -18,6 +17,12 @@
     // border width too and keeps the same gap on the end as above and below.
     padding-right: calc(input.$ods-input-actions-padding-right + var(--ods-semantic-border-thickness));
     height: input.$ods-input-field-height;
+
+    // Only a Clipboard that shows its value takes the form field width: one made of a trigger alone
+    // (the copy button of Code) keeps the width of its button.
+    &:has(input) {
+      @include input.ods-input-width();
+    }
 
     &:focus-within:not(:has(button:focus-within)) {
       @include focus.ods-focus();

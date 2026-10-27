@@ -29,4 +29,16 @@ describe('Clipboard rendering', () => {
     expect(gap.end).toBe(gap.top);
     expect(gap.end).toBe(gap.bottom);
   });
+
+  it('should take the form field width with a control, and the width of its trigger without one', async() => {
+    await gotoStory(page, 'rendering/width');
+    await page.waitForSelector('[data-testid="width-trigger-only-trigger"]');
+
+    const widths = await page.evaluate(() => Object.fromEntries(['width-control', 'width-trigger-only', 'width-trigger-only-trigger']
+      .map((testId) => [testId, document.querySelector(`[data-testid="${testId}"]`)!.getBoundingClientRect().width])));
+
+    expect(widths['width-control']).toBe(280);
+    expect(widths['width-trigger-only']).toBeLessThan(280);
+    expect(widths['width-trigger-only']).toBeGreaterThanOrEqual(widths['width-trigger-only-trigger']);
+  });
 });

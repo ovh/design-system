@@ -11,3 +11,16 @@ export const render = () => (
     <ClipboardTrigger data-testid="render-trigger" />
   </Clipboard>
 );
+
+export const width = () => (
+  <>
+    <Clipboard data-testid="width-control">
+      <ClipboardControl value="My great value to copy" />
+      <ClipboardTrigger />
+    </Clipboard>
+
+    <Clipboard data-testid="width-trigger-only" value="My great value to copy">
+      <ClipboardTrigger data-testid="width-trigger-only-trigger" />
+    </Clipboard>
+  </>
+);

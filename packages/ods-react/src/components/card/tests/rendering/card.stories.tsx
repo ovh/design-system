@@ -17,6 +17,10 @@ export const render = () => (
 
 export const statuses = () => (
   <>
+    <Card data-testid="default">
+      Default
+    </Card>
+
     <Card
       data-testid="status-none"
       status={ 'none' as CardStatus }>

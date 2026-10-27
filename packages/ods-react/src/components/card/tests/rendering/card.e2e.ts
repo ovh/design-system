@@ -34,5 +34,11 @@ describe('Card rendering', () => {
       expect(unstyledStatuses).toEqual([]);
       expect(warnings).toEqual([]);
     });
+
+    it('should render neutral without status', async() => {
+      await gotoStory(page, 'rendering/statuses');
+
+      expect(await getStatusStyle(page, 'default')).toBe(await getStatusStyle(page, 'status-neutral'));
+    });
   });
 });

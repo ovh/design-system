@@ -1,7 +1,7 @@
 import { Accordion as VendorAccordion } from '@ark-ui/react/accordion';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { ACCORDION_EMPHASIS, type AccordionEmphasis } from '../../constants/accordion-emphasis';
+import { ACCORDION_EMPHASES, ACCORDION_EMPHASIS, type AccordionEmphasis } from '../../constants/accordion-emphasis';
 import { AccordionProvider } from '../../contexts/useAccordion';
 import styles from './accordion.module.scss';
 
@@ -47,8 +47,12 @@ const Accordion: FC<AccordionProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  // An unknown value from untyped code falls back to the default instead of picking another modifier class.
+  const isKnownEmphasis = (ACCORDION_EMPHASES as readonly string[]).includes(emphasis as string);
+  const accordionEmphasis = isKnownEmphasis ? emphasis : ACCORDION_EMPHASIS.medium;
+
   return (
-    <AccordionProvider emphasis={ emphasis }>
+    <AccordionProvider emphasis={ accordionEmphasis }>
       <VendorAccordion.Root
         className={ classNames(styles['accordion'], className) }
         collapsible={ true }

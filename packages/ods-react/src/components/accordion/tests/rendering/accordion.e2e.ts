@@ -5,6 +5,8 @@ import { ACCORDION_EMPHASES } from '../../src/constants/accordion-emphasis';
 
 type Styles = Record<string, Record<string, string>>;
 
+// The accordions of the emphases story: no emphasis, an unknown one, then every emphasis.
+const EMPHASIS_CASES = ['none', 'expand-icon-left', ...ACCORDION_EMPHASES];
 const MODES = ['multiple', 'single'];
 const PARTS = ['item-open', 'trigger-open', 'content-open', 'item-closed', 'trigger-closed', 'item-disabled', 'trigger-disabled'];
 const PROPERTIES = [
@@ -67,6 +69,14 @@ describe('Accordion rendering', () => {
       MODES.forEach((mode) => {
         PARTS.forEach((part) => {
           expect(styles[`none-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
+        });
+      });
+    });
+
+    it('should render an unknown emphasis as medium, without picking another modifier class', () => {
+      MODES.forEach((mode) => {
+        PARTS.forEach((part) => {
+          expect(styles[`expand-icon-left-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
         });
       });
     });
@@ -138,7 +148,7 @@ describe('Accordion rendering', () => {
     it('should keep the disabled state and the expand icon position on every emphasis', async() => {
       const disabledTriggers = await page.$$eval('[data-testid$="-trigger-disabled"]', (els) => els.map((el) => (el as HTMLButtonElement).disabled));
 
-      expect(disabledTriggers).toHaveLength(8);
+      expect(disabledTriggers).toHaveLength(EMPHASIS_CASES.length * MODES.length);
       expect(disabledTriggers.every(Boolean)).toBe(true);
 
       ACCORDION_EMPHASES.forEach((emphasis) => {

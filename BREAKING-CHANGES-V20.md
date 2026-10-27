@@ -59,7 +59,7 @@ not the history of the branch.
 `--ods-semantic-*` is the public surface of the theme: a consumer reads these roles, and a theme
 re-declares them. Their names and their meaning hold for the whole v20 line; their values belong
 to the theme. The `--ods-palette-*` ramps are public as well, as the input of a theme. The
-reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 277 in 20.0, 186
+reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 279 in 20.0, 188
 semantic and 91 palette, as counted by
 
 ```sh
@@ -449,7 +449,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 277 new ones are in (186 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 156 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 279 new ones are in (188 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 158 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |

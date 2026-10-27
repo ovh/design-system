@@ -1,11 +1,12 @@
 @mixin ods-message() {
   --ods-message-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);
-  // High emphasis: the subtle status surface, no border, the text role made for that surface.
+  // High emphasis: the subtle status surface, no border, the text role made for that surface. Neutral reads the minimal
+  // surface instead, as its subtle one is the page surface: high would look like low on the page.
   --ods-message-background-color-critical-high: var(--ods-semantic-color-surface-critical-subtle);
   --ods-message-text-color-critical-high: var(--ods-semantic-color-content-on-critical);
   --ods-message-background-color-information-high: var(--ods-semantic-color-surface-information-subtle);
   --ods-message-text-color-information-high: var(--ods-semantic-color-content-on-information);
-  --ods-message-background-color-neutral-high: var(--ods-semantic-color-surface-neutral-subtle);
+  --ods-message-background-color-neutral-high: var(--ods-semantic-color-surface-neutral-minimal);
   --ods-message-text-color-neutral-high: var(--ods-semantic-color-content-on-neutral);
   --ods-message-background-color-primary-high: var(--ods-semantic-color-surface-accent-subtle);
   --ods-message-text-color-primary-high: var(--ods-semantic-color-content-on-accent);

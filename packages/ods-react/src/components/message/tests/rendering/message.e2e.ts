@@ -14,7 +14,7 @@ const SPEC: Record<MessageStatus, SpecRoles> = {
   [MESSAGE_STATUS.accent]: { high: ['surface-accent-subtle', 'content-on-accent'], medium: ['border-accent-subtle', 'content-accent'] },
   [MESSAGE_STATUS.critical]: { high: ['surface-critical-subtle', 'content-on-critical'], medium: ['border-critical-subtle', 'content-critical'] },
   [MESSAGE_STATUS.information]: { high: ['surface-information-subtle', 'content-on-information'], medium: ['border-information-subtle', 'content-information'] },
-  [MESSAGE_STATUS.neutral]: { high: ['surface-neutral-subtle', 'content-on-neutral'], medium: ['border-neutral-subtle', 'content-neutral'] },
+  [MESSAGE_STATUS.neutral]: { high: ['surface-neutral-minimal', 'content-on-neutral'], medium: ['border-neutral-subtle', 'content-neutral'] },
   [MESSAGE_STATUS.success]: { high: ['surface-success-subtle', 'content-on-success'], medium: ['border-success-subtle', 'content-success'] },
   [MESSAGE_STATUS.warning]: { high: ['surface-warning-subtle', 'content-on-warning'], medium: ['border-warning-subtle', 'content-warning'] },
 };

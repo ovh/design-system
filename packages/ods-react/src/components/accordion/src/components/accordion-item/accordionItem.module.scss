@@ -2,6 +2,11 @@
 
 @layer ods-atoms {
   .accordion-item {
+    // Inner radius of the first and last items, read by the high trigger. Reset on every item, so
+    // that a nested Accordion does not inherit the corners of its parent item.
+    --ods-accordion-item-inner-radius-top: 0;
+    --ods-accordion-item-inner-radius-bottom: 0;
+
     display: grid;
     position: relative;
     border-width: var(--ods-accordion-border-width);
@@ -14,11 +19,15 @@
     }
 
     &:first-child {
+      --ods-accordion-item-inner-radius-top: calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width));
+
       border-top-left-radius: var(--ods-accordion-border-radius);
       border-top-right-radius: var(--ods-accordion-border-radius);
     }
 
     &:last-child {
+      --ods-accordion-item-inner-radius-bottom: calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width));
+
       border-bottom-left-radius: var(--ods-accordion-border-radius);
       border-bottom-right-radius: var(--ods-accordion-border-radius);
     }
@@ -41,9 +50,9 @@
       border-width: 0;
       background-color: transparent;
 
-      // No border to overlap: cancels the -1px overlap of medium.
+      // No border to overlap: spacing separates the items instead of the -1px overlap of medium.
       &:not(:first-child) {
-        margin-top: 0;
+        margin-top: var(--ods-semantic-size-space-gap-block);
       }
     }
   }

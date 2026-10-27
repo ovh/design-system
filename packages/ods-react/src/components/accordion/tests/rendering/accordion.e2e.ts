@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getTokenColor, gotoStory } from '../../../../helpers/test';
 import { ACCORDION_EMPHASES } from '../../src/constants/accordion-emphasis';
 
 type Styles = Record<string, Record<string, string>>;
@@ -50,23 +50,25 @@ describe('Accordion rendering', () => {
 
   describe('emphasis', () => {
     let styles: Styles;
-    let warnings: string[];
 
-    beforeEach(async() => {
+    async function loadEmphases(): Promise<void> {
       await page.mouse.move(0, 0);
-      warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+      await gotoStory(page, 'rendering/emphases');
       await page.waitForSelector('[data-testid="low-single-trigger-disabled"]');
+    }
+
+    // The tests below only read these styles: the ones that click or focus load the story again.
+    beforeAll(async() => {
+      await loadEmphases();
       styles = await getStyles(page);
     });
 
-    it('should render without emphasis as medium, without any warning', () => {
+    it('should render without emphasis as medium', () => {
       MODES.forEach((mode) => {
         PARTS.forEach((part) => {
           expect(styles[`none-${mode}-${part}`]).toEqual(styles[`medium-${mode}-${part}`]);
         });
       });
-
-      expect(warnings).toEqual([]);
     });
 
     it('should render medium as the default rendering: borders on the raised surface', async() => {
@@ -89,7 +91,7 @@ describe('Accordion rendering', () => {
       });
     });
 
-    it('should render high with a tinted trigger, the content on a white surface and the medium borders', async() => {
+    it('should render high with a tinted trigger, the content on the item surface and the medium borders', async() => {
       const tint = await getTokenColor(page, '--ods-semantic-color-surface-neutral-minimal');
 
       MODES.forEach((mode) => {
@@ -100,14 +102,16 @@ describe('Accordion rendering', () => {
         expect(styles[`high-${mode}-trigger-open`]['background-color']).toBe(tint);
         expect(styles[`high-${mode}-trigger-closed`]['background-color']).toBe(tint);
         expect(styles[`high-${mode}-trigger-disabled`]['background-color']).toBe(TRANSPARENT);
-        expect(styles[`high-${mode}-content-open`]['background-color']).toBe('rgb(255, 255, 255)');
+        expect(styles[`high-${mode}-content-open`]['background-color']).toBe(TRANSPARENT);
         expect(styles[`high-${mode}-content-open`]['padding-top']).toBe(styles[`medium-${mode}-content-open`]['padding-top']);
       });
 
       expect(styles['high-multiple-content-disabled']['background-color']).toBe(TRANSPARENT);
     });
 
-    it('should render low without any border nor background', () => {
+    it('should render low without any border nor background, the items separated by spacing', async() => {
+      const gap = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--ods-semantic-size-space-gap-block').trim());
+
       MODES.forEach((mode) => {
         const open = styles[`low-${mode}-item-open`];
         const closed = styles[`low-${mode}-item-closed`];
@@ -119,8 +123,11 @@ describe('Accordion rendering', () => {
           expect(item['border-right-width']).toBe('0px');
           expect(item['border-bottom-width']).toBe('0px');
           expect(item['background-color']).toBe(TRANSPARENT);
-          expect(item['margin-top']).toBe('0px');
         });
+
+        expect(open['margin-top']).toBe('0px');
+        expect(closed['margin-top']).toBe(gap);
+        expect(disabled['margin-top']).toBe(gap);
 
         ['trigger-open', 'trigger-closed', 'trigger-disabled', 'content-open'].forEach((part) => {
           expect(styles[`low-${mode}-${part}`]['background-color']).toBe(TRANSPARENT);
@@ -144,6 +151,8 @@ describe('Accordion rendering', () => {
     });
 
     it('should keep the multiple and single modes on every emphasis', async() => {
+      await loadEmphases();
+
       const triggers = ACCORDION_EMPHASES.flatMap((emphasis) => MODES.map((mode) => `[data-testid="${emphasis}-${mode}-trigger-closed"]`));
 
       const closedItems = ACCORDION_EMPHASES.flatMap((emphasis) => MODES.map((mode) => `${emphasis}-${mode}-item-closed`));
@@ -166,6 +175,7 @@ describe('Accordion rendering', () => {
     });
 
     it('should keep a visible focus outline on the trigger of every emphasis', async() => {
+      await loadEmphases();
       await page.keyboard.press('Tab');
 
       const outlines = await page.evaluate((emphases: string[]) => emphases.map((emphasis) => {

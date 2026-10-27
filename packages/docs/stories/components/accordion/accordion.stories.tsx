@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { ACCORDION_EMPHASIS, Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
+import { ACCORDION_EMPHASES, ACCORDION_EMPHASIS, Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
@@ -348,24 +348,28 @@ export const ThemeGenerator: Story = {
     layout: 'fullscreen',
   },
   render: ({}) => (
-    <Accordion>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          <Text preset="paragraph">Hello World!</Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">Lorem ipsum dolor sit amet.</Text>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1" disabled>
-        <AccordionTrigger>
-          <Text preset="paragraph">Disabled item</Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">This item is disabled.</Text>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      { ACCORDION_EMPHASES.map((emphasis) => (
+        <Accordion defaultValue={ ['0'] } emphasis={ emphasis } key={ emphasis }>
+          <AccordionItem value="0">
+            <AccordionTrigger>
+              <Text preset="paragraph">{ `${String(emphasis)}: Hello World!` }</Text>
+            </AccordionTrigger>
+            <AccordionContent>
+              <Text preset="paragraph">Lorem ipsum dolor sit amet.</Text>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="1" disabled>
+            <AccordionTrigger>
+              <Text preset="paragraph">Disabled item</Text>
+            </AccordionTrigger>
+            <AccordionContent>
+              <Text preset="paragraph">This item is disabled.</Text>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      )) }
+    </div>
   ),
   tags: ['!dev'],
 };

@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 903
+tokens: 812
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -38,7 +38,6 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MODAL_COLOR` | No | undefined | The color preset to use. DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21. (deprecated) |
 | `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 
@@ -58,15 +57,6 @@ This component extends all the native `<button>` attributes.
 | `value` | `string` | No | undefined | - |
 
 ## Enums
-
-### MODAL_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### MODAL_I18N
 

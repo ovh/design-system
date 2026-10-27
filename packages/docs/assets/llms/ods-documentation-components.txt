@@ -751,7 +751,7 @@ slug: badge
 category: component
 type: overview
 version: 19.7.3
-tokens: 258
+tokens: 218
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
 ---
 
@@ -763,7 +763,6 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `emphasis` | `BADGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
 | `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
@@ -1027,7 +1026,7 @@ slug: badge
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1523
+tokens: 1417
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
 ---
 
@@ -1039,25 +1038,11 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `emphasis` | `BADGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
 | `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### BADGE_COLOR (deprecated)
-
-- `alpha` = `alpha`
-- `beta` = `beta`
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `new` = `new`
-- `primary` = `primary`
-- `promotion` = `promotion`
-- `success` = `success`
-- `warning` = `warning`
 
 ### BADGE_EMPHASIS
 
@@ -1771,7 +1756,7 @@ slug: button
 category: component
 type: overview
 version: 19.7.3
-tokens: 360
+tokens: 305
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button.txt
 ---
 
@@ -1783,7 +1768,6 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -1985,7 +1969,7 @@ slug: button
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 4591
+tokens: 4490
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
 ---
 
@@ -1997,22 +1981,12 @@ This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### BUTTON_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### BUTTON_EMPHASIS
 
@@ -2736,7 +2710,7 @@ slug: card
 category: component
 type: overview
 version: 19.7.3
-tokens: 202
+tokens: 163
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.txt
 ---
 
@@ -2748,7 +2722,6 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Examples
@@ -2913,7 +2886,7 @@ slug: card
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 398
+tokens: 313
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
 ---
 
@@ -2925,19 +2898,9 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Enums
-
-### CARD_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### CARD_STATUS
 
@@ -7448,7 +7411,7 @@ slug: divider
 category: component
 type: overview
 version: 19.7.3
-tokens: 223
+tokens: 179
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider.txt
 ---
 
@@ -7460,7 +7423,6 @@ _A **Divider** component is a spacer used to add white space between two element
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
@@ -7567,7 +7529,7 @@ slug: divider
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 235
+tokens: 171
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--technical-information.txt
 ---
 
@@ -7579,16 +7541,10 @@ This component extends all the native `<hr>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
 ## Enums
-
-### DIVIDER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### DIVIDER_ORIENTATION
 
@@ -12864,7 +12820,7 @@ slug: message
 category: component
 type: overview
 version: 19.7.3
-tokens: 345
+tokens: 305
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message.txt
 ---
 
@@ -12876,7 +12832,6 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -13186,7 +13141,7 @@ slug: message
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2164
+tokens: 2077
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
 ---
 
@@ -13198,7 +13153,6 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -13220,15 +13174,6 @@ _No specific property._
 | `name` | `'meter' | 'filter' | 'stop' | 'key' | 'grid' | 'list' | 'timer' | 'email' | 'location' | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | Yes | undefined | The icon name. |
 
 ## Enums
-
-### MESSAGE_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### MESSAGE_EMPHASIS
 
@@ -14276,7 +14221,7 @@ slug: modal
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 903
+tokens: 812
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
 ---
 
@@ -14310,7 +14255,6 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MODAL_COLOR` | No | undefined | The color preset to use. DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21. (deprecated) |
 | `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 
@@ -14330,15 +14274,6 @@ This component extends all the native `<button>` attributes.
 | `value` | `string` | No | undefined | - |
 
 ## Enums
-
-### MODAL_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### MODAL_I18N
 
@@ -16995,7 +16930,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1515
+tokens: 1405
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -17038,7 +16973,6 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `accept` | `string` | No | undefined | Expected file type in file upload controls |
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
@@ -17068,7 +17002,6 @@ _No specific property._
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -17861,7 +17794,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1118
+tokens: 1063
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -17899,7 +17832,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -19760,7 +19692,7 @@ slug: spinner
 category: component
 type: overview
 version: 19.7.3
-tokens: 212
+tokens: 166
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner.txt
 ---
 
@@ -19772,7 +19704,6 @@ _A visual indicator that a process is happening in the background but the interf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Examples
@@ -19925,7 +19856,7 @@ slug: spinner
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 181
+tokens: 115
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--technical-information.txt
 ---
 
@@ -19937,15 +19868,9 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Enums
-
-### SPINNER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### SPINNER_SIZE
 
@@ -21417,7 +21342,7 @@ slug: tag
 category: component
 type: overview
 version: 19.7.3
-tokens: 1053
+tokens: 1014
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
 ---
 
@@ -21429,7 +21354,6 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
@@ -21629,7 +21553,7 @@ slug: tag
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2531
+tokens: 2446
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
 ---
 
@@ -21641,21 +21565,11 @@ This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### TAG_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### TAG_SIZE
 
@@ -23218,7 +23132,7 @@ slug: toaster
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 323
+tokens: 277
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--technical-information.txt
 ---
 
@@ -23236,15 +23150,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 | `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | The position on screen where the toasts will appear. |
 
 ## Enums
-
-### TOAST_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### TOAST_STATUS
 

@@ -4,7 +4,7 @@ slug: button
 category: component
 type: overview
 version: 19.7.3
-tokens: 360
+tokens: 305
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button.txt
 ---
 
@@ -16,7 +16,6 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |

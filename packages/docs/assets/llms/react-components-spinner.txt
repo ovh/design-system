@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: overview
 version: 19.7.3
-tokens: 212
+tokens: 166
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner.txt
 ---
 
@@ -16,7 +16,6 @@ _A visual indicator that a process is happening in the background but the interf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Examples

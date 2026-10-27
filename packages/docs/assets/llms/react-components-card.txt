@@ -4,7 +4,7 @@ slug: card
 category: component
 type: overview
 version: 19.7.3
-tokens: 202
+tokens: 163
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.txt
 ---
 
@@ -16,7 +16,6 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Examples

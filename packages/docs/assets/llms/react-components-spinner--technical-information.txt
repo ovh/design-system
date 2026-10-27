@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 181
+tokens: 115
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--technical-information.txt
 ---
 
@@ -16,15 +16,9 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Enums
-
-### SPINNER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### SPINNER_SIZE
 

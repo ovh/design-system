@@ -685,7 +685,6 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `emphasis` | `BADGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
 | `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
@@ -945,25 +944,11 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BADGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `emphasis` | `BADGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
 | `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### BADGE_COLOR (deprecated)
-
-- `alpha` = `alpha`
-- `beta` = `beta`
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `new` = `new`
-- `primary` = `primary`
-- `promotion` = `promotion`
-- `success` = `success`
-- `warning` = `warning`
 
 ### BADGE_EMPHASIS
 
@@ -1635,7 +1620,6 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -1833,22 +1817,12 @@ This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### BUTTON_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### BUTTON_EMPHASIS
 
@@ -2530,7 +2504,6 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Examples
@@ -2691,19 +2664,9 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `CARD_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
 
 ## Enums
-
-### CARD_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### CARD_STATUS
 
@@ -6927,7 +6890,6 @@ _A **Divider** component is a spacer used to add white space between two element
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
@@ -7030,16 +6992,10 @@ This component extends all the native `<hr>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
 ## Enums
-
-### DIVIDER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### DIVIDER_ORIENTATION
 
@@ -11853,7 +11809,6 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -12159,7 +12114,6 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MESSAGE_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 | `emphasis` | `MESSAGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
@@ -12181,15 +12135,6 @@ _No specific property._
 | `name` | `'meter' | 'filter' | 'stop' | 'key' | 'grid' | 'list' | 'timer' | 'email' | 'location' | 'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube'` | Yes | undefined | The icon name. |
 
 ## Enums
-
-### MESSAGE_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### MESSAGE_EMPHASIS
 
@@ -13166,7 +13111,6 @@ This component extends all the native `<div>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `MODAL_COLOR` | No | undefined | The color preset to use. DEPRECATED: Pass role="alertdialog" instead of color="critical", color will be removed in v21. (deprecated) |
 | `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
 | `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
 
@@ -13186,15 +13130,6 @@ This component extends all the native `<button>` attributes.
 | `value` | `string` | No | undefined | - |
 
 ## Enums
-
-### MODAL_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### MODAL_I18N
 
@@ -15684,7 +15619,6 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `accept` | `string` | No | undefined | Expected file type in file upload controls |
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
@@ -15714,7 +15648,6 @@ _No specific property._
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -16475,7 +16408,6 @@ Use ARIA (Accessible Rich Internet Applications) live regions to announce filter
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
@@ -18189,7 +18121,6 @@ _A visual indicator that a process is happening in the background but the interf
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Examples
@@ -18338,15 +18269,9 @@ This component extends all the native `<span>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `SPINNER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Set the --ods-spinner-color CSS custom property instead, color will be removed in v21. (deprecated) |
 | `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
 
 ## Enums
-
-### SPINNER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### SPINNER_SIZE
 
@@ -19706,7 +19631,6 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
@@ -19902,21 +19826,11 @@ This component extends all the native `<button>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `TAG_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead, color will be removed in v21. (deprecated) |
 | `icon` | `'accessibility' | 'accessibility-full' | 'analysis' | 'arrow-crossed' | 'arrow-down' | 'arrow-down-left' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-right' | 'arrow-right' | 'arrow-up' | 'arrow-up-down' | 'arrow-up-left' | 'arrow-up-right' | 'bell' | 'bill' | 'blog' | 'book' | 'box' | 'brain' | 'building' | 'cable' | 'calculator' | 'calendar' | 'castle' | 'chain-link' | 'check' | 'chevron-double-left' | 'chevron-double-right' | 'chevron-down' | 'chevron-left' | 'chevron-left-slash' | 'chevron-left-underscore' | 'chevron-right' | 'chevron-up' | 'circle-check' | 'circle-check-full' | 'circle-info' | 'circle-info-full' | 'circle-question' | 'circle-question-full' | 'circle-three-nodes' | 'circle-user' | 'circle-xmark' | 'circle-xmark-full' | 'clock-time-four' | 'clock-time-nine' | 'clock-time-six' | 'clock-time-three' | 'clock-time-twelve' | 'cloud' | 'cloud-check' | 'cloud-download' | 'cloud-lock' | 'cloud-upload' | 'cloud-xmark' | 'cog' | 'columns' | 'comment' | 'cpu' | 'credit-card' | 'crown' | 'd-pad' | 'diagnostic' | 'diamond-exclamation' | 'diamond-exclamation-full' | 'diamonds-full' | 'discord' | 'disk' | 'download' | 'drag-drop' | 'ellipsis-horizontal' | 'ellipsis-vertical' | 'email' | 'emoticon' | 'emoticon-dizzy' | 'emoticon-neutral' | 'emoticon-sad' | 'emoticon-smile' | 'emoticon-wink' | 'equal' | 'external-link' | 'eye' | 'eye-off' | 'facebook' | 'fiber' | 'file' | 'file-copy' | 'file-minus' | 'file-plus' | 'filter' | 'flame' | 'flask-empty' | 'flask-full' | 'flask-half' | 'floppy' | 'focus' | 'folder' | 'folder-minus' | 'folder-plus' | 'funnel' | 'game-console' | 'game-controller' | 'game-controller-alt' | 'gathering' | 'gift' | 'github' | 'globe' | 'grid' | 'grid-alt' | 'hamburger-menu' | 'handshake' | 'headphones' | 'heart' | 'heart-full' | 'heart-half' | 'hexagon-exclamation' | 'hexagon-exclamation-full' | 'hierarchy' | 'history' | 'home' | 'key' | 'keyboard' | 'leaf' | 'lifebuoy' | 'lightbulb' | 'lightning' | 'linkedin' | 'list' | 'location' | 'lock-close' | 'lock-open' | 'magic-wand' | 'magnifying-glass' | 'meter' | 'mic' | 'mic-off' | 'minus' | 'money' | 'money-bag-default' | 'money-bag-dollar' | 'money-bag-euro' | 'monitor' | 'moon' | 'network' | 'paperclip' | 'pause' | 'pause-full' | 'pen' | 'percent' | 'phone' | 'piggy-bank' | 'pin' | 'pin-off' | 'play' | 'play-full' | 'plus' | 'printer' | 'question' | 'reddit' | 'refresh' | 'resize' | 'robot' | 'server' | 'server-rack' | 'share-nodes' | 'share-screen' | 'shield' | 'shield-check' | 'shield-exclamation' | 'shield-firewall' | 'shield-lock' | 'shield-minus' | 'shield-off' | 'shield-plus' | 'shield-xmark' | 'shopping-cart' | 'shopping-cart-error' | 'shopping-cart-minus' | 'shopping-cart-plus' | 'shopping-cart-xmark' | 'shrink' | 'shutdown' | 'snowflake' | 'sort-alpha-down' | 'sort-alpha-up' | 'sort-numeric-down' | 'sort-numeric-up' | 'sparkle' | 'split-horizontal' | 'split-vertical' | 'ssl-key' | 'star' | 'star-full' | 'star-half' | 'stop' | 'stop-full' | 'store' | 'suitcase' | 'sun' | 'sync' | 'tag' | 'target' | 'theme' | 'thumbs-down' | 'thumbs-up' | 'timer' | 'traffic-cone' | 'trash' | 'triangle-exclamation' | 'triangle-exclamation-full' | 'triangle-three-nodes' | 'truck' | 'twitch' | 'undo' | 'upload' | 'user' | 'user-full' | 'vault' | 'x' | 'xmark' | 'youtube' | null` | No | undefined | The icon to display on the right side. |
 | `size` | `'lg' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `TAG_STATUS` | No | undefined | The status preset to use. |
 
 ## Enums
-
-### TAG_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### TAG_SIZE
 
@@ -21322,15 +21236,6 @@ The **Toaster** component handles by itself the accessibility requirements.
 | `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | The position on screen where the toasts will appear. |
 
 ## Enums
-
-### TOAST_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### TOAST_STATUS
 
@@ -27961,13 +27866,13 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**), and the APIs deprecated in 20.0 keep working until v21 (see **Deprecations**). Moving to React 19 requires no ODS-related code change.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**). Moving to React 19 requires no ODS-related code change.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before (review the Button default rendering and migrate the Message `variant`, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before. The component API changes apply whatever your React version: migrate the removed `color` props and `toast.primary()`, the Message `variant` and the Table `variant`, and review the Button default rendering (see **Breaking changes**). The theme changes below apply whatever your React version too.
 
 ## If you move to React 19
 
@@ -28041,7 +27946,7 @@ These are unchanged by the React version — they apply the same way on React 18
 
 - **Vite**: works out of the box, CSS is handled natively.
 - **Webpack 5**: configure `css-loader` (and `style-loader`) so the CSS shipped by ODS is bundled.
-- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). The Markdown component accesses `document` at load time, so import it through `next/dynamic` with `{ ssr: false }`.
+- **Next.js (App Router)**: Next 15 already requires React 19. Use ODS inside client components (`'use client'`). They are server-side rendered like any client component, the Markdown component included: no `next/dynamic` with `{ ssr: false }` is needed.
 
 ## Default theme
 
@@ -28362,6 +28267,23 @@ If you reference the theme Sass sources or font files directly (Sass imports, co
 
 These changes require a code update: each one comes with its before and after.
 
+**The `color` prop is removed** from Badge, Button, Card, Divider, Message, ModalContent, Spinner and Tag (on Divider and ModalContent, it was deprecated since v19), with the `XXX_COLOR` and `XXX_COLORS` constants and the `XxxColor` types of these components and of the Toaster, and with `toast.primary()`. Where the component has a `status` prop, use it instead (`XXX_STATUS`, `XXX_STATUSES` and the `XxxStatus` type): the `primary` value is renamed `accent` (`brand` on Button), the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button). Divider, ModalContent and Spinner have no `status`: see their own entry.
+
+- TypeScript reports each removed usage, even through a spread object: `color` is typed `never` on these components, so not even the HTML `color` attribute is accepted.
+- In untyped JavaScript, a `color` attribute is no longer read by these components: it is forwarded to the DOM as the obsolete HTML `color` attribute. Remove it.
+- If one of your wrappers declares its own `color` prop on top of `BadgeProp` (or the props of the other components above), TypeScript reports that it incorrectly extends it: remove the prop and map its values to `status`, or keep it under an `Omit<BadgeProp, 'color'>` if it serves another purpose.
+- If one of your wrappers takes the HTML props of an element (`ComponentPropsWithRef<'span'>`…) and spreads them into one of these components, TypeScript reports that `color` is not assignable to `undefined`: omit it from the wrapper props (`Omit<ComponentPropsWithRef<'span'>, 'color'>`).
+- If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
+- The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see Message).
+
+To find the usages to migrate in your code:
+
+```sh
+grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
+```
+
+`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched, but TypeScript reports them. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. A library built on ODS (a UI kit wrapping Badge or Button) must migrate too before you can move to v20.
+
 ### Accordion
 
 **New `emphasis` prop** (`ACCORDION_EMPHASIS`, `ACCORDION_EMPHASES` and the `AccordionEmphasis` type): `high`, `medium` or `low`, set on the root for every item. `medium` is the default, so an Accordion without `emphasis` renders as before: nothing to migrate. Only a wrapper is affected: if it declares its own `emphasis` prop on top of `AccordionProp`, add `'emphasis'` to its `Omit` or rename it. In untyped JavaScript, an `emphasis` attribute forwarded to Accordion is now read as the emphasis preset.
@@ -28384,7 +28306,52 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 }
 ```
 
+### Badge
+
+**The `color` prop is removed**, with `BADGE_COLOR`, `BADGE_COLORS` and the `BadgeColor` type (see above):
+
+- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
+
+**New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
+
+To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
+
+**before**
+```tsx
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+
+<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
+<Badge color={ BADGE_COLOR.success }>Active</Badge>
+```
+
+**after**
+```tsx
+import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
+<Badge status={ BADGE_STATUS.success }>Active</Badge>
+```
+
+**optional, new in v20**
+```tsx
+import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
+
+<Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Expired</Badge>
+<Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Active</Badge>
+```
+
 ### Button
+
+**The `color` prop is removed**, with `BUTTON_COLOR`, `BUTTON_COLORS` and the `ButtonColor` type (see above):
+
+- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
+- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
+- `color="critical"` and `color="neutral"`: use `status` with the same value.
+- `color="information"`, `success` and `warning` are removed **without** `status` equivalent: a Button does not convey a status. Use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
 
 **The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
 
@@ -28401,29 +28368,89 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 To find the Buttons to review in your code:
 
 ```sh
-grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_VARIANTS?\b|\bButtonVariant\b" src/
+grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_(VARIANT|COLOR)S?\b|\bButton(Variant|Color)\b" src/
 ```
 
-TypeScript reports every remaining `variant` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
+TypeScript reports every remaining `variant` and `color` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
 
 **before**
 ```tsx
-import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
 
 // filled in v19, medium (outlined) in v20
 <Button>Save</Button>
 <Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>
+<Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.default }>Delete</Button>
 ```
 
 **after**
 ```tsx
-import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
 
 <Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
 <Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
+<Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+### Card
+
+**The `color` prop is removed**, with `CARD_COLOR`, `CARD_COLORS` and the `CardColor` type (see above):
+
+- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
+- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
+
+To find the usages to migrate: `grep -rnE "\bCARD_COLORS?\b|\bCardColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
+
+**before**
+```tsx
+import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
+
+<Card color={ CARD_COLOR.neutral }>...</Card>
+```
+
+**after**
+```tsx
+import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
+
+<Card status={ CARD_STATUS.neutral }>...</Card>
+```
+
+### Divider
+
+**The `color` prop is removed** (it was deprecated since v19), with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
+
+- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
+
+To find the usages to migrate: `grep -rnE "\bDIVIDER_COLORS?\b|\bDividerColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
+
+**before**
+```tsx
+import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
+
+<Divider color={ DIVIDER_COLOR.primary } />
+<Divider color={ DIVIDER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Divider } from '@ovhcloud/ods-react';
+
+<Divider />
+<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
 ```
 
 ### Message
+
+**The `color` prop is removed**, with `MESSAGE_COLOR`, `MESSAGE_COLORS` and the `MessageColor` type (see above):
+
+- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
+- `color="primary"`: use `status="accent"`.
+- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
+- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
 
 **The `variant` prop of the Message is removed, replaced by `emphasis`, and every Message changes rendering.** `MESSAGE_VARIANT`, `MESSAGE_VARIANTS` and the `MessageVariant` type are removed with it, without deprecation period: TypeScript reports each usage, and in untyped JavaScript a `variant` attribute is ignored (and forwarded to the DOM).
 
@@ -28453,7 +28480,7 @@ import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 To find the usages to migrate in your code:
 
 ```sh
-grep -rnE "\bMESSAGE_VARIANTS?\b|\bMessageVariant\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
+grep -rnE "\bMESSAGE_(VARIANT|COLOR)S?\b|\bMessage(Variant|Color)\b|ods-message-variant-|--ods-message-(background|text)-color-" src/
 grep -rnE "<Message([[:space:]]|>|$)" src/
 ```
 
@@ -28461,7 +28488,7 @@ Review each match of the second search that sets neither `variant` nor `emphasis
 
 **before**
 ```tsx
-import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
+import { MESSAGE_COLOR, MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud/ods-react';
 
 // tinted background in v19, medium (raised surface with a border) in v20
 <Message status={ MESSAGE_STATUS.success }>
@@ -28470,6 +28497,10 @@ import { MESSAGE_STATUS, MESSAGE_VARIANT, Message, MessageBody } from '@ovhcloud
 
 <Message status={ MESSAGE_STATUS.warning } variant={ MESSAGE_VARIANT.light }>
   <MessageBody>Your session will expire soon.</MessageBody>
+</Message>
+
+<Message color={ MESSAGE_COLOR.primary } variant={ MESSAGE_VARIANT.light }>
+  <MessageBody>A new version is available.</MessageBody>
 </Message>
 ```
 
@@ -28484,6 +28515,76 @@ import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody } from '@ovhclou
 <Message status={ MESSAGE_STATUS.warning }>
   <MessageBody>Your session will expire soon.</MessageBody>
 </Message>
+
+<Message status={ MESSAGE_STATUS.accent }>
+  <MessageBody>A new version is available.</MessageBody>
+</Message>
+```
+
+### Modal
+
+**The `color` prop of `ModalContent` is removed** (it was deprecated since v19), with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It had no visual effect: its only effect was to give the dialog the `alertdialog` role when set to `critical`.
+
+- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
+- Any other value: remove the prop.
+- A computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
+- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): replace it with your own constant or a boolean such as `isCritical`.
+
+To find the usages to migrate: `grep -rnE "\bMODAL_COLORS?\b|\bModalColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
+
+**before**
+```tsx
+import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent color={ MODAL_COLOR.critical }>
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+**after**
+```tsx
+import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+
+<Modal>
+  <ModalContent role="alertdialog">
+    <ModalBody>Are you sure you want to delete this item?</ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Spinner
+
+**The `color` prop is removed**, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is set by the `--ods-spinner-color` CSS custom property, primary by default, so a Spinner without `color` renders as before.
+
+- No `color`: nothing to do, the Spinner stays primary.
+- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
+- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
+- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
+- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
+- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
+
+To find the usages to migrate: `grep -rnE "\bSPINNER_COLORS?\b|\bSpinnerColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
+
+**before**
+```tsx
+import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
+
+<Spinner color={ SPINNER_COLOR.neutral } />
+```
+
+**after**
+```tsx
+import { Spinner } from '@ovhcloud/ods-react';
+
+<Spinner className="my-spinner" />
+```
+
+```css
+.my-spinner {
+  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
+}
 ```
 
 ### Table
@@ -28510,219 +28611,16 @@ import { Table } from '@ovhcloud/ods-react';
 <Table striped>...</Table>
 ```
 
-## Deprecations
-
-The following APIs are deprecated as of 20.0 (the Divider and ModalContent `color` props since v19). They keep working in 20.x and will be removed in v21: migrate when convenient. Each deprecated prop, and `toast.primary()`, logs a `[DEPRECATED]` console warning once per page load; the deprecated constants and types are marked `@deprecated` for your IDE.
-
-**From `color` to `status`.** On Badge, Button, Card, Message and Tag, the `color` prop is deprecated in favor of a `status` prop, and their constants follow: `XXX_COLOR` and `XXX_COLORS` are deprecated in favor of `XXX_STATUS` and `XXX_STATUSES`, and the `XxxColor` type in favor of `XxxStatus`. When both props are set, `status` wins. The `primary` value is renamed `accent` (`brand` on Button); the other values keep their name, except Button `information`, `success` and `warning`, which have no `status` (see Button).
-
-To find the usages to migrate in your code:
-
-```sh
-grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?\b|\b(Badge|Button|Card|Message|Spinner|Tag|Toast|Divider|Modal)Color\b|toast\.primary\(|[[:space:]]color=" src/
-```
-
-`color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. Warnings can also come from a library built on ODS (a UI kit wrapping Badge or Button): they stop once that library migrates.
-
-If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript now reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'color' | 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
-
-The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see **Breaking changes**).
-
-### Badge
-
-- `color` (or `BADGE_COLOR`): use `status` (or `BADGE_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
-- `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
-- New `emphasis` prop (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
-
-**before**
-```tsx
-import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
-
-<Badge color={ BADGE_COLOR.primary }>New feature</Badge>
-<Badge color={ BADGE_COLOR.success }>Active</Badge>
-```
-
-**after**
-```tsx
-import { BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
-
-<Badge status={ BADGE_STATUS.accent }>New feature</Badge>
-<Badge status={ BADGE_STATUS.success }>Active</Badge>
-```
-
-**optional, new in v20**
-```tsx
-import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
-
-<Badge emphasis={ BADGE_EMPHASIS.high } status={ BADGE_STATUS.critical }>Expired</Badge>
-<Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.success }>Active</Badge>
-```
-
-### Button
-
-- `color` (or `BUTTON_COLOR`): use `status` (or `BUTTON_STATUS`).
-- `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
-- `color="critical"` and `color="neutral"`: use `status` with the same value.
-- `color="information"`, `success` and `warning` have **no** `status` equivalent: they keep their v19 rendering through the deprecated `color` prop until v21. A Button does not convey a status: use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
-- `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
-
-**before**
-```tsx
-import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';
-
-<Button color={ BUTTON_COLOR.primary }>Save</Button>
-<Button color={ BUTTON_COLOR.critical }>Delete</Button>
-```
-
-**after**
-```tsx
-import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
-
-<Button>Save</Button>
-<Button status={ BUTTON_STATUS.critical }>Delete</Button>
-```
-
-### Card
-
-- `color` (or `CARD_COLOR`): use `status` (or `CARD_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- No `color`: the default is now `neutral`. Set `status="accent"` to keep the v19 color; the card also paints a background now (see **Default rendering**).
-- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
-- `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
-
-**before**
-```tsx
-import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
-
-<Card color={ CARD_COLOR.neutral }>...</Card>
-```
-
-**after**
-```tsx
-import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
-
-<Card status={ CARD_STATUS.neutral }>...</Card>
-```
-
-### Divider
-
-The `color` prop, already deprecated in v19, will be removed in v21, with `DIVIDER_COLOR`, `DIVIDER_COLORS` and the `DividerColor` type. The Divider has no `status`.
-
-- `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
-- `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
-
-**before**
-```tsx
-import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';
-
-<Divider color={ DIVIDER_COLOR.primary } />
-<Divider color={ DIVIDER_COLOR.neutral } />
-```
-
-**after**
-```tsx
-import { Divider } from '@ovhcloud/ods-react';
-
-<Divider />
-<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
-```
-
-### Message
-
-- `color` (or `MESSAGE_COLOR`): use `status` (or `MESSAGE_STATUS`).
-- `color="primary"`: use `status="accent"`.
-- `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
-- `MESSAGE_COLORS` and `MessageColor`: use `MESSAGE_STATUSES` and `MessageStatus`.
-- `variant` (or `MESSAGE_VARIANT`): removed in v20, see **Breaking changes**.
-
-**before**
-```tsx
-import { MESSAGE_COLOR, Message, MessageBody } from '@ovhcloud/ods-react';
-
-<Message color={ MESSAGE_COLOR.warning }>
-  <MessageBody>Your session will expire soon.</MessageBody>
-</Message>
-```
-
-**after**
-```tsx
-import { MESSAGE_STATUS, Message, MessageBody } from '@ovhcloud/ods-react';
-
-<Message status={ MESSAGE_STATUS.warning }>
-  <MessageBody>Your session will expire soon.</MessageBody>
-</Message>
-```
-
-### Modal
-
-The `color` prop of `ModalContent`, already deprecated in v19, will be removed in v21, with `MODAL_COLOR`, `MODAL_COLORS` and the `ModalColor` type. It has no visual effect: its only effect is to give the dialog the `alertdialog` role when set to `critical`.
-
-- `color="critical"` (or `MODAL_COLOR.critical`): replace it with `role="alertdialog"`.
-- any other value: remove the prop.
-- a computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
-- `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): it stays exported until v21; replace it with your own constant or a boolean such as `isCritical`.
-
-**before**
-```tsx
-import { MODAL_COLOR, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
-
-<Modal>
-  <ModalContent color={ MODAL_COLOR.critical }>
-    <ModalBody>Are you sure you want to delete this item?</ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-**after**
-```tsx
-import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
-
-<Modal>
-  <ModalContent role="alertdialog">
-    <ModalBody>Are you sure you want to delete this item?</ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-### Spinner
-
-The `color` prop is deprecated, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is now set by the `--ods-spinner-color` CSS custom property, primary by default, so its rendering is unchanged.
-
-- No `color`: nothing to do, the Spinner stays primary.
-- `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
-- `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
-- To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.
-- Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
-- In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
-
-**before**
-```tsx
-import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';
-
-<Spinner color={ SPINNER_COLOR.neutral } />
-```
-
-**after**
-```tsx
-import { Spinner } from '@ovhcloud/ods-react';
-
-<Spinner className="my-spinner" />
-```
-
-```css
-.my-spinner {
-  --ods-spinner-color: var(--ods-semantic-color-content-neutral);
-}
-```
-
 ### Tag
+
+**The `color` prop is removed**, with `TAG_COLOR`, `TAG_COLORS` and the `TagColor` type (see above):
 
 - `color` (or `TAG_COLOR`): use `status` (or `TAG_STATUS`).
 - `color="primary"`: use `status="accent"`.
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
+
+To find the usages to migrate: `grep -rnE "\bTAG_COLORS?\b|\bTagColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -28740,9 +28638,14 @@ import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
 
 ### Toaster
 
+**`toast.primary()` is removed**, with `TOAST_COLOR`, `TOAST_COLORS` and the `ToastColor` type (see above):
+
 - `toast.primary()`: use `toast.accent()`.
 - `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
+- A `color` passed in the toast options (`toast('…', { color: 'primary' })`): use the matching helper (`toast.accent('…')`).
 - `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+
+To find the usages to migrate: `grep -rnE "\bTOAST_COLORS?\b|\bToastColor\b|toast\.primary\(" src/`.
 
 **before**
 ```tsx

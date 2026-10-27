@@ -214,15 +214,6 @@ function transformProse(text: string, ctx: MdxContext): string {
     return `${'#'.repeat(Number(level) || 2)} ${label}`;
   });
 
-  out = out.replace(/<Canvas([^>]*)\/>/g, (_, raw) => {
-    const { from, source, story } = parseAttrs(raw);
-    if (source === 'none' || !story) {
-      return '';
-    }
-    const code = ctx.story(story, from);
-    return code ? `\`\`\`tsx\n${code}\n\`\`\`` : '';
-  });
-
   out = out.replace(/<IdentityCard([^>]*?)>([\s\S]*?)<\/IdentityCard>/g, (_, raw, children) => {
     const { figmaLink, githubUrl, name } = parseAttrs(raw);
     const aliases = parseStringArray(/aliases=\{\s*\[([\s\S]*?)\]\s*\}/.exec(raw)?.[1] ?? '');
@@ -282,6 +273,17 @@ function transformProse(text: string, ctx: MdxContext): string {
   // form demos): point at the page instead.
   out = out.replace(/<(Roadmap|Recipes|FormData|Component)\b[^>]*\/>/g,
     `_Interactive content — see ${ctx.pageUrl}_`);
+
+  // Last of the tag ports: the story source it inserts is code, which the ports above would rewrite
+  // (an AccordionTrigger turned into a bold label).
+  out = out.replace(/<Canvas([^>]*)\/>/g, (_, raw) => {
+    const { from, source, story } = parseAttrs(raw);
+    if (source === 'none' || !story) {
+      return '';
+    }
+    const code = ctx.story(story, from);
+    return code ? `\`\`\`tsx\n${code}\n\`\`\`` : '';
+  });
 
   // Leftover contract/ODS tags: drop the tags from PROSE, keep their text
   // content. Code is quoted verbatim and must survive: fences (the story

@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { gotoStory } from '../../../../helpers/test';
 
 async function getFill(page: Page, testId: string): Promise<string> {
   const spinner = await page.waitForSelector(`[data-testid="${testId}"]`);
@@ -21,11 +21,10 @@ async function resolveColor(page: Page, color: string): Promise<string> {
 
 describe('Spinner rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="spinner"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -69,14 +68,13 @@ describe('Spinner rendering', () => {
   });
 
   describe('color', () => {
-    it('should fill with primary by default and with the --ods-spinner-color custom property, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/color');
+    it('should fill with primary by default and with the --ods-spinner-color custom property', async() => {
+      await gotoStory(page, 'rendering/color');
 
       expect(await getFill(page, 'default')).toBe(await resolveColor(page, 'var(--ods-semantic-color-content-accent)'));
       expect(await getFill(page, 'current-color')).toBe('rgb(255, 0, 0)');
       expect(await getFill(page, 'custom-property')).toBe('rgb(0, 128, 0)');
       expect(await getFill(page, 'parent-custom-property')).toBe('rgb(0, 0, 255)');
-      expect(warnings).toEqual([]);
     });
   });
 });

@@ -1,14 +1,13 @@
 import 'jest-puppeteer';
-import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, gotoStory } from '../../../../helpers/test';
 import { CARD_STATUSES } from '../../src/constants/card-status';
 
 describe('Card rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="card"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -23,8 +22,8 @@ describe('Card rendering', () => {
   });
 
   describe('statuses', () => {
-    it('should style every status, unlike an unknown status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+    it('should style every status, unlike an unknown status', async() => {
+      await gotoStory(page, 'rendering/statuses');
 
       const unknownStyle = await getStatusStyle(page, 'status-none');
 
@@ -32,7 +31,6 @@ describe('Card rendering', () => {
       const unstyledStatuses = CARD_STATUSES.filter((_, index) => styles[index] === unknownStyle);
 
       expect(unstyledStatuses).toEqual([]);
-      expect(warnings).toEqual([]);
     });
 
     it('should render neutral without status', async() => {

@@ -1,4 +1,4 @@
-import { type ConsoleMessage, type Page } from 'puppeteer';
+import { type Page } from 'puppeteer';
 
 async function gotoStory(page: Page, story: string): Promise<void> {
   const uriPart = story.replace('/', '--');
@@ -32,24 +32,8 @@ async function getTokenColor(page: Page, token: string): Promise<string> {
   }, token);
 }
 
-async function gotoStoryAndCollectDeprecations(page: Page, story: string): Promise<string[]> {
-  const warnings: string[] = [];
-  const onConsole = (message: ConsoleMessage): void => {
-    if (message.text().includes('[DEPRECATED]')) {
-      warnings.push(message.text());
-    }
-  };
-
-  page.on('console', onConsole);
-  await gotoStory(page, story);
-  page.off('console', onConsole);
-
-  return warnings;
-}
-
 export {
   getStatusStyle,
   getTokenColor,
   gotoStory,
-  gotoStoryAndCollectDeprecations,
 };

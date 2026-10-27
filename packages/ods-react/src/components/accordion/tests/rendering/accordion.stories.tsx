@@ -65,7 +65,7 @@ const EmphasisAccordion = ({ emphasis, multiple }: { emphasis?: AccordionEmphasi
 export const emphases = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '8px' }}>
     {
-      [undefined, ...ACCORDION_EMPHASES].map((emphasis) => [true, false].map((multiple) => (
+      [undefined, 'expand-icon-left' as AccordionEmphasis, ...ACCORDION_EMPHASES].map((emphasis) => [true, false].map((multiple) => (
         <EmphasisAccordion
           emphasis={ emphasis }
           key={ `${emphasis}-${multiple}` }

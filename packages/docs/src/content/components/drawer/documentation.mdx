@@ -89,7 +89,7 @@ The **Drawer** can slide in from the left, right, top, or bottom, depending on i
 
 When the **Drawer** is opened, focus automatically moves to the first focusable element inside.
 
-When the **Drawer** is closed while focus is inside it, focus returns to the trigger element, or, for a Drawer without trigger, to the element that was focused before it opened.
+When the **Drawer** is closed while focus is inside it, or after its focused element was removed, focus returns to the trigger it was opened from, or, for a Drawer without trigger, to the element that was focused before it opened. A focus moved elsewhere in the page is left where it is.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 

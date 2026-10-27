@@ -27,8 +27,8 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
   const { open } = useDialogContext();
   const { backdrop, backdropStyle, positionerStyle, setContentId } = useDrawer();
 
-  // zag finds the content by id (focus on open, Escape, focus return): a custom id must be its id too.
-  // Layout effect: the id must be set before zag's machine starts, for a drawer open on mount.
+  // zag reads the content id through `ids` (see Drawer): a custom id is given to it before its
+  // machine starts (layout effect), for a drawer open on mount.
   useLayoutEffect(() => {
     setContentId(props.id);
   }, [props.id, setContentId]);

@@ -1,5 +1,5 @@
 import 'jest-puppeteer';
-import { type Page } from 'puppeteer';
+import { type ElementHandle, type Page } from 'puppeteer';
 import { gotoStory } from '../../../../helpers/test';
 
 const CONTENT = '[data-ods="drawer-content"]';
@@ -12,6 +12,16 @@ async function waitForDrawerState(page: Page, state: 'closed' | 'open'): Promise
       content.getAttribute('data-state') === expected &&
       content.getAnimations().every((animation) => animation.playState !== 'running');
   }, {}, CONTENT, state);
+}
+
+async function waitForContentOpen(page: Page, testId: string): Promise<void> {
+  await page.waitForFunction((id) => {
+    const content = document.querySelector(`[data-testid="${id}"]`);
+
+    return !!content &&
+      content.getAttribute('data-state') === 'open' &&
+      content.getAnimations().every((animation) => animation.playState !== 'running');
+  }, {}, testId);
 }
 
 async function waitForFocus(page: Page, testId: string): Promise<void> {
@@ -39,6 +49,21 @@ async function clickBackgroundButtonPosition(page: Page): Promise<void> {
   const box = await (await page.$('[data-testid="background"]'))!.boundingBox();
 
   await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
+}
+
+type ShadowHost = HTMLElement & { drawerShadowRoot: ShadowRoot };
+
+// The shadow root of the shadow root stories, reached through the host as a closed one is not.
+async function getShadowElement(page: Page, testId: string): Promise<ElementHandle<Element>> {
+  return (await page.evaluateHandle((id) => {
+    return (document.querySelector('[data-testid="host"]') as ShadowHost).drawerShadowRoot.querySelector(`[data-testid="${id}"]`);
+  }, testId)) as ElementHandle<Element>;
+}
+
+async function waitForShadowFocus(page: Page, testId: string): Promise<void> {
+  await page.waitForFunction((id) => {
+    return (document.querySelector('[data-testid="host"]') as ShadowHost | null)?.drawerShadowRoot?.activeElement?.getAttribute('data-testid') === id;
+  }, {}, testId);
 }
 
 async function wait(page: Page, ms: number): Promise<void> {
@@ -216,6 +241,195 @@ describe('Drawer behavior', () => {
       expect(await isFocusInDrawer(page)).toBe(false);
     });
 
+    it('should return the focus to the trigger when it has a custom id', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-custom-trigger-id');
+      await waitForDrawerState(page, 'open');
+
+      expect(await page.$eval('[data-testid="trigger"]', (el) => el.id)).toBe('custom-trigger-id');
+      await page.focus('[data-testid="second"]');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      expect(await isFocusInDrawer(page)).toBe(false);
+    });
+
+    it('should handle a custom content id when open on mount', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-open-custom-content-id');
+      await waitForDrawerState(page, 'open');
+
+      expect(await page.$eval(CONTENT, (el) => el.id)).toBe('custom-content-id');
+      await waitForFocus(page, 'first');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      expect(await isFocusInDrawer(page)).toBe(false);
+    });
+
+    it('should return the focus to the trigger when the content id changed while open', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-changing-content-id');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      await page.click('[data-testid="next-item"]');
+      await page.waitForFunction((selector) => document.querySelector(selector)?.id === 'details-2', {}, CONTENT);
+
+      // Interacting inside the drawer under its new id, then losing the focus there, is not an outside interaction.
+      await page.click('[data-testid="self-removing"]');
+      await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
+      expect(await isFocusOnBody(page)).toBe(true);
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      expect(await isFocusInDrawer(page)).toBe(false);
+    });
+
+    it('should return the focus to the valued trigger the drawer was opened from', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-valued-triggers');
+      await page.waitForSelector('[data-testid="trigger-3"]');
+
+      await page.click('[data-testid="trigger-3"]');
+      await waitForDrawerState(page, 'open');
+      await waitForFocus(page, 'first');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger-3');
+      expect(await getFocusedTestId(page)).toBe('trigger-3');
+    });
+
+    it('should return the focus to the valued trigger the drawer was opened from when the click did not focus it', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-valued-triggers');
+      await page.waitForSelector('[data-testid="trigger-2"]');
+
+      // A scripted click does not focus the button, as in WebKit: the opener is body.
+      await page.$eval('[data-testid="trigger-2"]', (el) => (el as HTMLElement).click());
+      await waitForDrawerState(page, 'open');
+      await waitForFocus(page, 'first');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger-2');
+      expect(await getFocusedTestId(page)).toBe('trigger-2');
+    });
+
+    it('should scroll the trigger into view when giving it the focus back', async() => {
+      await gotoStory(page, 'behavior/no-backdrop');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      await page.evaluate(() => window.scrollTo(0, 2000));
+      await page.waitForFunction(() => window.scrollY > 0);
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+      await waitForFocus(page, 'trigger');
+
+      expect(await page.$eval('[data-testid="trigger"]', (el) => {
+        const { bottom, top } = el.getBoundingClientRect();
+
+        return top >= 0 && bottom <= window.innerHeight;
+      })).toBe(true);
+    });
+
+    it('should give the focus to the trigger when a layer opened from the drawer gives it back to the closed drawer', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-nested-modal');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      await page.click('[data-testid="close"]');
+      await page.waitForSelector('[data-testid="discard"]', { visible: true });
+      await page.click('[data-testid="discard"]');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      await wait(page, 300);
+      expect(await getFocusedTestId(page)).toBe('trigger');
+    });
+
+    it('should return the focus to the valued trigger of the last opening when the click did not focus it', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-valued-triggers');
+      await page.waitForSelector('[data-testid="trigger-1"]');
+
+      await page.click('[data-testid="trigger-1"]');
+      await waitForFocus(page, 'first');
+      await page.keyboard.press('Escape');
+      await waitForFocus(page, 'trigger-1');
+
+      // The focus is still on trigger 1 when trigger 2 opens the drawer without taking it.
+      await page.$eval('[data-testid="trigger-2"]', (el) => (el as HTMLElement).click());
+      await waitForDrawerState(page, 'open');
+      await waitForFocus(page, 'first');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger-2');
+      expect(await getFocusedTestId(page)).toBe('trigger-2');
+    });
+
+    it('should return the focus to the valued trigger the open drawer switched to', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-valued-triggers');
+      await page.waitForSelector('[data-testid="trigger-1"]');
+
+      await page.click('[data-testid="trigger-1"]');
+      await waitForFocus(page, 'first');
+
+      // Another valued trigger switches the open drawer to its value instead of closing it.
+      await page.click('[data-testid="trigger-2"]');
+      await page.waitForFunction(() => document.querySelector('[data-testid="trigger-2"]')?.hasAttribute('data-current'));
+      await page.focus('[data-testid="first"]');
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger-2');
+      expect(await getFocusedTestId(page)).toBe('trigger-2');
+    });
+
+    it('should not leave the focus in the closed drawer when a layer gives it back and nothing can take it', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-nested-modal-without-trigger');
+      await page.waitForSelector('[data-testid="external-no-focus"]');
+
+      await page.click('[data-testid="external-no-focus"]');
+      await waitForDrawerState(page, 'open');
+      await waitForFocus(page, 'close');
+
+      await page.click('[data-testid="close"]');
+      await page.waitForSelector('[data-testid="discard"]', { visible: true });
+      await page.click('[data-testid="discard"]');
+      await waitForDrawerState(page, 'closed');
+      await wait(page, 300);
+
+      expect(await isFocusInDrawer(page)).toBe(false);
+    });
+
+    it('should give the focus to the outer trigger when the outer drawer closed before the inner one', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-nested-drawers');
+      await page.waitForSelector('[data-testid="outer-trigger"]');
+
+      await page.click('[data-testid="outer-trigger"]');
+      await waitForContentOpen(page, 'outer-content');
+      await page.click('[data-testid="inner-trigger"]');
+      await waitForContentOpen(page, 'inner-content');
+      await waitForFocus(page, 'close-outer');
+
+      await page.click('[data-testid="close-outer"]');
+      await page.waitForFunction(() => document.querySelector('[data-testid="outer-content"]')?.getAttribute('data-state') === 'closed');
+      await page.keyboard.press('Escape');
+      await page.waitForFunction(() => document.querySelector('[data-testid="inner-content"]')?.getAttribute('data-state') === 'closed');
+      await nextFrames(page);
+
+      expect(await getFocusedTestId(page)).toBe('outer-trigger');
+    });
+
     it('should return the focus to the external opener of a controlled drawer', async() => {
       await gotoStory(page, 'behavior/no-backdrop-controlled');
       await page.waitForSelector('[data-testid="external"]');
@@ -263,8 +477,24 @@ describe('Drawer behavior', () => {
 
       await page.click('[data-testid="self-removing"]');
       await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
-      // Lets the next tick pass, where a focus loss to nowhere is settled.
-      await wait(page, 50);
+
+      await page.keyboard.press('Escape');
+      await waitForDrawerState(page, 'closed');
+
+      await waitForFocus(page, 'trigger');
+      expect(await getFocusedTestId(page)).toBe('trigger');
+    });
+
+    it('should return the focus to the trigger when the focused element was removed after an interaction outside', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-removed-focus');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      // Outside, then back inside: only the last interaction counts.
+      await page.click('[data-testid="page-input"]');
+      await waitForFocus(page, 'page-input');
+      await page.click('[data-testid="self-removing"]');
+      await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
 
       await page.keyboard.press('Escape');
       await waitForDrawerState(page, 'closed');
@@ -281,7 +511,6 @@ describe('Drawer behavior', () => {
       await openWithTrigger(page);
       await page.click('[data-testid="self-removing"]');
       await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
-      await wait(page, 50);
       await page.click('[data-testid="page-input"]');
       await waitForFocus(page, 'page-input');
 
@@ -296,7 +525,6 @@ describe('Drawer behavior', () => {
       await openWithTrigger(page);
       await page.click('[data-testid="self-removing"]');
       await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
-      await wait(page, 50);
       await page.click('[data-testid="page-input"]');
       await waitForFocus(page, 'page-input');
 
@@ -304,6 +532,84 @@ describe('Drawer behavior', () => {
       await waitForDrawerState(page, 'closed');
       await nextFrames(page);
       expect(await getFocusedTestId(page)).toBe('page-input');
+    });
+
+    it('should not move the focus when the focused element was removed then some page text was clicked', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-removed-focus');
+      await page.waitForSelector('[data-testid="trigger"]');
+      await openWithTrigger(page);
+
+      await page.click('[data-testid="self-removing"]');
+      await page.waitForFunction(() => !document.querySelector('[data-testid="self-removing"]'));
+      await page.click('[data-testid="page-text"]');
+
+      await page.$eval('[data-testid="close-by-code"]', (el) => (el as HTMLElement).click());
+      await waitForDrawerState(page, 'closed');
+      await nextFrames(page);
+
+      expect(await isFocusOnBody(page)).toBe(true);
+    });
+
+    it('should return the focus to the trigger inside a shadow root', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-in-shadow-root');
+      const trigger = await page.waitForSelector('[data-testid="host"] >>> [data-testid="trigger"]');
+
+      await trigger!.click();
+      await page.waitForFunction(() => document.querySelector('[data-testid="host"]')?.shadowRoot?.activeElement?.getAttribute('data-testid') === 'first');
+
+      await page.keyboard.press('Escape');
+
+      await page.waitForFunction(() => document.querySelector('[data-testid="host"]')?.shadowRoot?.activeElement?.getAttribute('data-testid') === 'trigger');
+    });
+
+    it('should not take the focus from the page when closed by code inside a shadow root', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-in-shadow-root');
+      const trigger = await page.waitForSelector('[data-testid="host"] >>> [data-testid="trigger"]');
+
+      await trigger!.click();
+      await page.waitForFunction(() => document.querySelector('[data-testid="host"]')?.shadowRoot?.activeElement?.getAttribute('data-testid') === 'first');
+
+      await page.click('[data-testid="page-input"]');
+      await waitForFocus(page, 'page-input');
+
+      await page.$eval('[data-testid="host"] >>> [data-testid="close-by-code"]', (el) => (el as HTMLElement).click());
+      await page.waitForFunction(() => document.querySelector('[data-testid="host"]')?.shadowRoot?.querySelector('[data-ods="drawer-content"]')?.getAttribute('data-state') === 'closed');
+      await nextFrames(page);
+
+      expect(await getFocusedTestId(page)).toBe('page-input');
+    });
+
+    it('should return the focus to the trigger inside a closed shadow root when the focused element was removed', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-in-closed-shadow-root');
+      await page.waitForFunction(() => !!(document.querySelector('[data-testid="host"]') as ShadowHost | null)?.drawerShadowRoot?.querySelector('[data-testid="trigger"]'));
+
+      await (await getShadowElement(page, 'trigger')).click();
+      await waitForShadowFocus(page, 'first');
+      await (await getShadowElement(page, 'self-removing')).click();
+      await page.waitForFunction(() => !(document.querySelector('[data-testid="host"]') as ShadowHost).drawerShadowRoot.querySelector('[data-testid="self-removing"]'));
+
+      await page.keyboard.press('Escape');
+
+      await waitForShadowFocus(page, 'trigger');
+    });
+
+    it('should not take the focus from an iframe of the page when closed by code', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-outside-iframe');
+      const frame = (await (await page.waitForSelector('[data-testid="outside-frame"]'))!.contentFrame())!;
+
+      await page.click('[data-testid="trigger"]');
+      await waitForFocus(page, 'first');
+
+      await frame.waitForSelector('[data-testid="frame-input"]');
+      await frame.focus('[data-testid="frame-input"]');
+      await waitForFocus(page, 'outside-frame');
+
+      await page.$eval('[data-testid="close-by-code"]', (el) => (el as HTMLElement).click());
+      await waitForDrawerState(page, 'closed');
+      await nextFrames(page);
+
+      expect(await getFocusedTestId(page)).toBe('outside-frame');
+      expect(await frame.evaluate(() => document.activeElement?.getAttribute('data-testid') ?? null)).toBe('frame-input');
     });
 
     it('should not take the focus from the parent page when closed by code in an iframe', async() => {
@@ -327,12 +633,13 @@ describe('Drawer behavior', () => {
     });
 
     it('should return the focus to the trigger when closed by code in an iframe while the window lost the focus', async() => {
-      // Without focus emulation, the page really loses the focus when another tab comes to front.
+      let otherPage: Page | undefined;
       const session = await page.createCDPSession();
-      await session.send('Emulation.setFocusEmulationEnabled', { enabled: false });
-      const otherPage = await browser.newPage();
 
       try {
+        // Without focus emulation, the page really loses the focus when another tab comes to front.
+        await session.send('Emulation.setFocusEmulationEnabled', { enabled: false });
+        otherPage = await browser.newPage();
         await page.bringToFront();
         await gotoStory(page, 'behavior/no-backdrop-in-iframe');
         const frame = (await (await page.waitForSelector('[data-testid="frame"]'))!.contentFrame())!;
@@ -352,11 +659,65 @@ describe('Drawer behavior', () => {
 
         expect(await frame.evaluate(() => document.activeElement?.getAttribute('data-testid') ?? null)).toBe('trigger');
       } finally {
-        await otherPage.close();
+        await otherPage?.close();
         await session.send('Emulation.setFocusEmulationEnabled', { enabled: true });
         await session.detach();
         await page.bringToFront();
       }
+    });
+
+    it('should not take the focus from the parent page when closed by code in an iframe while the window lost the focus', async() => {
+      let otherPage: Page | undefined;
+      const session = await page.createCDPSession();
+
+      try {
+        // Without focus emulation, the page really loses the focus when another tab comes to front.
+        await session.send('Emulation.setFocusEmulationEnabled', { enabled: false });
+        otherPage = await browser.newPage();
+        await page.bringToFront();
+        await gotoStory(page, 'behavior/no-backdrop-in-iframe');
+        const frame = (await (await page.waitForSelector('[data-testid="frame"]'))!.contentFrame())!;
+
+        await frame.waitForSelector('[data-testid="trigger"]');
+        await frame.click('[data-testid="trigger"]');
+        await frame.waitForFunction(() => document.activeElement?.getAttribute('data-testid') === 'first');
+        await page.click('[data-testid="parent-input"]');
+        await waitForFocus(page, 'parent-input');
+
+        await otherPage.bringToFront();
+        await page.waitForFunction(() => !document.hasFocus());
+
+        await frame.$eval('[data-testid="close-by-code"]', (el) => (el as HTMLElement).click());
+        await frame.waitForFunction((selector) => document.querySelector(selector)?.getAttribute('data-state') === 'closed', {}, CONTENT);
+        await page.bringToFront();
+        await nextFrames(page);
+
+        expect(await getFocusedTestId(page)).toBe('parent-input');
+      } finally {
+        await otherPage?.close();
+        await session.send('Emulation.setFocusEmulationEnabled', { enabled: true });
+        await session.detach();
+        await page.bringToFront();
+      }
+    });
+
+    it('should not take the focus from the top page when closed by code two iframes below', async() => {
+      await gotoStory(page, 'behavior/no-backdrop-in-nested-iframe');
+      const outerFrame = (await (await page.waitForSelector('[data-testid="outer-frame"]'))!.contentFrame())!;
+      const frame = (await (await outerFrame.waitForSelector('[data-testid="frame"]'))!.contentFrame())!;
+
+      await frame.waitForSelector('[data-testid="trigger"]');
+      await frame.click('[data-testid="trigger"]');
+      await frame.waitForFunction(() => document.activeElement?.getAttribute('data-testid') === 'first');
+
+      await page.click('[data-testid="top-input"]');
+      await waitForFocus(page, 'top-input');
+
+      await frame.$eval('[data-testid="close-by-code"]', (el) => (el as HTMLElement).click());
+      await frame.waitForFunction((selector) => document.querySelector(selector)?.getAttribute('data-state') === 'closed', {}, CONTENT);
+      await nextFrames(page);
+
+      expect(await getFocusedTestId(page)).toBe('top-input');
     });
 
     it('should not move the focus when closed by code while the focus is outside', async() => {

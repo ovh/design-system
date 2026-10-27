@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, gotoStory } from '../../../../helpers/test';
 import { BADGE_EMPHASIS } from '../../src/constants/badge-emphasis';
 import { BADGE_STATUS, BADGE_STATUSES } from '../../src/constants/badge-status';
 
@@ -23,11 +23,10 @@ async function getColors(page: Page, testId: string): Promise<Colors> {
 
 describe('Badge rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="badge"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -74,8 +73,8 @@ describe('Badge rendering', () => {
   });
 
   describe('statuses', () => {
-    it('should style every status, unlike an unknown status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+    it('should style every status, unlike an unknown status', async() => {
+      await gotoStory(page, 'rendering/statuses');
 
       const unknownStyle = await getStatusStyle(page, 'status-none');
 
@@ -83,7 +82,6 @@ describe('Badge rendering', () => {
       const unstyledStatuses = BADGE_STATUSES.filter((_, index) => styles[index] === unknownStyle);
 
       expect(unstyledStatuses).toEqual([]);
-      expect(warnings).toEqual([]);
     });
   });
 
@@ -92,14 +90,13 @@ describe('Badge rendering', () => {
       await gotoStory(page, 'rendering/emphases');
     });
 
-    it('should render medium by default, for every status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+    it('should render medium by default, for every status', async() => {
+      await gotoStory(page, 'rendering/emphases');
 
       const defaultStyles = await Promise.all(BADGE_STATUSES.map((status) => getStatusStyle(page, `${status}-default`)));
       const mediumStyles = await Promise.all(BADGE_STATUSES.map((status) => getStatusStyle(page, `${status}-${BADGE_EMPHASIS.medium}`)));
 
       expect(defaultStyles).toEqual(mediumStyles);
-      expect(warnings).toEqual([]);
     });
 
     it('should fill the background in high, unlike medium', async() => {

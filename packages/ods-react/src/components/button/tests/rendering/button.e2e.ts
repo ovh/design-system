@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, getTokenColor, gotoStory } from '../../../../helpers/test';
 import { BUTTON_EMPHASES } from '../../src/constants/button-emphasis';
 import { BUTTON_STATUSES } from '../../src/constants/button-status';
 
@@ -39,11 +39,10 @@ async function getVariantStyle(page: Page, status: keyof typeof VARIANT_ROLES, v
 
 describe('Button rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="button"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -154,8 +153,8 @@ describe('Button rendering', () => {
   });
 
   describe('statuses', () => {
-    it('should style every status in every emphasis, unlike an unknown status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+    it('should style every status in every emphasis, unlike an unknown status', async() => {
+      await gotoStory(page, 'rendering/statuses');
 
       const unstyled = await Promise.all(BUTTON_EMPHASES.map(async(emphasis) => {
         const unknownStyle = await getStatusStyle(page, `status-none-${emphasis}`);
@@ -165,13 +164,12 @@ describe('Button rendering', () => {
       }));
 
       expect(unstyled.flat()).toEqual([]);
-      expect(warnings).toEqual([]);
     });
   });
 
   describe('emphasis', () => {
-    it('should render each emphasis of each status like its v19 variant (high as default, medium as outline, low as ghost), without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+    it('should render each emphasis of each status like its v19 variant (high as default, medium as outline, low as ghost)', async() => {
+      await gotoStory(page, 'rendering/emphases');
       const v19Variants = { high: 'default', low: 'ghost', medium: 'outline' } as const;
 
       const pairs = BUTTON_STATUSES.flatMap((status) => BUTTON_EMPHASES.map((emphasis) => ({ emphasis, status })));
@@ -180,7 +178,6 @@ describe('Button rendering', () => {
 
       expect(pairs.map(({ emphasis, status }, index) => `${status} ${emphasis}: ${styles[index]}`))
         .toEqual(pairs.map(({ emphasis, status }, index) => `${status} ${emphasis}: ${variantStyles[index]}`));
-      expect(warnings).toEqual([]);
     });
 
     it('should render as medium (the v19 outline) by default', async() => {

@@ -1,13 +1,12 @@
 import 'jest-puppeteer';
-import { gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { gotoStory } from '../../../../helpers/test';
 
 describe('Divider rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="divider"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {

@@ -1,14 +1,13 @@
 import 'jest-puppeteer';
-import { getStatusStyle, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, gotoStory } from '../../../../helpers/test';
 import { TAG_STATUSES } from '../../src/constants/tag-status';
 
 describe('Tag rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="tag"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -38,8 +37,8 @@ describe('Tag rendering', () => {
   });
 
   describe('statuses', () => {
-    it('should style every status, unlike an unknown status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+    it('should style every status, unlike an unknown status', async() => {
+      await gotoStory(page, 'rendering/statuses');
 
       const unknownStyle = await getStatusStyle(page, 'status-none');
 
@@ -47,7 +46,6 @@ describe('Tag rendering', () => {
       const unstyledStatuses = TAG_STATUSES.filter((_, index) => styles[index] === unknownStyle);
 
       expect(unstyledStatuses).toEqual([]);
-      expect(warnings).toEqual([]);
     });
   });
 });

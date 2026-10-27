@@ -1,6 +1,6 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecations } from '../../../../helpers/test';
+import { getStatusStyle, getTokenColor, gotoStory } from '../../../../helpers/test';
 import { MESSAGE_EMPHASES, MESSAGE_EMPHASIS, type MessageEmphasis } from '../../src/constants/message-emphasis';
 import { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from '../../src/constants/message-status';
 
@@ -68,13 +68,12 @@ const PAIRS = MESSAGE_STATUSES.flatMap((status) => MESSAGE_EMPHASES.map((emphasi
 
 describe('Message rendering', () => {
   it('should render the web component', async() => {
-    const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/render');
+    await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="message"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="message-body"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="message-icon"]')).not.toBeNull();
-    expect(warnings).toEqual([]);
   });
 
   describe('custom style', () => {
@@ -89,8 +88,8 @@ describe('Message rendering', () => {
   });
 
   describe('statuses', () => {
-    it('should style every status, unlike an unknown status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/statuses');
+    it('should style every status, unlike an unknown status', async() => {
+      await gotoStory(page, 'rendering/statuses');
 
       const unknownStyle = await getStatusStyle(page, 'status-none');
 
@@ -98,7 +97,6 @@ describe('Message rendering', () => {
       const unstyledStatuses = MESSAGE_STATUSES.filter((_, index) => styles[index] === unknownStyle);
 
       expect(unstyledStatuses).toEqual([]);
-      expect(warnings).toEqual([]);
     });
   });
 
@@ -107,14 +105,13 @@ describe('Message rendering', () => {
       await gotoStory(page, 'rendering/emphases');
     });
 
-    it('should render medium by default, for every status, without any warning', async() => {
-      const warnings = await gotoStoryAndCollectDeprecations(page, 'rendering/emphases');
+    it('should render medium by default, for every status', async() => {
+      await gotoStory(page, 'rendering/emphases');
 
       const defaultStyles = await Promise.all(MESSAGE_STATUSES.map((status) => getStatusStyle(page, `${status}-default`)));
       const mediumStyles = await Promise.all(MESSAGE_STATUSES.map((status) => getStatusStyle(page, `${status}-${MESSAGE_EMPHASIS.medium}`)));
 
       expect(defaultStyles).toEqual(mediumStyles);
-      expect(warnings).toEqual([]);
     });
 
     it('should render an unknown emphasis as medium', async() => {

@@ -13,11 +13,11 @@ describe('Checkbox rendering', () => {
   });
 
   describe('checked', () => {
-    it('should paint the hover with the selection highlight', async() => {
+    it('should paint the hover with the solid control hover', async() => {
       await gotoStory(page, 'rendering/checked');
 
       const control = await page.waitForSelector('[data-testid="checked"]');
-      const highlight = await getTokenColor(page, '--ods-semantic-color-interaction-selected-solid-highlight');
+      const highlight = await getTokenColor(page, '--ods-semantic-color-interaction-control-solid-hover');
       const background = (): Promise<string | undefined> => control!.evaluate((el: Element) => getComputedStyle(el).backgroundColor);
 
       await control!.hover();

@@ -2092,7 +2092,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4927
+tokens: 4929
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -2240,10 +2240,10 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
 | `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
-| `--ods-semantic-color-interaction-selected-solid-highlight` | `var(--ods-palette-accent-800)` |
-| `--ods-semantic-color-interaction-selected-solid-active` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-700)` |
-| `--ods-semantic-color-control-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-control-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-control-solid-hover` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-control-solid-active` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |

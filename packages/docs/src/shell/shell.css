@@ -119,7 +119,7 @@ body {
 
 .shell__search-hint:hover {
   border-color: var(--ods-semantic-color-interaction-control-hover);
-  background-color: var(--ods-semantic-color-control-highlight);
+  background-color: var(--ods-semantic-color-interaction-control-highlight);
 }
 
 .shell__search-option {

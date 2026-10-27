@@ -19,9 +19,9 @@
 
 ## Badge
 
-- [Overview](./react-components-badge.txt) (~258 tokens)
+- [Overview](./react-components-badge.txt) (~218 tokens)
 - [Documentation](./react-components-badge--documentation.txt) (~2439 tokens)
-- [Technical Information](./react-components-badge--technical-information.txt) (~1523 tokens)
+- [Technical Information](./react-components-badge--technical-information.txt) (~1417 tokens)
 - [Examples](./react-components-badge--examples.txt) (~891 tokens)
 
 ## Breadcrumb
@@ -33,9 +33,9 @@
 
 ## Button
 
-- [Overview](./react-components-button.txt) (~360 tokens)
+- [Overview](./react-components-button.txt) (~305 tokens)
 - [Documentation](./react-components-button--documentation.txt) (~1590 tokens)
-- [Technical Information](./react-components-button--technical-information.txt) (~4591 tokens)
+- [Technical Information](./react-components-button--technical-information.txt) (~4490 tokens)
 - [Examples](./react-components-button--examples.txt) (~778 tokens)
 
 ## Button Group
@@ -47,9 +47,9 @@
 
 ## Card
 
-- [Overview](./react-components-card.txt) (~202 tokens)
+- [Overview](./react-components-card.txt) (~163 tokens)
 - [Documentation](./react-components-card--documentation.txt) (~1442 tokens)
-- [Technical Information](./react-components-card--technical-information.txt) (~398 tokens)
+- [Technical Information](./react-components-card--technical-information.txt) (~313 tokens)
 - [Examples](./react-components-card--examples.txt) (~420 tokens)
 
 ## Cart
@@ -110,9 +110,9 @@
 
 ## Divider
 
-- [Overview](./react-components-divider.txt) (~223 tokens)
+- [Overview](./react-components-divider.txt) (~179 tokens)
 - [Documentation](./react-components-divider--documentation.txt) (~720 tokens)
-- [Technical Information](./react-components-divider--technical-information.txt) (~235 tokens)
+- [Technical Information](./react-components-divider--technical-information.txt) (~171 tokens)
 - [Examples](./react-components-divider--examples.txt) (~230 tokens)
 
 ## Drawer
@@ -208,9 +208,9 @@
 
 ## Message
 
-- [Overview](./react-components-message.txt) (~345 tokens)
+- [Overview](./react-components-message.txt) (~305 tokens)
 - [Documentation](./react-components-message--documentation.txt) (~2320 tokens)
-- [Technical Information](./react-components-message--technical-information.txt) (~2164 tokens)
+- [Technical Information](./react-components-message--technical-information.txt) (~2077 tokens)
 - [Examples](./react-components-message--examples.txt) (~1172 tokens)
 
 ## Message Bubble
@@ -231,7 +231,7 @@
 
 - [Overview](./react-components-modal.txt) (~480 tokens)
 - [Documentation](./react-components-modal--documentation.txt) (~1686 tokens)
-- [Technical Information](./react-components-modal--technical-information.txt) (~903 tokens)
+- [Technical Information](./react-components-modal--technical-information.txt) (~812 tokens)
 - [Examples](./react-components-modal--examples.txt) (~1230 tokens)
 
 ## Pagination
@@ -273,7 +273,7 @@
 
 - [Overview](./react-components-prompt-input.txt) (~509 tokens)
 - [Documentation](./react-components-prompt-input--documentation.txt) (~1415 tokens)
-- [Technical Information](./react-components-prompt-input--technical-information.txt) (~1515 tokens)
+- [Technical Information](./react-components-prompt-input--technical-information.txt) (~1405 tokens)
 - [Examples](./react-components-prompt-input--examples.txt) (~1142 tokens)
 
 ## Quantity
@@ -287,7 +287,7 @@
 
 - [Overview](./react-components-query-filter.txt) (~685 tokens)
 - [Documentation](./react-components-query-filter--documentation.txt) (~1358 tokens)
-- [Technical Information](./react-components-query-filter--technical-information.txt) (~1118 tokens)
+- [Technical Information](./react-components-query-filter--technical-information.txt) (~1063 tokens)
 - [Examples](./react-components-query-filter--examples.txt) (~819 tokens)
 
 ## Radio Group
@@ -320,9 +320,9 @@
 
 ## Spinner
 
-- [Overview](./react-components-spinner.txt) (~212 tokens)
+- [Overview](./react-components-spinner.txt) (~166 tokens)
 - [Documentation](./react-components-spinner--documentation.txt) (~1390 tokens)
-- [Technical Information](./react-components-spinner--technical-information.txt) (~181 tokens)
+- [Technical Information](./react-components-spinner--technical-information.txt) (~115 tokens)
 - [Examples](./react-components-spinner--examples.txt) (~190 tokens)
 
 ## Switch
@@ -348,9 +348,9 @@
 
 ## Tag
 
-- [Overview](./react-components-tag.txt) (~1053 tokens)
+- [Overview](./react-components-tag.txt) (~1014 tokens)
 - [Documentation](./react-components-tag--documentation.txt) (~1374 tokens)
-- [Technical Information](./react-components-tag--technical-information.txt) (~2531 tokens)
+- [Technical Information](./react-components-tag--technical-information.txt) (~2446 tokens)
 - [Examples](./react-components-tag--examples.txt) (~301 tokens)
 
 ## Text
@@ -385,7 +385,7 @@
 
 - [Overview](./react-components-toaster.txt) (~274 tokens)
 - [Documentation](./react-components-toaster--documentation.txt) (~1120 tokens)
-- [Technical Information](./react-components-toaster--technical-information.txt) (~323 tokens)
+- [Technical Information](./react-components-toaster--technical-information.txt) (~277 tokens)
 - [Examples](./react-components-toaster--examples.txt) (~1165 tokens)
 
 ## Toggle

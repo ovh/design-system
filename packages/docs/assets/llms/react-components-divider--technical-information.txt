@@ -4,7 +4,7 @@ slug: divider
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 235
+tokens: 171
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--technical-information.txt
 ---
 
@@ -16,16 +16,10 @@ This component extends all the native `<hr>` attributes.
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `DIVIDER_COLOR` | No | undefined | The color preset to use. DEPRECATED: Override the background-color in CSS instead, color will be removed in v21. (deprecated) |
 | `orientation` | `'horizontal' | 'vertical'` | No | undefined | The orientation of the divider. |
 | `spacing` | `'0' | '2' | '4' | '6' | '8' | '12' | '16' | '24' | '32' | '40' | '48' | '64'` | No | undefined | The spacing preset to use. |
 
 ## Enums
-
-### DIVIDER_COLOR (deprecated)
-
-- `neutral` = `neutral`
-- `primary` = `primary`
 
 ### DIVIDER_ORIENTATION
 

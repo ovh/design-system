@@ -4,7 +4,7 @@ slug: toaster
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 323
+tokens: 277
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--technical-information.txt
 ---
 
@@ -22,15 +22,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 | `position` | `'bottom' | 'bottom-end' | 'bottom-start' | 'top' | 'top-end' | 'top-start'` | No | undefined | The position on screen where the toasts will appear. |
 
 ## Enums
-
-### TOAST_COLOR (deprecated)
-
-- `critical` = `critical`
-- `information` = `information`
-- `neutral` = `neutral`
-- `primary` = `primary`
-- `success` = `success`
-- `warning` = `warning`
 
 ### TOAST_STATUS
 

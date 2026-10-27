@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1515
+tokens: 1405
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -47,7 +47,6 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `accept` | `string` | No | undefined | Expected file type in file upload controls |
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
@@ -77,7 +76,6 @@ _No specific property._
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
 | `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |

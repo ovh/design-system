@@ -6917,8 +6917,7 @@ import { Page } from 'puppeteer';
 declare function gotoStory(page: Page, story: string): Promise<void>;
 declare function getStatusStyle(page: Page, testId: string): Promise<string>;
 declare function getTokenColor(page: Page, token: string): Promise<string>;
-declare function gotoStoryAndCollectDeprecations(page: Page, story: string): Promise<string[]>;
-export { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecations, };
+export { getStatusStyle, getTokenColor, gotoStory, };
 
 // ==================== hooks/useDevice.d.ts ====================
 interface UseDevice {

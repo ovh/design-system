@@ -460,7 +460,7 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 
 **New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
 
-To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b|<Badge[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -545,7 +545,7 @@ import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value.
 - `CARD_COLORS` and `CardColor`: use `CARD_STATUSES` and `CardStatus`.
 
-To find the usages to migrate: `grep -rnE "\bCARD_COLORS?\b|\bCardColor\b|<Card[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bCARD_COLORS?\b|\bCardColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -568,7 +568,7 @@ import { CARD_STATUS, Card } from '@ovhcloud/ods-react';
 - `color="primary"` (or `DIVIDER_COLOR.primary`): remove the prop, it is the default rendering.
 - `color="neutral"` (or `DIVIDER_COLOR.neutral`): remove the prop and override the `background-color` in CSS.
 
-To find the usages to migrate: `grep -rnE "\bDIVIDER_COLORS?\b|\bDividerColor\b|<Divider[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bDIVIDER_COLORS?\b|\bDividerColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -673,7 +673,7 @@ import { MESSAGE_EMPHASIS, MESSAGE_STATUS, Message, MessageBody } from '@ovhclou
 - A computed `color`: replace it with `role={ isCritical ? 'alertdialog' : undefined }`; an `undefined` role keeps the default `dialog` role.
 - `MODAL_COLOR` used outside `ModalContent` (in your own wrappers or maps): replace it with your own constant or a boolean such as `isCritical`.
 
-To find the usages to migrate: `grep -rnE "\bMODAL_COLORS?\b|\bModalColor\b|<ModalContent[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bMODAL_COLORS?\b|\bModalColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -708,7 +708,7 @@ import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
 - Set the custom property on the Spinner, through its `className`, or on a container of yours, rather than on a global `[data-ods="spinner"]` selector: that selector would also reach the Spinners displayed by Button, Input and FileUpload. A container also reaches the loading Spinners of the Input and FileUpload placed inside it; only the Button Spinner keeps its own color, the text color of the button.
 - In TypeScript, setting it through the `style` prop requires a cast (`style={ { '--ods-spinner-color': 'currentColor' } as CSSProperties }`); a `className` avoids it.
 
-To find the usages to migrate: `grep -rnE "\bSPINNER_COLORS?\b|\bSpinnerColor\b|<Spinner[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bSPINNER_COLORS?\b|\bSpinnerColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx
@@ -763,7 +763,7 @@ import { Table } from '@ovhcloud/ods-react';
 - `color="critical"`, `information`, `neutral`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `TAG_COLORS` and `TagColor`: use `TAG_STATUSES` and `TagStatus`.
 
-To find the usages to migrate: `grep -rnE "\bTAG_COLORS?\b|\bTagColor\b|<Tag[^>]*[[:space:]]color=" src/`.
+To find the usages to migrate: `grep -rnE "\bTAG_COLORS?\b|\bTagColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**
 ```tsx

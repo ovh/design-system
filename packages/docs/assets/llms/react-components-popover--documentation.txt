@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1467
+tokens: 1476
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--documentation.txt
 ---
 
@@ -162,7 +162,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button aria-label="Profile">
+    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -174,23 +174,23 @@ Update the content type on the **Popover Trigger**, which is set by default to `
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Information
       </Button>
 
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Notifications
       </Button>
 
       <Divider style={{ width: '100%' }} />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.low }
         status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        role="menuitem">
         Sign out
       </Button>
     </div>

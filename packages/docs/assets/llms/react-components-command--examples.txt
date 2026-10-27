@@ -4,7 +4,7 @@ slug: command
 category: component
 type: examples
 version: 19.7.3
-tokens: 1963
+tokens: 2056
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--examples.txt
 ---
 
@@ -15,7 +15,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter />
@@ -46,7 +46,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 
     return (
       <>
-        <Button onClick={ openCommand }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openCommand }>
           Open command
         </Button>
 
@@ -82,7 +82,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
     return (
       <Command>
         <Command.Trigger asChild>
-          <Button>Open command</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
         </Command.Trigger>
         <Command.Content>
           <Command.Filter
@@ -109,7 +109,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter placeholder="Search..." />
@@ -140,7 +140,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 <>
   <Command>
     <Command.Trigger asChild>
-      <Button>Open command</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
     </Command.Trigger>
     <Command.Content>
       <Command.Filter placeholder="Search..." />
@@ -164,7 +164,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.List aria-label="Actions">
@@ -198,7 +198,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter placeholder="Search..." />
@@ -214,7 +214,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -235,7 +235,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -256,7 +256,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -280,7 +280,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-comman
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />

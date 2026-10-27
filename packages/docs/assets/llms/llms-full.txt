@@ -1489,10 +1489,10 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## Examples
 
@@ -1500,7 +1500,7 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 - Default
 - Loading
 - Size
-- Variant
+- Emphasis
 - Accessibility Explicit Text Content
 - Accessibility Icon Only
 - Accessibility Bad Practice Icon Only
@@ -1531,7 +1531,7 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
   **Button** labels express explicitly what action will occur when the user interacts with it. Its aspect describes
   the importance and influence level.
 
-  This component exists in many ways : variants, sizes and colors.
+  This component exists in many ways : emphases, statuses and sizes.
 
 | | |
 |---|---|
@@ -1564,19 +1564,19 @@ A button should not mimic a link. It can lead to confusion for users and assisti
 
 **Do**
 
-- Use a primary Button to highlight the main action on a page or in a form
-- Pair an outline Button for complementary actions (e.g., "Cancel", "Learn more")
-- Maintain a clear visual hierarchy between Button types (primary, outline, ghost)
+- Use a high emphasis Button to highlight the main action on a page or in a form
+- Pair a medium emphasis Button for complementary actions (e.g., "Cancel", "Learn more")
+- Maintain a clear visual hierarchy between Button emphases (high, medium, low)
 - Use icons when they add clarity to the action (e.g., arrow for "Next", trash for "Delete")
 - Choose the appropriate size based on context
 
 **Don't**
 
 - Don't use a Button as a link, use the Link component instead
-- Don't show more than one primary button per view
+- Don't show more than one high emphasis Button per view
 - Don't place two identical Buttons side by side (same label and style)
 - Don't use standalone decorative icons in Buttons unless the action is universally understood
-- Don't use a ghost Button as the main call to action
+- Don't use a low emphasis Button as the main call to action
 - Don't overload a Button with too much text or visual clutter
 
 ### Best Practices in Context
@@ -1603,11 +1603,15 @@ An icon can be displayed on the left or right of the **Button** label. Icon-only
 - **Critical**: alerts users to high-priority actions or warnings that require immediate attention.
 - **Neutral**: secondary actions (such as clearing field or close button).
 
-### Variant
+### Emphasis
 
-- **Default**: primary actions, featuring a full background with a matching border to signify important emphasis.
-- **Outline**: secondary actions, featuring a transparent background with a visible border to signify less emphasis than primary buttons.
-- **Ghost**: tertiary or less prominent actions, blending into the background with minimal styling until hovered or focused to reduce visual dominance.
+The emphasis sets the visual weight of the **Button**, whatever its status.
+
+- **High**: primary actions, featuring a full background with a matching border to signify important emphasis.
+- **Medium** _(default)_: secondary actions, featuring a light background with a visible border to signify less emphasis than high **Buttons**.
+- **Low**: tertiary or less prominent actions, blending into the background with minimal styling until hovered or focused to reduce visual dominance.
+
+The action roles combine a status and an emphasis: a primary action is a brand **Button** with a high emphasis, a secondary action a medium one and a tertiary action a low one.
 
 ### Size
 
@@ -1683,10 +1687,10 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## Enums
 
@@ -1699,6 +1703,12 @@ This component extends all the native `<button>` attributes.
 - `success` = `success`
 - `warning` = `warning`
 
+### BUTTON_EMPHASIS
+
+- `high` = `high`
+- `low` = `low`
+- `medium` = `medium`
+
 ### BUTTON_SIZE
 
 - `md` = `md`
@@ -1710,12 +1720,6 @@ This component extends all the native `<button>` attributes.
 - `brand` = `brand`
 - `critical` = `critical`
 - `neutral` = `neutral`
-
-### BUTTON_VARIANT
-
-- `default` = `default`
-- `ghost` = `ghost`
-- `outline` = `outline`
 
 ## CSS Variables
 
@@ -1939,13 +1943,13 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Variant
+## Emphasis
 
 ```tsx
 <>
-  <Button variant={ BUTTON_VARIANT.default }>Default button</Button>
-  <Button variant={ BUTTON_VARIANT.outline }>Outline button</Button>
-  <Button variant={ BUTTON_VARIANT.ghost }>Ghost button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.high }>High button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.medium }>Medium button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.low }>Low button</Button>
 </>
 ```
 
@@ -4717,7 +4721,7 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4744,7 +4748,7 @@ In the case of several groups, it is recommended to provide an accessible name f
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4770,7 +4774,7 @@ To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` inste
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -4889,7 +4893,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter />
@@ -4920,7 +4924,7 @@ This component extends all the native `<div>` attributes.
 
     return (
       <>
-        <Button onClick={ openCommand }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openCommand }>
           Open command
         </Button>
 
@@ -4956,7 +4960,7 @@ This component extends all the native `<div>` attributes.
     return (
       <Command>
         <Command.Trigger asChild>
-          <Button>Open command</Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
         </Command.Trigger>
         <Command.Content>
           <Command.Filter
@@ -4983,7 +4987,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter placeholder="Search..." />
@@ -5014,7 +5018,7 @@ This component extends all the native `<div>` attributes.
 <>
   <Command>
     <Command.Trigger asChild>
-      <Button>Open command</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
     </Command.Trigger>
     <Command.Content>
       <Command.Filter placeholder="Search..." />
@@ -5038,7 +5042,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.List aria-label="Actions">
@@ -5072,7 +5076,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content>
     <Command.Filter placeholder="Search..." />
@@ -5088,7 +5092,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -5109,7 +5113,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -5130,7 +5134,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -5154,7 +5158,7 @@ This component extends all the native `<div>` attributes.
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -7091,7 +7095,7 @@ Ensure that assistive technologies announce the **Drawer** correctly using [aria
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7109,7 +7113,7 @@ Ensure that assistive technologies announce the **Drawer** correctly using [aria
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7200,7 +7204,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Drawer backdrop>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7229,7 +7233,7 @@ This component extends all the native `<button>` attributes.
 
     return (
       <>
-        <Button onClick={ openDrawer }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
           Trigger Drawer
         </Button>
 
@@ -7252,7 +7256,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7270,7 +7274,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7312,7 +7316,7 @@ This component extends all the native `<button>` attributes.
 <>
  <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Top drawer
      </Button>
    </DrawerTrigger>
@@ -7326,7 +7330,7 @@ This component extends all the native `<button>` attributes.
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Left drawer
      </Button>
    </DrawerTrigger>
@@ -7340,7 +7344,7 @@ This component extends all the native `<button>` attributes.
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Right Drawer
      </Button>
    </DrawerTrigger>
@@ -7354,7 +7358,7 @@ This component extends all the native `<button>` attributes.
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Bottom Drawer
      </Button>
    </DrawerTrigger>
@@ -7373,7 +7377,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7399,7 +7403,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -7728,17 +7732,17 @@ _No specific property._
               editing
                 ? <>
                   <EditableSubmitTrigger asChild>
-                    <Button size={ BUTTON_SIZE.sm }>Submit</Button>
+                    <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>Submit</Button>
                   </EditableSubmitTrigger>
 
                   <EditableCancelTrigger asChild>
                     <Button
-                      size={ BUTTON_SIZE.sm }
-                      variant={ BUTTON_VARIANT.outline }>Cancel</Button>
+                      emphasis={ BUTTON_EMPHASIS.medium }
+                      size={ BUTTON_SIZE.sm }>Cancel</Button>
                   </EditableCancelTrigger>
                 </>
                 : <EditableEditTrigger asChild>
-                  <Button size={ BUTTON_SIZE.sm }>Edit</Button>
+                  <Button emphasis={ BUTTON_EMPHASIS.high } size={ BUTTON_SIZE.sm }>Edit</Button>
                 </EditableEditTrigger>
             )
           }
@@ -8940,11 +8944,11 @@ _No specific property._
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -9051,11 +9055,12 @@ _No specific property._
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -9144,7 +9149,7 @@ _No specific property._
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -9271,11 +9276,11 @@ _No specific property._
   </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    <Button variant={ BUTTON_VARIANT.outline }>
+    <Button emphasis={ BUTTON_EMPHASIS.medium }>
       Back
     </Button>
 
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Update profile
     </Button>
   </div>
@@ -9926,8 +9931,8 @@ The **Input** does not disable, hide or otherwise alter the content it is given.
   endContent={ (
     <Button
       aria-label="Copy value"
-      size={ BUTTON_SIZE.xs }
-      variant={ BUTTON_VARIANT.ghost }>
+      emphasis={ BUTTON_EMPHASIS.low }
+      size={ BUTTON_SIZE.xs }>
       <Icon name={ ICON_NAME.fileCopy } />
     </Button>
   ) } />
@@ -10012,7 +10017,7 @@ Only reference the parts that describe the value. A control inside the decoratio
        endContent={
          <>
            <span id="weight-unit">kg</span>
-           <Button aria-label="Copy value" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>
+           <Button aria-label="Copy value" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.xs }>
              <Icon name={ ICON_NAME.fileCopy } />
            </Button>
          </>
@@ -10109,11 +10114,11 @@ To provide more context on the interactive elements, you can provide your own cu
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button type="submit">
+          <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
             Sign in
           </Button>
         </div>
@@ -10279,8 +10284,8 @@ This component extends all the native `<input>` attributes.
   endContent={ (
     <Button
       aria-label="Copy value"
-      size={ BUTTON_SIZE.xs }
-      variant={ BUTTON_VARIANT.ghost }>
+      emphasis={ BUTTON_EMPHASIS.low }
+      size={ BUTTON_SIZE.xs }>
       <Icon name={ ICON_NAME.fileCopy } />
     </Button>
   ) } />
@@ -10409,11 +10414,11 @@ This component extends all the native `<input>` attributes.
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button type="submit">
+          <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
             Sign in
           </Button>
         </div>
@@ -11584,7 +11589,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Menu>
   <MenuTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Open menu
     </Button>
   </MenuTrigger>
@@ -11608,7 +11613,7 @@ This component extends all the native `<button>` attributes.
 
     return (
       <>
-        <Button onClick={ toggleMenu }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleMenu }>
           Toggle menu
         </Button>
 
@@ -11632,7 +11637,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Menu>
   <MenuTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Open menu
     </Button>
   </MenuTrigger>
@@ -11655,7 +11660,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Menu>
   <MenuTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Open menu
     </Button>
   </MenuTrigger>
@@ -11679,7 +11684,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Menu>
   <MenuTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Open menu
     </Button>
   </MenuTrigger>
@@ -11918,11 +11923,12 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
     return (
       <>
         <div>
-          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
@@ -12127,11 +12133,12 @@ _No specific property._
     return (
       <>
         <div>
-          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert
@@ -12860,7 +12867,7 @@ Ensure that assistive technologies announce the **Modal** correctly using
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -12879,7 +12886,7 @@ Ensure that assistive technologies announce the **Modal** correctly using
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -12906,7 +12913,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -12919,11 +12926,11 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
       </p>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        <Button variant={ BUTTON_VARIANT.ghost }>
+        <Button emphasis={ BUTTON_EMPHASIS.low }>
           Cancel
         </Button>
 
-        <Button status={ BUTTON_STATUS.critical }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>
@@ -13024,7 +13031,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13037,11 +13044,11 @@ This component extends all the native `<button>` attributes.
       </p>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        <Button variant={ BUTTON_VARIANT.ghost }>
+        <Button emphasis={ BUTTON_EMPHASIS.low }>
           Cancel
         </Button>
 
-        <Button status={ BUTTON_STATUS.critical }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>
@@ -13055,7 +13062,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13078,7 +13085,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13099,7 +13106,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13131,7 +13138,7 @@ This component extends all the native `<button>` attributes.
 
     return (
       <>
-        <Button onClick={ openModal }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
           Trigger Modal
         </Button>
 
@@ -13171,7 +13178,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13192,7 +13199,7 @@ This component extends all the native `<button>` attributes.
   closeOnEscape={ false }
   closeOnInteractOutside={ false }>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -13211,7 +13218,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -14744,7 +14751,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button aria-label="Profile">
+    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -14756,23 +14763,23 @@ Update the content type on the **Popover Trigger**, which is set by default to `
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Information
       </Button>
 
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Notifications
       </Button>
 
       <Divider style={{ width: '100%' }} />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.low }
         status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        role="menuitem">
         Sign out
       </Button>
     </div>
@@ -14853,7 +14860,7 @@ This component extends all the native `<button>` attributes.
 
     return (
       <>
-        <Button onClick={ togglePopover }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ togglePopover }>
           Toggle popover
         </Button>
 
@@ -14876,7 +14883,7 @@ This component extends all the native `<button>` attributes.
 ```tsx
 <Popover>
   <PopoverTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Custom Trigger
     </Button>
   </PopoverTrigger>
@@ -14988,7 +14995,7 @@ This component extends all the native `<button>` attributes.
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button aria-label="Profile">
+    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -15000,23 +15007,23 @@ This component extends all the native `<button>` attributes.
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Information
       </Button>
 
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Notifications
       </Button>
 
       <Divider style={{ width: '100%' }} />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.low }
         status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        role="menuitem">
         Sign out
       </Button>
     </div>
@@ -15485,11 +15492,11 @@ _No specific property._
 |---|---|---|---|---|
 | `accept` | `string` | No | undefined | Expected file type in file upload controls |
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `multiple` | `boolean` | No | undefined | Whether multiple files can be selected at once |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## PromptInputRoot
 
@@ -15515,10 +15522,10 @@ _No specific property._
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## PromptInputTextControl
 
@@ -16276,10 +16283,10 @@ Use ARIA (Accessible Rich Internet Applications) live regions to announce filter
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## QueryFilterContent
 
@@ -21168,34 +21175,40 @@ The **Toaster** component handles by itself the accessibility requirements.
 
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       status={ BUTTON_STATUS.critical }
       onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
       Critical toast
     </Button>
 
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
       Information toast
     </Button>
 
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       status={ BUTTON_STATUS.neutral }
       onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
       Neutral toast
     </Button>
 
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       status={ BUTTON_STATUS.brand }
       onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
       Accent toast
     </Button>
 
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
       Success toast
     </Button>
 
     <Button
+      emphasis={ BUTTON_EMPHASIS.high }
       onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
       Warning toast
     </Button>
@@ -21210,6 +21223,7 @@ The **Toaster** component handles by itself the accessibility requirements.
   <Toaster id="custom-content" />
 
   <Button
+    emphasis={ BUTTON_EMPHASIS.high }
     onClick={ () => toast(
       <div>
         <Text preset={ TEXT_PRESET.label }>
@@ -21236,7 +21250,7 @@ The **Toaster** component handles by itself the accessibility requirements.
 <>
   <Toaster />
 
-  <Button onClick={ () => toast('Notification message') }>
+  <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Notification message') }>
     Trigger toast
   </Button>
 </>
@@ -21251,11 +21265,11 @@ The **Toaster** component handles by itself the accessibility requirements.
     id="dismissible" />
 
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button onClick={ () => toast('Non dismissible toast', { toasterId: 'dismissible' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Non dismissible toast', { toasterId: 'dismissible' }) }>
       Trigger non dismissible toast
     </Button>
 
-    <Button onClick={ () => toast('Dismissible toast', { dismissible: true, toasterId: 'dismissible' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Dismissible toast', { dismissible: true, toasterId: 'dismissible' }) }>
       Trigger dismissible toast
     </Button>
   </div>
@@ -21271,11 +21285,11 @@ The **Toaster** component handles by itself the accessibility requirements.
     id="duration" />
 
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button onClick={ () => toast('Infinite toast', { toasterId: 'duration' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Infinite toast', { toasterId: 'duration' }) }>
       Trigger infinite toast
     </Button>
 
-    <Button onClick={ () => toast('3 seconds toast', { duration: 3000, toasterId: 'duration' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('3 seconds toast', { duration: 3000, toasterId: 'duration' }) }>
       Trigger 3 seconds toast
     </Button>
   </div>
@@ -21286,15 +21300,16 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 ```tsx
 <>
-  <Toaster id="icon" />
+     <Toaster id="icon" />
 
-  <Button onClick={ () => toast('Notification message with icon', {
-    icon: ICON_NAME.circleInfo,
-    toasterId: 'icon',
-  })}>
-    Trigger toast
-  </Button>
-</>
+     <Button emphasis={ BUTTON_EMPHASIS.high }
+onClick={ () => toast('Notification message with icon', {
+       icon: ICON_NAME.circleInfo,
+       toasterId: 'icon',
+     })}>
+       Trigger toast
+     </Button>
+   </>
 ```
 
 ## Position
@@ -21314,27 +21329,27 @@ The **Toaster** component handles by itself the accessibility requirements.
     gridTemplateRows: 'repeat(2, 1fr)',
     gap: '20px',
   }}>
-    <Button onClick={ () => toast('Top Start', { toasterId: 'top-start' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top Start', { toasterId: 'top-start' }) }>
       Top Start
     </Button>
 
-    <Button onClick={ () => toast('Top', { toasterId: 'top' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top', { toasterId: 'top' }) }>
       Top
     </Button>
 
-    <Button onClick={ () => toast('Top End', { toasterId: 'top-end' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top End', { toasterId: 'top-end' }) }>
       Top End
     </Button>
 
-    <Button onClick={ () => toast('Bottom Start', { toasterId: 'bottom-start' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom Start', { toasterId: 'bottom-start' }) }>
       Bottom Start
     </Button>
 
-    <Button onClick={ () => toast('Bottom', { toasterId: 'bottom' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom', { toasterId: 'bottom' }) }>
       Bottom
     </Button>
 
-    <Button onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
       Bottom End
     </Button>
   </div>
@@ -21866,7 +21881,7 @@ This component extends all the native `<button>` attributes.
 
     return (
       <>
-        <Button onClick={ toggleTooltip }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleTooltip }>
           Toggle tooltip
         </Button>
 
@@ -22688,9 +22703,9 @@ _No specific property._
         <div style={{ marginBottom: 16 }}>
           <Button
             aria-label="Add file at root level"
+            emphasis={ BUTTON_EMPHASIS.medium }
             onClick={ handleAddRootFile }
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.outline }>
+            size={ BUTTON_SIZE.xs }>
             <Icon name={ ICON_NAME.plus } />
             Add file at root level
           </Button>
@@ -22711,22 +22726,22 @@ _No specific property._
                       { isBranch ? (
                         <Button
                         aria-label="Add child"
+                        emphasis={ BUTTON_EMPHASIS.medium }
                         onClick={(e) => { e.stopPropagation(); handleAddChild(item.id); }}
                         size={ BUTTON_SIZE.xs }
                         onKeyDown={(e) => { e.stopPropagation(); }}
-                        variant={ BUTTON_VARIANT.outline }
                         >
                           <Icon name={ ICON_NAME.plus } />
                         </Button>
                       ) : null }
                       <Button
                         aria-label="Delete"
+                        emphasis={ BUTTON_EMPHASIS.medium }
                         status={ BUTTON_STATUS.critical }
                         onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
                         onMouseDown={(e) => { e.stopPropagation(); }}
                         onKeyDown={(e) => { e.stopPropagation(); }}
-                        size={ BUTTON_SIZE.xs }
-                        variant={ BUTTON_VARIANT.outline }>
+                        size={ BUTTON_SIZE.xs }>
                         <Icon name={ ICON_NAME.trash } />
                       </Button>
                     </div>
@@ -23047,7 +23062,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -23068,7 +23083,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -23794,11 +23809,12 @@ When using a critical **Message**:
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -23844,11 +23860,11 @@ Use when:
   </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    <Button variant={ BUTTON_VARIANT.outline }>
+    <Button emphasis={ BUTTON_EMPHASIS.medium }>
       Back
     </Button>
 
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Update profile
     </Button>
   </div>
@@ -23932,7 +23948,7 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -23981,11 +23997,11 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -24257,7 +24273,7 @@ You can use the `defaultValue` property to initialize the component with a value
 Example of uncontrolled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type FormEvent, useRef } from 'react';
 
 const UncontrolledForm = () => {
@@ -24286,7 +24302,7 @@ const UncontrolledForm = () => {
           name="input" />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -24301,7 +24317,7 @@ Controlled components will manage their `value` prop on their own and react to v
 Example of controlled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useState } from 'react';
 
 const ControlledForm = () => {
@@ -24329,7 +24345,7 @@ const ControlledForm = () => {
           value={ inputValue } />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -24350,7 +24366,7 @@ Regardless of the library used, you can also use a schema validator to manage yo
 These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { Controller, useForm } from 'react-hook-form';
 
 type FormData = {
@@ -24398,7 +24414,7 @@ const FormHookForm = () => {
           </FormField>
         )} />
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -24411,7 +24427,7 @@ const FormHookForm = () => {
 Here is another example using [Formik](https://formik.org) library.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 
 type FormData = {
@@ -24458,7 +24474,7 @@ const FormFormik = () => {
         </Datepicker>
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -25200,13 +25216,13 @@ Base is optional.
 You can use Tailwind utilities alongside ODS components:
 
 ```tsx
-import { Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 function MyComponent() {
   return (
   <div>
       <p className="text-ods-critical">Click on the button!</p>
-      <Button className="bg-ods-brand">Click me!</Button>
+      <Button className="bg-ods-brand" emphasis={ BUTTON_EMPHASIS.high }>Click me!</Button>
   </div>
   );
 }
@@ -27756,7 +27772,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before (review the Button default rendering, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -28150,6 +28166,45 @@ If you reference the theme Sass sources or font files directly (Sass imports, co
 ## Breaking changes
 
 These changes require a code update: each one comes with its before and after.
+
+### Button
+
+**The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
+
+- `variant="default"`: use `emphasis="high"`.
+- `variant="outline"`: use `emphasis="medium"`, or nothing, as `medium` is the new default.
+- `variant="ghost"`: use `emphasis="low"`.
+- The Sass mixins (`ods-button-variant-default`, `-ghost`, `-outline`) and the `--ods-button-*-ghost` and `--ods-button-*-outline` CSS custom properties keep their v19 names: `default` styles the `high` emphasis, `outline` the `medium` one and `ghost` the `low` one.
+
+**The default rendering changes.** In v19, a Button without `variant` was filled (the `default` variant). In v20, a Button without `emphasis` is `medium`, which renders as the v19 `outline` variant. The ODS components built on Button (Pagination, ButtonGroup, Cart…) keep their v19 rendering.
+
+- To keep the filled rendering, add `emphasis={ BUTTON_EMPHASIS.high }` (or `emphasis="high"`) to each Button that set no `variant`, including in your own components that render or wrap a Button.
+- If one of your wrappers declares its own `emphasis` prop on top of `ButtonProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Button is now read as the emphasis preset.
+
+To find the Buttons to review in your code:
+
+```sh
+grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_VARIANTS?\b|\bButtonVariant\b" src/
+```
+
+TypeScript reports every remaining `variant` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
+
+**before**
+```tsx
+import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
+
+// filled in v19, medium (outlined) in v20
+<Button>Save</Button>
+<Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+
+<Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
+<Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
+```
 
 ### Table
 

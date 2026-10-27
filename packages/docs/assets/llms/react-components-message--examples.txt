@@ -4,7 +4,7 @@ slug: message
 category: component
 type: examples
 version: 19.7.3
-tokens: 1108
+tokens: 1128
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--examples.txt
 ---
 
@@ -72,11 +72,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
     return (
       <>
         <div>
-          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert

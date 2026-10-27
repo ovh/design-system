@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: examples
 version: 19.7.3
-tokens: 1153
+tokens: 1230
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--examples.txt
 ---
 
@@ -15,7 +15,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -28,11 +28,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
       </p>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        <Button variant={ BUTTON_VARIANT.ghost }>
+        <Button emphasis={ BUTTON_EMPHASIS.low }>
           Cancel
         </Button>
 
-        <Button status={ BUTTON_STATUS.critical }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>
@@ -46,7 +46,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -69,7 +69,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -90,7 +90,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -122,7 +122,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 
     return (
       <>
-        <Button onClick={ openModal }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
           Trigger Modal
         </Button>
 
@@ -162,7 +162,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -183,7 +183,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
   closeOnEscape={ false }
   closeOnInteractOutside={ false }>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -202,7 +202,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>

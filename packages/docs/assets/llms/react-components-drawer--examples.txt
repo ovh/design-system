@@ -4,7 +4,7 @@ slug: drawer
 category: component
 type: examples
 version: 19.7.3
-tokens: 980
+tokens: 1065
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--examples.txt
 ---
 
@@ -15,7 +15,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 ```tsx
 <Drawer backdrop>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -44,7 +44,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
     return (
       <>
-        <Button onClick={ openDrawer }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
           Trigger Drawer
         </Button>
 
@@ -67,7 +67,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -85,7 +85,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -127,7 +127,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 <>
  <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Top drawer
      </Button>
    </DrawerTrigger>
@@ -141,7 +141,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Left drawer
      </Button>
    </DrawerTrigger>
@@ -155,7 +155,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Right Drawer
      </Button>
    </DrawerTrigger>
@@ -169,7 +169,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 <Drawer>
    <DrawerTrigger asChild>
-     <Button>
+     <Button emphasis={ BUTTON_EMPHASIS.high }>
        Bottom Drawer
      </Button>
    </DrawerTrigger>
@@ -188,7 +188,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>
@@ -214,7 +214,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 ```tsx
 <Drawer>
   <DrawerTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
     </Button>
   </DrawerTrigger>

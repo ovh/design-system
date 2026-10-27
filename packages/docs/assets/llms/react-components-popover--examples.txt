@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: examples
 version: 19.7.3
-tokens: 1228
+tokens: 1253
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--examples.txt
 ---
 
@@ -22,7 +22,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 
     return (
       <>
-        <Button onClick={ togglePopover }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ togglePopover }>
           Toggle popover
         </Button>
 
@@ -45,7 +45,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 ```tsx
 <Popover>
   <PopoverTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Custom Trigger
     </Button>
   </PopoverTrigger>
@@ -157,7 +157,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
   <PopoverTrigger
     aria-haspopup="menu"
     asChild>
-    <Button aria-label="Profile">
+    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
       <Icon name={ ICON_NAME.ellipsisVertical } />
     </Button>
   </PopoverTrigger>
@@ -169,23 +169,23 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
       role="menu"
       style={{ display: 'flex', flexDirection: 'column' }}>
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Information
       </Button>
 
       <Button
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
         Notifications
       </Button>
 
       <Divider style={{ width: '100%' }} />
 
       <Button
+        emphasis={ BUTTON_EMPHASIS.low }
         status={ BUTTON_STATUS.critical }
-        role="menuitem"
-        variant={ BUTTON_VARIANT.ghost }>
+        role="menuitem">
         Sign out
       </Button>
     </div>

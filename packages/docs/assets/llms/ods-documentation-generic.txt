@@ -155,7 +155,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4524
+tokens: 4541
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -340,7 +340,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -361,7 +361,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -760,7 +760,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6798
+tokens: 6887
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -1109,11 +1109,12 @@ When using a critical **Message**:
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -1159,11 +1160,11 @@ Use when:
   </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    <Button variant={ BUTTON_VARIANT.outline }>
+    <Button emphasis={ BUTTON_EMPHASIS.medium }>
       Back
     </Button>
 
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Update profile
     </Button>
   </div>
@@ -1247,7 +1248,7 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -1296,11 +1297,11 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -1572,7 +1573,7 @@ You can use the `defaultValue` property to initialize the component with a value
 Example of uncontrolled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type FormEvent, useRef } from 'react';
 
 const UncontrolledForm = () => {
@@ -1601,7 +1602,7 @@ const UncontrolledForm = () => {
           name="input" />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -1616,7 +1617,7 @@ Controlled components will manage their `value` prop on their own and react to v
 Example of controlled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useState } from 'react';
 
 const ControlledForm = () => {
@@ -1644,7 +1645,7 @@ const ControlledForm = () => {
           value={ inputValue } />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -1665,7 +1666,7 @@ Regardless of the library used, you can also use a schema validator to manage yo
 These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { Controller, useForm } from 'react-hook-form';
 
 type FormData = {
@@ -1713,7 +1714,7 @@ const FormHookForm = () => {
           </FormField>
         )} />
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -1726,7 +1727,7 @@ const FormHookForm = () => {
 Here is another example using [Formik](https://formik.org) library.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 
 type FormData = {
@@ -1773,7 +1774,7 @@ const FormFormik = () => {
         </Datepicker>
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -2465,7 +2466,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1231
+tokens: 1244
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -2570,13 +2571,13 @@ Base is optional.
 You can use Tailwind utilities alongside ODS components:
 
 ```tsx
-import { Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 function MyComponent() {
   return (
   <div>
       <p className="text-ods-critical">Click on the button!</p>
-      <Button className="bg-ods-brand">Click me!</Button>
+      <Button className="bg-ods-brand" emphasis={ BUTTON_EMPHASIS.high }>Click me!</Button>
   </div>
   );
 }
@@ -5125,7 +5126,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 8562
+tokens: 9144
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5148,7 +5149,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before; expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
+Nothing to do for React. Installation and types keep working as before (review the Button default rendering, see **Breaking changes**); expect a `[DEPRECATED]` console warning, once per page load, for each deprecated prop (and `toast.primary()`) you still use (see **Deprecations**). The theme changes below apply whatever your React version.
 
 ## If you move to React 19
 
@@ -5542,6 +5543,45 @@ If you reference the theme Sass sources or font files directly (Sass imports, co
 ## Breaking changes
 
 These changes require a code update: each one comes with its before and after.
+
+### Button
+
+**The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
+
+- `variant="default"`: use `emphasis="high"`.
+- `variant="outline"`: use `emphasis="medium"`, or nothing, as `medium` is the new default.
+- `variant="ghost"`: use `emphasis="low"`.
+- The Sass mixins (`ods-button-variant-default`, `-ghost`, `-outline`) and the `--ods-button-*-ghost` and `--ods-button-*-outline` CSS custom properties keep their v19 names: `default` styles the `high` emphasis, `outline` the `medium` one and `ghost` the `low` one.
+
+**The default rendering changes.** In v19, a Button without `variant` was filled (the `default` variant). In v20, a Button without `emphasis` is `medium`, which renders as the v19 `outline` variant. The ODS components built on Button (Pagination, ButtonGroup, Cart…) keep their v19 rendering.
+
+- To keep the filled rendering, add `emphasis={ BUTTON_EMPHASIS.high }` (or `emphasis="high"`) to each Button that set no `variant`, including in your own components that render or wrap a Button.
+- If one of your wrappers declares its own `emphasis` prop on top of `ButtonProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Button is now read as the emphasis preset.
+
+To find the Buttons to review in your code:
+
+```sh
+grep -rnE "<Button([[:space:]]|>|$)|\bBUTTON_VARIANTS?\b|\bButtonVariant\b" src/
+```
+
+TypeScript reports every remaining `variant` on a Button. Review each `<Button` match that sets no `variant`, on its first line or on the following ones: it changes rendering. This search misses self-closing `<Button/>` written without a space and Buttons imported under another name (`import { Button as OdsButton }`): search for those names too.
+
+**before**
+```tsx
+import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';
+
+// filled in v19, medium (outlined) in v20
+<Button>Save</Button>
+<Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>
+```
+
+**after**
+```tsx
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+
+<Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
+<Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
+```
 
 ### Table
 

@@ -4,7 +4,7 @@ slug: input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 3222
+tokens: 3231
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
 ---
 
@@ -111,8 +111,8 @@ The **Input** does not disable, hide or otherwise alter the content it is given.
   endContent={ (
     <Button
       aria-label="Copy value"
-      size={ BUTTON_SIZE.xs }
-      variant={ BUTTON_VARIANT.ghost }>
+      emphasis={ BUTTON_EMPHASIS.low }
+      size={ BUTTON_SIZE.xs }>
       <Icon name={ ICON_NAME.fileCopy } />
     </Button>
   ) } />
@@ -197,7 +197,7 @@ Only reference the parts that describe the value. A control inside the decoratio
        endContent={
          <>
            <span id="weight-unit">kg</span>
-           <Button aria-label="Copy value" size={ BUTTON_SIZE.xs } variant={ BUTTON_VARIANT.ghost }>
+           <Button aria-label="Copy value" emphasis={ BUTTON_EMPHASIS.low } size={ BUTTON_SIZE.xs }>
              <Icon name={ ICON_NAME.fileCopy } />
            </Button>
          </>
@@ -294,11 +294,11 @@ To provide more context on the interactive elements, you can provide your own cu
         </FormField>
 
         <div style={{ display: 'flex', columnGap: '8px', justifyContent: 'flex-end' }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button type="submit">
+          <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
             Sign in
           </Button>
         </div>

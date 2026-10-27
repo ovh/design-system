@@ -4,7 +4,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2049
+tokens: 2069
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -198,11 +198,12 @@ For non-critical **Messages** (e.g., info, success, warning), use `role="status"
     return (
       <>
         <div>
-          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
             Add status
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
             Add alert

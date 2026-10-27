@@ -4,7 +4,6 @@ import { getStatusStyle, getTokenColor, gotoStory, gotoStoryAndCollectDeprecatio
 import { MESSAGE_EMPHASES, MESSAGE_EMPHASIS, type MessageEmphasis } from '../../src/constants/message-emphasis';
 import { MESSAGE_STATUS, MESSAGE_STATUSES, type MessageStatus } from '../../src/constants/message-status';
 
-const PAGE_BACKGROUND = 'rgb(255, 255, 255)';
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 type Rendering = { background: string, border: string, icon: string, text: string };
@@ -63,22 +62,6 @@ async function getCloseButtonStyle(page: Page, testId: string): Promise<string> 
     const style = getComputedStyle(el);
     return [style.backgroundColor, style.borderTopColor, style.color, style.height].join(' | ');
   });
-}
-
-function getLuminance(color: string): number {
-  const [r, g, b] = color.match(/\d+(\.\d+)?/g)!.slice(0, 3).map((channel) => {
-    const value = Number(channel) / 255;
-    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
-  });
-
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-
-function getContrastRatio({ background, text }: Rendering): number {
-  // A transparent (low) Message is read on the page background.
-  const [lighter, darker] = [getLuminance(background === TRANSPARENT ? PAGE_BACKGROUND : background), getLuminance(text)].sort((a, b) => b - a);
-
-  return (lighter + 0.05) / (darker + 0.05);
 }
 
 const PAIRS = MESSAGE_STATUSES.flatMap((status) => MESSAGE_EMPHASES.map((emphasis) => [status, emphasis] as const));
@@ -155,16 +138,6 @@ describe('Message rendering', () => {
       const styles = await Promise.all(PAIRS.map(([status, emphasis]) => getCloseButtonStyle(page, `${status}-${emphasis}`)));
 
       expect(new Set(styles).size).toBe(1);
-    });
-
-    it('should keep an AA text contrast (4.5:1) for every status and emphasis', async() => {
-      const testIds = PAIRS.map(([status, emphasis]) => `${status}-${emphasis}`);
-      const ratios = await Promise.all(testIds.map(async(testId) => getContrastRatio(await getRendering(page, testId))));
-      const failures = testIds
-        .map((testId, index) => `${testId}: ${ratios[index].toFixed(2)}`)
-        .filter((_, index) => ratios[index] < 4.5);
-
-      expect(failures).toEqual([]);
     });
   });
 

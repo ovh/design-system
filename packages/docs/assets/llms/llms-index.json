@@ -392,7 +392,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1854,
+          "tokens": 1922,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
@@ -1146,7 +1146,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1186,
+          "tokens": 1211,
           "url": "./react-components-select--documentation.txt"
         },
         "technical-information": {
@@ -1406,7 +1406,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1281,
+          "tokens": 1323,
           "url": "./react-components-timepicker--documentation.txt"
         },
         "technical-information": {
@@ -1587,7 +1587,7 @@
       "slug": "ovhcloud-design-system-customize-design-tokens",
       "title": "Design Tokens",
       "type": "overview",
-      "tokens": 4929,
+      "tokens": 4942,
       "url": "./ovhcloud-design-system-customize-design-tokens.txt"
     },
     {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 11209,
+      "tokens": 11843,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

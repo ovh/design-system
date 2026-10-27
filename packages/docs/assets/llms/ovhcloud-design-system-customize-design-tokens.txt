@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4929
+tokens: 4942
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -197,6 +197,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-size-block-size-sm` | `24px` |
 | `--ods-semantic-size-block-size-md` | `32px` |
 | `--ods-semantic-size-block-size-lg` | `40px` |
+| `--ods-semantic-size-inline-size-field` | `280px` |
 | `--ods-semantic-border-thickness` | `1px` |
 | `--ods-semantic-border-thickness-strong` | `2px` |
 

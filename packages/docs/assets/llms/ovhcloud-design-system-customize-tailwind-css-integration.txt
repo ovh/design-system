@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1231
+tokens: 1244
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -109,13 +109,13 @@ Base is optional.
 You can use Tailwind utilities alongside ODS components:
 
 ```tsx
-import { Button } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
 
 function MyComponent() {
   return (
   <div>
       <p className="text-ods-critical">Click on the button!</p>
-      <Button className="bg-ods-brand">Click me!</Button>
+      <Button className="bg-ods-brand" emphasis={ BUTTON_EMPHASIS.high }>Click me!</Button>
   </div>
   );
 }

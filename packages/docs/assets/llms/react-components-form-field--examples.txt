@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: examples
 version: 19.7.3
-tokens: 2656
+tokens: 2693
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--examples.txt
 ---
 
@@ -70,11 +70,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -181,11 +181,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -274,7 +275,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -401,11 +402,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    <Button variant={ BUTTON_VARIANT.outline }>
+    <Button emphasis={ BUTTON_EMPHASIS.medium }>
       Back
     </Button>
 
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Update profile
     </Button>
   </div>

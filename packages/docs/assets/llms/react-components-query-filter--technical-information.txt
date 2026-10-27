@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1111
+tokens: 1118
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -43,10 +43,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `color` | `BUTTON_COLOR` | No | undefined | The color preset to use. DEPRECATED: Use the `status` prop instead (information, success and warning have no status equivalent), color will be removed in v21. (deprecated) |
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
 | `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
 | `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
 | `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
-| `variant` | `'default' | 'ghost' | 'outline'` | No | undefined | The variant preset to use. |
 
 ## QueryFilterContent
 

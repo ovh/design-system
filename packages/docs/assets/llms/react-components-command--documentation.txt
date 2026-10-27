@@ -4,7 +4,7 @@ slug: command
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1936
+tokens: 1962
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--documentation.txt
 ---
 
@@ -161,7 +161,7 @@ The search input has a `combobox` role, and an `aria-controls` relationship with
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -188,7 +188,7 @@ In the case of several groups, it is recommended to provide an accessible name f
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />
@@ -214,7 +214,7 @@ To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` inste
 ```tsx
 <Command>
   <Command.Trigger asChild>
-    <Button>Open command</Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>Open command</Button>
   </Command.Trigger>
   <Command.Content aria-label="Command palette">
     <Command.Filter aria-label="Search command palette" placeholder="Search..." />

@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4524
+tokens: 4541
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -189,7 +189,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -210,7 +210,7 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>

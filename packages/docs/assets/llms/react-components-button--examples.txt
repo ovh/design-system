@@ -4,7 +4,7 @@ slug: button
 category: component
 type: examples
 version: 19.7.3
-tokens: 779
+tokens: 778
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
 ---
 
@@ -46,13 +46,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 </>
 ```
 
-## Variant
+## Emphasis
 
 ```tsx
 <>
-  <Button variant={ BUTTON_VARIANT.default }>Default button</Button>
-  <Button variant={ BUTTON_VARIANT.outline }>Outline button</Button>
-  <Button variant={ BUTTON_VARIANT.ghost }>Ghost button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.high }>High button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.medium }>Medium button</Button>
+  <Button emphasis={ BUTTON_EMPHASIS.low }>Low button</Button>
 </>
 ```
 

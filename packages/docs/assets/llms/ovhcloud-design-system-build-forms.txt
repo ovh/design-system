@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 6798
+tokens: 6887
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
@@ -353,11 +353,12 @@ When using a critical **Message**:
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <Button
             disabled={ isSubmitting }
-            variant={ BUTTON_VARIANT.outline }>
+            emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
           <Button
+            emphasis={ BUTTON_EMPHASIS.high }
             status={ BUTTON_STATUS.critical }
             loading={ isSubmitting }
             type="submit">
@@ -403,11 +404,11 @@ Use when:
   </FormField>
 
   <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-    <Button variant={ BUTTON_VARIANT.outline }>
+    <Button emphasis={ BUTTON_EMPHASIS.medium }>
       Back
     </Button>
 
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Update profile
     </Button>
   </div>
@@ -491,7 +492,7 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button>
+          <Button emphasis={ BUTTON_EMPHASIS.high }>
             Save
           </Button>
         </div>
@@ -540,11 +541,11 @@ Use when:
         </FormField>
 
         <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
-          <Button variant={ BUTTON_VARIANT.outline }>
+          <Button emphasis={ BUTTON_EMPHASIS.medium }>
             Cancel
           </Button>
 
-          <Button status={ BUTTON_STATUS.critical }>
+          <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
             Delete account
           </Button>
         </div>
@@ -816,7 +817,7 @@ You can use the `defaultValue` property to initialize the component with a value
 Example of uncontrolled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type FormEvent, useRef } from 'react';
 
 const UncontrolledForm = () => {
@@ -845,7 +846,7 @@ const UncontrolledForm = () => {
           name="input" />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -860,7 +861,7 @@ Controlled components will manage their `value` prop on their own and react to v
 Example of controlled form:
 
 ```tsx
-import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { type ChangeEvent, useState } from 'react';
 
 const ControlledForm = () => {
@@ -888,7 +889,7 @@ const ControlledForm = () => {
           value={ inputValue } />
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -909,7 +910,7 @@ Regardless of the library used, you can also use a schema validator to manage yo
 These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { Controller, useForm } from 'react-hook-form';
 
 type FormData = {
@@ -957,7 +958,7 @@ const FormHookForm = () => {
           </FormField>
         )} />
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>
@@ -970,7 +971,7 @@ const FormHookForm = () => {
 Here is another example using [Formik](https://formik.org) library.
 
 ```tsx
-import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { BUTTON_EMPHASIS, Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 
 type FormData = {
@@ -1017,7 +1018,7 @@ const FormFormik = () => {
         </Datepicker>
       </FormField>
 
-      <Button type="submit">
+      <Button emphasis={ BUTTON_EMPHASIS.high } type="submit">
         Submit button
       </Button>
     </form>

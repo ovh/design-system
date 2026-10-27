@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1652
+tokens: 1686
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--documentation.txt
 ---
 
@@ -125,7 +125,7 @@ Ensure that assistive technologies announce the **Modal** correctly using
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -144,7 +144,7 @@ Ensure that assistive technologies announce the **Modal** correctly using
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -171,7 +171,7 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
 ```tsx
 <Modal>
   <ModalTrigger asChild>
-    <Button>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Modal
     </Button>
   </ModalTrigger>
@@ -184,11 +184,11 @@ For **Modals** that require user decisions (e.g., confirmation dialogs), place t
       </p>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
-        <Button variant={ BUTTON_VARIANT.ghost }>
+        <Button emphasis={ BUTTON_EMPHASIS.low }>
           Cancel
         </Button>
 
-        <Button status={ BUTTON_STATUS.critical }>
+        <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>
           Delete
         </Button>
       </div>

@@ -23,7 +23,8 @@
   --ods-semantic-color-surface-critical-subtle: var(--ods-palette-red-800);
   --ods-semantic-color-surface-critical: var(--ods-palette-red-500);
   --ods-semantic-color-surface-control: var(--ods-palette-navy-900);
-  --ods-semantic-color-surface-control-solid: var(--ods-palette-accent-600);
+  --ods-semantic-color-surface-code: var(--ods-palette-black);
+  --ods-semantic-color-surface-control-solid: var(--ods-palette-accent-100);
   --ods-semantic-color-surface-thumb: var(--ods-palette-navy-100);
   --ods-semantic-color-surface-track: var(--ods-palette-navy-700);
   --ods-semantic-color-surface-segmented: var(--ods-palette-accent-700);
@@ -112,7 +113,7 @@
   --ods-semantic-color-interaction-control-highlight: var(--ods-semantic-color-surface-control);
   --ods-semantic-color-interaction-track-hover: var(--ods-palette-navy-300);
   --ods-semantic-color-focus: var(--ods-palette-white);
-  --ods-semantic-color-brand: var(--ods-palette-brand-400);
+  --ods-semantic-color-brand: var(--ods-palette-white);
 }
 
 /* Components */

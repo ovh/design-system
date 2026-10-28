@@ -200,5 +200,9 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
         background-color: var(--ods-tag-background-color-warning-active);
       }
     }
+  } @else if $color == 'primary' {
+    @error "ods-tag-color: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-tag-color: unknown value '#{$color}', expected one of: accent, critical, information, neutral, success, warning.";
   }
 }

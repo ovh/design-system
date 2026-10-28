@@ -10,6 +10,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
 
 # Tag
 
+## Default
+
+```tsx
+<Tag>
+  My tag
+</Tag>
+```
+
 ## Status
 
 ```tsx
@@ -21,28 +29,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
   <Tag status={ TAG_STATUS.success }>Success</Tag>
   <Tag status={ TAG_STATUS.warning }>Warning</Tag>
 </>
-```
-
-## Custom Icon
-
-```tsx
-<>
-  <Tag icon={ null }>
-    No Icon
-  </Tag>
-
-  <Tag icon={ ICON_NAME.star }>
-    Custom Icon
-  </Tag>
-</>
-```
-
-## Default
-
-```tsx
-<Tag>
-  My tag
-</Tag>
 ```
 
 ## Disabled
@@ -59,6 +45,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--e
 <>
   <Tag size={ TAG_SIZE.md }>MD tag</Tag>
   <Tag size={ TAG_SIZE.lg }>LG tag</Tag>
+</>
+```
+
+## Custom Icon
+
+```tsx
+<>
+  <Tag icon={ null }>
+    No Icon
+  </Tag>
+
+  <Tag icon={ ICON_NAME.star }>
+    Custom Icon
+  </Tag>
 </>
 ```
 

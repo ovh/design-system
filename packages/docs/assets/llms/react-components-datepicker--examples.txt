@@ -10,18 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 
 # Datepicker
 
-## Date Formatter
-
-```tsx
-<Datepicker
-  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
-  placeholder="yyyy">
-  <DatepickerControl />
-
-  <DatepickerContent />
-</Datepicker>
-```
-
 ## Default
 
 ```tsx
@@ -62,26 +50,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Label:
-  </FormFieldLabel>
+<Datepicker readOnly>
+  <DatepickerControl />
 
-  <Datepicker>
-    <DatepickerControl />
-
-    <DatepickerContent />
-  </Datepicker>
-</FormField>
+  <DatepickerContent />
+</Datepicker>
 ```
 
-## Max View
+## Date Formatter
 
 ```tsx
-<Datepicker maxView="day">
+<Datepicker
+  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+  placeholder="yyyy">
   <DatepickerControl />
 
   <DatepickerContent />
@@ -100,6 +84,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </Datepicker>
 ```
 
+## Max View
+
+```tsx
+<Datepicker maxView="day">
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
 ## Min View
 
 ```tsx
@@ -110,14 +104,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 </Datepicker>
 ```
 
-## Readonly
+## In Form Field
 
 ```tsx
-<Datepicker readOnly>
-  <DatepickerControl />
+<FormField>
+  <FormFieldLabel>
+    Label:
+  </FormFieldLabel>
 
-  <DatepickerContent />
-</Datepicker>
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 ## Accessibility Form Field

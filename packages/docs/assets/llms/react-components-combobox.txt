@@ -44,17 +44,17 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 
 - Default
 - Clearable
-- Custom Filter
 - Disabled
 - Readonly
 - Group
-- In Form Field
 - Invalid
 - Controlled
 - Highlight
 - Custom Options
+- Custom Filter
 - Empty
 - Multiple
+- In Form Field
 - Accessibility Form Field
 - Accessibility I18n
 

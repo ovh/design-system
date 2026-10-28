@@ -10,12 +10,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 
 # Pagination
 
-## Accessibility Label
+## Default
 
 ```tsx
-<Pagination
-  aria-label="Pagination"
-  totalItems={ 5000 }>
+<Pagination totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```
@@ -39,14 +37,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
       </Pagination>
     );
   }
-```
-
-## Default
-
-```tsx
-<Pagination totalItems={ 5000 }>
-  <PaginationPages />
-</Pagination>
 ```
 
 ## Disabled
@@ -226,16 +216,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 </div>
 ```
 
-## Page Size Selection
-
-```tsx
-<Pagination totalItems={ 500 }>
-  <PaginationPageSizeSelector />
-
-  <PaginationPages />
-</Pagination>
-```
-
 ## Sibling Count
 
 ```tsx
@@ -267,4 +247,24 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
     <PaginationPages />
   </Pagination>
 </div>
+```
+
+## Page Size Selection
+
+```tsx
+<Pagination totalItems={ 500 }>
+  <PaginationPageSizeSelector />
+
+  <PaginationPages />
+</Pagination>
+```
+
+## Accessibility Label
+
+```tsx
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
 ```

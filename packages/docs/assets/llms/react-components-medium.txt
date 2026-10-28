@@ -12,10 +12,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
 
 ## Examples
 
-- Caption
 - Default
 - Height
 - Width
+- Caption
 
 ## Documentation pages
 

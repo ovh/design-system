@@ -10,22 +10,13 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--
 
 # Icon
 
-## Accessibility Informative
-
-```tsx
-<Icon
-  aria-label="home"
-  name={ ICON_NAME.home }
-  role="img" />
-```
-
-## Decorative
+## Default
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
 ```
 
-## Default
+## Decorative
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
@@ -37,6 +28,15 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--
 <Icon
   aria-label="Help"
   name={ ICON_NAME.circleQuestion }
+  role="img" />
+```
+
+## Accessibility Informative
+
+```tsx
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
   role="img" />
 ```
 

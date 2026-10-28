@@ -23,8 +23,8 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 ## Examples
 
-- Status
 - Default
+- Status
 - Loading
 - Size
 - Emphasis

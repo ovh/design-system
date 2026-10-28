@@ -10,58 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 # Drawer
 
-## Backdrop
-
-```tsx
-<Drawer backdrop>
-  <DrawerTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Drawer
-    </Button>
-  </DrawerTrigger>
-
-  <DrawerContent>
-    <DrawerBody>
-      My drawer content
-    </DrawerBody>
-  </DrawerContent>
-</Drawer>
-```
-
-## Controlled
-
-```tsx
-{
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: DrawerOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openDrawer() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
-          Trigger Drawer
-        </Button>
-
-        <Drawer
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <DrawerContent>
-            <DrawerBody>
-              Content
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -80,10 +28,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 </Drawer>
 ```
 
-## Overlay Elements
+## Backdrop
 
 ```tsx
-<Drawer>
+<Drawer backdrop>
   <DrawerTrigger asChild>
     <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
@@ -91,31 +39,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
   </DrawerTrigger>
 
   <DrawerContent>
-    <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-      <Select items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}>
-        <SelectControl />
-
-        <SelectContent createPortal={ false } />
-      </Select>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon
-            name={ ICON_NAME.circleQuestion }
-            style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-
-        <TooltipContent createPortal={ false }>
-          This is the tooltip content
-        </TooltipContent>
-      </Tooltip>
+    <DrawerBody>
+      My drawer content
     </DrawerBody>
   </DrawerContent>
 </Drawer>
@@ -181,6 +106,81 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
    </DrawerContent>
  </Drawer>
  </>
+```
+
+## Overlay Elements
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: DrawerOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openDrawer() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
+          Trigger Drawer
+        </Button>
+
+        <Drawer
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <DrawerContent>
+            <DrawerBody>
+              Content
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    );
+  }
 ```
 
 ## Accessibility Aria Labelled By

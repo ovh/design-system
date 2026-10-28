@@ -691,9 +691,9 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 ## Examples
 
+- Default
 - Status
 - Emphasis
-- Default
 - Size
 - Accessibility Aria Label
 - Accessibility With Tooltip
@@ -1037,6 +1037,14 @@ This component extends all the native `<span>` attributes.
 
 # Badge
 
+## Default
+
+```tsx
+<Badge>
+  My badge
+</Badge>
+```
+
 ## Status
 
 ```tsx
@@ -1080,14 +1088,6 @@ This component extends all the native `<span>` attributes.
     <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
   </div>
 </>
-```
-
-## Default
-
-```tsx
-<Badge>
-  My badge
-</Badge>
 ```
 
 ## Size
@@ -1181,10 +1181,10 @@ _A list of <DocLink to="/components/link">Links</DocLink> showing the current pa
 
 ## Examples
 
+- Default
 - Collapsed
 - Custom After Before Collapse
 - Custom Collapse Threshold
-- Default
 - No Collapse
 - Accessibility With Aria Label
 
@@ -1362,6 +1362,30 @@ _No specific property._
 
 # Breadcrumb
 
+## Default
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink aria-label="Home" href="#">
+      <Icon name={ ICON_NAME.home } />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Parent
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Current
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
 ## Collapsed
 
 ```tsx
@@ -1508,30 +1532,6 @@ _No specific property._
 </Breadcrumb>
 ```
 
-## Default
-
-```tsx
-<Breadcrumb>
-  <BreadcrumbItem>
-    <BreadcrumbLink aria-label="Home" href="#">
-      <Icon name={ ICON_NAME.home } />
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Parent
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Current
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
-```
-
 ## No Collapse
 
 ```tsx
@@ -1627,8 +1627,8 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 ## Examples
 
-- Status
 - Default
+- Status
 - Loading
 - Size
 - Emphasis
@@ -2028,6 +2028,14 @@ This component extends all the native `<button>` attributes.
 
 # Button
 
+## Default
+
+```tsx
+<Button>
+  My button
+</Button>
+```
+
 ## Status
 
 ```tsx
@@ -2036,14 +2044,6 @@ This component extends all the native `<button>` attributes.
   <Button status={ BUTTON_STATUS.critical }>Critical</Button>
   <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
 </>
-```
-
-## Default
-
-```tsx
-<Button>
-  My button
-</Button>
 ```
 
 ## Loading
@@ -2238,10 +2238,10 @@ This component extends all the native `<button>` attributes.
 
 ## Examples
 
-- Controlled
 - Default
 - Disabled
 - Disabled Item
+- Controlled
 - Multiple
 - Size
 
@@ -2393,27 +2393,6 @@ This component extends all the native `<button>` attributes.
 
 # Button Group
 
-## Controlled
-
-```tsx
-{
-    const [values, setValues] = useState(['hourly']);
-
-    return (
-      <ButtonGroup
-        onValueChange={ ({ value }) => setValues(value) }
-        value={ values }>
-        <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-        <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-        <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-        <ButtonGroupItem value="custom">
-          <Icon name={ ICON_NAME.calendar } /> Custom
-        </ButtonGroupItem>
-      </ButtonGroup>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -2451,6 +2430,27 @@ This component extends all the native `<button>` attributes.
     <Icon name={ ICON_NAME.calendar } /> Custom
   </ButtonGroupItem>
 </ButtonGroup>
+```
+
+## Controlled
+
+```tsx
+{
+    const [values, setValues] = useState(['hourly']);
+
+    return (
+      <ButtonGroup
+        onValueChange={ ({ value }) => setValues(value) }
+        value={ values }>
+        <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+        <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+        <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+        <ButtonGroupItem value="custom">
+          <Icon name={ ICON_NAME.calendar } /> Custom
+        </ButtonGroupItem>
+      </ButtonGroup>
+    );
+  }
 ```
 
 ## Multiple
@@ -2508,8 +2508,8 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 ## Examples
 
-- Status
 - Default
+- Status
 - Accessibility Grouping
 - Accessibility Alternative Grouping
 
@@ -2695,6 +2695,14 @@ This component extends all the native `<div>` attributes.
 
 # Card
 
+## Default
+
+```tsx
+<Card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+</Card>
+```
+
 ## Status
 
 ```tsx
@@ -2723,14 +2731,6 @@ This component extends all the native `<div>` attributes.
     <p>Warning</p>
   </Card>
 </>
-```
-
-## Default
-
-```tsx
-<Card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-</Card>
 ```
 
 ## Accessibility Grouping
@@ -3246,10 +3246,10 @@ _**Checkbox** are used for a list of options where the user may make a choice by
 
 - Default
 - Disabled
-- In Form Field
-- Group
 - Invalid
 - States
+- Group
+- In Form Field
 
 ## Documentation pages
 
@@ -3421,60 +3421,6 @@ _No specific property._
 </Checkbox>
 ```
 
-## In Form Field
-
-```tsx
-<>
-  <Text preset={ TEXT_PRESET.label }>
-    Legal considerations:
-  </Text>
-
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-
-      <CheckboxLabel>
-        I agree to the terms and conditions.
-      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-
-      <CheckboxLabel>
-        I agree to receive marketing communications.
-      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-</>
-```
-
-## Group
-
-```tsx
-<CheckboxGroup
-  defaultValue={ ['marketing'] }
-  name="acknowledgments">
-  <Checkbox value="term">
-    <CheckboxControl />
-
-    <CheckboxLabel>
-      I agree to the terms and conditions.
-    </CheckboxLabel>
-  </Checkbox>
-
-  <Checkbox value="marketing">
-    <CheckboxControl />
-
-    <CheckboxLabel>
-      I agree to receive marketing communications.
-    </CheckboxLabel>
-  </Checkbox>
-</CheckboxGroup>
-```
-
 ## Invalid
 
 ```tsx
@@ -3517,6 +3463,60 @@ _No specific property._
 </>
 ```
 
+## Group
+
+```tsx
+<CheckboxGroup
+  defaultValue={ ['marketing'] }
+  name="acknowledgments">
+  <Checkbox value="term">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to the terms and conditions.
+    </CheckboxLabel>
+  </Checkbox>
+
+  <Checkbox value="marketing">
+    <CheckboxControl />
+
+    <CheckboxLabel>
+      I agree to receive marketing communications.
+    </CheckboxLabel>
+  </Checkbox>
+</CheckboxGroup>
+```
+
+## In Form Field
+
+```tsx
+<>
+  <Text preset={ TEXT_PRESET.label }>
+    Legal considerations:
+  </Text>
+
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        I agree to the terms and conditions.
+      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        I agree to receive marketing communications.
+      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+</>
+```
+
 ## Clipboard
 
 # Clipboard
@@ -3537,10 +3537,10 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 ## Examples
 
 - Default
+- Disabled
+- Loading
 - Masked
 - Custom Labels
-- Loading
-- Disabled
 - Accessibility Form Field
 
 ## Documentation pages
@@ -3711,6 +3711,26 @@ This component extends all the native `<button>` attributes.
 </Clipboard>
 ```
 
+## Disabled
+
+```tsx
+<Clipboard value="Disabled" disabled>
+  <ClipboardControl />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Loading
+
+```tsx
+<Clipboard value="Loading" >
+  <ClipboardControl loading />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
 ## Masked
 
 ```tsx
@@ -3730,26 +3750,6 @@ This component extends all the native `<button>` attributes.
   <ClipboardTrigger
     labelCopy="Click to copy"
     labelCopySuccess="Successfully copied" />
-</Clipboard>
-```
-
-## Loading
-
-```tsx
-<Clipboard value="Loading" >
-  <ClipboardControl loading />
-
-  <ClipboardTrigger />
-</Clipboard>
-```
-
-## Disabled
-
-```tsx
-<Clipboard value="Disabled" disabled>
-  <ClipboardControl />
-
-  <ClipboardTrigger />
 </Clipboard>
 ```
 
@@ -3790,10 +3790,10 @@ _**Code** component highlights strings or small blocks of **Code** so it makes t
 ## Examples
 
 - Default
+- Multiline
 - Can Copy
 - Custom Labels
 - Highlighter
-- Multiline
 
 ## Documentation pages
 
@@ -3926,6 +3926,20 @@ This component extends all the native `<div>` attributes.
 </Code>
 ```
 
+## Multiline
+
+```tsx
+<Code>
+    { `function isTargetInElement(event, element) {
+if (!element) {
+  return false;
+}
+
+  return element.contains(event.target) || event.composedPath().includes(element);
+}` }
+  </Code>
+```
+
 ## Can Copy
 
 ```tsx
@@ -3955,20 +3969,6 @@ This component extends all the native `<div>` attributes.
   }}>
   console.log('Hello World');
 </Code>
-```
-
-## Multiline
-
-```tsx
-<Code>
-    { `function isTargetInElement(event, element) {
-if (!element) {
-  return false;
-}
-
-  return element.contains(event.target) || event.composedPath().includes(element);
-}` }
-  </Code>
 ```
 
 ## Combobox
@@ -4009,17 +4009,17 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 
 - Default
 - Clearable
-- Custom Filter
 - Disabled
 - Readonly
 - Group
-- In Form Field
 - Invalid
 - Controlled
 - Highlight
 - Custom Options
+- Custom Filter
 - Empty
 - Multiple
+- In Form Field
 - Accessibility Form Field
 - Accessibility I18n
 
@@ -4342,28 +4342,6 @@ This component extends all the native `<div>` attributes.
 </Combobox>
 ```
 
-## Custom Filter
-
-```tsx
-<Combobox
-  customFilter={ (label, inputValue) => {
-    const reversedLabel = label.split('').reverse().join('');
-    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
-  }}
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Search from right to left in each word" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
 ## Disabled
 
 ```tsx
@@ -4430,26 +4408,6 @@ This component extends all the native `<div>` attributes.
 
   <ComboboxContent />
 </Combobox>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Combobox
-  </FormFieldLabel>
-
-  <Combobox
-    items={[
-      { label: 'Dog', value: 'dog' },
-      { label: 'Cat', value: 'cat' },
-    ]}>
-    <ComboboxControl />
-
-    <ComboboxContent />
-  </Combobox>
-</FormField>
 ```
 
 ## Invalid
@@ -4555,6 +4513,28 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
+## Custom Filter
+
+```tsx
+<Combobox
+  customFilter={ (label, inputValue) => {
+    const reversedLabel = label.split('').reverse().join('');
+    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+  }}
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl placeholder="Search from right to left in each word" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
 ## Empty
 
 ```tsx
@@ -4582,6 +4562,26 @@ This component extends all the native `<div>` attributes.
 
   <ComboboxContent />
 </Combobox>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Combobox
+  </FormFieldLabel>
+
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+    ]}>
+    <ComboboxControl />
+
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
 ## Accessibility Form Field
@@ -5315,7 +5315,6 @@ This component extends all the native `<div>` attributes.
 
 ## Examples
 
-- Accessibility I18n
 - Default
 - Empty
 - Pagination Example
@@ -5325,6 +5324,7 @@ This component extends all the native `<div>` attributes.
 - Sorting Disabled Columns
 - Sorting Controlled
 - Visibility Example
+- Accessibility I18n
 
 ## Documentation pages
 
@@ -5744,42 +5744,6 @@ _No specific property._
 ## Data Table
 
 # Data Table
-
-## Accessibility I18n
-
-```tsx
-{
-    type Member = {
-      firstName: string;
-      lastName: string;
-      role: string;
-    }
-
-    const data: Member[] = useMemo(() => [
-      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
-      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
-      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
-    ], []);
-
-    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
-      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
-      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
-      { id: 'role', header: 'Role', accessorKey: 'role' },
-    ], []);
-
-    return (
-      <DataTable
-        columns={ columns }
-        data={ data }
-        i18n={{
-          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
-        }}>
-        <DataTableHead />
-        <DataTableBody />
-      </DataTable>
-    );
-  }
-```
 
 ## Default
 
@@ -6361,6 +6325,42 @@ _No specific property._
   }
 ```
 
+## Accessibility I18n
+
+```tsx
+{
+    type Member = {
+      firstName: string;
+      lastName: string;
+      role: string;
+    }
+
+    const data: Member[] = useMemo(() => [
+      { firstName: 'John', lastName: 'Doe', role: 'Admin' },
+      { firstName: 'Jane', lastName: 'Smith', role: 'User' },
+      { firstName: 'Bob', lastName: 'Johnson', role: 'Manager' },
+    ], []);
+
+    const columns: DataTableColumnDef<Member>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    return (
+      <DataTable
+        columns={ columns }
+        data={ data }
+        i18n={{
+          [DATA_TABLE_I18N.sortableColumn]: 'Sortable column, activate to change the order',
+        }}>
+        <DataTableHead />
+        <DataTableBody />
+      </DataTable>
+    );
+  }
+```
+
 ## Datepicker
 
 # Datepicker
@@ -6399,14 +6399,14 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 
 ## Examples
 
-- Date Formatter
 - Default
 - Disabled
-- In Form Field
-- Max View
-- Min Max
-- Min View
 - Readonly
+- Date Formatter
+- Min Max
+- Max View
+- Min View
+- In Form Field
 - Accessibility Form Field
 - Accessibility Date Format
 - Accessibility I18n
@@ -6714,18 +6714,6 @@ This component extends all the native `<input>` attributes.
 
 # Datepicker
 
-## Date Formatter
-
-```tsx
-<Datepicker
-  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
-  placeholder="yyyy">
-  <DatepickerControl />
-
-  <DatepickerContent />
-</Datepicker>
-```
-
 ## Default
 
 ```tsx
@@ -6766,26 +6754,22 @@ This component extends all the native `<input>` attributes.
 </>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Label:
-  </FormFieldLabel>
+<Datepicker readOnly>
+  <DatepickerControl />
 
-  <Datepicker>
-    <DatepickerControl />
-
-    <DatepickerContent />
-  </Datepicker>
-</FormField>
+  <DatepickerContent />
+</Datepicker>
 ```
 
-## Max View
+## Date Formatter
 
 ```tsx
-<Datepicker maxView="day">
+<Datepicker
+  dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+  placeholder="yyyy">
   <DatepickerControl />
 
   <DatepickerContent />
@@ -6804,6 +6788,16 @@ This component extends all the native `<input>` attributes.
 </Datepicker>
 ```
 
+## Max View
+
+```tsx
+<Datepicker maxView="day">
+  <DatepickerControl />
+
+  <DatepickerContent />
+</Datepicker>
+```
+
 ## Min View
 
 ```tsx
@@ -6814,14 +6808,20 @@ This component extends all the native `<input>` attributes.
 </Datepicker>
 ```
 
-## Readonly
+## In Form Field
 
 ```tsx
-<Datepicker readOnly>
-  <DatepickerControl />
+<FormField>
+  <FormFieldLabel>
+    Label:
+  </FormFieldLabel>
 
-  <DatepickerContent />
-</Datepicker>
+  <Datepicker>
+    <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 ## Accessibility Form Field
@@ -7083,11 +7083,11 @@ This component extends all the native `<hr>` attributes.
 
 ## Examples
 
-- Backdrop
-- Controlled
 - Default
-- Overlay Elements
+- Backdrop
 - Position
+- Overlay Elements
+- Controlled
 - Accessibility Aria Labelled By
 - Accessibility Aria Label
 
@@ -7329,58 +7329,6 @@ This component extends all the native `<button>` attributes.
 
 # Drawer
 
-## Backdrop
-
-```tsx
-<Drawer backdrop>
-  <DrawerTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Drawer
-    </Button>
-  </DrawerTrigger>
-
-  <DrawerContent>
-    <DrawerBody>
-      My drawer content
-    </DrawerBody>
-  </DrawerContent>
-</Drawer>
-```
-
-## Controlled
-
-```tsx
-{
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: DrawerOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openDrawer() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
-          Trigger Drawer
-        </Button>
-
-        <Drawer
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <DrawerContent>
-            <DrawerBody>
-              Content
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -7399,10 +7347,10 @@ This component extends all the native `<button>` attributes.
 </Drawer>
 ```
 
-## Overlay Elements
+## Backdrop
 
 ```tsx
-<Drawer>
+<Drawer backdrop>
   <DrawerTrigger asChild>
     <Button emphasis={ BUTTON_EMPHASIS.high }>
       Trigger Drawer
@@ -7410,31 +7358,8 @@ This component extends all the native `<button>` attributes.
   </DrawerTrigger>
 
   <DrawerContent>
-    <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-      <Select items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}>
-        <SelectControl />
-
-        <SelectContent createPortal={ false } />
-      </Select>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon
-            name={ ICON_NAME.circleQuestion }
-            style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-
-        <TooltipContent createPortal={ false }>
-          This is the tooltip content
-        </TooltipContent>
-      </Tooltip>
+    <DrawerBody>
+      My drawer content
     </DrawerBody>
   </DrawerContent>
 </Drawer>
@@ -7502,6 +7427,81 @@ This component extends all the native `<button>` attributes.
  </>
 ```
 
+## Overlay Elements
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Drawer
+    </Button>
+  </DrawerTrigger>
+
+  <DrawerContent>
+    <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: DrawerOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openDrawer() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openDrawer }>
+          Trigger Drawer
+        </Button>
+
+        <Drawer
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <DrawerContent>
+            <DrawerBody>
+              Content
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    );
+  }
+```
+
 ## Accessibility Aria Labelled By
 
 ```tsx
@@ -7566,10 +7566,10 @@ This component extends all the native `<button>` attributes.
 
 ## Examples
 
-- Complex Form Element
+- Default
 - Controlled
 - Custom Actions
-- Default
+- Complex Form Element
 
 ## Documentation pages
 
@@ -7748,56 +7748,26 @@ _No specific property._
 
 # Editable
 
-## Complex Form Element
+## Default
 
 ```tsx
 {
-    const [displayValue, setDisplayValue] = useState('');
-    const [accountValue, setAccountValue] = useState('');
-    const [domainValue, setDomainValue] = useState('');
-
-    function onCancel(): void {
-      const [account, domain] = displayValue.split('@ovhcloud');
-
-      setAccountValue(account || '');
-      setDomainValue(domain || '');
-    }
+    const [value, setValue] = useState('Double click to edit');
+    const bufferValue = useRef(value);
 
     return (
       <Editable
-        onCancel={ onCancel }
-        onSubmit={ () => setDisplayValue(`${accountValue}@ovhcloud${domainValue}`) }>
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
         <EditableDisplay>
-          { displayValue || <EditableDisplayEmpty>Account name</EditableDisplayEmpty> }
+          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
         </EditableDisplay>
 
         <EditableInput>
-          <FormField style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', columnGap: '8px' }}>
-            <Input
-              name="account-name"
-              onChange={ (e) => setAccountValue(e.target.value) }
-              pattern="^([a-zA-Z0-9]|([._\-](?![._\-])))*[a-zA-Z0-9]$"
-              placeholder="Account name"
-              value={ accountValue } />
-
-            <span>
-              @ovhcloud
-            </span>
-
-            <Select
-              items={[
-                { label: '.fr', value: '.fr' },
-                { label: '.com', value: '.com' },
-                { label: '.dev', value: '.dev' },
-              ]}
-              name="domain"
-              onValueChange={ ({ value }) => setDomainValue(value[0]) }
-              value={ domainValue ? [domainValue] : [] }>
-              <SelectControl placeholder="Select domain" />
-
-              <SelectContent />
-            </Select>
-          </FormField>
+          <Input
+            autoFocus
+            defaultValue={ value }
+            onChange={ (e) => bufferValue.current = e.target.value } />
         </EditableInput>
 
         <EditableActions />
@@ -7882,26 +7852,56 @@ _No specific property._
   }
 ```
 
-## Default
+## Complex Form Element
 
 ```tsx
 {
-    const [value, setValue] = useState('Double click to edit');
-    const bufferValue = useRef(value);
+    const [displayValue, setDisplayValue] = useState('');
+    const [accountValue, setAccountValue] = useState('');
+    const [domainValue, setDomainValue] = useState('');
+
+    function onCancel(): void {
+      const [account, domain] = displayValue.split('@ovhcloud');
+
+      setAccountValue(account || '');
+      setDomainValue(domain || '');
+    }
 
     return (
       <Editable
-        onCancel={ () => bufferValue.current = value }
-        onSubmit={ () => setValue(bufferValue.current) }>
+        onCancel={ onCancel }
+        onSubmit={ () => setDisplayValue(`${accountValue}@ovhcloud${domainValue}`) }>
         <EditableDisplay>
-          { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
+          { displayValue || <EditableDisplayEmpty>Account name</EditableDisplayEmpty> }
         </EditableDisplay>
 
         <EditableInput>
-          <Input
-            autoFocus
-            defaultValue={ value }
-            onChange={ (e) => bufferValue.current = e.target.value } />
+          <FormField style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', columnGap: '8px' }}>
+            <Input
+              name="account-name"
+              onChange={ (e) => setAccountValue(e.target.value) }
+              pattern="^([a-zA-Z0-9]|([._\-](?![._\-])))*[a-zA-Z0-9]$"
+              placeholder="Account name"
+              value={ accountValue } />
+
+            <span>
+              @ovhcloud
+            </span>
+
+            <Select
+              items={[
+                { label: '.fr', value: '.fr' },
+                { label: '.com', value: '.com' },
+                { label: '.dev', value: '.dev' },
+              ]}
+              name="domain"
+              onValueChange={ ({ value }) => setDomainValue(value[0]) }
+              value={ domainValue ? [domainValue] : [] }>
+              <SelectControl placeholder="Select domain" />
+
+              <SelectContent />
+            </Select>
+          </FormField>
         </EditableInput>
 
         <EditableActions />
@@ -7930,10 +7930,10 @@ _No specific property._
 ## Examples
 
 - Default
+- Progress
 - Disabled
 - Non Dismissible
 - Error
-- Progress
 
 ## Documentation pages
 
@@ -8075,6 +8075,20 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
+## Progress
+
+```tsx
+{
+    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        file={ fakeFile }
+        progress={ 45 }/>
+    );
+  }
+```
+
 ## Disabled
 
 ```tsx
@@ -8117,20 +8131,6 @@ This component extends all the native `<div>` attributes.
   }
 ```
 
-## Progress
-
-```tsx
-{
-    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail
-        file={ fakeFile }
-        progress={ 45 }/>
-    );
-  }
-```
-
 ## File Upload
 
 # File Upload
@@ -8161,16 +8161,16 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 
 ## Examples
 
-- Accept
-- Accessibility File Button
-- Compact
-- Custom Labels
 - Default
+- Compact
 - Disabled
+- Custom Labels
+- Accept
 - Max File
 - Max Size
 - Upload
 - In Form Field
+- Accessibility File Button
 - Accessibility Form Field
 
 ## Documentation pages
@@ -8474,6 +8474,95 @@ _No specific property._
 
 # File Upload
 
+## Default
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  }
+```
+
+## Compact
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  }
+```
+
+## Disabled
+
+```tsx
+<FileUpload
+  disabled
+  variant={ FILE_UPLOAD_VARIANT.compact }>
+  <FileUploadList />
+</FileUpload>
+```
+
+## Custom Labels
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        acceptedFileLabel="Formats acceptés : images"
+        dropzoneLabel="Glisser-déposer des fichiers"
+        maxFile={ 3 }
+        maxFileLabel="Nombre maximal de fichiers :"
+        maxSize={ 524288000 }
+        maxSizeLabel="Taille de fichier max :"
+        onFileAccept={ ({ files }) => setFiles(files) }
+        triggerLabel="Parcourir les fichiers"
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx }
+                progress={ 100 }
+                uploadSuccessLabel="Fichier uploadé" />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  }
+```
+
 ## Accept
 
 ```tsx
@@ -8510,124 +8599,6 @@ _No specific property._
       </FileUpload>
     );
   }
-```
-
-## Accessibility File Button
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload
-        onFileAccept={ ({ files }) => setFiles(files) }
-        variant={ FILE_UPLOAD_VARIANT.compact }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                i18n={{
-                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
-                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
-                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
-                }}
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
-## Compact
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload
-        onFileAccept={ ({ files }) => setFiles(files) }
-        variant={ FILE_UPLOAD_VARIANT.compact }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
-## Custom Labels
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload
-        acceptedFileLabel="Formats acceptés : images"
-        dropzoneLabel="Glisser-déposer des fichiers"
-        maxFile={ 3 }
-        maxFileLabel="Nombre maximal de fichiers :"
-        maxSize={ 524288000 }
-        maxSizeLabel="Taille de fichier max :"
-        onFileAccept={ ({ files }) => setFiles(files) }
-        triggerLabel="Parcourir les fichiers"
-        variant={ FILE_UPLOAD_VARIANT.compact }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx }
-                progress={ 100 }
-                uploadSuccessLabel="Fichier uploadé" />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
-## Default
-
-```tsx
-{
-    const [files, setFiles] = useState<File[]>([]);
-
-    return (
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  }
-```
-
-## Disabled
-
-```tsx
-<FileUpload
-  disabled
-  variant={ FILE_UPLOAD_VARIANT.compact }>
-  <FileUploadList />
-</FileUpload>
 ```
 
 ## Max File
@@ -8790,6 +8761,35 @@ _No specific property._
   }
 ```
 
+## Accessibility File Button
+
+```tsx
+{
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  }
+```
+
 ## Accessibility Form Field
 
 ```tsx
@@ -8836,15 +8836,15 @@ _A **Form Field** component is used to wrap several form components with logic, 
 ## Examples
 
 - Default
+- Label
+- Label Sub Label
+- Helper
 - Error
 - Guide Form Critical
 - Guide Form Error
 - Guide Form Grouped Field
 - Guide Form Mandatory
 - Guide Form Simple
-- Helper
-- Label
-- Label Sub Label
 - Accessibility Label
 
 ## Documentation pages
@@ -9019,6 +9019,45 @@ _No specific property._
 ```tsx
 <FormField>
   <Textarea name="textarea" />
+</FormField>
+```
+
+## Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea name="textarea" />
+</FormField>
+```
+
+## Label Sub Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description
+    <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
+  </FormFieldLabel>
+
+  <Textarea name="textarea" />
+</FormField>
+```
+
+## Helper
+
+```tsx
+<FormField>
+  <Textarea name="textarea" />
+
+  <FormFieldHelper>
+    <Text preset={ TEXT_PRESET.caption }>
+      Helper text
+    </Text>
+  </FormFieldHelper>
 </FormField>
 ```
 
@@ -9417,45 +9456,6 @@ _No specific property._
 </form>
 ```
 
-## Helper
-
-```tsx
-<FormField>
-  <Textarea name="textarea" />
-
-  <FormFieldHelper>
-    <Text preset={ TEXT_PRESET.caption }>
-      Helper text
-    </Text>
-  </FormFieldHelper>
-</FormField>
-```
-
-## Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea name="textarea" />
-</FormField>
-```
-
-## Label Sub Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description
-    <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
-  </FormFieldLabel>
-
-  <Textarea name="textarea" />
-</FormField>
-```
-
 ## Accessibility Label
 
 ```tsx
@@ -9486,10 +9486,10 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 ## Examples
 
-- Accessibility Informative
-- Decorative
 - Default
+- Decorative
 - Informative
+- Accessibility Informative
 - Accessibility Bad Practice Decorative
 - Accessibility Bad Practice Rating
 - Accessibility Rating
@@ -9832,22 +9832,13 @@ This component extends all the native `<span>` attributes.
 
 # Icon
 
-## Accessibility Informative
-
-```tsx
-<Icon
-  aria-label="home"
-  name={ ICON_NAME.home }
-  role="img" />
-```
-
-## Decorative
+## Default
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
 ```
 
-## Default
+## Decorative
 
 ```tsx
 <Icon name={ ICON_NAME.home } />
@@ -9859,6 +9850,15 @@ This component extends all the native `<span>` attributes.
 <Icon
   aria-label="Help"
   name={ ICON_NAME.circleQuestion }
+  role="img" />
+```
+
+## Accessibility Informative
+
+```tsx
+<Icon
+  aria-label="home"
+  name={ ICON_NAME.home }
   role="img" />
 ```
 
@@ -9932,20 +9932,20 @@ _**Input** component is an **Input** field where users can type into_
 
 ## Examples
 
+- Default
+- Disabled
+- Read Only
 - Clearable
+- Loading
+- Masked
+- Types
+- Floating Number
 - Datalist
+- In Form Field
 - Content Adornments
 - Content Adornment With Button
 - Domain Availability Search
 - Login Form
-- Default
-- Disabled
-- Floating Number
-- In Form Field
-- Loading
-- Masked
-- Read Only
-- Types
 - Accessibility Form Field
 - Accessibility Content
 - Accessibility I18n
@@ -10370,12 +10370,67 @@ This component extends all the native `<input>` attributes.
 
 # Input
 
+## Default
+
+```tsx
+<Input />
+```
+
+## Disabled
+
+```tsx
+<Input disabled />
+```
+
+## Read Only
+
+```tsx
+<Input
+  defaultValue="Readonly"
+  readOnly />
+```
+
 ## Clearable
 
 ```tsx
 <Input
   clearable
   defaultValue="Clearable" />
+```
+
+## Loading
+
+```tsx
+<Input loading />
+```
+
+## Masked
+
+```tsx
+<Input maskOption={{ enable: true }} />
+```
+
+## Types
+
+```tsx
+<>
+  <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+  <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+  <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+  <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+  <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+  <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+  <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
+</>
+```
+
+## Floating Number
+
+```tsx
+<Input
+  defaultValue="9.99"
+  step="any"
+  type={ INPUT_TYPE.number } />
 ```
 
 ## Datalist
@@ -10392,6 +10447,18 @@ This component extends all the native `<input>` attributes.
     <option value="Vanilla"></option>
   </datalist>
 </>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Name:
+  </FormFieldLabel>
+
+  <Input />
+</FormField>
 ```
 
 ## Content Adornments
@@ -10555,73 +10622,6 @@ This component extends all the native `<input>` attributes.
       </form>
     );
   }
-```
-
-## Default
-
-```tsx
-<Input />
-```
-
-## Disabled
-
-```tsx
-<Input disabled />
-```
-
-## Floating Number
-
-```tsx
-<Input
-  defaultValue="9.99"
-  step="any"
-  type={ INPUT_TYPE.number } />
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Name:
-  </FormFieldLabel>
-
-  <Input />
-</FormField>
-```
-
-## Loading
-
-```tsx
-<Input loading />
-```
-
-## Masked
-
-```tsx
-<Input maskOption={{ enable: true }} />
-```
-
-## Read Only
-
-```tsx
-<Input
-  defaultValue="Readonly"
-  readOnly />
-```
-
-## Types
-
-```tsx
-<>
-  <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
-  <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
-  <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
-  <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
-  <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
-  <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
-  <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
-</>
 ```
 
 ## Accessibility Form Field
@@ -11049,10 +11049,10 @@ If a **Link** points to a file download, it should include the file type and siz
 
 ## Examples
 
-- Accessibility Link
 - Default
 - Size
 - Variant
+- Accessibility Link
 
 ## Documentation pages
 
@@ -11183,16 +11183,6 @@ This component extends all the native `<svg>` attributes.
 
 # Logo
 
-## Accessibility Link
-
-```tsx
-<a
-  aria-label="Return to the OVHcloud home page"
-  href="https://www.ovhcloud.com">
-  <Logo />
-</a>
-```
-
 ## Default
 
 ```tsx
@@ -11218,6 +11208,16 @@ This component extends all the native `<svg>` attributes.
 </>
 ```
 
+## Accessibility Link
+
+```tsx
+<a
+  aria-label="Return to the OVHcloud home page"
+  href="https://www.ovhcloud.com">
+  <Logo />
+</a>
+```
+
 ## Markdown
 
 # Markdown
@@ -11231,9 +11231,9 @@ This component extends all the native `<svg>` attributes.
 
 ## Examples
 
-- Code Highlighter
-- Custom Component
 - Default
+- Custom Component
+- Code Highlighter
 
 ## Documentation pages
 
@@ -11297,6 +11297,39 @@ allowing developers to adapt the rendering to specific use cases.
 
 # Markdown
 
+## Default
+
+```tsx
+<Markdown content={`# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+> Blockquotes
+
+\`Inline code\`
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+
+| Column 1 | Column 2 |
+| --- | --- |
+| Value 1 | Value 2 |
+`} />
+```
+
+## Custom Component
+
+```tsx
+<Markdown
+  component={{
+    a: ({ children, href }) => <Link href={ href } target="_blank">{ children }</Link>,
+  }}
+  content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
+```
+
 ## Code Highlighter
 
 ```tsx
@@ -11322,49 +11355,16 @@ console.log('Hello World!');
 `} />
 ```
 
-## Custom Component
-
-```tsx
-<Markdown
-  component={{
-    a: ({ children, href }) => <Link href={ href } target="_blank">{ children }</Link>,
-  }}
-  content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
-```
-
-## Default
-
-```tsx
-<Markdown content={`# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
-> Blockquotes
-
-\`Inline code\`
-\`\`\`
-// print something in the console
-console.log('Hello World!');
-\`\`\`
-
-| Column 1 | Column 2 |
-| --- | --- |
-| Value 1 | Value 2 |
-`} />
-```
-
 ## Medium
 
 # Medium
 
 ## Examples
 
-- Caption
 - Default
 - Height
 - Width
+- Caption
 
 ## Documentation pages
 
@@ -11453,22 +11453,6 @@ _No specific property._
 
 # Medium
 
-## Caption
-
-```tsx
-<figure>
-  <Medium
-    alt="NASA Computer room"
-    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-
-  <figcaption>
-    <Text preset={ TEXT_PRESET.caption }>
-      © Copyright National Aeronautics and Space Administration
-    </Text>
-  </figcaption>
-</figure>
-```
-
 ## Default
 
 ```tsx
@@ -11495,6 +11479,22 @@ _No specific property._
   width={ 300 } />
 ```
 
+## Caption
+
+```tsx
+<figure>
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      © Copyright National Aeronautics and Space Administration
+    </Text>
+  </figcaption>
+</figure>
+```
+
 ## Menu
 
 # Menu
@@ -11517,9 +11517,9 @@ _A Menu component provides a list of options or actions that appear when a user 
 
 - Default
 - Controlled
-- Nested
-- Group
 - Disabled
+- Group
+- Nested
 
 ## Documentation pages
 
@@ -11762,7 +11762,7 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Nested
+## Disabled
 
 ```tsx
 <Menu>
@@ -11772,15 +11772,9 @@ This component extends all the native `<button>` attributes.
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value='new'>New</MenuItem>
-    <MenuItem value='open'>Open</MenuItem>
-    <MenuSubmenu>
-      <MenuTrigger>Share</MenuTrigger>
-      <MenuContent>
-        <MenuItem value='email'>Email</MenuItem>
-        <MenuItem value='message'>Message</MenuItem>
-      </MenuContent>
-    </MenuSubmenu>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem disabled value="settings">Settings</MenuItem>
+    <MenuItem value="logout">Logout</MenuItem>
   </MenuContent>
 </Menu>
 ```
@@ -11809,7 +11803,7 @@ This component extends all the native `<button>` attributes.
 </Menu>
 ```
 
-## Disabled
+## Nested
 
 ```tsx
 <Menu>
@@ -11819,9 +11813,15 @@ This component extends all the native `<button>` attributes.
     </Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuItem value="profile">Profile</MenuItem>
-    <MenuItem disabled value="settings">Settings</MenuItem>
-    <MenuItem value="logout">Logout</MenuItem>
+    <MenuItem value='new'>New</MenuItem>
+    <MenuItem value='open'>Open</MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>Share</MenuTrigger>
+      <MenuContent>
+        <MenuItem value='email'>Email</MenuItem>
+        <MenuItem value='message'>Message</MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
   </MenuContent>
 </Menu>
 ```
@@ -11845,14 +11845,14 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 ## Examples
 
-- Accessibility Grouping
-- Accessibility Alternative Grouping
-- Accessibility Roles
-- Status
 - Default
+- Status
 - Multiline
 - Non Dismissible
 - Emphasis
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+- Accessibility Roles
 
 ## Documentation pages
 
@@ -12228,6 +12228,114 @@ _No specific property._
 
 # Message
 
+## Default
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Status
+
+```tsx
+<>
+  <Message status={ MESSAGE_STATUS.accent }>
+    <MessageIcon name={ ICON_NAME.lightbulb } />
+
+    <MessageBody>Accent message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.critical }>
+    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+    <MessageBody>Critical message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.information }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>Information message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.neutral }>
+    <MessageIcon name={ ICON_NAME.email } />
+
+    <MessageBody>Neutral message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.success }>
+    <MessageIcon name={ ICON_NAME.circleCheck } />
+
+    <MessageBody>Success message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.warning }>
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+    <MessageBody>Warning message</MessageBody>
+  </Message>
+</>
+```
+
+## Multiline
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+  </MessageBody>
+</Message>
+```
+
+## Non Dismissible
+
+```tsx
+<Message dismissible={ false }>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Emphasis
+
+```tsx
+<>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      High emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
+    </MessageBody>
+  </Message>
+</>
+```
+
 ## Accessibility Grouping
 
 ```tsx
@@ -12334,114 +12442,6 @@ _No specific property._
       </>
     );
   }
-```
-
-## Status
-
-```tsx
-<>
-  <Message status={ MESSAGE_STATUS.accent }>
-    <MessageIcon name={ ICON_NAME.lightbulb } />
-
-    <MessageBody>Accent message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.critical }>
-    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-
-    <MessageBody>Critical message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.information }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>Information message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.neutral }>
-    <MessageIcon name={ ICON_NAME.email } />
-
-    <MessageBody>Neutral message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.success }>
-    <MessageIcon name={ ICON_NAME.circleCheck } />
-
-    <MessageBody>Success message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.warning }>
-    <MessageIcon name={ ICON_NAME.triangleExclamation } />
-
-    <MessageBody>Warning message</MessageBody>
-  </Message>
-</>
-```
-
-## Default
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Multiline
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
-  </MessageBody>
-</Message>
-```
-
-## Non Dismissible
-
-```tsx
-<Message dismissible={ false }>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Emphasis
-
-```tsx
-<>
-  <Message emphasis={ MESSAGE_EMPHASIS.high }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      High emphasis Message
-    </MessageBody>
-  </Message>
-
-  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Medium emphasis Message
-    </MessageBody>
-  </Message>
-
-  <Message emphasis={ MESSAGE_EMPHASIS.low }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Low emphasis Message
-    </MessageBody>
-  </Message>
-</>
 ```
 
 ## Message Bubble
@@ -12616,12 +12616,12 @@ This component extends all the native `<div>` attributes.
 
 ## Examples
 
+- Default
+- Thresholds
+- Optimum
 - Accessibility Aria Label
 - Accessibility Aria Labelledby
 - Accessibility Aria Valuetext
-- Default
-- Optimum
-- Thresholds
 
 ## Documentation pages
 
@@ -12783,6 +12783,61 @@ This component extends all the native `<div>` attributes.
 
 # Meter
 
+## Default
+
+```tsx
+<Meter />
+```
+
+## Thresholds
+
+```tsx
+<>
+  <p>Value under low threshold:</p>
+  <Meter
+    low={ 40 }
+    value={ 35 } />
+
+  <p>Value between both thresholds:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    value={ 60 } />
+
+  <p>Value above high threshold:</p>
+  <Meter
+    high={ 80 }
+    value={ 90 } />
+</>
+```
+
+## Optimum
+
+```tsx
+<>
+  <p>Low optimum and low value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 20 } />
+
+  <p>Low optimum and high value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 60 } />
+
+  <p>Low optimum and very high value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 90 } />
+</>
+```
+
 ## Accessibility Aria Label
 
 ```tsx
@@ -12819,61 +12874,6 @@ This component extends all the native `<div>` attributes.
   value={ 35 } />
 ```
 
-## Default
-
-```tsx
-<Meter />
-```
-
-## Optimum
-
-```tsx
-<>
-  <p>Low optimum and low value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 20 } />
-
-  <p>Low optimum and high value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 60 } />
-
-  <p>Low optimum and very high value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 90 } />
-</>
-```
-
-## Thresholds
-
-```tsx
-<>
-  <p>Value under low threshold:</p>
-  <Meter
-    low={ 40 }
-    value={ 35 } />
-
-  <p>Value between both thresholds:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    value={ 60 } />
-
-  <p>Value above high threshold:</p>
-  <Meter
-    high={ 80 }
-    value={ 90 } />
-</>
-```
-
 ## Modal
 
 # Modal
@@ -12897,15 +12897,15 @@ _A **Modal** component is used to overlay with important content the main view o
 
 ## Examples
 
+- Default
+- Controlled
+- Non Dismissible
+- Non Escapable
+- Overlay Elements
 - Accessibility Actions
 - Accessibility Aria Labelled By
 - Accessibility Aria Label
 - Accessibility Bad Practices Aria
-- Controlled
-- Default
-- Non Dismissible
-- Non Escapable
-- Overlay Elements
 
 ## Documentation pages
 
@@ -13181,6 +13181,139 @@ This component extends all the native `<button>` attributes.
 
 # Modal
 
+## Default
+
+```tsx
+<Modal>
+  <ModalTrigger>
+    Trigger Modal
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>My modal header</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: ModalOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openModal() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
+          Trigger Modal
+        </Button>
+
+        <Modal
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <ModalContent>
+            <ModalHeader>Controlled modal</ModalHeader>
+            <ModalBody>
+              Content
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+```
+
+## Non Dismissible
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent dismissible={ false }>
+    <ModalHeader>Non dismissible</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Non Escapable
+
+```tsx
+<Modal
+  closeOnEscape={ false }
+  closeOnInteractOutside={ false }>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Non escapable</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Overlay Elements
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Overlay elements</ModalHeader>
+    <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
 ## Accessibility Actions
 
 ```tsx
@@ -13277,139 +13410,6 @@ This component extends all the native `<button>` attributes.
 </Modal>
 ```
 
-## Controlled
-
-```tsx
-{
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: ModalOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openModal() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
-          Trigger Modal
-        </Button>
-
-        <Modal
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <ModalContent>
-            <ModalHeader>Controlled modal</ModalHeader>
-            <ModalBody>
-              Content
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </>
-    );
-  }
-```
-
-## Default
-
-```tsx
-<Modal>
-  <ModalTrigger>
-    Trigger Modal
-  </ModalTrigger>
-  <ModalContent>
-    <ModalHeader>My modal header</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Non Dismissible
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent dismissible={ false }>
-    <ModalHeader>Non dismissible</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Non Escapable
-
-```tsx
-<Modal
-  closeOnEscape={ false }
-  closeOnInteractOutside={ false }>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent>
-    <ModalHeader>Non escapable</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Overlay Elements
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent>
-    <ModalHeader>Overlay elements</ModalHeader>
-    <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-      <Select items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}>
-        <SelectControl />
-
-        <SelectContent createPortal={ false } />
-      </Select>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon
-            name={ ICON_NAME.circleQuestion }
-            style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-
-        <TooltipContent createPortal={ false }>
-          This is the tooltip content
-        </TooltipContent>
-      </Tooltip>
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
 ## Pagination
 
 # Pagination
@@ -13437,18 +13437,18 @@ _A **Pagination** component splits a long list into numbered pages and lets user
 
 ## Examples
 
-- Accessibility Label
-- Controlled
 - Default
+- Controlled
 - Disabled
 - Items Per Page
 - Links
 - With React Router
 - Links With All Controls
 - Links Vs Buttons
-- Page Size Selection
 - Sibling Count
 - With Tooltip Labels
+- Page Size Selection
+- Accessibility Label
 
 ## Documentation pages
 
@@ -13852,12 +13852,10 @@ This component extends all the native `<div>` attributes.
 
 # Pagination
 
-## Accessibility Label
+## Default
 
 ```tsx
-<Pagination
-  aria-label="Pagination"
-  totalItems={ 5000 }>
+<Pagination totalItems={ 5000 }>
   <PaginationPages />
 </Pagination>
 ```
@@ -13881,14 +13879,6 @@ This component extends all the native `<div>` attributes.
       </Pagination>
     );
   }
-```
-
-## Default
-
-```tsx
-<Pagination totalItems={ 5000 }>
-  <PaginationPages />
-</Pagination>
 ```
 
 ## Disabled
@@ -14068,16 +14058,6 @@ This component extends all the native `<div>` attributes.
 </div>
 ```
 
-## Page Size Selection
-
-```tsx
-<Pagination totalItems={ 500 }>
-  <PaginationPageSizeSelector />
-
-  <PaginationPages />
-</Pagination>
-```
-
 ## Sibling Count
 
 ```tsx
@@ -14111,6 +14091,26 @@ This component extends all the native `<div>` attributes.
 </div>
 ```
 
+## Page Size Selection
+
+```tsx
+<Pagination totalItems={ 500 }>
+  <PaginationPageSizeSelector />
+
+  <PaginationPages />
+</Pagination>
+```
+
+## Accessibility Label
+
+```tsx
+<Pagination
+  aria-label="Pagination"
+  totalItems={ 5000 }>
+  <PaginationPages />
+</Pagination>
+```
+
 ## Password
 
 # Password
@@ -14131,13 +14131,13 @@ _**Password** component is an <DocLink to="/components/input">Input</DocLink> fi
 
 ## Examples
 
-- Accessibility Label
-- Clearable
 - Default
 - Disabled
-- In Form Field
-- Loading
 - Read Only
+- Clearable
+- Loading
+- In Form Field
+- Accessibility Label
 - Accessibility Form Field
 - Accessibility I18n
 
@@ -14299,26 +14299,6 @@ This component extends all the native `<input>` attributes.
 
 # Password
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Password:
-  </FormFieldLabel>
-
-  <Password />
-</FormField>
-```
-
-## Clearable
-
-```tsx
-<Password
-  clearable
-  defaultValue="Clearable" />
-```
-
 ## Default
 
 ```tsx
@@ -14329,6 +14309,28 @@ This component extends all the native `<input>` attributes.
 
 ```tsx
 <Password disabled />
+```
+
+## Read Only
+
+```tsx
+<Password
+  defaultValue="Readonly"
+  readOnly />
+```
+
+## Clearable
+
+```tsx
+<Password
+  clearable
+  defaultValue="Clearable" />
+```
+
+## Loading
+
+```tsx
+<Password loading />
 ```
 
 ## In Form Field
@@ -14343,18 +14345,16 @@ This component extends all the native `<input>` attributes.
 </FormField>
 ```
 
-## Loading
+## Accessibility Label
 
 ```tsx
-<Password loading />
-```
+<FormField>
+  <FormFieldLabel>
+    Password:
+  </FormFieldLabel>
 
-## Read Only
-
-```tsx
-<Password
-  defaultValue="Readonly"
-  readOnly />
+  <Password />
+</FormField>
 ```
 
 ## Accessibility Form Field
@@ -14411,15 +14411,15 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 ## Examples
 
-- Accessibility Label
-- Clearable
-- Country List
 - Default
 - Disabled
-- In Form Field
+- Readonly
+- Clearable
 - Loading
 - Locale
-- Readonly
+- Country List
+- In Form Field
+- Accessibility Label
 - Accessibility Form Field
 - Accessibility I18n
 
@@ -14899,60 +14899,6 @@ _No specific property._
 
 # Phone Number
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
-```
-
-## Clearable
-
-```tsx
-<>
-  <PhoneNumber>
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-</>
-```
-
-## Country List
-
-```tsx
-<>
-  <span>All countries</span>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-
-  <span>Subset of countries</span>
-
-  <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -14977,18 +14923,36 @@ _No specific property._
 </>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
+<>
+  <PhoneNumber readOnly>
     <PhoneNumberControl />
   </PhoneNumber>
-</FormField>
+
+  <PhoneNumber readOnly>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+## Clearable
+
+```tsx
+<>
+  <PhoneNumber>
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</>
 ```
 
 ## Loading
@@ -15027,20 +14991,56 @@ _No specific property._
 </>
 ```
 
-## Readonly
+## Country List
 
 ```tsx
 <>
-  <PhoneNumber readOnly>
-    <PhoneNumberControl />
-  </PhoneNumber>
+  <span>All countries</span>
 
-  <PhoneNumber readOnly>
+  <PhoneNumber>
     <PhoneNumberCountryList />
 
     <PhoneNumberControl />
   </PhoneNumber>
+
+  <span>Subset of countries</span>
+
+  <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
 </>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
 ```
 
 ## Accessibility Form Field
@@ -15103,13 +15103,13 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ## Examples
 
-- Controlled
-- Custom Trigger
 - Default
-- Grid
-- Accessibility With Menu
+- Custom Trigger
+- Controlled
 - Same Width
+- Grid
 - ZIndex
+- Accessibility With Menu
 
 ## Documentation pages
 
@@ -15370,6 +15370,36 @@ This component extends all the native `<button>` attributes.
 
 # Popover
 
+## Default
+
+```tsx
+<Popover>
+  <PopoverTrigger>
+    Show popover
+  </PopoverTrigger>
+
+  <PopoverContent>
+    This is the popover content
+  </PopoverContent>
+</Popover>
+```
+
+## Custom Trigger
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Custom Trigger
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent>
+    This is the popover content
+  </PopoverContent>
+</Popover>
+```
+
 ## Controlled
 
 ```tsx
@@ -15400,32 +15430,16 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Custom Trigger
+## Same Width
 
 ```tsx
-<Popover>
-  <PopoverTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Custom Trigger
-    </Button>
-  </PopoverTrigger>
-
-  <PopoverContent>
-    This is the popover content
-  </PopoverContent>
-</Popover>
-```
-
-## Default
-
-```tsx
-<Popover>
+<Popover overlayConfig={{ sameWidth: true }}>
   <PopoverTrigger>
-    Show popover
+    Show popover that will take this width as reference
   </PopoverTrigger>
 
   <PopoverContent>
-    This is the popover content
+    The popover content
   </PopoverContent>
 </Popover>
 ```
@@ -15510,63 +15524,6 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility With Menu
-
-```tsx
-<Popover>
-  <PopoverTrigger
-    aria-haspopup="menu"
-    asChild>
-    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
-      <Icon name={ ICON_NAME.ellipsisVertical } />
-    </Button>
-  </PopoverTrigger>
-
-  <PopoverContent
-    aria-label="Profile menu"
-    withArrow>
-    <div
-      role="menu"
-      style={{ display: 'flex', flexDirection: 'column' }}>
-      <Button
-        emphasis={ BUTTON_EMPHASIS.low }
-        role="menuitem">
-        Information
-      </Button>
-
-      <Button
-        emphasis={ BUTTON_EMPHASIS.low }
-        role="menuitem">
-        Notifications
-      </Button>
-
-      <Divider style={{ width: '100%' }} />
-
-      <Button
-        emphasis={ BUTTON_EMPHASIS.low }
-        status={ BUTTON_STATUS.critical }
-        role="menuitem">
-        Sign out
-      </Button>
-    </div>
-  </PopoverContent>
-</Popover>
-```
-
-## Same Width
-
-```tsx
-<Popover overlayConfig={{ sameWidth: true }}>
-  <PopoverTrigger>
-    Show popover that will take this width as reference
-  </PopoverTrigger>
-
-  <PopoverContent>
-    The popover content
-  </PopoverContent>
-</Popover>
-```
-
 ## ZIndex
 
 ```tsx
@@ -15624,6 +15581,49 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility With Menu
+
+```tsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild>
+    <Button aria-label="Profile" emphasis={ BUTTON_EMPHASIS.high }>
+      <Icon name={ ICON_NAME.ellipsisVertical } />
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow>
+    <div
+      role="menu"
+      style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
+        Information
+      </Button>
+
+      <Button
+        emphasis={ BUTTON_EMPHASIS.low }
+        role="menuitem">
+        Notifications
+      </Button>
+
+      <Divider style={{ width: '100%' }} />
+
+      <Button
+        emphasis={ BUTTON_EMPHASIS.low }
+        status={ BUTTON_STATUS.critical }
+        role="menuitem">
+        Sign out
+      </Button>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
 ## Progress Bar
 
 # Progress Bar
@@ -15640,9 +15640,9 @@ _A horizontal bar indicating the current completion status of a long-running tas
 ## Examples
 
 - Default
-- Indeterminate
 - Max
 - Value
+- Indeterminate
 - Accessibility Label
 
 ## Documentation pages
@@ -15751,12 +15751,6 @@ This component extends all the native `<progress>` attributes.
 <ProgressBar />
 ```
 
-## Indeterminate
-
-```tsx
-<ProgressBar value="indeterminate" />
-```
-
 ## Max
 
 ```tsx
@@ -15769,6 +15763,12 @@ This component extends all the native `<progress>` attributes.
 
 ```tsx
 <ProgressBar value="50" />
+```
+
+## Indeterminate
+
+```tsx
+<ProgressBar value="indeterminate" />
 ```
 
 ## Accessibility Label
@@ -16264,14 +16264,14 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- Readonly
 - Max
 - Min
-- Readonly
 - Step
+- In Form Field
+- Accessibility Label
 
 ## Documentation pages
 
@@ -16432,24 +16432,6 @@ _No specific property._
 
 # Quantity
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Number of CPUs:
-  </FormFieldLabel>
-
-  <Quantity
-    max={ 10 }
-    min={ 0 }>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -16470,20 +16452,14 @@ _No specific property._
 </Quantity>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Set a quantity:
-  </FormFieldLabel>
-
-  <Quantity>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ## Max
@@ -16506,16 +16482,6 @@ _No specific property._
 </Quantity>
 ```
 
-## Readonly
-
-```tsx
-<Quantity readOnly>
-  <QuantityControl>
-    <QuantityInput />
-  </QuantityControl>
-</Quantity>
-```
-
 ## Step
 
 ```tsx
@@ -16524,6 +16490,40 @@ _No specific property._
     <QuantityInput />
   </QuantityControl>
 </Quantity>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:
+  </FormFieldLabel>
+
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Number of CPUs:
+  </FormFieldLabel>
+
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```
 
 ## Query Filter
@@ -17016,9 +17016,9 @@ _A **Radio** button allows users to select only one option from a number of choi
 - Default
 - Disabled Group
 - Disabled Item
-- In Form Field
 - Invalid
 - Orientation
+- In Form Field
 
 ## Documentation pages
 
@@ -17254,36 +17254,6 @@ _No specific property._
 </RadioGroup>
 ```
 
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Pick a language:
-  </FormFieldLabel>
-
-  <RadioGroup>
-    <Radio value="html">
-      <RadioControl />
-
-      <RadioLabel>HTML</RadioLabel>
-    </Radio>
-
-    <Radio value="css">
-      <RadioControl />
-
-      <RadioLabel>CSS</RadioLabel>
-    </Radio>
-
-    <Radio value="js">
-      <RadioControl />
-
-      <RadioLabel>JavaScript</RadioLabel>
-    </Radio>
-  </RadioGroup>
-</FormField>
-```
-
 ## Invalid
 
 ```tsx
@@ -17336,6 +17306,36 @@ _No specific property._
 </RadioGroup>
 ```
 
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Pick a language:
+  </FormFieldLabel>
+
+  <RadioGroup>
+    <Radio value="html">
+      <RadioControl />
+
+      <RadioLabel>HTML</RadioLabel>
+    </Radio>
+
+    <Radio value="css">
+      <RadioControl />
+
+      <RadioLabel>CSS</RadioLabel>
+    </Radio>
+
+    <Radio value="js">
+      <RadioControl />
+
+      <RadioLabel>JavaScript</RadioLabel>
+    </Radio>
+  </RadioGroup>
+</FormField>
+```
+
 ## Range
 
 # Range
@@ -17364,14 +17364,14 @@ _**Range** component is used to allow users to visually select one or more value
 
 ## Examples
 
-- Controlled
 - Default
 - Disabled
-- In Form Field
 - Max Min
 - Step
 - Ticks
 - Ticks Labels
+- Controlled
+- In Form Field
 - Accessibility Form Field
 - Accessibility Descriptive Sub Label
 
@@ -17577,38 +17577,6 @@ This component extends all the native `<div>` attributes.
 
 # Range
 
-## Controlled
-
-```tsx
-{
-    const [draggingValue, setDraggingValue] = useState<number>();
-    const [value, setValue] = useState<number>();
-
-    function onDragging(detail: RangeValueChangeDetail) {
-      setDraggingValue(detail.value[0]);
-    }
-
-    function onValueChange(detail: RangeValueChangeDetail) {
-      setValue(detail.value[0]);
-    }
-
-    return (
-      <>
-        <p>
-          <span>Final value: { value }</span>
-          <br />
-          <span>Dragged value: { draggingValue }</span>
-        </p>
-
-        <Range
-          onDragging={ onDragging }
-          onValueChange={ onValueChange }
-          value={ draggingValue ? [draggingValue] : undefined } />
-      </>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -17631,18 +17599,6 @@ This component extends all the native `<div>` attributes.
     defaultValue={ [50, 75] }
     disabled />
 </>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Range:
-  </FormFieldLabel>
-
-  <Range />
-</FormField>
 ```
 
 ## Max Min
@@ -17730,6 +17686,50 @@ This component extends all the native `<div>` attributes.
 </>
 ```
 
+## Controlled
+
+```tsx
+{
+    const [draggingValue, setDraggingValue] = useState<number>();
+    const [value, setValue] = useState<number>();
+
+    function onDragging(detail: RangeValueChangeDetail) {
+      setDraggingValue(detail.value[0]);
+    }
+
+    function onValueChange(detail: RangeValueChangeDetail) {
+      setValue(detail.value[0]);
+    }
+
+    return (
+      <>
+        <p>
+          <span>Final value: { value }</span>
+          <br />
+          <span>Dragged value: { draggingValue }</span>
+        </p>
+
+        <Range
+          onDragging={ onDragging }
+          onValueChange={ onValueChange }
+          value={ draggingValue ? [draggingValue] : undefined } />
+      </>
+    );
+  }
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Range:
+  </FormFieldLabel>
+
+  <Range />
+</FormField>
+```
+
 ## Accessibility Form Field
 
 ```tsx
@@ -17799,14 +17799,14 @@ _**Select** component is used to select one or more items from a list of values_
 
 ## Examples
 
-- Accessibility Form Field
-- Custom Renderer
 - Default
-- Disabled
 - Group
-- In Form Field
 - Multiple
+- Disabled
 - Readonly
+- Custom Renderer
+- In Form Field
+- Accessibility Form Field
 
 ## Documentation pages
 
@@ -18004,25 +18004,218 @@ This component extends all the native `<button>` attributes.
 
 # Select
 
-## Accessibility Form Field
+## Default
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Select a Web hosting
-  </FormFieldLabel>
+<Select items={[
+  { label: 'Dog', value:'dog' },
+  { label: 'Cat', value:'cat' },
+  { label: 'Hamster', value:'hamster' },
+  { label: 'Parrot', value:'parrot' },
+  { label: 'Spider', value:'spider' },
+  { label: 'Goldfish', value:'goldfish' },
+]}>
+  <SelectControl />
 
+  <SelectContent />
+</Select>
+```
+
+## Group
+
+```tsx
+<Select
+  items={[
+    {
+      label: 'Europe',
+      options: [
+        { label: 'France', value: 'fr' },
+        { label: 'Germany', value: 'de' },
+        { label: 'Italy', value: 'it' },
+      ]
+    },
+    {
+      label: 'Asia',
+      options: [
+        { label: 'China', value: 'cn' },
+        { label: 'Japan', value: 'jp' },
+        { label: 'Russia', value: 'ru' },
+      ]
+    },
+    {
+      label: 'North America',
+      options: [
+        { label: 'Canada', value: 'ca' },
+        { label: 'Mexico', value: 'mx' },
+        { label: 'United States of America', value: 'us' },
+      ]
+    },
+  ]}>
+  <SelectControl />
+
+  <SelectContent />
+</Select>
+```
+
+## Multiple
+
+```tsx
+<>
   <Select
     items={[
-      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
-      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
-      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
-    ]}>
-    <SelectControl />
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}
+    multiple>
+    <Text
+      htmlFor="multiple"
+      preset={ TEXT_PRESET.label }>
+      Default multiple selection
+    </Text>
+
+    <SelectControl
+      id="multiple"
+      placeholder="Select one or more pets" />
 
     <SelectContent />
   </Select>
-</FormField>
+
+  <Select
+    items={[
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}
+    multiple="merge">
+    <Text
+      htmlFor="multiple-merged"
+      preset={ TEXT_PRESET.label }>
+      Merged multiple selection
+    </Text>
+
+    <SelectControl
+      id="multiple-merged"
+      placeholder="Select one or more pets" />
+
+    <SelectContent />
+  </Select>
+</>
+```
+
+## Disabled
+
+```tsx
+<>
+  <Select
+    disabled
+    items={[
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}>
+    <Text
+      htmlFor="disabled"
+      preset={ TEXT_PRESET.label }>
+      Disabled
+    </Text>
+
+    <SelectControl
+      id="disabled"
+      placeholder="Select one or more pets" />
+
+    <SelectContent />
+  </Select>
+
+  <Select
+    items={[
+      { label: 'Dog', value:'dog', disabled: true },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot', disabled: true },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}>
+    <Text
+      htmlFor="disabled-options"
+      preset={ TEXT_PRESET.label }>
+      Disabled options
+    </Text>
+
+    <SelectControl
+      id="disabled-options"
+      placeholder="Select one or more pets" />
+
+    <SelectContent />
+  </Select>
+
+  <Select
+    items={[
+      {
+        label: 'Europe',
+        options: [
+          { label: 'France', value: 'fr' },
+          { label: 'Germany', value: 'de', disabled: true },
+          { label: 'Italy', value: 'it' },
+        ]
+      },
+      {
+        disabled: true,
+        label: 'Asia',
+        options: [
+          { label: 'China', value: 'cn', disabled: true },
+          { label: 'Japan', value: 'jp', disabled: true },
+          { label: 'Russia', value: 'ru', disabled: true },
+        ]
+      },
+      {
+        label: 'North America',
+        options: [
+          { label: 'Canada', value: 'ca' },
+          { label: 'Mexico', value: 'mx' },
+          { label: 'United States of America', value: 'us' },
+        ]
+      },
+    ]}>
+    <Text
+      htmlFor="disabled-group"
+      preset={ TEXT_PRESET.label }>
+      Disabled group or group option
+    </Text>
+
+    <SelectControl id="disabled-group" />
+
+    <SelectContent />
+  </Select>
+</>
+```
+
+## Readonly
+
+```tsx
+<Select
+  items={[
+    { label: 'Dog', value:'dog' },
+    { label: 'Cat', value:'cat' },
+    { label: 'Hamster', value:'hamster' },
+    { label: 'Parrot', value:'parrot' },
+    { label: 'Spider', value:'spider' },
+    { label: 'Goldfish', value:'goldfish' },
+  ]}
+  readOnly>
+  <SelectControl placeholder="Select one or more pets" />
+
+  <SelectContent />
+</Select>
 ```
 
 ## Custom Renderer
@@ -18134,149 +18327,6 @@ This component extends all the native `<button>` attributes.
   }
 ```
 
-## Default
-
-```tsx
-<Select items={[
-  { label: 'Dog', value:'dog' },
-  { label: 'Cat', value:'cat' },
-  { label: 'Hamster', value:'hamster' },
-  { label: 'Parrot', value:'parrot' },
-  { label: 'Spider', value:'spider' },
-  { label: 'Goldfish', value:'goldfish' },
-]}>
-  <SelectControl />
-
-  <SelectContent />
-</Select>
-```
-
-## Disabled
-
-```tsx
-<>
-  <Select
-    disabled
-    items={[
-      { label: 'Dog', value:'dog' },
-      { label: 'Cat', value:'cat' },
-      { label: 'Hamster', value:'hamster' },
-      { label: 'Parrot', value:'parrot' },
-      { label: 'Spider', value:'spider' },
-      { label: 'Goldfish', value:'goldfish' },
-    ]}>
-    <Text
-      htmlFor="disabled"
-      preset={ TEXT_PRESET.label }>
-      Disabled
-    </Text>
-
-    <SelectControl
-      id="disabled"
-      placeholder="Select one or more pets" />
-
-    <SelectContent />
-  </Select>
-
-  <Select
-    items={[
-      { label: 'Dog', value:'dog', disabled: true },
-      { label: 'Cat', value:'cat' },
-      { label: 'Hamster', value:'hamster' },
-      { label: 'Parrot', value:'parrot', disabled: true },
-      { label: 'Spider', value:'spider' },
-      { label: 'Goldfish', value:'goldfish' },
-    ]}>
-    <Text
-      htmlFor="disabled-options"
-      preset={ TEXT_PRESET.label }>
-      Disabled options
-    </Text>
-
-    <SelectControl
-      id="disabled-options"
-      placeholder="Select one or more pets" />
-
-    <SelectContent />
-  </Select>
-
-  <Select
-    items={[
-      {
-        label: 'Europe',
-        options: [
-          { label: 'France', value: 'fr' },
-          { label: 'Germany', value: 'de', disabled: true },
-          { label: 'Italy', value: 'it' },
-        ]
-      },
-      {
-        disabled: true,
-        label: 'Asia',
-        options: [
-          { label: 'China', value: 'cn', disabled: true },
-          { label: 'Japan', value: 'jp', disabled: true },
-          { label: 'Russia', value: 'ru', disabled: true },
-        ]
-      },
-      {
-        label: 'North America',
-        options: [
-          { label: 'Canada', value: 'ca' },
-          { label: 'Mexico', value: 'mx' },
-          { label: 'United States of America', value: 'us' },
-        ]
-      },
-    ]}>
-    <Text
-      htmlFor="disabled-group"
-      preset={ TEXT_PRESET.label }>
-      Disabled group or group option
-    </Text>
-
-    <SelectControl id="disabled-group" />
-
-    <SelectContent />
-  </Select>
-</>
-```
-
-## Group
-
-```tsx
-<Select
-  items={[
-    {
-      label: 'Europe',
-      options: [
-        { label: 'France', value: 'fr' },
-        { label: 'Germany', value: 'de' },
-        { label: 'Italy', value: 'it' },
-      ]
-    },
-    {
-      label: 'Asia',
-      options: [
-        { label: 'China', value: 'cn' },
-        { label: 'Japan', value: 'jp' },
-        { label: 'Russia', value: 'ru' },
-      ]
-    },
-    {
-      label: 'North America',
-      options: [
-        { label: 'Canada', value: 'ca' },
-        { label: 'Mexico', value: 'mx' },
-        { label: 'United States of America', value: 'us' },
-      ]
-    },
-  ]}>
-  <SelectControl />
-
-  <SelectContent />
-</Select>
-```
-
 ## In Form Field
 
 ```tsx
@@ -18298,75 +18348,25 @@ This component extends all the native `<button>` attributes.
 </FormField>
 ```
 
-## Multiple
+## Accessibility Form Field
 
 ```tsx
-<>
-  <Select
-    items={[
-      { label: 'Dog', value:'dog' },
-      { label: 'Cat', value:'cat' },
-      { label: 'Hamster', value:'hamster' },
-      { label: 'Parrot', value:'parrot' },
-      { label: 'Spider', value:'spider' },
-      { label: 'Goldfish', value:'goldfish' },
-    ]}
-    multiple>
-    <Text
-      htmlFor="multiple"
-      preset={ TEXT_PRESET.label }>
-      Default multiple selection
-    </Text>
-
-    <SelectControl
-      id="multiple"
-      placeholder="Select one or more pets" />
-
-    <SelectContent />
-  </Select>
+<FormField>
+  <FormFieldLabel>
+    Select a Web hosting
+  </FormFieldLabel>
 
   <Select
     items={[
-      { label: 'Dog', value:'dog' },
-      { label: 'Cat', value:'cat' },
-      { label: 'Hamster', value:'hamster' },
-      { label: 'Parrot', value:'parrot' },
-      { label: 'Spider', value:'spider' },
-      { label: 'Goldfish', value:'goldfish' },
-    ]}
-    multiple="merge">
-    <Text
-      htmlFor="multiple-merged"
-      preset={ TEXT_PRESET.label }>
-      Merged multiple selection
-    </Text>
-
-    <SelectControl
-      id="multiple-merged"
-      placeholder="Select one or more pets" />
+      { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+      { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+      { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+    ]}>
+    <SelectControl />
 
     <SelectContent />
   </Select>
-</>
-```
-
-## Readonly
-
-```tsx
-<Select
-  items={[
-    { label: 'Dog', value:'dog' },
-    { label: 'Cat', value:'cat' },
-    { label: 'Hamster', value:'hamster' },
-    { label: 'Parrot', value:'parrot' },
-    { label: 'Spider', value:'spider' },
-    { label: 'Goldfish', value:'goldfish' },
-  ]}
-  readOnly>
-  <SelectControl placeholder="Select one or more pets" />
-
-  <SelectContent />
-</Select>
+</FormField>
 ```
 
 ## Skeleton
@@ -18519,8 +18519,8 @@ _A visual indicator that a process is happening in the background but the interf
 
 ## Examples
 
-- Color
 - Default
+- Color
 - Size
 - Accessibility Aria Busy Aria Live
 - Accessibility Aria Label
@@ -18684,6 +18684,12 @@ This component extends all the native `<span>` attributes.
 
 # Spinner
 
+## Default
+
+```tsx
+<Spinner />
+```
+
 ## Color
 
 ```tsx
@@ -18691,12 +18697,6 @@ This component extends all the native `<span>` attributes.
   <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
   <Spinner />
 </>
-```
-
-## Default
-
-```tsx
-<Spinner />
 ```
 
 ## Size
@@ -18756,12 +18756,12 @@ _A **Switch** allows users to quickly and easily switch between several states, 
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Checked
 - Default
+- Checked
 - Disabled
 - Sizes
+- Accessibility Aria Label
+- Accessibility Aria Labelledby
 
 ## Documentation pages
 
@@ -18939,48 +18939,20 @@ This component extends all the native `<button>` attributes.
 
 # Switch
 
-## Accessibility Aria Label
+## Default
 
 ```tsx
-<Switch aria-label="Select an item">
+<Switch>
   <SwitchItem value="item-1">Item 1</SwitchItem>
   <SwitchItem value="item-2">Item 2</SwitchItem>
   <SwitchItem value="item-3">Item 3</SwitchItem>
 </Switch>
-```
-
-## Accessibility Aria Labelledby
-
-```tsx
-<>
-  <Text
-    id="switch-label"
-    preset={ TEXT_PRESET.label }>
-    Select an item:
-  </Text>
-
-  <Switch aria-labelledby="switch-label">
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-</>
 ```
 
 ## Checked
 
 ```tsx
 <Switch defaultValue="item-1">
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Default
-
-```tsx
-<Switch>
   <SwitchItem value="item-1">Item 1</SwitchItem>
   <SwitchItem value="item-2">Item 2</SwitchItem>
   <SwitchItem value="item-3">Item 3</SwitchItem>
@@ -19015,6 +18987,34 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility Aria Label
+
+```tsx
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">Item 1</SwitchItem>
+  <SwitchItem value="item-2">Item 2</SwitchItem>
+  <SwitchItem value="item-3">Item 3</SwitchItem>
+</Switch>
+```
+
+## Accessibility Aria Labelledby
+
+```tsx
+<>
+  <Text
+    id="switch-label"
+    preset={ TEXT_PRESET.label }>
+    Select an item:
+  </Text>
+
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+</>
+```
+
 ## Table
 
 # Table
@@ -19030,10 +19030,10 @@ _A component to display data in a tabular format._
 
 ## Examples
 
-- Custom Caption
 - Default
 - Size
 - Striped
+- Custom Caption
 
 ## Documentation pages
 
@@ -19147,47 +19147,6 @@ This component extends all the native `<table>` attributes.
 ## Table
 
 # Table
-
-## Custom Caption
-
-```tsx
-<Table>
-  <caption>
-    <Text preset={ TEXT_PRESET.caption }>
-      Front-end web developer course 2021
-    </Text>
-  </caption>
-  <thead>
-  <tr>
-    <th scope="col">Person</th>
-    <th scope="col">Most interest in</th>
-    <th scope="col">Age</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <th scope="row">Chris</th>
-    <td>HTML tables</td>
-    <td>22</td>
-  </tr>
-  <tr>
-    <th scope="row">Dennis</th>
-    <td>Web accessibility</td>
-    <td>45</td>
-  </tr>
-  <tr>
-    <th scope="row">Sarah</th>
-    <td>JavaScript frameworks</td>
-    <td>29</td>
-  </tr>
-  <tr>
-    <th scope="row">Karen</th>
-    <td>Web performance</td>
-    <td>36</td>
-  </tr>
-  </tbody>
-</Table>
-```
 
 ## Default
 
@@ -19415,6 +19374,47 @@ This component extends all the native `<table>` attributes.
 </>
 ```
 
+## Custom Caption
+
+```tsx
+<Table>
+  <caption>
+    <Text preset={ TEXT_PRESET.caption }>
+      Front-end web developer course 2021
+    </Text>
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Most interest in</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>HTML tables</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <th scope="row">Dennis</th>
+    <td>Web accessibility</td>
+    <td>45</td>
+  </tr>
+  <tr>
+    <th scope="row">Sarah</th>
+    <td>JavaScript frameworks</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <th scope="row">Karen</th>
+    <td>Web performance</td>
+    <td>36</td>
+  </tr>
+  </tbody>
+</Table>
+```
+
 ## Tabs
 
 # Tabs
@@ -19435,15 +19435,15 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 
 ## Examples
 
-- Controlled
 - Default
+- Variant
+- Size
 - Disabled
 - Overflow
-- Size
-- Variant
 - With Arrows
 - With Content
 - Product Detail
+- Controlled
 - Controlled With Navigation
 - Mount Strategy
 
@@ -19734,30 +19734,6 @@ _No specific property._
 
 # Tabs
 
-## Controlled
-
-```tsx
-{
-    const [value, setValue] = useState('tab1');
-
-    const handleValueChange = (event: TabsValueChangeEvent) => {
-      setValue(event.value);
-    };
-
-    return (
-      <Tabs
-        onValueChange={ handleValueChange }
-        value={ value }>
-        <TabList>
-          <Tab value="tab1">Tab 1</Tab>
-          <Tab value="tab2">Tab 2</Tab>
-          <Tab value="tab3">Tab 3</Tab>
-        </TabList>
-      </Tabs>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -19770,33 +19746,18 @@ _No specific property._
 </Tabs>
 ```
 
-## Disabled
+## Variant
 
 ```tsx
-<Tabs defaultValue="tab1">
+<Tabs
+  defaultValue="tab1"
+  variant={ TABS_VARIANT.switch }>
   <TabList>
     <Tab value="tab1">Tab 1</Tab>
-    <Tab value="tab2" disabled>Tab 2</Tab>
+    <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
 </Tabs>
-```
-
-## Overflow
-
-```tsx
-<div style={{ width: '300px' }}>
-  <Tabs defaultValue="tab1">
-    <TabList>
-      <Tab value="tab1">Tab 1</Tab>
-      <Tab value="tab2">Tab 2</Tab>
-      <Tab value="tab3">Tab 3</Tab>
-      <Tab value="tab4">Tab 4</Tab>
-      <Tab value="tab5">Tab 5</Tab>
-      <Tab value="tab6">Tab 6</Tab>
-    </TabList>
-  </Tabs>
-</div>
 ```
 
 ## Size
@@ -19841,18 +19802,33 @@ _No specific property._
 </>
 ```
 
-## Variant
+## Disabled
 
 ```tsx
-<Tabs
-  defaultValue="tab1"
-  variant={ TABS_VARIANT.switch }>
+<Tabs defaultValue="tab1">
   <TabList>
     <Tab value="tab1">Tab 1</Tab>
-    <Tab value="tab2">Tab 2</Tab>
+    <Tab value="tab2" disabled>Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
 </Tabs>
+```
+
+## Overflow
+
+```tsx
+<div style={{ width: '300px' }}>
+  <Tabs defaultValue="tab1">
+    <TabList>
+      <Tab value="tab1">Tab 1</Tab>
+      <Tab value="tab2">Tab 2</Tab>
+      <Tab value="tab3">Tab 3</Tab>
+      <Tab value="tab4">Tab 4</Tab>
+      <Tab value="tab5">Tab 5</Tab>
+      <Tab value="tab6">Tab 6</Tab>
+    </TabList>
+  </Tabs>
+</div>
 ```
 
 ## With Arrows
@@ -19930,6 +19906,30 @@ _No specific property._
     <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
   </TabContent>
 </Tabs>
+```
+
+## Controlled
+
+```tsx
+{
+    const [value, setValue] = useState('tab1');
+
+    const handleValueChange = (event: TabsValueChangeEvent) => {
+      setValue(event.value);
+    };
+
+    return (
+      <Tabs
+        onValueChange={ handleValueChange }
+        value={ value }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    );
+  }
 ```
 
 ## Controlled With Navigation
@@ -20031,11 +20031,11 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 ## Examples
 
-- Status
-- Custom Icon
 - Default
+- Status
 - Disabled
 - Size
+- Custom Icon
 - Accessibility List
 - Accessibility Aria Roles
 - Accessibility Aria Label
@@ -20311,6 +20311,14 @@ This component extends all the native `<button>` attributes.
 
 # Tag
 
+## Default
+
+```tsx
+<Tag>
+  My tag
+</Tag>
+```
+
 ## Status
 
 ```tsx
@@ -20322,28 +20330,6 @@ This component extends all the native `<button>` attributes.
   <Tag status={ TAG_STATUS.success }>Success</Tag>
   <Tag status={ TAG_STATUS.warning }>Warning</Tag>
 </>
-```
-
-## Custom Icon
-
-```tsx
-<>
-  <Tag icon={ null }>
-    No Icon
-  </Tag>
-
-  <Tag icon={ ICON_NAME.star }>
-    Custom Icon
-  </Tag>
-</>
-```
-
-## Default
-
-```tsx
-<Tag>
-  My tag
-</Tag>
 ```
 
 ## Disabled
@@ -20360,6 +20346,20 @@ This component extends all the native `<button>` attributes.
 <>
   <Tag size={ TAG_SIZE.md }>MD tag</Tag>
   <Tag size={ TAG_SIZE.lg }>LG tag</Tag>
+</>
+```
+
+## Custom Icon
+
+```tsx
+<>
+  <Tag icon={ null }>
+    No Icon
+  </Tag>
+
+  <Tag icon={ ICON_NAME.star }>
+    Custom Icon
+  </Tag>
 </>
 ```
 
@@ -20416,11 +20416,11 @@ _The **Text** component is used to display and style text content within an appl
 ## Examples
 
 - Default
-- Disabled
-- Fig Caption
 - Preset
-- Reuse Style
+- Disabled
 - Table Caption
+- Fig Caption
+- Reuse Style
 
 ## Documentation pages
 
@@ -20542,30 +20542,6 @@ _No specific property._
 </Text>
 ```
 
-## Disabled
-
-```tsx
-<Text disabled>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Text>
-```
-
-## Fig Caption
-
-```tsx
-<figure>
-  <img alt="OVHcloud logo"
-       src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
-       style={{ height: '100px' }} />
-
-  <figcaption>
-    <Text preset={ TEXT_PRESET.caption }>
-      My picture title
-    </Text>
-  </figcaption>
-</figure>
-```
-
 ## Preset
 
 ```tsx
@@ -20586,13 +20562,11 @@ _No specific property._
 </>
 ```
 
-## Reuse Style
+## Disabled
 
 ```tsx
-<Text
-  as="span"
-  preset={ TEXT_PRESET.heading5 }>
-  I am a &lt;span&gt; using the heading5 preset style.
+<Text disabled>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </Text>
 ```
 
@@ -20624,6 +20598,32 @@ _No specific property._
 </table>
 ```
 
+## Fig Caption
+
+```tsx
+<figure>
+  <img alt="OVHcloud logo"
+       src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+       style={{ height: '100px' }} />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      My picture title
+    </Text>
+  </figcaption>
+</figure>
+```
+
+## Reuse Style
+
+```tsx
+<Text
+  as="span"
+  preset={ TEXT_PRESET.heading5 }>
+  I am a &lt;span&gt; using the heading5 preset style.
+</Text>
+```
+
 ## Textarea
 
 # Textarea
@@ -20638,13 +20638,13 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
 
 ## Examples
 
-- Accessibility Described By
-- Accessibility Form Field
 - Default
 - Disabled
-- In Form Field
 - Read Only
 - Resizable
+- In Form Field
+- Accessibility Described By
+- Accessibility Form Field
 
 ## Documentation pages
 
@@ -20802,34 +20802,6 @@ This component extends all the native `<textarea>` attributes.
 
 # Textarea
 
-## Accessibility Described By
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-
-  <FormFieldHelper>
-    Enter a brief description
-  </FormFieldHelper>
-</FormField>
-```
-
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -20840,6 +20812,20 @@ This component extends all the native `<textarea>` attributes.
 
 ```tsx
 <Textarea disabled />
+```
+
+## Read Only
+
+```tsx
+<Textarea
+  defaultValue="Readonly"
+  readOnly />
+```
+
+## Resizable
+
+```tsx
+<Textarea style={{ resize: 'both' }} />
 ```
 
 ## In Form Field
@@ -20881,18 +20867,32 @@ This component extends all the native `<textarea>` attributes.
   }
 ```
 
-## Read Only
+## Accessibility Described By
 
 ```tsx
-<Textarea
-  defaultValue="Readonly"
-  readOnly />
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+
+  <FormFieldHelper>
+    Enter a brief description
+  </FormFieldHelper>
+</FormField>
 ```
 
-## Resizable
+## Accessibility Form Field
 
 ```tsx
-<Textarea style={{ resize: 'both' }} />
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+</FormField>
 ```
 
 ## Tile
@@ -21130,13 +21130,13 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
 - Readonly
-- Timezone List
 - With Seconds
+- Timezone List
+- In Form Field
+- Accessibility Label
 
 ## Documentation pages
 
@@ -21354,22 +21354,6 @@ _No specific property._
 
 # Timepicker
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Starting time:
-  </FormFieldLabel>
-
-  <Timepicker withSeconds>
-    <TimepickerControl />
-
-    <TimepickerTimezoneList />
-  </Timepicker>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -21394,20 +21378,6 @@ _No specific property._
 </>
 ```
 
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Timepicker:
-  </FormFieldLabel>
-
-  <Timepicker>
-    <TimepickerControl />
-  </Timepicker>
-</FormField>
-```
-
 ## Readonly
 
 ```tsx
@@ -21417,6 +21387,22 @@ _No specific property._
   </Timepicker>
 
   <Timepicker readOnly>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+## With Seconds
+
+```tsx
+<>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+  </Timepicker>
+
+  <Timepicker withSeconds>
     <TimepickerControl />
 
     <TimepickerTimezoneList />
@@ -21446,20 +21432,34 @@ _No specific property._
 </>
 ```
 
-## With Seconds
+## In Form Field
 
 ```tsx
-<>
-  <Timepicker withSeconds>
+<FormField>
+  <FormFieldLabel>
+    Timepicker:
+  </FormFieldLabel>
+
+  <Timepicker>
     <TimepickerControl />
   </Timepicker>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Starting time:
+  </FormFieldLabel>
 
   <Timepicker withSeconds>
     <TimepickerControl />
 
     <TimepickerTimezoneList />
   </Timepicker>
-</>
+</FormField>
 ```
 
 ## Toaster
@@ -21480,13 +21480,13 @@ _**Toaster** component provides a section on the page where you'll be able to di
 
 ## Examples
 
-- Statuses
-- Custom Content
 - Default
 - Dismissible
 - Duration
 - Icon
 - Position
+- Custom Content
+- Statuses
 
 ## Documentation pages
 
@@ -21659,83 +21659,6 @@ The **Toaster** component handles by itself the accessibility requirements.
 
 # Toaster
 
-## Statuses
-
-```tsx
-<>
-  <Toaster id="statuses" />
-
-  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.critical }
-      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
-      Critical toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
-      Information toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.neutral }
-      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
-      Neutral toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.brand }
-      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
-      Accent toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
-      Success toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
-      Warning toast
-    </Button>
-  </div>
-</>
-```
-
-## Custom Content
-
-```tsx
-<>
-  <Toaster id="custom-content" />
-
-  <Button
-    emphasis={ BUTTON_EMPHASIS.high }
-    onClick={ () => toast(
-      <div>
-        <Text preset={ TEXT_PRESET.label }>
-          Toast title
-        </Text>
-
-        <Text>
-          Toast text helps users providing feedback or information.
-        </Text>
-
-        <Link>
-          Some Link
-        </Link>
-      </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
-    )}>
-    Trigger toast
-  </Button>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -21848,6 +21771,83 @@ onClick={ () => toast('Notification message with icon', {
 </>
 ```
 
+## Custom Content
+
+```tsx
+<>
+  <Toaster id="custom-content" />
+
+  <Button
+    emphasis={ BUTTON_EMPHASIS.high }
+    onClick={ () => toast(
+      <div>
+        <Text preset={ TEXT_PRESET.label }>
+          Toast title
+        </Text>
+
+        <Text>
+          Toast text helps users providing feedback or information.
+        </Text>
+
+        <Link>
+          Some Link
+        </Link>
+      </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
+    )}>
+    Trigger toast
+  </Button>
+</>
+```
+
+## Statuses
+
+```tsx
+<>
+  <Toaster id="statuses" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+      Critical toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+      Information toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+      Neutral toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+      Success toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+      Warning toast
+    </Button>
+  </div>
+</>
+```
+
 ## Toggle
 
 # Toggle
@@ -21869,10 +21869,10 @@ onClick={ () => toast('Notification message with icon', {
 
 - Default
 - Disabled
-- In Form Field
 - Invalid
 - With Label
 - With Labels
+- In Form Field
 - Accessibility Label
 - Accessibility Aria Label
 
@@ -22064,6 +22064,34 @@ _No specific property._
 </Toggle>
 ```
 
+## Invalid
+
+```tsx
+<Toggle invalid>
+  <ToggleControl />
+</Toggle>
+```
+
+## With Label
+
+```tsx
+<Toggle>
+  <ToggleControl />
+
+  <ToggleLabel>
+    Enable dark mode
+  </ToggleLabel>
+</Toggle>
+```
+
+## With Labels
+
+```tsx
+<Toggle withLabels>
+  <ToggleControl />
+</Toggle>
+```
+
 ## In Form Field
 
 ```tsx
@@ -22092,34 +22120,6 @@ _No specific property._
     </Toggle>
   </FormField>
 </>
-```
-
-## Invalid
-
-```tsx
-<Toggle invalid>
-  <ToggleControl />
-</Toggle>
-```
-
-## With Label
-
-```tsx
-<Toggle>
-  <ToggleControl />
-
-  <ToggleLabel>
-    Enable dark mode
-  </ToggleLabel>
-</Toggle>
-```
-
-## With Labels
-
-```tsx
-<Toggle withLabels>
-  <ToggleControl />
-</Toggle>
 ```
 
 ## Accessibility Label
@@ -22166,12 +22166,12 @@ _**Tooltip** component is used to display contextual information when the user h
 
 ## Examples
 
-- Controlled
-- Custom Trigger
 - Default
+- Custom Trigger
+- Controlled
 - Grid
-- Accessibility Tooltip
 - ZIndex
+- Accessibility Tooltip
 
 ## Documentation pages
 
@@ -22361,6 +22361,36 @@ This component extends all the native `<button>` attributes.
 
 # Tooltip
 
+## Default
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
+## Custom Trigger
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      name={ ICON_NAME.circleQuestion }
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
 ## Controlled
 
 ```tsx
@@ -22391,36 +22421,6 @@ This component extends all the native `<button>` attributes.
       </>
     );
   }
-```
-
-## Custom Trigger
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      name={ ICON_NAME.circleQuestion }
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
-```
-
-## Default
-
-```tsx
-<Tooltip>
-  <TooltipTrigger>
-    Show tooltip
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
 ```
 
 ## Grid
@@ -22503,24 +22503,6 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
-## Accessibility Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      aria-label="Open tooltip"
-      name={ ICON_NAME.circleInfo }
-      role="img"
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    Some additional context.
-  </TooltipContent>
-</Tooltip>
-```
-
 ## ZIndex
 
 ```tsx
@@ -22578,6 +22560,24 @@ This component extends all the native `<button>` attributes.
 </>
 ```
 
+## Accessibility Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    Some additional context.
+  </TooltipContent>
+</Tooltip>
+```
+
 ## Tree View
 
 # Tree View
@@ -22600,12 +22600,12 @@ This component extends all the native `<button>` attributes.
 
 - Default
 - Multiple
+- Disabled
+- Custom Render
 - Default Expanded Value
 - Controlled
 - Controlled Multiple
-- Disabled
 - Disabled Items
-- Custom Render
 - In Form Field
 - Dynamic Children
 
@@ -22853,6 +22853,87 @@ _No specific property._
   }
 ```
 
+## Disabled
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        disabled
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
+## Custom Render
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item }>
+              { ({ item, isBranch, isExpanded }) => (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
+                  <span>{ item.name }</span>
+                </span>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
 ## Default Expanded Value
 
 ```tsx
@@ -22978,44 +23059,6 @@ _No specific property._
   }
 ```
 
-## Disabled
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        disabled
-        items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
 ## Disabled Items
 
 ```tsx
@@ -23046,49 +23089,6 @@ _No specific property._
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
-## Custom Render
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item }>
-              { ({ item, isBranch, isExpanded }) => (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
-                  <span>{ item.name }</span>
-                </span>
-              ) }
-            </TreeViewNode>
           )) }
         </TreeViewNodes>
       </TreeView>

@@ -22,6 +22,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-t
   }
 ```
 
+## Progress
+
+```tsx
+{
+    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        file={ fakeFile }
+        progress={ 45 }/>
+    );
+  }
+```
+
 ## Disabled
 
 ```tsx
@@ -60,20 +74,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-t
       <FileThumbnail
         error="Something went wrong"
         file={ fakeFile } />
-    );
-  }
-```
-
-## Progress
-
-```tsx
-{
-    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
-
-    return (
-      <FileThumbnail
-        file={ fakeFile }
-        progress={ 45 }/>
     );
   }
 ```

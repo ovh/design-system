@@ -48,28 +48,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 </Combobox>
 ```
 
-## Custom Filter
-
-```tsx
-<Combobox
-  customFilter={ (label, inputValue) => {
-    const reversedLabel = label.split('').reverse().join('');
-    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
-  }}
-  items={[
-    { label: 'Dog', value: 'dog' },
-    { label: 'Cat', value: 'cat' },
-    { label: 'Hamster', value: 'hamster' },
-    { label: 'Parrot', value: 'parrot' },
-    { label: 'Spider', value: 'spider' },
-    { label: 'Goldfish', value: 'goldfish' },
-  ]}>
-  <ComboboxControl placeholder="Search from right to left in each word" />
-
-  <ComboboxContent />
-</Combobox>
-```
-
 ## Disabled
 
 ```tsx
@@ -136,26 +114,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 
   <ComboboxContent />
 </Combobox>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Combobox
-  </FormFieldLabel>
-
-  <Combobox
-    items={[
-      { label: 'Dog', value: 'dog' },
-      { label: 'Cat', value: 'cat' },
-    ]}>
-    <ComboboxControl />
-
-    <ComboboxContent />
-  </Combobox>
-</FormField>
 ```
 
 ## Invalid
@@ -261,6 +219,28 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
   }
 ```
 
+## Custom Filter
+
+```tsx
+<Combobox
+  customFilter={ (label, inputValue) => {
+    const reversedLabel = label.split('').reverse().join('');
+    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+  }}
+  items={[
+    { label: 'Dog', value: 'dog' },
+    { label: 'Cat', value: 'cat' },
+    { label: 'Hamster', value: 'hamster' },
+    { label: 'Parrot', value: 'parrot' },
+    { label: 'Spider', value: 'spider' },
+    { label: 'Goldfish', value: 'goldfish' },
+  ]}>
+  <ComboboxControl placeholder="Search from right to left in each word" />
+
+  <ComboboxContent />
+</Combobox>
+```
+
 ## Empty
 
 ```tsx
@@ -288,6 +268,26 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combob
 
   <ComboboxContent />
 </Combobox>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Combobox
+  </FormFieldLabel>
+
+  <Combobox
+    items={[
+      { label: 'Dog', value: 'dog' },
+      { label: 'Cat', value: 'cat' },
+    ]}>
+    <ComboboxControl />
+
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
 ## Accessibility Form Field

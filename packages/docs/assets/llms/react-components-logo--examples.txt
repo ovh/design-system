@@ -10,16 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--
 
 # Logo
 
-## Accessibility Link
-
-```tsx
-<a
-  aria-label="Return to the OVHcloud home page"
-  href="https://www.ovhcloud.com">
-  <Logo />
-</a>
-```
-
 ## Default
 
 ```tsx
@@ -43,4 +33,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--
   <Logo variant={ LOGO_VARIANT.default } />
   <Logo variant={ LOGO_VARIANT.emblem } />
 </>
+```
+
+## Accessibility Link
+
+```tsx
+<a
+  aria-label="Return to the OVHcloud home page"
+  href="https://www.ovhcloud.com">
+  <Logo />
+</a>
 ```

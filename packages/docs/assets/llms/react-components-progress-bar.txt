@@ -22,9 +22,9 @@ _A horizontal bar indicating the current completion status of a long-running tas
 ## Examples
 
 - Default
-- Indeterminate
 - Max
 - Value
+- Indeterminate
 - Accessibility Label
 
 ## Documentation pages

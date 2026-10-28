@@ -10,60 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 
 # Phone Number
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
-```
-
-## Clearable
-
-```tsx
-<>
-  <PhoneNumber>
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-</>
-```
-
-## Country List
-
-```tsx
-<>
-  <span>All countries</span>
-
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl />
-  </PhoneNumber>
-
-  <span>Subset of countries</span>
-
-  <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
-    <PhoneNumberCountryList />
-
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -88,18 +34,36 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:
-  </FormFieldLabel>
-
-  <PhoneNumber>
+<>
+  <PhoneNumber readOnly>
     <PhoneNumberControl />
   </PhoneNumber>
-</FormField>
+
+  <PhoneNumber readOnly>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+## Clearable
+
+```tsx
+<>
+  <PhoneNumber>
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</>
 ```
 
 ## Loading
@@ -138,20 +102,56 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
 </>
 ```
 
-## Readonly
+## Country List
 
 ```tsx
 <>
-  <PhoneNumber readOnly>
-    <PhoneNumberControl />
-  </PhoneNumber>
+  <span>All countries</span>
 
-  <PhoneNumber readOnly>
+  <PhoneNumber>
     <PhoneNumberCountryList />
 
     <PhoneNumberControl />
   </PhoneNumber>
+
+  <span>Subset of countries</span>
+
+  <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
 </>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
 ```
 
 ## Accessibility Form Field

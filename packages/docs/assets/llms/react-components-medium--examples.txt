@@ -10,22 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
 
 # Medium
 
-## Caption
-
-```tsx
-<figure>
-  <Medium
-    alt="NASA Computer room"
-    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-
-  <figcaption>
-    <Text preset={ TEXT_PRESET.caption }>
-      © Copyright National Aeronautics and Space Administration
-    </Text>
-  </figcaption>
-</figure>
-```
-
 ## Default
 
 ```tsx
@@ -50,4 +34,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
   alt="NASA Computer room"
   src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
   width={ 300 } />
+```
+
+## Caption
+
+```tsx
+<figure>
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      © Copyright National Aeronautics and Space Administration
+    </Text>
+  </figcaption>
+</figure>
 ```

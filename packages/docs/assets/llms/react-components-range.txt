@@ -34,14 +34,14 @@ _**Range** component is used to allow users to visually select one or more value
 
 ## Examples
 
-- Controlled
 - Default
 - Disabled
-- In Form Field
 - Max Min
 - Step
 - Ticks
 - Ticks Labels
+- Controlled
+- In Form Field
 - Accessibility Form Field
 - Accessibility Descriptive Sub Label
 

@@ -29,20 +29,20 @@ _**Input** component is an **Input** field where users can type into_
 
 ## Examples
 
+- Default
+- Disabled
+- Read Only
 - Clearable
+- Loading
+- Masked
+- Types
+- Floating Number
 - Datalist
+- In Form Field
 - Content Adornments
 - Content Adornment With Button
 - Domain Availability Search
 - Login Form
-- Default
-- Disabled
-- Floating Number
-- In Form Field
-- Loading
-- Masked
-- Read Only
-- Types
 - Accessibility Form Field
 - Accessibility Content
 - Accessibility I18n

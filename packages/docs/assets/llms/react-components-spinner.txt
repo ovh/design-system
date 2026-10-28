@@ -20,8 +20,8 @@ _A visual indicator that a process is happening in the background but the interf
 
 ## Examples
 
-- Color
 - Default
+- Color
 - Size
 - Accessibility Aria Busy Aria Live
 - Accessibility Aria Label

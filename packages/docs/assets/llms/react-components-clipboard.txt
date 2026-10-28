@@ -26,10 +26,10 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 ## Examples
 
 - Default
+- Disabled
+- Loading
 - Masked
 - Custom Labels
-- Loading
-- Disabled
 - Accessibility Form Field
 
 ## Documentation pages

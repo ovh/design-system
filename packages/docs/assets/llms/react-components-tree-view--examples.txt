@@ -85,6 +85,87 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-v
   }
 ```
 
+## Disabled
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        disabled
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
+## Custom Render
+
+```tsx
+{
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item }>
+              { ({ item, isBranch, isExpanded }) => (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
+                  <span>{ item.name }</span>
+                </span>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+```
+
 ## Default Expanded Value
 
 ```tsx
@@ -210,44 +291,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-v
   }
 ```
 
-## Disabled
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView
-        disabled
-        items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
 ## Disabled Items
 
 ```tsx
@@ -278,49 +321,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-v
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-```
-
-## Custom Render
-
-```tsx
-{
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-    return (
-      <TreeView items={ items }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item }>
-              { ({ item, isBranch, isExpanded }) => (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
-                  <span>{ item.name }</span>
-                </span>
-              ) }
-            </TreeViewNode>
           )) }
         </TreeViewNodes>
       </TreeView>

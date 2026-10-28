@@ -33,13 +33,13 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
 - Readonly
-- Timezone List
 - With Seconds
+- Timezone List
+- In Form Field
+- Accessibility Label
 
 ## Documentation pages
 

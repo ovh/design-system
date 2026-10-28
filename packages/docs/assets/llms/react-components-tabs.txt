@@ -26,15 +26,15 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
 
 ## Examples
 
-- Controlled
 - Default
+- Variant
+- Size
 - Disabled
 - Overflow
-- Size
-- Variant
 - With Arrows
 - With Content
 - Product Detail
+- Controlled
 - Controlled With Navigation
 - Mount Strategy
 

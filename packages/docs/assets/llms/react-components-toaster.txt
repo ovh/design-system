@@ -24,13 +24,13 @@ _**Toaster** component provides a section on the page where you'll be able to di
 
 ## Examples
 
-- Statuses
-- Custom Content
 - Default
 - Dismissible
 - Duration
 - Icon
 - Position
+- Custom Content
+- Statuses
 
 ## Documentation pages
 

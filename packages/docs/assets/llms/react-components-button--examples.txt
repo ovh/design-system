@@ -10,6 +10,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 
 # Button
 
+## Default
+
+```tsx
+<Button>
+  My button
+</Button>
+```
+
 ## Status
 
 ```tsx
@@ -18,14 +26,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
   <Button status={ BUTTON_STATUS.critical }>Critical</Button>
   <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
 </>
-```
-
-## Default
-
-```tsx
-<Button>
-  My button
-</Button>
 ```
 
 ## Loading

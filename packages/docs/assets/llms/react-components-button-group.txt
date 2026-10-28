@@ -23,10 +23,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button
 
 ## Examples
 
-- Controlled
 - Default
 - Disabled
 - Disabled Item
+- Controlled
 - Multiple
 - Size
 

@@ -10,30 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
 
 # Tabs
 
-## Controlled
-
-```tsx
-{
-    const [value, setValue] = useState('tab1');
-
-    const handleValueChange = (event: TabsValueChangeEvent) => {
-      setValue(event.value);
-    };
-
-    return (
-      <Tabs
-        onValueChange={ handleValueChange }
-        value={ value }>
-        <TabList>
-          <Tab value="tab1">Tab 1</Tab>
-          <Tab value="tab2">Tab 2</Tab>
-          <Tab value="tab3">Tab 3</Tab>
-        </TabList>
-      </Tabs>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -46,33 +22,18 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
 </Tabs>
 ```
 
-## Disabled
+## Variant
 
 ```tsx
-<Tabs defaultValue="tab1">
+<Tabs
+  defaultValue="tab1"
+  variant={ TABS_VARIANT.switch }>
   <TabList>
     <Tab value="tab1">Tab 1</Tab>
-    <Tab value="tab2" disabled>Tab 2</Tab>
+    <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
 </Tabs>
-```
-
-## Overflow
-
-```tsx
-<div style={{ width: '300px' }}>
-  <Tabs defaultValue="tab1">
-    <TabList>
-      <Tab value="tab1">Tab 1</Tab>
-      <Tab value="tab2">Tab 2</Tab>
-      <Tab value="tab3">Tab 3</Tab>
-      <Tab value="tab4">Tab 4</Tab>
-      <Tab value="tab5">Tab 5</Tab>
-      <Tab value="tab6">Tab 6</Tab>
-    </TabList>
-  </Tabs>
-</div>
 ```
 
 ## Size
@@ -117,18 +78,33 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
 </>
 ```
 
-## Variant
+## Disabled
 
 ```tsx
-<Tabs
-  defaultValue="tab1"
-  variant={ TABS_VARIANT.switch }>
+<Tabs defaultValue="tab1">
   <TabList>
     <Tab value="tab1">Tab 1</Tab>
-    <Tab value="tab2">Tab 2</Tab>
+    <Tab value="tab2" disabled>Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
 </Tabs>
+```
+
+## Overflow
+
+```tsx
+<div style={{ width: '300px' }}>
+  <Tabs defaultValue="tab1">
+    <TabList>
+      <Tab value="tab1">Tab 1</Tab>
+      <Tab value="tab2">Tab 2</Tab>
+      <Tab value="tab3">Tab 3</Tab>
+      <Tab value="tab4">Tab 4</Tab>
+      <Tab value="tab5">Tab 5</Tab>
+      <Tab value="tab6">Tab 6</Tab>
+    </TabList>
+  </Tabs>
+</div>
 ```
 
 ## With Arrows
@@ -206,6 +182,30 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--
     <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
   </TabContent>
 </Tabs>
+```
+
+## Controlled
+
+```tsx
+{
+    const [value, setValue] = useState('tab1');
+
+    const handleValueChange = (event: TabsValueChangeEvent) => {
+      setValue(event.value);
+    };
+
+    return (
+      <Tabs
+        onValueChange={ handleValueChange }
+        value={ value }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    );
+  }
 ```
 
 ## Controlled With Navigation

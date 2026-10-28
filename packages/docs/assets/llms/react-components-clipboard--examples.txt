@@ -20,6 +20,26 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
 </Clipboard>
 ```
 
+## Disabled
+
+```tsx
+<Clipboard value="Disabled" disabled>
+  <ClipboardControl />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
+## Loading
+
+```tsx
+<Clipboard value="Loading" >
+  <ClipboardControl loading />
+
+  <ClipboardTrigger />
+</Clipboard>
+```
+
 ## Masked
 
 ```tsx
@@ -39,26 +59,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
   <ClipboardTrigger
     labelCopy="Click to copy"
     labelCopySuccess="Successfully copied" />
-</Clipboard>
-```
-
-## Loading
-
-```tsx
-<Clipboard value="Loading" >
-  <ClipboardControl loading />
-
-  <ClipboardTrigger />
-</Clipboard>
-```
-
-## Disabled
-
-```tsx
-<Clipboard value="Disabled" disabled>
-  <ClipboardControl />
-
-  <ClipboardTrigger />
 </Clipboard>
 ```
 

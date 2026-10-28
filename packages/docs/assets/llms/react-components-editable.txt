@@ -24,10 +24,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editab
 
 ## Examples
 
-- Complex Form Element
+- Default
 - Controlled
 - Custom Actions
-- Default
+- Complex Form Element
 
 ## Documentation pages
 

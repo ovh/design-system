@@ -28,9 +28,9 @@ _A **Radio** button allows users to select only one option from a number of choi
 - Default
 - Disabled Group
 - Disabled Item
-- In Form Field
 - Invalid
 - Orientation
+- In Form Field
 
 ## Documentation pages
 

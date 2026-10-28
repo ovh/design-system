@@ -25,14 +25,14 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 ## Examples
 
-- Accessibility Grouping
-- Accessibility Alternative Grouping
-- Accessibility Roles
-- Status
 - Default
+- Status
 - Multiline
 - Non Dismissible
 - Emphasis
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+- Accessibility Roles
 
 ## Documentation pages
 

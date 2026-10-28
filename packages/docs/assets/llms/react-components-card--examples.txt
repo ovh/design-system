@@ -10,6 +10,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--
 
 # Card
 
+## Default
+
+```tsx
+<Card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+</Card>
+```
+
 ## Status
 
 ```tsx
@@ -38,14 +46,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--
     <p>Warning</p>
   </Card>
 </>
-```
-
-## Default
-
-```tsx
-<Card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-</Card>
 ```
 
 ## Accessibility Grouping

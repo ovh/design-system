@@ -28,12 +28,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-v
 
 - Default
 - Multiple
+- Disabled
+- Custom Render
 - Default Expanded Value
 - Controlled
 - Controlled Multiple
-- Disabled
 - Disabled Items
-- Custom Render
 - In Form Field
 - Dynamic Children
 

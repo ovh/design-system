@@ -18,30 +18,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
 </Text>
 ```
 
-## Disabled
-
-```tsx
-<Text disabled>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Text>
-```
-
-## Fig Caption
-
-```tsx
-<figure>
-  <img alt="OVHcloud logo"
-       src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
-       style={{ height: '100px' }} />
-
-  <figcaption>
-    <Text preset={ TEXT_PRESET.caption }>
-      My picture title
-    </Text>
-  </figcaption>
-</figure>
-```
-
 ## Preset
 
 ```tsx
@@ -62,13 +38,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
 </>
 ```
 
-## Reuse Style
+## Disabled
 
 ```tsx
-<Text
-  as="span"
-  preset={ TEXT_PRESET.heading5 }>
-  I am a &lt;span&gt; using the heading5 preset style.
+<Text disabled>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </Text>
 ```
 
@@ -98,4 +72,30 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--
   </tr>
   </tbody>
 </table>
+```
+
+## Fig Caption
+
+```tsx
+<figure>
+  <img alt="OVHcloud logo"
+       src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+       style={{ height: '100px' }} />
+
+  <figcaption>
+    <Text preset={ TEXT_PRESET.caption }>
+      My picture title
+    </Text>
+  </figcaption>
+</figure>
+```
+
+## Reuse Style
+
+```tsx
+<Text
+  as="span"
+  preset={ TEXT_PRESET.heading5 }>
+  I am a &lt;span&gt; using the heading5 preset style.
+</Text>
 ```

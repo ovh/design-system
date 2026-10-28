@@ -4,7 +4,7 @@ slug: breadcrumb
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 403
+tokens: 463
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--technical-information.txt
 ---
 
@@ -49,3 +49,6 @@ _No specific property._
 |---|---|
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |

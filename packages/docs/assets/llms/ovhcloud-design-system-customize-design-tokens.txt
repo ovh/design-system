@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4942
+tokens: 5058
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -42,6 +42,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-muted` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
 | `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
@@ -91,6 +92,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
 | `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-control-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
@@ -100,6 +102,9 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-separator` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-container` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
@@ -123,8 +128,8 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-50)` |
-| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-100)` |
 | `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
@@ -156,6 +161,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-interaction-control-highlight` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-interaction-control-solid-hover` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-interaction-control-solid-active` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-track-hover` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |

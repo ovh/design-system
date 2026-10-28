@@ -4,7 +4,7 @@ slug: switch
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 435
+tokens: 433
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--technical-information.txt
 ---
 
@@ -47,6 +47,6 @@ This component extends all the native `<button>` attributes.
 | `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-state-is-disabled-opacity` | `1` |
-| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-switch-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-switch-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |

@@ -4,7 +4,7 @@ slug: table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 325
+tokens: 321
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
 ---
 
@@ -31,8 +31,8 @@ This component extends all the native `<table>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
-| `--ods-table-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-muted)` |
+| `--ods-table-border-color` | `var(--ods-semantic-color-border-separator)` |
 | `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
 | `--ods-table-cell-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |

@@ -26,8 +26,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-critical-active: var(--ods-semantic-color-interaction-critical-subtle-active);
   --ods-tag-background-color-critical-hover: var(--ods-semantic-color-interaction-critical-subtle-hover);
   --ods-tag-text-color-critical: var(--ods-semantic-color-content-on-critical);
-  --ods-tag-text-color-critical-active: var(--ods-semantic-color-content-on-critical);
-  --ods-tag-text-color-critical-hover: var(--ods-semantic-color-content-on-critical);
   // information
   --ods-tag-border-color-information: var(--ods-semantic-color-border-information-subtle);
   --ods-tag-border-color-information-active: var(--ods-semantic-color-border-information-subtle);
@@ -36,8 +34,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-information-active: var(--ods-semantic-color-interaction-information-subtle-active);
   --ods-tag-background-color-information-hover: var(--ods-semantic-color-interaction-information-subtle-hover);
   --ods-tag-text-color-information: var(--ods-semantic-color-content-on-information);
-  --ods-tag-text-color-information-active: var(--ods-semantic-color-content-on-information);
-  --ods-tag-text-color-information-hover: var(--ods-semantic-color-content-on-information);
   // neutral
   --ods-tag-border-color-neutral: var(--ods-semantic-color-border-neutral-subtle);
   --ods-tag-border-color-neutral-active: var(--ods-semantic-color-border-control);
@@ -46,8 +42,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-neutral-active: var(--ods-semantic-color-interaction-neutral-subtle-active);
   --ods-tag-background-color-neutral-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
   --ods-tag-text-color-neutral: var(--ods-semantic-color-content-on-neutral);
-  --ods-tag-text-color-neutral-active: var(--ods-semantic-color-content-on-neutral);
-  --ods-tag-text-color-neutral-hover: var(--ods-semantic-color-content-on-neutral);
   // accent
   --ods-tag-border-color-accent: var(--ods-semantic-color-border-accent-subtle);
   --ods-tag-border-color-accent-active: var(--ods-semantic-color-border-accent-subtle);
@@ -56,8 +50,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-accent-active: var(--ods-semantic-color-interaction-accent-subtle-active);
   --ods-tag-background-color-accent-hover: var(--ods-semantic-color-interaction-accent-subtle-hover);
   --ods-tag-text-color-accent: var(--ods-semantic-color-content-on-accent);
-  --ods-tag-text-color-accent-active: var(--ods-semantic-color-content-on-accent);
-  --ods-tag-text-color-accent-hover: var(--ods-semantic-color-content-on-accent);
   // success
   --ods-tag-border-color-success: var(--ods-semantic-color-border-success-subtle);
   --ods-tag-border-color-success-active: var(--ods-semantic-color-border-success-subtle);
@@ -66,8 +58,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-success-active: var(--ods-semantic-color-interaction-success-subtle-active);
   --ods-tag-background-color-success-hover: var(--ods-semantic-color-interaction-success-subtle-hover);
   --ods-tag-text-color-success: var(--ods-semantic-color-content-on-success);
-  --ods-tag-text-color-success-active: var(--ods-semantic-color-content-on-success);
-  --ods-tag-text-color-success-hover: var(--ods-semantic-color-content-on-success);
   // warning
   --ods-tag-border-color-warning: var(--ods-semantic-color-border-warning-subtle);
   --ods-tag-border-color-warning-active: var(--ods-semantic-color-border-warning-subtle);
@@ -76,8 +66,6 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-background-color-warning-active: var(--ods-semantic-color-interaction-warning-subtle-active);
   --ods-tag-background-color-warning-hover: var(--ods-semantic-color-interaction-warning-subtle-hover);
   --ods-tag-text-color-warning: var(--ods-semantic-color-content-on-warning);
-  --ods-tag-text-color-warning-active: var(--ods-semantic-color-content-on-warning);
-  --ods-tag-text-color-warning-hover: var(--ods-semantic-color-content-on-warning);
 
   box-sizing: border-box;
   display: inline-flex;

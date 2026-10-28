@@ -117,6 +117,10 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     border-color: var(--ods-badge-border-color-warning);
     background-color: var(--ods-badge-background-color-warning);
     color: var(--ods-badge-text-color-warning);
+  } @else if $color == 'primary' {
+    @error "ods-badge-color: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-badge-color: unknown value '#{$color}', expected one of: accent, alpha, beta, critical, information, neutral, new, promotion, success, warning.";
   }
 }
 
@@ -136,6 +140,12 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   } @else if $color == 'warning' {
     background-color: var(--ods-badge-background-color-warning-high);
     color: var(--ods-badge-text-color-warning-high);
+  } @else if $color == 'primary' {
+    @error "ods-badge-color-high: 'primary' is renamed 'accent' in v20.";
+  } @else if $color == 'accent' or $color == 'alpha' or $color == 'beta' or $color == 'new' or $color == 'promotion' {
+    @error "ods-badge-color-high: '#{$color}' has no high rendering, use ods-badge-color('#{$color}').";
+  } @else {
+    @error "ods-badge-color-high: unknown value '#{$color}', expected one of: critical, information, neutral, success, warning.";
   }
 }
 
@@ -154,6 +164,10 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     color: var(--ods-badge-text-color-success-low);
   } @else if $color == 'warning' {
     color: var(--ods-badge-text-color-warning-low);
+  } @else if $color == 'primary' {
+    @error "ods-badge-color-low: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-badge-color-low: unknown value '#{$color}', expected one of: accent, critical, information, neutral, success, warning.";
   }
 }
 

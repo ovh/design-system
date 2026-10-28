@@ -206,6 +206,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-brand-high-active);
       }
     }
+  } @else if $color == 'primary' {
+    @error "ods-button-emphasis-high: 'primary' is renamed 'brand' in v20.";
+  } @else if $color == 'information' or $color == 'success' or $color == 'warning' {
+    @error "ods-button-emphasis-high: '#{$color}' is removed in v20, a Button does not convey a status: use brand, critical or neutral.";
+  } @else {
+    @error "ods-button-emphasis-high: unknown value '#{$color}', expected one of: brand, critical, neutral.";
   }
 }
 
@@ -260,6 +266,12 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         color: var(--ods-button-text-color-brand-low-active);
       }
     }
+  } @else if $color == 'primary' {
+    @error "ods-button-emphasis-low: 'primary' is renamed 'brand' in v20.";
+  } @else if $color == 'information' or $color == 'success' or $color == 'warning' {
+    @error "ods-button-emphasis-low: '#{$color}' is removed in v20, a Button does not convey a status: use brand, critical or neutral.";
+  } @else {
+    @error "ods-button-emphasis-low: unknown value '#{$color}', expected one of: brand, critical, neutral.";
   }
 }
 
@@ -324,5 +336,11 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         color: var(--ods-button-text-color-brand-medium-active);
       }
     }
+  } @else if $color == 'primary' {
+    @error "ods-button-emphasis-medium: 'primary' is renamed 'brand' in v20.";
+  } @else if $color == 'information' or $color == 'success' or $color == 'warning' {
+    @error "ods-button-emphasis-medium: '#{$color}' is removed in v20, a Button does not convey a status: use brand, critical or neutral.";
+  } @else {
+    @error "ods-button-emphasis-medium: unknown value '#{$color}', expected one of: brand, critical, neutral.";
   }
 }

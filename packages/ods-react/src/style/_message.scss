@@ -74,6 +74,10 @@
     border: none;
     background-color: var(--ods-message-background-color-warning-high);
     color: var(--ods-message-text-color-warning-high);
+  } @else if $color == 'primary' {
+    @error "ods-message-emphasis-high: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-message-emphasis-high: unknown value '#{$color}', expected one of: accent, critical, information, neutral, success, warning.";
   }
 }
 
@@ -102,6 +106,10 @@
     border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-warning-medium);
     background-color: var(--ods-message-background-color-warning-medium);
     color: var(--ods-message-text-color-warning-medium);
+  } @else if $color == 'primary' {
+    @error "ods-message-emphasis-medium: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-message-emphasis-medium: unknown value '#{$color}', expected one of: accent, critical, information, neutral, success, warning.";
   }
 }
 
@@ -130,5 +138,9 @@
     border: none;
     background-color: transparent;
     color: var(--ods-message-text-color-warning-low);
+  } @else if $color == 'primary' {
+    @error "ods-message-emphasis-low: 'primary' is renamed 'accent' in v20.";
+  } @else {
+    @error "ods-message-emphasis-low: unknown value '#{$color}', expected one of: accent, critical, information, neutral, success, warning.";
   }
 }

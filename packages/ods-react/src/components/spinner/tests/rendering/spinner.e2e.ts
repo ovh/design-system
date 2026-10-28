@@ -68,7 +68,7 @@ describe('Spinner rendering', () => {
   });
 
   describe('color', () => {
-    it('should fill with primary by default and with the --ods-spinner-color custom property', async() => {
+    it('should fill with accent by default and with the --ods-spinner-color custom property', async() => {
       await gotoStory(page, 'rendering/color');
 
       expect(await getFill(page, 'default')).toBe(await resolveColor(page, 'var(--ods-semantic-color-content-accent)'));

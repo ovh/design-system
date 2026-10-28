@@ -11,10 +11,10 @@
     // and accent, already filled, keeps it in high.
 
     &--accent {
-      @include badge.ods-badge-color('primary');
+      @include badge.ods-badge-color('accent');
 
       &#{$badge}--low {
-        @include badge.ods-badge-color-low('primary');
+        @include badge.ods-badge-color-low('accent');
       }
     }
 

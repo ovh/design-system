@@ -9,14 +9,14 @@
     // medium is the status rendering itself, so it has no class of its own.
 
     &--accent {
-      @include message.ods-message-emphasis-medium('primary');
+      @include message.ods-message-emphasis-medium('accent');
 
       &#{$message}--high {
-        @include message.ods-message-emphasis-high('primary');
+        @include message.ods-message-emphasis-high('accent');
       }
 
       &#{$message}--low {
-        @include message.ods-message-emphasis-low('primary');
+        @include message.ods-message-emphasis-low('accent');
       }
     }
 

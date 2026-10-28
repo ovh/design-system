@@ -39,7 +39,7 @@
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-default('primary');
+        @include button.ods-button-variant-default('brand');
       }
     }
 
@@ -53,7 +53,7 @@
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-ghost('primary');
+        @include button.ods-button-variant-ghost('brand');
       }
     }
 
@@ -67,7 +67,7 @@
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-outline('primary');
+        @include button.ods-button-variant-outline('brand');
       }
     }
 

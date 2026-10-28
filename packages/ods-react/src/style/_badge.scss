@@ -35,9 +35,9 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   --ods-badge-background-color-new: var(--ods-semantic-color-surface-decorative-new);
   --ods-badge-border-color-new: transparent;
   --ods-badge-text-color-new: var(--ods-semantic-color-content-on-vivid);
-  --ods-badge-background-color-primary: var(--ods-semantic-color-surface-accent-subtle);
-  --ods-badge-border-color-primary: var(--ods-semantic-color-border-accent-subtle);
-  --ods-badge-text-color-primary: var(--ods-semantic-color-content-on-accent);
+  --ods-badge-background-color-accent: var(--ods-semantic-color-surface-accent-subtle);
+  --ods-badge-border-color-accent: var(--ods-semantic-color-border-accent-subtle);
+  --ods-badge-text-color-accent: var(--ods-semantic-color-content-on-accent);
   --ods-badge-background-color-promotion: var(--ods-semantic-color-surface-decorative-promotion);
   --ods-badge-border-color-promotion: transparent;
   --ods-badge-text-color-promotion: var(--ods-semantic-color-content-on-vivid);
@@ -62,7 +62,7 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   --ods-badge-text-color-critical-low: var(--ods-semantic-color-content-critical);
   --ods-badge-text-color-information-low: var(--ods-semantic-color-content-information);
   --ods-badge-text-color-neutral-low: var(--ods-semantic-color-content-neutral);
-  --ods-badge-text-color-primary-low: var(--ods-semantic-color-content-accent);
+  --ods-badge-text-color-accent-low: var(--ods-semantic-color-content-accent);
   --ods-badge-text-color-success-low: var(--ods-semantic-color-content-success);
   --ods-badge-text-color-warning-low: var(--ods-semantic-color-content-warning);
 
@@ -101,10 +101,10 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     border-color: var(--ods-badge-border-color-new);
     background-color: var(--ods-badge-background-color-new);
     color: var(--ods-badge-text-color-new);
-  } @else if $color == 'primary' {
-    border-color: var(--ods-badge-border-color-primary);
-    background-color: var(--ods-badge-background-color-primary);
-    color: var(--ods-badge-text-color-primary);
+  } @else if $color == 'accent' {
+    border-color: var(--ods-badge-border-color-accent);
+    background-color: var(--ods-badge-background-color-accent);
+    color: var(--ods-badge-text-color-accent);
   } @else if $color == 'promotion' {
     border-color: var(--ods-badge-border-color-promotion);
     background-color: var(--ods-badge-background-color-promotion);
@@ -148,8 +148,8 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     color: var(--ods-badge-text-color-information-low);
   } @else if $color == 'neutral' {
     color: var(--ods-badge-text-color-neutral-low);
-  } @else if $color == 'primary' {
-    color: var(--ods-badge-text-color-primary-low);
+  } @else if $color == 'accent' {
+    color: var(--ods-badge-text-color-accent-low);
   } @else if $color == 'success' {
     color: var(--ods-badge-text-color-success-low);
   } @else if $color == 'warning' {

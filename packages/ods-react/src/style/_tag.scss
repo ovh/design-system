@@ -48,16 +48,16 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
   --ods-tag-text-color-neutral: var(--ods-semantic-color-content-on-neutral);
   --ods-tag-text-color-neutral-active: var(--ods-semantic-color-content-on-neutral);
   --ods-tag-text-color-neutral-hover: var(--ods-semantic-color-content-on-neutral);
-  // primary
-  --ods-tag-border-color-primary: var(--ods-semantic-color-border-accent-subtle);
-  --ods-tag-border-color-primary-active: var(--ods-semantic-color-border-accent-subtle);
-  --ods-tag-border-color-primary-hover: var(--ods-semantic-color-border-accent-subtle);
-  --ods-tag-background-color-primary: var(--ods-semantic-color-surface-raised);
-  --ods-tag-background-color-primary-active: var(--ods-semantic-color-interaction-accent-subtle-active);
-  --ods-tag-background-color-primary-hover: var(--ods-semantic-color-interaction-accent-subtle-hover);
-  --ods-tag-text-color-primary: var(--ods-semantic-color-content-on-accent);
-  --ods-tag-text-color-primary-active: var(--ods-semantic-color-content-on-accent);
-  --ods-tag-text-color-primary-hover: var(--ods-semantic-color-content-on-accent);
+  // accent
+  --ods-tag-border-color-accent: var(--ods-semantic-color-border-accent-subtle);
+  --ods-tag-border-color-accent-active: var(--ods-semantic-color-border-accent-subtle);
+  --ods-tag-border-color-accent-hover: var(--ods-semantic-color-border-accent-subtle);
+  --ods-tag-background-color-accent: var(--ods-semantic-color-surface-raised);
+  --ods-tag-background-color-accent-active: var(--ods-semantic-color-interaction-accent-subtle-active);
+  --ods-tag-background-color-accent-hover: var(--ods-semantic-color-interaction-accent-subtle-hover);
+  --ods-tag-text-color-accent: var(--ods-semantic-color-content-on-accent);
+  --ods-tag-text-color-accent-active: var(--ods-semantic-color-content-on-accent);
+  --ods-tag-text-color-accent-hover: var(--ods-semantic-color-content-on-accent);
   // success
   --ods-tag-border-color-success: var(--ods-semantic-color-border-success-subtle);
   --ods-tag-border-color-success-active: var(--ods-semantic-color-border-success-subtle);
@@ -161,21 +161,21 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) / 
         background-color: var(--ods-tag-background-color-neutral-active);
       }
     }
-  } @else if $color == 'primary' {
-    border-color: var(--ods-tag-border-color-primary);
-    background-color: var(--ods-tag-background-color-primary);
-    color: var(--ods-tag-text-color-primary);
+  } @else if $color == 'accent' {
+    border-color: var(--ods-tag-border-color-accent);
+    background-color: var(--ods-tag-background-color-accent);
+    color: var(--ods-tag-text-color-accent);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-tag-border-color-primary-hover);
-        background-color: var(--ods-tag-background-color-primary-hover);
+        border-color: var(--ods-tag-border-color-accent-hover);
+        background-color: var(--ods-tag-background-color-accent-hover);
       }
 
       &:active {
-        border-color: var(--ods-tag-border-color-primary-active);
-        background-color: var(--ods-tag-background-color-primary-active);
+        border-color: var(--ods-tag-border-color-accent-active);
+        background-color: var(--ods-tag-background-color-accent-active);
       }
     }
   } @else if $color == 'success' {

@@ -13,7 +13,7 @@
     }
 
     &#{$tag}--accent {
-      @include tag.ods-tag-color('primary');
+      @include tag.ods-tag-color('accent');
     }
 
     &#{$tag}--critical {

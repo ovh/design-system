@@ -120,34 +120,34 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-text-color-neutral-outline-hover: var(--ods-semantic-color-content-on-neutral);
   --ods-button-text-color-neutral-outline-active: var(--ods-semantic-color-content-on-neutral);
 
-  // primary
-  --ods-button-background-color-primary: var(--ods-semantic-color-surface-brand);
-  --ods-button-background-color-primary-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-background-color-primary-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-border-color-primary: var(--ods-semantic-color-border-brand);
-  --ods-button-border-color-primary-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-border-color-primary-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-text-color-primary: var(--ods-semantic-color-content-on-brand-solid);
-  --ods-button-text-color-primary-hover: var(--ods-semantic-color-content-on-brand-solid);
-  --ods-button-text-color-primary-active: var(--ods-semantic-color-content-on-brand-solid);
-  --ods-button-background-color-primary-ghost: inherit;
-  --ods-button-background-color-primary-ghost-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
-  --ods-button-background-color-primary-ghost-active: var(--ods-semantic-color-interaction-brand-subtle-active);
-  --ods-button-border-color-primary-ghost: unset;
-  --ods-button-border-color-primary-ghost-hover: unset;
-  --ods-button-border-color-primary-ghost-active: unset;
-  --ods-button-text-color-primary-ghost: var(--ods-semantic-color-content-brand-minor);
-  --ods-button-text-color-primary-ghost-hover: var(--ods-semantic-color-content-on-brand);
-  --ods-button-text-color-primary-ghost-active: var(--ods-semantic-color-content-on-brand);
-  --ods-button-background-color-primary-outline: var(--ods-semantic-color-surface-control);
-  --ods-button-background-color-primary-outline-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
-  --ods-button-background-color-primary-outline-active: var(--ods-semantic-color-interaction-brand-subtle-active);
-  --ods-button-border-color-primary-outline: var(--ods-semantic-color-border-brand-minor);
-  --ods-button-border-color-primary-outline-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-border-color-primary-outline-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-text-color-primary-outline: var(--ods-semantic-color-content-brand-minor);
-  --ods-button-text-color-primary-outline-hover: var(--ods-semantic-color-content-on-brand);
-  --ods-button-text-color-primary-outline-active: var(--ods-semantic-color-content-on-brand);
+  // brand
+  --ods-button-background-color-brand: var(--ods-semantic-color-surface-brand);
+  --ods-button-background-color-brand-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-background-color-brand-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-border-color-brand: var(--ods-semantic-color-border-brand);
+  --ods-button-border-color-brand-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-border-color-brand-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-text-color-brand: var(--ods-semantic-color-content-on-brand-solid);
+  --ods-button-text-color-brand-hover: var(--ods-semantic-color-content-on-brand-solid);
+  --ods-button-text-color-brand-active: var(--ods-semantic-color-content-on-brand-solid);
+  --ods-button-background-color-brand-ghost: inherit;
+  --ods-button-background-color-brand-ghost-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
+  --ods-button-background-color-brand-ghost-active: var(--ods-semantic-color-interaction-brand-subtle-active);
+  --ods-button-border-color-brand-ghost: unset;
+  --ods-button-border-color-brand-ghost-hover: unset;
+  --ods-button-border-color-brand-ghost-active: unset;
+  --ods-button-text-color-brand-ghost: var(--ods-semantic-color-content-brand-minor);
+  --ods-button-text-color-brand-ghost-hover: var(--ods-semantic-color-content-on-brand);
+  --ods-button-text-color-brand-ghost-active: var(--ods-semantic-color-content-on-brand);
+  --ods-button-background-color-brand-outline: var(--ods-semantic-color-surface-control);
+  --ods-button-background-color-brand-outline-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
+  --ods-button-background-color-brand-outline-active: var(--ods-semantic-color-interaction-brand-subtle-active);
+  --ods-button-border-color-brand-outline: var(--ods-semantic-color-border-brand-minor);
+  --ods-button-border-color-brand-outline-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-border-color-brand-outline-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-text-color-brand-outline: var(--ods-semantic-color-content-brand-minor);
+  --ods-button-text-color-brand-outline-hover: var(--ods-semantic-color-content-on-brand);
+  --ods-button-text-color-brand-outline-active: var(--ods-semantic-color-content-on-brand);
 
   // success
   --ods-button-background-color-success: var(--ods-semantic-color-surface-success);
@@ -308,21 +308,21 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         background-color: var(--ods-button-background-color-neutral-active);
       }
     }
-  } @else if $color == 'primary' {
-    border-color: var(--ods-button-border-color-primary);
-    background-color: var(--ods-button-background-color-primary);
-    color: var(--ods-button-text-color-primary);
+  } @else if $color == 'brand' {
+    border-color: var(--ods-button-border-color-brand);
+    background-color: var(--ods-button-background-color-brand);
+    color: var(--ods-button-text-color-brand);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-primary-hover);
-        background-color: var(--ods-button-background-color-primary-hover);
+        border-color: var(--ods-button-border-color-brand-hover);
+        background-color: var(--ods-button-background-color-brand-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-primary-active);
-        background-color: var(--ods-button-background-color-primary-active);
+        border-color: var(--ods-button-border-color-brand-active);
+        background-color: var(--ods-button-background-color-brand-active);
       }
     }
   } @else if $color == 'success' {
@@ -413,20 +413,20 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         color: var(--ods-button-text-color-neutral-ghost-active);
       }
     }
-  } @else if $color == 'primary' {
-    background-color: var(--ods-button-background-color-primary-ghost);
-    color: var(--ods-button-text-color-primary-ghost);
+  } @else if $color == 'brand' {
+    background-color: var(--ods-button-background-color-brand-ghost);
+    color: var(--ods-button-text-color-brand-ghost);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        background-color: var(--ods-button-background-color-primary-ghost-hover);
-        color: var(--ods-button-text-color-primary-ghost-hover);
+        background-color: var(--ods-button-background-color-brand-ghost-hover);
+        color: var(--ods-button-text-color-brand-ghost-hover);
       }
 
       &:active {
-        background-color: var(--ods-button-background-color-primary-ghost-active);
-        color: var(--ods-button-text-color-primary-ghost-active);
+        background-color: var(--ods-button-background-color-brand-ghost-active);
+        color: var(--ods-button-text-color-brand-ghost-active);
       }
     }
   } @else if $color == 'success' {
@@ -525,23 +525,23 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
         color: var(--ods-button-text-color-neutral-outline-active);
       }
     }
-  } @else if $color == 'primary' {
-    border-color: var(--ods-button-border-color-primary-outline);
-    background-color: var(--ods-button-background-color-primary-outline);
-    color: var(--ods-button-text-color-primary-outline);
+  } @else if $color == 'brand' {
+    border-color: var(--ods-button-border-color-brand-outline);
+    background-color: var(--ods-button-background-color-brand-outline);
+    color: var(--ods-button-text-color-brand-outline);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-primary-outline-hover);
-        background-color: var(--ods-button-background-color-primary-outline-hover);
-        color: var(--ods-button-text-color-primary-outline-hover);
+        border-color: var(--ods-button-border-color-brand-outline-hover);
+        background-color: var(--ods-button-background-color-brand-outline-hover);
+        color: var(--ods-button-text-color-brand-outline-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-primary-outline-active);
-        background-color: var(--ods-button-background-color-primary-outline-active);
-        color: var(--ods-button-text-color-primary-outline-active);
+        border-color: var(--ods-button-border-color-brand-outline-active);
+        background-color: var(--ods-button-background-color-brand-outline-active);
+        color: var(--ods-button-text-color-brand-outline-active);
       }
     }
   } @else if $color == 'success' {

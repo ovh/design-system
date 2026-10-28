@@ -6,6 +6,9 @@ const SECTIONS = ['overview', 'documentation', 'technical-information', 'example
 const SEARCH_LIMIT_DEFAULT = 8;
 const SEARCH_LIMIT_MAX = 20;
 const MAX_INPUT = 200;
+// Pages read at once by search_docs: scanning every indexed page with no bound
+// can exhaust file descriptors (EMFILE) on large documentation sets.
+const SEARCH_READ_CONCURRENCY = 16;
 
 type Index = Awaited<ReturnType<typeof getIndex>>;
 type Component = Index['components'][number];
@@ -55,6 +58,24 @@ function annotations(network: boolean): { destructiveHint: boolean, idempotentHi
 async function withIndex(run: (index: Index) => Promise<ToolResult> | ToolResult): Promise<ToolResult> {
   const index = await getIndex().catch(() => undefined);
   return index ? run(index) : fail('The ODS documentation index cannot be loaded (broken install?): reinstall @ovhcloud/ods-mcp. Details are in the server log.');
+}
+
+/* Promise.all with at most `limit` tasks in flight; results keep the input order. */
+async function mapBounded<T, R>(items: T[], limit: number, run: (item: T) => Promise<R>): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let next = 0;
+  // Each worker takes the next free item, then chains onto the following one.
+  const worker = async(): Promise<void> => {
+    const i = next;
+    next += 1;
+    if (i >= items.length) {
+      return;
+    }
+    results[i] = await run(items[i]);
+    return worker();
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return results;
 }
 
 /* Guides are identified by their page file: two pages may share a slug (the
@@ -252,7 +273,7 @@ async function registerTools(server: McpServer): Promise<void> {
     // back to title matching, which still routes the agent to the right page.
     const titleOnly = sourceKind() === 'pinned';
     let unreadable = 0;
-    const hits = await Promise.all(entries.map(async(entry): Promise<SearchHit | null> => {
+    const hits = await mapBounded(entries, SEARCH_READ_CONCURRENCY, async(entry): Promise<SearchHit | null> => {
       let body = '';
       if (!titleOnly) {
         try {
@@ -268,7 +289,7 @@ async function registerTools(server: McpServer): Promise<void> {
       }
       const snippet = body ? body.slice(Math.max(0, at - 80), at + 180).replace(/\s+/g, ' ').trim() : '';
       return { fetch: entry.fetch, key: entry.key, score, section: entry.section, snippet, title: entry.title };
-    }));
+    });
 
     // One result per component (or guide): its best-scoring section.
     const best = new Map<string, SearchHit>();

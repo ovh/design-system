@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
-import { readFile } from 'node:fs/promises';
-import { dirname, join, resolve } from 'node:path';
+import { readFile, realpath } from 'node:fs/promises';
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const BUNDLED_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../content');
@@ -67,10 +67,31 @@ function findProjectLlms(): string | null {
   }
 }
 
+/* Page paths come from llms-index.json, which the project's node_modules provides: a path
+   that leaves the documentation set (absolute, `..`, a URL) would turn a documentation tool
+   into a reader of any file the server can read. */
+function isPagePath(rel: string): boolean {
+  return rel !== '' && !isAbsolute(rel) && !/^[a-z][a-z\d+.-]*:/i.test(rel) && !rel.split(/[\\/]/).includes('..');
+}
+
+/* Local reads also resolve symlinks: a page linked to a file outside the set is refused too. */
+function localReader(root: string): DocSource['read'] {
+  let base: Promise<string> | undefined;
+  return async(rel): Promise<string> => {
+    base ??= realpath(root);
+    const file = await realpath(join(root, rel));
+    const inside = relative(await base, file);
+    if (inside === '' || inside === '..' || inside.startsWith(`..${sep}`) || isAbsolute(inside)) {
+      throw new Error(`Page outside the documentation set: ${rel}`);
+    }
+    return readFile(file, 'utf8');
+  };
+}
+
 const bundledSource: DocSource = {
   kind: 'bundled',
   label: 'bundled with @ovhcloud/ods-mcp',
-  read: (rel) => readFile(join(BUNDLED_ROOT, 'llms', rel), 'utf8'),
+  read: localReader(join(BUNDLED_ROOT, 'llms')),
 };
 
 function resolveDocSource(): DocSource {
@@ -99,7 +120,7 @@ function resolveDocSource(): DocSource {
     return {
       kind: 'project',
       label: 'project node_modules (@ovhcloud/ods-react/dist/llms)',
-      read: (rel) => readFile(join(project, rel), 'utf8'),
+      read: localReader(project),
     };
   }
 
@@ -142,6 +163,9 @@ async function readDoc(url: string): Promise<string> {
   // Loading the index settles the active source (pinned or its bundled fallback).
   await getIndex();
   const rel = url.replace(/^\.\//, '');
+  if (!isPagePath(rel)) {
+    throw new Error(`Page outside the documentation set: ${rel}`);
+  }
   let doc = docCache.get(rel);
   if (doc === undefined) {
     doc = activeSource.read(rel);

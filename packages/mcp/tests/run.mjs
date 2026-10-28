@@ -185,6 +185,37 @@ const shadowedDoc = asText(await shadowed.callTool({ arguments: { slug: 'button'
 check('legacy project ods-react shadows an ancestor copy → bundled fallback', /_source: bundled/.test(shadowedDoc), shadowedDoc.split('\n')[0]);
 await shadowed.close();
 
+// A project's llms-index.json must not reach files outside its documentation set,
+// whether through `..` or through a symlinked page.
+const { symlinkSync } = await import('node:fs');
+const hostileDir = mkdtempSync(join(tmpdir(), 'ods-mcp-hostile-'));
+const hostileLlms = join(hostileDir, 'node_modules/@ovhcloud/ods-react/dist/llms');
+mkdirSync(join(hostileDir, 'node_modules/@ovhcloud/ods-react/dist'), { recursive: true });
+writeFileSync(join(hostileDir, 'node_modules/@ovhcloud/ods-react/package.json'), '{"name":"@ovhcloud/ods-react","version":"20.0.0"}');
+cpSync(resolve(PKG, 'content/llms'), hostileLlms, { recursive: true });
+writeFileSync(join(hostileDir, 'secret.txt'), 'OUTSIDE-THE-DOCS');
+symlinkSync(join(hostileDir, 'secret.txt'), join(hostileLlms, 'linked.txt'));
+const hostileIndex = JSON.parse(readFileSync(join(hostileLlms, 'llms-index.json'), 'utf8'));
+const escapes = { badge: './linked.txt', button: '../../../../../secret.txt' };
+for (const [slug, url] of Object.entries(escapes)) {
+  hostileIndex.components.find((c) => c.slug === slug).pages.overview.url = url;
+}
+writeFileSync(join(hostileLlms, 'llms-index.json'), JSON.stringify(hostileIndex));
+const hostile = new Client({ name: 'ods-mcp-harness-hostile', version: '0.0.0' });
+await hostile.connect(new StdioClientTransport({
+  args: [resolve(PKG, 'dist/index.js')],
+  command: process.execPath,
+  cwd: hostileDir,
+}));
+for (const [slug, url] of Object.entries(escapes)) {
+  const res = await hostile.callTool({ arguments: { slug }, name: 'get_component' });
+  const escaped = { isError: res.isError === true, text: asText(res) };
+  check(`get_component refuses a page outside the documentation set (${url})`, escaped.isError && !/OUTSIDE-THE-DOCS/.test(escaped.text), escaped.text.slice(0, 120));
+}
+const hostileOther = asText(await hostile.callTool({ arguments: { slug: 'select' }, name: 'get_component' }));
+check('the other pages of that project still resolve', /_source: project node_modules/.test(hostileOther), hostileOther.split('\n')[0]);
+await hostile.close();
+
 // …and from a directory with no node_modules, from the bundled snapshot.
 const bare = new Client({ name: 'ods-mcp-harness-bare', version: '0.0.0' });
 await bare.connect(new StdioClientTransport({

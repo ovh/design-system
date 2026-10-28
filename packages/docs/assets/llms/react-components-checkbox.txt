@@ -29,10 +29,10 @@ _**Checkbox** are used for a list of options where the user may make a choice by
 
 - Default
 - Disabled
-- In Form Field
-- Group
 - Invalid
 - States
+- Group
+- In Form Field
 
 ## Documentation pages
 

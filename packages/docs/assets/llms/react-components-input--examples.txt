@@ -10,12 +10,67 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
 
 # Input
 
+## Default
+
+```tsx
+<Input />
+```
+
+## Disabled
+
+```tsx
+<Input disabled />
+```
+
+## Read Only
+
+```tsx
+<Input
+  defaultValue="Readonly"
+  readOnly />
+```
+
 ## Clearable
 
 ```tsx
 <Input
   clearable
   defaultValue="Clearable" />
+```
+
+## Loading
+
+```tsx
+<Input loading />
+```
+
+## Masked
+
+```tsx
+<Input maskOption={{ enable: true }} />
+```
+
+## Types
+
+```tsx
+<>
+  <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+  <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+  <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+  <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+  <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+  <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+  <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
+</>
+```
+
+## Floating Number
+
+```tsx
+<Input
+  defaultValue="9.99"
+  step="any"
+  type={ INPUT_TYPE.number } />
 ```
 
 ## Datalist
@@ -32,6 +87,18 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
     <option value="Vanilla"></option>
   </datalist>
 </>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Name:
+  </FormFieldLabel>
+
+  <Input />
+</FormField>
 ```
 
 ## Content Adornments
@@ -195,73 +262,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input-
       </form>
     );
   }
-```
-
-## Default
-
-```tsx
-<Input />
-```
-
-## Disabled
-
-```tsx
-<Input disabled />
-```
-
-## Floating Number
-
-```tsx
-<Input
-  defaultValue="9.99"
-  step="any"
-  type={ INPUT_TYPE.number } />
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Name:
-  </FormFieldLabel>
-
-  <Input />
-</FormField>
-```
-
-## Loading
-
-```tsx
-<Input loading />
-```
-
-## Masked
-
-```tsx
-<Input maskOption={{ enable: true }} />
-```
-
-## Read Only
-
-```tsx
-<Input
-  defaultValue="Readonly"
-  readOnly />
-```
-
-## Types
-
-```tsx
-<>
-  <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
-  <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
-  <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
-  <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
-  <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
-  <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
-  <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
-</>
 ```
 
 ## Accessibility Form Field

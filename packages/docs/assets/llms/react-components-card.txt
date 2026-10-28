@@ -20,8 +20,8 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 ## Examples
 
-- Status
 - Default
+- Status
 - Accessibility Grouping
 - Accessibility Alternative Grouping
 

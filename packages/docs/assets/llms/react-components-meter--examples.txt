@@ -10,6 +10,61 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter-
 
 # Meter
 
+## Default
+
+```tsx
+<Meter />
+```
+
+## Thresholds
+
+```tsx
+<>
+  <p>Value under low threshold:</p>
+  <Meter
+    low={ 40 }
+    value={ 35 } />
+
+  <p>Value between both thresholds:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    value={ 60 } />
+
+  <p>Value above high threshold:</p>
+  <Meter
+    high={ 80 }
+    value={ 90 } />
+</>
+```
+
+## Optimum
+
+```tsx
+<>
+  <p>Low optimum and low value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 20 } />
+
+  <p>Low optimum and high value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 60 } />
+
+  <p>Low optimum and very high value:</p>
+  <Meter
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 90 } />
+</>
+```
+
 ## Accessibility Aria Label
 
 ```tsx
@@ -44,59 +99,4 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter-
   aria-valuetext="35 files uploaded"
   low={ 40 }
   value={ 35 } />
-```
-
-## Default
-
-```tsx
-<Meter />
-```
-
-## Optimum
-
-```tsx
-<>
-  <p>Low optimum and low value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 20 } />
-
-  <p>Low optimum and high value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 60 } />
-
-  <p>Low optimum and very high value:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    optimum={ 30 }
-    value={ 90 } />
-</>
-```
-
-## Thresholds
-
-```tsx
-<>
-  <p>Value under low threshold:</p>
-  <Meter
-    low={ 40 }
-    value={ 35 } />
-
-  <p>Value between both thresholds:</p>
-  <Meter
-    high={ 80 }
-    low={ 40 }
-    value={ 60 } />
-
-  <p>Value above high threshold:</p>
-  <Meter
-    high={ 80 }
-    value={ 90 } />
-</>
 ```

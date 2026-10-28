@@ -10,22 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepi
 
 # Timepicker
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Starting time:
-  </FormFieldLabel>
-
-  <Timepicker withSeconds>
-    <TimepickerControl />
-
-    <TimepickerTimezoneList />
-  </Timepicker>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -50,20 +34,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepi
 </>
 ```
 
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Timepicker:
-  </FormFieldLabel>
-
-  <Timepicker>
-    <TimepickerControl />
-  </Timepicker>
-</FormField>
-```
-
 ## Readonly
 
 ```tsx
@@ -73,6 +43,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepi
   </Timepicker>
 
   <Timepicker readOnly>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+## With Seconds
+
+```tsx
+<>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+  </Timepicker>
+
+  <Timepicker withSeconds>
     <TimepickerControl />
 
     <TimepickerTimezoneList />
@@ -102,18 +88,32 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepi
 </>
 ```
 
-## With Seconds
+## In Form Field
 
 ```tsx
-<>
-  <Timepicker withSeconds>
+<FormField>
+  <FormFieldLabel>
+    Timepicker:
+  </FormFieldLabel>
+
+  <Timepicker>
     <TimepickerControl />
   </Timepicker>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Starting time:
+  </FormFieldLabel>
 
   <Timepicker withSeconds>
     <TimepickerControl />
 
     <TimepickerTimezoneList />
   </Timepicker>
-</>
+</FormField>
 ```

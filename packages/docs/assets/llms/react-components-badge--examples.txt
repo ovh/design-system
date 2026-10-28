@@ -10,6 +10,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
 
 # Badge
 
+## Default
+
+```tsx
+<Badge>
+  My badge
+</Badge>
+```
+
 ## Status
 
 ```tsx
@@ -53,14 +61,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge-
     <Badge emphasis={ BADGE_EMPHASIS.low } status={ BADGE_STATUS.warning }>Warning</Badge>
   </div>
 </>
-```
-
-## Default
-
-```tsx
-<Badge>
-  My badge
-</Badge>
 ```
 
 ## Size

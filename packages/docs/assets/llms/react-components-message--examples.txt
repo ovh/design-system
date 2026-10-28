@@ -10,6 +10,114 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
 
 # Message
 
+## Default
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Status
+
+```tsx
+<>
+  <Message status={ MESSAGE_STATUS.accent }>
+    <MessageIcon name={ ICON_NAME.lightbulb } />
+
+    <MessageBody>Accent message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.critical }>
+    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+    <MessageBody>Critical message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.information }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>Information message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.neutral }>
+    <MessageIcon name={ ICON_NAME.email } />
+
+    <MessageBody>Neutral message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.success }>
+    <MessageIcon name={ ICON_NAME.circleCheck } />
+
+    <MessageBody>Success message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.warning }>
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+    <MessageBody>Warning message</MessageBody>
+  </Message>
+</>
+```
+
+## Multiline
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+  </MessageBody>
+</Message>
+```
+
+## Non Dismissible
+
+```tsx
+<Message dismissible={ false }>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Emphasis
+
+```tsx
+<>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      High emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
+    </MessageBody>
+  </Message>
+</>
+```
+
 ## Accessibility Grouping
 
 ```tsx
@@ -116,112 +224,4 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
       </>
     );
   }
-```
-
-## Status
-
-```tsx
-<>
-  <Message status={ MESSAGE_STATUS.accent }>
-    <MessageIcon name={ ICON_NAME.lightbulb } />
-
-    <MessageBody>Accent message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.critical }>
-    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-
-    <MessageBody>Critical message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.information }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>Information message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.neutral }>
-    <MessageIcon name={ ICON_NAME.email } />
-
-    <MessageBody>Neutral message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.success }>
-    <MessageIcon name={ ICON_NAME.circleCheck } />
-
-    <MessageBody>Success message</MessageBody>
-  </Message>
-
-  <Message status={ MESSAGE_STATUS.warning }>
-    <MessageIcon name={ ICON_NAME.triangleExclamation } />
-
-    <MessageBody>Warning message</MessageBody>
-  </Message>
-</>
-```
-
-## Default
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Multiline
-
-```tsx
-<Message>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
-  </MessageBody>
-</Message>
-```
-
-## Non Dismissible
-
-```tsx
-<Message dismissible={ false }>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
-
-  <MessageBody>
-    Default message
-  </MessageBody>
-</Message>
-```
-
-## Emphasis
-
-```tsx
-<>
-  <Message emphasis={ MESSAGE_EMPHASIS.high }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      High emphasis Message
-    </MessageBody>
-  </Message>
-
-  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Medium emphasis Message
-    </MessageBody>
-  </Message>
-
-  <Message emphasis={ MESSAGE_EMPHASIS.low }>
-    <MessageIcon name={ ICON_NAME.circleInfo } />
-
-    <MessageBody>
-      Low emphasis Message
-    </MessageBody>
-  </Message>
-</>
 ```

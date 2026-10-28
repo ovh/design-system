@@ -33,15 +33,15 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 ## Examples
 
-- Accessibility Label
-- Clearable
-- Country List
 - Default
 - Disabled
-- In Form Field
+- Readonly
+- Clearable
 - Loading
 - Locale
-- Readonly
+- Country List
+- In Form Field
+- Accessibility Label
 - Accessibility Form Field
 - Accessibility I18n
 

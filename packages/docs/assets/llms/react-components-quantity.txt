@@ -30,14 +30,14 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
 
 ## Examples
 
-- Accessibility Label
 - Default
 - Disabled
-- In Form Field
+- Readonly
 - Max
 - Min
-- Readonly
 - Step
+- In Form Field
+- Accessibility Label
 
 ## Documentation pages
 

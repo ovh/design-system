@@ -44,14 +44,14 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 
 ## Examples
 
-- Date Formatter
 - Default
 - Disabled
-- In Form Field
-- Max View
-- Min Max
-- Min View
 - Readonly
+- Date Formatter
+- Min Max
+- Max View
+- Min View
+- In Form Field
 - Accessibility Form Field
 - Accessibility Date Format
 - Accessibility I18n

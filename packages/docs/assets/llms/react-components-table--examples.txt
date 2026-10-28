@@ -10,47 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
 
 # Table
 
-## Custom Caption
-
-```tsx
-<Table>
-  <caption>
-    <Text preset={ TEXT_PRESET.caption }>
-      Front-end web developer course 2021
-    </Text>
-  </caption>
-  <thead>
-  <tr>
-    <th scope="col">Person</th>
-    <th scope="col">Most interest in</th>
-    <th scope="col">Age</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <th scope="row">Chris</th>
-    <td>HTML tables</td>
-    <td>22</td>
-  </tr>
-  <tr>
-    <th scope="row">Dennis</th>
-    <td>Web accessibility</td>
-    <td>45</td>
-  </tr>
-  <tr>
-    <th scope="row">Sarah</th>
-    <td>JavaScript frameworks</td>
-    <td>29</td>
-  </tr>
-  <tr>
-    <th scope="row">Karen</th>
-    <td>Web performance</td>
-    <td>36</td>
-  </tr>
-  </tbody>
-</Table>
-```
-
 ## Default
 
 ```tsx
@@ -275,4 +234,45 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table-
     </tbody>
   </Table>
 </>
+```
+
+## Custom Caption
+
+```tsx
+<Table>
+  <caption>
+    <Text preset={ TEXT_PRESET.caption }>
+      Front-end web developer course 2021
+    </Text>
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Most interest in</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>HTML tables</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <th scope="row">Dennis</th>
+    <td>Web accessibility</td>
+    <td>45</td>
+  </tr>
+  <tr>
+    <th scope="row">Sarah</th>
+    <td>JavaScript frameworks</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <th scope="row">Karen</th>
+    <td>Web performance</td>
+    <td>36</td>
+  </tr>
+  </tbody>
+</Table>
 ```

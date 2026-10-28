@@ -10,34 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
 
 # Textarea
 
-## Accessibility Described By
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-
-  <FormFieldHelper>
-    Enter a brief description
-  </FormFieldHelper>
-</FormField>
-```
-
-## Accessibility Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Description:
-  </FormFieldLabel>
-
-  <Textarea />
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -48,6 +20,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
 
 ```tsx
 <Textarea disabled />
+```
+
+## Read Only
+
+```tsx
+<Textarea
+  defaultValue="Readonly"
+  readOnly />
+```
+
+## Resizable
+
+```tsx
+<Textarea style={{ resize: 'both' }} />
 ```
 
 ## In Form Field
@@ -89,16 +75,30 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
   }
 ```
 
-## Read Only
+## Accessibility Described By
 
 ```tsx
-<Textarea
-  defaultValue="Readonly"
-  readOnly />
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+
+  <FormFieldHelper>
+    Enter a brief description
+  </FormFieldHelper>
+</FormField>
 ```
 
-## Resizable
+## Accessibility Form Field
 
 ```tsx
-<Textarea style={{ resize: 'both' }} />
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea />
+</FormField>
 ```

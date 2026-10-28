@@ -10,24 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quanti
 
 # Quantity
 
-## Accessibility Label
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Number of CPUs:
-  </FormFieldLabel>
-
-  <Quantity
-    max={ 10 }
-    min={ 0 }>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
-```
-
 ## Default
 
 ```tsx
@@ -48,20 +30,14 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quanti
 </Quantity>
 ```
 
-## In Form Field
+## Readonly
 
 ```tsx
-<FormField>
-  <FormFieldLabel>
-    Set a quantity:
-  </FormFieldLabel>
-
-  <Quantity>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ## Max
@@ -84,16 +60,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quanti
 </Quantity>
 ```
 
-## Readonly
-
-```tsx
-<Quantity readOnly>
-  <QuantityControl>
-    <QuantityInput />
-  </QuantityControl>
-</Quantity>
-```
-
 ## Step
 
 ```tsx
@@ -102,4 +68,38 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quanti
     <QuantityInput />
   </QuantityControl>
 </Quantity>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:
+  </FormFieldLabel>
+
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Number of CPUs:
+  </FormFieldLabel>
+
+  <Quantity
+    max={ 10 }
+    min={ 0 }>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```

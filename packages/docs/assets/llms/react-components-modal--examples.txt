@@ -10,6 +10,139 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
 
 # Modal
 
+## Default
+
+```tsx
+<Modal>
+  <ModalTrigger>
+    Trigger Modal
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>My modal header</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function onOpenChange({ open }: ModalOpenChangeDetail) {
+      setIsOpen(open);
+    }
+
+    function openModal() {
+      setIsOpen(true);
+    }
+
+    return (
+      <>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
+          Trigger Modal
+        </Button>
+
+        <Modal
+          onOpenChange={ onOpenChange }
+          open={ isOpen }>
+          <ModalContent>
+            <ModalHeader>Controlled modal</ModalHeader>
+            <ModalBody>
+              Content
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+```
+
+## Non Dismissible
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent dismissible={ false }>
+    <ModalHeader>Non dismissible</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Non Escapable
+
+```tsx
+<Modal
+  closeOnEscape={ false }
+  closeOnInteractOutside={ false }>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Non escapable</ModalHeader>
+    <ModalBody>
+      My modal content
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Overlay Elements
+
+```tsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Trigger Modal
+    </Button>
+  </ModalTrigger>
+
+  <ModalContent>
+    <ModalHeader>Overlay elements</ModalHeader>
+    <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+      <Select items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+        <SelectControl />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name={ ICON_NAME.circleQuestion }
+            style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent createPortal={ false }>
+          This is the tooltip content
+        </TooltipContent>
+      </Tooltip>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
 ## Accessibility Actions
 
 ```tsx
@@ -101,139 +234,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal-
       <p id="modal-content">
         Are you sure you want to delete this item? This action cannot be undone.
       </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Controlled
-
-```tsx
-{
-    const [isOpen, setIsOpen] = useState(false);
-
-    function onOpenChange({ open }: ModalOpenChangeDetail) {
-      setIsOpen(open);
-    }
-
-    function openModal() {
-      setIsOpen(true);
-    }
-
-    return (
-      <>
-        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ openModal }>
-          Trigger Modal
-        </Button>
-
-        <Modal
-          onOpenChange={ onOpenChange }
-          open={ isOpen }>
-          <ModalContent>
-            <ModalHeader>Controlled modal</ModalHeader>
-            <ModalBody>
-              Content
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </>
-    );
-  }
-```
-
-## Default
-
-```tsx
-<Modal>
-  <ModalTrigger>
-    Trigger Modal
-  </ModalTrigger>
-  <ModalContent>
-    <ModalHeader>My modal header</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Non Dismissible
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent dismissible={ false }>
-    <ModalHeader>Non dismissible</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Non Escapable
-
-```tsx
-<Modal
-  closeOnEscape={ false }
-  closeOnInteractOutside={ false }>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent>
-    <ModalHeader>Non escapable</ModalHeader>
-    <ModalBody>
-      My modal content
-    </ModalBody>
-  </ModalContent>
-</Modal>
-```
-
-## Overlay Elements
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button emphasis={ BUTTON_EMPHASIS.high }>
-      Trigger Modal
-    </Button>
-  </ModalTrigger>
-
-  <ModalContent>
-    <ModalHeader>Overlay elements</ModalHeader>
-    <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
-      <Select items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}>
-        <SelectControl />
-
-        <SelectContent createPortal={ false } />
-      </Select>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon
-            name={ ICON_NAME.circleQuestion }
-            style={{ fontSize: '24px' }} />
-        </TooltipTrigger>
-
-        <TooltipContent createPortal={ false }>
-          This is the tooltip content
-        </TooltipContent>
-      </Tooltip>
     </ModalBody>
   </ModalContent>
 </Modal>

@@ -22,9 +22,9 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 ## Examples
 
+- Default
 - Status
 - Emphasis
-- Default
 - Size
 - Accessibility Aria Label
 - Accessibility With Tooltip

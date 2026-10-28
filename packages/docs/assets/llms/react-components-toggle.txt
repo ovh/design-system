@@ -27,10 +27,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 
 - Default
 - Disabled
-- In Form Field
 - Invalid
 - With Label
 - With Labels
+- In Form Field
 - Accessibility Label
 - Accessibility Aria Label
 

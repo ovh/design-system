@@ -20,13 +20,13 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
 
 ## Examples
 
-- Accessibility Described By
-- Accessibility Form Field
 - Default
 - Disabled
-- In Form Field
 - Read Only
 - Resizable
+- In Form Field
+- Accessibility Described By
+- Accessibility Form Field
 
 ## Documentation pages
 

@@ -25,11 +25,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 ## Examples
 
-- Backdrop
-- Controlled
 - Default
-- Overlay Elements
+- Backdrop
 - Position
+- Overlay Elements
+- Controlled
 - Accessibility Aria Labelled By
 - Accessibility Aria Label
 

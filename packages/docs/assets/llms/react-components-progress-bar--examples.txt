@@ -16,12 +16,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progre
 <ProgressBar />
 ```
 
-## Indeterminate
-
-```tsx
-<ProgressBar value="indeterminate" />
-```
-
 ## Max
 
 ```tsx
@@ -34,6 +28,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progre
 
 ```tsx
 <ProgressBar value="50" />
+```
+
+## Indeterminate
+
+```tsx
+<ProgressBar value="indeterminate" />
 ```
 
 ## Accessibility Label

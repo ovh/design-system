@@ -10,83 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
 
 # Toaster
 
-## Statuses
-
-```tsx
-<>
-  <Toaster id="statuses" />
-
-  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.critical }
-      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
-      Critical toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
-      Information toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.neutral }
-      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
-      Neutral toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      status={ BUTTON_STATUS.brand }
-      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
-      Accent toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
-      Success toast
-    </Button>
-
-    <Button
-      emphasis={ BUTTON_EMPHASIS.high }
-      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
-      Warning toast
-    </Button>
-  </div>
-</>
-```
-
-## Custom Content
-
-```tsx
-<>
-  <Toaster id="custom-content" />
-
-  <Button
-    emphasis={ BUTTON_EMPHASIS.high }
-    onClick={ () => toast(
-      <div>
-        <Text preset={ TEXT_PRESET.label }>
-          Toast title
-        </Text>
-
-        <Text>
-          Toast text helps users providing feedback or information.
-        </Text>
-
-        <Link>
-          Some Link
-        </Link>
-      </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
-    )}>
-    Trigger toast
-  </Button>
-</>
-```
-
 ## Default
 
 ```tsx
@@ -194,6 +117,83 @@ onClick={ () => toast('Notification message with icon', {
 
     <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
       Bottom End
+    </Button>
+  </div>
+</>
+```
+
+## Custom Content
+
+```tsx
+<>
+  <Toaster id="custom-content" />
+
+  <Button
+    emphasis={ BUTTON_EMPHASIS.high }
+    onClick={ () => toast(
+      <div>
+        <Text preset={ TEXT_PRESET.label }>
+          Toast title
+        </Text>
+
+        <Text>
+          Toast text helps users providing feedback or information.
+        </Text>
+
+        <Link>
+          Some Link
+        </Link>
+      </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
+    )}>
+    Trigger toast
+  </Button>
+</>
+```
+
+## Statuses
+
+```tsx
+<>
+  <Toaster id="statuses" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+      Critical toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+      Information toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+      Neutral toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+      Success toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+      Warning toast
     </Button>
   </div>
 </>

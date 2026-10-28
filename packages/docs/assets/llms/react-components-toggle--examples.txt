@@ -26,6 +26,34 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 </Toggle>
 ```
 
+## Invalid
+
+```tsx
+<Toggle invalid>
+  <ToggleControl />
+</Toggle>
+```
+
+## With Label
+
+```tsx
+<Toggle>
+  <ToggleControl />
+
+  <ToggleLabel>
+    Enable dark mode
+  </ToggleLabel>
+</Toggle>
+```
+
+## With Labels
+
+```tsx
+<Toggle withLabels>
+  <ToggleControl />
+</Toggle>
+```
+
 ## In Form Field
 
 ```tsx
@@ -54,34 +82,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
     </Toggle>
   </FormField>
 </>
-```
-
-## Invalid
-
-```tsx
-<Toggle invalid>
-  <ToggleControl />
-</Toggle>
-```
-
-## With Label
-
-```tsx
-<Toggle>
-  <ToggleControl />
-
-  <ToggleLabel>
-    Enable dark mode
-  </ToggleLabel>
-</Toggle>
-```
-
-## With Labels
-
-```tsx
-<Toggle withLabels>
-  <ToggleControl />
-</Toggle>
 ```
 
 ## Accessibility Label

@@ -36,16 +36,16 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 
 ## Examples
 
-- Accept
-- Accessibility File Button
-- Compact
-- Custom Labels
 - Default
+- Compact
 - Disabled
+- Custom Labels
+- Accept
 - Max File
 - Max Size
 - Upload
 - In Form Field
+- Accessibility File Button
 - Accessibility Form Field
 
 ## Documentation pages

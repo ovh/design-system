@@ -15,11 +15,11 @@ _The **Text** component is used to display and style text content within an appl
 ## Examples
 
 - Default
-- Disabled
-- Fig Caption
 - Preset
-- Reuse Style
+- Disabled
 - Table Caption
+- Fig Caption
+- Reuse Style
 
 ## Documentation pages
 

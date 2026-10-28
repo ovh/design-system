@@ -22,15 +22,15 @@ _A **Form Field** component is used to wrap several form components with logic, 
 ## Examples
 
 - Default
+- Label
+- Label Sub Label
+- Helper
 - Error
 - Guide Form Critical
 - Guide Form Error
 - Guide Form Grouped Field
 - Guide Form Mandatory
 - Guide Form Simple
-- Helper
-- Label
-- Label Sub Label
 - Accessibility Label
 
 ## Documentation pages

@@ -10,6 +10,39 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdo
 
 # Markdown
 
+## Default
+
+```tsx
+<Markdown content={`# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+> Blockquotes
+
+\`Inline code\`
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+
+| Column 1 | Column 2 |
+| --- | --- |
+| Value 1 | Value 2 |
+`} />
+```
+
+## Custom Component
+
+```tsx
+<Markdown
+  component={{
+    a: ({ children, href }) => <Link href={ href } target="_blank">{ children }</Link>,
+  }}
+  content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
+```
+
 ## Code Highlighter
 
 ```tsx
@@ -32,38 +65,5 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdo
 // print something in the console
 console.log('Hello World!');
 \`\`\`
-`} />
-```
-
-## Custom Component
-
-```tsx
-<Markdown
-  component={{
-    a: ({ children, href }) => <Link href={ href } target="_blank">{ children }</Link>,
-  }}
-  content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
-```
-
-## Default
-
-```tsx
-<Markdown content={`# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
-> Blockquotes
-
-\`Inline code\`
-\`\`\`
-// print something in the console
-console.log('Hello World!');
-\`\`\`
-
-| Column 1 | Column 2 |
-| --- | --- |
-| Value 1 | Value 2 |
 `} />
 ```

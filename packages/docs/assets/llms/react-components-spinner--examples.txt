@@ -10,6 +10,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
 
 # Spinner
 
+## Default
+
+```tsx
+<Spinner />
+```
+
 ## Color
 
 ```tsx
@@ -17,12 +23,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
   <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
   <Spinner />
 </>
-```
-
-## Default
-
-```tsx
-<Spinner />
 ```
 
 ## Size

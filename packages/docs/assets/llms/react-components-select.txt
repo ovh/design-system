@@ -35,14 +35,14 @@ _**Select** component is used to select one or more items from a list of values_
 
 ## Examples
 
-- Accessibility Form Field
-- Custom Renderer
 - Default
-- Disabled
 - Group
-- In Form Field
 - Multiple
+- Disabled
 - Readonly
+- Custom Renderer
+- In Form Field
+- Accessibility Form Field
 
 ## Documentation pages
 

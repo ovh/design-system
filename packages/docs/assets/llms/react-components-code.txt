@@ -27,10 +27,10 @@ _**Code** component highlights strings or small blocks of **Code** so it makes t
 ## Examples
 
 - Default
+- Multiline
 - Can Copy
 - Custom Labels
 - Highlighter
-- Multiline
 
 ## Documentation pages
 

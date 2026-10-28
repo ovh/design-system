@@ -29,15 +29,15 @@ _A **Modal** component is used to overlay with important content the main view o
 
 ## Examples
 
+- Default
+- Controlled
+- Non Dismissible
+- Non Escapable
+- Overlay Elements
 - Accessibility Actions
 - Accessibility Aria Labelled By
 - Accessibility Aria Label
 - Accessibility Bad Practices Aria
-- Controlled
-- Default
-- Non Dismissible
-- Non Escapable
-- Overlay Elements
 
 ## Documentation pages
 

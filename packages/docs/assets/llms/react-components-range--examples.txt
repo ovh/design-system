@@ -10,38 +10,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
 
 # Range
 
-## Controlled
-
-```tsx
-{
-    const [draggingValue, setDraggingValue] = useState<number>();
-    const [value, setValue] = useState<number>();
-
-    function onDragging(detail: RangeValueChangeDetail) {
-      setDraggingValue(detail.value[0]);
-    }
-
-    function onValueChange(detail: RangeValueChangeDetail) {
-      setValue(detail.value[0]);
-    }
-
-    return (
-      <>
-        <p>
-          <span>Final value: { value }</span>
-          <br />
-          <span>Dragged value: { draggingValue }</span>
-        </p>
-
-        <Range
-          onDragging={ onDragging }
-          onValueChange={ onValueChange }
-          value={ draggingValue ? [draggingValue] : undefined } />
-      </>
-    );
-  }
-```
-
 ## Default
 
 ```tsx
@@ -64,18 +32,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
     defaultValue={ [50, 75] }
     disabled />
 </>
-```
-
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Range:
-  </FormFieldLabel>
-
-  <Range />
-</FormField>
 ```
 
 ## Max Min
@@ -161,6 +117,50 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range-
       { label: 'Excellent', value: 5 },
     ]} />
 </>
+```
+
+## Controlled
+
+```tsx
+{
+    const [draggingValue, setDraggingValue] = useState<number>();
+    const [value, setValue] = useState<number>();
+
+    function onDragging(detail: RangeValueChangeDetail) {
+      setDraggingValue(detail.value[0]);
+    }
+
+    function onValueChange(detail: RangeValueChangeDetail) {
+      setValue(detail.value[0]);
+    }
+
+    return (
+      <>
+        <p>
+          <span>Final value: { value }</span>
+          <br />
+          <span>Dragged value: { draggingValue }</span>
+        </p>
+
+        <Range
+          onDragging={ onDragging }
+          onValueChange={ onValueChange }
+          value={ draggingValue ? [draggingValue] : undefined } />
+      </>
+    );
+  }
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Range:
+  </FormFieldLabel>
+
+  <Range />
+</FormField>
 ```
 
 ## Accessibility Form Field

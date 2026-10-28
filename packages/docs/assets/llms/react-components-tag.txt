@@ -22,11 +22,11 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 
 ## Examples
 
-- Status
-- Custom Icon
 - Default
+- Status
 - Disabled
 - Size
+- Custom Icon
 - Accessibility List
 - Accessibility Aria Roles
 - Accessibility Aria Label

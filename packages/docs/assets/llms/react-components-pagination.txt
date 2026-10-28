@@ -33,18 +33,18 @@ _A **Pagination** component splits a long list into numbered pages and lets user
 
 ## Examples
 
-- Accessibility Label
-- Controlled
 - Default
+- Controlled
 - Disabled
 - Items Per Page
 - Links
 - With React Router
 - Links With All Controls
 - Links Vs Buttons
-- Page Size Selection
 - Sibling Count
 - With Tooltip Labels
+- Page Size Selection
+- Accessibility Label
 
 ## Documentation pages
 

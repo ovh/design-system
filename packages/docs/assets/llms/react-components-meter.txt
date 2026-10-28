@@ -23,12 +23,12 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.
 
 ## Examples
 
+- Default
+- Thresholds
+- Optimum
 - Accessibility Aria Label
 - Accessibility Aria Labelledby
 - Accessibility Aria Valuetext
-- Default
-- Optimum
-- Thresholds
 
 ## Documentation pages
 

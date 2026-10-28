@@ -20,10 +20,10 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 ## Examples
 
-- Accessibility Informative
-- Decorative
 - Default
+- Decorative
 - Informative
+- Accessibility Informative
 - Accessibility Bad Practice Decorative
 - Accessibility Bad Practice Rating
 - Accessibility Rating

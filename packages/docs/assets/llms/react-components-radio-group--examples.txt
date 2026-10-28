@@ -84,36 +84,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
 </RadioGroup>
 ```
 
-## In Form Field
-
-```tsx
-<FormField>
-  <FormFieldLabel>
-    Pick a language:
-  </FormFieldLabel>
-
-  <RadioGroup>
-    <Radio value="html">
-      <RadioControl />
-
-      <RadioLabel>HTML</RadioLabel>
-    </Radio>
-
-    <Radio value="css">
-      <RadioControl />
-
-      <RadioLabel>CSS</RadioLabel>
-    </Radio>
-
-    <Radio value="js">
-      <RadioControl />
-
-      <RadioLabel>JavaScript</RadioLabel>
-    </Radio>
-  </RadioGroup>
-</FormField>
-```
-
 ## Invalid
 
 ```tsx
@@ -164,4 +134,34 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
     <RadioLabel>JavaScript</RadioLabel>
   </Radio>
 </RadioGroup>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Pick a language:
+  </FormFieldLabel>
+
+  <RadioGroup>
+    <Radio value="html">
+      <RadioControl />
+
+      <RadioLabel>HTML</RadioLabel>
+    </Radio>
+
+    <Radio value="css">
+      <RadioControl />
+
+      <RadioLabel>CSS</RadioLabel>
+    </Radio>
+
+    <Radio value="js">
+      <RadioControl />
+
+      <RadioLabel>JavaScript</RadioLabel>
+    </Radio>
+  </RadioGroup>
+</FormField>
 ```

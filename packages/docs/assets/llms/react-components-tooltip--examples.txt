@@ -10,6 +10,36 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
 
 # Tooltip
 
+## Default
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
+## Custom Trigger
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      name={ ICON_NAME.circleQuestion }
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    This is the tooltip content
+  </TooltipContent>
+</Tooltip>
+```
+
 ## Controlled
 
 ```tsx
@@ -40,36 +70,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
       </>
     );
   }
-```
-
-## Custom Trigger
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      name={ ICON_NAME.circleQuestion }
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
-```
-
-## Default
-
-```tsx
-<Tooltip>
-  <TooltipTrigger>
-    Show tooltip
-  </TooltipTrigger>
-
-  <TooltipContent>
-    This is the tooltip content
-  </TooltipContent>
-</Tooltip>
 ```
 
 ## Grid
@@ -152,24 +152,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
 </>
 ```
 
-## Accessibility Tooltip
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      aria-label="Open tooltip"
-      name={ ICON_NAME.circleInfo }
-      role="img"
-      style={{ fontSize: '24px' }} />
-  </TooltipTrigger>
-
-  <TooltipContent>
-    Some additional context.
-  </TooltipContent>
-</Tooltip>
-```
-
 ## ZIndex
 
 ```tsx
@@ -225,4 +207,22 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
     </TooltipContent>
   </Tooltip>
 </>
+```
+
+## Accessibility Tooltip
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name={ ICON_NAME.circleInfo }
+      role="img"
+      style={{ fontSize: '24px' }} />
+  </TooltipTrigger>
+
+  <TooltipContent>
+    Some additional context.
+  </TooltipContent>
+</Tooltip>
 ```

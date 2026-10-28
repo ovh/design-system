@@ -18,6 +18,20 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--
 </Code>
 ```
 
+## Multiline
+
+```tsx
+<Code>
+    { `function isTargetInElement(event, element) {
+if (!element) {
+  return false;
+}
+
+  return element.contains(event.target) || event.composedPath().includes(element);
+}` }
+  </Code>
+```
+
 ## Can Copy
 
 ```tsx
@@ -47,18 +61,4 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--
   }}>
   console.log('Hello World');
 </Code>
-```
-
-## Multiline
-
-```tsx
-<Code>
-    { `function isTargetInElement(event, element) {
-if (!element) {
-  return false;
-}
-
-  return element.contains(event.target) || event.composedPath().includes(element);
-}` }
-  </Code>
 ```

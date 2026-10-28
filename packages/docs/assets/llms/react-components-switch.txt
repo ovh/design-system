@@ -24,12 +24,12 @@ _A **Switch** allows users to quickly and easily switch between several states, 
 
 ## Examples
 
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-- Checked
 - Default
+- Checked
 - Disabled
 - Sizes
+- Accessibility Aria Label
+- Accessibility Aria Labelledby
 
 ## Documentation pages
 

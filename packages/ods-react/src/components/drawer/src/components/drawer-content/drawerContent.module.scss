@@ -24,6 +24,12 @@
       pointer-events: none;
     }
 
+    // The drawer mixin sets `display: block`, which would win over the `hidden` attribute that Ark
+    // sets once the close animation has ended, and leave the closed content reachable with Tab.
+    &[hidden] {
+      display: none;
+    }
+
     &--bottom {
       @include drawer.ods-drawer-position('bottom');
 

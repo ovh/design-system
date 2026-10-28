@@ -39,6 +39,6 @@ This component extends all the native `<div>` attributes.
 | `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-card-border-color-primary` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-card-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |

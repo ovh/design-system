@@ -4,7 +4,7 @@ slug: message
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2077
+tokens: 2076
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
 ---
 
@@ -68,8 +68,8 @@ _No specific property._
 | `--ods-message-text-color-information-high` | `var(--ods-semantic-color-content-on-information)` |
 | `--ods-message-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-minimal)` |
 | `--ods-message-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral)` |
-| `--ods-message-background-color-primary-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
-| `--ods-message-text-color-primary-high` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-message-background-color-accent-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-message-text-color-accent-high` | `var(--ods-semantic-color-content-on-accent)` |
 | `--ods-message-background-color-success-high` | `var(--ods-semantic-color-surface-success-subtle)` |
 | `--ods-message-text-color-success-high` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-message-background-color-warning-high` | `var(--ods-semantic-color-surface-warning-subtle)` |
@@ -83,9 +83,9 @@ _No specific property._
 | `--ods-message-background-color-neutral-medium` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-message-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
-| `--ods-message-background-color-primary-medium` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-message-border-color-primary-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-message-text-color-primary-medium` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-background-color-accent-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-message-border-color-accent-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-message-text-color-accent-medium` | `var(--ods-semantic-color-content-accent)` |
 | `--ods-message-background-color-success-medium` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-color-success-medium` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-message-text-color-success-medium` | `var(--ods-semantic-color-content-success)` |
@@ -95,6 +95,6 @@ _No specific property._
 | `--ods-message-text-color-critical-low` | `var(--ods-semantic-color-content-critical)` |
 | `--ods-message-text-color-information-low` | `var(--ods-semantic-color-content-information)` |
 | `--ods-message-text-color-neutral-low` | `var(--ods-semantic-color-content-neutral)` |
-| `--ods-message-text-color-primary-low` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-message-text-color-accent-low` | `var(--ods-semantic-color-content-accent)` |
 | `--ods-message-text-color-success-low` | `var(--ods-semantic-color-content-success)` |
 | `--ods-message-text-color-warning-low` | `var(--ods-semantic-color-content-warning)` |

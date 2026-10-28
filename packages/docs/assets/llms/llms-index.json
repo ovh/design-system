@@ -85,7 +85,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1417,
+          "tokens": 1416,
           "url": "./react-components-badge--technical-information.txt"
         },
         "examples": {
@@ -137,7 +137,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 4490,
+          "tokens": 2196,
           "url": "./react-components-button--technical-information.txt"
         },
         "examples": {
@@ -787,7 +787,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2077,
+          "tokens": 2076,
           "url": "./react-components-message--technical-information.txt"
         },
         "examples": {
@@ -1198,7 +1198,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1390,
+          "tokens": 1379,
           "url": "./react-components-spinner--documentation.txt"
         },
         "technical-information": {
@@ -1307,7 +1307,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2446,
+          "tokens": 2169,
           "url": "./react-components-tag--technical-information.txt"
         },
         "examples": {
@@ -1580,7 +1580,7 @@
       "slug": "ovhcloud-design-system-customize-style-customization",
       "title": "Style Customization",
       "type": "overview",
-      "tokens": 629,
+      "tokens": 620,
       "url": "./ovhcloud-design-system-customize-style-customization.txt"
     },
     {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 12159,
+      "tokens": 14161,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

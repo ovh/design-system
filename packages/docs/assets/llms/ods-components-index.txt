@@ -21,7 +21,7 @@
 
 - [Overview](./react-components-badge.txt) (~218 tokens)
 - [Documentation](./react-components-badge--documentation.txt) (~2439 tokens)
-- [Technical Information](./react-components-badge--technical-information.txt) (~1417 tokens)
+- [Technical Information](./react-components-badge--technical-information.txt) (~1416 tokens)
 - [Examples](./react-components-badge--examples.txt) (~891 tokens)
 
 ## Breadcrumb
@@ -35,7 +35,7 @@
 
 - [Overview](./react-components-button.txt) (~305 tokens)
 - [Documentation](./react-components-button--documentation.txt) (~1590 tokens)
-- [Technical Information](./react-components-button--technical-information.txt) (~4490 tokens)
+- [Technical Information](./react-components-button--technical-information.txt) (~2196 tokens)
 - [Examples](./react-components-button--examples.txt) (~778 tokens)
 
 ## Button Group
@@ -210,7 +210,7 @@
 
 - [Overview](./react-components-message.txt) (~305 tokens)
 - [Documentation](./react-components-message--documentation.txt) (~2320 tokens)
-- [Technical Information](./react-components-message--technical-information.txt) (~2077 tokens)
+- [Technical Information](./react-components-message--technical-information.txt) (~2076 tokens)
 - [Examples](./react-components-message--examples.txt) (~1172 tokens)
 
 ## Message Bubble
@@ -321,7 +321,7 @@
 ## Spinner
 
 - [Overview](./react-components-spinner.txt) (~166 tokens)
-- [Documentation](./react-components-spinner--documentation.txt) (~1390 tokens)
+- [Documentation](./react-components-spinner--documentation.txt) (~1379 tokens)
 - [Technical Information](./react-components-spinner--technical-information.txt) (~115 tokens)
 - [Examples](./react-components-spinner--examples.txt) (~190 tokens)
 
@@ -350,7 +350,7 @@
 
 - [Overview](./react-components-tag.txt) (~1014 tokens)
 - [Documentation](./react-components-tag--documentation.txt) (~1374 tokens)
-- [Technical Information](./react-components-tag--technical-information.txt) (~2446 tokens)
+- [Technical Information](./react-components-tag--technical-information.txt) (~2169 tokens)
 - [Examples](./react-components-tag--examples.txt) (~301 tokens)
 
 ## Text

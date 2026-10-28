@@ -31,6 +31,10 @@
     "./blue-jeans/css": {
       "sass": "./src/blue-jeans/index.scss",
       "default": "./dist/blue-jeans/index.css"
+    },
+    "./aluminium-dark/css": {
+      "sass": "./src/aluminium-dark/index.scss",
+      "default": "./dist/aluminium-dark/index.css"
     }
   },
   "files": [

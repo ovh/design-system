@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 11843
+tokens: 12159
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -27,7 +27,7 @@ The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` toke
 
 ## If you stay on React 18
 
-Nothing to do for React. Installation and types keep working as before. The component API changes apply whatever your React version: migrate the removed `color` props and `toast.primary()`, the Message `variant` and the Table `variant`, and review the Button default rendering (see **Breaking changes**). The theme changes below apply whatever your React version too.
+Nothing to do for React. Installation and types keep working as before. The component API changes apply whatever your React version: migrate the removed `color` props and `toast.primary()`, the Message `variant` and the Table `variant`, and review the Button default rendering (see **Breaking changes**). The theme changes below apply whatever your React version too. See also **Behavior changes** below.
 
 ## If you move to React 19
 
@@ -464,6 +464,13 @@ grep -rniE "source.?sans.?pro" src/
 ```
 
 If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+## Behavior changes
+
+These apply whichever React version you use.
+
+- **Drawer** without backdrop, focus on close: when the Drawer is closed while the focus is inside it (Escape, a close button inside it, or `open` set to `false` by your code), or after its focused element was removed, the focus now returns to the trigger it was opened from or, for a Drawer without trigger, to the element that had the focus before it opened. The page scrolls that element back into view if it has left the screen. In v19, the focus stayed on an element of the closed Drawer. A focus moved elsewhere in the page is never taken back, so code that focuses another element when the Drawer closes keeps working, and code that only focuses the trigger again can be removed. A layer opened from the Drawer (a confirmation Modal, a Menu) that gives the focus back inside the closed Drawer hands it to the trigger too. A Drawer unmounted while open (`{ isOpen && <Drawer open> }`) gives nothing back: keep it mounted and drive `open` instead.
+- **Drawer** with a custom `id` on `DrawerContent`: Escape, `closeOnInteractOutside` and the focus on open now work, and the trigger `aria-controls` points to the content. In v19, they silently did nothing.
 
 ## Breaking changes
 

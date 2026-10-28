@@ -439,17 +439,17 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 349,
+          "tokens": 402,
           "url": "./react-components-drawer.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1343,
+          "tokens": 1714,
           "url": "./react-components-drawer--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 581,
+          "tokens": 634,
           "url": "./react-components-drawer--technical-information.txt"
         },
         "examples": {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 11843,
+      "tokens": 12159,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

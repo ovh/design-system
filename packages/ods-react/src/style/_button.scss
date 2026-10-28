@@ -34,76 +34,76 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   --ods-button-padding-vertical-md: #{$ods-button-padding-vertical-md};
 
   // critical
-  --ods-button-background-color-critical: var(--ods-semantic-color-surface-critical);
-  --ods-button-background-color-critical-hover: var(--ods-semantic-color-interaction-critical-hover);
-  --ods-button-background-color-critical-active: var(--ods-semantic-color-interaction-critical-active);
-  --ods-button-border-color-critical: var(--ods-semantic-color-border-critical);
-  --ods-button-border-color-critical-hover: var(--ods-semantic-color-interaction-critical-hover);
-  --ods-button-border-color-critical-active: var(--ods-semantic-color-interaction-critical-active);
-  --ods-button-text-color-critical: var(--ods-semantic-color-content-on-critical-solid);
-  --ods-button-background-color-critical-ghost: inherit;
-  --ods-button-background-color-critical-ghost-hover: var(--ods-semantic-color-interaction-critical-subtle-hover);
-  --ods-button-background-color-critical-ghost-active: var(--ods-semantic-color-interaction-critical-subtle-active);
-  --ods-button-text-color-critical-ghost: var(--ods-semantic-color-content-critical);
-  --ods-button-text-color-critical-ghost-hover: var(--ods-semantic-color-content-on-critical);
-  --ods-button-text-color-critical-ghost-active: var(--ods-semantic-color-content-on-critical);
-  --ods-button-background-color-critical-outline: var(--ods-semantic-color-surface-control);
-  --ods-button-background-color-critical-outline-hover: var(--ods-semantic-color-interaction-critical-subtle-hover);
-  --ods-button-background-color-critical-outline-active: var(--ods-semantic-color-interaction-critical-subtle-active);
-  --ods-button-border-color-critical-outline: var(--ods-semantic-color-border-critical);
-  --ods-button-border-color-critical-outline-hover: var(--ods-semantic-color-interaction-critical-hover);
-  --ods-button-border-color-critical-outline-active: var(--ods-semantic-color-interaction-critical-active);
-  --ods-button-text-color-critical-outline: var(--ods-semantic-color-content-critical);
-  --ods-button-text-color-critical-outline-hover: var(--ods-semantic-color-content-on-critical);
-  --ods-button-text-color-critical-outline-active: var(--ods-semantic-color-content-on-critical);
+  --ods-button-background-color-critical-high: var(--ods-semantic-color-surface-critical);
+  --ods-button-background-color-critical-high-hover: var(--ods-semantic-color-interaction-critical-hover);
+  --ods-button-background-color-critical-high-active: var(--ods-semantic-color-interaction-critical-active);
+  --ods-button-border-color-critical-high: var(--ods-semantic-color-border-critical);
+  --ods-button-border-color-critical-high-hover: var(--ods-semantic-color-interaction-critical-hover);
+  --ods-button-border-color-critical-high-active: var(--ods-semantic-color-interaction-critical-active);
+  --ods-button-text-color-critical-high: var(--ods-semantic-color-content-on-critical-solid);
+  --ods-button-background-color-critical-low: inherit;
+  --ods-button-background-color-critical-low-hover: var(--ods-semantic-color-interaction-critical-subtle-hover);
+  --ods-button-background-color-critical-low-active: var(--ods-semantic-color-interaction-critical-subtle-active);
+  --ods-button-text-color-critical-low: var(--ods-semantic-color-content-critical);
+  --ods-button-text-color-critical-low-hover: var(--ods-semantic-color-content-on-critical);
+  --ods-button-text-color-critical-low-active: var(--ods-semantic-color-content-on-critical);
+  --ods-button-background-color-critical-medium: var(--ods-semantic-color-surface-control);
+  --ods-button-background-color-critical-medium-hover: var(--ods-semantic-color-interaction-critical-subtle-hover);
+  --ods-button-background-color-critical-medium-active: var(--ods-semantic-color-interaction-critical-subtle-active);
+  --ods-button-border-color-critical-medium: var(--ods-semantic-color-border-critical);
+  --ods-button-border-color-critical-medium-hover: var(--ods-semantic-color-interaction-critical-hover);
+  --ods-button-border-color-critical-medium-active: var(--ods-semantic-color-interaction-critical-active);
+  --ods-button-text-color-critical-medium: var(--ods-semantic-color-content-critical);
+  --ods-button-text-color-critical-medium-hover: var(--ods-semantic-color-content-on-critical);
+  --ods-button-text-color-critical-medium-active: var(--ods-semantic-color-content-on-critical);
 
   // neutral
-  --ods-button-background-color-neutral: var(--ods-semantic-color-surface-neutral);
-  --ods-button-background-color-neutral-hover: var(--ods-semantic-color-interaction-neutral-hover);
-  --ods-button-background-color-neutral-active: var(--ods-semantic-color-interaction-neutral-active);
-  --ods-button-border-color-neutral: var(--ods-semantic-color-border-neutral);
-  --ods-button-border-color-neutral-hover: var(--ods-semantic-color-interaction-neutral-hover);
-  --ods-button-border-color-neutral-active: var(--ods-semantic-color-interaction-neutral-active);
-  --ods-button-text-color-neutral: var(--ods-semantic-color-content-on-neutral-solid);
-  --ods-button-background-color-neutral-ghost: inherit;
-  --ods-button-background-color-neutral-ghost-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
-  --ods-button-background-color-neutral-ghost-active: var(--ods-semantic-color-interaction-neutral-subtle-active);
-  --ods-button-text-color-neutral-ghost: var(--ods-semantic-color-content-neutral);
-  --ods-button-text-color-neutral-ghost-hover: var(--ods-semantic-color-content-on-neutral);
-  --ods-button-text-color-neutral-ghost-active: var(--ods-semantic-color-content-on-neutral);
-  --ods-button-background-color-neutral-outline: var(--ods-semantic-color-surface-control);
-  --ods-button-background-color-neutral-outline-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
-  --ods-button-background-color-neutral-outline-active: var(--ods-semantic-color-interaction-neutral-subtle-active);
-  --ods-button-border-color-neutral-outline: var(--ods-semantic-color-border-neutral);
-  --ods-button-border-color-neutral-outline-hover: var(--ods-semantic-color-interaction-neutral-hover);
-  --ods-button-border-color-neutral-outline-active: var(--ods-semantic-color-interaction-neutral-active);
-  --ods-button-text-color-neutral-outline: var(--ods-semantic-color-content-neutral);
-  --ods-button-text-color-neutral-outline-hover: var(--ods-semantic-color-content-on-neutral);
-  --ods-button-text-color-neutral-outline-active: var(--ods-semantic-color-content-on-neutral);
+  --ods-button-background-color-neutral-high: var(--ods-semantic-color-surface-neutral);
+  --ods-button-background-color-neutral-high-hover: var(--ods-semantic-color-interaction-neutral-hover);
+  --ods-button-background-color-neutral-high-active: var(--ods-semantic-color-interaction-neutral-active);
+  --ods-button-border-color-neutral-high: var(--ods-semantic-color-border-neutral);
+  --ods-button-border-color-neutral-high-hover: var(--ods-semantic-color-interaction-neutral-hover);
+  --ods-button-border-color-neutral-high-active: var(--ods-semantic-color-interaction-neutral-active);
+  --ods-button-text-color-neutral-high: var(--ods-semantic-color-content-on-neutral-solid);
+  --ods-button-background-color-neutral-low: inherit;
+  --ods-button-background-color-neutral-low-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
+  --ods-button-background-color-neutral-low-active: var(--ods-semantic-color-interaction-neutral-subtle-active);
+  --ods-button-text-color-neutral-low: var(--ods-semantic-color-content-neutral);
+  --ods-button-text-color-neutral-low-hover: var(--ods-semantic-color-content-on-neutral);
+  --ods-button-text-color-neutral-low-active: var(--ods-semantic-color-content-on-neutral);
+  --ods-button-background-color-neutral-medium: var(--ods-semantic-color-surface-control);
+  --ods-button-background-color-neutral-medium-hover: var(--ods-semantic-color-interaction-neutral-subtle-hover);
+  --ods-button-background-color-neutral-medium-active: var(--ods-semantic-color-interaction-neutral-subtle-active);
+  --ods-button-border-color-neutral-medium: var(--ods-semantic-color-border-neutral);
+  --ods-button-border-color-neutral-medium-hover: var(--ods-semantic-color-interaction-neutral-hover);
+  --ods-button-border-color-neutral-medium-active: var(--ods-semantic-color-interaction-neutral-active);
+  --ods-button-text-color-neutral-medium: var(--ods-semantic-color-content-neutral);
+  --ods-button-text-color-neutral-medium-hover: var(--ods-semantic-color-content-on-neutral);
+  --ods-button-text-color-neutral-medium-active: var(--ods-semantic-color-content-on-neutral);
 
   // brand
-  --ods-button-background-color-brand: var(--ods-semantic-color-surface-brand);
-  --ods-button-background-color-brand-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-background-color-brand-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-border-color-brand: var(--ods-semantic-color-border-brand);
-  --ods-button-border-color-brand-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-border-color-brand-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-text-color-brand: var(--ods-semantic-color-content-on-brand-solid);
-  --ods-button-background-color-brand-ghost: inherit;
-  --ods-button-background-color-brand-ghost-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
-  --ods-button-background-color-brand-ghost-active: var(--ods-semantic-color-interaction-brand-subtle-active);
-  --ods-button-text-color-brand-ghost: var(--ods-semantic-color-content-brand-minor);
-  --ods-button-text-color-brand-ghost-hover: var(--ods-semantic-color-content-on-brand);
-  --ods-button-text-color-brand-ghost-active: var(--ods-semantic-color-content-on-brand);
-  --ods-button-background-color-brand-outline: var(--ods-semantic-color-surface-control);
-  --ods-button-background-color-brand-outline-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
-  --ods-button-background-color-brand-outline-active: var(--ods-semantic-color-interaction-brand-subtle-active);
-  --ods-button-border-color-brand-outline: var(--ods-semantic-color-border-brand-minor);
-  --ods-button-border-color-brand-outline-hover: var(--ods-semantic-color-interaction-brand-hover);
-  --ods-button-border-color-brand-outline-active: var(--ods-semantic-color-interaction-brand-active);
-  --ods-button-text-color-brand-outline: var(--ods-semantic-color-content-brand-minor);
-  --ods-button-text-color-brand-outline-hover: var(--ods-semantic-color-content-on-brand);
-  --ods-button-text-color-brand-outline-active: var(--ods-semantic-color-content-on-brand);
+  --ods-button-background-color-brand-high: var(--ods-semantic-color-surface-brand);
+  --ods-button-background-color-brand-high-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-background-color-brand-high-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-border-color-brand-high: var(--ods-semantic-color-border-brand);
+  --ods-button-border-color-brand-high-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-border-color-brand-high-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-text-color-brand-high: var(--ods-semantic-color-content-on-brand-solid);
+  --ods-button-background-color-brand-low: inherit;
+  --ods-button-background-color-brand-low-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
+  --ods-button-background-color-brand-low-active: var(--ods-semantic-color-interaction-brand-subtle-active);
+  --ods-button-text-color-brand-low: var(--ods-semantic-color-content-brand-minor);
+  --ods-button-text-color-brand-low-hover: var(--ods-semantic-color-content-on-brand);
+  --ods-button-text-color-brand-low-active: var(--ods-semantic-color-content-on-brand);
+  --ods-button-background-color-brand-medium: var(--ods-semantic-color-surface-control);
+  --ods-button-background-color-brand-medium-hover: var(--ods-semantic-color-interaction-brand-subtle-hover);
+  --ods-button-background-color-brand-medium-active: var(--ods-semantic-color-interaction-brand-subtle-active);
+  --ods-button-border-color-brand-medium: var(--ods-semantic-color-border-brand-minor);
+  --ods-button-border-color-brand-medium-hover: var(--ods-semantic-color-interaction-brand-hover);
+  --ods-button-border-color-brand-medium-active: var(--ods-semantic-color-interaction-brand-active);
+  --ods-button-text-color-brand-medium: var(--ods-semantic-color-content-brand-minor);
+  --ods-button-text-color-brand-medium-hover: var(--ods-semantic-color-content-on-brand);
+  --ods-button-text-color-brand-medium-active: var(--ods-semantic-color-content-on-brand);
 
   box-sizing: border-box;
   display: inline-flex;
@@ -151,177 +151,177 @@ $ods-button-size-md: var(--ods-semantic-size-block-size-lg);
   }
 }
 
-@mixin ods-button-variant-default($color) {
+@mixin ods-button-emphasis-high($color) {
   border-width: var(--ods-button-border-width);
   border-style: solid;
 
   @if $color == 'critical' {
-    border-color: var(--ods-button-border-color-critical);
-    background-color: var(--ods-button-background-color-critical);
-    color: var(--ods-button-text-color-critical);
+    border-color: var(--ods-button-border-color-critical-high);
+    background-color: var(--ods-button-background-color-critical-high);
+    color: var(--ods-button-text-color-critical-high);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-critical-hover);
-        background-color: var(--ods-button-background-color-critical-hover);
+        border-color: var(--ods-button-border-color-critical-high-hover);
+        background-color: var(--ods-button-background-color-critical-high-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-critical-active);
-        background-color: var(--ods-button-background-color-critical-active);
+        border-color: var(--ods-button-border-color-critical-high-active);
+        background-color: var(--ods-button-background-color-critical-high-active);
       }
     }
   } @else if $color == 'neutral' {
-    border-color: var(--ods-button-border-color-neutral);
-    background-color: var(--ods-button-background-color-neutral);
-    color: var(--ods-button-text-color-neutral);
+    border-color: var(--ods-button-border-color-neutral-high);
+    background-color: var(--ods-button-background-color-neutral-high);
+    color: var(--ods-button-text-color-neutral-high);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-neutral-hover);
-        background-color: var(--ods-button-background-color-neutral-hover);
+        border-color: var(--ods-button-border-color-neutral-high-hover);
+        background-color: var(--ods-button-background-color-neutral-high-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-neutral-active);
-        background-color: var(--ods-button-background-color-neutral-active);
+        border-color: var(--ods-button-border-color-neutral-high-active);
+        background-color: var(--ods-button-background-color-neutral-high-active);
       }
     }
   } @else if $color == 'brand' {
-    border-color: var(--ods-button-border-color-brand);
-    background-color: var(--ods-button-background-color-brand);
-    color: var(--ods-button-text-color-brand);
+    border-color: var(--ods-button-border-color-brand-high);
+    background-color: var(--ods-button-background-color-brand-high);
+    color: var(--ods-button-text-color-brand-high);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-brand-hover);
-        background-color: var(--ods-button-background-color-brand-hover);
+        border-color: var(--ods-button-border-color-brand-high-hover);
+        background-color: var(--ods-button-background-color-brand-high-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-brand-active);
-        background-color: var(--ods-button-background-color-brand-active);
+        border-color: var(--ods-button-border-color-brand-high-active);
+        background-color: var(--ods-button-background-color-brand-high-active);
       }
     }
   }
 }
 
-@mixin ods-button-variant-ghost($color) {
+@mixin ods-button-emphasis-low($color) {
   border: var(--ods-button-border-width) solid transparent;
 
   @if $color == 'critical' {
-    background-color: var(--ods-button-background-color-critical-ghost);
-    color: var(--ods-button-text-color-critical-ghost);
+    background-color: var(--ods-button-background-color-critical-low);
+    color: var(--ods-button-text-color-critical-low);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        background-color: var(--ods-button-background-color-critical-ghost-hover);
-        color: var(--ods-button-text-color-critical-ghost-hover);
+        background-color: var(--ods-button-background-color-critical-low-hover);
+        color: var(--ods-button-text-color-critical-low-hover);
       }
 
       &:active {
-        background-color: var(--ods-button-background-color-critical-ghost-active);
-        color: var(--ods-button-text-color-critical-ghost-active);
+        background-color: var(--ods-button-background-color-critical-low-active);
+        color: var(--ods-button-text-color-critical-low-active);
       }
     }
   } @else if $color == 'neutral' {
-    background-color: var(--ods-button-background-color-neutral-ghost);
-    color: var(--ods-button-text-color-neutral-ghost);
+    background-color: var(--ods-button-background-color-neutral-low);
+    color: var(--ods-button-text-color-neutral-low);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        background-color: var(--ods-button-background-color-neutral-ghost-hover);
-        color: var(--ods-button-text-color-neutral-ghost-hover);
+        background-color: var(--ods-button-background-color-neutral-low-hover);
+        color: var(--ods-button-text-color-neutral-low-hover);
       }
 
       &:active {
-        background-color: var(--ods-button-background-color-neutral-ghost-active);
-        color: var(--ods-button-text-color-neutral-ghost-active);
+        background-color: var(--ods-button-background-color-neutral-low-active);
+        color: var(--ods-button-text-color-neutral-low-active);
       }
     }
   } @else if $color == 'brand' {
-    background-color: var(--ods-button-background-color-brand-ghost);
-    color: var(--ods-button-text-color-brand-ghost);
+    background-color: var(--ods-button-background-color-brand-low);
+    color: var(--ods-button-text-color-brand-low);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        background-color: var(--ods-button-background-color-brand-ghost-hover);
-        color: var(--ods-button-text-color-brand-ghost-hover);
+        background-color: var(--ods-button-background-color-brand-low-hover);
+        color: var(--ods-button-text-color-brand-low-hover);
       }
 
       &:active {
-        background-color: var(--ods-button-background-color-brand-ghost-active);
-        color: var(--ods-button-text-color-brand-ghost-active);
+        background-color: var(--ods-button-background-color-brand-low-active);
+        color: var(--ods-button-text-color-brand-low-active);
       }
     }
   }
 }
 
-@mixin ods-button-variant-outline($color) {
+@mixin ods-button-emphasis-medium($color) {
   border-width: var(--ods-button-border-width);
   border-style: solid;
 
   @if $color == 'critical' {
-    border-color: var(--ods-button-border-color-critical-outline);
-    background-color: var(--ods-button-background-color-critical-outline);
-    color: var(--ods-button-text-color-critical-outline);
+    border-color: var(--ods-button-border-color-critical-medium);
+    background-color: var(--ods-button-background-color-critical-medium);
+    color: var(--ods-button-text-color-critical-medium);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-critical-outline-hover);
-        background-color: var(--ods-button-background-color-critical-outline-hover);
-        color: var(--ods-button-text-color-critical-outline-hover);
+        border-color: var(--ods-button-border-color-critical-medium-hover);
+        background-color: var(--ods-button-background-color-critical-medium-hover);
+        color: var(--ods-button-text-color-critical-medium-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-critical-outline-active);
-        background-color: var(--ods-button-background-color-critical-outline-active);
-        color: var(--ods-button-text-color-critical-outline-active);
+        border-color: var(--ods-button-border-color-critical-medium-active);
+        background-color: var(--ods-button-background-color-critical-medium-active);
+        color: var(--ods-button-text-color-critical-medium-active);
       }
     }
   } @else if $color == 'neutral' {
-    border-color: var(--ods-button-border-color-neutral-outline);
-    background-color: var(--ods-button-background-color-neutral-outline);
-    color: var(--ods-button-text-color-neutral-outline);
+    border-color: var(--ods-button-border-color-neutral-medium);
+    background-color: var(--ods-button-background-color-neutral-medium);
+    color: var(--ods-button-text-color-neutral-medium);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-neutral-outline-hover);
-        background-color: var(--ods-button-background-color-neutral-outline-hover);
-        color: var(--ods-button-text-color-neutral-outline-hover);
+        border-color: var(--ods-button-border-color-neutral-medium-hover);
+        background-color: var(--ods-button-background-color-neutral-medium-hover);
+        color: var(--ods-button-text-color-neutral-medium-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-neutral-outline-active);
-        background-color: var(--ods-button-background-color-neutral-outline-active);
-        color: var(--ods-button-text-color-neutral-outline-active);
+        border-color: var(--ods-button-border-color-neutral-medium-active);
+        background-color: var(--ods-button-background-color-neutral-medium-active);
+        color: var(--ods-button-text-color-neutral-medium-active);
       }
     }
   } @else if $color == 'brand' {
-    border-color: var(--ods-button-border-color-brand-outline);
-    background-color: var(--ods-button-background-color-brand-outline);
-    color: var(--ods-button-text-color-brand-outline);
+    border-color: var(--ods-button-border-color-brand-medium);
+    background-color: var(--ods-button-background-color-brand-medium);
+    color: var(--ods-button-text-color-brand-medium);
 
     &:not(:disabled) {
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-button-border-color-brand-outline-hover);
-        background-color: var(--ods-button-background-color-brand-outline-hover);
-        color: var(--ods-button-text-color-brand-outline-hover);
+        border-color: var(--ods-button-border-color-brand-medium-hover);
+        background-color: var(--ods-button-background-color-brand-medium-hover);
+        color: var(--ods-button-text-color-brand-medium-hover);
       }
 
       &:active {
-        border-color: var(--ods-button-border-color-brand-outline-active);
-        background-color: var(--ods-button-background-color-brand-outline-active);
-        color: var(--ods-button-text-color-brand-outline-active);
+        border-color: var(--ods-button-border-color-brand-medium-active);
+        background-color: var(--ods-button-background-color-brand-medium-active);
+        color: var(--ods-button-text-color-brand-medium-active);
       }
     }
   }

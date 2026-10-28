@@ -28,46 +28,45 @@
       @include button.ods-button-size('md');
     }
 
-    // The Sass mixins keep their v19 variant names: default renders high, ghost low and outline medium
     &--high {
       &#{$button}--critical {
-        @include button.ods-button-variant-default('critical');
+        @include button.ods-button-emphasis-high('critical');
       }
 
       &#{$button}--neutral {
-        @include button.ods-button-variant-default('neutral');
+        @include button.ods-button-emphasis-high('neutral');
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-default('brand');
+        @include button.ods-button-emphasis-high('brand');
       }
     }
 
     &--low {
       &#{$button}--critical {
-        @include button.ods-button-variant-ghost('critical');
+        @include button.ods-button-emphasis-low('critical');
       }
 
       &#{$button}--neutral {
-        @include button.ods-button-variant-ghost('neutral');
+        @include button.ods-button-emphasis-low('neutral');
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-ghost('brand');
+        @include button.ods-button-emphasis-low('brand');
       }
     }
 
     &--medium {
       &#{$button}--critical {
-        @include button.ods-button-variant-outline('critical');
+        @include button.ods-button-emphasis-medium('critical');
       }
 
       &#{$button}--neutral {
-        @include button.ods-button-variant-outline('neutral');
+        @include button.ods-button-emphasis-medium('neutral');
       }
 
       &#{$button}--brand {
-        @include button.ods-button-variant-outline('brand');
+        @include button.ods-button-emphasis-medium('brand');
       }
     }
 

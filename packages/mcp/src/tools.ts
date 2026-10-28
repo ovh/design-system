@@ -167,7 +167,7 @@ async function pageAnswer(url: string, notice = ''): Promise<ToolResult> {
     const body = await readDoc(url);
     return text(`_source: ${sourceLabel()}_\n${notice ? `_note: ${notice}_\n` : ''}\n${body}`);
   } catch {
-    return fail(`Cannot read the documentation page ${url.replace(/^\.\//, '')} from the ${sourceKind()} documentation set. Failures are not retried: restart the server once the cause is fixed.`);
+    return fail(`Cannot read the documentation page ${url.replace(/^\.\//, '')} from the ${sourceKind()} documentation set. It is read again on the next call.`);
   }
 }
 

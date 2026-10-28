@@ -133,7 +133,8 @@ const configuredSource = resolveDocSource();
 let activeSource = configuredSource;
 let fallbackNotice: string | undefined;
 
-// Promises are cached, rejections included: a failure is not retried on every call.
+// The index promise is cached, rejection included, so a broken index is not retried on every
+// call; a page read that fails leaves the cache (see readDoc) and is retried on the next call.
 let indexPromise: Promise<LlmsIndex> | undefined;
 const docCache = new Map<string, Promise<string>>();
 

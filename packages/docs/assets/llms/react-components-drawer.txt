@@ -4,7 +4,7 @@ slug: drawer
 category: component
 type: overview
 version: 19.7.3
-tokens: 349
+tokens: 402
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
 ---
 
@@ -14,10 +14,10 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `backdrop` | `boolean` | No | undefined | Whether a backdrop is displayed. |
+| `backdrop` | `boolean` | No | undefined | Whether a backdrop is displayed. With a backdrop, the drawer behaves as a modal: focus is trapped, the rest of the page is inert and its scroll is locked. |
 | `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the drawer backdrop. Useful if you want to override the backdrop z-index. |
 | `closeOnEscape` | `boolean` | No | undefined | Whether to close the drawer when the escape key is pressed. |
-| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the outside is clicked. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the drawer when the user clicks or moves the focus outside of it. Defaults to true when a backdrop is displayed, false otherwise. |
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
 | `onOpenChange` | `(detail: DrawerOpenChangeDetail) => void` | No | undefined | Callback fired when the drawer open state changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the drawer. |

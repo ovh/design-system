@@ -14,6 +14,6 @@
 }
 
 .custom-button-critical {
-  --ods-button-border-color-critical: #c47e01;
-  --ods-button-background-color-critical: #ffa400;
+  --ods-button-border-color-critical-high: #c47e01;
+  --ods-button-background-color-critical-high: #ffa400;
 }

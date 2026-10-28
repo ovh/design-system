@@ -40,7 +40,7 @@
             &[data-focus],
             &:hover {
               &::after {
-                background-color: var(--ods-button-background-color-brand-hover);
+                background-color: var(--ods-button-background-color-brand-high-hover);
               }
             }
           }
@@ -53,7 +53,7 @@
             position: absolute;
             bottom: 3px;
             border-radius: var(--ods-semantic-size-radius-full);
-            background-color: var(--ods-button-background-color-brand);
+            background-color: var(--ods-button-background-color-brand-high);
             width: 4px;
             height: 4px;
             content: "";
@@ -78,7 +78,7 @@
 
         &[data-focus] {
           background-color: var(--ods-semantic-color-interaction-highlight);
-          color: var(--ods-button-text-color-brand-ghost-hover);
+          color: var(--ods-button-text-color-brand-low-hover);
 
           &:focus-visible {
             @include focus.ods-focus;

@@ -279,11 +279,10 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-accordion-item-inner-radius-top` | `calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width))` |
 | `--ods-accordion-item-inner-radius-bottom` | `calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width))` |
 | `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-accordion-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-accordion-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-accordion-border-width` | `1px` |
 | `--ods-accordion-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
@@ -629,7 +628,7 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-avatar-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-avatar-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-avatar-text-color` | `var(--ods-semantic-color-content-heading)` |
 | `--ods-avatar-border-radius` | `var(--ods-semantic-size-radius-full)` |
 | `--ods-avatar-size` | `24px` |
@@ -992,40 +991,48 @@ This component extends all the native `<span>` attributes.
 | `--ods-badge-background-color-beta` | `var(--ods-semantic-color-surface-decorative-beta)` |
 | `--ods-badge-border-color-beta` | `transparent` |
 | `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-on-critical)` |
-| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-information)` |
+| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-neutral)` |
 | `--ods-badge-background-color-new` | `var(--ods-semantic-color-surface-decorative-new)` |
 | `--ods-badge-border-color-new` | `transparent` |
 | `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-accent` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-badge-background-color-accent` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-badge-text-color-accent` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-badge-text-color-accent` | `var(--ods-semantic-color-content-accent)` |
 | `--ods-badge-background-color-promotion` | `var(--ods-semantic-color-surface-decorative-promotion)` |
 | `--ods-badge-border-color-promotion` | `transparent` |
 | `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-on-success)` |
-| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-success)` |
+| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-badge-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
-| `--ods-badge-background-color-critical-high` | `var(--ods-semantic-color-surface-critical)` |
-| `--ods-badge-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical-solid)` |
-| `--ods-badge-background-color-information-high` | `var(--ods-semantic-color-surface-information)` |
-| `--ods-badge-text-color-information-high` | `var(--ods-semantic-color-content-on-information-solid)` |
-| `--ods-badge-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral)` |
-| `--ods-badge-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral-solid)` |
-| `--ods-badge-background-color-success-high` | `var(--ods-semantic-color-surface-success)` |
-| `--ods-badge-text-color-success-high` | `var(--ods-semantic-color-content-on-success-solid)` |
-| `--ods-badge-background-color-warning-high` | `var(--ods-semantic-color-surface-warning)` |
-| `--ods-badge-text-color-warning-high` | `var(--ods-semantic-color-content-on-warning-solid)` |
+| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-badge-background-color-accent-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-badge-border-color-accent-high` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-badge-text-color-accent-high` | `var(--ods-semantic-color-content-on-accent)` |
+| `--ods-badge-background-color-critical-high` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-badge-border-color-critical-high` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-badge-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-badge-background-color-information-high` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-badge-border-color-information-high` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-badge-text-color-information-high` | `var(--ods-semantic-color-content-on-information)` |
+| `--ods-badge-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-badge-border-color-neutral-high` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-badge-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-badge-background-color-success-high` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-badge-border-color-success-high` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-badge-text-color-success-high` | `var(--ods-semantic-color-content-on-success)` |
+| `--ods-badge-background-color-warning-high` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-badge-border-color-warning-high` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-badge-text-color-warning-high` | `var(--ods-semantic-color-content-on-warning)` |
 | `--ods-badge-text-color-critical-low` | `var(--ods-semantic-color-content-critical)` |
 | `--ods-badge-text-color-information-low` | `var(--ods-semantic-color-content-information)` |
 | `--ods-badge-text-color-neutral-low` | `var(--ods-semantic-color-content-neutral)` |
@@ -1357,6 +1364,9 @@ _No specific property._
 |---|---|
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
 
 ## Breadcrumb
 
@@ -2590,7 +2600,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-card-border-width` | `var(--ods-semantic-border-thickness)` |
 | `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-container)` |
 | `--ods-card-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
@@ -7958,7 +7968,7 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
 | `--ods-state-is-disabled-opacity` | `1` |
@@ -10655,8 +10665,8 @@ _No specific property._
 | `--ods-kbd-border-width` | `var(--ods-semantic-border-thickness)` |
 | `--ods-kbd-border-bottom-width` | `calc(var(--ods-semantic-border-thickness) * 2)` |
 | `--ods-kbd-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-kbd-border-color` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-kbd-border-color` | `var(--ods-semantic-color-border-container)` |
+| `--ods-kbd-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-kbd-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
 | `--ods-kbd-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 | `--ods-kbd-text-color` | `var(--ods-semantic-color-content-on-neutral)` |
@@ -10861,6 +10871,9 @@ If a **Link** points to a file download, it should include the file type and siz
 |---|---|
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
 | `--ods-state-is-disabled-opacity` | `1` |
 
 ## Link
@@ -12092,16 +12105,22 @@ _No specific property._
 |---|---|
 | `--ods-message-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-message-background-color-critical-high` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-message-border-color-critical-high` | `var(--ods-semantic-color-border-critical-subtle)` |
 | `--ods-message-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical)` |
 | `--ods-message-background-color-information-high` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-border-color-information-high` | `var(--ods-semantic-color-border-information-subtle)` |
 | `--ods-message-text-color-information-high` | `var(--ods-semantic-color-content-on-information)` |
-| `--ods-message-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-message-border-color-neutral-high` | `var(--ods-semantic-color-border-neutral-subtle)` |
 | `--ods-message-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral)` |
 | `--ods-message-background-color-accent-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
+| `--ods-message-border-color-accent-high` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-message-text-color-accent-high` | `var(--ods-semantic-color-content-on-accent)` |
 | `--ods-message-background-color-success-high` | `var(--ods-semantic-color-surface-success-subtle)` |
+| `--ods-message-border-color-success-high` | `var(--ods-semantic-color-border-success-subtle)` |
 | `--ods-message-text-color-success-high` | `var(--ods-semantic-color-content-on-success)` |
 | `--ods-message-background-color-warning-high` | `var(--ods-semantic-color-surface-warning-subtle)` |
+| `--ods-message-border-color-warning-high` | `var(--ods-semantic-color-border-warning-subtle)` |
 | `--ods-message-text-color-warning-high` | `var(--ods-semantic-color-content-on-warning)` |
 | `--ods-message-background-color-critical-medium` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-message-border-color-critical-medium` | `var(--ods-semantic-color-border-critical-subtle)` |
@@ -12459,7 +12478,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-message-bubble-text-color` | `var(--ods-message-bubble-error-text-color)` |
 | `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
-| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
 | `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-subtle)` |
 | `--ods-message-bubble-error-text-color` | `var(--ods-semantic-color-content-critical)` |
@@ -18380,7 +18399,7 @@ _No specific property._
 | Variable | Default value |
 |---|---|
 | `--ods-skeleton-background-color` | `var(--ods-semantic-color-surface-pending)` |
-| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-neutral-subtle)` |
+| `--ods-skeleton-transition-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-skeleton-background-color-image` | `linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color))` |
 
 ## Skeleton
@@ -18835,7 +18854,7 @@ This component extends all the native `<button>` attributes.
 | `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-switch-item-text-color-checked` | `var(--ods-semantic-color-content-on-solid)` |
 | `--ods-state-is-disabled-opacity` | `1` |
-| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-switch-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-switch-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 
@@ -19038,8 +19057,8 @@ This component extends all the native `<table>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
-| `--ods-table-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-muted)` |
+| `--ods-table-border-color` | `var(--ods-semantic-color-border-separator)` |
 | `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
 | `--ods-table-cell-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
@@ -19606,7 +19625,7 @@ _No specific property._
 | Variable | Default value |
 |---|---|
 | `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-segmented)` |
-| `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-neutral-minimal)` |
+| `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-track)` |
 | `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-semantic-size-radius-container) * 1.25)` |
 | `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-semantic-size-radius-container) * 0.75)` |
 | `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
@@ -19627,7 +19646,7 @@ _No specific property._
 | `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-tab-border-color-selected-switch` | `var(--ods-semantic-color-border-control)` |
 | `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
-| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-border-neutral-strong)` |
+| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-interaction-track-hover)` |
 | `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
@@ -20901,7 +20920,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-neutral-minimal)` |
+| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
 | `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
@@ -21932,7 +21951,7 @@ _No specific property._
 | `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-track)` |
 | `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
-| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-solid)` |
+| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-control-solid)` |
 | `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-state-is-disabled-opacity` | `1` |
 
@@ -25169,6 +25188,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-muted` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
 | `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
@@ -25218,6 +25238,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
 | `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-control-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
@@ -25227,6 +25248,9 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-separator` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-container` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
@@ -25250,8 +25274,8 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
 | `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-50)` |
-| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-50)` |
+| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-100)` |
 | `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
@@ -25283,6 +25307,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-interaction-control-highlight` | `var(--ods-palette-accent-50)` |
 | `--ods-semantic-color-interaction-control-solid-hover` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-interaction-control-solid-active` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-track-hover` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
 | `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |

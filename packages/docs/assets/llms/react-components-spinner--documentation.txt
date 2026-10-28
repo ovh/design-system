@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1390
+tokens: 1379
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--documentation.txt
 ---
 
@@ -66,7 +66,7 @@ The **Spinner** component has a spinning animation to show to the user that the 
 
 ### Color
 
-The **Spinner** is primary by default, for contexts where it is tied to the main brand action.
+The **Spinner** uses the accent color by default.
 
 To use another color, set the `--ods-spinner-color` CSS custom property on the **Spinner**, through its `className`, or on a container of yours, for example:
 

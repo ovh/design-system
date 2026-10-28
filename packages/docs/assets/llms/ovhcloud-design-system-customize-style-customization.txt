@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 629
+tokens: 620
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -59,7 +59,6 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 .my-link {
   @include ods-link();
-  @include ods-link-color('primary');
 }
 ```
 

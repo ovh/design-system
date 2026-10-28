@@ -1997,7 +1997,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 629
+tokens: 620
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -2052,7 +2052,6 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 .my-link {
   @include ods-link();
-  @include ods-link-color('primary');
 }
 ```
 
@@ -5129,7 +5128,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 12159
+tokens: 14161
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5433,8 +5432,9 @@ The `--ods-<component>-*` custom properties keep their names, with the exception
 - The tokens that only painted a disabled state are removed, since a disabled component is now dimmed with an opacity: `--ods-button-group-item-background-color-checked-disabled`, `--ods-switch-item-background-color-checked-disabled`, `--ods-tab-background-color-selected-disabled-switch`, `--ods-tab-border-color-disabled`, `--ods-tab-border-color-selected-disabled`, `--ods-tab-border-color-selected-disabled-switch`, `--ods-tile-background-color-disabled`, and the SCSS variables `$ods-state-is-disabled-background-color`, `$ods-state-is-disabled-border-color` and `$ods-state-is-disabled-text-color`. For a grey disabled state, style `:disabled` or `[data-disabled]` yourself.
 - The tokens that nothing read in 19.7.3 are removed: `--ods-tile-background-color`, `--ods-tile-border-color` and `--ods-tile-border-width` (the Tile renders a Card: override the `--ods-card-*` tokens instead), and the six `--ods-modal-header-background-color-*`.
 - `--ods-tab-border-color-selected` and `--ods-tab-text-color-selected` are removed: the selected Tab reads `--ods-semantic-color-border-selected-solid` and `--ods-semantic-color-content-on-selected`, so override those on `[data-ods="tab"]`.
-- `--ods-message-close-button-text-color-primary` is removed: the close button of the Message is a neutral ghost Button, so override `--ods-button-text-color-neutral-ghost` on `[data-ods="message"] [data-ods="button"]`.
+- `--ods-message-close-button-text-color-primary` is removed: the close button of the Message is a neutral ghost Button, so override `--ods-button-text-color-neutral-low` on `[data-ods="message"] [data-ods="button"]`.
 - `--ods-toggle-control-background-color-hover` is removed: the unchecked Toggle no longer changes its background on hover. `--ods-toggle-control-border-color` is removed too: the Toggle border reads `--ods-semantic-color-border-control`, so override that one on `[data-ods="toggle"]`.
+- The status custom properties of Badge, Button, Card, Message and Tag are renamed after the status and the emphasis they paint, and the Button and Tag ones that nothing read are removed: see **The Sass mixins and CSS custom properties follow the status and the emphasis** in **Breaking changes**, and the Button and Message entries.
 - The SCSS variables deprecated in v19 are removed: `$ods-modal-z-index` (read `$ods-overlay-modal-z-index`), `$ods-modal-border-radius` (read `var(--ods-semantic-size-radius-overlay)`), `$ods-modal-margin` (read `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`), `$ods-overlay-arrow-background-color` (read `var(--ods-semantic-color-surface-overlay)`) and `$drawer-max-size` (read `$drawer-max-width` or `$drawer-max-height`). So are the unused `ods-modal-color()` mixin and `$ods-overlay-select-z-index` (read `$ods-overlay-base-z-index`).
 
 To find them in your code:
@@ -5551,7 +5551,7 @@ These changes need no code change: the new rendering is intended. To keep the v1
 - **Button**: 4px corners at every size, where v19 had 2px (`xs`), 4px (`sm`) and 8px (`md`). Keep v19: `[data-ods="button"] { --ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px; }`.
 - **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
-- **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the primary hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-primary*` instead.
+- **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the accent hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-accent*` instead.
 - **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
@@ -5608,7 +5608,7 @@ These changes require a code update: each one comes with its before and after.
 - If one of your wrappers declares its own `color` prop on top of `BadgeProp` (or the props of the other components above), TypeScript reports that it incorrectly extends it: remove the prop and map its values to `status`, or keep it under an `Omit<BadgeProp, 'color'>` if it serves another purpose.
 - If one of your wrappers takes the HTML props of an element (`ComponentPropsWithRef<'span'>`…) and spreads them into one of these components, TypeScript reports that `color` is not assignable to `undefined`: omit it from the wrapper props (`Omit<ComponentPropsWithRef<'span'>, 'color'>`).
 - If one of your wrappers declares its own `status` prop on top of `BadgeProp` (or the Button, Card, Message or Tag props), TypeScript reports a conflict, often as `Type '…' is not assignable to type 'never'` at the call sites or `Rest types may only be created from object types` in the wrapper: add `'status'` to the `Omit` (`Omit<BadgeProp, 'status'>`) or rename your prop, and destructure it before spreading the other props into the ODS component. In untyped JavaScript, a `status` attribute forwarded to these components is now interpreted as the status preset.
-- The Sass mixins (`ods-badge-color('primary')`, `ods-button-variant-default('primary')`…) and the `--ods-*-primary` CSS custom properties keep their v19 names, except the Message ones, renamed with the removal of its `variant` (see Message).
+- The Sass mixins and the CSS custom properties follow the status and the emphasis too: see **The Sass mixins and CSS custom properties follow the status and the emphasis** below.
 
 To find the usages to migrate in your code:
 
@@ -5617,6 +5617,67 @@ grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?
 ```
 
 `color=` also matches native and third-party elements: review each match. Props passed through an object or a spread (`{ color: 'primary' }`) are not matched, but TypeScript reports them. In a codebase that also uses other libraries, limit the search to the files that import ODS: `grep -rl "@ovhcloud/ods-react" src | xargs grep -nE "<same pattern>"`. A library built on ODS (a UI kit wrapping Badge or Button) must migrate too before you can move to v20.
+
+**The Sass mixins and CSS custom properties follow the status and the emphasis.** The styles behind the props now use the same names:
+
+- Badge, Card and Tag: `primary` becomes `accent` in their custom properties and in the `ods-badge-color` and `ods-tag-color` mixins: `--ods-badge-background-color-primary` becomes `--ods-badge-background-color-accent`, `--ods-tag-border-color-primary-hover` becomes `--ods-tag-border-color-accent-hover`, `--ods-card-border-color-primary` becomes `--ods-card-border-color-accent`. The other statuses keep their names.
+- Message: `primary` becomes `accent` too, and every name also takes its emphasis: `--ods-message-background-color-primary` becomes `--ods-message-background-color-accent-high`, not `--ods-message-background-color-accent` (see Message).
+- Button: every status custom property and mixin takes its emphasis, and `primary` becomes `brand`: `--ods-button-background-color-primary-hover` becomes `--ods-button-background-color-brand-high-hover` (see Button).
+- The text colors of a hovered or pressed Tag are removed: `--ods-tag-text-color-<status>-hover` and `-active` held the rest value and nothing read them. Some Button ones are removed for the same reason (see Button).
+- These mixins now fail to compile on a value they do not know: `'primary'` names its new value, and any other value lists the accepted ones. An override or a `var()` of a custom property under its old name is silently ignored: search for them.
+
+```sh
+grep -rnE -- '--ods-(badge|card|tag)-[a-z-]*primary|--ods-tag-text-color-[a-z]+-(hover|active)([^-a-z]|$)|ods-(badge-color|tag-color)[a-z-]*\(.{0,3}primary' src/
+```
+
+On Badge, Card and Tag, the renames are 1:1. To apply them to the files found, then remove the overrides of the Tag text colors by hand:
+
+```sh
+sed -E -i.bak 's/(--ods-(badge|card|tag)-[a-z-]*)primary/\1accent/g; s/(ods-(badge-color|tag-color)[a-z-]*\([[:space:]]*["'"'"']?)primary/\1accent/g' <files>
+```
+
+These searches miss a status passed through a variable or a list, and a name built by interpolation:
+
+```scss
+@each $status in primary, information, success {
+  .my-button--#{$status} {
+    @include ods.ods-button-variant-default($status);
+  }
+}
+```
+
+The build reports a leftover mixin value, one value at a time. Nothing reports an interpolated custom property (`--ods-tag-background-color-#{$status}` in Sass, `` `--ods-tag-background-color-${status}` `` in TypeScript): search them too.
+
+```sh
+grep -rnE -- '--ods-(badge|button|card|message|tag)-[a-z-]*(#\{|\$\{)' src/
+grep -rlE "@ovhcloud/ods-react/style" src | xargs grep -nwE "primary|information|success|warning"
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-badge {
+  @include ods.ods-badge-color('primary');
+}
+
+.my-tags {
+  --ods-tag-background-color-primary-hover: #e0f0ff;
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-badge {
+  @include ods.ods-badge-color('accent');
+}
+
+.my-tags {
+  --ods-tag-background-color-accent-hover: #e0f0ff;
+}
+```
 
 ### Accordion
 
@@ -5685,6 +5746,7 @@ import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
 - `color="primary"`: use `status="brand"`, or nothing, as `brand` is the default.
 - `color="critical"` and `color="neutral"`: use `status` with the same value.
 - `color="information"`, `success` and `warning` are removed **without** `status` equivalent: a Button does not convey a status. Use a `brand`, `neutral` or `critical` Button, and a Badge or a Message to convey the status.
+- With them, their CSS custom properties are removed (see **The Sass mixins and CSS custom properties are named after the status and the emphasis** below).
 - `BUTTON_COLORS` and `ButtonColor`: use `BUTTON_STATUSES` and `ButtonStatus`.
 
 **The `variant` prop is replaced by `emphasis`**, with `BUTTON_VARIANT`, `BUTTON_VARIANTS` and the `ButtonVariant` type (use `BUTTON_EMPHASIS`, `BUTTON_EMPHASES` and `ButtonEmphasis`):
@@ -5692,7 +5754,7 @@ import { BADGE_EMPHASIS, BADGE_STATUS, Badge } from '@ovhcloud/ods-react';
 - `variant="default"`: use `emphasis="high"`.
 - `variant="outline"`: use `emphasis="medium"`, or nothing, as `medium` is the new default.
 - `variant="ghost"`: use `emphasis="low"`.
-- The Sass mixins (`ods-button-variant-default`, `-ghost`, `-outline`) and the `--ods-button-*-ghost` and `--ods-button-*-outline` CSS custom properties keep their v19 names: `default` styles the `high` emphasis, `outline` the `medium` one and `ghost` the `low` one.
+- The Sass mixins and the CSS custom properties take the emphasis too (see **The Sass mixins and CSS custom properties are named after the status and the emphasis** below).
 
 **The default rendering changes.** In v19, a Button without `variant` was filled (the `default` variant). In v20, a Button without `emphasis` is `medium`, which renders as the v19 `outline` variant. The ODS components built on Button (Pagination, ButtonGroup, Cart…) keep their v19 rendering.
 
@@ -5724,6 +5786,73 @@ import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '@ovhcloud/ods-react';
 <Button emphasis={ BUTTON_EMPHASIS.high }>Save</Button>
 <Button emphasis={ BUTTON_EMPHASIS.low }>Cancel</Button>
 <Button emphasis={ BUTTON_EMPHASIS.high } status={ BUTTON_STATUS.critical }>Delete</Button>
+```
+
+**The Sass mixins and CSS custom properties are named after the status and the emphasis**, `<status>` being `brand` (`primary` in v19), `critical` or `neutral`, and `<property>` being `background`, `border` or `text`:
+
+- `ods-button-variant-default(<status>)`: use `ods-button-emphasis-high(<status>)`.
+- `ods-button-variant-outline(<status>)`: use `ods-button-emphasis-medium(<status>)`.
+- `ods-button-variant-ghost(<status>)`: use `ods-button-emphasis-low(<status>)`.
+- `--ods-button-<property>-color-<status>`, with its `-hover` and `-active` states: use `--ods-button-<property>-color-<status>-high` (`--ods-button-background-color-primary-hover` becomes `--ods-button-background-color-brand-high-hover`).
+- `--ods-button-<property>-color-<status>-outline`, with its states: use `--ods-button-<property>-color-<status>-medium`.
+- `--ods-button-<property>-color-<status>-ghost`, with its states: use `--ods-button-<property>-color-<status>-low`.
+- No v19 name keeps another meaning: the names without emphasis, which painted the filled Button, are gone, so an override left under an old name paints nothing rather than another emphasis.
+- Removed, as nothing read them and they held the rest value: `--ods-button-text-color-<status>-hover` and `-active` (a high Button keeps its text color), and `--ods-button-border-color-<status>-ghost` with its states (a low Button draws no border).
+- The `information`, `success` and `warning` custom properties are removed, and the mixins accept `brand`, `critical` and `neutral` only. A `var()` of one of them reads the semantic role it held instead, `<status>` being `information`, `success` or `warning`: `--ods-semantic-color-surface-<status>` for the high background, `--ods-semantic-color-border-<status>` for the high and medium border, `--ods-semantic-color-interaction-<status>-hover` and `-active` for their hover and active background and border, `--ods-semantic-color-content-on-<status>-solid` for the high text, `--ods-semantic-color-surface-control` for the medium background, `--ods-semantic-color-interaction-<status>-subtle-hover` and `-active` for the medium and low hover and active background, `--ods-semantic-color-content-<status>` for the medium and low text and `--ods-semantic-color-content-on-<status>` for their hover and active text. An override of one of them paints nothing: remove it.
+- The mixins fail to compile on a value they do not know: `'primary'` names `'brand'`, and a removed status says it is removed.
+
+To find them in your code, this search matches every v19 name and no v20 one:
+
+```sh
+grep -rnE -- '--ods-button-(background|border|text)-color-[a-z]+(-ghost|-outline)?(-hover|-active)?([^-a-z]|$)|ods-button-variant-' src/
+```
+
+Outside the removed names, the renames are 1:1. To apply them to the files found, in this order:
+
+```sh
+sed -E -i.bak 's/(--ods-button-(background|border|text)-color-)primary/\1brand/g; s/(--ods-button-(background|border|text)-color-(brand|critical|neutral))-ghost/\1-low/g; s/(--ods-button-(background|border|text)-color-(brand|critical|neutral))-outline/\1-medium/g; s/(--ods-button-(background|border|text)-color-(brand|critical|neutral))(-hover|-active)?([^-a-z0-9]|$)/\1-high\4\5/g; s/ods-button-variant-default/ods-button-emphasis-high/g; s/ods-button-variant-outline/ods-button-emphasis-medium/g; s/ods-button-variant-ghost/ods-button-emphasis-low/g; s/(ods-button-emphasis-[a-z]+\([[:space:]]*["'"'"']?)primary/\1brand/g' <files>
+```
+
+The removed names come out of it as names that do not exist, and the `information`, `success` and `warning` ones are left as they were: search for them, then replace each `var()` by its semantic role and remove each override.
+
+```sh
+grep -rnE -- '--ods-button-text-color-[a-z]+-high-(hover|active)|--ods-button-border-color-[a-z]+-low|--ods-button-[a-z-]*(information|success|warning)' src/
+```
+
+**before**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-action {
+  @include ods.ods-button-variant-default('primary');
+}
+
+.my-toolbar {
+  --ods-button-background-color-primary-hover: #003a8f;
+  --ods-button-text-color-neutral-ghost: #4d5592;
+}
+
+.my-status {
+  color: var(--ods-button-text-color-success-outline);
+}
+```
+
+**after**
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
+
+.my-action {
+  @include ods.ods-button-emphasis-high('brand');
+}
+
+.my-toolbar {
+  --ods-button-background-color-brand-high-hover: #003a8f;
+  --ods-button-text-color-neutral-low: #4d5592;
+}
+
+.my-status {
+  color: var(--ods-semantic-color-content-success);
+}
 ```
 
 ### Card
@@ -5802,7 +5931,7 @@ import { Divider } from '@ovhcloud/ods-react';
 - **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
 - **Low**: transparent background, no border, the **Medium** text and icon role.
 
-**Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `primary` (the accent status), `success` or `warning`:
+**Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `success` or `warning`, the same in both names, and `primary`, which becomes `accent` in the new names (`ods-message-variant-default('primary')`: use `ods-message-emphasis-high('accent')`):
 
 - `ods-message-variant-default(<status>)`: use `ods-message-emphasis-high(<status>)`.
 - `ods-message-variant-light(<status>)`: use `ods-message-emphasis-medium(<status>)`.
@@ -5890,9 +6019,9 @@ import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
 
 ### Spinner
 
-**The `color` prop is removed**, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is set by the `--ods-spinner-color` CSS custom property, primary by default, so a Spinner without `color` renders as before.
+**The `color` prop is removed**, with `SPINNER_COLOR`, `SPINNER_COLORS` and the `SpinnerColor` type. The Spinner has no `status`: its color is set by the `--ods-spinner-color` CSS custom property, accent by default (the v19 primary rendering), so a Spinner without `color` renders as before.
 
-- No `color`: nothing to do, the Spinner stays primary.
+- No `color`: nothing to do, the Spinner keeps its v19 color.
 - `color="primary"` (or `SPINNER_COLOR.primary`): remove the prop, it is the default rendering.
 - `color="neutral"` (or `SPINNER_COLOR.neutral`): remove the prop and set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` in CSS.
 - To make the Spinner follow the text color around it, set `--ods-spinner-color: currentColor`.

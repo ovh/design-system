@@ -18,7 +18,7 @@ $spinner-size-lg: 80px;
     display: inline-block;
     height: 100%;
     // No default declared on .spinner: an override set in another layer (Button, Input) or on an ancestor
-    // must win whatever the CSS loading order, the fallback gives the v19 primary rendering.
+    // must win whatever the CSS loading order, so the accent color is only given as the var() fallback.
     fill: var(--ods-spinner-color, var(--ods-semantic-color-content-accent));
 
     &--xs {

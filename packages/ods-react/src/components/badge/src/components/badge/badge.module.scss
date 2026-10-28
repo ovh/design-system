@@ -6,9 +6,9 @@
 
     @include badge.ods-badge();
 
-    // medium is the status rendering itself (v19 look), so it has no class of its own.
+    // medium is the status rendering itself, so it has no class of its own.
     // The promotional statuses (alpha, beta, new, promotion) keep it in high and low,
-    // and accent, already filled, keeps it in high.
+    // and accent keeps it in high: ods-badge-color-high has no accent value yet.
 
     &--accent {
       @include badge.ods-badge-color('accent');

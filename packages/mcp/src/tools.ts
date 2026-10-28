@@ -324,11 +324,17 @@ async function registerTools(server: McpServer): Promise<void> {
       return text(`${index.generic.length} guides:\n${index.generic.map((g) => `- ${guideId(g)} (${g.title}${g.type === 'overview' ? '' : `, ${g.type}`})`).join('\n')}`);
     }
     const partial = wanted.length >= 3;
+    // camelCase input ("formatPrice" -> "format-price") must still reach the
+    // dashless helper slugs ("helpers-formatprice"): retry the partial matches
+    // on the dash-insensitive form.
+    const loose = compact(wanted);
     const guide = index.generic.find((g) => guideId(g) === wanted)
       ?? index.generic.find((g) => g.slug === wanted)
-      ?? index.generic.find((g) => compact(g.slug) === compact(wanted))
+      ?? index.generic.find((g) => compact(g.slug) === loose)
       ?? (partial ? index.generic.find((g) => g.slug.endsWith(`-${wanted}`)) : undefined)
-      ?? (partial ? index.generic.find((g) => g.slug.includes(wanted)) : undefined);
+      ?? (partial ? index.generic.find((g) => g.slug.includes(wanted)) : undefined)
+      ?? (loose.length >= 3 ? index.generic.find((g) => compact(g.slug).endsWith(loose)) : undefined)
+      ?? (loose.length >= 3 ? index.generic.find((g) => compact(g.slug).includes(loose)) : undefined);
     if (!guide) {
       return fail(`Unknown guide "${slug}". Call get_guide without argument to list them.`);
     }

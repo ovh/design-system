@@ -124,6 +124,11 @@ check(`get_recipe lists ${recipeCount} recipes`, new RegExp(`${recipeCount} reci
 const dataGrid = await callRaw({ arguments: { name: 'data grid' }, name: 'get_recipe' });
 check('get_recipe "data grid" resolves', !dataGrid.isError && /Recipe: /.test(dataGrid.text), dataGrid.text.slice(0, 120));
 
+for (const helper of ['formatPrice', 'formatRelativeTime']) {
+  const helperGuide = await callRaw({ arguments: { slug: helper }, name: 'get_guide' });
+  check(`get_guide ${helper} resolves the camelCase helper name`, !helperGuide.isError && new RegExp(helper, 'i').test(helperGuide.text), helperGuide.text.slice(0, 120));
+}
+
 const shortGuide = await callRaw({ arguments: { slug: 'a' }, name: 'get_guide' });
 check('get_guide refuses a 1-letter partial match', shortGuide.isError, shortGuide.text.slice(0, 120));
 

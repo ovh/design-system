@@ -146,6 +146,8 @@ async function readDoc(url: string): Promise<string> {
   if (doc === undefined) {
     doc = activeSource.read(rel);
     docCache.set(rel, doc);
+    // A failed read (EMFILE, network…) must not stick until the server restarts.
+    doc.catch(() => docCache.delete(rel));
   }
   return doc;
 }

@@ -104,15 +104,17 @@ In v19, **Select** and **Combobox** filled their container, and any field placed
 **To get the v19 behavior back**, set `width: 100%` on the **root** of the field. Never set it on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`: the root now carries the width and the control only fills it.
 
 ```css
-[data-ods="select"],
+[data-ods="select"]:not([data-ods="pagination-page-size-selector"] *),
 [data-ods="combobox"],
 [data-ods="phone-number"],
 [data-ods="timepicker"],
-[data-ods="clipboard"],
+[data-ods="clipboard"]:has(input),
 [data-ods="textarea"] {
   width: 100%;
 }
 ```
+
+The two exclusions keep the fields ODS sizes by their content as they are: the page size Select of **Pagination**, and a **Clipboard** made of its trigger alone. Without them, this rule, declared outside the ODS layers, would override their own sizing.
 
 For **Input** and **Password**, pass a `className` that sets `width: 100%` to the component instead: their root carries no `data-ods` attribute (`[data-ods="input"]` and `[data-ods="password"]` target the native `<input>`, not the root). For **Datepicker**, pass it to both `Datepicker` and `DatepickerControl`: the `Datepicker` root is an inline block sized by its content, so a percentage on the control alone does not fill the container (and `[data-ods="datepicker-control"]` also targets the native `<input>`).
 

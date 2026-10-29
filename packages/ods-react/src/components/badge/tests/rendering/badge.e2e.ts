@@ -1,8 +1,8 @@
 import 'jest-puppeteer';
 import { type Page } from 'puppeteer';
-import { getStatusStyle, gotoStory } from '../../../../helpers/test';
-import { BADGE_EMPHASIS } from '../../src/constants/badge-emphasis';
-import { BADGE_STATUS, BADGE_STATUSES } from '../../src/constants/badge-status';
+import { getStatusStyle, getTokenColor, gotoStory } from '../../../../helpers/test';
+import { BADGE_EMPHASES, BADGE_EMPHASIS, type BadgeEmphasis } from '../../src/constants/badge-emphasis';
+import { BADGE_STATUS, BADGE_STATUSES, type BadgeStatus } from '../../src/constants/badge-status';
 
 // Statuses without a high or low value yet: they keep their medium rendering in both.
 const PROMOTIONAL_STATUSES = [BADGE_STATUS.alpha, BADGE_STATUS.beta, BADGE_STATUS.new, BADGE_STATUS.promotion];
@@ -11,6 +11,28 @@ const TEXT_ONLY_STATUSES = FILLED_STATUSES;
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 type Colors = { background: string, border: string, text: string };
+type SpecRoles = { high: [string, string, string], medium: [string, string, string], low: string };
+
+// The semantic roles each emphasis reads, as on Message. High and medium are [background, border, text], both lined
+// with the subtle status border: high on the subtle status surface, medium on the raised surface. Low has a transparent
+// background and border, and the status text.
+const SPEC: Partial<Record<BadgeStatus, SpecRoles>> = Object.fromEntries(FILLED_STATUSES.map((status) => [status, {
+  high: [`surface-${status}-subtle`, `border-${status}-subtle`, `content-on-${status}`],
+  low: `content-${status}`,
+  medium: ['surface-raised', `border-${status}-subtle`, `content-${status}`],
+}]));
+
+async function getExpectedColors(page: Page, status: BadgeStatus, emphasis: BadgeEmphasis): Promise<Colors> {
+  const { high, low, medium } = SPEC[status]!;
+  const color = (role: string): Promise<string> => getTokenColor(page, `--ods-semantic-color-${role}`);
+
+  if (emphasis === BADGE_EMPHASIS.low) {
+    return { background: TRANSPARENT, border: TRANSPARENT, text: await color(low) };
+  }
+
+  const [background, border, text] = await Promise.all((emphasis === BADGE_EMPHASIS.high ? high : medium).map(color));
+  return { background, border, text };
+}
 
 async function getColors(page: Page, testId: string): Promise<Colors> {
   const element = await page.waitForSelector(`[data-testid="${testId}"]`);
@@ -113,6 +135,17 @@ describe('Badge rendering', () => {
       const invalidStatuses = TEXT_ONLY_STATUSES.filter((_, index) => lowColors[index].background !== TRANSPARENT || lowColors[index].border !== TRANSPARENT);
 
       expect(invalidStatuses).toEqual([]);
+    });
+
+    it('should apply the spec roles to the background, border and text of every status and emphasis', async() => {
+      const pairs = FILLED_STATUSES.flatMap((status) => BADGE_EMPHASES.map((emphasis) => [status, emphasis] as const));
+      const colors = await Promise.all(pairs.map(([status, emphasis]) => getColors(page, `${status}-${emphasis}`)));
+      const expectations = await Promise.all(pairs.map(([status, emphasis]) => getExpectedColors(page, status, emphasis)));
+      const mismatches = pairs
+        .map(([status, emphasis], index) => ({ actual: colors[index], expected: expectations[index], testId: `${status}-${emphasis}` }))
+        .filter(({ actual, expected }) => JSON.stringify(actual) !== JSON.stringify(expected));
+
+      expect(mismatches).toEqual([]);
     });
 
     it('should keep the medium rendering where high or low has no value yet', async() => {

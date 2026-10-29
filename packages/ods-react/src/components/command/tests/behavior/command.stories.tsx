@@ -12,6 +12,8 @@ const fileOptions = [
   { id: 'opt-save-file', label: 'Save file' },
 ];
 
+const manyOptions = Array.from({ length: 40 }, (_, idx) => ({ id: `opt-${idx + 1}`, label: `Option ${idx + 1}` }));
+
 export const KeyboardNavigation = () => (
   <Command open>
     <Command.Content createPortal={ false }>
@@ -180,3 +182,16 @@ export const Groups = () => {
     </>
   );
 };
+
+export const ManyOptions = () => (
+  <Command open>
+    <Command.Content createPortal={ false }>
+      <Command.Filter placeholder="Search..." />
+      <Command.List>
+        { manyOptions.map((opt) => (
+          <Command.Option key={ opt.id } id={ opt.id }>{ opt.label }</Command.Option>
+        )) }
+      </Command.List>
+    </Command.Content>
+  </Command>
+);

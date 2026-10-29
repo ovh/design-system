@@ -26,11 +26,19 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
     selectItem,
   } = useCombobox();
   const optionRef = useRef<HTMLDivElement>(null);
+  const isPointerHighlightRef = useRef(false);
 
+  // An option highlighted by the pointer is already visible: scrolling then
+  // would only move the page under the pointer and highlight another option.
+  // Keyed on the highlight source, not the hover: an option still under the
+  // pointer but reached back by keyboard must scroll into view. The pointer
+  // highlights on move, not on enter: a scroll under a resting mouse fires
+  // pointerenter on the option that slides under it, but no pointermove.
   useEffect(() => {
-    if (optionRef.current && isHighlighted) {
+    if (optionRef.current && isHighlighted && !isPointerHighlightRef.current) {
       optionRef.current.scrollIntoView({ block: 'nearest' });
     }
+    isPointerHighlightRef.current = false;
   }, [isHighlighted, optionRef]);
 
   function onClick(): void {
@@ -51,7 +59,12 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
         className,
       )}
       onClick={ onClick }
-      onPointerEnter={ () => highlightOption(item) }
+      onPointerMove={ () => {
+        if (!isHighlighted) {
+          isPointerHighlightRef.current = true;
+          highlightOption(item);
+        }
+      } }
       ref={ optionRef }
       role="option"
       tabIndex={ -1 }

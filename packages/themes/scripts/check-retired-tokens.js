@@ -8,6 +8,8 @@
  * retired-tokens.txt lists the names declared in 19.7.3 and declared nowhere at the head:
  *   comm -23 <(names declared at v19.7.3) <(names declared at HEAD)
  * over packages/themes/src and packages/ods-react/src.
+ * A few names that v20 added and then removed during its development are listed too, so that a
+ * branch started before their removal cannot bring them back.
  *
  * Usage: node scripts/check-retired-tokens.js
  */

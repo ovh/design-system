@@ -132,7 +132,6 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
       },
     ],
   },
-  { hidden: true, icon: ICON_NAME.list, id: 'guides/roadmap', kind: 'guide', path: '/guides/roadmap', title: 'Roadmap' },
   { icon: ICON_NAME.circleQuestion, id: 'guides/faq', kind: 'guide', path: '/guides/faq', title: 'F.A.Q.' },
 ];
 

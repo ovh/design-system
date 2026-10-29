@@ -269,9 +269,9 @@ function transformProse(text: string, ctx: MdxContext): string {
     return name ? `<code>${name}</code>${value ? ` (default: <code>${value}</code>)` : ''}` : '';
   });
 
-  // Live/interactive-only ports (mutable roadmap data, recipe browser,
-  // form demos): point at the page instead.
-  out = out.replace(/<(Roadmap|Recipes|FormData|Component)\b[^>]*\/>/g,
+  // Live/interactive-only ports (recipe browser, form demos): point at the
+  // page instead.
+  out = out.replace(/<(Recipes|FormData|Component)\b[^>]*\/>/g,
     `_Interactive content — see ${ctx.pageUrl}_`);
 
   // Last of the tag ports: the story source it inserts is code, which the ports above would rewrite

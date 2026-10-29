@@ -21,7 +21,6 @@ import { DesignTokens } from './ports/designTokens/DesignTokens';
 import { TokenPreview } from './ports/designTokens/tokenPreview/TokenPreview';
 import { OdsLocaleList } from './ports/OdsLocaleList';
 import { Recipes } from './ports/recipes/Recipes';
-import { Roadmap } from './ports/roadmap/Roadmap';
 import './doc.css';
 
 /* The neutral-format component contract: every component available inside a
@@ -213,7 +212,6 @@ const MDX_COMPONENTS = {
   OdsLocaleList,
   Recipes,
   TableVsDataTable,
-  Roadmap,
   Table,
   TokenPreview,
   img: DocImage,

@@ -3,7 +3,7 @@ import { type ComponentPropsWithRef, type CSSProperties, type FC, type JSX, forw
 import { declaredTokens } from '../helpers/designTokens';
 
 /* Forces the ODS light theme onto a subtree (recipe previews), so the docs
-   dark skin doesn't bleed into them — ODS ships no dark theme for demos. */
+   dark skin doesn't bleed into them: demos are shown in the light theme. */
 const ResetTheme: FC<ComponentPropsWithRef<'div'>> = forwardRef(({ children, className, style = {}, ...props }, ref): JSX.Element => (
   <div
     className={ className }

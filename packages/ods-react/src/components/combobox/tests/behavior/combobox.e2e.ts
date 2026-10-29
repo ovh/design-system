@@ -160,6 +160,70 @@ describe('Combobox behaviour', () => {
     });
   });
 
+  describe('scrolling', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/page-bottom');
+      await page.waitForSelector('[data-ods="combobox"]');
+    });
+
+    it('should scroll the page to keep the highlighted option visible on keyboard navigation', async() => {
+      // The pointer rests on the control, so the page scroll brings options under it.
+      await openContent(page);
+      const itemCount = (await getItems(page)).length;
+
+      await Array.from({ length: itemCount }).reduce<Promise<void>>(
+        (previous, _, idx) => previous.then(async() => {
+          await page.keyboard.press('ArrowDown');
+          await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+          // An option sliding under the pointer must not take the highlight.
+          expect(await page.$$eval('[role="option"]', (els) => els.findIndex((el) => el.getAttribute('aria-selected') === 'true'))).toBe(idx);
+        }),
+        Promise.resolve(),
+      );
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+
+      const bottom = await page.$eval('[role="option"]:last-child', (el) => el.getBoundingClientRect().bottom);
+      expect(bottom).toBeLessThanOrEqual(await page.evaluate(() => window.innerHeight));
+    });
+
+    it('should not scroll the page when hovering a partly visible option', async() => {
+      await openContent(page);
+      const scrollY = await page.evaluate(() => window.scrollY);
+      const top = await page.evaluate(() => {
+        const options = Array.from(document.querySelectorAll('[role="option"]'));
+        const partlyVisible = options.find((el) => el.getBoundingClientRect().bottom > window.innerHeight);
+        return partlyVisible?.getBoundingClientRect().top;
+      });
+
+      expect(top).toBeLessThan(await page.evaluate(() => window.innerHeight));
+      await page.mouse.move(20, (top! + await page.evaluate(() => window.innerHeight)) / 2);
+      await page.waitForSelector('[role="option"][aria-selected="true"]');
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+
+      expect(await page.evaluate(() => window.scrollY)).toBe(scrollY);
+    });
+
+    it('should scroll a hovered option into view once reached back by keyboard', async() => {
+      await openContent(page);
+      const { index, top } = await page.evaluate(() => {
+        const options = Array.from(document.querySelectorAll('[role="option"]'));
+        const partlyVisible = options.findIndex((el) => el.getBoundingClientRect().bottom > window.innerHeight);
+        return { index: partlyVisible, top: options[partlyVisible]?.getBoundingClientRect().top };
+      });
+
+      expect(top).toBeLessThan(await page.evaluate(() => window.innerHeight));
+      // The pointer stays still on the partly visible option from here on.
+      await page.mouse.move(20, (top! + await page.evaluate(() => window.innerHeight)) / 2);
+      await page.waitForFunction((idx) => document.querySelectorAll('[role="option"]')[idx]?.getAttribute('aria-selected') === 'true', {}, index);
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowDown');
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+
+      const bottom = await page.evaluate((idx) => document.querySelectorAll('[role="option"]')[idx].getBoundingClientRect().bottom, index);
+      expect(bottom).toBeLessThanOrEqual(await page.evaluate(() => window.innerHeight));
+    });
+  });
+
   describe('filtering', () => {
     describe('default', () => {
       beforeEach(async() => {

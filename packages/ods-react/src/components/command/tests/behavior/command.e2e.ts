@@ -23,6 +23,29 @@ async function typeInFilter(page: Page, text: string): Promise<void> {
   await page.type('[data-ods="command-filter"]', text);
 }
 
+async function getHighlightedIndex(page: Page): Promise<number> {
+  return page.$$eval('[data-ods="command-option"]', (els) => els.findIndex((el) => el.getAttribute('aria-selected') === 'true'));
+}
+
+// The first option cut by the bottom of the scrolled list, and the middle of its visible slice.
+async function getClippedOption(page: Page): Promise<{ index: number, x: number, y: number }> {
+  return page.evaluate(() => {
+    const listBottom = document.querySelector('[data-ods="command-list"]')!.parentElement!.getBoundingClientRect().bottom;
+    const options = Array.from(document.querySelectorAll('[data-ods="command-option"]'));
+    const index = options.findIndex((el) => el.getBoundingClientRect().bottom > listBottom);
+    const { left, top } = options[index].getBoundingClientRect();
+    return { index, x: left + 20, y: (top + listBottom) / 2 };
+  });
+}
+
+async function getListScrollTop(page: Page): Promise<number> {
+  return page.$eval('[data-ods="command-list"]', (el) => el.parentElement!.scrollTop);
+}
+
+async function nextFrame(page: Page): Promise<void> {
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+}
+
 async function getSelectedValue(page: Page): Promise<string> {
   return page.$eval('[data-testid="selected-value"]', (el) => el.textContent || '');
 }
@@ -343,6 +366,67 @@ describe('Command behaviour', () => {
 
       expect(options.length).toBe(1);
       expect(await getHighlightedOptionId(page)).toBe('opt-copy');
+    });
+  });
+
+  describe('scrolling', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/many-options');
+      await page.waitForSelector('[data-ods="command-option"][aria-selected="true"]');
+      // The cases need a list that scrolls, so wait for its styles.
+      await page.waitForFunction(() => {
+        const list = document.querySelector('[data-ods="command-list"]')!.parentElement!;
+        return list.scrollHeight > list.clientHeight;
+      });
+      await clickFilter(page);
+    });
+
+    it('should not scroll the list when hovering a partly visible option', async() => {
+      const scrollTop = await getListScrollTop(page);
+      const { index, x, y } = await getClippedOption(page);
+
+      await page.mouse.move(x, y);
+      await nextFrame(page);
+
+      expect(await getHighlightedIndex(page)).toBe(index);
+      expect(await getListScrollTop(page)).toBe(scrollTop);
+    });
+
+    it('should scroll a hovered option into view once reached back by keyboard', async() => {
+      const { index, x, y } = await getClippedOption(page);
+
+      // The pointer stays still on the partly visible option from here on.
+      await page.mouse.move(x, y);
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowDown');
+      await nextFrame(page);
+
+      expect(await getHighlightedIndex(page)).toBe(index);
+      const { bottom, listBottom } = await page.evaluate((idx) => ({
+        bottom: document.querySelectorAll('[data-ods="command-option"]')[idx].getBoundingClientRect().bottom,
+        listBottom: document.querySelector('[data-ods="command-list"]')!.parentElement!.getBoundingClientRect().bottom,
+      }), index);
+      expect(bottom).toBeLessThanOrEqual(listBottom);
+    });
+
+    it('should keep the keyboard highlight when the list scrolls under a resting pointer', async() => {
+      const { index } = await getClippedOption(page);
+      const { x, y } = await page.$eval('[data-ods="command-option"]', (el) => {
+        const { left, top, height } = el.getBoundingClientRect();
+        return { x: left + 20, y: top + height / 2 };
+      });
+
+      await page.mouse.move(x, y);
+      // Past the clipped option, so that the list scrolls under the pointer.
+      await Array.from({ length: index + 3 }).reduce<Promise<void>>(
+        (previous) => previous.then(async() => {
+          await page.keyboard.press('ArrowDown');
+          await nextFrame(page);
+        }),
+        Promise.resolve(),
+      );
+
+      expect(await getHighlightedIndex(page)).toBe(index + 3);
     });
   });
 });

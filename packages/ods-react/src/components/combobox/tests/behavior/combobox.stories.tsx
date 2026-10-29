@@ -13,6 +13,8 @@ const simpleItems = [
   { label: 'Date', value: 'the-date' },
 ];
 
+const manyItems = Array.from({ length: 40 }, (_, idx) => ({ label: `Item ${idx + 1}`, value: `item-${idx + 1}` }));
+
 const groupedItems = [
   {
     label: 'Fruits',
@@ -135,6 +137,15 @@ export const KeyboardNavigation = () => (
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
+);
+
+export const PageBottom = () => (
+  <div style={{ padding: '35vh 0 100vh' }}>
+    <Combobox items={ manyItems }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </div>
 );
 
 export const MultipleCombobox = () => (

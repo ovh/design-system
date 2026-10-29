@@ -31,6 +31,7 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
 }, ref): JSX.Element | null => {
   const { filter, highlightItem, highlightedValue, registerHandler, registerItem, unregisterHandler, unregisterItem } = useCommand();
   const nodeRef = useRef<HTMLDivElement | null>(null);
+  const isPointerHighlightRef = useRef(false);
   const id = useId();
   const itemId = props?.id || id;
   const isDisabled = props['aria-disabled'] === true || props['aria-disabled'] === 'true';
@@ -69,10 +70,17 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
     return (): void => unregisterItem(itemId);
   }, [itemId, unregisterItem]);
 
+  // An option highlighted by the pointer is already visible: scrolling then
+  // would only move the page under the pointer and highlight another option.
+  // Keyed on the highlight source, not the hover: an option still under the
+  // pointer but reached back by keyboard must scroll into view. The pointer
+  // highlights on move, not on enter: a scroll under a resting mouse fires
+  // pointerenter on the option that slides under it, but no pointermove.
   useEffect(() => {
-    if (isHighlighted) {
+    if (isHighlighted && !isPointerHighlightRef.current) {
       nodeRef.current?.scrollIntoView({ block: 'nearest' });
     }
+    isPointerHighlightRef.current = false;
   }, [isHighlighted]);
 
   if (!isVisible) {
@@ -93,11 +101,12 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
         }
         props.onClick?.(e);
       } }
-      onPointerEnter={ (e) => {
-        if (!isDisabled) {
+      onPointerMove={ (e) => {
+        if (!isDisabled && !isHighlighted) {
+          isPointerHighlightRef.current = true;
           highlightItem(itemId);
         }
-        props.onPointerEnter?.(e);
+        props.onPointerMove?.(e);
       } }
       ref={ nodeRef }
       role="option">

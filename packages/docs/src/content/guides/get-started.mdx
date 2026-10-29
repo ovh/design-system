@@ -98,6 +98,15 @@ via Sass import:
   </MessageBody>
 </Message>
 
+The dark theme is an overlay, to load **after** the default theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+It re-declares the semantic tokens on `:root`, so it applies to the whole page. ODS does not switch between the light and dark themes at runtime: load the one you need.
+
 <Heading label="Typescript" level={ 2 } />
 
 To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.

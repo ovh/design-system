@@ -9,7 +9,7 @@
     --ods-toggle-control-border-color-hover: var(--ods-semantic-color-interaction-control-hover);
     --ods-toggle-control-label-off-text-color: var(--ods-semantic-color-content-text);
     --ods-toggle-control-label-on-text-color: var(--ods-semantic-color-content-on-control-solid);
-    --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-surface-raised);
+    --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-surface-thumb);
 
     box-sizing: border-box;
     display: inline-block;
@@ -36,6 +36,9 @@
     }
 
     &[data-state="checked"] {
+      // The thumb takes the ink of the fill, so it keeps its contrast where the fill is inverted (dark themes).
+      --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-content-on-control-solid);
+
       transition: background-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing), border-color var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing);
       border-color: var(--ods-semantic-color-border-control-solid);
       background: var(--ods-semantic-color-surface-control-solid);
@@ -53,6 +56,9 @@
       }
 
       &[data-invalid] {
+        --ods-toggle-control-label-on-text-color: var(--ods-semantic-color-content-on-critical-solid);
+        --ods-toggle-control-thumb-background-color: var(--ods-semantic-color-content-on-critical-solid);
+
         background-color: var(--ods-semantic-color-surface-critical);
       }
 

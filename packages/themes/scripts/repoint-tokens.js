@@ -236,6 +236,7 @@ function rampRole(kind, family, rung, prop) {
  */
 const NOTES = {
   theme: {
+    'anchor-text-color-hover': 'to restyle the Link hover, set `--ods-link-text-color-hover` on `[data-ods="link"]`: the Link no longer reads `interaction-brand-hover`, which now drives the brand Button hover, and its hover keeps the rest color (BC-19).',
     'background-color': 'per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.',
     'heading-text-color': 'a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.',
     'overlay-z-index': 'an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.',

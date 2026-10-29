@@ -578,6 +578,8 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 
 **New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default: a colored border and colored text on the raised surface, which is not the v19 look (see **Default rendering**). Use `high` for a tinted background with a light border, the closest to v19, and `low` for colored text only. In the blue-jeans theme, `high` is the tinted background without border, as in v19, and `medium` sits on the raised surface with the light status border: add `emphasis="high"` to keep the v19 look. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
 
+**The status custom properties paint the `medium` emphasis.** In v19, `--ods-badge-background-color-<status>` and `--ods-badge-text-color-<status>` painted the tinted Badge. In v20 they paint the default `medium` Badge, and the tinted background is the `high` emphasis, read from the `-high` names: if you add `emphasis="high"` to keep the v19 look, move your overrides to `--ods-badge-background-color-<status>-high` and `--ods-badge-text-color-<status>-high`.
+
 To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
 **before**

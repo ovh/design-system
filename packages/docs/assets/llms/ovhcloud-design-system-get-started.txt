@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
 version: 19.7.3
-tokens: 658
+tokens: 745
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
 ---
 
@@ -106,6 +106,15 @@ via Sass import:
   
 > In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
 > Though this will increase the bundle size and prevent browser resources loading optimization.
+
+The dark theme is an overlay, to load **after** the default theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+It re-declares the semantic tokens on `:root`, so it applies to the whole page. ODS does not switch between the light and dark themes at runtime: load the one you need.
 
 ## Typescript
 

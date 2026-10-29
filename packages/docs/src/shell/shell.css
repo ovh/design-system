@@ -283,7 +283,8 @@ body {
   padding: 0;
 }
 
-/* ODS ships no dark theme, so we build one for the parent document: flip the
+/* The docs chrome does not load an ODS dark theme (aluminium-dark is an
+   overlay for apps), so we build one for the parent document: flip the
    background/text tokens AND the whole neutral ramp (light → dark). That way
    every ODS surface rendered in the docs chrome — table stripes and headers,
    inactive tabs, tree selection, cards, borders, muted text — inverts and
@@ -375,10 +376,13 @@ body {
   --ods-semantic-color-border-control: var(--ods-palette-gray-300);
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-50);
   --ods-semantic-color-border-separator: var(--ods-palette-gray-100);
+  --ods-semantic-color-border-container: var(--ods-palette-gray-300);
+  --ods-semantic-color-border-track: var(--ods-palette-gray-200);
   --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-200);
   --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);
+  --ods-semantic-color-interaction-track-hover: var(--ods-palette-gray-300);
   --ods-semantic-color-chart-axis: var(--ods-palette-gray-300);
   --ods-semantic-color-chart-grid: var(--ods-palette-gray-200);
   --ods-semantic-color-chart-tick: var(--ods-palette-gray-700);

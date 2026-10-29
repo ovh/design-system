@@ -85,10 +85,12 @@ via Sass import:
 
 ```scss
 @use 'pkg:@ovhcloud/ods-themes/default/css';
-@use 'pkg:@ovhcloud/ods-themes/default/fonts';
+@use '@ovhcloud/ods-themes/default/fonts';
 ```
 
 `pkg:` URLs require the <ExternalLink href="https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/">Node.js package importer</ExternalLink> (Sass `v1.71+`), enabled with `importers: [new NodePackageImporter()]` in your Sass options.
+
+The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
 <Message dismissible={ false } style={{ width: '100%' }}>
   <MessageIcon name="circle-info" />

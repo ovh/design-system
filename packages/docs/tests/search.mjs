@@ -55,8 +55,11 @@ async function suite(browser, { base, version }) {
       const scrolledToSection = await page.evaluate(isSectionInView, decodeURIComponent(hash.slice(1)));
       ok('the section is scrolled into view (SPA nav)', scrolledToSection);
     }
-    // Flash highlight (CSS Custom Highlight API): painted on arrival…
-    const flashed = await page.evaluate(() => CSS.highlights?.has('ods-search') ?? false);
+    // Flash highlight (CSS Custom Highlight API): painted once the lazy content has settled, which
+    // can take longer than the wait above. Awaited rather than sampled: it clears itself after
+    // CLEAR_AFTER_MS, so a later sample would miss it.
+    const flashed = await page.waitForFunction(() => CSS.highlights?.has('ods-search'), {}, { timeout: 8000 })
+      .then(() => true, () => false);
     ok('searched terms are flash-highlighted on arrival', flashed);
     // …and self-cleared shortly after. Coupled to CLEAR_AFTER_MS (2600) in
     // src/doc/searchHighlight.ts: keep this wait above CLEAR_AFTER_MS.

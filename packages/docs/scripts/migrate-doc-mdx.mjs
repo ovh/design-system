@@ -32,7 +32,6 @@ const HOME_ROUTES = {
   migration16to17: '/guides/migration-16-to-17',
   migration17to18: '/guides/migration-17-to-18',
   migrationToV19: '/guides/migration-to-v19',
-  roadmap: '/guides/roadmap',
   sandboxTool: '/tools/sandbox',
   styleCustomization: '/guides/style-customization',
   tailwind: '/guides/tailwind',
@@ -147,7 +146,7 @@ function migrate(source) {
   const CONTRACT = new Set([
     'Anatomy', 'BestPractices', 'Canvas', 'ChartColorCards', 'DesignTokens', 'DocLink', 'ExternalLink',
     'Heading', 'HelperSpecification', 'Icon', 'IdentityCard', 'Kbd', 'Link', 'Message', 'MessageBody',
-    'MessageIcon', 'OdsLocaleList', 'Recipes', 'Roadmap', 'Table', 'TokenPreview',
+    'MessageIcon', 'OdsLocaleList', 'Recipes', 'Table', 'TokenPreview',
   ]);
   for (const tag of scanned.matchAll(/<([A-Z]\w+)[\s/>]/g)) {
     if (!CONTRACT.has(tag[1])) {

@@ -79,14 +79,14 @@ async function suite(browser, { base, version }) {
   const placementHint = await page.locator('.shell__search-option--content .shell__search-option-hint').first().textContent();
   ok('a heading-only term finds its section ("textarea placement")', placementHint === 'Placement', placementHint ?? '(no content hit)');
 
-  // Hidden pages (Roadmap) stay out of the full-text hits too, not only of the
-  // title matches, while the index still holds them. Other pages mentioning
-  // the roadmap (What's new) are still found.
+  // The Roadmap page is retired: gone from the index and the palette, while other
+  // pages mentioning the roadmap (What's new) are still found.
   await page.locator('[data-ods="command-filter"]').fill('roadmap');
   await page.waitForTimeout(900);
   const hitTitles = await page.locator('.shell__search-option--content > span:not([class])').allTextContents();
   const roadmapHits = hitTitles.filter((title) => title === 'Roadmap').length;
-  ok('hidden pages stay out of the full-text hits ("roadmap")', index.some((entry) => entry.r.startsWith('/guides/roadmap')) && roadmapHits === 0, `${roadmapHits} hit(s)`);
+  ok('the retired Roadmap is out of the index and the palette', !index.some((entry) => entry.r.startsWith('/guides/roadmap')) && roadmapHits === 0, `${roadmapHits} hit(s)`);
+  ok('the pages mentioning the roadmap are still found', hitTitles.some((title) => title.trim() === "What's new"), hitTitles.join(', ') || '(no content hit)');
 
   // Mixed-language query: the strict all-terms pass finds nothing, the
   // any-term fallback must still surface the cognate ("validation").

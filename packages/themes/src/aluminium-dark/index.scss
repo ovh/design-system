@@ -131,6 +131,12 @@
   /* Focus */
   --ods-semantic-color-focus: var(--ods-palette-white);
 
+  /* Shadow */
+  // Menu, Popover, Tooltip, Drawer and Modal have no border, and their surface is the one of a Card in this theme: the
+  // overlay shadow draws their edge, a 1px ring in the container border color, over a black and denser shadow.
+  --ods-semantic-color-shadow-overlay: var(--ods-palette-black);
+  --ods-semantic-shadow-overlay: 0 0 0 1px var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
+
   /* Brand */
   --ods-semantic-color-brand: var(--ods-palette-white);
 }

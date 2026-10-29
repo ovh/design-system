@@ -4,7 +4,7 @@
     border-bottom-right-radius: inherit;
     padding: 0 var(--ods-accordion-padding-horizontal) var(--ods-accordion-padding-vertical);
 
-    // Tinted details: the content takes the fill, the trigger stays on the item surface. Not on a
+    // Muted details: the content takes the muted surface, the trigger stays on the item surface. Not on a
     // disabled item, which keeps the medium rendering, dimmed.
     &--high:not([data-disabled]) {
       // The inner edge of the item border, so that no item background shows at the rounded corners.

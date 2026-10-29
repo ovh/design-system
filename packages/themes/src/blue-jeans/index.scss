@@ -175,7 +175,7 @@
 }
 
 @layer ods-molecules {
-  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  // Same as in ods-atoms above.
   :root [data-ods='message'] {
     // high is the v19 tinted fill without a border.
     --ods-message-border-color-accent-high: transparent;

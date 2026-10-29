@@ -50,7 +50,7 @@ not the history of the branch.
 | [BC-16](#bc-16---deprecated-and-unused-scss-exports-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated and 2 unused SCSS exports of `./style` removed | manual |
 | [BC-17](#bc-17---code-custom-properties-renamed) | `@ovhcloud/ods-react` | 3 `Code` custom properties renamed | automatable |
 | [BC-18](#bc-18---button-border-width-token-renamed) | `@ovhcloud/ods-react` | `Button` border width token renamed | automatable |
-| [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, the `Combobox` tags and the transitions render differently by default | manual |
+| [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, `Link`, the `Combobox` and `Query Filter` tags and the transitions render differently by default | manual |
 | [BC-20](#bc-20---a-19x-custom-theme-no-longer-applies) | `@ovhcloud/ods-themes` | a 19.x custom theme no longer applies | manual |
 | [BC-21](#bc-21---form-fields-share-one-default-width) | `@ovhcloud/ods-react` | form fields share one default width instead of filling their container | manual |
 | [BC-22](#bc-22---a-drawer-without-backdrop-gives-the-focus-back-on-close) | `@ovhcloud/ods-react` | a drawer without backdrop gives the focus back on close | none needed |
@@ -161,6 +161,7 @@ at `brand-700`, the rung that `primary-700` became.
 
 Depends on the site:
 
+- `--ods-theme-anchor-text-color-hover`: to restyle the Link hover, set `--ods-link-text-color-hover` on `[data-ods="link"]`: the Link no longer reads `interaction-brand-hover`, which now drives the brand Button hover, and its hover keeps the rest color (BC-19).
 - `--ods-theme-background-color`: per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.
 - `--ods-theme-heading-text-color`: a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.
 - `--ods-theme-overlay-z-index`: an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.
@@ -695,11 +696,11 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border and, without `emphasis`, loses its tinted background, the selected `Tab` fills, the tags of a multiple `Combobox` turn `accent`, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
+| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border and, without `emphasis`, loses its tinted background, the selected `Tab` fills, the `Link` hover keeps the rest color, the tags of a multiple `Combobox` and of a `Query Filter` turn `accent`, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
 | **Impact** | Visual only. On a tinted ground, a card or an accordion now shows a white box. `status="accent"`, which brings back the 19.7.3 color of a `Card` without status (BC-09), does not bring back its transparency. |
-| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>` and multiple `<Combobox>` |
+| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>`, `<Link>`, multiple `<Combobox>` and `<QueryFilter>` |
 | **Codemod** | **manual** - add the rules below to the consumer stylesheet, outside any `@layer`. |
-| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/themes/src/default/index.scss` (motion) |
+| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/style/_link.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/ods-react/src/components/query-filter/src/components/query-filter-tags/QueryFilterTags.tsx`, `packages/themes/src/default/index.scss` (motion) |
 
 - **Card, Tile and Accordion** paint `--ods-semantic-color-surface-raised` where 19.7.3 painted no
   background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`.
@@ -724,6 +725,14 @@ goes under the v20 modal.
   `--ods-tag-background-color-accent-hover` instead of the information ones. An override of the
   information `Tag` tokens aimed at these tags no longer reaches them: override the
   `--ods-tag-*-accent*` tokens instead.
+- **Query Filter**: the tags are `accent`, where 19.7.3 rendered the default `information` Tag. An
+  override of the information `Tag` tokens no longer reaches them: override the
+  `--ods-tag-*-accent*` tokens instead.
+- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where 19.7.3
+  darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`,
+  `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the
+  `ods-link()` mixin. Keep the 19.7.3 hover:
+  `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
 - **Motion**: the transitions read the motion tokens, and a few of them change. The Toggle thumb
   goes from `0.4s ease` to `--ods-semantic-motion-duration-slow` (300ms) `ease-in-out`, its checked
   background and border from `0.2s ease` to `-medium` (200ms) `ease-in-out`, the Radio dot from

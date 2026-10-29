@@ -28,7 +28,7 @@ const EXCLUDED = [
   'packages/themes/scripts/repoint-tokens.js',
   'packages/themes/scripts/retired-tokens.txt',
   'packages/docs/src/content/guides/migration-19-to-20.mdx',
-  'packages/docs/src/content/guides/whats-new.mdx',
+  'packages/docs/src/content/guides/whats-new*.mdx',
   'packages/docs/assets/llms',
   '**/CHANGELOG.md',
 ];

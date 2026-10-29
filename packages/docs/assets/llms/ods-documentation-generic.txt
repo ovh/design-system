@@ -35,7 +35,7 @@ slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
 version: 19.7.3
-tokens: 658
+tokens: 745
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
 ---
 
@@ -137,6 +137,15 @@ via Sass import:
   
 > In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
 > Though this will increase the bundle size and prevent browser resources loading optimization.
+
+The dark theme is an overlay, to load **after** the default theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+It re-declares the semantic tokens on `:root`, so it applies to the whole page. ODS does not switch between the light and dark themes at runtime: load the one you need.
 
 ## Typescript
 
@@ -5131,7 +5140,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 14323
+tokens: 14595
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5555,6 +5564,8 @@ These changes need no code change: the new rendering is intended. To keep the v1
 - **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
 - **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the accent hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-accent*` instead.
+- **Query Filter**: the tags are `accent`, where v19 rendered the default `information` Tag. An override of the information Tag tokens no longer reaches them: override `--ods-tag-*-accent*` instead.
+- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
 - **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
@@ -5714,6 +5725,8 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 - `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
 
 **New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default: a colored border and colored text on the raised surface, which is not the v19 look (see **Default rendering**). Use `high` for a tinted background with a light border, the closest to v19, and `low` for colored text only. In the blue-jeans theme, `high` is the tinted background without border, as in v19, and `medium` sits on the raised surface with the light status border: add `emphasis="high"` to keep the v19 look. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
+
+**The status custom properties paint the `medium` emphasis.** In v19, `--ods-badge-background-color-<status>` and `--ods-badge-text-color-<status>` painted the tinted Badge. In v20 they paint the default `medium` Badge, and the tinted background is the `high` emphasis, read from the `-high` names: if you add `emphasis="high"` to keep the v19 look, move your overrides to `--ods-badge-background-color-<status>-high` and `--ods-badge-text-color-<status>-high`.
 
 To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 

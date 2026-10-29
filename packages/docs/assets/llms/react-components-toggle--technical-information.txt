@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 427
+tokens: 430
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -44,6 +44,6 @@ _No specific property._
 | `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-track)` |
 | `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
-| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-control-solid)` |
-| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-critical-solid)` |
+| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-content-on-critical-solid)` |
 | `--ods-state-is-disabled-opacity` | `1` |

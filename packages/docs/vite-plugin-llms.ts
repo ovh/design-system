@@ -143,10 +143,12 @@ function checkComponentInvariants(componentKeys: string[]): void {
 }
 
 /* Every component page follows the same outline, so readers (and the llms
-   output) find a section at the same place on every page: the identity card,
-   the "Dos & Don'ts" (level 3, under Usage) and the level-2 sections below,
-   in this order. Placement and Variation are optional. A page that cannot
-   have a section yet is listed in COMPONENT_SECTION_GAPS, which only shrinks. */
+   output) find a section at the same place on every page. The check requires
+   an identity card, a level-3 "Dos & Don'ts" and the level-2 sections below in
+   this order, but not where the card and the "Dos & Don'ts" sit (under
+   Overview and Usage by convention). Placement and Variation are optional. A
+   page that cannot have a section yet is listed in COMPONENT_SECTION_GAPS,
+   which only shrinks. */
 const COMPONENT_SECTIONS = ['Overview', 'Usage', 'Placement', 'Behavior', 'Variation', 'Navigation', 'Accessibility'];
 const OPTIONAL_COMPONENT_SECTIONS = new Set(['Placement', 'Variation']);
 const COMPONENT_SECTION_GAPS: Record<string, string[]> = {

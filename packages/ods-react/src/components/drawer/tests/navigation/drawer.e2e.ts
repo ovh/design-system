@@ -53,14 +53,26 @@ describe('Drawer navigation', () => {
 
       await page.click('[data-testid="trigger"]');
       await waitForFocus(page, 'first');
+
+      // Read in the page as soon as the drawer turns closed: outside CI, puppeteer is slowed down
+      // (slowMo), and a read from the test would come after the close animation has ended.
+      await page.$eval(CONTENT, (el) => {
+        new MutationObserver((_, observer) => {
+          if (el.getAttribute('data-state') === 'closed') {
+            el.setAttribute('data-closing-state', JSON.stringify({
+              display: getComputedStyle(el).display,
+              hasRunningAnimation: el.getAnimations().some((animation) => animation.playState === 'running'),
+              isHidden: el.hasAttribute('hidden'),
+            }));
+            observer.disconnect();
+          }
+        }).observe(el, { attributeFilter: ['data-state'] });
+      });
       await page.keyboard.press('Escape');
 
-      await page.waitForFunction((selector) => document.querySelector(selector)?.getAttribute('data-state') === 'closed', {}, CONTENT);
-      expect(await page.$eval(CONTENT, (el) => ({
-        display: getComputedStyle(el).display,
-        hasRunningAnimation: el.getAnimations().some((animation) => animation.playState === 'running'),
-        isHidden: el.hasAttribute('hidden'),
-      }))).toEqual({ display: 'block', hasRunningAnimation: true, isHidden: false });
+      await page.waitForSelector(`${CONTENT}[data-closing-state]`);
+      expect(JSON.parse(await page.$eval(CONTENT, (el) => el.getAttribute('data-closing-state') ?? '')))
+        .toEqual({ display: 'block', hasRunningAnimation: true, isHidden: false });
 
       await waitForHidden(page);
       expect(await page.$eval(CONTENT, (el) => getComputedStyle(el).display)).toBe('none');

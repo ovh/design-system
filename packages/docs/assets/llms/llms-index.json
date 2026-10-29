@@ -1668,13 +1668,6 @@
       "url": "./ovhcloud-design-system-f-a-q.txt"
     },
     {
-      "slug": "ovhcloud-design-system-roadmap",
-      "title": "Roadmap",
-      "type": "overview",
-      "tokens": 25,
-      "url": "./ovhcloud-design-system-roadmap.txt"
-    },
-    {
       "slug": "helpers-formatprice",
       "title": "formatPrice",
       "type": "overview",

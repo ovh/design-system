@@ -29652,12 +29652,6 @@ const MyApp = () => {
 };
 ```
 
-## Roadmap
-
-# Roadmap
-
-_Interactive content — see https://ovh.github.io/design-system/v19.7.3/guides/roadmap_
-
 ## formatPrice
 
 # formatPrice

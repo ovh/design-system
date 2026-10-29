@@ -20,7 +20,15 @@ const ColorPalette: FC<ColorPaletteProp> = ({ tokens }): JSX.Element => {
             </TooltipTrigger>
 
             <TooltipContent>
-              { token.value }
+              <div className={ styles['color-palette__token'] }>
+                <span className={ styles['color-palette__token__name'] }>
+                  { token.name }
+                </span>
+
+                <span>
+                  { token.value }
+                </span>
+              </div>
             </TooltipContent>
           </Tooltip>
         ))

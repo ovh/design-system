@@ -2,7 +2,6 @@ import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { useMemo } from 'react';
 import { TOKEN_CATEGORY } from '../constants/designTokens';
 import { categorizeTokens, declaredTokens, splitPaletteTokens } from '../helpers/designTokens';
-import { Text } from '../../../ods';
 import { Heading } from '../../DocComponents';
 import { ColorPalette } from './colorPalette/ColorPalette';
 import { TokensTable } from './tokensTable/TokensTable';
@@ -22,11 +21,8 @@ const DesignTokens = () => {
     return categorizeTokens(declaredTokens(lightThemeTokens));
   }, []);
 
-  // The palette is shown as colors only: its tokens are theme internals, apps
-  // read the semantic tokens built on top of it. Aliases (brand → blue,
-  // accent → navy) would only repeat a ramp.
-  const { monoColors, palettes } = useMemo(() => {
-    return splitPaletteTokens(tokenByCategory[TOKEN_CATEGORY.palette].filter((token) => !token.value.startsWith('var(')));
+  const { monoColors, opacities, palettes } = useMemo(() => {
+    return splitPaletteTokens(tokenByCategory[TOKEN_CATEGORY.palette]);
   }, [tokenByCategory]);
 
   return (
@@ -53,8 +49,6 @@ const DesignTokens = () => {
         label="Color Palettes"
         level={ 2 } />
 
-      <Text as="p">The colors the themes are built from. Use them through the semantic tokens above.</Text>
-
       <div style={{ overflowX: 'auto' }}>
         {
           palettes.map((palette, idx) => (
@@ -68,6 +62,14 @@ const DesignTokens = () => {
       <br />
 
       <ColorPalette tokens={ monoColors } />
+
+      <section>
+        <Heading
+          label="Opacity"
+          level={ 3 } />
+
+        <TokensTable tokens={ opacities } />
+      </section>
     </div>
   );
 };

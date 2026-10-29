@@ -10,3 +10,12 @@
   cursor: pointer;
 }
 
+.color-palette__token {
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+}
+
+.color-palette__token__name {
+  font-weight: bold;
+}

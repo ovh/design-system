@@ -63,9 +63,10 @@ pnpm new:component
 This will generate all the component resources and the documentation files in the docs package
 (stories in `packages/docs/stories/components/<component-name>/`, documentation page in `packages/docs/src/content/components/<component-name>/documentation.mdx`), and registers the page in the docs navigation (`packages/docs/src/nav/model.ts`).
 
-Keep the generated outline of the documentation page: an identity card, then the `Overview`, `Usage` (with its `Dos & Don'ts`),
+Keep the generated outline of the documentation page: the `Overview` (with the identity card), `Usage` (with its `Dos & Don'ts`),
 `Placement`, `Behavior`, `Variation`, `Navigation` and `Accessibility` sections, in this order (`Placement` and `Variation` are optional).
-The documentation build fails when a component page drifts from it (see `checkComponentStructure` in `packages/docs/vite-plugin-llms.ts`).
+The documentation build fails when a page misses the identity card, a level-3 `Dos & Don'ts` or a required section, or when the sections
+are out of order (see `checkComponentStructure` in `packages/docs/vite-plugin-llms.ts`).
 
 ## Working on an existing component
 

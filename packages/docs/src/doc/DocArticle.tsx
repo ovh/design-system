@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../ods-react/src/components/accordion/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { flashSearchTerms } from './searchHighlight';
@@ -53,7 +54,7 @@ function dedupeHeadingIds(container: HTMLElement): void {
    the sidebar. Headings render with slugified ids (Heading contract); the
    MDX content mounts lazily, so the list is (re)collected through a
    MutationObserver instead of a one-shot scan. */
-const PageToc = ({ container }: { container: HTMLElement | null }) => {
+const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLElement | null }) => {
   const [entries, setEntries] = useState<TocEntry[]>([]);
   const [expanded, setExpanded] = useState<string[]>([]);
   const [active, setActive] = useState<string>('');
@@ -136,40 +137,73 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
 
   const items = toTocItems(entries);
 
+  // Sections stay open: expandedValue is held at every branch and no onExpandedChange is wired, so
+  // the tree can't be collapsed.
+  const tree = (
+    <TreeView
+      expandedValue={ expanded }
+      items={ items }
+      onValueChange={ ({ value }) => value[0] && goTo(value[0]) }
+      value={ active ? [active] : [] }>
+      <TreeViewNodes>
+        { items.map((item) => (
+          <TreeViewNode item={ item } key={ item.id }>
+            { ({ item: node }) => (
+              <span
+                className="doc-layout__toc-node"
+                onClick={ (event) => {
+                  // The label scrolls; only the chevron collapses a branch.
+                  event.stopPropagation();
+                  goTo(node.id);
+                } }>
+                { node.name }
+              </span>
+            ) }
+          </TreeViewNode>
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+
+  // Without the room for its column, the table of contents opens from the top of the article.
+  if (compact) {
+    return (
+      <nav aria-label="On this page" className="doc-layout__toc-compact">
+        <Accordion>
+          <AccordionItem value="toc">
+            <AccordionTrigger>On this page</AccordionTrigger>
+            <AccordionContent>{ tree }</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </nav>
+    );
+  }
+
   return (
     <nav aria-label="On this page" className="doc-layout__toc">
       <Text className="doc-layout__toc-title" preset={ TEXT_PRESET.caption }>On this page</Text>
-      { /* Sections stay open: expandedValue is held at every branch and no
-           onExpandedChange is wired, so the tree can't be collapsed. */ }
-      <TreeView
-        expandedValue={ expanded }
-        items={ items }
-        onValueChange={ ({ value }) => value[0] && goTo(value[0]) }
-        value={ active ? [active] : [] }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode item={ item } key={ item.id }>
-              { ({ item: node }) => (
-                <span
-                  className="doc-layout__toc-node"
-                  onClick={ (event) => {
-                    // The label scrolls; only the chevron collapses a branch.
-                    event.stopPropagation();
-                    goTo(node.id);
-                  } }>
-                  { node.name }
-                </span>
-              ) }
-            </TreeViewNode>
-          )) }
-        </TreeViewNodes>
-      </TreeView>
+      { tree }
     </nav>
   );
 };
 
+/* Keep in sync with doc.css: below it the article takes the whole width, without a ToC column. */
+const COMPACT_TOC_QUERY = '(max-width: 1100px)';
+
+const useCompactToc = () => {
+  const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_TOC_QUERY).matches);
+  useEffect(() => {
+    const query = window.matchMedia(COMPACT_TOC_QUERY);
+    const onChange = () => setCompact(query.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+  return compact;
+};
+
 /* Doc page layout: the article plus its ToC column. */
 const DocArticle = ({ children }: { children: ReactNode }) => {
+  const compactToc = useCompactToc();
   const ref = useRef<HTMLDivElement>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
   const honoredHash = useRef<string>('');
@@ -252,10 +286,11 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="doc-layout">
+      { compactToc && <PageToc compact container={ container } /> }
       <article className="doc" ref={ ref }>
         { children }
       </article>
-      <PageToc container={ container } />
+      { !compactToc && <PageToc container={ container } /> }
     </div>
   );
 };

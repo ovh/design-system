@@ -147,7 +147,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     <nav aria-label="Documentation" className="shell__nav">
       <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } sectionIcons />
       <Divider className="shell__tree-divider" />
-      <Text className="shell__tree-dividerd" preset={ TEXT_PRESET.paragraph }>Reference</Text>
+      <Text className="shell__tree-label-reference" preset={ TEXT_PRESET.caption }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 

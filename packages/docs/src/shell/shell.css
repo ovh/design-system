@@ -201,10 +201,9 @@ body {
   margin: var(--ods-semantic-size-space-gap-block) 0 calc(var(--ods-semantic-size-space-gap-block) * 2);
 }
 
-.shell__tree-dividerd {
+.shell__tree-label-reference {
+  display: block;
   margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
-  text-transform: uppercase;
-  letter-spacing: .04em;
 }
 
 .shell__tree-label--tight {

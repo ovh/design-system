@@ -20,6 +20,20 @@ async function suite(browser, { base, version }) {
     await page.goto(`${base}/v${version}/?path=/docs/ovhcloud-design-system-tools-component-gallery--documentation`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL('**/tools/component-gallery', { timeout: 10000 });
   });
+  // The newest release, deployed under its own /vX.Y.Z/ path too, never learns of the later ones:
+  // its version stays selected there, and the latest channel entry still leads to /latest/.
+  await check('a pinned deployment keeps its version and its latest entry leads to /latest/', async () => {
+    await page.goto(`${base}/v${version}/guides/get-started`, { waitUntil: 'domcontentloaded' });
+    const trigger = page.locator('[data-testid="version-select"] [data-part="trigger"]');
+    await trigger.waitFor({ timeout: 15000 });
+    const shown = (await trigger.textContent())?.trim();
+    if (shown !== `v${version}`) {
+      throw new Error(`the select shows "${shown}"`);
+    }
+    await trigger.click();
+    await page.getByRole('option', { name: /^Latest$|\(latest\)/ }).click();
+    await page.waitForURL('**/latest/**', { timeout: 10000 });
+  });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });

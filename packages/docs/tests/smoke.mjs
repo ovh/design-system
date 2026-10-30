@@ -37,6 +37,13 @@ async function suite(browser, { base, version }) {
     await page.waitForURL('https://ovh.github.io/design-system/latest/', { timeout: 10000 });
     await page.unroute('https://ovh.github.io/design-system/**');
   });
+  await check('a page links to the next one of the sidebar at its foot', async () => {
+    await page.goto(`${V}/guides/get-started`, { waitUntil: 'domcontentloaded' });
+    const next = page.locator('nav[aria-label="Previous and next pages"] a').last();
+    await next.waitFor({ timeout: 10000 });
+    await next.click();
+    await page.waitForURL(`**/v${version}/guides/apply-ods-style`, { timeout: 10000 });
+  });
   await check('an unknown page says so instead of bouncing to the homepage', async () => {
     await page.goto(`${V}/components/does-not-exist`, { waitUntil: 'domcontentloaded' });
     await page.getByRole('heading', { level: 1, name: 'Page not found' }).waitFor({ timeout: 10000 });

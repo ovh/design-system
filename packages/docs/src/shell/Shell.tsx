@@ -16,6 +16,7 @@ import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavP
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
+import { PagePager } from './PagePager';
 import { SearchCommand } from './SearchCommand';
 import './shell.css';
 
@@ -363,6 +364,7 @@ const Shell = () => {
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" ref={ contentRef } tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />
+          <PagePager currentId={ currentPage?.id } />
         </main>
       </div>
     </div>

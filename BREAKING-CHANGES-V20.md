@@ -512,7 +512,11 @@ grep -rnE '\$(ods-badge-height-md|ods-button-size-(xs|sm|md)|animation-duration|
 ```
 
 `$ods-input-actions-padding-right` goes from `4px` to `2px`: the action buttons of a field sit as
-close to its border as its block inset. `./style` also gains the `ods-highlight-indicator()` mixin.
+close to its border as its block inset. `$ods-badge-padding-horizontal-sm` and `-md` go from `4px`
+to `8px`, `-lg` from `6px` to `12px` (the pill's side room; the blue-jeans theme puts the 19.7.3
+widths back through the custom properties, not these variables), and `ods-badge-size()` now takes
+the border thickness off the vertical padding. `ods-message-emphasis-high()` likewise takes it off
+both paddings. `./style` also gains the `ods-highlight-indicator()` mixin.
 
 `Tile` loses `--ods-tile-border-width`, `--ods-tile-border-color` and `--ods-tile-background-color`.
 All three were declared but never read: `Tile` renders a `Card`, so its border, its background and

@@ -262,6 +262,31 @@ body {
   overflow: auto;
 }
 
+/* Aligned on the centered block of the doc pages, like the topbar. */
+.shell__pager {
+  margin: var(--ods-semantic-size-space-gap-section) auto 0;
+  max-width: var(--doc-block-width);
+}
+
+.shell__pager-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ods-semantic-size-space-gap-group);
+  justify-content: space-between;
+}
+
+.shell__pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--ods-semantic-size-space-gap-block) / 2);
+}
+
+.shell__pager-link--next {
+  align-items: flex-end;
+  margin-left: auto;
+  text-align: end;
+}
+
 /* The home route drops the content padding: the Welcome page lays out its own (homepage.module.css). */
 .shell__content--flush {
   padding: 0;

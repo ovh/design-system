@@ -1,8 +1,9 @@
 /* An overlay on the blue-jeans theme, at the same :root specificity: load it after blue-jeans/css.
    Surfaces, structure and selection follow aluminium dark on navy; brand and accent stay blue, so the
-   selected Tile outline (border-accent) is blue. Status roles keep the blue-jeans ramps: pale fill 900
-   (information 800, neutral gray-900), ink on the pale fill 200, pale border 600 (information 500) on
-   medium only: high keeps the blue-jeans tinted fill without a border, as in blue-jeans light. */
+   selected Tile outline (border-accent) is blue. Status roles keep the blue-jeans ramps: pale fill 900, as
+   their v19 ramps stop where aluminium's 800 sits (information 800, neutral gray-900), ink on the pale fill
+   200, pale border 600 (information 500); Badge and Message keep the blue-jeans borderless tinted fill in
+   high. */
 :root {
   /* Palette - accent */
   // The accent ramp aims at navy for the roles that read it; the accent status roles alias information.
@@ -64,7 +65,7 @@
   --ods-semantic-color-content-neutral: var(--ods-palette-gray-400);
   --ods-semantic-color-content-brand: var(--ods-palette-brand-400);
 
-  /* Minor brand button at rest: drawn with the control inks in this theme. */
+  /* Minor brand button at rest: the brand ink, as the solid one. */
   --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-400);
   --ods-semantic-color-content-accent: var(--ods-semantic-color-content-information);
   --ods-semantic-color-content-information: var(--ods-palette-blue-400);
@@ -100,7 +101,7 @@
   --ods-semantic-color-border-readonly: var(--ods-palette-navy-600);
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-100);
 
-  /* Minor brand button at rest: the control border step. */
+  /* Borders - statuses */
   --ods-semantic-color-border-accent: var(--ods-semantic-color-border-information);
   --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-500);
   --ods-semantic-color-border-information: var(--ods-palette-blue-400);
@@ -161,7 +162,7 @@
   --ods-semantic-color-focus: var(--ods-palette-white);
 
   /* Shadow */
-  // As in aluminium dark: the overlay shadow draws the edge of the overlays, which have no border. Re-declared here
+  // The overlay shadow draws the edge of the overlays, which have no border. Re-declared here
   // because blue-jeans, loaded before this overlay, sets its own shadow-overlay.
   --ods-semantic-color-shadow-overlay: var(--ods-palette-black);
   --ods-semantic-shadow-overlay: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
@@ -172,7 +173,7 @@
 
 /* Components */
 @layer ods-quarks {
-  // Same as in ods-atoms below.
+  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
   :root [data-ods='skeleton'] {
     // blue-jeans moves the shimmer to surface-neutral-subtle, the gray status fill here: back to surface-muted, as in
     // aluminium dark.
@@ -181,7 +182,7 @@
 }
 
 @layer ods-atoms {
-  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  // Same as in ods-quarks above.
   :root [data-ods='button'] {
     // border-critical moves to red-400 for the fields: the solid critical Button keeps its edge on its fill.
     --ods-button-border-color-critical-high: var(--ods-semantic-color-surface-critical);
@@ -205,6 +206,7 @@
 }
 
 @layer ods-molecules {
+  // Same as in ods-quarks above.
   :root [data-ods='message'] {
     // One ink across the three emphases.
     --ods-message-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);

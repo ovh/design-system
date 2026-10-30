@@ -88,23 +88,33 @@ function detectCurrentChannel(): string {
   return currentVersion === (versions as string[])[0] ? 'latest' : currentVersion;
 }
 
-// The newest release only appears as the "latest" channel, labelled with its version; the
-// " (latest)" flag shows in the dropdown only.
 const [LATEST_VERSION, ...OLDER_VERSIONS] = versions as string[];
-const VERSION_ITEMS = [
-  { customRendererData: { suffix: ' (latest)' }, label: `v${LATEST_VERSION}`, value: 'latest' },
-  ...OLDER_VERSIONS.map((v) => ({ label: `v${v}`, value: v })),
-];
+
+// On the latest channel, the newest release only appears as that channel, labelled with its version;
+// the " (latest)" flag shows in the dropdown only. A pinned /vX.Y.Z/ deployment never learns of the
+// releases after its build: there the channel reads "Latest" and every version keeps its own entry,
+// so that the pinned one stays selected and choosing the channel still leads to /latest/.
+function versionItems(channel: string) {
+  if (channel === 'latest') {
+    return [
+      { customRendererData: { suffix: ' (latest)' }, label: `v${LATEST_VERSION}`, value: 'latest' },
+      ...OLDER_VERSIONS.map((v) => ({ label: `v${v}`, value: v })),
+    ];
+  }
+  return [
+    { label: 'Latest', value: 'latest' },
+    ...(versions as string[]).map((v) => ({ label: `v${v}`, value: v })),
+  ];
+}
 
 const VersionSelect = () => {
-  const channel = detectCurrentChannel();
-  const current = channel === LATEST_VERSION ? 'latest' : channel;
+  const current = detectCurrentChannel();
 
   return (
     <Select
       className="shell__topbar-select"
       data-testid="version-select"
-      items={ VERSION_ITEMS }
+      items={ versionItems(current) }
       onValueChange={ ({ value }) => {
         const target = value[0];
         if (target && target !== current) {

@@ -50,9 +50,12 @@ const SandboxRoute = () => {
   );
 };
 
-/* Sections that left their guide keep their old #anchor working: the previous
-   majors of What's new got a page each (v12 and earlier share the last one), the
-   troubleshooting entries left the F.A.Q. */
+/* Version headings and entries that left their guide keep their old #anchor
+   working: the previous majors of What's new got a page each (v12 and earlier
+   share the last one, which also holds the undated "February 2022" entry), the
+   troubleshooting entries left the F.A.Q. The numbered sub-section anchors of
+   What's new, such as #bug-fixes-12, are not mapped: their number changed with
+   the split. */
 const TROUBLESHOOTING_ANCHORS = new Set([
   'ts2307-cannot-find-module-ovhcloud-ods-react-or-its-corresponding-type-declarations',
   'my-popover-tooltip-is-not-displayed-correctly',

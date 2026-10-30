@@ -79,8 +79,7 @@ body {
   color: var(--ods-semantic-color-brand);
 }
 
-/* Not the uniform field width: the theme select fills its grid cell (.shell__sidebar-selects),
-   the version select fits its label (.shell__brand-row). */
+/* Not the uniform field width: the version select fits its label, beside the logo. */
 .shell__topbar-select {
   width: auto;
 }
@@ -89,12 +88,6 @@ body {
   display: inline-flex;
   column-gap: var(--ods-semantic-size-space-gap-inline);
   align-items: center;
-}
-
-.shell__sidebar-selects {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
-  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
 }
 
 /* The logo and the version it documents, on one line. */
@@ -357,6 +350,7 @@ body {
   --ods-semantic-color-surface-page: var(--docs-dark-ground);
   --ods-semantic-color-surface-raised: var(--docs-dark-ground);
   --ods-semantic-color-surface-overlay: var(--docs-dark-ground);
+  --ods-semantic-color-surface-control: var(--docs-dark-ground);
   --ods-semantic-color-content-text: var(--docs-dark-ink);
   --ods-semantic-color-content-heading: var(--docs-dark-ink);
 
@@ -494,27 +488,19 @@ body {
 
 /* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
    long page title. */
-.shell__llms-link {
-  display: inline-flex;
+.shell__topbar-actions {
+  display: flex;
   flex: none;
-  column-gap: calc(var(--ods-semantic-size-space-gap-inline) * .75);
+  gap: var(--ods-semantic-size-space-gap-inline);
   align-items: center;
   margin-inline-start: auto;
-  border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-brand-minor);
-  border-radius: var(--ods-semantic-size-radius-control);
-  /* The raised surface, not the control one: the docs dark theme does not darken the latter,
-     which would leave the light link text on a white ground. */
-  background-color: var(--ods-semantic-color-surface-raised);
-  padding: calc(var(--ods-semantic-size-space-inset-block) * .75) calc(var(--ods-semantic-size-space-inset-inline) * .75);
-  min-height: var(--ods-semantic-size-block-size-md);
-  line-height: 1;
-  white-space: nowrap;
-  color: var(--ods-semantic-color-content-brand-minor);
-  text-decoration: none;
 }
 
-.shell__llms-link:hover {
-  border-color: var(--ods-semantic-color-interaction-brand-hover);
+/* On the Welcome page, the actions only: no band over its own heading. */
+.shell__topbar--welcome {
+  border-bottom: 0;
+  background-color: transparent;
+  padding-block-end: 0;
 }
 
 /* Matched terms inside a search snippet. */

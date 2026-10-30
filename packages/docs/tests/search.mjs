@@ -120,20 +120,19 @@ async function suite(browser, { base, version }) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
 
-  // View as Markdown: the topbar link targets the page's llms document.
+  // The topbar Markdown menu serves the page's llms document.
   await page.goto(`${root}/components/button`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('[data-testid="view-as-markdown"]', { timeout: 10000 });
-  const mdLink = page.locator('[data-testid="view-as-markdown"]');
-  ok('View as Markdown is a link that opens a new tab', await mdLink.evaluate((el) => el.tagName === 'A' && el.getAttribute('target') === '_blank'));
+  const copyPage = page.locator('[data-testid="page-markdown"]');
+  await copyPage.waitFor({ timeout: 10000 });
   // Its text stays readable on its own ground in the dark theme, hovered or not.
   const darkContrasts = [];
   await page.evaluate(() => document.body.setAttribute('data-theme', 'dark'));
   for (const hover of [false, true]) {
     if (hover) {
-      await mdLink.hover();
+      await copyPage.hover();
       await page.waitForTimeout(200);
     }
-    darkContrasts.push(await mdLink.evaluate((el) => {
+    darkContrasts.push(await copyPage.evaluate((el) => {
       const luminance = (color) => {
         const [r, g, b] = color.match(/[\d.]+/g).slice(0, 3).map((value) => {
           const channel = Number(value) / 255;
@@ -147,18 +146,22 @@ async function suite(browser, { base, version }) {
     }));
   }
   await page.evaluate(() => document.body.removeAttribute('data-theme'));
-  ok('View as Markdown reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
-  const mdHref = await mdLink.getAttribute('href');
-  ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref ?? ''), mdHref ?? '(none)');
+  ok('the Markdown menu button reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
+  await copyPage.click();
+  ok('the Markdown menu copies the page', await page.locator('[data-testid="copy-page"]').isVisible());
+  const [mdPage] = await Promise.all([page.waitForEvent('popup'), page.locator('[data-testid="view-as-markdown"]').click()]);
+  const mdHref = mdPage.url();
+  await mdPage.close();
+  ok('View as Markdown opens the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
   const mdRes = await page.request.get(mdHref);
   const md = mdRes.ok() ? await mdRes.text() : '';
   ok('the linked markdown resolves and is the right page', mdRes.ok() && /^---\n/.test(md) && /button/i.test(md.slice(0, 300)), `status ${mdRes.status()}`);
 
-  // The link hides where no llms document exists.
+  // The menu hides where no llms document exists.
   await page.goto(`${root}/tools/sandbox`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('.shell__topbar');
   await page.waitForTimeout(500);
-  ok('View as Markdown hidden on tool pages', (await page.locator('[data-testid="view-as-markdown"]').count()) === 0);
+  ok('the Markdown menu is hidden on tool pages', (await copyPage.count()) === 0);
 
   // Heading anchors: hover-revealed, native hash href. (Own try: a missing
   // heading must report KO, not kill the whole run.)

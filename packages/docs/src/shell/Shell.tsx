@@ -7,15 +7,15 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Divider } from '../../../ods-react/src/components/divider/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
+import { Menu, MenuContent, MenuItem, MenuTrigger } from '../../../ods-react/src/components/menu/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { APP_ROOT } from '../appBase';
 import { llmsFileFor } from '../doc/llmsFile';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
-import { ThemeSelect, VersionSelect } from './TopbarSelects';
+import { ThemeMenu, VersionSelect } from './TopbarSelects';
 import { PagePager } from './PagePager';
 import { SearchCommand } from './SearchCommand';
 import './shell.css';
@@ -192,10 +192,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
 
     { /* The display settings sit at the foot, out of the way of the navigation. */ }
     <div className="shell__sidebar-footer">
-      <div className="shell__sidebar-selects">
-        <BrandSelect />
-        <ThemeSelect />
-      </div>
+      <BrandSelect />
       <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
         <Icon name={ ICON_NAME.github } /> GitHub
       </Link>
@@ -207,39 +204,61 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
-/* Opens the current page's llms markdown — the exact file the AI toolchain
-   consumes — in a new tab. Hidden on pages that emit no llms document (the
-   route mapping and its exclusions: llmsFile.ts). */
-const MarkdownLink = ({ pathname }: { pathname: string }) => {
+/* The current page as Markdown, the exact file the AI toolchain consumes (llms, see llmsFile.ts):
+   one menu copies it, ready to paste into an assistant, opens it in a new tab, or copies its link.
+   Hidden on pages that emit no llms document. */
+const PageMarkdownMenu = ({ narrow, pathname }: { narrow: boolean, pathname: string }) => {
+  const [status, setStatus] = useState('');
   const file = llmsFileFor(pathname);
+
+  useEffect(() => {
+    setStatus('');
+  }, [pathname]);
 
   if (!file) {
     return null;
   }
 
   const href = new URL(`llms/${file}`, APP_ROOT).href;
+  const copy = async (text: Promise<string> | string, done: string) => {
+    try {
+      await navigator.clipboard.writeText(await text);
+      setStatus(done);
+      window.setTimeout(() => setStatus(''), 2500);
+    } catch {
+      setStatus('Copy failed: use View as Markdown');
+    }
+  };
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        { /* A link, not a button: the URL can be read, shared, curl'ed or handed to an assistant
-             as-is. It only borrows the outline button look (shell.css). */ }
-        <Link
-          className="shell__llms-link"
-          data-testid="view-as-markdown"
-          href={ href }
-          rel="noreferrer"
-          target="_blank">
-          { /* Same icon as the AI Agents nav section: this IS the machine-
-               readable face of the page. */ }
-          <Icon name={ ICON_NAME.robot } />
-          View as Markdown
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent>
-        Opens the Markdown version of this page, made for LLMs, in a new tab
-      </TooltipContent>
-    </Tooltip>
+    <>
+      <Menu>
+        <MenuTrigger asChild>
+          <Button
+            aria-label={ narrow ? 'Markdown for LLMs' : undefined }
+            data-testid="page-markdown"
+            emphasis={ BUTTON_EMPHASIS.medium }
+            status={ BUTTON_STATUS.neutral }>
+            { /* A check for a moment once something is copied: the menu has closed by then. */ }
+            <Icon name={ status && !status.startsWith('Copy failed') ? ICON_NAME.check : ICON_NAME.robot } />
+            { !narrow && 'Markdown for LLMs' }
+            <Icon name={ ICON_NAME.chevronDown } />
+          </Button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem data-testid="copy-page" onSelect={ () => copy(fetch(href).then((response) => response.text()), 'Page copied as Markdown') } value="copy">
+            <span className="shell__select-item"><Icon name={ ICON_NAME.fileCopy } /> Copy page as Markdown</span>
+          </MenuItem>
+          <MenuItem data-testid="view-as-markdown" onSelect={ () => window.open(href, '_blank', 'noopener') } value="view">
+            <span className="shell__select-item"><Icon name={ ICON_NAME.externalLink } /> View as Markdown</span>
+          </MenuItem>
+          <MenuItem onSelect={ () => copy(href, 'Markdown link copied') } value="link">
+            <span className="shell__select-item"><Icon name={ ICON_NAME.chainLink } /> Copy Markdown link</span>
+          </MenuItem>
+        </MenuContent>
+      </Menu>
+      <span aria-live="polite" className="sr-only">{ status }</span>
+    </>
   );
 };
 
@@ -388,22 +407,24 @@ const Shell = () => {
       ) }
 
       <div className="shell__main">
-        { !isWelcome && (
-          <header className={ isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
-            { isNarrow && (
-              <Button
-                aria-label="Open navigation"
-                className="shell__menu-button"
-                emphasis={ BUTTON_EMPHASIS.low }
-                status={ BUTTON_STATUS.neutral }
-                onClick={ () => setNavOpen(true) }>
-                <Icon name={ ICON_NAME.hamburgerMenu } />
-              </Button>
-            ) }
-            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text>
-            { currentPage && <MarkdownLink pathname={ location.pathname } /> }
-          </header>
-        ) }
+        { /* The Welcome page keeps only the topbar actions, over its own heading. */ }
+        <header className={ isWelcome ? 'shell__topbar shell__topbar--welcome' : isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
+          { isNarrow && (
+            <Button
+              aria-label="Open navigation"
+              className="shell__menu-button"
+              emphasis={ BUTTON_EMPHASIS.low }
+              status={ BUTTON_STATUS.neutral }
+              onClick={ () => setNavOpen(true) }>
+              <Icon name={ ICON_NAME.hamburgerMenu } />
+            </Button>
+          ) }
+          { !isWelcome && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
+          <div className="shell__topbar-actions">
+            { currentPage && !isWelcome && <PageMarkdownMenu narrow={ isNarrow } pathname={ location.pathname } /> }
+            <ThemeMenu />
+          </div>
+        </header>
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" ref={ contentRef } tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />

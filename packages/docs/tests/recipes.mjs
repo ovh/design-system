@@ -1,7 +1,7 @@
 // Recipe pages: the README cases the page lays out (Do's & don'ts, a README opening on a
 // sub-heading, a TODO placeholder), the components and source sections, the preview on a phone,
-// the scroll position when a gallery card opens its page and back, the card headings on a
-// component page, and the feature list tooltip triggers.
+// the gallery filters, the scroll position when a gallery card opens its page and back, the card
+// headings on a component page, and the feature list tooltip triggers.
 import { makeChecker } from './helpers.mjs';
 
 async function suite(browser, { base, version }) {
@@ -85,6 +85,32 @@ async function suite(browser, { base, version }) {
       throw new Error('the preview overflows its card and is cut');
     }
     await page.setViewportSize({ height: 800, width: 1280 });
+  });
+
+  await check('the gallery combines its category with a name or tag search, and counts what it shows', async () => {
+    await page.goto(`${root}/recipes/components`, { waitUntil: 'domcontentloaded' });
+    const names = page.locator('[class*="recipe-card__inner__header"] a');
+    await names.first().waitFor({ timeout: 15000 });
+    const total = await names.count();
+    const count = page.locator('[class*="gallery-toolbar__count"]');
+    const search = page.getByRole('searchbox', { name: 'Filter recipes' });
+    const shows = async (term, expected) => {
+      await search.fill(term);
+      const shown = (await names.allTextContents()).sort();
+      const counted = (await count.textContent())?.replace(/\s+/g, ' ').trim();
+      const empty = await page.getByText('No recipe matches your filters').count();
+      if (shown.join() !== expected.join() || counted !== `${expected.length} / ${total}` || empty !== (expected.length ? 0 : 1)) {
+        throw new Error(`"${term}": ${shown.join(', ') || 'none'}, count ${counted}, empty state ${empty}`);
+      }
+    };
+    const category = page.getByRole('combobox', { name: 'Filter by category' });
+    await category.fill('Commerce');
+    await page.locator('[data-ods="combobox-content"] [role="option"]', { hasText: 'Commerce' }).click();
+    await shows('', ['Feature List Product Card', 'Media Product Card', 'Order Button']);
+    // "cart" is a tag of two Commerce recipes, in neither name.
+    await shows('cart', ['Feature List Product Card', 'Order Button']);
+    await shows('media', ['Media Product Card']);
+    await shows('chat', []);
   });
 
   await check('a gallery card opens its recipe at the top of the page', async () => {

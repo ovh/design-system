@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 5058
+tokens: 4997
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -43,7 +43,6 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
 | `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
 | `--ods-semantic-color-surface-muted` | `var(--ods-palette-gray-100)` |
-| `--ods-semantic-color-surface-neutral-minimal` | `var(--ods-palette-gray-50)` |
 | `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
 | `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
@@ -105,10 +104,8 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-border-separator` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-border-track` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-border-container` | `var(--ods-palette-gray-300)` |
-| `--ods-semantic-color-border-neutral-minimal` | `var(--ods-palette-gray-200)` |
 | `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
-| `--ods-semantic-color-border-neutral-strong` | `var(--ods-palette-gray-300)` |
 | `--ods-semantic-color-border-control` | `var(--ods-palette-gray-500)` |
 | `--ods-semantic-color-border-control-solid` | `var(--ods-semantic-color-surface-control-solid)` |
 | `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |

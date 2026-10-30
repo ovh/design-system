@@ -46,6 +46,7 @@ async function suite(browser, { base, version }) {
   await check('the source code shows its tabs and code (chat)', async () => {
     await open('chat');
     const source = page.locator('[class*="recipe-page__block"]').last();
+    await source.locator('pre').first().waitFor({ timeout: 15000 }).catch(() => {});
     const tabs = await source.locator('[role="tab"]').count();
     const code = await source.locator('pre').count();
     if (!tabs || !code) {
@@ -107,6 +108,39 @@ async function suite(browser, { base, version }) {
         const back = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
         throw new Error(`back on the gallery at scrollTop ${back}, left at ${before}`);
       });
+  });
+
+  await check('a component page left after using its table of contents comes back to its position', async () => {
+    // Reached in-app, as a reader would: its history entry carries a router key, unlike a page load.
+    await open('chat');
+    const link = page.locator('ul[class*="recipe-page__components"] a').first();
+    const href = await link.evaluate((el) => new URL(el.href).pathname);
+    await link.evaluate((el) => el.click());
+    await page.waitForURL(`**${href}`, { timeout: 10000 });
+    const toc = page.locator('.doc-layout__toc-node').nth(2);
+    await toc.waitFor({ timeout: 15000 });
+    await toc.click();
+    // Once the smooth scroll to the section is over, the reader scrolls on.
+    const left = await page.evaluate(async () => {
+      const pane = document.querySelector('.shell__content');
+      const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      for (let previous = -1; previous !== pane.scrollTop; await wait(200)) {
+        previous = pane.scrollTop;
+      }
+      pane.scrollTop += 400;
+      await wait(200);
+      return pane.scrollTop;
+    });
+    await page.locator('.shell__sidebar').getByText('Datepicker', { exact: true }).click();
+    await page.waitForFunction(() => document.title.startsWith('Datepicker —'), null, { timeout: 10000 });
+    await page.goBack();
+    await page.waitForURL(`**${href}#*`, { timeout: 10000 });
+    // The demos of the page size themselves above the position: it must hold once they have.
+    await page.waitForTimeout(2500);
+    const back = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
+    if (Math.abs(back - left) > 1) {
+      throw new Error(`back on ${href} at scrollTop ${back}, left at ${left}`);
+    }
   });
 
   await check('the recipes of a component page are h3 cards under its "Recipes" h2 (tooltip)', async () => {

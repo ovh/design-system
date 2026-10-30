@@ -20,7 +20,9 @@
   margin-top: 12px;
   border: 1px solid var(--ods-semantic-color-border-neutral-subtle);
   border-radius: 8px;
-  overflow: hidden;
+  /* A preview wider than the card (the 300px Query Filter control on a phone) scrolls instead of
+     being cut. */
+  overflow: auto;
 }
 
 .recipe-card__inner__canvas__preview {

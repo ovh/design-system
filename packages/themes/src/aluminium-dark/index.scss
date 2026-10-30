@@ -146,17 +146,17 @@
   // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
   :root [data-ods='badge'] {
     // One ink across the three emphases.
-    --ods-badge-text-color-accent: var(--ods-semantic-color-content-on-accent);
+    --ods-badge-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);
     --ods-badge-text-color-accent-low: var(--ods-semantic-color-content-on-accent);
-    --ods-badge-text-color-critical: var(--ods-semantic-color-content-on-critical);
+    --ods-badge-text-color-critical-medium: var(--ods-semantic-color-content-on-critical);
     --ods-badge-text-color-critical-low: var(--ods-semantic-color-content-on-critical);
-    --ods-badge-text-color-information: var(--ods-semantic-color-content-on-information);
+    --ods-badge-text-color-information-medium: var(--ods-semantic-color-content-on-information);
     --ods-badge-text-color-information-low: var(--ods-semantic-color-content-on-information);
-    --ods-badge-text-color-neutral: var(--ods-semantic-color-content-on-neutral);
+    --ods-badge-text-color-neutral-medium: var(--ods-semantic-color-content-on-neutral);
     --ods-badge-text-color-neutral-low: var(--ods-semantic-color-content-on-neutral);
-    --ods-badge-text-color-success: var(--ods-semantic-color-content-on-success);
+    --ods-badge-text-color-success-medium: var(--ods-semantic-color-content-on-success);
     --ods-badge-text-color-success-low: var(--ods-semantic-color-content-on-success);
-    --ods-badge-text-color-warning: var(--ods-semantic-color-content-on-warning);
+    --ods-badge-text-color-warning-medium: var(--ods-semantic-color-content-on-warning);
     --ods-badge-text-color-warning-low: var(--ods-semantic-color-content-on-warning);
   }
 }

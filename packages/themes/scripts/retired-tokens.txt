@@ -1,5 +1,15 @@
+--ods-badge-background-color-critical
+--ods-badge-background-color-information
+--ods-badge-background-color-neutral
 --ods-badge-background-color-primary
+--ods-badge-background-color-success
+--ods-badge-background-color-warning
+--ods-badge-text-color-critical
+--ods-badge-text-color-information
+--ods-badge-text-color-neutral
 --ods-badge-text-color-primary
+--ods-badge-text-color-success
+--ods-badge-text-color-warning
 --ods-border-radius-lg
 --ods-border-radius-md
 --ods-border-radius-sm

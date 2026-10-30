@@ -45,10 +45,10 @@ const Homepage = () => {
 
         <div className={ styles['homepage__tiles'] }>
           <HomepageTile
-            description="60+ production-ready React components."
+            description="50+ production-ready React components."
             icon={ ICON_NAME.grid }
             linkLabel="Browse components"
-            path="/components/button"
+            path="/tools/component-gallery"
             title="Components" />
 
           <HomepageTile

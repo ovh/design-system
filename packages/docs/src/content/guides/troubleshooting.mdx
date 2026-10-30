@@ -97,4 +97,6 @@ const MyApp = () => {
 ODS components rely on React state, effects and browser APIs, so they cannot render as React Server Components.
 Use them from client components, marked with the `'use client'` directive, and keep the theme imports in your root layout.
 
+If the error is `document is not defined` and the page renders a `Toaster`, it comes from its default portal into `document.body`: pass `createPortal={ false }`, or render the `Toaster` only once the page is mounted in the browser.
+
 See <DocLink to="/guides/get-started">Get Started</DocLink> for the full setup.

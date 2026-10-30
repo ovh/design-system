@@ -19,7 +19,9 @@
   font-family: var(--ods-semantic-font-family-code, monospace);
   font-size: .85em;
   white-space: pre-wrap;
-  word-break: break-word;
+  /* A long union still wraps, but an identifier (BUTTON_EMPHASIS) widens its column instead of
+     breaking in the middle. */
+  overflow-wrap: break-word;
 }
 
 .tech__enum {

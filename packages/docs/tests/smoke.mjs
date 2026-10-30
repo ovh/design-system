@@ -85,14 +85,14 @@ async function suite(browser, { base, version }) {
       throw new Error('latest llms unreachable');
     }
   });
-  await check('search palette: components first, icons, section hints', async () => {
+  await check('search palette: where to start, then components, icons, section hints', async () => {
     await page.goto(`${V}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('#root *', { timeout: 10000 });
     await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
     await page.waitForSelector('[data-ods="command-content"]', { timeout: 8000 });
     const ok = await page.evaluate(() => {
       const headings = [...document.querySelectorAll('[data-ods="command-content"] [class*="command-group__heading"]')].map((h) => h.textContent.trim());
-      return headings[0] === 'Components'
+      return headings[0] === 'Start here' && headings[1] === 'Components'
         && !!document.querySelector('.shell__search-option-icon')
         && [...document.querySelectorAll('.shell__search-option-hint')].some((h) => h.textContent.includes('Customize'));
     });

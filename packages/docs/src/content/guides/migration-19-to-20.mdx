@@ -788,7 +788,7 @@ import { Divider } from '@ovhcloud/ods-react';
 
 - `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
 - `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
-- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background. A `high` Message keeps the v19 `default` size: its padding gives up the thickness of its border.
 - `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
 - New `low` emphasis: colored text and icon only, without background nor border.
 - Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.

@@ -12,6 +12,7 @@ import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
 import { GuideDoc } from './pages/GuideDoc';
 import { HelperDoc } from './pages/HelperDoc';
+import { NotFound } from './pages/NotFound';
 import { RecipesDoc } from './pages/RecipesDoc';
 import { decodeSnippet } from './sandbox/shareCode';
 import { ErrorPage } from './shell/ErrorPage';
@@ -28,7 +29,7 @@ const ComponentRoute = () => {
   const page = flattenPages().find((p) => p.id === `components/${key}`);
 
   if (!page || !page.stories) {
-    return <Navigate replace to="/" />;
+    return <NotFound />;
   }
   return <ComponentDoc key={ page.id } page={ page } tokens={ tokens } />;
 };
@@ -83,7 +84,7 @@ const GuideRoute = () => {
     return <Navigate replace to={ `${moved}${hash}` } />;
   }
   if (!page) {
-    return <Navigate replace to="/" />;
+    return <NotFound />;
   }
   return <GuideDoc key={ page.id } page={ page } />;
 };
@@ -93,7 +94,7 @@ const HelperRoute = () => {
   const page = flattenPages().find((p) => p.id === `helpers/${key}`);
 
   if (!page) {
-    return <Navigate replace to="/" />;
+    return <NotFound />;
   }
   return <HelperDoc key={ page.id } page={ page } />;
 };
@@ -103,7 +104,7 @@ const RecipesRoute = () => {
   const page = flattenPages().find((p) => p.id === `recipes/${key}`);
 
   if (!page) {
-    return <Navigate replace to="/" />;
+    return <NotFound />;
   }
   return <RecipesDoc key={ page.id } page={ page } />;
 };
@@ -186,7 +187,7 @@ const router = createBrowserRouter([
         ),
         path: '/tools/component-gallery',
       },
-      { element: <Navigate replace to="/" />, path: '*' },
+      { element: <NotFound />, path: '*' },
     ],
   },
 ], { basename: BASENAME });

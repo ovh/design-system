@@ -88,6 +88,19 @@
   max-width: 100%;
 }
 
+.doc__not-found {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-semantic-size-space-gap-group);
+}
+
+.doc__not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ods-semantic-size-space-gap-group);
+  align-items: center;
+}
+
 /* Grid pages (the Recipe Gallery) use the full width instead of the reading column. */
 article.doc.doc--wide {
   max-width: none;

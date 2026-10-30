@@ -231,8 +231,9 @@ const Shell = () => {
 
   // Keep the browser tab title in sync with the active page.
   useEffect(() => {
-    document.title = currentPage ? `${currentPage.title} — OVHcloud Design System` : 'OVHcloud Design System';
-  }, [currentPage]);
+    const title = currentPage?.title ?? (location.pathname === '/' ? undefined : 'Page not found');
+    document.title = title ? `${title} — OVHcloud Design System` : 'OVHcloud Design System';
+  }, [currentPage, location.pathname]);
 
   // Any navigation (tree, palette, in-content link) closes the nav drawer.
   useEffect(() => {
@@ -355,8 +356,8 @@ const Shell = () => {
                 <Icon name={ ICON_NAME.hamburgerMenu } />
               </Button>
             ) }
-            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
-            <MarkdownLink pathname={ location.pathname } />
+            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text>
+            { currentPage && <MarkdownLink pathname={ location.pathname } /> }
           </header>
         ) }
 
@@ -368,4 +369,4 @@ const Shell = () => {
   );
 };
 
-export { Shell, useNarrow, type ShellContext };
+export { Shell, openSearchPalette, useNarrow, type ShellContext };

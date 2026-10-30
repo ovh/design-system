@@ -59,18 +59,30 @@ const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
    doesn't contain it simply shows nothing selected. The sections of the active page open, whichever
    way it was reached (link, search palette), next to the ones the reader opened, and the tree
    scrolls to it. */
-const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
+const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   currentId?: string;
   expanded: string[];
   nodes: (NavSection | NavPage)[];
   onNavigate: (id: string) => void;
+  rootIcons?: boolean;
 }) => {
-  const items = toTreeItems(nodes);
+  const items = toTreeItems(nodes, rootIcons);
+  // A gallery page is shown as its section: the section opens it, and is selected while it is read.
+  const sectionPages = new Map(items.flatMap(function collect(item): [string, string][] {
+    const page = item.customRendererData?.page;
+    return [...(page ? [[item.id, page] as [string, string]] : []), ...((item.children ?? []) as typeof items).flatMap(collect)];
+  }));
+  const selected = [...sectionPages].find(([, page]) => page === currentId)?.[0] ?? currentId;
+  const rootPages = new Set(items.filter((item) => !item.children).map((item) => item.id));
   const [open, setOpen] = useState(expanded);
   const ref = useRef<HTMLDivElement>(null);
+  // The chevron of a section only opens or closes it; its name opens the section's page, if any.
+  const onChevron = useRef(false);
 
   useEffect(() => {
-    const sections = currentId ? sectionsOf(nodes, currentId) : [];
+    // A gallery's own section is the selected entry, not an ancestor: the tree opens or closes it
+    // as the reader clicks it, untouched here.
+    const sections = (currentId ? sectionsOf(nodes, currentId) : []).filter((id) => sectionPages.get(id) !== currentId);
     setOpen((previous) => (sections.every((id) => previous.includes(id)) ? previous : [...new Set([...previous, ...sections])]));
     // The tree marks its selected node some frames after mounting, and its rows keep moving while
     // sections open and fonts load: for two seconds, the selected page is brought to the middle
@@ -110,18 +122,26 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
       expandedValue={ open }
       items={ items }
       onExpandedChange={ ({ expandedValue }) => setOpen(expandedValue) }
-      onValueChange={ ({ value }) => value[0] && onNavigate(value[0]) }
+      onPointerDownCapture={ (event) => {
+        onChevron.current = !!(event.target as Element).closest('[data-part="branch-indicator"]');
+      } }
+      onValueChange={ ({ value }) => {
+        if (value[0] && !onChevron.current) {
+          onNavigate(sectionPages.get(value[0]) ?? value[0]);
+        }
+        onChevron.current = false;
+      } }
       ref={ ref }
-      value={ currentId ? [currentId] : [] }>
+      value={ selected ? [selected] : [] }>
       <TreeViewNodes>
         { items.map((item) => (
           <TreeViewNode item={ item } key={ item.id }>
             { ({ customData, isBranch, item: node }) => {
-              const data = customData as { badge?: 'beta' | 'deprecated' | 'new', gallery?: true, icon?: Parameters<typeof Icon>[0]['name'] };
+              const data = customData as { badge?: 'beta' | 'deprecated' | 'new', icon?: Parameters<typeof Icon>[0]['name'] };
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', data?.gallery && 'shell__tree-label--gallery'].filter(Boolean).join(' ') }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', !isBranch && rootPages.has(node.id) && 'shell__tree-label--root-page'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
@@ -164,7 +184,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
 
     <nav aria-label="Documentation" className="shell__nav">
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Guides</Text>
-      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
+      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } rootIcons />
       <Divider className="shell__tree-divider" />
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />

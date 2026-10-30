@@ -129,6 +129,11 @@ body {
   color: var(--ods-semantic-color-content-text);
 }
 
+.shell__search-hint:focus-visible {
+  outline: var(--ods-semantic-border-focus-style) var(--ods-semantic-border-focus-thickness) var(--ods-semantic-color-focus);
+  outline-offset: var(--ods-semantic-border-focus-offset);
+}
+
 .shell__search-hint:hover {
   border-color: var(--ods-semantic-color-interaction-control-hover);
   background-color: var(--ods-semantic-color-interaction-control-highlight);
@@ -184,18 +189,14 @@ body {
   margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
 }
 
-/* A page at the root of a tree has no chevron: its name takes the chevron's room, so that it lines
+/* A page at the root of a tree has no chevron: its label takes the chevron's room, so that it lines
    up with the section names around it. */
-.shell__nav [data-part="item"][data-depth="1"] .shell__tree-label {
+.shell__tree-label--root-page {
   padding-left: calc(var(--ods-semantic-size-space-gap-group) * 1.5);
 }
 
 .shell__tree-label--section {
   font-weight: var(--ods-semantic-font-weight-semibold);
-}
-
-.shell__tree-label--gallery {
-  font-weight: var(--ods-semantic-font-weight-bold);
 }
 
 /* Layout only — the look is the ODS Link's own. */

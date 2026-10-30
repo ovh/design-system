@@ -3,7 +3,7 @@ import { type ComponentType, type ReactElement, type ReactNode, useMemo } from '
 import { useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
-import { Card } from '../../../ods-react/src/components/card/src';
+import { CARD_STATUS, Card } from '../../../ods-react/src/components/card/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -103,14 +103,14 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
 
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (
   <div className="doc__best-practices">
-    <div className="doc__best-practices-col doc__best-practices-col--do">
-      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleCheck } /> Do</Text>
+    <Card className="doc__best-practices-col" status={ CARD_STATUS.success }>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon className="doc__best-practices-icon--do" name={ ICON_NAME.circleCheck } /> Do</Text>
       <ul>{ dos.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
-    </div>
-    <div className="doc__best-practices-col doc__best-practices-col--dont">
-      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleXmark } /> Don't</Text>
+    </Card>
+    <Card className="doc__best-practices-col" status={ CARD_STATUS.critical }>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon className="doc__best-practices-icon--dont" name={ ICON_NAME.circleXmark } /> Don't</Text>
       <ul>{ donts.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
-    </div>
+    </Card>
   </div>
 );
 

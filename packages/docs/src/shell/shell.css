@@ -57,6 +57,13 @@ body {
   padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   background-color: var(--ods-semantic-color-surface-raised);
   height: 100%;
+  /* The navigation scrolls between the header and the footer, which stay in view. */
+  overflow: hidden;
+}
+
+.shell__nav {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -83,13 +90,6 @@ body {
   column-gap: var(--ods-semantic-size-space-gap-inline);
   align-items: center;
 }
-
-.shell__upper-controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ods-semantic-size-space-gap-block);
-}
-
 
 .shell__sidebar-selects {
   display: grid;
@@ -154,26 +154,16 @@ body {
   font-size: 0.78rem;
 }
 
-.shell__search-kbds {
-  display: flex;
-  gap: 3px;
-
-  /* baseline, not center: the Kbd caps have a doubled bottom border (keycap
-     effect) that optically raises their glyphs — box-centering leaves the
-     chip text and the + on visibly different lines. */
-  align-items: baseline;
+.shell__search-kbd {
   margin-left: auto;
-}
-
-.shell__search-plus {
-  font-size: 0.75rem;
 }
 
 .shell__sidebar-footer {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
-  margin-top: auto;
+  gap: var(--ods-semantic-size-space-gap-group);
+  border-top: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-separator);
+  padding-top: var(--ods-semantic-size-space-gap-group);
 }
 
 .shell__tree-label {
@@ -183,9 +173,6 @@ body {
   align-items: center;
 }
 
-.shell__tree-badge {
-  margin-left: calc(var(--ods-semantic-size-space-gap-inline) / 2);
-}
 
 /* Separator between the guides tree and the reference tree. */
 .shell__tree-divider {

@@ -47,11 +47,11 @@ We did expose a bunch of <ExternalLink href="https://sass-lang.com">Sass</Extern
 
 For example, if you need to make an anchor tag looks like a `Link`:
 
-```css
-@import '@ovhcloud/ods-react/style';
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
 
 .my-link {
-  @include ods-link();
+  @include ods.ods-link();
 }
 ```
 

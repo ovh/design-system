@@ -263,7 +263,7 @@ article.doc.doc--wide {
 /* Light mode: a border marks the block boundary on the light surface (the
    background itself comes from the shiki theme — see CodeBlock.tsx). */
 body:not([data-theme="dark"]) [data-ods="code"] {
-  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  border: 1px solid var(--ods-semantic-color-border-separator);
 }
 
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———

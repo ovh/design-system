@@ -314,6 +314,9 @@
 --ods-outline-offset
 --ods-outline-style-default
 --ods-outline-width
+--ods-semantic-color-border-neutral-minimal
+--ods-semantic-color-border-neutral-strong
+--ods-semantic-color-surface-neutral-minimal
 --ods-switch-item-background-color-checked-disabled
 --ods-tab-background-color-selected-disabled-switch
 --ods-tab-border-color-disabled

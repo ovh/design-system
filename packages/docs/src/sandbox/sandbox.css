@@ -41,7 +41,7 @@
 }
 
 .sandbox__pane {
-  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  border: 1px solid var(--ods-semantic-color-border-separator);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -74,8 +74,8 @@
 
 .sandbox__pane-header {
   align-items: center;
-  background-color: var(--ods-semantic-color-surface-neutral-minimal);
-  border-bottom: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  background-color: var(--ods-semantic-color-surface-muted);
+  border-bottom: 1px solid var(--ods-semantic-color-border-separator);
   display: flex;
   gap: 12px;
   min-height: 44px;

@@ -40,7 +40,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 8px 8px 0 0;
-  background-color: var(--ods-semantic-color-surface-neutral-minimal);
+  background-color: var(--ods-semantic-color-surface-muted);
   padding: 8px;
 }
 

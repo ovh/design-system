@@ -62,8 +62,8 @@ const THEME = {
   'brand-color': 'color-brand',
   'heading-text-color': 'color-content-heading',
   'progress-background-color': 'color-surface-control-solid',
-  'split-background-color': 'color-border-neutral-minimal',
-  'split-border-color': 'color-border-neutral-minimal',
+  'split-background-color': 'color-border-separator',
+  'split-border-color': 'color-border-separator',
   'text-color': 'color-content-text',
   'text-color-disabled': null,
   'text-color-selected': 'color-content-on-selected-solid',
@@ -167,7 +167,7 @@ function rampRole(kind, family, rung, prop) {
       return light ? `color-interaction-${f}-subtle-${state}` : `color-interaction-${f}-${state}`;
     }
     if (f === 'neutral') {
-      if (['025', '050', '075', '100'].includes(rung)) return 'color-surface-neutral-minimal';
+      if (['025', '050', '075', '100'].includes(rung)) return 'color-surface-muted';
       if (['200', '300'].includes(rung)) return 'color-surface-neutral-subtle';
       if (rung === '900') return 'color-surface-code';
       return 'color-surface-neutral';
@@ -186,7 +186,7 @@ function rampRole(kind, family, rung, prop) {
     if (f === 'neutral') {
       if (state !== 'rest' && ['400', '500'].includes(rung)) return 'color-interaction-control-hover';
       if (state !== 'rest' && !light) return `color-interaction-neutral-${state}`;
-      if (['025', '050', '075', '100'].includes(rung)) return 'color-border-neutral-minimal';
+      if (['025', '050', '075', '100'].includes(rung)) return 'color-border-separator';
       if (rung === '200') return 'color-border-neutral-subtle';
       if (rung === '300') return 'color-border-control';
       return 'color-border-neutral';

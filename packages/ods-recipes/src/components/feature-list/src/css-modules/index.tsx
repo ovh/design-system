@@ -28,8 +28,7 @@ const FeatureList = (): JSX.Element => {
               <Icon
                 aria-label={ `More information about ${FEATURES.title}` }
                 className={ style['feature-list__tooltip-trigger'] }
-                name={ ICON_NAME.circleQuestion }
-                role="img" />
+                name={ ICON_NAME.circleQuestion } />
             </TooltipTrigger>
 
             <TooltipContent>
@@ -61,8 +60,7 @@ const FeatureList = (): JSX.Element => {
                       <Icon
                         aria-label={ `More information about ${label}` }
                         className={ style['feature-list__tooltip-trigger'] }
-                        name={ ICON_NAME.circleQuestion }
-                        role="img" />
+                        name={ ICON_NAME.circleQuestion } />
                     </TooltipTrigger>
 
                     <TooltipContent>

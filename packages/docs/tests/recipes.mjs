@@ -1,0 +1,109 @@
+// Recipe pages: the README cases the page lays out (Do's & don'ts, a README opening on a
+// sub-heading, a TODO placeholder), the components and source sections, the preview on a phone,
+// and the scroll position when a gallery card opens its page.
+import { makeChecker } from './helpers.mjs';
+
+async function suite(browser, { base, version }) {
+  const results = [];
+  const check = makeChecker(results);
+  const root = `${base}/v${version}`;
+  const page = await browser.newPage();
+  const pageErrors = [];
+  page.on('pageerror', (err) => pageErrors.push(String(err)));
+
+  // The one-line summary is the paragraph right before the preview block.
+  const hasSummary = () => page.evaluate(() => {
+    const previous = document.querySelector('[class*="recipe-page__block"]')?.previousElementSibling;
+    return previous?.tagName === 'P' && !!previous.querySelector('em');
+  });
+
+  const open = async (key) => {
+    await page.goto(`${root}/recipes/${key}`, { waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('#source-code', { state: 'attached', timeout: 15000 });
+  };
+
+  await check('a README with Do\'s & don\'ts shows them as two lists (chat)', async () => {
+    await open('chat');
+    await page.waitForSelector('#dos-don-ts', { state: 'attached' });
+    const dos = await page.locator('.doc__best-practices-col--do li').count();
+    const donts = await page.locator('.doc__best-practices-col--dont li').count();
+    if (dos !== 5 || donts !== 5 || !(await hasSummary())) {
+      throw new Error(`${dos} do, ${donts} don't (README: 5 and 5), summary ${await hasSummary()}`);
+    }
+  });
+
+  await check('the components used link to their pages (chat)', async () => {
+    const links = page.locator('ul[class*="recipe-page__components"] a');
+    const hrefs = await links.evaluateAll((all) => all.map((link) => new URL(link.href).pathname));
+    if (!hrefs.length || hrefs.some((href) => !/\/components\/[a-z-]+$/.test(href))) {
+      throw new Error(hrefs.join(', ') || 'no link');
+    }
+    await links.first().click();
+    await page.waitForURL(`**${hrefs[0]}`, { timeout: 10000 });
+  });
+
+  await check('the source code shows its tabs and code (chat)', async () => {
+    await open('chat');
+    const source = page.locator('[class*="recipe-page__block"]').last();
+    const tabs = await source.locator('[role="tab"]').count();
+    const code = await source.locator('pre').count();
+    if (!tabs || !code) {
+      throw new Error(`${tabs} tab(s), ${code} code block(s)`);
+    }
+  });
+
+  await check('a README opening on a sub-heading has no summary, its sections stay (status-modal)', async () => {
+    await open('status-modal');
+    const summary = await hasSummary();
+    const overview = await page.locator('#overview').count();
+    const variants = await page.locator('#variants').count();
+    if (summary || !overview || !variants) {
+      throw new Error(`summary ${summary}, overview ${overview}, variants ${variants}`);
+    }
+  });
+
+  await check('a TODO README shows no overview (data-grid-with-query-filter)', async () => {
+    await open('data-grid-with-query-filter');
+    if (await page.locator('#overview').count()) {
+      throw new Error('an Overview section is shown');
+    }
+  });
+
+  await check('a preview wider than a phone scrolls instead of being cut (data-grid-with-query-filter)', async () => {
+    await page.setViewportSize({ height: 800, width: 375 });
+    await open('data-grid-with-query-filter');
+    const canvas = page.locator('[class*="recipe-card__inner__canvas"]').first();
+    await canvas.waitFor({ timeout: 15000 });
+    await page.waitForTimeout(1500);
+    const state = await canvas.evaluate((el) => ({
+      overflowX: getComputedStyle(el).overflowX,
+      overflows: el.scrollWidth > el.clientWidth,
+    }));
+    if (state.overflows && state.overflowX === 'hidden') {
+      throw new Error('the preview overflows its card and is cut');
+    }
+    await page.setViewportSize({ height: 800, width: 1280 });
+  });
+
+  await check('a gallery card opens its recipe at the top of the page', async () => {
+    await page.goto(`${root}/recipes/components`, { waitUntil: 'domcontentloaded' });
+    const links = page.locator('[class*="recipe-card__inner__header"] a');
+    await links.last().waitFor({ timeout: 15000 });
+    await links.last().scrollIntoViewIfNeeded();
+    const before = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
+    const href = await links.last().evaluate((link) => new URL(link.href).pathname);
+    await links.last().click();
+    await page.waitForURL(`**${href}`, { timeout: 10000 });
+    await page.waitForSelector('#source-code', { state: 'attached', timeout: 15000 });
+    const after = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
+    if (before === 0 || after !== 0) {
+      throw new Error(`scrollTop ${before} on the gallery, ${after} on the recipe`);
+    }
+  });
+
+  results.push(pageErrors.length === 0 ? 'OK  zero pageerror' : `KO  ${pageErrors.length} pageerror(s)`);
+  await page.close();
+  return results;
+}
+
+export { suite };

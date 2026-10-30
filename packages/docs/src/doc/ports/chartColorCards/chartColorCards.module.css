@@ -26,7 +26,7 @@
 .chart-color-cards__card :global([data-ods="clipboard-trigger"]) {
   display: block;
   border: none;
-  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-separator);
   border-radius: 0;
   cursor: pointer;
   padding: 0;

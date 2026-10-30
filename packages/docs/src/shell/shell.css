@@ -53,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: calc(var(--ods-semantic-size-space-gap-block) * 2);
-  border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  border-right: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-separator);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2);
   background-color: var(--ods-semantic-color-surface-raised);
   height: 100%;
@@ -241,7 +241,7 @@ body {
   display: flex;
   align-items: center;
   background-color: var(--ods-semantic-color-surface-raised);
-  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-minimal);
+  border-bottom: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-separator);
   padding: calc(var(--ods-semantic-size-space-inset-block) * 1.5) calc(var(--ods-semantic-size-space-inset-inline) * 3);
 }
 
@@ -363,7 +363,7 @@ body {
 
   /* --- tier 2: every role bound to gray. */
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
-  --ods-semantic-color-surface-neutral-minimal: var(--ods-palette-gray-100);
+  --ods-semantic-color-surface-muted: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
   --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-gray-50);
   --ods-semantic-color-surface-readonly: var(--ods-palette-gray-50);
@@ -374,9 +374,8 @@ body {
   --ods-semantic-color-border-strong: var(--ods-palette-gray-600);
   --ods-semantic-color-border-control: var(--ods-palette-gray-300);
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-50);
-  --ods-semantic-color-border-neutral-minimal: var(--ods-palette-gray-100);
+  --ods-semantic-color-border-separator: var(--ods-palette-gray-100);
   --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-200);
-  --ods-semantic-color-border-neutral-strong: var(--ods-palette-gray-700);
   --ods-semantic-color-interaction-neutral-hover: var(--ods-palette-gray-700);
   --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-100);
   --ods-semantic-color-interaction-control-hover: var(--ods-palette-gray-500);

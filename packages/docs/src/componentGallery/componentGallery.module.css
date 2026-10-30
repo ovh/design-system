@@ -49,7 +49,7 @@
      before it, where scrolling cannot reach. */
   align-items: safe center;
   justify-content: safe center;
-  border: 1px solid var(--ods-semantic-color-border-neutral-minimal);
+  border: 1px solid var(--ods-semantic-color-border-separator);
   border-radius: var(--ods-semantic-size-radius-container);
   min-height: 180px;
   max-height: 360px;

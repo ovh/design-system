@@ -107,8 +107,8 @@ at `brand-700`, the rung that `primary-700` became.
 | `--ods-theme-brand-color` | `--ods-semantic-color-brand` |
 | `--ods-theme-heading-text-color` | `--ods-semantic-color-content-heading` |
 | `--ods-theme-progress-background-color` | `--ods-semantic-color-surface-control-solid` |
-| `--ods-theme-split-background-color` | `--ods-semantic-color-border-neutral-minimal` |
-| `--ods-theme-split-border-color` | `--ods-semantic-color-border-neutral-minimal` |
+| `--ods-theme-split-background-color` | `--ods-semantic-color-border-separator` |
+| `--ods-theme-split-border-color` | `--ods-semantic-color-border-separator` |
 | `--ods-theme-text-color` | `--ods-semantic-color-content-text` |
 | `--ods-theme-text-color-disabled` | _none_ |
 | `--ods-theme-text-color-selected` | `--ods-semantic-color-content-on-selected-solid` |
@@ -198,7 +198,7 @@ One caveat on that table: run on the ODS sources before the migration, it sends 
 it, 23 in a `color`, 4 in a `background` or a `fill` and 1 in a `border`, and on 3 of the 5
 outside `color` ODS picked another role than the table: the normal Meter fill reads
 `surface-success`, the Spinner fill `content-accent`, and the blockquote border of `_text.scss`
-`border-neutral-minimal`. A site outside `color` is worth a look before taking the table's answer.
+`border-separator`. A site outside `color` is worth a look before taking the table's answer.
 
 ---
 
@@ -227,10 +227,10 @@ Destinations are shown without their `--ods-semantic-color-` prefix.
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
-| 025 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-minimal` |
-| 050 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-minimal` |
-| 075 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-minimal` |
-| 100 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-minimal` |
+| 025 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-muted` |
+| 050 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-muted` |
+| 075 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-muted` |
+| 100 | `surface-selected` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-muted` |
 | 200 | `surface-information-subtle` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-subtle` |
 | 300 | `surface-information-subtle` | `surface-information-subtle` | `surface-critical-subtle` | `surface-success-subtle` | `surface-warning-subtle` | `surface-neutral-subtle` |
 | 400 | `surface-brand` | `surface-information` | `surface-critical` | `surface-success` | `surface-warning` | `surface-neutral` |
@@ -273,10 +273,10 @@ Depends on the site:
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
-| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
 | 200 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-subtle` |
 | 300 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-control` |
 | 400 | `border-brand` | `border-information` | `border-critical` | `border-success` | `border-warning` | `border-neutral` |
@@ -291,10 +291,10 @@ On a `-hover` / `-active` declaration:
 | rung | primary | information | critical | success | warning | neutral |
 | --- | --- | --- | --- | --- | --- | --- |
 | 000 | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` | `surface-page` |
-| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
-| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-minimal` |
+| 025 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 050 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 075 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
+| 100 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-separator` |
 | 200 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-neutral-subtle` |
 | 300 | `border-information-subtle` | `border-information-subtle` | `border-critical-subtle` | `border-success-subtle` | `border-warning-subtle` | `border-control` |
 | 400 | `interaction-brand-hover` / `-active` | `interaction-information-hover` / `-active` | `interaction-critical-hover` / `-active` | `interaction-success-hover` / `-active` | `interaction-warning-hover` / `-active` | `interaction-control-hover` |

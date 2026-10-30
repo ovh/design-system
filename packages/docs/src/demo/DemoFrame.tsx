@@ -25,6 +25,8 @@ interface DemoFrameProp {
   /* Fires with the frame document once it has painted — for callers that
      measure the rendered DOM (the anatomy highlighter). */
   onReady?: (frameDocument: Document) => void;
+  /* The frame's accessible name, read when entering it. */
+  title?: string;
   /* Hot token overrides (theme generator use case), e.g. { '--ods-palette-brand-500': '#ff0000' } */
   tokens?: Record<string, string>;
 }
@@ -282,7 +284,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -303,6 +305,7 @@ const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"
+        title={ title }
         style={ ready
           // no height here: FrameAutoSize owns it imperatively — a height in
           // the React style prop would clobber it on every parent re-render.

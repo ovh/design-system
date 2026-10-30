@@ -59,6 +59,7 @@ const ThemeSelect = () => {
       onValueChange={ ({ value }) => setChoice((value[0] as ThemeChoice) ?? 'system') }
       value={ [choice] }>
       <SelectControl
+        aria-label="Color scheme"
         customItemRenderer={ ({ text }) => (
           <span className="shell__select-item">
             <Icon name={ THEME_ICONS[choice] } /> { text }
@@ -123,7 +124,7 @@ const VersionSelect = () => {
       } }
       overlayConfig={ { sameWidth: false } }
       value={ [current] }>
-      <SelectControl />
+      <SelectControl aria-label="Version" />
       <SelectContent
         customOptionRenderer={ ({ customData, label }) => (
           <span>{ label }{ (customData as { suffix?: string } | undefined)?.suffix }</span>

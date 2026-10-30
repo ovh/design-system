@@ -175,7 +175,7 @@ const ThemeGenerator = (): JSX.Element => {
         </Splitter.ResizeTrigger>
 
         <Splitter.Panel id="preview" style={{ overflow: 'auto' }}>
-          <DemoFrame bare tokens={ debouncedOverrides }>
+          <DemoFrame bare title="Theme preview" tokens={ debouncedOverrides }>
             <ThemeGeneratorPreview />
           </DemoFrame>
         </Splitter.Panel>

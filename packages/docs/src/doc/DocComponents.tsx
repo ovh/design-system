@@ -151,10 +151,17 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
 
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */
 const CodeFence = ({ children }: { children?: ReactNode }) => {
-  const codeEl = children as ReactElement<{ children: string }> | undefined;
+  const codeEl = children as ReactElement<{ children: string, className?: string }> | undefined;
   const source = typeof codeEl?.props?.children === 'string' ? codeEl.props.children.trim() : '';
-  return <CodeBlock style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
+  const language = codeEl?.props?.className?.match(/language-(\S+)/)?.[1];
+  return <CodeBlock language={ language } style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
 };
+
+/* Inline `code` of the MDX content, as the ODS Markdown component renders it. A fenced block reaches
+   CodeFence first, which reads this element's props, not its rendering. */
+const InlineCode = ({ children, className }: { children?: ReactNode, className?: string }) => (
+  <Text as="code" className={ className } preset={ TEXT_PRESET.code }>{ children }</Text>
+);
 
 /* Static comparison block shared by the table and data-table docs. */
 const TableVsDataTable = () => (
@@ -214,6 +221,7 @@ const MDX_COMPONENTS = {
   TableVsDataTable,
   Table,
   TokenPreview,
+  code: InlineCode,
   img: DocImage,
   pre: CodeFence,
 };

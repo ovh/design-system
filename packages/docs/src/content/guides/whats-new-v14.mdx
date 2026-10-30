@@ -2,7 +2,7 @@
 
 <Heading label="v14.1.0" level={ 2 } />
 
-<Heading label="New features:" level={ 3 } />
+<Heading label="New features" level={ 3 } />
 
 * **CDK**
 * Manage surface position when located on the edge.
@@ -18,7 +18,7 @@ We added the following components:
 
 <DocLink to="/components/switch">See Documentation</DocLink>
 
-<Heading label="Features changes:" level={ 3 } />
+<Heading label="Features changes" level={ 3 } />
 
 * **Pagination**
 
@@ -34,7 +34,7 @@ We added the following components:
 
 > For more information, check our replacement guide using version selector.
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 * **Radio**:
 
@@ -48,7 +48,7 @@ We added the following components:
 
 As it is a major version, you have to do the <DocLink to="/guides/migration-13-to-14">migration guide 13.x to 14.x</DocLink>
 
-<Heading label="New features:" level={ 3 } />
+<Heading label="New features" level={ 3 } />
 
 We added the following components:
 
@@ -74,13 +74,19 @@ Components version 2:
 
 See CDK Documentation using version selector.
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 * **Tile**:
 * `hoverable` attribute has been added to avoid double focus
 * `interactive` attribute has been removed
-> ⚠️️ **Breaking change**<br />
-  > For more information, check our migration guide
+
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    **Breaking change**: for more information, check our migration guide.
+  </MessageBody>
+</Message>
+
 * **Link**:
 * add missing color for active state
 * fix Link host container size to match its content

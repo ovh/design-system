@@ -88,7 +88,7 @@ via Sass import:
 @use '@ovhcloud/ods-themes/default/fonts';
 ```
 
-`pkg:` URLs require the <ExternalLink href="https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/">Node.js package importer</ExternalLink> (Sass `v1.71+`), enabled with `importers: [new NodePackageImporter()]` in your Sass options.
+`pkg:` URLs require the <ExternalLink href="https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/">Node.js package importer</ExternalLink> (Sass `v1.71.1+`), enabled with `importers: [new NodePackageImporter()]` in your Sass options.
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
@@ -96,7 +96,7 @@ The fonts stylesheet declares its font files with relative `url()`s, which Sass 
   <MessageIcon name="circle-info" />
 
   <MessageBody>
-    In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
+    In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default';`.
     Though this will increase the bundle size and prevent browser resources loading optimization.
   </MessageBody>
 </Message>

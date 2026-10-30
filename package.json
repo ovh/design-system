@@ -39,7 +39,7 @@
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
     "test:examples": "bash scripts/test-example-apps.sh",
     "test:spec:ci": "lerna run --stream --concurrency 2 test:spec:ci",
-    "version": "pnpm install && pnpm build:storybook:deps && pnpm doc && pnpm --filter @ovhcloud/ods-docs run build && git add pnpm-lock.yaml packages/docs/assets/llms && echo \"more info, see: https://github.com/lerna/lerna/issues/2891#issuecomment-953823502\"",
+    "version": "pnpm install && pnpm build:prod && pnpm doc && pnpm --filter @ovhcloud/ods-docs run build && git add pnpm-lock.yaml packages/docs/assets/llms && echo \"more info, see: https://github.com/lerna/lerna/issues/2891#issuecomment-953823502\"",
     "version:graduate": "lerna version --conventional-commits --exact --force-publish --conventional-graduate",
     "version:major": "lerna version major --conventional-commits --exact --force-publish",
     "version:minor": "lerna version minor --conventional-commits --exact --force-publish",

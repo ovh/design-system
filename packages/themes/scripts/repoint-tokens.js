@@ -44,11 +44,12 @@ const WRITE = process.argv.includes('--write');
  * naive pass would corrupt it.
  *
  * `null` means the role is gone with nothing to take over - the disabled colors, now an opacity
- * (BC-12 in BREAKING-CHANGES-V20.md) - so the site is reported, not rewritten.
+ * (BC-12 in BREAKING-CHANGES-V20.md) - or that no semantic role reaches its v19 reader any more
+ * (the Link hover, a component custom property now), so the site is reported, not rewritten.
  */
 const THEME = {
   'anchor-text-color': 'color-content-brand',
-  'anchor-text-color-hover': 'color-interaction-brand-hover',
+  'anchor-text-color-hover': null,
   'anchor-text-color-visited': 'color-interaction-brand-visited',
   'background-color': 'color-surface-page',
   'background-color-disabled': null,
@@ -236,7 +237,8 @@ function rampRole(kind, family, rung, prop) {
  */
 const NOTES = {
   theme: {
-    'anchor-text-color-hover': 'to restyle the Link hover, set `--ods-link-text-color-hover` on `[data-ods="link"]`: the Link no longer reads `interaction-brand-hover`, which now drives the brand Button hover, and its hover keeps the rest color (BC-19).',
+    'anchor-text-color-hover': 'no semantic role: the Link hover is `--ods-link-text-color-hover`, set it on `[data-ods="link"]`. Its default is the rest color (BC-19); `interaction-brand-hover` now drives the brand Button hover.',
+    'input-text-color-checked': 'the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`; the checked Switch item (deprecated) reads `content-on-solid`.',
     'background-color': 'per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.',
     'heading-text-color': 'a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.',
     'overlay-z-index': 'an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.',

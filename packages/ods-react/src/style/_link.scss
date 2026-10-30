@@ -35,10 +35,6 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
     will-change: transform;
   }
 
-  &:visited {
-    color: var(--ods-link-text-color-visited);
-  }
-
   &:hover,
   &:focus-visible {
     color: var(--ods-link-text-color-hover);
@@ -50,5 +46,10 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
 
   &:focus-visible {
     @include focus.ods-focus();
+  }
+
+  // After :hover, so that a visited link keeps its color on hover, as in 19.7.3.
+  &:visited {
+    color: var(--ods-link-text-color-visited);
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/components/button/src';
@@ -207,15 +207,62 @@ const Shell = () => {
     setNavOpen(false);
   }, [location.pathname]);
 
-  // A new page opens at its top. The content pane scrolls, not the window, so the browser does not
-  // reset it: back and forward (POP) keep their position, and a #hash lands on its own section.
+  // The content pane scrolls, not the window, so the browser neither resets nor restores it. A new
+  // page opens at its top, unless a #hash lands on its own section; back and forward (POP) bring the
+  // pane back to where its history entry was left.
   const navigationType = useNavigationType();
   const contentRef = useRef<HTMLElement>(null);
+  const positions = useRef(new Map<string, number>());
+  const entryKey = useRef(location.key);
+
+  // Set during the commit, before the browser fires the scroll events of the page swap: they are
+  // recorded on the new entry, and the one left keeps the last position its reader scrolled to.
+  useLayoutEffect(() => {
+    entryKey.current = location.key;
+  }, [location.key]);
 
   useEffect(() => {
-    if (navigationType !== 'POP' && !location.hash) {
-      contentRef.current?.scrollTo({ top: 0 });
+    const pane = contentRef.current;
+    const onScroll = () => {
+      positions.current.set(entryKey.current, pane?.scrollTop ?? 0);
+    };
+    pane?.addEventListener('scroll', onScroll, { passive: true });
+    return () => pane?.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const pane = contentRef.current;
+    if (!pane) {
+      return;
     }
+    if (navigationType !== 'POP') {
+      if (!location.hash) {
+        pane.scrollTo({ top: 0 });
+      }
+      return;
+    }
+    const top = positions.current.get(location.key);
+    if (!top) {
+      return;
+    }
+    // The page is still settling (lazy route, demo frames sizing above the position): hold the
+    // position each frame for two seconds, and let go as soon as the reader scrolls.
+    const deadline = performance.now() + 2000;
+    let frame = 0;
+    const restore = () => {
+      pane.scrollTop = top;
+      if (performance.now() < deadline) {
+        frame = requestAnimationFrame(restore);
+      }
+    };
+    const stop = () => cancelAnimationFrame(frame);
+    const inputs = ['keydown', 'pointerdown', 'touchstart', 'wheel'];
+    restore();
+    inputs.forEach((type) => pane.addEventListener(type, stop, { passive: true }));
+    return () => {
+      stop();
+      inputs.forEach((type) => pane.removeEventListener(type, stop));
+    };
   }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onNavigate = (id: string) => {

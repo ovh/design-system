@@ -6,7 +6,7 @@
 ## Accordion
 
 - [Overview](./react-components-accordion.txt) (~324 tokens)
-- [Documentation](./react-components-accordion--documentation.txt) (~1689 tokens)
+- [Documentation](./react-components-accordion--documentation.txt) (~1693 tokens)
 - [Technical Information](./react-components-accordion--technical-information.txt) (~627 tokens)
 - [Examples](./react-components-accordion--examples.txt) (~1342 tokens)
 
@@ -20,7 +20,7 @@
 ## Badge
 
 - [Overview](./react-components-badge.txt) (~218 tokens)
-- [Documentation](./react-components-badge--documentation.txt) (~2439 tokens)
+- [Documentation](./react-components-badge--documentation.txt) (~2455 tokens)
 - [Technical Information](./react-components-badge--technical-information.txt) (~1592 tokens)
 - [Examples](./react-components-badge--examples.txt) (~891 tokens)
 
@@ -209,7 +209,7 @@
 ## Message
 
 - [Overview](./react-components-message.txt) (~305 tokens)
-- [Documentation](./react-components-message--documentation.txt) (~2320 tokens)
+- [Documentation](./react-components-message--documentation.txt) (~2346 tokens)
 - [Technical Information](./react-components-message--technical-information.txt) (~2225 tokens)
 - [Examples](./react-components-message--examples.txt) (~1172 tokens)
 

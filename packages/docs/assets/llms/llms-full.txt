@@ -128,7 +128,7 @@ Same behavior and styling applies to both Desktop and Mobile modes.
 
 The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
 
-- **High**: the header sits on a tinted surface that sets it apart from the panel, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **High**: the panel of an open item sits on a muted surface that sets it apart from the header, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
 - **Medium** _(default)_: items are outlined by borders, on the raised surface.
 - **Low**: no border nor background: spacing separates the items. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
 
@@ -806,11 +806,13 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 ### Emphasis
 
-- **High**: filled background, for a status that must stand out at a glance.
-- **Medium** _(default)_: light background, for statuses that inform without competing with the content around them.
+- **High**: tinted background with a light border, for a status that must stand out at a glance.
+- **Medium** _(default)_: colored border and text on the raised surface, like the medium **Message**, for statuses that inform without competing with the content around them.
 - **Low**: colored text only, without background, for dense contexts such as tables or lists. The label must carry the meaning on its own, as the color is the only status cue.
 
-The **Accent** status has no high rendering yet, so its high emphasis looks like medium. The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their medium look in every emphasis.
+The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their filled look in every emphasis.
+
+The blue-jeans theme keeps the v19 tinted look in high, without border.
 
 ```tsx
 <>
@@ -11872,11 +11874,13 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 
 ### Emphasis
 
-- **High**: tinted background, for important information that must be seen by the user.
-- **Medium** _(default)_: light background with a colored border, for information that should be noticed without competing with the content around it.
+- **High**: tinted background with a light colored border, for important information that must be seen by the user.
+- **Medium** _(default)_: neutral background with a colored border, for information that should be noticed without competing with the content around it.
 - **Low**: colored text and icon only, without background nor border, for non-urgent information in a subtle and less prominent manner.
 
 The close button looks the same in every emphasis.
+
+The blue-jeans theme keeps the v19 tinted look in high, without border.
 
 ```tsx
 <>
@@ -25232,8 +25236,8 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
-| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
+| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-700)` |
 | `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
 | `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
@@ -25311,7 +25315,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-chart-series-01` | `#0050d7` |
 | `--ods-semantic-color-chart-series-02` | `#ac246f` |
 | `--ods-semantic-color-chart-series-03` | `#00875a` |
 | `--ods-semantic-color-chart-series-04` | `#df3400` |
@@ -25458,10 +25462,10 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-palette-green-300` | `#6ee7b7` |
 | `--ods-palette-green-400` | `#34d399` |
 | `--ods-palette-green-500` | `#10b981` |
-| `--ods-palette-green-600` | `#059669` |
-| `--ods-palette-green-700` | `#047857` |
-| `--ods-palette-green-800` | `#065f46` |
-| `--ods-palette-green-900` | `#064e3b` |
+| `--ods-palette-green-600` | `#09a171` |
+| `--ods-palette-green-700` | `#067958` |
+| `--ods-palette-green-800` | `#002d1f` |
+| `--ods-palette-green-900` | `#03140e` |
 
 | Token | Value |
 |---|---|
@@ -25484,10 +25488,10 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-palette-orange-300` | `#fcd34d` |
 | `--ods-palette-orange-400` | `#fbbf24` |
 | `--ods-palette-orange-500` | `#f59e0b` |
-| `--ods-palette-orange-600` | `#d97706` |
-| `--ods-palette-orange-700` | `#b45309` |
-| `--ods-palette-orange-800` | `#92400e` |
-| `--ods-palette-orange-900` | `#78350f` |
+| `--ods-palette-orange-600` | `#e08125` |
+| `--ods-palette-orange-700` | `#a95723` |
+| `--ods-palette-orange-800` | `#401d0c` |
+| `--ods-palette-orange-900` | `#1b0b04` |
 
 | Token | Value |
 |---|---|
@@ -28426,7 +28430,7 @@ In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` 
 }
 ```
 
-The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose, except the first chart series (`--ods-semantic-color-chart-series-01`), which reads accent `500` and follows the accent ramp. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 
 ## Design tokens JSON
 
@@ -28573,7 +28577,7 @@ To have a drawer win over a modal, pass a higher `z-index` to the drawer through
 
 These changes need no code change: the new rendering is intended. To keep the v19 one, add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
 
-- **Badge**: a pill with a border, where v19 had 4px corners and no border. The border adds to the size: `sm` is 22px tall instead of 20px, `lg` 30px instead of 28px, and every size is 2px wider. Keep v19, sizes included: `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+- **Badge**: a pill with a colored border and colored text on the raised surface (the new `medium` emphasis), where v19 had 4px corners, no border and a tinted background (filled for `primary`). The border adds to the size: `sm` is 22px tall instead of 20px, `lg` 30px instead of 28px, and every size is 2px wider. To get closer to v19, use `emphasis="high"` for the tinted background and `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }` for the corners and the sizes; the colors stay those of v20. The blue-jeans theme keeps the 4px corners, and its `high` emphasis is the v19 tinted background without border (see Badge).
 - **Card and Tile**: a `--ods-semantic-color-surface-raised` background, where v19 had none. Keep v19: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`.
 - **Card without `status`**: neutral, where v19 was primary. Keep v19: `status="accent"`.
 - **Accordion**: a `--ods-semantic-color-surface-raised` background and 8px outer corners, where v19 had no background and 4px corners. Keep v19: `[data-ods="accordion"] { --ods-accordion-background-color: transparent; --ods-accordion-border-radius: 4px; }`.
@@ -28710,7 +28714,7 @@ grep -rlE "@ovhcloud/ods-react/style" src | xargs grep -nwE "primary|information
 
 ### Accordion
 
-**New `emphasis` prop** (`ACCORDION_EMPHASIS`, `ACCORDION_EMPHASES` and the `AccordionEmphasis` type): `high`, `medium` or `low`, set on the root for every item. `medium` is the default, so an Accordion without `emphasis` renders as before: nothing to migrate. Only a wrapper is affected: if it declares its own `emphasis` prop on top of `AccordionProp`, add `'emphasis'` to its `Omit` or rename it. In untyped JavaScript, an `emphasis` attribute forwarded to Accordion is now read as the emphasis preset.
+**New `emphasis` prop** (`ACCORDION_EMPHASIS`, `ACCORDION_EMPHASES` and the `AccordionEmphasis` type): `high`, `medium` or `low`, set on the root for every item. `medium` is the default, so an Accordion without `emphasis` only gets the changes listed in **Default rendering**: nothing to migrate. Only a wrapper is affected: if it declares its own `emphasis` prop on top of `AccordionProp`, add `'emphasis'` to its `Omit` or rename it. In untyped JavaScript, an `emphasis` attribute forwarded to Accordion is now read as the emphasis preset.
 
 **before**
 ```tsx
@@ -28739,7 +28743,7 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 - `color="alpha"`, `beta`, `critical`, `information`, `neutral`, `new`, `promotion`, `success`, `warning`: use `status` with the same value. `information` stays the default.
 - `BADGE_COLORS` and `BadgeColor`: use `BADGE_STATUSES` and `BadgeStatus`.
 
-**New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default and keeps the v19 look, so a Badge without `emphasis` renders as before: nothing to migrate. Use `high` for a filled Badge and `low` for colored text only. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
+**New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default: a colored border and colored text on the raised surface, which is not the v19 look (see **Default rendering**). Use `high` for a tinted background with a light border, the closest to v19, and `low` for colored text only. In the blue-jeans theme, `high` is the tinted background without border, as in v19, and `medium` sits on the raised surface with the light status border: add `emphasis="high"` to keep the v19 look. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
 
 To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
@@ -28956,9 +28960,11 @@ import { Divider } from '@ovhcloud/ods-react';
 
 **The colors change in every emphasis**, `high` included: it is close to, but not the same as, the v19 `default` variant, and `medium` is not the same as the v19 `light` variant. The **Accent** status reads the accent roles (in v19 `default`, it was filled blue with white text). The close button keeps the same neutral look in every emphasis and status. Each emphasis reads these semantic roles, `<status>` being `accent`, `critical`, `information`, `neutral`, `success` or `warning`:
 
-- **High**: background `--ods-semantic-color-surface-<status>-subtle`, text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background and a `700` text.
+- **High**: background `--ods-semantic-color-surface-<status>-subtle`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-on-<status>`. In v19 `default`: a `075` background, no border and a `700` text.
 - **Medium**: background `--ods-semantic-color-surface-raised`, border `--ods-semantic-color-border-<status>-subtle`, text and icon `--ods-semantic-color-content-<status>`. In v19 `light`: the border had the text color, a `600` step.
-- **Low**: transparent background, no border, the **Medium** text and icon role.
+- **Low**: transparent background and border, the **Medium** text and icon role.
+
+In the blue-jeans theme, `high` has no border. The dark themes give the three emphases the `content-on-<status>` text.
 
 **Sass mixins and CSS custom properties are renamed**, `<status>` being `critical`, `information`, `neutral`, `success` or `warning`, the same in both names, and `primary`, which becomes `accent` in the new names (`ods-message-variant-default('primary')`: use `ods-message-emphasis-high('accent')`):
 

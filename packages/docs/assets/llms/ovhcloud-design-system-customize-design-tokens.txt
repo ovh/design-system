@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4997
+tokens: 4991
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -86,8 +86,8 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-800)` |
 | `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
 | `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
-| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-800)` |
-| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-800)` |
+| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-700)` |
 | `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
 | `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
 | `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
@@ -165,7 +165,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
 | `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-semantic-color-chart-series-01` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-chart-series-01` | `#0050d7` |
 | `--ods-semantic-color-chart-series-02` | `#ac246f` |
 | `--ods-semantic-color-chart-series-03` | `#00875a` |
 | `--ods-semantic-color-chart-series-04` | `#df3400` |
@@ -312,10 +312,10 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-palette-green-300` | `#6ee7b7` |
 | `--ods-palette-green-400` | `#34d399` |
 | `--ods-palette-green-500` | `#10b981` |
-| `--ods-palette-green-600` | `#059669` |
-| `--ods-palette-green-700` | `#047857` |
-| `--ods-palette-green-800` | `#065f46` |
-| `--ods-palette-green-900` | `#064e3b` |
+| `--ods-palette-green-600` | `#09a171` |
+| `--ods-palette-green-700` | `#067958` |
+| `--ods-palette-green-800` | `#002d1f` |
+| `--ods-palette-green-900` | `#03140e` |
 
 | Token | Value |
 |---|---|
@@ -338,10 +338,10 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 | `--ods-palette-orange-300` | `#fcd34d` |
 | `--ods-palette-orange-400` | `#fbbf24` |
 | `--ods-palette-orange-500` | `#f59e0b` |
-| `--ods-palette-orange-600` | `#d97706` |
-| `--ods-palette-orange-700` | `#b45309` |
-| `--ods-palette-orange-800` | `#92400e` |
-| `--ods-palette-orange-900` | `#78350f` |
+| `--ods-palette-orange-600` | `#e08125` |
+| `--ods-palette-orange-700` | `#a95723` |
+| `--ods-palette-orange-800` | `#401d0c` |
+| `--ods-palette-orange-900` | `#1b0b04` |
 
 | Token | Value |
 |---|---|

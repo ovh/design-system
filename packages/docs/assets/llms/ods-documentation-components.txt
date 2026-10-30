@@ -51,7 +51,7 @@ slug: accordion
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1689
+tokens: 1693
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
 ---
 
@@ -144,7 +144,7 @@ Same behavior and styling applies to both Desktop and Mobile modes.
 
 The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
 
-- **High**: the header sits on a tinted surface that sets it apart from the panel, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **High**: the panel of an open item sits on a muted surface that sets it apart from the header, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
 - **Medium** _(default)_: items are outlined by borders, on the raised surface.
 - **Low**: no border nor background: spacing separates the items. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
 
@@ -789,7 +789,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2439
+tokens: 2455
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -892,11 +892,13 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 ### Emphasis
 
-- **High**: filled background, for a status that must stand out at a glance.
-- **Medium** _(default)_: light background, for statuses that inform without competing with the content around them.
+- **High**: tinted background with a light border, for a status that must stand out at a glance.
+- **Medium** _(default)_: colored border and text on the raised surface, like the medium **Message**, for statuses that inform without competing with the content around them.
 - **Low**: colored text only, without background, for dense contexts such as tables or lists. The label must carry the meaning on its own, as the color is the only status cue.
 
-The **Accent** status has no high rendering yet, so its high emphasis looks like medium. The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their medium look in every emphasis.
+The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their filled look in every emphasis.
+
+The blue-jeans theme keeps the v19 tinted look in high, without border.
 
 ```tsx
 <>
@@ -12806,7 +12808,7 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2320
+tokens: 2346
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
@@ -12903,11 +12905,13 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 
 ### Emphasis
 
-- **High**: tinted background, for important information that must be seen by the user.
-- **Medium** _(default)_: light background with a colored border, for information that should be noticed without competing with the content around it.
+- **High**: tinted background with a light colored border, for important information that must be seen by the user.
+- **Medium** _(default)_: neutral background with a colored border, for information that should be noticed without competing with the content around it.
 - **Low**: colored text and icon only, without background nor border, for non-urgent information in a subtle and less prominent manner.
 
 The close button looks the same in every emphasis.
+
+The blue-jeans theme keeps the v19 tinted look in high, without border.
 
 ```tsx
 <>

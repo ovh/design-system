@@ -1,3 +1,4 @@
+--ods-accordion-item-inner-radius-top
 --ods-badge-background-color-critical
 --ods-badge-background-color-information
 --ods-badge-background-color-neutral

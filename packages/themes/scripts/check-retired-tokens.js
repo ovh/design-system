@@ -9,7 +9,8 @@
  *   comm -23 <(names declared at v19.7.3) <(names declared at HEAD)
  * over packages/themes/src and packages/ods-react/src.
  * A few names that v20 added and then removed during its development are listed too, so that a
- * branch started before their removal cannot bring them back.
+ * branch started before their removal cannot bring them back. Kept by hand: regenerating the list
+ * with the comm above drops them.
  *
  * Usage: node scripts/check-retired-tokens.js
  */

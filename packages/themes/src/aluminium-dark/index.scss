@@ -49,7 +49,7 @@
   --ods-semantic-color-content-neutral: var(--ods-palette-gray-300);
   --ods-semantic-color-content-brand: var(--ods-palette-brand-400);
 
-  /* Minor brand button at rest: drawn with the control inks in this theme. */
+  /* Minor brand button at rest: the brand ink, as the solid one. */
   --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-400);
   --ods-semantic-color-content-accent: var(--ods-palette-accent-300);
   --ods-semantic-color-content-information: var(--ods-palette-blue-300);
@@ -84,7 +84,9 @@
   --ods-semantic-color-border-readonly: var(--ods-palette-navy-600);
   --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-100);
 
-  /* Minor brand button at rest: the control border step. */
+  /* Borders - statuses */
+
+  /* Minor brand button at rest: the brand step, not the control border. */
   --ods-semantic-color-border-brand-minor: var(--ods-palette-brand-500);
   --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-500);
   --ods-semantic-color-border-accent: var(--ods-palette-navy-200); /* the selected Tile, one step past the field hover */
@@ -126,6 +128,9 @@
   --ods-semantic-color-interaction-control-highlight: var(--ods-semantic-color-surface-control);
   --ods-semantic-color-interaction-control-solid-hover: var(--ods-palette-accent-200);
   --ods-semantic-color-interaction-control-solid-active: var(--ods-palette-accent-200);
+
+  /* Interaction - structure */
+  // The hover of the Tabs rail (border-track), not of the control rail (surface-track).
   --ods-semantic-color-interaction-track-hover: var(--ods-palette-navy-300);
 
   /* Focus */
@@ -135,7 +140,7 @@
   // Menu, Popover, Tooltip, Drawer and Modal have no border, and their surface is the one of a Card in this theme: the
   // overlay shadow draws their edge, a 1px ring in the container border color, over a black and denser shadow.
   --ods-semantic-color-shadow-overlay: var(--ods-palette-black);
-  --ods-semantic-shadow-overlay: 0 0 0 1px var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
+  --ods-semantic-shadow-overlay: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
 
   /* Brand */
   --ods-semantic-color-brand: var(--ods-palette-white);

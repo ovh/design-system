@@ -196,6 +196,9 @@
   --ods-semantic-color-interaction-control-highlight: var(--ods-palette-accent-50);
   --ods-semantic-color-interaction-control-solid-hover: var(--ods-palette-accent-800);
   --ods-semantic-color-interaction-control-solid-active: var(--ods-palette-accent-800);
+
+  /* Interaction - structure */
+  // The hover of the Tabs rail (border-track), not of the control rail (surface-track).
   --ods-semantic-color-interaction-track-hover: var(--ods-palette-gray-300);
 
   /* Charts */

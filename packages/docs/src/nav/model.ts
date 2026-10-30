@@ -295,12 +295,19 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
 }
 
 /* TreeView items derived from the model; leaf ids = page ids so a tree
-   selection maps straight to a route. Icons mark the pages inside a section; the root entries,
-   sections and pages alike, show plain names on one edge. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, nested = false): { children?: unknown[], customRendererData?: { badge?: Badge, gallery?: true, icon?: ICON_NAME }, id: string, name: string }[] {
-  return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
-    ? { customRendererData: { badge: node.badge, gallery: node.gallery, icon: nested && node.iconInTree !== false ? node.icon : undefined }, id: node.id, name: node.gallery ? 'Gallery' : node.title }
-    : { children: toTreeItems(node.children, true), customRendererData: {}, id: node.id, name: node.title }));
+   selection maps straight to a route. Pages carry their icon, except the long reference lists
+   (iconInTree: false); with rootIcons, the root sections carry theirs too (the guides tree). A
+   section with a gallery (Components, Recipes) is that gallery's entry: the section names its
+   page, which leaves the tree. */
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, rootIcons = false, nested = false): { children?: unknown[], customRendererData?: { badge?: Badge, icon?: ICON_NAME, page?: string }, id: string, name: string }[] {
+  return nodes.filter((node) => !isPage(node) || (!node.hidden && !node.gallery)).map((node) => (isPage(node)
+    ? { customRendererData: { badge: node.badge, icon: (nested || rootIcons) && node.iconInTree !== false ? node.icon : undefined }, id: node.id, name: node.title }
+    : {
+      children: toTreeItems(node.children, rootIcons, true),
+      customRendererData: { icon: rootIcons && !nested ? node.icon : undefined, page: node.children.find((child) => isPage(child) && child.gallery)?.id },
+      id: node.id,
+      name: node.title,
+    }));
 }
 
 export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type PageStoriesData, type StoriesLoader };

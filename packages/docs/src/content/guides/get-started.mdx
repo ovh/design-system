@@ -112,7 +112,7 @@ It re-declares the semantic tokens on `:root`, so it applies to the whole page. 
 
 <Heading label="Server-side rendering" level={ 2 } />
 
-ODS components rely on React state, effects and browser APIs: they render on the server, but cannot be used as React Server Components.
+ODS components rely on React state, effects and browser APIs: they cannot be used as React Server Components.
 
 With the Next.js App Router, import the theme in your root layout and use the components from client components, marked with the `'use client'` directive:
 
@@ -139,6 +139,8 @@ export default function Home() {
   return <Link href="#">My ODS Link</Link>;
 }
 ```
+
+The `Toaster` renders into `document.body` by default, which does not exist on the server, so the page fails to prerender with `document is not defined`. Pass `createPortal={ false }` to render it where it is placed, or render it only once the page is mounted in the browser.
 
 <Heading label="TypeScript" level={ 2 } />
 

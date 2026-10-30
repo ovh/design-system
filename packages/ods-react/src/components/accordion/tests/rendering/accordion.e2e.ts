@@ -39,6 +39,16 @@ describe('Accordion rendering', () => {
     expect(await page.waitForSelector('[data-ods="accordion-trigger"]')).not.toBeNull();
   });
 
+  describe('border role', () => {
+    it('should line the items with border-container, not the neutral status border', async() => {
+      await gotoStory(page, 'rendering/border-role');
+
+      const item = await page.waitForSelector('[data-testid="border-role-item"]');
+
+      expect(await item!.evaluate((el: Element) => getComputedStyle(el).borderTopColor)).toBe('rgb(1, 2, 3)');
+    });
+  });
+
   describe('custom style', () => {
     it('should render with custom style applied', async() => {
       await gotoStory(page, 'rendering/custom-style');
@@ -83,7 +93,7 @@ describe('Accordion rendering', () => {
 
     it('should render medium as the default rendering: borders on the raised surface', async() => {
       const background = await getTokenColor(page, '--ods-semantic-color-surface-raised');
-      const borderColor = await getTokenColor(page, '--ods-semantic-color-border-neutral-subtle');
+      const borderColor = await getTokenColor(page, '--ods-semantic-color-border-container');
       const borderColorHover = await getTokenColor(page, '--ods-semantic-color-interaction-control-hover');
 
       MODES.forEach((mode) => {

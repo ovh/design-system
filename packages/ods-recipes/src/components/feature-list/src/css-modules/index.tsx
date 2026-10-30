@@ -26,8 +26,10 @@ const FeatureList = (): JSX.Element => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Icon
+                aria-label={ `More information about ${FEATURES.title}` }
                 className={ style['feature-list__tooltip-trigger'] }
-                name={ ICON_NAME.circleQuestion } />
+                name={ ICON_NAME.circleQuestion }
+                role="img" />
             </TooltipTrigger>
 
             <TooltipContent>
@@ -57,8 +59,10 @@ const FeatureList = (): JSX.Element => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Icon
+                        aria-label={ `More information about ${label}` }
                         className={ style['feature-list__tooltip-trigger'] }
-                        name={ ICON_NAME.circleQuestion } />
+                        name={ ICON_NAME.circleQuestion }
+                        role="img" />
                     </TooltipTrigger>
 
                     <TooltipContent>

@@ -789,7 +789,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2455
+tokens: 2460
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -898,7 +898,7 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their filled look in every emphasis.
 
-The blue-jeans theme keeps the v19 tinted look in high, without border.
+The blue-jeans theme keeps the v19 tinted look in high, without border, and the v19 widths.
 
 ```tsx
 <>
@@ -1027,7 +1027,7 @@ slug: badge
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1592
+tokens: 1587
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
 ---
 
@@ -1075,11 +1075,11 @@ This component extends all the native `<span>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-badge-border-radius` | `var(--ods-semantic-size-radius-full)` |
-| `--ods-badge-padding-horizontal-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-badge-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-badge-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
-| `--ods-badge-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-badge-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
 | `--ods-badge-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
-| `--ods-badge-padding-horizontal-lg` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-badge-padding-horizontal-lg` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
 | `--ods-badge-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
 | `--ods-badge-background-color-alpha` | `var(--ods-semantic-color-surface-decorative-alpha)` |
 | `--ods-badge-border-color-alpha` | `transparent` |

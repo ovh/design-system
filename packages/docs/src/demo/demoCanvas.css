@@ -1,6 +1,6 @@
 .canvas {
   border: 1px solid var(--ods-semantic-color-border-separator);
-  border-radius: 6px;
+  border-radius: var(--ods-semantic-size-radius-container);
   margin: 1rem 0;
   overflow: hidden;
 }
@@ -19,7 +19,7 @@
 
 .canvas__title {
   font-size: .9rem;
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
 .canvas__actions {

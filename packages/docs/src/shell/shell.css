@@ -508,5 +508,5 @@ body {
   border-radius: 2px;
   background: transparent;
   color: inherit;
-  font-weight: 700;
+  font-weight: var(--ods-semantic-font-weight-bold);
 }

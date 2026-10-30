@@ -7,11 +7,11 @@
   margin: 12px 0;
   border: 1px solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-control);
-  background-color: #000000;
+  background-color: var(--ods-semantic-color-surface-code);
   padding: 8px;
   width: 100%;
   min-height: 220px;
-  color: #FFFFFF;
+  color: var(--ods-semantic-color-content-on-code);
   font-family: var(--ods-semantic-font-family-code);
   font-size: 12px;
 }

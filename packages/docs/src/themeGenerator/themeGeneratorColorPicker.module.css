@@ -52,7 +52,7 @@
   z-index: 1000;
   border: 1px solid var(--ods-semantic-color-border-control);
   border-radius: var(--ods-semantic-size-radius-container);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--ods-semantic-shadow-overlay);
   background-color: var(--ods-semantic-color-surface-page);
   padding: 16px;
 }

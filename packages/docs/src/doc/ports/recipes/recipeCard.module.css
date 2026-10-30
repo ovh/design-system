@@ -13,13 +13,13 @@
 .recipe-card__inner__header {
   margin: 0;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-semibold);
 }
 
 .recipe-card__inner__canvas {
   margin-top: 12px;
   border: 1px solid var(--ods-semantic-color-border-neutral-subtle);
-  border-radius: 8px;
+  border-radius: var(--ods-semantic-size-radius-container);
   /* A preview wider than the card (the 300px Query Filter control on a phone) scrolls instead of
      being cut. */
   overflow: auto;
@@ -39,7 +39,7 @@
   gap: 16px;
   align-items: center;
   justify-content: space-between;
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--ods-semantic-size-radius-container) var(--ods-semantic-size-radius-container) 0 0;
   background-color: var(--ods-semantic-color-surface-muted);
   padding: 8px;
 }
@@ -50,6 +50,6 @@
 
 .recipe-card__inner__code__panel__editor {
   box-sizing: border-box;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 var(--ods-semantic-size-radius-container) var(--ods-semantic-size-radius-container);
   width: 100%;
 }

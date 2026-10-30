@@ -41,7 +41,7 @@ const SandboxRoute = () => {
     <Suspense fallback={
       <div style={{ display: 'grid', gap: '16px' }}>
         <Skeleton style={{ height: '280px', width: '100%' }} />
-        <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} />
+        <Skeleton style={{ borderRadius: 'var(--ods-semantic-size-radius-control)', height: '74px', width: '100%' }} />
       </div>
     }>
       <Sandbox dark={ false } initialCode={ initialCode } tokens={ tokens } />

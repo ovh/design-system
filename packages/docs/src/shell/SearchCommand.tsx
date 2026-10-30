@@ -25,6 +25,9 @@ const GROUPS: { heading: string, kind: NavPage['kind'] }[] = [
 
 type SearchPage = ReturnType<typeof flattenPages>[number];
 
+/* Opened without a query, the palette leads with where a newcomer starts, before the 58 components. */
+const START_HERE = ['guides/get-started', 'tools/component-gallery', 'guides/design-tokens', 'guides/whats-new'];
+
 const BADGES = {
   beta: { label: 'Beta', status: BADGE_STATUS.beta },
   deprecated: { label: 'Deprecated', status: BADGE_STATUS.warning },
@@ -114,9 +117,15 @@ const SearchCommand = () => {
   const needle = query.trim().toLowerCase();
   const pageMatches = (page: SearchPage): boolean => !needle
     || [page.title, page.section, page.badge && BADGES[page.badge].label].filter(Boolean).join(' ').toLowerCase().includes(needle);
-  const groups = GROUPS
-    .map(({ heading, kind }) => ({ heading, kind, items: pages.filter((page) => page.kind === kind && pageMatches(page)) }))
-    .filter((group) => group.items.length > 0);
+  const startHere = needle ? [] : START_HERE.map((id) => pages.find((page) => page.id === id)).filter((page): page is SearchPage => !!page);
+  const groups = [
+    { heading: 'Start here', items: startHere, kind: 'start' },
+    ...GROUPS.map(({ heading, kind }) => ({
+      heading,
+      items: pages.filter((page) => page.kind === kind && pageMatches(page) && !startHere.includes(page)),
+      kind,
+    })),
+  ].filter((group) => group.items.length > 0);
   // A page already listed by title above is not repeated as a content hit,
   // whatever its #section: routes are compared without the hash.
   const shownPaths = new Set(groups.flatMap((group) => group.items.map((page) => page.path)));

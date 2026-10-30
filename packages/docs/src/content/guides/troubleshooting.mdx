@@ -61,7 +61,7 @@ page to read more about how to achieve this.
 
 <Heading label="Warning: Function components cannot be given refs" level={ 2 } />
 
-When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+With React 18, when using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
 
 ```text
 Warning: Function components cannot be given refs.
@@ -69,6 +69,8 @@ Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 ```
 
 This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+With React 19, `ref` is a regular prop and no warning is shown, but your component still has to pass the `ref` it receives down to its DOM element, as the example below does.
 
 ```tsx
 import { Link } from '@ovhcloud/ods-react';

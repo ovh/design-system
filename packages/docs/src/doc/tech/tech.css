@@ -11,7 +11,7 @@
 }
 
 .tech__prop-name {
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-semibold);
   margin-right: 8px;
 }
 
@@ -85,8 +85,10 @@
 
 .anatomy__highlight {
   position: absolute;
-  outline: 2px dashed #c54600;
-  border-radius: 2px;
+  /* The warning ink, not border-warning: a light orange would not stand out from the demo it
+     outlines (3:1 for a non-text mark). */
+  outline: var(--ods-semantic-border-thickness-strong) dashed var(--ods-semantic-color-content-warning);
+  border-radius: var(--ods-semantic-size-radius-control);
 }
 
 /* Narrow layout (≤1000px, cf. shell.css): the anatomy panel stacks (tree above

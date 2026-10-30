@@ -42,7 +42,7 @@
 
 .sandbox__pane {
   border: 1px solid var(--ods-semantic-color-border-separator);
-  border-radius: 6px;
+  border-radius: var(--ods-semantic-size-radius-container);
   display: flex;
   flex-direction: column;
   min-width: 0;

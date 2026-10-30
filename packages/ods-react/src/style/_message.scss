@@ -55,6 +55,9 @@
 }
 
 @mixin ods-message-emphasis-high($color) {
+  // The padding gives up the border thickness, so that high keeps the size of the 19.7.3 default variant, which had no border.
+  padding: calc(var(--ods-semantic-size-space-inset-block) - var(--ods-semantic-border-thickness)) calc(var(--ods-semantic-size-space-inset-inline) - var(--ods-semantic-border-thickness));
+
   @if $color == 'critical' {
     border: solid var(--ods-semantic-border-thickness) var(--ods-message-border-color-critical-high);
     background-color: var(--ods-message-background-color-critical-high);

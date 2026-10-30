@@ -368,4 +368,4 @@ const Shell = () => {
   );
 };
 
-export { Shell, type ShellContext };
+export { Shell, useNarrow, type ShellContext };

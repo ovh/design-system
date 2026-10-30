@@ -10,6 +10,7 @@ import { IconGallery } from '../doc/ports/iconGallery/IconGallery';
 import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
 import { hasTechData } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
+import { useNarrow } from '../shell/Shell';
 import { useStories } from '../nav/useStories';
 import { ComponentPage } from './ComponentPage';
 
@@ -63,6 +64,8 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   // Fall back to the first available tab when the URL segment isn't valid here.
   const requested = tab ?? 'documentation';
   const currentTab = tabs.some((entry) => entry.value === requested) ? requested : tabs[0].value;
+  // On a narrow screen the tab strip outgrows the column: its arrows reach the last tabs.
+  const narrow = useNarrow();
   const toPath = (value: string) => (value === 'documentation' ? page.path : `${page.path}/${value}`);
 
   const content = (
@@ -107,7 +110,7 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
         { tabs.length > 1
           ? (
             // The route picks the tab: only the selected panel is rendered, but it sits in its tabpanel.
-            <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
+            <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch } withArrows={ narrow }>
               <TabList className="doc-page__tabs">
                 { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
               </TabList>

@@ -68,7 +68,6 @@ body {
 
 .shell__brand-logo {
   display: flex;
-  margin: auto;
   width: 150px;
   color: var(--ods-semantic-color-brand);
 }
@@ -100,7 +99,6 @@ body {
 
 .shell__version-select {
   display: flex;
-  justify-content: center;
   /* Pulls the version up under the logo, cancelling most of the sidebar gap. */
   margin-top: calc(var(--ods-semantic-size-space-gap-block) * -1.5);
   margin-bottom: var(--ods-semantic-size-space-gap-block);

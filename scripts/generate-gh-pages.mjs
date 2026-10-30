@@ -98,12 +98,16 @@ const outDirName = 'docs';
     }
   }
   try {
-    // add the current build (released just done). The npm loop may already
-    // have deployed this same version (manual re-deploy on a released
-    // master): replace it, or cp would nest into the existing dir.
-    await $`rm -rf dist/v${currentVersion}`;
-    await $`cp -r packages/docs/dist dist/v${currentVersion}`;
-    await $`ln -s v${currentVersion} dist/latest`;
+    // add the current build, when there is one: the CI deploy job does not
+    // build, the npm loop has already brought this version. Replace it, or cp
+    // would nest into the existing dir.
+    if (fs.existsSync('packages/docs/dist')) {
+      await $`rm -rf dist/v${currentVersion}`;
+      await $`cp -r packages/docs/dist dist/v${currentVersion}`;
+      if (!currentVersion.includes('-')) {
+        await $`ln -s v${currentVersion} dist/latest`;
+      }
+    }
   } catch (e) {
     console.error(`cannot add the current docs build. ignore it`, e);
   }
@@ -113,6 +117,10 @@ const outDirName = 'docs';
     await $`mv dist/* ${outDirName}`;
   } catch (e) {
     console.error(`cannot move files into outDir.`, e);
+  }
+  // Everything above is fail-soft: never deploy without the released version.
+  if (!fs.existsSync(`${outDirName}/v${currentVersion}/index.html`)) {
+    throw new Error(`v${currentVersion} is missing from ${outDirName}, aborting the deploy`);
   }
   try {
     // SPA deep links: GitHub Pages serves 404.html for unknown paths; it
@@ -126,23 +134,29 @@ const outDirName = 'docs';
     // Regenerated at each deploy from what is actually on disk, so only the
     // versions that really ship an llms set are listed.
     const { existsSync, readdirSync, writeFileSync } = require('node:fs');
-    // Prereleases are excluded from the listing (agents should not be pointed
-    // at an alpha), which also spares rank() its release/prerelease tie.
-    const llmsVersions = readdirSync(outDirName)
-      .filter((name) => /^v\d/.test(name) && !name.includes('-') && existsSync(`${outDirName}/${name}/llms/llms.txt`))
+    // Prereleases are excluded from the listing and from the current version
+    // (agents should not be pointed at an alpha), which also spares rank() its
+    // release/prerelease tie.
+    const finalVersions = readdirSync(outDirName)
+      .filter((name) => /^v\d/.test(name) && !name.includes('-'))
       .sort((a, b) => rank(b.slice(1)) - rank(a.slice(1)));
+    const llmsVersions = finalVersions.filter((name) => existsSync(`${outDirName}/${name}/llms/llms.txt`));
+    // latest points at the newest final version: only list what that build ships.
+    const latestSets = [
+      ['Entry point', 'llms.txt', 'summary of the latest documentation set'],
+      ['Complete documentation', 'llms-full.txt', 'the full documentation in one file'],
+      ['Machine-readable index', 'llms-index.json', 'every file with type, token estimate and canonical URL'],
+    ].filter(([, file]) => existsSync(`${outDirName}/${finalVersions[0]}/llms/${file}`));
     writeFileSync(`${outDirName}/llms.txt`, [
       '# OVHcloud Design System Documentation for LLMs',
       '',
       '> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.',
       '',
-      `Current version: ${currentVersion}`,
+      `Current version: ${finalVersions[0]?.slice(1) ?? currentVersion}`,
       '',
       '## Documentation Sets (latest release)',
       '',
-      '- [Entry point](./latest/llms/llms.txt): summary of the latest documentation set',
-      '- [Complete documentation](./latest/llms/llms-full.txt): the full documentation in one file',
-      '- [Machine-readable index](./latest/llms/llms-index.json): every file with type, token estimate and canonical URL',
+      ...latestSets.map(([label, file, description]) => `- [${label}](./latest/llms/${file}): ${description}`),
       '',
       '## Versions',
       '',

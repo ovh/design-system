@@ -1,6 +1,6 @@
 const main = `
 
-[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+[Latest version](https://ovh.github.io/design-system/latest/guides/changelog)
 
 {{> header}}
 
@@ -20,9 +20,9 @@ const main = `
 
 const header = `
 {{#if isPatch~}}
-  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/guides/changelog)
 {{~else~}}
-  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/guides/changelog)
 {{~/if}}
 {{~#if title}} "{{title}}"
 {{~/if}}
@@ -50,6 +50,9 @@ const header = `
 module.exports = async () => {
   const createPreset = require('conventional-changelog-angular');
   const preset = await createPreset();
+  // The angular parser drops the "feat!:" breaking marker that commitlint accepts.
+  preset.parserOpts.headerPattern = /^(\w*)(?:\((.*)\))?!?: (.*)$/;
+  preset.parserOpts.breakingHeaderPattern = /^(\w*)(?:\((.*)\))?!: (.*)$/;
   preset.writerOpts.mainTemplate = main;
   preset.writerOpts.headerPartial = header;
   preset.writerOpts.commitUrlFormat = '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}';

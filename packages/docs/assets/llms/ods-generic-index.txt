@@ -22,7 +22,7 @@
 - [Forms](./ovhcloud-design-system-build-forms.txt) (~6900 tokens)
 - [Get Started](./ovhcloud-design-system-get-started.txt) (~745 tokens)
 - [Internationalization](./ovhcloud-design-system-build-internationalization.txt) (~608 tokens)
-- [Migration 19.x to 20.x](./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt) (~14595 tokens)
+- [Migration 19.x to 20.x](./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt) (~14628 tokens)
 - [Migration to v19](./ovhcloud-design-system-upgrade-migration-to-v19.txt) (~443 tokens)
 - [Style Customization](./ovhcloud-design-system-customize-style-customization.txt) (~620 tokens)
 - [Tailwind CSS Integration](./ovhcloud-design-system-customize-tailwind-css-integration.txt) (~1244 tokens)

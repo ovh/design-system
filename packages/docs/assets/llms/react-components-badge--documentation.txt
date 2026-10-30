@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2455
+tokens: 2460
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -113,7 +113,7 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their filled look in every emphasis.
 
-The blue-jeans theme keeps the v19 tinted look in high, without border.
+The blue-jeans theme keeps the v19 tinted look in high, without border, and the v19 widths.
 
 ```tsx
 <>

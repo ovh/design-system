@@ -20,8 +20,8 @@
 ## Badge
 
 - [Overview](./react-components-badge.txt) (~218 tokens)
-- [Documentation](./react-components-badge--documentation.txt) (~2455 tokens)
-- [Technical Information](./react-components-badge--technical-information.txt) (~1592 tokens)
+- [Documentation](./react-components-badge--documentation.txt) (~2460 tokens)
+- [Technical Information](./react-components-badge--technical-information.txt) (~1587 tokens)
 - [Examples](./react-components-badge--examples.txt) (~891 tokens)
 
 ## Breadcrumb

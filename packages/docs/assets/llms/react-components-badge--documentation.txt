@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2439
+tokens: 2455
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -107,11 +107,13 @@ An icon can be displayed on the left or right of the **Badge** label content. Ic
 
 ### Emphasis
 
-- **High**: filled background, for a status that must stand out at a glance.
-- **Medium** _(default)_: light background, for statuses that inform without competing with the content around them.
+- **High**: tinted background with a light border, for a status that must stand out at a glance.
+- **Medium** _(default)_: colored border and text on the raised surface, like the medium **Message**, for statuses that inform without competing with the content around them.
 - **Low**: colored text only, without background, for dense contexts such as tables or lists. The label must carry the meaning on its own, as the color is the only status cue.
 
-The **Accent** status has no high rendering yet, so its high emphasis looks like medium. The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their medium look in every emphasis.
+The promotional statuses (**Alpha**, **Beta**, **New** and **Promotion**) keep their filled look in every emphasis.
+
+The blue-jeans theme keeps the v19 tinted look in high, without border.
 
 ```tsx
 <>

@@ -4,7 +4,7 @@ slug: accordion
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1689
+tokens: 1693
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
 ---
 
@@ -97,7 +97,7 @@ Same behavior and styling applies to both Desktop and Mobile modes.
 
 The emphasis sets the visual weight of the **Accordion**, not the importance of its content. It applies to all its items.
 
-- **High**: the header sits on a tinted surface that sets it apart from the panel, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
+- **High**: the panel of an open item sits on a muted surface that sets it apart from the header, with the `medium` borders. Use it when the **Accordion** must stand out from the surrounding content.
 - **Medium** _(default)_: items are outlined by borders, on the raised surface.
 - **Low**: no border nor background: spacing separates the items. Use it in a dense layout, or when the **Accordion** is already inside a framed container (a Card, a side panel).
 

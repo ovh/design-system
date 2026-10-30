@@ -164,6 +164,10 @@
 
   :root [data-ods='badge'] {
     --ods-badge-border-radius: 4px;
+    // The v19 widths, border included: the 4px corners need less side room than the pill.
+    --ods-badge-padding-horizontal-sm: calc(var(--ods-semantic-size-space-inset-inline) / 2 - var(--ods-semantic-border-thickness));
+    --ods-badge-padding-horizontal-md: calc(var(--ods-semantic-size-space-inset-inline) / 2 - var(--ods-semantic-border-thickness));
+    --ods-badge-padding-horizontal-lg: calc(var(--ods-semantic-size-space-inset-inline) * 0.75 - var(--ods-semantic-border-thickness));
     // high is the v19 tinted fill without a border.
     --ods-badge-border-color-accent-high: transparent;
     --ods-badge-border-color-critical-high: transparent;

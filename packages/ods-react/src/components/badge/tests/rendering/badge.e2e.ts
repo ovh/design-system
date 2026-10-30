@@ -82,7 +82,7 @@ describe('Badge rendering', () => {
       expect(lgHeight).toBeGreaterThan(mdHeight);
     });
 
-    it('should add the border to the 19.7.3 heights of sm and lg', async() => {
+    it('should keep the 19.7.3 heights, border included', async() => {
       await gotoStory(page, 'rendering/sizes');
 
       const heights = await Promise.all(['sm', 'md', 'lg'].map(async(size) => {
@@ -90,7 +90,7 @@ describe('Badge rendering', () => {
         return badge!.evaluate((el: Element) => el.getBoundingClientRect().height);
       }));
 
-      expect(heights).toEqual([22, 24, 30]);
+      expect(heights).toEqual([20, 24, 28]);
     });
   });
 

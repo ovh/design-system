@@ -710,10 +710,12 @@ goes under the v20 modal.
   default `medium` emphasis sits on `surface-raised` with the `content-<status>` text, where
   19.7.3 had a tinted background (filled for `primary`): `emphasis="high"` brings the tinted
   background back, lined with a light border (without border in the blue-jeans theme).
-  The border adds to the height: `sm` renders 22px tall instead of 20px, `lg` 30px instead of 28px,
-  `md` stays at 24px, and every size is 2px wider. Closest to 19.7.3, sizes included (the colors stay those of v20):
-  `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`, with `emphasis="high"`
-  for the tinted background.
+  Every size keeps its 19.7.3 height, the border taken off the vertical padding, but the pill takes
+  8px on each side (12px in `lg`) where 19.7.3 took 4px (6px), through
+  `--ods-badge-padding-horizontal-<size>`. The blue-jeans theme keeps the 19.7.3 widths. Closest to
+  19.7.3 (the colors stay those of v20):
+  `[data-ods="badge"] { --ods-badge-border-radius: 4px; --ods-badge-padding-horizontal-sm: 3px; --ods-badge-padding-horizontal-md: 3px; --ods-badge-padding-horizontal-lg: 5px; }`,
+  with `emphasis="high"` for the tinted background.
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected` where 19.7.3 left it
   transparent, and the selected segment of a switch gets an outline,
   `--ods-tab-border-color-selected-switch`. Keep 19.7.3:

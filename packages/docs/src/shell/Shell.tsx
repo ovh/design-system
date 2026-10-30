@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link as RouterLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link as RouterLink, Outlet, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { BADGE_SIZE, BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/components/button/src';
 import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent } from '../../../ods-react/src/components/drawer/src';
@@ -207,6 +207,17 @@ const Shell = () => {
     setNavOpen(false);
   }, [location.pathname]);
 
+  // A new page opens at its top. The content pane scrolls, not the window, so the browser does not
+  // reset it: back and forward (POP) keep their position, and a #hash lands on its own section.
+  const navigationType = useNavigationType();
+  const contentRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (navigationType !== 'POP' && !location.hash) {
+      contentRef.current?.scrollTo({ top: 0 });
+    }
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const onNavigate = (id: string) => {
     const page = pages.find((p) => p.id === id);
     if (page) {
@@ -270,7 +281,7 @@ const Shell = () => {
           </header>
         ) }
 
-        <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" tabIndex={ -1 }>
+        <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" ref={ contentRef } tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />
         </main>
       </div>

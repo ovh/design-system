@@ -111,18 +111,22 @@ const RecipeSource = ({ recipe }: { recipe: Recipe }) => {
 };
 
 /* Gallery card: the recipe's name links to its page, with the live preview below. The code lives on
-   the page itself. */
-const RecipeCard = memo(({ path, recipe }: { path: string, recipe: Recipe }) => (
-  <div className={ styles['recipe-card'] }>
-    <Card className={ styles['recipe-card__inner'] } status={ CARD_STATUS.neutral }>
-      <h2 className={ styles['recipe-card__inner__header'] }>
-        <Link as={ RouterLink } to={ path }>{ recipe.name }</Link>
-      </h2>
+   the page itself. Under a component page's "Recipes" h2, the cards are its h3 children. */
+const RecipeCard = memo(({ level = 2, path, recipe }: { level?: 2 | 3, path: string, recipe: Recipe }) => {
+  const Title = level === 3 ? 'h3' : 'h2';
 
-      <RecipePreview recipe={ recipe } />
-    </Card>
-  </div>
-));
+  return (
+    <div className={ styles['recipe-card'] }>
+      <Card className={ styles['recipe-card__inner'] } status={ CARD_STATUS.neutral }>
+        <Title className={ styles['recipe-card__inner__header'] }>
+          <Link as={ RouterLink } to={ path }>{ recipe.name }</Link>
+        </Title>
+
+        <RecipePreview recipe={ recipe } />
+      </Card>
+    </div>
+  );
+});
 
 RecipeCard.displayName = 'RecipeCard';
 

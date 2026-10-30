@@ -74,7 +74,7 @@ const Recipes = ({ component, searchable = false }: { component?: string, search
       <div className={ component ? `${styles['recipes__grid']} ${styles['recipes__grid--related']}` : styles['recipes__grid'] }>
         { filtered.length > 0 ? (
           filtered.map(({ key, recipe }) => (
-            <RecipeCard key={ key } path={ `/recipes/${key}` } recipe={ recipe } />
+            <RecipeCard key={ key } level={ component ? 3 : 2 } path={ `/recipes/${key}` } recipe={ recipe } />
           ))
         ) : (
           <Message className={ styles['recipes__grid__empty'] } status={ MESSAGE_STATUS.information } dismissible={ false }>

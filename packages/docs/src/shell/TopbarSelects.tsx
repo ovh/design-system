@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import versions from '../../assets/ods-versions.json';
 import { version as currentVersion } from '../../../../lerna.json';
+import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
+import { Menu, MenuContent, MenuItem, MenuTrigger } from '../../../ods-react/src/components/menu/src';
 import { Select, SelectContent, SelectControl } from '../../../ods-react/src/components/select/src';
 
 /* Same behavior and storage key as the old manager addons: the preference
@@ -32,7 +34,9 @@ function readStoredTheme(): ThemeChoice {
   }
 }
 
-const ThemeSelect = () => {
+/* The color scheme, from an icon button in the topbar as most documentation sites place it. The
+   button shows the current choice; its menu lists the three. */
+const ThemeMenu = () => {
   const [choice, setChoice] = useState<ThemeChoice>(readStoredTheme);
 
   useEffect(() => {
@@ -51,27 +55,30 @@ const ThemeSelect = () => {
     return () => media.removeEventListener('change', apply);
   }, [choice]);
 
+  const current = THEME_ITEMS.find((item) => item.value === choice);
+
   return (
-    <Select
-      className="shell__topbar-select"
-      data-testid="theme-select"
-      items={ THEME_ITEMS }
-      onValueChange={ ({ value }) => setChoice((value[0] as ThemeChoice) ?? 'system') }
-      value={ [choice] }>
-      <SelectControl
-        aria-label="Color scheme"
-        customItemRenderer={ ({ text }) => (
-          <span className="shell__select-item">
-            <Icon name={ THEME_ICONS[choice] } /> { text }
-          </span>
-        ) } />
-      <SelectContent
-        customOptionRenderer={ ({ customData, label }) => (
-          <span className="shell__select-item">
-            <Icon name={ (customData as { icon: ICON_NAME }).icon } /> { label }
-          </span>
-        ) } />
-    </Select>
+    <Menu>
+      <MenuTrigger asChild>
+        <Button
+          aria-label={ `Color scheme: ${current?.label}` }
+          data-testid="theme-menu"
+          emphasis={ BUTTON_EMPHASIS.low }
+          status={ BUTTON_STATUS.neutral }>
+          <Icon name={ THEME_ICONS[choice] } />
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        { THEME_ITEMS.map((item) => (
+          <MenuItem key={ item.value } onSelect={ () => setChoice(item.value as ThemeChoice) } value={ item.value }>
+            <span className="shell__select-item">
+              <Icon name={ item.customRendererData.icon } /> { item.label }
+              { item.value === choice && <Icon name={ ICON_NAME.check } /> }
+            </span>
+          </MenuItem>
+        )) }
+      </MenuContent>
+    </Menu>
   );
 };
 
@@ -133,4 +140,4 @@ const VersionSelect = () => {
   );
 };
 
-export { ThemeSelect, VersionSelect };
+export { ThemeMenu, VersionSelect };

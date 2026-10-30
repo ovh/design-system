@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { flashSearchTerms } from './searchHighlight';
 import { createUniqueSlugs } from './slug';
@@ -137,7 +138,7 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
 
   return (
     <nav aria-label="On this page" className="doc-layout__toc">
-      <span className="doc-layout__toc-title">On this page</span>
+      <Text className="doc-layout__toc-title" preset={ TEXT_PRESET.caption }>On this page</Text>
       { /* Sections stay open: expandedValue is held at every branch and no
            onExpandedChange is wired, so the tree can't be collapsed. */ }
       <TreeView

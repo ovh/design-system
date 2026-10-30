@@ -1,5 +1,5 @@
 import { composeStory } from '@storybook/react';
-import { type ComponentType, type ReactElement, type ReactNode, useMemo } from 'react';
+import { Children, type ComponentType, type ReactElement, type ReactNode, isValidElement, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
@@ -10,6 +10,7 @@ import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
 import { CodeBlock } from './CodeBlock';
 import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
+import { Tab, TabContent, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
@@ -152,6 +153,21 @@ const InlineCode = ({ children, className }: { children?: ReactNode, className?:
   <Text as="code" className={ className } preset={ TEXT_PRESET.code }>{ children }</Text>
 );
 
+/* The same install command for each package manager: one fenced block per manager, shown as ODS
+   Tabs named after the command's first word (npm, pnpm). The llms output keeps the fences. */
+const PackageManagerTabs = ({ children }: { children?: ReactNode }) => {
+  const blocks = Children.toArray(children).filter(isValidElement<{ children?: ReactElement<{ children?: string }> }>);
+  const managers = blocks.map((block) => String(block.props.children?.props?.children ?? '').trim().split(/\s/)[0]);
+  return (
+    <Tabs className="doc__package-managers" defaultValue={ managers[0] }>
+      <TabList>
+        { managers.map((manager) => <Tab key={ manager } value={ manager }>{ manager }</Tab>) }
+      </TabList>
+      { blocks.map((block, index) => <TabContent key={ managers[index] } value={ managers[index] }>{ block }</TabContent>) }
+    </Tabs>
+  );
+};
+
 /* Static comparison block shared by the table and data-table docs. */
 const TableVsDataTable = () => (
   <>
@@ -206,6 +222,7 @@ const MDX_COMPONENTS = {
   MessageBody,
   MessageIcon,
   OdsLocaleList,
+  PackageManagerTabs,
   Recipes,
   TableVsDataTable,
   Table,

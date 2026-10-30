@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { EXPAND_ICON_POSITION, type ExpandIconPosition } from '../../constants/expand-icon-position';
-import { useAccordion } from '../../contexts/useAccordion';
 import style from './accordionTrigger.module.scss';
 
 interface AccordionTriggerProp extends ComponentPropsWithRef<'button'> {
@@ -19,13 +18,10 @@ const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { emphasis } = useAccordion();
-
   return (
     <Accordion.ItemTrigger
       className={ classNames(
         style['accordion-trigger'],
-        style[`accordion-trigger--${emphasis}`],
         style[`accordion-trigger--expand-icon-${expandIconPosition}`],
         className,
       )}

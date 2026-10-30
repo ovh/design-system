@@ -30,9 +30,12 @@ async function suite(browser, { base, version }) {
     if (shown !== `v${version}`) {
       throw new Error(`the select shows "${shown}"`);
     }
+    // The select leads to the production site: answer it locally, the URL is what is checked.
+    await page.route('https://ovh.github.io/design-system/**', (route) => route.fulfill({ body: '', contentType: 'text/html' }));
     await trigger.click();
     await page.getByRole('option', { name: /^Latest$|\(latest\)/ }).click();
-    await page.waitForURL('**/latest/**', { timeout: 10000 });
+    await page.waitForURL('https://ovh.github.io/design-system/latest/', { timeout: 10000 });
+    await page.unroute('https://ovh.github.io/design-system/**');
   });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });

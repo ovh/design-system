@@ -65,13 +65,16 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
       // This child effect runs before DocArticle's own dedupe pass, and an id
       // rename is no childList mutation: dedupe first so the links get the final ids.
       dedupeHeadingIds(container);
-      const found = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
+      const found: TocEntry[] = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
         id: el.id,
         label: el.textContent ?? '',
         level: el.tagName === 'H2' ? 2 : 3,
       }));
-      setEntries((previous) => (JSON.stringify(previous) === JSON.stringify(found) ? previous : found));
-      setExpanded(found.filter((entry) => entry.level === 2).map((entry) => entry.id));
+      // A long page (a changelog, release notes) lists its sections only: its sub-sections repeat
+      // the same few names ("Bug fixes") and would bury them.
+      const listed = found.length > 25 ? found.filter((entry) => entry.level === 2) : found;
+      setEntries((previous) => (JSON.stringify(previous) === JSON.stringify(listed) ? previous : listed));
+      setExpanded(listed.filter((entry) => entry.level === 2).map((entry) => entry.id));
     };
     collect();
     const observer = new MutationObserver(collect);

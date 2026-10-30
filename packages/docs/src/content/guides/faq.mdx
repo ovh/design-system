@@ -21,9 +21,9 @@ The OVHcloud Design System follows a structured release process to deliver impro
 
 **Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
 
-**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
+**Minor releases** introduce new non-breaking features, and can deprecate an element when a replacement exists.
 
-**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
+**Major releases** contain breaking changes and their migration guide.
 
 Releases are published several times a year based on user needs and product evolution.
 
@@ -33,10 +33,11 @@ We support two major versions at the same time:
 - The previous major version receives maintenance support for six months (critical fixes only).
 - Older versions are no longer supported.
 
-Deprecations follow a two-step workflow:
+Breaking changes follow these rules:
 
-- They are announced in a minor release, marked as "Deprecated" in the documentation, and paired with migration guidance.
-- They are removed in the next major release.
+- An element deprecated in a minor release is marked as "Deprecated" in the documentation, paired with migration guidance, and removed in the next major release.
+- A major release can also remove or rename an element that was not deprecated before.
+- Every removal or rename comes with a before/after example in the migration guide of the major release.
 
 Teams may upgrade at their own pace and can skip versions.
 We recommend pinning a specific ODS version in your project to ensure consistent behavior.
@@ -67,8 +68,8 @@ Ensure compatibility by testing the integration in your project.
 <Heading label="What about Web Components and Vue?" level={ 2 } />
 
 Starting from v19, ODS has moved to fully React-based components.
-Web Components and the Vue wrapper are now only available in v18.x, which is now in maintenance mode,
-so there won't be any new features for this version.
+Web Components and the Vue wrapper are only available in v18.x, which is no longer supported:
+it receives neither new features nor fixes.
 
 If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
 

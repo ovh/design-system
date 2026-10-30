@@ -15,6 +15,7 @@ const ColorPalette: FC<ColorPaletteProp> = ({ tokens }): JSX.Element => {
           <Tooltip key={ token.name }>
             <TooltipTrigger asChild>
               <div
+                aria-label={ token.name }
                 className={ styles['color-palette__block'] }
                 style={{ backgroundColor: token.value }} />
             </TooltipTrigger>

@@ -104,11 +104,11 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (
   <div className="doc__best-practices">
     <div className="doc__best-practices-col doc__best-practices-col--do">
-      <Text preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleCheck } /> Do</Text>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleCheck } /> Do</Text>
       <ul>{ dos.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
     </div>
     <div className="doc__best-practices-col doc__best-practices-col--dont">
-      <Text preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleXmark } /> Don't</Text>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleXmark } /> Don't</Text>
       <ul>{ donts.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
     </div>
   </div>

@@ -93,7 +93,7 @@ const ComponentGallery = (): JSX.Element => {
         total={ GALLERY.length } />
 
       { shown.length ? (
-        <DemoFrame pageSurface>
+        <DemoFrame pageSurface title="Component previews">
           <ul className={ styles['component-gallery__grid'] }>
             { shown.map(({ Preview, key, path, title }) => (
               <li className={ styles['component-gallery__item'] } key={ key }>

@@ -80,7 +80,7 @@ node -e "const k = Object.keys(require('@ovhcloud/ods-themes/default/tokens').ro
 | **Change** | The 72 role tokens named `--ods-theme-*` are deleted and replaced by `--ods-semantic-*`. No alias, no deprecation window. |
 | **Impact** | Any `var(--ods-theme-…)` in consumer CSS resolves to nothing. Fails visually, never loudly: the declaration is dropped and the property falls back to its inherited or initial value. |
 | **Detection** | `grep -rn -- '--ods-theme-' src/` |
-| **Codemod** | **automatable** - 62 of the 72 are a 1:1 rename and 6 split three ways, see below. The 4 disabled colors have no destination: disabled is now an opacity (BC-12), so those sites are reported. A few renames depend on what the site paints: the note under each table lists them with the roles ODS picked. |
+| **Codemod** | **automatable** - 61 of the 72 are a 1:1 rename and 6 split three ways, see below. The 4 disabled colors have no destination: disabled is now an opacity (BC-12). Nor has the Link hover, now the `--ods-link-text-color-hover` custom property (BC-19). Those sites are reported. A few renames depend on what the site paints: the note under each table lists them with the roles ODS picked. |
 | **Source of truth** | `packages/themes/scripts/repoint-tokens.js`, const `THEME` and `THEME_SPLIT`. The tables below are its output: `--tables --update` rewrites them. |
 
 A rename names a role, not a value: many roles keep the 19.7.3 value in the default theme, and many
@@ -93,7 +93,7 @@ at `brand-700`, the rung that `primary-700` became.
 | before | after |
 | --- | --- |
 | `--ods-theme-anchor-text-color` | `--ods-semantic-color-content-brand` |
-| `--ods-theme-anchor-text-color-hover` | `--ods-semantic-color-interaction-brand-hover` |
+| `--ods-theme-anchor-text-color-hover` | _none_ |
 | `--ods-theme-anchor-text-color-visited` | `--ods-semantic-color-interaction-brand-visited` |
 | `--ods-theme-background-color` | `--ods-semantic-color-surface-page` |
 | `--ods-theme-background-color-disabled` | _none_ |
@@ -161,7 +161,8 @@ at `brand-700`, the rung that `primary-700` became.
 
 Depends on the site:
 
-- `--ods-theme-anchor-text-color-hover`: to restyle the Link hover, set `--ods-link-text-color-hover` on `[data-ods="link"]`: the Link no longer reads `interaction-brand-hover`, which now drives the brand Button hover, and its hover keeps the rest color (BC-19).
+- `--ods-theme-anchor-text-color-hover`: no semantic role: the Link hover is `--ods-link-text-color-hover`, set it on `[data-ods="link"]`. Its default is the rest color (BC-19); `interaction-brand-hover` now drives the brand Button hover.
+- `--ods-theme-input-text-color-checked`: the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`; the checked Switch item (deprecated) reads `content-on-solid`.
 - `--ods-theme-background-color`: per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.
 - `--ods-theme-heading-text-color`: a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.
 - `--ods-theme-overlay-z-index`: an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.

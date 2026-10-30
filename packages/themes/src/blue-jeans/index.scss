@@ -155,8 +155,16 @@
 }
 
 /* Components */
-@layer ods-atoms {
+@layer ods-quarks {
   // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  :root [data-ods='skeleton'] {
+    // surface-pending and surface-muted are both gray-100 here: the shimmer takes the next rung, as in 19.7.3.
+    --ods-skeleton-transition-background-color: var(--ods-semantic-color-surface-neutral-subtle);
+  }
+}
+
+@layer ods-atoms {
+  // Same as in ods-quarks above.
   :root [data-ods='avatar'] {
     --ods-avatar-background-color: var(--ods-semantic-color-surface-brand);
     --ods-avatar-text-color: var(--ods-semantic-color-content-on-brand-solid);

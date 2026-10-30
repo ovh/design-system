@@ -3,7 +3,7 @@ import { Component, type ComponentType, type JSX, type ReactNode, useState } fro
 import { Link as RouterLink } from 'react-router-dom';
 import { DemoFrame } from '../demo/DemoFrame';
 import { flattenPages } from '../nav/model';
-import { Card, Link } from '../ods';
+import { Card, Link, TEXT_PRESET, Text } from '../ods';
 import { GalleryToolbar } from './GalleryToolbar';
 import styles from './componentGallery.module.css';
 
@@ -93,14 +93,14 @@ const ComponentGallery = (): JSX.Element => {
         total={ GALLERY.length } />
 
       { shown.length ? (
-        <DemoFrame pageSurface title="Component previews">
+        <DemoFrame bare pageSurface title="Component previews">
           <ul className={ styles['component-gallery__grid'] }>
             { shown.map(({ Preview, key, path, title }) => (
               <li className={ styles['component-gallery__item'] } key={ key }>
                 <Card className={ styles['component-gallery__card'] }>
-                  <h2 className={ styles['component-gallery__title'] }>
+                  <Text as="h2" preset={ TEXT_PRESET.heading4 }>
                     { path ? <Link as={ RouterLink } to={ path }>{ title }</Link> : title }
-                  </h2>
+                  </Text>
 
                   <div className={ styles['component-gallery__preview'] }>
                     { Preview && (

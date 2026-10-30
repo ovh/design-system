@@ -26,8 +26,8 @@ async function suite(browser, { base, version }) {
   await check('a README with Do\'s & don\'ts shows them as two lists (chat)', async () => {
     await open('chat');
     await page.waitForSelector('#dos-don-ts', { state: 'attached' });
-    const dos = await page.locator('.doc__best-practices-col--do li').count();
-    const donts = await page.locator('.doc__best-practices-col--dont li').count();
+    const dos = await page.locator('.doc__best-practices-col:first-child li').count();
+    const donts = await page.locator('.doc__best-practices-col:last-child li').count();
     if (dos !== 5 || donts !== 5 || !(await hasSummary())) {
       throw new Error(`${dos} do, ${donts} don't (README: 5 and 5), summary ${await hasSummary()}`);
     }

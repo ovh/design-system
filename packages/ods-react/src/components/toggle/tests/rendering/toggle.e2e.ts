@@ -24,6 +24,39 @@ describe('Toggle rendering', () => {
     });
   });
 
+  describe('state roles', () => {
+    // The ON label is the first span after the thumb; it only shows when checked.
+    async function getColors(testId: string): Promise<{ label: string | undefined, thumb: string | undefined }> {
+      const control = await page.waitForSelector(`[data-testid="${testId}"]`);
+
+      return control!.evaluate((el: Element) => {
+        const thumb = el.querySelector('[data-part="thumb"]');
+        const label = thumb?.nextElementSibling?.firstElementChild;
+
+        return {
+          label: label ? getComputedStyle(label).color : undefined,
+          thumb: thumb ? getComputedStyle(thumb).backgroundColor : undefined,
+        };
+      });
+    }
+
+    beforeEach(async() => {
+      await gotoStory(page, 'rendering/state-roles');
+    });
+
+    it('should paint the unchecked thumb with surface-thumb', async() => {
+      expect((await getColors('unchecked')).thumb).toBe('rgb(1, 2, 3)');
+    });
+
+    it('should paint the checked thumb and ON label with content-on-control-solid', async() => {
+      expect(await getColors('checked-labelled')).toEqual({ label: 'rgb(4, 5, 6)', thumb: 'rgb(4, 5, 6)' });
+    });
+
+    it('should paint the checked invalid thumb and ON label with content-on-critical-solid', async() => {
+      expect(await getColors('checked-invalid')).toEqual({ label: 'rgb(7, 8, 9)', thumb: 'rgb(7, 8, 9)' });
+    });
+  });
+
   describe('custom style', () => {
     it('should render with custom style applied', async() => {
       await gotoStory(page, 'rendering/custom-style');

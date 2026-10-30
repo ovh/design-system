@@ -63,7 +63,6 @@ body {
 .shell__brand {
   display: block;
   text-decoration: none;
-  color: inherit;
   color: var(--ods-semantic-color-content-heading);
 }
 
@@ -105,14 +104,6 @@ body {
   /* Pulls the version up under the logo, cancelling most of the sidebar gap. */
   margin-top: calc(var(--ods-semantic-size-space-gap-block) * -1.5);
   margin-bottom: var(--ods-semantic-size-space-gap-block);
-}
-
-.shell__sidebar-selects [data-ods="select-control"] {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .shell__search-hint {
@@ -251,12 +242,6 @@ body {
     calc(var(--ods-semantic-size-space-inset-inline) * 3),
     calc((100% - var(--doc-block-width)) / 2)
   );
-}
-
-.shell__dark {
-  display: flex;
-  gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
-  align-items: center;
 }
 
 .sr-only {

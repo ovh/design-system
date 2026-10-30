@@ -236,18 +236,6 @@ article.doc.doc--wide {
   margin: 0;
 }
 
-/* The shiki pre paints its own inline background; the ODS Code root owns the
-   surface instead, so padding area and code stay one single block. */
-[data-ods="code"] .shiki {
-  background-color: transparent !important;
-}
-
-/* Light mode: a border marks the block boundary on the light surface (the
-   background itself comes from the shiki theme — see CodeBlock.tsx). */
-body:not([data-theme="dark"]) [data-ods="code"] {
-  border: 1px solid var(--ods-semantic-color-border-separator);
-}
-
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———
    Wide leaf content (props tables, code, tab strips) scrolls inside its own
    box so the page itself never scrolls sideways. */

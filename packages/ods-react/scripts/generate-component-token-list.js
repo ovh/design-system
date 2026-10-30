@@ -88,10 +88,14 @@ async function writeOutput(content, outputFile) {
         return getCssVariables(file);
       }))).filter(Boolean);
 
+    // The first declaration is the base one: a later one sits in a state rule (checked, invalid, error...) and
+    // would document that state as the default.
     const cssVariables = variables
       .flatMap(({ declared }) => declared)
       .reduce((res, [key, value]) => {
-        res[key] = value;
+        if (!(key in res)) {
+          res[key] = value;
+        }
         return res;
       }, {});
 

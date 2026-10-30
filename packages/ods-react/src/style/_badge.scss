@@ -17,36 +17,38 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   --ods-badge-padding-vertical-md: #{$ods-badge-padding-vertical-md};
   --ods-badge-padding-horizontal-lg: #{$ods-badge-padding-horizontal-lg};
   --ods-badge-padding-vertical-lg: #{$ods-badge-padding-vertical-lg};
+  // Decorative statuses: one rendering, the vivid surface with its ink.
   --ods-badge-background-color-alpha: var(--ods-semantic-color-surface-decorative-alpha);
   --ods-badge-border-color-alpha: transparent;
   --ods-badge-text-color-alpha: var(--ods-semantic-color-content-on-vivid);
   --ods-badge-background-color-beta: var(--ods-semantic-color-surface-decorative-beta);
   --ods-badge-border-color-beta: transparent;
   --ods-badge-text-color-beta: var(--ods-semantic-color-content-on-vivid);
-  --ods-badge-background-color-critical: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-critical: var(--ods-semantic-color-border-critical-subtle);
-  --ods-badge-text-color-critical: var(--ods-semantic-color-content-critical);
-  --ods-badge-background-color-information: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-information: var(--ods-semantic-color-border-information-subtle);
-  --ods-badge-text-color-information: var(--ods-semantic-color-content-information);
-  --ods-badge-background-color-neutral: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-neutral: var(--ods-semantic-color-border-neutral-subtle);
-  --ods-badge-text-color-neutral: var(--ods-semantic-color-content-neutral);
   --ods-badge-background-color-new: var(--ods-semantic-color-surface-decorative-new);
   --ods-badge-border-color-new: transparent;
   --ods-badge-text-color-new: var(--ods-semantic-color-content-on-vivid);
-  --ods-badge-background-color-accent: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-accent: var(--ods-semantic-color-border-accent-subtle);
-  --ods-badge-text-color-accent: var(--ods-semantic-color-content-accent);
   --ods-badge-background-color-promotion: var(--ods-semantic-color-surface-decorative-promotion);
   --ods-badge-border-color-promotion: transparent;
   --ods-badge-text-color-promotion: var(--ods-semantic-color-content-on-vivid);
-  --ods-badge-background-color-success: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-success: var(--ods-semantic-color-border-success-subtle);
-  --ods-badge-text-color-success: var(--ods-semantic-color-content-success);
-  --ods-badge-background-color-warning: var(--ods-semantic-color-surface-raised);
-  --ods-badge-border-color-warning: var(--ods-semantic-color-border-warning-subtle);
-  --ods-badge-text-color-warning: var(--ods-semantic-color-content-warning);
+  // Medium emphasis (default): the raised surface, lined with the subtle status border, with the status text role.
+  --ods-badge-background-color-accent-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-accent-medium: var(--ods-semantic-color-border-accent-subtle);
+  --ods-badge-text-color-accent-medium: var(--ods-semantic-color-content-accent);
+  --ods-badge-background-color-critical-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-critical-medium: var(--ods-semantic-color-border-critical-subtle);
+  --ods-badge-text-color-critical-medium: var(--ods-semantic-color-content-critical);
+  --ods-badge-background-color-information-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-information-medium: var(--ods-semantic-color-border-information-subtle);
+  --ods-badge-text-color-information-medium: var(--ods-semantic-color-content-information);
+  --ods-badge-background-color-neutral-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-neutral-medium: var(--ods-semantic-color-border-neutral-subtle);
+  --ods-badge-text-color-neutral-medium: var(--ods-semantic-color-content-neutral);
+  --ods-badge-background-color-success-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-success-medium: var(--ods-semantic-color-border-success-subtle);
+  --ods-badge-text-color-success-medium: var(--ods-semantic-color-content-success);
+  --ods-badge-background-color-warning-medium: var(--ods-semantic-color-surface-raised);
+  --ods-badge-border-color-warning-medium: var(--ods-semantic-color-border-warning-subtle);
+  --ods-badge-text-color-warning-medium: var(--ods-semantic-color-content-warning);
   // High emphasis: the subtle status surface, lined with the subtle status border, with the text role made for that surface.
   --ods-badge-background-color-accent-high: var(--ods-semantic-color-surface-accent-subtle);
   --ods-badge-border-color-accent-high: var(--ods-semantic-color-border-accent-subtle);
@@ -94,37 +96,37 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
     background-color: var(--ods-badge-background-color-beta);
     color: var(--ods-badge-text-color-beta);
   } @else if $color == 'critical' {
-    border-color: var(--ods-badge-border-color-critical);
-    background-color: var(--ods-badge-background-color-critical);
-    color: var(--ods-badge-text-color-critical);
+    border-color: var(--ods-badge-border-color-critical-medium);
+    background-color: var(--ods-badge-background-color-critical-medium);
+    color: var(--ods-badge-text-color-critical-medium);
   } @else if $color == 'information' {
-    border-color: var(--ods-badge-border-color-information);
-    background-color: var(--ods-badge-background-color-information);
-    color: var(--ods-badge-text-color-information);
+    border-color: var(--ods-badge-border-color-information-medium);
+    background-color: var(--ods-badge-background-color-information-medium);
+    color: var(--ods-badge-text-color-information-medium);
   } @else if $color == 'neutral' {
-    border-color: var(--ods-badge-border-color-neutral);
-    background-color: var(--ods-badge-background-color-neutral);
-    color: var(--ods-badge-text-color-neutral);
+    border-color: var(--ods-badge-border-color-neutral-medium);
+    background-color: var(--ods-badge-background-color-neutral-medium);
+    color: var(--ods-badge-text-color-neutral-medium);
   } @else if $color == 'new' {
     border-color: var(--ods-badge-border-color-new);
     background-color: var(--ods-badge-background-color-new);
     color: var(--ods-badge-text-color-new);
   } @else if $color == 'accent' {
-    border-color: var(--ods-badge-border-color-accent);
-    background-color: var(--ods-badge-background-color-accent);
-    color: var(--ods-badge-text-color-accent);
+    border-color: var(--ods-badge-border-color-accent-medium);
+    background-color: var(--ods-badge-background-color-accent-medium);
+    color: var(--ods-badge-text-color-accent-medium);
   } @else if $color == 'promotion' {
     border-color: var(--ods-badge-border-color-promotion);
     background-color: var(--ods-badge-background-color-promotion);
     color: var(--ods-badge-text-color-promotion);
   } @else if $color == 'success' {
-    border-color: var(--ods-badge-border-color-success);
-    background-color: var(--ods-badge-background-color-success);
-    color: var(--ods-badge-text-color-success);
+    border-color: var(--ods-badge-border-color-success-medium);
+    background-color: var(--ods-badge-background-color-success-medium);
+    color: var(--ods-badge-text-color-success-medium);
   } @else if $color == 'warning' {
-    border-color: var(--ods-badge-border-color-warning);
-    background-color: var(--ods-badge-background-color-warning);
-    color: var(--ods-badge-text-color-warning);
+    border-color: var(--ods-badge-border-color-warning-medium);
+    background-color: var(--ods-badge-background-color-warning-medium);
+    color: var(--ods-badge-text-color-warning-medium);
   } @else if $color == 'primary' {
     @error "ods-badge-color: 'primary' is renamed 'accent' in v20.";
   } @else {

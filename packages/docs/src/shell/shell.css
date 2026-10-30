@@ -73,7 +73,7 @@ body {
 }
 
 /* Not the uniform field width: the theme select fills its grid cell (.shell__sidebar-selects),
-   the version select fits its label (.shell__version-select). */
+   the version select fits its label (.shell__brand-row). */
 .shell__topbar-select {
   width: auto;
 }
@@ -97,11 +97,12 @@ body {
   gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
 }
 
-.shell__version-select {
+/* The logo and the version it documents, on one line. */
+.shell__brand-row {
   display: flex;
-  /* Pulls the version up under the logo, cancelling most of the sidebar gap. */
-  margin-top: calc(var(--ods-semantic-size-space-gap-block) * -1.5);
-  margin-bottom: var(--ods-semantic-size-space-gap-block);
+  gap: var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
+  justify-content: space-between;
 }
 
 .shell__search-hint {
@@ -177,7 +178,8 @@ body {
 
 .shell__tree-label {
   display: inline-flex;
-  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) calc(var(--ods-semantic-size-space-gap-inline) * 1.5);
+  /* The chevron's own gap: a page's name after its icon lines up with a section's after its chevron. */
+  gap: calc(var(--ods-semantic-size-space-gap-block) * 1.5) var(--ods-semantic-size-space-gap-inline);
   align-items: center;
 }
 
@@ -190,13 +192,15 @@ body {
   margin: var(--ods-semantic-size-space-gap-block) 0 calc(var(--ods-semantic-size-space-gap-block) * 2);
 }
 
-.shell__tree-label-reference {
+.shell__tree-title {
   display: block;
   margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
 }
 
-.shell__tree-label--tight {
-  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+/* A page at the root of a tree has no chevron: its name takes the chevron's room, so that it lines
+   up with the section names around it. */
+.shell__nav [data-part="item"][data-depth="1"] .shell__tree-label {
+  padding-left: calc(var(--ods-semantic-size-space-gap-group) * 1.5);
 }
 
 .shell__tree-label--section {
@@ -204,7 +208,6 @@ body {
 }
 
 .shell__tree-label--gallery {
-  column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
   font-weight: var(--ods-semantic-font-weight-bold);
 }
 

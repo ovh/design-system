@@ -91,7 +91,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
   {
     icon: ICON_NAME.pen,
     id: 'build',
-    title: 'Guides',
+    title: 'Build',
     children: [
       { icon: ICON_NAME.accessibility, id: 'guides/accessibility', kind: 'guide', path: '/guides/accessibility', title: 'Accessibility' },
       { icon: ICON_NAME.globe, id: 'guides/internationalization', kind: 'guide', path: '/guides/internationalization', title: 'Internationalization' },
@@ -295,12 +295,12 @@ function flattenPages(nodes: (NavSection | NavPage)[] = NAV, trail: string[] = [
 }
 
 /* TreeView items derived from the model; leaf ids = page ids so a tree
-   selection maps straight to a route. Icons mark the pages (leaves); the
-   sections are already marked by their chevron. */
-function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, sectionIcons = false): { children?: unknown[], customRendererData?: { badge?: Badge, gallery?: true, icon?: ICON_NAME }, id: string, name: string }[] {
+   selection maps straight to a route. Icons mark the pages inside a section; the root entries,
+   sections and pages alike, show plain names on one edge. */
+function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, nested = false): { children?: unknown[], customRendererData?: { badge?: Badge, gallery?: true, icon?: ICON_NAME }, id: string, name: string }[] {
   return nodes.filter((node) => !isPage(node) || !node.hidden).map((node) => (isPage(node)
-    ? { customRendererData: { badge: node.badge, gallery: node.gallery, icon: node.iconInTree === false ? undefined : node.icon }, id: node.id, name: node.gallery ? 'Gallery' : node.title }
-    : { children: toTreeItems(node.children, sectionIcons), customRendererData: sectionIcons ? { icon: node.icon } : {}, id: node.id, name: node.title }));
+    ? { customRendererData: { badge: node.badge, gallery: node.gallery, icon: nested && node.iconInTree !== false ? node.icon : undefined }, id: node.id, name: node.gallery ? 'Gallery' : node.title }
+    : { children: toTreeItems(node.children, true), customRendererData: {}, id: node.id, name: node.title }));
 }
 
 export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type PageStoriesData, type StoriesLoader };

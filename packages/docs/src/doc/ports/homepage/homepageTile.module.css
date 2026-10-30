@@ -7,8 +7,6 @@
   padding: 1rem;
   inline-size: 100%;
   min-inline-size: 12.5rem;
-  text-decoration: none;
-  color: inherit;
 }
 
 .homepage-tile__title {
@@ -24,8 +22,4 @@
 
 .homepage-tile__icon {
   font-size: 1.25rem;
-}
-
-.homepage-tile__link {
-  margin-block-start: 0.5rem;
 }

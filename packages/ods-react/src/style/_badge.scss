@@ -2,11 +2,11 @@ $ods-badge-border-radius: var(--ods-semantic-size-radius-full);
 $ods-badge-height-sm: 20px;
 $ods-badge-height-md: var(--ods-semantic-size-block-size-sm);
 $ods-badge-height-lg: 28px;
-$ods-badge-padding-horizontal-sm: calc(var(--ods-semantic-size-space-inset-inline) / 2);
+$ods-badge-padding-horizontal-sm: var(--ods-semantic-size-space-inset-inline);
 $ods-badge-padding-vertical-sm: calc(var(--ods-semantic-size-space-inset-block) / 2);
-$ods-badge-padding-horizontal-md: calc(var(--ods-semantic-size-space-inset-inline) / 2);
+$ods-badge-padding-horizontal-md: var(--ods-semantic-size-space-inset-inline);
 $ods-badge-padding-vertical-md: calc(var(--ods-semantic-size-space-inset-block) / 2);
-$ods-badge-padding-horizontal-lg: calc(var(--ods-semantic-size-space-inset-inline) * 0.75);
+$ods-badge-padding-horizontal-lg: calc(var(--ods-semantic-size-space-inset-inline) * 1.5);
 $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) * 0.75);
 
 @mixin ods-badge() {
@@ -189,19 +189,20 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-semantic-size-space-inset-block) 
   }
 }
 
+// The vertical padding gives up the border thickness, so that every size keeps its 19.7.3 height.
 @mixin ods-badge-size($size) {
   @if $size == 'sm' {
-    padding: var(--ods-badge-padding-vertical-sm) var(--ods-badge-padding-horizontal-sm);
+    padding: calc(var(--ods-badge-padding-vertical-sm) - var(--ods-semantic-border-thickness)) var(--ods-badge-padding-horizontal-sm);
     min-height: $ods-badge-height-sm;
     line-height: 1;
     font-size: 0.75rem;
   } @else if $size == 'md' {
-    padding: var(--ods-badge-padding-vertical-md) var(--ods-badge-padding-horizontal-md);
+    padding: calc(var(--ods-badge-padding-vertical-md) - var(--ods-semantic-border-thickness)) var(--ods-badge-padding-horizontal-md);
     min-height: $ods-badge-height-md;
     line-height: 1;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
-    padding: var(--ods-badge-padding-vertical-lg) var(--ods-badge-padding-horizontal-lg);
+    padding: calc(var(--ods-badge-padding-vertical-lg) - var(--ods-semantic-border-thickness)) var(--ods-badge-padding-horizontal-lg);
     min-height: $ods-badge-height-lg;
     line-height: 1;
     font-size: 1rem;

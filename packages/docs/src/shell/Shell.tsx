@@ -59,14 +59,13 @@ const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
    doesn't contain it simply shows nothing selected. The sections of the active page open, whichever
    way it was reached (link, search palette), next to the ones the reader opened, and the tree
    scrolls to it. */
-const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
+const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
   currentId?: string;
   expanded: string[];
   nodes: (NavSection | NavPage)[];
   onNavigate: (id: string) => void;
-  sectionIcons?: boolean;
 }) => {
-  const items = toTreeItems(nodes, sectionIcons);
+  const items = toTreeItems(nodes);
   const [open, setOpen] = useState(expanded);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -95,7 +94,7 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', sectionIcons && 'shell__tree-label--tight', data?.gallery && 'shell__tree-label--gallery'].filter(Boolean).join(' ') }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', data?.gallery && 'shell__tree-label--gallery'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (
@@ -121,14 +120,14 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
   onSearch: () => void;
 }) => (
   <>
-    <RouterLink aria-label="OVHcloud Design System — home" className="shell__brand" to="/">
-      <BrandLogo />
-    </RouterLink>
+    <div className="shell__brand-row">
+      <RouterLink aria-label="OVHcloud Design System — home" className="shell__brand" to="/">
+        <BrandLogo />
+      </RouterLink>
+      <VersionSelect />
+    </div>
 
     <div className="shell__upper-controls">
-      <div className="shell__version-select">
-        <VersionSelect />
-      </div>
 
       <div className="shell__sidebar-selects">
         <BrandSelect />
@@ -146,9 +145,10 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     </div>
     
     <nav aria-label="Documentation" className="shell__nav">
-      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } sectionIcons />
+      <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Guides</Text>
+      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
       <Divider className="shell__tree-divider" />
-      <Text className="shell__tree-label-reference" preset={ TEXT_PRESET.caption }>Reference</Text>
+      <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 

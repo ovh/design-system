@@ -1,9 +1,29 @@
+import { type CSSProperties } from 'react';
 import { ACCORDION_EMPHASES, Accordion, AccordionContent, AccordionItem, AccordionTrigger, type AccordionEmphasis, EXPAND_ICON_POSITION } from '../../src';
 
 export default {
   component: Accordion,
   title: 'Tests rendering',
 };
+
+// border-container and border-neutral-subtle share their value in the default theme: distinct values tell them apart.
+export const borderRole = () => (
+  <div style={{
+    '--ods-semantic-color-border-container': 'rgb(1, 2, 3)',
+    '--ods-semantic-color-border-neutral-subtle': 'rgb(4, 5, 6)',
+  } as CSSProperties}>
+    <Accordion>
+      <AccordionItem data-testid="border-role-item" value="1">
+        <AccordionTrigger>
+          My content
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </div>
+);
 
 export const customStyle = () => (
   <Accordion data-testid="custom-style" style={{ height: '42px' }}>

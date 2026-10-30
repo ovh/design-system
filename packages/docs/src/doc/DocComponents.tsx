@@ -85,10 +85,10 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
       <div className="doc__identity-desc">{ children }</div>
       <Card className="doc__identity">
         <dl>
-          <div><dt>Name</dt><dd>{ name }</dd></div>
-          { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
+          <div><Text as="dt" preset={ TEXT_PRESET.caption }>Name</Text><dd>{ name }</dd></div>
+          { aliases.length > 0 && <div><Text as="dt" preset={ TEXT_PRESET.caption }>Aliases</Text><dd>{ aliases.join(', ') }</dd></div> }
           <div>
-            <dt>Links</dt>
+            <Text as="dt" preset={ TEXT_PRESET.caption }>Links</Text>
             <dd className="doc__identity-links">
               { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
               <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>

@@ -42,13 +42,6 @@
   margin: 0;
 }
 
-.doc__identity dt {
-  color: var(--ods-semantic-color-content-neutral);
-  font-size: .75rem;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-
 .doc__identity dd {
   margin: 0;
 }
@@ -171,12 +164,7 @@ article.doc.doc--wide {
 }
 
 .doc-layout__toc-title {
-  color: var(--ods-semantic-color-content-neutral);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .04em;
-  margin-bottom: 4px;
-  text-transform: uppercase;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
 }
 
 .doc-layout__toc-node {

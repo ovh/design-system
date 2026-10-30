@@ -33,13 +33,6 @@
   padding: 16px;
 }
 
-.component-gallery__title {
-  margin: 0;
-  color: var(--ods-semantic-color-content-heading);
-  font-family: var(--ods-semantic-font-family-heading);
-  font-size: 1.25rem;
-}
-
 /* A Default view can be wide or tall (Markdown, tables): it scrolls inside the card instead of
    stretching the grid row. */
 .component-gallery__preview {
@@ -49,8 +42,6 @@
      before it, where scrolling cannot reach. */
   align-items: safe center;
   justify-content: safe center;
-  border: 1px solid var(--ods-semantic-color-border-separator);
-  border-radius: var(--ods-semantic-size-radius-container);
   min-height: 180px;
   max-height: 360px;
   padding: 16px;

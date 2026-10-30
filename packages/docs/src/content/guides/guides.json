@@ -12,6 +12,13 @@
     { "mdx": "design-tokens", "slug": "ovhcloud-design-system-customize-design-tokens", "title": "Design Tokens" },
     { "mdx": "tailwind", "slug": "ovhcloud-design-system-customize-tailwind-css-integration", "title": "Tailwind CSS Integration" },
     { "mdx": "whats-new", "slug": "ovhcloud-design-system-upgrade-what-s-new", "title": "What's new" },
+    { "mdx": "whats-new-v18", "slug": "ovhcloud-design-system-upgrade-what-s-new-v18", "title": "What's new in v18" },
+    { "mdx": "whats-new-v17", "slug": "ovhcloud-design-system-upgrade-what-s-new-v17", "title": "What's new in v17" },
+    { "mdx": "whats-new-v16", "slug": "ovhcloud-design-system-upgrade-what-s-new-v16", "title": "What's new in v16" },
+    { "mdx": "whats-new-v15", "slug": "ovhcloud-design-system-upgrade-what-s-new-v15", "title": "What's new in v15" },
+    { "mdx": "whats-new-v14", "slug": "ovhcloud-design-system-upgrade-what-s-new-v14", "title": "What's new in v14" },
+    { "mdx": "whats-new-v13", "slug": "ovhcloud-design-system-upgrade-what-s-new-v13", "title": "What's new in v13" },
+    { "mdx": "whats-new-v12", "slug": "ovhcloud-design-system-upgrade-what-s-new-v12", "title": "What's new in v12 and earlier" },
     { "mdx": "migration-19-to-20", "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x", "title": "Migration 19.x to 20.x" },
     { "mdx": "migration-to-v19", "slug": "ovhcloud-design-system-upgrade-migration-to-v19", "title": "Migration to v19" },
     { "mdx": "migration-12-to-13", "slug": "ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x", "title": "12.x to 13.x" },
@@ -20,6 +27,7 @@
     { "mdx": "migration-15-to-16", "slug": "ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x", "title": "15.x to 16.x" },
     { "mdx": "migration-16-to-17", "slug": "ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x", "title": "16.x to 17.x" },
     { "mdx": "migration-17-to-18", "slug": "ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x", "title": "17.x to 18.x" },
+    { "mdx": "troubleshooting", "slug": "ovhcloud-design-system-troubleshooting", "title": "Troubleshooting" },
     { "mdx": "faq", "slug": "ovhcloud-design-system-f-a-q", "title": "FAQ" }
   ]
 }

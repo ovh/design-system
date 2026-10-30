@@ -1,0 +1,46 @@
+*Release notes of v13. For the current major version, see <DocLink to="/guides/whats-new">What's new</DocLink>.*
+
+<Heading label="v13.0.0" level={ 2 } />
+
+As it is a major version, you have to do the <DocLink to="/guides/migration-12-to-13">migration guide 12.x to 13.x</DocLink>
+
+<Heading label="New features" level={ 3 } />
+
+We added the following components:
+
+* Breadcrumb: <DocLink to="/components/breadcrumb">See Documentation</DocLink>
+* Collapsible: See Documentation using version selector
+* Pagination: <DocLink to="/components/pagination">See Documentation</DocLink>
+* Spinner: <DocLink to="/components/spinner">See Documentation</DocLink>
+
+Circle-shaped button has been added to Button Component (circle attribute)
+
+<Heading label="Bug fixes" level={ 3 } />
+
+* Button: `button' and `link`roles have been added (switching to`link\` role when Button has a href property)
+
+* Chip: expected style on Chip focus has been applied
+
+* Icon: missing download icon has been added
+
+* Input: odsValueChange event won't emit on component init
+
+* Link:
+
+* all content in Link is now aligned as expected
+
+* href and target attributes are optional
+
+* Select :
+
+* check for outside click target inside its DOM
+
+* fixed width on non flex Select has been removed
+
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    **Breaking change**: for more information, check our migration guide.
+  </MessageBody>
+</Message>
+

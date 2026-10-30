@@ -3,7 +3,6 @@ import { type ComponentMetadataWithSources, type ComponentRecipe, SOURCE, type S
 import langCss from '@shikijs/langs/css';
 import langScss from '@shikijs/langs/scss';
 import langTsx from '@shikijs/langs/tsx';
-import theme from '@shikijs/themes/nord';
 import { type ComponentType, memo, useMemo, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { CARD_STATUS, Card } from '../../../../../ods-react/src/components/card/src';
@@ -11,6 +10,7 @@ import { Code } from '../../../../../ods-react/src/components/code/src';
 import { Select, SelectContent, SelectControl, type SelectItem, type SelectValueChangeDetail } from '../../../../../ods-react/src/components/select/src';
 import { TABS_SIZE, TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '../../../../../ods-react/src/components/tabs/src';
 import { Link } from '../../../ods';
+import { useCodeTheme } from '../../CodeBlock';
 import { ResetTheme } from './ResetTheme';
 import styles from './recipeCard.module.css';
 
@@ -57,6 +57,7 @@ const RecipePreview = ({ recipe }: { recipe: Recipe }) => {
 /* The recipe's source: one tab per file, and a styling-mode switch when several exist. */
 const RecipeSource = ({ recipe }: { recipe: Recipe }) => {
   const [mode, setMode] = useState<Source>(SOURCE.cssModules);
+  const theme = useCodeTheme();
 
   const styleModeItems = useMemo(
     () => STYLE_MODE_ITEMS.filter((item) => !!(recipe.source as Record<string, unknown>)[item.value]),

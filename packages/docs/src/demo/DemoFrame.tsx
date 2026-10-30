@@ -25,6 +25,8 @@ interface DemoFrameProp {
   /* Fires with the frame document once it has painted — for callers that
      measure the rendered DOM (the anatomy highlighter). */
   onReady?: (frameDocument: Document) => void;
+  /* The frame's accessible name, read when entering it. */
+  title?: string;
   /* Hot token overrides (theme generator use case), e.g. { '--ods-palette-brand-500': '#ff0000' } */
   tokens?: Record<string, string>;
 }
@@ -282,12 +284,12 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }: DemoFrameProp) => {
+const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
 
   return (
     <>
-      { !ready && <Skeleton style={{ borderRadius: '4px', height: '74px', width: '100%' }} /> }
+      { !ready && <Skeleton style={{ borderRadius: 'var(--ods-semantic-size-radius-control)', height: '74px', width: '100%' }} /> }
       <Frame
         // The dialog rule patches an ods-react Drawer regression (backdrop
         // feature, 2026-07-10): backdrop defaults to undefined so the Dialog
@@ -303,10 +305,11 @@ const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, tokens }
         }
         initialContent={ INITIAL_CONTENT }
         mountTarget="#mount"
+        title={ title }
         style={ ready
           // no height here: FrameAutoSize owns it imperatively — a height in
           // the React style prop would clobber it on every parent re-render.
-          ? { ...(bare ? { border: 'none' } : { border: 'var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle)', borderRadius: '4px' }), width: '100%', colorScheme: 'auto', display: 'block' }
+          ? { ...(bare ? { border: 'none' } : { border: 'var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-neutral-subtle)', borderRadius: 'var(--ods-semantic-size-radius-control)' }), width: '100%', colorScheme: 'auto', display: 'block' }
           : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
         <StyleSync />
         <FrameAutoSize active={ ready } />

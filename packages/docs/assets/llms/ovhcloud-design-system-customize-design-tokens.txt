@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 4991
+tokens: 5390
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -22,6 +22,26 @@ Design tokens are available as CSS custom properties (variables) and can be used
   border-radius: var(--ods-semantic-size-radius-control);
 }
 ```
+
+## Token types
+
+Two types of tokens are meant to be used in your code (the `--ods-palette-*` ramps are the input of a theme, see below):
+
+- **Semantic**, `--ods-semantic-<category>-<role>` (e.g. `--ods-semantic-color-content-text`): values with a role, to style your own components and pages.
+- **Component**, `--ods-<component>-<property>` (e.g. `--ods-button-background-color-brand-high`): values of a single ODS component, to customize it.
+
+**Semantic** tokens give a role to a value: the color of a text, of a surface, of a border, the radius of a control, the duration of an animation…
+Their name reads from the most generic to the most specific part, for example `--ods-semantic-color-surface-selected-solid` is a `color`, used as a `surface`, for a `selected` element, in its `solid` variant, the strongest of `-subtle`, the unsuffixed one and `-solid`.
+The text on it reads `--ods-semantic-color-content-on-selected-solid`, while `--ods-semantic-color-content-on-selected` is the ink for the tinted ones.
+
+**Component** tokens are declared by each component and default to semantic tokens.
+Override them to adjust one component without affecting the others: each component lists its own in the *CSS Variables* section of its *Technical information* tab.
+
+## Which type should I use?
+
+Prefer **semantic** tokens in your application: they follow the theme, so your components stay consistent with ODS ones when the theme changes.
+
+Use **component** tokens only to customize an ODS component; never read them to style something else, as their value may change from one version to another.
 
 ## What is guaranteed
 

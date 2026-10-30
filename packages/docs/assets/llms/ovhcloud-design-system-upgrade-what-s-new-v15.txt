@@ -1,0 +1,93 @@
+---
+title: "What's new in v15"
+slug: ovhcloud-design-system-upgrade-what-s-new-v15
+category: generic
+type: overview
+version: 19.7.3
+tokens: 880
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v15.txt
+---
+
+# What's new in v15
+
+*Release notes of v15. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v15.0.1
+
+* Fix new packages release process.
+* Update documentation.
+
+## v15.0.0
+
+As it is a major version, you have to do the [migration guide 14.x to 15.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-14-to-15)
+
+### Project changes
+
+This version is the first step towards the new ODS internal architecture.
+The goal of this refactoring is to simplify and improve the whole project to:
+
+* provide a better developer experience and thus reduce development time
+* normalize all components behavior / design / attributes
+* have better control on dependencies and lib version upgrade
+* have better control on what ODS expose (through component or CDK)
+* ...
+
+This first step only impact two components `osds-text` and `osds-textarea`.
+
+All other components will follow on next version.
+
+Then common ODS lib and theming will be refactored on next version.
+
+### Features changes
+
+* **Text**
+
+* `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+
+* `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+
+* `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+
+* `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+
+* `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+
+* `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
+
+* **Textarea**
+
+* `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+
+* `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+
+* `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+
+* `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+
+* `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+
+* `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+
+* `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+
+* `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+
+* `OsdsTextarea` is now displayed as flex by default.
+
+* `OsdsTextarea` `flex` attribute has been removed.
+
+* `OsdsTextarea` `inline` attribute has been added.

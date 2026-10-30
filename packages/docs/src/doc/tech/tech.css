@@ -11,7 +11,7 @@
 }
 
 .tech__prop-name {
-  font-weight: 600;
+  font-weight: var(--ods-semantic-font-weight-semibold);
   margin-right: 8px;
 }
 
@@ -19,7 +19,9 @@
   font-family: var(--ods-semantic-font-family-code, monospace);
   font-size: .85em;
   white-space: pre-wrap;
-  word-break: break-word;
+  /* A long union still wraps, but an identifier (BUTTON_EMPHASIS) widens its column instead of
+     breaking in the middle. */
+  overflow-wrap: break-word;
 }
 
 .tech__enum {
@@ -72,12 +74,6 @@
   color: var(--ods-semantic-color-content-brand);
 }
 
-/* The story renders in a DemoFrame (iframe) so overlay parts lay out exactly
-   as in real usage; the frame fills this column. */
-.anatomy__stage {
-  min-width: 0;
-}
-
 /* Highlights ride a layer stretched over the anatomy panel: they sit over the
    iframe, offset by its position (measured inside the frame). Absolute, not
    fixed, so the scrolling content area clips them instead of letting them
@@ -91,8 +87,10 @@
 
 .anatomy__highlight {
   position: absolute;
-  outline: 2px dashed #c54600;
-  border-radius: 2px;
+  /* The warning ink, not border-warning: a light orange would not stand out from the demo it
+     outlines (3:1 for a non-text mark). */
+  outline: var(--ods-semantic-border-thickness-strong) dashed var(--ods-semantic-color-content-warning);
+  border-radius: var(--ods-semantic-size-radius-control);
 }
 
 /* Narrow layout (≤1000px, cf. shell.css): the anatomy panel stacks (tree above
@@ -101,10 +99,5 @@
 @media (max-width: 1000px) {
   .anatomy {
     grid-template-columns: 1fr;
-  }
-
-  .anatomy__stage {
-    max-width: 100%;
-    overflow-x: auto;
   }
 }

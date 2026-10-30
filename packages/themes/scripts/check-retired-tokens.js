@@ -22,13 +22,13 @@ const REPO = path.resolve(__dirname, '../../..');
 const NAMES = readFileSync(path.join(__dirname, 'retired-tokens.txt'), 'utf8').split('\n').filter(Boolean);
 const RETIRED = `--ods-(${NAMES.map((name) => name.replace(/^--ods-/, '')).join('|')})([^-a-z0-9]|$)`;
 
-/* The files that name the retired tokens on purpose: the inventory, its tooling, the "before" of the guides, generated files. */
+/* The files that name the retired tokens on purpose: the inventory, its tooling, the "before" of the migration guide, the release notes (they name the tokens of their time), generated files. */
 const EXCLUDED = [
   'BREAKING-CHANGES-V20.md',
   'packages/themes/scripts/repoint-tokens.js',
   'packages/themes/scripts/retired-tokens.txt',
   'packages/docs/src/content/guides/migration-19-to-20.mdx',
-  'packages/docs/src/content/guides/whats-new.mdx',
+  'packages/docs/src/content/guides/whats-new*.mdx',
   'packages/docs/assets/llms',
   '**/CHANGELOG.md',
 ];

@@ -16,7 +16,7 @@
 [last-commit-image]: https://img.shields.io/github/last-commit/ovh/design-system
 [last-commit-url]: https://github.com/ovh/design-system/commits
 [react-image]: https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB
-[react-url]: https://fr.react.dev/
+[react-url]: https://react.dev/
 [typescript-image]: https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white
 [typescript-url]: https://www.typescriptlang.org/
 [sass-image]: https://img.shields.io/badge/-Sass-CC6699?logo=sass&logoColor=white
@@ -41,10 +41,10 @@
 Feel free to check out the [Get Started](https://ovh.github.io/design-system/latest/guides/get-started) guide which describes everything you need to use ODS in your project.
 
 ## Migration
-Please read [Migration pages](https://ovh.github.io/design-system/latest/guides/migration-to-v19) to help you to manage the migration guides between each version of ODS.
+Please read the [latest migration guide](https://ovh.github.io/design-system/latest/guides/migration-19-to-20) to upgrade to the next major version. Guides for previous versions are listed in the *Upgrade* section of the documentation.
 
 # License
-Copyright 2024 OVH SAS
+Copyright 2022 OVH SAS
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

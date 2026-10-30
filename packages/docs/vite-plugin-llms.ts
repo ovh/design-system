@@ -142,6 +142,80 @@ function checkComponentInvariants(componentKeys: string[]): void {
   }
 }
 
+/* Every component page follows the same outline, so readers (and the llms
+   output) find a section at the same place on every page. The check requires
+   an identity card, a level-3 "Dos & Don'ts" and the level-2 sections below in
+   this order, but not where the card and the "Dos & Don'ts" sit (under
+   Overview and Usage by convention). Placement and Variation are optional (not
+   every component has a placement rule or variants); other level-2 headings
+   are ignored, wherever they sit. A page that misses a required item yet is
+   listed in COMPONENT_SECTION_GAPS, and the build fails once the page gets it,
+   so that the entry is removed. Headings inside MDX comments and code blocks
+   do not count, as they are not rendered. */
+const COMPONENT_SECTIONS = ['Overview', 'Usage', 'Placement', 'Behavior', 'Variation', 'Navigation', 'Accessibility'];
+const OPTIONAL_COMPONENT_SECTIONS = new Set(['Placement', 'Variation']);
+const COMPONENT_SECTION_GAPS: Record<string, string[]> = {
+  card: ['Behavior'],
+  divider: ['Behavior'],
+  drawer: ["Dos & Don'ts"],
+  'file-thumbnail': ["Dos & Don'ts"],
+  logo: ['Behavior'],
+  markdown: ["Dos & Don'ts"],
+  medium: ['Behavior'],
+  'message-bubble': ['Navigation', 'Accessibility'],
+};
+
+function checkComponentStructure(componentKeys: string[]): void {
+  const errors: string[] = [];
+  const required = [...COMPONENT_SECTIONS.filter((label) => !OPTIONAL_COMPONENT_SECTIONS.has(label)), "Dos & Don'ts", 'IdentityCard'];
+
+  for (const [key, gaps] of Object.entries(COMPONENT_SECTION_GAPS)) {
+    if (!componentKeys.includes(key)) {
+      errors.push(`COMPONENT_SECTION_GAPS lists '${key}', which has no component page`);
+    }
+    const unknown = gaps.filter((label) => !required.includes(label));
+    if (unknown.length) {
+      errors.push(`COMPONENT_SECTION_GAPS lists [${unknown.join(', ')}] for '${key}', which are not required items`);
+    }
+  }
+
+  for (const key of componentKeys) {
+    const mdx = readFileSync(resolve(here, `src/content/components/${key}/documentation.mdx`), 'utf8')
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+      .replace(/^```[\s\S]*?^```/gm, '');
+    const allHeadings = [...mdx.matchAll(/<Heading\b[^>]*>/g)].map(([tag]) => ({
+      label: /\blabel="([^"]+)"/.exec(tag)?.[1],
+      level: Number(/\blevel=\{ ?(\d) ?\}/.exec(tag)?.[1]),
+    }));
+    const headings = (level: number): string[] => allHeadings.filter((heading) => heading.level === level && heading.label).map((heading) => heading.label!);
+    const sections = headings(2).filter((label) => COMPONENT_SECTIONS.includes(label));
+    const gaps = COMPONENT_SECTION_GAPS[key] ?? [];
+    const missing = [
+      ...COMPONENT_SECTIONS.filter((label) => !OPTIONAL_COMPONENT_SECTIONS.has(label) && !sections.includes(label)),
+      ...(headings(3).includes("Dos & Don'ts") ? [] : ["Dos & Don'ts"]),
+      ...(mdx.includes('<IdentityCard') ? [] : ['IdentityCard']),
+    ];
+    const unexpected = missing.filter((label) => !gaps.includes(label));
+    const filled = gaps.filter((label) => !missing.includes(label));
+    const ordered = [...sections].sort((a, b) => COMPONENT_SECTIONS.indexOf(a) - COMPONENT_SECTIONS.indexOf(b));
+
+    if (unexpected.length) {
+      const dosLevels = allHeadings.filter((heading) => heading.label === "Dos & Don'ts" && heading.level !== 3).map((heading) => heading.level);
+      const hint = unexpected.includes("Dos & Don'ts") && dosLevels.length ? ` ("Dos & Don'ts" is at level ${dosLevels.join(', ')}, expected level 3)` : '';
+      errors.push(`'${key}' misses [${unexpected.join(', ')}]${hint}`);
+    }
+    if (filled.length) {
+      errors.push(`'${key}' now has [${filled.join(', ')}]: remove it from COMPONENT_SECTION_GAPS`);
+    }
+    if (sections.join() !== ordered.join()) {
+      errors.push(`'${key}' sections are out of order: [${sections.join(', ')}], expected [${ordered.join(', ')}]`);
+    }
+  }
+  if (errors.length) {
+    throw new Error(`llms: component page structure (see COMPONENT_SECTIONS in vite-plugin-llms.ts):\n- ${errors.join('\n- ')}`);
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * Design tokens, rendered from the same theme data as the page
  * (packages/themes build output + the shared categorize/split helpers).
@@ -625,6 +699,7 @@ function generate(outDir: string, withRootSummary = true): number {
     .map((entry) => entry.name)
     .sort();
   checkComponentInvariants(componentKeys);
+  checkComponentStructure(componentKeys);
 
   const components = componentKeys.map((key) => ({ key, title: titleize(key), ...componentDocs(key) }));
   const componentFiles = components.flatMap((comp) => comp.docs);

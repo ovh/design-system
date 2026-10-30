@@ -12,10 +12,11 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { APP_ROOT } from '../appBase';
 import { llmsFileFor } from '../doc/llmsFile';
-import { GUIDES_NAV, REFERENCE_NAV, flattenPages, toTreeItems, type NavPage, type NavSection } from '../nav/model';
+import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
 import { ThemeSelect, VersionSelect } from './TopbarSelects';
+import { PagePager } from './PagePager';
 import { SearchCommand } from './SearchCommand';
 import './shell.css';
 
@@ -38,8 +39,26 @@ const useNarrow = () => {
   return narrow;
 };
 
+/* The sections a page sits in, outermost first; empty when the page is not in these nodes. */
+const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
+  for (const node of nodes) {
+    if (node.id === id) {
+      return [];
+    }
+    if (!isPage(node)) {
+      const inner = sectionsOf(node.children, id);
+      if (inner.length || node.children.some((child) => child.id === id)) {
+        return [node.id, ...inner];
+      }
+    }
+  }
+  return [];
+};
+
 /* One sidebar tree. Selection is bound to the active page id; a tree that
-   doesn't contain it simply shows nothing selected. */
+   doesn't contain it simply shows nothing selected. The sections of the active page open, whichever
+   way it was reached (link, search palette), next to the ones the reader opened, and the tree
+   scrolls to it. */
 const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
   currentId?: string;
   expanded: string[];
@@ -48,11 +67,25 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, sectionIcons }: {
   sectionIcons?: boolean;
 }) => {
   const items = toTreeItems(nodes, sectionIcons);
+  const [open, setOpen] = useState(expanded);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const sections = currentId ? sectionsOf(nodes, currentId) : [];
+    setOpen((previous) => (sections.every((id) => previous.includes(id)) ? previous : [...new Set([...previous, ...sections])]));
+    const frame = requestAnimationFrame(() => {
+      ref.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [currentId, nodes]);
+
   return (
     <TreeView
-      defaultExpandedValue={ expanded }
+      expandedValue={ open }
       items={ items }
+      onExpandedChange={ ({ expandedValue }) => setOpen(expandedValue) }
       onValueChange={ ({ value }) => value[0] && onNavigate(value[0]) }
+      ref={ ref }
       value={ currentId ? [currentId] : [] }>
       <TreeViewNodes>
         { items.map((item) => (
@@ -115,7 +148,7 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
     <nav aria-label="Documentation" className="shell__nav">
       <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } sectionIcons />
       <Divider className="shell__tree-divider" />
-      <Text className="shell__tree-dividerd" preset={ TEXT_PRESET.paragraph }>Reference</Text>
+      <Text className="shell__tree-label-reference" preset={ TEXT_PRESET.caption }>Reference</Text>
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 
@@ -199,8 +232,9 @@ const Shell = () => {
 
   // Keep the browser tab title in sync with the active page.
   useEffect(() => {
-    document.title = currentPage ? `${currentPage.title} — OVHcloud Design System` : 'OVHcloud Design System';
-  }, [currentPage]);
+    const title = currentPage?.title ?? (location.pathname === '/' ? undefined : 'Page not found');
+    document.title = title ? `${title} — OVHcloud Design System` : 'OVHcloud Design System';
+  }, [currentPage, location.pathname]);
 
   // Any navigation (tree, palette, in-content link) closes the nav drawer.
   useEffect(() => {
@@ -323,17 +357,18 @@ const Shell = () => {
                 <Icon name={ ICON_NAME.hamburgerMenu } />
               </Button>
             ) }
-            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? 'OVHcloud Design System' }</Text>
-            <MarkdownLink pathname={ location.pathname } />
+            <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text>
+            { currentPage && <MarkdownLink pathname={ location.pathname } /> }
           </header>
         ) }
 
         <main className={ location.pathname === '/' ? 'shell__content shell__content--flush' : 'shell__content' } id="main-content" ref={ contentRef } tabIndex={ -1 }>
           <Outlet context={ { tokens } satisfies ShellContext } />
+          <PagePager currentId={ currentPage?.id } />
         </main>
       </div>
     </div>
   );
 };
 
-export { Shell, type ShellContext };
+export { Shell, openSearchPalette, useNarrow, type ShellContext };

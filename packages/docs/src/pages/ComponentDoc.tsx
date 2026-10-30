@@ -1,7 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { type ComponentType, Suspense, lazy, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { TABS_VARIANT, Tab, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
+import { TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { DocSkeleton } from '../doc/DocSkeleton';
@@ -10,6 +10,7 @@ import { IconGallery } from '../doc/ports/iconGallery/IconGallery';
 import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
 import { hasTechData } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
+import { useNarrow } from '../shell/Shell';
 import { useStories } from '../nav/useStories';
 import { ComponentPage } from './ComponentPage';
 
@@ -63,50 +64,60 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   // Fall back to the first available tab when the URL segment isn't valid here.
   const requested = tab ?? 'documentation';
   const currentTab = tabs.some((entry) => entry.value === requested) ? requested : tabs[0].value;
+  // On a narrow screen the tab strip outgrows the column: its arrows reach the last tabs.
+  const narrow = useNarrow();
   const toPath = (value: string) => (value === 'documentation' ? page.path : `${page.path}/${value}`);
+
+  const content = (
+    <>
+      { currentTab === 'documentation' && Doc && (
+        stories
+          ? (
+            <Suspense fallback={ <DocSkeleton /> }>
+              <DocArticle>
+                <MDXProvider components={ MDX_COMPONENTS }>
+                  <Doc />
+                </MDXProvider>
+              </DocArticle>
+            </Suspense>
+          )
+          : <DocSkeleton />
+      ) }
+
+      { currentTab === 'gallery' && Gallery && <Gallery /> }
+
+      { currentTab === 'technical' && (
+        <DocArticle>
+          <TechnicalSpecification component={ componentKey } />
+        </DocArticle>
+      ) }
+
+      { currentTab === 'examples' && (
+        stories
+          ? (
+            <DocArticle>
+              <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
+            </DocArticle>
+          )
+          : <DocSkeleton />
+      ) }
+    </>
+  );
 
   return (
     <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
       <div className="doc-page">
-        { tabs.length > 1 && (
-          <Tabs className="doc-page__tabs" onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch }>
-            <TabList>
-              { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
-            </TabList>
-          </Tabs>
-        ) }
-
-        { currentTab === 'documentation' && Doc && (
-          stories
-            ? (
-              <Suspense fallback={ <DocSkeleton /> }>
-                <DocArticle>
-                  <MDXProvider components={ MDX_COMPONENTS }>
-                    <Doc />
-                  </MDXProvider>
-                </DocArticle>
-              </Suspense>
-            )
-            : <DocSkeleton />
-        ) }
-
-        { currentTab === 'gallery' && Gallery && <Gallery /> }
-
-        { currentTab === 'technical' && (
-          <DocArticle>
-            <TechnicalSpecification component={ componentKey } />
-          </DocArticle>
-        ) }
-
-        { currentTab === 'examples' && (
-          stories
-            ? (
-              <DocArticle>
-                <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
-              </DocArticle>
-            )
-            : <DocSkeleton />
-        ) }
+        { tabs.length > 1
+          ? (
+            // The route picks the tab: only the selected panel is rendered, but it sits in its tabpanel.
+            <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch } withArrows={ narrow }>
+              <TabList className="doc-page__tabs">
+                { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
+              </TabList>
+              <TabContent value={ currentTab }>{ content }</TabContent>
+            </Tabs>
+          )
+          : content }
       </div>
     </PageStoriesProvider>
   );

@@ -3,7 +3,7 @@ import { type ComponentType, type ReactElement, type ReactNode, useMemo } from '
 import { useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
-import { Card } from '../../../ods-react/src/components/card/src';
+import { CARD_STATUS, Card } from '../../../ods-react/src/components/card/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
@@ -85,10 +85,10 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
       <div className="doc__identity-desc">{ children }</div>
       <Card className="doc__identity">
         <dl>
-          <div><dt>Name</dt><dd>{ name }</dd></div>
-          { aliases.length > 0 && <div><dt>Aliases</dt><dd>{ aliases.join(', ') }</dd></div> }
+          <div><Text as="dt" preset={ TEXT_PRESET.caption }>Name</Text><dd>{ name }</dd></div>
+          { aliases.length > 0 && <div><Text as="dt" preset={ TEXT_PRESET.caption }>Aliases</Text><dd>{ aliases.join(', ') }</dd></div> }
           <div>
-            <dt>Links</dt>
+            <Text as="dt" preset={ TEXT_PRESET.caption }>Links</Text>
             <dd className="doc__identity-links">
               { figmaLink && <Link href={ figmaLink } target="_blank">Design <Icon name={ ICON_NAME.externalLink } /></Link> }
               <Link href={ githubUrl } target="_blank">GitHub <Icon name={ ICON_NAME.externalLink } /></Link>
@@ -103,14 +103,14 @@ const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, star
 
 const BestPractices = ({ donts = [], dos = [] }: { donts?: string[], dos?: string[] }) => (
   <div className="doc__best-practices">
-    <div className="doc__best-practices-col doc__best-practices-col--do">
-      <Text preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleCheck } /> Do</Text>
+    <Card className="doc__best-practices-col" status={ CARD_STATUS.success }>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon className="doc__best-practices-icon--do" name={ ICON_NAME.circleCheck } /> Do</Text>
       <ul>{ dos.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
-    </div>
-    <div className="doc__best-practices-col doc__best-practices-col--dont">
-      <Text preset={ TEXT_PRESET.heading6 }><Icon name={ ICON_NAME.circleXmark } /> Don't</Text>
+    </Card>
+    <Card className="doc__best-practices-col" status={ CARD_STATUS.critical }>
+      <Text as="h4" preset={ TEXT_PRESET.heading6 }><Icon className="doc__best-practices-icon--dont" name={ ICON_NAME.circleXmark } /> Don't</Text>
       <ul>{ donts.map((item) => <li key={ item }>{ item.replace(/^- /, '') }</li>) }</ul>
-    </div>
+    </Card>
   </div>
 );
 
@@ -151,10 +151,22 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
 
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */
 const CodeFence = ({ children }: { children?: ReactNode }) => {
-  const codeEl = children as ReactElement<{ children: string }> | undefined;
+  const codeEl = children as ReactElement<{ children: string, className?: string }> | undefined;
   const source = typeof codeEl?.props?.children === 'string' ? codeEl.props.children.trim() : '';
-  return <CodeBlock style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
+  const language = codeEl?.props?.className?.match(/language-(\S+)/)?.[1];
+  return <CodeBlock language={ language } style={{ margin: '1rem 0', width: '100%' }}>{ source }</CodeBlock>;
 };
+
+/* A Markdown quote, as the ODS Markdown component renders it. */
+const Blockquote = ({ children }: { children?: ReactNode }) => (
+  <Text as="blockquote" preset={ TEXT_PRESET.blockquote }>{ children }</Text>
+);
+
+/* Inline `code` of the MDX content, as the ODS Markdown component renders it. A fenced block reaches
+   CodeFence first, which reads this element's props, not its rendering. */
+const InlineCode = ({ children, className }: { children?: ReactNode, className?: string }) => (
+  <Text as="code" className={ className } preset={ TEXT_PRESET.code }>{ children }</Text>
+);
 
 /* Static comparison block shared by the table and data-table docs. */
 const TableVsDataTable = () => (
@@ -214,6 +226,8 @@ const MDX_COMPONENTS = {
   TableVsDataTable,
   Table,
   TokenPreview,
+  blockquote: Blockquote,
+  code: InlineCode,
   img: DocImage,
   pre: CodeFence,
 };

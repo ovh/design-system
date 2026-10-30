@@ -47,6 +47,7 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, tokens }: Co
         <Heading label={ demoTitle(name) } level={ 3 } />
         <DemoCanvas
           dark={ dark }
+          label={ `${demoTitle(name)} example` }
           sandboxCode={ source ? buildSandboxSnippet(source, imports) : undefined }
           source={ source }
           tokens={ tokens }>

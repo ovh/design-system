@@ -1,0 +1,265 @@
+---
+title: "What's new in v17"
+slug: ovhcloud-design-system-upgrade-what-s-new-v17
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1593
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v17.txt
+---
+
+# What's new in v17
+
+*Release notes of v17. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v17.2.2
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### Bug fixes
+
+**Button**
+
+- Fix the issue where the button was still clickable on the border while disabled.
+
+### Feature updates
+
+**Radio-button**
+
+- Add 'XS' size to radio button.
+
+## v17.2.1
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### Bug fixes
+
+**Clipboard**
+
+- A white background is now properly displayed on the `Popover`.
+
+**Menu**
+
+- A minimal height is now forced in the `Menu` component, giving proper styling on the bottom margin.
+
+## v17.2.0
+
+This update introduces our new `Table` component, enhances various features and improves documentation.
+It also brings numerous bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### New component
+
+**Table**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/table)
+
+### Documentation improvements
+
+**Form Field**
+
+- Added an accessibility label.
+- Updated Storybook Usage Guidelines.
+
+### Feature updates
+
+**Clipboard**
+
+- `Tooltip` now features a `3 seconds` closing delay.
+- `Tooltip` won't be displayed if `success-message` OR `error-message` is not defined.
+
+**Datepicker**
+
+- `Datepicker` days are now displayed with 2 letters.
+
+**Pagination**
+
+- New attribute `defaultCurrentPage` has been added.
+- New method `getCurrentPage()` has been added.
+- Old attribute `current` has been removed.
+- Navigation will be hidden if `totalItems` is lower than `itemPerPage`
+
+### Bug fixes
+
+**Breadcrumb**
+**Link**
+
+- Multiple active states issue on Safari browsers has been fixed.
+
+**Datepicker**
+
+- Error color on `Datepicker`'s border has been fixed.
+
+**Input**
+
+- Clearing the `Input` now properly focuses it afterwards.
+
+**Modal**
+
+- Overlaying elements can now overflow from the `Modal`.
+- Pressing the `ESCAPE` key when a `Select` is open inside a `Modal` no longer displays an unwanted backdrop.
+- Width value has been fixed on breakpoint.
+
+**Popover**
+
+- Overlaying elements can now overflow from the `Popover`.
+
+**Textarea**
+
+- `Textarea` style has been fixed to match the `Input`.
+
+**Tile**
+
+- Checked `Tile` styling has been fixed on Safari.
+
+**Search Bar**
+
+- `odsSearchSubmit` event is now properly triggered on `KEY_DOWN` input.
+
+## v17.1.0
+
+As we're working towards a massive uniformization of all ODS form elements (events, nav behavior, required state, validity state, ...),
+the amount of changes is too important to be released immediately.
+
+This release brings the expected form-association of form elements, so that they act as native one for
+formData submit and reset.
+
+It also fixes the missing types of event (`odsBlur`, `odsFocus`, `odsValueChange`).
+
+### Documentation improvements
+
+Documentation usage guidelines have been completed with almost all components properties and slots:
+- tons of new components examples
+- dark background when `contrasted` prop is set
+- shortcuts have been disabled due to issue with some input preview
+
+### Feature update
+
+**Pagination**
+
+- A new `defaultItemsPerPage` has been added, which allows to define the initial value of `itemsPerPage` on first render
+
+### Bug fixes
+
+**Button / Checkbox / Radio / Range / Tile**
+
+- Prevent click event on click when disabled on Chromium & Safari.
+
+**Modal**
+
+- Modal is now correctly cleaned up on disconnect
+
+**Tile**
+
+- Ensure position stays consistent regarding end/start slot emptiness
+
+### Miscellaneous
+
+- Upgrade to StencilJS 4.12
+
+## v17.0.3
+
+### Bug fixes
+
+**Input**
+
+* Icon size are now displayed at the expected size
+
+**Quantity**
+
+* Native arrow are now hidden on Safari
+
+**Radio / Radio group**
+
+* Remove logger issue on documentation example page
+
+**Toggle**
+
+* Toggle now shrink correctly when slot content are very large
+
+**Tile**
+
+* Tile borders are now correctly rounded on Safari
+
+## v17.0.2
+
+### Bug fixes
+
+**Modal**
+
+* Added `enter` and `space` keys binding on the close button + cancel button on Storybook
+* Fixed display problems within the modal that could lead to some elements getting shrunk
+* Scroll is now prevented when a modal is open
+
+## v17.0.1
+
+### Bug fixes
+
+**Pagination**
+
+* Next & previous buttons have been fixed on Chrome & Safari where they could allow the user to go out of bound.
+
+**Radio-Button**
+
+* Smaller text has been fixed and is now aligning vertically as well.
+
+**Fonts**
+
+* Fonts have been fixed to display the correct font on Safari.
+
+## v17.0.0
+
+As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-16-to-17)
+
+### Project changes
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+What this means for your code:
+
+* `ods-component-xxx` are no longer published and should be removed
+* only one dependency to add to your `package.json`
+
+```text
+"ods-components": "17.0.0"
+```
+
+ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
+
+For more details on how to import ODS components, see:
+
+* the updated [Get Started documentation](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+* the 16.x to 17.x [Migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-16-to-17)
+
+### Documentation improvements
+
+We went through each component to update:
+
+* the Demo controls to be more relevant
+* the Usage Guidelines, with more examples and the missing properties
+* with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
+
+### Component changes
+
+**Pagination**
+
+* Add `odsItemPerPageChange` when the item per page select change
+
+### Bug fixes
+
+**Datagrid**
+
+* Overflowing elements can now correctly be displayed (see updated documentation)
+
+**Menu**
+
+* Ellipsis is now correctly displayed on Safari
+
+**Modal**
+
+* Inner element with overlay are now correctly displayed
+
+**Tabs**
+
+* Fix hover rendering

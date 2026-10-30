@@ -11,11 +11,13 @@ import './demoCanvas.css';
 /* One unified card: a demo on a tinted surface, a toolbar, and the source
    below (collapsible, shown by default). Used by both the doc <Canvas> and
    the Examples tab so every demo looks the same. */
-const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
+const DemoCanvas = ({ children, dark, label, sandboxCode, source, title, tokens }: {
   children: ReactNode;
   dark?: boolean;
   sandboxCode?: string;
   source?: string;
+  /* The demo frame's accessible name. */
+  label?: string;
   title?: string;
   tokens?: Record<string, string>;
 }) => {
@@ -52,7 +54,7 @@ const DemoCanvas = ({ children, dark, sandboxCode, source, title, tokens }: {
       ) }
 
       <div className="canvas__demo">
-        <DemoFrame bare dark={ dark } inset tokens={ tokens }>
+        <DemoFrame bare dark={ dark } inset title={ label } tokens={ tokens }>
           { children }
         </DemoFrame>
       </div>

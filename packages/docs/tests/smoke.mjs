@@ -37,6 +37,20 @@ async function suite(browser, { base, version }) {
     await page.waitForURL('https://ovh.github.io/design-system/latest/', { timeout: 10000 });
     await page.unroute('https://ovh.github.io/design-system/**');
   });
+  await check('a page links to the next one of the sidebar at its foot', async () => {
+    await page.goto(`${V}/guides/get-started`, { waitUntil: 'domcontentloaded' });
+    const next = page.locator('nav[aria-label="Previous and next pages"] a').last();
+    await next.waitFor({ timeout: 10000 });
+    await next.click();
+    await page.waitForURL(`**/v${version}/guides/apply-ods-style`, { timeout: 10000 });
+  });
+  await check('an unknown page says so instead of bouncing to the homepage', async () => {
+    await page.goto(`${V}/components/does-not-exist`, { waitUntil: 'domcontentloaded' });
+    await page.getByRole('heading', { level: 1, name: 'Page not found' }).waitFor({ timeout: 10000 });
+    if (!page.url().endsWith('/components/does-not-exist')) {
+      throw new Error(`landed on ${page.url()}`);
+    }
+  });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });
@@ -71,14 +85,14 @@ async function suite(browser, { base, version }) {
       throw new Error('latest llms unreachable');
     }
   });
-  await check('search palette: components first, icons, section hints', async () => {
+  await check('search palette: where to start, then components, icons, section hints', async () => {
     await page.goto(`${V}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('#root *', { timeout: 10000 });
     await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
     await page.waitForSelector('[data-ods="command-content"]', { timeout: 8000 });
     const ok = await page.evaluate(() => {
       const headings = [...document.querySelectorAll('[data-ods="command-content"] [class*="command-group__heading"]')].map((h) => h.textContent.trim());
-      return headings[0] === 'Components'
+      return headings[0] === 'Start here' && headings[1] === 'Components'
         && !!document.querySelector('.shell__search-option-icon')
         && [...document.querySelectorAll('.shell__search-option-hint')].some((h) => h.textContent.includes('Customize'));
     });

@@ -1,0 +1,105 @@
+---
+title: "What's new in v14"
+slug: ovhcloud-design-system-upgrade-what-s-new-v14
+category: generic
+type: overview
+version: 19.7.3
+tokens: 823
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v14.txt
+---
+
+# What's new in v14
+
+*Release notes of v14. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v14.1.0
+
+### New features
+
+* **CDK**
+* Manage surface position when located on the edge.
+* The surface can now be centered at the top or bottom of the trigger. See CDK Documentation using version selector.
+
+We added the following components:
+
+**Form Field**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/form-field)
+
+**Switch**
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/switch)
+
+### Features changes
+
+* **Pagination**
+
+* Add tooltip to the arrows.
+
+* Can now show pages according to a numbers of items shown by page.
+
+> For more information, check our documentation [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/pagination)
+
+* **Location-tile**
+
+* Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+
+> For more information, check our replacement guide using version selector.
+
+### Bug fixes
+
+* **Radio**:
+
+* Radio button is now unfocusable when disabled
+
+* **Input**:
+
+* cursor is set to not-allowed when disabled
+
+## v14.0.0
+
+As it is a major version, you have to do the [migration guide 13.x to 14.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-13-to-14)
+
+### New features
+
+We added the following components:
+
+* **Progress Bar**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/progress-bar)
+* **Popover**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/popover)
+* **Tooltip**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tooltip)
+
+Components version 2:
+
+* **Input V2**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/input)
+* new properties have been added
+* `loading`: it displays a Spinner
+* `clearable`: it clears the input value on click
+* `masked`: it indicates if the input value is hidden or not (to be used with password type)
+* new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/select)
+
+**Quantity** component accepts four digits in the input field:
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/quantity)
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+
+See CDK Documentation using version selector.
+
+### Bug fixes
+
+* **Tile**:
+* `hoverable` attribute has been added to avoid double focus
+* `interactive` attribute has been removed
+
+  
+  
+> **Breaking change**: for more information, check our migration guide.
+
+* **Link**:
+* add missing color for active state
+* fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%

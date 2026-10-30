@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
 version: 19.7.3
-tokens: 745
+tokens: 1167
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
 ---
 
@@ -16,7 +16,8 @@ All OVHcloud Design System packages are available on [NPM](https://www.npmjs.com
 
 ## Installation
 
-Include **ODS** in your projects like any other npm/pnpm module:
+Include **ODS** in your projects like any other npm/pnpm module.
+`react` and `react-dom` (`v18.2+` or `v19+`) are peer dependencies: they must already be installed in your project.
 
 ```bash
 npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
@@ -72,8 +73,6 @@ const App = () => {
 };
 ```
 
-Components are compatible with React `v18.2+`, `v19+`.
-
 ## Import components constants
 
 All enums, interfaces, events are available directly from the `ods-react` lib
@@ -96,15 +95,19 @@ import '@ovhcloud/ods-themes/default/fonts';
 
 via Sass import:
 
-```css
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/default/fonts';
+```scss
+@use 'pkg:@ovhcloud/ods-themes/default/css';
+@use '@ovhcloud/ods-themes/default/fonts';
 ```
 
+`pkg:` URLs require the [Node.js package importer](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/) (Sass `v1.71.1+`), enabled with `importers: [new NodePackageImporter()]` in your Sass options.
+
+The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
+
   
 
   
-> In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
+> In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default';`.
 > Though this will increase the bundle size and prevent browser resources loading optimization.
 
 The dark theme is an overlay, to load **after** the default theme:
@@ -116,9 +119,41 @@ import '@ovhcloud/ods-themes/aluminium-dark/css';
 
 It re-declares the semantic tokens on `:root`, so it applies to the whole page. ODS does not switch between the light and dark themes at runtime: load the one you need.
 
-## Typescript
+## Server-side rendering
 
-To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with [Typescript 5.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler).
+ODS components rely on React state, effects and browser APIs: they cannot be used as React Server Components.
+
+With the Next.js App Router, import the theme in your root layout and use the components from client components, marked with the `'use client'` directive:
+
+```tsx
+// app/layout.tsx
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{ children }</body>
+    </html>
+  );
+}
+```
+
+```tsx
+// app/page.tsx
+'use client';
+import { Link } from '@ovhcloud/ods-react';
+
+export default function Home() {
+  return <Link href="#">My ODS Link</Link>;
+}
+```
+
+The `Toaster` renders into `document.body` by default, which does not exist on the server, so the page fails to prerender with `document is not defined`. Pass `createPortal={ false }` to render it where it is placed, or render it only once the page is mounted in the browser.
+
+## TypeScript
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with [TypeScript 5.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler).
 
 ```typescript
 "moduleResolution": "bundler"

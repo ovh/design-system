@@ -125,7 +125,8 @@ const PageToc = ({ container }: { container: HTMLElement | null }) => {
   const goTo = (id: string) => {
     const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.getElementById(id)?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
-    history.replaceState(null, '', `#${id}`);
+    // Keeps the state: React Router reads its entry key there, and the Shell its scroll position.
+    history.replaceState(history.state, '', `#${id}`);
     setActive(id);
   };
 

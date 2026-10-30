@@ -7,7 +7,7 @@
 
 - [Overview](./react-components-accordion.txt) (~324 tokens)
 - [Documentation](./react-components-accordion--documentation.txt) (~1693 tokens)
-- [Technical Information](./react-components-accordion--technical-information.txt) (~627 tokens)
+- [Technical Information](./react-components-accordion--technical-information.txt) (~608 tokens)
 - [Examples](./react-components-accordion--examples.txt) (~1342 tokens)
 
 ## Avatar
@@ -21,7 +21,7 @@
 
 - [Overview](./react-components-badge.txt) (~218 tokens)
 - [Documentation](./react-components-badge--documentation.txt) (~2460 tokens)
-- [Technical Information](./react-components-badge--technical-information.txt) (~1587 tokens)
+- [Technical Information](./react-components-badge--technical-information.txt) (~1619 tokens)
 - [Examples](./react-components-badge--examples.txt) (~891 tokens)
 
 ## Breadcrumb
@@ -174,7 +174,7 @@
 ## Link
 
 - [Overview](./react-components-link.txt) (~197 tokens)
-- [Documentation](./react-components-link--documentation.txt) (~1299 tokens)
+- [Documentation](./react-components-link--documentation.txt) (~1318 tokens)
 - [Technical Information](./react-components-link--technical-information.txt) (~205 tokens)
 - [Examples](./react-components-link--examples.txt) (~310 tokens)
 
@@ -392,7 +392,7 @@
 
 - [Overview](./react-components-toggle.txt) (~306 tokens)
 - [Documentation](./react-components-toggle--documentation.txt) (~971 tokens)
-- [Technical Information](./react-components-toggle--technical-information.txt) (~430 tokens)
+- [Technical Information](./react-components-toggle--technical-information.txt) (~427 tokens)
 - [Examples](./react-components-toggle--examples.txt) (~277 tokens)
 
 ## Tooltip

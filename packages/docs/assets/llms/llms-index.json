@@ -33,7 +33,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 627,
+          "tokens": 608,
           "url": "./react-components-accordion--technical-information.txt"
         },
         "examples": {
@@ -85,7 +85,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1587,
+          "tokens": 1619,
           "url": "./react-components-badge--technical-information.txt"
         },
         "examples": {
@@ -652,7 +652,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1299,
+          "tokens": 1318,
           "url": "./react-components-link--documentation.txt"
         },
         "technical-information": {
@@ -1463,7 +1463,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 430,
+          "tokens": 427,
           "url": "./react-components-toggle--technical-information.txt"
         },
         "examples": {
@@ -1608,7 +1608,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 14628,
+      "tokens": 14851,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

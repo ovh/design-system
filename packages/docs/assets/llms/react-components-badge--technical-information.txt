@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1587
+tokens: 1619
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
 ---
 
@@ -64,30 +64,30 @@ This component extends all the native `<span>` attributes.
 | `--ods-badge-background-color-beta` | `var(--ods-semantic-color-surface-decorative-beta)` |
 | `--ods-badge-border-color-beta` | `transparent` |
 | `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-information)` |
-| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-neutral)` |
 | `--ods-badge-background-color-new` | `var(--ods-semantic-color-surface-decorative-new)` |
 | `--ods-badge-border-color-new` | `transparent` |
 | `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-accent` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-badge-text-color-accent` | `var(--ods-semantic-color-content-accent)` |
 | `--ods-badge-background-color-promotion` | `var(--ods-semantic-color-surface-decorative-promotion)` |
 | `--ods-badge-border-color-promotion` | `transparent` |
 | `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-success)` |
-| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-badge-background-color-accent-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-accent-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-badge-text-color-accent-medium` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-badge-background-color-critical-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-critical-medium` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-badge-text-color-critical-medium` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-badge-background-color-information-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-information-medium` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-badge-text-color-information-medium` | `var(--ods-semantic-color-content-information)` |
+| `--ods-badge-background-color-neutral-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-badge-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-badge-background-color-success-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-success-medium` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-badge-text-color-success-medium` | `var(--ods-semantic-color-content-success)` |
+| `--ods-badge-background-color-warning-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-warning-medium` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-badge-text-color-warning-medium` | `var(--ods-semantic-color-content-warning)` |
 | `--ods-badge-background-color-accent-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
 | `--ods-badge-border-color-accent-high` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-badge-text-color-accent-high` | `var(--ods-semantic-color-content-on-accent)` |

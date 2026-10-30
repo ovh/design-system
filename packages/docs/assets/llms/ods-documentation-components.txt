@@ -245,7 +245,7 @@ slug: accordion
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 627
+tokens: 608
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
 ---
 
@@ -303,7 +303,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-accordion-item-inner-radius-bottom` | `calc(var(--ods-accordion-border-radius) - var(--ods-accordion-border-width))` |
+| `--ods-accordion-item-inner-radius-bottom` | `0` |
 | `--ods-state-is-disabled-opacity` | `1` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-container)` |
@@ -1027,7 +1027,7 @@ slug: badge
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1587
+tokens: 1619
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
 ---
 
@@ -1087,30 +1087,30 @@ This component extends all the native `<span>` attributes.
 | `--ods-badge-background-color-beta` | `var(--ods-semantic-color-surface-decorative-beta)` |
 | `--ods-badge-border-color-beta` | `transparent` |
 | `--ods-badge-text-color-beta` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-critical` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
-| `--ods-badge-text-color-critical` | `var(--ods-semantic-color-content-critical)` |
-| `--ods-badge-background-color-information` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
-| `--ods-badge-text-color-information` | `var(--ods-semantic-color-content-information)` |
-| `--ods-badge-background-color-neutral` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-neutral` | `var(--ods-semantic-color-border-neutral-subtle)` |
-| `--ods-badge-text-color-neutral` | `var(--ods-semantic-color-content-neutral)` |
 | `--ods-badge-background-color-new` | `var(--ods-semantic-color-surface-decorative-new)` |
 | `--ods-badge-border-color-new` | `transparent` |
 | `--ods-badge-text-color-new` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-accent` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
-| `--ods-badge-text-color-accent` | `var(--ods-semantic-color-content-accent)` |
 | `--ods-badge-background-color-promotion` | `var(--ods-semantic-color-surface-decorative-promotion)` |
 | `--ods-badge-border-color-promotion` | `transparent` |
 | `--ods-badge-text-color-promotion` | `var(--ods-semantic-color-content-on-vivid)` |
-| `--ods-badge-background-color-success` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
-| `--ods-badge-text-color-success` | `var(--ods-semantic-color-content-success)` |
-| `--ods-badge-background-color-warning` | `var(--ods-semantic-color-surface-raised)` |
-| `--ods-badge-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |
-| `--ods-badge-text-color-warning` | `var(--ods-semantic-color-content-warning)` |
+| `--ods-badge-background-color-accent-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-accent-medium` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-badge-text-color-accent-medium` | `var(--ods-semantic-color-content-accent)` |
+| `--ods-badge-background-color-critical-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-critical-medium` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-badge-text-color-critical-medium` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-badge-background-color-information-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-information-medium` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-badge-text-color-information-medium` | `var(--ods-semantic-color-content-information)` |
+| `--ods-badge-background-color-neutral-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral-subtle)` |
+| `--ods-badge-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-badge-background-color-success-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-success-medium` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-badge-text-color-success-medium` | `var(--ods-semantic-color-content-success)` |
+| `--ods-badge-background-color-warning-medium` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-badge-border-color-warning-medium` | `var(--ods-semantic-color-border-warning-subtle)` |
+| `--ods-badge-text-color-warning-medium` | `var(--ods-semantic-color-content-warning)` |
 | `--ods-badge-background-color-accent-high` | `var(--ods-semantic-color-surface-accent-subtle)` |
 | `--ods-badge-border-color-accent-high` | `var(--ods-semantic-color-border-accent-subtle)` |
 | `--ods-badge-text-color-accent-high` | `var(--ods-semantic-color-content-on-accent)` |
@@ -11565,7 +11565,7 @@ slug: link
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1299
+tokens: 1318
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--documentation.txt
 ---
 
@@ -11636,7 +11636,7 @@ A **Link** can stand alone on a page, or it can be placed within a sentence or a
 
 When disabled, users cannot focus nor click on the **Link**.
 
-On hover, **Link** is underlined and its color changes.
+On hover, **Link** is underlined and keeps its color: the underline is the hover signal. A visited **Link** keeps its visited color.
 
 An optional icon can be displayed on the left or right of the **Link** label content. Icon-only **Link** also exists but it must meet accessibility requirements. See Accessibility section below.
 
@@ -13552,8 +13552,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-message-bubble-background-color` | `var(--ods-message-bubble-error-background-color)` |
-| `--ods-message-bubble-text-color` | `var(--ods-message-bubble-error-text-color)` |
+| `--ods-message-bubble-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-bubble-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
 | `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
 | `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-muted)` |
@@ -23864,7 +23864,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 430
+tokens: 427
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -23904,8 +23904,8 @@ _No specific property._
 | `--ods-toggle-control-background-color` | `var(--ods-semantic-color-surface-track)` |
 | `--ods-toggle-control-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
 | `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
-| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-critical-solid)` |
-| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-content-on-critical-solid)` |
+| `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-control-solid)` |
+| `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
 | `--ods-state-is-disabled-opacity` | `1` |
 
 ---

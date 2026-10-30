@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 14628
+tokens: 14851
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -498,20 +498,21 @@ grep -rnE "\b(BADGE|BUTTON|CARD|MESSAGE|SPINNER|TAG|TOAST|DIVIDER|MODAL)_COLORS?
 
 **The Sass mixins and CSS custom properties follow the status and the emphasis.** The styles behind the props now use the same names:
 
-- Badge, Card and Tag: `primary` becomes `accent` in their custom properties and in the `ods-badge-color` and `ods-tag-color` mixins: `--ods-badge-background-color-primary` becomes `--ods-badge-background-color-accent`, `--ods-tag-border-color-primary-hover` becomes `--ods-tag-border-color-accent-hover`, `--ods-card-border-color-primary` becomes `--ods-card-border-color-accent`. The other statuses keep their names.
+- Badge: the status custom properties take their emphasis, and `primary` becomes `accent`: `--ods-badge-background-color-primary` becomes `--ods-badge-background-color-accent-high`, `--ods-badge-text-color-critical` becomes `--ods-badge-text-color-critical-high` (see Badge), and `ods-badge-color('primary')` becomes `ods-badge-color('accent')`. The decorative statuses keep their names.
+- Card and Tag: `primary` becomes `accent` in their custom properties and in the `ods-tag-color` mixin: `--ods-tag-border-color-primary-hover` becomes `--ods-tag-border-color-accent-hover`, `--ods-card-border-color-primary` becomes `--ods-card-border-color-accent`. The other statuses keep their names.
 - Message: `primary` becomes `accent` too, and every name also takes its emphasis: `--ods-message-background-color-primary` becomes `--ods-message-background-color-accent-high`, not `--ods-message-background-color-accent` (see Message).
 - Button: every status custom property and mixin takes its emphasis, and `primary` becomes `brand`: `--ods-button-background-color-primary-hover` becomes `--ods-button-background-color-brand-high-hover` (see Button).
 - The text colors of a hovered or pressed Tag are removed: `--ods-tag-text-color-<status>-hover` and `-active` held the rest value and nothing read them. Some Button ones are removed for the same reason (see Button).
 - These mixins now fail to compile on a value they do not know: `'primary'` names its new value, and any other value lists the accepted ones. An override or a `var()` of a custom property under its old name is silently ignored: search for them.
 
 ```sh
-grep -rnE -- '--ods-(badge|card|tag)-[a-z-]*primary|--ods-tag-text-color-[a-z]+-(hover|active)([^-a-z]|$)|ods-(badge-color|tag-color)[a-z-]*\(.{0,3}primary' src/
+grep -rnE -- '--ods-(badge|card|tag)-[a-z-]*primary|--ods-badge-(background|text)-color-(critical|information|neutral|success|warning)([^-a-z]|$)|--ods-tag-text-color-[a-z]+-(hover|active)([^-a-z]|$)|ods-(badge-color|tag-color)[a-z-]*\(.{0,3}primary' src/
 ```
 
-On Badge, Card and Tag, the renames are 1:1. To apply them to the files found, then remove the overrides of the Tag text colors by hand:
+On Badge, Card and Tag, the renames are 1:1. To apply them to the files found, then add `emphasis="high"` to the Badges these overrides target and remove the overrides of the Tag text colors by hand:
 
 ```sh
-sed -E -i.bak 's/(--ods-(badge|card|tag)-[a-z-]*)primary/\1accent/g; s/(ods-(badge-color|tag-color)[a-z-]*\([[:space:]]*["'"'"']?)primary/\1accent/g' <files>
+sed -E -i.bak 's/(--ods-badge-(background|text)-color-)primary/\1accent-high/g; s/(--ods-badge-(background|text)-color-(critical|information|neutral|success|warning))([^-a-z]|$)/\1-high\4/g; s/(--ods-(card|tag)-[a-z-]*)primary/\1accent/g; s/(ods-(badge-color|tag-color)[a-z-]*\([[:space:]]*["'"'"']?)primary/\1accent/g' <files>
 ```
 
 These searches miss a status passed through a variable or a list, and a name built by interpolation:
@@ -590,7 +591,7 @@ interface FaqProp extends Omit<AccordionProp, 'emphasis'> {
 
 **New `emphasis` prop** (`BADGE_EMPHASIS`, `BADGE_EMPHASES`, `BadgeEmphasis`): `high`, `medium` or `low`. `medium` is the default: a colored border and colored text on the raised surface, which is not the v19 look (see **Default rendering**). Use `high` for a tinted background with a light border, the closest to v19, and `low` for colored text only. In the blue-jeans theme, `high` is the tinted background without border, as in v19, and `medium` sits on the raised surface with the light status border: add `emphasis="high"` to keep the v19 look. If one of your wrappers declares its own `emphasis` prop on top of `BadgeProp`, add `'emphasis'` to its `Omit` or rename it; in untyped JavaScript, an `emphasis` attribute forwarded to Badge is now read as the emphasis preset.
 
-**The status custom properties paint the `medium` emphasis.** In v19, `--ods-badge-background-color-<status>` and `--ods-badge-text-color-<status>` painted the tinted Badge. In v20 they paint the default `medium` Badge, and the tinted background is the `high` emphasis, read from the `-high` names: if you add `emphasis="high"` to keep the v19 look, move your overrides to `--ods-badge-background-color-<status>-high` and `--ods-badge-text-color-<status>-high`.
+**The status custom properties take the emphasis.** In v19, `--ods-badge-background-color-<status>` and `--ods-badge-text-color-<status>` painted the tinted Badge, which is the `high` emphasis in v20: they become `--ods-badge-background-color-<status>-high` and `--ods-badge-text-color-<status>-high`, and apply once you add `emphasis="high"`. The default `medium` Badge reads the new `-<status>-medium` names. No unsuffixed name is left for `accent`, `critical`, `information`, `neutral`, `success` and `warning`, so an old override is ignored rather than applied to another emphasis. The decorative `alpha`, `beta`, `new` and `promotion` keep their names.
 
 To find the usages to migrate: `grep -rnE "\bBADGE_COLORS?\b|\bBadgeColor\b" src/`. The `color` props are found by the shared search at the top of **Breaking changes**, which also catches a `color` written on its own line.
 
@@ -799,7 +800,7 @@ import { Divider } from '@ovhcloud/ods-react';
 
 - `variant="default"` (or `MESSAGE_VARIANT.default`): use `emphasis="high"` (or `MESSAGE_EMPHASIS.high`).
 - `variant="light"` (or `MESSAGE_VARIANT.light`): use `emphasis="medium"`, or nothing, as `medium` is the default.
-- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background.
+- No `variant`: the Message rendered as `default` (tinted background) in v19; it now renders as `medium` (untinted background, the raised surface, with a light colored border). The `medium` border adds its thickness on each side: such a Message is slightly taller and wider than in v19. Add `emphasis={ MESSAGE_EMPHASIS.high }` to keep a tinted background. A `high` Message keeps the v19 `default` size: its padding gives up the thickness of its border.
 - `MESSAGE_VARIANTS` and `MessageVariant`: use `MESSAGE_EMPHASES` and `MessageEmphasis`.
 - New `low` emphasis: colored text and icon only, without background nor border.
 - Toaster: toasts render as `medium` (formerly `light`), with the new colors below. Nothing to change in your code.

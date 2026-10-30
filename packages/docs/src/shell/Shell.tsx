@@ -72,10 +72,37 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
   useEffect(() => {
     const sections = currentId ? sectionsOf(nodes, currentId) : [];
     setOpen((previous) => (sections.every((id) => previous.includes(id)) ? previous : [...new Set([...previous, ...sections])]));
-    const frame = requestAnimationFrame(() => {
-      ref.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
-    });
-    return () => cancelAnimationFrame(frame);
+    // The tree marks its selected node some frames after mounting, and its rows keep moving while
+    // sections open and fonts load: for two seconds, the selected page is brought to the middle
+    // whenever it is out of view, until the reader scrolls the navigation.
+    const holdsPage = !!currentId && flattenPages(nodes).some((page) => page.id === currentId);
+    const pane = ref.current?.closest('.shell__nav');
+    if (!holdsPage || !pane) {
+      return;
+    }
+    const deadline = performance.now() + 2000;
+    let frame = 0;
+    const reveal = () => {
+      const selected = ref.current?.querySelector('[aria-selected="true"]');
+      if (selected) {
+        const item = selected.getBoundingClientRect();
+        const view = pane.getBoundingClientRect();
+        if (item.top < view.top || item.bottom > view.bottom) {
+          selected.scrollIntoView({ block: 'center' });
+        }
+      }
+      if (performance.now() < deadline) {
+        frame = requestAnimationFrame(reveal);
+      }
+    };
+    const stop = () => cancelAnimationFrame(frame);
+    const inputs = ['keydown', 'pointerdown', 'touchstart', 'wheel'];
+    frame = requestAnimationFrame(reveal);
+    inputs.forEach((type) => pane.addEventListener(type, stop, { passive: true }));
+    return () => {
+      stop();
+      inputs.forEach((type) => pane.removeEventListener(type, stop));
+    };
   }, [currentId, nodes]);
 
   return (
@@ -112,6 +139,9 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate }: {
   );
 };
 
+/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform. */
+const SEARCH_SHORTCUT = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+
 /* The whole sidebar content: rendered in the fixed aside on wide screens and
    inside the navigation drawer on narrow ones. */
 const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
@@ -127,23 +157,11 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
       <VersionSelect />
     </div>
 
-    <div className="shell__upper-controls">
+    <button className="shell__search-hint" onClick={ onSearch } type="button">
+      <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
+      <Kbd className="shell__search-kbd">{ SEARCH_SHORTCUT }</Kbd>
+    </button>
 
-      <div className="shell__sidebar-selects">
-        <BrandSelect />
-        <ThemeSelect />
-      </div>
-
-      <button className="shell__search-hint" onClick={onSearch} type="button">
-        <Icon name={ICON_NAME.magnifyingGlass} /> Search…{" "}
-        <span className="shell__search-kbds">
-          <Kbd>cmd</Kbd>
-          <span className="shell__search-plus">+</span>
-          <Kbd>k</Kbd>
-        </span>
-      </button>
-    </div>
-    
     <nav aria-label="Documentation" className="shell__nav">
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Guides</Text>
       <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } />
@@ -152,7 +170,12 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 
+    { /* The display settings sit at the foot, out of the way of the navigation. */ }
     <div className="shell__sidebar-footer">
+      <div className="shell__sidebar-selects">
+        <BrandSelect />
+        <ThemeSelect />
+      </div>
       <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
         <Icon name={ ICON_NAME.github } /> GitHub
       </Link>

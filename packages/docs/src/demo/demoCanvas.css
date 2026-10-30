@@ -38,12 +38,9 @@
   border-top: 1px solid var(--ods-semantic-color-border-separator);
 }
 
-/* The code block fills the panel edge-to-edge (the card + border-top already
-   frame it) — override the standalone code surface/border from doc.css. */
+/* The code block fills the panel edge-to-edge: the card and the border-top already frame it. */
 .canvas__code [data-ods="code"] {
-  border: 0 !important;
-  border-radius: 0 !important;
-  margin: 0 !important;
+  --ods-code-border-radius: 0;
 }
 
 /* Narrow layout (≤1000px, cf. shell.css): the toolbar actions wrap under the

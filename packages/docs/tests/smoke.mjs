@@ -37,6 +37,13 @@ async function suite(browser, { base, version }) {
     await page.waitForURL('https://ovh.github.io/design-system/latest/', { timeout: 10000 });
     await page.unroute('https://ovh.github.io/design-system/**');
   });
+  await check('an unknown page says so instead of bouncing to the homepage', async () => {
+    await page.goto(`${V}/components/does-not-exist`, { waitUntil: 'domcontentloaded' });
+    await page.getByRole('heading', { level: 1, name: 'Page not found' }).waitFor({ timeout: 10000 });
+    if (!page.url().endsWith('/components/does-not-exist')) {
+      throw new Error(`landed on ${page.url()}`);
+    }
+  });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });

@@ -14,10 +14,6 @@
   scroll-margin-top: calc(var(--ods-semantic-size-space-inset-block) * 1.5);
 }
 
-.doc__canvas {
-  margin: 1rem 0;
-}
-
 .doc__missing {
   color: var(--ods-semantic-color-content-warning);
   font-family: monospace;
@@ -90,10 +86,6 @@
   display: block;
   margin: 1rem 0;
   max-width: 100%;
-}
-
-.doc__link {
-  color: var(--ods-semantic-color-content-brand);
 }
 
 /* Grid pages (the Recipe Gallery) use the full width instead of the reading column. */

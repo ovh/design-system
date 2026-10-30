@@ -72,12 +72,6 @@
   color: var(--ods-semantic-color-content-brand);
 }
 
-/* The story renders in a DemoFrame (iframe) so overlay parts lay out exactly
-   as in real usage; the frame fills this column. */
-.anatomy__stage {
-  min-width: 0;
-}
-
 /* Highlights ride a layer stretched over the anatomy panel: they sit over the
    iframe, offset by its position (measured inside the frame). Absolute, not
    fixed, so the scrolling content area clips them instead of letting them
@@ -101,10 +95,5 @@
 @media (max-width: 1000px) {
   .anatomy {
     grid-template-columns: 1fr;
-  }
-
-  .anatomy__stage {
-    max-width: 100%;
-    overflow-x: auto;
   }
 }

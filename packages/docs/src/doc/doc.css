@@ -174,23 +174,18 @@ article.doc.doc--wide {
 
 .doc-layout__toc-node {
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* The ToC never collapses, so its expand chevron is just noise. */
-.doc-layout__toc [data-part="branch-indicator"] {
+.doc-layout__toc [data-part="branch-indicator"],
+.doc-layout__toc-compact [data-part="branch-indicator"] {
   display: none;
 }
 
+/* Keep in sync with COMPACT_TOC_QUERY (DocArticle.tsx). */
 @media (max-width: 1100px) {
   .doc-layout {
     grid-template-columns: minmax(0, var(--doc-article-width));
-  }
-
-  .doc-layout__toc {
-    display: none;
   }
 }
 

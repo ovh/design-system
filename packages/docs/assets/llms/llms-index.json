@@ -1538,7 +1538,7 @@
       "slug": "ovhcloud-design-system-get-started",
       "title": "Get Started",
       "type": "overview",
-      "tokens": 745,
+      "tokens": 1167,
       "url": "./ovhcloud-design-system-get-started.txt"
     },
     {
@@ -1573,21 +1573,21 @@
       "slug": "ovhcloud-design-system-customize-apply-ods-style",
       "title": "Apply ODS Style",
       "type": "overview",
-      "tokens": 329,
+      "tokens": 315,
       "url": "./ovhcloud-design-system-customize-apply-ods-style.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-style-customization",
       "title": "Style Customization",
       "type": "overview",
-      "tokens": 620,
+      "tokens": 622,
       "url": "./ovhcloud-design-system-customize-style-customization.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-design-tokens",
       "title": "Design Tokens",
       "type": "overview",
-      "tokens": 4991,
+      "tokens": 5390,
       "url": "./ovhcloud-design-system-customize-design-tokens.txt"
     },
     {
@@ -1601,8 +1601,57 @@
       "slug": "ovhcloud-design-system-upgrade-what-s-new",
       "title": "What's new",
       "type": "overview",
-      "tokens": 18449,
+      "tokens": 6668,
       "url": "./ovhcloud-design-system-upgrade-what-s-new.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v18",
+      "title": "What's new in v18",
+      "type": "overview",
+      "tokens": 4759,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v18.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v17",
+      "title": "What's new in v17",
+      "type": "overview",
+      "tokens": 1593,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v17.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v16",
+      "title": "What's new in v16",
+      "type": "overview",
+      "tokens": 2294,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v16.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v15",
+      "title": "What's new in v15",
+      "type": "overview",
+      "tokens": 880,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v15.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v14",
+      "title": "What's new in v14",
+      "type": "overview",
+      "tokens": 823,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v14.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v13",
+      "title": "What's new in v13",
+      "type": "overview",
+      "tokens": 345,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v13.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v12",
+      "title": "What's new in v12 and earlier",
+      "type": "overview",
+      "tokens": 1397,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v12.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
@@ -1661,10 +1710,17 @@
       "url": "./ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt"
     },
     {
+      "slug": "ovhcloud-design-system-troubleshooting",
+      "title": "Troubleshooting",
+      "type": "overview",
+      "tokens": 912,
+      "url": "./ovhcloud-design-system-troubleshooting.txt"
+    },
+    {
       "slug": "ovhcloud-design-system-f-a-q",
       "title": "FAQ",
       "type": "overview",
-      "tokens": 1517,
+      "tokens": 975,
       "url": "./ovhcloud-design-system-f-a-q.txt"
     },
     {

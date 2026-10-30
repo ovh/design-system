@@ -62,9 +62,9 @@ When disabled, **Tile** does not respond to user interaction and cannot be selec
 
 **Tile** can contain any type of content, including interactive elements.
 
-### Navigation
+## Navigation
 
-#### Focus Management
+### Focus Management
 
 **Tile** follows standard keyboard navigation patterns defined by its usage context.
 

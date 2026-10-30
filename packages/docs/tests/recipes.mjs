@@ -1,6 +1,7 @@
 // Recipe pages: the README cases the page lays out (Do's & don'ts, a README opening on a
 // sub-heading, a TODO placeholder), the components and source sections, the preview on a phone,
-// and the scroll position when a gallery card opens its page.
+// the scroll position when a gallery card opens its page and back, the card headings on a
+// component page, and the feature list tooltip triggers.
 import { makeChecker } from './helpers.mjs';
 
 async function suite(browser, { base, version }) {
@@ -98,6 +99,34 @@ async function suite(browser, { base, version }) {
     const after = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
     if (before === 0 || after !== 0) {
       throw new Error(`scrollTop ${before} on the gallery, ${after} on the recipe`);
+    }
+    await page.goBack();
+    await page.waitForURL('**/recipes/components', { timeout: 10000 });
+    await page.waitForFunction((top) => Math.abs((document.querySelector('.shell__content')?.scrollTop ?? 0) - top) <= 1, before, { timeout: 5000 })
+      .catch(async () => {
+        const back = await page.evaluate(() => document.querySelector('.shell__content')?.scrollTop ?? 0);
+        throw new Error(`back on the gallery at scrollTop ${back}, left at ${before}`);
+      });
+  });
+
+  await check('the recipes of a component page are h3 cards under its "Recipes" h2 (tooltip)', async () => {
+    await page.goto(`${root}/components/tooltip/examples`, { waitUntil: 'domcontentloaded' });
+    const titles = page.locator('[class*="recipe-card__inner__header"]');
+    await titles.first().waitFor({ timeout: 15000 });
+    const tags = [...new Set(await titles.evaluateAll((all) => all.map((title) => title.tagName)))];
+    const recipes = await page.locator('h2#recipes').count();
+    if (tags.join() !== 'H3' || !recipes) {
+      throw new Error(`card titles ${tags.join(', ')}, "Recipes" h2 ${recipes}`);
+    }
+  });
+
+  await check('the feature list tooltip icons are named buttons (feature-list)', async () => {
+    await open('feature-list');
+    const triggers = page.locator('[data-ods="tooltip-trigger"][aria-label^="More information about"]');
+    await triggers.first().waitFor({ state: 'attached', timeout: 15000 });
+    const roles = [...new Set(await triggers.evaluateAll((all) => all.map((trigger) => trigger.getAttribute('role'))))];
+    if (roles.join() !== 'button') {
+      throw new Error(`role ${roles.join(', ')}`);
     }
   });
 

@@ -11,9 +11,10 @@
       (function () {
         var l = window.location;
         var m = l.pathname.match(/^(.*?\/(?:v\d[^/]*|latest)\/)(.*)$/);
-        if (m) {
+        // A version root landing here does not exist: bouncing to it again would loop.
+        if (m && m[2]) {
           l.replace(m[1] + '?p=/' + m[2] + (l.search ? '&' + l.search.slice(1) : '') + l.hash);
-        } else {
+        } else if (l.pathname !== '/design-system/latest/') {
           l.replace('/design-system/latest/');
         }
       })();

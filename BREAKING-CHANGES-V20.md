@@ -63,7 +63,7 @@ not the history of the branch.
 `--ods-semantic-*` is the public surface of the theme: a consumer reads these roles, and a theme
 re-declares them. Their names and their meaning hold for the whole v20 line; their values belong
 to the theme. The `--ods-palette-*` ramps are public as well, as the input of a theme. The
-reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 279 in 20.0, 188
+reference list is the set of keys of `@ovhcloud/ods-themes/default/tokens`: 282 in 20.0, 191
 semantic and 91 palette, as counted by
 
 ```sh
@@ -453,7 +453,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 279 new ones are in (188 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 158 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
+| **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 282 new ones are in (191 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 158 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
 | **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |
@@ -482,7 +482,7 @@ stays the `blue-jeans` overlay, loaded after it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | Most `--ods-<component>-*` names are kept, and their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Removed: two stray `--ods-theme-*` locals, the dead tokens listed below, the seven disabled-state tokens of BC-12, the renames of BC-17, BC-18, BC-23 and BC-24 and the removals of BC-25. Added: `--ods-card-background-color` and `--ods-accordion-background-color`, the ten `--ods-badge-border-color-*` (all three in BC-19), the six `--ods-message-border-color-*-medium`, `--ods-tab-border-color-selected-switch`, an internal reset (BC-12) and the new names of BC-17, BC-18, BC-23 and BC-24. Several bindings also changed role, mostly to give `active` states their own `interaction-*-active`: the pressed rung is kept on purpose, even where the default theme gives it the hover value, so that a theme can tell them apart. |
+| **Change** | Most `--ods-<component>-*` names are kept, and their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Removed: two stray `--ods-theme-*` locals, the dead tokens listed below, the seven disabled-state tokens of BC-12, the renames of BC-17, BC-18, BC-23 and BC-24 and the removals of BC-25. Added: `--ods-card-background-color` and `--ods-accordion-background-color`, the ten `--ods-badge-border-color-*` (all three in BC-19), the twelve `--ods-message-border-color-*-high` and `-medium`, `--ods-tab-border-color-selected-switch`, an internal reset (BC-12) and the new names of BC-17, BC-18, BC-23 and BC-24. Several bindings also changed role, mostly to give `active` states their own `interaction-*-active`: the pressed rung is kept on purpose, even where the default theme gives it the hover value, so that a theme can tell them apart. |
 | **Impact** | A consumer overriding a component token by name keeps working, except for a removed or renamed name, whose override is silently ignored. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-critical: var(--ods-color-critical-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colors shift slightly even where nothing breaks. |
 | **Detection** | the BC-01 / BC-02 greps for a value that reads a removed token, and the two commands below for the removed names and the `./style` arithmetic |
 | **Codemod** | none needed beyond BC-01 / BC-02 for the values; the removed names are listed below with their replacement |
@@ -695,7 +695,7 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border, the selected `Tab` fills, the tags of a multiple `Combobox` turn `accent`, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
+| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border and, without `emphasis`, loses its tinted background, the selected `Tab` fills, the tags of a multiple `Combobox` turn `accent`, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
 | **Impact** | Visual only. On a tinted ground, a card or an accordion now shows a white box. `status="accent"`, which brings back the 19.7.3 color of a `Card` without status (BC-09), does not bring back its transparency. |
 | **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>` and multiple `<Combobox>` |
 | **Codemod** | **manual** - add the rules below to the consumer stylesheet, outside any `@layer`. |
@@ -705,10 +705,14 @@ goes under the v20 modal.
   background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`.
   Keep 19.7.3: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`
   and `[data-ods="accordion"] { --ods-accordion-background-color: transparent; }`.
-- **Badge** becomes a pill with a border, read from the new `--ods-badge-border-color-<color>`.
+- **Badge** becomes a pill with a border, read from the new `--ods-badge-border-color-<color>`. Its
+  default `medium` emphasis sits on `surface-raised` with the `content-<status>` text, where
+  19.7.3 had a tinted background (filled for `primary`): `emphasis="high"` brings the tinted
+  background back, lined with a light border (without border in the blue-jeans theme).
   The border adds to the height: `sm` renders 22px tall instead of 20px, `lg` 30px instead of 28px,
-  `md` stays at 24px, and every size is 2px wider. Keep 19.7.3, sizes included:
-  `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`.
+  `md` stays at 24px, and every size is 2px wider. Closest to 19.7.3, sizes included (the colors stay those of v20):
+  `[data-ods="badge"] { --ods-badge-border-radius: 4px; border-width: 0; }`, with `emphasis="high"`
+  for the tinted background.
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected` where 19.7.3 left it
   transparent, and the selected segment of a switch gets an outline,
   `--ods-tab-border-color-selected-switch`. Keep 19.7.3:
@@ -737,7 +741,7 @@ goes under the v20 modal.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | A 19.x custom theme, Theme Generator exports included, declares `--ods-theme-*` and `--ods-color-*`, which v20 neither declares nor reads. A v20 theme re-declares the brand and accent ramps, `--ods-palette-brand-*` and `--ods-palette-accent-*` (`50` to `900`), on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`. |
-| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design, except `--ods-semantic-color-chart-series-01`, which reads accent `500` and follows the accent ramp. Over `default/css` alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. `blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
+| **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design. Over `default/css` alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. `blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
 | **Detection** | `grep -rnE -- "--ods-(theme\|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/`: it finds a theme written as CSS, as the JSON the 19.x Theme Generator exports, or as that object kept in a JS or TS file |
 | **Codemod** | **manual** - move the brand colors onto the two ramps, then re-declare the roles the ramps do not reach. |
 | **Source of truth** | `packages/themes/src/default/index.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/index.scss` (a theme written this way) |

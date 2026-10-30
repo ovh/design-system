@@ -106,7 +106,10 @@
   --ods-semantic-color-border-information: var(--ods-palette-blue-400);
   --ods-semantic-color-border-success-subtle: var(--ods-palette-green-600);
   --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-600);
+  --ods-semantic-color-border-warning: var(--ods-palette-orange-500);
   --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-600);
+  // The invalid cue of the fields and the edge of the critical Buttons: red-500 is 2.89:1 on the page, under 3:1.
+  --ods-semantic-color-border-critical: var(--ods-palette-red-400);
 
   /* Borders - states */
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-400);
@@ -179,6 +182,11 @@
 
 @layer ods-atoms {
   // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  :root [data-ods='button'] {
+    // border-critical moves to red-400 for the fields: the solid critical Button keeps its edge on its fill.
+    --ods-button-border-color-critical-high: var(--ods-semantic-color-surface-critical);
+  }
+
   :root [data-ods='badge'] {
     // One ink across the three emphases.
     --ods-badge-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);

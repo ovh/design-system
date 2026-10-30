@@ -2,7 +2,7 @@
 
 <Heading label="v16.6.0" level={ 2 } />
 
-<Heading label="Feature update:" level={ 3 } />
+<Heading label="Feature update" level={ 3 } />
 
 **Breadcrumb**
 
@@ -16,7 +16,7 @@
 * If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
 * If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Button**
 
@@ -41,14 +41,14 @@
 
 <Heading label="v16.5.0" level={ 2 } />
 
-<Heading label="Feature update:" level={ 3 } />
+<Heading label="Feature update" level={ 3 } />
 
 **Documentation**
 
 * Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
 * Removing Starter documentation, as it is deprecated for now.
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Datagrid**
 
@@ -74,13 +74,13 @@
 
 <Heading label="v16.4.0" level={ 2 } />
 
-<Heading label="New component:" level={ 3 } />
+<Heading label="New component" level={ 3 } />
 
 **Datagrid**
 
 * See Documentation using version selector
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Phone number**
 
@@ -90,7 +90,7 @@
 
 * The release list now correctly displays the name of the latest version.
 
-<Heading label="Feature update:" level={ 3 } />
+<Heading label="Feature update" level={ 3 } />
 
 **Component Generator**
 
@@ -98,13 +98,13 @@
 
 <Heading label="v16.3.2" level={ 2 } />
 
-<Heading label="New component:" level={ 3 } />
+<Heading label="New component" level={ 3 } />
 
 **Medium**
 
 <DocLink to="/components/medium">See Documentation</DocLink>
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Phone number**
 
@@ -124,7 +124,7 @@
 
 <Heading label="v16.3.1" level={ 2 } />
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Datepicker**
 
@@ -136,12 +136,19 @@
 
 <Heading label="v16.3.0" level={ 2 } />
 
-<Heading label="Component changes:" level={ 3 } />
+<Heading label="Component changes" level={ 3 } />
 
 **Button**
 
 * Each variant now display correctly when using circle button
-> ⚠️️ **Breaking change**
+
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    **Breaking change**
+  </MessageBody>
+</Message>
+
 * Circle button may render differently regarding the variant you're using
 
 **Datepicker**
@@ -157,7 +164,7 @@
 
 * Component has been refactored internally, but this should not have any impacts
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Menu**
 
@@ -175,15 +182,22 @@
 
 * On Safari the component is displayed correctly when using flex
 
-<Heading label="Project changes:" level={ 3 } />
+<Heading label="Project changes" level={ 3 } />
 
 * The whole project is now built using Stenciljs v4.7
-> ⚠️️ **Breaking change**
+
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    **Breaking change**
+  </MessageBody>
+</Message>
+
 * We don't generate the bundle `custom-elements-bundle` anymore
 
 <Heading label="v16.2.1" level={ 2 } />
 
-<Heading label="Component changes:" level={ 3 } />
+<Heading label="Component changes" level={ 3 } />
 
 **Datepicker**
 
@@ -202,7 +216,7 @@
 
 * Component has been refactored internally, but this should not have any impacts
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Datepicker**
 
@@ -222,44 +236,44 @@
 
 <Heading label="v16.2.0" level={ 2 } />
 
-<Heading label="New component:" level={ 3 } />
+<Heading label="New component" level={ 3 } />
 
 **Datepicker**
 
 <DocLink to="/components/datepicker">See Documentation</DocLink>
 
-<Heading label="Component changes:" level={ 3 } />
+<Heading label="Component changes" level={ 3 } />
 
 **Clipboard**
 
 * Added tooltip confirmation message on paste
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Textarea**
 
 * Correctly emit `odsValueChange` event on value change.
 
-<Heading label="Documentation changes:" level={ 3 } />
+<Heading label="Documentation changes" level={ 3 } />
 
 * Improve typedoc documentation
 
 <Heading label="v16.1.1" level={ 2 } />
 
-<Heading label="Documentation fixes:" level={ 3 } />
+<Heading label="Documentation fixes" level={ 3 } />
 
 * Component specification pages now displays correct information
 * Tile sandbox now uses correct list of commands
 
 <Heading label="v16.1.0" level={ 2 } />
 
-<Heading label="New component:" level={ 3 } />
+<Heading label="New component" level={ 3 } />
 
 **Phone Number**
 
 <DocLink to="/components/phone-number">See Documentation</DocLink>
 
-<Heading label="Component changes:" level={ 3 } />
+<Heading label="Component changes" level={ 3 } />
 
 **Input**
 
@@ -267,17 +281,24 @@
 
 **Progress Bar**
 
-> ⚠️️ **Breaking change**
 
-* `max` and `value` attributes are now `number` and won`t accept `string\` anymore.
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    **Breaking change**
+  </MessageBody>
+</Message>
 
-<Heading label="Bug fixes:" level={ 3 } />
+
+* `max` and `value` attributes are now `number` and won't accept `string` anymore.
+
+<Heading label="Bug fixes" level={ 3 } />
 
 **Code**
 
 * Contrasted version have now the right color.
 
-<Heading label="Project changes:" level={ 3 } />
+<Heading label="Project changes" level={ 3 } />
 
 * The whole project is now built using node 18.
 
@@ -289,13 +310,14 @@ Fixes CI build issues when deploying Storybook.
 
 As it is a major version, you'll have to follow the <DocLink to="/guides/migration-15-to-16">migration guide 15.x to 16.x</DocLink>
 
-⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
+<Message status="warning" dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="triangle-exclamation" />
+  <MessageBody>
+    We're aware that not all the documentation is up-to-date with the latest technical changes. We're currently working on improving the storybook but didn't want to delay the release much more. If you have any issue migrating, reach us directly and we'll help you.
+  </MessageBody>
+</Message>
 
-⚠️We're currently working on improving the storybook but didn't want to delay the release much more ⚠️
-
-⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
-
-<Heading label="Project changes:" level={ 3 } />
+<Heading label="Project changes" level={ 3 } />
 
 This version embed the whole new project architecture (initiated with the v15).
 
@@ -309,7 +331,7 @@ We now have seperations between:
 * `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
 * `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
 
-<Heading label="Component changes:" level={ 3 } />
+<Heading label="Component changes" level={ 3 } />
 
 **All Components**
 
@@ -344,7 +366,7 @@ Ex:
 `OdsSpinnerEvents` have been removed, as the component does not handle any events.
 `OdsSpinnerMethods` have been removed, as the component does not expose any methods.
 
-<Heading label="New component:" level={ 3 } />
+<Heading label="New component" level={ 3 } />
 
 **Clipboard**
 
@@ -362,13 +384,13 @@ See documentation using version selector
 
 See documentation using version selector
 
-<Heading label="Features changes:" level={ 3 } />
+<Heading label="Features changes" level={ 3 } />
 
 **Button**
 
 * Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
 
-<Heading label="Bug fixes:" level={ 3 } />
+<Heading label="Bug fixes" level={ 3 } />
 
 **Button**
 

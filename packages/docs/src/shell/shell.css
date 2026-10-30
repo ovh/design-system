@@ -366,13 +366,10 @@ body {
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);
   --ods-semantic-color-surface-muted: var(--ods-palette-gray-100);
   --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-200);
-  --ods-semantic-color-surface-neutral-recessed: var(--ods-palette-gray-50);
   --ods-semantic-color-surface-readonly: var(--ods-palette-gray-50);
-  --ods-semantic-color-surface-selected-disabled: var(--ods-palette-gray-500);
   --ods-semantic-color-content-neutral: var(--ods-palette-gray-600);
   --ods-semantic-color-content-placeholder: var(--ods-palette-gray-600);
   --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-700);
-  --ods-semantic-color-border-strong: var(--ods-palette-gray-600);
   --ods-semantic-color-border-control: var(--ods-palette-gray-300);
   --ods-semantic-color-border-readonly: var(--ods-palette-gray-50);
   --ods-semantic-color-border-separator: var(--ods-palette-gray-100);
@@ -389,28 +386,17 @@ body {
   --ods-semantic-color-chart-legend: var(--ods-palette-gray-700);
 
   /* --- tier 2: every role bound to the brand ramp. */
-  --ods-semantic-color-surface-base: var(--ods-palette-brand-500);
   --ods-semantic-color-surface-selected: var(--ods-palette-brand-50);
-  --ods-semantic-color-surface-selected-strong: var(--ods-palette-brand-100);
   --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-100);
-  --ods-semantic-color-content-base: var(--ods-palette-brand-500);
-  --ods-semantic-color-content-visited: var(--ods-palette-brand-700);
   --ods-semantic-color-content-brand: var(--ods-palette-brand-500);
   --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-500);
-  --ods-semantic-color-border-base: var(--ods-palette-brand-500);
-  --ods-semantic-color-border-selected: var(--ods-palette-brand-500);
   --ods-semantic-color-border-drag-over: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-base-hover: var(--ods-palette-brand-600);
-  --ods-semantic-color-interaction-base-subtle-hover: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-highlight-hover: var(--ods-palette-brand-100);
-  --ods-semantic-color-interaction-selected-highlight-hover: var(--ods-palette-brand-200);
   --ods-semantic-color-focus: var(--ods-palette-brand-500);
   --ods-semantic-color-brand: var(--ods-palette-white);
 
   /* The selected surfaces are dark tints here, so the text on them inverts too:
      the light-theme bindings are near-black. */
   --ods-semantic-color-content-on-selected: var(--docs-dark-ink);
-  --ods-semantic-color-content-on-brand-subtle: var(--docs-dark-ink);
 
   /* Left alone on purpose: surface-code and content-on-code (already a dark
      ground with light text), content-on-solid and surface-thumb (white belongs

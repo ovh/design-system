@@ -6,7 +6,6 @@ type Story = StoryObj<MessageBubbleProp>;
 
 const meta: Meta<MessageBubbleProp> = {
   component: MessageBubble,
-  tags: ['new'],
   title: 'React Components/Message Bubble',
 };
 

@@ -20,7 +20,6 @@ const meta: Meta<MenuProp> = {
     MenuSubmenu,
     MenuTrigger,
   },
-  tags: ['new'],
   title: 'React Components/Menu',
 };
 

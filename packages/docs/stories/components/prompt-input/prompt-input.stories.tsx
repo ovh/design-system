@@ -44,7 +44,6 @@ const meta: Meta<PromptInputProp> = {
     PromptInputSendButton,
     PromptInputTextControl,
   },
-  tags: ["new"],
   title: "React Components/Prompt Input",
 };
 

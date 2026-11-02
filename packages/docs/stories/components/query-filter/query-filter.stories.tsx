@@ -11,7 +11,6 @@ const meta: Meta<QueryFilterProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'i18n', 'filterOption', 'filterProperty', 'locale', 'name', 'onInputValueChange', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'required', 'value']),
   component: QueryFilter,
   subcomponents: { QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags },
-  tags: ['new'],
   title: 'React Components/Query Filter',
 };
 

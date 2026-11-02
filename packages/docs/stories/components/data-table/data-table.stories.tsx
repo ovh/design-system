@@ -12,7 +12,6 @@ const meta: Meta<DataTableProp<Person>> = {
   argTypes: excludeFromDemoControls(['columns', 'data', 'initialState', 'getRowId', 'manualSorting', 'onColumnPinningChange', 'onColumnVisibilityChange', 'onRowSelectionChange', 'onSortingChange', 'state', 'stickyHeader']),
   component: DataTable,
   subcomponents: { DataTableBody, DataTableEmpty, DataTableHead },
-  tags: ['new'],
   title: 'React Components/Data Table',
 };
 

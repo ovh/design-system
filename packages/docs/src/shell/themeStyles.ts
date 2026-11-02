@@ -2,15 +2,15 @@
    demand, which a plain `import '...css'` cannot do. */
 import aluminiumDarkCss from '../../../themes/src/aluminium-dark/index.scss?inline';
 import blueJeansCss from '../../../themes/src/blue-jeans/index.scss?inline';
+import blueJeansDarkCss from '../../../themes/src/blue-jeans-dark/index.scss?inline';
 
 type Brand = 'blue-jeans' | 'default';
 type Scheme = 'dark' | 'light';
 
 /* The ODS stylesheets layered over the default theme main.tsx loads, all targeting :root at its
-   specificity: the brand theme, then its dark overlay. Blue Jeans has no dark overlay yet (it comes
-   with blue-jeans-dark): it stays light in the dark scheme. */
-const THEMES: Record<Brand, { dark?: string, light: string }> = {
-  'blue-jeans': { light: blueJeansCss },
+   specificity: the brand theme, then its dark overlay. */
+const THEMES: Record<Brand, { dark: string, light: string }> = {
+  'blue-jeans': { dark: blueJeansDarkCss, light: blueJeansCss },
   default: { dark: aluminiumDarkCss, light: '' },
 };
 
@@ -47,9 +47,9 @@ const current: { brand: Brand, scheme: Scheme } = { brand: readStoredBrand(), sc
    sandbox editor). */
 const apply = () => {
   const theme = THEMES[current.brand];
-  const dark = current.scheme === 'dark' ? theme.dark : undefined;
+  const dark = current.scheme === 'dark';
   brandStyle.textContent = theme.light;
-  schemeStyle.textContent = dark ?? '';
+  schemeStyle.textContent = dark ? theme.dark : '';
   if (dark) {
     document.body.setAttribute('data-theme', 'dark');
   } else {

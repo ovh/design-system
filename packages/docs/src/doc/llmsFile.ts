@@ -1,5 +1,6 @@
 import guidesInventory from '../content/guides/guides.json';
 import helpersInventory from '../content/helpers/helpers.json';
+import { flattenPages } from '../nav/model';
 
 // Component tab → llms filename suffix (no tab: the documentation page).
 const COMPONENT_TAB_SUFFIX: Record<string, string> = {
@@ -13,8 +14,10 @@ const COMPONENT_TAB_SUFFIX: Record<string, string> = {
    helpers theirs from helpers.json.
    Recipes have one aggregate document (recipes-components.txt) for their
    single page. Returns null when the page has no llms document (gallery,
-   tools, llms-excluded guides) — the link simply hides. */
-function llmsFileFor(pathname: string): string | null {
+   tools, llms-excluded guides, unknown components) — the link simply hides. */
+function llmsFileFor(route: string): string | null {
+  // A trailing slash is ignored, as the router does.
+  const pathname = route.length > 1 ? route.replace(/\/+$/, '') : route;
   if (pathname === '/') {
     return 'ovhcloud-design-system-welcome.txt';
   }
@@ -22,6 +25,9 @@ function llmsFileFor(pathname: string): string | null {
   const component = pathname.match(/^\/components\/([^/]+)(?:\/(technical|examples))?$/);
   if (component) {
     const [, key, tab] = component;
+    if (!flattenPages().some((page) => page.path === `/components/${key}`)) {
+      return null;
+    }
     return `react-components-${key}${COMPONENT_TAB_SUFFIX[tab] ?? '--documentation'}.txt`;
   }
 

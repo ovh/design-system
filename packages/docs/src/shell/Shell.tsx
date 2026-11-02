@@ -243,10 +243,12 @@ const Shell = () => {
     return () => window.clearTimeout(idle);
   }, []);
 
-  // Exact match first; then prefix match so sub-views (/components/x/examples)
-  // still highlight their page in the tree.
+  // Exact match first; then the one-segment tab views of a component page
+  // (/components/x/examples), the only sub-views the router has: any other
+  // nested path is a not found page, not the page it starts with.
   const currentPage = pages.find((page) => page.path === location.pathname)
-    ?? pages.find((page) => page.path !== '/' && location.pathname.startsWith(`${page.path}/`));
+    ?? pages.find((page) => page.kind === 'component' && location.pathname.startsWith(`${page.path}/`)
+      && !location.pathname.slice(page.path.length + 1).includes('/'));
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
     || (currentPage?.kind === 'recipe' && !currentPage.gallery);

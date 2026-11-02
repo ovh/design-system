@@ -216,6 +216,12 @@ article.doc.doc--wide {
   margin: 0;
 }
 
+/* Dark scheme: the code blocks on the navy of the light theme's code surface (accent-900), through
+   the Code component's own ground property; CodeBlock leaves it to the component there. */
+[data-theme="dark"] [data-ods="code"] {
+  --ods-code-background-color: var(--ods-palette-accent-900);
+}
+
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———
    Wide leaf content (props tables, code, tab strips) scrolls inside its own
    box so the page itself never scrolls sideways. */

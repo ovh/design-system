@@ -21266,7 +21266,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1290
+tokens: 1190
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -21307,17 +21307,9 @@ This component extends all the native `<div>` attributes.
 
 This component extends all the native `<div>` attributes.
 
-| Property | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
-| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+_No specific property._
 
 ## Enums
-
-### TABS_I18N
-
-- `scrollLeftButton` = `tabs.scroll.left.button`
-- `scrollRightButton` = `tabs.scroll.right.button`
 
 ### TABS_MOUNT_STRATEGY
 

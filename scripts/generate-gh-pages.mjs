@@ -99,12 +99,17 @@ const outDirName = 'docs';
   }
   try {
     // add the current build, when there is one: the CI deploy job does not
-    // build, the npm loop has already brought this version. Replace it, or cp
-    // would nest into the existing dir.
+    // build, the npm loop has already brought this version, and the CI deploy
+    // step moves latest itself. Replace it, or cp would nest into the existing dir.
     if (fs.existsSync('packages/docs/dist')) {
       await $`rm -rf dist/v${currentVersion}`;
       await $`cp -r packages/docs/dist dist/v${currentVersion}`;
-      if (!currentVersion.includes('-')) {
+      // latest is the newest final version: never a prerelease, nor a
+      // maintenance release of an older line.
+      const newestFinal = [...lineages.keys(), currentVersion]
+        .filter((version) => !version.includes('-'))
+        .sort((a, b) => rank(b) - rank(a))[0];
+      if (currentVersion === newestFinal) {
         await $`ln -s v${currentVersion} dist/latest`;
       }
     }

@@ -52,16 +52,16 @@ Open a pull request from your `release/*` branch to `master` and merge it, so th
 Our internal CI runs the release workflow, defined outside this repository, on every `v*` tag:
 
 1. It builds the packages, the API documentation and the documentation site, and fails if `packages/docs/assets/llms` differs from the committed files.
-2. It publishes every public package listed by `pnpm exec lerna list` (`@ovhcloud/ods-react`, `@ovhcloud/ods-recipes`, `@ovhcloud/ods-themes`, `@ovhcloud/ods-docs` and `@ovhcloud/ods-mcp`) to the internal registry.
+2. It publishes every public package listed by `pnpm exec lerna list` (`@ovhcloud/ods-react`, `@ovhcloud/ods-recipes`, `@ovhcloud/ods-themes`, `@ovhcloud/ods-docs` and `@ovhcloud/ods-mcp`) to the internal registry: under `latest` for the newest final version, `alpha` for a prerelease, `latest-<major>` for a maintenance release of an older line.
 3. It opens the npm sync pull request, which a maintainer must approve. The packages reach npmjs.com once that pull request is merged.
-4. It rebuilds the GitHub Pages site from the published documentation packages (`@ovhcloud/ods-storybook` up to 19.7.3, `@ovhcloud/ods-docs` after) and pushes it to the `gh-pages` branch. `latest` moves to the new version, unless it is a prerelease.
+4. It rebuilds the GitHub Pages site from the published documentation packages (`@ovhcloud/ods-storybook` up to 19.7.3, `@ovhcloud/ods-docs` after) and pushes it to the `gh-pages` branch. `latest` only moves forward: a prerelease or a maintenance release of an older line leaves it on the newest final version.
 
 ## After the release
 
 Merging the npm sync pull request cannot be undone: npmjs.com never gives a version number back. Before approving it, check that:
 
 - `https://ovh.github.io/design-system/vX.Y.Z/` serves the new documentation, and its version selector lists the previous versions.
-- `https://ovh.github.io/design-system/latest/` serves the new version for a final release, the previous one for a prerelease.
+- `https://ovh.github.io/design-system/latest/` serves the newest final version: the new one, unless it is a prerelease or a maintenance release of an older line.
 
 Once it is merged, `npm view @ovhcloud/ods-react dist-tags` shows the new version.
 
@@ -118,6 +118,12 @@ pnpm ods:major
 
 The release branch will be used for bugfixes later (patch).
 Once the support for the version has ended, the branch will be unreferenced.
+
+### Maintenance: fix an older line
+
+Release the fix from the existing `release/X.Y` branch of that line with `pnpm ods:patch`. The CI publishes it under the `latest-<major>` dist-tag on the internal registry and leaves the `latest` documentation on the newest version.
+
+On npmjs.com, the npm sync sets the dist-tag itself. Once its pull request is merged, check that `npm view @ovhcloud/ods-react dist-tags` still shows the newest version as `latest`, and ask the maintainers of the npm sync to restore it otherwise.
 
 ### Prerelease: try a version before it is final
 

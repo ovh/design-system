@@ -120,19 +120,20 @@ async function suite(browser, { base, version }) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
 
-  // The topbar Markdown menu serves the page's llms document.
+  // View as Markdown: the topbar link targets the page's llms document.
   await page.goto(`${root}/components/button`, { waitUntil: 'domcontentloaded' });
-  const copyPage = page.locator('[data-testid="page-markdown"]');
-  await copyPage.waitFor({ timeout: 10000 });
+  const mdLink = page.locator('[data-testid="view-as-markdown"]');
+  await mdLink.waitFor({ timeout: 10000 });
+  ok('View as Markdown is a link that opens a new tab', await mdLink.evaluate((el) => el.tagName === 'A' && el.getAttribute('target') === '_blank'));
   // Its text stays readable on its own ground in the dark theme, hovered or not.
   const darkContrasts = [];
   await page.evaluate(() => document.body.setAttribute('data-theme', 'dark'));
   for (const hover of [false, true]) {
     if (hover) {
-      await copyPage.hover();
+      await mdLink.hover();
       await page.waitForTimeout(200);
     }
-    darkContrasts.push(await copyPage.evaluate((el) => {
+    darkContrasts.push(await mdLink.evaluate((el) => {
       const luminance = (color) => {
         const [r, g, b] = color.match(/[\d.]+/g).slice(0, 3).map((value) => {
           const channel = Number(value) / 255;
@@ -140,28 +141,25 @@ async function suite(browser, { base, version }) {
         });
         return (.2126 * r) + (.7152 * g) + (.0722 * b);
       };
-      const style = getComputedStyle(el);
-      const [light, dark] = [luminance(style.color), luminance(style.backgroundColor)].sort((a, b) => b - a);
+      // A link has no ground of its own: measured against the topbar it sits on.
+      const ground = getComputedStyle(el.closest('.shell__topbar')).backgroundColor;
+      const [light, dark] = [luminance(getComputedStyle(el).color), luminance(ground)].sort((a, b) => b - a);
       return Math.round(((light + .05) / (dark + .05)) * 100) / 100;
     }));
   }
   await page.evaluate(() => document.body.removeAttribute('data-theme'));
-  ok('the Markdown menu button reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
-  await copyPage.click();
-  ok('the Markdown menu copies the page', await page.locator('[data-testid="copy-page"]').isVisible());
-  const [mdPage] = await Promise.all([page.waitForEvent('popup'), page.locator('[data-testid="view-as-markdown"]').click()]);
-  const mdHref = mdPage.url();
-  await mdPage.close();
-  ok('View as Markdown opens the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
+  ok('View as Markdown reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
+  const mdHref = await mdLink.getAttribute('href') ?? '';
+  ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
   const mdRes = await page.request.get(mdHref);
   const md = mdRes.ok() ? await mdRes.text() : '';
   ok('the linked markdown resolves and is the right page', mdRes.ok() && /^---\n/.test(md) && /button/i.test(md.slice(0, 300)), `status ${mdRes.status()}`);
 
-  // The menu hides where no llms document exists.
+  // The link hides where no llms document exists.
   await page.goto(`${root}/tools/sandbox`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('.shell__topbar');
   await page.waitForTimeout(500);
-  ok('the Markdown menu is hidden on tool pages', (await copyPage.count()) === 0);
+  ok('View as Markdown hidden on tool pages', (await mdLink.count()) === 0);
 
   // Heading anchors: hover-revealed, native hash href. (Own try: a missing
   // heading must report KO, not kill the whole run.)

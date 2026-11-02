@@ -488,6 +488,14 @@ body {
 
 /* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
    long page title. */
+/* Layout only: the look is the ODS Link's own. */
+.shell__markdown-link {
+  display: inline-flex;
+  gap: var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
+  white-space: nowrap;
+}
+
 .shell__topbar-actions {
   display: flex;
   flex: none;

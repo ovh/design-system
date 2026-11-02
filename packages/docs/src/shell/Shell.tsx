@@ -7,7 +7,6 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Divider } from '../../../ods-react/src/components/divider/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
-import { Menu, MenuContent, MenuItem, MenuTrigger } from '../../../ods-react/src/components/menu/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { APP_ROOT } from '../appBase';
@@ -204,61 +203,27 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
-/* The current page as Markdown, the exact file the AI toolchain consumes (llms, see llmsFile.ts):
-   one menu copies it, ready to paste into an assistant, opens it in a new tab, or copies its link.
-   Hidden on pages that emit no llms document. */
-const PageMarkdownMenu = ({ narrow, pathname }: { narrow: boolean, pathname: string }) => {
-  const [status, setStatus] = useState('');
+/* Opens the current page as Markdown, the exact file the AI toolchain consumes (llms, see
+   llmsFile.ts), in a new tab: a link, so that the URL can be read, shared or handed to an
+   assistant as is. Hidden on pages that emit no llms document. */
+const MarkdownLink = ({ narrow, pathname }: { narrow: boolean, pathname: string }) => {
   const file = llmsFileFor(pathname);
-
-  useEffect(() => {
-    setStatus('');
-  }, [pathname]);
 
   if (!file) {
     return null;
   }
 
-  const href = new URL(`llms/${file}`, APP_ROOT).href;
-  const copy = async (text: Promise<string> | string, done: string) => {
-    try {
-      await navigator.clipboard.writeText(await text);
-      setStatus(done);
-      window.setTimeout(() => setStatus(''), 2500);
-    } catch {
-      setStatus('Copy failed: use View as Markdown');
-    }
-  };
-
   return (
-    <>
-      <Menu>
-        <MenuTrigger asChild>
-          <Button
-            aria-label={ narrow ? 'Markdown for LLMs' : undefined }
-            data-testid="page-markdown"
-            emphasis={ BUTTON_EMPHASIS.medium }
-            status={ BUTTON_STATUS.neutral }>
-            { /* A check for a moment once something is copied: the menu has closed by then. */ }
-            <Icon name={ status && !status.startsWith('Copy failed') ? ICON_NAME.check : ICON_NAME.robot } />
-            { !narrow && 'Markdown for LLMs' }
-            <Icon name={ ICON_NAME.chevronDown } />
-          </Button>
-        </MenuTrigger>
-        <MenuContent>
-          <MenuItem data-testid="copy-page" onSelect={ () => copy(fetch(href).then((response) => response.text()), 'Page copied as Markdown') } value="copy">
-            <span className="shell__select-item"><Icon name={ ICON_NAME.fileCopy } /> Copy page as Markdown</span>
-          </MenuItem>
-          <MenuItem data-testid="view-as-markdown" onSelect={ () => window.open(href, '_blank', 'noopener') } value="view">
-            <span className="shell__select-item"><Icon name={ ICON_NAME.externalLink } /> View as Markdown</span>
-          </MenuItem>
-          <MenuItem onSelect={ () => copy(href, 'Markdown link copied') } value="link">
-            <span className="shell__select-item"><Icon name={ ICON_NAME.chainLink } /> Copy Markdown link</span>
-          </MenuItem>
-        </MenuContent>
-      </Menu>
-      <span aria-live="polite" className="sr-only">{ status }</span>
-    </>
+    <Link
+      aria-label={ narrow ? 'View as Markdown (new tab)' : undefined }
+      className="shell__markdown-link"
+      data-testid="view-as-markdown"
+      href={ new URL(`llms/${file}`, APP_ROOT).href }
+      rel="noreferrer"
+      target="_blank">
+      <Icon name={ ICON_NAME.robot } />
+      { !narrow && <>View as Markdown <Icon name={ ICON_NAME.externalLink } /></> }
+    </Link>
   );
 };
 
@@ -421,7 +386,7 @@ const Shell = () => {
           ) }
           { !isWelcome && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
           <div className="shell__topbar-actions">
-            { currentPage && !isWelcome && <PageMarkdownMenu narrow={ isNarrow } pathname={ location.pathname } /> }
+            { currentPage && !isWelcome && <MarkdownLink narrow={ isNarrow } pathname={ location.pathname } /> }
             <ThemeMenu />
           </div>
         </header>

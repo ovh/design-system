@@ -124,8 +124,9 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
     };
   }, [container, entries]);
 
+  // Too short for a table of contents: the Markdown link alone.
   if (entries.length < 2) {
-    return null;
+    return <MarkdownLink className="doc-layout__toc-markdown" />;
   }
 
   const goTo = (id: string) => {
@@ -173,7 +174,10 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
         <Accordion>
           <AccordionItem value="toc">
             <AccordionTrigger>On this page</AccordionTrigger>
-            <AccordionContent>{ tree }</AccordionContent>
+            <AccordionContent>
+              <MarkdownLink className="doc-layout__toc-markdown" />
+              { tree }
+            </AccordionContent>
           </AccordionItem>
         </Accordion>
       </nav>
@@ -182,7 +186,10 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
 
   return (
     <nav aria-label="On this page" className="doc-layout__toc">
-      <Text className="doc-layout__toc-title" preset={ TEXT_PRESET.caption }>On this page</Text>
+      <div className="doc-layout__toc-head">
+        <Text preset={ TEXT_PRESET.caption }>On this page</Text>
+        <MarkdownLink />
+      </div>
       { tree }
     </nav>
   );
@@ -287,10 +294,8 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="doc-layout">
-      { /* The page's own aids: its table of contents and its Markdown version. */ }
       { compactToc && (
         <div className="doc-layout__aside doc-layout__aside--compact">
-          <MarkdownLink />
           <PageToc compact container={ container } />
         </div>
       ) }
@@ -299,7 +304,6 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
       </article>
       { !compactToc && (
         <aside className="doc-layout__aside">
-          <MarkdownLink />
           <PageToc container={ container } />
         </aside>
       ) }

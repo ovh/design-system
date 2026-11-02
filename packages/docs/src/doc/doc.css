@@ -165,8 +165,7 @@ article.doc.doc--wide {
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
 }
 
-/* The ToC column: the page's Markdown link, then its table of contents, kept in view together. The
-   link comes first: a long table of contents would push it out of view. */
+/* The ToC column, kept in view. */
 .doc-layout__aside {
   display: flex;
   flex-direction: column;
@@ -180,15 +179,25 @@ article.doc.doc--wide {
   position: static;
 }
 
-.doc-layout__markdown-link {
-  display: inline-flex;
+
+.doc-layout__toc-head {
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--ods-semantic-size-space-gap-inline);
+  /* Center, not baseline: the Link's baseline is its icon's, which sat its text above the title's. */
   align-items: center;
-  align-self: flex-start;
+  justify-content: space-between;
+  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
 }
 
-.doc-layout__toc-title {
-  margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
+/* At the caption size, the Link's own icon gap is wide for the robot icon. */
+.markdown-link {
+  --ods-link-column-gap: calc(var(--ods-semantic-size-space-gap-inline) / 2);
+}
+
+.doc-layout__toc-markdown {
+  display: block;
+  margin-bottom: var(--ods-semantic-size-space-gap-block);
 }
 
 .doc-layout__toc-node {

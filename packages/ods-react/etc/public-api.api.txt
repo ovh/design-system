@@ -5918,7 +5918,17 @@ export { TabContent, type TabContentProp, };
 
 // ==================== components/tabs/src/components/tab-list/TabList.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
+import { Locale } from '../../../../../utils/locales';
+import { TABS_I18N } from '../../constants/tabs-i18n';
 interface TabListProp extends ComponentPropsWithRef<'div'> {
+    /**
+     * Internal translations override.
+     */
+    i18n?: Partial<Record<TABS_I18N, string>>;
+    /**
+     * The locale used for the translation of the internal elements.
+     */
+    locale?: Locale;
 }
 declare const TabList: FC<TabListProp>;
 export { TabList, type TabListProp, };
@@ -5941,6 +5951,35 @@ interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, T
 }
 declare const Tabs: FC<TabsProp>;
 export { Tabs, type TabsProp, };
+
+// ==================== components/tabs/src/constants/tabs-i18n.d.ts ====================
+declare enum TABS_I18N {
+    scrollLeftButton = "tabs.scroll.left.button",
+    scrollRightButton = "tabs.scroll.right.button"
+}
+declare const TRANSLATION: {
+    "tabs.scroll.left.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "tabs.scroll.right.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+};
+export { TABS_I18N, TRANSLATION, };
 
 // ==================== components/tabs/src/constants/tabs-mount-strategy.d.ts ====================
 import { MOUNT_STRATEGIES, MOUNT_STRATEGY, MountStrategy } from '../../../../utils/mount-strategy';
@@ -6031,6 +6070,7 @@ declare const Tabs: import('react').FC<TabsProp> & {
 export { Tabs };
 export { Tab, TabContent, TabList };
 export type { TabsProp, TabListProp, TabProp, TabContentProp };
+export { TABS_I18N } from './constants/tabs-i18n';
 export { TABS_MOUNT_STRATEGIES, TABS_MOUNT_STRATEGY, type TabsMountStrategy } from './constants/tabs-mount-strategy';
 export { TABS_SIZE, TABS_SIZES, type TabsSize } from './constants/tabs-size';
 export { TABS_VARIANT, TABS_VARIANTS, type TabsVariant } from './constants/tabs-variant';

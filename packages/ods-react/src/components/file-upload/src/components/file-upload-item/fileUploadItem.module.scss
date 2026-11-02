@@ -24,6 +24,11 @@
 
     &:not([data-disabled]):hover:not(:has(#{$item}__delete:hover)) {
       background-color: var(--ods-file-upload-item-background-color-hover);
+
+      #{$item}__info__name--error,
+      #{$item}__error {
+        color: var(--ods-file-upload-item-text-color-critical-hover);
+      }
     }
 
     &[data-disabled] {

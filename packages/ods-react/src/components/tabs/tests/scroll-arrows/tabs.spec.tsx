@@ -35,4 +35,23 @@ describe('Tabs scroll arrows', () => {
 
     expect(buttonLabels(html)).toEqual(['Previous', 'Next']);
   });
+
+  describe('without a locale, in a server runtime without navigator', () => {
+    const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+
+    beforeEach(() => {
+      Object.defineProperty(globalThis, 'navigator', { configurable: true, value: undefined });
+    });
+
+    afterEach(() => {
+      if (descriptor) {
+        Object.defineProperty(globalThis, 'navigator', descriptor);
+      }
+    });
+
+    it('should render the tabs, with English arrow names', () => {
+      expect(() => renderTabList({})).not.toThrow();
+      expect(buttonLabels(renderTabList({ withArrows: true }))).toEqual(['Scroll tabs left', 'Scroll tabs right']);
+    });
+  });
 });

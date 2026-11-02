@@ -5,8 +5,11 @@ interface UseI18n {
   translate: (key: string) => string
 }
 
+// Empty where no browser language is known, as in a server runtime without navigator: the locale
+// then falls back to English.
 function getBrowserLocales<T>(): T[] {
-  return navigator.language?.split('-').map<T>((browserIsoCode) => browserIsoCode.toLowerCase() as T);
+  const language = typeof navigator === 'undefined' ? undefined : navigator.language;
+  return language ? language.split('-').map<T>((browserIsoCode) => browserIsoCode.toLowerCase() as T) : [];
 }
 
 function getCurrentLocale(locale?: Locale): Locale {

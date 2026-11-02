@@ -122,6 +122,8 @@ if (deepLink && deepLink.startsWith('/')) {
   const moved: Record<string, string> = {
     'ovhcloud-design-system-tools-component-gallery': '/tools/component-gallery',
     'ovhcloud-design-system-what-s-new-changelog': '/guides/changelog',
+    // The "Latest version" link of the changelog entries up to 19.7.3.
+    'design-system-changelog': '/guides/changelog',
     'react-components-icon--gallery': '/components/icon/gallery',
   };
   const path = moved[full] ?? moved[slug] ?? target?.path ?? '/';

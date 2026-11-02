@@ -28,7 +28,7 @@ function readStoredBrand(): Brand {
   return stored === 'blue-jeans' ? stored : 'default';
 }
 
-const BrandSelect = () => {
+const BrandSelect = ({ className }: { className?: string }) => {
   const [brand, setBrand] = useState<Brand>(readStoredBrand);
 
   useEffect(() => {
@@ -46,6 +46,7 @@ const BrandSelect = () => {
 
   return (
     <Select
+      className={ className }
       data-testid="brand-select"
       items={ BRAND_ITEMS }
       onValueChange={ ({ value }) => setBrand((value[0] as Brand) ?? 'default') }

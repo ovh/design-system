@@ -79,7 +79,7 @@ body {
   color: var(--ods-semantic-color-brand);
 }
 
-/* Not the uniform field width: the version select fits its label, beside the logo. */
+/* Not the uniform field width: the version and brand selects fit their label. */
 .shell__topbar-select {
   width: auto;
 }
@@ -88,14 +88,6 @@ body {
   display: inline-flex;
   column-gap: var(--ods-semantic-size-space-gap-inline);
   align-items: center;
-}
-
-/* The logo and the version it documents, on one line. */
-.shell__brand-row {
-  display: flex;
-  gap: var(--ods-semantic-size-space-gap-inline);
-  align-items: center;
-  justify-content: space-between;
 }
 
 .shell__search-hint {
@@ -162,6 +154,13 @@ body {
   gap: var(--ods-semantic-size-space-gap-group);
   border-top: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-separator);
   padding-top: var(--ods-semantic-size-space-gap-group);
+}
+
+.shell__sidebar-footer-row {
+  display: flex;
+  gap: var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
+  justify-content: space-between;
 }
 
 .shell__tree-label {
@@ -488,14 +487,6 @@ body {
 
 /* Topbar "View as Markdown": pushed to the right edge, never shrinks under a
    long page title. */
-/* Layout only: the look is the ODS Link's own. */
-.shell__markdown-link {
-  display: inline-flex;
-  gap: var(--ods-semantic-size-space-gap-inline);
-  align-items: center;
-  white-space: nowrap;
-}
-
 .shell__topbar-actions {
   display: flex;
   flex: none;

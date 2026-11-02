@@ -46,6 +46,10 @@ async function suite(browser, { base, version }) {
     ok('content hit carries a matched snippet', /aria-describedby/i.test(snippet ?? ''), (snippet ?? '(none)').slice(0, 80));
     const marks = await page.locator('.shell__search-mark').count();
     ok('matched terms are bolded in the snippet', marks > 0, `${marks} marks`);
+    // Flash highlight (CSS Custom Highlight API): watched from the click on, since it clears itself
+    // after CLEAR_AFTER_MS (2600) and the checks below can outlast it on a loaded machine.
+    const flashed = page.waitForFunction(() => CSS.highlights?.has('ods-search'), {}, { timeout: 10000 })
+      .then(() => true, () => false);
     await page.locator('.shell__search-option--content').first().click();
     await page.waitForTimeout(1500);
     ok('selecting a content hit navigates', !page.url().endsWith(`${root}/`), page.url());
@@ -55,12 +59,7 @@ async function suite(browser, { base, version }) {
       const scrolledToSection = await page.evaluate(isSectionInView, decodeURIComponent(hash.slice(1)));
       ok('the section is scrolled into view (SPA nav)', scrolledToSection);
     }
-    // Flash highlight (CSS Custom Highlight API): painted once the lazy content has settled, which
-    // can take longer than the wait above. Awaited rather than sampled: it clears itself after
-    // CLEAR_AFTER_MS, so a later sample would miss it.
-    const flashed = await page.waitForFunction(() => CSS.highlights?.has('ods-search'), {}, { timeout: 8000 })
-      .then(() => true, () => false);
-    ok('searched terms are flash-highlighted on arrival', flashed);
+    ok('searched terms are flash-highlighted on arrival', await flashed);
     // …and self-cleared shortly after. Coupled to CLEAR_AFTER_MS (2600) in
     // src/doc/searchHighlight.ts: keep this wait above CLEAR_AFTER_MS.
     await page.waitForTimeout(2800);

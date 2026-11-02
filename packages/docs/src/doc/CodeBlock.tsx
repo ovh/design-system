@@ -34,8 +34,14 @@ const LANGUAGES: Record<string, Language> = {
   yaml: yamlLang,
 };
 
+/* In the dark scheme, the code blocks take their ground from the Code component (doc.css), not from
+   the theme: without an editor.background, the component keeps its own, and a transparent bg keeps
+   shiki's own pre from painting its default grey over it. */
+const { 'editor.background': _ground, ...darkColors } = oneDarkPro.colors ?? {};
+const darkTheme = { ...oneDarkPro, bg: 'transparent', colors: darkColors };
+
 /* The shiki theme of every code block, following the docs light/dark mode. */
-const useCodeTheme = () => (useDocTheme() === 'dark' ? oneDarkPro : githubLight);
+const useCodeTheme = () => (useDocTheme() === 'dark' ? darkTheme : githubLight);
 
 /* Every code snippet of the docs goes through here: ODS Code, copy button
    always on, shiki theme following the docs light/dark mode.

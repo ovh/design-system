@@ -181,12 +181,6 @@ body {
   margin-bottom: calc(var(--ods-semantic-size-space-gap-block) / 2);
 }
 
-/* A page at the root of a tree has no chevron: its label takes the chevron's room, so that it lines
-   up with the section names around it. */
-.shell__tree-label--root-page {
-  padding-left: calc(var(--ods-semantic-size-space-gap-group) * 1.5);
-}
-
 .shell__tree-label--section {
   font-weight: var(--ods-semantic-font-weight-semibold);
 }

@@ -70,7 +70,6 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
     return [...(page ? [[item.id, page] as [string, string]] : []), ...((item.children ?? []) as typeof items).flatMap(collect)];
   }));
   const selected = [...sectionPages].find(([, page]) => page === currentId)?.[0] ?? currentId;
-  const rootPages = new Set(items.filter((item) => !item.children).map((item) => item.id));
   const sections = new Set(items.flatMap(function collect(item): string[] {
     return item.children ? [item.id, ...(item.children as typeof items).flatMap(collect)] : [];
   }));
@@ -162,7 +161,7 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
               const badgeStatus = data?.badge === 'new' ? BADGE_STATUS.new : data?.badge === 'beta' ? BADGE_STATUS.beta : BADGE_STATUS.warning;
               const badgeLabel = data?.badge === 'new' ? 'New' : data?.badge === 'beta' ? 'Beta' : 'Deprecated';
               return (
-                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section', !isBranch && rootPages.has(node.id) && 'shell__tree-label--root-page'].filter(Boolean).join(' ') }>
+                <span className={ ['shell__tree-label', isBranch && 'shell__tree-label--section'].filter(Boolean).join(' ') }>
                   { data?.icon && <Icon name={ data.icon } /> }
                   <span>{ node.name }</span>
                   { data?.badge && (

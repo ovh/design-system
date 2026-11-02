@@ -3,11 +3,13 @@ import { type ComponentType, Suspense, lazy, useMemo } from 'react';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { RecipePage } from '../doc/ports/recipes/RecipePage';
 import { DocSkeleton } from '../doc/DocSkeleton';
+import { MarkdownLink } from '../doc/MarkdownLink';
 import { type NavPage } from '../nav/model';
 
-/* Recipe Gallery: a full-width grid (no ToC), rendered straight through the
-   MDX provider — the <Recipes /> component is self-contained. Every other
-   recipe page is that one recipe, in full. */
+/* Recipe Gallery: a full-width grid (no ToC, so the Markdown link leads the
+   article), rendered straight through the MDX provider — the <Recipes />
+   component is self-contained. Every other recipe page is that one recipe,
+   in full. */
 
 const RECIPE_MODULES = import.meta.glob('../content/recipes/*.mdx');
 
@@ -26,6 +28,7 @@ const RecipesDoc = ({ page }: { page: NavPage }) => {
   return (
     <Suspense fallback={ <DocSkeleton /> }>
       <article className="doc doc--wide">
+        <MarkdownLink className="doc-layout__toc-markdown" />
         <MDXProvider components={ MDX_COMPONENTS }>
           <Doc />
         </MDXProvider>

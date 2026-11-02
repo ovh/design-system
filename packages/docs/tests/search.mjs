@@ -124,9 +124,16 @@ async function suite(browser, { base, version }) {
   const mdLink = page.locator('[data-testid="view-as-markdown"]');
   await mdLink.waitFor({ timeout: 10000 });
   ok('View as Markdown is a link that opens a new tab', await mdLink.evaluate((el) => el.tagName === 'A' && el.getAttribute('target') === '_blank'));
-  // Its text stays readable on its own ground in the dark theme, hovered or not.
+  // Its text stays readable on its own ground in the dark theme, hovered or not. The dark scheme
+  // is picked from the Color scheme menu: it loads the dark theme stylesheet, which a bare
+  // data-theme attribute does not.
+  const pickScheme = async (label) => {
+    await page.locator('[data-testid="theme-menu"]').click();
+    await page.getByRole('menuitem', { name: label }).click();
+    await page.waitForFunction((dark) => document.body.hasAttribute('data-theme') === dark, label === 'Dark', { timeout: 5000 });
+  };
   const darkContrasts = [];
-  await page.evaluate(() => document.body.setAttribute('data-theme', 'dark'));
+  await pickScheme('Dark');
   for (const hover of [false, true]) {
     if (hover) {
       await mdLink.hover();
@@ -150,7 +157,8 @@ async function suite(browser, { base, version }) {
       return Math.round(((light + .05) / (dark + .05)) * 100) / 100;
     }));
   }
-  await page.evaluate(() => document.body.removeAttribute('data-theme'));
+  await page.mouse.move(0, 0);
+  await pickScheme('System');
   ok('View as Markdown reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
   const mdHref = await mdLink.getAttribute('href') ?? '';
   ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
@@ -163,6 +171,19 @@ async function suite(browser, { base, version }) {
   await page.waitForSelector('.shell__topbar');
   await page.waitForTimeout(500);
   ok('View as Markdown hidden on tool pages', (await mdLink.count()) === 0);
+  // …and on the not found page of an unknown component, which has no llms document either.
+  await page.goto(`${root}/components/does-not-exist`, { waitUntil: 'domcontentloaded' });
+  await page.getByRole('heading', { level: 1, name: 'Page not found' }).waitFor({ timeout: 10000 });
+  ok('View as Markdown hidden on an unknown component', (await mdLink.count()) === 0);
+  // The Recipe Gallery has no table of contents: the link leads its article.
+  await page.goto(`${root}/recipes/components`, { waitUntil: 'domcontentloaded' });
+  const galleryHref = await mdLink.waitFor({ timeout: 10000 }).then(() => mdLink.getAttribute('href'), () => null);
+  ok('View as Markdown on the Recipe Gallery', /llms\/recipes-components\.txt$/.test(galleryHref ?? ''), galleryHref ?? '(no link)');
+  // A trailing slash keeps the page it names: its title and its Markdown link.
+  await page.goto(`${root}/guides/get-started/`, { waitUntil: 'domcontentloaded' });
+  const slashHref = await mdLink.waitFor({ timeout: 10000 }).then(() => mdLink.getAttribute('href'), () => null);
+  const slashTitle = await page.locator('h1').first().textContent();
+  ok('a trailing slash keeps the guide title and its Markdown link', slashTitle === 'Get Started' && !!slashHref, `${slashTitle} / ${slashHref ?? '(no link)'}`);
 
   // Heading anchors: hover-revealed, native hash href. (Own try: a missing
   // heading must report KO, not kill the whole run.)

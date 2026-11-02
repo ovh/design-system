@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 620
+tokens: 622
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -54,11 +54,11 @@ We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to
 
 For example, if you need to make an anchor tag looks like a `Link`:
 
-```css
-@import '@ovhcloud/ods-react/style';
+```scss
+@use '@ovhcloud/ods-react/style' as ods;
 
 .my-link {
-  @include ods-link();
+  @include ods.ods-link();
 }
 ```
 

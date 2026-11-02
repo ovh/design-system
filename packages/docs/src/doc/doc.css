@@ -165,7 +165,8 @@ article.doc.doc--wide {
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
 }
 
-/* The ToC column: the table of contents, then the page's Markdown link, kept in view together. */
+/* The ToC column: the page's Markdown link, then its table of contents, kept in view together. The
+   link comes first: a long table of contents would push it out of view. */
 .doc-layout__aside {
   display: flex;
   flex-direction: column;

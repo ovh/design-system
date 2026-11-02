@@ -290,8 +290,8 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
       { /* The page's own aids: its table of contents and its Markdown version. */ }
       { compactToc && (
         <div className="doc-layout__aside doc-layout__aside--compact">
-          <PageToc compact container={ container } />
           <MarkdownLink />
+          <PageToc compact container={ container } />
         </div>
       ) }
       <article className="doc" ref={ ref }>
@@ -299,8 +299,8 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
       </article>
       { !compactToc && (
         <aside className="doc-layout__aside">
-          <PageToc container={ container } />
           <MarkdownLink />
+          <PageToc container={ container } />
         </aside>
       ) }
     </div>

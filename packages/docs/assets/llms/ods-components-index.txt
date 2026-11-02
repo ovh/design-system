@@ -140,7 +140,7 @@
 
 - [Overview](./react-components-file-upload.txt) (~563 tokens)
 - [Documentation](./react-components-file-upload--documentation.txt) (~1908 tokens)
-- [Technical Information](./react-components-file-upload--technical-information.txt) (~881 tokens)
+- [Technical Information](./react-components-file-upload--technical-information.txt) (~907 tokens)
 - [Examples](./react-components-file-upload--examples.txt) (~1940 tokens)
 
 ## Form Field

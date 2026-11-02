@@ -5,6 +5,7 @@ import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/c
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Menu, MenuContent, MenuItem, MenuTrigger } from '../../../ods-react/src/components/menu/src';
 import { Select, SelectContent, SelectControl } from '../../../ods-react/src/components/select/src';
+import { setThemeScheme } from './themeStyles';
 
 /* Same behavior and storage key as the old manager addons: the preference
    survives the platform switch. */
@@ -42,14 +43,7 @@ const ThemeMenu = () => {
   useEffect(() => {
     localStorage.setItem(THEME_KEY, JSON.stringify(choice));
     const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const apply = () => {
-      const dark = choice === 'dark' || (choice === 'system' && media.matches);
-      if (dark) {
-        document.body.setAttribute('data-theme', 'dark');
-      } else {
-        document.body.removeAttribute('data-theme');
-      }
-    };
+    const apply = () => setThemeScheme(choice === 'dark' || (choice === 'system' && media.matches) ? 'dark' : 'light');
     apply();
     media.addEventListener('change', apply);
     return () => media.removeEventListener('change', apply);

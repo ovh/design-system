@@ -36,12 +36,11 @@ describe('Tabs scroll arrows', () => {
     expect(buttonLabels(html)).toEqual(['Previous', 'Next']);
   });
 
-  describe('without a locale, in a server runtime without navigator', () => {
+  describe('without a locale', () => {
     const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
-
-    beforeEach(() => {
-      Object.defineProperty(globalThis, 'navigator', { configurable: true, value: undefined });
-    });
+    const setNavigator = (value: unknown): void => {
+      Object.defineProperty(globalThis, 'navigator', { configurable: true, value });
+    };
 
     afterEach(() => {
       if (descriptor) {
@@ -49,8 +48,18 @@ describe('Tabs scroll arrows', () => {
       }
     });
 
-    it('should render the tabs, with English arrow names', () => {
+    it('should render the tabs, with English arrow names, in a server runtime without navigator', () => {
+      setNavigator(undefined);
+
       expect(() => renderTabList({})).not.toThrow();
+      expect(buttonLabels(renderTabList({ withArrows: true }))).toEqual(['Scroll tabs left', 'Scroll tabs right']);
+    });
+
+    // The markup the client hydrates must match the server's, whatever the browser language: it is
+    // only applied once mounted.
+    it('should render the same English arrow names on the server whatever the browser language', () => {
+      setNavigator({ language: 'fr-FR' });
+
       expect(buttonLabels(renderTabList({ withArrows: true }))).toEqual(['Scroll tabs left', 'Scroll tabs right']);
     });
   });

@@ -165,6 +165,28 @@ const COMPONENT_SECTION_GAPS: Record<string, string[]> = {
   'message-bubble': ['Navigation', 'Accessibility'],
 };
 
+/* Drops the fenced code blocks as CommonMark reads them: a fence of three or
+   more backticks or tildes, indented by up to three spaces, closed by a fence
+   of the same character at least as long, or by the end of the file. */
+function withoutCodeFences(text: string): string {
+  let fence: { char: string, length: number } | undefined;
+
+  return text.split('\n').filter((line) => {
+    const marker = /^ {0,3}(`{3,}|~{3,})/.exec(line)?.[1];
+    if (!fence) {
+      if (marker) {
+        fence = { char: marker[0], length: marker.length };
+        return false;
+      }
+      return true;
+    }
+    if (marker && marker[0] === fence.char && marker.length >= fence.length && !line.trim().slice(marker.length).trim()) {
+      fence = undefined;
+    }
+    return false;
+  }).join('\n');
+}
+
 function checkComponentStructure(componentKeys: string[]): void {
   const errors: string[] = [];
   const required = [...COMPONENT_SECTIONS.filter((label) => !OPTIONAL_COMPONENT_SECTIONS.has(label)), "Dos & Don'ts", 'IdentityCard'];
@@ -180,9 +202,8 @@ function checkComponentStructure(componentKeys: string[]): void {
   }
 
   for (const key of componentKeys) {
-    const mdx = readFileSync(resolve(here, `src/content/components/${key}/documentation.mdx`), 'utf8')
-      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
-      .replace(/^```[\s\S]*?^```/gm, '');
+    const mdx = withoutCodeFences(readFileSync(resolve(here, `src/content/components/${key}/documentation.mdx`), 'utf8'))
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
     const allHeadings = [...mdx.matchAll(/<Heading\b[^>]*>/g)].map(([tag]) => ({
       label: /\blabel="([^"]+)"/.exec(tag)?.[1],
       level: Number(/\blevel=\{ ?(\d) ?\}/.exec(tag)?.[1]),

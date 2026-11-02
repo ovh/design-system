@@ -75,6 +75,7 @@ body {
 
 .shell__brand-logo {
   display: flex;
+  margin-inline: auto;
   width: 150px;
   color: var(--ods-semantic-color-brand);
 }

@@ -38,13 +38,15 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, tokens }: Co
   const examples = demos.filter(({ name }) => !isAccessibilityStory(name));
   const accessibility = demos.filter(({ name }) => isAccessibilityStory(name));
 
-  // Each demo gets its own h3 so the page ToC lists it, grouped under the h2 sections.
-  const renderDemo = ({ Component, name }: ComposedDemo) => {
+  // Each demo gets its own heading so the page ToC lists it. The examples are the tab's own content,
+  // already named by the tab: their demos are its h2 sections; the other groups keep an h2 of their
+  // own, with h3 demos.
+  const renderDemo = (level: 2 | 3) => ({ Component, name }: ComposedDemo) => {
     const source = sources[name];
     const imports = (storiesModule[name] as { globals?: { imports?: string } } | undefined)?.globals?.imports;
     return (
       <div key={ name }>
-        <Heading label={ demoTitle(name) } level={ 3 } />
+        <Heading label={ demoTitle(name) } level={ level } />
         <DemoCanvas
           dark={ dark }
           label={ `${demoTitle(name)} example` }
@@ -59,17 +61,12 @@ const ComponentPage = ({ component, dark, rawSource, storiesModule, tokens }: Co
 
   return (
     <section>
-      { examples.length > 0 && (
-        <>
-          <Heading label="Examples" level={ 2 } />
-          { examples.map(renderDemo) }
-        </>
-      ) }
+      { examples.map(renderDemo(2)) }
 
       { accessibility.length > 0 && (
         <>
           <Heading label="Accessibility" level={ 2 } />
-          { accessibility.map(renderDemo) }
+          { accessibility.map(renderDemo(3)) }
         </>
       ) }
 

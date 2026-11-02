@@ -19,15 +19,11 @@ Before starting, make sure you are on a release branch, your working tree is cle
 
 ### 1. Create the release branch
 
-For a major or minor version, create a new `release/X.Y` branch from up-to-date `master`. For a patch, use the existing release branch that matches its scope.
+Create a branch named after the version you are about to release, from up-to-date `master`: `release/20.1.0`, `release/20.0.0-alpha.1`. The previous release must already be merged back into `master` (step 4), so that `lerna.json` holds its version. A fix for an older line is the exception, see [Maintenance](#maintenance-fix-an-older-line).
 
-The changelog lists the commits since the previous release tag, so that tag must be an ancestor of your branch. Release commits come back to `master` through a rebase merge, which leaves their tag behind: a branch cut from `master` usually misses it. The version command checks it and prints the command to run, for instance:
+The changelog lists the commits since the previous release tag. Release commits come back to `master` through a rebase merge, which leaves that tag behind, so the version command grafts it onto your branch locally (`git replace`: never pushed, files unchanged) and prints how to remove the graft afterwards. Your branch stays free of the tag's commits and still rebase-merges into `master`.
 
-```bash
-git merge -s ours --no-edit v19.7.3
-```
-
-This merge only records the ancestry, your files stay as they are.
+Commits made directly on a release branch come back to `master` as new commits, and the next changelog lists them again: land fixes on `master` first.
 
 ### 2. Add a "What's New" entry
 
@@ -45,16 +41,18 @@ Once the tag is pushed, our CI takes over and the release is out shortly after.
 
 ### 4. Merge back to `master`
 
-Open a pull request from your `release/*` branch to `master` and merge it, so the version bump, changelogs, and "What's New" entry land on `master`.
+Open a pull request from your release branch to `master` and rebase-merge it, so the version bump, changelogs, and "What's New" entry land on `master` before the next release branch is cut. Do not merge back a fix for an older line: port the fix to `master` on its own.
 
 ## What the CI does
 
 Our internal CI runs the release workflow, defined outside this repository, on every `v*` tag:
 
 1. It builds the packages, the API documentation and the documentation site, and fails if `packages/docs/assets/llms` differs from the committed files.
-2. It publishes every public package listed by `pnpm exec lerna list` (`@ovhcloud/ods-react`, `@ovhcloud/ods-recipes`, `@ovhcloud/ods-themes`, `@ovhcloud/ods-docs` and `@ovhcloud/ods-mcp`) to the internal registry: under `latest` for the newest final version, `alpha` for a prerelease, `latest-<major>` for a maintenance release of an older line.
-3. It opens the npm sync pull request, which a maintainer must approve. The packages reach npmjs.com once that pull request is merged.
-4. It rebuilds the GitHub Pages site from the published documentation packages (`@ovhcloud/ods-storybook` up to 19.7.3, `@ovhcloud/ods-docs` after) and pushes it to the `gh-pages` branch. `latest` only moves forward: a prerelease or a maintenance release of an older line leaves it on the newest final version.
+2. It publishes every public package listed by `pnpm exec lerna list` (`@ovhcloud/ods-react`, `@ovhcloud/ods-recipes`, `@ovhcloud/ods-themes`, `@ovhcloud/ods-docs` and `@ovhcloud/ods-mcp`) to the internal registry. Only the newest final version gets `latest`: a prerelease gets `alpha` (`alpha-<major>` for an older major), an older final version `latest-<major>` (`latest-<major>.<minor>` within the newest major).
+3. It opens the npm sync pull request, which a maintainer must approve. The packages reach npmjs.com once that pull request is merged. The sync refuses a final version older than the newest one it already published, since npmjs.com could make it `latest`, and skips a version it already lists, so running it again is safe.
+4. It rebuilds the GitHub Pages site from the published documentation packages (`@ovhcloud/ods-storybook` up to 19.7.3, `@ovhcloud/ods-docs` after) and pushes it to the `gh-pages` branch. `latest` only moves forward: a prerelease or a fix for an older line leaves it on the newest final version.
+
+If the documentation deploy fails, run that job of the release again, or run the manual documentation deploy on the tag: a run on `master` is untagged and never moves `latest`. Two tags pushed close together can make the second deploy fail to push `gh-pages`: run it again. Running the deploy of an older release again puts its root `llms.txt` back: deploy the newest version afterwards.
 
 ## After the release
 
@@ -95,20 +93,17 @@ Then, you have to generate a minor version from your branch.
 pnpm ods:minor
 ```
 
-The release branch will be used for bugfixes later (patch).
-Once the support for the version has ended, the branch will be un-referenced.
-
 ### Major: breaking changes
 
 You added breaking changes:
 
-Create a release branch from up-to-date `master` that corresponds to the version you are going to release like `release/X.Y`.
+Create a release branch from up-to-date `master` that corresponds to the version you are going to release like `release/X.Y.Z`.
 
 Then add a migration guide for the version you are going to release:
 
 1. Write the guide in `packages/docs/src/content/guides/migration-X-to-Y.mdx` (plain MDX, no imports or Meta needed — guide files are picked up automatically).
 2. Register the page in the navigation model, `packages/docs/src/nav/model.ts` (Upgrade section, like the existing `guides/migration-*` entries).
-3. Add a `GUIDE_META` entry for it in `packages/docs/vite-plugin-llms.ts` so it lands in the generated LLM documentation (the build fails with a "guide inventory drift" error until the entry exists).
+3. Add an entry for it in `packages/docs/src/content/guides/guides.json` so it lands in the generated LLM documentation (the build fails with a "guide inventory drift" error until the entry exists).
 
 Then, you have to generate a major version from your branch.
 
@@ -116,18 +111,17 @@ Then, you have to generate a major version from your branch.
 pnpm ods:major
 ```
 
-The release branch will be used for bugfixes later (patch).
-Once the support for the version has ended, the branch will be unreferenced.
-
 ### Maintenance: fix an older line
 
-Release the fix from the existing `release/X.Y` branch of that line with `pnpm ods:patch`. The CI publishes it under the `latest-<major>` dist-tag on the internal registry and leaves the `latest` documentation on the newest version.
+Cut the branch from the last tag of that line instead of `master`, for instance `release/19.7.4` from `v19.7.3`, commit the fix there, then run `pnpm ods:patch`. That branch keeps the scripts of its line. The CI publishes the packages under `latest-<major>` on the internal registry and leaves the `latest` documentation on the newest version.
 
-On npmjs.com, the npm sync sets the dist-tag itself. Once its pull request is merged, check that `npm view @ovhcloud/ods-react dist-tags` still shows the newest version as `latest`, and ask the maintainers of the npm sync to restore it otherwise.
+The npm sync refuses it, since npmjs.com could make it `latest`. Once you have agreed with the maintainers of the npm sync on how it will be tagged, publish it with the manual npm sync and its override, then check that `npm view @ovhcloud/ods-react dist-tags` still shows the newest version as `latest`.
+
+Do not merge this branch back into `master`.
 
 ### Prerelease: try a version before it is final
 
-From the release branch, publish prereleases first, then the final version:
+Each from its own release branch cut from `master`, publish prereleases first, then the final version:
 
 ```bash
 pnpm ods:premajor    # 1.0.0 -> 2.0.0-alpha.0

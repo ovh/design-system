@@ -12,10 +12,11 @@ const textOf = (children: ReactNode): string => Children.toArray(children)
 /* The changelog is generated plain markdown (conventional-changelog), not MDX: stray braces or angle
    brackets in commit subjects would break an MDX compile, so it renders through the ODS Markdown
    component. Its "# Change Log" title repeats the page title; a release is a "#" (minor) or "##"
-   (patch) heading, and both are the page's sections. */
+   (patch) heading, and both are the page's sections. A release heading keeps the link of its number
+   to the documentation of that version. */
 const HEADINGS = {
-  h1: ({ children }: { children?: ReactNode }) => (textOf(children) === 'Change Log' ? null : <Heading label={ textOf(children) } level={ 2 } />),
-  h2: ({ children }: { children?: ReactNode }) => <Heading label={ textOf(children) } level={ 2 } />,
+  h1: ({ children }: { children?: ReactNode }) => (textOf(children) === 'Change Log' ? null : <Heading content={ children } label={ textOf(children) } level={ 2 } />),
+  h2: ({ children }: { children?: ReactNode }) => <Heading content={ children } label={ textOf(children) } level={ 2 } />,
   h3: ({ children }: { children?: ReactNode }) => <Heading label={ textOf(children) } level={ 3 } />,
 };
 

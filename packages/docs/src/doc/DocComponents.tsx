@@ -13,6 +13,7 @@ import { Table } from '../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
+import { previousMajorDocUrl } from './previousMajorDocUrl';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
@@ -57,29 +58,12 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
   );
 };
 
-/* Previous-major documentation link, gated by startingVersion (the major the
-   component first shipped in): a component born after the previous major has
-   no earlier doc to link to. v18 and below is the Stencil-era storybook, whose
-   form elements lived under a "form-elements" category. */
-const LAST_NON_REACT_VERSION = 18;
+/* The previous major is the newest released version of another major. */
 const PREVIOUS_MAJOR_FULL_VERSION = (versions as string[]).find((version) => version.split('.')[0] !== (versions as string[])[0]?.split('.')[0]) ?? '';
-const PREVIOUS_MAJOR = parseInt(PREVIOUS_MAJOR_FULL_VERSION, 10);
-const PREVIOUS_FORM_ELEMENTS = ['checkbox', 'clipboard', 'combobox', 'datepicker', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'quantity', 'radio', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'];
-
-function previousMajorDocUrl(name: string, startingVersion?: number): string {
-  if (!PREVIOUS_MAJOR_FULL_VERSION || (startingVersion && startingVersion > PREVIOUS_MAJOR)) {
-    return '';
-  }
-  const uriName = name.toLowerCase().replace(' ', '-');
-  const isStencilEra = PREVIOUS_MAJOR <= LAST_NON_REACT_VERSION;
-  const suffix = isStencilEra && PREVIOUS_FORM_ELEMENTS.includes(uriName) ? '-form-elements' : '';
-  const prefix = isStencilEra ? 'ods' : 'react';
-  return `https://ovh.github.io/design-system/v${PREVIOUS_MAJOR_FULL_VERSION}/?path=/docs/${prefix}-components${suffix}-${uriName}--documentation`;
-}
 
 /* Description (plain prose, unboxed) and the metadata card sit side by side. */
 const IdentityCard = ({ aliases = [], children, figmaLink, githubUrl, name, startingVersion }: { aliases?: string[], children?: ReactNode, figmaLink?: string, githubUrl: string, name: string, startingVersion?: number }) => {
-  const previousVersionUrl = previousMajorDocUrl(name, startingVersion);
+  const previousVersionUrl = previousMajorDocUrl(PREVIOUS_MAJOR_FULL_VERSION, name, githubUrl, startingVersion);
   return (
     <div className="doc__overview">
       <div className="doc__identity-desc">{ children }</div>

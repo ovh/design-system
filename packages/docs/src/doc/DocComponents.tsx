@@ -58,22 +58,22 @@ const Canvas = ({ from, source = 'shown', story }: { from?: string, source?: 'sh
 };
 
 /* Previous-major documentation link, gated by startingVersion (the major the
-   component first shipped in): a component born in (or after) the previous
-   major has no earlier doc to link to. Same logic as the old storybook
-   IdentityCard — v18 and below is the Stencil-era storybook, whose form
-   elements lived under a "form-elements" category. */
+   component first shipped in): a component born after the previous major has
+   no earlier doc to link to. v18 and below is the Stencil-era storybook, whose
+   form elements lived under a "form-elements" category. */
 const LAST_NON_REACT_VERSION = 18;
 const PREVIOUS_MAJOR_FULL_VERSION = (versions as string[]).find((version) => version.split('.')[0] !== (versions as string[])[0]?.split('.')[0]) ?? '';
 const PREVIOUS_MAJOR = parseInt(PREVIOUS_MAJOR_FULL_VERSION, 10);
 const PREVIOUS_FORM_ELEMENTS = ['checkbox', 'clipboard', 'combobox', 'datepicker', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'quantity', 'radio', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'];
 
 function previousMajorDocUrl(name: string, startingVersion?: number): string {
-  if (!PREVIOUS_MAJOR_FULL_VERSION || (startingVersion && startingVersion >= PREVIOUS_MAJOR)) {
+  if (!PREVIOUS_MAJOR_FULL_VERSION || (startingVersion && startingVersion > PREVIOUS_MAJOR)) {
     return '';
   }
   const uriName = name.toLowerCase().replace(' ', '-');
-  const suffix = PREVIOUS_FORM_ELEMENTS.includes(uriName) && (!startingVersion || startingVersion <= LAST_NON_REACT_VERSION) ? '-form-elements' : '';
-  const prefix = PREVIOUS_MAJOR > LAST_NON_REACT_VERSION ? 'react' : 'ods';
+  const isStencilEra = PREVIOUS_MAJOR <= LAST_NON_REACT_VERSION;
+  const suffix = isStencilEra && PREVIOUS_FORM_ELEMENTS.includes(uriName) ? '-form-elements' : '';
+  const prefix = isStencilEra ? 'ods' : 'react';
   return `https://ovh.github.io/design-system/v${PREVIOUS_MAJOR_FULL_VERSION}/?path=/docs/${prefix}-components${suffix}-${uriName}--documentation`;
 }
 

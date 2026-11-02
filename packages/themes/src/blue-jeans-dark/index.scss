@@ -188,6 +188,12 @@
     --ods-button-border-color-critical-high: var(--ods-semantic-color-surface-critical);
   }
 
+  :root [data-ods='meter'] {
+    // surface-success and surface-critical keep their blue-jeans values: 2.76:1 and 2.13:1 on the navy-700 track.
+    --ods-meter-background-color-critical: var(--ods-palette-red-300);
+    --ods-meter-background-color-normal: var(--ods-palette-green-300);
+  }
+
   :root [data-ods='badge'] {
     // One ink across the three emphases.
     --ods-badge-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);

@@ -134,8 +134,9 @@ With the Next.js App Router, import the theme in your root layout and use the co
 // app/layout.tsx
 import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
+import { type ReactNode } from 'react';
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>{ children }</body>

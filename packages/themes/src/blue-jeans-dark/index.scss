@@ -229,3 +229,11 @@
     --ods-message-text-color-warning-low: var(--ods-semantic-color-content-on-warning);
   }
 }
+
+@layer ods-organisms {
+  // Same as in ods-quarks above.
+  :root [data-ods='file-upload'] {
+    // The error ink of a hovered row: content-critical gives 3.71:1 on interaction-highlight, red-200 5.08:1.
+    --ods-file-upload-item-text-color-critical-hover: var(--ods-palette-red-200);
+  }
+}

@@ -346,6 +346,8 @@ body {
   --ods-semantic-color-surface-control: var(--docs-dark-ground);
   --ods-semantic-color-content-text: var(--docs-dark-ink);
   --ods-semantic-color-content-heading: var(--docs-dark-ink);
+  /* The select chevrons and the other control icons: bound to accent-800, they vanish on the dark ground. */
+  --ods-semantic-color-content-icon: var(--docs-dark-ink);
 
   /* --- tier 2: every role bound to gray. */
   --ods-semantic-color-surface-neutral: var(--ods-palette-gray-600);

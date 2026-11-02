@@ -162,6 +162,9 @@ importers:
         specifier: 8.6.12
         version: 8.6.12
     devDependencies:
+      '@mdx-js/mdx':
+        specifier: 3.1.1
+        version: 3.1.1
       '@mdx-js/rollup':
         specifier: 3.1.1
         version: 3.1.1(rollup@4.62.2)

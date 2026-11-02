@@ -1,7 +1,6 @@
 // Offline audit (milliseconds) of the "Previous major version" link of every
-// component identity card, for the previous major of today (the Stencil-era
-// v18) and for the one after the v20 release (the React v19), whose storybook
-// ids follow the component folder.
+// component identity card, with the Stencil-era v18 and with the React v19 as
+// the previous major, whose storybook ids follow the component folder.
 import { readFileSync, readdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
@@ -39,10 +38,12 @@ async function suite() {
   const missing = Object.keys(cards).filter((folder) => !cards[folder].name || !cards[folder].githubUrl.endsWith(`/${folder}`));
   ok('every identity card names its component and its own folder in githubUrl', missing.length === 0, missing.join(', '));
 
+  // The component pages of the last v19 storybook (v19.7.3/index.json).
+  const v19Pages = ['accordion', 'avatar', 'badge', 'breadcrumb', 'button', 'button-group', 'card', 'cart', 'checkbox', 'clipboard', 'code', 'combobox', 'data-table', 'datepicker', 'divider', 'drawer', 'editable', 'file-thumbnail', 'file-upload', 'form-field', 'icon', 'input', 'kbd', 'link', 'logo', 'markdown', 'medium', 'menu', 'message', 'message-bubble', 'meter', 'modal', 'pagination', 'password', 'phone-number', 'popover', 'progress-bar', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'skeleton', 'spinner', 'switch', 'table', 'tabs', 'tag', 'text', 'textarea', 'tile', 'timepicker', 'toaster', 'toggle', 'tooltip', 'tree-view'];
   const wrong = Object.keys(cards)
-    .map((folder) => [folder, linkOf('19.7.3', folder), (cards[folder].startingVersion ?? 0) > 19 ? '' : `react-components-${folder}`])
+    .map((folder) => [folder, linkOf('19.7.3', folder), v19Pages.includes(folder) ? `react-components-${folder}` : ''])
     .filter(([, actual, expected]) => actual !== expected);
-  ok('v19 as previous major: each component born by v19 links to its folder id, the others to nothing', wrong.length === 0, wrong.map(([folder, actual]) => `${folder} → ${actual || 'no link'}`).join(', '));
+  ok('v19 as previous major: each component with a v19 storybook page links to it, the others to nothing', wrong.length === 0, wrong.map(([folder, actual]) => `${folder} → ${actual || 'no link'}`).join(', '));
 
   for (const [folder, expected] of [
     ['checkbox', 'ods-components-form-elements-checkbox'],

@@ -9,8 +9,6 @@ import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
-import { APP_ROOT } from '../appBase';
-import { llmsFileFor } from '../doc/llmsFile';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
@@ -163,18 +161,16 @@ const SEARCH_SHORTCUT = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'C
 
 /* The whole sidebar content: rendered in the fixed aside on wide screens and
    inside the navigation drawer on narrow ones. */
-const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
+const SidebarPanels = ({ currentId, narrow, onNavigate, onSearch }: {
   currentId?: string;
+  narrow: boolean;
   onNavigate: (id: string) => void;
   onSearch: () => void;
 }) => (
   <>
-    <div className="shell__brand-row">
-      <RouterLink aria-label="OVHcloud Design System — home" className="shell__brand" to="/">
-        <BrandLogo />
-      </RouterLink>
-      <VersionSelect />
-    </div>
+    <RouterLink aria-label="OVHcloud Design System — home" className="shell__brand" to="/">
+      <BrandLogo />
+    </RouterLink>
 
     <button className="shell__search-hint" onClick={ onSearch } type="button">
       <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
@@ -189,12 +185,16 @@ const SidebarPanels = ({ currentId, onNavigate, onSearch }: {
       <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
     </nav>
 
-    { /* The display settings sit at the foot, out of the way of the navigation. */ }
+    { /* The site's own context sits at the foot: the version it documents and its repository. The
+         brand select joins it on narrow screens, where the topbar has no room for it. */ }
     <div className="shell__sidebar-footer">
-      <BrandSelect />
-      <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
-        <Icon name={ ICON_NAME.github } /> GitHub
-      </Link>
+      { narrow && <BrandSelect /> }
+      <div className="shell__sidebar-footer-row">
+        <Link aria-label="GitHub repository" className="shell__github" href="https://github.com/ovh/design-system" rel="noreferrer" target="_blank">
+          <Icon name={ ICON_NAME.github } /> GitHub
+        </Link>
+        <VersionSelect />
+      </div>
     </div>
   </>
 );
@@ -203,29 +203,6 @@ const openSearchPalette = () => {
   document.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'k', metaKey: true }));
 };
 
-/* Opens the current page as Markdown, the exact file the AI toolchain consumes (llms, see
-   llmsFile.ts), in a new tab: a link, so that the URL can be read, shared or handed to an
-   assistant as is. Hidden on pages that emit no llms document. */
-const MarkdownLink = ({ narrow, pathname }: { narrow: boolean, pathname: string }) => {
-  const file = llmsFileFor(pathname);
-
-  if (!file) {
-    return null;
-  }
-
-  return (
-    <Link
-      aria-label={ narrow ? 'View as Markdown (new tab)' : undefined }
-      className="shell__markdown-link"
-      data-testid="view-as-markdown"
-      href={ new URL(`llms/${file}`, APP_ROOT).href }
-      rel="noreferrer"
-      target="_blank">
-      <Icon name={ ICON_NAME.robot } />
-      { !narrow && <>View as Markdown <Icon name={ ICON_NAME.externalLink } /></> }
-    </Link>
-  );
-};
 
 const Shell = () => {
   const location = useLocation();
@@ -345,7 +322,7 @@ const Shell = () => {
 
       { !isNarrow && (
         <aside className="shell__sidebar">
-          <SidebarPanels currentId={ currentPage?.id } onNavigate={ onNavigate } onSearch={ openSearchPalette } />
+          <SidebarPanels currentId={ currentPage?.id } narrow={ false } onNavigate={ onNavigate } onSearch={ openSearchPalette } />
         </aside>
       ) }
 
@@ -365,7 +342,7 @@ const Shell = () => {
                 onClick={ () => setNavOpen(false) }>
                 <Icon name={ ICON_NAME.xmark } />
               </Button>
-              <SidebarPanels currentId={ currentPage?.id } onNavigate={ onNavigate } onSearch={ onSearch } />
+              <SidebarPanels currentId={ currentPage?.id } narrow onNavigate={ onNavigate } onSearch={ onSearch } />
             </DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -386,7 +363,7 @@ const Shell = () => {
           ) }
           { !isWelcome && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
           <div className="shell__topbar-actions">
-            { currentPage && !isWelcome && <MarkdownLink narrow={ isNarrow } pathname={ location.pathname } /> }
+            { !isNarrow && <BrandSelect className="shell__topbar-select" /> }
             <ThemeMenu />
           </div>
         </header>

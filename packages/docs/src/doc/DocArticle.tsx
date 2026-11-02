@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../ods-react/src/components/accordion/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { MarkdownLink } from './MarkdownLink';
 import { flashSearchTerms } from './searchHighlight';
 import { createUniqueSlugs } from './slug';
 
@@ -286,11 +287,22 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="doc-layout">
-      { compactToc && <PageToc compact container={ container } /> }
+      { /* The page's own aids: its table of contents and its Markdown version. */ }
+      { compactToc && (
+        <div className="doc-layout__aside doc-layout__aside--compact">
+          <PageToc compact container={ container } />
+          <MarkdownLink />
+        </div>
+      ) }
       <article className="doc" ref={ ref }>
         { children }
       </article>
-      { !compactToc && <PageToc container={ container } /> }
+      { !compactToc && (
+        <aside className="doc-layout__aside">
+          <PageToc container={ container } />
+          <MarkdownLink />
+        </aside>
+      ) }
     </div>
   );
 };

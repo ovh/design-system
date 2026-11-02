@@ -163,9 +163,27 @@ article.doc.doc--wide {
   max-height: calc(100dvh - 120px);
   overflow-y: auto;
   padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+}
+
+/* The ToC column: the table of contents, then the page's Markdown link, kept in view together. */
+.doc-layout__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-semantic-size-space-gap-group);
   position: sticky;
   z-index: var(--ods-semantic-z-index-sticky);
   top: 8px;
+}
+
+.doc-layout__aside--compact {
+  position: static;
+}
+
+.doc-layout__markdown-link {
+  display: inline-flex;
+  gap: var(--ods-semantic-size-space-gap-inline);
+  align-items: center;
+  align-self: flex-start;
 }
 
 .doc-layout__toc-title {

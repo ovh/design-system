@@ -121,6 +121,7 @@ if (deepLink && deepLink.startsWith('/')) {
   // Pages whose place in the tree changed since Storybook: their old slug no longer derives from it.
   const moved: Record<string, string> = {
     'ovhcloud-design-system-tools-component-gallery': '/tools/component-gallery',
+    'ovhcloud-design-system-what-s-new-changelog': '/guides/changelog',
     'react-components-icon--gallery': '/components/icon/gallery',
   };
   const path = moved[full] ?? moved[slug] ?? target?.path ?? '/';

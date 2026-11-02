@@ -1,6 +1,8 @@
+// The Storybook URL of the changelog: latest stays on the 19.7.3 Storybook until
+// 20.0.0, and the docs app maps this legacy path onto /guides/changelog.
 const main = `
 
-[Latest version](https://ovh.github.io/design-system/latest/guides/changelog)
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 {{> header}}
 

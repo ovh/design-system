@@ -1,0 +1,154 @@
+---
+title: "What's new in v12 and earlier"
+slug: ovhcloud-design-system-upgrade-what-s-new-v12
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1397
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v12.txt
+---
+
+# What's new in v12 and earlier
+
+*Release notes of v12 and earlier. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+
+## v12.1.0
+
+### New features
+
+We added the Tabs component.<br />
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tabs)
+
+A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
+
+A coding Style has also been added so you can check our guidelines and how to write code for OVHcloud Design System project.<br />
+
+The Contributing Documentation has been updated:
+
+* How to use a component in an other one
+* Theming: how to customize a style
+* some warning about pushing any sensitive content
+
+### Bug fixes
+
+Range component color when in error has been fixed.
+
+Some width issue on Button component has been fixed.<br />
+When in flex, a Button can now display an ellipsis for text content when necessary.
+
+## v12.0.5
+
+### Bug fixes
+
+Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
+
+Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
+
+## v12.0.0
+
+First release on GitHub. There is no new feature in this version. It is now open source
+
+## v11.0.0
+
+Flag component has been modified; you’ll need to update as explained in the migration guide.
+For more details about assets, see [Installation](https://ovh.github.io/design-system/v19.7.3/guides/get-started) page.
+New attributes are available on this component: `lazy`, `assetPath` and `src`.
+
+Before importing any component you now have to setup ods.
+
+Dual range is now available for Range component; It offers two handles to set a min and max value.
+
+To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
+Now, ODS components logic has been moved into controllers.
+If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our Storybook.
+
+Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
+
+We had blur events on Quantity component to set the correct value regarding the Quantity bounds.
+It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
+When Quantity is out of bounds, the field value is now in error state.
+
+## v10.2.0
+
+A new library called `CDK` for `Component Development Kit` is available.
+The main objective is to make the development to be easier thanks to helpers.
+The first integrated feature is an overlay system that allows manipulating and displaying content
+on foreground of the page.
+
+We added a new entire section for `contributions` in the storybook.
+Feel free to read the Contributing Documentation if you want to contribute.
+
+We simplified our developer environment with a `global.dev.ts` file in order to
+make the developer tests isolated from the production build.
+
+We optimized our CI/CD workflow for a more reactive and efficient build time and release time.
+
+We fixed some issue about automated screenshot testing with some timeout.
+
+## v10.1.0
+
+We added the select component (version 1).
+
+[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/select)
+
+## v10.0.0
+
+We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+
+```text
+@stencil/core ~2.6.0 to ~2.18.1
+@stencil/sass ~1.4.1 to ~2.0.0
+jest ~26.6.3 to ~27.4.5
+@types/jest ~26.0.24 to ~27.5.2
+jest-cli ~26.6.3 to ~27.4.5
+jest-puppeteer ^5.0.4 to ~6.1.1
+jest-puppeteer-preset ^5.0.4 to ~6.1.1
+ts-jest ~26.5.6 to ~27.1.5
+typescript 4.2.3 to 4.7.4
+puppeteer ~5.5.0 to ~10.0.0
+yarn-2.4.2 to yarn-3.2.4
+node-fetch ~2.6.6 to ~2.6.7
+ts-node ~9.1.1 to ~10.7.0
+```
+
+> If you are an `ODS` contributor, you may need to do some changes
+
+We now build all of our components for `React` and `Vue` frameworks.
+They allow to use all the potential and features of your high-end JS framework.
+You can read the updated [Getting Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+to initialize an App with ODS and see how it works depending the framework.
+
+Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
+
+`ods-textarea` had an incorrect `spellcheck` property than could be equal to `spellcheck="false'` which is incorrect in HTML.
+Now it is in DOM only if it is `true`.
+
+You can now disable animation on `ods-toggle` by defining a CSS value `--ods-toggle-transition-slider: none`.
+
+Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
+It was previously set with only one number instead of two, accordingly with CSS3.
+
+## v9.1.0
+
+Adding 2 new components :
+
+* accordion: display a content that can be collapsed
+* code: display a snippet of code and copy it into the clipboard
+
+If you already have customized themes, you have to declare the variables for this 2 new components.
+see more in the migration guide 9.x
+
+## February 2022
+
+The V1 **Design System** graphical charter is finalized. This charter contains :
+
+* Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+* A Typography system
+* All spacing options
+* Components:
+* **Buttons**
+* **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+* **Chips & Badges**
+* **Cards**
+* **Cart**

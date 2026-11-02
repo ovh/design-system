@@ -71,9 +71,16 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   }));
   const selected = [...sectionPages].find(([, page]) => page === currentId)?.[0] ?? currentId;
   const rootPages = new Set(items.filter((item) => !item.children).map((item) => item.id));
+  const sections = new Set(items.flatMap(function collect(item): string[] {
+    return item.children ? [item.id, ...(item.children as typeof items).flatMap(collect)] : [];
+  }));
+  const toggle = (id: string) => setOpen((previous) => (previous.includes(id) ? previous.filter((open) => open !== id) : [...previous, id]));
   const [open, setOpen] = useState(expanded);
   const ref = useRef<HTMLDivElement>(null);
-  // The chevron of a section only opens or closes it; its name opens the section's page, if any.
+  // A click on a section does one thing: its chevron opens or closes it, and its name opens its page
+  // (the galleries) or, without one, opens or closes it too. The TreeView would also toggle the
+  // section on every click: expandOnClick, not in the ODS props yet but passed through to Ark, turns
+  // that off, and the toggling happens here.
   const onChevron = useRef(false);
 
   useEffect(() => {
@@ -119,15 +126,32 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
       expandedValue={ open }
       items={ items }
       onExpandedChange={ ({ expandedValue }) => setOpen(expandedValue) }
-      onPointerDownCapture={ (event) => {
-        onChevron.current = !!(event.target as Element).closest('[data-part="branch-indicator"]');
+      onClickCapture={ (event) => {
+        // Before the TreeView's own handler: a chevron click toggles here, even on the selected
+        // section, and the selection change it also triggers is then ignored.
+        const chevron = (event.target as Element).closest('[data-part="branch-indicator"]');
+        const id = chevron?.closest('[data-part="branch-control"]')?.getAttribute('data-value');
+        if (id) {
+          onChevron.current = true;
+          toggle(id);
+          window.setTimeout(() => {
+            onChevron.current = false;
+          });
+        }
       } }
       onValueChange={ ({ value }) => {
-        if (value[0] && !onChevron.current) {
-          onNavigate(sectionPages.get(value[0]) ?? value[0]);
+        const id = value[0];
+        if (!id || onChevron.current) {
+          return;
         }
-        onChevron.current = false;
+        const page = sectionPages.get(id) ?? (sections.has(id) ? undefined : id);
+        if (page) {
+          onNavigate(page);
+        } else {
+          toggle(id);
+        }
       } }
+      { ...{ expandOnClick: false } }
       ref={ ref }
       value={ selected ? [selected] : [] }>
       <TreeViewNodes>

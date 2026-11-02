@@ -6,7 +6,8 @@ import './doc.css';
 
 const PRESETS = { 2: TEXT_PRESET.heading3, 3: TEXT_PRESET.heading4, 4: TEXT_PRESET.heading6 } as const;
 
-const Heading = ({ children, className, label, level }: { children?: ReactNode, className?: string, label: string, level: 2 | 3 | 4 }) => {
+/* `content` replaces the label inside the heading when it carries markup (a link), the label still naming its id. */
+const Heading = ({ children, className, content, label, level }: { children?: ReactNode, className?: string, content?: ReactNode, label: string, level: 2 | 3 | 4 }) => {
   const id = slugify(label);
   return (
     // The anchor sits BESIDE the heading, not inside it: nested, its label would
@@ -17,7 +18,7 @@ const Heading = ({ children, className, label, level }: { children?: ReactNode, 
         className={ cx('doc__heading', className) }
         id={ id }
         preset={ PRESETS[level] }>
-        { label }{ children }
+        { content ?? label }{ children }
       </Text>
       { /* Hover anchor: native #-navigation, plus the absolute URL in the
            clipboard so "look at this section" is one click to share. */ }

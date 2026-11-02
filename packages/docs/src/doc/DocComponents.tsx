@@ -147,6 +147,11 @@ const Blockquote = ({ children }: { children?: ReactNode }) => (
   <Text as="blockquote" preset={ TEXT_PRESET.blockquote }>{ children }</Text>
 );
 
+/* A Markdown link of the MDX content (the release links of the migration titles), with the ODS Link look. */
+const MarkdownLink = ({ children, href }: { children?: ReactNode, href?: string }) => (
+  <Link href={ href }>{ children }</Link>
+);
+
 /* Inline `code` of the MDX content, as the ODS Markdown component renders it. A fenced block reaches
    CodeFence first, which reads this element's props, not its rendering. */
 const InlineCode = ({ children, className }: { children?: ReactNode, className?: string }) => (
@@ -227,6 +232,7 @@ const MDX_COMPONENTS = {
   TableVsDataTable,
   Table,
   TokenPreview,
+  a: MarkdownLink,
   blockquote: Blockquote,
   code: InlineCode,
   img: DocImage,

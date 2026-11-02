@@ -23,7 +23,8 @@ async function suite(browser, { base, version }) {
     }
   });
   await check('edited ramp reaches a brand Button inside the frame', async () => {
-    const marked = await page.evaluate(() => {
+    // Polled: the frame renders its sections before its cloned component stylesheets have loaded.
+    const marked = await page.waitForFunction(() => {
       const f = [...document.querySelectorAll('iframe')].find((el) => el.contentDocument?.body?.textContent?.includes('Theme previews'));
       const doc = f.contentDocument;
       const view = doc.defaultView;
@@ -32,7 +33,7 @@ async function suite(browser, { base, version }) {
       const button = [...doc.querySelectorAll('[data-ods="button"]')].find((el) => view.getComputedStyle(el).backgroundColor === `rgb(${r}, ${g}, ${b})`);
       button?.setAttribute('data-themegen-probe', '');
       return !!button;
-    });
+    }, {}, { timeout: 15000 }).then(() => true, () => false);
     if (!marked) {
       throw new Error('no Button painted with --ods-palette-brand-500');
     }

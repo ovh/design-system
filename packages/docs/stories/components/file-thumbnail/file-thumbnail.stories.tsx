@@ -9,7 +9,6 @@ type Story = StoryObj<FileThumbnailProp>;
 const meta: Meta<FileThumbnailProp> = {
   argTypes: excludeFromDemoControls(['file', 'i18n', 'locale', 'onFileRemove']),
   component: FileThumbnail,
-  tags: ['new'],
   title: 'React Components/File Thumbnail',
 };
 

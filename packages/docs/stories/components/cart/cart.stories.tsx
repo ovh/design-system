@@ -13,7 +13,6 @@ const meta: Meta<CartProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'onOpenChange']),
   component: Cart,
   subcomponents: { CartAction, CartEmpty, CartExtraContent, CartProductGroup, CartProductGroupItem, CartTotal },
-  tags: ['new'],
   title: 'React Components/Cart',
 };
 

@@ -9,7 +9,6 @@ type Story = StoryObj<AvatarProp>;
 const meta: Meta<AvatarProp> = {
   argTypes: excludeFromDemoControls(['children']),
   component: Avatar,
-  tags: ['new'],
   title: 'React Components/Avatar',
 };
 

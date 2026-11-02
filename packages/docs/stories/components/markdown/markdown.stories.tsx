@@ -15,7 +15,6 @@ type Story = StoryObj<MarkdownProp>;
 const meta: Meta<MarkdownProp> = {
   argTypes: excludeFromDemoControls(['component']),
   component: Markdown,
-  tags: ['new'],
   title: 'React Components/Markdown',
 };
 

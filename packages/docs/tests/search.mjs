@@ -120,7 +120,7 @@ async function suite(browser, { base, version }) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
 
-  // View as Markdown: the link beside the table of contents targets the page's llms document.
+  // View as Markdown: the link by the table of contents title targets the page's llms document.
   await page.goto(`${root}/components/button`, { waitUntil: 'domcontentloaded' });
   const mdLink = page.locator('[data-testid="view-as-markdown"]');
   await mdLink.waitFor({ timeout: 10000 });
@@ -141,8 +141,12 @@ async function suite(browser, { base, version }) {
         });
         return (.2126 * r) + (.7152 * g) + (.0722 * b);
       };
-      // A link has no ground of its own: measured against the page it sits on.
-      const ground = getComputedStyle(document.body).backgroundColor;
+      // A link has no ground of its own: measured against the nearest one painted (the ToC card).
+      let node = el.parentElement;
+      while (node && getComputedStyle(node).backgroundColor === 'rgba(0, 0, 0, 0)') {
+        node = node.parentElement;
+      }
+      const ground = getComputedStyle(node ?? document.body).backgroundColor;
       const [light, dark] = [luminance(getComputedStyle(el).color), luminance(ground)].sort((a, b) => b - a);
       return Math.round(((light + .05) / (dark + .05)) * 100) / 100;
     }));

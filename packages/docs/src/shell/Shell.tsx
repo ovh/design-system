@@ -245,10 +245,12 @@ const Shell = () => {
 
   // Exact match first; then the one-segment tab views of a component page
   // (/components/x/examples), the only sub-views the router has: any other
-  // nested path is a not found page, not the page it starts with.
-  const currentPage = pages.find((page) => page.path === location.pathname)
-    ?? pages.find((page) => page.kind === 'component' && location.pathname.startsWith(`${page.path}/`)
-      && !location.pathname.slice(page.path.length + 1).includes('/'));
+  // nested path is a not found page, not the page it starts with. A trailing
+  // slash is ignored, as the router does.
+  const pathname = location.pathname.length > 1 ? location.pathname.replace(/\/+$/, '') : location.pathname;
+  const currentPage = pages.find((page) => page.path === pathname)
+    ?? pages.find((page) => page.kind === 'component' && pathname.startsWith(`${page.path}/`)
+      && !pathname.slice(page.path.length + 1).includes('/'));
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
     || (currentPage?.kind === 'recipe' && !currentPage.gallery);

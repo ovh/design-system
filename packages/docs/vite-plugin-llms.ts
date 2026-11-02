@@ -167,12 +167,14 @@ const COMPONENT_SECTION_GAPS: Record<string, string[]> = {
 
 /* Drops the fenced code blocks as CommonMark reads them: a fence of three or
    more backticks or tildes, indented by up to three spaces, closed by a fence
-   of the same character at least as long, or by the end of the file. */
+   of the same character at least as long, or by the end of the file. A fence
+   inside a blockquote counts too: the quote markers are read past first. */
 function withoutCodeFences(text: string): string {
   let fence: { char: string, length: number } | undefined;
 
   return text.split('\n').filter((line) => {
-    const marker = /^ {0,3}(`{3,}|~{3,})/.exec(line)?.[1];
+    const content = line.replace(/^(?: {0,3}> ?)+/, '');
+    const marker = /^ {0,3}(`{3,}|~{3,})/.exec(content)?.[1];
     if (!fence) {
       if (marker) {
         fence = { char: marker[0], length: marker.length };
@@ -180,7 +182,7 @@ function withoutCodeFences(text: string): string {
       }
       return true;
     }
-    if (marker && marker[0] === fence.char && marker.length >= fence.length && !line.trim().slice(marker.length).trim()) {
+    if (marker && marker[0] === fence.char && marker.length >= fence.length && !content.trim().slice(marker.length).trim()) {
       fence = undefined;
     }
     return false;

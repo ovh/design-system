@@ -107,22 +107,7 @@ The fonts stylesheet declares its font files with relative `url()`s, which Sass 
   </MessageBody>
 </Message>
 
-Each dark theme is an overlay, to load **after** the light theme it darkens. The aluminium dark theme goes after the default theme:
-
-```typescript
-import '@ovhcloud/ods-themes/default/css';
-import '@ovhcloud/ods-themes/aluminium-dark/css';
-```
-
-The blue jeans dark theme goes after the default theme and the blue jeans theme, in this order:
-
-```typescript
-import '@ovhcloud/ods-themes/default/css';
-import '@ovhcloud/ods-themes/blue-jeans/css';
-import '@ovhcloud/ods-themes/blue-jeans-dark/css';
-```
-
-A dark theme re-declares the semantic tokens on `:root`, so it applies to the whole page. To switch between themes, or to create your own, see <DocLink to="/guides/themes">Themes</DocLink>.
+The Blue Jeans theme and the dark themes are overlays, loaded **after** the default theme: <DocLink to="/guides/themes">Themes</DocLink> gives the imports of each theme, in order, and explains how to switch between them or create your own.
 
 <Heading label="Server-side rendering" level={ 2 } />
 

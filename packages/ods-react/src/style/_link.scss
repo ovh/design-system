@@ -1,12 +1,17 @@
 @use './focus';
 
 $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
+// Unlike the colors, not declared by the mixin, only read with a fallback: a value set on a link or
+// on any ancestor (a container, :root) is inherited instead of being reset on every link. Kept out of
+// ./style (index.scss hides them): the custom properties are the API.
+$ods-link-underline-thickness: var(--ods-link-underline-thickness, 1px);
+$ods-link-underline-thickness-hover: var(--ods-link-underline-thickness-hover, 2px);
 
 @mixin ods-link() {
   --ods-link-column-gap: var(--ods-semantic-size-space-gap-inline);
   --ods-link-row-gap: var(--ods-semantic-size-space-gap-block);
   --ods-link-text-color: var(--ods-semantic-color-content-brand);
-  // Same value as at rest: the hover signal is the underline, not a color change.
+  // Same value as at rest: the hover signal is the thicker underline, not a color change.
   --ods-link-text-color-hover: var(--ods-semantic-color-content-brand);
   --ods-link-text-color-visited: var(--ods-semantic-color-interaction-brand-visited);
 
@@ -21,18 +26,16 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
   font-weight: $ods-link-font-weight;
   cursor: pointer;
 
+  // The underline is there at rest, so that a link is not told by its color alone (RGAA 10.6,
+  // WCAG 1.4.1), and thickens on hover.
   &::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing-enter);
     background-color: currentcolor;
     width: 100%;
-    height: 1px;
+    height: $ods-link-underline-thickness;
     content: "";
-    will-change: transform;
   }
 
   &:hover,
@@ -40,7 +43,7 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
     color: var(--ods-link-text-color-hover);
 
     &::after {
-      transform: scaleX(1);
+      height: $ods-link-underline-thickness-hover;
     }
   }
 
@@ -51,5 +54,13 @@ $ods-link-font-weight: var(--ods-semantic-font-weight-semibold);
   // After :hover, so that a visited link keeps its color on hover, as in 19.7.3.
   &:visited {
     color: var(--ods-link-text-color-visited);
+  }
+
+  // Forced colors repaint the background of the line with the canvas color: draw it with the link
+  // color of the user's palette, so that the underline stays the cue.
+  @media (forced-colors: active) {
+    &::after {
+      background-color: LinkText;
+    }
   }
 }

@@ -1,7 +1,15 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type JSX, type MouseEvent, forwardRef, useMemo } from 'react';
+import { Children, type ComponentPropsWithRef, type ElementType, type ForwardedRef, Fragment, type JSX, type MouseEvent, type ReactNode, forwardRef, isValidElement, useMemo } from 'react';
 import { getElementText } from '../../../../../utils/element';
+import { Icon } from '../../../../icon/src';
 import style from './link.module.scss';
+
+// The children with their fragments unfolded, so that <><Icon /></> still reads as an icon.
+function getNodes(children: ReactNode): ReactNode[] {
+  return Children.toArray(children).flatMap((node) => (
+    isValidElement<{ children?: ReactNode }>(node) && node.type === Fragment ? getNodes(node.props.children) : [node]
+  ));
+}
 
 interface LinkProp<T extends ElementType = 'a'> {
   /**
@@ -29,6 +37,14 @@ const Link = forwardRef(function Link<T extends ElementType>({
     return getElementText(children) === '';
   }, [children]);
 
+  // Only ODS icons: a label rendered by a component, such as a translation, has no text in the
+  // children, yet is text on the page and keeps the rest underline.
+  const isIconOnly = useMemo(() => {
+    const nodes = getNodes(children);
+
+    return nodes.length > 0 && nodes.every((node) => isValidElement(node) && node.type === Icon);
+  }, [children]);
+
   function onClick(event: MouseEvent): void {
     if (disabled) {
       event.preventDefault();
@@ -45,6 +61,7 @@ const Link = forwardRef(function Link<T extends ElementType>({
         style['link'],
         { [style['link--disabled']]: disabled },
         { [style['link--no-text']]: hasNoText },
+        { [style['link--icon-only']]: isIconOnly },
         className,
       )}
       data-ods="link"

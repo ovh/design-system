@@ -18,6 +18,10 @@
     }
 
     &__trigger {
+      // Icon-only links next to the page links: the same 1px hover underline, never the 2px one of
+      // the current page.
+      --ods-link-underline-thickness-hover: 1px;
+
       &::before {
         position: absolute;
         top: 50%;

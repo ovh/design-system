@@ -11,6 +11,11 @@
       gap: 0;
     }
 
+    &--icon-only {
+      // An icon alone is not read among text: no underline under it at rest.
+      --ods-link-underline-thickness: 0;
+    }
+
     &#{$current}--disabled {
       @include state.ods-is-disabled();
 
@@ -19,7 +24,7 @@
         color: var(--ods-link-text-color);
 
         &::after {
-          transform: scaleX(0);
+          height: link.$ods-link-underline-thickness;
         }
       }
     }

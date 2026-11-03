@@ -8,6 +8,7 @@
     { "mdx": "forms", "slug": "ovhcloud-design-system-build-forms", "stories": "components/form-field", "title": "Forms" },
     { "mdx": "charts", "slug": "ovhcloud-design-system-build-charts", "title": "Charts" },
     { "mdx": "apply-ods-style", "slug": "ovhcloud-design-system-customize-apply-ods-style", "title": "Apply ODS Style" },
+    { "mdx": "themes", "slug": "ovhcloud-design-system-customize-themes", "title": "Themes" },
     { "mdx": "style-customization", "slug": "ovhcloud-design-system-customize-style-customization", "title": "Style Customization" },
     { "mdx": "design-tokens", "slug": "ovhcloud-design-system-customize-design-tokens", "title": "Design Tokens" },
     { "mdx": "tailwind", "slug": "ovhcloud-design-system-customize-tailwind-css-integration", "title": "Tailwind CSS Integration" },

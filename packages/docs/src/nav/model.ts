@@ -83,6 +83,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
     title: 'Customize',
     children: [
       { icon: ICON_NAME.theme, id: 'guides/apply-ods-style', kind: 'guide', path: '/guides/apply-ods-style', title: 'Apply ODS Style' },
+      { icon: ICON_NAME.moon, id: 'guides/themes', kind: 'guide', path: '/guides/themes', title: 'Themes' },
       { icon: ICON_NAME.resize, id: 'guides/style-customization', kind: 'guide', path: '/guides/style-customization', title: 'Style Customization' },
       { icon: ICON_NAME.diamondsFull, id: 'guides/design-tokens', kind: 'guide', path: '/guides/design-tokens', title: 'Design Tokens' },
       { icon: ICON_NAME.gridAlt, id: 'guides/tailwind', kind: 'guide', path: '/guides/tailwind', title: 'Tailwind CSS Integration' },

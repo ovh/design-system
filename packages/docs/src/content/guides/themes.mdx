@@ -54,8 +54,8 @@ A page shows one theme: the one its stylesheets declare on `:root`. No attribute
 To switch themes, change the stylesheets the page loads. The order still matters, so keep each overlay in its own `<link>` after the theme it builds on, and turn it on or off:
 
 ```html
-<link rel="stylesheet" href="/themes/default.css">
-<link rel="stylesheet" href="/themes/aluminium-dark.css" id="ods-dark" disabled>
+<link rel="stylesheet" href="/ods-themes/default/index.css">
+<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" id="ods-dark" disabled>
 ```
 
 ```typescript
@@ -67,11 +67,11 @@ function setDarkMode(isDark: boolean): void {
 To follow the color scheme of the operating system instead, without any script, give the dark overlay a media query:
 
 ```html
-<link rel="stylesheet" href="/themes/default.css">
-<link rel="stylesheet" href="/themes/aluminium-dark.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="/ods-themes/default/index.css">
+<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" media="(prefers-color-scheme: dark)">
 ```
 
-These URLs point at the built files of `@ovhcloud/ods-themes`, from its `dist` folder, copied to your public folder.
+These URLs assume the `dist` folder of `@ovhcloud/ods-themes` copied to your public folder as `ods-themes`, one folder per theme.
 
 With Vite, a `?url` import emits the file and gives its URL instead. Vite adds the stylesheets you import after the `<link>` elements of your `index.html`, so an overlay declared there would come before the default theme and lose: create its `<link>` from your code, at the end of `<head>`:
 
@@ -87,7 +87,7 @@ function setDarkMode(isDark: boolean): void {
 }
 ```
 
-This documentation works the same way: its theme select and its color scheme button load the overlays they select, after the default theme.
+This documentation also loads its overlays after the default theme, into two `<style>` elements that its theme select and its color scheme button fill.
 
 <Heading label="Use the tokens in your CSS" level={ 2 } />
 
@@ -108,4 +108,15 @@ A theme of your own is an overlay too: a stylesheet, loaded after `@ovhcloud/ods
 }
 ```
 
-The ramps do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their default values. Re-declare the `--ods-semantic-*` tokens themselves to change them. The <DocLink to="/guides/migration-19-to-20">migration guide</DocLink> details which roles each ramp reaches.
+The ramps do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their default values. Over the default theme alone, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare the `--ods-semantic-*` tokens themselves to change them. The <DocLink to="/guides/migration-19-to-20">migration guide</DocLink> details which roles each ramp reaches.
+
+The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+With a dark overlay, load your theme between the default theme and the overlay. The overlay reads the brand and accent ramps, so your colors reach it, and the roles it re-declares, such as the focus ring, stay on top:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import './my-theme.css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```

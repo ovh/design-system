@@ -11,6 +11,25 @@ describe('Modal rendering', () => {
     expect(await page.waitForSelector('[data-ods="modal-trigger"]')).not.toBeNull();
   });
 
+  describe('overlay shadow', () => {
+    it('should draw the content with the overlay shadow, as the other overlays', async() => {
+      await gotoStory(page, 'rendering/overlay-shadow');
+
+      const content = await page.waitForSelector('[data-testid="overlay-shadow"]');
+      const expected = await page.evaluate(() => {
+        const probe = document.createElement('div');
+        probe.style.boxShadow = 'var(--ods-semantic-shadow-overlay)';
+        document.body.appendChild(probe);
+        const shadow = getComputedStyle(probe).boxShadow;
+        probe.remove();
+        return shadow;
+      });
+
+      expect(expected).not.toBe('none');
+      expect(await content!.evaluate((el: Element) => getComputedStyle(el).boxShadow)).toBe(expected);
+    });
+  });
+
   describe('role', () => {
     it('should be a dialog by default and respect a role override', async() => {
       await gotoStory(page, 'rendering/role');

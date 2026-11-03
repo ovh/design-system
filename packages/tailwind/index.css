@@ -1,0 +1,8 @@
+/* The ODS layers sit between the Tailwind components and utilities: a utility on an ODS component
+   wins over its style, and the ODS styles win over the Tailwind preflight (base). The first
+   stylesheet that names a layer sets its place: this file must come before the ODS components in
+   the app (README). */
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, utilities;
+
+@import 'tailwindcss';
+@import './theme.css';

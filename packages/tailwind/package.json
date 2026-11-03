@@ -1,0 +1,39 @@
+{
+  "name": "@ovhcloud/ods-tailwind",
+  "version": "19.7.3",
+  "description": "Tailwind CSS v4 utilities mapped to the OVHcloud Design System tokens",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git",
+    "directory": "packages/tailwind"
+  },
+  "exports": {
+    ".": "./index.css",
+    "./theme.css": "./theme.css",
+    "./package.json": "./package.json"
+  },
+  "style": "./index.css",
+  "files": [
+    "index.css",
+    "theme.css",
+    "README.md"
+  ],
+  "scripts": {
+    "build:ci": "pnpm run build:prod",
+    "build:prod": "node scripts/generate-theme.js",
+    "test:spec": "node tests/run.mjs",
+    "test:spec:ci": "pnpm run build:ci && pnpm run test:spec",
+    "prepublishOnly": "pnpm run build:prod"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-themes": "workspace:*"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "4.3.3"
+  }
+}

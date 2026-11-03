@@ -2,6 +2,7 @@ packages:
   - "packages/docs"
   - "packages/examples/*"
   - "packages/mcp"
+  - "packages/tailwind"
   - "packages/ods-react"
   - "packages/ods-react/src/components/*"
   - "packages/ods-recipes"

@@ -122,6 +122,10 @@ function dedent(code: string): string {
    emission skip them, from this single list. */
 const EXCLUDED_STORIES = new Set(['AnatomyTech', 'Overview', 'ThemeGenerator', 'Demo']);
 
+/* The Guide* stories are the demos of a guide page (<Canvas from="…" />): they stay out of the
+   component page that hosts them, and out of its llms. */
+const isComponentDemo = (name: string): boolean => !EXCLUDED_STORIES.has(name) && !name.startsWith('Guide');
+
 const isAccessibilityStory = (name: string): boolean => name.startsWith('Accessibility');
 
 /* Demo order, as the Storybook examples pages had it: Default first, then the
@@ -131,7 +135,7 @@ const isAccessibilityStory = (name: string): boolean => name.startsWith('Accessi
 function orderStories(names: string[]): string[] {
   const rank = (name: string) => (name === 'Default' ? 0 : isAccessibilityStory(name) ? 2 : 1);
   return names
-    .filter((name) => !EXCLUDED_STORIES.has(name))
+    .filter(isComponentDemo)
     .map((name, index) => ({ index, name }))
     .sort((a, b) => (rank(a.name) - rank(b.name)) || (a.index - b.index))
     .map(({ name }) => name);
@@ -165,4 +169,4 @@ function extractStorySources(fileSource: string): Record<string, string> {
   return sources;
 }
 
-export { EXCLUDED_STORIES, extractStorySources, isAccessibilityStory, orderStories };
+export { EXCLUDED_STORIES, extractStorySources, isAccessibilityStory, isComponentDemo, orderStories };

@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/react';
 import { type ComponentType } from 'react';
-import { EXCLUDED_STORIES } from './extractSource';
+import { isComponentDemo } from './extractSource';
 
 interface ComposedDemo {
   Component: ComponentType;
@@ -9,14 +9,15 @@ interface ComposedDemo {
 
 /* Turns a public CSF module (packages/docs/stories/**) into renderable
    demos, using Storybook's official portable-stories API — no Storybook
-   runtime involved. Layout-only stories used by the old docs stay out of the
-   demo list — the shared EXCLUDED_STORIES, also honored by the llms emit. */
+   runtime involved. Layout-only stories used by the old docs and the demos of
+   the guides stay out of the demo list — the shared isComponentDemo, also
+   honored by the llms emit. */
 
 function composeModule(storiesModule: Record<string, unknown>): ComposedDemo[] {
   const composed = composeStories(storiesModule as Parameters<typeof composeStories>[0]) as Record<string, ComponentType>;
 
   return Object.entries(composed)
-    .filter(([name]) => !EXCLUDED_STORIES.has(name))
+    .filter(([name]) => isComponentDemo(name))
     .map(([name, Component]) => ({ Component, name }));
 }
 

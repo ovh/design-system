@@ -5,6 +5,14 @@ export default {
   title: 'Tests rendering',
 };
 
+export const overlayShadow = () => (
+  <Modal open>
+    <ModalContent data-testid="overlay-shadow">
+      <ModalBody>Content</ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
 export const render = () => (
   <Modal>
     <ModalTrigger data-testid="render">

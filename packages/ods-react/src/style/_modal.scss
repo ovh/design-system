@@ -22,6 +22,7 @@ $ods-modal-size: 512px;
   margin: auto var(--ods-modal-margin-horizontal);
   border: none;
   border-radius: var(--ods-modal-border-radius);
+  box-shadow: var(--ods-semantic-shadow-overlay);
   background: var(--ods-semantic-color-surface-overlay);
   width: 100%;
   min-width: 320px;

@@ -1,12 +1,16 @@
 import { Switch } from '@ark-ui/react/switch';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { ToggleProvider, type ToggleRootProp } from '../../contexts/useToggle';
-import { ToggleControl } from '../toggle-control/ToggleControl';
 import style from './toggle.module.scss';
 
-interface ToggleProp extends ComponentPropsWithRef<'label'>, ToggleRootProp {}
+interface ToggleProp extends ComponentPropsWithRef<'label'>, ToggleRootProp {
+  /**
+   * The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed.
+   */
+  children: ReactNode;
+}
 
 const Toggle: FC<ToggleProp> = forwardRef(({
   className,
@@ -25,15 +29,11 @@ const Toggle: FC<ToggleProp> = forwardRef(({
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
 
-  if (!children) {
-    console.warn('[DEPRECATED]: Usage of <Toggle /> alone is not recommended. Please use a full composition using <ToggleControl /> (and <ToggleLabel> if needed). Like the following <Toggle><ToggleControl /></Toggle>');
-  }
-
   return (
     <ToggleProvider withLabels={ withLabels }>
       <Switch.Root
         checked={ checked }
-        className={ classNames(style['toggle'], children ? className : '' )}
+        className={ classNames(style['toggle'], className) }
         data-ods="toggle"
         defaultChecked={ defaultChecked }
         disabled={ disabled }
@@ -45,9 +45,7 @@ const Toggle: FC<ToggleProp> = forwardRef(({
         required={ required }
         value={ value }
         { ...props }>
-        {
-          children || <ToggleControl className={ className } />
-        }
+        { children }
       </Switch.Root>
     </ToggleProvider>
   );

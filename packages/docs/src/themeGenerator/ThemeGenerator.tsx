@@ -1,7 +1,7 @@
 import { Splitter } from '@ark-ui/react/splitter';
 import { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
-import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, ICON_NAME, Icon, Switch, SwitchItem, type SwitchValueChangeDetail } from '../ods';
+import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button, ICON_NAME, Icon, TABS_SIZE, TABS_VARIANT, Tab, TabList, Tabs, type TabsValueChangeEvent } from '../ods';
 import { DemoFrame } from '../demo/DemoFrame';
 import { declaredTokens, resolveTokenValues } from '../doc/ports/helpers/designTokens';
 import { ThemeGeneratorJSONModal } from './ThemeGeneratorJSONModal';
@@ -100,7 +100,7 @@ const ThemeGenerator = (): JSX.Element => {
     setIsCustomTheme(true);
   }
 
-  function handleThemeValueChange(details: SwitchValueChangeDetail): void {
+  function handleThemeValueChange(details: TabsValueChangeEvent): void {
     const next = details.value;
     if (isCustomTheme && next !== 'custom') {
       setPendingTheme(next);
@@ -129,10 +129,12 @@ const ThemeGenerator = (): JSX.Element => {
             <Icon name={ ICON_NAME.chevronLeftUnderscore } /> JSON
           </Button>
 
-          <Switch onValueChange={ handleThemeValueChange } value={ selectedTheme }>
-            <SwitchItem value="default">Default</SwitchItem>
-            <SwitchItem value="custom">Custom</SwitchItem>
-          </Switch>
+          <Tabs onValueChange={ handleThemeValueChange } size={ TABS_SIZE.sm } value={ selectedTheme } variant={ TABS_VARIANT.switch }>
+            <TabList>
+              <Tab value="default">Default</Tab>
+              <Tab value="custom">Custom</Tab>
+            </TabList>
+          </Tabs>
 
           <Button
             emphasis={ BUTTON_EMPHASIS.low }

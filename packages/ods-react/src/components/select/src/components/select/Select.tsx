@@ -14,7 +14,6 @@ const Select: FC<SelectProp> = forwardRef(({
   defaultOpen,
   defaultValue,
   disabled = false,
-  fitControlWidth = true,
   id,
   invalid,
   items = [],
@@ -76,7 +75,7 @@ const Select: FC<SelectProp> = forwardRef(({
         positioning={{
           flip: overlayConfig?.flip,
           gutter: -1,
-          sameWidth: overlayConfig?.sameWidth ?? fitControlWidth,
+          sameWidth: overlayConfig?.sameWidth ?? true,
         }}
         readOnly={ readOnly }
         ref={ ref }

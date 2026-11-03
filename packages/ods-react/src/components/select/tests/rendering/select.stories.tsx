@@ -32,3 +32,13 @@ export const DefaultWidth = () => (
     <div data-testid="override"><Select className="probe probe-wide" items={ [] }><SelectControl /><SelectContent /></Select></div>
   </>
 );
+
+export const listWidth = () => (
+  <Select
+    data-testid="list-width"
+    defaultOpen
+    items={ [{ label: 'A', value: 'a' }] }>
+    <SelectControl />
+    <SelectContent createPortal={ false } />
+  </Select>
+);

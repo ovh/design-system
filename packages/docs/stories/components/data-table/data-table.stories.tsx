@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { DATA_TABLE_I18N, DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead, type DataTableProp, type DataTableSortingState } from '../../../../ods-react/src/components/data-table/src';
-import { PAGINATION_PER_PAGE, Pagination } from '../../../../ods-react/src/components/pagination/src';
+import { PAGINATION_PER_PAGE, Pagination, PaginationPages } from '../../../../ods-react/src/components/pagination/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { excludeFromDemoControls } from '../../support/controls';
 import { staticSourceRenderConfig } from '../../support/source';
@@ -265,7 +265,7 @@ export const Overview: Story = {
 
 export const PaginationExample: Story = {
   globals: {
-    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, PAGINATION_PER_PAGE, Pagination, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+    imports: `import { DataTable, DataTableBody, type DataTableColumnDef, DataTableHead, PAGINATION_PER_PAGE, Pagination, PaginationPages, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';`,
   },
   parameters: {
@@ -328,7 +328,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';`,
           onPageChange={ ({ page }) => setPage(page) }
           page={ page }
           pageSize={ PAGE_LIMIT }
-          totalItems={ total } />
+          totalItems={ total }>
+          <PaginationPages />
+        </Pagination>
       </div>
     );
   },

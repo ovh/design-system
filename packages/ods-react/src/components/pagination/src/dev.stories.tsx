@@ -37,82 +37,28 @@ export const Controlled = () => {
   );
 };
 
-export const ControlledDeprecated = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-
-  useEffect(() => {
-    console.log(`Query new ${pageSize} results for page ${currentPage}`);
-  }, [currentPage, pageSize]);
-
-  function onPageChange({ page }: PaginationPageChangeDetail) {
-    setCurrentPage(page);
-  }
-
-  function onPageSizeChange({ pageSize }: PaginationPageSizeChangeDetail) {
-    setPageSize(pageSize);
-  }
-
-  return (
-    <Pagination
-      onPageChange={ onPageChange }
-      onPageSizeChange={ onPageSizeChange }
-      page={ currentPage }
-      pageSize={ pageSize }
-      totalItems={ 500 }
-      withPageSizeSelector />
-  );
-};
-
 export const Default = () => (
-  <>
-    <Pagination
-      defaultPage={ 10 }
-      totalItems={ 50000 }>
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      defaultPage={ 10 }
-      totalItems={ 50000 } />
-  </>
+  <Pagination
+    defaultPage={ 10 }
+    totalItems={ 50000 }>
+    <PaginationPages />
+  </Pagination>
 );
 
 export const CustomStyle = () => (
-  <>
-    <Pagination
-      className={ style['custom-pagination'] }
-      totalItems={ 500 }>
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      className={ style['custom-pagination'] }
-      totalItems={ 500 } />
-  </>
+  <Pagination
+    className={ style['custom-pagination'] }
+    totalItems={ 500 }>
+    <PaginationPages />
+  </Pagination>
 );
 
 export const Disabled = () => (
-  <>
-    <Pagination
-      disabled
-      totalItems={ 500 }>
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      disabled
-      totalItems={ 500 } />
-  </>
+  <Pagination
+    disabled
+    totalItems={ 500 }>
+    <PaginationPages />
+  </Pagination>
 );
 
 // A hash so that following a link does not take the storybook iframe off the story.
@@ -220,22 +166,12 @@ export const Refs = () => {
 };
 
 export const WithLabels = () => (
-  <>
-    <Pagination
-      labelTooltipPrev="Go to prev page"
-      labelTooltipNext="Go to next page"
-      totalItems={ 500 }>
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      labelTooltipPrev="Go to prev page"
-      labelTooltipNext="Go to next page"
-      totalItems={ 500 } />
-  </>
+  <Pagination
+    labelTooltipPrev="Go to prev page"
+    labelTooltipNext="Go to next page"
+    totalItems={ 500 }>
+    <PaginationPages />
+  </Pagination>
 );
 
 export const WithPageSelector = () => (
@@ -247,36 +183,17 @@ export const WithPageSelector = () => (
 );
 
 export const WithPageSizeSelector = () => (
-  <>
-    <Pagination totalItems={ 500 }>
-      <PaginationPageSizeSelector />
+  <Pagination totalItems={ 500 }>
+    <PaginationPageSizeSelector />
 
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      totalItems={ 500 }
-      withPageSizeSelector />
-  </>
+    <PaginationPages />
+  </Pagination>
 );
 
 export const WithPageSizeSelectorAndCustomTotalLabel = () => (
-  <>
-    <Pagination totalItems={ 500 }>
-      <PaginationPageSizeSelector label="sur 500 résultats" />
+  <Pagination totalItems={ 500 }>
+    <PaginationPageSizeSelector label="sur 500 résultats" />
 
-      <PaginationPages />
-    </Pagination>
-
-    <hr />
-    <p>Deprecated</p>
-
-    <Pagination
-      renderTotalItemsLabel={ ({ totalItems }) => `sur ${totalItems} résultats`}
-      totalItems={ 500 }
-      withPageSizeSelector />
-  </>
+    <PaginationPages />
+  </Pagination>
 );

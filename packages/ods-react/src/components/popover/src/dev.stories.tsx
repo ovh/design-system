@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import style from './dev.module.css';
 import { BUTTON_EMPHASIS, Button } from '../../button/src';
-import { DIVIDER_SPACING, Divider } from '../../divider/src';
 import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '../../modal/src';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
 
@@ -298,29 +297,15 @@ export const Grid = () => (
 );
 
 export const Gutter = () => (
-  <>
-    <Popover overlayConfig={{ gutter: 0 }}>
-      <PopoverTrigger>
-        Show popover
-      </PopoverTrigger>
+  <Popover overlayConfig={{ gutter: 0 }}>
+    <PopoverTrigger>
+      Show popover
+    </PopoverTrigger>
 
-      <PopoverContent>
-        This is the popover content
-      </PopoverContent>
-    </Popover>
-
-    <Divider spacing={ DIVIDER_SPACING._32 } />
-
-    <Popover gutter={ 0 }>
-      <PopoverTrigger>
-        [DEPRECATED] Show popover
-      </PopoverTrigger>
-
-      <PopoverContent>
-        This is the popover content
-      </PopoverContent>
-    </Popover>
-  </>
+    <PopoverContent>
+      This is the popover content
+    </PopoverContent>
+  </Popover>
 );
 
 export const OnPositionChange = () => {
@@ -348,25 +333,12 @@ export const OnPositionChange = () => {
 };
 
 export const SameWidth = () => (
-  <>
-    <Popover overlayConfig={{ sameWidth: true }}>
-      <PopoverTrigger>
-        Show popover with this width
-      </PopoverTrigger>
-      <PopoverContent>
-        Popover
-      </PopoverContent>
-    </Popover>
-
-    <Divider spacing={ DIVIDER_SPACING._32 } />
-
-    <Popover sameWidth>
-      <PopoverTrigger>
-        [DEPRECATED] Show popover with this width
-      </PopoverTrigger>
-      <PopoverContent>
-        Popover
-      </PopoverContent>
-    </Popover>
-  </>
+  <Popover overlayConfig={{ sameWidth: true }}>
+    <PopoverTrigger>
+      Show popover with this width
+    </PopoverTrigger>
+    <PopoverContent>
+      Popover
+    </PopoverContent>
+  </Popover>
 );

@@ -8,12 +8,9 @@ interface PopoverProp extends PopoverRootProp {}
 const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
   autoFocus = true,
   children,
-  gutter,
   onOpenChange,
   open,
   overlayConfig,
-  position = POPOVER_POSITION.top,
-  sameWidth,
   triggerId,
   ...props
 }): JSX.Element => {
@@ -30,9 +27,9 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
       open={ open }
       positioning={{
         flip: overlayConfig?.flip,
-        gutter: overlayConfig?.gutter ?? gutter,
-        placement: overlayConfig?.position ?? position,
-        sameWidth: overlayConfig?.sameWidth ?? sameWidth,
+        gutter: overlayConfig?.gutter,
+        placement: overlayConfig?.position ?? POPOVER_POSITION.top,
+        sameWidth: overlayConfig?.sameWidth,
       }}
       { ...props }>
       { children }

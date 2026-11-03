@@ -57,6 +57,10 @@ not the history of the branch.
 | [BC-23](#bc-23---badge-card-message-and-tag-status-custom-properties-renamed) | `@ovhcloud/ods-react` | `Badge`, `Card`, `Message` and `Tag` status custom properties and Sass values renamed (`primary` becomes `accent`) | automatable |
 | [BC-24](#bc-24---button-custom-properties-and-sass-mixins-named-after-the-status-and-the-emphasis) | `@ovhcloud/ods-react` | `Button` custom properties and Sass mixins named after the status and the emphasis | automatable |
 | [BC-25](#bc-25---108-button-and-tag-custom-properties-removed) | `@ovhcloud/ods-react` | 108 `Button` and `Tag` custom properties removed | partial |
+| [BC-26](#bc-26---switch-removed) | `@ovhcloud/ods-react` | `Switch` removed | manual |
+| [BC-27](#bc-27---pagination-and-toggle-render-their-children-only) | `@ovhcloud/ods-react` | `Pagination` and `Toggle` render their children only, `renderTotalItemsLabel` and `withPageSizeSelector` removed | automatable |
+| [BC-28](#bc-28---the-positioning-props-replaced-by-overlayconfig-removed) | `@ovhcloud/ods-react` | `position`, `gutter`, `sameWidth` and `fitControlWidth` removed from `Menu`, `Popover`, `Select` and `Tooltip` | automatable |
+| [BC-29](#bc-29---fileuploaditem-uploadsuccesslabel-removed) | `@ovhcloud/ods-react` | `FileUploadItem` `uploadSuccessLabel` removed | automatable |
 
 ## The v20 token contract
 
@@ -162,7 +166,7 @@ at `brand-700`, the rung that `primary-700` became.
 Depends on the site:
 
 - `--ods-theme-anchor-text-color-hover`: no semantic role: the Link hover is `--ods-link-text-color-hover`, set it on `[data-ods="link"]`. Its default is the rest color (BC-19); `interaction-brand-hover` now drives the brand Button hover.
-- `--ods-theme-input-text-color-checked`: the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`; the checked Switch item (deprecated) reads `content-on-solid`.
+- `--ods-theme-input-text-color-checked`: the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`.
 - `--ods-theme-background-color`: per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.
 - `--ods-theme-heading-text-color`: a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.
 - `--ods-theme-overlay-z-index`: an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.
@@ -263,7 +267,7 @@ On a `-hover` / `-active` declaration:
 Depends on the site:
 
 - every family, 000: white: per site, as `--ods-theme-background-color` in BC-01.
-- primary, 025-300 on a `-hover` / `-active`: ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, File Upload).
+- primary, 025-300 on a `-hover` / `-active`: ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (File Upload).
 - neutral, 025-100 on a `-hover` / `-active`: the Tab hover reads `interaction-highlight`, as the list-like items do.
 - primary, 200-300: `primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.
 - neutral, 700-900: `surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.
@@ -600,8 +604,8 @@ The trigger and the content inherit the item's radius, so nothing else changes. 
 
 A disabled component dims once. The mixin resets `--ods-state-is-disabled-opacity` on its children,
 so a disabled part nested in it - the `Input` of a `Combobox`, the clear `Button` of an `Input` -
-does not multiply a second opacity on top. `ButtonGroup`, `Switch` and `Range` carry the opacity on
-their root when the whole group is disabled, rather than on each item.
+does not multiply a second opacity on top. `ButtonGroup` and `Range` carry the opacity on their root
+when the whole group is disabled, rather than on each item.
 
 The theme declares no disabled color role: `--ods-semantic-opacity-disabled` carries the whole
 state.
@@ -859,6 +863,58 @@ goes under the v20 modal.
 | `--ods-button-text-color-<status>-outline` | `var(--ods-semantic-color-content-<status>)` |
 | `--ods-button-text-color-<status>-outline-hover` | `var(--ods-semantic-color-content-on-<status>)` |
 | `--ods-button-text-color-<status>-outline-active` | `var(--ods-semantic-color-content-on-<status>)` |
+
+---
+
+## BC-26 - `Switch` removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The `Switch` component, deprecated since 19.4.0, is removed with `SwitchItem` (and `Switch.Item`), `SWITCH_SIZE`, `SWITCH_SIZES`, the `SwitchProp`, `SwitchItemProp`, `SwitchSize` and `SwitchValueChangeDetail` types, the `@ovhcloud/ods-react/switch` entry point and its 8 remaining custom properties: `--ods-switch-background-color`, `--ods-switch-border-radius`, `--ods-switch-column-gap`, `--ods-switch-item-background-color` with its `-checked` and `-hover` states, and `--ods-switch-item-text-color` with its `-checked` state (BC-12 already removes `--ods-switch-item-background-color-checked-disabled`). |
+| **Impact** | An import of one of them fails to compile and to bundle. An override of a `--ods-switch-*` custom property is left without effect. |
+| **Detection** | `grep -rnE '@ovhcloud/ods-react/switch\|--ods-switch-' src/`, and `grep -rlE '@ovhcloud/ods-react' src/ \| xargs grep -nwE 'Switch\|SwitchItem\|SWITCH_SIZES?\|SwitchProp\|SwitchItemProp\|SwitchSize\|SwitchValueChangeDetail'`, limited to the files that import ODS as other libraries export a `Switch` too |
+| **Codemod** | **manual** - the replacement depends on the use. To move between views or modes, `Tabs` with `variant="switch"` renders the same segmented control: `Switch` becomes `Tabs` around a `TabList`, each `SwitchItem` a `Tab`, and `value`, `defaultValue`, `onValueChange` (`{ value }`) and `size` (`sm`, `md`) keep their shape; `disabled` moves to each `Tab`. To turn an option on with an immediate effect, `ButtonGroup`, whose `value` is an array. To pick a form value, `RadioGroup`. |
+| **Source of truth** | `packages/ods-react/src/components/tabs/src/components/tabs/Tabs.tsx` |
+
+---
+
+## BC-27 - `Pagination` and `Toggle` render their children only
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | `children` is required on `Pagination` and on `Toggle`, which no longer render a default composition. A `Pagination` without children rendered `PaginationPages`, preceded by a `PaginationPageSizeSelector` labelled by `renderTotalItemsLabel` when `withPageSizeSelector` was set; both props are removed. A `Toggle` without children rendered a `ToggleControl` and gave it its `className`. Both uses warned as deprecated since 19.7.0 (`Pagination`) and 19.1.0 (`Toggle`). |
+| **Impact** | TypeScript reports a missing `children` and each removed prop. In untyped JavaScript, a `Pagination` without children renders an empty `nav`, `renderTotalItemsLabel` and `withPageSizeSelector` are forwarded to it and React warns, and a `Toggle` without children renders no control: the toggle disappears. |
+| **Detection** | `grep -rnE '<(Pagination\|Toggle)([[:space:]][^>]*)?/>\|renderTotalItemsLabel\|withPageSizeSelector' src/`, which misses a self-closing element written over several lines: review the other `<Pagination` and `<Toggle` matches, or rely on TypeScript |
+| **Codemod** | **automatable** - give a `Pagination` without children `<PaginationPages />`, preceded by `<PaginationPageSizeSelector />` when it had `withPageSizeSelector`, whose `label` takes what `renderTotalItemsLabel` returned for its `totalItems`. Give a `Toggle` without children `<ToggleControl />`, and move the `className` of that `Toggle` onto the `ToggleControl`. |
+| **Source of truth** | `packages/ods-react/src/components/pagination/src/components/pagination/Pagination.tsx`, `packages/ods-react/src/components/toggle/src/components/toggle/Toggle.tsx` |
+
+---
+
+## BC-28 - the positioning props replaced by `overlayConfig` removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The props deprecated since 19.7.0 in favor of `overlayConfig` are removed: `position` on `Menu`, `Popover` and `Tooltip`, `gutter` and `sameWidth` on `Popover`, and `fitControlWidth` on `Select`. The defaults do not change: `Popover` and `Tooltip` open on `top`, and the `Select` list takes the width of its control. |
+| **Impact** | TypeScript reports each usage. In untyped JavaScript the value is ignored: the overlay opens at its default position and gap, and a `Select` that set `fitControlWidth={ false }` gets a list as wide as its control again, with `fitControlWidth` forwarded to the DOM. |
+| **Detection** | `grep -rnE '\b(gutter\|sameWidth\|fitControlWidth)=\|position=\{ ?(MENU\|POPOVER\|TOOLTIP)_POSITION' src/`; a `position` written as a string is only reported by TypeScript, as `Drawer` and `Toaster` keep theirs |
+| **Codemod** | **automatable** - move the prop into `overlayConfig` under the same value: `position`, `gutter` and `sameWidth` keep their name, `fitControlWidth` becomes `sameWidth`. When the element already sets the same key in `overlayConfig`, keep that one: it already won. |
+| **Source of truth** | `packages/ods-react/src/components/menu/src/contexts/useMenu.tsx`, `packages/ods-react/src/components/popover/src/contexts/usePopover.tsx`, `packages/ods-react/src/components/select/src/contexts/useSelect.tsx`, `packages/ods-react/src/components/tooltip/src/contexts/useTooltip.tsx` |
+
+---
+
+## BC-29 - `FileUploadItem` `uploadSuccessLabel` removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | `uploadSuccessLabel`, deprecated since 19.3.0 when a successful upload started to show an icon instead of a label, is removed from `FileUploadItemProp`. |
+| **Impact** | TypeScript reports each usage. Nothing changes at runtime: 19.7.3 already displayed no label and forwarded the prop to the `li`. |
+| **Detection** | `grep -rn 'uploadSuccessLabel' src/` |
+| **Codemod** | **automatable** - remove the prop. |
+| **Source of truth** | `packages/ods-react/src/components/file-upload/src/components/file-upload-item/FileUploadItem.tsx` |
 
 ---
 

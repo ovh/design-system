@@ -9,7 +9,7 @@ import { staticSourceRenderConfig } from '../../support/source';
 type Story = StoryObj<SelectProp>;
 
 const meta: Meta<SelectProp> = {
-  argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'fitControlWidth', 'id', 'items', 'name', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'positionerStyle', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'id', 'items', 'name', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'positionerStyle', 'required', 'value']),
   component: Select,
   subcomponents: { SelectContent, SelectControl },
   title: 'React Components/Select',

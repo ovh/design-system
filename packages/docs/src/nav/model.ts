@@ -209,7 +209,6 @@ const COMPONENT_PAGES: [key: string, title: string, badge?: Badge][] = [
   ['select', 'Select'],
   ['skeleton', 'Skeleton'],
   ['spinner', 'Spinner'],
-  ['switch', 'Switch', 'deprecated'],
   ['table', 'Table'],
   ['tabs', 'Tabs'],
   ['tag', 'Tag'],

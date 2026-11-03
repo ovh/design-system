@@ -149,8 +149,7 @@ import { useState } from 'react';`,
               <FileUploadItem
                 file={ file }
                 key={ idx }
-                progress={ 100 }
-                uploadSuccessLabel="Fichier uploadé" />
+                progress={ 100 } />
             ))
           }
         </FileUploadList>

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput } from '../../editable/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Pagination } from '../../pagination/src';
+import { Pagination, PaginationPages } from '../../pagination/src';
 import { Quantity, QuantityControl, QuantityInput } from '../../quantity/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip/src';
 import { DataTable, DataTableBody, type DataTableColumnDef, type DataTableColumnPinningState, type DataTableColumnVisibilityState, DataTableEmpty, DataTableHead, type DataTableRowSelectionState, type DataTableSortingState } from '.';
@@ -479,7 +479,9 @@ export const WithPaginationAPI = () => {
         onPageChange={ ({ page }) => setPage(page) }
         page={ page }
         pageSize={ PAGE_LIMIT }
-        totalItems={ total } />
+        totalItems={ total }>
+        <PaginationPages />
+      </Pagination>
     </>
   );
 };

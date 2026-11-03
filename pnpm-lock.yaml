@@ -792,8 +792,6 @@ importers:
 
   packages/ods-react/src/components/spinner: {}
 
-  packages/ods-react/src/components/switch: {}
-
   packages/ods-react/src/components/table: {}
 
   packages/ods-react/src/components/tabs: {}

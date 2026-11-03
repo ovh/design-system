@@ -15,3 +15,18 @@ export const render = () => (
     </PopoverContent>
   </Popover>
 );
+
+export const defaultPosition = () => (
+  <div style={{ paddingTop: '200px' }}>
+    <Popover open>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
+      <PopoverContent
+        createPortal={ false }
+        data-testid="default-position">
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+  </div>
+);

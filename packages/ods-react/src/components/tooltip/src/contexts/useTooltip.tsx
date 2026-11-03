@@ -46,12 +46,6 @@ interface TooltipRootProp {
     sameWidth?: boolean,
   }
   /**
-   * @deprecated
-   * @type=TOOLTIP_POSITION
-   * The tooltip position around the trigger.
-   */
-  position?: TooltipPosition,
-  /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */
   positionerStyle?: CSSProperties,

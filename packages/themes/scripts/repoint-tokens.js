@@ -238,7 +238,7 @@ function rampRole(kind, family, rung, prop) {
 const NOTES = {
   theme: {
     'anchor-text-color-hover': 'no semantic role: the Link hover is `--ods-link-text-color-hover`, set it on `[data-ods="link"]`. Its default is the rest color (BC-19); `interaction-brand-hover` now drives the brand Button hover.',
-    'input-text-color-checked': 'the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`; the checked Switch item (deprecated) reads `content-on-solid`.',
+    'input-text-color-checked': 'the tick, the Radio dot, the Toggle ON label and thumb, the Select and TreeView boxes and the `ods-checkbox()` mixin read `content-on-control-solid`.',
     'background-color': 'per site: `surface-page` for the page, `surface-raised` for a card or a panel, `surface-overlay` for a popover, a modal or a drawer, `surface-control` for a field. ODS reads all four.',
     'heading-text-color': 'a group label in a list (Select, Combobox, Menu, Query Filter) reads `content-group-label`.',
     'overlay-z-index': 'an offset meant to clear a drawer or a modal now lands under them: restack it with BC-15.',
@@ -249,7 +249,7 @@ const NOTES = {
   ramp: {
     surface: [
       ['every family', '000', 'white: per site, as `--ods-theme-background-color` in BC-01.'],
-      ['primary', '025-300 on a `-hover` / `-active`', 'ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (Switch, File Upload).'],
+      ['primary', '025-300 on a `-hover` / `-active`', 'ODS picked per component: `interaction-brand-subtle-*` on the primary ghost and outline Button, `interaction-accent-subtle-*` on the Tag, `interaction-highlight` on list-like items (File Upload).'],
       ['neutral', '025-100 on a `-hover` / `-active`', 'the Tab hover reads `interaction-highlight`, as the list-like items do.'],
       ['primary', '200-300', '`primary` was also the brand: a brand or accent tint reads `surface-accent-subtle` rather than the information family.'],
       ['neutral', '700-900', '`surface-code` is the role of the Code block. No role holds another dark neutral fill: `surface-neutral` is the solid neutral one.'],

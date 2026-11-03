@@ -28827,7 +28827,7 @@ import { FileUploadItem } from '@ovhcloud/ods-react';
 
 **The `position` prop is removed** (deprecated since v19.7.0): use `overlayConfig={{ position }}`, which takes the same values (`'bottom-end'`, `'top'`…). If the Menu already sets `overlayConfig.position`, remove `position`: `overlayConfig` already won. In untyped JavaScript, a `position` prop is ignored and the Menu opens at its default position.
 
-To find the usages to migrate: `grep -rnE "<Menu[[:space:]]([^>]|=>)*[[:space:]]position=" src/`. A `position` written on its own line is not matched: TypeScript reports it.
+To find the usages to migrate: `grep -rnE "<Menu([[:space:]]([^>]|=>)*)?[[:space:]]position=" src/`. A `position` written on its own line is not matched: TypeScript reports it.
 
 **before**
 ```tsx
@@ -29016,10 +29016,10 @@ import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhclo
 To find the usages to migrate, shorthand booleans (`<Popover sameWidth>`) included:
 
 ```sh
-grep -rnE "(^|[[:space:]])(gutter|sameWidth)([[:space:]]*=|[[:space:]]*/?>|[[:space:]]*$|[[:space:]]+[A-Za-z])|position=\{ ?POPOVER_POSITION" src/
+grep -rnE "(^|[[:space:]])(gutter|sameWidth)([[:space:]]*=|[[:space:]]*/?>|[[:space:]]*$|[[:space:]]+[A-Za-z])|position=\{ ?POPOVER_POSITION|<Popover([[:space:]]([^>]|=>)*)?[[:space:]]position=" src/
 ```
 
-A `position` written as a string is not matched: TypeScript reports it.
+A `position` written as a string on its own line is not matched: TypeScript reports it.
 
 **before**
 ```tsx
@@ -29246,7 +29246,7 @@ import { Toggle, ToggleControl } from '@ovhcloud/ods-react';
 
 **The `position` prop is removed** (deprecated since v19.7.0): use `overlayConfig={{ position }}`, which takes the same values (`TOOLTIP_POSITION`). If the Tooltip already sets `overlayConfig.position`, remove `position`: `overlayConfig` already won. The default position stays `top`. In untyped JavaScript, a `position` prop is ignored.
 
-To find the usages to migrate: `grep -rnE "position=\{ ?TOOLTIP_POSITION" src/`. A `position` written as a string is not matched: TypeScript reports it.
+To find the usages to migrate: `grep -rnE "position=\{ ?TOOLTIP_POSITION|<Tooltip([[:space:]]([^>]|=>)*)?[[:space:]]position=" src/`. A `position` written as a string on its own line is not matched: TypeScript reports it.
 
 **before**
 ```tsx

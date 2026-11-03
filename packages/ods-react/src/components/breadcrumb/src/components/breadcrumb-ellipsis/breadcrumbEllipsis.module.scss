@@ -5,6 +5,9 @@
     font-weight: var(--ods-semantic-font-weight-semibold);
 
     &__button {
+      // A button, not a link among text: no underline at rest.
+      --ods-link-underline-thickness: 0;
+
       @include link.ods-link();
 
       border: 0;

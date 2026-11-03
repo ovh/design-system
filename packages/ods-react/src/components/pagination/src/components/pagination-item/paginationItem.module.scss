@@ -28,6 +28,11 @@
     }
 
     &__link {
+      // The page numbers are plainly links in their row: no underline at rest, and a 1px one on
+      // hover, so that it never reads as the 2px underline of the current page.
+      --ods-link-underline-thickness: 0;
+      --ods-link-underline-thickness-hover: 1px;
+
       &::before {
         position: absolute;
         top: 50%;
@@ -41,8 +46,9 @@
     }
 
     // The active page leads nowhere: it reads as plain text and stays out of the tab order, while
-    // exposed as a disabled link. It borrows the geometry of the Link underline, but permanent and
-    // twice as thick, so that "you are here" never reads as "hovered".
+    // exposed as a disabled link. It borrows the geometry of the Link underline, permanent and 2px,
+    // twice the 1px hover underline the page links and the chevrons are given (see &__link and
+    // paginationPages.module.scss), so that "you are here" never reads as "hovered".
     &__current {
       display: inline-flex;
       position: relative;

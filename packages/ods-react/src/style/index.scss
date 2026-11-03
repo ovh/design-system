@@ -7,7 +7,7 @@
 @forward 'font';
 @forward 'icon';
 @forward 'input';
-@forward 'link';
+@forward 'link' hide $ods-link-underline-thickness, $ods-link-underline-thickness-hover;
 @forward 'message';
 @forward 'modal';
 @forward 'overlay';

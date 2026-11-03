@@ -53,6 +53,21 @@ function link(part: string, page: number | null, href: string | null): Control {
 }
 
 describe('Pagination server rendering', () => {
+  describe('without children', () => {
+    it('should render no control and warn once', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      const html = renderToString(<Pagination totalItems={ 500 }>{ null }</Pagination>);
+
+      renderToString(<Pagination totalItems={ 500 }>{ null }</Pagination>);
+
+      expect(readControls(html)).toEqual([]);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
+      expect(warnSpy.mock.calls[0][0]).toContain('<PaginationPages />');
+
+      warnSpy.mockRestore();
+    });
+  });
+
   describe('link mode', () => {
     it('should render every destination in the initial html', () => {
       const html = renderPagination({ page: 5, pageSize: 20 });

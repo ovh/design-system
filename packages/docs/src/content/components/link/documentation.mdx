@@ -66,7 +66,15 @@ A **Link** can stand alone on a page, or it can be placed within a sentence or a
 
 When disabled, users cannot focus nor click on the **Link**.
 
-On hover, **Link** is underlined and keeps its color: the underline is the hover signal. A visited **Link** keeps its visited color.
+A **Link** is underlined at rest, 1px in its own color, so that it is not told from the surrounding text by its color alone. On hover, the underline turns 2px and the **Link** keeps its color: the thicker underline is the hover signal. A visited **Link** keeps its visited color.
+
+The thicknesses read `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover`. Set them on a **Link** or on a container, for instance `0` at rest in a navigation where the links are plainly links. A disabled **Link** keeps its rest underline, dimmed with it.
+
+An icon-only **Link** made of ODS **Icon** components has no underline at rest. With another icon, such as an inline `<svg>` or an icon from another library, the **Link** cannot tell it from a label and keeps the underline: set `--ods-link-underline-thickness: 0` on it.
+
+The underline is a pseudo-element drawn by the **Link** box, not a `text-decoration`: `text-decoration: none` does not remove it, `--ods-link-underline-thickness: 0` does. Being drawn by the box, it does not follow a label that wraps over several lines: a **Link** set to `display: inline` draws it under part of its last line, or not at all when it starts mid-sentence, and a **Link** left `inline-flex` draws it across its whole width, under its last line. A printed page also loses it when the print dialog leaves the background graphics out.
+
+In forced colors mode, the underline is drawn in the link color of the system palette (`LinkText`), so it stays visible.
 
 An optional icon can be displayed on the left or right of the **Link** label content. Icon-only **Link** also exists but it must meet accessibility requirements. See Accessibility section below.
 

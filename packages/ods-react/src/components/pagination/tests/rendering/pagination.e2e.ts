@@ -10,6 +10,11 @@ describe('Pagination rendering', () => {
   });
 
   describe('link mode', () => {
+    beforeEach(async() => {
+      // The pointer stays where the previous test left it: off the links, so that a rest value is not read hovered.
+      await page.mouse.move(0, 0);
+    });
+
     it('should render the pages a user can go to as links, not as buttons', async() => {
       await gotoStory(page, 'rendering/link');
       await page.waitForSelector('[data-testid="link"]');
@@ -78,6 +83,35 @@ describe('Pagination rendering', () => {
         expect(underline).toBeCloseTo(text, 1);
         expect(underline).toBeLessThan(cell);
       });
+    });
+
+    it('should underline the page links on hover only, at 1px, apart from the 2px underline of the current page', async() => {
+      await gotoStory(page, 'rendering/link');
+      await page.waitForSelector('[data-testid="link"]');
+
+      const getHeights = (): Promise<string[]> => page.$$eval('[data-part="item"][href]', (elements) => elements.map((el) => getComputedStyle(el, '::after').height));
+      const rest = await getHeights();
+
+      expect(rest.length).toBeGreaterThan(0);
+      rest.forEach((height) => expect(height).toBe('0px'));
+
+      await page.hover('[data-part="item"][href]');
+
+      expect((await getHeights())[0]).toBe('1px');
+      expect(await page.$eval('[data-part="item"][aria-current="page"]', (el: Element) => getComputedStyle(el, '::after').height)).toBe('2px');
+    });
+
+    it('should underline the chevrons on hover only, at 1px, as the page links', async() => {
+      await gotoStory(page, 'rendering/link');
+
+      const trigger = await page.waitForSelector('[data-part="next-trigger"]');
+      const getHeight = (): Promise<string> => trigger!.evaluate((el: Element) => getComputedStyle(el, '::after').height);
+
+      expect(await getHeight()).toBe('0px');
+
+      await trigger!.hover();
+
+      expect(await getHeight()).toBe('1px');
     });
 
     it('should underline the chevron of a trigger, the way an icon only link is underlined', async() => {

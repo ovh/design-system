@@ -10,7 +10,7 @@ import { loadSearchIndex, searchDocs, type SearchHit, tokenize } from './search'
    built for), controlled so selecting an entry closes it, bound to ⌘K.
    The filter is CONTROLLED (query state below), which turns the Command's
    own matching off: page entries are matched on title + section trail +
-   status badge label ("deprecated" lists the deprecated pages) here,
+   status badge label ("new" lists the new pages) here,
    and a full-text pass over the whole documentation corpus (lazy-loaded
    index, see search.ts) fills the "In the docs" group for everything the
    titles alone can't answer. */

@@ -884,9 +884,9 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | `children` is required on `Pagination` and on `Toggle`, which no longer render a default composition. A `Pagination` without children rendered `PaginationPages`, preceded by a `PaginationPageSizeSelector` labelled by `renderTotalItemsLabel` when `withPageSizeSelector` was set; both props are removed. A `Toggle` without children rendered a `ToggleControl` and gave it its `className`. Both uses warned as deprecated since 19.7.0 (`Pagination`) and 19.1.0 (`Toggle`). |
-| **Impact** | TypeScript reports a missing `children` and each removed prop. In untyped JavaScript, a `Pagination` without children renders an empty `nav`, `renderTotalItemsLabel` and `withPageSizeSelector` are forwarded to it and React warns, and a `Toggle` without children renders no control: the toggle disappears. |
-| **Detection** | `grep -rnE '<(Pagination\|Toggle)([[:space:]][^>]*)?/>\|renderTotalItemsLabel\|withPageSizeSelector' src/`, which misses a self-closing element written over several lines: review the other `<Pagination` and `<Toggle` matches, or rely on TypeScript |
+| **Change** | `children` is required on `Pagination` and on `Toggle`, which no longer render a default composition. A `Pagination` without children rendered `PaginationPages`, preceded by a `PaginationPageSizeSelector` labelled by `renderTotalItemsLabel` when `withPageSizeSelector` was set; both props are removed, and typed `never`. A `Toggle` without children rendered a `ToggleControl` and gave it its `className`. Both uses warned as deprecated since 19.7.0 (`Pagination`) and 19.1.0 (`Toggle`); a `Pagination` or a `Toggle` rendered with empty children (`null`, `undefined`) now logs a warning once. |
+| **Impact** | TypeScript reports a missing `children` (TS2741) and each removed prop, through a spread object too. Empty children still compile. In untyped JavaScript, a `Pagination` without children renders an empty `nav`, and `renderTotalItemsLabel` and `withPageSizeSelector` are forwarded to it; a `Toggle` without children renders an empty `label`: no control, no focusable element and no hidden `input`, so the field is no longer submitted with its form. Both log the warning. |
+| **Detection** | `grep -rnE '<(Pagination\|Toggle)([[:space:]]([^>]\|=>)*)?/>\|renderTotalItemsLabel\|withPageSizeSelector' src/`, which misses a self-closing element written over several lines: rely on TypeScript for those |
 | **Codemod** | **automatable** - give a `Pagination` without children `<PaginationPages />`, preceded by `<PaginationPageSizeSelector />` when it had `withPageSizeSelector`, whose `label` takes what `renderTotalItemsLabel` returned for its `totalItems`. Give a `Toggle` without children `<ToggleControl />`, and move the `className` of that `Toggle` onto the `ToggleControl`. |
 | **Source of truth** | `packages/ods-react/src/components/pagination/src/components/pagination/Pagination.tsx`, `packages/ods-react/src/components/toggle/src/components/toggle/Toggle.tsx` |
 
@@ -897,9 +897,9 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | The props deprecated since 19.7.0 in favor of `overlayConfig` are removed: `position` on `Menu`, `Popover` and `Tooltip`, `gutter` and `sameWidth` on `Popover`, and `fitControlWidth` on `Select`. The defaults do not change: `Popover` and `Tooltip` open on `top`, and the `Select` list takes the width of its control. |
-| **Impact** | TypeScript reports each usage. In untyped JavaScript the value is ignored: the overlay opens at its default position and gap, and a `Select` that set `fitControlWidth={ false }` gets a list as wide as its control again, with `fitControlWidth` forwarded to the DOM. |
-| **Detection** | `grep -rnE '\b(gutter\|sameWidth\|fitControlWidth)=\|position=\{ ?(MENU\|POPOVER\|TOOLTIP)_POSITION' src/`; a `position` written as a string is only reported by TypeScript, as `Drawer` and `Toaster` keep theirs |
+| **Change** | The props deprecated since 19.7.0 in favor of `overlayConfig` are removed, and typed `never`: `position` on `Menu`, `Popover` and `Tooltip`, `gutter` and `sameWidth` on `Popover`, and `fitControlWidth` on `Select`. The defaults do not change: `Popover` and `Tooltip` open on `top`, and the `Select` list takes the width of its control. |
+| **Impact** | TypeScript reports each usage, through a spread object too. In untyped JavaScript, and in the compiled JavaScript of a library built on ODS, the value is ignored: the overlay opens at its default position and gap, and a `Select` that set `fitControlWidth={ false }` gets a list as wide as its control again, with `fitControlWidth` forwarded to the DOM. |
+| **Detection** | `grep -rnE '(^\|[[:space:]])(gutter\|sameWidth\|fitControlWidth)([[:space:]]*=\|[[:space:]]*/?>\|[[:space:]]*$\|[[:space:]]+[A-Za-z])\|position=\{ ?(POPOVER\|TOOLTIP)_POSITION' src/`, shorthand booleans included. A `position` written as a string is only reported by TypeScript, as `Drawer` and `Toaster` keep theirs. A `Menu` `position` is always a string: `MENU_POSITION` is not exported |
 | **Codemod** | **automatable** - move the prop into `overlayConfig` under the same value: `position`, `gutter` and `sameWidth` keep their name, `fitControlWidth` becomes `sameWidth`. When the element already sets the same key in `overlayConfig`, keep that one: it already won. |
 | **Source of truth** | `packages/ods-react/src/components/menu/src/contexts/useMenu.tsx`, `packages/ods-react/src/components/popover/src/contexts/usePopover.tsx`, `packages/ods-react/src/components/select/src/contexts/useSelect.tsx`, `packages/ods-react/src/components/tooltip/src/contexts/useTooltip.tsx` |
 
@@ -911,7 +911,7 @@ goes under the v20 modal.
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
 | **Change** | `uploadSuccessLabel`, deprecated since 19.3.0 when a successful upload started to show an icon instead of a label, is removed from `FileUploadItemProp`. |
-| **Impact** | TypeScript reports each usage. Nothing changes at runtime: 19.7.3 already displayed no label and forwarded the prop to the `li`. |
+| **Impact** | TypeScript reports each usage, through a spread object too: the prop is typed `never`. Nothing changes at runtime: 19.7.3 already displayed no label and forwarded the prop to the `li`. |
 | **Detection** | `grep -rn 'uploadSuccessLabel' src/` |
 | **Codemod** | **automatable** - remove the prop. |
 | **Source of truth** | `packages/ods-react/src/components/file-upload/src/components/file-upload-item/FileUploadItem.tsx` |

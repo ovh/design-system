@@ -5148,7 +5148,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 14851
+tokens: 14917
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5574,6 +5574,7 @@ These changes need no code change: the new rendering is intended. To keep the v1
 - **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the accent hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-accent*` instead.
 - **Query Filter**: the tags are `accent`, where v19 rendered the default `information` Tag. An override of the information Tag tokens no longer reaches them: override `--ods-tag-*-accent*` instead.
 - **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
+- **Modal**: the content draws `--ods-semantic-shadow-overlay`, as the Drawer and the other overlays, where v19 drew no shadow. In the dark themes, this shadow is what sets the modal off its backdrop. Keep v19: `[data-ods="modal-content"] { box-shadow: none; }`.
 - **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).

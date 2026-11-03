@@ -3482,7 +3482,7 @@ Form Guidelines] }
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/checkbox"
               name="Checkbox">
   **Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice
-  (without submit), the use of a switch is preferred (see Switch).
+  (without submit), the use of a toggle is preferred (see Toggle).
 
 | | |
 |---|---|
@@ -6142,7 +6142,7 @@ slug: data-table
 category: component
 type: examples
 version: 19.7.3
-tokens: 3903
+tokens: 3916
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--examples.txt
 ---
 
@@ -6304,7 +6304,9 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-t
           onPageChange={ ({ page }) => setPage(page) }
           page={ page }
           pageSize={ PAGE_LIMIT }
-          totalItems={ total } />
+          totalItems={ total }>
+          <PaginationPages />
+        </Pagination>
       </div>
     );
   }
@@ -8996,7 +8998,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 907
+tokens: 853
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -9036,7 +9038,6 @@ This component extends all the native `<li>` attributes.
 | `file` | `File` | Yes | undefined | The current File object. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `progress` | `number` | No | undefined | The file upload progress. |
-| `uploadSuccessLabel` | `string` | No | undefined | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. (deprecated) |
 
 ## FileUploadList
 
@@ -9082,7 +9083,7 @@ slug: file-upload
 category: component
 type: examples
 version: 19.7.3
-tokens: 1940
+tokens: 1927
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--examples.txt
 ---
 
@@ -9167,8 +9168,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-u
               <FileUploadItem
                 file={ file }
                 key={ idx }
-                progress={ 100 }
-                uploadSuccessLabel="Fichier uploadé" />
+                progress={ 100 } />
             ))
           }
         </FileUploadList>
@@ -12401,7 +12401,7 @@ slug: menu
 category: component
 type: overview
 version: 19.7.3
-tokens: 323
+tokens: 301
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu.txt
 ---
 
@@ -12417,7 +12417,6 @@ _A Menu component provides a list of options or actions that appear when a user 
 | `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the menu. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `MENU_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
 
@@ -12560,7 +12559,7 @@ slug: menu
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 740
+tokens: 718
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
 ---
 
@@ -12575,7 +12574,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--
 | `onPositionChange` | `(detail: MenuPositionChangeDetail) => void` | No | undefined | Callback fired when the menu position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the menu. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `MENU_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the MenuTrigger component. |
 
@@ -14499,7 +14497,7 @@ slug: pagination
 category: component
 type: overview
 version: 19.7.3
-tokens: 909
+tokens: 829
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination.txt
 ---
 
@@ -14511,6 +14509,7 @@ _A **Pagination** component splits a long list into numbered pages and lets user
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `children` | `ReactNode` | Yes | undefined | The parts of the pagination to render, such as PaginationPages. |
 | `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `getPageUrl` | `(detail: PaginationPageUrlDetail) => string` | No | undefined | Build the URL of a given page. Providing it turns the pages and the previous / next triggers into links, so that they can be crawled, opened in a new tab and restored on reload. They then look like the Link component, as they navigate, instead of the Button component. Read the page and the size back from the URL and pass them as `page` (or `defaultPage` when every navigation loads a new document) and `pageSize`. |
@@ -14521,10 +14520,8 @@ _A **Pagination** component splits a long list into numbered pages and lets user
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when a page size is picked. Along `getPageUrl` the size is reported but not applied: navigate to the matching URL and pass the new `pageSize` back. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then what holds the size: the component renders it instead of keeping a size of its own. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## Examples
 
@@ -14890,7 +14887,7 @@ slug: pagination
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1000
+tokens: 920
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
 ---
 
@@ -14901,6 +14898,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `children` | `ReactNode` | Yes | undefined | The parts of the pagination to render, such as PaginationPages. |
 | `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `getPageUrl` | `(detail: PaginationPageUrlDetail) => string` | No | undefined | Build the URL of a given page. Providing it turns the pages and the previous / next triggers into links, so that they can be crawled, opened in a new tab and restored on reload. They then look like the Link component, as they navigate, instead of the Button component. Read the page and the size back from the URL and pass them as `page` (or `defaultPage` when every navigation loads a new document) and `pageSize`. |
@@ -14911,10 +14909,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when a page size is picked. Along `getPageUrl` the size is reported but not applied: navigate to the matching URL and pass the new `pageSize` back. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then what holds the size: the component renders it instead of keeping a size of its own. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## PaginationPages
 
@@ -16274,7 +16270,7 @@ slug: popover
 category: component
 type: overview
 version: 19.7.3
-tokens: 429
+tokens: 365
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover.txt
 ---
 
@@ -16287,14 +16283,11 @@ _**Popover** component is triggered by click and is used to provide additional i
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `autoFocus` | `boolean` | No | undefined | Whether to automatically set focus on the first focusable content within the popover when opened. |
-| `gutter` | `number` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `onOpenChange` | `(detail: PopoverOpenChangeDetail) => void` | No | undefined | Callback fired when the popover open state changes. |
 | `onPositionChange` | `(detail: PopoverPositionChangeDetail) => void` | No | undefined | Callback fired when the popover position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the popover. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `POPOVER_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| `sameWidth` | `boolean` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the PopoverTrigger component. |
 
 ## Examples
@@ -16521,7 +16514,7 @@ slug: popover
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 589
+tokens: 525
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--technical-information.txt
 ---
 
@@ -16533,14 +16526,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popove
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `autoFocus` | `boolean` | No | undefined | Whether to automatically set focus on the first focusable content within the popover when opened. |
-| `gutter` | `number` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `onOpenChange` | `(detail: PopoverOpenChangeDetail) => void` | No | undefined | Callback fired when the popover open state changes. |
 | `onPositionChange` | `(detail: PopoverPositionChangeDetail) => void` | No | undefined | Callback fired when the popover position changes. |
 | `open` | `boolean` | No | undefined | The controlled open state of the popover. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `POPOVER_POSITION` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| `sameWidth` | `boolean` | No | undefined | Moved to overlayConfig. (deprecated) |
 | `triggerId` | `string` | No | undefined | ID of an external trigger element to use in place of the PopoverTrigger component. |
 
 ## PopoverContent
@@ -19209,7 +19199,7 @@ slug: select
 category: component
 type: overview
 version: 19.7.3
-tokens: 558
+tokens: 532
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select.txt
 ---
 
@@ -19224,7 +19214,6 @@ _**Select** component is used to select one or more items from a list of values_
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `fitControlWidth` | `boolean` | No | undefined | Use overlayConfig.sameWidth instead (deprecated) |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
 | `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
@@ -19397,7 +19386,7 @@ slug: select
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 794
+tokens: 768
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--technical-information.txt
 ---
 
@@ -19411,7 +19400,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 | `defaultOpen` | `boolean` | No | undefined | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `string[] | string` | No | undefined | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `fitControlWidth` | `boolean` | No | undefined | Use overlayConfig.sameWidth instead (deprecated) |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `items` | `SelectItem<CustomData>[]` | Yes | undefined | The list of items |
 | `multiple` | `SelectMultipleMode` | No | undefined | Allows multiple selection and define how it should be rendered. |
@@ -20271,318 +20259,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinne
 
   <Spinner aria-labelledby="loading-text" />
 </div>
-```
-
-
-## Switch
-
----
-title: "Switch"
-slug: switch
-category: component
-type: overview
-version: 19.7.3
-tokens: 263
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch.txt
----
-
-# Switch
-
-_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
-
-## Props
-
-| Property | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `defaultValue` | `string` | No | undefined | The initial value of the selected item. Use when you don't need to control the value of the switch. |
-| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `onValueChange` | `(detail: SwitchValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
-| `size` | `'md' | 'sm'` | No | undefined | The size preset to use. |
-| `value` | `string` | No | undefined | The controlled value of the selected item. |
-
-## Examples
-
-- Default
-- Checked
-- Disabled
-- Sizes
-- Accessibility Aria Label
-- Accessibility Aria Labelledby
-
-## Documentation pages
-
-- [Documentation](./react-components-switch--documentation.txt)
-- [Technical Information](./react-components-switch--technical-information.txt)
-- [Examples](./react-components-switch--examples.txt)
-
----
-title: "Switch"
-slug: switch
-category: component
-type: documentation
-version: 19.7.3
-tokens: 1075
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--documentation.txt
----
-
-# Switch
-
-_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
-
-## Overview
-
-A **Switch** allows users to quickly and easily switch between several states, actions or options in a row.
-
-| | |
-|---|---|
-| Name | Switch |
-| Also known as | Button group, Segmented control, Toggle group |
-| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10578 |
-| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/switch |
-
-## Usage
-
-A **Switch** is used to switch between multiple states, actions or options (up-to 4).
-
-It can be used for many use cases such as selecting a state within a group of states or filtering.
-
-### Dos & Don'ts
-
-**Do**
-
-- Use a Switch when the user must choose one active option among 2 to 4 closely related states or actions
-- Ensure each Switch item has a clear, descriptive label
-- Use a Switch when immediate feedback or real-time filtering is expected upon selection
-
-**Don't**
-
-- Don't use a Switch for more than 4 options. Prefer Radio Group, Checkbox, or Select instead depending on your use case
-- Don't use a Switch for unrelated options, they should belong to a common category or context
-- Don't use a Switch if selecting an option does not produce an immediate effect. Use a Checkbox or another control instead
-- Don't rely solely on icons, add text for clarity
-
-### Best Practices in Context
-
-1. **Switch**
-2. **Active toggle button**
-3. **Toggle button**
-4. **Label**
-
-## Placement
-
-A **Switch** can be used in a page when the user needs to select a choice from multiple states or items.
-It may replace two radio buttons or a single checkbox to allow users to choose between several states.
-
-By default, the width of a **Switch** item is defined by the length of content.
-A custom width can be set so all items on the track will have the same size regardless of content length.
-
-## Behavior
-
-The user can switch between states by clicking the **Switch** items, and it has an immediate effect.
-
-## Navigation
-
-### Focus Management
-
-When the **Switch** receives focus, it is set on the currently selected item, or on the first item if none is selected.
-
-Each individual **Switch** item is focusable unless disabled. A disabled item cannot receive focus or be activated.
-
-Focus remains within the group when navigating between items using arrow keys.
-
-### General Keyboard Shortcuts
-
-Pressing `Tab` moves focus to the selected item or the first item in the group.
-
-Pressing `Shift` + `Tab` moves focus to the previous focusable element outside the **Switch** group.
-
-Pressing `Arrow Right` or `Arrow Down` moves focus to the next item in the group.
-
-Pressing `Arrow Left` or `Arrow Up` moves focus to the previous item in the group.
-
-Pressing `Home` (or `fn` + `Arrow Left`) moves focus to the first item.
-
-Pressing `End` (or `fn` + `Arrow Right`) moves focus to the last item.
-
-Pressing `Space` or `Enter` activates or deactivates the focused item, updating the selection immediately.
-
-## Accessibility
-
-To ensure proper accessibility, **Switch** must be correctly labeled.
-
-### Always provide an explicit label
-
-Every **Switch** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
-using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
-or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
-
-```tsx
-<Switch aria-label="Select an item">
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
- Screen readers will announce the label and the option information (text, position, selection state).
-
-```tsx
-<>
-  <Text
-    id="switch-label"
-    preset={ TEXT_PRESET.label }>
-    Select an item:
-  </Text>
-
-  <Switch aria-labelledby="switch-label">
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-</>
-```
-
- Screen readers will announce the label and the option information (text, position, selection state).
-
----
-title: "Switch"
-slug: switch
-category: component
-type: technical-information
-version: 19.7.3
-tokens: 433
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--technical-information.txt
----
-
-# Switch
-
-## Switch
-
-This component extends all the native `<div>` attributes.
-
-| Property | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `defaultValue` | `string` | No | undefined | The initial value of the selected item. Use when you don't need to control the value of the switch. |
-| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
-| `onValueChange` | `(detail: SwitchValueChangeDetail) => void` | No | undefined | Callback fired when the value changes. |
-| `size` | `'md' | 'sm'` | No | undefined | The size preset to use. |
-| `value` | `string` | No | undefined | The controlled value of the selected item. |
-
-## SwitchItem
-
-This component extends all the native `<button>` attributes.
-
-| Property | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `value` | `string` | Yes | undefined | The value of the switch item. |
-
-## Enums
-
-### SWITCH_SIZE
-
-- `md` = `md`
-- `sm` = `sm`
-
-## CSS Variables
-
-| Variable | Default value |
-|---|---|
-| `--ods-switch-item-background-color` | `inherit` |
-| `--ods-switch-item-background-color-checked` | `var(--ods-semantic-color-interaction-accent-hover)` |
-| `--ods-switch-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
-| `--ods-switch-item-text-color` | `var(--ods-semantic-color-content-text)` |
-| `--ods-switch-item-text-color-checked` | `var(--ods-semantic-color-content-on-solid)` |
-| `--ods-state-is-disabled-opacity` | `1` |
-| `--ods-switch-background-color` | `var(--ods-semantic-color-surface-muted)` |
-| `--ods-switch-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
-| `--ods-switch-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
-
----
-title: "Switch"
-slug: switch
-category: component
-type: examples
-version: 19.7.3
-tokens: 408
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--examples.txt
----
-
-# Switch
-
-## Default
-
-```tsx
-<Switch>
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Checked
-
-```tsx
-<Switch defaultValue="item-1">
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Disabled
-
-```tsx
-<Switch disabled>
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Sizes
-
-```tsx
-<>
-  <Switch size={ SWITCH_SIZE.sm }>
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-
-  <Switch size={ SWITCH_SIZE.md }>
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-</>
-```
-
-## Accessibility Aria Label
-
-```tsx
-<Switch aria-label="Select an item">
-  <SwitchItem value="item-1">Item 1</SwitchItem>
-  <SwitchItem value="item-2">Item 2</SwitchItem>
-  <SwitchItem value="item-3">Item 3</SwitchItem>
-</Switch>
-```
-
-## Accessibility Aria Labelledby
-
-```tsx
-<>
-  <Text
-    id="switch-label"
-    preset={ TEXT_PRESET.label }>
-    Select an item:
-  </Text>
-
-  <Switch aria-labelledby="switch-label">
-    <SwitchItem value="item-1">Item 1</SwitchItem>
-    <SwitchItem value="item-2">Item 2</SwitchItem>
-    <SwitchItem value="item-3">Item 3</SwitchItem>
-  </Switch>
-</>
 ```
 
 
@@ -23703,7 +23379,7 @@ slug: toggle
 category: component
 type: overview
 version: 19.7.3
-tokens: 306
+tokens: 338
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle.txt
 ---
 
@@ -23714,6 +23390,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `checked` | `boolean` | No | undefined | The controlled checked state of the toggle. |
+| `children` | `ReactNode` | Yes | undefined | The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
@@ -23873,7 +23550,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 427
+tokens: 459
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -23886,6 +23563,7 @@ This component extends all the native `<label>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `checked` | `boolean` | No | undefined | The controlled checked state of the toggle. |
+| `children` | `ReactNode` | Yes | undefined | The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
@@ -24036,7 +23714,7 @@ slug: tooltip
 category: component
 type: overview
 version: 19.7.3
-tokens: 325
+tokens: 298
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip.txt
 ---
 
@@ -24053,7 +23731,6 @@ _**Tooltip** component is used to display contextual information when the user h
 | `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
 | `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `TOOLTIP_POSITION` | No | undefined | The tooltip position around the trigger. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## Examples
@@ -24211,7 +23888,7 @@ slug: tooltip
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 497
+tokens: 469
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--technical-information.txt
 ---
 
@@ -24227,7 +23904,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toolti
 | `open` | `boolean` | No | undefined | The controlled open state of the tooltip. |
 | `openDelay` | `number` | No | undefined | Number of milliseconds before opening the tooltip. |
 | `overlayConfig` | `object` | No | undefined | The overlay configuration. |
-| `position` | `TOOLTIP_POSITION` | No | undefined | The tooltip position around the trigger. (deprecated) |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## TooltipContent

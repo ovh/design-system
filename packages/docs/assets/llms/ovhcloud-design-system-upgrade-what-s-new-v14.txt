@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-what-s-new-v14
 category: generic
 type: overview
 version: 19.7.3
-tokens: 823
+tokens: 831
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v14.txt
 ---
 
@@ -28,7 +28,7 @@ We added the following components:
 
 **Switch**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/switch)
+Removed in v20, see the [Migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-19-to-20)
 
 ### Features changes
 

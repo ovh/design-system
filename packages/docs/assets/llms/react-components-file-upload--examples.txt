@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: examples
 version: 19.7.3
-tokens: 1940
+tokens: 1927
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--examples.txt
 ---
 
@@ -89,8 +89,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-u
               <FileUploadItem
                 file={ file }
                 key={ idx }
-                progress={ 100 }
-                uploadSuccessLabel="Fichier uploadé" />
+                progress={ 100 } />
             ))
           }
         </FileUploadList>

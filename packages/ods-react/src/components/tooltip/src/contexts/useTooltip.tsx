@@ -37,6 +37,7 @@ interface TooltipRootProp {
     gutter?: number;
     /**
      * @type=TOOLTIP_POSITION
+     * \@default-value=TOOLTIP_POSITION.top
      * The tooltip position around the trigger.
      */
     position?: TooltipPosition,
@@ -45,6 +46,11 @@ interface TooltipRootProp {
      */
     sameWidth?: boolean,
   }
+  /**
+   * Removed in v20, use overlayConfig.position. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  position?: never,
   /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */

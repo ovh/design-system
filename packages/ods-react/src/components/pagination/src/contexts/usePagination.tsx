@@ -84,6 +84,11 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    */
   pageSize?: number;
   /**
+   * Removed in v20, use the label of PaginationPageSizeSelector. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  renderTotalItemsLabel?: never;
+  /**
    * The number of pages to show beside active page.
    */
   siblingCount?: number;
@@ -91,6 +96,11 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    * The total number of items.
    */
   totalItems: number;
+  /**
+   * Removed in v20, render a PaginationPageSizeSelector. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  withPageSizeSelector?: never;
 }
 
 interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {

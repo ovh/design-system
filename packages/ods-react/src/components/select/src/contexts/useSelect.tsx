@@ -60,6 +60,11 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    */
   disabled?: boolean,
   /**
+   * Removed in v20, use overlayConfig.sameWidth. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  fitControlWidth?: never,
+  /**
    * Whether the component is in error state.
    */
   invalid?: boolean,
@@ -96,6 +101,7 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
      */
     flip?: boolean,
     /**
+     * \@default-value=true
      * Whether to make the floating element same width as the reference element.
      */
     sameWidth?: boolean,

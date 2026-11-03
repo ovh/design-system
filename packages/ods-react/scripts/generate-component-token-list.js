@@ -88,22 +88,27 @@ async function writeOutput(content, outputFile) {
         return getCssVariables(file);
       }))).filter(Boolean);
 
-    // The first declaration is the base one: a later one sits in a state rule (checked, invalid, error...) and
-    // would document that state as the default.
-    const cssVariables = variables
-      .flatMap(({ declared }) => declared)
-      .reduce((res, [key, value]) => {
-        if (!(key in res)) {
-          res[key] = value;
-        }
-        return res;
-      }, {});
-
-    variables.flatMap(({ fallbacks }) => fallbacks).forEach(([key, value]) => {
-      if (!(key in cssVariables)) {
-        cssVariables[key] = value;
+    // Documentation policy: a property read with a fallback is documented with that fallback, the value it takes
+    // when nothing sets it, as its declarations may sit in a modifier or a state rule (an icon-only Link, the reset
+    // inside a disabled control). Otherwise, the first declaration is the base one: a later one sits in a state rule
+    // (checked, invalid, error...) and would document that state as the default. The order stays the one of the
+    // declarations, then of the properties only read with a fallback.
+    const fallbacks = variables.flatMap(({ fallbacks }) => fallbacks).reduce((res, [key, value]) => {
+      if (!(key in res)) {
+        res[key] = value;
       }
-    });
+      return res;
+    }, {});
+
+    const cssVariables = [
+      ...variables.flatMap(({ declared }) => declared),
+      ...Object.entries(fallbacks),
+    ].reduce((res, [key, value]) => {
+      if (!(key in res)) {
+        res[key] = key in fallbacks ? fallbacks[key] : value;
+      }
+      return res;
+    }, {});
 
     return writeOutput(cssVariables, path.resolve(process.cwd(), 'documentation', 'cssVariable.json'));
   } catch(error) {

@@ -3,6 +3,7 @@
    vite.config.ts. Ported doc components import ODS from here. */
 export { BADGE_SIZE, BADGE_STATUS, Badge } from '../../ods-react/src/components/badge/src';
 export { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../ods-react/src/components/button/src';
+export { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem, type ButtonGroupValueChangeDetail } from '../../ods-react/src/components/button-group/src';
 export { CARD_STATUS, Card } from '../../ods-react/src/components/card/src';
 export { Clipboard, ClipboardControl, ClipboardTrigger } from '../../ods-react/src/components/clipboard/src';
 export { Combobox, ComboboxContent, ComboboxControl } from '../../ods-react/src/components/combobox/src';
@@ -19,7 +20,6 @@ export { Select, SelectContent, SelectControl, type SelectOptionItem, type Selec
 export { Skeleton } from '../../ods-react/src/components/skeleton/src';
 export { SPINNER_SIZE, Spinner } from '../../ods-react/src/components/spinner/src';
 export { TABLE_SIZE, Table } from '../../ods-react/src/components/table/src';
-export { TABS_SIZE, TABS_VARIANT, Tab, TabList, Tabs, type TabsValueChangeEvent } from '../../ods-react/src/components/tabs/src';
 export { TEXT_PRESET, Text } from '../../ods-react/src/components/text/src';
 export { Textarea } from '../../ods-react/src/components/textarea/src';
 export { Tooltip, TooltipContent, TooltipTrigger } from '../../ods-react/src/components/tooltip/src';

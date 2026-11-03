@@ -17,6 +17,7 @@ export const render = () => (
 );
 
 export const defaultPosition = () => (
+  // Room above the trigger: without it, the flip opens the content below and the default position cannot be read.
   <div style={{ paddingTop: '200px' }}>
     <Popover open>
       <PopoverTrigger>

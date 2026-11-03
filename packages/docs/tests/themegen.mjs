@@ -82,6 +82,31 @@ async function suite(browser, { base, version }) {
       throw new Error(`intercepté par ${JSON.stringify(hit)}`);
     }
   });
+  await check('the theme selector turns Custom on an edit and back to Default once confirmed', async () => {
+    const tabs = page.locator('[class*="theme-generator__menu"] [data-ods="tab"]');
+    const selected = async () => (await tabs.and(page.locator('[aria-selected="true"]')).textContent())?.trim();
+    if (await selected() !== 'Custom') {
+      throw new Error(`selected after an edit: ${await selected()}`);
+    }
+    await tabs.filter({ hasText: 'Default' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: 'Stay on Custom' }).click();
+    if (await selected() !== 'Custom') {
+      throw new Error(`selected after cancelling: ${await selected()}`);
+    }
+    await tabs.filter({ hasText: 'Default' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: /^Switch to/ }).click();
+    await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 5000 });
+    if (await selected() !== 'Default') {
+      throw new Error(`selected after confirming: ${await selected()}`);
+    }
+    await page.click('text=JSON');
+    await page.waitForSelector('textarea', { timeout: 5000 });
+    const keys = Object.keys(JSON.parse(await page.inputValue('textarea')));
+    await page.getByRole('dialog').getByText('Close', { exact: true }).click();
+    if (keys.length) {
+      throw new Error(`the export still holds ${keys.length} entries`);
+    }
+  });
   results.push(pageErrors.length === 0 ? 'OK  zero pageerror' : `KO  ${pageErrors.length} pageerror(s)`);
   await page.close();
   return results;

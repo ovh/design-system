@@ -1,0 +1,4 @@
+/* The ODS Tailwind entry point first: it declares the layer order before any layer is used. */
+@import '@ovhcloud/ods-tailwind';
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';

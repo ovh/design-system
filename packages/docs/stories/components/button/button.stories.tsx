@@ -318,7 +318,7 @@ export const GuideThemesOwnStyle: StoryObj = {
           gap: var(--ods-semantic-size-space-gap-block);
           max-width: 280px;
           padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
-          border: 1px solid var(--ods-semantic-color-border-neutral);
+          border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-container);
           border-radius: var(--ods-semantic-size-radius-container);
           background-color: var(--ods-semantic-color-surface-raised);
           color: var(--ods-semantic-color-content-text);

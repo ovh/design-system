@@ -83,17 +83,21 @@ async function suite(browser, { base, version }) {
     }
   });
   await check('the theme selector turns Custom on an edit and back to Default once confirmed', async () => {
-    const tabs = page.locator('[class*="theme-generator__menu"] [data-ods="tab"]');
-    const selected = async () => (await tabs.and(page.locator('[aria-selected="true"]')).textContent())?.trim();
+    const items = page.getByRole('radiogroup', { name: 'Edited theme' }).getByRole('radio');
+    const selected = async () => (await items.and(page.locator('[aria-checked="true"]')).textContent())?.trim();
     if (await selected() !== 'Custom') {
       throw new Error(`selected after an edit: ${await selected()}`);
     }
-    await tabs.filter({ hasText: 'Default' }).click();
+    await items.filter({ hasText: 'Custom' }).click();
+    if (await selected() !== 'Custom') {
+      throw new Error(`selected after clicking the selected item: ${await selected()}`);
+    }
+    await items.filter({ hasText: 'Default' }).click();
     await page.getByRole('dialog').getByRole('button', { name: 'Stay on Custom' }).click();
     if (await selected() !== 'Custom') {
       throw new Error(`selected after cancelling: ${await selected()}`);
     }
-    await tabs.filter({ hasText: 'Default' }).click();
+    await items.filter({ hasText: 'Default' }).click();
     await page.getByRole('dialog').getByRole('button', { name: /^Switch to/ }).click();
     await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 5000 });
     if (await selected() !== 'Default') {

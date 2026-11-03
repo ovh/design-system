@@ -35,7 +35,7 @@ slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1285
+tokens: 1180
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
 ---
 
@@ -143,22 +143,7 @@ The fonts stylesheet declares its font files with relative `url()`s, which Sass 
 > In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default';`.
 > Though this will increase the bundle size and prevent browser resources loading optimization.
 
-Each dark theme is an overlay, to load **after** the light theme it darkens. The aluminium dark theme goes after the default theme:
-
-```typescript
-import '@ovhcloud/ods-themes/default/css';
-import '@ovhcloud/ods-themes/aluminium-dark/css';
-```
-
-The blue jeans dark theme goes after the default theme and the blue jeans theme, in this order:
-
-```typescript
-import '@ovhcloud/ods-themes/default/css';
-import '@ovhcloud/ods-themes/blue-jeans/css';
-import '@ovhcloud/ods-themes/blue-jeans-dark/css';
-```
-
-A dark theme re-declares the semantic tokens on `:root`, so it applies to the whole page. ODS does not switch between the light and dark themes at runtime: load the one you need.
+The Blue Jeans theme and the dark themes are overlays, loaded **after** the default theme: [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) gives the imports of each theme, in order, and explains how to switch between them or create your own.
 
 ## Server-side rendering
 
@@ -1999,7 +1984,7 @@ slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
 version: 19.7.3
-tokens: 315
+tokens: 350
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
@@ -2026,7 +2011,7 @@ html {
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page.
+If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page. They follow the theme the page loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)).
 
 ```css
 .my-custom-title {
@@ -2044,6 +2029,177 @@ import '@ovhcloud/ods-react/normalize-css';
 ```
 
 
+## Themes
+
+---
+title: "Themes"
+slug: ovhcloud-design-system-customize-themes
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1680
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-themes.txt
+---
+
+# Themes
+
+A theme is a stylesheet that declares the ODS design tokens as CSS custom properties on `:root`. ODS components read these tokens, and so can your own CSS: load a theme, and both follow it.
+
+## Available themes
+
+`@ovhcloud/ods-themes` ships four themes:
+
+- **Default** (`@ovhcloud/ods-themes/default/css`), the Aluminium look: the base every other theme is loaded after.
+- **Blue Jeans** (`@ovhcloud/ods-themes/blue-jeans/css`), the OVHcloud look, an overlay on the default theme.
+- **Aluminium dark** (`@ovhcloud/ods-themes/aluminium-dark/css`), the dark overlay of the default theme.
+- **Blue Jeans dark** (`@ovhcloud/ods-themes/blue-jeans-dark/css`), the dark overlay of the Blue Jeans theme.
+
+The fonts are a stylesheet of their own, `@ovhcloud/ods-themes/default/fonts`, for every theme.
+
+## Load a theme
+
+An overlay only re-declares the tokens it changes, so it is loaded **after** the theme it builds on. Every theme declares its tokens on `:root`, with the same specificity: the stylesheet loaded last wins.
+
+The default theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+The Blue Jeans theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+```
+
+The Aluminium dark theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+The Blue Jeans dark theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+import '@ovhcloud/ods-themes/blue-jeans-dark/css';
+```
+
+## Switch themes
+
+A page shows one theme: the one its stylesheets declare on `:root`. No attribute or class selects a theme, so ODS does not switch themes by itself.
+
+To switch themes, change the stylesheets the page loads. The order still matters, so keep each overlay in its own `<link>` after the theme it builds on, and turn it on or off:
+
+```html
+<link rel="stylesheet" href="/ods-themes/default/index.css">
+<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" id="ods-dark" disabled>
+```
+
+```typescript
+function setDarkMode(isDark: boolean): void {
+  (document.getElementById('ods-dark') as HTMLLinkElement).disabled = !isDark;
+}
+```
+
+To follow the color scheme of the operating system instead, without any script, give the dark overlay a media query:
+
+```html
+<link rel="stylesheet" href="/ods-themes/default/index.css">
+<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" media="(prefers-color-scheme: dark)">
+```
+
+These URLs assume the `dist` folder of `@ovhcloud/ods-themes` copied to your public folder as `ods-themes`, one folder per theme.
+
+With Vite, a `?url` import emits the file and gives its URL instead. Vite adds the stylesheets you import after the `<link>` elements of your `index.html`, so an overlay declared there would come before the default theme and lose: create its `<link>` from your code, at the end of `<head>`:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import darkThemeUrl from '@ovhcloud/ods-themes/aluminium-dark/css?url';
+
+const darkTheme = Object.assign(document.createElement('link'), { disabled: true, href: darkThemeUrl, rel: 'stylesheet' });
+document.head.append(darkTheme);
+
+function setDarkMode(isDark: boolean): void {
+  darkTheme.disabled = !isDark;
+}
+```
+
+This documentation also loads its overlays after the default theme, into two `<style>` elements that its theme select and its color scheme button fill.
+
+## Use the tokens in your CSS
+
+Style your own elements with the `--ods-semantic-*` tokens, and they follow the theme as the ODS components do. Switch the theme or the color scheme of this documentation, from its top bar (at the bottom of the navigation on narrow screens): the plan below follows, as its Button does. The two dark themes share their surfaces and their brand color, so the plan looks the same in both.
+
+```tsx
+<>
+  <style>{`
+    .my-plan {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ods-semantic-size-space-gap-block);
+      max-width: 280px;
+      padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+      border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-container);
+      border-radius: var(--ods-semantic-size-radius-container);
+      background-color: var(--ods-semantic-color-surface-raised);
+      color: var(--ods-semantic-color-content-text);
+    }
+
+    .my-plan__name {
+      margin: 0;
+      color: var(--ods-semantic-color-content-heading);
+      font-weight: var(--ods-semantic-font-weight-semibold);
+    }
+
+    .my-plan__price {
+      color: var(--ods-semantic-color-content-brand);
+      font-weight: var(--ods-semantic-font-weight-bold);
+    }
+  `}</style>
+
+  <div className="my-plan">
+    <p className="my-plan__name">Starter plan</p>
+    <span className="my-plan__price">€4.99 / month</span>
+    <Button>Order</Button>
+  </div>
+</>
+```
+
+The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page explains which tokens to use and lists all of them.
+
+## Create your own theme
+
+A theme of your own is an overlay too: a stylesheet, loaded after `@ovhcloud/ods-themes/default/css`, that re-declares the brand and accent ramps on `:root`, from `50` to `900`:
+
+```css
+:root {
+  --ods-palette-brand-500: #7a00cc;
+  /* and the other brand and accent rungs, from 50 to 900 */
+}
+```
+
+The ramps do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their default values. Over the default theme alone, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare the `--ods-semantic-*` tokens themselves to change them. The [migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-19-to-20) details which roles each ramp reaches.
+
+The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+With a dark overlay, load your theme between the default theme and the overlay. The overlay reads the brand and accent ramps, so your colors reach it, and the roles it re-declares, such as the focus ring, stay on top:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import './my-theme.css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+
 ## Style Customization
 
 ---
@@ -2052,7 +2208,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 622
+tokens: 631
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -2118,8 +2274,7 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-We do advise to reuse those variables on your own style, this way your application will automatically be updated on current
-theme changes or when new themes will be released.
+We do advise to reuse those variables on your own style, this way your application follows the theme it loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)).
 
 You can find the whole list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) documentation page.
 
@@ -2546,7 +2701,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1244
+tokens: 1994
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -2582,11 +2737,15 @@ export default {
       },
       colors: {
         'ods-brand': 'var(--ods-semantic-color-surface-brand)',
+        'ods-critical': 'var(--ods-semantic-color-surface-critical)',
+        'ods-heading': 'var(--ods-semantic-color-content-heading)',
         'ods-success': 'var(--ods-semantic-color-surface-success)',
-        'ods-warning': 'var(--ods-semantic-color-content-warning)',
+        'ods-text': 'var(--ods-semantic-color-content-text)',
+        'ods-warning': 'var(--ods-semantic-color-surface-warning)',
       },
       fontFamily: {
         'ods-body': 'var(--ods-semantic-font-family-body)',
+        'ods-code': 'var(--ods-semantic-font-family-code)',
       },
     },
   },
@@ -2594,71 +2753,100 @@ export default {
 }
 ```
 
-### Integration with IDEs
-#### Integration with JetBrains
-This should work straight out of the box.
-
-#### Integration with VSCode
-Create a `./.vscode/tailwind.json` containing the classes you want to expose for autocompletion.
-
-```json
-{
-    "customClasses": [
-      "ods-brand",
-      "ods-success",
-      "ods-critical",
-      "ods-control",
-      "ods-container",
-      "ods-pill",
-      "ods-body",
-    ]
-  }
-```
+Then import the ODS theme as usual (see [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started)). Tailwind CSS v3 emits its utilities outside of any CSS layer, so they take precedence over the ODS component styles, which sit in the `ods-*` layers: a `rounded-ods-pill` class on an ODS component applies without further setup.
 
 ## Tailwind CSS v4 Configuration
+
 For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.com/docs/adding-custom-styles) property:
 
 ```css
+/* ods-tailwind.css */
 @theme {
   --radius-ods-control: var(--ods-semantic-size-radius-control);
   --radius-ods-container: var(--ods-semantic-size-radius-container);
   --radius-ods-pill: var(--ods-semantic-size-radius-pill);
 
   --color-ods-brand: var(--ods-semantic-color-surface-brand);
+  --color-ods-critical: var(--ods-semantic-color-surface-critical);
+  --color-ods-heading: var(--ods-semantic-color-content-heading);
   --color-ods-success: var(--ods-semantic-color-surface-success);
-  --color-ods-critical: var(--ods-semantic-color-content-critical);
+  --color-ods-text: var(--ods-semantic-color-content-text);
+  --color-ods-warning: var(--ods-semantic-color-surface-warning);
 
   --font-ods-body: var(--ods-semantic-font-family-body);
+  --font-ods-code: var(--ods-semantic-font-family-code);
 }
 ```
 
-Then import that file after the main ODS theme and Tailwind CSS.
-In order for you to properly be able to overwrite the ODS theme, you need to redefine the order of the CSS layers.
-Base is optional.
+Then import that file after Tailwind CSS and the ODS theme:
 
-```typescript
-// index.css
-
-@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, molecules, utilities;
+```css
+/* index.css */
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, utilities;
 @import "tailwindcss";
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/default/fonts';
-@import './ods-tailwind.css';
+@import "@ovhcloud/ods-themes/default/css";
+@import "@ovhcloud/ods-themes/default/fonts";
+@import "./ods-tailwind.css";
 ```
+
+The first line orders the CSS layers. Tailwind CSS v4 puts its utilities in the `utilities` layer and the ODS components put their styles in the `ods-*` layers: listing the `ods-*` layers before `utilities` lets a Tailwind class take precedence over an ODS component style. Without it, the `ods-*` layers come after the Tailwind ones, and the ODS styles win. The `base` layer, the Tailwind CSS reset, is optional.
+
+## Themes and dark mode
+
+The `ods-*` classes only read the ODS tokens, so they follow the theme the page loads, dark themes included: load another theme, or switch themes as explained in [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes), and they change with it, with no Tailwind CSS configuration and no `dark:` variant.
+
+Other themes are imported after the default theme, as without Tailwind CSS. For instance, for the Blue Jeans theme in Tailwind CSS v4:
+
+```css
+/* index.css */
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, utilities;
+@import "tailwindcss";
+@import "@ovhcloud/ods-themes/default/css";
+@import "@ovhcloud/ods-themes/default/fonts";
+@import "@ovhcloud/ods-themes/blue-jeans/css";
+@import "./ods-tailwind.css";
+```
+
+If your own classes use the `dark:` variant of Tailwind CSS, make it follow the same switch as the ODS dark theme. By default, it follows the color scheme of the operating system, as a dark theme loaded with `media="(prefers-color-scheme: dark)"` does. If your code turns the dark theme on and off, also set a class of your own on `<html>`, `ods-dark` for instance, and point the variant at it:
+
+```css
+/* Tailwind CSS v4, in index.css */
+@custom-variant dark (&:where(.ods-dark, .ods-dark *));
+```
+
+```js
+// Tailwind CSS v3, in tailwind.config.js
+export default {
+  darkMode: ['selector', '.ods-dark'],
+  // …
+}
+```
+
+ODS itself reads no class: `ods-dark` only drives your `dark:` classes.
+
+## Integration with IDEs
+
+### Integration with JetBrains
+
+This should work straight out of the box.
+
+### Integration with VSCode
+
+Install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension: the `ods-*` classes complete from your configuration (v3) or your CSS file (v4). In Tailwind CSS v4, if the extension does not find your CSS file, point its `tailwindCSS.experimental.configFile` setting at it.
 
 ## Usage Examples
 
 You can use Tailwind utilities alongside ODS components:
 
 ```tsx
-import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';
+import { Button } from '@ovhcloud/ods-react';
 
 function MyComponent() {
   return (
-  <div>
-      <p className="text-ods-critical">Click on the button!</p>
-      <Button className="bg-ods-brand" emphasis={ BUTTON_EMPHASIS.high }>Click me!</Button>
-  </div>
+    <div>
+      <p className="text-ods-heading font-ods-body">Click on the button!</p>
+      <Button className="rounded-ods-pill">Click me!</Button>
+    </div>
   );
 }
 ```
@@ -2668,17 +2856,16 @@ function MyComponent() {
 ### Color Usage
 
 - Use semantic color names (e.g., `ods-brand`, `ods-success`) instead of generic colors
-- **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
+- **Issue**: Color classes not working? Verify that the Tailwind config (v3) or the `@theme` file (v4) includes the ODS color mappings, and that the content paths (v3) include your component files.
 
 ### Spacing and Layout
 
 - Use ODS border radius tokens (`rounded-ods-control`, `rounded-ods-container`, etc.)
-- Leverage ODS form element heights for consistent input sizing
-- **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
+- **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes/default/css` is imported, and loaded before the other themes.
 
 ### Typography
 
-- Use the ODS font family (`font-ods` for body text, `font-ods-code` for code)
+- Use the ODS font family (`font-ods-body` for body text, `font-ods-code` for code)
 - Apply semantic text colors (`text-ods-text`, `text-ods-heading`)
 - Maintain proper contrast ratios with ODS color combinations
 
@@ -2687,13 +2874,15 @@ function MyComponent() {
 - ODS components can be styled with Tailwind utilities using the `className` prop
 - Avoid overriding core ODS component styles unless necessary
 - Use Tailwind for layout and positioning, ODS for component behavior
-- **Issue**: Responsive breakpoints not working? Confirm that the ODS breakpoint variables are properly defined and check that the screen configuration in Tailwind config is correct.
+- **Issue**: An ODS style wins over a Tailwind class in v4? Check that the `@layer` line comes first in your CSS entry file.
+- **Issue**: Responsive breakpoints not matching ODS? The ODS breakpoints are Sass variables of `@ovhcloud/ods-react/style` (`$ods-breakpoint-mobile: 576px`, `$ods-breakpoint-tablet: 768px`, `$ods-breakpoint-desktop: 992px`, `$ods-breakpoint-large-screen: 1200px`), not CSS custom properties: declare their values in `theme.screens` (v3) or as `--breakpoint-*` variables in `@theme` (v4).
 
 ## Resources
 
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Tailwind v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
 - [ODS Get Started Guide](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+- [ODS Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)
 - [ODS Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens)
 
 

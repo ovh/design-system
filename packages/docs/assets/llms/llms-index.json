@@ -543,7 +543,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 222,
+          "tokens": 194,
           "url": "./react-components-form-field.txt"
         },
         "documentation": {
@@ -558,7 +558,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 2693,
+          "tokens": 246,
           "url": "./react-components-form-field--examples.txt"
         }
       }
@@ -1512,7 +1512,7 @@
       "slug": "ovhcloud-design-system-get-started",
       "title": "Get Started",
       "type": "overview",
-      "tokens": 1285,
+      "tokens": 1180,
       "url": "./ovhcloud-design-system-get-started.txt"
     },
     {
@@ -1547,14 +1547,21 @@
       "slug": "ovhcloud-design-system-customize-apply-ods-style",
       "title": "Apply ODS Style",
       "type": "overview",
-      "tokens": 315,
+      "tokens": 350,
       "url": "./ovhcloud-design-system-customize-apply-ods-style.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-customize-themes",
+      "title": "Themes",
+      "type": "overview",
+      "tokens": 1680,
+      "url": "./ovhcloud-design-system-customize-themes.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-style-customization",
       "title": "Style Customization",
       "type": "overview",
-      "tokens": 622,
+      "tokens": 631,
       "url": "./ovhcloud-design-system-customize-style-customization.txt"
     },
     {
@@ -1568,7 +1575,7 @@
       "slug": "ovhcloud-design-system-customize-tailwind-css-integration",
       "title": "Tailwind CSS Integration",
       "type": "overview",
-      "tokens": 1244,
+      "tokens": 1994,
       "url": "./ovhcloud-design-system-customize-tailwind-css-integration.txt"
     },
     {

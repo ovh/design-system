@@ -1,6 +1,7 @@
 // Offline audit (milliseconds) of the package imports the documentation
-// quotes: each '@ovhcloud/<package>/<subpath>' of a current guide or component
-// page must match an export of that package, whose files exist once built.
+// quotes, in code or as inline code: each '@ovhcloud/<package>/<subpath>' of a
+// current guide or component page must match an export of that package, whose
+// files exist once built.
 // The release notes and migration guides quote past versions on purpose.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -49,7 +50,7 @@ async function suite() {
 
   const quoted = new Map();
   for (const path of pageFiles()) {
-    for (const [, specifier] of readFileSync(path, 'utf8').matchAll(/['"](?:pkg:)?(@ovhcloud\/[a-z0-9-]+(?:\/[\w./-]+)?)(?:\?[\w&=]+)?['"]/g)) {
+    for (const [, specifier] of readFileSync(path, 'utf8').matchAll(/['"`](?:pkg:)?(@ovhcloud\/[a-z0-9-]+(?:\/[\w./-]+)?)(?:\?[\w&=]+)?['"`]/g)) {
       quoted.set(specifier, [...(quoted.get(specifier) ?? []), path.slice(contentRoot.length + 1)]);
     }
   }

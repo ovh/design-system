@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 17807
+tokens: 18065
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -1099,8 +1099,8 @@ import { Spinner } from '@ovhcloud/ods-react';
 
 **The Switch component is removed** (deprecated since v19.4.0), with `SwitchItem` (and `Switch.Item`), `SWITCH_SIZE`, `SWITCH_SIZES`, the `SwitchProp`, `SwitchItemProp`, `SwitchSize` and `SwitchValueChangeDetail` types, the `@ovhcloud/ods-react/switch` entry point and the `--ods-switch-*` CSS custom properties. Replace it according to its use:
 
-- To move between views or modes: [Tabs](https://ovh.github.io/design-system/v19.7.3/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, and each `SwitchItem` becomes a `Tab`. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`.
-- To turn an option on or off with an immediate effect: [Button Group](https://ovh.github.io/design-system/v19.7.3/components/button-group). Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`.
+- To move between views: [Tabs](https://ovh.github.io/design-system/v19.7.3/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, each `SwitchItem` becomes a `Tab`, and the views shown under the Switch move into one `TabContent` per `Tab`, so that each tab controls its panel. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`. The inactive panels stay mounted by default: set `mountStrategy="unmount"` on the Tabs to keep a view rendered only while it is shown.
+- To pick a mode or turn an option on or off with an immediate effect, with no view to hold: [Button Group](https://ovh.github.io/design-system/v19.7.3/components/button-group). With a single selection, it renders a radio group: give it an `aria-label`. Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`, or an empty array when the selected item is clicked again: ignore it to keep the selection.
 - To pick a value in a form: [Radio Group](https://ovh.github.io/design-system/v19.7.3/components/radio-group).
 - An override of a `--ods-switch-*` custom property has no element left to style: remove it, and style the replacement through its own custom properties.
 
@@ -1119,18 +1119,37 @@ import { SWITCH_SIZE, Switch, SwitchItem } from '@ovhcloud/ods-react';
   <SwitchItem value="list">List</SwitchItem>
   <SwitchItem value="grid">Grid</SwitchItem>
 </Switch>
+
+{ view === 'list' ? <ServerList /> : <ServerGrid /> }
 ```
 
 **after**
 ```tsx
-import { TABS_SIZE, TABS_VARIANT, Tab, TabList, Tabs } from '@ovhcloud/ods-react';
+import { TABS_SIZE, TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '@ovhcloud/ods-react';
 
 <Tabs onValueChange={ ({ value }) => setView(value) } size={ TABS_SIZE.sm } value={ view } variant={ TABS_VARIANT.switch }>
   <TabList>
     <Tab value="list">List</Tab>
     <Tab value="grid">Grid</Tab>
   </TabList>
+
+  <TabContent value="list"><ServerList /></TabContent>
+  <TabContent value="grid"><ServerGrid /></TabContent>
 </Tabs>
+```
+
+**after, for a mode with no view to hold**
+```tsx
+import { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';
+
+<ButtonGroup
+  aria-label="Units"
+  onValueChange={ ({ value }) => value[0] && setUnit(value[0]) }
+  size={ BUTTON_GROUP_SIZE.sm }
+  value={ [unit] }>
+  <ButtonGroupItem value="gb">GB</ButtonGroupItem>
+  <ButtonGroupItem value="gib">GiB</ButtonGroupItem>
+</ButtonGroup>
 ```
 
 ### Table

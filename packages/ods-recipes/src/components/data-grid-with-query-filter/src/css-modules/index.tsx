@@ -7,6 +7,7 @@ import {
   DataTableEmpty,
   DataTableHead,
   Pagination,
+  PaginationPages,
   QueryFilter,
   QueryFilterClear,
   QueryFilterContent,
@@ -157,7 +158,9 @@ const DataGridWithQueryFilter = (): JSX.Element => {
         onPageChange={ ({ page }) => setCurrentPage(page) }
         page={ currentPage }
         pageSize={ PAGE_SIZE }
-        totalItems={ total } />
+        totalItems={ total }>
+        <PaginationPages />
+      </Pagination>
     </div>
   );
 };

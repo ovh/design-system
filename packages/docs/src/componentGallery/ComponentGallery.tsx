@@ -15,7 +15,7 @@ const CATEGORIES: Record<string, string[]> = {
   'Actions': ['button', 'button-group', 'clipboard', 'link'],
   'Data display': ['accordion', 'avatar', 'card', 'cart', 'code', 'data-table', 'divider', 'file-thumbnail', 'icon', 'kbd', 'logo', 'markdown', 'medium', 'table', 'text', 'tile'],
   'Feedback & status': ['badge', 'message', 'message-bubble', 'meter', 'progress-bar', 'skeleton', 'spinner', 'tag'],
-  'Form elements': ['checkbox', 'combobox', 'datepicker', 'editable', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'switch', 'textarea', 'timepicker', 'toggle'],
+  'Form elements': ['checkbox', 'combobox', 'datepicker', 'editable', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'textarea', 'timepicker', 'toggle'],
   'Navigation': ['breadcrumb', 'command', 'menu', 'pagination', 'tabs', 'tree-view'],
   'Overlays': ['drawer', 'modal', 'popover', 'toaster', 'tooltip'],
 };

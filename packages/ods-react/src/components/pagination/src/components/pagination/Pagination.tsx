@@ -1,9 +1,7 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
-import { type FC, type JSX, forwardRef, useEffect } from 'react';
-import { PaginationProvider, type PaginationRootProp, defaultRenderTotalItemsLabel, usePagination } from '../../contexts/usePagination';
-import { PaginationPageSizeSelector } from '../pagination-page-size-selector/PaginationPageSizeSelector';
-import { PaginationPages } from '../pagination-pages/PaginationPages';
+import { type FC, type JSX, forwardRef } from 'react';
+import { PaginationProvider, type PaginationRootProp, usePagination } from '../../contexts/usePagination';
 import style from './pagination.module.scss';
 
 interface PaginationProp extends PaginationRootProp {}
@@ -12,19 +10,11 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
   children,
   className,
   defaultPage,
-  renderTotalItemsLabel = defaultRenderTotalItemsLabel,
   siblingCount,
   totalItems,
-  withPageSizeSelector,
   ...props
 }, ref): JSX.Element => {
   const { currentPage, getPageUrl, handlePageChange, itemsPerPage } = usePagination();
-
-  useEffect(() => {
-    if (!children) {
-      console.warn('[DEPRECATED]: Usage of <Pagination /> alone is not recommended. Please use a full composition. Like the following <Pagination><PaginationPages /></Pagination>');
-    }
-  }, [children]);
 
   return (
     <VendorPagination.Root
@@ -40,18 +30,7 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
       siblingCount={ siblingCount }
       type={ getPageUrl ? 'link' : 'button' }
       { ...props }>
-      {/* [Deprecated] remove non children default render on next major release */}
-      {
-        children
-        ?? <>
-          {
-            withPageSizeSelector &&
-            <PaginationPageSizeSelector label={ renderTotalItemsLabel({ totalItems }) } />
-          }
-
-          <PaginationPages />
-        </>
-      }
+      { children }
     </VendorPagination.Root>
   );
 });

@@ -4,10 +4,9 @@ import { type ComponentPropsWithRef, type ElementType, type JSX, type ReactNode,
 import { useContext } from '../../../../utils/context';
 import { warnOnce } from '../../../../utils/warn-once';
 
-/** @internal DEPRECATED: remove on next major version */
-type PaginationTotalItemsLabelRenderer = (params: { totalItems: number }) => string | number;
-/** DEPRECATED: remove on next major */
-const defaultRenderTotalItemsLabel: PaginationTotalItemsLabelRenderer = ({ totalItems }) => `of ${totalItems} results`;
+function defaultRenderTotalItemsLabel({ totalItems }: { totalItems: number }): string {
+  return `of ${totalItems} results`;
+}
 
 interface PaginationPageChangeDetail {
   page: number;
@@ -24,6 +23,10 @@ interface PaginationPageUrlDetail {
 }
 
 interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
+  /**
+   * The parts of the pagination to render, such as PaginationPages.
+   */
+  children: ReactNode;
   /**
    * The initial active page. Use when you don't need to control the active page of the pagination.
    */
@@ -81,13 +84,6 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    */
   pageSize?: number;
   /**
-   * @deprecated
-   * \@default-value='of $\{totalItems\} results'
-   * Format the label displayed near the per-page selector.
-   * DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector
-   */
-  renderTotalItemsLabel?: PaginationTotalItemsLabelRenderer;
-  /**
    * The number of pages to show beside active page.
    */
   siblingCount?: number;
@@ -95,12 +91,6 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
    * The total number of items.
    */
   totalItems: number;
-  /**
-   * @deprecated
-   * Whether the per-page selector is displayed.
-   * DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector
-   */
-  withPageSizeSelector?: boolean;
 }
 
 interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
@@ -215,6 +205,5 @@ export {
   type PaginationPageUrlDetail,
   PaginationProvider,
   type PaginationRootProp,
-  type PaginationTotalItemsLabelRenderer,
   usePagination,
 };

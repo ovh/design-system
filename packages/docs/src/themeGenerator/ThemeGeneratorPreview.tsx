@@ -46,7 +46,6 @@ import * as RangeStories from '../../stories/components/range/range.stories';
 import * as SelectStories from '../../stories/components/select/select.stories';
 import * as SkeletonStories from '../../stories/components/skeleton/skeleton.stories';
 import * as SpinnerStories from '../../stories/components/spinner/spinner.stories';
-import * as SwitchStories from '../../stories/components/switch/switch.stories';
 import * as TableStories from '../../stories/components/table/table.stories';
 import * as TabsStories from '../../stories/components/tabs/tabs.stories';
 import * as TagStories from '../../stories/components/tag/tag.stories';
@@ -112,7 +111,6 @@ const THEME_STORY_MODULES: Record<string, Record<string, unknown>> = {
   Select: SelectStories,
   Skeleton: SkeletonStories,
   Spinner: SpinnerStories,
-  Switch: SwitchStories,
   Table: TableStories,
   Tabs: TabsStories,
   Tag: TagStories,

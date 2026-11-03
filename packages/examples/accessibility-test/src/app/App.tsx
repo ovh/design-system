@@ -41,7 +41,6 @@ import {
   Select, SelectContent, SelectControl,
   Skeleton,
   Spinner,
-  Switch, SwitchItem,
   Table,
   Tabs, TabContent, TabList, Tab,
   Tag,
@@ -49,7 +48,7 @@ import {
   Textarea,
   Timepicker, TimepickerControl, TimepickerTimezoneList,
   Toaster, toast,
-  Toggle,
+  Toggle, ToggleControl,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -1380,42 +1379,6 @@ function App(): ReactElement {
         </section>
 
         <section>
-          <h1>Switch</h1>
-
-          <Switch aria-label="Select an item">
-            <SwitchItem value="item-1">Item 1</SwitchItem>
-            <SwitchItem value="item-2">Item 2</SwitchItem>
-            <SwitchItem value="item-3">Item 3</SwitchItem>
-          </Switch>
-
-          <Text
-            id="switch-label"
-            preset={ TEXT_PRESET.label }>
-            Select an item:
-          </Text>
-
-          <Switch aria-labelledby="switch-label">
-            <SwitchItem value="item-1">Item 1</SwitchItem>
-            <SwitchItem value="item-2">Item 2</SwitchItem>
-            <SwitchItem value="item-3">Item 3</SwitchItem>
-          </Switch>
-
-          <Switch
-            aria-label="Select an item"
-            size="sm">
-            <SwitchItem value="item-1">
-              Item 1
-            </SwitchItem>
-            <SwitchItem value="item-2">
-              Item 2
-            </SwitchItem>
-            <SwitchItem value="item-3">
-              Item 3
-            </SwitchItem>
-          </Switch>
-        </section>
-
-        <section>
           <h1>Table</h1>
 
           <Table>
@@ -1592,14 +1555,18 @@ function App(): ReactElement {
         <section>
           <h1>Toggle</h1>
 
-          <Toggle aria-label="Enable dark mode" />
+          <Toggle aria-label="Enable dark mode">
+            <ToggleControl />
+          </Toggle>
 
           <FormField>
             <FormFieldLabel>
               Dark mode
             </FormFieldLabel>
 
-            <Toggle />
+            <Toggle>
+              <ToggleControl />
+            </Toggle>
           </FormField>
 
           <FormField invalid>
@@ -1607,7 +1574,9 @@ function App(): ReactElement {
               Dark mode
             </FormFieldLabel>
 
-            <Toggle />
+            <Toggle>
+              <ToggleControl />
+            </Toggle>
           </FormField>
         </section>
 

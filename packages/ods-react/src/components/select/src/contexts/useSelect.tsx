@@ -60,11 +60,6 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    */
   disabled?: boolean,
   /**
-   * @deprecated
-   * Use overlayConfig.sameWidth instead
-   */
-  fitControlWidth?: boolean,
-  /**
    * Whether the component is in error state.
    */
   invalid?: boolean,

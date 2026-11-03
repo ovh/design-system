@@ -35,4 +35,18 @@ describe('Select rendering', () => {
       expect(await widthOf('override')).toBe(400);
     });
   });
+
+  describe('list width', () => {
+    it('should give the list the width of the control by default', async() => {
+      await gotoStory(page, 'rendering/list-width');
+      await page.waitForSelector('[data-testid="list-width"] [data-ods="select-content"]', { visible: true });
+
+      const [list, control] = await page.evaluate(() => [
+        document.querySelector('[data-testid="list-width"] [data-ods="select-content"]')!.getBoundingClientRect().width,
+        document.querySelector('[data-testid="list-width"] [data-ods="select-control"]')!.getBoundingClientRect().width,
+      ]);
+
+      expect(list).toBe(control);
+    });
+  });
 });

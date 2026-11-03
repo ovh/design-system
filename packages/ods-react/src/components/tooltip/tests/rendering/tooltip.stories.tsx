@@ -15,3 +15,18 @@ export const render = () => (
     </TooltipContent>
   </Tooltip>
 );
+
+export const defaultPosition = () => (
+  <div style={{ paddingTop: '200px' }}>
+    <Tooltip open>
+      <TooltipTrigger>
+        Show tooltip
+      </TooltipTrigger>
+      <TooltipContent
+        createPortal={ false }
+        data-testid="default-position">
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+  </div>
+);

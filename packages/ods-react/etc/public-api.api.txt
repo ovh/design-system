@@ -2384,12 +2384,6 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
      * The file upload progress.
      */
     progress?: number;
-    /**
-     * @deprecated
-     * The label displayed after a successful upload.
-     * DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update.
-     */
-    uploadSuccessLabel?: string;
 }
 declare const FileUploadItem: FC<FileUploadItemProp>;
 export { FileUploadItem, type FileUploadItemProp, };
@@ -2952,7 +2946,6 @@ export * from './progress-bar/src';
 export * from './file-upload/src';
 export * from './toggle/src';
 export * from './phone-number/src';
-export * from './switch/src';
 export * from './drawer/src';
 export * from './pagination/src';
 export * from './timepicker/src';
@@ -3433,12 +3426,6 @@ interface MenuRootProp {
          */
         sameWidth?: boolean;
     };
-    /**
-     * @deprecated
-     * \@type=MENU_POSITION
-     * Moved to overlayConfig.
-     */
-    position?: MenuPosition;
     /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */
@@ -3929,12 +3916,9 @@ export { PAGINATION_PER_PAGE, PAGINATION_PER_PAGE_OPTIONS, };
 
 // ==================== components/pagination/src/contexts/usePagination.d.ts ====================
 import { ComponentPropsWithRef, ElementType, JSX, ReactNode } from 'react';
-/** @internal DEPRECATED: remove on next major version */
-type PaginationTotalItemsLabelRenderer = (params: {
+declare function defaultRenderTotalItemsLabel({ totalItems }: {
     totalItems: number;
-}) => string | number;
-/** DEPRECATED: remove on next major */
-declare const defaultRenderTotalItemsLabel: PaginationTotalItemsLabelRenderer;
+}): string;
 interface PaginationPageChangeDetail {
     page: number;
     pageSize: number;
@@ -3947,6 +3931,10 @@ interface PaginationPageUrlDetail {
     pageSize: number;
 }
 interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
+    /**
+     * The parts of the pagination to render, such as PaginationPages.
+     */
+    children: ReactNode;
     /**
      * The initial active page. Use when you don't need to control the active page of the pagination.
      */
@@ -4004,13 +3992,6 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      */
     pageSize?: number;
     /**
-     * @deprecated
-     * \@default-value='of $\{totalItems\} results'
-     * Format the label displayed near the per-page selector.
-     * DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector
-     */
-    renderTotalItemsLabel?: PaginationTotalItemsLabelRenderer;
-    /**
      * The number of pages to show beside active page.
      */
     siblingCount?: number;
@@ -4018,12 +3999,6 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      * The total number of items.
      */
     totalItems: number;
-    /**
-     * @deprecated
-     * Whether the per-page selector is displayed.
-     * DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector
-     */
-    withPageSizeSelector?: boolean;
 }
 interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
     children: ReactNode;
@@ -4036,7 +4011,7 @@ type PaginationContextType = Omit<PaginationProviderProp, 'children'> & {
 };
 declare function PaginationProvider({ children, defaultPage, disabled, getPageUrl, labelTooltipNext, labelTooltipPrev, linkAs, onPageChange, onPageSizeChange, page, pageSize, totalItems, }: PaginationProviderProp): JSX.Element;
 declare function usePagination(): PaginationContextType;
-export { defaultRenderTotalItemsLabel, type PaginationContextType, type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, type PaginationPageUrlDetail, PaginationProvider, type PaginationRootProp, type PaginationTotalItemsLabelRenderer, usePagination, };
+export { defaultRenderTotalItemsLabel, type PaginationContextType, type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail, type PaginationPageUrlDetail, PaginationProvider, type PaginationRootProp, usePagination, };
 
 // ==================== components/pagination/src/index.d.ts ====================
 export { Pagination, type PaginationProp } from './components/pagination/Pagination';
@@ -4636,11 +4611,6 @@ interface PopoverRootProp {
      */
     autoFocus?: boolean;
     /**
-     * @deprecated
-     * Moved to overlayConfig.
-     */
-    gutter?: number;
-    /**
      * Callback fired when the popover open state changes.
      */
     onOpenChange?: (detail: PopoverOpenChangeDetail) => void;
@@ -4675,20 +4645,9 @@ interface PopoverRootProp {
         sameWidth?: boolean;
     };
     /**
-     * @deprecated
-     * @type=POPOVER_POSITION
-     * Moved to overlayConfig.
-     */
-    position?: PopoverPosition;
-    /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */
     positionerStyle?: CSSProperties;
-    /**
-     * @deprecated
-     * Moved to overlayConfig.
-     */
-    sameWidth?: boolean;
     /**
      * ID of an external trigger element to use in place of the PopoverTrigger component.
      */
@@ -5676,11 +5635,6 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
      */
     disabled?: boolean;
     /**
-     * @deprecated
-     * Use overlayConfig.sameWidth instead
-     */
-    fitControlWidth?: boolean;
-    /**
      * Whether the component is in error state.
      */
     invalid?: boolean;
@@ -5805,68 +5759,6 @@ export { SPINNER_SIZE, SPINNER_SIZES, type SpinnerSize, };
 // ==================== components/spinner/src/index.d.ts ====================
 export { Spinner, type SpinnerProp } from './components/spinner/Spinner';
 export { SPINNER_SIZE, SPINNER_SIZES, type SpinnerSize } from './constants/spinner-size';
-
-// ==================== components/switch/src/components/switch-item/SwitchItem.d.ts ====================
-import { ComponentPropsWithRef, FC } from 'react';
-interface SwitchItemProp extends ComponentPropsWithRef<'button'> {
-    /**
-     * The value of the switch item.
-     */
-    value: string;
-}
-declare const SwitchItem: FC<SwitchItemProp>;
-export { SwitchItem, type SwitchItemProp, };
-
-// ==================== components/switch/src/components/switch/Switch.d.ts ====================
-import { ComponentPropsWithRef, FC } from 'react';
-import { SwitchSize } from '../../constants/switch-size';
-interface SwitchValueChangeDetail {
-    value: string;
-}
-interface SwitchProp extends ComponentPropsWithRef<'div'> {
-    /**
-     * The initial value of the selected item. Use when you don't need to control the value of the switch.
-     */
-    defaultValue?: string;
-    /**
-     * Whether the component is disabled.
-     */
-    disabled?: boolean;
-    /**
-     * Callback fired when the value changes.
-     */
-    onValueChange?: (detail: SwitchValueChangeDetail) => void;
-    /**
-     * The size preset to use.
-     */
-    size?: SwitchSize;
-    /**
-     * The controlled value of the selected item.
-     */
-    value?: string;
-}
-declare const Switch: FC<SwitchProp>;
-export { Switch, type SwitchProp, type SwitchValueChangeDetail, };
-
-// ==================== components/switch/src/constants/switch-size.d.ts ====================
-declare enum SWITCH_SIZE {
-    md = "md",
-    sm = "sm"
-}
-type SwitchSize = `${SWITCH_SIZE}`;
-declare const SWITCH_SIZES: readonly SWITCH_SIZE[];
-export { SWITCH_SIZE, SWITCH_SIZES, type SwitchSize, };
-
-// ==================== components/switch/src/index.d.ts ====================
-import { SwitchProp, SwitchValueChangeDetail } from './components/switch/Switch';
-import { SwitchItem, SwitchItemProp } from './components/switch-item/SwitchItem';
-declare const Switch: import('react').FC<SwitchProp> & {
-    Item: import('react').FC<SwitchItemProp>;
-};
-export { Switch };
-export { SwitchItem };
-export type { SwitchProp, SwitchValueChangeDetail, SwitchItemProp };
-export { SWITCH_SIZE, SWITCH_SIZES, type SwitchSize } from './constants/switch-size';
 
 // ==================== components/table/src/components/table/Table.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
@@ -6580,9 +6472,13 @@ declare const ToggleLabels: FC;
 export { ToggleLabels, };
 
 // ==================== components/toggle/src/components/toggle/Toggle.d.ts ====================
-import { ComponentPropsWithRef, FC } from 'react';
+import { ComponentPropsWithRef, FC, ReactNode } from 'react';
 import { ToggleRootProp } from '../../contexts/useToggle';
 interface ToggleProp extends ComponentPropsWithRef<'label'>, ToggleRootProp {
+    /**
+     * The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed.
+     */
+    children: ReactNode;
 }
 declare const Toggle: FC<ToggleProp>;
 export { Toggle, type ToggleProp, };
@@ -6736,12 +6632,6 @@ interface TooltipRootProp {
          */
         sameWidth?: boolean;
     };
-    /**
-     * @deprecated
-     * @type=TOOLTIP_POSITION
-     * The tooltip position around the trigger.
-     */
-    position?: TooltipPosition;
     /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */

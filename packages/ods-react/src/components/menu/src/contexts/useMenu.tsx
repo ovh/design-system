@@ -48,12 +48,6 @@ interface MenuRootProp {
     sameWidth?: boolean,
   }
   /**
-   * @deprecated
-   * \@type=MENU_POSITION
-   * Moved to overlayConfig.
-   */
-  position?: MenuPosition,
-  /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */
   positionerStyle?: CSSProperties,

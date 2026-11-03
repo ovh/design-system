@@ -192,28 +192,11 @@ const TableVsDataTable = () => (
   </>
 );
 
-/* Deprecation banner (switch doc): replacement path per use-case. */
-const Deprecated = () => (
-  <Message status={ MESSAGE_STATUS.warning } dismissible={ false } style={{ width: '100%' }}>
-    <MessageIcon name={ ICON_NAME.triangleExclamation } />
-    <MessageBody>
-      Component is now deprecated and will be removed in a future major release.
-      You can use different components instead depending on your use-case:
-      <ul>
-        <li>managing navigation: move to <DocLink to="/components/tabs">Tabs</DocLink> using the switch variant.</li>
-        <li>managing option activation: move to a <DocLink to="/components/button-group">Button Group</DocLink>.</li>
-        <li>as a form element: move to a <DocLink to="/components/radio-group">Radio Group</DocLink>.</li>
-      </ul>
-    </MessageBody>
-  </Message>
-);
-
 const MDX_COMPONENTS = {
   Anatomy,
   BestPractices,
   Canvas,
   ChartColorCards,
-  Deprecated,
   DesignTokens,
   DocLink,
   ExternalLink,

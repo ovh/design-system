@@ -13,7 +13,9 @@ export const customStyle = () => (
   <Pagination
     totalItems={20}
     data-testid="custom-style"
-    style={{ height: '42px' }} />
+    style={{ height: '42px' }}>
+    <PaginationPages />
+  </Pagination>
 );
 
 export const link = () => (
@@ -47,7 +49,9 @@ export const pages = () => (
 
 export const render = () => (
   <Pagination
-    totalItems={20} data-testid="render" />
+    totalItems={20} data-testid="render">
+    <PaginationPages />
+  </Pagination>
 );
 
 export const unlayeredRule = () => (
@@ -56,6 +60,8 @@ export const unlayeredRule = () => (
 
     <Pagination
       data-testid="unlayered-rule"
-      totalItems={20} />
+      totalItems={20}>
+      <PaginationPages />
+    </Pagination>
   </>
 );

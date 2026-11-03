@@ -9,4 +9,12 @@ describe('Tooltip rendering', () => {
     expect(await page.waitForSelector('[data-ods="tooltip-content"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="tooltip-trigger"]')).not.toBeNull();
   });
+
+  it('should open on top of the trigger by default', async() => {
+    await gotoStory(page, 'rendering/default-position');
+
+    const content = await page.waitForSelector('[data-testid="default-position"][data-placement]');
+
+    expect(await content?.evaluate((el: Element) => el.getAttribute('data-placement'))).toBe('top');
+  });
 });

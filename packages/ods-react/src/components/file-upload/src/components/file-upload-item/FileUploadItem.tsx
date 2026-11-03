@@ -27,12 +27,6 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
    * The file upload progress.
    */
   progress?: number,
-  /**
-   * @deprecated
-   * The label displayed after a successful upload.
-   * DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update.
-   */
-  uploadSuccessLabel?: string,
 }
 
 const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({

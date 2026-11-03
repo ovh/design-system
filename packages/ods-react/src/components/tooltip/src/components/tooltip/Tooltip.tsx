@@ -12,7 +12,6 @@ const TooltipRoot: FC<PropsWithChildren<TooltipProp>> = ({
   open,
   openDelay = 0,
   overlayConfig,
-  position = TOOLTIP_POSITION.top,
   ...props
 }): JSX.Element => {
   const { triggerId } = useTooltip();
@@ -33,7 +32,7 @@ const TooltipRoot: FC<PropsWithChildren<TooltipProp>> = ({
       positioning={{
         flip: overlayConfig?.flip,
         gutter: overlayConfig?.gutter,
-        placement: overlayConfig?.position || position,
+        placement: overlayConfig?.position || TOOLTIP_POSITION.top,
         sameWidth: overlayConfig?.sameWidth,
       }}
       { ...props }>

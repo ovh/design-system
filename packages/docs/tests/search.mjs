@@ -96,12 +96,12 @@ async function suite(browser, { base, version }) {
   await page.waitForTimeout(900);
   ok('fallback surfaces hits for a mixed FR/EN query', (await page.locator('.shell__search-option--content').count()) > 0);
 
-  // Status badges are matched too: "deprecated" lists the deprecated pages
-  // (Switch) in their own group, not only as full-text hits.
-  await page.locator('[data-ods="command-filter"]').fill('deprecated');
+  // Status badges are matched too: "new" lists the new pages (Command) in
+  // their own group, not only as full-text hits.
+  await page.locator('[data-ods="command-filter"]').fill('new');
   await page.waitForTimeout(900);
-  const deprecatedSwitch = page.getByRole('group', { name: 'Components' }).locator('[data-ods="command-option"]', { hasText: 'Switch' });
-  ok('"deprecated" lists Switch in the Components group', (await deprecatedSwitch.count()) > 0);
+  const newCommand = page.getByRole('group', { name: 'Components' }).locator('[data-ods="command-option"]', { hasText: 'Command' });
+  ok('"new" lists Command in the Components group', (await newCommand.count()) > 0);
 
   // A page listed by title is not repeated as a content hit, whatever the
   // #section of the hit: no "In the docs" entry may land on the Button

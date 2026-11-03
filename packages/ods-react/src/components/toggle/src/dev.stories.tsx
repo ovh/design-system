@@ -9,13 +9,9 @@ export default {
 };
 
 export const CustomStyle = () => (
-  <>
-    <Toggle className={ style['custom-toggle-deprecated'] } />
-
-    <Toggle className={ style['custom-toggle'] }>
-      <ToggleControl className={ style['custom-toggle-control'] } />
-    </Toggle>
-  </>
+  <Toggle className={ style['custom-toggle'] }>
+    <ToggleControl className={ style['custom-toggle-control'] } />
+  </Toggle>
 );
 
 export const Controlled = () => {
@@ -23,9 +19,6 @@ export const Controlled = () => {
 
   return (
     <>
-      <Toggle checked={ isToggled } onCheckedChange={ () => setIsToggled(!isToggled) } />
-      <p>Toggled: { isToggled.toString() }</p>
-
       <Toggle checked={ isToggled } onCheckedChange={ () => setIsToggled(!isToggled) }>
         <ToggleControl />
       </Toggle>
@@ -36,8 +29,6 @@ export const Controlled = () => {
 
 export const Default = () => (
   <>
-    <Toggle />
-
     <Toggle>
       <ToggleControl />
     </Toggle>
@@ -52,13 +43,6 @@ export const Default = () => (
 
 export const Disabled = () => (
   <>
-    <Toggle disabled />
-    <Toggle defaultChecked disabled />
-    <Toggle disabled withLabels />
-    <Toggle defaultChecked disabled withLabels />
-
-    <br /><br />
-
     <Toggle disabled>
       <ToggleControl />
     </Toggle>
@@ -88,22 +72,6 @@ export const InFormField = () => {
           My toggle:
         </FormFieldLabel>
 
-        <Toggle />
-
-        <FormFieldHelper>
-          Help text
-        </FormFieldHelper>
-
-        <FormFieldError>
-          Error message
-        </FormFieldError>
-      </FormField>
-
-      <FormField invalid={ isInvalid }>
-        <FormFieldLabel>
-          My toggle:
-        </FormFieldLabel>
-
         <Toggle>
           <ToggleControl />
         </Toggle>
@@ -121,13 +89,9 @@ export const InFormField = () => {
 };
 
 export const Invalid = () => (
-  <>
-    <Toggle invalid />
-
-    <Toggle invalid>
-      <ToggleControl />
-    </Toggle>
-  </>
+  <Toggle invalid>
+    <ToggleControl />
+  </Toggle>
 );
 
 export const WithLabel = () => (
@@ -138,38 +102,13 @@ export const WithLabel = () => (
 );
 
 export const WithLabels = () => (
-  <>
-    <Toggle withLabels />
-
-    <Toggle withLabels>
-      <ToggleControl />
-    </Toggle>
-  </>
+  <Toggle withLabels>
+    <ToggleControl />
+  </Toggle>
 );
 
 export const States = () => (
   <>
-    <p>Unchecked invalid</p>
-    <Toggle invalid />
-
-    <p>Unchecked invalid & disabled</p>
-    <Toggle
-      disabled
-      invalid />
-
-    <p>Checked invalid</p>
-    <Toggle
-      defaultChecked
-      invalid />
-
-    <p>Checked invalid & disabled</p>
-    <Toggle
-      defaultChecked
-      disabled
-      invalid />
-
-    <br /><br />
-
     <p>Unchecked invalid</p>
     <Toggle invalid>
       <ToggleControl />

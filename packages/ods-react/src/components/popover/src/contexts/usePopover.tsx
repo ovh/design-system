@@ -17,11 +17,6 @@ interface PopoverRootProp {
    */
   autoFocus?: boolean,
   /**
-   * @deprecated
-   * Moved to overlayConfig.
-   */
-  gutter?: number;
-  /**
    * Callback fired when the popover open state changes.
    */
   onOpenChange?: (detail: PopoverOpenChangeDetail) => void,
@@ -56,20 +51,9 @@ interface PopoverRootProp {
     sameWidth?: boolean,
   },
   /**
-   * @deprecated
-   * @type=POPOVER_POSITION
-   * Moved to overlayConfig.
-   */
-  position?: PopoverPosition,
-  /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */
   positionerStyle?: CSSProperties,
-  /**
-   * @deprecated
-   * Moved to overlayConfig.
-   */
-  sameWidth?: boolean,
   /**
    * ID of an external trigger element to use in place of the PopoverTrigger component.
    */

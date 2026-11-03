@@ -1,6 +1,7 @@
 import { Switch } from '@ark-ui/react/switch';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef } from 'react';
+import { warnOnce } from '../../../../../utils/warn-once';
 import { useFormField } from '../../../../form-field/src';
 import { ToggleProvider, type ToggleRootProp } from '../../contexts/useToggle';
 import style from './toggle.module.scss';
@@ -28,6 +29,10 @@ const Toggle: FC<ToggleProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+
+  if (children == null) {
+    warnOnce('Toggle.children', 'Toggle renders its children only: please render a <ToggleControl />, otherwise neither the control nor its form input is rendered.');
+  }
 
   return (
     <ToggleProvider withLabels={ withLabels }>

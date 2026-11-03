@@ -1,6 +1,7 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef } from 'react';
+import { warnOnce } from '../../../../../utils/warn-once';
 import { PaginationProvider, type PaginationRootProp, usePagination } from '../../contexts/usePagination';
 import style from './pagination.module.scss';
 
@@ -15,6 +16,10 @@ const PaginationRoot: FC<PaginationProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { currentPage, getPageUrl, handlePageChange, itemsPerPage } = usePagination();
+
+  if (children == null) {
+    warnOnce('Pagination.children', 'Pagination renders its children only: please render its parts, such as <PaginationPages />, otherwise nothing is displayed.');
+  }
 
   return (
     <VendorPagination.Root

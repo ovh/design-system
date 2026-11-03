@@ -8,7 +8,7 @@ import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Kbd } from '../../../ods-react/src/components/kbd/src';
 import { LinkProp, Link } from '../../../ods-react/src/components/link/src';
 import { CodeBlock } from './CodeBlock';
-import { MESSAGE_STATUS, Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
+import { Message, MessageBody, MessageIcon } from '../../../ods-react/src/components/message/src';
 import { Table } from '../../../ods-react/src/components/table/src';
 import { Tab, TabContent, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';

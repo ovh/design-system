@@ -4,7 +4,7 @@ slug: tile
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 267
+tokens: 276
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
 ---
 
@@ -31,7 +31,7 @@ _No specific property._
 |---|---|
 | `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected-subtle)` |
 | `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-accent)` |

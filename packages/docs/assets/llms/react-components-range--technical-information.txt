@@ -4,7 +4,7 @@ slug: range
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 530
+tokens: 539
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--technical-information.txt
 ---
 
@@ -42,4 +42,4 @@ This component extends all the native `<div>` attributes.
 |---|---|
 | `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
 | `--ods-range-track-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

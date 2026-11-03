@@ -4,7 +4,7 @@ slug: link
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 205
+tokens: 238
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
 ---
 
@@ -27,4 +27,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 | `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-link-underline-thickness` | `1px` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-link-underline-thickness-hover` | `2px` |

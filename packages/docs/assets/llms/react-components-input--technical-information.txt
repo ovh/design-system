@@ -4,7 +4,7 @@ slug: input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 470
+tokens: 479
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--technical-information.txt
 ---
 
@@ -55,4 +55,4 @@ This component extends all the native `<input>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

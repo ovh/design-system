@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: overview
 version: 19.7.3
-tokens: 222
+tokens: 194
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field.txt
 ---
 
@@ -26,11 +26,6 @@ _A **Form Field** component is used to wrap several form components with logic, 
 - Label Sub Label
 - Helper
 - Error
-- Guide Form Critical
-- Guide Form Error
-- Guide Form Grouped Field
-- Guide Form Mandatory
-- Guide Form Simple
 - Accessibility Label
 
 ## Documentation pages

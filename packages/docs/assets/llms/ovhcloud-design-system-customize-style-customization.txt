@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
 version: 19.7.3
-tokens: 622
+tokens: 631
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
@@ -70,8 +70,7 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-We do advise to reuse those variables on your own style, this way your application will automatically be updated on current
-theme changes or when new themes will be released.
+We do advise to reuse those variables on your own style, this way your application follows the theme it loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)).
 
 You can find the whole list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) documentation page.
 

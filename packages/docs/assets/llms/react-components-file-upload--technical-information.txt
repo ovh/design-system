@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 907
+tokens: 853
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -44,7 +44,6 @@ This component extends all the native `<li>` attributes.
 | `file` | `File` | Yes | undefined | The current File object. |
 | `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
 | `progress` | `number` | No | undefined | The file upload progress. |
-| `uploadSuccessLabel` | `string` | No | undefined | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. (deprecated) |
 
 ## FileUploadList
 

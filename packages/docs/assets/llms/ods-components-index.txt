@@ -99,7 +99,7 @@
 - [Overview](./react-components-data-table.txt) (~636 tokens)
 - [Documentation](./react-components-data-table--documentation.txt) (~3080 tokens)
 - [Technical Information](./react-components-data-table--technical-information.txt) (~625 tokens)
-- [Examples](./react-components-data-table--examples.txt) (~3903 tokens)
+- [Examples](./react-components-data-table--examples.txt) (~3916 tokens)
 
 ## Datepicker
 
@@ -140,8 +140,8 @@
 
 - [Overview](./react-components-file-upload.txt) (~563 tokens)
 - [Documentation](./react-components-file-upload--documentation.txt) (~1908 tokens)
-- [Technical Information](./react-components-file-upload--technical-information.txt) (~907 tokens)
-- [Examples](./react-components-file-upload--examples.txt) (~1940 tokens)
+- [Technical Information](./react-components-file-upload--technical-information.txt) (~853 tokens)
+- [Examples](./react-components-file-upload--examples.txt) (~1927 tokens)
 
 ## Form Field
 
@@ -201,9 +201,9 @@
 
 ## Menu
 
-- [Overview](./react-components-menu.txt) (~323 tokens)
+- [Overview](./react-components-menu.txt) (~301 tokens)
 - [Documentation](./react-components-menu--documentation.txt) (~764 tokens)
-- [Technical Information](./react-components-menu--technical-information.txt) (~740 tokens)
+- [Technical Information](./react-components-menu--technical-information.txt) (~718 tokens)
 - [Examples](./react-components-menu--examples.txt) (~609 tokens)
 
 ## Message
@@ -236,9 +236,9 @@
 
 ## Pagination
 
-- [Overview](./react-components-pagination.txt) (~909 tokens)
+- [Overview](./react-components-pagination.txt) (~829 tokens)
 - [Documentation](./react-components-pagination--documentation.txt) (~4207 tokens)
-- [Technical Information](./react-components-pagination--technical-information.txt) (~1000 tokens)
+- [Technical Information](./react-components-pagination--technical-information.txt) (~920 tokens)
 - [Examples](./react-components-pagination--examples.txt) (~1702 tokens)
 
 ## Password
@@ -257,9 +257,9 @@
 
 ## Popover
 
-- [Overview](./react-components-popover.txt) (~429 tokens)
+- [Overview](./react-components-popover.txt) (~365 tokens)
 - [Documentation](./react-components-popover--documentation.txt) (~1476 tokens)
-- [Technical Information](./react-components-popover--technical-information.txt) (~589 tokens)
+- [Technical Information](./react-components-popover--technical-information.txt) (~525 tokens)
 - [Examples](./react-components-popover--examples.txt) (~1253 tokens)
 
 ## Progress Bar
@@ -306,9 +306,9 @@
 
 ## Select
 
-- [Overview](./react-components-select.txt) (~558 tokens)
+- [Overview](./react-components-select.txt) (~532 tokens)
 - [Documentation](./react-components-select--documentation.txt) (~1211 tokens)
-- [Technical Information](./react-components-select--technical-information.txt) (~794 tokens)
+- [Technical Information](./react-components-select--technical-information.txt) (~768 tokens)
 - [Examples](./react-components-select--examples.txt) (~2453 tokens)
 
 ## Skeleton
@@ -324,13 +324,6 @@
 - [Documentation](./react-components-spinner--documentation.txt) (~1379 tokens)
 - [Technical Information](./react-components-spinner--technical-information.txt) (~115 tokens)
 - [Examples](./react-components-spinner--examples.txt) (~190 tokens)
-
-## Switch
-
-- [Overview](./react-components-switch.txt) (~263 tokens)
-- [Documentation](./react-components-switch--documentation.txt) (~1075 tokens)
-- [Technical Information](./react-components-switch--technical-information.txt) (~433 tokens)
-- [Examples](./react-components-switch--examples.txt) (~408 tokens)
 
 ## Table
 
@@ -390,16 +383,16 @@
 
 ## Toggle
 
-- [Overview](./react-components-toggle.txt) (~306 tokens)
+- [Overview](./react-components-toggle.txt) (~338 tokens)
 - [Documentation](./react-components-toggle--documentation.txt) (~971 tokens)
-- [Technical Information](./react-components-toggle--technical-information.txt) (~427 tokens)
+- [Technical Information](./react-components-toggle--technical-information.txt) (~459 tokens)
 - [Examples](./react-components-toggle--examples.txt) (~277 tokens)
 
 ## Tooltip
 
-- [Overview](./react-components-tooltip.txt) (~325 tokens)
+- [Overview](./react-components-tooltip.txt) (~298 tokens)
 - [Documentation](./react-components-tooltip--documentation.txt) (~1146 tokens)
-- [Technical Information](./react-components-tooltip--technical-information.txt) (~497 tokens)
+- [Technical Information](./react-components-tooltip--technical-information.txt) (~469 tokens)
 - [Examples](./react-components-tooltip--examples.txt) (~1066 tokens)
 
 ## Tree View

@@ -4,7 +4,7 @@ slug: recipes-components
 category: generic
 type: overview
 version: 19.7.3
-tokens: 676
+tokens: 680
 source: https://ovh.github.io/design-system/v19.7.3/llms/recipes-components.txt
 ---
 
@@ -40,7 +40,7 @@ ODS components used: Button, Clipboard, ClipboardControl, ClipboardTrigger, Data
 
 Tags: interactive, presentation
 
-ODS components used: DataTable, DataTableBody, DataTableEmpty, DataTableHead, Pagination, QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags, formatRelativeTime, 
+ODS components used: DataTable, DataTableBody, DataTableEmpty, DataTableHead, Pagination, PaginationPages, QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags, formatRelativeTime, 
 
 ## Email Field
 

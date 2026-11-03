@@ -376,7 +376,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 3903,
+          "tokens": 3916,
           "url": "./react-components-data-table--examples.txt"
         }
       }
@@ -527,12 +527,12 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 907,
+          "tokens": 853,
           "url": "./react-components-file-upload--technical-information.txt"
         },
         "examples": {
           "type": "examples",
-          "tokens": 1940,
+          "tokens": 1927,
           "url": "./react-components-file-upload--examples.txt"
         }
       }
@@ -751,7 +751,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 323,
+          "tokens": 301,
           "url": "./react-components-menu.txt"
         },
         "documentation": {
@@ -761,7 +761,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 740,
+          "tokens": 718,
           "url": "./react-components-menu--technical-information.txt"
         },
         "examples": {
@@ -881,7 +881,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 909,
+          "tokens": 829,
           "url": "./react-components-pagination.txt"
         },
         "documentation": {
@@ -891,7 +891,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1000,
+          "tokens": 920,
           "url": "./react-components-pagination--technical-information.txt"
         },
         "examples": {
@@ -959,7 +959,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 429,
+          "tokens": 365,
           "url": "./react-components-popover.txt"
         },
         "documentation": {
@@ -969,7 +969,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 589,
+          "tokens": 525,
           "url": "./react-components-popover--technical-information.txt"
         },
         "examples": {
@@ -1141,7 +1141,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 558,
+          "tokens": 532,
           "url": "./react-components-select.txt"
         },
         "documentation": {
@@ -1151,7 +1151,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 794,
+          "tokens": 768,
           "url": "./react-components-select--technical-information.txt"
         },
         "examples": {
@@ -1210,32 +1210,6 @@
           "type": "examples",
           "tokens": 190,
           "url": "./react-components-spinner--examples.txt"
-        }
-      }
-    },
-    {
-      "slug": "switch",
-      "title": "Switch",
-      "pages": {
-        "overview": {
-          "type": "overview",
-          "tokens": 263,
-          "url": "./react-components-switch.txt"
-        },
-        "documentation": {
-          "type": "documentation",
-          "tokens": 1075,
-          "url": "./react-components-switch--documentation.txt"
-        },
-        "technical-information": {
-          "type": "technical-information",
-          "tokens": 433,
-          "url": "./react-components-switch--technical-information.txt"
-        },
-        "examples": {
-          "type": "examples",
-          "tokens": 408,
-          "url": "./react-components-switch--examples.txt"
         }
       }
     },
@@ -1453,7 +1427,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 306,
+          "tokens": 338,
           "url": "./react-components-toggle.txt"
         },
         "documentation": {
@@ -1463,7 +1437,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 427,
+          "tokens": 459,
           "url": "./react-components-toggle--technical-information.txt"
         },
         "examples": {
@@ -1479,7 +1453,7 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 325,
+          "tokens": 298,
           "url": "./react-components-tooltip.txt"
         },
         "documentation": {
@@ -1489,7 +1463,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 497,
+          "tokens": 469,
           "url": "./react-components-tooltip--technical-information.txt"
         },
         "examples": {
@@ -1531,7 +1505,7 @@
       "slug": "ovhcloud-design-system-welcome",
       "title": "Welcome",
       "type": "overview",
-      "tokens": 254,
+      "tokens": 252,
       "url": "./ovhcloud-design-system-welcome.txt"
     },
     {
@@ -1636,7 +1610,7 @@
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v14",
       "title": "What's new in v14",
       "type": "overview",
-      "tokens": 823,
+      "tokens": 831,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v14.txt"
     },
     {
@@ -1657,7 +1631,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 14917,
+      "tokens": 17503,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {
@@ -1755,7 +1729,7 @@
       "slug": "recipes-components",
       "title": "Components",
       "type": "overview",
-      "tokens": 676,
+      "tokens": 680,
       "url": "./recipes-components.txt"
     }
   ]

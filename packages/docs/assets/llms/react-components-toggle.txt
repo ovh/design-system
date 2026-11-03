@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: overview
 version: 19.7.3
-tokens: 306
+tokens: 338
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle.txt
 ---
 
@@ -15,6 +15,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `checked` | `boolean` | No | undefined | The controlled checked state of the toggle. |
+| `children` | `ReactNode` | Yes | undefined | The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |

@@ -4,7 +4,7 @@ slug: pagination
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1000
+tokens: 920
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
 ---
 
@@ -15,6 +15,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
+| `children` | `ReactNode` | Yes | undefined | The parts of the pagination to render, such as PaginationPages. |
 | `defaultPage` | `number` | No | undefined | The initial active page. Use when you don't need to control the active page of the pagination. |
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `getPageUrl` | `(detail: PaginationPageUrlDetail) => string` | No | undefined | Build the URL of a given page. Providing it turns the pages and the previous / next triggers into links, so that they can be crawled, opened in a new tab and restored on reload. They then look like the Link component, as they navigate, instead of the Button component. Read the page and the size back from the URL and pass them as `page` (or `defaultPage` when every navigation loads a new document) and `pageSize`. |
@@ -25,10 +26,8 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagina
 | `onPageSizeChange` | `(detail: PaginationPageSizeChangeDetail) => void` | No | undefined | Callback fired when a page size is picked. Along `getPageUrl` the size is reported but not applied: navigate to the matching URL and pass the new `pageSize` back. |
 | `page` | `number` | No | undefined | The controlled active page |
 | `pageSize` | `number` | No | undefined | The number of items per page. Along `getPageUrl` it is read on every render rather than only on mount, as the URL is then what holds the size: the component renders it instead of keeping a size of its own. |
-| `renderTotalItemsLabel` | `PaginationTotalItemsLabelRenderer` | No | 'of ${totalItems} results' | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 | `siblingCount` | `number` | No | undefined | The number of pages to show beside active page. |
 | `totalItems` | `number` | Yes | undefined | The total number of items. |
-| `withPageSizeSelector` | `boolean` | No | undefined | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector (deprecated) |
 
 ## PaginationPages
 

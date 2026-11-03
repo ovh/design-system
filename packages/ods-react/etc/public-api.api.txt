@@ -2384,6 +2384,11 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
      * The file upload progress.
      */
     progress?: number;
+    /**
+     * Removed in v20, a successful upload shows an icon. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    uploadSuccessLabel?: never;
 }
 declare const FileUploadItem: FC<FileUploadItemProp>;
 export { FileUploadItem, type FileUploadItemProp, };
@@ -3427,6 +3432,11 @@ interface MenuRootProp {
         sameWidth?: boolean;
     };
     /**
+     * Removed in v20, use overlayConfig.position. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    position?: never;
+    /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */
     positionerStyle?: CSSProperties;
@@ -3992,6 +4002,11 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      */
     pageSize?: number;
     /**
+     * Removed in v20, use the label of PaginationPageSizeSelector. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    renderTotalItemsLabel?: never;
+    /**
      * The number of pages to show beside active page.
      */
     siblingCount?: number;
@@ -3999,6 +4014,11 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
      * The total number of items.
      */
     totalItems: number;
+    /**
+     * Removed in v20, render a PaginationPageSizeSelector. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    withPageSizeSelector?: never;
 }
 interface PaginationProviderProp extends Pick<PaginationRootProp, 'defaultPage' | 'disabled' | 'getPageUrl' | 'labelTooltipNext' | 'labelTooltipPrev' | 'linkAs' | 'onPageChange' | 'onPageSizeChange' | 'page' | 'pageSize' | 'totalItems'> {
     children: ReactNode;
@@ -4611,6 +4631,11 @@ interface PopoverRootProp {
      */
     autoFocus?: boolean;
     /**
+     * Removed in v20, use overlayConfig.gutter. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    gutter?: never;
+    /**
      * Callback fired when the popover open state changes.
      */
     onOpenChange?: (detail: PopoverOpenChangeDetail) => void;
@@ -4636,6 +4661,7 @@ interface PopoverRootProp {
         gutter?: number;
         /**
          * @type=POPOVER_POSITION
+         * \@default-value=POPOVER_POSITION.top
          * The popover position around the trigger.
          */
         position?: PopoverPosition;
@@ -4645,9 +4671,19 @@ interface PopoverRootProp {
         sameWidth?: boolean;
     };
     /**
+     * Removed in v20, use overlayConfig.position. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    position?: never;
+    /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */
     positionerStyle?: CSSProperties;
+    /**
+     * Removed in v20, use overlayConfig.sameWidth. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    sameWidth?: never;
     /**
      * ID of an external trigger element to use in place of the PopoverTrigger component.
      */
@@ -5635,6 +5671,11 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
      */
     disabled?: boolean;
     /**
+     * Removed in v20, use overlayConfig.sameWidth. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    fitControlWidth?: never;
+    /**
      * Whether the component is in error state.
      */
     invalid?: boolean;
@@ -5671,6 +5712,7 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
          */
         flip?: boolean;
         /**
+         * \@default-value=true
          * Whether to make the floating element same width as the reference element.
          */
         sameWidth?: boolean;
@@ -6624,6 +6666,7 @@ interface TooltipRootProp {
         gutter?: number;
         /**
          * @type=TOOLTIP_POSITION
+         * \@default-value=TOOLTIP_POSITION.top
          * The tooltip position around the trigger.
          */
         position?: TooltipPosition;
@@ -6632,6 +6675,11 @@ interface TooltipRootProp {
          */
         sameWidth?: boolean;
     };
+    /**
+     * Removed in v20, use overlayConfig.position. Typed never so that the v19 prop also fails through a spread object.
+     * @internal
+     */
+    position?: never;
     /**
      * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
      */

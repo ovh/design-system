@@ -27,6 +27,11 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
    * The file upload progress.
    */
   progress?: number,
+  /**
+   * Removed in v20, a successful upload shows an icon. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  uploadSuccessLabel?: never,
 }
 
 const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({

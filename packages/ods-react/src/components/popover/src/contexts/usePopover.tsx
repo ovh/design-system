@@ -17,6 +17,11 @@ interface PopoverRootProp {
    */
   autoFocus?: boolean,
   /**
+   * Removed in v20, use overlayConfig.gutter. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  gutter?: never,
+  /**
    * Callback fired when the popover open state changes.
    */
   onOpenChange?: (detail: PopoverOpenChangeDetail) => void,
@@ -42,6 +47,7 @@ interface PopoverRootProp {
     gutter?: number;
     /**
      * @type=POPOVER_POSITION
+     * \@default-value=POPOVER_POSITION.top
      * The popover position around the trigger.
      */
     position?: PopoverPosition,
@@ -51,9 +57,19 @@ interface PopoverRootProp {
     sameWidth?: boolean,
   },
   /**
+   * Removed in v20, use overlayConfig.position. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  position?: never,
+  /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */
   positionerStyle?: CSSProperties,
+  /**
+   * Removed in v20, use overlayConfig.sameWidth. Typed never so that the v19 prop also fails through a spread object.
+   * @internal
+   */
+  sameWidth?: never,
   /**
    * ID of an external trigger element to use in place of the PopoverTrigger component.
    */

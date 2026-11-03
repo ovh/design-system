@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 18713
+tokens: 19774
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -484,11 +484,79 @@ These changes need no code change: the new rendering is intended. To keep the v1
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
 - **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the accent hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-accent*` instead.
 - **Query Filter**: the tags are `accent`, where v19 rendered the default `information` Tag. An override of the information Tag tokens no longer reaches them: override `--ods-tag-*-accent*` instead.
-- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
+- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `:where([data-ods="link"], [data-ods="breadcrumb-link"], [data-ods="breadcrumb"] li > button) { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }` (the last selector is the `Breadcrumb` ellipsis, which has no `data-ods`). An element styled with `ods-link()` declares the property itself: set it in the same rule, after the `@include`. The link is also underlined at rest: see **Link underline** below.
 - **Modal**: the content draws `--ods-semantic-shadow-overlay`, as the Drawer and the other overlays, where v19 drew no shadow. In the dark themes, this shadow is what sets the modal off its backdrop. Keep v19: `[data-ods="modal-content"] { box-shadow: none; }`.
 - **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
+
+### Link underline
+
+A link is underlined at rest, 1px in its own color, so that it is not told from the surrounding text by its color alone (RGAA 10.6, WCAG 1.4.1), and the underline turns 2px on hover: the thicker underline is the hover signal. v19 only drew it on hover, 1px, with a left-to-right sweep. It applies to `Link`, the `Breadcrumb` links, the `Markdown` links and the elements styled with the `ods-link()` mixin. An icon-only link made of ODS icons and the `Breadcrumb` ellipsis have no underline at rest, the page links and the chevrons of a `Pagination` keep a 1px hover underline, and a disabled link keeps its rest underline, dimmed with it.
+
+The thicknesses are read from `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover`. To keep the links of a navigation, a menu or a footer without an underline at rest, set them on that container only, so that the links within your text keep theirs:
+
+```css
+.my-app-nav {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 1px;
+}
+```
+
+A `Link` restyled as a button or as a full-width menu item now draws its 1px line along its bottom edge at rest, and a `Link` that wraps a `Button` or an image draws it under that element: set `--ods-link-underline-thickness: 0` on that `Link`, or, when it runs an action rather than a navigation, render a `Button` instead. Keep the underline on a link placed within a sentence: without it, the link is told by its color only.
+
+The underline is a pseudo-element, not a `text-decoration`: `text-decoration: none`, or the Tailwind `no-underline` class, does not remove it. Set the variable instead, for instance `[--ods-link-underline-thickness:0]` in Tailwind.
+
+The content of a `Menu` or a `Popover` renders in a portal, outside your container: set the variables on `MenuContent` or `PopoverContent`, through their `className`.
+
+The icon-only case is detected on the ODS `Icon` component itself: a component of yours that renders it is not, and that link keeps its underline. Set `--ods-link-underline-thickness: 0` on it.
+
+A rule of yours on the `::after` of a link (`[data-ods="link"]`, `[data-ods="breadcrumb-link"]` or an element styled with `ods-link()`) was written for a line hidden at rest. A `height` now shows at rest and gives way to the 2px of the hover, so the link gets thinner on hover. A current-page indicator made with `transform: scaleX(1)` no longer stands out. Replace these rules with the custom properties:
+
+```css
+.my-link {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 3px;
+}
+
+.my-nav [aria-current="page"] {
+  --ods-link-underline-thickness: 2px;
+  --ods-link-underline-thickness-hover: 2px;
+}
+```
+
+To find the cases above:
+
+```sh
+rg -U -l '<(Ods)?Link\b[^>]*>\s*<(Button|img)\b' -g '*.tsx' src
+rg -U -l '<(MenuItem|PopoverContent)\b[^<]*>[\s\S]{0,400}?<(Ods)?Link\b' -g '*.tsx' src
+grep -rnE -A8 'ods-link\(\)|data-ods=.(breadcrumb-)?link' src/ | grep -E '::after|scaleX|height'
+```
+
+Closest to v19 for every link, without the sweep: `:root { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 1px; }`. With the v19 sweep on `Link` and the `Breadcrumb` links too:
+
+```css
+:root {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 1px;
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"]) {
+  --ods-link-underline-thickness: 1px;
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"])::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing-enter);
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"]):is(:hover, :focus-visible):not([aria-disabled="true"])::after {
+  transform: scaleX(1);
+}
+```
+
+The sweep only reaches `Link` and the `Breadcrumb` links: the ellipsis and the elements styled with `ods-link()` have no `data-ods`, and keep the thicknesses with no sweep.
 
 ## Typography
 

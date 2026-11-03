@@ -245,7 +245,7 @@ slug: accordion
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 608
+tokens: 617
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
 ---
 
@@ -304,7 +304,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-accordion-item-inner-radius-bottom` | `0` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
@@ -1450,7 +1450,7 @@ slug: breadcrumb
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 463
+tokens: 487
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--technical-information.txt
 ---
 
@@ -1493,11 +1493,13 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-link-underline-thickness` | `1px` |
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
 | `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
+| `--ods-link-underline-thickness-hover` | `2px` |
 
 ---
 title: "Breadcrumb"
@@ -1981,7 +1983,7 @@ slug: button
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2196
+tokens: 2205
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
 ---
 
@@ -2101,7 +2103,7 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-brand-medium` | `var(--ods-semantic-color-content-brand-minor)` |
 | `--ods-button-text-color-brand-medium-hover` | `var(--ods-semantic-color-content-on-brand)` |
 | `--ods-button-text-color-brand-medium-active` | `var(--ods-semantic-color-content-on-brand)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-spinner-color` | `currentcolor` |
 
 ---
@@ -2463,7 +2465,7 @@ slug: button-group
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 318
+tokens: 327
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--technical-information.txt
 ---
 
@@ -2502,7 +2504,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Button Group"
@@ -3560,7 +3562,7 @@ slug: checkbox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 543
+tokens: 552
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
 ---
 
@@ -3615,7 +3617,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Checkbox"
@@ -3908,7 +3910,7 @@ slug: clipboard
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 418
+tokens: 427
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--technical-information.txt
 ---
 
@@ -3950,7 +3952,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Clipboard"
@@ -4557,7 +4559,7 @@ slug: combobox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1014
+tokens: 1023
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
 ---
 
@@ -4623,7 +4625,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-combobox-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-combobox-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-combobox-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Combobox"
@@ -5262,7 +5264,7 @@ slug: command
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1137
+tokens: 1146
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
 ---
 
@@ -5352,7 +5354,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-command-width` | `380px` |
 | `--ods-command-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-command-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Command"
@@ -7061,7 +7063,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 999
+tokens: 1008
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -7140,7 +7142,7 @@ This component extends all the native `<input>` attributes.
 |---|---|
 | `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 | `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Datepicker"
@@ -8593,7 +8595,7 @@ slug: file-thumbnail
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 356
+tokens: 365
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
 ---
 
@@ -8629,7 +8631,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "File Thumbnail"
@@ -8998,7 +9000,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 853
+tokens: 862
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -9070,7 +9072,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
 | `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-file-upload-item-text-color-critical-hover` | `var(--ods-semantic-color-content-critical)` |
@@ -10636,7 +10638,7 @@ slug: input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 470
+tokens: 479
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--technical-information.txt
 ---
 
@@ -10687,7 +10689,7 @@ This component extends all the native `<input>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Input"
@@ -11178,7 +11180,7 @@ slug: link
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1318
+tokens: 1660
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--documentation.txt
 ---
 
@@ -11249,7 +11251,15 @@ A **Link** can stand alone on a page, or it can be placed within a sentence or a
 
 When disabled, users cannot focus nor click on the **Link**.
 
-On hover, **Link** is underlined and keeps its color: the underline is the hover signal. A visited **Link** keeps its visited color.
+A **Link** is underlined at rest, 1px in its own color, so that it is not told from the surrounding text by its color alone. On hover, the underline turns 2px and the **Link** keeps its color: the thicker underline is the hover signal. A visited **Link** keeps its visited color.
+
+The thicknesses read `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover`. Set them on a **Link** or on a container, for instance `0` at rest in a navigation where the links are plainly links. A disabled **Link** keeps its rest underline, dimmed with it.
+
+An icon-only **Link** made of ODS **Icon** components has no underline at rest. With another icon, such as an inline `<svg>` or an icon from another library, the **Link** cannot tell it from a label and keeps the underline: set `--ods-link-underline-thickness: 0` on it.
+
+The underline is a pseudo-element drawn by the **Link** box, not a `text-decoration`: `text-decoration: none` does not remove it, `--ods-link-underline-thickness: 0` does. Being drawn by the box, it does not follow a label that wraps over several lines: a **Link** set to `display: inline` draws it under part of its last line, or not at all when it starts mid-sentence, and a **Link** left `inline-flex` draws it across its whole width, under its last line. A printed page also loses it when the print dialog leaves the background graphics out.
+
+In forced colors mode, the underline is drawn in the link color of the system palette (`LinkText`), so it stays visible.
 
 An optional icon can be displayed on the left or right of the **Link** label content. Icon-only **Link** also exists but it must meet accessibility requirements. See Accessibility section below.
 
@@ -11330,7 +11340,7 @@ slug: link
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 205
+tokens: 238
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
 ---
 
@@ -11353,7 +11363,9 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--
 | `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-link-underline-thickness` | `1px` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-link-underline-thickness-hover` | `2px` |
 
 ---
 title: "Link"
@@ -12171,7 +12183,7 @@ slug: menu
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 718
+tokens: 727
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
 ---
 
@@ -12242,7 +12254,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Menu"
@@ -14499,7 +14511,7 @@ slug: pagination
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 920
+tokens: 943
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
 ---
 
@@ -14561,6 +14573,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-link-underline-thickness` | `0` |
+| `--ods-link-underline-thickness-hover` | `1px` |
 | `--ods-pagination-page-selector-input-width` | `45px` |
 
 ---
@@ -16854,7 +16868,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1405
+tokens: 1414
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -16960,7 +16974,7 @@ _No specific property._
 | `--ods-prompt-input-control-line-height` | `1.375em` |
 | `--ods-prompt-input-control-min-lines` | `1` |
 | `--ods-prompt-input-control-max-lines` | `5` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Prompt Input"
@@ -17305,7 +17319,7 @@ slug: quantity
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 374
+tokens: 383
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--technical-information.txt
 ---
 
@@ -17345,7 +17359,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Quantity"
@@ -17718,7 +17732,7 @@ slug: query-filter
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1063
+tokens: 1072
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
 ---
 
@@ -17793,7 +17807,7 @@ _No specific property._
 | `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Query Filter"
@@ -18117,7 +18131,7 @@ slug: radio-group
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 391
+tokens: 400
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--technical-information.txt
 ---
 
@@ -18163,7 +18177,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Radio Group"
@@ -18557,7 +18571,7 @@ slug: range
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 530
+tokens: 539
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--technical-information.txt
 ---
 
@@ -18595,7 +18609,7 @@ This component extends all the native `<div>` attributes.
 |---|---|
 | `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
 | `--ods-range-track-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Range"
@@ -18998,7 +19012,7 @@ slug: select
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 768
+tokens: 777
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--technical-information.txt
 ---
 
@@ -19055,7 +19069,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Select"
@@ -20555,7 +20569,7 @@ slug: tabs
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1290
+tokens: 1299
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
 ---
 
@@ -20656,7 +20670,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
 | `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-text)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Tabs"
@@ -21171,7 +21185,7 @@ slug: tag
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2169
+tokens: 2177
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
 ---
 
@@ -21256,7 +21270,7 @@ This component extends all the native `<button>` attributes.
 | `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-active)` |
 | `--ods-tag-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
 | `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Tag"
@@ -21481,7 +21495,7 @@ slug: text
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 123
+tokens: 132
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--technical-information.txt
 ---
 
@@ -21514,7 +21528,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Text"
@@ -21799,7 +21813,7 @@ slug: textarea
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 89
+tokens: 97
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--technical-information.txt
 ---
 
@@ -21817,7 +21831,7 @@ This component extends all the native `<textarea>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Textarea"
@@ -22040,7 +22054,7 @@ slug: tile
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 267
+tokens: 276
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
 ---
 
@@ -22067,7 +22081,7 @@ _No specific property._
 |---|---|
 | `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected-subtle)` |
 | `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-accent)` |
@@ -23162,7 +23176,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 459
+tokens: 468
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -23205,7 +23219,7 @@ _No specific property._
 | `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-control-solid)` |
 | `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ---
 title: "Toggle"
@@ -23957,7 +23971,7 @@ slug: tree-view
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 550
+tokens: 559
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--technical-information.txt
 ---
 
@@ -23998,7 +24012,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-tree-view-node-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tree-view-node-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-tree-view-node-row-gap` | `var(--ods-semantic-size-space-gap-block)` |

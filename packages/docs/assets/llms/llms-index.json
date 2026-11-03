@@ -33,7 +33,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 608,
+          "tokens": 617,
           "url": "./react-components-accordion--technical-information.txt"
         },
         "examples": {
@@ -111,7 +111,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 463,
+          "tokens": 487,
           "url": "./react-components-breadcrumb--technical-information.txt"
         },
         "examples": {
@@ -137,7 +137,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2196,
+          "tokens": 2205,
           "url": "./react-components-button--technical-information.txt"
         },
         "examples": {
@@ -163,7 +163,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 318,
+          "tokens": 327,
           "url": "./react-components-button-group--technical-information.txt"
         },
         "examples": {
@@ -241,7 +241,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 543,
+          "tokens": 552,
           "url": "./react-components-checkbox--technical-information.txt"
         },
         "examples": {
@@ -267,7 +267,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 418,
+          "tokens": 427,
           "url": "./react-components-clipboard--technical-information.txt"
         },
         "examples": {
@@ -319,7 +319,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1014,
+          "tokens": 1023,
           "url": "./react-components-combobox--technical-information.txt"
         },
         "examples": {
@@ -345,7 +345,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1137,
+          "tokens": 1146,
           "url": "./react-components-command--technical-information.txt"
         },
         "examples": {
@@ -397,7 +397,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 999,
+          "tokens": 1008,
           "url": "./react-components-datepicker--technical-information.txt"
         },
         "examples": {
@@ -501,7 +501,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 356,
+          "tokens": 365,
           "url": "./react-components-file-thumbnail--technical-information.txt"
         },
         "examples": {
@@ -527,7 +527,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 853,
+          "tokens": 862,
           "url": "./react-components-file-upload--technical-information.txt"
         },
         "examples": {
@@ -605,7 +605,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 470,
+          "tokens": 479,
           "url": "./react-components-input--technical-information.txt"
         },
         "examples": {
@@ -652,12 +652,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1318,
+          "tokens": 1660,
           "url": "./react-components-link--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 205,
+          "tokens": 238,
           "url": "./react-components-link--technical-information.txt"
         },
         "examples": {
@@ -761,7 +761,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 718,
+          "tokens": 727,
           "url": "./react-components-menu--technical-information.txt"
         },
         "examples": {
@@ -891,7 +891,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 920,
+          "tokens": 943,
           "url": "./react-components-pagination--technical-information.txt"
         },
         "examples": {
@@ -1021,7 +1021,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1405,
+          "tokens": 1414,
           "url": "./react-components-prompt-input--technical-information.txt"
         },
         "examples": {
@@ -1047,7 +1047,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 374,
+          "tokens": 383,
           "url": "./react-components-quantity--technical-information.txt"
         },
         "examples": {
@@ -1073,7 +1073,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1063,
+          "tokens": 1072,
           "url": "./react-components-query-filter--technical-information.txt"
         },
         "examples": {
@@ -1099,7 +1099,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 391,
+          "tokens": 400,
           "url": "./react-components-radio-group--technical-information.txt"
         },
         "examples": {
@@ -1125,7 +1125,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 530,
+          "tokens": 539,
           "url": "./react-components-range--technical-information.txt"
         },
         "examples": {
@@ -1151,7 +1151,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 768,
+          "tokens": 777,
           "url": "./react-components-select--technical-information.txt"
         },
         "examples": {
@@ -1255,7 +1255,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1290,
+          "tokens": 1299,
           "url": "./react-components-tabs--technical-information.txt"
         },
         "examples": {
@@ -1281,7 +1281,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2169,
+          "tokens": 2177,
           "url": "./react-components-tag--technical-information.txt"
         },
         "examples": {
@@ -1307,7 +1307,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 123,
+          "tokens": 132,
           "url": "./react-components-text--technical-information.txt"
         },
         "examples": {
@@ -1333,7 +1333,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 89,
+          "tokens": 97,
           "url": "./react-components-textarea--technical-information.txt"
         },
         "examples": {
@@ -1359,7 +1359,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 267,
+          "tokens": 276,
           "url": "./react-components-tile--technical-information.txt"
         },
         "examples": {
@@ -1437,7 +1437,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 459,
+          "tokens": 468,
           "url": "./react-components-toggle--technical-information.txt"
         },
         "examples": {
@@ -1489,7 +1489,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 550,
+          "tokens": 559,
           "url": "./react-components-tree-view--technical-information.txt"
         },
         "examples": {
@@ -1638,7 +1638,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 18713,
+      "tokens": 19774,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

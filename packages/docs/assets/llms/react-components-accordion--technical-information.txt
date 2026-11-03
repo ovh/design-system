@@ -4,7 +4,7 @@ slug: accordion
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 608
+tokens: 617
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
 ---
 
@@ -63,7 +63,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-accordion-item-inner-radius-bottom` | `0` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |

@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2169
+tokens: 2177
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
 ---
 
@@ -89,4 +89,4 @@ This component extends all the native `<button>` attributes.
 | `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-active)` |
 | `--ods-tag-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
 | `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

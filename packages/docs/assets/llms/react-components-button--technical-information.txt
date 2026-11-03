@@ -4,7 +4,7 @@ slug: button
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2196
+tokens: 2205
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
 ---
 
@@ -124,5 +124,5 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-brand-medium` | `var(--ods-semantic-color-content-brand-minor)` |
 | `--ods-button-text-color-brand-medium-hover` | `var(--ods-semantic-color-content-on-brand)` |
 | `--ods-button-text-color-brand-medium-active` | `var(--ods-semantic-color-content-on-brand)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-spinner-color` | `currentcolor` |

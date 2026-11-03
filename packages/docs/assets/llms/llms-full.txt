@@ -280,7 +280,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-accordion-item-inner-radius-bottom` | `0` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-accordion-background-color` | `var(--ods-semantic-color-surface-raised)` |
 | `--ods-accordion-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-accordion-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |
@@ -1364,11 +1364,13 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
+| `--ods-link-underline-thickness` | `1px` |
 | `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
 | `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
+| `--ods-link-underline-thickness-hover` | `2px` |
 
 ## Breadcrumb
 
@@ -1937,7 +1939,7 @@ This component extends all the native `<button>` attributes.
 | `--ods-button-text-color-brand-medium` | `var(--ods-semantic-color-content-brand-minor)` |
 | `--ods-button-text-color-brand-medium-hover` | `var(--ods-semantic-color-content-on-brand)` |
 | `--ods-button-text-color-brand-medium-active` | `var(--ods-semantic-color-content-on-brand)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-spinner-color` | `currentcolor` |
 
 ## Button
@@ -2303,7 +2305,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Button Group
 
@@ -3311,7 +3313,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Checkbox
 
@@ -3611,7 +3613,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Clipboard
 
@@ -4214,7 +4216,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-combobox-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-combobox-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-combobox-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Combobox
 
@@ -4908,7 +4910,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-command-width` | `380px` |
 | `--ods-command-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
 | `--ods-command-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Command
 
@@ -6626,7 +6628,7 @@ This component extends all the native `<input>` attributes.
 |---|---|
 | `--ods-datepicker-content-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
 | `--ods-datepicker-content-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Datepicker
 
@@ -7975,7 +7977,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## File Thumbnail
 
@@ -8381,7 +8383,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
 | `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-file-upload-item-text-color-critical-hover` | `var(--ods-semantic-color-content-critical)` |
@@ -9893,7 +9895,7 @@ This component extends all the native `<input>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Input
 
@@ -10393,7 +10395,15 @@ A **Link** can stand alone on a page, or it can be placed within a sentence or a
 
 When disabled, users cannot focus nor click on the **Link**.
 
-On hover, **Link** is underlined and keeps its color: the underline is the hover signal. A visited **Link** keeps its visited color.
+A **Link** is underlined at rest, 1px in its own color, so that it is not told from the surrounding text by its color alone. On hover, the underline turns 2px and the **Link** keeps its color: the thicker underline is the hover signal. A visited **Link** keeps its visited color.
+
+The thicknesses read `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover`. Set them on a **Link** or on a container, for instance `0` at rest in a navigation where the links are plainly links. A disabled **Link** keeps its rest underline, dimmed with it.
+
+An icon-only **Link** made of ODS **Icon** components has no underline at rest. With another icon, such as an inline `<svg>` or an icon from another library, the **Link** cannot tell it from a label and keeps the underline: set `--ods-link-underline-thickness: 0` on it.
+
+The underline is a pseudo-element drawn by the **Link** box, not a `text-decoration`: `text-decoration: none` does not remove it, `--ods-link-underline-thickness: 0` does. Being drawn by the box, it does not follow a label that wraps over several lines: a **Link** set to `display: inline` draws it under part of its last line, or not at all when it starts mid-sentence, and a **Link** left `inline-flex` draws it across its whole width, under its last line. A printed page also loses it when the print dialog leaves the background graphics out.
+
+In forced colors mode, the underline is drawn in the link color of the system palette (`LinkText`), so it stays visible.
 
 An optional icon can be displayed on the left or right of the **Link** label content. Icon-only **Link** also exists but it must meet accessibility requirements. See Accessibility section below.
 
@@ -10489,7 +10499,9 @@ If a **Link** points to a file download, it should include the file type and siz
 | `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
 | `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-link-underline-thickness` | `1px` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-link-underline-thickness-hover` | `2px` |
 
 ## Link
 
@@ -11238,7 +11250,7 @@ This component extends all the native `<button>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Menu
 
@@ -13382,6 +13394,8 @@ This component extends all the native `<div>` attributes.
 
 | Variable | Default value |
 |---|---|
+| `--ods-link-underline-thickness` | `0` |
+| `--ods-link-underline-thickness-hover` | `1px` |
 | `--ods-pagination-page-selector-input-width` | `45px` |
 
 ## Pagination
@@ -15606,7 +15620,7 @@ _No specific property._
 | `--ods-prompt-input-control-line-height` | `1.375em` |
 | `--ods-prompt-input-control-min-lines` | `1` |
 | `--ods-prompt-input-control-max-lines` | `5` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Prompt Input
 
@@ -15956,7 +15970,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Quantity
 
@@ -16369,7 +16383,7 @@ _No specific property._
 | `--ods-query-filter-control-column-gap` | `calc(var(--ods-semantic-size-space-gap-inline) / 2)` |
 | `--ods-query-filter-control-row-gap` | `calc(var(--ods-semantic-size-space-gap-block) / 2)` |
 | `--ods-query-filter-control-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block-compact) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Query Filter
 
@@ -16704,7 +16718,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Radio Group
 
@@ -17101,7 +17115,7 @@ This component extends all the native `<div>` attributes.
 |---|---|
 | `--ods-range-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
 | `--ods-range-track-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Range
 
@@ -17526,7 +17540,7 @@ This component extends all the native `<button>` attributes.
 | Variable | Default value |
 |---|---|
 | `--ods-select-group-option-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 3)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Select
 
@@ -18987,7 +19001,7 @@ This component extends all the native `<div>` attributes.
 | `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
 | `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-text)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Tabs
 
@@ -19552,7 +19566,7 @@ This component extends all the native `<button>` attributes.
 | `--ods-tag-background-color-warning-active` | `var(--ods-semantic-color-interaction-warning-subtle-active)` |
 | `--ods-tag-background-color-warning-hover` | `var(--ods-semantic-color-interaction-warning-subtle-hover)` |
 | `--ods-tag-text-color-warning` | `var(--ods-semantic-color-content-on-warning)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Tag
 
@@ -19775,7 +19789,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Text
 
@@ -20043,7 +20057,7 @@ This component extends all the native `<textarea>` attributes.
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Textarea
 
@@ -20258,7 +20272,7 @@ _No specific property._
 |---|---|
 | `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-muted)` |
 | `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
 | `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected-subtle)` |
 | `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-accent)` |
@@ -21291,7 +21305,7 @@ _No specific property._
 | `--ods-toggle-control-label-off-text-color` | `var(--ods-semantic-color-content-text)` |
 | `--ods-toggle-control-label-on-text-color` | `var(--ods-semantic-color-content-on-control-solid)` |
 | `--ods-toggle-control-thumb-background-color` | `var(--ods-semantic-color-surface-thumb)` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 
 ## Toggle
 
@@ -22014,7 +22028,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-tree-view-node-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-tree-view-node-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
 | `--ods-tree-view-node-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
@@ -28340,11 +28354,79 @@ These changes need no code change: the new rendering is intended. To keep the v1
 - **Tabs**: the selected tab fills with `--ods-semantic-color-surface-selected`, where v19 left it transparent, and the selected segment of a switch gets an outline. Keep v19: `[data-ods="tab"] { --ods-semantic-color-surface-selected: transparent; --ods-tab-border-color-selected-switch: transparent; }`. Hovering a switch segment now paints `--ods-tab-background-color-hover`, the same token as the hover of the default tabs, so no rule removes it without changing those too.
 - **Combobox**: the tags of a multiple Combobox are `accent`, where v19 rendered the default `information` Tag, and the focused tag reads the accent hover tokens of the Tag. An override of the information Tag tokens no longer reaches these tags: override `--ods-tag-*-accent*` instead.
 - **Query Filter**: the tags are `accent`, where v19 rendered the default `information` Tag. An override of the information Tag tokens no longer reaches them: override `--ods-tag-*-accent*` instead.
-- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
+- **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where v19 darkened it. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the v19 hover: `:where([data-ods="link"], [data-ods="breadcrumb-link"], [data-ods="breadcrumb"] li > button) { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }` (the last selector is the `Breadcrumb` ellipsis, which has no `data-ods`). An element styled with `ods-link()` declares the property itself: set it in the same rule, after the `@include`. The link is also underlined at rest: see **Link underline** below.
 - **Modal**: the content draws `--ods-semantic-shadow-overlay`, as the Drawer and the other overlays, where v19 drew no shadow. In the dark themes, this shadow is what sets the modal off its backdrop. Keep v19: `[data-ods="modal-content"] { box-shadow: none; }`.
 - **Motion**: the Toggle thumb goes from `0.4s ease` to 300ms `ease-in-out`, its checked background and border from `0.2s ease` to 200ms `ease-in-out`, the Radio dot from 120ms to 150ms, and the TreeView and TabList transitions from `ease` to `ease-in-out`. When the user asks for reduced motion, the default theme also brings `--ods-semantic-motion-duration-fast`, `-medium` and `-slow` down to `0.01s`. Keep the full durations: `@media (prefers-reduced-motion: reduce) { :root { --ods-semantic-motion-duration-fast: 150ms; --ods-semantic-motion-duration-medium: 200ms; --ods-semantic-motion-duration-slow: 300ms; } }`, loaded after the theme.
 - **Disabled components**: dimmed with an opacity, where v19 repainted them grey. Keep v19: style `:disabled` or `[data-disabled]` yourself.
 - **Modal and Drawer**: a modal is always above a drawer (see **Layers**).
+
+### Link underline
+
+A link is underlined at rest, 1px in its own color, so that it is not told from the surrounding text by its color alone (RGAA 10.6, WCAG 1.4.1), and the underline turns 2px on hover: the thicker underline is the hover signal. v19 only drew it on hover, 1px, with a left-to-right sweep. It applies to `Link`, the `Breadcrumb` links, the `Markdown` links and the elements styled with the `ods-link()` mixin. An icon-only link made of ODS icons and the `Breadcrumb` ellipsis have no underline at rest, the page links and the chevrons of a `Pagination` keep a 1px hover underline, and a disabled link keeps its rest underline, dimmed with it.
+
+The thicknesses are read from `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover`. To keep the links of a navigation, a menu or a footer without an underline at rest, set them on that container only, so that the links within your text keep theirs:
+
+```css
+.my-app-nav {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 1px;
+}
+```
+
+A `Link` restyled as a button or as a full-width menu item now draws its 1px line along its bottom edge at rest, and a `Link` that wraps a `Button` or an image draws it under that element: set `--ods-link-underline-thickness: 0` on that `Link`, or, when it runs an action rather than a navigation, render a `Button` instead. Keep the underline on a link placed within a sentence: without it, the link is told by its color only.
+
+The underline is a pseudo-element, not a `text-decoration`: `text-decoration: none`, or the Tailwind `no-underline` class, does not remove it. Set the variable instead, for instance `[--ods-link-underline-thickness:0]` in Tailwind.
+
+The content of a `Menu` or a `Popover` renders in a portal, outside your container: set the variables on `MenuContent` or `PopoverContent`, through their `className`.
+
+The icon-only case is detected on the ODS `Icon` component itself: a component of yours that renders it is not, and that link keeps its underline. Set `--ods-link-underline-thickness: 0` on it.
+
+A rule of yours on the `::after` of a link (`[data-ods="link"]`, `[data-ods="breadcrumb-link"]` or an element styled with `ods-link()`) was written for a line hidden at rest. A `height` now shows at rest and gives way to the 2px of the hover, so the link gets thinner on hover. A current-page indicator made with `transform: scaleX(1)` no longer stands out. Replace these rules with the custom properties:
+
+```css
+.my-link {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 3px;
+}
+
+.my-nav [aria-current="page"] {
+  --ods-link-underline-thickness: 2px;
+  --ods-link-underline-thickness-hover: 2px;
+}
+```
+
+To find the cases above:
+
+```sh
+rg -U -l '<(Ods)?Link\b[^>]*>\s*<(Button|img)\b' -g '*.tsx' src
+rg -U -l '<(MenuItem|PopoverContent)\b[^<]*>[\s\S]{0,400}?<(Ods)?Link\b' -g '*.tsx' src
+grep -rnE -A8 'ods-link\(\)|data-ods=.(breadcrumb-)?link' src/ | grep -E '::after|scaleX|height'
+```
+
+Closest to v19 for every link, without the sweep: `:root { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 1px; }`. With the v19 sweep on `Link` and the `Breadcrumb` links too:
+
+```css
+:root {
+  --ods-link-underline-thickness: 0;
+  --ods-link-underline-thickness-hover: 1px;
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"]) {
+  --ods-link-underline-thickness: 1px;
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"])::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing-enter);
+}
+
+:where([data-ods="link"], [data-ods="breadcrumb-link"]):is(:hover, :focus-visible):not([aria-disabled="true"])::after {
+  transform: scaleX(1);
+}
+```
+
+The sweep only reaches `Link` and the `Breadcrumb` links: the ellipsis and the elements styled with `ods-link()` have no `data-ods`, and keep the thicknesses with no sweep.
 
 ## Typography
 

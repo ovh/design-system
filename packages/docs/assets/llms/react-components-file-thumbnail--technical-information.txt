@@ -4,7 +4,7 @@ slug: file-thumbnail
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 356
+tokens: 365
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
 ---
 
@@ -40,4 +40,4 @@ This component extends all the native `<div>` attributes.
 | `--ods-file-thumbnail-border-color` | `var(--ods-semantic-color-border-container)` |
 | `--ods-file-thumbnail-object-fit` | `contain` |
 | `--ods-file-thumbnail-preview-size` | `32px` |
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

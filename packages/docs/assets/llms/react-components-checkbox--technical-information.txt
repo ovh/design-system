@@ -4,7 +4,7 @@ slug: checkbox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 543
+tokens: 552
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
 ---
 
@@ -59,4 +59,4 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

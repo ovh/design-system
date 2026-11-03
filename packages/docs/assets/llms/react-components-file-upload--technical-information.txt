@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 853
+tokens: 862
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -76,7 +76,7 @@ _No specific property._
 
 | Variable | Default value |
 |---|---|
-| `--ods-state-is-disabled-opacity` | `1` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
 | `--ods-file-upload-item-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
 | `--ods-file-upload-item-border-radius` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
 | `--ods-file-upload-item-text-color-critical-hover` | `var(--ods-semantic-color-content-critical)` |

@@ -14,6 +14,9 @@ const GUIDE_STORY_MODULES: Record<string, Record<string, StoriesLoader | undefin
   forms: {
     'form-field': storiesOf('components/form-field'),
   },
+  themes: {
+    button: storiesOf('components/button'),
+  },
 };
 
 export { GUIDE_STORY_MODULES };

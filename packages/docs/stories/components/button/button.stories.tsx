@@ -304,6 +304,47 @@ import { useState } from 'react';`,
   },
 };
 
+export const GuideThemesOwnStyle: StoryObj = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <style>{`
+        .my-plan {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ods-semantic-size-space-gap-block);
+          max-width: 280px;
+          padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+          border: 1px solid var(--ods-semantic-color-border-neutral);
+          border-radius: var(--ods-semantic-size-radius-container);
+          background-color: var(--ods-semantic-color-surface-raised);
+          color: var(--ods-semantic-color-content-text);
+        }
+
+        .my-plan__name {
+          margin: 0;
+          color: var(--ods-semantic-color-content-heading);
+          font-weight: var(--ods-semantic-font-weight-semibold);
+        }
+
+        .my-plan__price {
+          color: var(--ods-semantic-color-content-brand);
+          font-weight: var(--ods-semantic-font-weight-bold);
+        }
+      `}</style>
+
+      <div className="my-plan">
+        <p className="my-plan__name">Starter plan</p>
+        <span className="my-plan__price">€4.99 / month</span>
+        <Button>Order</Button>
+      </div>
+    </>
+  ),
+};
+
 export const ThemeGenerator: StoryObj = {
   parameters: {
     layout: 'fullscreen',

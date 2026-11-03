@@ -1,0 +1,101 @@
+A theme is a stylesheet that declares the ODS design tokens as CSS custom properties on `:root`. ODS components read these tokens, and so can your own CSS: load a theme, and both follow it.
+
+<Heading label="Available themes" level={ 2 } />
+
+`@ovhcloud/ods-themes` ships four themes:
+
+- **Default** (`@ovhcloud/ods-themes/default/css`), the Aluminium look: the base every other theme is loaded after.
+- **Blue Jeans** (`@ovhcloud/ods-themes/blue-jeans/css`), the OVHcloud look, an overlay on the default theme.
+- **Aluminium dark** (`@ovhcloud/ods-themes/aluminium-dark/css`), the dark overlay of the default theme.
+- **Blue Jeans dark** (`@ovhcloud/ods-themes/blue-jeans-dark/css`), the dark overlay of the Blue Jeans theme.
+
+The fonts are a stylesheet of their own, `@ovhcloud/ods-themes/default/fonts`, for every theme.
+
+<Heading label="Load a theme" level={ 2 } />
+
+An overlay only re-declares the tokens it changes, so it is loaded **after** the theme it builds on. Every theme declares its tokens on `:root`, with the same specificity: the stylesheet loaded last wins.
+
+The default theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+The Blue Jeans theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+```
+
+The Aluminium dark theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+The Blue Jeans dark theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+import '@ovhcloud/ods-themes/blue-jeans-dark/css';
+```
+
+<Heading label="Switch themes" level={ 2 } />
+
+A page shows one theme: the one its stylesheets declare on `:root`. No attribute or class selects a theme, so ODS does not switch themes by itself.
+
+To switch themes, change the stylesheets the page loads. The order still matters, so keep each overlay in its own `<link>` after the theme it builds on, and turn it on or off:
+
+```html
+<link rel="stylesheet" href="/themes/default.css">
+<link rel="stylesheet" href="/themes/aluminium-dark.css" id="ods-dark" disabled>
+```
+
+```typescript
+function setDarkMode(isDark: boolean): void {
+  (document.getElementById('ods-dark') as HTMLLinkElement).disabled = !isDark;
+}
+```
+
+To follow the color scheme of the operating system instead, without any script, give the dark overlay a media query:
+
+```html
+<link rel="stylesheet" href="/themes/default.css">
+<link rel="stylesheet" href="/themes/aluminium-dark.css" media="(prefers-color-scheme: dark)">
+```
+
+These URLs point at the files of `@ovhcloud/ods-themes/dist`, copied to your public folder. With Vite, a `?url` import emits the file and gives its URL instead:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import darkThemeUrl from '@ovhcloud/ods-themes/aluminium-dark/css?url';
+
+(document.getElementById('ods-dark') as HTMLLinkElement).href = darkThemeUrl;
+```
+
+This documentation works the same way: the theme select and the color scheme button of its top bar load the overlays they select, after the default theme.
+
+<Heading label="Use the tokens in your CSS" level={ 2 } />
+
+Style your own elements with the `--ods-semantic-*` tokens, and they follow the theme as the ODS components do. Switch the theme or the color scheme from the top bar of this page: the plan below changes with its Button.
+
+<Canvas story="GuideThemesOwnStyle" from="button" />
+
+The <DocLink to="/guides/design-tokens">Design Tokens</DocLink> page explains which tokens to use and lists all of them.
+
+<Heading label="Create your own theme" level={ 2 } />
+
+A theme of your own is an overlay too: a stylesheet, loaded after `@ovhcloud/ods-themes/default/css`, that re-declares the brand and accent ramps on `:root`, from `50` to `900`:
+
+```css
+:root {
+  --ods-palette-brand-500: #7a00cc;
+  /* and the other brand and accent rungs, from 50 to 900 */
+}
+```
+
+The ramps do not reach every role: the focus ring, the status colors and the chart series keep their default values. Re-declare the `--ods-semantic-*` tokens themselves to change them. The <DocLink to="/guides/migration-19-to-20">migration guide</DocLink> details which roles each ramp reaches.

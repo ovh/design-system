@@ -50,7 +50,7 @@ not the history of the branch.
 | [BC-16](#bc-16---deprecated-and-unused-scss-exports-of-ovhcloudods-reactstyle-removed) | `@ovhcloud/ods-react` | 5 deprecated and 2 unused SCSS exports of `./style` removed | manual |
 | [BC-17](#bc-17---code-custom-properties-renamed) | `@ovhcloud/ods-react` | 3 `Code` custom properties renamed | automatable |
 | [BC-18](#bc-18---button-border-width-token-renamed) | `@ovhcloud/ods-react` | `Button` border width token renamed | automatable |
-| [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, `Link`, `Modal`, the `Combobox` and `Query Filter` tags and the transitions render differently by default | manual |
+| [BC-19](#bc-19---default-rendering-changes) | `@ovhcloud/ods-react` | `Card`, `Tile`, `Accordion`, `Badge`, `Tabs`, `Link` (with the `Breadcrumb` and `Markdown` links and `ods-link()`), `Modal`, the `Combobox` and `Query Filter` tags and the transitions render differently by default | manual |
 | [BC-20](#bc-20---a-19x-custom-theme-no-longer-applies) | `@ovhcloud/ods-themes` | a 19.x custom theme no longer applies | manual |
 | [BC-21](#bc-21---form-fields-share-one-default-width) | `@ovhcloud/ods-react` | form fields share one default width instead of filling their container | manual |
 | [BC-22](#bc-22---a-drawer-without-backdrop-gives-the-focus-back-on-close) | `@ovhcloud/ods-react` | a drawer without backdrop gives the focus back on close | none needed |
@@ -489,7 +489,7 @@ stays the `blue-jeans` overlay, loaded after it.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | Most `--ods-<component>-*` names are kept, and their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Removed: two stray `--ods-theme-*` locals, the dead tokens listed below, the seven disabled-state tokens of BC-12, the renames of BC-17, BC-18, BC-23 and BC-24 and the removals of BC-25. Added: `--ods-card-background-color` and `--ods-accordion-background-color`, the ten `--ods-badge-border-color-<status>` and the Badge emphasis names, `--ods-badge-*-color-<status>-high` and `--ods-badge-text-color-<status>-low` (BC-19), the three `--ods-link-text-color*` (BC-19), the twelve `--ods-message-border-color-*-high` and `-medium`, `--ods-tab-border-color-selected-switch`, an internal reset (BC-12) and the new names of BC-17, BC-18, BC-23 and BC-24. Several bindings also changed role, mostly to give `active` states their own `interaction-*-active`: the pressed rung is kept on purpose, even where the default theme gives it the hover value, so that a theme can tell them apart. |
+| **Change** | Most `--ods-<component>-*` names are kept, and their default values now reference `--ods-semantic-*` instead of `--ods-theme-*` / `--ods-color-*`. Removed: two stray `--ods-theme-*` locals, the dead tokens listed below, the seven disabled-state tokens of BC-12, the renames of BC-17, BC-18, BC-23 and BC-24 and the removals of BC-25. Added: `--ods-card-background-color` and `--ods-accordion-background-color`, the ten `--ods-badge-border-color-<status>` and the Badge emphasis names, `--ods-badge-*-color-<status>-high` and `--ods-badge-text-color-<status>-low` (BC-19), the three `--ods-link-text-color*` and `--ods-link-underline-thickness` / `-hover` (BC-19), the twelve `--ods-message-border-color-*-high` and `-medium`, `--ods-tab-border-color-selected-switch`, an internal reset (BC-12) and the new names of BC-17, BC-18, BC-23 and BC-24. Several bindings also changed role, mostly to give `active` states their own `interaction-*-active`: the pressed rung is kept on purpose, even where the default theme gives it the hover value, so that a theme can tell them apart. |
 | **Impact** | A consumer overriding a component token by name keeps working, except for a removed or renamed name, whose override is silently ignored. A consumer overriding it **with a value that reads a removed token** (`--ods-button-background-color-critical: var(--ods-color-critical-500)`) breaks - that is BC-01 / BC-02 seen from the component side. Colors shift slightly even where nothing breaks. |
 | **Detection** | the BC-01 / BC-02 greps for a value that reads a removed token, and the two commands below for the removed names and the `./style` arithmetic |
 | **Codemod** | none needed beyond BC-01 / BC-02 for the values; the removed names are listed below with their replacement |
@@ -706,11 +706,11 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-react` |
-| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border and, without `emphasis`, loses its tinted background, the selected `Tab` fills, the `Link` hover keeps the rest color, the tags of a multiple `Combobox` and of a `Query Filter` turn `accent`, the `Modal` gets the overlay shadow, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
+| **Change** | Several components render differently with no change on the consumer side: `Card`, `Tile` and `Accordion` paint a background, `Badge` becomes a pill with a border and, without `emphasis`, loses its tinted background, the selected `Tab` fills, the `Link` is underlined at rest and its hover keeps the rest color, the tags of a multiple `Combobox` and of a `Query Filter` turn `accent`, the `Modal` gets the overlay shadow, and the transitions read the motion tokens. Each case is listed below with the rule that brings 19.7.3 back. |
 | **Impact** | Visual only. On a tinted ground, a card or an accordion now shows a white box. `status="accent"`, which brings back the 19.7.3 color of a `Card` without status (BC-09), does not bring back its transparency. |
-| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>`, `<Link>`, `<Modal>`, multiple `<Combobox>` and `<QueryFilter>` |
+| **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>`, `<Link>`, `<Breadcrumb>`, `<Markdown>`, `<Modal>`, multiple `<Combobox>` and `<QueryFilter>`, and to every `@include ods-link()`. For the Link underline: a `Link` that wraps a `Button` or an image, `rg -U -l '<(Ods)?Link\b[^>]*>\s*<(Button\|img)\b' -g '*.tsx' src`; the links of a `Menu` or a `Popover`, `rg -U -l '<(MenuItem\|PopoverContent)\b[^<]*>[\s\S]{0,400}?<(Ods)?Link\b' -g '*.tsx' src`; the rules on the `::after` of a link, `grep -rnE -A8 'ods-link\(\)\|data-ods=.(breadcrumb-)?link' src/ \| grep -E '::after\|scaleX\|height'` |
 | **Codemod** | **manual** - add the rules below to the consumer stylesheet, outside any `@layer`. |
-| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/style/_link.scss`, `packages/ods-react/src/style/_modal.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/ods-react/src/components/query-filter/src/components/query-filter-tags/QueryFilterTags.tsx`, `packages/themes/src/default/index.scss` (motion) |
+| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/style/_link.scss`, `packages/ods-react/src/components/link/src/components/link/Link.tsx` (icon-only links), `packages/ods-react/src/components/pagination/src/components/pagination-item/paginationItem.module.scss` and `pagination-pages/paginationPages.module.scss`, `packages/ods-react/src/components/breadcrumb/src/components/breadcrumb-ellipsis/breadcrumbEllipsis.module.scss`, `packages/ods-react/src/style/_modal.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/ods-react/src/components/query-filter/src/components/query-filter-tags/QueryFilterTags.tsx`, `packages/themes/src/default/index.scss` (motion) |
 
 - **Card, Tile and Accordion** paint `--ods-semantic-color-surface-raised` where 19.7.3 painted no
   background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`.
@@ -741,10 +741,65 @@ goes under the v20 modal.
   override of the information `Tag` tokens no longer reaches them: override the
   `--ods-tag-*-accent*` tokens instead.
 - **Link**: the hover color is the rest color, `--ods-semantic-color-content-brand`, where 19.7.3
-  darkened it: the underline is the hover signal. The colors are read from `--ods-link-text-color`,
-  `--ods-link-text-color-hover` and `--ods-link-text-color-visited`, also declared by the
-  `ods-link()` mixin. Keep the 19.7.3 hover:
-  `[data-ods="link"] { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`.
+  darkened it. The colors are read from `--ods-link-text-color`, `--ods-link-text-color-hover` and
+  `--ods-link-text-color-visited`, also declared by the `ods-link()` mixin. Keep the 19.7.3 hover:
+  `:where([data-ods="link"], [data-ods="breadcrumb-link"], [data-ods="breadcrumb"] li > button) { --ods-link-text-color-hover: var(--ods-semantic-color-interaction-brand-hover); }`
+  (the last selector is the `Breadcrumb` ellipsis, which has no `data-ods`). An element styled with
+  `ods-link()` declares the property itself: set it in the same rule, after the `@include`.
+  The underline is there at rest, 1px in the link color, so that a link is not told by its color
+  alone (RGAA 10.6, WCAG 1.4.1), and turns 2px on hover: the thicker underline is the hover signal.
+  19.7.3 only drew it on hover, 1px, with a left-to-right sweep. The thicknesses are read from
+  `--ods-link-underline-thickness` and `--ods-link-underline-thickness-hover` with a fallback, so a
+  rule on `:root` or on a container reaches every link: `Link`, the `Breadcrumb` links, the
+  `Markdown` links and the elements styled with the `ods-link()` mixin. An icon-only link made of
+  ODS icons and the `Breadcrumb` ellipsis have no underline at rest, the page links and the chevrons
+  of a `Pagination` keep a 1px hover underline, and a disabled link keeps its rest underline, dimmed
+  with it. Closest to 19.7.3, without the sweep:
+  `:root { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 1px; }`. With the sweep on `Link` and the
+  `Breadcrumb` links too:
+
+  ```css
+  :root {
+    --ods-link-underline-thickness: 0;
+    --ods-link-underline-thickness-hover: 1px;
+  }
+
+  :where([data-ods="link"], [data-ods="breadcrumb-link"]) {
+    --ods-link-underline-thickness: 1px;
+  }
+
+  :where([data-ods="link"], [data-ods="breadcrumb-link"])::after {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--ods-semantic-motion-duration-medium) var(--ods-semantic-motion-easing-enter);
+  }
+
+  :where([data-ods="link"], [data-ods="breadcrumb-link"]):is(:hover, :focus-visible):not([aria-disabled="true"])::after {
+    transform: scaleX(1);
+  }
+  ```
+
+  The sweep only reaches `Link` and the `Breadcrumb` links: the ellipsis and the elements styled
+  with `ods-link()` have no `data-ods`, and keep the thicknesses with no sweep.
+  A `Link` that wraps a `Button` or an image now draws its line under that element at rest: set
+  `--ods-link-underline-thickness: 0` on that `Link`, or, when it runs an action rather than a
+  navigation, render a `Button` instead. The underline is a pseudo-element, not a
+  `text-decoration`: `text-decoration: none`, or the Tailwind `no-underline` class, does not remove
+  it, the variables do (`[--ods-link-underline-thickness:0]` in Tailwind). The content of a `Menu` or
+  a `Popover` renders in a portal, outside a container that sets the variables: set them on
+  `MenuContent` or `PopoverContent`, through their `className`. The icon-only case is detected on
+  the ODS `Icon` component itself: a component of the app that renders it is not, and its link keeps
+  the underline.
+  A rule of the consumer on the `::after` of a link (`[data-ods="link"]`,
+  `[data-ods="breadcrumb-link"]` or an element styled with `ods-link()`) was written for a line
+  hidden at rest. A `height` now shows at rest and gives way to the 2px of the hover, so the link
+  gets thinner on hover, and a current-page indicator made with `transform: scaleX(1)` no longer
+  stands out. Replace these rules with the custom properties:
+  `.my-link { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 3px; }`,
+  `.my-nav [aria-current="page"] { --ods-link-underline-thickness: 2px; --ods-link-underline-thickness-hover: 2px; }`.
+  In forced colors, the underline is drawn in `LinkText`, where 19.7.3 lost it (its color became
+  the canvas one).
+
 - **Modal**: the content draws `--ods-semantic-shadow-overlay`, as the `Drawer` and the other
   overlays, where 19.7.3 drew no shadow. In the dark themes, this shadow is what sets the modal off
   its backdrop. Keep 19.7.3: `[data-ods="modal-content"] { box-shadow: none; }`.

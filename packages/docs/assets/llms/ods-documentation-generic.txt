@@ -5340,7 +5340,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 17503
+tokens: 17772
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5895,7 +5895,11 @@ grep -rlE "@ovhcloud/ods-react/style" src | xargs grep -nwE "primary|information
 }
 ```
 
-**The APIs deprecated in v19 are removed**: the Switch component (see Switch), the Pagination and the Toggle used without children (see Pagination and Toggle), the `renderTotalItemsLabel` and `withPageSizeSelector` props of Pagination, the positioning props replaced by `overlayConfig` (see Menu, Popover, Select and Tooltip) and the `uploadSuccessLabel` prop of FileUploadItem (see File Upload). TypeScript reports each usage.
+**The APIs deprecated in v19 are removed**: the Switch component (see Switch), the Pagination and the Toggle used without children (see Pagination and Toggle), the `renderTotalItemsLabel` and `withPageSizeSelector` props of Pagination, the positioning props replaced by `overlayConfig` (see Menu, Popover, Select and Tooltip) and the `uploadSuccessLabel` prop of FileUploadItem (see File Upload).
+
+- **Fastest path**: upgrade, then run `tsc --noEmit`. Each removed usage is a type error, even passed through a spread object: `children` missing on a Pagination or a Toggle, a removed prop elsewhere. The `grep` commands of each section are a fallback for untyped code.
+- **On a v19 release older than 19.7.0**, `overlayConfig`, `PaginationPages` and `PaginationPageSizeSelector` do not exist yet: upgrade to the latest 19.x first, which breaks nothing, migrate, then upgrade to v20.
+- **If you publish a library built on ODS**, release its v20-compatible version first: its compiled JavaScript gets no type error, and a removed prop it still passes is silently ignored.
 
 ### Accordion
 
@@ -6148,15 +6152,15 @@ import { FileUploadItem } from '@ovhcloud/ods-react';
 
 ### Menu
 
-**The `position` prop is removed** (deprecated since v19.7.0): use `overlayConfig={{ position }}`, which takes the same values (`MENU_POSITION`). If the Menu already sets `overlayConfig.position`, remove `position`: `overlayConfig` already won. In untyped JavaScript, a `position` prop is ignored and the Menu opens at its default position.
+**The `position` prop is removed** (deprecated since v19.7.0): use `overlayConfig={{ position }}`, which takes the same values (`'bottom-end'`, `'top'`…). If the Menu already sets `overlayConfig.position`, remove `position`: `overlayConfig` already won. In untyped JavaScript, a `position` prop is ignored and the Menu opens at its default position.
 
-To find the usages to migrate: `grep -rnE "position=\{ ?MENU_POSITION" src/`. A `position` written as a string is not matched: TypeScript reports it.
+To find the usages to migrate: `grep -rnE "<Menu[[:space:]]([^>]|=>)*[[:space:]]position=" src/`. A `position` written on its own line is not matched: TypeScript reports it.
 
 **before**
 ```tsx
-import { MENU_POSITION, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
+import { Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 
-<Menu position={ MENU_POSITION.bottomEnd }>
+<Menu position="bottom-end">
   <MenuTrigger>Actions</MenuTrigger>
   <MenuContent>
     <MenuItem value="edit">Edit</MenuItem>
@@ -6166,9 +6170,9 @@ import { MENU_POSITION, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhclo
 
 **after**
 ```tsx
-import { MENU_POSITION, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
+import { Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 
-<Menu overlayConfig={{ position: MENU_POSITION.bottomEnd }}>
+<Menu overlayConfig={{ position: 'bottom-end' }}>
   <MenuTrigger>Actions</MenuTrigger>
   <MenuContent>
     <MenuItem value="edit">Edit</MenuItem>
@@ -6296,12 +6300,12 @@ import { Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
 - A Pagination without children: add `<PaginationPages />` as its child.
 - `withPageSizeSelector`: add `<PaginationPageSizeSelector />` before `<PaginationPages />`.
 - `renderTotalItemsLabel`: pass what it returned as the `label` of the `PaginationPageSizeSelector`. Without `label`, the selector reads `of <totalItems> results`, as in v19.
-- In untyped JavaScript, a Pagination without children renders an empty `nav`, and the two removed props are forwarded to it.
+- In untyped JavaScript, a Pagination without children renders an empty `nav`, and the two removed props are forwarded to it. A Pagination with empty children (`null`, `undefined`) compiles and renders the same: it logs a warning once.
 
 To find the usages to migrate:
 
 ```sh
-grep -rnE "<Pagination([[:space:]][^>]*)?/>|renderTotalItemsLabel|withPageSizeSelector" src/
+grep -rnE "<Pagination([[:space:]]([^>]|=>)*)?/>|renderTotalItemsLabel|withPageSizeSelector" src/
 ```
 
 This search misses a Pagination written over several lines that closes itself: TypeScript reports each one.
@@ -6336,7 +6340,13 @@ import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhclo
 
 **The `position`, `gutter` and `sameWidth` props are removed** (deprecated since v19.7.0): move them into `overlayConfig`, under the same names and values. If the Popover already sets the same key in `overlayConfig`, remove the prop: `overlayConfig` already won. The default position stays `top`. In untyped JavaScript, these props are ignored.
 
-To find the usages to migrate: `grep -rnE "\b(gutter|sameWidth)=|position=\{ ?POPOVER_POSITION" src/`. A `position` written as a string is not matched: TypeScript reports it.
+To find the usages to migrate, shorthand booleans (`<Popover sameWidth>`) included:
+
+```sh
+grep -rnE "(^|[[:space:]])(gutter|sameWidth)([[:space:]]*=|[[:space:]]*/?>|[[:space:]]*$|[[:space:]]+[A-Za-z])|position=\{ ?POPOVER_POSITION" src/
+```
+
+A `position` written as a string is not matched: TypeScript reports it.
 
 **before**
 ```tsx
@@ -6539,9 +6549,9 @@ toast.accent('Your export is ready');
 
 - A Toggle without children: add `<ToggleControl />` as its child. The other props stay on the Toggle.
 - A `className` on a Toggle without children styled the control: move it onto the `ToggleControl`. On a Toggle with children, `className` styles the root, as in v19.
-- In untyped JavaScript, a Toggle without children renders no control: the toggle disappears.
+- In untyped JavaScript, a Toggle without children renders an empty `label`: no control, no focusable element and no hidden `input`, so the field is no longer submitted with its form. A Toggle with empty children (`null`, `undefined`) compiles and renders the same: it logs a warning once.
 
-To find the usages to migrate: `grep -rnE "<Toggle([[:space:]][^>]*)?/>" src/`. This search misses a Toggle written over several lines that closes itself: TypeScript reports each one.
+To find the usages to migrate: `grep -rnE "<Toggle([[:space:]]([^>]|=>)*)?/>" src/`. This search misses a Toggle written over several lines that closes itself: TypeScript reports each one.
 
 **before**
 ```tsx

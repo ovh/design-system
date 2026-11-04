@@ -102,7 +102,8 @@
         background-color: var(--ods-tab-background-color-selected-switch);
         color: var(--ods-semantic-color-content-on-selected);
 
-        // `outline`, not box-shadow: shadow-control may be `none`.
+        // `outline`, not box-shadow: a custom theme may set shadow-control to `none`, which would
+        // invalidate a shadow list.
         &:not(:focus-visible) {
           outline: var(--ods-semantic-border-thickness) solid var(--ods-tab-border-color-selected-switch);
           outline-offset: calc(var(--ods-semantic-border-thickness) * -1);

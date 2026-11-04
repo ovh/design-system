@@ -5,7 +5,9 @@ import blueJeansDarkCss from '@ovhcloud/ods-themes/blue-jeans-dark/css?inline';
 import { type ReactElement, useEffect, useState } from 'react';
 
 /* Each theme is an overlay loaded after the default one (index.css), dark after its light theme.
-   The Tailwind utilities read the ODS variables, so they follow the switch with no rebuild. */
+   Imported as strings and injected last, so that a switch removes the previous overlay: a CSS
+   import cannot be unloaded. The Tailwind utilities read the ODS variables, so they follow the
+   switch with no rebuild. */
 const THEMES: Record<string, string[]> = {
   'Aluminium': [],
   'Aluminium dark': [aluminiumDarkCss],
@@ -24,7 +26,7 @@ function App(): ReactElement {
   }, [theme]);
 
   return (
-    <main className="min-h-screen bg-ods-surface-page p-ods-gap-section font-ods-body text-ods-content-text">
+    <main className="min-h-screen bg-ods-surface-page p-ods-gap-section text-ods-content-text">
       <div className="mx-auto flex max-w-2xl flex-col gap-ods-gap-group">
         <div className="flex flex-wrap gap-ods-gap-inline" role="group" aria-label="Theme">
           { Object.keys(THEMES).map((name) => (

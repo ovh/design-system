@@ -270,8 +270,9 @@
   --ods-semantic-color-shadow-control: var(--ods-palette-gray-900);
   --ods-semantic-color-shadow-raised: var(--ods-palette-gray-900);
   --ods-semantic-color-shadow-overlay: var(--ods-palette-gray-900);
-  --ods-semantic-shadow-control: none;
-  // Not `none`: Tile appends it to a shadow list.
+  // Not `none`: a shadow list that holds `none` is invalid as a whole. Tile appends shadow-raised
+  // to one, and a Tailwind ring composes with any of them.
+  --ods-semantic-shadow-control: 0 0 #0000;
   --ods-semantic-shadow-raised: 0 0 #0000;
   --ods-semantic-shadow-overlay: 0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent);
 

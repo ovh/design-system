@@ -1568,14 +1568,14 @@
       "slug": "ovhcloud-design-system-customize-design-tokens",
       "title": "Design Tokens",
       "type": "overview",
-      "tokens": 5390,
+      "tokens": 5391,
       "url": "./ovhcloud-design-system-customize-design-tokens.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-tailwind-css-integration",
       "title": "Tailwind CSS Integration",
       "type": "overview",
-      "tokens": 1244,
+      "tokens": 2505,
       "url": "./ovhcloud-design-system-customize-tailwind-css-integration.txt"
     },
     {
@@ -1638,7 +1638,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 18065,
+      "tokens": 18713,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

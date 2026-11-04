@@ -61,6 +61,7 @@ not the history of the branch.
 | [BC-27](#bc-27---pagination-and-toggle-render-their-children-only) | `@ovhcloud/ods-react` | `Pagination` and `Toggle` render their children only, `renderTotalItemsLabel` and `withPageSizeSelector` removed | automatable |
 | [BC-28](#bc-28---the-positioning-props-replaced-by-overlayconfig-removed) | `@ovhcloud/ods-react` | `position`, `gutter`, `sameWidth` and `fitControlWidth` removed from `Menu`, `Popover`, `Select` and `Tooltip` | automatable |
 | [BC-29](#bc-29---fileuploaditem-uploadsuccesslabel-removed) | `@ovhcloud/ods-react` | `FileUploadItem` `uploadSuccessLabel` removed | automatable |
+| [BC-30](#bc-30---the-tailwind-configuration-of-the-19x-guide-no-longer-applies) | documentation | the Tailwind configuration of the 19.x guide no longer applies | manual |
 
 ## The v20 token contract
 
@@ -915,6 +916,19 @@ goes under the v20 modal.
 | **Detection** | `grep -rn 'uploadSuccessLabel' src/` |
 | **Codemod** | **automatable** - remove the prop. |
 | **Source of truth** | `packages/ods-react/src/components/file-upload/src/components/file-upload-item/FileUploadItem.tsx` |
+
+---
+
+## BC-30 - the Tailwind configuration of the 19.x guide no longer applies
+
+| field | value |
+| --- | --- |
+| **Package** | documentation (the Tailwind CSS Integration guide) |
+| **Change** | The 19.x guide had consumers copy a Tailwind configuration (a v3 `tailwind.config.js` or a v4 `@theme` block) that read tokens BC-01 removes: `ods-primary`, `ods-success`, `ods-critical`, `ods-xs` to `ods-lg`, `ods-default` (`ods-color-primary-500`, `ods-border-radius-md`… in v3). The new `@ovhcloud/ods-tailwind` package maps the Tailwind v4 utilities to the semantic tokens under other names. |
+| **Impact** | A class of the copied configuration resolves to nothing: Tailwind gives no error for it, and the property falls back to its inherited or initial value. |
+| **Detection** | `grep -rnE -- '[a-z-]+-ods-(primary\|success\|warning\|critical\|xs\|sm\|md\|lg\|default)\b\|ods-(color-[a-z]+-[0-9]+\|border-radius-[a-z]+\|font-family-default)' src/` |
+| **Codemod** | **manual** - a color class depends on its property (`bg-` reads a surface, `text-` a content color, `border-` a border color), and the 2px `xs` radius has no v20 equivalent. |
+| **Source of truth** | `packages/docs/src/content/guides/migration-19-to-20.mdx` (Tailwind CSS), `packages/tailwind/theme.css` |
 
 ---
 

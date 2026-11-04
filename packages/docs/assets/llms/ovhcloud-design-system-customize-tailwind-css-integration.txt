@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2002
+tokens: 2550
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -46,7 +46,7 @@ Then import `@ovhcloud/ods-tailwind` in your stylesheet, followed by the ODS the
 
 ### Import order
 
-Import this stylesheet **before any ODS component**, as the first import of your entry point:
+Import this stylesheet **before any ODS theme or component**, as the first import of your entry point, and import the ODS theme from it rather than from JavaScript:
 
 ```typescript
 // main.tsx
@@ -58,9 +58,17 @@ import { App } from './App';
   
 
   
-> `@ovhcloud/ods-tailwind` declares the order of the CSS layers: the Tailwind theme, base and components, then the ODS layers, then the Tailwind utilities. The first stylesheet that names a layer sets its place. If an ODS component is imported before it, the ODS layers land before the Tailwind base styles, which then reset the ODS buttons and headings.
+> `@ovhcloud/ods-tailwind` declares the order of the CSS layers: the Tailwind theme and base, then the ODS layers, then the Tailwind components and utilities. A layer takes its place from the first stylesheet that names it, and the ODS theme and components name the ODS layers too. If either is imported before `@ovhcloud/ods-tailwind`, the ODS layers land before the Tailwind base styles, which then reset the ODS buttons and headings.
 
-With this order, a utility you put on an ODS component wins over its style, and the ODS styles win over the Tailwind base styles.
+With this order, the ODS styles win over the Tailwind base styles, and your own styles win over the ODS ones: a utility on an ODS component, or a rule of yours in `@layer components`, where Tailwind puts the styles of your components. Target an ODS element with a class rather than a tag selector there: a `.card button` rule in `@layer components` also restyles every ODS button of the card.
+
+For an order that holds whatever the import order, declare it in the `<head>` of your page, before any stylesheet:
+
+```html
+<style>@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;</style>
+```
+
+With a Content Security Policy, allow this inline style with its hash or a nonce.
 
 ## Utilities
 
@@ -122,7 +130,11 @@ function Summary() {
 }
 ```
 
-On a solid ground, use the content token made for it: `bg-ods-surface-brand` goes with `text-ods-content-on-brand-solid`.
+On a solid ground, use the content token made for it: `bg-ods-surface-brand` goes with `text-ods-content-on-brand-solid`. `bg-ods-brand` is the brand color of the logo, not a surface.
+
+The page font is the ODS body font, and the monospace font the ODS code font: the Tailwind base styles set them on the page, so the ODS components and their overlays (Modal, Popover, Tooltip…) inherit them with no class.
+
+The tokens Tailwind has no theme for are not mapped. Read them with the variable shorthand: `z-(--ods-semantic-z-index-modal)`, `opacity-(--ods-semantic-opacity-disabled)`, `duration-(--ods-semantic-motion-duration-fast)`.
 
 ## Themes
 
@@ -137,6 +149,15 @@ The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their value
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
+To follow the system setting with no JavaScript, condition the dark theme on it:
+
+```css
+@import '@ovhcloud/ods-tailwind';
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/aluminium-dark/css' (prefers-color-scheme: dark);
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
 ### Switch themes at runtime
 
 ODS ships no theme switcher, but each theme is an overlay that re-declares the semantic tokens on `:root`: loading or removing it switches the whole page, the ODS components and the Tailwind utilities alike, with no rebuild. For instance, with Vite, import the overlays as strings and add the one the user picks:
@@ -147,6 +168,7 @@ import { useEffect } from 'react';
 
 function useDarkTheme(dark: boolean) {
   useEffect(() => {
+    document.documentElement.toggleAttribute('data-dark', dark);
     if (!dark) {
       return;
     }
@@ -158,18 +180,24 @@ function useDarkTheme(dark: boolean) {
 }
 ```
 
-Add the overlay after the stylesheets of your app, so that it comes after the default theme. For Blue Jeans dark, add the Blue Jeans theme first, then its dark theme.
+Add the overlay after the stylesheets of your app, so that it comes after the default theme. For Blue Jeans dark, add the Blue Jeans theme first, then its dark theme. With a Content Security Policy, allow inline styles with a nonce. The overlay applies once the page has rendered: to avoid a flash of the light theme, read the user's choice in a small inline script in the `<head>`.
+
+The Tailwind `dark:` variant follows the system setting by default, not the theme you load. Point it at your switch, so that `dark:` utilities and the ODS dark theme go together:
+
+```css
+@custom-variant dark (&:where([data-dark], [data-dark] *));
+```
 
 ### Without the layer order
 
-If your app already sets its own Tailwind entry point and layer order, import only the utilities, after Tailwind:
+If your app already sets its own Tailwind entry point and layer order, import only the utilities, after Tailwind, and after any reset of a namespace (`--color-*: initial`), which would clear the ODS utilities too:
 
 ```css
 @import 'tailwindcss';
 @import '@ovhcloud/ods-tailwind/theme.css';
 ```
 
-Then keep the ODS layers (`ods-quarks`, `ods-atoms`, `ods-molecules`, `ods-organisms`) after the Tailwind `base` layer and before `utilities` in your own `@layer` statement.
+Then keep the ODS layers (`ods-quarks`, `ods-atoms`, `ods-molecules`, `ods-organisms`) after the Tailwind `base` layer and before `components` in your own `@layer` statement.
 
 ## Tailwind CSS v3
 
@@ -198,7 +226,7 @@ export default {
 };
 ```
 
-Tailwind CSS v3 has no layer order of its own to declare: its base styles do not use cascade layers, so they win over the ODS styles. Leave the Tailwind preflight out (`corePlugins: { preflight: false }`) if it resets the ODS components.
+Tailwind CSS v3 has no layer order of its own to declare: its base styles do not use cascade layers, so they always win over the ODS styles and reset the ODS buttons and headings. Leave the Tailwind preflight out: `corePlugins: { preflight: false }`.
 
 ## Resources
 

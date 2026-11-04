@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 18065
+tokens: 18713
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -243,6 +243,61 @@ grep -rnE "ods-themes/src/default/_?variables" src/
     padding: 16px;
   }
 }
+```
+
+## Tailwind CSS
+
+The v19 Tailwind guide had you copy a configuration that read the tokens removed above: its `ods-primary`, `ods-success`, `ods-critical`, `ods-xs` to `ods-lg` and `ods-default` keys (`ods-color-primary-500`, `ods-border-radius-md`… in a Tailwind v3 configuration) now resolve to nothing. Tailwind gives no error for a class it no longer knows: the property silently falls back.
+
+In v20, `@ovhcloud/ods-tailwind` maps the Tailwind v4 utilities to the semantic tokens, with no configuration to copy (see [Tailwind CSS Integration](https://ovh.github.io/design-system/v19.7.3/guides/tailwind)). Remove the ODS keys of your configuration, and the `.vscode/tailwind.json` list of the v19 guide, then rename the classes:
+
+  <thead>
+  <tr>
+    <th scope="col">v19 class</th>
+    <th scope="col">v20 class</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>bg-ods-primary</code>, <code>text-ods-primary</code>, <code>border-ods-primary</code></td>
+    <td><code>bg-ods-surface-brand</code>, <code>text-ods-content-brand</code>, <code>border-ods-border-brand</code></td>
+  </tr>
+  <tr>
+    <td><code>bg-ods-success</code>, <code>text-ods-success</code>, <code>border-ods-success</code></td>
+    <td><code>bg-ods-surface-success</code>, <code>text-ods-content-success</code>, <code>border-ods-border-success</code></td>
+  </tr>
+  <tr>
+    <td><code>bg-ods-critical</code>, <code>text-ods-critical</code>, <code>border-ods-critical</code></td>
+    <td><code>bg-ods-surface-critical</code>, <code>text-ods-content-critical</code>, <code>border-ods-border-critical</code></td>
+  </tr>
+  <tr>
+    <td><code>rounded-ods-xs</code> (2px)</td>
+    <td>no 2px radius in v20: <code>rounded-ods-control</code> (4px), or <code>rounded-xs</code></td>
+  </tr>
+  <tr>
+    <td><code>rounded-ods-sm</code> (4px)</td>
+    <td><code>rounded-ods-control</code></td>
+  </tr>
+  <tr>
+    <td><code>rounded-ods-md</code> (8px)</td>
+    <td><code>rounded-ods-container</code></td>
+  </tr>
+  <tr>
+    <td><code>rounded-ods-lg</code> (16px)</td>
+    <td><code>rounded-ods-pill</code></td>
+  </tr>
+  <tr>
+    <td><code>font-ods-default</code></td>
+    <td><code>font-ods-body</code>, or nothing: it is the page font</td>
+  </tr>
+  </tbody>
+
+As for the tokens, a color depends on the property: a `bg-` reads a surface, a `text-` a content color, a `border-` a border color. `bg-ods-brand` is the logo color, not a surface.
+
+To find the classes:
+
+```sh
+grep -rnE -- '[a-z-]+-ods-(primary|success|warning|critical|xs|sm|md|lg|default)\b|ods-(color-[a-z]+-[0-9]+|border-radius-[a-z]+|font-family-default)' src/
 ```
 
 ## Custom themes

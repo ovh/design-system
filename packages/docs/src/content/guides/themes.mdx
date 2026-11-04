@@ -13,7 +13,7 @@ The fonts are a stylesheet of their own, `@ovhcloud/ods-themes/default/fonts`, f
 
 <Heading label="Load a theme" level={ 2 } />
 
-An overlay only re-declares the tokens it changes, so it is loaded **after** the theme it builds on. Every theme declares its tokens on `:root`, with the same specificity: the stylesheet loaded last wins.
+An overlay re-declares the tokens it changes, and the component styles of its own look in the ODS layers, so it is loaded **after** the theme it builds on. Every theme declares its tokens on `:root`, with the same specificity: the stylesheet loaded last wins.
 
 The default theme:
 
@@ -54,8 +54,9 @@ A page shows one theme: the one its stylesheets declare on `:root`. No attribute
 To switch themes, change the stylesheets the page loads. The order still matters, so keep each overlay in its own `<link>` after the theme it builds on, and turn it on or off:
 
 ```html
-<link rel="stylesheet" href="/ods-themes/default/index.css">
-<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" id="ods-dark" disabled>
+<link rel="stylesheet" href="/ods-themes/dist/default/index.css">
+<link rel="stylesheet" href="/ods-themes/dist/default/fonts.css">
+<link rel="stylesheet" href="/ods-themes/dist/aluminium-dark/index.css" id="ods-dark" disabled>
 ```
 
 ```typescript
@@ -67,11 +68,12 @@ function setDarkMode(isDark: boolean): void {
 To follow the color scheme of the operating system instead, without any script, give the dark overlay a media query:
 
 ```html
-<link rel="stylesheet" href="/ods-themes/default/index.css">
-<link rel="stylesheet" href="/ods-themes/aluminium-dark/index.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="/ods-themes/dist/default/index.css">
+<link rel="stylesheet" href="/ods-themes/dist/default/fonts.css">
+<link rel="stylesheet" href="/ods-themes/dist/aluminium-dark/index.css" media="(prefers-color-scheme: dark)">
 ```
 
-These URLs assume the `dist` folder of `@ovhcloud/ods-themes` copied to your public folder as `ods-themes`, one folder per theme.
+These URLs assume the `dist` and `assets` folders of `@ovhcloud/ods-themes` copied side by side to your public folder, under `ods-themes`: `fonts.css` reads its font files from `../../assets/fonts/`.
 
 With Vite, a `?url` import emits the file and gives its URL instead. Vite adds the stylesheets you import after the `<link>` elements of your `index.html`, so an overlay declared there would come before the default theme and lose: create its `<link>` from your code, at the end of `<head>`:
 
@@ -112,11 +114,24 @@ The ramps do not reach every role: the focus ring, the information, success, war
 
 The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 
-With a dark overlay, load your theme between the default theme and the overlay. The overlay reads the brand and accent ramps, so your colors reach it, and the roles it re-declares, such as the focus ring, stay on top:
+With a dark overlay, the order depends on what the overlay re-declares.
+
+Aluminium dark reads the brand and accent ramps without re-declaring them: load your theme between the default theme and the overlay. Your colors reach the dark theme, and the roles it re-declares, such as the focus ring, stay on top:
 
 ```typescript
 import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
 import './my-theme.css';
 import '@ovhcloud/ods-themes/aluminium-dark/css';
+```
+
+Blue Jeans and Blue Jeans dark re-declare the whole accent ramp, the dark one in navy. Load your brand ramp after Blue Jeans, and your accent ramp after the last overlay, alone, so that it does not override the other roles of the dark theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+import '@ovhcloud/ods-themes/blue-jeans/css';
+import './my-theme.css'; // the brand ramp
+import '@ovhcloud/ods-themes/blue-jeans-dark/css';
+import './my-accent.css'; // the accent ramp only
 ```

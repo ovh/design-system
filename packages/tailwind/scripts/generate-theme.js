@@ -3,10 +3,10 @@
 /*
  * Writes theme.css, the Tailwind v4 @theme block that maps utilities to the ODS semantic tokens.
  *
- * Read from the default theme's tokens.json, the token list every theme declares: blue-jeans and
- * the dark themes are overlays that re-declare the same custom properties. The block points at
- * them (`inline`, so that each utility reads the ODS variable where it is used), never at their
- * values, so one file serves every theme and follows a theme switch.
+ * Read from the default theme's tokens.json: the other themes are overlays loaded after it, which
+ * re-point a subset of these semantic tokens and add none (tests/run.mjs checks it). The block
+ * points at the tokens (`inline`, so that each utility reads the ODS variable where it is used),
+ * never at their values, so one file serves every theme and follows a theme switch.
  */
 const fs = require('fs');
 const path = require('path');
@@ -15,19 +15,32 @@ const OUTPUT = path.resolve(__dirname, '..', 'theme.css');
 const PREFIX = '--ods-semantic-';
 
 /* ODS token family → Tailwind theme namespace. The `ods-` prefix keeps them apart from the
-   Tailwind defaults (bg-ods-surface-page next to bg-white). The palette is left out: the
-   semantic tokens are the ones a theme re-points, and the ones components read. */
+   Tailwind defaults (bg-ods-surface-page next to bg-white). The palette is left out: a palette step
+   carries no role, and the components read only the semantic tokens. */
 const NAMESPACES = [
-  { family: 'color-', namespace: 'color', skip: /^color-shadow-/ },
+  { family: 'color-', namespace: 'color' },
   { family: 'size-radius-', namespace: 'radius' },
   { family: 'shadow-', namespace: 'shadow' },
   { family: 'font-family-', namespace: 'font' },
   { family: 'font-weight-', namespace: 'font-weight' },
   { family: 'size-space-', namespace: 'spacing' },
+  // Three families share the spacing namespace: block- and inline- keep the sizes recognisable
+  // (h-ods-block-md, not h-ods-md).
   { family: 'size-block-size-', namespace: 'spacing', rename: (name) => `block-${name}` },
   { family: 'size-inline-size-', namespace: 'spacing', rename: (name) => `inline-${name}` },
+  // No trailing dash, to take the bare --ods-semantic-motion-easing too, as ease-ods-default.
   { family: 'motion-easing', namespace: 'ease', rename: (name) => name.replace(/^-/, '') || 'default' },
 ];
+
+/* Families with no Tailwind theme namespace, or none worth a utility: color-shadow-* only tint the
+   shadow tokens, and the others are read with the variable shorthand (z-(--ods-semantic-z-index-modal),
+   duration-(--ods-semantic-motion-duration-fast)…), as the guide says. A family that is in neither
+   list fails the build, so that a new one is mapped or left out on purpose. */
+const LEFT_OUT = ['color-shadow-', 'border-thickness', 'border-focus-', 'opacity-', 'motion-duration-', 'z-index-'];
+
+/* Tailwind derives one class prefix from several namespaces: font-ods-x reads --font-ods-x and
+   --font-weight-ods-x alike. Two tokens that end on the same class are a collision too. */
+const CLASS_OF = { 'font-weight': 'font' };
 
 function themeVariables(tokens) {
   const lines = [];
@@ -35,18 +48,30 @@ function themeVariables(tokens) {
 
   for (const token of Object.keys(tokens).filter((name) => name.startsWith(PREFIX)).sort()) {
     const name = token.slice(PREFIX.length);
-    const entry = NAMESPACES.find(({ family, skip }) => name.startsWith(family) && !skip?.test(name));
-    if (!entry) {
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(name)) {
+      throw new Error(`${token} is not a valid token name`);
+    }
+    if (LEFT_OUT.some((family) => name.startsWith(family))) {
       continue;
     }
-    const rest = name.slice(entry.family.length);
-    const utility = `--${entry.namespace}-ods-${entry.rename ? entry.rename(rest) : rest}`;
-    if (seen.has(utility)) {
-      throw new Error(`${token} and ${seen.get(utility)} both map to ${utility}`);
+    const entry = NAMESPACES.find(({ family }) => name.startsWith(family));
+    if (!entry) {
+      throw new Error(`${token} is in no known family: map it in NAMESPACES or leave it out in LEFT_OUT`);
     }
-    seen.set(utility, token);
-    lines.push(`  ${utility}: var(${token});`);
+    const rest = name.slice(entry.family.length);
+    const key = entry.rename ? entry.rename(rest) : rest;
+    const utilityClass = `${CLASS_OF[entry.namespace] ?? entry.namespace}-ods-${key}`;
+    if (seen.has(utilityClass)) {
+      throw new Error(`${token} and ${seen.get(utilityClass)} both give ${utilityClass}`);
+    }
+    seen.set(utilityClass, token);
+    lines.push(`  --${entry.namespace}-ods-${key}: var(${token});`);
   }
+
+  /* The fonts of the page: the Tailwind preflight sets them on html, and the ODS components inherit
+     them, the overlays a portal mounts under body included. */
+  lines.push(`  --default-font-family: var(${PREFIX}font-family-body);`);
+  lines.push(`  --default-mono-font-family: var(${PREFIX}font-family-code);`);
   return lines;
 }
 
@@ -68,4 +93,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { themeVariables };
+module.exports = { LEFT_OUT, NAMESPACES, themeVariables };

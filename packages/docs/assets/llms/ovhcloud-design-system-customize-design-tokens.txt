@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
 version: 19.7.3
-tokens: 5390
+tokens: 5391
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
@@ -250,7 +250,7 @@ The `--ods-semantic-*` tokens are the public surface of the theme: read them in 
 |---|---|
 | `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
 | `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
-| `--ods-semantic-shadow-control` | `none` |
+| `--ods-semantic-shadow-control` | `0 0 #0000` |
 | `--ods-semantic-shadow-raised` | `0 0 #0000` |
 | `--ods-semantic-shadow-overlay` | `0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent)` |
 | `--ods-semantic-z-index-sticky` | `100` |

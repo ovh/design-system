@@ -1000,11 +1000,10 @@ importers:
         version: link:../../../../ods-react
 
   packages/tailwind:
-    dependencies:
+    devDependencies:
       '@ovhcloud/ods-themes':
         specifier: workspace:*
         version: link:../themes
-    devDependencies:
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3

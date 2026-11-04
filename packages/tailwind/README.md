@@ -8,7 +8,7 @@ It is opt-in: `@ovhcloud/ods-react` does not depend on Tailwind, and ODS works w
 
 ## Setup
 
-Requires Tailwind CSS v4.
+Requires Tailwind CSS v4, in an app that already uses ODS (`@ovhcloud/ods-react` and `@ovhcloud/ods-themes`).
 
 ```bash
 npm install @ovhcloud/ods-tailwind tailwindcss @tailwindcss/vite
@@ -26,13 +26,13 @@ export default defineConfig({
 ```
 
 ```css
-/* index.css: @ovhcloud/ods-tailwind first, it brings Tailwind */
+/* index.css: @ovhcloud/ods-tailwind first, it sets the layer order before the ODS theme names its layers */
 @import '@ovhcloud/ods-tailwind';
 @import '@ovhcloud/ods-themes/default/css';
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
-Import this stylesheet **before** any ODS component, as the first import of your entry point:
+Import this stylesheet **before any ODS theme or component**, as the first import of your entry point, and import the ODS theme from it rather than from JavaScript:
 
 ```ts
 // main.tsx
@@ -40,7 +40,13 @@ import './index.css';
 import { App } from './App';
 ```
 
-`@ovhcloud/ods-tailwind` declares the order of the CSS layers: the Tailwind theme, base and components, then the ODS layers, then the Tailwind utilities. A utility you put on an ODS component wins over its style, and the ODS styles win over the Tailwind reset. The first stylesheet that names a layer sets its place: if an ODS component is imported first, its layers land before the Tailwind reset, which then strips the ODS buttons and headings of their style.
+`@ovhcloud/ods-tailwind` declares the order of the CSS layers: the Tailwind theme and base, then the ODS layers, then the Tailwind components and utilities. The ODS styles win over the Tailwind reset, and your own styles win over the ODS ones, in `@layer components` as in a utility.
+
+A layer takes its place from the first stylesheet that names it, and the ODS theme and components name the ODS layers too. If either is imported before `@ovhcloud/ods-tailwind`, the ODS layers land before the Tailwind reset, which then strips the ODS buttons and headings of their style. For an order that holds whatever the import order, declare it in the `<head>` of your page, before any stylesheet:
+
+```html
+<style>@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;</style>
+```
 
 ## Utilities
 
@@ -52,12 +58,16 @@ import { App } from './App';
 | `font` | `--ods-semantic-font-family-*` | `font-ods-body` |
 | `font-weight` | `--ods-semantic-font-weight-*` | `font-ods-semibold` |
 | `spacing` | `--ods-semantic-size-space-*`, `-block-size-*` (as `block-*`), `-inline-size-field` (as `inline-field`) | `p-ods-inset-inline`, `gap-ods-gap-group`, `h-ods-block-md` |
-| `ease` | `--ods-semantic-motion-easing*` | `ease-ods-enter` |
+| `ease` | `--ods-semantic-motion-easing` (as `default`), `-enter`, `-exit` | `ease-ods-default`, `ease-ods-enter` |
 
-The `ods-` prefix keeps them apart from the Tailwind defaults, which stay available. The palette is not mapped: use the semantic tokens, the ones a theme re-points.
+The `ods-` prefix keeps them apart from the Tailwind defaults, which stay available. The page font is the ODS body font, overlays included, and the monospace font the ODS code font.
 
-To use the utilities without the layer order, for instance with your own Tailwind entry point, import `@ovhcloud/ods-tailwind/theme.css` after `tailwindcss`.
+Not mapped: the palette (a palette step carries no role: use the semantic tokens, the ones the components read), and the tokens Tailwind has no theme for or that need no utility. Read those with the variable shorthand: `z-(--ods-semantic-z-index-modal)`, `opacity-(--ods-semantic-opacity-disabled)`, `duration-(--ods-semantic-motion-duration-fast)`.
+
+`bg-ods-brand` is the brand color of the logo, not a surface: for a brand ground, use `bg-ods-surface-brand` with `text-ods-content-on-brand-solid`.
+
+To use the utilities without the layer order, for instance with your own Tailwind entry point, import `@ovhcloud/ods-tailwind/theme.css` after `tailwindcss`, and after any reset of a namespace (`--color-*: initial`), which would clear the ODS utilities too.
 
 ## Development
 
-`theme.css` is generated from `@ovhcloud/ods-themes/default/tokens` by `pnpm run build:prod`. `pnpm run test:spec` compiles the stylesheet with Tailwind and checks that every mapped token has its utility.
+`theme.css` is generated from `@ovhcloud/ods-themes/default/tokens` by `pnpm run build:prod`, and committed: `pnpm run lint:css` fails when it is out of date. `pnpm run test:spec` compiles the stylesheet with Tailwind and checks the committed file.

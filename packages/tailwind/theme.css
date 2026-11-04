@@ -173,4 +173,6 @@
   --spacing-ods-inset-block: var(--ods-semantic-size-space-inset-block);
   --spacing-ods-inset-block-compact: var(--ods-semantic-size-space-inset-block-compact);
   --spacing-ods-inset-inline: var(--ods-semantic-size-space-inset-inline);
+  --default-font-family: var(--ods-semantic-font-family-body);
+  --default-mono-font-family: var(--ods-semantic-font-family-code);
 }

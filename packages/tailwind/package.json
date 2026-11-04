@@ -23,17 +23,16 @@
   "scripts": {
     "build:ci": "pnpm run build:prod",
     "build:prod": "node scripts/generate-theme.js",
+    "lint:css": "git diff --exit-code -- theme.css || { echo 'theme.css is out of date: run pnpm build:prod in packages/tailwind and commit it.'; exit 1; }",
     "test:spec": "node tests/run.mjs",
-    "test:spec:ci": "pnpm run build:ci && pnpm run test:spec",
+    "test:spec:ci": "pnpm run test:spec",
     "prepublishOnly": "pnpm run build:prod"
   },
-  "dependencies": {
-    "@ovhcloud/ods-themes": "workspace:*"
-  },
   "peerDependencies": {
-    "tailwindcss": ">=4.0.0"
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
+    "@ovhcloud/ods-themes": "workspace:*",
     "tailwindcss": "4.3.3"
   }
 }

@@ -65,9 +65,13 @@ const strays = declared.filter((line) => !/^ {2}--[a-z-]+-ods-[a-z0-9-]+: var\(-
 check('every theme variable reads an ODS semantic token', strays.length === 0, strays.slice(0, 3).join(' | '));
 
 // The page fonts: the Tailwind preflight sets them on html, which the ODS components and the
-// overlays a portal mounts under body inherit.
-const html = /html,\s*:host \{([^}]*)\}/.exec(compiler.build([]))?.[1] ?? '';
-check('the page font is the ODS body font', html.includes('font-family: var(--ods-semantic-font-family-body'), html.replace(/\s+/g, ' ').slice(0, 120));
+// overlays a portal mounts under body inherit. Tailwind 4.3 inlines --default-font-family there,
+// 4.0 reads it from the variable it declares.
+const base = compiler.build([]);
+const html = /html,\s*:host \{([^}]*)\}/.exec(base)?.[1].replace(/\s+/g, ' ') ?? '';
+const pageFont = html.includes('font-family: var(--ods-semantic-font-family-body')
+  || (/font-family: var\( ?--default-font-family/.test(html) && base.includes('--default-font-family: var(--ods-semantic-font-family-body)'));
+check('the page font is the ODS body font', pageFont, html.slice(0, 120));
 
 // The ODS shadows compose with the Tailwind rings: Tailwind lists every shadow in one box-shadow, and
 // a token worth `none` would invalidate the whole list, ring included.

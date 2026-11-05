@@ -51,8 +51,9 @@ try {
   // The graft gives HEAD two parents, and the changelog skips merge commits:
   // HEAD itself is never listed. Only graft onto a commit it would skip anyway.
   const message = (await $`git log -1 --format=%B HEAD`).stdout;
-  if (/^(feat|fix|perf|revert)\b|^Revert "|^\w+(\([^)]*\))?!:|^BREAKING[ -]CHANGE/m.test(message)) {
-    console.error(`HEAD "${message.split('\n')[0]}" would be left out of the changelog: commit the What's new entry first!`);
+  const [header] = message.split('\n');
+  if (/^((feat|fix|perf|revert)\b|\w+(\([^)]*\))?!:|Revert ")/.test(header) || /^BREAKING[ -]CHANGE/m.test(message)) {
+    console.error(`HEAD "${header}" would be left out of the changelog: commit the What's new entry first!`);
     process.exit(1);
   }
   const head = (await $`git rev-parse HEAD`).stdout.trim();

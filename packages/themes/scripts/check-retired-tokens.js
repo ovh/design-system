@@ -30,6 +30,7 @@ const EXCLUDED = [
   'packages/docs/src/content/guides/migration-19-to-20.mdx',
   'packages/docs/src/content/guides/whats-new*.mdx',
   'packages/docs/assets/llms',
+  'CHANGELOG.md',
   '**/CHANGELOG.md',
 ];
 

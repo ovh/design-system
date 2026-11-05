@@ -27874,7 +27874,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but three components render differently with no prop set: a Card without `status` is neutral (see **Default rendering**), a Button without `emphasis` is outlined (see **Button**), and a Message without `emphasis` has no tinted background (see **Message**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but several components render differently by default, as **Default rendering** lists, including with no prop set: a Card without `status` is neutral, and a Badge, Button or Message without `emphasis` is no longer filled or tinted (see **Badge**, **Button** and **Message**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 

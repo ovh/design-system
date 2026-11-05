@@ -50,9 +50,10 @@ try {
 } catch {
   // The graft gives HEAD two parents, and the changelog skips merge commits:
   // HEAD itself is never listed. Only graft onto a commit it would skip anyway.
+  // Keep in sync with changelog.preset.config.js and the angular parser and writer.
   const message = (await $`git log -1 --format=%B HEAD`).stdout;
-  const [header] = message.split('\n');
-  if (/^((feat|fix|perf|revert)\b|\w+(\([^)]*\))?!:|Revert ")/.test(header) || /^BREAKING[ -]CHANGE/m.test(message)) {
+  const [header, ...body] = message.split('\n');
+  if (/^((feat|fix|perf|revert)\b|\w*(\([^)]*\))?!:|Revert ")/.test(header) || /^[\s|*]*BREAKING CHANGE[:\s]/im.test(body.join('\n'))) {
     console.error(`HEAD "${header}" would be left out of the changelog: commit the What's new entry first!`);
     process.exit(1);
   }

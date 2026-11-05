@@ -3,9 +3,9 @@ title: "Migration 19.x to 20.x"
 slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
-version: 19.7.3
-tokens: 20727
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
+version: 20.0.0-alpha.0
+tokens: 20735
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
 # Migration 19.x to 20.x
@@ -268,7 +268,7 @@ grep -rnE "ods-themes/src/default/_?variables" src/
 
 The v19 Tailwind guide had you copy a configuration that read the tokens removed above: its `ods-primary`, `ods-success`, `ods-critical`, `ods-xs` to `ods-lg` and `ods-default` keys (`ods-color-primary-500`, `ods-border-radius-md`… in a Tailwind v3 configuration) now resolve to nothing. Tailwind gives no error for a class it no longer knows: the property silently falls back.
 
-In v20, `@ovhcloud/ods-tailwind` maps the Tailwind v4 utilities to the semantic tokens, with no configuration to copy (see [Tailwind CSS Integration](https://ovh.github.io/design-system/v19.7.3/guides/tailwind)). Remove the ODS keys of your configuration, and the `.vscode/tailwind.json` list of the v19 guide, then rename the classes:
+In v20, `@ovhcloud/ods-tailwind` maps the Tailwind v4 utilities to the semantic tokens, with no configuration to copy (see [Tailwind CSS Integration](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/tailwind)). Remove the ODS keys of your configuration, and the `.vscode/tailwind.json` list of the v19 guide, then rename the classes:
 
   <thead>
   <tr>
@@ -1303,9 +1303,9 @@ import { Spinner } from '@ovhcloud/ods-react';
 
 **The Switch component is removed** (deprecated since v19.4.0), with `SwitchItem` (and `Switch.Item`), `SWITCH_SIZE`, `SWITCH_SIZES`, the `SwitchProp`, `SwitchItemProp`, `SwitchSize` and `SwitchValueChangeDetail` types, the `@ovhcloud/ods-react/switch` entry point and the `--ods-switch-*` CSS custom properties. Replace it according to its use:
 
-- To move between views: [Tabs](https://ovh.github.io/design-system/v19.7.3/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, each `SwitchItem` becomes a `Tab`, and the views shown under the Switch move into one `TabContent` per `Tab`, so that each tab controls its panel. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`. The inactive panels stay mounted by default: set `mountStrategy="unmount"` on the Tabs to keep a view rendered only while it is shown.
-- To pick a mode or turn an option on or off with an immediate effect, with no view to hold: [Button Group](https://ovh.github.io/design-system/v19.7.3/components/button-group). With a single selection, it renders a radio group: give it an `aria-label`. Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`, or an empty array when the selected item is clicked again: ignore it to keep the selection.
-- To pick a value in a form: [Radio Group](https://ovh.github.io/design-system/v19.7.3/components/radio-group).
+- To move between views: [Tabs](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, each `SwitchItem` becomes a `Tab`, and the views shown under the Switch move into one `TabContent` per `Tab`, so that each tab controls its panel. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`. The inactive panels stay mounted by default: set `mountStrategy="unmount"` on the Tabs to keep a view rendered only while it is shown.
+- To pick a mode or turn an option on or off with an immediate effect, with no view to hold: [Button Group](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button-group). With a single selection, it renders a radio group: give it an `aria-label`. Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`, or an empty array when the selected item is clicked again: ignore it to keep the selection.
+- To pick a value in a form: [Radio Group](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/radio-group).
 - An override of a `--ods-switch-*` custom property has no element left to style: remove it, and style the replacement through its own custom properties.
 
 To find the usages to migrate (other libraries export a `Switch` too, so the second search is limited to the files that import ODS):

@@ -3,9 +3,9 @@ title: "Pagination"
 slug: pagination
 category: component
 type: documentation
-version: 19.7.3
-tokens: 4207
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 4231
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-pagination--documentation.txt
 ---
 
 # Pagination
@@ -30,7 +30,7 @@ The **Pagination** component divides a list into discrete pages and provides the
 ## Usage
 
 A **Pagination** component is used in two situations, and each one calls for a different kind of control :
-* To navigate among a [Table](https://ovh.github.io/design-system/v19.7.3/components/table) component, or any content swapped inside the page the user is already on.
+* To navigate among a [Table](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table) component, or any content swapped inside the page the user is already on.
 * To browse a set of items spread over pages of their own, each with a URL (products list, public catalogue, documentation index, ...), see "Pages as links" below.
 
 ### Dos & Don'ts
@@ -60,7 +60,7 @@ A **Pagination** component is used in two situations, and each one calls for a d
 6. **Current page button**
 7. **Unselected page button**
 
-The anatomy above describes the default **Pagination**, whose pages are [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button). When the pages are links, the same anatomy is rendered with the [Link](https://ovh.github.io/design-system/v19.7.3/components/link) style instead, as described in "Pages as links" below.
+The anatomy above describes the default **Pagination**, whose pages are [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button). When the pages are links, the same anatomy is rendered with the [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) style instead, as described in "Pages as links" below.
 
 ## Placement
 
@@ -105,7 +105,7 @@ Depending on the current page number and the amount of pages, here are the diffe
 - an ellipsis,
 - the last numbered page
 
-Those counts hold whatever the pages are made of: they are rendered as [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button) or as [Links](https://ovh.github.io/design-system/v19.7.3/components/link) depending on what activating one does, as described in "Pages as links" below.
+Those counts hold whatever the pages are made of: they are rendered as [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) or as [Links](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) depending on what activating one does, as described in "Pages as links" below.
 
 ### Go to page
 
@@ -115,16 +115,16 @@ Allows users to directly select a page from an number input.
 
 Where the **Pagination** is used to move between actual pages, each with a URL of its own, the pages must be links rather than Buttons.
 
-By default a page is a [Button](https://ovh.github.io/design-system/v19.7.3/components/button): activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated [Table](https://ovh.github.io/design-system/v19.7.3/components/table).
+By default a page is a [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button): activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated [Table](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table).
 
 As soon as a page is a destination, provide `getPageUrl` and the pages become real links.
 
-Because those pages navigate, they are rendered with the [Link](https://ovh.github.io/design-system/v19.7.3/components/link) style rather than the [Button](https://ovh.github.io/design-system/v19.7.3/components/button) style: a button looks like a button, a link looks like a link.
+Because those pages navigate, they are rendered with the [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) style rather than the [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) style: a button looks like a button, a link looks like a link.
 
 What changes in link mode:
-- Every page the user can go to is a [Link](https://ovh.github.io/design-system/v19.7.3/components/link) carrying an `href`
+- Every page the user can go to is a [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) carrying an `href`
 - The active page leads nowhere: it carries no `href` and stays out of the tab order. It reads as emphasised text and is exposed as a disabled link carrying [aria-current="page"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current)
-- With `disabled`, every link keeps its `href`, as a disabled [Link](https://ovh.github.io/design-system/v19.7.3/components/link) does: activating it does nothing, but crawlers still see the destination and a middle click still opens it
+- With `disabled`, every link keeps its `href`, as a disabled [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) does: activating it does nothing, but crawlers still see the destination and a middle click still opens it
 
 #### Wiring link mode
 
@@ -172,7 +172,7 @@ Three consequences follow from the URL being in charge:
 
 #### The controls that are not links
 
-Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page [Select](https://ovh.github.io/design-system/v19.7.3/components/select). In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into a URL and navigates.
+Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select). In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into a URL and navigates.
 
 ```tsx
 {

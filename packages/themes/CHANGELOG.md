@@ -3,6 +3,113 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
+# [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
+[compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
+
+### Bug Fixes
+
+* **badge:** keep the 19.7.3 heights and give the pill room on its sides ([f7d050e](https://github.com/ovh/design-system/commit/f7d050e4cce6c76a8b0b349ebbda66a8fef00ef6))
+* **badge:** name the medium status custom properties after their emphasis ([2b7a511](https://github.com/ovh/design-system/commit/2b7a511663d918d6ed29f4ebb0f5cb375b0a4df5))
+* **themes:** draw the edge of the overlays in aluminium dark ([689a989](https://github.com/ovh/design-system/commit/689a9893ec45ebbcb676d861e844f4f9657740b6))
+* **themes:** exclude every What's new page from the retired-token check ([20cba95](https://github.com/ovh/design-system/commit/20cba95677b926362dc4bddb8dab0d0b4f78d337))
+* **themes:** follow the aluminium dark review in blue-jeans dark ([31c268d](https://github.com/ovh/design-system/commit/31c268d0c93d3e606e4f924f77630bfe1d7bf8ff))
+* **themes:** give shadow-control a shadow, not none, so that it composes ([2c761f4](https://github.com/ovh/design-system/commit/2c761f47afd2b16b90df60128d9e220e6213f146)), closes [#0000](https://github.com/ovh/design-system/issues/0000)
+* **themes:** give the blue-jeans Skeleton its shimmer back ([40f41c8](https://github.com/ovh/design-system/commit/40f41c8cf1bd7cec7b388bd048f7a3179b216581))
+* **themes:** give the green and orange ramps real dark tints ([e820ec6](https://github.com/ovh/design-system/commit/e820ec601d0725d7d2916df2ceaecbb2b0633d87))
+* **themes:** give the hovered FileUpload error row 4.5:1 in both dark themes ([9c51593](https://github.com/ovh/design-system/commit/9c515931819ec94d04a25f2afd5c635d6c876255))
+* **themes:** give the invalid border 3:1 in blue-jeans dark ([6487f97](https://github.com/ovh/design-system/commit/6487f979da6cf4c7dd5e50c99cd7d09e3f155e92))
+* **themes:** give the Meter fill 3:1 in blue-jeans dark ([4fc4331](https://github.com/ovh/design-system/commit/4fc4331e5c7b76195b5f3e4bdeb6c5c2f2d91bad))
+* **themes:** make the first chart series a fixed color ([dd82697](https://github.com/ovh/design-system/commit/dd826974a2d4e5d09221592d06983c29333dc6d2)), closes [#0050d7](https://github.com/ovh/design-system/issues/0050d7)
+* **themes:** migrate the v19 checked fill to surface-control-solid ([209f042](https://github.com/ovh/design-system/commit/209f0427e9de40e010c4d31dda7275184f316fdb))
+* **themes:** stop mapping two v19 tokens to roles their readers left ([f043c21](https://github.com/ovh/design-system/commit/f043c215fd3405fb0b6c9ff16ab0190621f56bfe))
+* **themes:** whiten the logo, invert the control fill and darken code in aluminium dark ([40da465](https://github.com/ovh/design-system/commit/40da46563073d0264f2cedd366af63dc434def7c)), closes [#000e9](https://github.com/ovh/design-system/issues/000e9)
+
+
+### Features
+
+* **core:** bump minor dependencies ([c1018d6](https://github.com/ovh/design-system/commit/c1018d62d72f06faa1e30aaed5d940bd938ec4d8))
+* **form-fields:** give every form field the same default width ([5479021](https://github.com/ovh/design-system/commit/547902197c8b9b6cbca5331f17a6017a8668ca5d))
+* **ods-react:** remove the APIs deprecated in v19 ([632fc69](https://github.com/ovh/design-system/commit/632fc692bef89a4b5adaeaea5717f88ffcf20891))
+* **themes, ods-react:** add the aluminium dark theme and rewire components for it ([4fae554](https://github.com/ovh/design-system/commit/4fae5541a17e876a16cf9984a52024792178ae23))
+* **themes:** add the blue-jeans dark theme on the aluminium dark model ([b063739](https://github.com/ovh/design-system/commit/b0637398e295ccd257ccaa1aa34338fd78abcdc0))
+* **themes:** align the blue-jeans theme with the v19 look ([a28c3cc](https://github.com/ovh/design-system/commit/a28c3ccf1a7e3bb4eaae109dd05243a0fa6f5b88))
+* **themes:** export the aluminium dark theme ([43c40ad](https://github.com/ovh/design-system/commit/43c40ad87ae4e1baacf5c3da634db4b6d39d5dc6))
+* **themes:** export the blue-jeans dark theme ([db6e33c](https://github.com/ovh/design-system/commit/db6e33cfb04e68682354a8355194210917409268))
+* **themes:** rename the default font family to Source Sans 3 ([40aa864](https://github.com/ovh/design-system/commit/40aa864e948fa340ba8afc82dc4bef2cb3faccec))
+* **themes:** replace the token surface with a semantic layer ([e81f8b8](https://github.com/ovh/design-system/commit/e81f8b827710c857c54205b659c514edacdbcd97)), closes [#1146](https://github.com/ovh/design-system/issues/1146)
+* **themes:** ship each theme mode as one standalone stylesheet ([2741442](https://github.com/ovh/design-system/commit/2741442eae0d6bff0fb926efc00e2a67959fedd7))
+
+
+### BREAKING CHANGES
+
+* **themes:** the @ovhcloud/ods-themes/default export (the theme with its
+fonts inlined as base64) is removed: load default/css with default/fonts or
+./fonts-base64. The built files and the Sass sources moved in the package.
+The JavaScript entry point (ODS_THEME, ODS_THEMES) is removed. See BC-31,
+BC-32 and BC-33.
+* **ods-react:** Switch, SwitchItem, SWITCH_SIZE(S), their types, the
+@ovhcloud/ods-react/switch entry point and the --ods-switch-* custom
+properties are removed: use Tabs with the switch variant, ButtonGroup or
+RadioGroup. Pagination and Toggle require children (PaginationPages,
+ToggleControl), and renderTotalItemsLabel and withPageSizeSelector are
+removed: use PaginationPageSizeSelector. position, gutter, sameWidth and
+fitControlWidth are removed from Menu, Popover, Select and Tooltip: use
+overlayConfig. uploadSuccessLabel is removed from FileUploadItem.
+* **badge:** --ods-badge-background-color-<status> and
+--ods-badge-text-color-<status> (accent, critical, information, neutral,
+success, warning) are removed. A 19.7.3 override maps to the -high name,
+together with emphasis="high" on the Badge.
+* **badge:** the Badge is wider in the default theme: its horizontal
+padding goes from 4px to 8px (6px to 12px in lg).
+* **themes:** the green and orange palette rungs 600 to 900 change
+value, and --ods-semantic-color-content-on-success and
+--ods-semantic-color-content-on-warning move from the 800 rung to 700.
+* **themes, ods-react:** the Badge status custom properties paint the medium
+emphasis, the tint moving to the -high names; the Badge and Message high
+emphases get a border; the Query Filter tags are accent; the Link hover
+keeps its rest color and reads --ods-link-text-color-hover; the v19
+--ods-theme-input-text-color-checked migrates to
+--ods-semantic-color-content-on-control-solid.
+* **form-fields:** fields no longer stretch to their container nor shrink to their content by default; size a field through its root className or style. The Select and Combobox roots now always carry a CSS-module class and render as inline-block.
+* **themes:** the --ods-theme-*, --ods-color-* and 13 remaining legacy
+tokens are removed without alias, read the --ods-semantic-* role that
+replaces each one (BC-01 to BC-03). The palette is rebuilt on the rungs 50 to
+900 (BC-04), 161 SCSS variables of src/default/_variables.scss are removed,
+the breakpoints included, which @ovhcloud/ods-react/style still exports
+(BC-05), and ./default/tokens holds only the new names (BC-06).
+* **themes:** @ovhcloud/ods-themes/default/css ships the Aluminium look,
+import @ovhcloud/ods-themes/blue-jeans/css right after it to keep the
+OVHcloud look (BC-07). A 19.x custom theme no longer applies: a v20 theme
+re-declares the --ods-palette-brand-* and --ods-palette-accent-* ramps
+(BC-20).
+* **themes:** component tokens now read the semantic layer, and 25 of them
+are removed or renamed, so an override of one is silently ignored (BC-08):
+among them --ods-button-border-radius-width becomes --ods-button-border-width
+(BC-18), and --ods-code-primary-color, --ods-code-secondary-color and
+--ods-code-trigger-background-color become --ods-code-text-color,
+--ods-code-background-color and --ods-code-trigger-color (BC-17). Six
+variables of @ovhcloud/ods-react/style now hold a var() string and fail in
+Sass arithmetic, and 11 of its exports are removed (BC-12, BC-16, BC-18).
+* **themes:** the default rendering changes: Card defaults to neutral
+(BC-09), Button has a 4px radius at every size (BC-10), Accordion takes the
+whole container radius (BC-11), a disabled component is dimmed with an opacity
+instead of being repainted grey (BC-12), form fields paint their own
+background (BC-14), a modal always stacks above a drawer (BC-15), and Card,
+Tile, Accordion, Badge, Tabs, the multiple Combobox tags and the transitions
+render differently (BC-19).
+* **themes:** the default font family is renamed from 'Source Sans Pro' to
+'Source Sans 3' in --ods-theme-font-family, --ods-font-family-default and the
+@font-face rules, without alias. CSS or custom themes that write
+'Source Sans Pro' explicitly must use var(--ods-theme-font-family) or
+'Source Sans 3' instead.
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

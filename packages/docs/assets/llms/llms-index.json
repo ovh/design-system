@@ -1,7 +1,7 @@
 {
   "name": "OVHcloud Design System",
-  "version": "19.7.3",
-  "baseUrl": "https://ovh.github.io/design-system/v19.7.3/llms",
+  "version": "20.0.0-alpha.0",
+  "baseUrl": "https://ovh.github.io/design-system/v20.0.0-alpha.0/llms",
   "generatedFrom": "ods-docs native build emit",
   "sets": {
     "full": {
@@ -106,7 +106,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1114,
+          "tokens": 1118,
           "url": "./react-components-breadcrumb--documentation.txt"
         },
         "technical-information": {
@@ -132,7 +132,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1590,
+          "tokens": 1592,
           "url": "./react-components-button--documentation.txt"
         },
         "technical-information": {
@@ -158,7 +158,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 745,
+          "tokens": 747,
           "url": "./react-components-button-group--documentation.txt"
         },
         "technical-information": {
@@ -184,7 +184,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1442,
+          "tokens": 1446,
           "url": "./react-components-card--documentation.txt"
         },
         "technical-information": {
@@ -314,7 +314,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1805,
+          "tokens": 1813,
           "url": "./react-components-combobox--documentation.txt"
         },
         "technical-information": {
@@ -392,7 +392,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1922,
+          "tokens": 1934,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
@@ -574,7 +574,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 900,
+          "tokens": 902,
           "url": "./react-components-icon--documentation.txt"
         },
         "technical-information": {
@@ -886,7 +886,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 4207,
+          "tokens": 4231,
           "url": "./react-components-pagination--documentation.txt"
         },
         "technical-information": {
@@ -912,7 +912,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1120,
+          "tokens": 1122,
           "url": "./react-components-password--documentation.txt"
         },
         "technical-information": {
@@ -938,7 +938,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1533,
+          "tokens": 1541,
           "url": "./react-components-phone-number--documentation.txt"
         },
         "technical-information": {
@@ -964,7 +964,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1476,
+          "tokens": 1478,
           "url": "./react-components-popover--documentation.txt"
         },
         "technical-information": {
@@ -1172,7 +1172,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 744,
+          "tokens": 746,
           "url": "./react-components-skeleton--documentation.txt"
         },
         "technical-information": {
@@ -1198,7 +1198,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1379,
+          "tokens": 1381,
           "url": "./react-components-spinner--documentation.txt"
         },
         "technical-information": {
@@ -1276,7 +1276,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1374,
+          "tokens": 1376,
           "url": "./react-components-tag--documentation.txt"
         },
         "technical-information": {
@@ -1380,7 +1380,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1323,
+          "tokens": 1327,
           "url": "./react-components-timepicker--documentation.txt"
         },
         "technical-information": {
@@ -1458,7 +1458,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1146,
+          "tokens": 1148,
           "url": "./react-components-tooltip--documentation.txt"
         },
         "technical-information": {
@@ -1505,14 +1505,14 @@
       "slug": "ovhcloud-design-system-welcome",
       "title": "Welcome",
       "type": "overview",
-      "tokens": 252,
+      "tokens": 256,
       "url": "./ovhcloud-design-system-welcome.txt"
     },
     {
       "slug": "ovhcloud-design-system-get-started",
       "title": "Get Started",
       "type": "overview",
-      "tokens": 1174,
+      "tokens": 1176,
       "url": "./ovhcloud-design-system-get-started.txt"
     },
     {
@@ -1526,14 +1526,14 @@
       "slug": "ovhcloud-design-system-build-internationalization",
       "title": "Internationalization",
       "type": "overview",
-      "tokens": 608,
+      "tokens": 614,
       "url": "./ovhcloud-design-system-build-internationalization.txt"
     },
     {
       "slug": "ovhcloud-design-system-build-forms",
       "title": "Forms",
       "type": "overview",
-      "tokens": 6900,
+      "tokens": 6932,
       "url": "./ovhcloud-design-system-build-forms.txt"
     },
     {
@@ -1547,21 +1547,21 @@
       "slug": "ovhcloud-design-system-customize-apply-ods-style",
       "title": "Apply ODS Style",
       "type": "overview",
-      "tokens": 350,
+      "tokens": 356,
       "url": "./ovhcloud-design-system-customize-apply-ods-style.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-themes",
       "title": "Themes",
       "type": "overview",
-      "tokens": 1964,
+      "tokens": 1970,
       "url": "./ovhcloud-design-system-customize-themes.txt"
     },
     {
       "slug": "ovhcloud-design-system-customize-style-customization",
       "title": "Style Customization",
       "type": "overview",
-      "tokens": 631,
+      "tokens": 635,
       "url": "./ovhcloud-design-system-customize-style-customization.txt"
     },
     {
@@ -1575,77 +1575,84 @@
       "slug": "ovhcloud-design-system-customize-tailwind-css-integration",
       "title": "Tailwind CSS Integration",
       "type": "overview",
-      "tokens": 2634,
+      "tokens": 2644,
       "url": "./ovhcloud-design-system-customize-tailwind-css-integration.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new",
       "title": "What's new",
       "type": "overview",
-      "tokens": 6668,
+      "tokens": 790,
       "url": "./ovhcloud-design-system-upgrade-what-s-new.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-upgrade-what-s-new-v19",
+      "title": "What's new in v19",
+      "type": "overview",
+      "tokens": 6686,
+      "url": "./ovhcloud-design-system-upgrade-what-s-new-v19.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v18",
       "title": "What's new in v18",
       "type": "overview",
-      "tokens": 4759,
+      "tokens": 4779,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v18.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v17",
       "title": "What's new in v17",
       "type": "overview",
-      "tokens": 1593,
+      "tokens": 1603,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v17.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v16",
       "title": "What's new in v16",
       "type": "overview",
-      "tokens": 2294,
+      "tokens": 2308,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v16.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v15",
       "title": "What's new in v15",
       "type": "overview",
-      "tokens": 880,
+      "tokens": 884,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v15.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v14",
       "title": "What's new in v14",
       "type": "overview",
-      "tokens": 831,
+      "tokens": 853,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v14.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v13",
       "title": "What's new in v13",
       "type": "overview",
-      "tokens": 345,
+      "tokens": 355,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v13.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-what-s-new-v12",
       "title": "What's new in v12 and earlier",
       "type": "overview",
-      "tokens": 1397,
+      "tokens": 1407,
       "url": "./ovhcloud-design-system-upgrade-what-s-new-v12.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 20727,
+      "tokens": 20735,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {
       "slug": "ovhcloud-design-system-upgrade-migration-to-v19",
       "title": "Migration to v19",
       "type": "overview",
-      "tokens": 443,
+      "tokens": 447,
       "url": "./ovhcloud-design-system-upgrade-migration-to-v19.txt"
     },
     {
@@ -1680,7 +1687,7 @@
       "slug": "ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x",
       "title": "16.x to 17.x",
       "type": "overview",
-      "tokens": 555,
+      "tokens": 557,
       "url": "./ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt"
     },
     {
@@ -1694,14 +1701,14 @@
       "slug": "ovhcloud-design-system-troubleshooting",
       "title": "Troubleshooting",
       "type": "overview",
-      "tokens": 912,
+      "tokens": 922,
       "url": "./ovhcloud-design-system-troubleshooting.txt"
     },
     {
       "slug": "ovhcloud-design-system-f-a-q",
       "title": "FAQ",
       "type": "overview",
-      "tokens": 975,
+      "tokens": 977,
       "url": "./ovhcloud-design-system-f-a-q.txt"
     },
     {
@@ -1736,7 +1743,7 @@
       "slug": "recipes-components",
       "title": "Components",
       "type": "overview",
-      "tokens": 680,
+      "tokens": 682,
       "url": "./recipes-components.txt"
     }
   ]

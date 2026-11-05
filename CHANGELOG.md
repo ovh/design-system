@@ -5,6 +5,451 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
+# [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
+[compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
+
+### Bug Fixes
+
+* **accordion:** address review feedback ([da20e08](https://github.com/ovh/design-system/commit/da20e087b5c53a38f82286fffd3d015d57dccd9d))
+* **accordion:** fall back to medium for an unknown emphasis ([415d5ca](https://github.com/ovh/design-system/commit/415d5ca2c66e60a65ebd6aa2bccac9ceaca26e4d))
+* **accordion:** repoint the emphasis styles on the semantic layer ([33ead4a](https://github.com/ovh/design-system/commit/33ead4ae7a9ef9d76174b06e475a378e012c4b9e))
+* amend ci tests ([d261919](https://github.com/ovh/design-system/commit/d261919cb5e8f12ca41926ac1e7db232c9e9c5d1))
+* **badge:** keep the 19.7.3 heights and give the pill room on its sides ([f7d050e](https://github.com/ovh/design-system/commit/f7d050e4cce6c76a8b0b349ebbda66a8fef00ef6))
+* **badge:** name the medium status custom properties after their emphasis ([2b7a511](https://github.com/ovh/design-system/commit/2b7a511663d918d6ed29f4ebb0f5cb375b0a4df5))
+* **badge:** repoint the emphasis styles on the semantic layer ([a0f6dce](https://github.com/ovh/design-system/commit/a0f6dce708f13152559683d6435bcc8a288db017))
+* **ci:** graft the previous release tag instead of merging it ([31a053e](https://github.com/ovh/design-system/commit/31a053e4cef3a28181fbde1d623a9070eac984ba))
+* **ci:** keep latest on the newest final version ([553a3b0](https://github.com/ovh/design-system/commit/553a3b02732d1990f634df14333b9349e06b0ac8))
+* **ci:** make the release process safe for v20 and its prereleases ([9ca51ea](https://github.com/ovh/design-system/commit/9ca51ea0a55ca28498e4a2992f07d69f1ce40cc6))
+* **ci:** point the changelog latest link at a URL both doc sites resolve ([aaa142a](https://github.com/ovh/design-system/commit/aaa142ab42317610c242e56027f0ac550aea7091))
+* **ci:** read the breaking note in the graft guard as the changelog parser does ([b4cb9a1](https://github.com/ovh/design-system/commit/b4cb9a123715602842a26cd8275bfbff7e9b0532))
+* **ci:** read the commit type from the header only in the graft guard ([0a80544](https://github.com/ovh/design-system/commit/0a80544e706d355e5de494443bed5ffc40702d0e))
+* **ci:** refuse to graft the previous tag onto a commit the changelog lists ([ae4ef0b](https://github.com/ovh/design-system/commit/ae4ef0b920192bb7d86f2a341accdfcf1f63a990))
+* **ci:** stop the graft on a native git revert too ([2a08b5a](https://github.com/ovh/design-system/commit/2a08b5afdc2b3a0e75042ea7856c01bd299e9f83))
+* **clipboard:** keep a clipboard without control at the width of its trigger ([d8ecc92](https://github.com/ovh/design-system/commit/d8ecc92376a5260322f24602fa12afdbcd625342))
+* **combobox, command, query-filter:** skip the option scroll on pointer highlights ([39a14f3](https://github.com/ovh/design-system/commit/39a14f335fd9e03bfcfe9a311a48a58f0d99bfc8))
+* **command:** add anatomy ([5a0d083](https://github.com/ovh/design-system/commit/5a0d08376c75be75f8568c78daec758fdcce4dc9))
+* **command:** align trigger typing with the modal trigger for TypeScript 6 ([5183610](https://github.com/ovh/design-system/commit/5183610c074695c263d290496165def42e74cb6a))
+* **command:** APGfixes ([35dc20c](https://github.com/ovh/design-system/commit/35dc20ca188a8ff95e0094b7bf777faa6046109b))
+* **command:** e2e ([c941b57](https://github.com/ovh/design-system/commit/c941b57fd35a6ac0032582e718375c45df741cd8))
+* **command:** handle reviews ([7e7fcc1](https://github.com/ovh/design-system/commit/7e7fcc120bfe3169bc095aa2664d4918d59f3486))
+* **command:** order the icon import and stop asserting the highlight mid-render ([7d4eeb3](https://github.com/ovh/design-system/commit/7d4eeb35cb0a88140c2fc447721c0cd8f32d1b77))
+* **command:** review returns ([a77a664](https://github.com/ovh/design-system/commit/a77a66406962da044831c23da8ab4a50985da2f6))
+* **command:** use default text in Badge ([d260219](https://github.com/ovh/design-system/commit/d2602199b4272908f677bfc490e8e7d5702417e0))
+* **core:** adapt command component and dev stories to the upgraded toolchain ([5b6ac4c](https://github.com/ovh/design-system/commit/5b6ac4cb7c9dcf61a987db80644e9a242ba383c5))
+* **core:** review returns ([0bf6d7d](https://github.com/ovh/design-system/commit/0bf6d7d85e5c1b56c429b067f00d5d4064578c65))
+* correct html list semantics on safari ([f916a62](https://github.com/ovh/design-system/commit/f916a62078d810dafa9b32732e0b72303b706fad))
+* **data-table:** make the sort headers keyboard operable ([51ff108](https://github.com/ovh/design-system/commit/51ff108dfceeff519ce0887b6c1bf873cc008f21))
+* **docs:** a11y and resilience quick wins ([abcef53](https://github.com/ovh/design-system/commit/abcef53ef062af718f0c342a0cc167011701e65a))
+* **docs:** align the sidebar logo and version select on the left ([c0a2e34](https://github.com/ovh/design-system/commit/c0a2e34c94313d40ce15eb73e5dbdb198e688e32))
+* **docs:** anchor the enum headings of the technical tab ([ee0092f](https://github.com/ovh/design-system/commit/ee0092fd80da9911d9367dff1e65ddfa659dbe1e))
+* **docs:** app-height shell layout, footer always visible, drop the token field ([134de72](https://github.com/ovh/design-system/commit/134de72b3710b433be9e702d6b9ddc9083d2d14c))
+* **docs:** bold sidebar sections and unclipped selects ([ee20eab](https://github.com/ovh/design-system/commit/ee20eabba91b1ed0ebdfb6573b475c109f55155c))
+* **docs:** bring back View as Markdown as a plain link ([6f8e9b6](https://github.com/ovh/design-system/commit/6f8e9b6fa01ddf230a54fe095618bcc8f6bc7398))
+* **docs:** bring the content pane back to its position on back and forward ([41dc738](https://github.com/ovh/design-system/commit/41dc738ef25e674dfe14b9c2a4b1ad45a6cedf26))
+* **docs:** build the v19 previous major link from the component folder ([f0cfbc9](https://github.com/ovh/design-system/commit/f0cfbc901dbdea79d5a6e1b531046beab7ef3734))
+* **docs:** center the logo at the top of the sidebar ([cd5a5d8](https://github.com/ovh/design-system/commit/cd5a5d80d06555034eaaa6da2b84149a5a4c2aef))
+* **docs:** clean canvas borders, open sandbox in a new tab ([7b9e6b0](https://github.com/ovh/design-system/commit/7b9e6b0b97039e8236c381e0bcece4521dd5b5b5))
+* **docs:** dark form fields, kbd baseline, search palette UX ([993eeba](https://github.com/ovh/design-system/commit/993eeba5c74ac57eb8878108ef331cc352552bfa))
+* **docs:** darken Blue Jeans with its dark theme ([fb1ebb6](https://github.com/ovh/design-system/commit/fb1ebb6d5add40aeb6c3f089722b2ebedeece34b))
+* **docs:** default code layout and url-bound component tabs ([4705400](https://github.com/ovh/design-system/commit/47054007c357460c58f566611016c0acc6301991))
+* **docs:** drop level-1 doc headings duplicated by the topbar title ([29de0ae](https://github.com/ovh/design-system/commit/29de0ae7045e68faa27d29f5942d4e66cc531dc4))
+* **docs:** drop the dark chrome roles no theme declares ([90971b6](https://github.com/ovh/design-system/commit/90971b6288faa01e3686f6923796226d01614f67))
+* **docs:** drop the Examples heading the Examples tab repeats ([e11e54c](https://github.com/ovh/design-system/commit/e11e54cca19d977e14ec22afdaa75f3e50ce4dd2))
+* **docs:** drop the Status Modal summary taken from a variant section ([7e2019a](https://github.com/ovh/design-system/commit/7e2019af9abfe6a29581d4d16e72568898e3e7fa))
+* **docs:** follow the content pane in the ToC scroll-spy ([4aa7cb6](https://github.com/ovh/design-system/commit/4aa7cb6916a2a976f37496dfe2a98f795b23ff7e))
+* **docs:** frame each Component Gallery preview once ([f5afce0](https://github.com/ovh/design-system/commit/f5afce04393ddc9130a906c9e2bbf2a28b698c4a))
+* **docs:** give repeated headings unique anchors ([84ccdbf](https://github.com/ovh/design-system/commit/84ccdbf95fc7e70e6b11f18622e4ef3aac311fd1))
+* **docs:** give the dark chrome the new container and track roles ([18be5af](https://github.com/ovh/design-system/commit/18be5af5f1f0f0f1071fd53106de210eaa651ba9))
+* **docs:** give the section headings more room above than below ([982b8f4](https://github.com/ovh/design-system/commit/982b8f450ed82c0cacd0ec4d548e394bb959e9ae))
+* **docs:** give the sidebar one left edge and a compact header ([b223ced](https://github.com/ovh/design-system/commit/b223cedcc8e8439ba2da8b44319336cc4d04b91d))
+* **docs:** harden the docs platform following the PR review ([31ae09b](https://github.com/ovh/design-system/commit/31ae09bf8fa9ce3377b876702ad2a41b4ab89733))
+* **docs:** keep a nested unknown path off the page it starts with ([52b0922](https://github.com/ovh/design-system/commit/52b0922fcfbf0e166e1f26cfd8ce710f06fa9b71))
+* **docs:** keep a pinned deployment on its own version in the version select ([206e8c2](https://github.com/ovh/design-system/commit/206e8c21264a17e7e91f5d39911bbd14be3275ab))
+* **docs:** keep demo frames still while their overlays are used ([e295cc9](https://github.com/ovh/design-system/commit/e295cc950d57b51421accf251b9048c71f17b1fd))
+* **docs:** keep dialogs and removed popups out of the demo frame overlay height ([7a2cf1e](https://github.com/ovh/design-system/commit/7a2cf1e962e0dcbcda740e0c2da156caf1ee3faa))
+* **docs:** keep heading anchors out of names, land union deep-links ([1ad7ac7](https://github.com/ovh/design-system/commit/1ad7ac7dba902b7c1dc46f65672ca47de67ed6e5))
+* **docs:** keep sidebar selects inside their column ([80e3047](https://github.com/ovh/design-system/commit/80e30477b907b866b1ef103aa8eb0ec0f50cb163))
+* **docs:** keep the anatomy tree expanded, no collapse ([daef698](https://github.com/ovh/design-system/commit/daef6987cc11a8b95f58c255b2d66c03847ce741))
+* **docs:** keep the brand logo readable in dark mode ([41d0585](https://github.com/ovh/design-system/commit/41d058578a596162497ac60637bd812d26e366f1)), closes [#000e9](https://github.com/ovh/design-system/issues/000e9)
+* **docs:** keep the control icons visible in the dark chrome ([c35cff7](https://github.com/ovh/design-system/commit/c35cff7e29b7cd005a09b747bc9f9664e6ad9f0c))
+* **docs:** keep the focus rings whole inside the demo frames ([ed705f1](https://github.com/ovh/design-system/commit/ed705f1f836f548b03a4963473042b76261a0d2b))
+* **docs:** keep the guide demos off the component pages ([c1fe1a1](https://github.com/ovh/design-system/commit/c1fe1a1b41dec86f4120a49d114cd68bfa209d13))
+* **docs:** keep the page of a URL with a trailing slash ([9e9122b](https://github.com/ovh/design-system/commit/9e9122bc9f8d60aab686694566297522a7004706))
+* **docs:** keep the recipe gallery grid driven by its own width ([0350901](https://github.com/ovh/design-system/commit/03509014c390fde19ee3c0ec42b3ff93da7e5784))
+* **docs:** keep the release links in the changelog headings ([fbdf913](https://github.com/ovh/design-system/commit/fbdf91303138c28e3b5e05dbdac95b031d97828a))
+* **docs:** keep the router entry when the table of contents sets the hash ([335509f](https://github.com/ovh/design-system/commit/335509f212a0d35da1c31a81f971e2231da82a5d))
+* **docs:** keep the story sources intact in the llms exports ([1f98c1f](https://github.com/ovh/design-system/commit/1f98c1f4859163352d468e0aa1bb4fd1141e3fbb))
+* **docs:** keep the table of contents readable and reachable on narrow screens ([733088c](https://github.com/ovh/design-system/commit/733088cef63c552e1ed6e5fc885a6391eda61d1d))
+* **docs:** keep the toc tree expanded, no collapse ([c7110db](https://github.com/ovh/design-system/commit/c7110db89a816bb0537a75d2482a225560305776))
+* **docs:** keep the toc, the palette and the search index in sync with the page ([f6f7522](https://github.com/ovh/design-system/commit/f6f75222f25f534cd4185aaabd09f49dec41a810))
+* **docs:** keep the topbar and the demo frame body on the raised surface ([7d1694a](https://github.com/ovh/design-system/commit/7d1694a908744bdb3d5824f6078e994a7c6636f5))
+* **docs:** keep the type identifiers of the props table whole ([630a0ea](https://github.com/ovh/design-system/commit/630a0ea91a0c7f376c504a68e8a0ef3dac2b9e3f))
+* **docs:** lead the homepage Components tile to the gallery ([82527a2](https://github.com/ovh/design-system/commit/82527a25f4e1ed5899e808bba8a1bb5d8ffb26b7))
+* **docs:** leave the root pages of the sidebar at the TreeView's own indent ([03d71c7](https://github.com/ovh/design-system/commit/03d71c729c1df4e209afa5104eb2e26aae987743))
+* **docs:** legible dark mode via neutral ramp and code theme sync ([a6311c3](https://github.com/ovh/design-system/commit/a6311c39c02f3de609af1e7b708ecdacdfdd2b86))
+* **docs:** legible link colors in dark ([17f09fb](https://github.com/ovh/design-system/commit/17f09fbacb64f0a59ecb6aa5af7cebd9bb1a0b86))
+* **docs:** legible select text and primary controls in dark ([5fc21f9](https://github.com/ovh/design-system/commit/5fc21f992e81944c736d4896f41181a24a941e76))
+* **docs:** legible tree hover and selected states in dark ([74b78c4](https://github.com/ovh/design-system/commit/74b78c4ead7522daca260c6143cf6e420eb813a0))
+* **docs:** let a recipe preview wider than its card scroll ([a4bca0c](https://github.com/ovh/design-system/commit/a4bca0c2189ef95ddae0b2a137ca04c2650eedcc))
+* **docs:** let a sidebar section click do one thing ([f2f9698](https://github.com/ovh/design-system/commit/f2f96987fa60908f9e0813634769ddc6a924f5ff))
+* **docs:** link the previous major page of the components born in v19 ([75d06e0](https://github.com/ovh/design-system/commit/75d06e03c2a76106033c01365c7fc32d2784a023))
+* **docs:** list only the sections in the table of contents of a long page ([166d234](https://github.com/ovh/design-system/commit/166d234d73780d4d72cc2cee1bd07c11bd9316b8))
+* **docs:** make the gh-pages deploy fail-safe on registry errors and version collisions ([6f4160f](https://github.com/ovh/design-system/commit/6f4160ff0107a8347aac6322653b34e776986ead))
+* **docs:** match badges, dedupe content hits and fix snippet contrast in the palette ([d742ccb](https://github.com/ovh/design-system/commit/d742ccb2da0f34f671e03b220f23b692b729e816))
+* **docs:** message spacing and icon alignment in mdx content ([13d6294](https://github.com/ovh/design-system/commit/13d62942d6a76cab78f0ff690bca11a7722179ad))
+* **docs:** move overview description out of the identity card ([f430e6b](https://github.com/ovh/design-system/commit/f430e6b6100a634044dc6819712687b0313881c8))
+* **docs:** name the topbar selects, the demo frames and the component tab panels ([f1ce77a](https://github.com/ovh/design-system/commit/f1ce77ab35ef8f062ca1e2d23c4f9df30ee8b15c))
+* **docs:** nest the recipe cards of a component page under its recipes heading ([20bda1f](https://github.com/ovh/design-system/commit/20bda1f1e331f71a7944ba8ce66810ffa3d21bc2))
+* **docs:** open a new page at the top of the content pane ([9bbf645](https://github.com/ovh/design-system/commit/9bbf645091063dd7962dd8b718cd45b6c849b75d))
+* **docs:** open and scroll the sidebar to the page being read ([4be2281](https://github.com/ovh/design-system/commit/4be2281dc785c6d4115dda756851817c1f2ab91c))
+* **docs:** open the demo dropdowns on their trigger again ([9ee54e0](https://github.com/ovh/design-system/commit/9ee54e0528e9844744f0d72e1d5c7aee5f9954f7))
+* **docs:** open the sandbox and anatomy dropdowns on their trigger ([4e17293](https://github.com/ovh/design-system/commit/4e17293745f9523f2b2d34fe02562546aef2f32a))
+* **docs:** order helpers section below components ([bc83b9e](https://github.com/ovh/design-system/commit/bc83b9e205e26f98d4114b5121fbe441e56b8aa3))
+* **docs:** overview description beside the metadata card ([80d2164](https://github.com/ovh/design-system/commit/80d2164995ec5d756fd735bd0a1feb90736966e5))
+* **docs:** pick the Theme Generator theme with a button group ([0cabf41](https://github.com/ovh/design-system/commit/0cabf410186af9a5f12f905d097380c7de5092f4))
+* **docs:** pin the sidebar settings to its foot and tidy the badges ([4996f1c](https://github.com/ovh/design-system/commit/4996f1cc7dadbc641828d9095046e4b342bc2e82))
+* **docs:** put View as Markdown above the table of contents ([0e3444c](https://github.com/ovh/design-system/commit/0e3444c50743283111111df7e15ea96046c10607))
+* **docs:** reach the last component tabs on a narrow screen ([6c8225d](https://github.com/ovh/design-system/commit/6c8225d53e167a8737ca2653597d258306bd1124))
+* **docs:** read semantic tokens for the search snippet and the heading anchor ([cee15e3](https://github.com/ovh/design-system/commit/cee15e30c3eb7a92868f2cb8ac01ee0bc6741450))
+* **docs:** read the component outline as the page renders it ([0f90b21](https://github.com/ovh/design-system/commit/0f90b21a8db36f602521048c7bee2c3917c4674c))
+* **docs:** read the component outline from the MDX tree ([3ee7652](https://github.com/ovh/design-system/commit/3ee7652003ffda13a7013ebd0f73edf3f29543c6))
+* **docs:** render anatomy in a frame, restore nested tree and dashed highlight ([555a3de](https://github.com/ovh/design-system/commit/555a3decf70b67dd60e1de111e1603f6a0a103fc))
+* **docs:** render the Markdown links of the content with the ODS Link ([abc5f07](https://github.com/ovh/design-system/commit/abc5f0703b4454f9d1073937660a533af0dfc192))
+* **docs:** render the Markdown quotes with the ODS blockquote preset ([5f99f19](https://github.com/ovh/design-system/commit/5f99f198e6a9d95aacb4f2f24aa939d519384812))
+* **docs:** replace an already-deployed current version on gh-pages ([fcfaad1](https://github.com/ovh/design-system/commit/fcfaad1275d4d9e58ca24c19ee7ca253f1be04b0))
+* **docs:** resolve cross-component canvas demos in guides via from= ([914ef78](https://github.com/ovh/design-system/commit/914ef786918ba428a2eb0f27053401589ba73937))
+* **docs:** restore share modal copy and limitations note ([ffc94d7](https://github.com/ovh/design-system/commit/ffc94d75633d1c1f6b2ed8851ad6a852e54b6b4e))
+* **docs:** set the code blocks apart from the page and color them by language ([c4b2403](https://github.com/ovh/design-system/commit/c4b24030d2c866b992d3f2f7890cb503f711fce0)), closes [#f2f2f2](https://github.com/ovh/design-system/issues/f2f2f2)
+* **docs:** set the dark code blocks on the light theme's code navy ([44a6934](https://github.com/ovh/design-system/commit/44a693446c1ff3240c91bf2a5f629c0fcf0827d7))
+* **docs:** set the Markdown link small, beside the On this page title ([e57467b](https://github.com/ovh/design-system/commit/e57467b68714df5d5ab2110f8194335b2b2a2a51))
+* **docs:** share the helpers inventory and the heading anchor with the technical tab ([1baa060](https://github.com/ovh/design-system/commit/1baa060e21966c12090b92894770c331b855074f))
+* **docs:** show the Markdown link on the Recipe Gallery and not on an unknown component ([b57eeaa](https://github.com/ovh/design-system/commit/b57eeaade6be808df34aa0ebd000c3548644281d))
+* **docs:** show the version number on the latest channel ([fcb5768](https://github.com/ovh/design-system/commit/fcb5768212af457d4f4effc900a2260be6a2d41f))
+* **docs:** sidebar icons on top-level entries only ([cd35425](https://github.com/ovh/design-system/commit/cd35425c9343e8b6652c90af9bbfac4cfa5afce4))
+* **docs:** skip every kind of code fence in the component outline check ([df3486a](https://github.com/ovh/design-system/commit/df3486aa6e14b5cff459ed4586a145c231c8be37))
+* **docs:** skip the quoted code fences in the component outline check ([8cd5840](https://github.com/ovh/design-system/commit/8cd5840b5c61cdb272ead66ff243bd84cfa221d1))
+* **docs:** stop anatomy render loop, restore tree selection ([db0b155](https://github.com/ovh/design-system/commit/db0b1556ea8ca5ea47d70db169ac81740ddc7288))
+* **docs:** theme raw markdown links for dark legibility ([2cd525f](https://github.com/ovh/design-system/commit/2cd525f2161d677d3f92229c83dd89d6d1cebf1e))
+* **docs:** tighten share modal with a header title ([4eadf3c](https://github.com/ovh/design-system/commit/4eadf3ca18aa28261a277f7eee7e9d55409338aa))
+* **docs:** use brand color for the logo ([e0fff32](https://github.com/ovh/design-system/commit/e0fff328b50f83f2238221b072ae47c6cbd9c234))
+* **docs:** visible code surface in light mode ([67d8512](https://github.com/ovh/design-system/commit/67d8512f263a6078b178ea869f16c7d7ca149226))
+* **drawer:** give a custom content id to the dialog machine ([9318bd2](https://github.com/ovh/design-system/commit/9318bd23cbd6d3f9267172a2b12cbc1e5f212769))
+* **drawer:** hide the closed content so that Tab cannot reach it ([da620b5](https://github.com/ovh/design-system/commit/da620b5f959bddba2f29e85fde39917e77d6e272))
+* **drawer:** keep closed drawers inert to pointer events ([c0e17c3](https://github.com/ovh/design-system/commit/c0e17c375f3c9490a8d2a395a6dc3bf560d70e34))
+* **drawer:** return focus to the trigger when closing without backdrop ([988234c](https://github.com/ovh/design-system/commit/988234cda62457d42893a818a4b9f506ae19af5c))
+* **drawer:** review returns ([bd3e535](https://github.com/ovh/design-system/commit/bd3e535c8f5b568a3fec3e900c1f32d608774404))
+* **examples:** check the new layer order in the Tailwind example app ([b3c1fbc](https://github.com/ovh/design-system/commit/b3c1fbc4f6a15e9624dba021137b2a4c85a401e5))
+* **file-upload:** let the theme set the error ink of a hovered row ([00c8c36](https://github.com/ovh/design-system/commit/00c8c36468600744bf7dea3d4483c8d1f7bd3a22))
+* **form-field:** link the label to the id the field actually renders ([0cf79c9](https://github.com/ovh/design-system/commit/0cf79c9f6a24c69c2883e7bdad0dc1189a7322a8))
+* **input:** even out the gap around in-field action buttons ([e2007f8](https://github.com/ovh/design-system/commit/e2007f8309fa5dd61c774fda55442d03dcf48c15))
+* **input:** keep the in-field inset on the container ([e8f65d4](https://github.com/ovh/design-system/commit/e8f65d441ccafea54a85652d296eca1a5ee100f0))
+* **Input:** restore stories with content adornments and fix import paths for new docs platform ([4da9333](https://github.com/ovh/design-system/commit/4da93336526fc7f96fbad282a025ee7fcbdc4875))
+* **Input:** split helper and error in LoginForm, disable native validation ([8bdf781](https://github.com/ovh/design-system/commit/8bdf7816465a1204323ec05bab5a9a7cc1bbc38d))
+* **Input:** validate LoginForm on submit and show errors in FormFieldHelper ([82f7006](https://github.com/ovh/design-system/commit/82f70063a8bfd01085d3368b833afcecdf455d03))
+* **link:** keep the visited color on hover ([3546508](https://github.com/ovh/design-system/commit/3546508770aa68252427c8e04ee6e494df3b72c1))
+* **link:** stop throwing on click when no onClick is given ([c603c3b](https://github.com/ovh/design-system/commit/c603c3b431915cc9e181f347ae33e9d1624b7e05))
+* **link:** underline a link at rest so that its color is not its only cue ([6fd611d](https://github.com/ovh/design-system/commit/6fd611dcdc9f6b20cc27c1d7f0eefa32bd53cdb1))
+* **llms:** review returns ([1f22aee](https://github.com/ovh/design-system/commit/1f22aee3d4e798d9c0c16c18a3e55f1f2c0b7079))
+* **markdown:** bundle the non-dom entity decoder so the library loads on the server ([4863c8b](https://github.com/ovh/design-system/commit/4863c8b8a2760896c3846ef17279d873f2116466))
+* **mcp:** address review feedback ([4e04a60](https://github.com/ovh/design-system/commit/4e04a607e112b24d59fbee2e5bf9ff120d24a13a))
+* **mcp:** bound the page reads of search_docs and stop caching the failed ones ([a2af279](https://github.com/ovh/design-system/commit/a2af279968fe864682baeaae6f6320a317d534c8))
+* **mcp:** build the package before its CI tests ([587a4d7](https://github.com/ovh/design-system/commit/587a4d71f7e4da2e8ffcad9bd56ad96f48e6b7ef))
+* **mcp:** derive the guide-count check from the docs index ([1ccda1e](https://github.com/ovh/design-system/commit/1ccda1eefffb9de9b4b9af6fbd0c86ff18be29f1))
+* **mcp:** document the real source precedence and guard the build ([5fca527](https://github.com/ovh/design-system/commit/5fca527b31f086b79751c78873b8df1170699bb1))
+* **mcp:** keep the page reads inside the documentation set ([885df6f](https://github.com/ovh/design-system/commit/885df6f27a1ce789792859e8c2ad64030e574858))
+* **mcp:** rank a short slug found inside the query after closer suggestions ([066b05b](https://github.com/ovh/design-system/commit/066b05be62445bef11716544a58f5d459a4c2612))
+* **mcp:** reach the camelCase helper names in get_guide ([93d5321](https://github.com/ovh/design-system/commit/93d5321017a92159974f45a70e43415b22d216ce))
+* **mcp:** reach the helpers documentation pages, keep local paths out of answers ([cafed46](https://github.com/ovh/design-system/commit/cafed46d81d6603b4b748319a0581e75d667fb8a))
+* **mcp:** read the docs of the nearest installed ods-react only ([39ebed1](https://github.com/ovh/design-system/commit/39ebed1bb928869e56b9ef7d70cefaa7e8633828))
+* **mcp:** read the resolved values and the references of the v20 tokens ([dbe8e71](https://github.com/ovh/design-system/commit/dbe8e71e8d8532aa0e4fc369149a4ec4a7296fc3))
+* **mcp:** rebuild the ods-react llms set the tests read when it is missing or stale ([aa7ad5f](https://github.com/ovh/design-system/commit/aa7ad5f52ef1596f720fbbe22c0ad9243a76993d))
+* **mcp:** resolve loose component slugs and suggest fuzzily ([2227c25](https://github.com/ovh/design-system/commit/2227c250d2bae0001d84417196de01e4c27b9a12))
+* **mcp:** say that a failed page read is retried on the next call ([4d2373e](https://github.com/ovh/design-system/commit/4d2373e8a225d18f3de0ceb9730ef443eae9b6d0))
+* **mcp:** say why a pinned version cannot load its index ([47ff00c](https://github.com/ovh/design-system/commit/47ff00c5d8a2313cc8cb6f3edf6d2edb13eebfda))
+* **message:** keep the 19.7.3 size of the high emphasis ([29b29dc](https://github.com/ovh/design-system/commit/29b29dcccdf97379719d26af9622102db2185500))
+* **message:** read the minimal neutral surface in high emphasis ([3bf2e7f](https://github.com/ovh/design-system/commit/3bf2e7fc11fcb4d506aa144c3c10b418dbfd7d6c))
+* **message:** repoint the emphasis styles on the semantic layer ([98cefc0](https://github.com/ovh/design-system/commit/98cefc034e320ff52904fc64ceee63a534bc28eb))
+* **modal:** draw the overlay shadow, as the other overlays ([6efb0dd](https://github.com/ovh/design-system/commit/6efb0ddda219ca2c245820c6d57ded2d8b58fd20))
+* **ods-react:** apply the browser language once mounted, so the hydrated markup matches the server ([930dc91](https://github.com/ovh/design-system/commit/930dc91852a476e430d35faaf156ce9baf45dcc2))
+* **ods-react:** document the base value of a component custom property ([872b46f](https://github.com/ovh/design-system/commit/872b46f61e2ac517c83a040a7b4b60283cea9f44))
+* **ods-react:** document the custom properties read only with a fallback ([f667878](https://github.com/ovh/design-system/commit/f667878365c67af7f6487894fbc4a84364c47dd2))
+* **ods-react:** document the fallback of a custom property as its default ([2920907](https://github.com/ovh/design-system/commit/29209078664987ffc85231a8ec9f58865e0f7972))
+* **ods-react:** fall back to English when no browser language is known ([db6c651](https://github.com/ovh/design-system/commit/db6c651f40b2d6b4b5987c4ae950de124b46918d))
+* **ods-react:** type the removed v19 props never ([9dc039e](https://github.com/ovh/design-system/commit/9dc039ea3e75230ed7f4d818d7ebb01548cfe748))
+* **prompt-input:** give the attach and send buttons a default name ([b4ebd86](https://github.com/ovh/design-system/commit/b4ebd86645f4a02398cb56d7a7ebbd5d1227c5ac))
+* **prompt-input:** story typo ([cb9b636](https://github.com/ovh/design-system/commit/cb9b63690ad7efd4bc7af57d2bf46a965c5833c0))
+* **query-filter:** apply aria-label and aria-labelledby to the field ([061a5a8](https://github.com/ovh/design-system/commit/061a5a85a340fe25916a5c10ad3692d1edd92f72))
+* **recipes:** give the feature list tooltip icons an accessible name ([c91504a](https://github.com/ovh/design-system/commit/c91504a8386db577a7c5d399c9af919272c5e414))
+* **recipes:** keep the button role of the feature list tooltip triggers ([db6c190](https://github.com/ovh/design-system/commit/db6c190d1d1c6771eae154cef561ee0627c4a09c))
+* **recipes:** prevent build fail if empty directories remains in src/components ([af85ef7](https://github.com/ovh/design-system/commit/af85ef747cd7ff04596a0d99bd0b81986dbb0e3e))
+* **storybook:** complete the displayed story imports ([c70b3a6](https://github.com/ovh/design-system/commit/c70b3a6f025640280b971a9352dbb07b34580967))
+* **storybook:** review returns ([5e4aed1](https://github.com/ovh/design-system/commit/5e4aed16dcc9cacf21cf99408b1de136785d07dc))
+* **storybook:** use configured npm registry to fetch version list ([c7667e3](https://github.com/ovh/design-system/commit/c7667e38d999c5794b0738f987ab869694885a0b))
+* **tabs:** name the scroll arrows of the tab list ([3d177bc](https://github.com/ovh/design-system/commit/3d177bc48cf7bfde0460c674a5bee4e58dc720fd))
+* **tailwind:** put the ODS layers under components, and check theme.css in the linters ([0fae858](https://github.com/ovh/design-system/commit/0fae858d2db1ab5f1f5a0c89128f7282b7cef3f9))
+* **themes:** draw the edge of the overlays in aluminium dark ([689a989](https://github.com/ovh/design-system/commit/689a9893ec45ebbcb676d861e844f4f9657740b6))
+* **themes:** exclude every What's new page from the retired-token check ([20cba95](https://github.com/ovh/design-system/commit/20cba95677b926362dc4bddb8dab0d0b4f78d337))
+* **themes:** follow the aluminium dark review in blue-jeans dark ([31c268d](https://github.com/ovh/design-system/commit/31c268d0c93d3e606e4f924f77630bfe1d7bf8ff))
+* **themes:** give shadow-control a shadow, not none, so that it composes ([2c761f4](https://github.com/ovh/design-system/commit/2c761f47afd2b16b90df60128d9e220e6213f146)), closes [#0000](https://github.com/ovh/design-system/issues/0000)
+* **themes:** give the blue-jeans Skeleton its shimmer back ([40f41c8](https://github.com/ovh/design-system/commit/40f41c8cf1bd7cec7b388bd048f7a3179b216581))
+* **themes:** give the green and orange ramps real dark tints ([e820ec6](https://github.com/ovh/design-system/commit/e820ec601d0725d7d2916df2ceaecbb2b0633d87))
+* **themes:** give the hovered FileUpload error row 4.5:1 in both dark themes ([9c51593](https://github.com/ovh/design-system/commit/9c515931819ec94d04a25f2afd5c635d6c876255))
+* **themes:** give the invalid border 3:1 in blue-jeans dark ([6487f97](https://github.com/ovh/design-system/commit/6487f979da6cf4c7dd5e50c99cd7d09e3f155e92))
+* **themes:** give the Meter fill 3:1 in blue-jeans dark ([4fc4331](https://github.com/ovh/design-system/commit/4fc4331e5c7b76195b5f3e4bdeb6c5c2f2d91bad))
+* **themes:** make the first chart series a fixed color ([dd82697](https://github.com/ovh/design-system/commit/dd826974a2d4e5d09221592d06983c29333dc6d2)), closes [#0050d7](https://github.com/ovh/design-system/issues/0050d7)
+* **themes:** migrate the v19 checked fill to surface-control-solid ([209f042](https://github.com/ovh/design-system/commit/209f0427e9de40e010c4d31dda7275184f316fdb))
+* **themes:** stop mapping two v19 tokens to roles their readers left ([f043c21](https://github.com/ovh/design-system/commit/f043c215fd3405fb0b6c9ff16ab0190621f56bfe))
+* **themes:** whiten the logo, invert the control fill and darken code in aluminium dark ([40da465](https://github.com/ovh/design-system/commit/40da46563073d0264f2cedd366af63dc434def7c)), closes [#000e9](https://github.com/ovh/design-system/issues/000e9)
+* **toggle:** keep the thumb and the invalid label readable in the dark themes ([00fe00d](https://github.com/ovh/design-system/commit/00fe00d05144a4be64cb4c89138638d4c78f10a1))
+* **tree-view:** carry the checked state on the treeitem in multiple mode ([71a20df](https://github.com/ovh/design-system/commit/71a20df628fa45afb9e8e0bb8af0023f7f4767c1))
+
+
+### Features
+
+* **accordion:** add the emphasis prop ([aa2020c](https://github.com/ovh/design-system/commit/aa2020cceac2db1848db28473c71048d379f93f0))
+* **badge:** add the emphasis prop ([4cbc59c](https://github.com/ovh/design-system/commit/4cbc59c79fad688170c88b83fd3ce992ae4550c9))
+* **badge:** add the status prop and deprecate color ([d6675ac](https://github.com/ovh/design-system/commit/d6675ace857d247ac55a9970cf8d299c5c057709))
+* **button:** add the status prop and deprecate color ([bdac21d](https://github.com/ovh/design-system/commit/bdac21dd75798b86e5b33bac2d1edf251a1fb310))
+* **button:** drop the information, success and warning custom properties ([a793477](https://github.com/ovh/design-system/commit/a793477328fdc763e9bb19e16fc555345d8da016))
+* **button:** name the Sass mixins and custom properties after the emphasis ([9e33993](https://github.com/ovh/design-system/commit/9e339936b5cbd930f319fc3a81ef411064c6c707))
+* **button:** replace the variant prop with emphasis ([aac761b](https://github.com/ovh/design-system/commit/aac761b7453609a944e77c52d8c09ffafa71ffaa))
+* **card:** add the status prop and deprecate color ([8e3ec26](https://github.com/ovh/design-system/commit/8e3ec26b00e0a998a6b099645d13b46acb7d5089))
+* clean useless comments ([a8e6c37](https://github.com/ovh/design-system/commit/a8e6c37836ad5a53766da3244ad85775a29ec4da))
+* command component ([9154337](https://github.com/ovh/design-system/commit/9154337edae139773a32d225c8ce293551e24668))
+* **command:** pnpm adaptations ([38ae58d](https://github.com/ovh/design-system/commit/38ae58d487c7a718b83cd3c54f378b3640fc1a2c))
+* **core:** bump minor dependencies ([c1018d6](https://github.com/ovh/design-system/commit/c1018d62d72f06faa1e30aaed5d940bd938ec4d8))
+* **core:** move examples to dedicated pages ([f4ca44f](https://github.com/ovh/design-system/commit/f4ca44fe932af9472e729a1c62c896cd3dcb63a4))
+* **core:** remove demo pages ([da1c5b2](https://github.com/ovh/design-system/commit/da1c5b2ca145d2c1a4280aaea86081e06134273b))
+* **core:** update RELEASING.md ([2227253](https://github.com/ovh/design-system/commit/22272536fc8292beebdb9f9f56dd05e729a31f8a))
+* **divider:** deprecate the color prop until v21 ([395068a](https://github.com/ovh/design-system/commit/395068a18185e63d6b98cdd2196ed34637df341e))
+* **docs:** add a category filter to the component gallery and use the ODS Link ([f5ea84f](https://github.com/ovh/design-system/commit/f5ea84fb59ae6ddd423010edb708680195c568a8))
+* **docs:** bootstrap the docs platform PoC — portable stories in isolated frames ([ff6b74f](https://github.com/ovh/design-system/commit/ff6b74f86b65d43ed7a7a7a44e51d740cf19249b))
+* **docs:** check the outline of the component pages at build time ([345245c](https://github.com/ovh/design-system/commit/345245cbd39c69fb7614f75d64e0e1453e23cc91))
+* **docs:** codemod support for static pages ([6687021](https://github.com/ovh/design-system/commit/6687021f2715cbf426b6fb1e4cf61c24bbf1e261))
+* **docs:** content-driven demo frame sizing ([c47511c](https://github.com/ovh/design-system/commit/c47511c67f234ad7af10904a5ccfab3411f9309b))
+* **docs:** deploy under gh-pages version subpaths ([5090a52](https://github.com/ovh/design-system/commit/5090a5288f0cc21cb6566a481c8b6645d4ffed7f))
+* **docs:** document the MCP server in the AI Agents section ([4ed2678](https://github.com/ovh/design-system/commit/4ed267819c3afcf9cee9d1d90e44c0ade30639f1))
+* **docs:** drop the topbar and the background image from the Welcome page ([ddc4b03](https://github.com/ovh/design-system/commit/ddc4b03ff6e5b213d5875779a5af48ee663f2e35))
+* **docs:** flatten Recipes into a Recipe Gallery and one full page per recipe ([6df3ec9](https://github.com/ovh/design-system/commit/6df3ec90dfc661d21513ea181c3c0df7bd87c5d0))
+* **docs:** full-text palette search, markdown links and heading anchors ([420bc60](https://github.com/ovh/design-system/commit/420bc608939345ba80b6f390e2a7c4688afb00c9))
+* **docs:** full-width content, tabs use the switch variant ([ff96c7b](https://github.com/ovh/design-system/commit/ff96c7ba4856e0aa423a9c871e1ea685d9e5601c))
+* **docs:** gather the troubleshooting entries in their own guide ([8634473](https://github.com/ovh/design-system/commit/863447337344b6da6bb5f11074e0495316c65bb5))
+* **docs:** helpers section with function specs and demos ([436e235](https://github.com/ovh/design-system/commit/436e2352b3b0f1b2d91d65ff2ba2d56f23034550))
+* **docs:** hide the Welcome and Roadmap pages from the sidebar and the search ([ac11a4b](https://github.com/ovh/design-system/commit/ac11a4ba18a3d248e8664242854bdb7183dce806))
+* **docs:** homepage and static guide pages ([738e5cf](https://github.com/ovh/design-system/commit/738e5cf8d0f2ad1f1dd90a6ff077614633fa85c1))
+* **docs:** icon component with a searchable gallery tab ([c0b8fed](https://github.com/ovh/design-system/commit/c0b8fed3bb845711ef9b90b593e9005f7cee6887))
+* **docs:** import the 54 remaining components ([b0459f2](https://github.com/ovh/design-system/commit/b0459f2d92446aa77d0a1b4e0c6067e47bef6f69))
+* **docs:** index each recipe page in the search palette ([a1573e1](https://github.com/ovh/design-system/commit/a1573e158b3bd8c9b5a46ef8ab7652a8b0ac818e))
+* **docs:** inline copyable code snippets with light and dark themes ([a78d577](https://github.com/ovh/design-system/commit/a78d577d6d7b7ce39773502fd2aa5c56cdc4d316))
+* **docs:** interactive anatomy on the technical information tab ([55c0d96](https://github.com/ovh/design-system/commit/55c0d962abbd2595a030808ce8897908f430190c))
+* **docs:** keep the committed llms model through the platform switch ([25593e1](https://github.com/ovh/design-system/commit/25593e1852dbb51500c4719de149c8fa901f251b))
+* **docs:** latest channel, themed select icons and leaf-only tree icons ([e700d26](https://github.com/ovh/design-system/commit/e700d2655bfaa7c881f22a7e230a59a480816686))
+* **docs:** lead the empty search palette with where to start ([3288214](https://github.com/ovh/design-system/commit/3288214ee1228880032992200e8364ad6a47aa8f))
+* **docs:** link each page to the previous and next one of the sidebar ([c41341a](https://github.com/ovh/design-system/commit/c41341a1161a1b00d1d9eb1c9148616b8bad4bba))
+* **docs:** migrate Input component doc to neutral format and add content adornments sections ([6e6269c](https://github.com/ovh/design-system/commit/6e6269cf271201d8195cad93e30fc9b49b0d1b76))
+* **docs:** monaco sandbox spike — live TS editing with the full ODS type graph ([1bd5e6e](https://github.com/ovh/design-system/commit/1bd5e6e07a90d39139da925c94a135c3b0a2f518))
+* **docs:** move the color scheme to the topbar and gather the Markdown actions in one menu ([20b6c21](https://github.com/ovh/design-system/commit/20b6c21a7a30e0dbff71901d87f2745645263199))
+* **docs:** native llms emission honoring the legacy contract ([0a2f4c8](https://github.com/ovh/design-system/commit/0a2f4c8f2b3282580e8934c511a52f3a985e80ff))
+* **docs:** neutral content format, mdx pipeline and automated migration ([de147bb](https://github.com/ovh/design-system/commit/de147bb6581643d902ad2a2c668bc649ac5b35a9))
+* **docs:** neutral-format React 19 migration guide, versions list as a build prereq ([058d815](https://github.com/ovh/design-system/commit/058d815eaea5edc1f5eb2730440af8f689c5ce7e))
+* **docs:** new and deprecated badges on the nav tree ([4c94072](https://github.com/ovh/design-system/commit/4c940721577f65e2e6dec66bb195bfc85471d710))
+* **docs:** note native attributes each component extends ([31aa934](https://github.com/ovh/design-system/commit/31aa9345a3c407ed3f85a4dd94de453b99a6a99f))
+* **docs:** ods icons in the sidebar tree, dark toggle moved to the sidebar ([cbcfa13](https://github.com/ovh/design-system/commit/cbcfa13a757c91ad658b36550f3d33e4b621f21e))
+* **docs:** ods shell, working shell dark mode and sandbox prefetch ([401a2e9](https://github.com/ovh/design-system/commit/401a2e9cdb376ae4b53806319da65b79e4c4f781))
+* **docs:** ods skeletons while demo frames and the sandbox load ([93b07e3](https://github.com/ovh/design-system/commit/93b07e3a3815378d8d147a12a8be2161c0ee2628))
+* **docs:** open the galleries from their sidebar section ([a2af281](https://github.com/ovh/design-system/commit/a2af28134493f311edfe793a435d03e89e9e7441))
+* **docs:** order the examples and give them a table of contents ([142023b](https://github.com/ovh/design-system/commit/142023b79db8b9934129e489998df5ead6d02e74))
+* **docs:** ovhcloud brand logo and selects in the sidebar ([88a54cc](https://github.com/ovh/design-system/commit/88a54cc453e00ca5edeb450ed72672c4fe576243))
+* **docs:** page toc, flat nav and ods links in the shell ([7eb7285](https://github.com/ovh/design-system/commit/7eb7285e01b670bae54de87475e0356ef290b6bf))
+* **docs:** per-component recipes at the bottom of examples ([80394bd](https://github.com/ovh/design-system/commit/80394bd70eb67690bf7cf2159ace0970b6334e26))
+* **docs:** per-demo source display and native llms emission ([f8b382d](https://github.com/ovh/design-system/commit/f8b382decc974e36c45fc96349dc9af71d4c306f))
+* **docs:** poc day 2 — production build, style mirroring, sandbox robustness ([2087d70](https://github.com/ovh/design-system/commit/2087d7091dcb41d9a2108d67896c730ab24e25b1))
+* **docs:** polish the doc page layout: Card, raised ToC, centered 80ch column ([5f18003](https://github.com/ovh/design-system/commit/5f18003245dac8100ec0eb483b6d6d779f7a0590))
+* **docs:** port storybook doc components to the neutral contract ([1a74e43](https://github.com/ovh/design-system/commit/1a74e43084307e87c3d5cd37d1e6df895a9e93ba))
+* **docs:** recipes section with live pattern previews ([8734243](https://github.com/ovh/design-system/commit/87342430ede12251721a9959a0e35fded628176d))
+* **docs:** redesign sandbox as a two-pane playground ([3efd2d8](https://github.com/ovh/design-system/commit/3efd2d870957556d92a5836ca73a1e1a431e422c))
+* **docs:** reorganize the sidebar navigation and add icons to the guides tree ([4236735](https://github.com/ovh/design-system/commit/4236735146d61b4fc52d4fccb4905e74bd3dffe4))
+* **docs:** replace the storybook package with the docs platform ([f398e41](https://github.com/ovh/design-system/commit/f398e4118cff0c842cfc5f23c637d0ab3ac538c8))
+* **docs:** resizable sandbox panes and error tooltip ([b3dfe57](https://github.com/ovh/design-system/commit/b3dfe5756225ba6036bd9ecf10401865e1ed3c2a))
+* **docs:** responsive layout for the docs platform ([8e896cd](https://github.com/ovh/design-system/commit/8e896cd84736c44916d4a7989a6740546b821289))
+* **docs:** retire the Roadmap page ([b630826](https://github.com/ovh/design-system/commit/b63082692ac575d8fc6b9be62cad9421e28916c4))
+* **docs:** rework the sidebar selects and align the search hint on the input style ([f69a0e5](https://github.com/ovh/design-system/commit/f69a0e57c19d4509fbf1f4431d28eb4c1c887ec7))
+* **docs:** sandbox inline errors, short share links, fullscreen, resize fix ([30a1063](https://github.com/ovh/design-system/commit/30a1063b2c5f62b0ddef2fefa0aea512668e9c16))
+* **docs:** sandbox reset, share modal, theme-synced editor ([e2d533e](https://github.com/ovh/design-system/commit/e2d533e04acf92e10f0d315be30f82759ddbede7))
+* **docs:** sandbox splitter with button handle and orientation toggle ([fc9cfe6](https://github.com/ovh/design-system/commit/fc9cfe6002aa0139213d6be30baa505f2e4f661a))
+* **docs:** scroll-spy selection in the toc tree ([ea2cedd](https://github.com/ovh/design-system/commit/ea2cedd61e54183d616a2b06a5759737f07eb9af))
+* **docs:** set the display settings in the topbar and the page aids in the page ([9a8652f](https://github.com/ovh/design-system/commit/9a8652f4cf91b5317b7e7bb985c9d928e6afa7a2))
+* **docs:** share the row between the related recipes of a component ([6ebb8f9](https://github.com/ovh/design-system/commit/6ebb8f9558e4d119aad9a53b494f4cc791d20406))
+* **docs:** shell — treeview sidebar, command-k search, url routing ([fa4d5c2](https://github.com/ovh/design-system/commit/fa4d5c27575b38383118046b5445a20b3cdc2fea))
+* **docs:** show a not found page instead of bouncing unknown links home ([1acf394](https://github.com/ovh/design-system/commit/1acf394f86186387187d6f6ed40855a3ca42441c))
+* **docs:** show the dark scheme with the ODS aluminium-dark theme ([912f865](https://github.com/ovh/design-system/commit/912f8650e5b1a96ac3fecbf2a32136b8b035db76))
+* **docs:** show the Default view of every component in a card grid on the Component Gallery ([89cd40e](https://github.com/ovh/design-system/commit/89cd40e6057233b11a6552ce89f313e7b82ffc92))
+* **docs:** show the install command per package manager in tabs ([5aba971](https://github.com/ovh/design-system/commit/5aba971bdfdc672b5238f87b1f23d5d4b2ddb21d))
+* **docs:** split nav into guides and reference trees ([89caa19](https://github.com/ovh/design-system/commit/89caa19aae7eebc5ed28226a38f09e473dca98a4))
+* **docs:** split What's new into one page per major version ([18756e0](https://github.com/ovh/design-system/commit/18756e04f5f0b3ecdbce80f1a9f57ec3da5c19c1))
+* **docs:** style the View as Markdown topbar link as an outline button aligned right ([f0c9be1](https://github.com/ovh/design-system/commit/f0c9be141088728d9104e4e5afb600a8cad4161c))
+* **docs:** succeed the storybook package on npm as @ovhcloud/ods-docs ([35b0788](https://github.com/ovh/design-system/commit/35b0788bac534b8428f0774563711a3b9bbb4c23))
+* **docs:** technical information tab from typedoc data ([b6142a9](https://github.com/ovh/design-system/commit/b6142a99b8af1ae2761f90c374675a823dd04d83))
+* **docs:** theme and version selects in the topbar ([99f9f4e](https://github.com/ovh/design-system/commit/99f9f4e19993bf4e41c1731bb1be9ccf42daac8a))
+* **docs:** theme generator tool ([daad7bb](https://github.com/ovh/design-system/commit/daad7bb4c5405d2087e43433da198b81647274fe))
+* **docs:** toc as an ods tree view ([841fcc4](https://github.com/ovh/design-system/commit/841fcc420d85718659e1b21bcf7ea88fa674d5d6))
+* **docs:** unified demo canvas with toolbar and open-in-sandbox ([2cb4be3](https://github.com/ovh/design-system/commit/2cb4be36cb2a7978aad54629ba5eaa40b56e91d9))
+* **drawer:** add backdrop attribute ([3a61821](https://github.com/ovh/design-system/commit/3a61821d10180e78ec7101d1373b330fb473a2fe))
+* **drawer:** lock page scroll and close on backdrop click when the backdrop is shown ([570a487](https://github.com/ovh/design-system/commit/570a4872488371202a089f33a7a77c0baf51f6a8))
+* **examples:** add a Tailwind v4 example app ([6f446c9](https://github.com/ovh/design-system/commit/6f446c965825a6261cd5c1420f897a34e0aad93f))
+* **form-fields:** give every form field the same default width ([5479021](https://github.com/ovh/design-system/commit/547902197c8b9b6cbca5331f17a6017a8668ca5d))
+* **input:** add startContent and endContent adornments ([8fe37af](https://github.com/ovh/design-system/commit/8fe37af10f9890af32941c2b1ad9e67a5f27a2ad))
+* **Input:** review returns ([5c29f6f](https://github.com/ovh/design-system/commit/5c29f6f9fdf3babd278310b82aacb106dfeaafec))
+* **llms:** auto update version number ([95607b9](https://github.com/ovh/design-system/commit/95607b93b31ba097a9eda0258dda0b9dafb1637f))
+* **llms:** make Storybook extraction deterministic ([5dc64d5](https://github.com/ovh/design-system/commit/5dc64d533f9ed2dace17f9493948eebe51f5f043))
+* **llms:** regenerate assets for the restructured documentation ([66f2eb7](https://github.com/ovh/design-system/commit/66f2eb78676024ed3c2fb7b492c5c9da91ceff9e))
+* **llms:** self-describing files, JSON index and idempotent generation ([5634999](https://github.com/ovh/design-system/commit/56349997b77b82c7883a29e4d4632bbd936d47ef))
+* **mcp:** expose the ODS documentation to AI assistants over MCP ([171cc5d](https://github.com/ovh/design-system/commit/171cc5de0f93223a2c8125020dbb7c9559256788))
+* **message:** add the emphasis prop and remove variant ([60d7add](https://github.com/ovh/design-system/commit/60d7add1de0efc22f001f7ace6b04f9a33ce636a))
+* **message:** add the status prop and deprecate color ([5144b3c](https://github.com/ovh/design-system/commit/5144b3cf38c37ba1c7024789b9825deea94af72a))
+* **modal:** deprecate the color prop of ModalContent until v21 ([e125c38](https://github.com/ovh/design-system/commit/e125c3874600247aaa2fa1914e4c5e865bc179ef))
+* **ods-react:** add React 19 support ([8323e06](https://github.com/ovh/design-system/commit/8323e06b33b639b88e265fe87aa6c933af61482d))
+* **ods-react:** drop the Button and Tag custom properties no style reads ([35ba200](https://github.com/ovh/design-system/commit/35ba200e49a7daa9c069cde5568d45861077662f))
+* **ods-react:** log each deprecation warning once ([e5bc3a4](https://github.com/ovh/design-system/commit/e5bc3a48ab1fb96d30aedd35a37732680a03a3a4))
+* **ods-react:** name the accent and brand custom properties after their status ([da6e082](https://github.com/ovh/design-system/commit/da6e082ad68430bdd2c73a460560e465ff040bd7))
+* **ods-react:** remove the APIs deprecated in v19 ([632fc69](https://github.com/ovh/design-system/commit/632fc692bef89a4b5adaeaea5717f88ffcf20891))
+* **ods-react:** remove the deprecated color props ([3e48600](https://github.com/ovh/design-system/commit/3e48600d51ef8dae03376fca08a40cffb4fc6859))
+* **ods-react:** ship llms documentation locally in the package ([68842a6](https://github.com/ovh/design-system/commit/68842a6e75d4832d5493bc41d6cadadcc98dadc6))
+* **ods-react:** stop the status mixins on an unknown value ([3d2c7ab](https://github.com/ovh/design-system/commit/3d2c7abd137d5a4f889487028d4189b3dbfb23df))
+* **pagination, toggle:** warn once when rendered without children ([0ade7f6](https://github.com/ovh/design-system/commit/0ade7f657d350baba1d14665867fd57e6580cb36))
+* **pagination:** allow usage of links ([8aef19a](https://github.com/ovh/design-system/commit/8aef19afbaa9b944a4e2ff52779935413e8c9bfe))
+* **recipes:** show the Database feature list in Feature List and Feature List Product Card ([cd7c04d](https://github.com/ovh/design-system/commit/cd7c04d62b5c8ce92328a43a705af1d0b08a8f7a))
+* **spinner:** add the --ods-spinner-color property and deprecate color ([9336e19](https://github.com/ovh/design-system/commit/9336e1951ca69dfde25e1d9eed7846d98f0e322b))
+* **storybook:** migrate command to the examples page pattern ([44970e4](https://github.com/ovh/design-system/commit/44970e4610de9c6bcd268823e7368f4401dff398))
+* **storybook:** move faq & roadmap ([4bfa10e](https://github.com/ovh/design-system/commit/4bfa10e73a899f82d39f326468444811d1603375))
+* **storybook:** move recipes from technical-information to examples page across all components, update generator templates, and fix chat recipe scrolling the whole page ([9580e6f](https://github.com/ovh/design-system/commit/9580e6f5d0e7cc89e882611a9d0e68770521ea22))
+* **storybook:** redesign homepage and restructure sidebar navigation ([cfc6ad5](https://github.com/ovh/design-system/commit/cfc6ad5395fa4b072642b9ceb921c22dd3dc4b3a))
+* **storybook:** review returns ([ebb2ac1](https://github.com/ovh/design-system/commit/ebb2ac10cf46ef1e05905949a0ae0762a3b16e80))
+* **table:** replace the variant prop with a striped boolean ([b808cd7](https://github.com/ovh/design-system/commit/b808cd78e32bd0bd3189627d186805dc8c6db850))
+* **tabs:** add mountStrategy to choose when inactive panels content is rendered ([753fff4](https://github.com/ovh/design-system/commit/753fff43e20d3f1781adfeeebd91b4284a8cbc04))
+* **tag:** add the status prop and deprecate color ([e668916](https://github.com/ovh/design-system/commit/e66891603cfa2e2d23ef990a2dfe79df5f715030))
+* **tailwind:** map the Tailwind v4 utilities to the ODS tokens ([ae50e1e](https://github.com/ovh/design-system/commit/ae50e1ed076f57fbc1b2fbb63e39ba6ef3567418))
+* **themes, ods-react:** add the aluminium dark theme and rewire components for it ([4fae554](https://github.com/ovh/design-system/commit/4fae5541a17e876a16cf9984a52024792178ae23))
+* **themes:** add the blue-jeans dark theme on the aluminium dark model ([b063739](https://github.com/ovh/design-system/commit/b0637398e295ccd257ccaa1aa34338fd78abcdc0))
+* **themes:** align the blue-jeans theme with the v19 look ([a28c3cc](https://github.com/ovh/design-system/commit/a28c3ccf1a7e3bb4eaae109dd05243a0fa6f5b88))
+* **themes:** export the aluminium dark theme ([43c40ad](https://github.com/ovh/design-system/commit/43c40ad87ae4e1baacf5c3da634db4b6d39d5dc6))
+* **themes:** export the blue-jeans dark theme ([db6e33c](https://github.com/ovh/design-system/commit/db6e33cfb04e68682354a8355194210917409268))
+* **themes:** rename the default font family to Source Sans 3 ([40aa864](https://github.com/ovh/design-system/commit/40aa864e948fa340ba8afc82dc4bef2cb3faccec))
+* **themes:** replace the token surface with a semantic layer ([e81f8b8](https://github.com/ovh/design-system/commit/e81f8b827710c857c54205b659c514edacdbcd97)), closes [#1146](https://github.com/ovh/design-system/issues/1146)
+* **themes:** ship each theme mode as one standalone stylesheet ([2741442](https://github.com/ovh/design-system/commit/2741442eae0d6bff0fb926efc00e2a67959fedd7))
+* **toaster:** add toast.accent() and deprecate toast.primary() ([97ac042](https://github.com/ovh/design-system/commit/97ac0428db6dbf3985deaa7b8487a0ab837d9210))
+
+
+### BREAKING CHANGES
+
+* **themes:** the @ovhcloud/ods-themes/default export (the theme with its
+fonts inlined as base64) is removed: load default/css with default/fonts or
+./fonts-base64. The built files and the Sass sources moved in the package.
+The JavaScript entry point (ODS_THEME, ODS_THEMES) is removed. See BC-31,
+BC-32 and BC-33.
+* **link:** a link with text is underlined at rest, and its hover
+underline is 2px. Closest to 19.7.3, without the sweep, for every link:
+:root { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 1px; }.
+* **ods-react:** Switch, SwitchItem, SWITCH_SIZE(S), their types, the
+@ovhcloud/ods-react/switch entry point and the --ods-switch-* custom
+properties are removed: use Tabs with the switch variant, ButtonGroup or
+RadioGroup. Pagination and Toggle require children (PaginationPages,
+ToggleControl), and renderTotalItemsLabel and withPageSizeSelector are
+removed: use PaginationPageSizeSelector. position, gutter, sameWidth and
+fitControlWidth are removed from Menu, Popover, Select and Tooltip: use
+overlayConfig. uploadSuccessLabel is removed from FileUploadItem.
+* **modal:** the Modal content draws --ods-semantic-shadow-overlay in
+every theme, where 19.7.3 drew no shadow. Keep 19.7.3 with
+[data-ods="modal-content"] { box-shadow: none; }.
+* **badge:** --ods-badge-background-color-<status> and
+--ods-badge-text-color-<status> (accent, critical, information, neutral,
+success, warning) are removed. A 19.7.3 override maps to the -high name,
+together with emphasis="high" on the Badge.
+* **badge:** the Badge is wider in the default theme: its horizontal
+padding goes from 4px to 8px (6px to 12px in lg).
+* **themes:** the green and orange palette rungs 600 to 900 change
+value, and --ods-semantic-color-content-on-success and
+--ods-semantic-color-content-on-warning move from the 800 rung to 700.
+* **themes, ods-react:** the Badge status custom properties paint the medium
+emphasis, the tint moving to the -high names; the Badge and Message high
+emphases get a border; the Query Filter tags are accent; the Link hover
+keeps its rest color and reads --ods-link-text-color-hover; the v19
+--ods-theme-input-text-color-checked migrates to
+--ods-semantic-color-content-on-control-solid.
+* **ods-react:** these mixins fail to compile on an unknown value instead
+of emitting no color.
+* **button:** ods-button-variant-default, -ghost and -outline become
+ods-button-emphasis-high, -low and -medium, and
+--ods-button-<property>-color-<status>[-hover|-active] becomes
+-<status>-high, -<status>-ghost* becomes -<status>-low*, -<status>-outline*
+becomes -<status>-medium*.
+* **ods-react:** --ods-button-text-color-<status>-hover and -active,
+--ods-button-border-color-<status>-ghost (with -hover and -active) and
+--ods-tag-text-color-<status>-hover and -active are removed; they were
+never read.
+* **button:** the --ods-button-*-information*, --ods-button-*-success*
+and --ods-button-*-warning* custom properties are removed, and the
+ods-button-variant-default, -ghost and -outline mixins no longer accept
+'information', 'success' or 'warning'.
+* **ods-react:** the --ods-badge-*-primary*, --ods-card-*-primary,
+--ods-message-*-primary-*, --ods-tag-*-primary* custom properties and
+the 'primary' value of their Sass mixins are renamed accent; the
+--ods-button-*-primary* ones and the 'primary' value of the
+ods-button-variant-* mixins are renamed brand.
+* **form-fields:** fields no longer stretch to their container nor shrink to their content by default; size a field through its root className or style. The Select and Combobox roots now always carry a CSS-module class and render as inline-block.
+* **ods-react:** color is removed from Badge, Button, Card, Divider,
+Message, ModalContent, Spinner and Tag, with the XXX_COLOR(S) and
+XxxColor exports and toast.primary(): use status (primary becomes accent,
+brand on Button), role="alertdialog" or --ods-spinner-color.
+* **message:** the Message variant prop is removed, with MESSAGE_VARIANT,
+MESSAGE_VARIANTS and MessageVariant: use emphasis (default becomes high,
+light becomes medium). A Message without prop now renders as medium, and
+the colors change in every emphasis. The ods-message-variant-* mixins are
+renamed ods-message-emphasis-*, the --ods-message-* custom properties get
+a -high, -medium or -low suffix, the medium border has its own custom
+property and --ods-message-close-button-text-color-primary is removed.
+* **button:** the Button variant prop is removed with BUTTON_VARIANT, BUTTON_VARIANTS and ButtonVariant: use emphasis (default -> high, outline -> medium, ghost -> low). A Button without emphasis now renders as medium (the v19 outline): set emphasis to high to keep the filled rendering.
+* **table:** the Table variant prop is removed with TABLE_VARIANT, TABLE_VARIANTS and TableVariant. Replace variant="striped" with striped, and drop variant="default".
+* **themes:** the --ods-theme-*, --ods-color-* and 13 remaining legacy
+tokens are removed without alias, read the --ods-semantic-* role that
+replaces each one (BC-01 to BC-03). The palette is rebuilt on the rungs 50 to
+900 (BC-04), 161 SCSS variables of src/default/_variables.scss are removed,
+the breakpoints included, which @ovhcloud/ods-react/style still exports
+(BC-05), and ./default/tokens holds only the new names (BC-06).
+* **themes:** @ovhcloud/ods-themes/default/css ships the Aluminium look,
+import @ovhcloud/ods-themes/blue-jeans/css right after it to keep the
+OVHcloud look (BC-07). A 19.x custom theme no longer applies: a v20 theme
+re-declares the --ods-palette-brand-* and --ods-palette-accent-* ramps
+(BC-20).
+* **themes:** component tokens now read the semantic layer, and 25 of them
+are removed or renamed, so an override of one is silently ignored (BC-08):
+among them --ods-button-border-radius-width becomes --ods-button-border-width
+(BC-18), and --ods-code-primary-color, --ods-code-secondary-color and
+--ods-code-trigger-background-color become --ods-code-text-color,
+--ods-code-background-color and --ods-code-trigger-color (BC-17). Six
+variables of @ovhcloud/ods-react/style now hold a var() string and fail in
+Sass arithmetic, and 11 of its exports are removed (BC-12, BC-16, BC-18).
+* **themes:** the default rendering changes: Card defaults to neutral
+(BC-09), Button has a 4px radius at every size (BC-10), Accordion takes the
+whole container radius (BC-11), a disabled component is dimmed with an opacity
+instead of being repainted grey (BC-12), form fields paint their own
+background (BC-14), a modal always stacks above a drawer (BC-15), and Card,
+Tile, Accordion, Badge, Tabs, the multiple Combobox tags and the transitions
+render differently (BC-19).
+* **themes:** the default font family is renamed from 'Source Sans Pro' to
+'Source Sans 3' in --ods-theme-font-family, --ods-font-family-default and the
+@font-face rules, without alias. CSS or custom themes that write
+'Source Sans Pro' explicitly must use var(--ods-theme-font-family) or
+'Source Sans 3' instead.
+* **docs:** replace the storybook package with the docs platform
+
+
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

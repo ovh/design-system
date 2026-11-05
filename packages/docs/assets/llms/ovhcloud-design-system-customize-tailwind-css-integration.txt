@@ -3,9 +3,9 @@ title: "Tailwind CSS Integration"
 slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
-version: 19.7.3
-tokens: 2634
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
+version: 20.0.0-alpha.0
+tokens: 2644
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
 # Tailwind CSS Integration
@@ -115,7 +115,7 @@ Every utility has an `ods-` prefix, which keeps it apart from the Tailwind defau
   </tr>
   </tbody>
 
-A utility is named after its token: `--ods-semantic-color-surface-raised` gives `bg-ods-surface-raised`, `--ods-semantic-size-space-gap-group` gives `gap-ods-gap-group`. See [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) for what each token is for. The palette (`--ods-palette-*`) is not mapped: use the semantic tokens, the ones a theme re-points.
+A utility is named after its token: `--ods-semantic-color-surface-raised` gives `bg-ods-surface-raised`, `--ods-semantic-size-space-gap-group` gives `gap-ods-gap-group`. See [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) for what each token is for. The palette (`--ods-palette-*`) is not mapped: use the semantic tokens, the ones a theme re-points.
 
 ```tsx
 import { BADGE_STATUS, Badge, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
@@ -138,7 +138,7 @@ The tokens Tailwind has no theme for are not mapped. Read them with the variable
 
 ## Themes
 
-The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their values. The same classes follow the theme the page loads, dark themes included, with no Tailwind configuration: load another theme, or switch themes as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) explains, and they change with it.
+The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their values. The same classes follow the theme the page loads, dark themes included, with no Tailwind configuration: load another theme, or switch themes as [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) explains, and they change with it.
 
 Import another theme instead of the default one, after `@ovhcloud/ods-tailwind`. A theme is complete: import only one, with the fonts it names.
 
@@ -158,7 +158,7 @@ To follow the system setting with no JavaScript, condition each mode on it, so t
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
-A theme switched from your code, as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) does it with a `<link>` in the `<head>`, is loaded outside `@ovhcloud/ods-tailwind`: declare the layer order first in the `<head>`, before that `<link>` (see **Import order**), or the theme sets it and the Tailwind base styles reset the ODS components.
+A theme switched from your code, as [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) does it with a `<link>` in the `<head>`, is loaded outside `@ovhcloud/ods-tailwind`: declare the layer order first in the `<head>`, before that `<link>` (see **Import order**), or the theme sets it and the Tailwind base styles reset the ODS components.
 
 ```html
 <style>@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;</style>
@@ -232,5 +232,5 @@ In VS Code, install the [Tailwind CSS IntelliSense](https://marketplace.visualst
 
 - [Tailwind CSS theme variables](https://tailwindcss.com/docs/theme)
 - [Tailwind CSS v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide)
-- [ODS Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)
-- [ODS Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens)
+- [ODS Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes)
+- [ODS Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens)

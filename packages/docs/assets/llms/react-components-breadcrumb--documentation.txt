@@ -3,14 +3,14 @@ title: "Breadcrumb"
 slug: breadcrumb
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1114
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1118
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-breadcrumb--documentation.txt
 ---
 
 # Breadcrumb
 
-_A list of [Links](https://ovh.github.io/design-system/v19.7.3/components/link) showing the current page location in the navigational hierarchy._
+_A list of [Links](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) showing the current page location in the navigational hierarchy._
 
 ## Overview
 
@@ -94,7 +94,7 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 
 **Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify them.
 
-**Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v19.7.3/components/link).
+**Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link).
 
 ```tsx
 <Breadcrumb aria-label="Breadcrumb">

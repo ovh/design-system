@@ -3,9 +3,9 @@ title: "Get Started"
 slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1174
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
+version: 20.0.0-alpha.0
+tokens: 1176
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-get-started.txt
 ---
 
 # Get Started
@@ -107,7 +107,7 @@ via Sass import:
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
-ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
+ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
 
 ## Server-side rendering
 

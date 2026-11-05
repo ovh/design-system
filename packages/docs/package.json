@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-docs",
-  "version": "19.7.3",
+  "version": "20.0.0-alpha.0",
   "type": "module",
   "scripts": {
     "build": "pnpm generate:versions && vite build",
@@ -16,19 +16,19 @@
     "@ark-ui/react": "5.39.0",
     "@mdx-js/react": "3.1.1",
     "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-recipes": "workspace:*",
     "@ovhcloud/ods-themes": "workspace:*",
     "@shikijs/langs": "4.3.0",
     "@shikijs/themes": "4.3.0",
     "@storybook/react": "8.6.12",
+    "lz-string": "^1.5.0",
     "markdown-to-jsx": "9.10.2",
     "monaco-editor": "0.52.2",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-frame-component": "5.3.2",
     "react-router-dom": "7.18.0",
-    "storybook": "8.6.12",
-    "@ovhcloud/ods-recipes": "workspace:*",
-    "lz-string": "^1.5.0"
+    "storybook": "8.6.12"
   },
   "devDependencies": {
     "@mdx-js/mdx": "3.1.1",

@@ -3,9 +3,9 @@ title: "Logo"
 slug: logo
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 112
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo--technical-information.txt
 ---
 
 # Logo

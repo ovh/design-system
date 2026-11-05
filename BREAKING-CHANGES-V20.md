@@ -995,7 +995,7 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | The `./default` export, the default theme with its fonts inlined as base64 (731 KB), is removed. The base64 fonts are exported alone as `./fonts-base64`, the fonts of the themes ODS ships, to load instead of `./default/fonts`. |
+| **Change** | The `./default` export, the default theme with its fonts inlined as base64 (722 KB), is removed. The base64 fonts are exported alone as `./fonts-base64`, the fonts of the themes ODS ships, to load instead of `./default/fonts`. |
 | **Impact** | `import '@ovhcloud/ods-themes/default'` fails to resolve (`ERR_PACKAGE_PATH_NOT_EXPORTED`), at build time. |
 | **Detection** | `grep -rnE "ods-themes/default['\"]" src/` |
 | **Codemod** | **automatable** - replace the import with `./default/css` plus `./default/fonts`, or `./fonts-base64` where the font files cannot be served. |

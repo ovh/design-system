@@ -356,7 +356,7 @@ function destinations() {
   return out;
 }
 
-const themeSource = fs.readFileSync(path.join(REPO, 'packages/themes/src/default/index.scss'), 'utf8')
+const themeSource = fs.readFileSync(path.join(REPO, 'packages/themes/src/aluminium/light.scss'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '')
   .replace(/\/\/.*$/gm, '');
 const declared = new Set(themeSource.match(/--ods-[a-z0-9-]+(?=\s*:)/g));

@@ -42,8 +42,12 @@ body {
   font-family: var(--ods-semantic-font-family-body);
 }
 
+/* position: the containing block of the absolute elements inside. A visually hidden one, such as the
+   native select of a Select, otherwise sits against the page at its place in the flow and makes it
+   scroll. */
 .shell {
   display: grid;
+  position: relative;
   grid-template-columns: 296px 1fr;
   height: 100dvh;
   overflow: hidden;
@@ -268,7 +272,7 @@ body {
   padding: 0;
 }
 
-/* The dark scheme is the ODS aluminium-dark theme (themeStyles.ts). Token values alone do not flip
+/* The dark scheme is a dark ODS theme (themeStyles.ts). Token values alone do not flip
    the UA's own painting: native fields and scrollbars follow color-scheme. */
 [data-theme="dark"] {
   color-scheme: dark;

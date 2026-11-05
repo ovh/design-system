@@ -3,8 +3,8 @@
 /*
  * Writes theme.css, the Tailwind v4 @theme block that maps utilities to the ODS semantic tokens.
  *
- * Read from the default theme's tokens.json: the other themes are overlays loaded after it, which
- * re-point a subset of these semantic tokens and add none (tests/run.mjs checks it). The block
+ * Read from the default theme's tokens.json: every theme declares the same semantic tokens (the
+ * themes build checks it), with its own values. The block
  * points at the tokens (`inline`, so that each utility reads the ODS variable where it is used),
  * never at their values, so one file serves every theme and follows a theme switch.
  */

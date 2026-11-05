@@ -38,7 +38,7 @@ not the history of the branch.
 | [BC-04](#bc-04--palette-rungs-000--025--075-retired) | `@ovhcloud/ods-themes` | palette rungs `000` / `025` / `075` retired | n/a (covered by BC-02) |
 | [BC-05](#bc-05--scss-variables-ods--removed) | `@ovhcloud/ods-themes` | SCSS `$ods-*` variables removed (161) | manual |
 | [BC-06](#bc-06--defaulttokensjson-content-replaced) | `@ovhcloud/ods-themes` | `./default/tokens` JSON content replaced | manual |
-| [BC-07](#bc-07---the-default-theme-no-longer-looks-like-ovhcloud) | `@ovhcloud/ods-themes` | the default theme no longer looks like OVHcloud | partial |
+| [BC-07](#bc-07---the-default-theme-no-longer-looks-like-ovhcloud) | `@ovhcloud/ods-themes` | the default theme no longer looks like OVHcloud | automatable |
 | [BC-08](#bc-08--tier-3-component-token-values-re-bound) | `@ovhcloud/ods-react` | tier-3 component token values re-bound | none needed |
 | [BC-09](#bc-09---card-defaults-to-neutral) | `@ovhcloud/ods-react` | `Card` defaults to `neutral` | automatable |
 | [BC-10](#bc-10--button-radius-moves-to-the-control-family) | `@ovhcloud/ods-react` | `Button` radius is 4px at every size | manual |
@@ -62,6 +62,9 @@ not the history of the branch.
 | [BC-28](#bc-28---the-positioning-props-replaced-by-overlayconfig-removed) | `@ovhcloud/ods-react` | `position`, `gutter`, `sameWidth` and `fitControlWidth` removed from `Menu`, `Popover`, `Select` and `Tooltip` | automatable |
 | [BC-29](#bc-29---fileuploaditem-uploadsuccesslabel-removed) | `@ovhcloud/ods-react` | `FileUploadItem` `uploadSuccessLabel` removed | automatable |
 | [BC-30](#bc-30---the-tailwind-configuration-of-the-19x-guide-no-longer-applies) | documentation | the Tailwind configuration of the 19.x guide no longer applies | manual |
+| [BC-31](#bc-31---the-base64-theme-bundle-default-removed) | `@ovhcloud/ods-themes` | the base64 theme bundle `./default` removed | automatable |
+| [BC-32](#bc-32---the-theme-files-moved-in-the-package) | `@ovhcloud/ods-themes` | the theme files moved in the package (`dist/`, `src/`) | automatable |
+| [BC-33](#bc-33---the-ods_theme-and-ods_themes-exports-removed) | `@ovhcloud/ods-themes` | the `ODS_THEME` and `ODS_THEMES` exports removed | manual |
 
 ## The v20 token contract
 
@@ -438,7 +441,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | **Impact** | No numeric fallback. A consumer cannot mechanically map `--ods-color-primary-025` onto a palette rung, which is why BC-02 sends them to a role instead. A site moved to the palette by number, or a Sass read of `$ods-palette-gray-200`, silently gets another color. |
 | **Detection** | `grep -rnE -- '--ods-color-[a-z]+-(000\|025\|075)' src/` |
 | **Codemod** | n/a - handled by BC-02 |
-| **Source of truth** | `packages/themes/src/default/_variables.scss` |
+| **Source of truth** | `packages/themes/src/aluminium/_variables.scss`, `packages/themes/src/blue-jeans/_variables.scss` |
 
 ---
 
@@ -448,10 +451,10 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
 | **Change** | 161 of the 207 SCSS variables of `src/default/_variables.scss` are gone: the whole `$ods-color-*` ramp, `$ods-color-brand-*`, the flat form-element variables, the breakpoints, the named palette colors and the dimension variables listed in BC-03. 46 palette variables keep their name, but only 10 keep their value (blue `500`-`900`, gray `600`-`900`, white, see BC-04). 25 are new: the `50` rungs, the navy ramp, black, the four decorative colors and the opacity rungs. |
-| **Impact** | No export condition forwards the file, in 19.7.3 as in v20: only a consumer who resolved `src/default/_variables.scss` by path reaches it. A removed variable fails at build time; a kept one that changed value does not fail at all. |
+| **Impact** | No export condition forwards the file, in 19.7.3 as in v20: only a consumer who resolved `src/default/_variables.scss` by path reaches it, and that path is gone too (see BC-32). A removed variable fails at build time; a kept one that changed value does not fail at all. |
 | **Detection** | `grep -rnE "ods-themes/src/default/_?variables" src/`: the path is the only way to these variables, so the import finds every file that reads them |
 | **Codemod** | **manual** - a SCSS variable is compile-time, so the right answer is usually "stop using it, read the custom property instead". The breakpoints are still exported by `@ovhcloud/ods-react/style`, under the same names. |
-| **Source of truth** | `packages/themes/src/default/_variables.scss` |
+| **Source of truth** | `packages/themes/src/aluminium/_variables.scss`, `packages/themes/src/blue-jeans/_variables.scss` |
 
 ---
 
@@ -463,7 +466,7 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | **Change** | `@ovhcloud/ods-themes/default/tokens` still resolves and keeps its shape, but no key survives: the 187 old names are out, and 282 new ones are in (191 `--ods-semantic-*` and 91 `--ods-palette-*`, of which 20 are the brand and accent ramps). `root` maps each name to what it resolves to, always a literal: in 19.7.3 it gave the declared value, and 24 of its 187 values were `var()` references (`--ods-theme-primary-color` was `var(--ods-color-primary-500)`). A new `refs` object gives the declared value of the 160 tokens that point at another one (`var(...)`). Values are the unconditional ones: the reduced-motion durations declared under `@media (prefers-reduced-motion: reduce)` are not in the JSON. |
 | **Impact** | Anything reading the JSON by key - a theme editor, a Figma sync, a docs table - reads `undefined`. |
 | **Detection** | `grep -rn 'ods-themes/default/tokens' src/` |
-| **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. |
+| **Codemod** | **manual** - depends entirely on what the consumer does with the JSON. Each theme ships its own JSON with the same keys (`blue-jeans/tokens`, `aluminium-dark/tokens`, `blue-jeans-dark/tokens`): an app that moves to `blue-jeans/css` (BC-07) reads `blue-jeans/tokens`, `default/tokens` keeps the Aluminium values. |
 | **Source of truth** | `packages/themes/scripts/generate-token-lists.js` |
 
 ---
@@ -473,14 +476,14 @@ wraps (`control`, `container`, `overlay`, `pill`, `full`) and there is no rung b
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the navy family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a `:root` overlay that re-aims the accent ramp onto blue, redeclares the green, orange and red families with their v19 values and overrides the roles that differ. |
-| **Impact** | The largest visible change of the major: an app that imports only the default theme changes color almost everywhere. Loading `blue-jeans/css` *before* `default/css`, or a second copy of `default/css` injected later (a micro-frontend shipping its own), silently brings the default look back, because both declare their tokens on `:root` and the last one wins. |
+| **Change** | `@ovhcloud/ods-themes/default/css` now ships the Aluminium look: a grey page, and the accent ramp `--ods-palette-accent-*` (selection, text, headings, form controls) aliased to the navy family. The brand ramp `--ods-palette-brand-*` still aliases blue. The OVHcloud look is `@ovhcloud/ods-themes/blue-jeans/css`, a complete theme that aims the accent ramp at blue, keeps the green, orange and red families at their v19 values and sets the roles that differ. |
+| **Impact** | The largest visible change of the major: an app that imports only the default theme changes color almost everywhere. A copy of `default/css` loaded after `blue-jeans/css` (a micro-frontend shipping its own) silently brings the default look back, because both declare all their tokens on `:root` and the last one wins. |
 | **Detection** | `grep -rn 'ods-themes/default/css' src/` - every app that imports it alone |
-| **Codemod** | **partial** - add `import '@ovhcloud/ods-themes/blue-jeans/css'` right after the default import to keep the OVHcloud look. Where the theme is injected at runtime, the order has to be checked by hand. |
-| **Source of truth** | `packages/themes/src/default/index.scss`, `packages/themes/src/blue-jeans/index.scss` |
+| **Codemod** | **automatable** - replace the `default/css` import with `@ovhcloud/ods-themes/blue-jeans/css` to keep the OVHcloud look; replace an `@ovhcloud/ods-themes/default` import (removed, BC-31) with `blue-jeans/css` plus `default/fonts`. Where a theme is injected at runtime, check by hand that no other theme loads after it. |
+| **Source of truth** | `packages/themes/src/aluminium/light.scss`, `packages/themes/src/blue-jeans/light.scss` |
 
 This is the intended delivery: the default theme ships the Aluminium look, and the OVHcloud look
-stays the `blue-jeans` overlay, loaded after it.
+is the `blue-jeans` theme, loaded instead of it.
 
 ---
 
@@ -710,7 +713,7 @@ goes under the v20 modal.
 | **Impact** | Visual only. On a tinted ground, a card or an accordion now shows a white box. `status="accent"`, which brings back the 19.7.3 color of a `Card` without status (BC-09), does not bring back its transparency. |
 | **Detection** | none to run - it applies to every `<Card>`, `<Tile>`, `<Accordion>`, `<Badge>`, `<Tabs>`, `<Link>`, `<Breadcrumb>`, `<Markdown>`, `<Modal>`, multiple `<Combobox>` and `<QueryFilter>`, and to every `@include ods-link()`. For the Link underline: a `Link` that wraps a `Button` or an image, `rg -U -l '<(Ods)?Link\b[^>]*>\s*<(Button\|img)\b' -g '*.tsx' src`; the links of a `Menu` or a `Popover`, `rg -U -l '<(MenuItem\|PopoverContent)\b[^<]*>[\s\S]{0,400}?<(Ods)?Link\b' -g '*.tsx' src`; the rules on the `::after` of a link, `grep -rnE -A8 'ods-link\(\)\|data-ods=.(breadcrumb-)?link' src/ \| grep -E '::after\|scaleX\|height'` |
 | **Codemod** | **manual** - add the rules below to the consumer stylesheet, outside any `@layer`. |
-| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/style/_link.scss`, `packages/ods-react/src/components/link/src/components/link/Link.tsx` (icon-only links), `packages/ods-react/src/components/pagination/src/components/pagination-item/paginationItem.module.scss` and `pagination-pages/paginationPages.module.scss`, `packages/ods-react/src/components/breadcrumb/src/components/breadcrumb-ellipsis/breadcrumbEllipsis.module.scss`, `packages/ods-react/src/style/_modal.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/ods-react/src/components/query-filter/src/components/query-filter-tags/QueryFilterTags.tsx`, `packages/themes/src/default/index.scss` (motion) |
+| **Source of truth** | `packages/ods-react/src/components/card/src/components/card/card.module.scss`, `packages/ods-react/src/components/accordion/src/components/accordion/accordion.module.scss`, `packages/ods-react/src/style/_badge.scss`, `packages/ods-react/src/components/tabs/src/components/tab/tab.module.scss`, `packages/ods-react/src/style/_link.scss`, `packages/ods-react/src/components/link/src/components/link/Link.tsx` (icon-only links), `packages/ods-react/src/components/pagination/src/components/pagination-item/paginationItem.module.scss` and `pagination-pages/paginationPages.module.scss`, `packages/ods-react/src/components/breadcrumb/src/components/breadcrumb-ellipsis/breadcrumbEllipsis.module.scss`, `packages/ods-react/src/style/_modal.scss`, `packages/ods-react/src/components/combobox/src/components/combobox-control/ComboboxControl.tsx`, `packages/ods-react/src/components/query-filter/src/components/query-filter-tags/QueryFilterTags.tsx`, `packages/themes/src/aluminium/light.scss` (motion) |
 
 - **Card, Tile and Accordion** paint `--ods-semantic-color-surface-raised` where 19.7.3 painted no
   background, through the new `--ods-card-background-color` and `--ods-accordion-background-color`.
@@ -819,11 +822,11 @@ goes under the v20 modal.
 | field | value |
 | --- | --- |
 | **Package** | `@ovhcloud/ods-themes` |
-| **Change** | A 19.x custom theme, Theme Generator exports included, declares `--ods-theme-*` and `--ods-color-*`, which v20 neither declares nor reads. A v20 theme re-declares the brand and accent ramps, `--ods-palette-brand-*` and `--ods-palette-accent-*` (`50` to `900`), on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`. |
+| **Change** | A 19.x custom theme, Theme Generator exports included, declares `--ods-theme-*` and `--ods-color-*`, which v20 neither declares nor reads. A v20 theme re-declares the brand and accent ramps, `--ods-palette-brand-*` and `--ods-palette-accent-*` (`50` to `900`), on `:root`, in a stylesheet loaded after the theme it builds on. Load a single theme, then your stylesheet after it: a theme loaded after your stylesheet overrides every token it declares, palette ramps included. |
 | **Impact** | Silent: the custom theme has no effect, and nothing warns. The ramps do not reach every role: the focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, by design. Over `default/css` alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): a brand theme re-declares these three roles to repaint them. `blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`, where the roles are computed: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves. |
 | **Detection** | `grep -rnE -- "--ods-(theme\|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/`: it finds a theme written as CSS, as the JSON the 19.x Theme Generator exports, or as that object kept in a JS or TS file |
 | **Codemod** | **manual** - move the brand colors onto the two ramps, then re-declare the roles the ramps do not reach. |
-| **Source of truth** | `packages/themes/src/default/index.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/index.scss` (a theme written this way) |
+| **Source of truth** | `packages/themes/src/aluminium/light.scss` (the roles and the ramps they read), `packages/themes/src/blue-jeans/light.scss` (a theme written this way) |
 
 ---
 
@@ -836,7 +839,7 @@ goes under the v20 modal.
 | **Impact** | Visual only, nothing fails. A field that filled a form column, a `FormField` or a table cell now stops at `280px`. |
 | **Detection** | none to run - it applies to every listed field; review the forms whose layout relied on full-width `Select` or `Combobox` |
 | **Codemod** | **manual** - set `width: 100%` on the root of the field to fill the container again (a `className` on `Input` and `Password`, on both `Datepicker` and `DatepickerControl`), never on `SelectControl`, `ComboboxControl` or `PhoneNumberControl`; or change every field at once by re-declaring `--ods-semantic-size-inline-size-field`. |
-| **Source of truth** | `packages/ods-react/src/style/_input.scss` (`ods-input-width()`), `packages/themes/src/default/index.scss` (the token) |
+| **Source of truth** | `packages/ods-react/src/style/_input.scss` (`ods-input-width()`), `packages/themes/src/aluminium/light.scss` (the token) |
 
 ---
 
@@ -987,6 +990,44 @@ goes under the v20 modal.
 
 ---
 
+## BC-31 - the base64 theme bundle `./default` removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-themes` |
+| **Change** | The `./default` export, the default theme with its fonts inlined as base64 (731 KB), is removed. The base64 fonts are exported alone as `./fonts-base64`, the fonts of the themes ODS ships, to load instead of `./default/fonts`. |
+| **Impact** | `import '@ovhcloud/ods-themes/default'` fails to resolve (`ERR_PACKAGE_PATH_NOT_EXPORTED`), at build time. |
+| **Detection** | `grep -rnE "ods-themes/default['\"]" src/` |
+| **Codemod** | **automatable** - replace the import with `./default/css` plus `./default/fonts`, or `./fonts-base64` where the font files cannot be served. |
+| **Source of truth** | `packages/themes/package.json` (exports), `packages/themes/src/fonts-base64.scss` |
+
+---
+
+## BC-32 - the theme files moved in the package
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-themes` |
+| **Change** | Every theme mode is one standalone stylesheet, built from a folder per theme. The export paths are unchanged; the files behind them move. Built files: `dist/default/index.css` -> `dist/aluminium/light.css`, `dist/default/fonts.css` -> `dist/fonts.css`, `dist/default/default.css` -> `dist/aluminium/light.css` + `dist/fonts-base64.css` (see BC-31), `dist/default/tokens.json` -> `dist/aluminium/light.tokens.json`. Sass sources: `src/default/index.scss` -> `src/aluminium/light.scss`, `src/default/_variables.scss` -> `src/aluminium/_variables.scss`, `src/default/fonts.scss` -> `src/fonts.scss`, `src/default/default.scss` -> `src/aluminium/light.scss` + `src/fonts-base64.scss`. The other themes are new in v20: the built files are not part of the public API, only the export paths are. |
+| **Impact** | A path through the exports (`@ovhcloud/ods-themes/default/css`, a `pkg:` Sass URL) still resolves. A path into the package fails: a `<link>` to a copied `dist` folder, a CDN URL (`https://unpkg.com/@ovhcloud/ods-themes@19.7.3/dist/default/index.css` bumped to 20), a bundler alias, or a Sass `@use` of `src/default/*`. A CSS link returns a 404 and the page renders without a theme; a Sass import fails at build time. |
+| **Detection** | `grep -rnE "ods-themes(@[^/]+)?/(dist\|src)/" .` (code, HTML, build configs, CDN URLs with a version) |
+| **Codemod** | **automatable** - rewrite each path with the mapping above, or import the export path instead (`@ovhcloud/ods-themes/<theme>/css`). |
+| **Source of truth** | `packages/themes/package.json` (exports) |
+
+---
+
+## BC-33 - the `ODS_THEME` and `ODS_THEMES` exports removed
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-themes` |
+| **Change** | The `.` export, the JavaScript entry point of the package, is removed with the `ODS_THEME` enum and the `ODS_THEMES` list it held. They only ever listed `default`, and no ODS code read them. |
+| **Impact** | `import { ODS_THEME, ODS_THEMES } from '@ovhcloud/ods-themes'` fails to resolve, at build time. |
+| **Detection** | `grep -rnE "ODS_THEMES?\b" src/` |
+| **Codemod** | **manual** - use the theme names directly (`default`, `aluminium-dark`, `blue-jeans`, `blue-jeans-dark`) or the export paths they map to (`@ovhcloud/ods-themes/<theme>/css`). |
+| **Source of truth** | `packages/themes/package.json` (exports) |
+
+---
 ## Not inventoried yet
 
 - A few `packages/docs` files still mention the old names: the historical entries of

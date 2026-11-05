@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 19.7.3
-tokens: 2505
+tokens: 2634
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -140,29 +140,34 @@ The tokens Tailwind has no theme for are not mapped. Read them with the variable
 
 The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their values. The same classes follow the theme the page loads, dark themes included, with no Tailwind configuration: load another theme, or switch themes as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) explains, and they change with it.
 
-Other themes are imported after the default theme, as without Tailwind, and after `@ovhcloud/ods-tailwind`:
+Import another theme instead of the default one, after `@ovhcloud/ods-tailwind`. A theme is complete: import only one, with the fonts it names.
 
 ```css
 /* index.css, with the Blue Jeans dark theme */
 @import '@ovhcloud/ods-tailwind';
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/blue-jeans/css';
 @import '@ovhcloud/ods-themes/blue-jeans-dark/css';
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
-To follow the system setting with no JavaScript, condition the dark theme on it:
+To follow the system setting with no JavaScript, condition each mode on it, so that only one applies:
 
 ```css
 @import '@ovhcloud/ods-tailwind';
-@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/css' (prefers-color-scheme: light);
 @import '@ovhcloud/ods-themes/aluminium-dark/css' (prefers-color-scheme: dark);
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
+A theme switched from your code, as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) does it with a `<link>` in the `<head>`, is loaded outside `@ovhcloud/ods-tailwind`: declare the layer order first in the `<head>`, before that `<link>` (see **Import order**), or the theme sets it and the Tailwind base styles reset the ODS components.
+
+```html
+<style>@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;</style>
+<link rel="stylesheet" id="ods-theme">
+```
+
 ### The dark variant
 
-If your own classes use the `dark:` variant, make it follow the same switch as the ODS dark theme. By default, it follows the color scheme of the operating system, as a dark theme loaded with `(prefers-color-scheme: dark)` does. If your code turns the dark theme on and off, also set an attribute of your own on `<html>`, `data-dark` for instance, and point the variant at it:
+If your own classes use the `dark:` variant, make it follow the same switch as the ODS dark theme. By default, it follows the color scheme of the operating system, as a dark theme loaded with `(prefers-color-scheme: dark)` does. If your code swaps the light and dark themes, also set an attribute of your own on `<html>`, `data-dark` for instance, and point the variant at it:
 
 ```css
 /* Tailwind CSS v4, in index.css */

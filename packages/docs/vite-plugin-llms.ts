@@ -221,7 +221,7 @@ function tokensTable(tokens: Token[]): string {
 }
 
 function renderDesignTokens(): string | null {
-  const theme = readJson('../themes/dist/default/tokens.json') as { refs?: Record<string, string>, root?: Record<string, string> } | null;
+  const theme = readJson('../themes/dist/aluminium/light.tokens.json') as { refs?: Record<string, string>, root?: Record<string, string> } | null;
   if (!theme?.root) {
     return null;
   }

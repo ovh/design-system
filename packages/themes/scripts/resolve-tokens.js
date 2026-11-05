@@ -12,7 +12,7 @@
  * context they were found in, so a block under an attribute selector or a media query is visible
  * instead of silently dropped.
  *
- * Usage: node scripts/resolve-tokens.js [compiled.css ...]   (default: dist/default/index.css)
+ * Usage: node scripts/resolve-tokens.js [compiled.css ...]   (default: dist/aluminium/light.css)
  */
 
 const postcss = require('postcss');
@@ -185,16 +185,17 @@ function resolveScopes(scopes) {
 }
 
 async function main() {
-  const files = process.argv.length > 2 ? process.argv.slice(2) : ['dist/default/index.css'];
+  const files = process.argv.length > 2 ? process.argv.slice(2) : ['dist/aluminium/light.css'];
   const output = {};
 
   for (const file of files) {
     const css = await fs.readFile(path.resolve(process.cwd(), file), { encoding: 'utf-8' });
 
     /*
-     * Keyed by the path as given, not by its basename: every theme compiles to an `index.css`, so
-     * a basename key made `dist/default/index.css` and `dist/blue-jeans/index.css` collide and the
-     * last file silently won - which is exactly the pair you pass when comparing two brands.
+     * Keyed by the path as given, not by its basename: the modes of every theme compile to
+     * `light.css` and `dark.css`, so a basename key made `dist/aluminium/light.css` and
+     * `dist/blue-jeans/light.css` collide and the last file silently won - which is exactly the pair
+     * you pass when comparing two brands.
      */
     output[file] = resolveScopes(collect(css));
   }

@@ -140,7 +140,7 @@ These are unchanged by the React version — they apply the same way on React 18
 
 <Heading label="Default theme" level={ 2 } />
 
-`@ovhcloud/ods-themes/default/css` now ships a neutral look: a grey page, and an accent ramp on navy for selection, text, headings and form controls. The OVHcloud look is a separate overlay, `@ovhcloud/ods-themes/blue-jeans/css`, to load **after** the default theme.
+`@ovhcloud/ods-themes/default/css` now ships a neutral look: a grey page, and an accent ramp on navy for selection, text, headings and form controls. The OVHcloud look is a theme of its own, `@ovhcloud/ods-themes/blue-jeans/css`, to load **instead of** the default theme.
 
 To find the imports in your code:
 
@@ -155,11 +155,30 @@ import '@ovhcloud/ods-themes/default/css';
 
 **after**, to keep the OVHcloud look
 ```ts
-import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/blue-jeans/css';
 ```
 
-The order matters: both declare their tokens on `:root`, and the last one loaded wins. A second copy of the default theme loaded later, for instance by a micro-frontend that ships its own, brings the neutral look back.
+Load a single theme. Every theme declares all its tokens on `:root`, and the last one loaded wins: a copy of the default theme loaded later, for instance by a micro-frontend that ships its own, brings the neutral look back.
+
+If you import `@ovhcloud/ods-themes/default`, the theme with its fonts, it is removed (see **Typography**). To keep the OVHcloud look, replace it with both lines below:
+
+```ts
+import '@ovhcloud/ods-themes/blue-jeans/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+If you load the theme files by path rather than through the package exports (a `<link>` to a copied `dist` folder, a CDN URL, a bundler alias), the files moved:
+
+- `dist/default/index.css` is `dist/aluminium/light.css`.
+- `dist/default/fonts.css` is `dist/fonts.css`.
+- `dist/default/default.css` is `dist/aluminium/light.css` with `dist/fonts-base64.css`.
+- `dist/default/tokens.json` is `dist/aluminium/light.tokens.json`.
+
+An old path returns a 404, and the page renders without a theme, with no build error. Prefer the export paths (`@ovhcloud/ods-themes/default/css`), which did not change. To find the paths:
+
+```sh
+grep -rnE "ods-themes(@[^/]+)?/(dist|src)/" .
+```
 
 <Heading label="Theme tokens" level={ 2 } />
 
@@ -201,7 +220,7 @@ The `--ods-palette-*` ramps are published, but a rung number does not give back 
 
 If you read the Sass variables of `@ovhcloud/ods-themes` by path, most are gone: read the custom properties instead. The breakpoints are still exported by `@ovhcloud/ods-react/style`.
 
-The path is the only way to these variables, so the import finds every file that reads them:
+The path was the only way to these variables, and it is gone too: the Sass sources moved out of `src/default`. The import finds every file that reads them:
 
 ```sh
 grep -rnE "ods-themes/src/default/_?variables" src/
@@ -300,7 +319,7 @@ To find them in your code:
 grep -rnE -- "--ods-(theme|color)-[a-z0-9-]+[\"']?[[:space:]]*:" src/
 ```
 
-In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` and `--ods-palette-accent-*`, from 50 to 900) on `:root`, in a stylesheet loaded after `@ovhcloud/ods-themes/default/css`.
+In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` and `--ods-palette-accent-*`, from 50 to 900) on `:root`, in a stylesheet loaded after the theme it builds on.
 
 **before**
 ```css
@@ -319,6 +338,8 @@ In v20, a theme re-declares the brand and accent ramps (`--ods-palette-brand-*` 
 ```
 
 The ramps do not reach every role. The focus ring (`--ods-semantic-color-focus`), the status families and the chart series keep their default values, on purpose. Over the default theme alone, the brand ghost and outline Buttons take their text from the accent ramp (`--ods-semantic-color-content-brand-minor` and `--ods-semantic-color-content-on-brand`, on accent `800`) and their border from gray (`--ods-semantic-color-border-brand-minor`): the brand ramp reaches neither, and the border follows no ramp. Re-declare these `--ods-semantic-*` roles to change them. `@ovhcloud/ods-themes/blue-jeans/css` points the three at the brand ramp instead (`500`, `700` and `500`), so a theme loaded after it repaints them through that ramp. The ramps also only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+Load a single theme, then your stylesheet after it: a theme loaded after your stylesheet overrides every token it declares, palette ramps included.
 
 <Heading label="Design tokens JSON" level={ 2 } />
 
@@ -343,6 +364,34 @@ import tokens from '@ovhcloud/ods-themes/default/tokens';
 
 const brand = tokens.root['--ods-semantic-color-surface-brand'];
 ```
+
+Each theme ships its own JSON, with the same keys: `@ovhcloud/ods-themes/blue-jeans/tokens`, `aluminium-dark/tokens` and `blue-jeans-dark/tokens`. If you move to Blue Jeans to keep the OVHcloud look, read `blue-jeans/tokens`: `default/tokens` gives the Aluminium values.
+
+<Heading label="Theme names in JavaScript" level={ 2 } />
+
+The JavaScript entry point of `@ovhcloud/ods-themes` is removed, with the `ODS_THEME` enum and the `ODS_THEMES` list it exported. They only ever held `default`. Importing them now fails at build time.
+
+To find them in your code:
+
+```sh
+grep -rnE "ODS_THEMES?\b" src/
+```
+
+**before**
+```ts
+import { ODS_THEME, ODS_THEMES } from '@ovhcloud/ods-themes';
+
+const theme = ODS_THEME.default;
+const themes = ODS_THEMES;
+```
+
+**after**
+```ts
+const theme = 'default';
+const themes = ['default', 'aluminium-dark', 'blue-jeans', 'blue-jeans-dark'] as const;
+```
+
+Keep the list of themes in your application: list the ones it offers, each loaded through its export path, `@ovhcloud/ods-themes/<theme>/css`.
 
 <Heading label="Component tokens and style variables" level={ 2 } />
 
@@ -552,7 +601,7 @@ The sweep only reaches `Link` and the `Breadcrumb` links: the ellipsis and the e
 
 The default font family is renamed from `'Source Sans Pro'` to `'Source Sans 3'`, the current name of the font. The font files shipped by ODS were already Source Sans 3, so the rendering is unchanged: only the CSS family name changes.
 
-`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default` and `@ovhcloud/ods-themes/default/fonts` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
+`--ods-semantic-font-family-body` and `--ods-semantic-font-family-heading` start with `'Source Sans 3'`, and the `@font-face` rules of `@ovhcloud/ods-themes/default/fonts` and `@ovhcloud/ods-themes/fonts-base64` declare the font under that name only: there is **no** `'Source Sans Pro'` alias. If you only use the theme tokens, with the fonts loaded by ODS, there is nothing to do, except in the cases below.
 
 If your CSS or a custom theme writes `'Source Sans Pro'`, it no longer matches any font loaded by ODS and the text falls back to the next font of your stack: use `var(--ods-semantic-font-family-body)`, or `'Source Sans 3'`, instead. In particular:
 
@@ -581,6 +630,36 @@ grep -rniE "source.?sans.?pro" src/
 ```
 
 If you reference the theme Sass sources or font files directly (Sass imports, copied assets, CDN URLs, `<link rel="preload">`), the `assets/fonts/source-sans-pro/` folder is renamed `assets/fonts/source-sans-3/`, and the `source-sans-pro-font-face` and `source-sans-pro-italic-font-face` mixins are renamed `source-sans-3-font-face` and `source-sans-3-italic-font-face`.
+
+The `@ovhcloud/ods-themes/default` import, the default theme with its fonts inlined as base64, is removed: it reloaded every font with the theme. Load the theme and the fonts separately. The base64 fonts remain, as a fallback for a setup that cannot serve the font files, in `@ovhcloud/ods-themes/fonts-base64`: the same fonts as `default/fonts`, those of the themes ODS ships, to load instead of it.
+
+**before**
+```typescript
+import '@ovhcloud/ods-themes/default';
+```
+
+**after**
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+Or, if your setup cannot serve the font files:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/fonts-base64';
+```
+
+In Sass, `@import '@ovhcloud/ods-themes/default';` becomes the same two imports, `default/css` and `default/fonts`.
+
+The build fails on the old import: Sass reports that it cannot find the stylesheet, and the bundler that the package does not export `./default` (`"./default" is not exported`, or `Missing "./default" specifier` with an older Vite).
+
+The import ends with `default`, so this search finds it in a JavaScript or a Sass file:
+
+```sh
+grep -rnE "ods-themes/default['\"]" src/
+```
 
 <Heading label="Behavior changes" level={ 2 } />
 

@@ -1,9 +1,9 @@
 // Compiles index.css with the Tailwind v4 compiler and checks the committed theme.css: every
 // utility reads its ODS variable, every mapped token has its utility, the ODS shadows compose with
 // the Tailwind rings, and the ODS layers sit between the Tailwind base and components.
-// Usage: node tests/run.mjs. With the themes built (dist/), it also checks that theme.css is up to
-// date with their tokens.
-import { existsSync, readFileSync } from 'node:fs';
+// Usage: node tests/run.mjs. With the themes built, it also checks that theme.css is up to date with
+// their tokens.
+import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +12,20 @@ import { compile } from 'tailwindcss';
 const PKG = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const { LEFT_OUT, NAMESPACES, themeVariables } = require('../scripts/generate-theme.js');
+
+/* The built file behind an export of @ovhcloud/ods-themes, or null while the themes are not built. */
+const built = (subpath) => {
+  try {
+    return require.resolve(`@ovhcloud/ods-themes/${subpath}`);
+  } catch (error) {
+    // The export points at a file of dist/, missing until the themes are built.
+    if (error.code === 'MODULE_NOT_FOUND') {
+      return null;
+    }
+    throw error;
+  }
+};
+const THEMES = ['default', 'aluminium-dark', 'blue-jeans', 'blue-jeans-dark'];
 
 const results = [];
 const check = (label, ok, detail = '') => {
@@ -75,11 +89,15 @@ check('the page font is the ODS body font', pageFont, html.slice(0, 120));
 
 // The ODS shadows compose with the Tailwind rings: Tailwind lists every shadow in one box-shadow, and
 // a token worth `none` would invalidate the whole list, ring included.
-if (existsSync(resolve(PKG, 'node_modules/@ovhcloud/ods-themes/dist/default/index.css'))) {
-  const theme = readFileSync(require.resolve('@ovhcloud/ods-themes/default/css'), 'utf8');
-  for (const name of ['control', 'raised', 'overlay']) {
-    const value = new RegExp(`--ods-semantic-shadow-${name}:\\s*([^;]+);`).exec(theme)?.[1].trim();
-    check(`shadow-ods-${name} composes with a ring`, !!value && value !== 'none', `--ods-semantic-shadow-${name}: ${value}`);
+for (const name of THEMES) {
+  const file = built(`${name}/css`);
+  if (!file) {
+    continue;
+  }
+  const theme = readFileSync(file, 'utf8');
+  for (const shadow of ['control', 'raised', 'overlay']) {
+    const value = new RegExp(`--ods-semantic-shadow-${shadow}:\\s*([^;]+);`).exec(theme)?.[1].trim();
+    check(`${name}: shadow-ods-${shadow} composes with a ring`, !!value && value !== 'none', `--ods-semantic-shadow-${shadow}: ${value}`);
   }
 }
 
@@ -90,9 +108,10 @@ const order = /@layer ([a-z, -]+);/.exec(compiler.build([]).replace('@layer prop
 check('the ODS layers sit between base and components', order === 'theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities', order ?? '(none)');
 
 // With the themes built: theme.css is up to date with the default theme's tokens, every token family
-// is mapped or left out on purpose, and the other themes add no semantic token.
-const tokensPath = resolve(PKG, 'node_modules/@ovhcloud/ods-themes/dist/default/tokens.json');
-if (existsSync(tokensPath)) {
+// is mapped or left out on purpose, and the other themes add no semantic token (the themes build
+// checks they declare the same ones).
+const tokensPath = built('default/tokens');
+if (tokensPath) {
   const { root: tokens } = JSON.parse(readFileSync(tokensPath, 'utf8'));
   let lines = [];
   try {
@@ -105,10 +124,10 @@ if (existsSync(tokensPath)) {
   const families = [...NAMESPACES.map(({ family }) => family), ...LEFT_OUT];
   const semantic = Object.keys(tokens).filter((name) => name.startsWith('--ods-semantic-'));
   check(`every semantic token is in a listed family (${semantic.length})`, semantic.every((name) => families.some((family) => name.slice(15).startsWith(family))));
-  for (const overlay of ['blue-jeans', 'aluminium-dark', 'blue-jeans-dark']) {
-    const css = readFileSync(require.resolve(`@ovhcloud/ods-themes/${overlay}/css`), 'utf8');
-    const added = [...new Set(css.match(/--ods-semantic-[a-z0-9-]+(?=\s*:)/g) ?? [])].filter((name) => !(name in tokens));
-    check(`${overlay} adds no semantic token`, added.length === 0, added.join(', '));
+  for (const name of THEMES.slice(1)) {
+    const css = readFileSync(built(`${name}/css`), 'utf8');
+    const added = [...new Set(css.match(/--ods-semantic-[a-z0-9-]+(?=\s*:)/g) ?? [])].filter((token) => !(token in tokens));
+    check(`${name} adds no semantic token`, added.length === 0, added.join(', '));
   }
 } else {
   results.push('-- the themes are not built: theme.css is not compared with their tokens (linters checks it)');

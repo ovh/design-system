@@ -1,5 +1,7 @@
-/* An overlay on the blue-jeans theme, at the same :root specificity: load it after blue-jeans/css.
-   Surfaces, structure and selection follow aluminium dark on navy; brand and accent stay blue, so the
+// The dark mode of the blue-jeans theme: its light mode, then what dark changes, baked into one file.
+@use './light';
+
+/* Surfaces, structure and selection follow aluminium dark on navy; brand and accent stay blue, so the
    selected Tile outline (border-accent) is blue. Status roles keep the blue-jeans ramps: pale fill 900, as
    their v19 ramps stop where aluminium's 800 sits (information 800, neutral gray-900), ink on the pale fill
    200, pale border 600 (information 500); Badge and Message keep the blue-jeans borderless tinted fill in
@@ -163,7 +165,7 @@
 
   /* Shadow */
   // The overlay shadow draws the edge of the overlays, which have no border. Re-declared here
-  // because blue-jeans, loaded before this overlay, sets its own shadow-overlay.
+  // because the light mode sets its own shadow-overlay.
   --ods-semantic-color-shadow-overlay: var(--ods-palette-black);
   --ods-semantic-shadow-overlay: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
 

@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1180
+tokens: 1174
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
 ---
 
@@ -85,8 +85,9 @@ import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
 
 ## Import theme & fonts
 
-You need to import a theme to display all the components correctly.
-It defines all the colors, typographies, etc...
+You need to import a theme to display all the components correctly. It defines all the colors, typographies, etc.
+
+A theme names its fonts but does not load them: load them too. The default theme uses Source Sans 3 and Source Code Pro, which ODS ships with its icon font.
 
 via ES import:
 
@@ -106,13 +107,7 @@ via Sass import:
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
-  
-
-  
-> In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default';`.
-> Though this will increase the bundle size and prevent browser resources loading optimization.
-
-The Blue Jeans theme and the dark themes are overlays, loaded **after** the default theme: [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) gives the imports of each theme, in order, and explains how to switch between them or create your own.
+ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
 
 ## Server-side rendering
 

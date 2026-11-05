@@ -1512,7 +1512,7 @@
       "slug": "ovhcloud-design-system-get-started",
       "title": "Get Started",
       "type": "overview",
-      "tokens": 1180,
+      "tokens": 1174,
       "url": "./ovhcloud-design-system-get-started.txt"
     },
     {
@@ -1554,7 +1554,7 @@
       "slug": "ovhcloud-design-system-customize-themes",
       "title": "Themes",
       "type": "overview",
-      "tokens": 1907,
+      "tokens": 1947,
       "url": "./ovhcloud-design-system-customize-themes.txt"
     },
     {
@@ -1575,7 +1575,7 @@
       "slug": "ovhcloud-design-system-customize-tailwind-css-integration",
       "title": "Tailwind CSS Integration",
       "type": "overview",
-      "tokens": 2505,
+      "tokens": 2634,
       "url": "./ovhcloud-design-system-customize-tailwind-css-integration.txt"
     },
     {
@@ -1638,7 +1638,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 19774,
+      "tokens": 20611,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

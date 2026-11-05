@@ -1,5 +1,7 @@
-/* An overlay on the default theme, at the same :root specificity: load it after default/css.
-   Status rungs: pale fill 800 (accent 700, neutral gray-900), pale border 600 (accent and information 500),
+// The dark mode of the aluminium theme: its light mode, then what dark changes, baked into one file.
+@use './light';
+
+/* Status rungs: pale fill 800 (accent 700, neutral gray-900), pale border 600 (accent and information 500),
    ink on the pale fill 200, status text 300, solid fill 500 with its hover on 600. */
 :root {
   /* Surfaces - canvas and layers */

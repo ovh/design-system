@@ -27874,7 +27874,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but several components render differently by default, as **Default rendering** lists, including with no prop set: a Card without `status` is neutral, and a Badge, Button or Message without `emphasis` is no longer filled or tinted (see **Badge**, **Button** and **Message**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but several components render differently with no prop set: see **Default rendering**. Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
@@ -28375,11 +28375,13 @@ To have a drawer win over a modal, pass a higher `z-index` to the drawer through
 
 ## Default rendering
 
-These changes need no code change: the new rendering is intended. To keep the v19 one, add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
+These changes need no code change: the new rendering is intended. To keep the v19 one, set the prop given below, or add the rule given below to your own stylesheet, outside any `@layer`, so that it wins over the ODS styles.
 
 - **Badge**: a pill with a colored border and colored text on the raised surface (the new `medium` emphasis), where v19 had 4px corners, no border and a tinted background (filled for `primary`). Every size keeps its v19 height, but the pill takes 8px on each side (12px in `lg`) where v19 took 4px (6px). To get closer to v19, use `emphasis="high"` for the tinted background and `[data-ods="badge"] { --ods-badge-border-radius: 4px; --ods-badge-padding-horizontal-sm: 3px; --ods-badge-padding-horizontal-md: 3px; --ods-badge-padding-horizontal-lg: 5px; }` for the corners and the widths, border included; the colors stay those of v20. The blue-jeans theme keeps the 4px corners and the v19 widths, and its `high` emphasis is the v19 tinted background without border (see Badge).
 - **Card and Tile**: a `--ods-semantic-color-surface-raised` background, where v19 had none. Keep v19: `[data-ods="card"], [data-ods="tile"] { --ods-card-background-color: transparent; }`.
 - **Card without `status`**: neutral, where v19 was primary. Keep v19: `status="accent"`.
+- **Button without `emphasis`**: outlined (`medium`), where a Button without `variant` was filled in v19. Keep v19: `emphasis="high"` (see **Button**).
+- **Message without `emphasis`**: the raised surface with a light colored border (`medium`), where a Message without `variant` had a tinted background in v19. Keep v19: `emphasis="high"` (see **Message**).
 - **Accordion**: a `--ods-semantic-color-surface-raised` background and 8px outer corners, where v19 had no background and 4px corners. Keep v19: `[data-ods="accordion"] { --ods-accordion-background-color: transparent; --ods-accordion-border-radius: 4px; }`.
 - **Button**: 4px corners at every size, where v19 had 2px (`xs`), 4px (`sm`) and 8px (`md`). Keep v19: `[data-ods="button"] { --ods-button-border-radius-xs: 2px; --ods-button-border-radius-sm: 4px; --ods-button-border-radius-md: 8px; }`.
 - **Input, Quantity, Textarea and the fields built on them**: a `--ods-semantic-color-surface-control` background, where v19 was transparent. Keep v19: `--ods-semantic-color-surface-control: transparent` on the container of the fields, never on `:root`, where it would also clear the open lists of Select, Combobox and Query Filter. In that container, it also clears the Checkbox, the Select control, the outline Button (a Cancel or Back button next to the fields), and a list rendered with `createPortal={ false }`, which sits inside the container.

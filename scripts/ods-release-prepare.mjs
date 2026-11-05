@@ -48,6 +48,13 @@ if (!(await $`git tag --list ${previousTag}`).stdout.trim()) {
 try {
   await $`git merge-base --is-ancestor ${previousTag} HEAD`;
 } catch {
+  // The graft gives HEAD two parents, and the changelog skips merge commits:
+  // HEAD itself is never listed. Only graft onto a commit it would skip anyway.
+  const message = (await $`git log -1 --format=%B HEAD`).stdout;
+  if (/^(feat|fix|perf|revert)\b|^\w+(\([^)]*\))?!:|^BREAKING[ -]CHANGE/m.test(message)) {
+    console.error(`HEAD "${message.split('\n')[0]}" would be left out of the changelog: commit the What's new entry first!`);
+    process.exit(1);
+  }
   const head = (await $`git rev-parse HEAD`).stdout.trim();
   const parents = (await $`git rev-parse HEAD^@`).stdout.trim().split('\n').filter(Boolean);
   await $`git replace --graft ${head} ${parents} ${previousTag}`;

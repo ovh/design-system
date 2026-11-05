@@ -21,7 +21,7 @@ Before starting, make sure you are on a release branch, your working tree is cle
 
 Create a branch named after the version you are about to release, from up-to-date `master`: `release/20.1.0`, `release/20.0.0-alpha.1`. The previous release must already be merged back into `master` (step 4), so that `lerna.json` holds its version. A fix for an older line is the exception, see [Maintenance](#maintenance-fix-an-older-line).
 
-The changelog lists the commits since the previous release tag. Release commits come back to `master` through a rebase merge, which leaves that tag behind, so the version command grafts it onto your branch locally (`git replace`: never pushed, files unchanged) and prints how to remove the graft afterwards. Your branch stays free of the tag's commits and still rebase-merges into `master`.
+The changelog lists the commits since the previous release tag. Release commits come back to `master` through a rebase merge, which leaves that tag behind, so the version command grafts it onto your branch locally (`git replace`: never pushed, files unchanged) and prints how to remove the graft afterwards. Your branch stays free of the tag's commits and still rebase-merges into `master`. The graft makes the last commit of the branch look like a merge, which the changelog skips: that commit must be the What's new entry (step 2), and the version command stops if it is a change the changelog would list.
 
 Commits made directly on a release branch come back to `master` as new commits, and the next changelog lists them again: land fixes on `master` first.
 

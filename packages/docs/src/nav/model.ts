@@ -128,6 +128,7 @@ const GUIDES_NAV: (NavSection | NavPage)[] = [
         id: 'previous-whats-new',
         title: "What's new in previous versions",
         children: [
+          { icon: ICON_NAME.file, id: 'guides/whats-new-v19', kind: 'guide', path: '/guides/whats-new-v19', title: 'v19' },
           { icon: ICON_NAME.file, id: 'guides/whats-new-v18', kind: 'guide', path: '/guides/whats-new-v18', title: 'v18' },
           { icon: ICON_NAME.file, id: 'guides/whats-new-v17', kind: 'guide', path: '/guides/whats-new-v17', title: 'v17' },
           { icon: ICON_NAME.file, id: 'guides/whats-new-v16', kind: 'guide', path: '/guides/whats-new-v16', title: 'v16' },

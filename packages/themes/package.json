@@ -9,36 +9,41 @@
     "directory": "packages/themes"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./default": {
-      "sass": "./src/default/default.scss",
-      "default": "./dist/default/default.css"
-    },
     "./default/css": {
-      "sass": "./src/default/index.scss",
-      "default": "./dist/default/index.css"
+      "sass": "./src/aluminium/light.scss",
+      "default": "./dist/aluminium/light.css"
     },
     "./default/fonts": {
-      "sass": "./src/default/fonts.scss",
-      "default": "./dist/default/fonts.css"
+      "sass": "./src/fonts.scss",
+      "default": "./dist/fonts.css"
+    },
+    "./fonts-base64": {
+      "sass": "./src/fonts-base64.scss",
+      "default": "./dist/fonts-base64.css"
     },
     "./default/tokens": {
-      "default": "./dist/default/tokens.json"
+      "default": "./dist/aluminium/light.tokens.json"
     },
     "./blue-jeans/css": {
-      "sass": "./src/blue-jeans/index.scss",
-      "default": "./dist/blue-jeans/index.css"
+      "sass": "./src/blue-jeans/light.scss",
+      "default": "./dist/blue-jeans/light.css"
+    },
+    "./blue-jeans/tokens": {
+      "default": "./dist/blue-jeans/light.tokens.json"
     },
     "./aluminium-dark/css": {
-      "sass": "./src/aluminium-dark/index.scss",
-      "default": "./dist/aluminium-dark/index.css"
+      "sass": "./src/aluminium/dark.scss",
+      "default": "./dist/aluminium/dark.css"
+    },
+    "./aluminium-dark/tokens": {
+      "default": "./dist/aluminium/dark.tokens.json"
     },
     "./blue-jeans-dark/css": {
-      "sass": "./src/blue-jeans-dark/index.scss",
-      "default": "./dist/blue-jeans-dark/index.css"
+      "sass": "./src/blue-jeans/dark.scss",
+      "default": "./dist/blue-jeans/dark.css"
+    },
+    "./blue-jeans-dark/tokens": {
+      "default": "./dist/blue-jeans/dark.tokens.json"
     }
   },
   "files": [
@@ -46,26 +51,25 @@
     "dist",
     "src"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
-    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && npm run build:css && npm run generate:tokens",
+    "build:prod": "npm run generate:base64-fonts && sass src:dist --no-source-map --pkg-importer=node && npm run build:css && npm run bake && npm run generate:tokens",
+    "bake": "node scripts/bake-themes.js",
     "build:css": "postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
     "build:watch": "sass --watch src:dist --no-source-map --pkg-importer=node",
     "clean": "rimraf dist",
+    "generate:base64-fonts": "node scripts/generate-base64-fonts.js",
     "generate:tokens": "node scripts/generate-token-lists.js",
-    "lint:css": "node scripts/check-retired-tokens.js && node scripts/repoint-tokens.js --tables > /dev/null",
+    "lint:css": "node scripts/check-retired-tokens.js && node scripts/repoint-tokens.js --tables > /dev/null && node scripts/generate-base64-fonts.js --check",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
-    "tokens:resolve": "sass src:dist --no-source-map --pkg-importer=node && node scripts/resolve-tokens.js",
-    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"
+    "tokens:resolve": "sass src:dist --no-source-map --pkg-importer=node && node scripts/resolve-tokens.js"
   },
   "devDependencies": {
     "autoprefixer": "10.4.17",
     "postcss": "8.4.35",
     "postcss-cli": "11.0.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.103.1",
-    "typescript": "6.0.3"
+    "sass": "1.103.1"
   },
   "browserslist": [
     "last 4 version",

@@ -1,33 +1,31 @@
-/* Compiled to strings instead of imported directly: the stylesheets have to be added and removed on
-   demand, which a plain `import '...css'` cannot do. */
-import aluminiumDarkCss from '../../../themes/src/aluminium-dark/index.scss?inline';
-import blueJeansCss from '../../../themes/src/blue-jeans/index.scss?inline';
-import blueJeansDarkCss from '../../../themes/src/blue-jeans-dark/index.scss?inline';
+/* Compiled to strings instead of imported directly: the stylesheet has to be swapped on demand,
+   which a plain `import '...css'` cannot do. */
+import aluminiumDarkCss from '@ovhcloud/ods-themes/aluminium-dark/css?inline';
+import blueJeansDarkCss from '@ovhcloud/ods-themes/blue-jeans-dark/css?inline';
+import blueJeansCss from '@ovhcloud/ods-themes/blue-jeans/css?inline';
 
 type Brand = 'blue-jeans' | 'default';
 type Scheme = 'dark' | 'light';
 
-/* The ODS stylesheets layered over the default theme main.tsx loads, all targeting :root at its
-   specificity: the brand theme, then its dark overlay. */
-const THEMES: Record<Brand, { dark: string, light: string }> = {
+/* Each mode is a complete theme. The default light one is the theme main.tsx loads, so it needs no
+   style of its own here. */
+const THEMES: Record<Brand, Record<Scheme, string>> = {
   'blue-jeans': { dark: blueJeansDarkCss, light: blueJeansCss },
   default: { dark: aluminiumDarkCss, light: '' },
 };
 
-/* Two style elements created once, in this order, so that the dark overlay always comes after the
-   brand, whichever of the two changes last. The demo frames mirror them (StyleSync). */
-const styleOf = (id: string): HTMLStyleElement => {
-  const existing = document.getElementById(id);
+/* One style element, after the theme main.tsx loads: it holds the theme shown, whole, so it wins over
+   that one on every token. The demo frames mirror it (StyleSync). */
+const themeStyle = ((): HTMLStyleElement => {
+  const existing = document.getElementById('ods-doc-theme');
   if (existing instanceof HTMLStyleElement) {
     return existing;
   }
   const style = document.createElement('style');
-  style.id = id;
+  style.id = 'ods-doc-theme';
   document.head.append(style);
   return style;
-};
-const brandStyle = styleOf('ods-doc-brand');
-const schemeStyle = styleOf('ods-doc-scheme');
+})();
 
 /* The brand is kept from one visit to the next, and applied from here: its select is not mounted
    while the navigation drawer is closed. */
@@ -46,11 +44,8 @@ const current: { brand: Brand, scheme: Scheme } = { brand: readStoredBrand(), sc
 /* data-theme marks the scheme actually shown, for what the docs paint themselves (code blocks,
    sandbox editor). */
 const apply = () => {
-  const theme = THEMES[current.brand];
-  const dark = current.scheme === 'dark';
-  brandStyle.textContent = theme.light;
-  schemeStyle.textContent = dark ? theme.dark : '';
-  if (dark) {
+  themeStyle.textContent = THEMES[current.brand][current.scheme];
+  if (current.scheme === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
   } else {
     document.body.removeAttribute('data-theme');

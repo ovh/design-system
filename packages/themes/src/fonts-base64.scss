@@ -1,0 +1,16 @@
+/*
+ * The same font-faces as fonts.scss, with the font files inlined as base64.
+ * A fallback for a setup that cannot serve the font files: it weighs about 700 KB, load it once,
+ * instead of fonts.scss.
+ */
+@use '../assets/fonts/ods-icon/icomoon/icomoon';
+@use '../assets/fonts/source-code-pro/base64/source-code-pro-variable';
+@use '../assets/fonts/source-code-pro/base64/source-code-pro-variable-italic';
+@use '../assets/fonts/source-sans-3/base64/source-sans3-variable-custom';
+@use '../assets/fonts/source-sans-3/base64/source-sans3-variable-custom-italic';
+@use './helpers/fonts';
+@include fonts.ods-icon-font-face(icomoon.$base64);
+@include fonts.source-code-pro-font-face(source-code-pro-variable.$base64);
+@include fonts.source-code-pro-italic-font-face(source-code-pro-variable-italic.$base64);
+@include fonts.source-sans-3-font-face(source-sans3-variable-custom.$base64);
+@include fonts.source-sans-3-italic-font-face(source-sans3-variable-custom-italic.$base64);

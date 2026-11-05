@@ -12,23 +12,15 @@ The ods-icon font is managed through icomoon.
 - click on `Generate Font` on the bottom, double-check that all icons and names are correct, then click on `Download`
 - unzip the downloaded file and copy all files from its `fonts` subdirectory plus the `selection.json` into `assets/fonts/ods-icon/icomoon`
 
-2. Transform into base64:
+2. Build the project
 
-As we can't provide the font from an external source for now, we have to embed it in the css.
-We'll use only the `.woff` file.
-
-From the `packages/themes` directory, run the following command to generate the `_icomoon.scss` file:
-```bash
-echo "\$base64: url(data:application/octet-stream;base64,$(base64 -b 0 -i ./assets/fonts/ods-icon/icomoon/icomoon.woff));" > ./assets/fonts/ods-icon/icomoon/_icomoon.scss
-```
-
-3. Build the project
-
-Run `npm run build:prod` at the root of the project.
+Run `npm run build:prod` at the root of the project. It also rewrites the base64 copy of the font
+read by `fonts-base64`, `assets/fonts/ods-icon/icomoon/_icomoon.scss`: commit it with the font
+files, `lint:css` fails when it is out of date.
 
 The new font is now available for other projects to use.
 
-4. Update `ods-icon`
+3. Update `ods-icon`
 
 Depending on your changes, you may need to go update the `ods-icon` component constants with the updated values.
 
@@ -41,8 +33,11 @@ You'll find the value of each icon content in the `style.css` file in the icomoo
 
 ## How to update the theme values?
 
-The palette values are in `src/default/_variables.scss`, transcribed by hand from MDS / Figma. The
-semantic roles, which point at the palette, are in `src/default/index.scss`.
+Each theme has its own folder, `src/aluminium` and `src/blue-jeans`, independent of the other. In
+each, the palette values are in `_variables.scss`, and the semantic roles, which point at the
+palette, are in `light.scss`. `dark.scss` uses `light.scss` and only re-declares what the dark mode
+changes: a value shared by both modes, such as a radius, is set in `light.scss` only.
 
-`pnpm build:prod` regenerates `dist/default/tokens.json`, and `pnpm tokens:resolve` prints what
-each token resolves to.
+`pnpm build:prod` compiles each mode to a single stylesheet (`dist/<theme>/<mode>.css`, the two
+modes merged into one `:root` by `scripts/bake-themes.js`) and regenerates its
+`<mode>.tokens.json`. `pnpm tokens:resolve` prints what each token resolves to.

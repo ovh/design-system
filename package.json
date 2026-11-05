@@ -13,7 +13,7 @@
     "build:ci": "lerna run --stream build:ci",
     "build:prod": "lerna run --stream build:prod",
     "build:storybook": "pnpm build:storybook:deps && lerna run --stream build:storybook",
-    "build:storybook:deps": "([ -d packages/ods-react/dist ] || pnpm --filter @ovhcloud/ods-react run build:prod) && ([ -d packages/ods-recipes/dist ] || pnpm --filter @ovhcloud/ods-recipes run build:prod) && ([ -d packages/themes/dist ] || pnpm --filter @ovhcloud/ods-themes run build:prod) && ([ -d packages/ods-react/src/components/accordion/documentation ] || pnpm doc)",
+    "build:storybook:deps": "([ -d packages/ods-react/dist ] || pnpm --filter @ovhcloud/ods-react run build:prod) && ([ -d packages/ods-recipes/dist ] || pnpm --filter @ovhcloud/ods-recipes run build:prod) && ([ -f packages/themes/dist/aluminium/light.css ] || pnpm --filter @ovhcloud/ods-themes run build:prod) && ([ -d packages/ods-react/src/components/accordion/documentation ] || pnpm doc)",
     "clean": "lerna run clean",
     "doc": "lerna run --concurrency 2 doc",
     "docs": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-docs run start",

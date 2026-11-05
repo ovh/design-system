@@ -11,9 +11,10 @@ const postcss = require('postcss');
 const fs = require('fs').promises;
 const path = require('path');
 const { CYCLE, DANGLING, resolveValue } = require('./resolve-tokens');
+const { themes } = require('./themes');
 
-async function getTokens(theme) {
-  const indexCSS = await fs.readFile(path.resolve(process.cwd(), 'dist', theme, 'index.css'), { encoding: 'utf-8' });
+async function getTokens(file) {
+  const indexCSS = await fs.readFile(file, { encoding: 'utf-8' });
   const declared = new Map();
 
   postcss.parse(indexCSS).walkRules(':root', (rule) => {
@@ -35,7 +36,7 @@ async function getTokens(theme) {
     root[name] = resolveValue(value, (reference) => declared.get(reference), new Set([name]));
 
     if (root[name].includes(DANGLING) || root[name].includes(CYCLE)) {
-      throw new Error(`${theme}: ${name} does not resolve (${root[name]})`);
+      throw new Error(`${path.relative(process.cwd(), file)}: ${name} does not resolve (${root[name]})`);
     }
     if (value.includes('var(')) {
       refs[name] = value;
@@ -45,14 +46,37 @@ async function getTokens(theme) {
   return { root, refs };
 }
 
+/* Every theme declares the same semantic tokens: one added to a single theme would ship unnoticed. The palette may differ. */
+function assertSameSemanticTokens(tokensByTheme) {
+  const semantic = (tokens) => Object.keys(tokens.root).filter((name) => name.startsWith('--ods-semantic-'));
+  const [reference, ...others] = tokensByTheme;
+  const expected = new Set(semantic(reference.tokens));
+
+  for (const { name, tokens } of others) {
+    const actual = new Set(semantic(tokens));
+    const missing = [...expected].filter((token) => !actual.has(token));
+    const extra = [...actual].filter((token) => !expected.has(token));
+
+    if (missing.length || extra.length) {
+      throw new Error(`${name} does not declare the semantic tokens of ${reference.name}:\n${[
+        ...missing.map((token) => `  missing ${token}`),
+        ...extra.map((token) => `  extra   ${token}`),
+      ].join('\n')}`);
+    }
+  }
+}
+
 (async function main() {
   try {
-    const { ODS_THEMES } = require(path.resolve(process.cwd(), 'dist', 'index'));
+    const tokensByTheme = await Promise.all(themes().map(async (theme) => ({
+      file: theme.tokens,
+      name: theme.name,
+      tokens: await getTokens(theme.css),
+    })));
 
-    await Promise.all(ODS_THEMES.map(async (theme) => {
-      const tokens = await getTokens(theme);
-      await fs.writeFile(path.resolve(process.cwd(), 'dist', theme, 'tokens.json'), JSON.stringify(tokens), 'utf8');
-    }));
+    assertSameSemanticTokens(tokensByTheme);
+
+    await Promise.all(tokensByTheme.map(({ file, tokens }) => fs.writeFile(file, JSON.stringify(tokens), 'utf8')));
   } catch(error) {
     console.error('Could not generate the tokens.json files.', error);
     process.exitCode = 1;

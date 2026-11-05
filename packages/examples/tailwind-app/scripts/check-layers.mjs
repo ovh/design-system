@@ -9,7 +9,7 @@ const EXPECTED = ['theme', 'base', 'ods-quarks', 'ods-atoms', 'ods-molecules', '
 const dist = resolve(import.meta.dirname, '../dist');
 
 // The stylesheets index.html links, in their order: the ones the page loads first, which set the
-// order. The theme overlays (?url) are emitted beside them but added later, by the app.
+// order. The other themes (?url) are emitted beside them but linked later, by the app.
 const linked = [...readFileSync(resolve(dist, 'index.html'), 'utf8').matchAll(/<link rel="stylesheet"[^>]*href="\/([^"]+)"/g)];
 const css = linked.map(([, href]) => readFileSync(resolve(dist, href), 'utf8')).join('\n');
 

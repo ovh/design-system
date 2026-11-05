@@ -30,7 +30,7 @@ if [ ! -f "$ROOT/packages/ods-react/dist/index.js" ]; then
   echo "▶ ods-react dist missing — building @ovhcloud/ods-react…"
   pnpm --filter @ovhcloud/ods-react run build:prod || { echo "✗ ods-react build failed"; exit 1; }
 fi
-if [ ! -f "$ROOT/packages/themes/dist/default/index.css" ]; then
+if [ ! -f "$ROOT/packages/themes/dist/aluminium/light.css" ]; then
   echo "▶ themes dist missing — building @ovhcloud/ods-themes…"
   pnpm --filter @ovhcloud/ods-themes run build:prod || { echo "✗ themes build failed"; exit 1; }
 fi

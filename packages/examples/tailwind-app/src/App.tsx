@@ -4,29 +4,29 @@ import aluminiumDarkUrl from '@ovhcloud/ods-themes/aluminium-dark/css?url';
 import blueJeansDarkUrl from '@ovhcloud/ods-themes/blue-jeans-dark/css?url';
 import { type ReactElement, useEffect, useState } from 'react';
 
-/* Each theme is an overlay loaded after the default one (index.css), dark after its light theme,
-   switched as the Themes guide does: a disabled <link> per overlay, created at the end of <head>,
-   after the stylesheets Vite adds. The Tailwind utilities read the ODS variables, so they follow
-   the switch with no rebuild. */
-const OVERLAYS = Object.fromEntries([blueJeansUrl, aluminiumDarkUrl, blueJeansDarkUrl].map((href) => {
-  const link = Object.assign(document.createElement('link'), { disabled: true, href, rel: 'stylesheet' });
-  document.head.append(link);
-  return [href, link];
-}));
+/* Each theme is a complete stylesheet. The page starts on the default one (index.css, which also sets
+   the layer order); another theme is shown by a single <link> at the end of <head>, after the
+   stylesheets Vite adds, whose href is swapped as the Themes guide does. The Tailwind utilities
+   read the ODS variables, so they follow the switch with no rebuild. */
+const themeLink = Object.assign(document.createElement('link'), { rel: 'stylesheet' });
 
-const THEMES: Record<string, string[]> = {
-  'Aluminium': [],
-  'Aluminium dark': [aluminiumDarkUrl],
-  'Blue Jeans': [blueJeansUrl],
-  'Blue Jeans dark': [blueJeansUrl, blueJeansDarkUrl],
+const THEMES: Record<string, string | null> = {
+  'Aluminium': null,
+  'Aluminium dark': aluminiumDarkUrl,
+  'Blue Jeans': blueJeansUrl,
+  'Blue Jeans dark': blueJeansDarkUrl,
 };
 
 function App(): ReactElement {
   const [theme, setTheme] = useState('Aluminium');
 
   useEffect(() => {
-    for (const [href, link] of Object.entries(OVERLAYS)) {
-      link.disabled = !THEMES[theme].includes(href);
+    const href = THEMES[theme];
+    if (href) {
+      themeLink.href = href;
+      document.head.append(themeLink);
+    } else {
+      themeLink.remove();
     }
   }, [theme]);
 

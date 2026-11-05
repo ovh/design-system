@@ -77,8 +77,9 @@ import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
 
 <Heading label="Import theme & fonts" level={ 2 } />
 
-You need to import a theme to display all the components correctly.
-It defines all the colors, typographies, etc...
+You need to import a theme to display all the components correctly. It defines all the colors, typographies, etc.
+
+A theme names its fonts but does not load them: load them too. The default theme uses Source Sans 3 and Source Code Pro, which ODS ships with its icon font.
 
 via ES import:
 
@@ -98,16 +99,7 @@ via Sass import:
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
-<Message dismissible={ false } style={{ width: '100%' }}>
-  <MessageIcon name="circle-info" />
-
-  <MessageBody>
-    In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default';`.
-    Though this will increase the bundle size and prevent browser resources loading optimization.
-  </MessageBody>
-</Message>
-
-The Blue Jeans theme and the dark themes are overlays, loaded **after** the default theme: <DocLink to="/guides/themes">Themes</DocLink> gives the imports of each theme, in order, and explains how to switch between them or create your own.
+ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. <DocLink to="/guides/themes">Themes</DocLink> lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
 
 <Heading label="Server-side rendering" level={ 2 } />
 

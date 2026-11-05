@@ -1,0 +1,54 @@
+---
+title: "Divider"
+slug: divider
+category: component
+type: examples
+version: 20.0.0-alpha.0
+tokens: 230
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-divider--examples.txt
+---
+
+# Divider
+
+## Default
+
+```tsx
+<Divider />
+```
+
+## Color
+
+```tsx
+<>
+  <Divider />
+  <Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />
+</>
+```
+
+## Orientation
+
+```tsx
+<>
+  <Divider orientation={ DIVIDER_ORIENTATION.horizontal } />
+  <Divider orientation={ DIVIDER_ORIENTATION.vertical } />
+</>
+```
+
+## Spacing
+
+```tsx
+<>
+  <Divider spacing={ DIVIDER_SPACING._0 } />
+  <Divider spacing={ DIVIDER_SPACING._2 } />
+  <Divider spacing={ DIVIDER_SPACING._4 } />
+  <Divider spacing={ DIVIDER_SPACING._6 } />
+  <Divider spacing={ DIVIDER_SPACING._8 } />
+  <Divider spacing={ DIVIDER_SPACING._12 } />
+  <Divider spacing={ DIVIDER_SPACING._16 } />
+  <Divider spacing={ DIVIDER_SPACING._24 } />
+  <Divider spacing={ DIVIDER_SPACING._32 } />
+  <Divider spacing={ DIVIDER_SPACING._40 } />
+  <Divider spacing={ DIVIDER_SPACING._48 } />
+  <Divider spacing={ DIVIDER_SPACING._64 } />
+</>
+```

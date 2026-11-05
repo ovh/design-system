@@ -1,0 +1,1 @@
+var e={"--ods-datepicker-content-padding-horizontal":`calc(var(--ods-semantic-size-space-inset-inline) / 2)`,"--ods-datepicker-content-padding-vertical":`calc(var(--ods-semantic-size-space-inset-block) / 2)`,"--ods-state-is-disabled-opacity":`var(--ods-semantic-opacity-disabled)`};export{e as default};

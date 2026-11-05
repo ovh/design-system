@@ -1,0 +1,38 @@
+---
+title: "Tile"
+slug: tile
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 276
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tile--technical-information.txt
+---
+
+# Tile
+
+## Tile
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `selected` | `boolean` | No | undefined | Whether the component is selected. |
+
+## TileAltContainer
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-tile-alt-container-background-color` | `var(--ods-semantic-color-surface-muted)` |
+| `--ods-tile-alt-container-background-color-selected` | `var(--ods-semantic-color-surface-selected)` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-tile-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tile-background-color-selected` | `var(--ods-semantic-color-surface-selected-subtle)` |
+| `--ods-tile-border-color-selected` | `var(--ods-semantic-color-border-accent)` |
+| `--ods-tile-border-color-hover` | `var(--ods-semantic-color-interaction-control-hover)` |

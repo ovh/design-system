@@ -1,0 +1,1 @@
+var e=function(e){return e.bottom=`bottom`,e.bottomEnd=`bottom-end`,e.bottomStart=`bottom-start`,e.left=`left`,e.leftEnd=`left-end`,e.leftStart=`left-start`,e.right=`right`,e.rightEnd=`right-end`,e.rightStart=`right-start`,e.top=`top`,e.topEnd=`top-end`,e.topStart=`top-start`,e}(e||{}),t=Object.freeze(Object.values(e));export{t as n,e as t};

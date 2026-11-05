@@ -1,0 +1,95 @@
+var e=`import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import { LOGO_SIZE, LOGO_VARIANT, Logo, type LogoProp } from '../../../../ods-react/src/components/logo/src';
+
+type Story = StoryObj<LogoProp>;
+
+const meta: Meta<LogoProp> = {
+  component: Logo,
+  title: 'React Components/Logo',
+};
+
+export default meta;
+
+export const Default: Story = {
+  globals: {
+    imports: \`import { Logo } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Logo />
+  ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div data-ods="logo-story">
+      <Logo />
+    </div>
+  ),
+};
+
+export const Size: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'grid', rowGap: '16px' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { LOGO_SIZE, Logo } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Logo size={ LOGO_SIZE.sm } />
+      <Logo size={ LOGO_SIZE.md } />
+      <Logo size={ LOGO_SIZE.lg } />
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Logo />
+  ),
+};
+
+export const Variant: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'grid', rowGap: '16px' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { LOGO_VARIANT, Logo } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Logo variant={ LOGO_VARIANT.default } />
+      <Logo variant={ LOGO_VARIANT.emblem } />
+    </>
+  ),
+};
+
+export const ThemeGenerator: StoryObj = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Logo />
+  ),
+};
+
+export const AccessibilityLink: Story = {
+  globals: {
+    imports: \`import { Logo } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <a
+      aria-label="Return to the OVHcloud home page"
+      href="https://www.ovhcloud.com">
+      <Logo />
+    </a>
+  ),
+};
+`;export{e as default};

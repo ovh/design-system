@@ -1,0 +1,396 @@
+---
+title: "Design Tokens"
+slug: ovhcloud-design-system-customize-design-tokens
+category: generic
+type: overview
+version: 20.0.0-alpha.0
+tokens: 5391
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-design-tokens.txt
+---
+
+# Design Tokens
+
+Design tokens define reusable design values such as colors, borders, and outlines as variables. Instead of using hardcoded values, they provide a consistent, scalable, and maintainable way to style components across all products.
+
+## Usage
+
+Design tokens are available as CSS custom properties (variables) and can be used in your CSS files:
+
+```css
+.my-component {
+  color: var(--ods-semantic-color-content-brand);
+  border-radius: var(--ods-semantic-size-radius-control);
+}
+```
+
+## Token types
+
+Two types of tokens are meant to be used in your code (the `--ods-palette-*` ramps are the input of a theme, see below):
+
+- **Semantic**, `--ods-semantic-<category>-<role>` (e.g. `--ods-semantic-color-content-text`): values with a role, to style your own components and pages.
+- **Component**, `--ods-<component>-<property>` (e.g. `--ods-button-background-color-brand-high`): values of a single ODS component, to customize it.
+
+**Semantic** tokens give a role to a value: the color of a text, of a surface, of a border, the radius of a control, the duration of an animation…
+Their name reads from the most generic to the most specific part, for example `--ods-semantic-color-surface-selected-solid` is a `color`, used as a `surface`, for a `selected` element, in its `solid` variant, the strongest of `-subtle`, the unsuffixed one and `-solid`.
+The text on it reads `--ods-semantic-color-content-on-selected-solid`, while `--ods-semantic-color-content-on-selected` is the ink for the tinted ones.
+
+**Component** tokens are declared by each component and default to semantic tokens.
+Override them to adjust one component without affecting the others: each component lists its own in the *CSS Variables* section of its *Technical information* tab.
+
+## Which type should I use?
+
+Prefer **semantic** tokens in your application: they follow the theme, so your components stay consistent with ODS ones when the theme changes.
+
+Use **component** tokens only to customize an ODS component; never read them to style something else, as their value may change from one version to another.
+
+## What is guaranteed
+
+The `--ods-semantic-*` tokens are the public surface of the theme: read them in your CSS, re-declare them in a theme. Their names and their meaning do not change during a major version; their values belong to the theme. The `--ods-palette-*` ramps are public too, as the input of a theme: a brand re-declares the `--ods-palette-brand-*` and `--ods-palette-accent-*` ramps. The tables below list every token of the default theme.
+
+## Theme Variables
+
+### Color
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-color-surface-page` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-raised` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-overlay` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-header` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-backdrop` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-surface-code` | `var(--ods-palette-accent-900)` |
+| `--ods-semantic-color-surface-selected-subtle` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-selected` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-muted` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-neutral-subtle` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-surface-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-surface-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-surface-accent-subtle` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-surface-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-surface-information-subtle` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-surface-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-surface-success-subtle` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-surface-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-surface-warning-subtle` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-surface-warning` | `var(--ods-palette-orange-500)` |
+| `--ods-semantic-color-surface-critical-subtle` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-surface-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-surface-control` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-control-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-surface-thumb` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-surface-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-segmented` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-surface-readonly` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-pending` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-surface-drag-over` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-surface-decorative-alpha` | `var(--ods-palette-decorative-alpha)` |
+| `--ods-semantic-color-surface-decorative-beta` | `var(--ods-palette-decorative-beta)` |
+| `--ods-semantic-color-surface-decorative-new` | `var(--ods-palette-decorative-new)` |
+| `--ods-semantic-color-surface-decorative-promotion` | `var(--ods-palette-decorative-promotion)` |
+| `--ods-semantic-color-content-heading` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-text` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-icon` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-group-label` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-content-placeholder` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-content-brand-minor` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-accent` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-content-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-critical` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-content-on-selected` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-content-on-neutral` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-content-on-brand` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-content-on-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-content-on-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-content-on-success` | `var(--ods-palette-green-700)` |
+| `--ods-semantic-color-content-on-warning` | `var(--ods-palette-orange-700)` |
+| `--ods-semantic-color-content-on-critical` | `var(--ods-palette-red-700)` |
+| `--ods-semantic-color-content-on-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-selected-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-control-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-neutral-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-brand-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-accent-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-information-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-success-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-warning-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-critical-solid` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-code` | `var(--ods-palette-white)` |
+| `--ods-semantic-color-content-on-vivid` | `var(--ods-palette-blue-900)` |
+| `--ods-semantic-color-border-separator` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-track` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-border-container` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-neutral-subtle` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-neutral` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-control` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-control-solid` | `var(--ods-semantic-color-surface-control-solid)` |
+| `--ods-semantic-color-border-readonly` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-border-selected-solid` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-border-brand` | `var(--ods-palette-brand-500)` |
+| `--ods-semantic-color-border-brand-minor` | `var(--ods-palette-gray-500)` |
+| `--ods-semantic-color-border-accent-subtle` | `var(--ods-palette-accent-300)` |
+| `--ods-semantic-color-border-accent` | `var(--ods-palette-accent-500)` |
+| `--ods-semantic-color-border-information-subtle` | `var(--ods-palette-blue-300)` |
+| `--ods-semantic-color-border-information` | `var(--ods-palette-blue-500)` |
+| `--ods-semantic-color-border-success-subtle` | `var(--ods-palette-green-300)` |
+| `--ods-semantic-color-border-success` | `var(--ods-palette-green-500)` |
+| `--ods-semantic-color-border-warning-subtle` | `var(--ods-palette-orange-300)` |
+| `--ods-semantic-color-border-warning` | `var(--ods-palette-orange-400)` |
+| `--ods-semantic-color-border-critical-subtle` | `var(--ods-palette-red-300)` |
+| `--ods-semantic-color-border-critical` | `var(--ods-palette-red-500)` |
+| `--ods-semantic-color-border-drag-over` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-neutral-subtle-hover` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-neutral-subtle-active` | `var(--ods-palette-gray-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-hover` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-brand-subtle-active` | `var(--ods-palette-brand-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-hover` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-accent-subtle-active` | `var(--ods-palette-accent-100)` |
+| `--ods-semantic-color-interaction-information-subtle-hover` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-information-subtle-active` | `var(--ods-palette-blue-100)` |
+| `--ods-semantic-color-interaction-success-subtle-hover` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-interaction-success-subtle-active` | `var(--ods-palette-green-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-hover` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-warning-subtle-active` | `var(--ods-palette-orange-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-hover` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-critical-subtle-active` | `var(--ods-palette-red-100)` |
+| `--ods-semantic-color-interaction-neutral-hover` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-neutral-active` | `var(--ods-palette-gray-600)` |
+| `--ods-semantic-color-interaction-brand-hover` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-active` | `var(--ods-palette-brand-600)` |
+| `--ods-semantic-color-interaction-brand-visited` | `var(--ods-palette-brand-700)` |
+| `--ods-semantic-color-interaction-accent-hover` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-accent-active` | `var(--ods-palette-accent-600)` |
+| `--ods-semantic-color-interaction-information-hover` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-information-active` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-color-interaction-success-hover` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-success-active` | `var(--ods-palette-green-600)` |
+| `--ods-semantic-color-interaction-warning-hover` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-warning-active` | `var(--ods-palette-orange-600)` |
+| `--ods-semantic-color-interaction-critical-hover` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-critical-active` | `var(--ods-palette-red-600)` |
+| `--ods-semantic-color-interaction-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-selected-highlight` | `var(--ods-palette-accent-200)` |
+| `--ods-semantic-color-interaction-control-hover` | `var(--ods-palette-accent-700)` |
+| `--ods-semantic-color-interaction-control-highlight` | `var(--ods-palette-accent-50)` |
+| `--ods-semantic-color-interaction-control-solid-hover` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-control-solid-active` | `var(--ods-palette-accent-800)` |
+| `--ods-semantic-color-interaction-track-hover` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-chart-background` | `var(--ods-semantic-color-surface-page)` |
+| `--ods-semantic-color-chart-axis` | `var(--ods-palette-gray-300)` |
+| `--ods-semantic-color-chart-grid` | `var(--ods-palette-gray-200)` |
+| `--ods-semantic-color-chart-tick` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-legend` | `var(--ods-palette-gray-700)` |
+| `--ods-semantic-color-chart-reference-line` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-semantic-color-chart-series-01` | `#0050d7` |
+| `--ods-semantic-color-chart-series-02` | `#ac246f` |
+| `--ods-semantic-color-chart-series-03` | `#00875a` |
+| `--ods-semantic-color-chart-series-04` | `#df3400` |
+| `--ods-semantic-color-chart-series-05` | `#25327c` |
+| `--ods-semantic-color-chart-series-06` | `#a61e20` |
+| `--ods-semantic-color-chart-series-07` | `#006d77` |
+| `--ods-semantic-color-chart-series-08` | `#6a2ecf` |
+| `--ods-semantic-color-chart-series-09` | `#374151` |
+| `--ods-semantic-color-chart-series-10` | `#4f8400` |
+| `--ods-semantic-color-shadow-control` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-raised` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-shadow-overlay` | `var(--ods-palette-gray-900)` |
+| `--ods-semantic-color-brand` | `var(--ods-palette-brand-700)` |
+
+### Size
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-size-space-inset-inline` | `8px` |
+| `--ods-semantic-size-space-inset-block` | `8px` |
+| `--ods-semantic-size-space-inset-block-compact` | `2px` |
+| `--ods-semantic-size-space-gap-inline` | `8px` |
+| `--ods-semantic-size-space-gap-block` | `8px` |
+| `--ods-semantic-size-space-gap-group` | `16px` |
+| `--ods-semantic-size-space-gap-section` | `32px` |
+| `--ods-semantic-size-radius-none` | `0` |
+| `--ods-semantic-size-radius-control` | `4px` |
+| `--ods-semantic-size-radius-container` | `8px` |
+| `--ods-semantic-size-radius-overlay` | `4px` |
+| `--ods-semantic-size-radius-pill` | `16px` |
+| `--ods-semantic-size-radius-full` | `calc(infinity * 1px)` |
+| `--ods-semantic-size-block-size-sm` | `24px` |
+| `--ods-semantic-size-block-size-md` | `32px` |
+| `--ods-semantic-size-block-size-lg` | `40px` |
+| `--ods-semantic-size-inline-size-field` | `280px` |
+| `--ods-semantic-border-thickness` | `1px` |
+| `--ods-semantic-border-thickness-strong` | `2px` |
+
+### Font
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-font-family-heading` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-body` | `'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif` |
+| `--ods-semantic-font-family-code` | `'Source Code Pro', monospace` |
+| `--ods-semantic-font-weight-regular` | `400` |
+| `--ods-semantic-font-weight-semibold` | `600` |
+| `--ods-semantic-font-weight-bold` | `700` |
+
+### Focus
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-color-focus` | `var(--ods-palette-blue-600)` |
+| `--ods-semantic-border-focus-thickness` | `2px` |
+| `--ods-semantic-border-focus-offset` | `2px` |
+| `--ods-semantic-border-focus-style` | `solid` |
+
+### Elevation
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-opacity-disabled` | `var(--ods-palette-opacity-50)` |
+| `--ods-semantic-opacity-backdrop` | `var(--ods-palette-opacity-75)` |
+| `--ods-semantic-shadow-control` | `0 0 #0000` |
+| `--ods-semantic-shadow-raised` | `0 0 #0000` |
+| `--ods-semantic-shadow-overlay` | `0 4px 6px -1px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 20%, transparent)` |
+| `--ods-semantic-z-index-sticky` | `100` |
+| `--ods-semantic-z-index-dropdown` | `200` |
+| `--ods-semantic-z-index-drawer` | `300` |
+| `--ods-semantic-z-index-modal` | `400` |
+
+### Motion
+
+| Token | Value |
+|---|---|
+| `--ods-semantic-motion-duration-instant` | `0s` |
+| `--ods-semantic-motion-duration-fast` | `150ms` |
+| `--ods-semantic-motion-duration-medium` | `200ms` |
+| `--ods-semantic-motion-duration-slow` | `300ms` |
+| `--ods-semantic-motion-easing` | `ease-in-out` |
+| `--ods-semantic-motion-easing-enter` | `ease-out` |
+| `--ods-semantic-motion-easing-exit` | `ease-in` |
+
+## Color Palettes
+
+| Token | Value |
+|---|---|
+| `--ods-palette-accent-50` | `var(--ods-palette-navy-50)` |
+| `--ods-palette-accent-100` | `var(--ods-palette-navy-100)` |
+| `--ods-palette-accent-200` | `var(--ods-palette-navy-200)` |
+| `--ods-palette-accent-300` | `var(--ods-palette-navy-300)` |
+| `--ods-palette-accent-400` | `var(--ods-palette-navy-400)` |
+| `--ods-palette-accent-500` | `var(--ods-palette-navy-500)` |
+| `--ods-palette-accent-600` | `var(--ods-palette-navy-600)` |
+| `--ods-palette-accent-700` | `var(--ods-palette-navy-700)` |
+| `--ods-palette-accent-800` | `var(--ods-palette-navy-800)` |
+| `--ods-palette-accent-900` | `var(--ods-palette-navy-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-blue-50` | `#f3fdff` |
+| `--ods-palette-blue-100` | `#e6faff` |
+| `--ods-palette-blue-200` | `#bef1ff` |
+| `--ods-palette-blue-300` | `#85d9fd` |
+| `--ods-palette-blue-400` | `#4bb2f6` |
+| `--ods-palette-blue-500` | `#0050d7` |
+| `--ods-palette-blue-600` | `#002dbe` |
+| `--ods-palette-blue-700` | `#000e9c` |
+| `--ods-palette-blue-800` | `#00185e` |
+| `--ods-palette-blue-900` | `#000d1f` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-brand-50` | `var(--ods-palette-blue-50)` |
+| `--ods-palette-brand-100` | `var(--ods-palette-blue-100)` |
+| `--ods-palette-brand-200` | `var(--ods-palette-blue-200)` |
+| `--ods-palette-brand-300` | `var(--ods-palette-blue-300)` |
+| `--ods-palette-brand-400` | `var(--ods-palette-blue-400)` |
+| `--ods-palette-brand-500` | `var(--ods-palette-blue-500)` |
+| `--ods-palette-brand-600` | `var(--ods-palette-blue-600)` |
+| `--ods-palette-brand-700` | `var(--ods-palette-blue-700)` |
+| `--ods-palette-brand-800` | `var(--ods-palette-blue-800)` |
+| `--ods-palette-brand-900` | `var(--ods-palette-blue-900)` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-gray-50` | `#f9f9f9` |
+| `--ods-palette-gray-100` | `#f2f2f2` |
+| `--ods-palette-gray-200` | `#e6e6e6` |
+| `--ods-palette-gray-300` | `#cccccc` |
+| `--ods-palette-gray-400` | `#b3b3b3` |
+| `--ods-palette-gray-500` | `#757575` |
+| `--ods-palette-gray-600` | `#666666` |
+| `--ods-palette-gray-700` | `#4d4d4d` |
+| `--ods-palette-gray-800` | `#333333` |
+| `--ods-palette-gray-900` | `#1a1a1a` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-green-50` | `#ecfdf5` |
+| `--ods-palette-green-100` | `#d1fae5` |
+| `--ods-palette-green-200` | `#a7f3d0` |
+| `--ods-palette-green-300` | `#6ee7b7` |
+| `--ods-palette-green-400` | `#34d399` |
+| `--ods-palette-green-500` | `#10b981` |
+| `--ods-palette-green-600` | `#09a171` |
+| `--ods-palette-green-700` | `#067958` |
+| `--ods-palette-green-800` | `#002d1f` |
+| `--ods-palette-green-900` | `#03140e` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-navy-50` | `#f4f5f8` |
+| `--ods-palette-navy-100` | `#edf0f5` |
+| `--ods-palette-navy-200` | `#d6deea` |
+| `--ods-palette-navy-300` | `#bbc7db` |
+| `--ods-palette-navy-400` | `#6c82a6` |
+| `--ods-palette-navy-500` | `#374f76` |
+| `--ods-palette-navy-600` | `#283d61` |
+| `--ods-palette-navy-700` | `#1a2d4b` |
+| `--ods-palette-navy-800` | `#101e35` |
+| `--ods-palette-navy-900` | `#091222` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-orange-50` | `#fffbeb` |
+| `--ods-palette-orange-100` | `#fef3c7` |
+| `--ods-palette-orange-200` | `#fde68a` |
+| `--ods-palette-orange-300` | `#fcd34d` |
+| `--ods-palette-orange-400` | `#fbbf24` |
+| `--ods-palette-orange-500` | `#f59e0b` |
+| `--ods-palette-orange-600` | `#e08125` |
+| `--ods-palette-orange-700` | `#a95723` |
+| `--ods-palette-orange-800` | `#401d0c` |
+| `--ods-palette-orange-900` | `#1b0b04` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-red-50` | `#fdecec` |
+| `--ods-palette-red-100` | `#fbd5d3` |
+| `--ods-palette-red-200` | `#f7aaa7` |
+| `--ods-palette-red-300` | `#f08581` |
+| `--ods-palette-red-400` | `#f2756f` |
+| `--ods-palette-red-500` | `#ca4b47` |
+| `--ods-palette-red-600` | `#b3403c` |
+| `--ods-palette-red-700` | `#8a302d` |
+| `--ods-palette-red-800` | `#381312` |
+| `--ods-palette-red-900` | `#1c0a09` |
+
+| Token | Value |
+|---|---|
+| `--ods-palette-black` | `#000000` |
+| `--ods-palette-decorative-alpha` | `#fbfe47` |
+| `--ods-palette-decorative-beta` | `#47fe78` |
+| `--ods-palette-decorative-new` | `#47fffa` |
+| `--ods-palette-decorative-promotion` | `#ccff66` |
+| `--ods-palette-white` | `#ffffff` |
+
+### Opacity
+
+| Token | Value |
+|---|---|
+| `--ods-palette-opacity-15` | `0.15` |
+| `--ods-palette-opacity-20` | `0.2` |
+| `--ods-palette-opacity-25` | `0.25` |
+| `--ods-palette-opacity-50` | `0.5` |
+| `--ods-palette-opacity-75` | `0.75` |

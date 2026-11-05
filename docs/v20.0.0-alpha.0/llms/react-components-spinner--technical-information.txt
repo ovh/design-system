@@ -1,0 +1,34 @@
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 115
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--technical-information.txt
+---
+
+# Spinner
+
+## Spinner
+
+This component extends all the native `<span>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
+
+## Enums
+
+### SPINNER_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+- `sm` = `sm`
+- `xs` = `xs`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-spinner-color` | `var(--ods-semantic-color-content-accent)` |

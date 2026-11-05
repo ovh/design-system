@@ -1,0 +1,35 @@
+---
+title: "Form Field"
+slug: form-field
+category: component
+type: overview
+version: 20.0.0-alpha.0
+tokens: 194
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field.txt
+---
+
+# Form Field
+
+_A **Form Field** component is used to wrap several form components with logic, visual hints and additional styling_
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `id` | `string` | No | undefined | The id given to the wrapped field, generated when omitted. An id set on the field itself takes precedence. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+
+## Examples
+
+- Default
+- Label
+- Label Sub Label
+- Helper
+- Error
+- Accessibility Label
+
+## Documentation pages
+
+- [Documentation](./react-components-form-field--documentation.txt)
+- [Technical Information](./react-components-form-field--technical-information.txt)
+- [Examples](./react-components-form-field--examples.txt)

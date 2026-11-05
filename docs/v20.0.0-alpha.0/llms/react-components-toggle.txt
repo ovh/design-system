@@ -1,0 +1,42 @@
+---
+title: "Toggle"
+slug: toggle
+category: component
+type: overview
+version: 20.0.0-alpha.0
+tokens: 338
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toggle.txt
+---
+
+# Toggle
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `checked` | `boolean` | No | undefined | The controlled checked state of the toggle. |
+| `children` | `ReactNode` | Yes | undefined | The parts of the toggle to render: a ToggleControl, and a ToggleLabel if needed. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `name` | `string` | No | undefined | The name of the form element. Useful for form submission. |
+| `onCheckedChange` | `(detail: ToggleCheckedChangeDetail) => void` | No | undefined | Callback fired when the checked state changes. |
+| `required` | `boolean` | No | undefined | Whether the component is required. |
+| `value` | `string` | No | undefined | The value of form element. Useful for form submission. |
+| `withLabels` | `boolean` | No | undefined | Whether the component displays "ON/OFF" labels. |
+
+## Examples
+
+- Default
+- Disabled
+- Invalid
+- With Label
+- With Labels
+- In Form Field
+- Accessibility Label
+- Accessibility Aria Label
+
+## Documentation pages
+
+- [Documentation](./react-components-toggle--documentation.txt)
+- [Technical Information](./react-components-toggle--technical-information.txt)
+- [Examples](./react-components-toggle--examples.txt)

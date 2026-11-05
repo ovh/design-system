@@ -1,0 +1,150 @@
+var e=`import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import { CARD_STATUS, CARD_STATUSES, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
+
+type Story = StoryObj<CardProp>;
+
+const meta: Meta<CardProp> = {
+  component: Card,
+  title: 'React Components/Card',
+};
+
+export default meta;
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Card style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+  ),
+};
+
+export const Default: Story = {
+  globals: {
+    imports: \`import { Card } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Card>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </Card>
+  ),
+};
+
+export const Status: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { CARD_STATUS, Card } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Card status={ CARD_STATUS.accent }>
+        <p>Accent</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.critical }>
+        <p>Critical</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.information }>
+        <p>Information</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.neutral }>
+        <p>Neutral</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.success }>
+        <p>Success</p>
+      </Card>
+
+      <Card status={ CARD_STATUS.warning }>
+        <p>Warning</p>
+      </Card>
+    </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Card style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+  ),
+};
+
+export const AccessibilityGrouping: Story = {
+  globals: {
+    imports: \`import { Card } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
+      <li>
+        <Card style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+      <li>
+        <Card style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+    </ul>
+  ),
+};
+
+export const AccessibilityAlternativeGrouping: Story = {
+  globals: {
+    imports: \`import { Card } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <div role="list" style={{ display: 'flex', gap: '16px' }}>
+      <Card role="listitem" style={{ padding: '8px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
+      <Card role="listitem" style={{ padding: '8px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
+    </div>
+  ),
+};
+
+export const ThemeGenerator: Story = {
+  name: 'ThemeGenerator',
+  parameters: {
+    docs: { disable: true },
+    layout: 'fullscreen',
+    options: { showPanel: false },
+  },
+  tags: ['!dev', 'hidden'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '16px' }}>
+      { CARD_STATUSES.map((status) => (
+        <Card key={ String(status) } status={ status }>
+          <p style={{ margin: 0 }}>{ String(status) }</p>
+        </Card>
+      )) }
+    </div>
+  ),
+};
+`;export{e as default};

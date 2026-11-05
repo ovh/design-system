@@ -1,0 +1,1 @@
+var e={"--ods-file-thumbnail-border-color":`var(--ods-semantic-color-border-container)`,"--ods-file-thumbnail-object-fit":`contain`,"--ods-file-thumbnail-preview-size":`32px`,"--ods-state-is-disabled-opacity":`var(--ods-semantic-opacity-disabled)`};export{e as default};

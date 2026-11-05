@@ -1,0 +1,200 @@
+---
+title: "Toaster"
+slug: toaster
+category: component
+type: examples
+version: 20.0.0-alpha.0
+tokens: 1165
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toaster--examples.txt
+---
+
+# Toaster
+
+## Default
+
+```tsx
+<>
+  <Toaster />
+
+  <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Notification message') }>
+    Trigger toast
+  </Button>
+</>
+```
+
+## Dismissible
+
+```tsx
+<>
+  <Toaster
+    dismissible={ false }
+    id="dismissible" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Non dismissible toast', { toasterId: 'dismissible' }) }>
+      Trigger non dismissible toast
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Dismissible toast', { dismissible: true, toasterId: 'dismissible' }) }>
+      Trigger dismissible toast
+    </Button>
+  </div>
+</>
+```
+
+## Duration
+
+```tsx
+<>
+  <Toaster
+    duration={ Infinity }
+    id="duration" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Infinite toast', { toasterId: 'duration' }) }>
+      Trigger infinite toast
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('3 seconds toast', { duration: 3000, toasterId: 'duration' }) }>
+      Trigger 3 seconds toast
+    </Button>
+  </div>
+</>
+```
+
+## Icon
+
+```tsx
+<>
+     <Toaster id="icon" />
+
+     <Button emphasis={ BUTTON_EMPHASIS.high }
+onClick={ () => toast('Notification message with icon', {
+       icon: ICON_NAME.circleInfo,
+       toasterId: 'icon',
+     })}>
+       Trigger toast
+     </Button>
+   </>
+```
+
+## Position
+
+```tsx
+<>
+  <Toaster id="top-start" position={ TOASTER_POSITION.topStart } />
+  <Toaster id="top" position={ TOASTER_POSITION.top } />
+  <Toaster id="top-end" position={ TOASTER_POSITION.topEnd } />
+  <Toaster id="bottom-start" position={ TOASTER_POSITION.bottomStart } />
+  <Toaster id="bottom" position={ TOASTER_POSITION.bottom } />
+  <Toaster id="bottom-end" position={ TOASTER_POSITION.bottomEnd } />
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: 'repeat(2, 1fr)',
+    gap: '20px',
+  }}>
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top Start', { toasterId: 'top-start' }) }>
+      Top Start
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top', { toasterId: 'top' }) }>
+      Top
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Top End', { toasterId: 'top-end' }) }>
+      Top End
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom Start', { toasterId: 'bottom-start' }) }>
+      Bottom Start
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom', { toasterId: 'bottom' }) }>
+      Bottom
+    </Button>
+
+    <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => toast('Bottom End', { toasterId: 'bottom-end' }) }>
+      Bottom End
+    </Button>
+  </div>
+</>
+```
+
+## Custom Content
+
+```tsx
+<>
+  <Toaster id="custom-content" />
+
+  <Button
+    emphasis={ BUTTON_EMPHASIS.high }
+    onClick={ () => toast(
+      <div>
+        <Text preset={ TEXT_PRESET.label }>
+          Toast title
+        </Text>
+
+        <Text>
+          Toast text helps users providing feedback or information.
+        </Text>
+
+        <Link>
+          Some Link
+        </Link>
+      </div>, { icon: ICON_NAME.circleInfo, toasterId: 'custom-content' }
+    )}>
+    Trigger toast
+  </Button>
+</>
+```
+
+## Statuses
+
+```tsx
+<>
+  <Toaster id="statuses" />
+
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.critical }
+      onClick={ () => toast.critical('Critical', { toasterId: 'statuses' }) }>
+      Critical toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.information('Information', { toasterId: 'statuses' }) }>
+      Information toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.neutral }
+      onClick={ () => toast.neutral('Neutral', { toasterId: 'statuses' }) }>
+      Neutral toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      status={ BUTTON_STATUS.brand }
+      onClick={ () => toast.accent('Accent', { toasterId: 'statuses' }) }>
+      Accent toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.success('Success', { toasterId: 'statuses' }) }>
+      Success toast
+    </Button>
+
+    <Button
+      emphasis={ BUTTON_EMPHASIS.high }
+      onClick={ () => toast.warning('Warning', { toasterId: 'statuses' }) }>
+      Warning toast
+    </Button>
+  </div>
+</>
+```

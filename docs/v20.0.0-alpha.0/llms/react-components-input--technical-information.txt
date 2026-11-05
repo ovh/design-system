@@ -1,0 +1,58 @@
+---
+title: "Input"
+slug: input
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 479
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-input--technical-information.txt
+---
+
+# Input
+
+## Input
+
+This component extends all the native `<input>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `clearable` | `boolean` | No | undefined | Whether the clear button is displayed. |
+| `endContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, after the value and before the action buttons (a unit, an icon, a ghost button). Never part of the input value. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `maskOption` | `object` | No | undefined | Masked display options. |
+| `onClear` | `() => void` | No | undefined | Callback fired when the input value is cleared. |
+| `startContent` | `ReactNode` | No | undefined | Decorative content displayed inside the field, before the value (a currency symbol, an icon, a fixed scheme such as `https://`). Never part of the input value. |
+| `type` | `'number' | 'search' | 'time' | 'text' | 'url' | 'email' | 'password'` | No | undefined | The input type. |
+
+## Enums
+
+### INPUT_I18N
+
+- `clearButton` = `input.clear.button`
+- `maskButtonHide` = `input.mask.hide.button`
+- `maskButtonShow` = `input.mask.show.button`
+- `searchButton` = `input.search.button`
+
+### INPUT_MASK_STATE
+
+- `close` = `close`
+- `open` = `open`
+
+### INPUT_TYPE
+
+- `email` = `email`
+- `number` = `number`
+- `password` = `password`
+- `search` = `search`
+- `text` = `text`
+- `time` = `time`
+- `url` = `url`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

@@ -1,0 +1,1 @@
+var e={"--ods-progress-bar-border-radius":`var(--ods-semantic-size-radius-container)`};export{e as default};

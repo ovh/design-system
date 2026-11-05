@@ -1,0 +1,21 @@
+---
+title: "Kbd"
+slug: kbd
+category: component
+type: overview
+version: 20.0.0-alpha.0
+tokens: 61
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-kbd.txt
+---
+
+# Kbd
+
+## Examples
+
+- Default
+
+## Documentation pages
+
+- [Documentation](./react-components-kbd--documentation.txt)
+- [Technical Information](./react-components-kbd--technical-information.txt)
+- [Examples](./react-components-kbd--examples.txt)

@@ -1,0 +1,86 @@
+---
+title: "Form Field"
+slug: form-field
+category: component
+type: examples
+version: 20.0.0-alpha.0
+tokens: 246
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field--examples.txt
+---
+
+# Form Field
+
+## Default
+
+```tsx
+<FormField>
+  <Textarea name="textarea" />
+</FormField>
+```
+
+## Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description:
+  </FormFieldLabel>
+
+  <Textarea name="textarea" />
+</FormField>
+```
+
+## Label Sub Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Description
+    <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
+  </FormFieldLabel>
+
+  <Textarea name="textarea" />
+</FormField>
+```
+
+## Helper
+
+```tsx
+<FormField>
+  <Textarea name="textarea" />
+
+  <FormFieldHelper>
+    <Text preset={ TEXT_PRESET.caption }>
+      Helper text
+    </Text>
+  </FormFieldHelper>
+</FormField>
+```
+
+## Error
+
+```tsx
+<FormField invalid>
+  <Textarea name="textarea" />
+
+  <FormFieldError>
+    Error message
+  </FormFieldError>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Login:
+  </FormFieldLabel>
+
+  <Input name="input" />
+
+  <FormFieldHelper>
+    Username or email address
+  </FormFieldHelper>
+</FormField>
+```

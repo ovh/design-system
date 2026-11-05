@@ -1,0 +1,41 @@
+---
+title: "Message Bubble"
+slug: message-bubble
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 336
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble--technical-information.txt
+---
+
+# Message Bubble
+
+## MessageBubble
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `error` | `boolean` | No | undefined | Indicates an error state |
+| `typing` | `boolean` | No | undefined | When typing a message |
+| `variant` | `'ai' | 'human'` | No | undefined | Visual variant of the message bubble |
+
+## Enums
+
+### MESSAGE_BUBBLE_VARIANT
+
+- `ai` = `ai`
+- `human` = `human`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-message-bubble-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-bubble-text-color` | `var(--ods-semantic-color-content-text)` |
+| `--ods-message-bubble-border-radius` | `calc(var(--ods-semantic-size-radius-container) * 2)` |
+| `--ods-message-bubble-padding` | `calc(var(--ods-semantic-size-space-inset-block) * 2) calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-message-bubble-human-background-color` | `var(--ods-semantic-color-surface-muted)` |
+| `--ods-message-bubble-ai-background-color` | `var(--ods-semantic-color-surface-information-subtle)` |
+| `--ods-message-bubble-error-background-color` | `var(--ods-semantic-color-surface-critical-subtle)` |
+| `--ods-message-bubble-error-text-color` | `var(--ods-semantic-color-content-critical)` |

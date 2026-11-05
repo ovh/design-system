@@ -1,0 +1,1 @@
+var e={"--ods-form-field-label-row-gap":`calc(var(--ods-semantic-size-space-gap-block) / 2)`,"--ods-form-field-label-column-gap":`calc(var(--ods-semantic-size-space-gap-inline) / 2)`,"--ods-form-field-row-gap":`calc(var(--ods-semantic-size-space-gap-block) / 2)`};export{e as default};

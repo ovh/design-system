@@ -1,0 +1,25 @@
+# OVHcloud Design System Documentation for LLMs
+
+> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+Current version: 19.7.3
+
+## Documentation Sets (latest release)
+
+- [Entry point](./latest/llms/llms.txt): summary of the latest documentation set
+- [Complete documentation](./latest/llms/llms-full.txt): the full documentation in one file
+
+## Versions
+
+Each release ships an immutable copy of its documentation set. Match the documentation to the @ovhcloud/ods-react version you use:
+
+1. Prefer the local copy shipped in the npm package: node_modules/@ovhcloud/ods-react/dist/llms/ (always the installed version, works offline)
+2. Otherwise use the pinned set matching your package.json version below
+3. Fall back to [latest](./latest/llms/llms.txt) only when the version is unknown
+
+- [v19.7.3](./v19.7.3/llms/llms.txt)
+- [v19.7.2](./v19.7.2/llms/llms.txt)
+- [v19.7.1](./v19.7.1/llms/llms.txt)
+- [v19.7.0](./v19.7.0/llms/llms.txt)
+- [v19.6.1](./v19.6.1/llms/llms.txt)
+- [v19.6.0](./v19.6.0/llms/llms.txt)

@@ -1,0 +1,128 @@
+---
+title: "Button"
+slug: button
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 2205
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button--technical-information.txt
+---
+
+# Button
+
+## Button
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
+| `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
+
+## Enums
+
+### BUTTON_EMPHASIS
+
+- `high` = `high`
+- `low` = `low`
+- `medium` = `medium`
+
+### BUTTON_SIZE
+
+- `md` = `md`
+- `sm` = `sm`
+- `xs` = `xs`
+
+### BUTTON_STATUS
+
+- `brand` = `brand`
+- `critical` = `critical`
+- `neutral` = `neutral`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-button-border-radius-xs` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-radius-sm` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-radius-md` | `var(--ods-semantic-size-radius-control)` |
+| `--ods-button-border-width` | `var(--ods-semantic-border-thickness)` |
+| `--ods-button-column-gap-xs` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
+| `--ods-button-column-gap-sm` | `calc(var(--ods-semantic-size-space-gap-inline) * 0.75)` |
+| `--ods-button-column-gap-md` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-button-padding-horizontal-xs` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-button-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
+| `--ods-button-padding-horizontal-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-button-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-block) * 0.75)` |
+| `--ods-button-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-button-padding-vertical-md` | `var(--ods-semantic-size-space-inset-block)` |
+| `--ods-button-background-color-critical-high` | `var(--ods-semantic-color-surface-critical)` |
+| `--ods-button-background-color-critical-high-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-background-color-critical-high-active` | `var(--ods-semantic-color-interaction-critical-active)` |
+| `--ods-button-border-color-critical-high` | `var(--ods-semantic-color-border-critical)` |
+| `--ods-button-border-color-critical-high-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-border-color-critical-high-active` | `var(--ods-semantic-color-interaction-critical-active)` |
+| `--ods-button-text-color-critical-high` | `var(--ods-semantic-color-content-on-critical-solid)` |
+| `--ods-button-background-color-critical-low` | `inherit` |
+| `--ods-button-background-color-critical-low-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-button-background-color-critical-low-active` | `var(--ods-semantic-color-interaction-critical-subtle-active)` |
+| `--ods-button-text-color-critical-low` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-button-text-color-critical-low-hover` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-text-color-critical-low-active` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-background-color-critical-medium` | `var(--ods-semantic-color-surface-control)` |
+| `--ods-button-background-color-critical-medium-hover` | `var(--ods-semantic-color-interaction-critical-subtle-hover)` |
+| `--ods-button-background-color-critical-medium-active` | `var(--ods-semantic-color-interaction-critical-subtle-active)` |
+| `--ods-button-border-color-critical-medium` | `var(--ods-semantic-color-border-critical)` |
+| `--ods-button-border-color-critical-medium-hover` | `var(--ods-semantic-color-interaction-critical-hover)` |
+| `--ods-button-border-color-critical-medium-active` | `var(--ods-semantic-color-interaction-critical-active)` |
+| `--ods-button-text-color-critical-medium` | `var(--ods-semantic-color-content-critical)` |
+| `--ods-button-text-color-critical-medium-hover` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-text-color-critical-medium-active` | `var(--ods-semantic-color-content-on-critical)` |
+| `--ods-button-background-color-neutral-high` | `var(--ods-semantic-color-surface-neutral)` |
+| `--ods-button-background-color-neutral-high-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-background-color-neutral-high-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-button-border-color-neutral-high` | `var(--ods-semantic-color-border-neutral)` |
+| `--ods-button-border-color-neutral-high-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-border-color-neutral-high-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-button-text-color-neutral-high` | `var(--ods-semantic-color-content-on-neutral-solid)` |
+| `--ods-button-background-color-neutral-low` | `inherit` |
+| `--ods-button-background-color-neutral-low-hover` | `var(--ods-semantic-color-interaction-neutral-subtle-hover)` |
+| `--ods-button-background-color-neutral-low-active` | `var(--ods-semantic-color-interaction-neutral-subtle-active)` |
+| `--ods-button-text-color-neutral-low` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-button-text-color-neutral-low-hover` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-text-color-neutral-low-active` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-background-color-neutral-medium` | `var(--ods-semantic-color-surface-control)` |
+| `--ods-button-background-color-neutral-medium-hover` | `var(--ods-semantic-color-interaction-neutral-subtle-hover)` |
+| `--ods-button-background-color-neutral-medium-active` | `var(--ods-semantic-color-interaction-neutral-subtle-active)` |
+| `--ods-button-border-color-neutral-medium` | `var(--ods-semantic-color-border-neutral)` |
+| `--ods-button-border-color-neutral-medium-hover` | `var(--ods-semantic-color-interaction-neutral-hover)` |
+| `--ods-button-border-color-neutral-medium-active` | `var(--ods-semantic-color-interaction-neutral-active)` |
+| `--ods-button-text-color-neutral-medium` | `var(--ods-semantic-color-content-neutral)` |
+| `--ods-button-text-color-neutral-medium-hover` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-text-color-neutral-medium-active` | `var(--ods-semantic-color-content-on-neutral)` |
+| `--ods-button-background-color-brand-high` | `var(--ods-semantic-color-surface-brand)` |
+| `--ods-button-background-color-brand-high-hover` | `var(--ods-semantic-color-interaction-brand-hover)` |
+| `--ods-button-background-color-brand-high-active` | `var(--ods-semantic-color-interaction-brand-active)` |
+| `--ods-button-border-color-brand-high` | `var(--ods-semantic-color-border-brand)` |
+| `--ods-button-border-color-brand-high-hover` | `var(--ods-semantic-color-interaction-brand-hover)` |
+| `--ods-button-border-color-brand-high-active` | `var(--ods-semantic-color-interaction-brand-active)` |
+| `--ods-button-text-color-brand-high` | `var(--ods-semantic-color-content-on-brand-solid)` |
+| `--ods-button-background-color-brand-low` | `inherit` |
+| `--ods-button-background-color-brand-low-hover` | `var(--ods-semantic-color-interaction-brand-subtle-hover)` |
+| `--ods-button-background-color-brand-low-active` | `var(--ods-semantic-color-interaction-brand-subtle-active)` |
+| `--ods-button-text-color-brand-low` | `var(--ods-semantic-color-content-brand-minor)` |
+| `--ods-button-text-color-brand-low-hover` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-button-text-color-brand-low-active` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-button-background-color-brand-medium` | `var(--ods-semantic-color-surface-control)` |
+| `--ods-button-background-color-brand-medium-hover` | `var(--ods-semantic-color-interaction-brand-subtle-hover)` |
+| `--ods-button-background-color-brand-medium-active` | `var(--ods-semantic-color-interaction-brand-subtle-active)` |
+| `--ods-button-border-color-brand-medium` | `var(--ods-semantic-color-border-brand-minor)` |
+| `--ods-button-border-color-brand-medium-hover` | `var(--ods-semantic-color-interaction-brand-hover)` |
+| `--ods-button-border-color-brand-medium-active` | `var(--ods-semantic-color-interaction-brand-active)` |
+| `--ods-button-text-color-brand-medium` | `var(--ods-semantic-color-content-brand-minor)` |
+| `--ods-button-text-color-brand-medium-hover` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-button-text-color-brand-medium-active` | `var(--ods-semantic-color-content-on-brand)` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-spinner-color` | `currentcolor` |

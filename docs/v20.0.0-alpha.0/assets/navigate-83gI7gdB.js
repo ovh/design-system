@@ -1,0 +1,1 @@
+import{st as e,yt as t}from"./use-locale-context-23U9qFbe.js";import{n}from"./raf-B8NBjsK_.js";function r(r){let i=()=>{let e=t(r);r.dispatchEvent(new e.MouseEvent(`click`))};e()?n(r,`keyup`,i):queueMicrotask(i)}export{r as t};

@@ -1,0 +1,83 @@
+---
+title: "Card"
+slug: card
+category: component
+type: examples
+version: 20.0.0-alpha.0
+tokens: 420
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card--examples.txt
+---
+
+# Card
+
+## Default
+
+```tsx
+<Card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+</Card>
+```
+
+## Status
+
+```tsx
+<>
+  <Card status={ CARD_STATUS.accent }>
+    <p>Accent</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.critical }>
+    <p>Critical</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.information }>
+    <p>Information</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.neutral }>
+    <p>Neutral</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.success }>
+    <p>Success</p>
+  </Card>
+
+  <Card status={ CARD_STATUS.warning }>
+    <p>Warning</p>
+  </Card>
+</>
+```
+
+## Accessibility Grouping
+
+```tsx
+<ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
+  <li>
+    <Card style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+  </li>
+  <li>
+    <Card style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+  </li>
+</ul>
+```
+
+## Accessibility Alternative Grouping
+
+```tsx
+<div role="list" style={{ display: 'flex', gap: '16px' }}>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+  <Card role="listitem" style={{ padding: '8px' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  </Card>
+</div>
+```

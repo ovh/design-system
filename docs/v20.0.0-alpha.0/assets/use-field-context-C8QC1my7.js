@@ -1,0 +1,1 @@
+import{u as e}from"./use-locale-context-23U9qFbe.js";var[t,n]=e({name:`FieldContext`,hookName:`useFieldContext`,providerName:`<FieldProvider />`,strict:!1});export{n as t};

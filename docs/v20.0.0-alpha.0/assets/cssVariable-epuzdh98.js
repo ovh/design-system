@@ -1,0 +1,1 @@
+var e={"--ods-toaster-padding":`24px`};export{e as default};

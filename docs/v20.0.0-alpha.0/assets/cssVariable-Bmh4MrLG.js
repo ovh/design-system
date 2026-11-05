@@ -1,0 +1,1 @@
+var e={"--ods-state-is-disabled-opacity":`var(--ods-semantic-opacity-disabled)`};export{e as default};

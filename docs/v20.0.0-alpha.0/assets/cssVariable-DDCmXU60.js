@@ -1,0 +1,1 @@
+var e={"--ods-select-group-option-padding-horizontal":`calc(var(--ods-semantic-size-space-inset-inline) * 3)`,"--ods-state-is-disabled-opacity":`var(--ods-semantic-opacity-disabled)`};export{e as default};

@@ -1,0 +1,45 @@
+---
+title: "Button"
+slug: button
+category: component
+type: overview
+version: 20.0.0-alpha.0
+tokens: 305
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button.txt
+---
+
+# Button
+
+_A **Button** component aims to initiate an action. Its text indicates the related intent, its aspect describes the importance and influence level._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `emphasis` | `BUTTON_EMPHASIS` | No | undefined | The emphasis preset to use, setting the visual weight of the button. |
+| `loading` | `boolean` | No | undefined | Whether the component is in loading state, disabling it. |
+| `size` | `'xs' | 'sm' | 'md'` | No | undefined | The size preset to use. |
+| `status` | `BUTTON_STATUS` | No | undefined | The status preset to use. |
+
+## Examples
+
+- Default
+- Status
+- Loading
+- Size
+- Emphasis
+- Accessibility Explicit Text Content
+- Accessibility Icon Only
+- Accessibility Bad Practice Icon Only
+- Accessibility Labelled By
+- Accessibility Bad Practice Labelled By
+- Accessibility Bad Practices Role Status
+- Accessibility Role Status
+- Accessibility Bad Practices Role Alert
+- Accessibility Role Alert
+
+## Documentation pages
+
+- [Documentation](./react-components-button--documentation.txt)
+- [Technical Information](./react-components-button--technical-information.txt)
+- [Examples](./react-components-button--examples.txt)

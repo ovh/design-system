@@ -1,0 +1,391 @@
+var e=`import { type Meta, type StoryObj } from '@storybook/react';
+import React, { useState } from 'react';
+import { BUTTON_EMPHASES, BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_STATUS, BUTTON_STATUSES, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { staticSourceRenderConfig } from '../../support/source';
+
+type Story = StoryObj<ButtonProp>;
+
+const meta: Meta<ButtonProp> = {
+  component: Button,
+  title: 'React Components/Button',
+};
+
+export default meta;
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      Button
+    </Button>
+  ),
+};
+
+export const Default: Story = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      My button
+    </Button>
+  ),
+};
+
+export const Status: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { BUTTON_STATUS, Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button status={ BUTTON_STATUS.brand }>Brand</Button>
+      <Button status={ BUTTON_STATUS.critical }>Critical</Button>
+      <Button status={ BUTTON_STATUS.neutral }>Neutral</Button>
+    </>
+  ),
+};
+
+export const Loading: StoryObj = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button loading={ true }>
+      Loading button
+    </Button>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Button>
+      Button
+    </Button>
+  ),
+};
+
+export const Size: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button size={ BUTTON_SIZE.md }>MD button</Button>
+      <Button size={ BUTTON_SIZE.sm }>SM button</Button>
+      <Button size={ BUTTON_SIZE.xs }>XS button</Button>
+    </>
+  ),
+};
+
+export const Emphasis: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { BUTTON_EMPHASIS, Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button emphasis={ BUTTON_EMPHASIS.high }>High button</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.medium }>Medium button</Button>
+      <Button emphasis={ BUTTON_EMPHASIS.low }>Low button</Button>
+    </>
+  ),
+};
+
+export const AccessibilityExplicitTextContent: StoryObj = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      Clear
+    </Button>
+  ),
+}
+
+export const AccessibilityIconOnly: StoryObj = {
+  globals: {
+    imports: \`import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button aria-label='Clear'>
+        <Icon name={ ICON_NAME.xmark } />
+    </Button>
+  ),
+}
+
+export const AccessibilityBadPracticeIconOnly: StoryObj = {
+  globals: {
+    imports: \`import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      <Icon name={ ICON_NAME.xmark } />
+    </Button>
+  ),
+}
+
+export const AccessibilityLabelledBy: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ ICON_NAME.filter } />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+  ),
+}
+
+export const AccessibilityBadPracticeLabelledBy: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: \`import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button>
+        <Icon name={ ICON_NAME.filter } />
+      </Button>
+      <span>Filter your search results</span>
+    </>
+  ),
+}
+
+export const AccessibilityBadPracticesRoleStatus: Story = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span style={{ marginLeft: '1rem' }}>
+          { message }
+        </span>
+      </>
+    );
+  },
+};
+
+export const AccessibilityRoleStatus: Story = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span
+          aria-live="polite"
+          role="status"
+          style={{ marginLeft: '1rem' }}>
+          { message }
+        </span>
+      </>
+    );
+  },
+};
+
+export const AccessibilityBadPracticesRoleAlert: Story = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
+        </span>
+      </>
+    );
+  },
+};
+
+export const AccessibilityRoleAlert: Story = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';\`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving!');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span
+          role="alert"
+          style={{ marginLeft: '1rem', color: 'red' }}>
+          { error }
+        </span>
+      </>
+    );
+  },
+};
+
+export const GuideThemesOwnStyle: StoryObj = {
+  globals: {
+    imports: \`import { Button } from '@ovhcloud/ods-react';\`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <style>{\`
+        .my-plan {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ods-semantic-size-space-gap-block);
+          max-width: 280px;
+          padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+          border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-container);
+          border-radius: var(--ods-semantic-size-radius-container);
+          background-color: var(--ods-semantic-color-surface-raised);
+          color: var(--ods-semantic-color-content-text);
+        }
+
+        .my-plan__name {
+          margin: 0;
+          color: var(--ods-semantic-color-content-heading);
+          font-weight: var(--ods-semantic-font-weight-semibold);
+        }
+
+        .my-plan__price {
+          color: var(--ods-semantic-color-content-brand);
+          font-weight: var(--ods-semantic-font-weight-bold);
+        }
+      \`}</style>
+
+      <div className="my-plan">
+        <p className="my-plan__name">Starter plan</p>
+        <span className="my-plan__price">€4.99 / month</span>
+        <Button>Order</Button>
+      </div>
+    </>
+  ),
+};
+
+export const ThemeGenerator: StoryObj = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      { BUTTON_SIZES.map((size) => (
+        <div key={ size } style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          { BUTTON_EMPHASES.map((emphasis) => (
+            <div key={\`\${String(size)}-\${String(emphasis)}\`} style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+              { BUTTON_STATUSES.map((status) => (
+                <Button key={\`\${String(size)}-\${String(emphasis)}-\${String(status)}\`} emphasis={ emphasis } size={ size } status={ status }>
+                  { \`\${String(emphasis)} \${String(status)}\` }
+                </Button>
+              )) }
+            </div>
+          )) }
+          <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+            { BUTTON_EMPHASES.map((emphasis) => (
+              <Button key={\`disabled-\${String(size)}-\${String(emphasis)}\`} emphasis={ emphasis } size={ size } disabled>
+                Disabled
+              </Button>
+            )) }
+          </div>
+          <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+            { BUTTON_EMPHASES.map((emphasis) => (
+              <Button key={\`loading-\${String(size)}-\${String(emphasis)}\`} emphasis={ emphasis } size={ size } loading>
+                Loading
+              </Button>
+            )) }
+          </div>
+        </div>
+      )) }
+
+      <div>
+        <Button emphasis={ BUTTON_EMPHASIS.high }>
+          <Icon name={ ICON_NAME.xmark } /> Close
+        </Button>
+      </div>
+    </div>
+  ),
+};
+`;export{e as default};

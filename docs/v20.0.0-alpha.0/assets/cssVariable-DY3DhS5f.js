@@ -1,0 +1,1 @@
+var e={"--ods-meter-background-color-critical":`var(--ods-semantic-color-surface-critical)`,"--ods-meter-background-color-normal":`var(--ods-semantic-color-surface-success)`,"--ods-meter-background-color-warning":`var(--ods-semantic-color-surface-warning)`};export{e as default};

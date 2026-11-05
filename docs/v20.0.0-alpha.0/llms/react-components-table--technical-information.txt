@@ -1,0 +1,42 @@
+---
+title: "Table"
+slug: table
+category: component
+type: technical-information
+version: 20.0.0-alpha.0
+tokens: 321
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table--technical-information.txt
+---
+
+# Table
+
+## Table
+
+This component extends all the native `<table>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
+
+## Enums
+
+### TABLE_SIZE
+
+- `lg` = `lg`
+- `md` = `md`
+- `sm` = `sm`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-table-striped-background-color` | `var(--ods-semantic-color-surface-muted)` |
+| `--ods-table-border-color` | `var(--ods-semantic-color-border-separator)` |
+| `--ods-table-cell-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-sm` | `var(--ods-semantic-size-space-inset-block)` |
+| `--ods-table-cell-padding-horizontal-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-md` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-table-cell-padding-horizontal-lg` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-table-cell-padding-vertical-lg` | `calc(var(--ods-semantic-size-space-inset-block) * 3)` |
+| `--ods-table-head-background-color` | `var(--ods-semantic-color-surface-header)` |

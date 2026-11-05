@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-customize-themes
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1947
+tokens: 1964
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-themes.txt
 ---
 
@@ -130,7 +130,7 @@ Style your own elements with the `--ods-semantic-*` tokens, and they follow the 
 
 The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page explains which tokens to use and lists all of them.
 
-To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet, with the same keys: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads.
+To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
 
 ## Create your own theme
 

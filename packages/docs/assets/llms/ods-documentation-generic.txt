@@ -2032,7 +2032,7 @@ slug: ovhcloud-design-system-customize-themes
 category: generic
 type: overview
 version: 19.7.3
-tokens: 1947
+tokens: 1964
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-themes.txt
 ---
 
@@ -2158,7 +2158,7 @@ Style your own elements with the `--ods-semantic-*` tokens, and they follow the 
 
 The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page explains which tokens to use and lists all of them.
 
-To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet, with the same keys: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads.
+To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
 
 ## Create your own theme
 
@@ -5569,7 +5569,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 20611
+tokens: 20672
 source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5586,7 +5586,7 @@ The peer dependency range is unchanged:
 }
 ```
 
-The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, except that a Card without `status` is now neutral (see **Default rendering**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
+The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but three components render differently with no prop set: a Card without `status` is neutral (see **Default rendering**), a Button without `emphasis` is outlined (see **Button**), and a Message without `emphasis` has no tinted background (see **Message**). Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
 
@@ -5940,7 +5940,7 @@ import tokens from '@ovhcloud/ods-themes/default/tokens';
 const brand = tokens.root['--ods-semantic-color-surface-brand'];
 ```
 
-Each theme ships its own JSON, with the same keys: `@ovhcloud/ods-themes/blue-jeans/tokens`, `aluminium-dark/tokens` and `blue-jeans-dark/tokens`. If you move to Blue Jeans to keep the OVHcloud look, read `blue-jeans/tokens`: `default/tokens` gives the Aluminium values.
+Each theme ships its own JSON: `@ovhcloud/ods-themes/blue-jeans/tokens`, `aluminium-dark/tokens` and `blue-jeans-dark/tokens`. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme. If you move to Blue Jeans to keep the OVHcloud look, read `blue-jeans/tokens`: `default/tokens` gives the Aluminium values.
 
 ## Theme names in JavaScript
 

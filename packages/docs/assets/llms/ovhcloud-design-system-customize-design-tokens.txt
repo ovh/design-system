@@ -3,9 +3,9 @@ title: "Design Tokens"
 slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 5391
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
 # Design Tokens

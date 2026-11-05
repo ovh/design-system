@@ -3,14 +3,14 @@ title: "Components"
 slug: recipes-components
 category: generic
 type: overview
-version: 19.7.3
-tokens: 680
-source: https://ovh.github.io/design-system/v19.7.3/llms/recipes-components.txt
+version: 20.0.0-alpha.0
+tokens: 682
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/recipes-components.txt
 ---
 
 # Components
 
-Proven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: https://ovh.github.io/design-system/v19.7.3/recipes/components
+Proven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components
 
 ## Chat
 

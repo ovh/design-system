@@ -9,9 +9,9 @@ title: "Welcome"
 slug: ovhcloud-design-system-welcome
 category: generic
 type: overview
-version: 19.7.3
-tokens: 252
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-welcome.txt
+version: 20.0.0-alpha.0
+tokens: 256
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-welcome.txt
 ---
 
 # Welcome
@@ -20,11 +20,11 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 OVHcloud Design System provides React components, design tokens, helpers and usage guidelines for building OVHcloud products.
 
-- Online documentation: https://ovh.github.io/design-system/v19.7.3/
+- Online documentation: https://ovh.github.io/design-system/v20.0.0-alpha.0/
 
 - Components documented in this set: Accordion, Avatar, Badge, Breadcrumb, Button, Button Group, Card, Cart, Checkbox, Clipboard, Code, Combobox, Command, Data Table, Datepicker, Divider, Drawer, Editable, File Thumbnail, File Upload, Form Field, Icon, Input, Kbd, Link, Logo, Markdown, Medium, Menu, Message, Message Bubble, Meter, Modal, Pagination, Password, Phone Number, Popover, Progress Bar, Prompt Input, Quantity, Query Filter, Radio Group, Range, Select, Skeleton, Spinner, Table, Tabs, Tag, Text, Textarea, Tile, Timepicker, Toaster, Toggle, Tooltip, Tree View
 
-- Get started: https://ovh.github.io/design-system/v19.7.3/guides/get-started
+- Get started: https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started
 
 
 ## Get Started
@@ -34,9 +34,9 @@ title: "Get Started"
 slug: ovhcloud-design-system-get-started
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1174
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
+version: 20.0.0-alpha.0
+tokens: 1176
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-get-started.txt
 ---
 
 # Get Started
@@ -138,7 +138,7 @@ via Sass import:
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
-ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
+ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
 
 ## Server-side rendering
 
@@ -189,9 +189,9 @@ title: "Accessibility"
 slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 4541
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
 # Accessibility
@@ -712,9 +712,9 @@ title: "Internationalization"
 slug: ovhcloud-design-system-build-internationalization
 category: generic
 type: overview
-version: 19.7.3
-tokens: 608
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-internationalization.txt
+version: 20.0.0-alpha.0
+tokens: 614
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-internationalization.txt
 ---
 
 # Internationalization
@@ -726,8 +726,8 @@ There are two exceptions, components with full embedded translation and componen
 ## Embedded translation
 
 So far, only the following components internally manage a complete translation system:
-- [Datepicker](https://ovh.github.io/design-system/v19.7.3/components/datepicker)
-- [Phone number](https://ovh.github.io/design-system/v19.7.3/components/phone-number)
+- [Datepicker](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker)
+- [Phone number](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/phone-number)
 
 Both are relying on the native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) feature.
 
@@ -738,7 +738,7 @@ They do de-facto support the same locales as [Intl](https://developer.mozilla.or
 Although you have complete control on label translation when using the ODS components, there are a few internal elements
 that need a textual description for accessibility purpose.
 
-For example, take the [Message](https://ovh.github.io/design-system/v19.7.3/components/message) component:
+For example, take the [Message](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/message) component:
 
 ![i18n anatomy](components/message/anatomy-i18n.png)
 
@@ -794,9 +794,9 @@ title: "Forms"
 slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
-version: 19.7.3
-tokens: 6900
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
+version: 20.0.0-alpha.0
+tokens: 6932
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-forms.txt
 ---
 
 # Forms
@@ -1368,7 +1368,7 @@ The right component reduces friction before validation is even needed.
 
 ### When the user needs to provide short, structured information
 
-Use [Input](https://ovh.github.io/design-system/v19.7.3/components/input) component.
+Use [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) component.
 
 Use for:
 - Personal information (First name, Last name).
@@ -1386,7 +1386,7 @@ Do not use when:
 
 ### When the user needs to explain, justify, or describe something
 
-Use [Textarea](https://ovh.github.io/design-system/v19.7.3/components/textarea) component.
+Use [Textarea](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/textarea) component.
 
 Use for:
 - Explain why the user is requesting a change.
@@ -1400,7 +1400,7 @@ Why?
 
 ### When the user must create or confirm secure credentials
 
-Use [Password](https://ovh.github.io/design-system/v19.7.3/components/password) component.
+Use [Password](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/password) component.
 
 Use for:
 - Account creation.
@@ -1414,7 +1414,7 @@ Why?
 
 ### When the user must enter an exact numeric value
 
-Use [Input](https://ovh.github.io/design-system/v19.7.3/components/input) or [Quantity](https://ovh.github.io/design-system/v19.7.3/components/quantity) component
+Use [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) or [Quantity](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/quantity) component
 
 Use for:
 - Quantity of items.
@@ -1432,7 +1432,7 @@ Avoid when:
 
 ### When the user is selecting an approximate value or a range
 
-Use [Range](https://ovh.github.io/design-system/v19.7.3/components/range) component.
+Use [Range](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/range) component.
 
 Use for:
 - Budget filter.
@@ -1451,7 +1451,7 @@ Avoid when:
 
 ### When users must choose one option and all options should be visible
 
-Use [Radio](https://ovh.github.io/design-system/v19.7.3/components/radio-group) buttons.
+Use [Radio](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/radio-group) buttons.
 
 Use for:
 - Choosing a subscription plan (e.g., Basic / Pro / Enterprise).
@@ -1473,7 +1473,7 @@ When a user must select a single option from a predefined list, the choice betwe
 
 #### Use Select
 
-Use [Select](https://ovh.github.io/design-system/v19.7.3/components/select) when the list is limited and easy to scan visually.
+Use [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select) when the list is limited and easy to scan visually.
 
 Typical situations:
 - Selecting a status (Draft / Pending / Approved).
@@ -1487,7 +1487,7 @@ Typical situations:
 
 #### Use Combobox
 
-Use [Combobox](https://ovh.github.io/design-system/v19.7.3/components/combobox) when the list is long or when search significantly improves usability.
+Use [Combobox](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/combobox) when the list is long or when search significantly improves usability.
 
 Typical situations:
 - Selecting a country from a global list.
@@ -1502,7 +1502,7 @@ Typical situations:
 
 ### When users can select multiple independent options
 
-Use [Checkboxes](https://ovh.github.io/design-system/v19.7.3/components/checkbox).
+Use [Checkboxes](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/checkbox).
 
 Use for:
 - Selecting product features.
@@ -1516,7 +1516,7 @@ Why?
 
 ### When the user is enabling or disabling a setting
 
-Use [Toggle](https://ovh.github.io/design-system/v19.7.3/components/toggle) component.
+Use [Toggle](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/toggle) component.
 
 Use for:
 - Enable dark mode.
@@ -1531,11 +1531,11 @@ Avoid when:
 - The action is critical or legally binding.
 - The user must explicitly confirm something important.
 
-In those cases, use a [Checkbox](https://ovh.github.io/design-system/v19.7.3/components/checkbox).
+In those cases, use a [Checkbox](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/checkbox).
 
 ### When the user must select a specific date
 
-Use [Datepicker](https://ovh.github.io/design-system/v19.7.3/components/datepicker) component.
+Use [Datepicker](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker) component.
 
 Use for:
 - Booking a meeting.
@@ -1553,7 +1553,7 @@ Consider alternatives when:
 
 ### When the user must provide supporting material
 
-Use [File Upload](https://ovh.github.io/design-system/v19.7.3/components/file-upload) component.
+Use [File Upload](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-upload) component.
 
 Use for:
 - Uploading identity documents.
@@ -1572,11 +1572,11 @@ Avoid when:
 
 ODS form elements can either be [controlled or uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components).
 
-You can use each form element directly in your own form, or wrap them using the [Form Field](https://ovh.github.io/design-system/v19.7.3/components/form-field) component.
+You can use each form element directly in your own form, or wrap them using the [Form Field](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/form-field) component.
 
 ## Form Field
 
-Using [Form Field](https://ovh.github.io/design-system/v19.7.3/components/form-field) component
+Using [Form Field](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/form-field) component
 will enforce layout, design, behavior and accessibility through a few dedicated components:
 - `FormFieldLabel`
 - `FormFieldHelperText`
@@ -1825,9 +1825,9 @@ title: "Charts"
 slug: ovhcloud-design-system-build-charts
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1039
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-charts.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-charts.txt
 ---
 
 # Charts
@@ -1978,14 +1978,14 @@ title: "Apply ODS Style"
 slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
-version: 19.7.3
-tokens: 350
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
+version: 20.0.0-alpha.0
+tokens: 356
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
 # Apply ODS Style
 
-After installing ODS (following the [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started) documentation),
+After installing ODS (following the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation),
 you'll be able to use every component with the correct style.
 
 For the non-component related style, you need to update your app accordingly.
@@ -2006,7 +2006,7 @@ html {
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page. They follow the theme the page loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)).
+If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page. They follow the theme the page loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes)).
 
 ```css
 .my-custom-title {
@@ -2031,9 +2031,9 @@ title: "Themes"
 slug: ovhcloud-design-system-customize-themes
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1964
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-themes.txt
+version: 20.0.0-alpha.0
+tokens: 1970
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-themes.txt
 ---
 
 # Themes
@@ -2156,7 +2156,7 @@ Style your own elements with the `--ods-semantic-*` tokens, and they follow the 
 </>
 ```
 
-The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page explains which tokens to use and lists all of them.
+The [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page explains which tokens to use and lists all of them.
 
 To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
 
@@ -2182,9 +2182,9 @@ import './my-theme.css';
 
 An ODS theme declares every token: loaded after your stylesheet, it overrides it. When the page switches themes, keep your stylesheet after the one shown.
 
-The `--ods-semantic-*` tokens are the public surface of a theme. The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page lists them, with their role.
+The `--ods-semantic-*` tokens are the public surface of a theme. The [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page lists them, with their role.
 
-To change the colors, the brand and accent ramps are the shortest way: `--ods-palette-brand-*` paints the brand roles, `--ods-palette-accent-*` the text, headings, selection and form controls. They do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their values. Over the default theme, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare these roles themselves to change them. The [migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-19-to-20) details which roles each ramp reaches.
+To change the colors, the brand and accent ramps are the shortest way: `--ods-palette-brand-*` paints the brand roles, `--ods-palette-accent-*` the text, headings, selection and form controls. They do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their values. Over the default theme, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare these roles themselves to change them. The [migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) details which roles each ramp reaches.
 
 The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 
@@ -2200,9 +2200,9 @@ title: "Style Customization"
 slug: ovhcloud-design-system-customize-style-customization
 category: generic
 type: overview
-version: 19.7.3
-tokens: 631
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
+version: 20.0.0-alpha.0
+tokens: 635
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-style-customization.txt
 ---
 
 # Style Customization
@@ -2267,9 +2267,9 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-We do advise to reuse those variables on your own style, this way your application follows the theme it loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)).
+We do advise to reuse those variables on your own style, this way your application follows the theme it loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes)).
 
-You can find the whole list on the [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) documentation page.
+You can find the whole list on the [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) documentation page.
 
 Example of CSS variables:
 
@@ -2293,9 +2293,9 @@ title: "Design Tokens"
 slug: ovhcloud-design-system-customize-design-tokens
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 5391
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-design-tokens.txt
 ---
 
 # Design Tokens
@@ -2693,9 +2693,9 @@ title: "Tailwind CSS Integration"
 slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
-version: 19.7.3
-tokens: 2634
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
+version: 20.0.0-alpha.0
+tokens: 2644
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
 # Tailwind CSS Integration
@@ -2805,7 +2805,7 @@ Every utility has an `ods-` prefix, which keeps it apart from the Tailwind defau
   </tr>
   </tbody>
 
-A utility is named after its token: `--ods-semantic-color-surface-raised` gives `bg-ods-surface-raised`, `--ods-semantic-size-space-gap-group` gives `gap-ods-gap-group`. See [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) for what each token is for. The palette (`--ods-palette-*`) is not mapped: use the semantic tokens, the ones a theme re-points.
+A utility is named after its token: `--ods-semantic-color-surface-raised` gives `bg-ods-surface-raised`, `--ods-semantic-size-space-gap-group` gives `gap-ods-gap-group`. See [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) for what each token is for. The palette (`--ods-palette-*`) is not mapped: use the semantic tokens, the ones a theme re-points.
 
 ```tsx
 import { BADGE_STATUS, Badge, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
@@ -2828,7 +2828,7 @@ The tokens Tailwind has no theme for are not mapped. Read them with the variable
 
 ## Themes
 
-The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their values. The same classes follow the theme the page loads, dark themes included, with no Tailwind configuration: load another theme, or switch themes as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) explains, and they change with it.
+The utilities read the ODS tokens (`var(--ods-semantic-…)`), never their values. The same classes follow the theme the page loads, dark themes included, with no Tailwind configuration: load another theme, or switch themes as [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) explains, and they change with it.
 
 Import another theme instead of the default one, after `@ovhcloud/ods-tailwind`. A theme is complete: import only one, with the fonts it names.
 
@@ -2848,7 +2848,7 @@ To follow the system setting with no JavaScript, condition each mode on it, so t
 @import '@ovhcloud/ods-themes/default/fonts';
 ```
 
-A theme switched from your code, as [Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes) does it with a `<link>` in the `<head>`, is loaded outside `@ovhcloud/ods-tailwind`: declare the layer order first in the `<head>`, before that `<link>` (see **Import order**), or the theme sets it and the Tailwind base styles reset the ODS components.
+A theme switched from your code, as [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes) does it with a `<link>` in the `<head>`, is loaded outside `@ovhcloud/ods-tailwind`: declare the layer order first in the `<head>`, before that `<link>` (see **Import order**), or the theme sets it and the Tailwind base styles reset the ODS components.
 
 ```html
 <style>@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;</style>
@@ -2922,8 +2922,8 @@ In VS Code, install the [Tailwind CSS IntelliSense](https://marketplace.visualst
 
 - [Tailwind CSS theme variables](https://tailwindcss.com/docs/theme)
 - [Tailwind CSS v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide)
-- [ODS Themes](https://ovh.github.io/design-system/v19.7.3/guides/themes)
-- [ODS Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens)
+- [ODS Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes)
+- [ODS Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens)
 
 
 ## What's new
@@ -2933,14 +2933,101 @@ title: "What's new"
 slug: ovhcloud-design-system-upgrade-what-s-new
 category: generic
 type: overview
-version: 19.7.3
-tokens: 6668
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new.txt
+version: 20.0.0-alpha.0
+tokens: 790
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new.txt
 ---
 
 # What's new
 
-*Release notes of the current major version, v19. Earlier versions are listed under [What's new in previous versions](https://ovh.github.io/design-system/v19.7.3/guides/whats-new-v18); the [Changelog](https://ovh.github.io/design-system/v19.7.3/guides/changelog) lists every change.*
+*Release notes of the current major version, v20. Earlier versions are listed under [What's new in previous versions](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new-v19); the [Changelog](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) lists every change.*
+
+## v20.0.0-alpha.0
+
+First prerelease of v20. It is published under the `alpha` tag: install it with `npm install @ovhcloud/ods-react@alpha @ovhcloud/ods-themes@alpha`, the `latest` tag stays on v19. Its API may still change before v20.0.0.
+
+v20 has breaking changes in the component API and in the theme. Follow the [Migration 19.x to 20.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) guide before you upgrade.
+
+### Project changes
+
+- **React 19** is supported, and React 18 still is: the peer dependency range is unchanged.
+- **Themes** are rebuilt on a semantic layer of tokens, and the default theme gets a new, neutral look. Four themes are shipped, each as one complete stylesheet: the default theme (Aluminium), its dark mode, Blue Jeans (the OVHcloud look) and its dark mode. See [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes).
+- **Documentation** moves from Storybook to a new documentation website, published as `@ovhcloud/ods-docs` in place of `@ovhcloud/ods-storybook`.
+- **APIs deprecated in v19 are removed**, the Switch component among them. The `color` prop is removed too, in favor of `status` where the component has one.
+
+### New packages
+
+**@ovhcloud/ods-mcp**
+
+An MCP server that gives AI assistants access to the ODS documentation. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/mcp-server).
+
+**@ovhcloud/ods-tailwind**
+
+Tailwind CSS v4 utilities mapped to the ODS tokens. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/tailwind).
+
+### New components
+
+**Command**
+
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/command).
+
+### Feature updates
+
+**Accordion**
+- New attribute `emphasis` has been added.
+
+**Badge**
+- New attributes `status` and `emphasis` have been added.
+
+**Button**
+- New attributes `status` and `emphasis` have been added, `emphasis` replaces `variant`.
+
+**Card**
+- New attribute `status` has been added.
+
+**Drawer**
+- New attribute `backdrop` has been added. With it, the page no longer scrolls and a click on the backdrop closes the drawer.
+
+**Input**
+- New attributes `startContent` and `endContent` have been added.
+
+**Message**
+- New attributes `status` and `emphasis` have been added, `emphasis` replaces `variant`.
+
+**Pagination**
+- New attributes `getPageUrl` and `linkAs` have been added, to render the pages as links.
+
+**Spinner**
+- New CSS custom property `--ods-spinner-color` has been added.
+
+**Table**
+- New attribute `striped` has been added, it replaces `variant`.
+
+**Tabs**
+- New attribute `mountStrategy` has been added, to choose when the content of the inactive panels is rendered.
+
+**Tag**
+- New attribute `status` has been added.
+
+**Toaster**
+- New method `toast.accent()` has been added, it replaces `toast.primary()`.
+
+
+## What's new in v19
+
+---
+title: "What's new in v19"
+slug: ovhcloud-design-system-upgrade-what-s-new-v19
+category: generic
+type: overview
+version: 20.0.0-alpha.0
+tokens: 6686
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v19.txt
+---
+
+# What's new in v19
+
+*Release notes of v19. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v19.7.3
 
@@ -2972,41 +3059,41 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Avatar**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/avatar).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/avatar).
 
 **DataTable**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/data-table).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/data-table).
 
 **FileThumbnail**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/file-thumbnail).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-thumbnail).
 
 **Markdown**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/markdown).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/markdown).
 
 **MessageBubble**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/message-bubble).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/message-bubble).
 
 **PromptInput**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/prompt-input).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/prompt-input).
 
 **QueryFilter**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/query-filter).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/query-filter).
 
 ### New recipes
 
 **Data Grid with Query Filter**
 
-[See Recipes](https://ovh.github.io/design-system/v19.7.3/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
 
 **Chat**
 
-[See Recipes](https://ovh.github.io/design-system/v19.7.3/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
 
 ### Feature updates
 
@@ -3147,17 +3234,17 @@ configuration will not be impacted.
 
 **Cart**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/cart).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/cart).
 
 **Menu**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/menu).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/menu).
 
 ### New recipes
 
 **Dashboard Card**
 
-[See Recipes](https://ovh.github.io/design-system/v19.7.3/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
 
 ### Design updates
 
@@ -3216,25 +3303,25 @@ configuration will not be impacted.
 
 **Editable**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/editable).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/editable).
 
 **Logo**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/logo).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/logo).
 
 **Tile**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tile).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tile).
 
 ### New recipes
 
 **Config Tile**
 
-[See Recipes](https://ovh.github.io/design-system/v19.7.3/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
 
 **Feature List Product Card**
 
-[See Recipes](https://ovh.github.io/design-system/v19.7.3/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
 
 ### Design updates
 
@@ -3266,7 +3353,7 @@ Starting from this version, `Drawer` and `Modal` z-indexes are now greater than 
 This may cause issue with your current usage of overlay elements inside `Modal`.
 
 To use such element correctly, you'll have to set the `createPortal={ false }` on overlay elements inside `Modal`.
-You can see some examples on the [Modal Technical Page](https://ovh.github.io/design-system/v19.7.3/components/modal).
+You can see some examples on the [Modal Technical Page](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal).
 
 We've also added a `positionerStyle` attribute on all overlay elements to allow you to override the positioner style and set up your own `z-index` values if needed.
 
@@ -3368,11 +3455,11 @@ You can find more information about recipes on the new dedicated section in the 
 
 **Button Group**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/button-group).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button-group).
 
 **Kbd**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/kbd).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/kbd).
 
 ### Design updates
 
@@ -3423,7 +3510,7 @@ You can find more information about recipes on the new dedicated section in the 
 
 **Toaster**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/toaster)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/toaster)
 
 ### Design updates
 
@@ -3557,11 +3644,11 @@ ODS documentation is now available as LLM files to help AI tools to better under
 
 **Meter**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/meter)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/meter)
 
 **TreeView**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tree-view)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tree-view)
 
 ### Font changes
 
@@ -3662,7 +3749,7 @@ We've implemented all the internal requirements on each component, validated usi
 Though, ensuring accessibility for your context does require you to use the right `aria`/`role`/... attribute at the right place.
 
 To help you with that, we've added:
-- a [guide about accessibility](https://ovh.github.io/design-system/v19.7.3/guides/accessibility) best practices.
+- a [guide about accessibility](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/accessibility) best practices.
 - a dedicated `Accessibility` section on each component `Documentation` page.
 
 #### i18n
@@ -3674,7 +3761,7 @@ We do provide default values for each supported locales to ensure that integrati
 
 You can customize those value further with your own translations.
 
-See the related [Internationalization guide](https://ovh.github.io/design-system/v19.7.3/guides/internationalization) for more information.
+See the related [Internationalization guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/internationalization) for more information.
 
 ### Design updates
 
@@ -3824,7 +3911,7 @@ With this new version we got rid of those constraints, which gave us some benefi
 Although, we tried to stay as close as possible to previous version behavior, the way you integrate ODS in your React app should be rethought,
 to ensure you use components as real React elements and not wrapped Web Components anymore.
 
-To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started) documentation.
+To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation.
 
 Here is a non-exhaustive list of the major changes:
 - rework of all components as React elements.
@@ -3848,14 +3935,14 @@ title: "What's new in v18"
 slug: ovhcloud-design-system-upgrade-what-s-new-v18
 category: generic
 type: overview
-version: 19.7.3
-tokens: 4759
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v18.txt
+version: 20.0.0-alpha.0
+tokens: 4779
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v18.txt
 ---
 
 # What's new in v18
 
-*Release notes of v18. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v18. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v18.6.4
 
@@ -3908,7 +3995,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Combobox**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/combobox)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/combobox)
 
 ### Feature updates
 
@@ -3922,7 +4009,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 - New attribute `isMasked` has been added.
 
 **Icon**
-- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the [accessibility best practices](https://ovh.github.io/design-system/v19.7.3/components/icon) instead.
+- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the [accessibility best practices](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/icon) instead.
 
 ### Bug fixes
 
@@ -3936,7 +4023,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 ### Documentation improvements
 
 - Add new dedicated page about design tokens under the `Design and Style` section.
-- Update the accessibility section of the [Icon](https://ovh.github.io/design-system/v19.7.3/components/icon) component, with best practices and examples.
+- Update the accessibility section of the [Icon](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/icon) component, with best practices and examples.
 
 ## v18.5.3
 
@@ -4054,7 +4141,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Drawer**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/drawer)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/drawer)
 
 ### Feature updates
 
@@ -4219,7 +4306,7 @@ We won't go through an exhaustive list of changes, here are the most important o
 - A new part `last` is now available to customize the last item (which differ from other link items).
 
 **Input**
-- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the [Technical information](https://ovh.github.io/design-system/v19.7.3/components/input) page.
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the [Technical information](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) page.
 - New attribute `list` has been added.
 - New slot `list` is now available.
 
@@ -4343,7 +4430,7 @@ Storybook has been partially rewritten, so you may notice a few changes:
 
 ## v18.0.0
 
-As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-17-to-18)
+As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-17-to-18)
 
 ### Project changes
 
@@ -4452,15 +4539,15 @@ to use the web-component by default.
 
 **File Upload**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/file-upload)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-upload)
 
 **Timepicker**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/timepicker)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/timepicker)
 
 ### Component changes
 
-Please check the [migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-17-to-18) regarding all the component changes.
+Please check the [migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-17-to-18) regarding all the component changes.
 
 
 ## What's new in v17
@@ -4470,14 +4557,14 @@ title: "What's new in v17"
 slug: ovhcloud-design-system-upgrade-what-s-new-v17
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1593
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v17.txt
+version: 20.0.0-alpha.0
+tokens: 1603
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v17.txt
 ---
 
 # What's new in v17
 
-*Release notes of v17. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v17. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v17.2.2
 
@@ -4518,7 +4605,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 **Table**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/table)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table)
 
 ### Documentation improvements
 
@@ -4675,7 +4762,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 ## v17.0.0
 
-As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-16-to-17)
+As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-16-to-17)
 
 ### Project changes
 
@@ -4696,8 +4783,8 @@ ODS components can then be either imported using lazy-loading (the code of each 
 
 For more details on how to import ODS components, see:
 
-* the updated [Get Started documentation](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
-* the 16.x to 17.x [Migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-16-to-17)
+* the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
+* the 16.x to 17.x [Migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-16-to-17)
 
 ### Documentation improvements
 
@@ -4739,14 +4826,14 @@ title: "What's new in v16"
 slug: ovhcloud-design-system-upgrade-what-s-new-v16
 category: generic
 type: overview
-version: 19.7.3
-tokens: 2294
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v16.txt
+version: 20.0.0-alpha.0
+tokens: 2308
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v16.txt
 ---
 
 # What's new in v16
 
-*Release notes of v16. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v16. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v16.6.0
 
@@ -4850,7 +4937,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Medium**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/medium)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/medium)
 
 ### Bug fixes
 
@@ -4982,7 +5069,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Datepicker**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/datepicker)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker)
 
 ### Component changes
 
@@ -5013,7 +5100,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 **Phone Number**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/phone-number)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/phone-number)
 
 ### Component changes
 
@@ -5045,7 +5132,7 @@ Fixes CI build issues when deploying Storybook.
 
 ## v16.0.0
 
-As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-15-to-16)
+As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-15-to-16)
 
   
   
@@ -5104,7 +5191,7 @@ Ex:
 
 **Clipboard**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/clipboard)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/clipboard)
 
 **Menu**
 
@@ -5112,7 +5199,7 @@ See documentation using version selector
 
 **Modal**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/modal)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal)
 
 **Search Bar**
 
@@ -5146,14 +5233,14 @@ title: "What's new in v15"
 slug: ovhcloud-design-system-upgrade-what-s-new-v15
 category: generic
 type: overview
-version: 19.7.3
-tokens: 880
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v15.txt
+version: 20.0.0-alpha.0
+tokens: 884
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v15.txt
 ---
 
 # What's new in v15
 
-*Release notes of v15. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v15. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v15.0.1
 
@@ -5162,7 +5249,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 ## v15.0.0
 
-As it is a major version, you have to do the [migration guide 14.x to 15.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-14-to-15)
+As it is a major version, you have to do the [migration guide 14.x to 15.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-14-to-15)
 
 ### Project changes
 
@@ -5243,14 +5330,14 @@ title: "What's new in v14"
 slug: ovhcloud-design-system-upgrade-what-s-new-v14
 category: generic
 type: overview
-version: 19.7.3
-tokens: 831
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v14.txt
+version: 20.0.0-alpha.0
+tokens: 853
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v14.txt
 ---
 
 # What's new in v14
 
-*Release notes of v14. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v14. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v14.1.0
 
@@ -5264,11 +5351,11 @@ We added the following components:
 
 **Form Field**
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/form-field)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/form-field)
 
 **Switch**
 
-Removed in v20, see the [Migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-19-to-20)
+Removed in v20, see the [Migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20)
 
 ### Features changes
 
@@ -5278,7 +5365,7 @@ Removed in v20, see the [Migration guide](https://ovh.github.io/design-system/v1
 
 * Can now show pages according to a numbers of items shown by page.
 
-> For more information, check our documentation [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/pagination)
+> For more information, check our documentation [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/pagination)
 
 * **Location-tile**
 
@@ -5298,29 +5385,29 @@ Removed in v20, see the [Migration guide](https://ovh.github.io/design-system/v1
 
 ## v14.0.0
 
-As it is a major version, you have to do the [migration guide 13.x to 14.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-13-to-14)
+As it is a major version, you have to do the [migration guide 13.x to 14.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-13-to-14)
 
 ### New features
 
 We added the following components:
 
-* **Progress Bar**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/progress-bar)
-* **Popover**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/popover)
-* **Tooltip**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tooltip)
+* **Progress Bar**: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/progress-bar)
+* **Popover**: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/popover)
+* **Tooltip**: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tooltip)
 
 Components version 2:
 
-* **Input V2**: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/input)
+* **Input V2**: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input)
 * new properties have been added
 * `loading`: it displays a Spinner
 * `clearable`: it clears the input value on click
 * `masked`: it indicates if the input value is hidden or not (to be used with password type)
 * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
-* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/select)
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)
 
 **Quantity** component accepts four digits in the input field:
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/quantity)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/quantity)
 
 **CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
 
@@ -5352,27 +5439,27 @@ title: "What's new in v13"
 slug: ovhcloud-design-system-upgrade-what-s-new-v13
 category: generic
 type: overview
-version: 19.7.3
-tokens: 345
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v13.txt
+version: 20.0.0-alpha.0
+tokens: 355
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v13.txt
 ---
 
 # What's new in v13
 
-*Release notes of v13. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v13. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v13.0.0
 
-As it is a major version, you have to do the [migration guide 12.x to 13.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-12-to-13)
+As it is a major version, you have to do the [migration guide 12.x to 13.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-12-to-13)
 
 ### New features
 
 We added the following components:
 
-* Breadcrumb: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/breadcrumb)
+* Breadcrumb: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/breadcrumb)
 * Collapsible: See Documentation using version selector
-* Pagination: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/pagination)
-* Spinner: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/spinner)
+* Pagination: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/pagination)
+* Spinner: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/spinner)
 
 Circle-shaped button has been added to Button Component (circle attribute)
 
@@ -5410,14 +5497,14 @@ title: "What's new in v12 and earlier"
 slug: ovhcloud-design-system-upgrade-what-s-new-v12
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1397
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v12.txt
+version: 20.0.0-alpha.0
+tokens: 1407
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v12.txt
 ---
 
 # What's new in v12 and earlier
 
-*Release notes of v12 and earlier. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v12 and earlier. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v12.1.0
 
@@ -5425,7 +5512,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 We added the Tabs component.<br />
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/tabs)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tabs)
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
 
@@ -5459,7 +5546,7 @@ First release on GitHub. There is no new feature in this version. It is now open
 ## v11.0.0
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see [Installation](https://ovh.github.io/design-system/v19.7.3/guides/get-started) page.
+For more details about assets, see [Installation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
 Before importing any component you now have to setup ods.
@@ -5497,7 +5584,7 @@ We fixed some issue about automated screenshot testing with some timeout.
 
 We added the select component (version 1).
 
-[See Documentation](https://ovh.github.io/design-system/v19.7.3/components/select)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)
 
 ## v10.0.0
 
@@ -5523,7 +5610,7 @@ ts-node ~9.1.1 to ~10.7.0
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated [Getting Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+You can read the updated [Getting Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
@@ -5568,9 +5655,9 @@ title: "Migration 19.x to 20.x"
 slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
-version: 19.7.3
-tokens: 20727
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
+version: 20.0.0-alpha.0
+tokens: 20735
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
 # Migration 19.x to 20.x
@@ -5833,7 +5920,7 @@ grep -rnE "ods-themes/src/default/_?variables" src/
 
 The v19 Tailwind guide had you copy a configuration that read the tokens removed above: its `ods-primary`, `ods-success`, `ods-critical`, `ods-xs` to `ods-lg` and `ods-default` keys (`ods-color-primary-500`, `ods-border-radius-md`… in a Tailwind v3 configuration) now resolve to nothing. Tailwind gives no error for a class it no longer knows: the property silently falls back.
 
-In v20, `@ovhcloud/ods-tailwind` maps the Tailwind v4 utilities to the semantic tokens, with no configuration to copy (see [Tailwind CSS Integration](https://ovh.github.io/design-system/v19.7.3/guides/tailwind)). Remove the ODS keys of your configuration, and the `.vscode/tailwind.json` list of the v19 guide, then rename the classes:
+In v20, `@ovhcloud/ods-tailwind` maps the Tailwind v4 utilities to the semantic tokens, with no configuration to copy (see [Tailwind CSS Integration](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/tailwind)). Remove the ODS keys of your configuration, and the `.vscode/tailwind.json` list of the v19 guide, then rename the classes:
 
   <thead>
   <tr>
@@ -6868,9 +6955,9 @@ import { Spinner } from '@ovhcloud/ods-react';
 
 **The Switch component is removed** (deprecated since v19.4.0), with `SwitchItem` (and `Switch.Item`), `SWITCH_SIZE`, `SWITCH_SIZES`, the `SwitchProp`, `SwitchItemProp`, `SwitchSize` and `SwitchValueChangeDetail` types, the `@ovhcloud/ods-react/switch` entry point and the `--ods-switch-*` CSS custom properties. Replace it according to its use:
 
-- To move between views: [Tabs](https://ovh.github.io/design-system/v19.7.3/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, each `SwitchItem` becomes a `Tab`, and the views shown under the Switch move into one `TabContent` per `Tab`, so that each tab controls its panel. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`. The inactive panels stay mounted by default: set `mountStrategy="unmount"` on the Tabs to keep a view rendered only while it is shown.
-- To pick a mode or turn an option on or off with an immediate effect, with no view to hold: [Button Group](https://ovh.github.io/design-system/v19.7.3/components/button-group). With a single selection, it renders a radio group: give it an `aria-label`. Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`, or an empty array when the selected item is clicked again: ignore it to keep the selection.
-- To pick a value in a form: [Radio Group](https://ovh.github.io/design-system/v19.7.3/components/radio-group).
+- To move between views: [Tabs](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tabs) with the `switch` variant, which renders the same segmented control. `Switch` becomes `Tabs` with `variant={ TABS_VARIANT.switch }` around a `TabList`, each `SwitchItem` becomes a `Tab`, and the views shown under the Switch move into one `TabContent` per `Tab`, so that each tab controls its panel. `value`, `defaultValue`, `onValueChange` (which receives `{ value }`) and `size` (`sm` or `md`) keep their shape. Tabs has no `disabled` prop: set `disabled` on each `Tab`. The inactive panels stay mounted by default: set `mountStrategy="unmount"` on the Tabs to keep a view rendered only while it is shown.
+- To pick a mode or turn an option on or off with an immediate effect, with no view to hold: [Button Group](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button-group). With a single selection, it renders a radio group: give it an `aria-label`. Its `value` is an array: `value={ [value] }`, and `onValueChange` receives `{ value: [value] }`, or an empty array when the selected item is clicked again: ignore it to keep the selection.
+- To pick a value in a form: [Radio Group](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/radio-group).
 - An override of a `--ods-switch-*` custom property has no element left to style: remove it, and style the replacement through its own custom properties.
 
 To find the usages to migrate (other libraries export a `Switch` too, so the second search is limited to the files that import ODS):
@@ -7059,9 +7146,9 @@ title: "Migration to v19"
 slug: ovhcloud-design-system-upgrade-migration-to-v19
 category: generic
 type: overview
-version: 19.7.3
-tokens: 443
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-to-v19.txt
+version: 20.0.0-alpha.0
+tokens: 447
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-migration-to-v19.txt
 ---
 
 # Migration to v19
@@ -7083,13 +7170,13 @@ For example, Button will now accept any node (text, text + icon, triple icon, ..
 Moving out of Web Component also means getting rid of the Shadow DOM.
 This means you now have direct access to the component DOM and it's easier to add your own style.
 Though this also means it is easier to break the component rendering, and some custom selectors may break from version to version
-(see [style customization documentation](https://ovh.github.io/design-system/v19.7.3/guides/style-customization) to know more).
+(see [style customization documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/style-customization) to know more).
 
 Regarding components, we tried to stay as close as possible to their previous interface while keeping them easy to integrate.
 Though, the way you'll integrate them in your React app should be rethought, to ensure you use them as real React components
 and not wrapped Web Components anymore.
 
-To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started) documentation.
+To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation.
 
 
 ## 12.x to 13.x
@@ -7099,9 +7186,9 @@ title: "12.x to 13.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 138
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x.txt
 ---
 
 # 12.x to 13.x
@@ -7126,9 +7213,9 @@ title: "13.x to 14.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 142
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x.txt
 ---
 
 # 13.x to 14.x
@@ -7153,9 +7240,9 @@ title: "14.x to 15.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 838
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x.txt
 ---
 
 # 14.x to 15.x
@@ -7273,9 +7360,9 @@ title: "15.x to 16.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 561
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x.txt
 ---
 
 # 15.x to 16.x
@@ -7342,9 +7429,9 @@ title: "16.x to 17.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x
 category: generic
 type: overview
-version: 19.7.3
-tokens: 555
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt
+version: 20.0.0-alpha.0
+tokens: 557
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt
 ---
 
 # 16.x to 17.x
@@ -7375,7 +7462,7 @@ Instead use only one dependency:
 
 ### Import
 
-You can see more details in the updated [Get Started documentation](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+You can see more details in the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
 
 #### Native webcomponents
 
@@ -7430,9 +7517,9 @@ title: "17.x to 18.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 390
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt
 ---
 
 # 17.x to 18.x
@@ -7483,14 +7570,14 @@ title: "Troubleshooting"
 slug: ovhcloud-design-system-troubleshooting
 category: generic
 type: overview
-version: 19.7.3
-tokens: 912
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-troubleshooting.txt
+version: 20.0.0-alpha.0
+tokens: 922
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-troubleshooting.txt
 ---
 
 # Troubleshooting
 
-*Common issues met when integrating ODS, and how to fix them. If yours is not listed, check the [F.A.Q.](https://ovh.github.io/design-system/v19.7.3/guides/faq) or [open an issue on GitHub](https://github.com/ovh/design-system/issues).*
+*Common issues met when integrating ODS, and how to fix them. If yours is not listed, check the [F.A.Q.](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/faq) or [open an issue on GitHub](https://github.com/ovh/design-system/issues).*
 
 ## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
 
@@ -7543,12 +7630,12 @@ This is to prevent those to appear behind an open modal/drawer.
 To allow overlay elements to correctly render inside a modal/drawer, add the `createPortal={ false }` attribute to the
 `Content` component of the overlay element.
 
-See [Drawer example](https://ovh.github.io/design-system/v19.7.3/components/drawer)
-and [Modal example](https://ovh.github.io/design-system/v19.7.3/components/modal).
+See [Drawer example](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/drawer)
+and [Modal example](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal).
 
 ## Icons are not displayed
 
-Ensure you did import the fonts in your application, check the [get started](https://ovh.github.io/design-system/v19.7.3/guides/get-started)
+Ensure you did import the fonts in your application, check the [get started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
 page to read more about how to achieve this.
 
 ## Warning: Function components cannot be given refs
@@ -7593,7 +7680,7 @@ Use them from client components, marked with the `'use client'` directive, and k
 
 If the error is `document is not defined` and the page renders a `Toaster`, it comes from its default portal into `document.body`: pass `createPortal={ false }`, or render the `Toaster` only once the page is mounted in the browser.
 
-See [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started) for the full setup.
+See [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) for the full setup.
 
 
 ## FAQ
@@ -7603,9 +7690,9 @@ title: "FAQ"
 slug: ovhcloud-design-system-f-a-q
 category: generic
 type: overview
-version: 19.7.3
-tokens: 975
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-f-a-q.txt
+version: 20.0.0-alpha.0
+tokens: 977
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-f-a-q.txt
 ---
 
 # FAQ
@@ -7687,7 +7774,7 @@ If you still need to access documentation about Web Components or Vue, use the v
 
 ## Something does not work as expected
 
-Common integration issues (TypeScript resolution, overlays, icons, refs, server-side rendering) and their fixes are gathered in the [Troubleshooting](https://ovh.github.io/design-system/v19.7.3/guides/troubleshooting) guide.
+Common integration issues (TypeScript resolution, overlays, icons, refs, server-side rendering) and their fixes are gathered in the [Troubleshooting](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/troubleshooting) guide.
 
 
 ## formatPrice
@@ -7697,9 +7784,9 @@ title: "formatPrice"
 slug: helpers-formatprice
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 109
-source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/helpers-formatprice.txt
 ---
 
 # formatPrice
@@ -7726,9 +7813,9 @@ title: "formatPrice"
 slug: helpers-formatprice
 category: generic
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 253
-source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/helpers-formatprice--documentation.txt
 ---
 
 # formatPrice
@@ -7782,9 +7869,9 @@ title: "formatRelativeTime"
 slug: helpers-formatrelativetime
 category: generic
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 113
-source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/helpers-formatrelativetime.txt
 ---
 
 # formatRelativeTime
@@ -7811,9 +7898,9 @@ title: "formatRelativeTime"
 slug: helpers-formatrelativetime
 category: generic
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 283
-source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/helpers-formatrelativetime--documentation.txt
 ---
 
 # formatRelativeTime
@@ -7867,14 +7954,14 @@ title: "Components"
 slug: recipes-components
 category: generic
 type: overview
-version: 19.7.3
-tokens: 680
-source: https://ovh.github.io/design-system/v19.7.3/llms/recipes-components.txt
+version: 20.0.0-alpha.0
+tokens: 682
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/recipes-components.txt
 ---
 
 # Components
 
-Proven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: https://ovh.github.io/design-system/v19.7.3/recipes/components
+Proven UI patterns (recipes) combining several ODS components. Each recipe ships copyable source code in the online documentation: https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components
 
 ## Chat
 

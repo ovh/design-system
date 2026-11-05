@@ -3,9 +3,9 @@ title: "Progress Bar"
 slug: progress-bar
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 718
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-progress-bar--documentation.txt
 ---
 
 # Progress Bar

@@ -3,9 +3,9 @@ title: "Button"
 slug: button
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1590
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1592
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button--documentation.txt
 ---
 
 # Button
@@ -38,7 +38,7 @@ They are used to allow users to interact with the page or its content.
 They must respect the proximity law in order to guide the user on the action to be performed and the expected result.
 A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
 
-**Buttons** don't usually redirect to an external page. For that, see [Link](https://ovh.github.io/design-system/v19.7.3/components/link).
+**Buttons** don't usually redirect to an external page. For that, see [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link).
 
 ### When to use a link or a button?
 

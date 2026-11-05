@@ -3,9 +3,9 @@ title: "Migration to v19"
 slug: ovhcloud-design-system-upgrade-migration-to-v19
 category: generic
 type: overview
-version: 19.7.3
-tokens: 443
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-to-v19.txt
+version: 20.0.0-alpha.0
+tokens: 447
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-migration-to-v19.txt
 ---
 
 # Migration to v19
@@ -27,10 +27,10 @@ For example, Button will now accept any node (text, text + icon, triple icon, ..
 Moving out of Web Component also means getting rid of the Shadow DOM.
 This means you now have direct access to the component DOM and it's easier to add your own style.
 Though this also means it is easier to break the component rendering, and some custom selectors may break from version to version
-(see [style customization documentation](https://ovh.github.io/design-system/v19.7.3/guides/style-customization) to know more).
+(see [style customization documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/style-customization) to know more).
 
 Regarding components, we tried to stay as close as possible to their previous interface while keeping them easy to integrate.
 Though, the way you'll integrate them in your React app should be rethought, to ensure you use them as real React components
 and not wrapped Web Components anymore.
 
-To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v19.7.3/guides/get-started) documentation.
+To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation.

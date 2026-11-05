@@ -5,6 +5,209 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
+# [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
+[compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
+
+### Bug Fixes
+
+* **accordion:** address review feedback ([da20e08](https://github.com/ovh/design-system/commit/da20e087b5c53a38f82286fffd3d015d57dccd9d))
+* **accordion:** fall back to medium for an unknown emphasis ([415d5ca](https://github.com/ovh/design-system/commit/415d5ca2c66e60a65ebd6aa2bccac9ceaca26e4d))
+* **accordion:** repoint the emphasis styles on the semantic layer ([33ead4a](https://github.com/ovh/design-system/commit/33ead4ae7a9ef9d76174b06e475a378e012c4b9e))
+* amend ci tests ([d261919](https://github.com/ovh/design-system/commit/d261919cb5e8f12ca41926ac1e7db232c9e9c5d1))
+* **badge:** keep the 19.7.3 heights and give the pill room on its sides ([f7d050e](https://github.com/ovh/design-system/commit/f7d050e4cce6c76a8b0b349ebbda66a8fef00ef6))
+* **badge:** name the medium status custom properties after their emphasis ([2b7a511](https://github.com/ovh/design-system/commit/2b7a511663d918d6ed29f4ebb0f5cb375b0a4df5))
+* **badge:** repoint the emphasis styles on the semantic layer ([a0f6dce](https://github.com/ovh/design-system/commit/a0f6dce708f13152559683d6435bcc8a288db017))
+* **clipboard:** keep a clipboard without control at the width of its trigger ([d8ecc92](https://github.com/ovh/design-system/commit/d8ecc92376a5260322f24602fa12afdbcd625342))
+* **combobox, command, query-filter:** skip the option scroll on pointer highlights ([39a14f3](https://github.com/ovh/design-system/commit/39a14f335fd9e03bfcfe9a311a48a58f0d99bfc8))
+* **command:** align trigger typing with the modal trigger for TypeScript 6 ([5183610](https://github.com/ovh/design-system/commit/5183610c074695c263d290496165def42e74cb6a))
+* **command:** APGfixes ([35dc20c](https://github.com/ovh/design-system/commit/35dc20ca188a8ff95e0094b7bf777faa6046109b))
+* **command:** e2e ([c941b57](https://github.com/ovh/design-system/commit/c941b57fd35a6ac0032582e718375c45df741cd8))
+* **command:** handle reviews ([7e7fcc1](https://github.com/ovh/design-system/commit/7e7fcc120bfe3169bc095aa2664d4918d59f3486))
+* **command:** order the icon import and stop asserting the highlight mid-render ([7d4eeb3](https://github.com/ovh/design-system/commit/7d4eeb35cb0a88140c2fc447721c0cd8f32d1b77))
+* **command:** review returns ([a77a664](https://github.com/ovh/design-system/commit/a77a66406962da044831c23da8ab4a50985da2f6))
+* **core:** adapt command component and dev stories to the upgraded toolchain ([5b6ac4c](https://github.com/ovh/design-system/commit/5b6ac4cb7c9dcf61a987db80644e9a242ba383c5))
+* correct html list semantics on safari ([f916a62](https://github.com/ovh/design-system/commit/f916a62078d810dafa9b32732e0b72303b706fad))
+* **data-table:** make the sort headers keyboard operable ([51ff108](https://github.com/ovh/design-system/commit/51ff108dfceeff519ce0887b6c1bf873cc008f21))
+* **drawer:** give a custom content id to the dialog machine ([9318bd2](https://github.com/ovh/design-system/commit/9318bd23cbd6d3f9267172a2b12cbc1e5f212769))
+* **drawer:** hide the closed content so that Tab cannot reach it ([da620b5](https://github.com/ovh/design-system/commit/da620b5f959bddba2f29e85fde39917e77d6e272))
+* **drawer:** keep closed drawers inert to pointer events ([c0e17c3](https://github.com/ovh/design-system/commit/c0e17c375f3c9490a8d2a395a6dc3bf560d70e34))
+* **drawer:** return focus to the trigger when closing without backdrop ([988234c](https://github.com/ovh/design-system/commit/988234cda62457d42893a818a4b9f506ae19af5c))
+* **drawer:** review returns ([bd3e535](https://github.com/ovh/design-system/commit/bd3e535c8f5b568a3fec3e900c1f32d608774404))
+* **file-upload:** let the theme set the error ink of a hovered row ([00c8c36](https://github.com/ovh/design-system/commit/00c8c36468600744bf7dea3d4483c8d1f7bd3a22))
+* **form-field:** link the label to the id the field actually renders ([0cf79c9](https://github.com/ovh/design-system/commit/0cf79c9f6a24c69c2883e7bdad0dc1189a7322a8))
+* **input:** even out the gap around in-field action buttons ([e2007f8](https://github.com/ovh/design-system/commit/e2007f8309fa5dd61c774fda55442d03dcf48c15))
+* **input:** keep the in-field inset on the container ([e8f65d4](https://github.com/ovh/design-system/commit/e8f65d441ccafea54a85652d296eca1a5ee100f0))
+* **link:** keep the visited color on hover ([3546508](https://github.com/ovh/design-system/commit/3546508770aa68252427c8e04ee6e494df3b72c1))
+* **link:** stop throwing on click when no onClick is given ([c603c3b](https://github.com/ovh/design-system/commit/c603c3b431915cc9e181f347ae33e9d1624b7e05))
+* **link:** underline a link at rest so that its color is not its only cue ([6fd611d](https://github.com/ovh/design-system/commit/6fd611dcdc9f6b20cc27c1d7f0eefa32bd53cdb1))
+* **markdown:** bundle the non-dom entity decoder so the library loads on the server ([4863c8b](https://github.com/ovh/design-system/commit/4863c8b8a2760896c3846ef17279d873f2116466))
+* **message:** keep the 19.7.3 size of the high emphasis ([29b29dc](https://github.com/ovh/design-system/commit/29b29dcccdf97379719d26af9622102db2185500))
+* **message:** read the minimal neutral surface in high emphasis ([3bf2e7f](https://github.com/ovh/design-system/commit/3bf2e7fc11fcb4d506aa144c3c10b418dbfd7d6c))
+* **message:** repoint the emphasis styles on the semantic layer ([98cefc0](https://github.com/ovh/design-system/commit/98cefc034e320ff52904fc64ceee63a534bc28eb))
+* **modal:** draw the overlay shadow, as the other overlays ([6efb0dd](https://github.com/ovh/design-system/commit/6efb0ddda219ca2c245820c6d57ded2d8b58fd20))
+* **ods-react:** apply the browser language once mounted, so the hydrated markup matches the server ([930dc91](https://github.com/ovh/design-system/commit/930dc91852a476e430d35faaf156ce9baf45dcc2))
+* **ods-react:** document the base value of a component custom property ([872b46f](https://github.com/ovh/design-system/commit/872b46f61e2ac517c83a040a7b4b60283cea9f44))
+* **ods-react:** document the custom properties read only with a fallback ([f667878](https://github.com/ovh/design-system/commit/f667878365c67af7f6487894fbc4a84364c47dd2))
+* **ods-react:** document the fallback of a custom property as its default ([2920907](https://github.com/ovh/design-system/commit/29209078664987ffc85231a8ec9f58865e0f7972))
+* **ods-react:** fall back to English when no browser language is known ([db6c651](https://github.com/ovh/design-system/commit/db6c651f40b2d6b4b5987c4ae950de124b46918d))
+* **ods-react:** type the removed v19 props never ([9dc039e](https://github.com/ovh/design-system/commit/9dc039ea3e75230ed7f4d818d7ebb01548cfe748))
+* **prompt-input:** give the attach and send buttons a default name ([b4ebd86](https://github.com/ovh/design-system/commit/b4ebd86645f4a02398cb56d7a7ebbd5d1227c5ac))
+* **query-filter:** apply aria-label and aria-labelledby to the field ([061a5a8](https://github.com/ovh/design-system/commit/061a5a85a340fe25916a5c10ad3692d1edd92f72))
+* **tabs:** name the scroll arrows of the tab list ([3d177bc](https://github.com/ovh/design-system/commit/3d177bc48cf7bfde0460c674a5bee4e58dc720fd))
+* **themes:** give shadow-control a shadow, not none, so that it composes ([2c761f4](https://github.com/ovh/design-system/commit/2c761f47afd2b16b90df60128d9e220e6213f146)), closes [#0000](https://github.com/ovh/design-system/issues/0000)
+* **themes:** stop mapping two v19 tokens to roles their readers left ([f043c21](https://github.com/ovh/design-system/commit/f043c215fd3405fb0b6c9ff16ab0190621f56bfe))
+* **themes:** whiten the logo, invert the control fill and darken code in aluminium dark ([40da465](https://github.com/ovh/design-system/commit/40da46563073d0264f2cedd366af63dc434def7c)), closes [#000e9](https://github.com/ovh/design-system/issues/000e9)
+* **toggle:** keep the thumb and the invalid label readable in the dark themes ([00fe00d](https://github.com/ovh/design-system/commit/00fe00d05144a4be64cb4c89138638d4c78f10a1))
+* **tree-view:** carry the checked state on the treeitem in multiple mode ([71a20df](https://github.com/ovh/design-system/commit/71a20df628fa45afb9e8e0bb8af0023f7f4767c1))
+
+
+### Features
+
+* **accordion:** add the emphasis prop ([aa2020c](https://github.com/ovh/design-system/commit/aa2020cceac2db1848db28473c71048d379f93f0))
+* **badge:** add the emphasis prop ([4cbc59c](https://github.com/ovh/design-system/commit/4cbc59c79fad688170c88b83fd3ce992ae4550c9))
+* **badge:** add the status prop and deprecate color ([d6675ac](https://github.com/ovh/design-system/commit/d6675ace857d247ac55a9970cf8d299c5c057709))
+* **button:** add the status prop and deprecate color ([bdac21d](https://github.com/ovh/design-system/commit/bdac21dd75798b86e5b33bac2d1edf251a1fb310))
+* **button:** drop the information, success and warning custom properties ([a793477](https://github.com/ovh/design-system/commit/a793477328fdc763e9bb19e16fc555345d8da016))
+* **button:** name the Sass mixins and custom properties after the emphasis ([9e33993](https://github.com/ovh/design-system/commit/9e339936b5cbd930f319fc3a81ef411064c6c707))
+* **button:** replace the variant prop with emphasis ([aac761b](https://github.com/ovh/design-system/commit/aac761b7453609a944e77c52d8c09ffafa71ffaa))
+* **card:** add the status prop and deprecate color ([8e3ec26](https://github.com/ovh/design-system/commit/8e3ec26b00e0a998a6b099645d13b46acb7d5089))
+* clean useless comments ([a8e6c37](https://github.com/ovh/design-system/commit/a8e6c37836ad5a53766da3244ad85775a29ec4da))
+* command component ([9154337](https://github.com/ovh/design-system/commit/9154337edae139773a32d225c8ce293551e24668))
+* **command:** pnpm adaptations ([38ae58d](https://github.com/ovh/design-system/commit/38ae58d487c7a718b83cd3c54f378b3640fc1a2c))
+* **core:** bump minor dependencies ([c1018d6](https://github.com/ovh/design-system/commit/c1018d62d72f06faa1e30aaed5d940bd938ec4d8))
+* **divider:** deprecate the color prop until v21 ([395068a](https://github.com/ovh/design-system/commit/395068a18185e63d6b98cdd2196ed34637df341e))
+* **docs:** keep the committed llms model through the platform switch ([25593e1](https://github.com/ovh/design-system/commit/25593e1852dbb51500c4719de149c8fa901f251b))
+* **docs:** neutral-format React 19 migration guide, versions list as a build prereq ([058d815](https://github.com/ovh/design-system/commit/058d815eaea5edc1f5eb2730440af8f689c5ce7e))
+* **drawer:** add backdrop attribute ([3a61821](https://github.com/ovh/design-system/commit/3a61821d10180e78ec7101d1373b330fb473a2fe))
+* **drawer:** lock page scroll and close on backdrop click when the backdrop is shown ([570a487](https://github.com/ovh/design-system/commit/570a4872488371202a089f33a7a77c0baf51f6a8))
+* **form-fields:** give every form field the same default width ([5479021](https://github.com/ovh/design-system/commit/547902197c8b9b6cbca5331f17a6017a8668ca5d))
+* **input:** add startContent and endContent adornments ([8fe37af](https://github.com/ovh/design-system/commit/8fe37af10f9890af32941c2b1ad9e67a5f27a2ad))
+* **Input:** review returns ([5c29f6f](https://github.com/ovh/design-system/commit/5c29f6f9fdf3babd278310b82aacb106dfeaafec))
+* **message:** add the emphasis prop and remove variant ([60d7add](https://github.com/ovh/design-system/commit/60d7add1de0efc22f001f7ace6b04f9a33ce636a))
+* **message:** add the status prop and deprecate color ([5144b3c](https://github.com/ovh/design-system/commit/5144b3cf38c37ba1c7024789b9825deea94af72a))
+* **modal:** deprecate the color prop of ModalContent until v21 ([e125c38](https://github.com/ovh/design-system/commit/e125c3874600247aaa2fa1914e4c5e865bc179ef))
+* **ods-react:** add React 19 support ([8323e06](https://github.com/ovh/design-system/commit/8323e06b33b639b88e265fe87aa6c933af61482d))
+* **ods-react:** drop the Button and Tag custom properties no style reads ([35ba200](https://github.com/ovh/design-system/commit/35ba200e49a7daa9c069cde5568d45861077662f))
+* **ods-react:** log each deprecation warning once ([e5bc3a4](https://github.com/ovh/design-system/commit/e5bc3a48ab1fb96d30aedd35a37732680a03a3a4))
+* **ods-react:** name the accent and brand custom properties after their status ([da6e082](https://github.com/ovh/design-system/commit/da6e082ad68430bdd2c73a460560e465ff040bd7))
+* **ods-react:** remove the APIs deprecated in v19 ([632fc69](https://github.com/ovh/design-system/commit/632fc692bef89a4b5adaeaea5717f88ffcf20891))
+* **ods-react:** remove the deprecated color props ([3e48600](https://github.com/ovh/design-system/commit/3e48600d51ef8dae03376fca08a40cffb4fc6859))
+* **ods-react:** ship llms documentation locally in the package ([68842a6](https://github.com/ovh/design-system/commit/68842a6e75d4832d5493bc41d6cadadcc98dadc6))
+* **ods-react:** stop the status mixins on an unknown value ([3d2c7ab](https://github.com/ovh/design-system/commit/3d2c7abd137d5a4f889487028d4189b3dbfb23df))
+* **pagination, toggle:** warn once when rendered without children ([0ade7f6](https://github.com/ovh/design-system/commit/0ade7f657d350baba1d14665867fd57e6580cb36))
+* **pagination:** allow usage of links ([8aef19a](https://github.com/ovh/design-system/commit/8aef19afbaa9b944a4e2ff52779935413e8c9bfe))
+* **spinner:** add the --ods-spinner-color property and deprecate color ([9336e19](https://github.com/ovh/design-system/commit/9336e1951ca69dfde25e1d9eed7846d98f0e322b))
+* **table:** replace the variant prop with a striped boolean ([b808cd7](https://github.com/ovh/design-system/commit/b808cd78e32bd0bd3189627d186805dc8c6db850))
+* **tabs:** add mountStrategy to choose when inactive panels content is rendered ([753fff4](https://github.com/ovh/design-system/commit/753fff43e20d3f1781adfeeebd91b4284a8cbc04))
+* **tag:** add the status prop and deprecate color ([e668916](https://github.com/ovh/design-system/commit/e66891603cfa2e2d23ef990a2dfe79df5f715030))
+* **themes, ods-react:** add the aluminium dark theme and rewire components for it ([4fae554](https://github.com/ovh/design-system/commit/4fae5541a17e876a16cf9984a52024792178ae23))
+* **themes:** align the blue-jeans theme with the v19 look ([a28c3cc](https://github.com/ovh/design-system/commit/a28c3ccf1a7e3bb4eaae109dd05243a0fa6f5b88))
+* **themes:** replace the token surface with a semantic layer ([e81f8b8](https://github.com/ovh/design-system/commit/e81f8b827710c857c54205b659c514edacdbcd97)), closes [#1146](https://github.com/ovh/design-system/issues/1146)
+* **themes:** ship each theme mode as one standalone stylesheet ([2741442](https://github.com/ovh/design-system/commit/2741442eae0d6bff0fb926efc00e2a67959fedd7))
+* **toaster:** add toast.accent() and deprecate toast.primary() ([97ac042](https://github.com/ovh/design-system/commit/97ac0428db6dbf3985deaa7b8487a0ab837d9210))
+
+
+### BREAKING CHANGES
+
+* **themes:** the @ovhcloud/ods-themes/default export (the theme with its
+fonts inlined as base64) is removed: load default/css with default/fonts or
+./fonts-base64. The built files and the Sass sources moved in the package.
+The JavaScript entry point (ODS_THEME, ODS_THEMES) is removed. See BC-31,
+BC-32 and BC-33.
+* **link:** a link with text is underlined at rest, and its hover
+underline is 2px. Closest to 19.7.3, without the sweep, for every link:
+:root { --ods-link-underline-thickness: 0; --ods-link-underline-thickness-hover: 1px; }.
+* **ods-react:** Switch, SwitchItem, SWITCH_SIZE(S), their types, the
+@ovhcloud/ods-react/switch entry point and the --ods-switch-* custom
+properties are removed: use Tabs with the switch variant, ButtonGroup or
+RadioGroup. Pagination and Toggle require children (PaginationPages,
+ToggleControl), and renderTotalItemsLabel and withPageSizeSelector are
+removed: use PaginationPageSizeSelector. position, gutter, sameWidth and
+fitControlWidth are removed from Menu, Popover, Select and Tooltip: use
+overlayConfig. uploadSuccessLabel is removed from FileUploadItem.
+* **modal:** the Modal content draws --ods-semantic-shadow-overlay in
+every theme, where 19.7.3 drew no shadow. Keep 19.7.3 with
+[data-ods="modal-content"] { box-shadow: none; }.
+* **badge:** --ods-badge-background-color-<status> and
+--ods-badge-text-color-<status> (accent, critical, information, neutral,
+success, warning) are removed. A 19.7.3 override maps to the -high name,
+together with emphasis="high" on the Badge.
+* **badge:** the Badge is wider in the default theme: its horizontal
+padding goes from 4px to 8px (6px to 12px in lg).
+* **themes, ods-react:** the Badge status custom properties paint the medium
+emphasis, the tint moving to the -high names; the Badge and Message high
+emphases get a border; the Query Filter tags are accent; the Link hover
+keeps its rest color and reads --ods-link-text-color-hover; the v19
+--ods-theme-input-text-color-checked migrates to
+--ods-semantic-color-content-on-control-solid.
+* **ods-react:** these mixins fail to compile on an unknown value instead
+of emitting no color.
+* **button:** ods-button-variant-default, -ghost and -outline become
+ods-button-emphasis-high, -low and -medium, and
+--ods-button-<property>-color-<status>[-hover|-active] becomes
+-<status>-high, -<status>-ghost* becomes -<status>-low*, -<status>-outline*
+becomes -<status>-medium*.
+* **ods-react:** --ods-button-text-color-<status>-hover and -active,
+--ods-button-border-color-<status>-ghost (with -hover and -active) and
+--ods-tag-text-color-<status>-hover and -active are removed; they were
+never read.
+* **button:** the --ods-button-*-information*, --ods-button-*-success*
+and --ods-button-*-warning* custom properties are removed, and the
+ods-button-variant-default, -ghost and -outline mixins no longer accept
+'information', 'success' or 'warning'.
+* **ods-react:** the --ods-badge-*-primary*, --ods-card-*-primary,
+--ods-message-*-primary-*, --ods-tag-*-primary* custom properties and
+the 'primary' value of their Sass mixins are renamed accent; the
+--ods-button-*-primary* ones and the 'primary' value of the
+ods-button-variant-* mixins are renamed brand.
+* **form-fields:** fields no longer stretch to their container nor shrink to their content by default; size a field through its root className or style. The Select and Combobox roots now always carry a CSS-module class and render as inline-block.
+* **ods-react:** color is removed from Badge, Button, Card, Divider,
+Message, ModalContent, Spinner and Tag, with the XXX_COLOR(S) and
+XxxColor exports and toast.primary(): use status (primary becomes accent,
+brand on Button), role="alertdialog" or --ods-spinner-color.
+* **message:** the Message variant prop is removed, with MESSAGE_VARIANT,
+MESSAGE_VARIANTS and MessageVariant: use emphasis (default becomes high,
+light becomes medium). A Message without prop now renders as medium, and
+the colors change in every emphasis. The ods-message-variant-* mixins are
+renamed ods-message-emphasis-*, the --ods-message-* custom properties get
+a -high, -medium or -low suffix, the medium border has its own custom
+property and --ods-message-close-button-text-color-primary is removed.
+* **button:** the Button variant prop is removed with BUTTON_VARIANT, BUTTON_VARIANTS and ButtonVariant: use emphasis (default -> high, outline -> medium, ghost -> low). A Button without emphasis now renders as medium (the v19 outline): set emphasis to high to keep the filled rendering.
+* **table:** the Table variant prop is removed with TABLE_VARIANT, TABLE_VARIANTS and TableVariant. Replace variant="striped" with striped, and drop variant="default".
+* **themes:** the --ods-theme-*, --ods-color-* and 13 remaining legacy
+tokens are removed without alias, read the --ods-semantic-* role that
+replaces each one (BC-01 to BC-03). The palette is rebuilt on the rungs 50 to
+900 (BC-04), 161 SCSS variables of src/default/_variables.scss are removed,
+the breakpoints included, which @ovhcloud/ods-react/style still exports
+(BC-05), and ./default/tokens holds only the new names (BC-06).
+* **themes:** @ovhcloud/ods-themes/default/css ships the Aluminium look,
+import @ovhcloud/ods-themes/blue-jeans/css right after it to keep the
+OVHcloud look (BC-07). A 19.x custom theme no longer applies: a v20 theme
+re-declares the --ods-palette-brand-* and --ods-palette-accent-* ramps
+(BC-20).
+* **themes:** component tokens now read the semantic layer, and 25 of them
+are removed or renamed, so an override of one is silently ignored (BC-08):
+among them --ods-button-border-radius-width becomes --ods-button-border-width
+(BC-18), and --ods-code-primary-color, --ods-code-secondary-color and
+--ods-code-trigger-background-color become --ods-code-text-color,
+--ods-code-background-color and --ods-code-trigger-color (BC-17). Six
+variables of @ovhcloud/ods-react/style now hold a var() string and fail in
+Sass arithmetic, and 11 of its exports are removed (BC-12, BC-16, BC-18).
+* **themes:** the default rendering changes: Card defaults to neutral
+(BC-09), Button has a 4px radius at every size (BC-10), Accordion takes the
+whole container radius (BC-11), a disabled component is dimmed with an opacity
+instead of being repainted grey (BC-12), form fields paint their own
+background (BC-14), a modal always stacks above a drawer (BC-15), and Card,
+Tile, Accordion, Badge, Tabs, the multiple Combobox tags and the transitions
+render differently (BC-19).
+
+
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

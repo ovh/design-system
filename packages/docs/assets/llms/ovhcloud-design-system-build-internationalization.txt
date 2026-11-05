@@ -3,9 +3,9 @@ title: "Internationalization"
 slug: ovhcloud-design-system-build-internationalization
 category: generic
 type: overview
-version: 19.7.3
-tokens: 608
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-internationalization.txt
+version: 20.0.0-alpha.0
+tokens: 614
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-internationalization.txt
 ---
 
 # Internationalization
@@ -17,8 +17,8 @@ There are two exceptions, components with full embedded translation and componen
 ## Embedded translation
 
 So far, only the following components internally manage a complete translation system:
-- [Datepicker](https://ovh.github.io/design-system/v19.7.3/components/datepicker)
-- [Phone number](https://ovh.github.io/design-system/v19.7.3/components/phone-number)
+- [Datepicker](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker)
+- [Phone number](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/phone-number)
 
 Both are relying on the native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) feature.
 
@@ -29,7 +29,7 @@ They do de-facto support the same locales as [Intl](https://developer.mozilla.or
 Although you have complete control on label translation when using the ODS components, there are a few internal elements
 that need a textual description for accessibility purpose.
 
-For example, take the [Message](https://ovh.github.io/design-system/v19.7.3/components/message) component:
+For example, take the [Message](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/message) component:
 
 ![i18n anatomy](components/message/anatomy-i18n.png)
 

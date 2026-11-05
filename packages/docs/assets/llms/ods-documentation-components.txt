@@ -9,9 +9,9 @@ title: "Accordion"
 slug: accordion
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 324
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-accordion.txt
 ---
 
 # Accordion
@@ -50,9 +50,9 @@ title: "Accordion"
 slug: accordion
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1693
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-accordion--documentation.txt
 ---
 
 # Accordion
@@ -244,9 +244,9 @@ title: "Accordion"
 slug: accordion
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 617
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-accordion--technical-information.txt
 ---
 
 # Accordion
@@ -318,9 +318,9 @@ title: "Accordion"
 slug: accordion
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1342
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-accordion--examples.txt
 ---
 
 # Accordion
@@ -558,9 +558,9 @@ title: "Avatar"
 slug: avatar
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 183
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-avatar.txt
 ---
 
 # Avatar
@@ -593,9 +593,9 @@ title: "Avatar"
 slug: avatar
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 745
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-avatar--documentation.txt
 ---
 
 # Avatar
@@ -667,9 +667,9 @@ title: "Avatar"
 slug: avatar
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 178
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-avatar--technical-information.txt
 ---
 
 # Avatar
@@ -698,9 +698,9 @@ title: "Avatar"
 slug: avatar
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 111
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-avatar--examples.txt
 ---
 
 # Avatar
@@ -749,9 +749,9 @@ title: "Badge"
 slug: badge
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 218
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-badge.txt
 ---
 
 # Badge
@@ -788,9 +788,9 @@ title: "Badge"
 slug: badge
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2460
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-badge--documentation.txt
 ---
 
 # Badge
@@ -1026,9 +1026,9 @@ title: "Badge"
 slug: badge
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1619
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-badge--technical-information.txt
 ---
 
 # Badge
@@ -1141,9 +1141,9 @@ title: "Badge"
 slug: badge
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 891
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-badge--examples.txt
 ---
 
 # Badge
@@ -1280,9 +1280,9 @@ title: "Breadcrumb"
 slug: breadcrumb
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 352
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-breadcrumb.txt
 ---
 
 # Breadcrumb
@@ -1321,14 +1321,14 @@ title: "Breadcrumb"
 slug: breadcrumb
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1114
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1118
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-breadcrumb--documentation.txt
 ---
 
 # Breadcrumb
 
-_A list of [Links](https://ovh.github.io/design-system/v19.7.3/components/link) showing the current page location in the navigational hierarchy._
+_A list of [Links](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) showing the current page location in the navigational hierarchy._
 
 ## Overview
 
@@ -1412,7 +1412,7 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 
 **Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify them.
 
-**Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v19.7.3/components/link).
+**Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link).
 
 ```tsx
 <Breadcrumb aria-label="Breadcrumb">
@@ -1449,9 +1449,9 @@ title: "Breadcrumb"
 slug: breadcrumb
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 487
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-breadcrumb--technical-information.txt
 ---
 
 # Breadcrumb
@@ -1506,9 +1506,9 @@ title: "Breadcrumb"
 slug: breadcrumb
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1077
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-breadcrumb--examples.txt
 ---
 
 # Breadcrumb
@@ -1769,9 +1769,9 @@ title: "Button"
 slug: button
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 305
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button.txt
 ---
 
 # Button
@@ -1815,9 +1815,9 @@ title: "Button"
 slug: button
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1590
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1592
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button--documentation.txt
 ---
 
 # Button
@@ -1850,7 +1850,7 @@ They are used to allow users to interact with the page or its content.
 They must respect the proximity law in order to guide the user on the action to be performed and the expected result.
 A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
 
-**Buttons** don't usually redirect to an external page. For that, see [Link](https://ovh.github.io/design-system/v19.7.3/components/link).
+**Buttons** don't usually redirect to an external page. For that, see [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link).
 
 ### When to use a link or a button?
 
@@ -1982,9 +1982,9 @@ title: "Button"
 slug: button
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2205
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button--technical-information.txt
 ---
 
 # Button
@@ -2111,9 +2111,9 @@ title: "Button"
 slug: button
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 778
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button--examples.txt
 ---
 
 # Button
@@ -2319,9 +2319,9 @@ title: "Button Group"
 slug: button-group
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 276
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group.txt
 ---
 
 # Button Group
@@ -2357,9 +2357,9 @@ title: "Button Group"
 slug: button-group
 category: component
 type: documentation
-version: 19.7.3
-tokens: 745
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 747
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group--documentation.txt
 ---
 
 # Button Group
@@ -2457,16 +2457,16 @@ Pressing `Space` or `Enter` activates or deactivates the focused button, updatin
 The **Button Group** component handles by itself the accessibility requirements regarding the control grouping.
 
 Though you need to ensure that each of your items follows the
-[Button Accessibility Best Practices](https://ovh.github.io/design-system/v19.7.3/components/button).
+[Button Accessibility Best Practices](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button).
 
 ---
 title: "Button Group"
 slug: button-group
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 327
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group--technical-information.txt
 ---
 
 # Button Group
@@ -2511,9 +2511,9 @@ title: "Button Group"
 slug: button-group
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 735
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group--examples.txt
 ---
 
 # Button Group
@@ -2627,9 +2627,9 @@ title: "Card"
 slug: card
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 163
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card.txt
 ---
 
 # Card
@@ -2660,9 +2660,9 @@ title: "Card"
 slug: card
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1442
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1446
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card--documentation.txt
 ---
 
 # Card
@@ -2700,8 +2700,8 @@ Several elements can be used in a **Card**:
 
 * A title
 * A description
-* A [Button](https://ovh.github.io/design-system/v19.7.3/components/button)
-* A [Medium](https://ovh.github.io/design-system/v19.7.3/components/medium)
+* A [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button)
+* A [Medium](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/medium)
 * Extra information
 
 All these elements are not mandatory in every **Card**.
@@ -2803,9 +2803,9 @@ title: "Card"
 slug: card
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 311
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card--technical-information.txt
 ---
 
 # Card
@@ -2848,9 +2848,9 @@ title: "Card"
 slug: card
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 420
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card--examples.txt
 ---
 
 # Card
@@ -2935,9 +2935,9 @@ title: "Cart"
 slug: cart
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 185
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-cart.txt
 ---
 
 # Cart
@@ -2968,9 +2968,9 @@ title: "Cart"
 slug: cart
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1218
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-cart--documentation.txt
 ---
 
 # Cart
@@ -3109,9 +3109,9 @@ title: "Cart"
 slug: cart
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 841
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-cart--technical-information.txt
 ---
 
 # Cart
@@ -3203,9 +3203,9 @@ title: "Cart"
 slug: cart
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1265
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-cart--examples.txt
 ---
 
 # Cart
@@ -3426,9 +3426,9 @@ title: "Checkbox"
 slug: checkbox
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 348
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-checkbox.txt
 ---
 
 # Checkbox
@@ -3468,9 +3468,9 @@ title: "Checkbox"
 slug: checkbox
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 744
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-checkbox--documentation.txt
 ---
 
 # Checkbox
@@ -3561,9 +3561,9 @@ title: "Checkbox"
 slug: checkbox
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 552
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-checkbox--technical-information.txt
 ---
 
 # Checkbox
@@ -3624,9 +3624,9 @@ title: "Checkbox"
 slug: checkbox
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 415
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-checkbox--examples.txt
 ---
 
 # Checkbox
@@ -3755,9 +3755,9 @@ title: "Clipboard"
 slug: clipboard
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 292
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-clipboard.txt
 ---
 
 # Clipboard
@@ -3795,9 +3795,9 @@ title: "Clipboard"
 slug: clipboard
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 888
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-clipboard--documentation.txt
 ---
 
 # Clipboard
@@ -3909,9 +3909,9 @@ title: "Clipboard"
 slug: clipboard
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 427
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-clipboard--technical-information.txt
 ---
 
 # Clipboard
@@ -3959,9 +3959,9 @@ title: "Clipboard"
 slug: clipboard
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 232
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-clipboard--examples.txt
 ---
 
 # Clipboard
@@ -4042,9 +4042,9 @@ title: "Code"
 slug: code
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 306
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-code.txt
 ---
 
 # Code
@@ -4082,9 +4082,9 @@ title: "Code"
 slug: code
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 652
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-code--documentation.txt
 ---
 
 # Code
@@ -4171,9 +4171,9 @@ title: "Code"
 slug: code
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 433
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-code--technical-information.txt
 ---
 
 # Code
@@ -4211,9 +4211,9 @@ title: "Code"
 slug: code
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 170
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-code--examples.txt
 ---
 
 # Code
@@ -4279,9 +4279,9 @@ title: "Combobox"
 slug: combobox
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 801
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-combobox.txt
 ---
 
 # Combobox
@@ -4345,9 +4345,9 @@ title: "Combobox"
 slug: combobox
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1805
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1813
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-combobox--documentation.txt
 ---
 
 # Combobox
@@ -4391,11 +4391,11 @@ The **Combobox** is best suited when users need to:
 
 ## Best Practices in Context
 
-1. [Input](https://ovh.github.io/design-system/v19.7.3/components/input) where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
+1. [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
 2. **Dropdown list** displaying a scrollable list of suggested items. Items can be customized using a custom renderer.
-3. [Tag](https://ovh.github.io/design-system/v19.7.3/components/tag) _(multiple selection mode)_ to display selected items as tags inside the Input field
-4. **Clearable** [Button](https://ovh.github.io/design-system/v19.7.3/components/button) _(optional)_ to allow users to clear the input content
-5. [Spinner](https://ovh.github.io/design-system/v19.7.3/components/spinner) _(optional)_ to indicate that data is being fetched
+3. [Tag](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tag) _(multiple selection mode)_ to display selected items as tags inside the Input field
+4. **Clearable** [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) _(optional)_ to allow users to clear the input content
+5. [Spinner](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/spinner) _(optional)_ to indicate that data is being fetched
 6. **Add entry option** _(optional)_ allows users to create new entries when no matching result is found. The label is customizable
 7. **Empty state message** is a customizable message displayed when no suggestion match the query
 
@@ -4558,9 +4558,9 @@ title: "Combobox"
 slug: combobox
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1023
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-combobox--technical-information.txt
 ---
 
 # Combobox
@@ -4632,9 +4632,9 @@ title: "Combobox"
 slug: combobox
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1769
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-combobox--examples.txt
 ---
 
 # Combobox
@@ -4978,9 +4978,9 @@ title: "Command"
 slug: command
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 492
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-command.txt
 ---
 
 # Command
@@ -5027,9 +5027,9 @@ title: "Command"
 slug: command
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1962
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-command--documentation.txt
 ---
 
 # Command
@@ -5263,9 +5263,9 @@ title: "Command"
 slug: command
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1146
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-command--technical-information.txt
 ---
 
 # Command
@@ -5361,9 +5361,9 @@ title: "Command"
 slug: command
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2056
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-command--examples.txt
 ---
 
 # Command
@@ -5666,9 +5666,9 @@ title: "Data Table"
 slug: data-table
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 636
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-data-table.txt
 ---
 
 # Data Table
@@ -5718,9 +5718,9 @@ title: "Data Table"
 slug: data-table
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 3080
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-data-table--documentation.txt
 ---
 
 # Data Table
@@ -6085,9 +6085,9 @@ title: "Data Table"
 slug: data-table
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 625
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-data-table--technical-information.txt
 ---
 
 # Data Table
@@ -6143,9 +6143,9 @@ title: "Data Table"
 slug: data-table
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 3916
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-data-table--examples.txt
 ---
 
 # Data Table
@@ -6776,9 +6776,9 @@ title: "Datepicker"
 slug: datepicker
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 827
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-datepicker.txt
 ---
 
 # Datepicker
@@ -6840,9 +6840,9 @@ title: "Datepicker"
 slug: datepicker
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1922
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1934
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-datepicker--documentation.txt
 ---
 
 # Datepicker
@@ -6919,25 +6919,25 @@ By clicking on the **Datepicker** icon button.
 
 **Date picking mode**
 
-Navigating to previous/next month : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button) to navigate through months
+Navigating to previous/next month : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to navigate through months
 
-Selecting a month : By clicking on the month selection [Button](https://ovh.github.io/design-system/v19.7.3/components/button) to switch to month picking mode
+Selecting a month : By clicking on the month selection [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to switch to month picking mode
 
 Picking a date : By clicking on a date
 
 **Month picking mode**
 
-Navigating to previous/next year : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button) to navigate through years
+Navigating to previous/next year : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to navigate through years
 
-Selecting a year : By clicking on the month selection [Button](https://ovh.github.io/design-system/v19.7.3/components/button) to switch to year picking mode
+Selecting a year : By clicking on the month selection [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to switch to year picking mode
 
 Picking a month: By clicking on a month, the dropdown goes back to date picking mode
 
 **Year picking mode**
 
-Navigating to previous/next range of years : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button) to navigate through years
+Navigating to previous/next range of years : By clicking on arrow icon [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to navigate through years
 
-Selecting a decade : By clicking on the month selection [Button](https://ovh.github.io/design-system/v19.7.3/components/button) to switch to year picking mode
+Selecting a decade : By clicking on the month selection [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) to switch to year picking mode
 
 Picking a month: By clicking on a month, the dropdown goes back to date picking mode
 
@@ -7062,9 +7062,9 @@ title: "Datepicker"
 slug: datepicker
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1008
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-datepicker--technical-information.txt
 ---
 
 # Datepicker
@@ -7149,9 +7149,9 @@ title: "Datepicker"
 slug: datepicker
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 590
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-datepicker--examples.txt
 ---
 
 # Datepicker
@@ -7330,9 +7330,9 @@ title: "Divider"
 slug: divider
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 179
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-divider.txt
 ---
 
 # Divider
@@ -7364,9 +7364,9 @@ title: "Divider"
 slug: divider
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 720
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-divider--documentation.txt
 ---
 
 # Divider
@@ -7448,9 +7448,9 @@ title: "Divider"
 slug: divider
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 171
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-divider--technical-information.txt
 ---
 
 # Divider
@@ -7491,9 +7491,9 @@ title: "Divider"
 slug: divider
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 230
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-divider--examples.txt
 ---
 
 # Divider
@@ -7549,9 +7549,9 @@ title: "Drawer"
 slug: drawer
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 402
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-drawer.txt
 ---
 
 # Drawer
@@ -7590,9 +7590,9 @@ title: "Drawer"
 slug: drawer
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1714
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-drawer--documentation.txt
 ---
 
 # Drawer
@@ -7767,9 +7767,9 @@ title: "Drawer"
 slug: drawer
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 634
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-drawer--technical-information.txt
 ---
 
 # Drawer
@@ -7834,9 +7834,9 @@ title: "Drawer"
 slug: drawer
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1065
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-drawer--examples.txt
 ---
 
 # Drawer
@@ -8068,9 +8068,9 @@ title: "Editable"
 slug: editable
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 309
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-editable.txt
 ---
 
 # Editable
@@ -8105,9 +8105,9 @@ title: "Editable"
 slug: editable
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 769
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-editable--documentation.txt
 ---
 
 # Editable
@@ -8213,9 +8213,9 @@ title: "Editable"
 slug: editable
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 484
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-editable--technical-information.txt
 ---
 
 # Editable
@@ -8288,9 +8288,9 @@ title: "Editable"
 slug: editable
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1129
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-editable--examples.txt
 ---
 
 # Editable
@@ -8465,9 +8465,9 @@ title: "File Thumbnail"
 slug: file-thumbnail
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 299
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-thumbnail.txt
 ---
 
 # File Thumbnail
@@ -8504,9 +8504,9 @@ title: "File Thumbnail"
 slug: file-thumbnail
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 778
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-thumbnail--documentation.txt
 ---
 
 # File Thumbnail
@@ -8594,9 +8594,9 @@ title: "File Thumbnail"
 slug: file-thumbnail
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 365
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-thumbnail--technical-information.txt
 ---
 
 # File Thumbnail
@@ -8638,9 +8638,9 @@ title: "File Thumbnail"
 slug: file-thumbnail
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 255
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-thumbnail--examples.txt
 ---
 
 # File Thumbnail
@@ -8721,9 +8721,9 @@ title: "File Upload"
 slug: file-upload
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 563
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-upload.txt
 ---
 
 # File Upload
@@ -8777,9 +8777,9 @@ title: "File Upload"
 slug: file-upload
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1908
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-upload--documentation.txt
 ---
 
 # File Upload
@@ -8999,9 +8999,9 @@ title: "File Upload"
 slug: file-upload
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 862
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-upload--technical-information.txt
 ---
 
 # File Upload
@@ -9084,9 +9084,9 @@ title: "File Upload"
 slug: file-upload
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1927
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-file-upload--examples.txt
 ---
 
 # File Upload
@@ -9444,9 +9444,9 @@ title: "Form Field"
 slug: form-field
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 194
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field.txt
 ---
 
 # Form Field
@@ -9480,9 +9480,9 @@ title: "Form Field"
 slug: form-field
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 990
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field--documentation.txt
 ---
 
 # Form Field
@@ -9600,9 +9600,9 @@ title: "Form Field"
 slug: form-field
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 289
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field--technical-information.txt
 ---
 
 # Form Field
@@ -9653,9 +9653,9 @@ title: "Form Field"
 slug: form-field
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 246
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-form-field--examples.txt
 ---
 
 # Form Field
@@ -9743,9 +9743,9 @@ title: "Icon"
 slug: icon
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 984
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon.txt
 ---
 
 # Icon
@@ -9779,9 +9779,9 @@ title: "Icon"
 slug: icon
 category: component
 type: documentation
-version: 19.7.3
-tokens: 900
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 902
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon--documentation.txt
 ---
 
 # Icon
@@ -9869,16 +9869,16 @@ If the **Icon** conveys essential information, it must be accompanied by an acce
   
   
 > If the **Icon** is inside an interactive element, prefer using [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) on the element itself rather than on the **Icon**.
-> See [Button](https://ovh.github.io/design-system/v19.7.3/components/button) examples.
+> See [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) examples.
 
 ---
 title: "Icon"
 slug: icon
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2492
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon--technical-information.txt
 ---
 
 # Icon
@@ -10123,9 +10123,9 @@ title: "Icon"
 slug: icon
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 437
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon--examples.txt
 ---
 
 # Icon
@@ -10215,9 +10215,9 @@ title: "Input"
 slug: input
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 472
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-input.txt
 ---
 
 # Input
@@ -10270,9 +10270,9 @@ title: "Input"
 slug: input
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 3231
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-input--documentation.txt
 ---
 
 # Input
@@ -10637,9 +10637,9 @@ title: "Input"
 slug: input
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 479
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-input--technical-information.txt
 ---
 
 # Input
@@ -10696,9 +10696,9 @@ title: "Input"
 slug: input
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1609
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-input--examples.txt
 ---
 
 # Input
@@ -11011,9 +11011,9 @@ title: "Kbd"
 slug: kbd
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 61
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-kbd.txt
 ---
 
 # Kbd
@@ -11033,9 +11033,9 @@ title: "Kbd"
 slug: kbd
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 334
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-kbd--documentation.txt
 ---
 
 # Kbd
@@ -11091,9 +11091,9 @@ title: "Kbd"
 slug: kbd
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 203
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-kbd--technical-information.txt
 ---
 
 # Kbd
@@ -11122,9 +11122,9 @@ title: "Kbd"
 slug: kbd
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 11
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-kbd--examples.txt
 ---
 
 # Kbd
@@ -11143,9 +11143,9 @@ title: "Link"
 slug: link
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 197
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-link.txt
 ---
 
 # Link
@@ -11179,9 +11179,9 @@ title: "Link"
 slug: link
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1660
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-link--documentation.txt
 ---
 
 # Link
@@ -11339,9 +11339,9 @@ title: "Link"
 slug: link
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 238
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-link--technical-information.txt
 ---
 
 # Link
@@ -11372,9 +11372,9 @@ title: "Link"
 slug: link
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 310
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-link--examples.txt
 ---
 
 # Link
@@ -11460,9 +11460,9 @@ title: "Logo"
 slug: logo
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 134
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo.txt
 ---
 
 # Logo
@@ -11492,9 +11492,9 @@ title: "Logo"
 slug: logo
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 672
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo--documentation.txt
 ---
 
 # Logo
@@ -11593,9 +11593,9 @@ title: "Logo"
 slug: logo
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 112
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo--technical-information.txt
 ---
 
 # Logo
@@ -11627,9 +11627,9 @@ title: "Logo"
 slug: logo
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 106
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo--examples.txt
 ---
 
 # Logo
@@ -11677,9 +11677,9 @@ title: "Markdown"
 slug: markdown
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 150
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-markdown.txt
 ---
 
 # Markdown
@@ -11708,9 +11708,9 @@ title: "Markdown"
 slug: markdown
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 386
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-markdown--documentation.txt
 ---
 
 # Markdown
@@ -11756,9 +11756,9 @@ title: "Markdown"
 slug: markdown
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 78
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-markdown--technical-information.txt
 ---
 
 # Markdown
@@ -11776,9 +11776,9 @@ title: "Markdown"
 slug: markdown
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 247
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-markdown--examples.txt
 ---
 
 # Markdown
@@ -11849,9 +11849,9 @@ title: "Medium"
 slug: medium
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 71
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-medium.txt
 ---
 
 # Medium
@@ -11874,9 +11874,9 @@ title: "Medium"
 slug: medium
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 538
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-medium--documentation.txt
 ---
 
 # Medium
@@ -11949,9 +11949,9 @@ title: "Medium"
 slug: medium
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 26
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-medium--technical-information.txt
 ---
 
 # Medium
@@ -11967,9 +11967,9 @@ title: "Medium"
 slug: medium
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 205
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-medium--examples.txt
 ---
 
 # Medium
@@ -12024,9 +12024,9 @@ title: "Menu"
 slug: menu
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 301
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu.txt
 ---
 
 # Menu
@@ -12063,9 +12063,9 @@ title: "Menu"
 slug: menu
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 764
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu--documentation.txt
 ---
 
 # Menu
@@ -12182,9 +12182,9 @@ title: "Menu"
 slug: menu
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 727
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu--technical-information.txt
 ---
 
 # Menu
@@ -12261,9 +12261,9 @@ title: "Menu"
 slug: menu
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 609
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu--examples.txt
 ---
 
 # Menu
@@ -12388,9 +12388,9 @@ title: "Message"
 slug: message
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 305
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message.txt
 ---
 
 # Message
@@ -12430,9 +12430,9 @@ title: "Message"
 slug: message
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2346
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message--documentation.txt
 ---
 
 # Message
@@ -12711,9 +12711,9 @@ title: "Message"
 slug: message
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2225
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message--technical-information.txt
 ---
 
 # Message
@@ -12818,9 +12818,9 @@ title: "Message"
 slug: message
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1172
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message--examples.txt
 ---
 
 # Message
@@ -13049,9 +13049,9 @@ title: "Message Bubble"
 slug: message-bubble
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 181
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble.txt
 ---
 
 # Message Bubble
@@ -13084,9 +13084,9 @@ title: "Message Bubble"
 slug: message-bubble
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 532
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble--documentation.txt
 ---
 
 # Message Bubble
@@ -13147,9 +13147,9 @@ title: "Message Bubble"
 slug: message-bubble
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 336
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble--technical-information.txt
 ---
 
 # Message Bubble
@@ -13189,9 +13189,9 @@ title: "Message Bubble"
 slug: message-bubble
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 125
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble--examples.txt
 ---
 
 # Message Bubble
@@ -13239,9 +13239,9 @@ title: "Meter"
 slug: meter
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 261
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter.txt
 ---
 
 # Meter
@@ -13277,9 +13277,9 @@ title: "Meter"
 slug: meter
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1019
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter--documentation.txt
 ---
 
 # Meter
@@ -13406,9 +13406,9 @@ title: "Meter"
 slug: meter
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 284
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter--technical-information.txt
 ---
 
 # Meter
@@ -13443,9 +13443,9 @@ title: "Meter"
 slug: meter
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 296
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter--examples.txt
 ---
 
 # Meter
@@ -13549,9 +13549,9 @@ title: "Modal"
 slug: modal
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 480
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-modal.txt
 ---
 
 # Modal
@@ -13596,9 +13596,9 @@ title: "Modal"
 slug: modal
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1686
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-modal--documentation.txt
 ---
 
 # Modal
@@ -13797,9 +13797,9 @@ title: "Modal"
 slug: modal
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 812
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-modal--technical-information.txt
 ---
 
 # Modal
@@ -13876,9 +13876,9 @@ title: "Modal"
 slug: modal
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1230
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-modal--examples.txt
 ---
 
 # Modal
@@ -14120,9 +14120,9 @@ title: "Pagination"
 slug: pagination
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 829
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-pagination.txt
 ---
 
 # Pagination
@@ -14173,9 +14173,9 @@ title: "Pagination"
 slug: pagination
 category: component
 type: documentation
-version: 19.7.3
-tokens: 4207
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 4231
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-pagination--documentation.txt
 ---
 
 # Pagination
@@ -14200,7 +14200,7 @@ The **Pagination** component divides a list into discrete pages and provides the
 ## Usage
 
 A **Pagination** component is used in two situations, and each one calls for a different kind of control :
-* To navigate among a [Table](https://ovh.github.io/design-system/v19.7.3/components/table) component, or any content swapped inside the page the user is already on.
+* To navigate among a [Table](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table) component, or any content swapped inside the page the user is already on.
 * To browse a set of items spread over pages of their own, each with a URL (products list, public catalogue, documentation index, ...), see "Pages as links" below.
 
 ### Dos & Don'ts
@@ -14230,7 +14230,7 @@ A **Pagination** component is used in two situations, and each one calls for a d
 6. **Current page button**
 7. **Unselected page button**
 
-The anatomy above describes the default **Pagination**, whose pages are [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button). When the pages are links, the same anatomy is rendered with the [Link](https://ovh.github.io/design-system/v19.7.3/components/link) style instead, as described in "Pages as links" below.
+The anatomy above describes the default **Pagination**, whose pages are [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button). When the pages are links, the same anatomy is rendered with the [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) style instead, as described in "Pages as links" below.
 
 ## Placement
 
@@ -14275,7 +14275,7 @@ Depending on the current page number and the amount of pages, here are the diffe
 - an ellipsis,
 - the last numbered page
 
-Those counts hold whatever the pages are made of: they are rendered as [Buttons](https://ovh.github.io/design-system/v19.7.3/components/button) or as [Links](https://ovh.github.io/design-system/v19.7.3/components/link) depending on what activating one does, as described in "Pages as links" below.
+Those counts hold whatever the pages are made of: they are rendered as [Buttons](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) or as [Links](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) depending on what activating one does, as described in "Pages as links" below.
 
 ### Go to page
 
@@ -14285,16 +14285,16 @@ Allows users to directly select a page from an number input.
 
 Where the **Pagination** is used to move between actual pages, each with a URL of its own, the pages must be links rather than Buttons.
 
-By default a page is a [Button](https://ovh.github.io/design-system/v19.7.3/components/button): activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated [Table](https://ovh.github.io/design-system/v19.7.3/components/table).
+By default a page is a [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button): activating it swaps the content in place, and nothing outside the component knows about it. That fits for example a paginated [Table](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table).
 
 As soon as a page is a destination, provide `getPageUrl` and the pages become real links.
 
-Because those pages navigate, they are rendered with the [Link](https://ovh.github.io/design-system/v19.7.3/components/link) style rather than the [Button](https://ovh.github.io/design-system/v19.7.3/components/button) style: a button looks like a button, a link looks like a link.
+Because those pages navigate, they are rendered with the [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) style rather than the [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) style: a button looks like a button, a link looks like a link.
 
 What changes in link mode:
-- Every page the user can go to is a [Link](https://ovh.github.io/design-system/v19.7.3/components/link) carrying an `href`
+- Every page the user can go to is a [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) carrying an `href`
 - The active page leads nowhere: it carries no `href` and stays out of the tab order. It reads as emphasised text and is exposed as a disabled link carrying [aria-current="page"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current)
-- With `disabled`, every link keeps its `href`, as a disabled [Link](https://ovh.github.io/design-system/v19.7.3/components/link) does: activating it does nothing, but crawlers still see the destination and a middle click still opens it
+- With `disabled`, every link keeps its `href`, as a disabled [Link](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/link) does: activating it does nothing, but crawlers still see the destination and a middle click still opens it
 
 #### Wiring link mode
 
@@ -14342,7 +14342,7 @@ Three consequences follow from the URL being in charge:
 
 #### The controls that are not links
 
-Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page [Select](https://ovh.github.io/design-system/v19.7.3/components/select). In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into a URL and navigates.
+Two controls carry no destination and cannot navigate on their own: the "Go to page" form and the items per page [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select). In link mode they report what the user asked for and wait, exactly as the pages do. The application turns that into a URL and navigates.
 
 ```tsx
 {
@@ -14510,9 +14510,9 @@ title: "Pagination"
 slug: pagination
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 943
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-pagination--technical-information.txt
 ---
 
 # Pagination
@@ -14582,9 +14582,9 @@ title: "Pagination"
 slug: pagination
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1702
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-pagination--examples.txt
 ---
 
 # Pagination
@@ -14856,9 +14856,9 @@ title: "Password"
 slug: password
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 332
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-password.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-password.txt
 ---
 
 # Password
@@ -14900,14 +14900,14 @@ title: "Password"
 slug: password
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1120
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-password--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1122
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-password--documentation.txt
 ---
 
 # Password
 
-_**Password** component is an [Input](https://ovh.github.io/design-system/v19.7.3/components/input) field for entering a password that can be hidden or not._
+_**Password** component is an [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) field for entering a password that can be hidden or not._
 
 ## Overview
 
@@ -15038,9 +15038,9 @@ title: "Password"
 slug: password
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 218
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-password--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-password--technical-information.txt
 ---
 
 # Password
@@ -15064,9 +15064,9 @@ title: "Password"
 slug: password
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 233
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-password--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-password--examples.txt
 ---
 
 # Password
@@ -15164,9 +15164,9 @@ title: "Phone Number"
 slug: phone-number
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1368
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-phone-number.txt
 ---
 
 # Phone Number
@@ -15217,14 +15217,14 @@ title: "Phone Number"
 slug: phone-number
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1533
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1541
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-phone-number--documentation.txt
 ---
 
 # Phone Number
 
-_**Phone Number** component is a combo of a selection of country phone indicator and an [Input](https://ovh.github.io/design-system/v19.7.3/components/input) field for entering a phone number_
+_**Phone Number** component is a combo of a selection of country phone indicator and an [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) field for entering a phone number_
 
 ## Overview
 
@@ -15271,7 +15271,7 @@ Form Guidelines] }
 
 ## Placement
 
-**Phone Number** is a group of [Select](https://ovh.github.io/design-system/v19.7.3/components/select) and [Input](https://ovh.github.io/design-system/v19.7.3/components/input), and should act as their specific placements.
+**Phone Number** is a group of [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select) and [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input), and should act as their specific placements.
 
 ## Behavior
 
@@ -15289,7 +15289,7 @@ For example:
 
 ### Locale
 
-The locale (i.e. country list translation in [Select](https://ovh.github.io/design-system/v19.7.3/components/select)) is first set to the value provided as a property.
+The locale (i.e. country list translation in [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)) is first set to the value provided as a property.
 
 If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
 
@@ -15388,9 +15388,9 @@ title: "Phone Number"
 slug: phone-number
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2280
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-phone-number--technical-information.txt
 ---
 
 # Phone Number
@@ -15699,9 +15699,9 @@ title: "Phone Number"
 slug: phone-number
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 620
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-phone-number--examples.txt
 ---
 
 # Phone Number
@@ -15895,9 +15895,9 @@ title: "Popover"
 slug: popover
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 365
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover.txt
 ---
 
 # Popover
@@ -15937,9 +15937,9 @@ title: "Popover"
 slug: popover
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1476
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1478
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--documentation.txt
 ---
 
 # Popover
@@ -15967,7 +15967,7 @@ It can include interactive elements such as a button or a link.
 
 ### Tooltip vs Popover
 
-- Both components look similar but a [Tooltip](https://ovh.github.io/design-system/v19.7.3/components/tooltip) is displayed on hover and focus while **Popover** is triggered by click.
+- Both components look similar but a [Tooltip](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tooltip) is displayed on hover and focus while **Popover** is triggered by click.
 - Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit a popover better.
 - Use a popover when you need to insert interactive elements such as Button.
 - A popover can be dismissed if an action button allows it.
@@ -16139,9 +16139,9 @@ title: "Popover"
 slug: popover
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 525
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--technical-information.txt
 ---
 
 # Popover
@@ -16199,9 +16199,9 @@ title: "Popover"
 slug: popover
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1253
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--examples.txt
 ---
 
 # Popover
@@ -16468,9 +16468,9 @@ title: "Progress Bar"
 slug: progress-bar
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 191
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-progress-bar.txt
 ---
 
 # Progress Bar
@@ -16503,9 +16503,9 @@ title: "Progress Bar"
 slug: progress-bar
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 718
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-progress-bar--documentation.txt
 ---
 
 # Progress Bar
@@ -16582,9 +16582,9 @@ title: "Progress Bar"
 slug: progress-bar
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 123
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-progress-bar--technical-information.txt
 ---
 
 # Progress Bar
@@ -16609,9 +16609,9 @@ title: "Progress Bar"
 slug: progress-bar
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 77
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-progress-bar--examples.txt
 ---
 
 # Progress Bar
@@ -16656,9 +16656,9 @@ title: "Prompt Input"
 slug: prompt-input
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 509
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-prompt-input.txt
 ---
 
 # Prompt Input
@@ -16706,9 +16706,9 @@ title: "Prompt Input"
 slug: prompt-input
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1415
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-prompt-input--documentation.txt
 ---
 
 # Prompt Input
@@ -16867,9 +16867,9 @@ title: "Prompt Input"
 slug: prompt-input
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1414
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-prompt-input--technical-information.txt
 ---
 
 # Prompt Input
@@ -16981,9 +16981,9 @@ title: "Prompt Input"
 slug: prompt-input
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1142
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-prompt-input--examples.txt
 ---
 
 # Prompt Input
@@ -17154,9 +17154,9 @@ title: "Quantity"
 slug: quantity
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 389
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-quantity.txt
 ---
 
 # Quantity
@@ -17201,9 +17201,9 @@ title: "Quantity"
 slug: quantity
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 904
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-quantity--documentation.txt
 ---
 
 # Quantity
@@ -17318,9 +17318,9 @@ title: "Quantity"
 slug: quantity
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 383
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-quantity--technical-information.txt
 ---
 
 # Quantity
@@ -17366,9 +17366,9 @@ title: "Quantity"
 slug: quantity
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 293
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-quantity--examples.txt
 ---
 
 # Quantity
@@ -17475,9 +17475,9 @@ title: "Query Filter"
 slug: query-filter
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 685
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-query-filter.txt
 ---
 
 # Query Filter
@@ -17525,9 +17525,9 @@ title: "Query Filter"
 slug: query-filter
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1358
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-query-filter--documentation.txt
 ---
 
 # Query Filter
@@ -17731,9 +17731,9 @@ title: "Query Filter"
 slug: query-filter
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1072
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-query-filter--technical-information.txt
 ---
 
 # Query Filter
@@ -17814,9 +17814,9 @@ title: "Query Filter"
 slug: query-filter
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 819
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-query-filter--examples.txt
 ---
 
 # Query Filter
@@ -17978,9 +17978,9 @@ title: "Radio Group"
 slug: radio-group
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 292
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-radio-group.txt
 ---
 
 # Radio Group
@@ -18018,9 +18018,9 @@ title: "Radio Group"
 slug: radio-group
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 930
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-radio-group--documentation.txt
 ---
 
 # Radio Group
@@ -18130,9 +18130,9 @@ title: "Radio Group"
 slug: radio-group
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 400
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-radio-group--technical-information.txt
 ---
 
 # Radio Group
@@ -18184,9 +18184,9 @@ title: "Radio Group"
 slug: radio-group
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 552
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-radio-group--examples.txt
 ---
 
 # Radio Group
@@ -18355,9 +18355,9 @@ title: "Range"
 slug: range
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 562
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-range.txt
 ---
 
 # Range
@@ -18408,9 +18408,9 @@ title: "Range"
 slug: range
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1364
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-range--documentation.txt
 ---
 
 # Range
@@ -18570,9 +18570,9 @@ title: "Range"
 slug: range
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 539
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-range--technical-information.txt
 ---
 
 # Range
@@ -18616,9 +18616,9 @@ title: "Range"
 slug: range
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 772
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-range--examples.txt
 ---
 
 # Range
@@ -18824,9 +18824,9 @@ title: "Select"
 slug: select
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 532
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-select.txt
 ---
 
 # Select
@@ -18875,9 +18875,9 @@ title: "Select"
 slug: select
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1211
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-select--documentation.txt
 ---
 
 # Select
@@ -19011,9 +19011,9 @@ title: "Select"
 slug: select
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 777
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-select--technical-information.txt
 ---
 
 # Select
@@ -19076,9 +19076,9 @@ title: "Select"
 slug: select
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2453
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-select--examples.txt
 ---
 
 # Select
@@ -19456,9 +19456,9 @@ title: "Skeleton"
 slug: skeleton
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 109
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-skeleton.txt
 ---
 
 # Skeleton
@@ -19482,9 +19482,9 @@ title: "Skeleton"
 slug: skeleton
 category: component
 type: documentation
-version: 19.7.3
-tokens: 744
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 746
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-skeleton--documentation.txt
 ---
 
 # Skeleton
@@ -19508,7 +19508,7 @@ A **Skeleton** can be used in a variety of contexts such as in Cards, lists, and
 
 ### Spinner vs Skeleton
 
-Both [Spinner](https://ovh.github.io/design-system/v19.7.3/components/spinner) and **Skeleton** indicate that content is loading, but they serve different purposes:
+Both [Spinner](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/spinner) and **Skeleton** indicate that content is loading, but they serve different purposes:
 
 * Use a Spinner when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
 
@@ -19564,9 +19564,9 @@ title: "Skeleton"
 slug: skeleton
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 149
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-skeleton--technical-information.txt
 ---
 
 # Skeleton
@@ -19590,9 +19590,9 @@ title: "Skeleton"
 slug: skeleton
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 53
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-skeleton--examples.txt
 ---
 
 # Skeleton
@@ -19627,9 +19627,9 @@ title: "Spinner"
 slug: spinner
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 166
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner.txt
 ---
 
 # Spinner
@@ -19662,9 +19662,9 @@ title: "Spinner"
 slug: spinner
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1379
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1381
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--documentation.txt
 ---
 
 # Spinner
@@ -19689,7 +19689,7 @@ A visual indicator that a process is happening in the background but the interfa
 
 ### Spinner vs Skeleton
 
-Both **Spinner** and [Skeleton](https://ovh.github.io/design-system/v19.7.3/components/skeleton) indicate that content is loading, but they serve different purposes:
+Both **Spinner** and [Skeleton](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/skeleton) indicate that content is loading, but they serve different purposes:
 
 * Use a **Spinner** when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
 
@@ -19791,9 +19791,9 @@ title: "Spinner"
 slug: spinner
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 115
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--technical-information.txt
 ---
 
 # Spinner
@@ -19826,9 +19826,9 @@ title: "Spinner"
 slug: spinner
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 190
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--examples.txt
 ---
 
 # Spinner
@@ -19895,9 +19895,9 @@ title: "Table"
 slug: table
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 152
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table.txt
 ---
 
 # Table
@@ -19929,9 +19929,9 @@ title: "Table"
 slug: table
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 771
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table--documentation.txt
 ---
 
 # Table
@@ -20005,9 +20005,9 @@ title: "Table"
 slug: table
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 321
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table--technical-information.txt
 ---
 
 # Table
@@ -20048,9 +20048,9 @@ title: "Table"
 slug: table
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1219
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-table--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table--examples.txt
 ---
 
 # Table
@@ -20330,9 +20330,9 @@ title: "Tabs"
 slug: tabs
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 397
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs.txt
 ---
 
 # Tabs
@@ -20376,9 +20376,9 @@ title: "Tabs"
 slug: tabs
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1918
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs--documentation.txt
 ---
 
 # Tabs
@@ -20568,9 +20568,9 @@ title: "Tabs"
 slug: tabs
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1299
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs--technical-information.txt
 ---
 
 # Tabs
@@ -20677,9 +20677,9 @@ title: "Tabs"
 slug: tabs
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1651
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tabs--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs--examples.txt
 ---
 
 # Tabs
@@ -20973,9 +20973,9 @@ title: "Tag"
 slug: tag
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1014
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tag.txt
 ---
 
 # Tag
@@ -21012,9 +21012,9 @@ title: "Tag"
 slug: tag
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1374
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1376
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tag--documentation.txt
 ---
 
 # Tag
@@ -21114,7 +21114,7 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ## Accessibility
 
-Unlike [Badge](https://ovh.github.io/design-system/v19.7.3/components/badge),
+Unlike [Badge](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/badge),
 **Tags** are interactive and can be removed by the user.
 To ensure accessibility, it is important to:
 
@@ -21184,9 +21184,9 @@ title: "Tag"
 slug: tag
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 2177
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tag--technical-information.txt
 ---
 
 # Tag
@@ -21277,9 +21277,9 @@ title: "Tag"
 slug: tag
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 301
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tag--examples.txt
 ---
 
 # Tag
@@ -21388,9 +21388,9 @@ title: "Text"
 slug: text
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 101
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-text.txt
 ---
 
 # Text
@@ -21417,9 +21417,9 @@ title: "Text"
 slug: text
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 811
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-text--documentation.txt
 ---
 
 # Text
@@ -21494,9 +21494,9 @@ title: "Text"
 slug: text
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 132
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-text--technical-information.txt
 ---
 
 # Text
@@ -21535,9 +21535,9 @@ title: "Text"
 slug: text
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 473
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-text--examples.txt
 ---
 
 # Text
@@ -21640,9 +21640,9 @@ title: "Textarea"
 slug: textarea
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 157
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-textarea.txt
 ---
 
 # Textarea
@@ -21676,9 +21676,9 @@ title: "Textarea"
 slug: textarea
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 987
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-textarea--documentation.txt
 ---
 
 # Textarea
@@ -21812,9 +21812,9 @@ title: "Textarea"
 slug: textarea
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 97
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-textarea--technical-information.txt
 ---
 
 # Textarea
@@ -21838,9 +21838,9 @@ title: "Textarea"
 slug: textarea
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 359
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-textarea--examples.txt
 ---
 
 # Textarea
@@ -21946,9 +21946,9 @@ title: "Tile"
 slug: tile
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 139
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tile.txt
 ---
 
 # Tile
@@ -21979,9 +21979,9 @@ title: "Tile"
 slug: tile
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 633
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tile--documentation.txt
 ---
 
 # Tile
@@ -22053,9 +22053,9 @@ title: "Tile"
 slug: tile
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 276
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tile--technical-information.txt
 ---
 
 # Tile
@@ -22092,9 +22092,9 @@ title: "Tile"
 slug: tile
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 443
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tile--examples.txt
 ---
 
 # Tile
@@ -22189,9 +22189,9 @@ title: "Timepicker"
 slug: timepicker
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 622
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-timepicker.txt
 ---
 
 # Timepicker
@@ -22238,9 +22238,9 @@ title: "Timepicker"
 slug: timepicker
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1323
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1327
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-timepicker--documentation.txt
 ---
 
 # Timepicker
@@ -22304,7 +22304,7 @@ A **Timepicker** shares the default width of every form field (280px, capped to 
 
 A **Timepicker** can widen to match its container by setting `width: 100%` on its root: the timezone select keeps its content width and the time field takes the remaining space.
 
-It has the same states and behaviors for each inner component (i.e. [Input](https://ovh.github.io/design-system/v19.7.3/components/input) and [Select](https://ovh.github.io/design-system/v19.7.3/components/select)).
+It has the same states and behaviors for each inner component (i.e. [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) and [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)).
 
 ## Navigation
 
@@ -22378,9 +22378,9 @@ title: "Timepicker"
 slug: timepicker
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 723
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-timepicker--technical-information.txt
 ---
 
 # Timepicker
@@ -22460,9 +22460,9 @@ title: "Timepicker"
 slug: timepicker
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 351
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-timepicker--examples.txt
 ---
 
 # Timepicker
@@ -22583,9 +22583,9 @@ title: "Toaster"
 slug: toaster
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 274
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toaster.txt
 ---
 
 # Toaster
@@ -22623,9 +22623,9 @@ title: "Toaster"
 slug: toaster
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1120
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toaster--documentation.txt
 ---
 
 # Toaster
@@ -22751,9 +22751,9 @@ title: "Toaster"
 slug: toaster
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 277
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toaster--technical-information.txt
 ---
 
 # Toaster
@@ -22800,9 +22800,9 @@ title: "Toaster"
 slug: toaster
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1165
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toaster--examples.txt
 ---
 
 # Toaster
@@ -23004,9 +23004,9 @@ title: "Toggle"
 slug: toggle
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 338
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toggle.txt
 ---
 
 # Toggle
@@ -23047,9 +23047,9 @@ title: "Toggle"
 slug: toggle
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 971
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toggle--documentation.txt
 ---
 
 # Toggle
@@ -23175,9 +23175,9 @@ title: "Toggle"
 slug: toggle
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 468
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toggle--technical-information.txt
 ---
 
 # Toggle
@@ -23226,9 +23226,9 @@ title: "Toggle"
 slug: toggle
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 277
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-toggle--examples.txt
 ---
 
 # Toggle
@@ -23339,9 +23339,9 @@ title: "Tooltip"
 slug: tooltip
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 298
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip.txt
 ---
 
 # Tooltip
@@ -23379,9 +23379,9 @@ title: "Tooltip"
 slug: tooltip
 category: component
 type: documentation
-version: 19.7.3
-tokens: 1146
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--documentation.txt
+version: 20.0.0-alpha.0
+tokens: 1148
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip--documentation.txt
 ---
 
 # Tooltip
@@ -23413,7 +23413,7 @@ They are suitable for a button, an icon, a link, and any other elements where ad
 
 ### Tooltip vs Popover
 
-- Both components look similar but a **Tooltip** is displayed on hover and focus while a [Popover](https://ovh.github.io/design-system/v19.7.3/components/popover) is triggered by click.
+- Both components look similar but a **Tooltip** is displayed on hover and focus while a [Popover](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/popover) is triggered by click.
 - **Tooltips** are commonly used for shorter explanations, while longer text / complex UIs would suit Popovers better.
 - Use a Popover when you need to insert interactive elements such as a button.
 - A Popover can be dismissed if an action button allows it.
@@ -23513,9 +23513,9 @@ title: "Tooltip"
 slug: tooltip
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 469
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip--technical-information.txt
 ---
 
 # Tooltip
@@ -23572,9 +23572,9 @@ title: "Tooltip"
 slug: tooltip
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 1066
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip--examples.txt
 ---
 
 # Tooltip
@@ -23804,9 +23804,9 @@ title: "Tree View"
 slug: tree-view
 category: component
 type: overview
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 380
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tree-view.txt
 ---
 
 # Tree View
@@ -23849,9 +23849,9 @@ title: "Tree View"
 slug: tree-view
 category: component
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 917
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tree-view--documentation.txt
 ---
 
 # Tree View
@@ -23970,9 +23970,9 @@ title: "Tree View"
 slug: tree-view
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 559
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tree-view--technical-information.txt
 ---
 
 # Tree View
@@ -24024,9 +24024,9 @@ title: "Tree View"
 slug: tree-view
 category: component
 type: examples
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 3246
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tree-view--examples.txt
 ---
 
 # Tree View

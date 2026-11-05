@@ -3,9 +3,9 @@ title: "Drawer"
 slug: drawer
 category: component
 type: technical-information
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 634
-source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-drawer--technical-information.txt
 ---
 
 # Drawer

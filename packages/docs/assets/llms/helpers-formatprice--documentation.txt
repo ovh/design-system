@@ -3,9 +3,9 @@ title: "formatPrice"
 slug: helpers-formatprice
 category: generic
 type: documentation
-version: 19.7.3
+version: 20.0.0-alpha.0
 tokens: 253
-source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/helpers-formatprice--documentation.txt
 ---
 
 # formatPrice

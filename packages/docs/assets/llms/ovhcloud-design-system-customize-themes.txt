@@ -3,9 +3,9 @@ title: "Themes"
 slug: ovhcloud-design-system-customize-themes
 category: generic
 type: overview
-version: 19.7.3
-tokens: 1964
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-themes.txt
+version: 20.0.0-alpha.0
+tokens: 1970
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-themes.txt
 ---
 
 # Themes
@@ -128,7 +128,7 @@ Style your own elements with the `--ods-semantic-*` tokens, and they follow the 
 </>
 ```
 
-The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page explains which tokens to use and lists all of them.
+The [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page explains which tokens to use and lists all of them.
 
 To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
 
@@ -154,9 +154,9 @@ import './my-theme.css';
 
 An ODS theme declares every token: loaded after your stylesheet, it overrides it. When the page switches themes, keep your stylesheet after the one shown.
 
-The `--ods-semantic-*` tokens are the public surface of a theme. The [Design Tokens](https://ovh.github.io/design-system/v19.7.3/guides/design-tokens) page lists them, with their role.
+The `--ods-semantic-*` tokens are the public surface of a theme. The [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page lists them, with their role.
 
-To change the colors, the brand and accent ramps are the shortest way: `--ods-palette-brand-*` paints the brand roles, `--ods-palette-accent-*` the text, headings, selection and form controls. They do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their values. Over the default theme, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare these roles themselves to change them. The [migration guide](https://ovh.github.io/design-system/v19.7.3/guides/migration-19-to-20) details which roles each ramp reaches.
+To change the colors, the brand and accent ramps are the shortest way: `--ods-palette-brand-*` paints the brand roles, `--ods-palette-accent-*` the text, headings, selection and form controls. They do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their values. Over the default theme, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare these roles themselves to change them. The [migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) details which roles each ramp reaches.
 
 The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
 

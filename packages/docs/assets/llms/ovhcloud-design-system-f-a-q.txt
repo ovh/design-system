@@ -3,9 +3,9 @@ title: "FAQ"
 slug: ovhcloud-design-system-f-a-q
 category: generic
 type: overview
-version: 19.7.3
-tokens: 975
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-f-a-q.txt
+version: 20.0.0-alpha.0
+tokens: 977
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-f-a-q.txt
 ---
 
 # FAQ
@@ -87,4 +87,4 @@ If you still need to access documentation about Web Components or Vue, use the v
 
 ## Something does not work as expected
 
-Common integration issues (TypeScript resolution, overlays, icons, refs, server-side rendering) and their fixes are gathered in the [Troubleshooting](https://ovh.github.io/design-system/v19.7.3/guides/troubleshooting) guide.
+Common integration issues (TypeScript resolution, overlays, icons, refs, server-side rendering) and their fixes are gathered in the [Troubleshooting](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/troubleshooting) guide.

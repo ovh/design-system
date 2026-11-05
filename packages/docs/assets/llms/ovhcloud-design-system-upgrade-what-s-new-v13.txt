@@ -3,27 +3,27 @@ title: "What's new in v13"
 slug: ovhcloud-design-system-upgrade-what-s-new-v13
 category: generic
 type: overview
-version: 19.7.3
-tokens: 345
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new-v13.txt
+version: 20.0.0-alpha.0
+tokens: 355
+source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v13.txt
 ---
 
 # What's new in v13
 
-*Release notes of v13. For the current major version, see [What's new](https://ovh.github.io/design-system/v19.7.3/guides/whats-new).*
+*Release notes of v13. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
 
 ## v13.0.0
 
-As it is a major version, you have to do the [migration guide 12.x to 13.x](https://ovh.github.io/design-system/v19.7.3/guides/migration-12-to-13)
+As it is a major version, you have to do the [migration guide 12.x to 13.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-12-to-13)
 
 ### New features
 
 We added the following components:
 
-* Breadcrumb: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/breadcrumb)
+* Breadcrumb: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/breadcrumb)
 * Collapsible: See Documentation using version selector
-* Pagination: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/pagination)
-* Spinner: [See Documentation](https://ovh.github.io/design-system/v19.7.3/components/spinner)
+* Pagination: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/pagination)
+* Spinner: [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/spinner)
 
 Circle-shaped button has been added to Button Component (circle attribute)
 

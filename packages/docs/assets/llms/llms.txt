@@ -19,5 +19,5 @@
 - Individual files are available for targeted LLM context (see the Components and Generic Documentation indexes)
 - The machine-readable index (JSON) lists every file with a token estimate for context budgeting
 - The content is automatically generated from the same source as the official documentation
-- This set documents version 19.7.3 and is kept immutably at https://ovh.github.io/design-system/v19.7.3/llms/ — the site root llms.txt lists every available version
+- This set documents version 20.0.0-alpha.0 and is kept immutably at https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ — the site root llms.txt lists every available version
 - The @ovhcloud/ods-react npm package ships these same files under dist/llms: prefer that local copy, it always matches the installed version

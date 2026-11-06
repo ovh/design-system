@@ -1,9 +1,9 @@
 {
   "about": "Last recorded numbers of the ods-migrate test procedure (TESTING.md). Coverage entries are keyed by the --label of the run and compared by scripts/coverage-check.mjs; acceptance entries by hand against scripts/acceptance/acceptance.sh. Update with `node scripts/coverage-check.mjs --record <run.json>...` and by editing `acceptance`, in the same change as the code that moves them.",
-  "recordedAt": "2026-10-27",
+  "recordedAt": "2026-11-06",
   "refs": {
     "v19": "v19.7.3 (0ce249290)",
-    "v20": "stack/remove-color (65bca4aae)"
+    "v20": "origin/master (2741442ea)"
   },
   "tooling": {
     "node": "v22.14.0",
@@ -126,7 +126,7 @@
       "note": "Built to hold one site of each kind: 1 MISSED (legacy.less) and 1 regression (a local BADGE_COLOR shadowing the import) are expected.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -141,21 +141,21 @@
         "snippets": 0
       },
       "sites": 6,
-      "auto": 4,
+      "auto": 5,
       "marked": 1,
-      "missed": 1,
-      "autoPct": 66.7,
-      "assistedPct": 83.3,
+      "missed": 0,
+      "autoPct": 83.3,
+      "assistedPct": 100,
       "regressions": 1,
       "regressionsUnderMarker": 0,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 6,
-      "differ": 4,
+      "agree": 7,
+      "differ": 3,
       "truthUnit": "item",
-      "toolWrong": 4,
+      "toolWrong": 3,
       "differByClass": {
-        "tool-wrong": 4,
+        "tool-wrong": 3,
         "decision": 0,
         "unrelated-change": 0,
         "style-only": 0
@@ -166,7 +166,7 @@
         "truth": "32d8c2b6bc47f8f8b87b65308c2af23030035505d4e00c35068a8e495f727aa2"
       },
       "migrateExit": 0,
-      "seconds": 7
+      "seconds": 16
     },
     "examples": {
       "corpus": "design-system packages/examples at v19.7.3, the 5 apps in one run (truth: the same path at stack/remove-color)",
@@ -176,7 +176,7 @@
       "note": "The 18 regressions are a known ods-migrate defect: accessibility-test App.tsx 326-365, BUTTON_COLOR.information/success/warning rewritten to BUTTON_STATUS.* (absent in v20) under the marker that keeps color=; they are 18 of the 19 tool-wrong items (the 19th: the Divider style of App.tsx:493). DIFFER decision 46 = button-default-emphasis 37 + drop-default 9 (the truth keeps the v19 look).",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -190,33 +190,33 @@
         "scanned": 49,
         "snippets": 1
       },
-      "sites": 109,
-      "auto": 91,
-      "marked": 18,
+      "sites": 138,
+      "auto": 112,
+      "marked": 26,
       "missed": 0,
-      "autoPct": 83.5,
+      "autoPct": 81.2,
       "assistedPct": 100,
-      "regressions": 18,
-      "regressionsUnderMarker": 18,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 121,
-      "differ": 74,
+      "agree": 125,
+      "differ": 91,
       "truthUnit": "item",
-      "toolWrong": 19,
+      "toolWrong": 3,
       "differByClass": {
-        "tool-wrong": 19,
+        "tool-wrong": 3,
         "decision": 46,
-        "unrelated-change": 9,
+        "unrelated-change": 42,
         "style-only": 0
       },
       "excluded": 0,
       "digests": {
         "corpus": "daf1a4e6a59728474bde753ab26ad2964f9efd8653ab00253763ecfbeb9e5270",
-        "truth": "510da2f4c8e02ad176debc96e4588328f30053fd73bd0cc7afc4419159c1ddfc"
+        "truth": "c0a7b1b3675135f6ed8a0f4600806c819020e30a64f6871979147697f517c321"
       },
       "migrateExit": 0,
-      "seconds": 13
+      "seconds": 24
     },
     "examples-accessibility-test": {
       "corpus": "packages/examples/accessibility-test (same preparation as examples)",
@@ -226,7 +226,7 @@
       "note": "The 18 regressions and 18 of the 19 tool-wrong items are the BUTTON_STATUS.* defect described under examples.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -240,33 +240,33 @@
         "scanned": 10,
         "snippets": 1
       },
-      "sites": 99,
-      "auto": 81,
-      "marked": 18,
+      "sites": 128,
+      "auto": 102,
+      "marked": 26,
       "missed": 0,
-      "autoPct": 81.8,
+      "autoPct": 79.7,
       "assistedPct": 100,
-      "regressions": 18,
-      "regressionsUnderMarker": 18,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 111,
-      "differ": 56,
+      "agree": 115,
+      "differ": 71,
       "truthUnit": "item",
-      "toolWrong": 19,
+      "toolWrong": 3,
       "differByClass": {
-        "tool-wrong": 19,
+        "tool-wrong": 3,
         "decision": 28,
-        "unrelated-change": 9,
+        "unrelated-change": 40,
         "style-only": 0
       },
       "excluded": 0,
       "digests": {
         "corpus": "4992ed821cc786f5d191369954aa4d05c06b4b10c63512624ed9d112c45883c2",
-        "truth": "f2c16874448893d91594582498631c1523d3936c175b29a5bef5e50c05b1cfc0"
+        "truth": "487b1b33ea0ec8e0cb129868b15986e661635a0f2b39046f3740d1f841e2d9e1"
       },
       "migrateExit": 0,
-      "seconds": 11
+      "seconds": 19
     },
     "examples-nextjs-app": {
       "corpus": "packages/examples/nextjs-app (same preparation as examples)",
@@ -275,7 +275,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -300,22 +300,22 @@
       "prematureFiles": 0,
       "prematureHunks": 0,
       "agree": 1,
-      "differ": 0,
+      "differ": 2,
       "truthUnit": "item",
       "toolWrong": 0,
       "differByClass": {
         "tool-wrong": 0,
         "decision": 0,
-        "unrelated-change": 0,
+        "unrelated-change": 2,
         "style-only": 0
       },
       "excluded": 0,
       "digests": {
         "corpus": "1d71738adc6eef3d0b33dee4b7410a2dbc437dbe35a9ced6601d96e509f36987",
-        "truth": "ba89780fe0f6db2e536bb4f46eb6460403d835a27f89162663c642f5b667f966"
+        "truth": "f6fd7292b9d9671de7d7a22c82ff9deeaab8fbfd6059332eaa017c4094ddf5fc"
       },
       "migrateExit": 0,
-      "seconds": 8
+      "seconds": 13
     },
     "examples-react-router-app": {
       "corpus": "packages/examples/react-router-app (same preparation as examples)",
@@ -324,7 +324,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -361,10 +361,10 @@
       "excluded": 0,
       "digests": {
         "corpus": "4a6a6a02dcb51e9da7a174108940e5fc1abe346b2abdb7c1c21e94095a748e96",
-        "truth": "c0b9da50a37a7864dd060162375809cb527d9230fe4b219c0f89691b026ba2f6"
+        "truth": "33bb3cc479eb84bb170d6ab1ee9c82b79edeb33b4a597bc222edfd48632fcfe1"
       },
       "migrateExit": 0,
-      "seconds": 8
+      "seconds": 12
     },
     "examples-vite-app": {
       "corpus": "packages/examples/vite-app (same preparation as examples)",
@@ -373,7 +373,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -410,10 +410,10 @@
       "excluded": 0,
       "digests": {
         "corpus": "db3cb4517e649f74f65832b23a96d4301601a8a544135fcb21aebae99eb21e44",
-        "truth": "17129b507a3f1e8671a5c8fdca5f19a250153a7bab8d7118840d8c72487192de"
+        "truth": "b82597bf983ec9f51ee99d5508e39157677adb2d01f793659010d6cd68d13543"
       },
       "migrateExit": 0,
-      "seconds": 9
+      "seconds": 14
     },
     "examples-webpack-app": {
       "corpus": "packages/examples/webpack-app (same preparation as examples)",
@@ -422,7 +422,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -462,7 +462,7 @@
         "truth": "2611cd7e9209d41d71fe17f93efe29e780529cd21def9ede48f9b9b33f7ab5c9"
       },
       "migrateExit": 0,
-      "seconds": 8
+      "seconds": 12
     },
     "recipes": {
       "corpus": "design-system packages/ods-recipes at v19.7.3 (truth: the same path at stack/remove-color)",
@@ -472,7 +472,7 @@
       "note": "The 4 MISSED are MESSAGE_COLOR in status-message/src/README.md (doc sites ods-migrate does not touch). tool-wrong 23: 13 .storybook/main.ts font-family lines (ods-migrate writes \"Source Sans 3\", the truth var(--ods-semantic-font-family-body)), the order-button custom properties rewritten to raw palette tokens, and 8 items under a marker.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -486,8 +486,8 @@
         "scanned": 149,
         "snippets": 0
       },
-      "sites": 200,
-      "auto": 188,
+      "sites": 201,
+      "auto": 189,
       "marked": 8,
       "missed": 4,
       "autoPct": 94,
@@ -496,30 +496,30 @@
       "regressionsUnderMarker": 0,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 184,
-      "differ": 67,
+      "agree": 221,
+      "differ": 81,
       "truthUnit": "item",
-      "toolWrong": 23,
+      "toolWrong": 27,
       "differByClass": {
-        "tool-wrong": 23,
+        "tool-wrong": 27,
         "decision": 26,
-        "unrelated-change": 13,
+        "unrelated-change": 23,
         "style-only": 5
       },
       "excluded": 0,
       "digests": {
         "corpus": "960cbe212ccb051b1035dee8aa3ad0133ec1cf8743cd84770fc89d0d6e6274c2",
-        "truth": "b9495a891b87a69bd1e56fc22c75e8c1ae6a7733ae19a87d7f9b42abf5847cb0"
+        "truth": "fcf4e996cabe7baedbd6d434ab3631ef9c2ff4d7b736d4d10093b65f71de5d80"
       },
       "migrateExit": 0,
-      "seconds": 11
+      "seconds": 16
     },
     "manager": {
       "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 ('base', 10,585 files, pinned digest)",
       "fetch": "node scripts/coverage/corpora/manager.mjs --out <dir> --repo <snapshot repo> (or --from <dir holding packages/>)",
       "command": "node --max-old-space-size=12000 scripts/coverage.mjs <dir>/manager/corpus/packages --label manager --json manager.json",
       "gated": true,
-      "note": "Recorded with no option (2026-10-27): @ovh-ux/muk and the other modules of the tree are found on their own. The harness counts 2 sites fewer than with --treat-as-ods @ovh-ux/muk (2021 vs 2023: manager-wiki Badge.stories.tsx:46 and :67, story args typed through the muk alias BadgeProps, which only the harness option makes it count; they were MISSED). The packages on ODS 17/18 (apps/ips, pci-rancher, catalog: 63 sites out of scope) are left unchanged by ods-migrate: 0 premature file (17 before). Regressions 2, both under a marker: BUTTON_STATUS.information in web-domains (the known BUTTON_STATUS.* defect). The 19 others of the previous baseline (pci-block-storage Button/ButtonLink callers, pci-instances ActionsMenu actionButton, pci-workflow ButtonLink) are fixed by following the props typed with ODS types. 14 of the 68 MISSED are doc sites.",
+      "note": "Recorded with no option (2026-10-27): @ovh-ux/muk and the other modules of the tree are found on their own. The harness counts 2 sites fewer than with --treat-as-ods @ovh-ux/muk (2021 vs 2023: manager-wiki Badge.stories.tsx:46 and :67, story args typed through the muk alias BadgeProps, which only the harness option makes it count; they were MISSED). The packages on ODS 17/18 (apps/ips, pci-rancher, catalog: 63 sites out of scope) are left unchanged by ods-migrate: 0 premature file (17 before). Regressions 2, both under a marker: BUTTON_STATUS.information in web-domains (the known BUTTON_STATUS.* defect). The 19 others of the previous baseline (pci-block-storage Button/ButtonLink callers, pci-instances ActionsMenu actionButton, pci-workflow ButtonLink) are fixed by following the props typed with ODS types. 14 of the 68 MISSED are doc sites. Not re-recorded on 2026-11-06 (origin/master): its source is gone from this machine (the manager snapshot repo is empty). Still on stack/remove-color: coverage-check reports it as not comparable until a run on master is recorded.",
       "refs": {
         "v19": "0ce249290",
         "v20": "65bca4aae"
@@ -561,7 +561,7 @@
       "note": "183 of the 190 MISSED are doc (151) and snippet (32) sites: the Markdown/MDX pages and story source strings ods-migrate does not rewrite; without them 423 sites, 380 auto, 36 marked, 7 missed. The 10 regressions are all under a marker (9 BUTTON_STATUS.information/success/warning, 1 duplicate key in .storybook/ods.theme.ts).",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "2741442ea"
       },
       "options": {
         "treatAsOds": [],
@@ -575,33 +575,33 @@
         "scanned": 323,
         "snippets": 451
       },
-      "sites": 609,
-      "auto": 380,
-      "marked": 39,
-      "missed": 190,
-      "autoPct": 62.4,
-      "assistedPct": 68.8,
-      "regressions": 10,
-      "regressionsUnderMarker": 10,
+      "sites": 792,
+      "auto": 403,
+      "marked": 182,
+      "missed": 207,
+      "autoPct": 50.9,
+      "assistedPct": 73.9,
+      "regressions": 1,
+      "regressionsUnderMarker": 1,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 254,
-      "differ": 248,
+      "agree": 193,
+      "differ": 964,
       "truthUnit": "item",
-      "toolWrong": 63,
+      "toolWrong": 62,
       "differByClass": {
-        "tool-wrong": 63,
-        "decision": 136,
-        "unrelated-change": 33,
+        "tool-wrong": 62,
+        "decision": 117,
+        "unrelated-change": 769,
         "style-only": 16
       },
-      "excluded": 67,
+      "excluded": 47,
       "digests": {
         "corpus": "26e2c3ed9d11987a11e733cb6aaceb75af74555140900fc8739f9bb59800d598",
-        "truth": "e9d9fc86a0e452c185326e63e8b43864ef7021e26bd6a369cb097593744d131d"
+        "truth": "1ecc71db930127592c0a84be5090c91e619ac3d4be0106ed856b5672dc51ea30"
       },
       "migrateExit": 0,
-      "seconds": 19
+      "seconds": 30
     }
   },
   "measuredWith": {

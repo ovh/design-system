@@ -228,7 +228,10 @@ function elementsOf(fn, jsx) {
         if (spread?.kind() === 'spread_element') spreads.push(namedChildren(spread)[0]?.text());
       }
     }
-    return { attrs, spreads, tag: element.field('name')?.text() };
+    // Children of its own (`<X { ...p }><span /></X>`): the props' children never reach it.
+    const own = element.kind() === 'jsx_opening_element'
+      && namedChildren(element.parent()).some((child) => !['jsx_opening_element', 'jsx_closing_element'].includes(child.kind()) && !(child.kind() === 'jsx_text' && child.text().trim() === ''));
+    return { attrs, children: own, spreads, tag: element.field('name')?.text() };
   });
 }
 
@@ -428,6 +431,7 @@ function computeEntry(desc, targetOf, options) {
   };
 
   const wrapperMemo = new Map();
+  const childrenThrough = new Set();
   const wrapperOf = (name, seen = new Set([`fn:${name}`])) => {
     if (wrapperMemo.has(name)) return wrapperMemo.get(name);
     wrapperMemo.set(name, null);
@@ -454,6 +458,11 @@ function computeEntry(desc, targetOf, options) {
         rejected.push({ component, kind: 'not-passed', name, props: kept, reason: `it does not pass ${kept.join(', ')} on to the ODS ${component}` });
       } else {
         result = component;
+        // The props' children reach the ODS element: its users write the parts a childless element needs.
+        if (!fn.param.destructured.some((item) => item.prop === 'children') && !element.children && !element.attrs.some((attr) => attr.name === 'children')
+          && (localOds.get(element.tag) === component || childrenThrough.has(element.tag))) {
+          childrenThrough.add(name);
+        }
       }
     }
     wrapperMemo.set(name, result);
@@ -521,7 +530,7 @@ function computeEntry(desc, targetOf, options) {
     if (typed && !wrapperOf(name)) ownTyped[name] = typed;
   }
 
-  const entry = { names: {}, reexports: false, shadow: new Set(), star: false, typed: {}, wrappers: {} };
+  const entry = { childrenThrough: new Set(), names: {}, reexports: false, shadow: new Set(), star: false, typed: {}, wrappers: {} };
   const explicit = new Set([...desc.reexports.flatMap((item) => item.specs.map((spec) => spec.exported)), ...desc.localExports.map((item) => item.exported), ...desc.exportedDecls]);
   const setName = (exported, ods, passThrough) => {
     entry.names[exported] = ods;
@@ -543,6 +552,7 @@ function computeEntry(desc, targetOf, options) {
       }
       (target.shadow ?? []).forEach((name) => !explicit.has(name) && entry.shadow.add(name));
       Object.assign(entry.wrappers, Object.fromEntries(Object.entries(target.wrappers ?? {}).filter(([name]) => !explicit.has(name))));
+      (target.childrenThrough ?? []).filter((name) => !explicit.has(name)).forEach((name) => entry.childrenThrough.add(name));
       Object.assign(entry.typed, Object.fromEntries(Object.entries(target.typed ?? {}).filter(([name]) => !explicit.has(name) && name !== 'default')));
       entry.reexports ||= Boolean(target.reexports);
     }
@@ -555,6 +565,7 @@ function computeEntry(desc, targetOf, options) {
         setName(spec.exported, ods, spec.exported === spec.name && spec.name === ods);
         entry.reexports = true;
         if (target !== true && target.wrappers?.[spec.name]) entry.wrappers[spec.exported] = target.wrappers[spec.name];
+        if (target !== true && target.childrenThrough?.includes(spec.name)) entry.childrenThrough.add(spec.exported);
       } else {
         entry.shadow.add(spec.exported);
         if (target && target !== true && target.typed?.[spec.name]) entry.typed[spec.exported] = target.typed[spec.name];
@@ -575,6 +586,7 @@ function computeEntry(desc, targetOf, options) {
       setName(exported, found.ods, found.reexport && exported === local && local === found.ods);
       if (found.reexport) entry.reexports = true;
       if (found.wrapper) entry.wrappers[exported] = found.wrapper;
+      if (found.wrapper && childrenThrough.has(local)) entry.childrenThrough.add(exported);
     } else {
       entry.shadow.add(exported);
       const typed = ownTyped[local] ?? localTyped.get(local);
@@ -583,6 +595,7 @@ function computeEntry(desc, targetOf, options) {
   }
   for (const name of Object.keys(entry.names)) entry.shadow.delete(name);
   entry.shadow = [...entry.shadow];
+  entry.childrenThrough = [...entry.childrenThrough];
   entry.rejected = rejected.filter((item) => explicit.has(item.name) || desc.localExports.some((exp) => exp.local === item.name));
   entry.ownTyped = ownTyped;
   return entry;

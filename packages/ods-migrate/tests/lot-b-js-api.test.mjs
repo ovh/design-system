@@ -73,7 +73,7 @@ function assertParity(source, output, filename = 'file.tsx', { config } = {}) {
 }
 
 describe('removed compound parts in JSX (A4-02)', () => {
-  it('marks <Switch.Item> on its element, never inside its tag, and once inside a marked <Switch>', () => {
+  it('marks <Switch.Item> on its element, never inside its tag, and rewrites the one inside a <Switch> with it', () => {
     const source = `import { Switch } from '${PKG}';
 
 export const A = () => (
@@ -88,7 +88,8 @@ export const B = () => <Switch.Item value="e" />;
 `;
     const { output, todos } = run(source);
     assert.doesNotMatch(output, /<\/?\/\*/);
-    assert.equal(todos.length, 4, 'the import, <Switch>, and the two <Switch.Item> outside it');
+    assert.equal(todos.length, 3, 'the import, and the two <Switch.Item> outside a <Switch>');
+    assert.match(output, /<Tabs variant="switch">\n {6}<TabList>\n {8}<Tab value="b">B<\/Tab>\n {6}<\/TabList>\n {4}<\/Tabs>/);
     assert.match(output, /\{\/\* TODO\(ods-v20\): <Switch\.Item> has no v20 equivalent: [^\n]*\*\/\}\n {4}<Switch\.Item value="c">/);
     assert.match(output, /=> \/\* TODO\(ods-v20\): <Switch\.Item> has no v20 equivalent: [^\n]*\*\/ <Switch\.Item value="e" \/>/);
     assertParity(source, output);

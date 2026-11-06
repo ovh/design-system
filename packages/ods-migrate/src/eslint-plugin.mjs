@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { planReplacement, replacementParts } from './replaced.mjs';
 import { moduleLookup, odsNameIn, olderOdsOf } from './resolve.mjs';
 import { attributeText, isUntyped, isV19Look, memberRule, resolveMapping, resolveTokenMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 import { planScriptTokens } from './tokens.mjs';
@@ -905,6 +906,124 @@ function migrationRule(rawMapping) {
         };
       };
 
+      // `<Switch>` written with its items → `<Tabs variant="switch">`, a `<TabList>` around them, each a `<Tab>`
+      // (mapping `replacedBy`, planned in replaced.mjs as in the codemod). Any other shape is reported where it is read, at the end of the file.
+      const replacedTags = [];
+      let topLevelNames;
+      const topLevel = () => {
+        if (topLevelNames) {
+          return topLevelNames;
+        }
+        topLevelNames = new Set();
+        const collect = (pattern) => walk(pattern, sourceCode.visitorKeys, (item) => item.type === 'Identifier' && topLevelNames.add(item.name));
+        for (const statement of sourceCode.ast.body) {
+          if (statement.type === 'ImportDeclaration') {
+            statement.specifiers.forEach((spec) => topLevelNames.add(spec.local.name));
+            continue;
+          }
+          const declaration = ['ExportNamedDeclaration', 'ExportDefaultDeclaration'].includes(statement.type) ? statement.declaration : statement;
+          if (declaration?.type === 'VariableDeclaration') {
+            declaration.declarations.forEach((declarator) => collect(declarator.id));
+          } else if (declaration?.id?.type === 'Identifier') {
+            topLevelNames.add(declaration.id.name);
+          }
+        }
+        return topLevelNames;
+      };
+      const reportReplaced = (node, component, replacement) => {
+        const element = node.parent;
+        const tag = node.name.type === 'JSXIdentifier' ? node.name.name : null;
+        const importNode = tag && imports.importNodes.find((item) => item.specifiers.some((spec) => spec.type === 'ImportSpecifier' && spec.local.name === tag));
+        const entry = importNode && sources.packages.map((name) => importNode.source.value.startsWith(`${name}/`) && importNode.source.value.slice(name.length + 1)).find(Boolean);
+        if (node.selfClosing || !importNode || imports.wrappers.has(tag) || (entry && REMOVED_ENTRIES[entry])) {
+          return;
+        }
+        const replacedTag = (opening) => opening.name.type === 'JSXIdentifier' && !imports.wrappers.has(opening.name.name) && components.get(opening.name.name) === component;
+        for (let outer = element.parent; outer; outer = outer.parent) {
+          if (outer.type === 'JSXElement' && replacedTag(outer.openingElement)) {
+            return;
+          }
+        }
+        const inner = [];
+        walk(element, sourceCode.visitorKeys, (item) => item.type === 'JSXOpeningElement' && item !== node && inner.push(item));
+        if (inner.some(replacedTag)) {
+          return;
+        }
+        const partNames = {};
+        for (const part of [replacement.element, replacement.wrap, ...Object.values(replacement.parts ?? {})]) {
+          partNames[part] ??= [...imports.imports].find(([, imported]) => imported === part)?.[0] ?? (topLevel().has(part) ? null : part);
+        }
+        if (Object.values(partNames).some((name) => !name)) {
+          return;
+        }
+        const range = (item) => ({ end: item.range[1], start: item.range[0] });
+        const tagOf = (opening) => ({
+          attributes: opening.attributes.map((attribute) => ({ end: attribute.range[1], name: attribute.type === 'JSXAttribute' ? sourceCode.getText(attribute.name) : null, start: attribute.range[0], text: sourceCode.getText(attribute) })),
+          end: opening.range[1],
+          name: range(opening.name),
+          start: opening.range[0],
+        });
+        const partOf = (name) => {
+          if (name.type === 'JSXMemberExpression') {
+            return name.object.type === 'JSXIdentifier' && imports.imports.get(name.object.name) === component ? replacement.statics?.[name.property.name] : undefined;
+          }
+          return name.type === 'JSXIdentifier' ? replacement.parts?.[imports.imports.get(name.name)] : undefined;
+        };
+        const items = inner.filter((opening) => partOf(opening.name)).map((opening) => ({
+          closingName: opening.parent.closingElement ? range(opening.parent.closingElement.name) : null,
+          opening: tagOf(opening),
+          to: partNames[partOf(opening.name)],
+        }));
+        const literals = [];
+        walk(element, sourceCode.visitorKeys, (item) => (isString(item) || item.type === 'TemplateLiteral') && literals.push(range(item)));
+        const plan = planReplacement({
+          element: { closing: { name: range(element.closingElement.name), start: element.closingElement.range[0] }, opening: tagOf(node) },
+          items,
+          literals,
+          names: { element: partNames[replacement.element], wrap: partNames[replacement.wrap] },
+          replacement,
+          source: sourceCode.text,
+        });
+        if (plan.blocked) {
+          return;
+        }
+        // Not reported as reads with no equivalent. They still count as reads: the import goes on the next --fix pass, once
+        // they are rewritten (in the same pass, the removal of the import could win over this fix and leave nothing to rewrite).
+        replacedTags.push(element);
+        // The parts not imported yet, as for a childless element: from the module imported from when it exports them, else from the package.
+        const added = replacementParts(replacement).filter((part) => ![...imports.imports.values()].includes(part));
+        const target = sources.targetOf(importNode.source.value);
+        const exported = (name) => target === true || odsNameIn(target, name) === name;
+        const packageImport = imports.importNodes.find((item) => item.source.value === mapping.package && item.importKind !== 'type' && item.specifiers.some((spec) => spec.type === 'ImportSpecifier'));
+        const lastImport = sourceCode.ast.body.filter((statement) => statement.type === 'ImportDeclaration').at(-1);
+        context.report({
+          data: { detail: `<${tag}> is removed in ODS v20: use <${partNames[replacement.element]}${Object.entries(replacement.add ?? {}).map(([name, value]) => ` ${attributeText(name, value)}`).join('')}>, a <${partNames[replacement.wrap]}> around its items, each a <${Object.values(partNames).at(-1)}>` },
+          fix: (fixer) => {
+            const fixes = plan.edits.map((item) => fixer.replaceTextRange([item.start, item.end], item.text));
+            const append = (statement, names) => {
+              const specs = statement?.specifiers.filter((spec) => spec.type === 'ImportSpecifier') ?? [];
+              if (names.length > 0 && specs.length > 0) {
+                fixes.push(appendToList(fixer, specs, specs.at(-1), sourceCode.getTokenBefore(specs[0]), names));
+              }
+            };
+            if (packageImport === importNode) {
+              append(importNode, added);
+            } else {
+              append(importNode, added.filter(exported));
+              const fromPackage = added.filter((name) => !exported(name));
+              if (packageImport) {
+                append(packageImport, fromPackage);
+              } else if (fromPackage.length > 0) {
+                fixes.push(fixer.insertTextAfter(lastImport, `${eol}import { ${fromPackage.join(', ')} } from '${mapping.package}';`));
+              }
+            }
+            return fixes;
+          },
+          messageId: 'replacedComponent',
+          node,
+        });
+      };
+
       // `variant={ c ? TABLE_VARIANT.striped : TABLE_VARIANT.default }` → `striped={ c }`: a ternary whose leaves all have a replacement.
       const foldTernary = (expression, rule, names) => {
         if (expression?.type !== 'ConditionalExpression') {
@@ -1306,6 +1425,9 @@ function migrationRule(rawMapping) {
             return;
           }
           const spec = mapping.components[component];
+          if (spec.replacedBy) {
+            reportReplaced(node, component, spec.replacedBy);
+          }
           const { props } = spec;
           const attributes = node.attributes.filter((attribute) => attribute.type === 'JSXAttribute' && attribute.name.type === 'JSXIdentifier');
           const byName = new Map(attributes.map((attribute) => [attribute.name.name, attribute]));
@@ -1715,11 +1837,15 @@ function migrationRule(rawMapping) {
                   node: inline.node,
                 });
               }
-              return !inline;
+              // Inside an element rewritten in this pass (`<Switch size={ SWITCH_SIZE.sm }>`), whose fix spans the element, the
+              // inline fix waits for the next pass: the read is kept until then, or its import would go first and leave it unbound.
+              return !inline || within(replacedTags, reference.identifier);
             });
+            // A tag of an element this pass rewrites (`<Switch>` → `<Tabs>`, its items): fixed above, not a read left behind.
+            const replacedRead = (identifier) => ['JSXOpeningElement', 'JSXClosingElement', 'JSXMemberExpression'].includes(identifier.parent.type) && within(replacedTags, identifier);
             // `Switch.Item` is a part of Switch: the root of a JSX tag name is the export it reads.
             const tagRoot = (name) => (name.type === 'JSXMemberExpression' ? tagRoot(name.object) : name.name);
-            for (const { identifier } of reads.filter((reference) => !within(flagged, reference.identifier))) {
+            for (const { identifier } of reads.filter((reference) => !within(flagged, reference.identifier) && !replacedRead(reference.identifier) && !inlineOf(reference.identifier, rule))) {
               const tag = identifier.parent.type === 'JSXMemberExpression' && identifier.parent.object === identifier ? identifier.parent.parent : identifier.parent;
               if (tag.type === 'JSXClosingElement') {
                 continue;
@@ -1806,6 +1932,7 @@ function migrationRule(rawMapping) {
         removedProp: '{{component}}: `{{from}}` is removed in ODS v20, use {{to}} instead.',
         renamedExport: '`{{from}}` is removed in ODS v20, use `{{to}}`.',
         renamedProp: '{{component}}: `{{from}}` is removed in ODS v20, use `{{to}}` (check the value mapping in the migration guide).',
+        replacedComponent: '{{detail}}.',
         spreadUntyped: '{{detail}}.',
         stacking: '{{detail}}.',
         toastOption: '{{detail}}.',

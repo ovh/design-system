@@ -11,7 +11,7 @@ const v20 = api('api-v20');
 
 // The keys of CONTRACT.md §4, per level. Anything else is a typo or an undocumented key.
 const KEYS = {
-  component: ['childless', 'conflicts', 'example', 'exports', 'extends', 'pending', 'props', 'propsType', 'whenAbsent'],
+  component: ['childless', 'conflicts', 'example', 'exports', 'extends', 'pending', 'props', 'propsType', 'replacedBy', 'whenAbsent'],
   example: ['before', 'imports'],
   export: ['callOptions', 'hint', 'inline', 'listNote', 'memberKeys', 'members', 'note', 'pending', 'removed', 'renameTo'],
   member: ['hint', 'to'],

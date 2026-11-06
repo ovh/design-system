@@ -334,6 +334,7 @@ Fix the code, then delete the marker. Every marker says what to do; the table gi
 | `token name built at runtime: map each value by hand` | The name is built with `${x}` / `#{…}`: replace it with a lookup of full v20 names. | `` `var(--ods-color-${s}-500)` `` | `TOKENS[s]` with full v20 names |
 | `button--default: it also matched every Button without variant` | Internal classes are not an API: select `[data-ods="button"]` and the component props. | `[class*="button--default"]` | `[data-ods="button"]` plus a prop |
 | `<Wrapper> declares its own color, typed never on Card in v20` | Rename your prop, or leave ODS's out with `Omit<…, 'color'>`. | `interface P extends CardProp { color: … }` | `Omit<CardProp, 'color'> & { tone: … }` |
+| `<Switch> has no v20 equivalent: ods-migrate rewrites a <Switch> written with its items to <Tabs variant="switch"> …, not this one` | The Switch is removed. ods-migrate rewrote every Switch whose items it could see; this one it could not (no item written out, an item with its own `disabled`, a Switch inside a Switch, a wrapper of your app, the `/switch` entry point). Write it as the others: `<Tabs variant="switch">`, a `<TabList>` around the items, each `<SwitchItem>` a `<Tab>`, `disabled` on each `<Tab>`. Or pick a single-select ButtonGroup (a mode with no view) or a RadioGroup (a form value). | `{/* TODO… */}` `<Switch value={ v }>{ items }</Switch>` | `<Tabs value={ v } variant="switch"><TabList>{ items }</TabList></Tabs>`, with `<Tab>` items |
 | `<SelectControl className>`: the field width now lives on the root | Move the width class or style to the root (`<Select>`, `<Combobox>`…). | `<SelectControl className="w-64" />` | `<Select className="w-64">` |
 
 ### The v20 colour names
@@ -432,6 +433,7 @@ Code checks cannot see these. Open each screen in v19 (your main branch) and v20
 | Overlays get new z-index values: a drawer now sits under a modal | drawers that open a modal, custom z-index on popovers, sticky headers |
 | Buttons that showed an information, success or warning status are gone or neutral | step 6 choices |
 | Edge no longer shows its own reveal button on password fields | login, settings |
+| The Switch is gone: ods-migrate made each one a Tabs `variant="switch"` (the default replacement). A Switch with no `value` nor `defaultValue` is a point to check: Tabs warns in the console without a selection, set `defaultValue` to the first item if the page started on it. A team that wants a single-select ButtonGroup (pick a mode with no view) or a RadioGroup (pick a form value) changes the Tabs after the run | every former Switch: `grep -rn 'variant="switch"'` |
 | The colours of the points to check "colours and styles that may look different" | the files of those lines |
 
 Beyond these, the component stylesheets changed widely between v19.7.3 and v20: on `accessibility-test`, 76 of the 124 ODS elements it renders use a component whose styles changed (Message, Tab, Datepicker, Badge, Button, Input…). Check each screen, not only the list above.

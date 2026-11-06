@@ -1,0 +1,8 @@
+{
+  "name": "app-with-imports",
+  "imports": {
+    "#ods": "./src/ods/index.ts",
+    "#ui/*": { "types": "./src/ui/*.ts", "default": "./src/ui/*.js" }
+  },
+  "dependencies": { "@ovhcloud/ods-react": "^19.7.0" }
+}

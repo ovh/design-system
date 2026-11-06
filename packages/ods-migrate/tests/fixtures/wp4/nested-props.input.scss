@@ -1,0 +1,14 @@
+.a {
+  border: {
+    color: var(--ods-color-primary-500);
+  }
+  &:hover {
+    background-color: var(--ods-color-primary-700);
+  }
+}
+
+.card:hover {
+  div {
+    background-color: var(--ods-color-primary-100);
+  }
+}

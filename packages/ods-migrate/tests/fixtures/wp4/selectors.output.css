@@ -1,0 +1,11 @@
+.row:not(:hover) { background-color: var(--ods-semantic-color-surface-selected); }
+.cell:not(:focus) { border-color: var(--ods-semantic-color-border-critical); }
+.chip, .chip:hover { /* TODO(ods-v20): --ods-color-critical-700: this selector list mixes a :hover state and the rest: `--ods-semantic-color-border-critical` at rest, `--ods-semantic-color-interaction-critical-hover` for the other, split the rule */ border-color: var(--ods-color-critical-700); }
+.a, .b:hover { /* TODO(ods-v20): --ods-color-primary-100: this selector list mixes a :hover state and the rest: `--ods-semantic-color-surface-selected` at rest, `--ods-semantic-color-interaction-accent-subtle-hover` for the other, split the rule */ background: var(--ods-color-primary-100); }
+.link:hover .icon { color: var(--ods-semantic-color-content-brand); }
+.tile:has(:hover) { background: var(--ods-semantic-color-surface-selected); }
+.button:focus-visible, .button:hover { border-color: var(--ods-semantic-color-interaction-critical-hover); }
+input::placeholder { color: var(--ods-semantic-color-content-placeholder); }
+.f::placeholder, .g { /* TODO(ods-v20): --ods-color-neutral-600: this selector list mixes a ::placeholder and the rest: `--ods-semantic-color-content-neutral` at rest, `--ods-semantic-color-content-placeholder` for the other, split the rule */ color: var(--ods-color-neutral-600); }
+.card:hover div { background-color: var(--ods-semantic-color-interaction-accent-subtle-hover); }
+.card:not(:hover) div { background-color: var(--ods-semantic-color-surface-selected); }

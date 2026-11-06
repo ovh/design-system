@@ -1,0 +1,1 @@
+{ "name": "on-catalog", "dependencies": { "@ovhcloud/ods-react": "catalog:", "@ovhcloud/ods-themes": "catalog:" } }

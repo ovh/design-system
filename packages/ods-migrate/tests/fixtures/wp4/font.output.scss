@@ -1,0 +1,4 @@
+@use '@ovhcloud/ods-themes/src/helpers/fonts';
+
+@include fonts.source-sans-3-font-face(url('/static/source-sans-pro/source-sans3-variable-custom.woff2'));
+@include fonts.source-sans-3-italic-font-face(url('~@ovhcloud/ods-themes/assets/fonts/source-sans-3/woff2/source-sans3-variable-custom-italic.woff2'));

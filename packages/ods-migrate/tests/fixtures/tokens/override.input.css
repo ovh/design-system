@@ -1,0 +1,5 @@
+:root {
+  --ods-color-form-element-text-placeholder-default: var(--ods-color-neutral-300);
+  --ods-color-primary-500: #7a00cc;
+  --ods-theme-primary-color: var(--ods-color-primary-500);
+}

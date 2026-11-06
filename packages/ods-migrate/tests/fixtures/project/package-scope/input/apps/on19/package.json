@@ -1,0 +1,1 @@
+{ "name": "on19", "dependencies": { "@ovhcloud/ods-components": "17.2.2", "@ovhcloud/ods-react": "~19.1.0", "@ovhcloud/ods-themes": "~19.1.0" } }

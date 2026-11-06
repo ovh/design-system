@@ -1,0 +1,1020 @@
+{
+  "from": "19",
+  "to": "20",
+  "package": "@ovhcloud/ods-react",
+  "components": {
+    "Accordion": {
+      "propsType": "AccordionProp",
+      "conflicts": [
+        "emphasis"
+      ],
+      "props": {}
+    },
+    "Badge": {
+      "propsType": "BadgeProp",
+      "conflicts": [
+        "status",
+        "emphasis"
+      ],
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": {
+            "primary": "accent"
+          },
+          "constant": "BADGE_COLOR",
+          "dropDefault": "information",
+          "v19Look": {
+            "choice": "badge-accent-filled",
+            "values": {
+              "primary": {
+                "emphasis": "high"
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "before": "<Badge color=\"primary\">New feature</Badge>\n<Badge color={ BADGE_COLOR.success }>Active</Badge>",
+        "imports": [
+          "Badge",
+          "BADGE_COLOR"
+        ]
+      }
+    },
+    "Button": {
+      "propsType": "ButtonProp",
+      "conflicts": [
+        "status",
+        "emphasis"
+      ],
+      "whenAbsent": {
+        "choice": "button-default-emphasis",
+        "unless": [
+          "variant",
+          "emphasis"
+        ],
+        "add": {
+          "emphasis": "high"
+        },
+        "hint": "a Button without `variant` was filled in v19 and renders `medium` in v20: add `emphasis=\"high\"` to keep the filled look"
+      },
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": {
+            "primary": "brand",
+            "information": null,
+            "success": null,
+            "warning": null
+          },
+          "constant": "BUTTON_COLOR",
+          "hint": "a Button shows no status in v20: pick `status` brand, neutral or critical (brand is the default), and show the status with a Badge or a Message next to it",
+          "dropDefault": "brand"
+        },
+        "variant": {
+          "renameTo": "emphasis",
+          "values": {
+            "default": "high",
+            "outline": "medium",
+            "ghost": "low"
+          },
+          "constant": "BUTTON_VARIANT",
+          "dropDefault": "medium",
+          "defaultWas": "default"
+        }
+      },
+      "example": {
+        "before": "<Button color={ BUTTON_COLOR.primary }>Save</Button>\n<Button variant={ BUTTON_VARIANT.ghost }>Cancel</Button>\n<Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.default }>Delete</Button>",
+        "imports": [
+          "Button",
+          "BUTTON_COLOR",
+          "BUTTON_VARIANT"
+        ]
+      }
+    },
+    "CartAction": {
+      "extends": "Button",
+      "props": {}
+    },
+    "EditableCancelTrigger": {
+      "extends": "Button",
+      "props": {}
+    },
+    "EditableEditTrigger": {
+      "extends": "Button",
+      "props": {}
+    },
+    "EditableSubmitTrigger": {
+      "extends": "Button",
+      "props": {}
+    },
+    "ModalCloseTrigger": {
+      "extends": "Button",
+      "props": {}
+    },
+    "PromptInputFileUploadButton": {
+      "extends": "Button",
+      "props": {}
+    },
+    "PromptInputSendButton": {
+      "extends": "Button",
+      "props": {}
+    },
+    "QueryFilterClear": {
+      "extends": "Button",
+      "props": {}
+    },
+    "Card": {
+      "propsType": "CardProp",
+      "conflicts": [
+        "status"
+      ],
+      "whenAbsent": {
+        "choice": "card-default-status",
+        "unless": [
+          "color",
+          "status"
+        ],
+        "add": {
+          "status": "accent"
+        },
+        "hint": "a Card without `color` was primary in v19 and is `neutral` in v20: add `status=\"accent\"` to keep the v19 look"
+      },
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": {
+            "primary": "accent"
+          },
+          "constant": "CARD_COLOR",
+          "dropDefault": "neutral"
+        }
+      },
+      "example": {
+        "before": "<Card color={ CARD_COLOR.neutral }>...</Card>",
+        "imports": [
+          "Card",
+          "CARD_COLOR"
+        ]
+      }
+    },
+    "Divider": {
+      "propsType": "DividerProp",
+      "props": {
+        "color": {
+          "remove": true,
+          "values": {
+            "primary": {},
+            "neutral": {}
+          },
+          "constant": "DIVIDER_COLOR",
+          "hint": "the v20 Divider has a single color: delete the prop, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey",
+          "v19Look": {
+            "choice": "divider-neutral-grey",
+            "values": {
+              "neutral": {
+                "style": {
+                  "expr": "{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }"
+                }
+              }
+            }
+          }
+        }
+      },
+      "exports": [
+        "DIVIDER_COLOR",
+        "DIVIDER_COLORS",
+        "DividerColor"
+      ],
+      "example": {
+        "before": "<Divider color={ DIVIDER_COLOR.primary } />\n<Divider color={ DIVIDER_COLOR.neutral } />",
+        "imports": [
+          "Divider",
+          "DIVIDER_COLOR"
+        ]
+      }
+    },
+    "Message": {
+      "propsType": "MessageProp",
+      "conflicts": [
+        "status",
+        "emphasis"
+      ],
+      "whenAbsent": {
+        "choice": "message-default-emphasis",
+        "unless": [
+          "variant",
+          "emphasis"
+        ],
+        "add": {
+          "emphasis": "high"
+        },
+        "hint": "a Message without `variant` had a tinted background in v19 and renders `medium` in v20: add `emphasis=\"high\"` to keep a tinted background"
+      },
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": {
+            "primary": "accent"
+          },
+          "constant": "MESSAGE_COLOR",
+          "dropDefault": "information"
+        },
+        "variant": {
+          "renameTo": "emphasis",
+          "values": {
+            "default": "high",
+            "light": "medium"
+          },
+          "constant": "MESSAGE_VARIANT",
+          "dropDefault": "medium",
+          "defaultWas": "default"
+        }
+      },
+      "example": {
+        "before": "<Message color={ MESSAGE_COLOR.warning } variant={ MESSAGE_VARIANT.light }>\n  <MessageBody>Your session will expire soon.</MessageBody>\n</Message>\n<Message color={ MESSAGE_COLOR.success } variant={ MESSAGE_VARIANT.default }>\n  <MessageBody>Your changes are saved.</MessageBody>\n</Message>",
+        "imports": [
+          "Message",
+          "MessageBody",
+          "MESSAGE_COLOR",
+          "MESSAGE_VARIANT"
+        ]
+      }
+    },
+    "ModalContent": {
+      "propsType": "ModalContentProp",
+      "props": {
+        "color": {
+          "remove": true,
+          "values": {
+            "critical": {
+              "role": "alertdialog"
+            },
+            "information": {},
+            "neutral": {},
+            "primary": {},
+            "success": {},
+            "warning": {}
+          },
+          "constant": "MODAL_COLOR",
+          "hint": "pass `role=\"alertdialog\"` for a critical dialog, e.g. `role={ isCritical ? \"alertdialog\" : undefined }`"
+        }
+      },
+      "exports": [
+        "MODAL_COLOR",
+        "MODAL_COLORS",
+        "ModalColor"
+      ],
+      "example": {
+        "before": "<Modal>\n  <ModalContent color={ MODAL_COLOR.critical }>\n    <ModalBody>Are you sure you want to delete this item?</ModalBody>\n  </ModalContent>\n</Modal>",
+        "imports": [
+          "Modal",
+          "ModalBody",
+          "ModalContent",
+          "MODAL_COLOR"
+        ]
+      }
+    },
+    "Spinner": {
+      "propsType": "SpinnerProp",
+      "props": {
+        "color": {
+          "remove": true,
+          "values": {
+            "primary": {},
+            "neutral": {}
+          },
+          "constant": "SPINNER_COLOR",
+          "hint": "the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color",
+          "v19Look": {
+            "choice": "spinner-neutral-grey",
+            "values": {
+              "neutral": {
+                "style": {
+                  "expr": "{ fill: 'var(--ods-semantic-color-surface-neutral)' }"
+                }
+              }
+            }
+          }
+        }
+      },
+      "exports": [
+        "SPINNER_COLOR",
+        "SPINNER_COLORS",
+        "SpinnerColor"
+      ],
+      "example": {
+        "before": "<Spinner color={ SPINNER_COLOR.primary } />\n<Spinner color={ SPINNER_COLOR.neutral } />",
+        "imports": [
+          "Spinner",
+          "SPINNER_COLOR"
+        ]
+      }
+    },
+    "Table": {
+      "propsType": "TableProp",
+      "props": {
+        "variant": {
+          "remove": true,
+          "values": {
+            "default": {},
+            "striped": {
+              "striped": true
+            }
+          },
+          "constant": "TABLE_VARIANT",
+          "hint": "use the boolean `striped` prop, e.g. `striped={ variant === 'striped' }`"
+        }
+      },
+      "exports": [
+        "TABLE_VARIANT",
+        "TABLE_VARIANTS",
+        "TableVariant"
+      ],
+      "example": {
+        "before": "<Table variant={ TABLE_VARIANT.striped }>...</Table>\n<Table variant={ TABLE_VARIANT.default }>...</Table>",
+        "imports": [
+          "Table",
+          "TABLE_VARIANT"
+        ]
+      }
+    },
+    "Tag": {
+      "propsType": "TagProp",
+      "conflicts": [
+        "status"
+      ],
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": {
+            "primary": "accent"
+          },
+          "constant": "TAG_COLOR",
+          "dropDefault": "information"
+        }
+      },
+      "example": {
+        "before": "<Tag color={ TAG_COLOR.primary }>Cloud</Tag>",
+        "imports": [
+          "Tag",
+          "TAG_COLOR"
+        ]
+      }
+    },
+    "Toaster": {
+      "props": {},
+      "exports": [
+        "toast",
+        "TOAST_COLOR",
+        "TOAST_COLORS",
+        "ToastColor"
+      ],
+      "example": {
+        "before": "toast.primary(\"Your export is ready\");",
+        "imports": [
+          "toast"
+        ]
+      }
+    },
+    "Popover": {
+      "propsType": "PopoverProp",
+      "props": {
+        "gutter": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "gutter"
+          }
+        },
+        "position": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "position"
+          }
+        },
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        },
+        "sameWidth": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "sameWidth"
+          }
+        }
+      },
+      "example": {
+        "before": "<Popover position=\"right\" gutter={ 8 } sameWidth>...</Popover>",
+        "imports": [
+          "Popover"
+        ]
+      }
+    },
+    "Tooltip": {
+      "propsType": "TooltipProp",
+      "props": {
+        "position": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "position"
+          }
+        },
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      },
+      "example": {
+        "before": "<Tooltip position=\"bottom\">...</Tooltip>",
+        "imports": [
+          "Tooltip"
+        ]
+      }
+    },
+    "Menu": {
+      "propsType": "MenuProp",
+      "props": {
+        "position": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "position"
+          }
+        },
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      },
+      "example": {
+        "before": "<Menu position=\"bottom-start\">...</Menu>",
+        "imports": [
+          "Menu"
+        ]
+      }
+    },
+    "Select": {
+      "propsType": "SelectProp",
+      "props": {
+        "fitControlWidth": {
+          "moveTo": {
+            "prop": "overlayConfig",
+            "key": "sameWidth",
+            "default": true
+          }
+        },
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      },
+      "example": {
+        "before": "<Select fitControlWidth={ false }>...</Select>\n<Select fitControlWidth>...</Select>",
+        "imports": [
+          "Select"
+        ]
+      }
+    },
+    "Clipboard": {
+      "props": {
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      }
+    },
+    "Code": {
+      "props": {
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      }
+    },
+    "Datepicker": {
+      "props": {
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      }
+    },
+    "Drawer": {
+      "props": {
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      }
+    },
+    "Modal": {
+      "props": {
+        "backdropStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        },
+        "positionerStyle": {
+          "stacking": true,
+          "hint": "ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400), and a drawer now sits under a modal: keep or change this value so the element sits where it must, then delete this comment"
+        }
+      }
+    },
+    "ClipboardTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "DrawerTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "MenuTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "ModalTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "PopoverTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "TooltipTrigger": {
+      "props": {
+        "value": {
+          "coerce": "string",
+          "hint": "pass a single string"
+        }
+      }
+    },
+    "Input": {
+      "props": {
+        "type": {
+          "todoUnless": {
+            "values": [
+              "password"
+            ],
+            "attribute": "maskOption"
+          },
+          "constant": "INPUT_TYPE",
+          "hint": "a password field no longer shows the Edge reveal button in v20: nothing to do, unless your users need it: then add `maskOption={ { enable: true } }` (the ODS reveal button), or use <Password />"
+        }
+      }
+    },
+    "FileUploadItem": {
+      "propsType": "FileUploadItemProp",
+      "props": {
+        "uploadSuccessLabel": {
+          "remove": true,
+          "always": true,
+          "hint": "the success state is shown by an icon"
+        }
+      }
+    },
+    "Pagination": {
+      "propsType": "PaginationProp",
+      "childless": {
+        "children": [
+          {
+            "element": "PaginationPageSizeSelector",
+            "when": "withPageSizeSelector",
+            "labelFrom": {
+              "prop": "renderTotalItemsLabel",
+              "arg": "{ totalItems: $totalItems }"
+            }
+          },
+          {
+            "element": "PaginationPages"
+          }
+        ]
+      },
+      "props": {
+        "renderTotalItemsLabel": {
+          "remove": true,
+          "always": true,
+          "hint": "pass the label to <PaginationPageSizeSelector label={ … }>"
+        },
+        "withPageSizeSelector": {
+          "remove": true,
+          "always": true,
+          "hint": "render <PaginationPageSizeSelector /> as a child of <Pagination>"
+        }
+      }
+    },
+    "Toggle": {
+      "childless": {
+        "children": [
+          {
+            "element": "ToggleControl",
+            "moveProps": [
+              "className"
+            ]
+          }
+        ]
+      }
+    },
+    "ComboboxControl": {
+      "props": {
+        "className": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Combobox>, the control only fills it"
+        },
+        "style": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Combobox>, the control only fills it"
+        }
+      }
+    },
+    "DatepickerControl": {
+      "props": {
+        "className": {
+          "note": "the field width now lives on the root in v20: set the width on both <Datepicker> and <DatepickerControl>: the Datepicker root is an inline block sized by its content, and the control defaults to the 280px field width"
+        },
+        "style": {
+          "note": "the field width now lives on the root in v20: set the width on both <Datepicker> and <DatepickerControl>: the Datepicker root is an inline block sized by its content, and the control defaults to the 280px field width"
+        }
+      }
+    },
+    "PhoneNumberControl": {
+      "props": {
+        "className": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <PhoneNumber>, the control only fills it"
+        },
+        "style": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <PhoneNumber>, the control only fills it"
+        }
+      }
+    },
+    "SelectControl": {
+      "props": {
+        "className": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Select>, the control only fills it"
+        },
+        "style": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Select>, the control only fills it"
+        }
+      }
+    },
+    "TimepickerControl": {
+      "props": {
+        "className": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Timepicker>, the control only fills it"
+        },
+        "style": {
+          "note": "the field width now lives on the root in v20: move a width class or style to <Timepicker>, the control only fills it"
+        }
+      }
+    }
+  },
+  "statics": {
+    "Cart": {
+      "Action": "CartAction"
+    },
+    "Clipboard": {
+      "Trigger": "ClipboardTrigger"
+    },
+    "Combobox": {
+      "Control": "ComboboxControl"
+    },
+    "Datepicker": {
+      "Control": "DatepickerControl"
+    },
+    "Drawer": {
+      "Trigger": "DrawerTrigger"
+    },
+    "Editable": {
+      "CancelTrigger": "EditableCancelTrigger",
+      "EditTrigger": "EditableEditTrigger",
+      "SubmitTrigger": "EditableSubmitTrigger"
+    },
+    "FileUpload": {
+      "Item": "FileUploadItem"
+    },
+    "Menu": {
+      "Trigger": "MenuTrigger"
+    },
+    "Modal": {
+      "Content": "ModalContent",
+      "Trigger": "ModalTrigger"
+    },
+    "PhoneNumber": {
+      "Control": "PhoneNumberControl"
+    },
+    "Popover": {
+      "Trigger": "PopoverTrigger"
+    },
+    "PromptInput": {
+      "FileUploadButton": "PromptInputFileUploadButton",
+      "SendButton": "PromptInputSendButton"
+    },
+    "QueryFilter": {
+      "Clear": "QueryFilterClear"
+    },
+    "Select": {
+      "Control": "SelectControl"
+    },
+    "Timepicker": {
+      "Control": "TimepickerControl"
+    },
+    "Tooltip": {
+      "Trigger": "TooltipTrigger"
+    }
+  },
+  "exports": {
+    "BADGE_COLOR": {
+      "renameTo": "BADGE_STATUS",
+      "members": {
+        "primary": "accent"
+      },
+      "listNote": "lists accent where v19 listed primary: check what is built from this list"
+    },
+    "BADGE_COLORS": {
+      "renameTo": "BADGE_STATUSES",
+      "note": "lists accent where v19 listed primary: check the lists built from it"
+    },
+    "BadgeColor": {
+      "renameTo": "BadgeStatus",
+      "members": {
+        "primary": "accent"
+      }
+    },
+    "BUTTON_COLOR": {
+      "renameTo": "BUTTON_STATUS",
+      "members": {
+        "primary": "brand",
+        "information": null,
+        "success": null,
+        "warning": null
+      },
+      "hint": "a Button shows no status in v20: pick `status` brand, neutral or critical (brand is the default), and show the status with a Badge or a Message next to it",
+      "listNote": "now lists 3 values (brand, critical, neutral): check what is built from this list"
+    },
+    "BUTTON_COLORS": {
+      "renameTo": "BUTTON_STATUSES",
+      "note": "now lists 3 values (brand, critical, neutral): check the lists built from it"
+    },
+    "ButtonColor": {
+      "renameTo": "ButtonStatus",
+      "members": {
+        "primary": "brand",
+        "information": null,
+        "success": null,
+        "warning": null
+      },
+      "hint": "a Button shows no status in v20: pick `status` brand, neutral or critical (brand is the default), and show the status with a Badge or a Message next to it"
+    },
+    "BUTTON_VARIANT": {
+      "renameTo": "BUTTON_EMPHASIS",
+      "members": {
+        "default": "high",
+        "outline": "medium",
+        "ghost": "low"
+      },
+      "listNote": "now lists high, low, medium (default, ghost, outline in v19): check what is built from this list"
+    },
+    "BUTTON_VARIANTS": {
+      "renameTo": "BUTTON_EMPHASES",
+      "note": "now lists high, low, medium (default, ghost, outline in v19): check the lists built from it"
+    },
+    "ButtonVariant": {
+      "renameTo": "ButtonEmphasis",
+      "members": {
+        "default": "high",
+        "outline": "medium",
+        "ghost": "low"
+      }
+    },
+    "CARD_COLOR": {
+      "renameTo": "CARD_STATUS",
+      "members": {
+        "primary": "accent"
+      },
+      "listNote": "lists accent where v19 listed primary: check what is built from this list"
+    },
+    "CARD_COLORS": {
+      "renameTo": "CARD_STATUSES",
+      "note": "lists accent where v19 listed primary: check the lists built from it"
+    },
+    "CardColor": {
+      "renameTo": "CardStatus",
+      "members": {
+        "primary": "accent"
+      }
+    },
+    "MESSAGE_COLOR": {
+      "renameTo": "MESSAGE_STATUS",
+      "members": {
+        "primary": "accent"
+      },
+      "listNote": "lists accent where v19 listed primary: check what is built from this list"
+    },
+    "MESSAGE_COLORS": {
+      "renameTo": "MESSAGE_STATUSES",
+      "note": "lists accent where v19 listed primary: check the lists built from it"
+    },
+    "MessageColor": {
+      "renameTo": "MessageStatus",
+      "members": {
+        "primary": "accent"
+      }
+    },
+    "MESSAGE_VARIANT": {
+      "renameTo": "MESSAGE_EMPHASIS",
+      "members": {
+        "default": "high",
+        "light": "medium"
+      },
+      "listNote": "now lists 3 values (high, low, medium; default, light in v19): check what is built from this list"
+    },
+    "MESSAGE_VARIANTS": {
+      "renameTo": "MESSAGE_EMPHASES",
+      "note": "now lists 3 values (high, low, medium): check the lists built from it"
+    },
+    "MessageVariant": {
+      "renameTo": "MessageEmphasis",
+      "members": {
+        "default": "high",
+        "light": "medium"
+      }
+    },
+    "TAG_COLOR": {
+      "renameTo": "TAG_STATUS",
+      "members": {
+        "primary": "accent"
+      },
+      "listNote": "lists accent where v19 listed primary: check what is built from this list"
+    },
+    "TAG_COLORS": {
+      "renameTo": "TAG_STATUSES",
+      "note": "lists accent where v19 listed primary: check the lists built from it"
+    },
+    "TagColor": {
+      "renameTo": "TagStatus",
+      "members": {
+        "primary": "accent"
+      }
+    },
+    "DIVIDER_COLOR": {
+      "removed": true,
+      "hint": "the v20 Divider has a single color: delete the prop, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey",
+      "members": {
+        "primary": {
+          "to": null,
+          "hint": "primary is the default and only color of the v20 Divider: delete it"
+        },
+        "neutral": {
+          "to": null,
+          "hint": "the v20 Divider has a single color: delete it, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey"
+        }
+      }
+    },
+    "DIVIDER_COLORS": {
+      "removed": true,
+      "hint": "the v20 Divider has a single color: delete the list and what is built from it"
+    },
+    "DividerColor": {
+      "removed": true,
+      "hint": "the v20 Divider has a single color: delete the prop, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey"
+    },
+    "MODAL_COLOR": {
+      "removed": true,
+      "hint": "use your own constant, or a boolean such as `isCritical`; if it feeds a prop of a shared component of yours (a `type` of your Modal), change that component once, then the places that use it"
+    },
+    "MODAL_COLORS": {
+      "removed": true,
+      "hint": "list your own values, or use a boolean such as `isCritical`"
+    },
+    "ModalColor": {
+      "removed": true,
+      "hint": "use your own type, or a boolean such as `isCritical`"
+    },
+    "SPINNER_COLOR": {
+      "removed": true,
+      "hint": "the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color",
+      "members": {
+        "primary": {
+          "to": null,
+          "hint": "primary is the default color of the v20 Spinner: delete it"
+        },
+        "neutral": {
+          "to": null,
+          "hint": "the v20 Spinner has a single default color: delete it, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color"
+        }
+      }
+    },
+    "SPINNER_COLORS": {
+      "removed": true,
+      "hint": "the v20 Spinner has a single default color: delete the list and what is built from it"
+    },
+    "SpinnerColor": {
+      "removed": true,
+      "hint": "the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color"
+    },
+    "TABLE_VARIANT": {
+      "removed": true,
+      "hint": "use the boolean `striped` prop of Table",
+      "members": {
+        "default": {
+          "to": null,
+          "hint": "a Table is not striped by default: delete it, or use `striped={ false }`"
+        },
+        "striped": {
+          "to": null,
+          "hint": "use the boolean `striped` prop of Table: `striped` (or `striped={ true }`)"
+        }
+      }
+    },
+    "TABLE_VARIANTS": {
+      "removed": true,
+      "hint": "use the boolean `striped` prop of Table: list `[false, true]` where you listed the variants"
+    },
+    "TableVariant": {
+      "removed": true,
+      "hint": "use `TableProp['striped']` (a boolean)"
+    },
+    "toast": {
+      "members": {
+        "primary": "accent"
+      },
+      "callOptions": {
+        "color": {
+          "toHelper": true,
+          "hint": "call the helper of the status instead, e.g. toast.success()"
+        }
+      }
+    },
+    "TOAST_COLOR": {
+      "renameTo": "TOAST_STATUS",
+      "members": {
+        "primary": "accent"
+      },
+      "listNote": "lists accent where v19 listed primary: check what is built from this list"
+    },
+    "TOAST_COLORS": {
+      "renameTo": "TOAST_STATUSES",
+      "note": "lists accent where v19 listed primary: check the lists built from it"
+    },
+    "ToastColor": {
+      "renameTo": "ToastStatus",
+      "members": {
+        "primary": "accent"
+      }
+    },
+    "Switch": {
+      "removed": true,
+      "hint": "the Switch is removed: use Tabs with `variant=\"switch\"` to move between views (each SwitchItem becomes a Tab), a single-select ButtonGroup to pick a mode with no view, or a RadioGroup to pick a form value"
+    },
+    "SwitchItem": {
+      "removed": true,
+      "hint": "the Switch is removed: use Tabs with `variant=\"switch\"` to move between views (each SwitchItem becomes a Tab), a single-select ButtonGroup to pick a mode with no view, or a RadioGroup to pick a form value"
+    },
+    "SwitchProp": {
+      "removed": true,
+      "hint": "the Switch is removed: type your props with the props of its replacement (`TabsProp`, `ButtonGroupProp` or `RadioGroupProp`)"
+    },
+    "SwitchItemProp": {
+      "removed": true,
+      "hint": "the Switch is removed: type your props with the item of its replacement (`TabProp`, `ButtonGroupItemProp` or `RadioProp`)"
+    },
+    "SwitchValueChangeDetail": {
+      "removed": true,
+      "hint": "the Switch is removed: type the handler with the detail of its replacement (`TabsValueChangeEvent` on Tabs, `ButtonGroupValueChangeDetail` on ButtonGroup, whose value is an array)"
+    },
+    "SWITCH_SIZE": {
+      "removed": true,
+      "hint": "the Switch is removed: its replacement takes its own size (`TABS_SIZE` on Tabs, `BUTTON_GROUP_SIZE` on ButtonGroup)"
+    },
+    "SWITCH_SIZES": {
+      "removed": true,
+      "hint": "the Switch is removed: list the sizes of its replacement (`TABS_SIZES` on Tabs, `BUTTON_GROUP_SIZES` on ButtonGroup)"
+    },
+    "SwitchSize": {
+      "removed": true,
+      "hint": "the Switch is removed: its replacement takes its own size type (`TabsSize` on Tabs, `ButtonGroupSize` on ButtonGroup)"
+    },
+    "ToastController": {
+      "memberKeys": true,
+      "members": {
+        "primary": "accent"
+      }
+    }
+  }
+}

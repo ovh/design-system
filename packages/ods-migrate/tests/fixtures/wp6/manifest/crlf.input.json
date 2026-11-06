@@ -1,0 +1,6 @@
+{
+	"name": "crlf",
+	"dependencies": {
+		"@shikijs/langs": "3.2.0"
+	}
+}

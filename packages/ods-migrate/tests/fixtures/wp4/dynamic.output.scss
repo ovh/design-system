@@ -1,0 +1,4 @@
+@each $s in primary, critical {
+  .x-#{$s} { /* TODO(ods-v20): --ods-color-#{…}: token name built at runtime: map each value by hand */ color: var(--ods-color-#{$s}-500); }
+  .y-#{$s} { /* TODO(ods-v20): --ods-theme-background-color-#{…}: token name built at runtime: map each value by hand */ background: var(--ods-theme-background-color-#{$s}); }
+}

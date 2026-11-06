@@ -1,0 +1,40 @@
+@use '@ovhcloud/ods-react/style' as ods;
+
+// A renamed component token, overridden and read.
+.account-button {
+  --ods-button-border-radius-width: 2px;
+  border-width: var(--ods-button-border-radius-width);
+}
+
+// Component tokens that only painted a disabled state.
+.settings-tabs {
+  --ods-tab-border-color-disabled: #ccc;
+}
+
+// Tile tokens that never did anything.
+.offer-tile {
+  --ods-tile-border-color: red;
+}
+
+// Still declared by ODS, but no longer read: reading it works, overriding it does nothing.
+.notifications-toggle {
+  --ods-toggle-control-border-color: blue;
+  outline-color: var(--ods-toggle-control-border-color);
+}
+
+// The removed variables of @ovhcloud/ods-react/style.
+.help-popover {
+  border-width: ods.$ods-button-border-radius-width;
+  border-radius: ods.$ods-modal-border-radius;
+  background: ods.$ods-overlay-arrow-background-color;
+  z-index: ods.$ods-modal-z-index;
+  margin: ods.$ods-modal-margin;
+  color: ods.$ods-state-is-disabled-text-color;
+}
+
+// A homonym that the stylesheet declares itself is its own.
+$drawer-max-size: 50%;
+
+.side-panel {
+  max-width: $drawer-max-size;
+}

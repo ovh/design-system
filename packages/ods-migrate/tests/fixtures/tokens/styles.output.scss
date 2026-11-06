@@ -1,0 +1,32 @@
+@use '@ovhcloud/ods-themes/assets/fonts/source-sans-3/base64/source-sans3-variable-custom';
+
+.card {
+  background-color: var(--ods-semantic-color-surface-selected);
+  border: 1px solid var(--ods-semantic-color-border-brand);
+  color: var(--ods-semantic-color-content-text);
+  border-radius: var(--ods-semantic-size-radius-container);
+  /* TODO(ods-v20): --ods-color-neutral-500: v20 names colours by what they paint: pick the one for this place. Most likely here (a border): `--ods-semantic-color-border-neutral`. Otherwise: background → `--ods-semantic-color-surface-neutral`, text → `--ods-semantic-color-content-neutral`. */
+  box-shadow: 0 0 4px var(--ods-color-neutral-500);
+  font-family: 'Source Sans 3', sans-serif;
+
+  &:hover {
+    background-color: var(--ods-semantic-color-interaction-brand-hover);
+  }
+
+  &--disabled {
+    /* TODO(ods-v20): --ods-theme-text-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+    color: var(--ods-theme-text-color-disabled);
+  }
+}
+
+.banner {
+  /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. Most likely here (a background): `--ods-semantic-color-surface-brand`. Otherwise: border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). / --ods-color-primary-700: v20 names colours by what they paint: pick the one for this place. Most likely here (a background): `--ods-semantic-color-surface-brand`. Otherwise: border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-on-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-700). */
+  background: linear-gradient(90deg, var(--ods-color-primary-500), var(--ods-color-primary-700));
+}
+
+.app {
+  color: var(--ods-color-blue-600);
+  --app-panel-bg: var(--ods-semantic-color-surface-muted);
+  /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */
+  --app-accent: var(--ods-color-primary-500);
+}

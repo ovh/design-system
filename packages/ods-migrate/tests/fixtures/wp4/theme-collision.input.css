@@ -1,0 +1,13 @@
+:root {
+  --ods-theme-border-width: 1px;
+  --ods-theme-input-border-width: var(--ods-theme-border-width);
+  --ods-theme-text-color: #111;
+  --ods-theme-input-text-color: var(--ods-theme-text-color);
+  --ods-theme-background-color: #fff;
+  --ods-color-form-element-background-default: #eee;
+}
+
+.panel {
+  --ods-theme-heading-text-color: #222;
+  --ods-color-heading: #333;
+}

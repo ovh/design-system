@@ -1,0 +1,4 @@
+.b { color: #{'var(--ods-color-primary-500)'}; }
+.c { color: unquote("var(--ods-color-primary-500)"); }
+$m: ('bg': '--ods-color-primary-500');
+$n: ('x': '--ods-color-primary-500');

@@ -1,0 +1,1 @@
+{ "name": "on-workspace", "dependencies": { "@ovhcloud/ods-react": "workspace:*", "@ovhcloud/ods-themes": "workspace:*" } }

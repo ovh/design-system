@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'My Sans';
+  src: url('~@ovhcloud/ods-themes/assets/fonts/source-sans-pro/woff2/source-sans3-variable-custom.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Own';
+  src: url('/static/source-sans-pro/own.woff2') format('woff2');
+}

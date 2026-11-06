@@ -1,0 +1,14 @@
+.a {
+  border: {
+    color: var(--ods-semantic-color-border-brand);
+  }
+  &:hover {
+    background-color: var(--ods-semantic-color-interaction-brand-hover);
+  }
+}
+
+.card:hover {
+  div {
+    background-color: var(--ods-semantic-color-interaction-accent-subtle-hover);
+  }
+}

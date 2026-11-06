@@ -1,0 +1,1 @@
+{ "name": "coverage-fixture", "private": true, "dependencies": { "@ovhcloud/ods-react": "^19.7.3", "react": "^18.2.0" } }

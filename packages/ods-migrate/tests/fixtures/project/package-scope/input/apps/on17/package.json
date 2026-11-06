@@ -1,0 +1,1 @@
+{ "name": "on17", "dependencies": { "@ovhcloud/ods-common-core": "17.2.2", "@ovhcloud/ods-components": "17.2.2" } }

@@ -1,0 +1,5 @@
+const a = <div className="[&:hover]:bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)] group-hover/card:bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)]" />;
+const b = <div className="hover:!bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)] !hover:bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)]" />;
+const c = <div className="peer-hover/x:bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)] has-[:hover]:bg-[var(--ods-semantic-color-interaction-accent-subtle-hover)]" />;
+const d = <div className="[&:not(:hover)]:bg-[var(--ods-semantic-color-surface-selected)] bg-[var(--ods-semantic-color-surface-selected)]!" />;
+const e = <div /* TODO(ods-v20): --ods-tab-text-color-selected: removed: a selected Tab paints the theme roles `--ods-semantic-color-border-selected-solid` (border), `--ods-semantic-color-surface-selected` (background) and `--ods-semantic-color-content-on-selected` (text) in v20. Override those inside `[data-ods="tab"][aria-selected="true"]` instead. */ className="text-[--ods-tab-text-color-selected]" />;

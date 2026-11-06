@@ -1,0 +1,50 @@
+{
+  "name": "@ovhcloud/ods-migrate",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Migration tooling from ODS v19 to v20: codemod, ESLint rule and migration guide, from one mapping",
+  "type": "module",
+  "bin": {
+    "ods-migrate": "./src/cli.mjs"
+  },
+  "exports": {
+    "./eslint-plugin": "./src/eslint-plugin.mjs",
+    "./mapping": "./mappings/v19-to-v20.json",
+    "./tokens-mapping": "./mappings/tokens-v19-to-v20.json",
+    "./stylelint-plugin": "./src/stylelint-plugin.mjs"
+  },
+  "scripts": {
+    "guide": "node src/guide.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "build:tokens": "node scripts/build-token-mapping.mjs",
+    "build:configurator": "node configurator/build.mjs",
+    "coverage": "node scripts/coverage.mjs",
+    "acceptance": "bash scripts/acceptance/acceptance.sh",
+    "coverage:check": "node scripts/coverage-check.mjs"
+  },
+  "dependencies": {
+    "@ast-grep/napi": "0.36.3",
+    "diff": "4.0.4",
+    "postcss": "8.5.26",
+    "postcss-scss": "4.0.9",
+    "postcss-value-parser": "4.2.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9",
+    "stylelint": ">=16.17"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "8.62.0",
+    "eslint": "10.5.0",
+    "sass": "1.103.1",
+    "stylelint": "17.14.1"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "stylelint": {
+      "optional": true
+    }
+  }
+}

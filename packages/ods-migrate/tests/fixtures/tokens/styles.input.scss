@@ -1,0 +1,28 @@
+@use '@ovhcloud/ods-themes/assets/fonts/source-sans-pro/base64/source-sans3-variable-custom';
+
+.card {
+  background-color: var(--ods-color-primary-100);
+  border: 1px solid var(--ods-color-primary-500);
+  color: var(--ods-theme-text-color);
+  border-radius: var(--ods-border-radius-md);
+  box-shadow: 0 0 4px var(--ods-color-neutral-500);
+  font-family: 'Source Sans Pro', sans-serif;
+
+  &:hover {
+    background-color: var(--ods-color-primary-700);
+  }
+
+  &--disabled {
+    color: var(--ods-theme-text-color-disabled);
+  }
+}
+
+.banner {
+  background: linear-gradient(90deg, var(--ods-color-primary-500), var(--ods-color-primary-700));
+}
+
+.app {
+  color: var(--ods-color-blue-600);
+  --app-panel-bg: var(--ods-color-neutral-050);
+  --app-accent: var(--ods-color-primary-500);
+}

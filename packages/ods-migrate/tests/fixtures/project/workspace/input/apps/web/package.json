@@ -1,0 +1,1 @@
+{ "name": "web", "dependencies": { "@acme/kit": "workspace:*", "@ovhcloud/ods-react": "^19.7.0" } }

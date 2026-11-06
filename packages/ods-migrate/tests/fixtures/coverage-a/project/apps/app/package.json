@@ -1,0 +1,1 @@
+{ "name": "@acme/app", "private": true, "imports": { "#ods": "./src/ods.ts" }, "dependencies": { "@acme/kit": "^1.0.0" } }

@@ -58,13 +58,13 @@ describe('eslint rule', () => {
 
   it('reports the removed props and exports it cannot migrate, and fixes the rest like the codemod', () => {
     const { messages, output } = linter.verifyAndFix(read('removed.input.tsx'), lintConfig, 'removed.input.tsx');
-    assert.deepEqual(messages.map((message) => `${message.line}:${message.messageId}`), ['1:removedImport', '3:noEquivalent', '5:noEquivalent', '11:removedComputed']);
+    assert.deepEqual(messages.map((message) => `${message.line}:${message.messageId}`), ['11:removedComputed']);
     assert.equal(output, stripScriptMarkers(read('removed.output.tsx')));
   });
 
-  it('reports a removed export passed to another component, and drops the import of the ones no longer read', () => {
+  it('writes the value of a removed export passed to another component, and drops its import', () => {
     const { messages, output } = linter.verifyAndFix(read('muk-modal.input.tsx'), lintConfig, 'muk-modal.input.tsx');
-    assert.deepEqual(messages.map((message) => `${message.line}:${message.messageId}`), ['1:removedImport', '5:noEquivalent']);
+    assert.deepEqual(messages.map((message) => `${message.line}:${message.messageId}`), []);
     assert.equal(output, stripScriptMarkers(read('muk-modal.output.tsx')));
   });
 

@@ -884,27 +884,67 @@
           "to": null,
           "hint": "the v20 Divider has a single color: delete it, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey"
         }
-      }
+      },
+      "inline": [
+        "neutral",
+        "primary"
+      ]
     },
     "DIVIDER_COLORS": {
       "removed": true,
-      "hint": "the v20 Divider has a single color: delete the list and what is built from it"
+      "hint": "the v20 Divider has a single color: delete the list and what is built from it",
+      "inline": {
+        "list": [
+          "neutral",
+          "primary"
+        ]
+      }
     },
     "DividerColor": {
       "removed": true,
-      "hint": "the v20 Divider has a single color: delete the prop, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey"
+      "hint": "the v20 Divider has a single color: delete the prop, or set `background-color: var(--ods-semantic-color-interaction-neutral-hover)` through a `className` or `style` to keep the v19 neutral grey",
+      "inline": [
+        "neutral",
+        "primary"
+      ]
     },
     "MODAL_COLOR": {
       "removed": true,
-      "hint": "use your own constant, or a boolean such as `isCritical`; if it feeds a prop of a shared component of yours (a `type` of your Modal), change that component once, then the places that use it"
+      "hint": "use your own constant, or a boolean such as `isCritical`; if it feeds a prop of a shared component of yours (a `type` of your Modal), change that component once, then the places that use it",
+      "inline": [
+        "critical",
+        "information",
+        "neutral",
+        "primary",
+        "success",
+        "warning"
+      ]
     },
     "MODAL_COLORS": {
       "removed": true,
-      "hint": "list your own values, or use a boolean such as `isCritical`"
+      "hint": "list your own values, or use a boolean such as `isCritical`",
+      "inline": {
+        "list": [
+          "critical",
+          "information",
+          "neutral",
+          "primary",
+          "success",
+          "warning"
+        ]
+      }
     },
     "ModalColor": {
       "removed": true,
-      "hint": "use your own type, or a boolean such as `isCritical`"
+      "hint": "use your own type, or a boolean such as `isCritical`",
+      "inline": [
+        "critical",
+        "information",
+        "neutral",
+        "primary",
+        "success",
+        "warning"
+      ]
     },
     "SPINNER_COLOR": {
       "removed": true,
@@ -918,15 +958,29 @@
           "to": null,
           "hint": "the v20 Spinner has a single default color: delete it, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color"
         }
-      }
+      },
+      "inline": [
+        "neutral",
+        "primary"
+      ]
     },
     "SPINNER_COLORS": {
       "removed": true,
-      "hint": "the v20 Spinner has a single default color: delete the list and what is built from it"
+      "hint": "the v20 Spinner has a single default color: delete the list and what is built from it",
+      "inline": {
+        "list": [
+          "neutral",
+          "primary"
+        ]
+      }
     },
     "SpinnerColor": {
       "removed": true,
-      "hint": "the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color"
+      "hint": "the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color",
+      "inline": [
+        "neutral",
+        "primary"
+      ]
     },
     "TABLE_VARIANT": {
       "removed": true,
@@ -940,15 +994,29 @@
           "to": null,
           "hint": "use the boolean `striped` prop of Table: `striped` (or `striped={ true }`)"
         }
-      }
+      },
+      "inline": [
+        "default",
+        "striped"
+      ]
     },
     "TABLE_VARIANTS": {
       "removed": true,
-      "hint": "use the boolean `striped` prop of Table: list `[false, true]` where you listed the variants"
+      "hint": "use the boolean `striped` prop of Table: list `[false, true]` where you listed the variants",
+      "inline": {
+        "list": [
+          "default",
+          "striped"
+        ]
+      }
     },
     "TableVariant": {
       "removed": true,
-      "hint": "use `TableProp['striped']` (a boolean)"
+      "hint": "use `TableProp['striped']` (a boolean)",
+      "inline": [
+        "default",
+        "striped"
+      ]
     },
     "toast": {
       "members": {
@@ -1000,15 +1068,29 @@
     },
     "SWITCH_SIZE": {
       "removed": true,
-      "hint": "the Switch is removed: its replacement takes its own size (`TABS_SIZE` on Tabs, `BUTTON_GROUP_SIZE` on ButtonGroup)"
+      "hint": "the Switch is removed: its replacement takes its own size (`TABS_SIZE` on Tabs, `BUTTON_GROUP_SIZE` on ButtonGroup)",
+      "inline": [
+        "md",
+        "sm"
+      ]
     },
     "SWITCH_SIZES": {
       "removed": true,
-      "hint": "the Switch is removed: list the sizes of its replacement (`TABS_SIZES` on Tabs, `BUTTON_GROUP_SIZES` on ButtonGroup)"
+      "hint": "the Switch is removed: list the sizes of its replacement (`TABS_SIZES` on Tabs, `BUTTON_GROUP_SIZES` on ButtonGroup)",
+      "inline": {
+        "list": [
+          "md",
+          "sm"
+        ]
+      }
     },
     "SwitchSize": {
       "removed": true,
-      "hint": "the Switch is removed: its replacement takes its own size type (`TabsSize` on Tabs, `ButtonGroupSize` on ButtonGroup)"
+      "hint": "the Switch is removed: its replacement takes its own size type (`TabsSize` on Tabs, `ButtonGroupSize` on ButtonGroup)",
+      "inline": [
+        "md",
+        "sm"
+      ]
     },
     "ToastController": {
       "memberKeys": true,

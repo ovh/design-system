@@ -132,23 +132,27 @@ export const B = () => <Toggle>
 });
 
 describe('removed exports in the import line (C-02, A9-02)', () => {
-  it('marks the import of removed exports still read, drops the ones no longer read, and gives every marker a next step', () => {
+  it('writes the values of the removed string enums the app keeps, marks what has no literal form, and drops the import once nothing reads it', () => {
     const source = `import { MODAL_COLOR, MODAL_COLORS, type ModalColor, TABLE_VARIANT, TABLE_VARIANTS, Modal, ModalContent, Text } from '${PKG}';
 
 export const kinds: ModalColor[] = [...MODAL_COLORS];
 export const all = [TABLE_VARIANTS];
 export const A = () => <Modal><ModalContent color={ MODAL_COLOR.critical }>x</ModalContent></Modal>;
 export const B = () => <Text>{ TABLE_VARIANT.striped }</Text>;
+export const C = Object.keys(TABLE_VARIANT);
 `;
     const { output, todos } = run(source);
-    // MODAL_COLOR is read only by the attribute rewritten to role="alertdialog": it goes.
-    assert.match(output, new RegExp(`^/\\* TODO\\(ods-v20\\): MODAL_COLORS, ModalColor, TABLE_VARIANT, TABLE_VARIANTS: removed in v20, delete them from this import once the places marked below no longer use them \\*/ import \\{ MODAL_COLORS, type ModalColor, TABLE_VARIANT, TABLE_VARIANTS, Modal, ModalContent, Text \\} from '${PKG}';\\n`));
+    assert.match(output, new RegExp(`^/\\* TODO\\(ods-v20\\): TABLE_VARIANT: removed in v20, delete it from this import once the places marked below no longer use it \\*/ import \\{ TABLE_VARIANT, Modal, ModalContent, Text \\} from '${PKG}';\\n`));
+    assert.match(output, /export const kinds: \('critical' \| 'information' \| 'neutral' \| 'primary' \| 'success' \| 'warning'\)\[\] = \[\.\.\.\(\['critical', 'information', 'neutral', 'primary', 'success', 'warning'\] as const\)\];/);
+    assert.match(output, /export const all = \[\(\['default', 'striped'\] as const\)\];/);
+    // MODAL_COLOR is read only by the attribute rewritten to role="alertdialog".
     assert.match(output, /<ModalContent role="alertdialog">/);
+    assert.match(output, /<Text>\{ 'striped' \}<\/Text>/);
+    // The enum object itself has no literal form.
+    assert.ok(todos.some(({ message }) => /^TABLE_VARIANT has no v20 equivalent: use the boolean `striped` prop/.test(message)));
     for (const message of todos.map((todo) => todo.message)) {
       assert.doesNotMatch(message, /has no v20 equivalent$/, `a marker without a next step: ${message}`);
     }
-    assert.ok(todos.some(({ message }) => /MODAL_COLORS has no v20 equivalent: list your own values/.test(message)));
-    assert.ok(todos.some(({ message }) => /TABLE_VARIANTS has no v20 equivalent: use the boolean `striped` prop/.test(message)));
     assertParity(source, output);
   });
 

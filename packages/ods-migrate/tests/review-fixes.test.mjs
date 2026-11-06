@@ -145,9 +145,10 @@ describe('review: decisions', () => {
     assert.match(notes.map(({ message }) => message).join('\n'), /declared on the document root: if this property is the page background, use `--ods-semantic-color-surface-page`/);
   });
 
-  it('offers to delete SPINNER_COLOR.neutral, as for the Divider', () => {
-    const { output } = codemod("import { SPINNER_COLOR } from '@ovhcloud/ods-react';\nexport const c = SPINNER_COLOR.neutral;\n");
-    assert.match(output, /SPINNER_COLOR\.neutral has no v20 equivalent: the v20 Spinner has a single default color: delete it, or set `--ods-spinner-color: .*` through a `className` to keep the v19 neutral color/);
+  it('writes the value of SPINNER_COLOR.neutral where the app keeps it, and offers to delete it where it reaches a Spinner', () => {
+    const { output } = codemod("import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';\nexport const c = SPINNER_COLOR.neutral;\nexport const A = () => <Spinner color={ c } />;\n");
+    assert.match(output, /^import \{ Spinner \} from '@ovhcloud\/ods-react';\nexport const c = 'neutral';\n/);
+    assert.match(output, /<Spinner color=\{…\}> is removed in v20 and its value is computed at runtime: the v20 Spinner has a single default color/);
   });
 });
 

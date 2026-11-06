@@ -682,6 +682,39 @@
           "note": "the field width now lives on the root in v20: move a width class or style to <Timepicker>, the control only fills it"
         }
       }
+    },
+    "Switch": {
+      "replacedBy": {
+        "element": "Tabs",
+        "wrap": "TabList",
+        "add": {
+          "variant": "switch"
+        },
+        "parts": {
+          "SwitchItem": "Tab"
+        },
+        "statics": {
+          "Item": "Tab"
+        },
+        "moveToParts": [
+          "disabled"
+        ],
+        "whenAbsent": {
+          "unless": [
+            "value",
+            "defaultValue"
+          ],
+          "note": "Tabs selects no tab and warns in the console without value or defaultValue: set defaultValue to the value of the item the page starts on (usually the first one)"
+        }
+      },
+      "example": {
+        "before": "<Switch aria-label=\"View\" size={ SWITCH_SIZE.sm } defaultValue=\"list\">\n  <SwitchItem value=\"list\">List</SwitchItem>\n  <SwitchItem value=\"grid\">Grid</SwitchItem>\n</Switch>",
+        "imports": [
+          "Switch",
+          "SwitchItem",
+          "SWITCH_SIZE"
+        ]
+      }
     }
   },
   "statics": {
@@ -1048,27 +1081,24 @@
     },
     "Switch": {
       "removed": true,
-      "hint": "the Switch is removed: use Tabs with `variant=\"switch\"` to move between views (each SwitchItem becomes a Tab), a single-select ButtonGroup to pick a mode with no view, or a RadioGroup to pick a form value"
+      "hint": "ods-migrate rewrites a <Switch> written with its items to <Tabs variant=\"switch\"> with a <TabList> and a <Tab> per SwitchItem, not this one (no children written out, an item that sets its own disabled, a wrapper of your app, or the /switch entry point): write it that way by hand, or use a single-select ButtonGroup to pick a mode with no view, or a RadioGroup to pick a form value"
     },
     "SwitchItem": {
       "removed": true,
-      "hint": "the Switch is removed: use Tabs with `variant=\"switch\"` to move between views (each SwitchItem becomes a Tab), a single-select ButtonGroup to pick a mode with no view, or a RadioGroup to pick a form value"
+      "hint": "a SwitchItem outside a <Switch> that ods-migrate rewrote: make it a <Tab> inside the <TabList> of the <Tabs variant=\"switch\"> that replaces its Switch (or the item of the ButtonGroup or RadioGroup you picked instead)"
     },
     "SwitchProp": {
-      "removed": true,
-      "hint": "the Switch is removed: type your props with the props of its replacement (`TabsProp`, `ButtonGroupProp` or `RadioGroupProp`)"
+      "renameTo": "TabsProp"
     },
     "SwitchItemProp": {
-      "removed": true,
-      "hint": "the Switch is removed: type your props with the item of its replacement (`TabProp`, `ButtonGroupItemProp` or `RadioProp`)"
+      "renameTo": "TabProp"
     },
     "SwitchValueChangeDetail": {
-      "removed": true,
-      "hint": "the Switch is removed: type the handler with the detail of its replacement (`TabsValueChangeEvent` on Tabs, `ButtonGroupValueChangeDetail` on ButtonGroup, whose value is an array)"
+      "renameTo": "TabsValueChangeEvent"
     },
     "SWITCH_SIZE": {
       "removed": true,
-      "hint": "the Switch is removed: its replacement takes its own size (`TABS_SIZE` on Tabs, `BUTTON_GROUP_SIZE` on ButtonGroup)",
+      "hint": "the Switch becomes Tabs, whose sizes are md, sm and xs (`TABS_SIZE`): the value it stood for is written instead",
       "inline": [
         "md",
         "sm"
@@ -1076,7 +1106,7 @@
     },
     "SWITCH_SIZES": {
       "removed": true,
-      "hint": "the Switch is removed: list the sizes of its replacement (`TABS_SIZES` on Tabs, `BUTTON_GROUP_SIZES` on ButtonGroup)",
+      "hint": "the Switch becomes Tabs, whose sizes are md, sm and xs (`TABS_SIZES`): the list of the v19 sizes is written instead",
       "inline": {
         "list": [
           "md",
@@ -1085,12 +1115,7 @@
       }
     },
     "SwitchSize": {
-      "removed": true,
-      "hint": "the Switch is removed: its replacement takes its own size type (`TabsSize` on Tabs, `ButtonGroupSize` on ButtonGroup)",
-      "inline": [
-        "md",
-        "sm"
-      ]
+      "renameTo": "TabsSize"
     },
     "ToastController": {
       "memberKeys": true,

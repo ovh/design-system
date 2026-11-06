@@ -21,8 +21,21 @@ function guideComponents() {
 
 /** The bullet list of a component entry, without the before / after snippets. */
 function guideBullets(component) {
-  const { extends: base, props, whenAbsent } = mapping.components[component];
+  const { extends: base, props = {}, replacedBy, whenAbsent } = mapping.components[component];
   const lines = [];
+
+  // A removed component that another one replaces: the element, its wrapper, each of its parts.
+  if (replacedBy) {
+    const added = Object.entries(replacedBy.add ?? {}).map(([name, value]) => ` ${attributeText(name, value)}`).join('');
+    const parts = Object.entries(replacedBy.parts ?? {}).map(([from, to]) => `${code(`<${from}>`)} becomes ${code(`<${to}>`)}`);
+    lines.push(`- ${code(`<${component}>`)} becomes ${code(`<${replacedBy.element}${added}>`)}, with a ${code(`<${replacedBy.wrap}>`)} around its items; ${list(parts)}. Its other props are kept.`);
+    for (const prop of replacedBy.moveToParts ?? []) {
+      lines.push(`- ${code(prop)}: ${replacedBy.element} has none, it is set on each ${code(`<${Object.values(replacedBy.parts)[0]}>`)}.`);
+    }
+    if (replacedBy.whenAbsent) {
+      lines.push(`- Without ${list(replacedBy.whenAbsent.unless.map(code), 'or')}: ${replacedBy.whenAbsent.note}.`);
+    }
+  }
 
   for (const [from, rule] of Object.entries(props)) {
     const constant = rule.constant && mapping.exports[rule.constant];

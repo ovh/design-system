@@ -1,4 +1,5 @@
 import { Lang, parse } from '@ast-grep/napi';
+import { planReplacement, replacementParts } from './replaced.mjs';
 import { odsNameIn } from './resolve.mjs';
 import { TODO, attributeText, eolOf, followsMarker, inlineMarker, isUntyped, isV19Look, jsxChildMarker, memberRule, resolveMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 
@@ -570,7 +571,12 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     if (packageAdded.length > 0) {
       const last = root.findAll({ rule: { kind: 'import_statement' } }).at(-1);
       const text = `import { ${packageAdded.join(', ')} } from '${mapping.package}';`;
-      if (last) {
+      // The last import may go as a whole below (a barrel whose names a rewrite replaced): the line goes where it was.
+      const emptied = last && importStatements.find((info) => sameRange(info.statement, last) && info.onlyNamed && info.added.length === 0 && info.specs.length > 0
+        && info.specs.every((item) => item.duplicate || ((item.rule?.renameTo || item.rule?.removed) && (reads.get(item.local)?.kept ?? 0) === 0)));
+      if (emptied) {
+        edit(startOf(last), startOf(last), `${text}${eol}`, change(last, `import ${packageAdded.join(', ')} from ${mapping.package} added`));
+      } else if (last) {
         edit(endOf(last), endOf(last), `${eol}${text}`, change(last, `import ${packageAdded.join(', ')} from ${mapping.package} added`));
       } else {
         edit(0, 0, `${text}${eol}`, change(0, `import ${packageAdded.join(', ')} from ${mapping.package} added`));
@@ -2170,6 +2176,115 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     const hasChildren = element.kind() === 'jsx_opening_element' && named(parent).some((child) => !sameRange(child, element) && child.kind() !== 'jsx_closing_element' && (child.kind() !== 'jsx_text' || child.text().trim() !== ''));
     if (!hasChildren && !writtenOut.some((node) => sameRange(node, element))) {
       note(attribute, message);
+    }
+  }
+
+  // ------------------------------------------------------------------------- removed components replaced by another one
+
+  // `<Switch>` written with its items → `<Tabs variant="switch">`, a `<TabList>` around the items, each a `<Tab>`
+  // (mapping `replacedBy`, planned in replaced.mjs as in the lint rule). Any other shape keeps its marker.
+  const topLevelNames = new Set();
+  if (Object.values(mapping.components).some((spec) => spec.replacedBy)) {
+    for (const statement of root.findAll({ rule: { kind: 'import_statement' } })) {
+      const clause = statement.find({ rule: { kind: 'import_clause' } });
+      for (const node of clause ? clause.findAll({ rule: { kind: 'identifier' } }) : []) {
+        topLevelNames.add(node.text());
+      }
+    }
+    for (const child of root.children()) {
+      const declaration = child.kind() === 'export_statement' ? child.field('declaration') : child;
+      if (!declaration) {
+        continue;
+      }
+      if (['lexical_declaration', 'variable_declaration'].includes(declaration.kind())) {
+        for (const declarator of named(declaration).filter((item) => item.kind() === 'variable_declarator')) {
+          const pattern = declarator.field('name');
+          [pattern, ...pattern.findAll({ rule: { any: [{ kind: 'identifier' }, { kind: 'shorthand_property_identifier_pattern' }] } })]
+            .filter((node) => ['identifier', 'shorthand_property_identifier_pattern'].includes(node.kind()))
+            .forEach((node) => topLevelNames.add(node.text()));
+        }
+      } else if (declaration.field('name')) {
+        topLevelNames.add(declaration.field('name').text());
+      }
+    }
+  }
+  const tagRange = (node) => ({ end: endOf(node), start: startOf(node) });
+  const tagOf = (opening) => ({
+    attributes: opening.children().filter((child) => child.kind() === 'jsx_attribute' || (child.kind() === 'jsx_expression' && child.find({ rule: { kind: 'spread_element' } })))
+      .map((attribute) => ({ end: endOf(attribute), name: attribute.kind() === 'jsx_attribute' ? attribute.child(0).text() : null, start: startOf(attribute), text: attribute.text() })),
+    end: endOf(opening),
+    name: tagRange(opening.field('name')),
+    start: startOf(opening),
+  });
+  // The removed component a tag renders, and the part of it (`SwitchItem`, `Switch.Item`) another tag renders.
+  const replacedOf = (tag) => (tag && !wrapperLocals.has(tag) && mapping.components[localComponents.get(tag)]?.replacedBy ? localComponents.get(tag) : null);
+  const replacedPartOf = (tag, replacement, component) => {
+    const [first, member, ...rest] = tag?.split('.') ?? [];
+    if (member) {
+      return rest.length === 0 && importedLocals.get(first) === component ? replacement.statics?.[member] : undefined;
+    }
+    return replacement.parts?.[importedLocals.get(first)];
+  };
+  for (const opening of elements.filter((node) => node.kind() === 'jsx_opening_element')) {
+    const tag = opening.field('name')?.text();
+    const component = replacedOf(tag);
+    const info = component && componentImport.get(tag);
+    const entry = info && packages.map((name) => info.specifier.startsWith(`${name}/`) && info.specifier.slice(name.length + 1)).find(Boolean);
+    if (!info || (entry && REMOVED_ENTRIES[entry])) {
+      continue;
+    }
+    const replacement = mapping.components[component].replacedBy;
+    const element = opening.parent();
+    // A Switch inside a Switch, or with one inside: marked, as it was.
+    const nested = (node) => replacedOf(node.field('name')?.text()) === component;
+    if (element.ancestors().some((ancestor) => ancestor.kind() === 'jsx_element' && nested(ancestor.child(0)))) {
+      continue;
+    }
+    const inner = element.findAll({ rule: { any: [{ kind: 'jsx_opening_element' }, { kind: 'jsx_self_closing_element' }] } }).filter((node) => !sameRange(node, opening));
+    if (inner.some(nested)) {
+      continue;
+    }
+    // The local name of each v20 part: its ODS import, or its own name when nothing else of the file holds it.
+    const partNames = {};
+    for (const part of [replacement.element, replacement.wrap, ...Object.values(replacement.parts ?? {})]) {
+      partNames[part] ??= [...importedLocals].find(([, imported]) => imported === part)?.[0] ?? (topLevelNames.has(part) ? null : part);
+    }
+    if (Object.values(partNames).some((name) => !name)) {
+      continue;
+    }
+    const items = [];
+    for (const node of inner) {
+      const part = replacedPartOf(node.field('name')?.text(), replacement, component);
+      if (!part) {
+        continue;
+      }
+      const closing = node.kind() === 'jsx_opening_element' ? node.parent().children().find((child) => child.kind() === 'jsx_closing_element') : null;
+      items.push({ closingName: closing?.field('name') ? tagRange(closing.field('name')) : null, opening: tagOf(node), to: partNames[part] });
+    }
+    const closing = element.children().find((child) => child.kind() === 'jsx_closing_element');
+    const plan = planReplacement({
+      element: { closing: { name: tagRange(closing.field('name')), start: startOf(closing) }, opening: tagOf(opening) },
+      items,
+      literals: element.findAll({ rule: { any: [{ kind: 'string' }, { kind: 'template_string' }] } }).map(tagRange),
+      names: { element: partNames[replacement.element], wrap: partNames[replacement.wrap] },
+      replacement,
+      source,
+    });
+    if (plan.blocked) {
+      continue;
+    }
+    const message = `<${tag}> → <${partNames[replacement.element]}${Object.entries(replacement.add ?? {}).map(([name, value]) => ` ${attributeText(name, value)}`).join('')}>, its ${items.length} item${items.length > 1 ? 's' : ''} → <${Object.values(partNames).at(-1)}> in a <${partNames[replacement.wrap]}>`;
+    plan.edits.forEach((item, index) => edit(item.start, item.end, item.text, ...(index === 0 ? [change(opening, message)] : [])));
+    plan.notes.forEach((text) => note(opening, `<${tag}> → <${partNames[replacement.element]}>: ${text}`));
+    // The tags are no longer reads of the removed exports: their import goes once nothing else reads them.
+    dropped.push(tagRange(opening.field('name')), tagRange(closing.field('name')), ...items.flatMap((item) => [item.opening.name, item.closingName].filter(Boolean)));
+    for (const part of replacementParts(replacement)) {
+      if (![...importedLocals.values()].includes(part)) {
+        const list = addedListOf(info, part);
+        if (!list.includes(part)) {
+          list.push(part);
+        }
+      }
     }
   }
 

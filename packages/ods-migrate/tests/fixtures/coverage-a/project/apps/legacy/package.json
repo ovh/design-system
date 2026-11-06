@@ -1,0 +1,1 @@
+{ "name": "@acme/legacy", "private": true, "dependencies": { "@ovhcloud/ods-themes": "18.6.4" } }

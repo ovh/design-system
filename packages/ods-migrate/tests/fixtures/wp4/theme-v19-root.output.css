@@ -1,0 +1,261 @@
+/*
+ * Expose the theme design tokens and layers order.
+ */
+/* stylelint-disable color-hex-length */
+/* stylelint-enable color-hex-length */
+@layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
+:root {
+  --ods-semantic-color-surface-decorative-alpha: #fbfe47;
+  --ods-semantic-color-surface-decorative-beta: #47fe78;
+  --ods-palette-white: #ffffff;
+  --ods-palette-red-50: #fff3f5;
+  /* TODO(ods-v20): --ods-color-critical-050 and --ods-color-critical-025 both become --ods-palette-red-50 in v20: keep one value */
+  --ods-palette-red-50: #ffe6ec;
+  --ods-palette-red-100: #ffd9e3;
+  /* TODO(ods-v20): --ods-color-critical-100 and --ods-color-critical-075 both become --ods-palette-red-100 in v20: keep one value */
+  --ods-palette-red-100: #ffccd9;
+  --ods-palette-red-200: #ef99ab;
+  --ods-palette-red-300: #e67386;
+  --ods-palette-red-400: #cf334e;
+  --ods-palette-red-500: #bf0020;
+  --ods-palette-red-600: #a6001c;
+  --ods-palette-red-700: #800015;
+  --ods-palette-red-800: #660011;
+  --ods-palette-red-900: #4d000d;
+  /* TODO(ods-v20): --ods-color-information-000 and --ods-color-critical-000 both become --ods-palette-white in v20: keep one value */
+  --ods-palette-white: #ffffff;
+  --ods-palette-blue-50: #f3fdff;
+  --ods-palette-blue-100: #e6faff;
+  --ods-palette-blue-200: #cef5ff;
+  /* TODO(ods-v20): --ods-color-information-100 and --ods-color-information-075 both become --ods-palette-blue-200 in v20: keep one value */
+  --ods-palette-blue-200: #bef1ff;
+  --ods-palette-blue-300: #85d9fd;
+  --ods-palette-blue-400: #4bb2f6;
+  --ods-palette-blue-500: #157eea;
+  /* TODO(ods-v20): --ods-color-information-500 and --ods-color-information-400 both become --ods-palette-blue-500 in v20: keep one value */
+  --ods-palette-blue-500: #0050d7;
+  --ods-palette-blue-600: #002dbe;
+  --ods-palette-blue-700: #000e9c;
+  --ods-palette-blue-800: #00185e;
+  --ods-palette-blue-900: #000d1f;
+  /* TODO(ods-v20): --ods-color-neutral-000 and --ods-color-critical-000 both become --ods-palette-white in v20: keep one value */
+  --ods-palette-white: #ffffff;
+  --ods-palette-gray-50: #f9f9f9;
+  --ods-palette-gray-100: #f2f2f2;
+  /* TODO(ods-v20): --ods-color-neutral-075 and --ods-color-neutral-050 both become --ods-palette-gray-100 in v20: keep one value */
+  --ods-palette-gray-100: #ececec;
+  --ods-palette-gray-200: #e6e6e6;
+  --ods-palette-gray-300: #cccccc;
+  --ods-palette-gray-400: #b3b3b3;
+  /* TODO(ods-v20): --ods-color-neutral-400 and --ods-color-neutral-300 both become --ods-palette-gray-400 in v20: keep one value */
+  --ods-palette-gray-400: #999999;
+  --ods-palette-gray-500: #808080;
+  --ods-palette-gray-600: #666666;
+  --ods-palette-gray-700: #4d4d4d;
+  --ods-palette-gray-800: #333333;
+  --ods-palette-gray-900: #1a1a1a;
+  --ods-semantic-color-surface-decorative-new: #47fffa;
+  /* TODO(ods-v20): --ods-color-primary-000 and --ods-color-critical-000 both become --ods-palette-white in v20: keep one value */
+  --ods-palette-white: #ffffff;
+  --ods-palette-brand-50: #f3fdff;
+  --ods-palette-brand-100: #e6faff;
+  --ods-palette-brand-200: #cef5ff;
+  /* TODO(ods-v20): --ods-color-primary-100 and --ods-color-primary-075 both become --ods-palette-brand-200 in v20: keep one value */
+  --ods-palette-brand-200: #bef1ff;
+  --ods-palette-brand-300: #85d9fd;
+  --ods-palette-brand-400: #4bb2f6;
+  --ods-palette-brand-500: #157eea;
+  /* TODO(ods-v20): --ods-color-primary-500 and --ods-color-primary-400 both become --ods-palette-brand-500 in v20: keep one value */
+  --ods-palette-brand-500: #0050d7;
+  --ods-palette-brand-600: #002dbe;
+  --ods-palette-brand-700: #000e9c;
+  --ods-palette-brand-800: #00185e;
+  --ods-palette-brand-900: #000d1f;
+  --ods-semantic-color-surface-decorative-promotion: #ccff66;
+  /* TODO(ods-v20): --ods-color-success-000 and --ods-color-critical-000 both become --ods-palette-white in v20: keep one value */
+  --ods-palette-white: #ffffff;
+  --ods-palette-green-50: #f3fbeb;
+  /* TODO(ods-v20): --ods-color-success-050 and --ods-color-success-025 both become --ods-palette-green-50 in v20: keep one value */
+  --ods-palette-green-50: #e7f7d7;
+  --ods-palette-green-100: #ddf5d1;
+  /* TODO(ods-v20): --ods-color-success-100 and --ods-color-success-075 both become --ods-palette-green-100 in v20: keep one value */
+  --ods-palette-green-100: #d2f2c2;
+  --ods-palette-green-200: #90cc7a;
+  --ods-palette-green-300: #64b347;
+  --ods-palette-green-400: #47991f;
+  --ods-palette-green-500: #2b8000;
+  --ods-palette-green-600: #267300;
+  --ods-palette-green-700: #226600;
+  --ods-palette-green-800: #1a4d00;
+  --ods-palette-green-900: #113300;
+  /* TODO(ods-v20): --ods-color-warning-000 and --ods-color-critical-000 both become --ods-palette-white in v20: keep one value */
+  --ods-palette-white: #ffffff;
+  --ods-palette-orange-50: #fffbe5;
+  /* TODO(ods-v20): --ods-color-warning-050 and --ods-color-warning-025 both become --ods-palette-orange-50 in v20: keep one value */
+  --ods-palette-orange-50: #fff7cc;
+  --ods-palette-orange-100: #feefa4;
+  /* TODO(ods-v20): --ods-color-warning-100 and --ods-color-warning-075 both become --ods-palette-orange-100 in v20: keep one value */
+  --ods-palette-orange-100: #feea86;
+  --ods-palette-orange-200: #fed265;
+  --ods-palette-orange-300: #ffbb43;
+  --ods-palette-orange-400: #ffa322;
+  --ods-palette-orange-500: #ff8b00;
+  --ods-palette-orange-600: #cc7000;
+  --ods-palette-orange-700: #995400;
+  --ods-palette-orange-800: #663800;
+  --ods-palette-orange-900: #4d2a00;
+  --ods-semantic-color-content-brand: #0050d7;
+  /* TODO(ods-v20): --ods-theme-anchor-text-color-hover: no v20 theme role: the Link hover colour is `--ods-link-text-color-hover`, set it on `[data-ods="link"]`. Its default is the rest colour, and the thicker underline is the hover signal in v20. */
+  --ods-theme-anchor-text-color-hover: #002dbe;
+  --ods-semantic-color-interaction-brand-visited: #000e9c;
+  --ods-semantic-color-surface-raised: #fff;
+  /* TODO(ods-v20): --ods-theme-background-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-theme-background-color-disabled: #e6e6e6;
+  --ods-semantic-color-surface-drag-over: var(--ods-palette-brand-200);
+  --ods-semantic-color-surface-readonly: #f2f2f2;
+  --ods-semantic-color-surface-selected-solid: #00185e;
+  /* TODO(ods-v20): --ods-theme-border-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-theme-border-color-disabled: #cccccc;
+  --ods-semantic-color-border-drag-over: var(--ods-palette-brand-200);
+  --ods-semantic-color-border-readonly: #f2f2f2;
+  --ods-semantic-color-border-selected-solid: #00185e;
+  --ods-semantic-color-brand: #000e9c;
+  --ods-semantic-color-content-heading: #00185e;
+  --ods-semantic-color-surface-control-solid: var(--ods-palette-brand-500);
+  --ods-semantic-color-border-separator: #e6e6e6;
+  /* TODO(ods-v20): --ods-theme-split-border-color and --ods-theme-split-background-color both become --ods-semantic-color-border-separator in v20: keep one value */
+  --ods-semantic-color-border-separator: #e6e6e6;
+  --ods-semantic-color-content-text: #4d5592;
+  /* TODO(ods-v20): --ods-theme-text-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-theme-text-color-disabled: #808080;
+  --ods-semantic-color-content-on-selected-solid: #ffffff;
+  --ods-semantic-color-surface-track: var(--ods-palette-gray-200);
+  /* TODO(ods-v20): --ods-theme-track-background-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-theme-track-background-color-disabled: var(--ods-palette-gray-500);
+  /* TODO(ods-v20): --ods-theme-critical-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-critical-color: var(--ods-palette-red-500);
+  /* TODO(ods-v20): --ods-theme-information-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-information-color: var(--ods-palette-blue-500);
+  /* TODO(ods-v20): --ods-theme-neutral-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-neutral-color: var(--ods-palette-gray-500);
+  /* TODO(ods-v20): --ods-theme-primary-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-primary-color: var(--ods-palette-brand-500);
+  /* TODO(ods-v20): --ods-theme-success-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-success-color: var(--ods-palette-green-500);
+  /* TODO(ods-v20): --ods-theme-warning-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-warning-color: var(--ods-palette-orange-500);
+  --ods-semantic-color-focus: #000e9c;
+  --ods-semantic-border-focus-offset: 2px;
+  --ods-semantic-border-focus-style: solid;
+  --ods-semantic-border-focus-thickness: 2px;
+  --ods-semantic-color-surface-backdrop: #0050d7;
+  --ods-semantic-opacity-backdrop: 0.75;
+  --ods-semantic-size-radius-overlay: calc(var(--ods-semantic-size-radius-container) / 2);
+  --ods-semantic-shadow-overlay: 0 2px 8px rgba(0, 14, 156, 0.2);
+  /* TODO(ods-v20): --ods-theme-overlay-z-index: check this stacking: the ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdown 200, drawer 300, modal 400), so a value computed from this token, kept in a variable, or overriding it may now land under a drawer or a modal: check what it must sit above, and set its value by hand. (this token is 99 in v19; its v20 layer, `--ods-semantic-z-index-dropdown`, is 200) */
+  --ods-theme-overlay-z-index: 99;
+  --ods-semantic-size-radius-container: 8px;
+  --ods-semantic-border-thickness: 1px;
+  --ods-semantic-size-space-gap-inline: 8px;
+  --ods-semantic-size-space-inset-inline: 8px;
+  --ods-semantic-size-space-inset-block: 8px;
+  --ods-semantic-size-space-gap-block: 8px;
+  --ods-semantic-motion-duration-slow: 300ms;
+  --ods-semantic-font-family-body: 'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-semantic-font-family-heading: 'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-semantic-font-family-code: 'Source Code Pro', arial;
+  /* TODO(ods-v20): --ods-theme-input-background-color-checked and --ods-theme-progress-background-color both become --ods-semantic-color-surface-control-solid in v20: keep one value */
+  --ods-semantic-color-surface-control-solid: #0050d7;
+  --ods-semantic-color-interaction-control-solid-hover: #000e9c;
+  --ods-semantic-color-surface-critical: #bf0020;
+  --ods-semantic-color-border-control: #b3b3b3;
+  --ods-semantic-color-border-control-solid: #0050d7;
+  /* TODO(ods-v20): --ods-theme-input-border-color-checked-hover and --ods-theme-input-background-color-checked-hover both become --ods-semantic-color-interaction-control-solid-hover in v20: keep one value */
+  --ods-semantic-color-interaction-control-solid-hover: #000e9c;
+  --ods-semantic-color-interaction-control-hover: #808080;
+  --ods-semantic-color-border-critical: #bf0020;
+  --ods-semantic-size-radius-control: calc(var(--ods-semantic-size-radius-container) / 2);
+  /* TODO(ods-v20): --ods-theme-input-border-width and --ods-theme-border-width both become --ods-semantic-border-thickness in v20: remove this declaration */
+  --ods-theme-input-border-width: var(--ods-theme-border-width);
+  --ods-semantic-size-block-size-md: 32px;
+  --ods-semantic-color-interaction-highlight: #bef1ff;
+  --ods-semantic-color-surface-selected: #e6faff;
+  --ods-semantic-color-interaction-selected-highlight: #bef1ff;
+  /* TODO(ods-v20): --ods-theme-input-padding-horizontal and --ods-theme-padding-horizontal both become --ods-semantic-size-space-inset-inline in v20: remove this declaration */
+  --ods-theme-input-padding-horizontal: var(--ods-theme-padding-horizontal);
+  --ods-semantic-size-space-inset-block-compact: calc(var(--ods-semantic-size-space-inset-block) / 4);
+  --ods-semantic-color-content-placeholder: #666666;
+  /* TODO(ods-v20): --ods-theme-input-text-color and --ods-theme-text-color both become --ods-semantic-color-content-text in v20: remove this declaration */
+  --ods-theme-input-text-color: var(--ods-theme-text-color);
+  --ods-semantic-color-content-on-control-solid: var(--ods-semantic-color-surface-raised);
+  --ods-semantic-color-content-critical: #bf0020;
+  --ods-semantic-color-chart-background: var(--ods-semantic-color-surface-raised);
+  --ods-semantic-color-chart-axis: var(--ods-palette-gray-400);
+  --ods-semantic-color-chart-tick: var(--ods-palette-gray-700);
+  --ods-semantic-color-chart-legend: var(--ods-palette-gray-700);
+  --ods-semantic-color-chart-grid: var(--ods-palette-gray-300);
+  /* TODO(ods-v20): --ods-theme-critical-color: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-critical`, border → `--ods-semantic-color-border-critical`, text → `--ods-semantic-color-content-critical`. */
+  --ods-semantic-color-chart-reference-line: var(--ods-theme-critical-color);
+  /* TODO(ods-v20): --ods-border-radius-xs: removed, v20 has no radius below `--ods-semantic-size-radius-control` (4px): write its v19 value, 2px, or use the closest `--ods-semantic-size-radius-*`. */
+  --ods-border-radius-xs: 2px;
+  /* TODO(ods-v20): --ods-border-radius-sm and --ods-theme-input-border-radius both become --ods-semantic-size-radius-control in v20: keep one value */
+  --ods-semantic-size-radius-control: 4px;
+  /* TODO(ods-v20): --ods-border-radius-md and --ods-theme-border-radius both become --ods-semantic-size-radius-container in v20: keep one value */
+  --ods-semantic-size-radius-container: 8px;
+  --ods-semantic-size-radius-pill: 16px;
+  /* TODO(ods-v20): --ods-border-width-sm and --ods-theme-border-width both become --ods-semantic-border-thickness in v20: keep one value */
+  --ods-semantic-border-thickness: 1px;
+  --ods-semantic-border-thickness-strong: 2px;
+  /* TODO(ods-v20): --ods-color-background-disabled-default: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-color-background-disabled-default: #e6e6e6;
+  /* TODO(ods-v20): --ods-color-background-readonly-default and --ods-theme-background-color-readonly both become --ods-semantic-color-surface-readonly in v20: keep one value */
+  --ods-semantic-color-surface-readonly: #f2f2f2;
+  /* TODO(ods-v20): --ods-color-border-disabled-default: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-color-border-disabled-default: #cccccc;
+  /* TODO(ods-v20): --ods-color-border-readonly-default and --ods-theme-border-color-readonly both become --ods-semantic-color-border-readonly in v20: keep one value */
+  --ods-semantic-color-border-readonly: #f2f2f2;
+  /* TODO(ods-v20): --ods-color-element-background-selected and --ods-theme-background-color-selected both become --ods-semantic-color-surface-selected-solid in v20: keep one value */
+  --ods-semantic-color-surface-selected-solid: #00185e;
+  /* TODO(ods-v20): --ods-color-element-text-selected and --ods-theme-text-color-selected both become --ods-semantic-color-content-on-selected-solid in v20: keep one value */
+  --ods-semantic-color-content-on-selected-solid: #ffffff;
+  --ods-semantic-color-surface-control: #ffffff;
+  /* TODO(ods-v20): --ods-color-form-element-background-default and --ods-color-form-element-background-critical both become --ods-semantic-color-surface-control in v20: keep one value */
+  --ods-semantic-color-surface-control: #ffffff;
+  /* TODO(ods-v20): --ods-color-form-element-background-focus-default and --ods-color-form-element-background-critical both become --ods-semantic-color-surface-control in v20: keep one value */
+  --ods-semantic-color-surface-control: #ffffff;
+  --ods-semantic-color-interaction-control-highlight: #ffffff;
+  /* TODO(ods-v20): --ods-color-form-element-background-selected-critical and --ods-theme-input-background-color-invalid both become --ods-semantic-color-surface-critical in v20: keep one value */
+  --ods-semantic-color-surface-critical: #bf0020;
+  /* TODO(ods-v20): --ods-color-form-element-border-critical and --ods-theme-input-border-color-invalid both become --ods-semantic-color-border-critical in v20: keep one value */
+  --ods-semantic-color-border-critical: #bf0020;
+  /* TODO(ods-v20): --ods-color-form-element-border-default and --ods-theme-input-border-color both become --ods-semantic-color-border-control in v20: keep one value */
+  --ods-semantic-color-border-control: #b3b3b3;
+  /* TODO(ods-v20): --ods-color-form-element-border-focus-default and --ods-theme-input-border-color-hover both become --ods-semantic-color-interaction-control-hover in v20: keep one value */
+  --ods-semantic-color-interaction-control-hover: #808080;
+  /* TODO(ods-v20): --ods-color-form-element-border-hover-default and --ods-theme-input-border-color-hover both become --ods-semantic-color-interaction-control-hover in v20: keep one value */
+  --ods-semantic-color-interaction-control-hover: #808080;
+  /* TODO(ods-v20): --ods-color-form-element-text-default and --ods-theme-text-color both become --ods-semantic-color-content-text in v20: keep one value */
+  --ods-semantic-color-content-text: #4d5592;
+  /* TODO(ods-v20): --ods-color-form-element-text-placeholder-default and --ods-theme-input-placeholder-text-color both become --ods-semantic-color-content-placeholder in v20: keep one value */
+  --ods-semantic-color-content-placeholder: #666666;
+  /* TODO(ods-v20): --ods-color-heading and --ods-theme-heading-text-color both become --ods-semantic-color-content-heading in v20: keep one value */
+  --ods-semantic-color-content-heading: #00185e;
+  /* TODO(ods-v20): --ods-color-text and --ods-theme-text-color both become --ods-semantic-color-content-text in v20: keep one value */
+  --ods-semantic-color-content-text: #4d5592;
+  /* TODO(ods-v20): --ods-color-text-disabled-default: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-color-text-disabled-default: #808080;
+  /* TODO(ods-v20): --ods-font-family-code and --ods-theme-font-family-code both become --ods-semantic-font-family-code in v20: keep one value */
+  --ods-semantic-font-family-code: 'Source Code Pro', arial;
+  /* TODO(ods-v20): --ods-font-family-default and --ods-theme-font-family both become --ods-semantic-font-family-body in v20: keep one value */
+  --ods-semantic-font-family-body: 'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  /* TODO(ods-v20): --ods-form-element-input-height and --ods-theme-input-min-height both become --ods-semantic-size-block-size-md in v20: keep one value */
+  --ods-semantic-size-block-size-md: 32px;
+  /* TODO(ods-v20): --ods-outline-color-default and --ods-theme-outline-color both become --ods-semantic-color-focus in v20: keep one value */
+  --ods-semantic-color-focus: #000e9c;
+  /* TODO(ods-v20): --ods-outline-offset and --ods-theme-outline-offset both become --ods-semantic-border-focus-offset in v20: keep one value */
+  --ods-semantic-border-focus-offset: 2px;
+  /* TODO(ods-v20): --ods-outline-style-default and --ods-theme-outline-style both become --ods-semantic-border-focus-style in v20: keep one value */
+  --ods-semantic-border-focus-style: solid;
+  /* TODO(ods-v20): --ods-outline-width and --ods-theme-outline-width both become --ods-semantic-border-focus-thickness in v20: keep one value */
+  --ods-semantic-border-focus-thickness: 2px;
+}

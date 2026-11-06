@@ -1,0 +1,140 @@
+{
+  "from": "19",
+  "to": "20",
+  "package": "@ovhcloud/ods-react",
+  "components": {
+    "Badge": {
+      "propsType": "BadgeProp",
+      "conflicts": ["status", "emphasis"],
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": { "primary": "accent" },
+          "constant": "BADGE_COLOR",
+          "v19Look": { "choice": "badge-accent-filled", "values": { "primary": { "emphasis": "high" } } }
+        }
+      }
+    },
+    "Button": {
+      "propsType": ["ButtonProp"],
+      "conflicts": ["status", "emphasis"],
+      "whenAbsent": { "choice": "button-default-emphasis", "unless": ["variant", "emphasis"], "add": { "emphasis": "high" }, "hint": "renders medium in v20 (was filled in v19)" },
+      "props": {
+        "color": {
+          "renameTo": "status",
+          "values": { "primary": "brand", "information": null, "success": null, "warning": null },
+          "constant": "BUTTON_COLOR",
+          "dropDefault": "brand",
+          "hint": "use a brand, neutral or critical Button"
+        },
+        "variant": {
+          "renameTo": "emphasis",
+          "values": { "default": "high", "outline": "medium", "ghost": "low" },
+          "constant": "BUTTON_VARIANT",
+          "dropDefault": "medium",
+          "defaultWas": "default"
+        }
+      }
+    },
+    "CartAction": { "extends": "Button" },
+    "Divider": {
+      "propsType": "DividerProp",
+      "props": {
+        "color": {
+          "remove": true,
+          "values": { "primary": {}, "neutral": {} },
+          "constant": "DIVIDER_COLOR",
+          "hint": "override the `background-color` in CSS instead",
+          "v19Look": { "choice": "divider-neutral-grey", "values": { "neutral": { "style": { "expr": "{ backgroundColor: 'var(--ods-semantic-color-border-neutral)' }" } } } }
+        }
+      }
+    },
+    "FileUploadItem": {
+      "props": {
+        "uploadSuccessLabel": { "remove": true, "always": true, "hint": "the success state is shown by an icon" }
+      }
+    },
+    "Input": {
+      "props": {
+        "type": { "todoUnless": { "values": ["password"], "attribute": "maskOption" }, "constant": "INPUT_TYPE", "hint": "add `maskOption={ { enable: true } }` or use <Password />" }
+      }
+    },
+    "Modal": {
+      "props": {
+        "positionerStyle": { "stacking": true, "hint": "modals are at 400 in v20" }
+      }
+    },
+    "ModalContent": {
+      "props": {
+        "color": {
+          "remove": true,
+          "values": { "critical": { "role": "alertdialog" }, "information": {}, "neutral": {}, "primary": {}, "success": {}, "warning": {} },
+          "constant": "MODAL_COLOR",
+          "hint": "pass `role=\"alertdialog\"` for a critical dialog"
+        }
+      }
+    },
+    "ModalTrigger": {
+      "props": {
+        "value": { "coerce": "string", "hint": "join the values or use one trigger per value" }
+      }
+    },
+    "Pagination": {
+      "pending": "ODS-2336",
+      "childless": {
+        "children": [
+          { "element": "PaginationPageSizeSelector", "when": "withPageSizeSelector", "labelFrom": { "prop": "renderTotalItemsLabel", "arg": "{ totalItems: $totalItems }" } },
+          { "element": "PaginationPages" }
+        ]
+      },
+      "props": {
+        "renderTotalItemsLabel": { "remove": true, "always": true, "pending": "ODS-2336" },
+        "withPageSizeSelector": { "remove": true, "always": true, "pending": "ODS-2336" }
+      }
+    },
+    "Popover": {
+      "props": {
+        "gutter": { "moveTo": { "prop": "overlayConfig", "key": "gutter" } },
+        "position": { "moveTo": { "prop": "overlayConfig", "key": "position" } },
+        "sameWidth": { "moveTo": { "prop": "overlayConfig", "key": "sameWidth" } }
+      }
+    },
+    "Select": {
+      "props": {
+        "fitControlWidth": { "moveTo": { "prop": "overlayConfig", "key": "sameWidth", "default": true } }
+      }
+    },
+    "Table": {
+      "props": {
+        "variant": { "remove": true, "values": { "default": {}, "striped": { "striped": true } }, "constant": "TABLE_VARIANT", "hint": "use the `striped` boolean" }
+      }
+    },
+    "Toaster": { "props": {} },
+    "Toggle": {
+      "pending": "ODS-2336",
+      "childless": { "children": [{ "element": "ToggleControl", "moveProps": ["className"] }] }
+    }
+  },
+  "exports": {
+    "BADGE_COLOR": { "renameTo": "BADGE_STATUS", "members": { "primary": "accent" } },
+    "BadgeColor": { "renameTo": "BadgeStatus", "members": { "primary": "accent" } },
+    "BUTTON_COLOR": { "renameTo": "BUTTON_STATUS", "members": { "primary": "brand", "information": null, "success": null, "warning": null }, "hint": "use a brand, neutral or critical Button" },
+    "ButtonColor": { "renameTo": "ButtonStatus", "members": { "primary": "brand", "information": null, "success": null, "warning": null }, "hint": "use a brand, neutral or critical Button" },
+    "BUTTON_VARIANT": { "renameTo": "BUTTON_EMPHASIS", "members": { "default": "high", "outline": "medium", "ghost": "low" } },
+    "DIVIDER_COLOR": {
+      "removed": true,
+      "hint": "override the `background-color` in CSS instead",
+      "members": { "primary": { "to": null, "hint": "primary is the default: delete it" }, "neutral": { "to": null, "hint": "neutral is the default look in v20: delete it" } }
+    },
+    "MODAL_COLOR": { "removed": true, "hint": "use your own constant, or a boolean such as `isCritical`" },
+    "Switch": { "removed": true, "pending": "ODS-2336", "hint": "use a Toggle or a RadioGroup" },
+    "SwitchItem": { "removed": true, "pending": "ODS-2336", "hint": "use a Toggle or a RadioGroup" },
+    "TABLE_VARIANT": { "removed": true, "hint": "use the `striped` boolean" },
+    "toast": {
+      "members": { "primary": "accent" },
+      "callOptions": { "color": { "toHelper": true, "values": { "neutral": null }, "hint": "call the helper of the status instead, e.g. toast.success()" } }
+    },
+    "TOAST_COLOR": { "renameTo": "TOAST_STATUS", "members": { "primary": "accent" } },
+    "ToastController": { "memberKeys": true, "members": { "primary": "accent" } }
+  }
+}

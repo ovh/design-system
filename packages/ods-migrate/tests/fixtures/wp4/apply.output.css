@@ -1,0 +1,2 @@
+.btn { @apply bg-[--ods-semantic-color-surface-brand] hover:text-[var(--ods-semantic-color-content-text)]; }
+.shadow { /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */ @apply shadow-[0_0_2px_var(--ods-color-primary-500)]; }

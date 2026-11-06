@@ -1,0 +1,46 @@
+@use '@ovhcloud/ods-react/style' as ods;
+
+// A renamed component token, overridden and read.
+.account-button {
+  --ods-button-border-width: 2px;
+  border-width: var(--ods-button-border-width);
+}
+
+// Component tokens that only painted a disabled state.
+.settings-tabs {
+  /* TODO(ods-v20): --ods-tab-border-color-disabled: disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there. */
+  --ods-tab-border-color-disabled: #ccc;
+}
+
+// Tile tokens that never did anything.
+.offer-tile {
+  /* TODO(ods-v20): --ods-tile-border-color: removed, and never read even in v19 (`Tile` renders a `Card`): this override did nothing. Remove it; overriding the Card token instead changes the rendering. (the Card one is `--ods-card-border-color-neutral`) */
+  --ods-tile-border-color: red;
+}
+
+// Still declared by ODS, but no longer read: reading it works, overriding it does nothing.
+.notifications-toggle {
+  /* TODO(ods-v20): --ods-toggle-control-border-color: removed: the Toggle border reads `--ods-semantic-color-border-control` in v20. Override that inside `[data-ods="toggle-control"]` instead. */
+  --ods-toggle-control-border-color: blue;
+  /* TODO(ods-v20): --ods-toggle-control-border-color: removed: the Toggle border reads `--ods-semantic-color-border-control` in v20. Override that inside `[data-ods="toggle-control"]` instead. */
+  outline-color: var(--ods-toggle-control-border-color);
+}
+
+// The removed variables of @ovhcloud/ods-react/style.
+.help-popover {
+  border-width: ods.$ods-button-border-width;
+  border-radius: var(--ods-semantic-size-radius-overlay);
+  background: var(--ods-semantic-color-surface-overlay);
+  z-index: ods.$ods-overlay-modal-z-index;
+  /* TODO(ods-v20): ods.$ods-modal-margin: removed: use `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`, or write its v19 value, 16px. */
+  margin: ods.$ods-modal-margin;
+  /* TODO(ods-v20): ods.$ods-state-is-disabled-text-color: disabled is an opacity in v20, not a colour: to look disabled like ODS, replace these colours with `@include ods-is-disabled()` (or `opacity: var(--ods-semantic-opacity-disabled)`); to keep a grey, write your own colour. */
+  color: ods.$ods-state-is-disabled-text-color;
+}
+
+// A homonym that the stylesheet declares itself is its own.
+$drawer-max-size: 50%;
+
+.side-panel {
+  max-width: $drawer-max-size;
+}

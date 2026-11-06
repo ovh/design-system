@@ -1,0 +1,4 @@
+const a = /* TODO(ods-v20): --ods-theme-input-border-color-…: token name built at runtime: map each value by hand */ `var(--ods-theme-input-border-color-${state})`;
+const b = /* TODO(ods-v20): --ods-color-…: token name built at runtime: map each value by hand */ `var(--ods-color-${status}-500)`;
+const c = /* TODO(ods-v20): --ods-color-…: token name built at runtime: map each value by hand */ 'var(--ods-color-' + status + '-500)';
+const d = /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */ `var(--ods-color-primary-500)`;

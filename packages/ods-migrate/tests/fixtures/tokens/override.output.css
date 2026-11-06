@@ -1,0 +1,6 @@
+:root {
+  --ods-semantic-color-content-placeholder: var(--ods-palette-gray-400);
+  --ods-palette-brand-500: #7a00cc;
+  /* TODO(ods-v20): --ods-theme-primary-color: a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`). */
+  --ods-theme-primary-color: var(--ods-palette-brand-500);
+}

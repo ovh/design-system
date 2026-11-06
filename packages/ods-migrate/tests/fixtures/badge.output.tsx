@@ -1,0 +1,40 @@
+import { type FC } from 'react';
+import {
+  BADGE_STATUS,
+  BADGE_STATUSES,
+  Badge,
+  type BadgeStatus,
+  Button,
+} from '@ovhcloud/ods-react';
+import { Badge as OtherBadge } from 'other-lib';
+
+const COLOR_BY_STATE: Record<string, BadgeStatus> = {
+  active: BADGE_STATUS.success,
+  draft: BADGE_STATUS['accent'],
+};
+
+const options = { BADGE_COLORS: BADGE_STATUSES };
+
+type Props = { color: BadgeStatus, fixed: BADGE_STATUS.accent };
+
+const Example: FC<Props & { isNew: boolean, label?: string }> = ({ color, isNew, label, ...rest }) => (
+  <>
+    <Badge status="accent">Héllo 😀</Badge>
+    <Badge status={ BADGE_STATUS.accent } size="sm">Constant</Badge>
+    <Badge status={ isNew ? 'accent' : "neutral" }>Ternary</Badge>
+    <Badge status={ color }>Variable</Badge>
+    <Badge status="accent">Both</Badge>
+    <Badge { ...rest } />
+    <Badge status={ label && 'warning' } />
+    <Button status="critical">Migrated too</Button>
+    <OtherBadge color="primary">Other lib</OtherBadge>
+    <span color="primary" />
+  </>
+);
+
+export { COLOR_BY_STATE, Example, options };
+
+const TONES: Record<string, BadgeStatus> = { draft: 'accent', done: 'success', list: ['accent'] as BadgeStatus[] };
+const tone = 'accent' as BadgeStatus;
+const checked = { draft: 'accent' } satisfies Record<string, BadgeStatus>;
+const untyped = { draft: 'primary' };

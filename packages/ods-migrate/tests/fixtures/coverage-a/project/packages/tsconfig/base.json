@@ -1,0 +1,4 @@
+{
+  // comments and trailing commas, as tsconfig files allow
+  "compilerOptions": { "strict": false, },
+}

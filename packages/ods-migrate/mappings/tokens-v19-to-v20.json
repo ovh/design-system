@@ -1,0 +1,3755 @@
+{
+  "from": "19",
+  "to": "20",
+  "source": {
+    "file": "packages/themes/scripts/repoint-tokens.js",
+    "from": "v19.7.3",
+    "ref": "origin/master",
+    "sha": "2741442ea"
+  },
+  "hints": {
+    "badge-mixin": "`ods-badge()` now draws a 1px solid border (coloured by `ods-badge-color()`, `currentColor` without it) and a full radius: to keep the v19 look, add `border: 0` and `--ods-badge-border-radius: var(--ods-semantic-size-radius-control)` after the include.",
+    "declaration": "a v19 theme declaration: a v20 theme declares the palette (`--ods-palette-*`) and, where a role needs its own value, the semantic token (`--ods-semantic-*`).",
+    "disabled": "disabled is an opacity in v20, not a colour: remove this colour. To dim like ODS, set `opacity: var(--ods-semantic-opacity-disabled)` on `:disabled` / `[data-disabled]`; for a grey, write your own colour there.",
+    "disabled-scss": "disabled is an opacity in v20, not a colour: to look disabled like ODS, replace these colours with `@include ods-is-disabled()` (or `opacity: var(--ods-semantic-opacity-disabled)`); to keep a grey, write your own colour.",
+    "drawer-max-size": "removed: use `$drawer-max-width` or `$drawer-max-height`, or write its v19 value, calc(100% - 48px).",
+    "is-disabled-mixin": "`ods-is-disabled()` now dims with `opacity: var(--ods-semantic-opacity-disabled)` instead of painting the v19 disabled grey: anything painted on this element is dimmed too. To keep a grey, set the colours here yourself.",
+    "message-close": "removed: the close button of a Message keeps its neutral look on every status and emphasis in v20, so an override has no effect and a read resolves to nothing. Remove it, or style the close button inside `[data-ods=\"message\"]` yourself.",
+    "button-status-removed": "removed: the `information`, `success` and `warning` Buttons are gone in v20 (use `status=\"neutral\"`, or a Message for a status), so an override of it paints nothing: delete it.",
+    "link-hover": "no v20 theme role: the Link hover colour is `--ods-link-text-color-hover`, set it on `[data-ods=\"link\"]`. Its default is the rest colour, and the thicker underline is the hover signal in v20.",
+    "modal-color-mixin": "removed: the header background it painted belongs to a `color` the Modal no longer renders. Delete this include.",
+    "modal-header": "removed: the Modal header has no status colour in v20, so an override has no effect and a read resolves to nothing. Remove it, or style the header inside `[data-ods=\"modal-content\"]` yourself.",
+    "modal-margin": "removed: use `$ods-modal-margin-horizontal` or `$ods-modal-margin-vertical`, or write its v19 value, 16px.",
+    "switch": "removed with the Switch component: replace the Switch (Tabs with `variant=\"switch\"`, Button Group or Radio Group, see the Switch section of the migration guide) and style the replacement through its own custom properties.",
+    "tab-selected": "removed: a selected Tab paints the theme roles `--ods-semantic-color-border-selected-solid` (border), `--ods-semantic-color-surface-selected` (background) and `--ods-semantic-color-content-on-selected` (text) in v20. Override those inside `[data-ods=\"tab\"][aria-selected=\"true\"]` instead.",
+    "toggle-border": "removed: the Toggle border reads `--ods-semantic-color-border-control` in v20. Override that inside `[data-ods=\"toggle-control\"]` instead.",
+    "unread-removed": "removed: it held the rest value and nothing read it, so an override of it never did anything. Delete it.",
+    "no-equivalent": "no v20 token for this value: write the value.",
+    "number-to-var": "a CSS var() in v20, not a Sass number: Sass arithmetic on it fails or emits a value the browser drops. Wrap it in calc().",
+    "ods": "ODS v20 itself uses",
+    "palette-changed": "this palette variable keeps its name in v20 with another colour, and no v20 stop holds the v19 one: write the value, or pick a `--ods-semantic-color-*` role.",
+    "palette-removed": "removed, and no v20 palette stop holds this colour: write the value, or pick a `--ods-semantic-color-*` role.",
+    "radius-xs": "removed, v20 has no radius below `--ods-semantic-size-radius-control` (4px): write its v19 value, 2px, or use the closest `--ods-semantic-size-radius-*`.",
+    "role": "v20 names colours by what they paint: pick the one for this place.",
+    "shared": "in the v20 default theme, this palette step also feeds",
+    "tile": "removed, and never read even in v19 (`Tile` renders a `Card`): this override did nothing. Remove it; overriding the Card token instead changes the rendering.",
+    "toggle-hover": "removed: the unchecked `Toggle` no longer changes its background on hover, so an override has no effect and a read resolves to nothing. Remove it, or style `[data-ods=\"toggle-control\"]:hover` yourself.",
+    "unknown": "ODS v19 never declared this name: it gives its fallback value (or nothing), in v19 as in v20. Nothing to do for the migration.",
+    "unread": "ODS v20 still declares this token but no longer reads it: an override of it has no effect.",
+    "z-rerank": "the ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdown 200, drawer 300, modal 400), so a value computed from this token, kept in a variable, or overriding it may now land under a drawer or a modal: check what it must sit above, and set its value by hand."
+  },
+  "scss": {
+    "$drawer-max-size": {
+      "bc": "BC-16",
+      "hint": "drawer-max-size",
+      "to": null
+    },
+    "$ods-button-border-radius-width": {
+      "bc": "BC-18",
+      "to": "$ods-button-border-width"
+    },
+    "$ods-modal-border-radius": {
+      "bc": "BC-16",
+      "value": "var(--ods-semantic-size-radius-overlay)"
+    },
+    "$ods-modal-margin": {
+      "bc": "BC-16",
+      "hint": "modal-margin",
+      "to": null
+    },
+    "$ods-modal-z-index": {
+      "bc": "BC-16",
+      "to": "$ods-overlay-modal-z-index"
+    },
+    "$ods-overlay-arrow-background-color": {
+      "bc": "BC-16",
+      "value": "var(--ods-semantic-color-surface-overlay)"
+    },
+    "$ods-overlay-select-z-index": {
+      "bc": "BC-16",
+      "to": "$ods-overlay-base-z-index"
+    },
+    "$ods-state-is-disabled-background-color": {
+      "bc": "BC-12",
+      "hint": "disabled-scss",
+      "to": null
+    },
+    "$ods-state-is-disabled-border-color": {
+      "bc": "BC-12",
+      "hint": "disabled-scss",
+      "to": null
+    },
+    "$ods-state-is-disabled-text-color": {
+      "bc": "BC-12",
+      "hint": "disabled-scss",
+      "to": null
+    },
+    "$ods-input-actions-padding-right": {
+      "bc": "BC-16",
+      "keep": true,
+      "note": "keeps its name and goes from 4px to 2px in v20 (`--ods-semantic-size-space-inset-block-compact`), like the action buttons of ODS fields. To keep 4px, write `calc(var(--ods-semantic-size-space-inset-inline) / 2)`."
+    },
+    "$ods-overlay-base-z-index": {
+      "bc": "BC-15",
+      "keep": true,
+      "note": "keeps its name and its layer, 99 in v19 and `--ods-semantic-z-index-dropdown` (200) in v20: a value you compute from it (`+ 1`) or that must clear another overlay may now land elsewhere, check it (a drawer now sits under a modal)."
+    },
+    "$ods-overlay-drawer-z-index": {
+      "bc": "BC-15",
+      "keep": true,
+      "note": "keeps its name and its layer, 101 in v19 and `--ods-semantic-z-index-drawer` (300) in v20: a value you compute from it (`+ 1`) or that must clear another overlay may now land elsewhere, check it (a drawer now sits under a modal)."
+    },
+    "$ods-overlay-modal-z-index": {
+      "bc": "BC-15",
+      "keep": true,
+      "note": "keeps its name and its layer, 100 in v19 and `--ods-semantic-z-index-modal` (400) in v20: a value you compute from it (`+ 1`) or that must clear another overlay may now land elsewhere, check it (a drawer now sits under a modal)."
+    },
+    "$ods-badge-border-radius": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-radius-full)`). To keep the v19 size, write `calc(var(--ods-semantic-size-radius-container) / 2)`."
+    },
+    "$ods-badge-padding-horizontal-sm": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-space-inset-inline)`). To keep the v19 size, write `calc(var(--ods-semantic-size-space-inset-inline) / 2)`."
+    },
+    "$ods-badge-padding-horizontal-md": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-space-inset-inline)`). To keep the v19 size, write `calc(var(--ods-semantic-size-space-inset-inline) / 2)`."
+    },
+    "$ods-badge-padding-horizontal-lg": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`calc(var(--ods-semantic-size-space-inset-inline) * 1.5)`). To keep the v19 size, write `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)`."
+    },
+    "$ods-button-border-radius-xs": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-radius-control)`). To keep the v19 size, write `calc(var(--ods-semantic-size-radius-container) / 4)`."
+    },
+    "$ods-button-border-radius-sm": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-radius-control)`). To keep the v19 size, write `calc(var(--ods-semantic-size-radius-container) / 2)`."
+    },
+    "$ods-button-border-radius-md": {
+      "bc": "BC-08",
+      "keep": true,
+      "note": "keeps its name with another value in v20 (`var(--ods-semantic-size-radius-control)`). To keep the v19 size, write `var(--ods-semantic-size-radius-container)`."
+    }
+  },
+  "tokens": {
+    "--ods-theme-anchor-text-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-brand"
+    },
+    "--ods-theme-anchor-text-color-hover": {
+      "bc": "BC-01",
+      "hint": "link-hover",
+      "to": null
+    },
+    "--ods-theme-anchor-text-color-visited": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-brand-visited"
+    },
+    "--ods-theme-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-raised",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "checkboxControl.module.scss",
+              "selectContent.module.scss",
+              "selectControl.module.scss",
+              "selectOptionIndicator.module.scss"
+            ],
+            "read": "--ods-semantic-color-surface-control"
+          },
+          {
+            "files": [
+              "datepickerContent.module.scss",
+              "drawerContent.module.scss",
+              "menuContent.module.scss",
+              "modalContent.module.scss",
+              "popoverContent.module.scss",
+              "tooltipContent.module.scss"
+            ],
+            "read": "--ods-semantic-color-surface-overlay"
+          },
+          {
+            "files": [
+              "radioControl.module.scss"
+            ],
+            "read": "--ods-semantic-color-content-on-control-solid"
+          }
+        ]
+      }
+    },
+    "--ods-theme-background-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-theme-background-color-drag-over": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-drag-over"
+    },
+    "--ods-theme-background-color-readonly": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-readonly",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "cartProductGroupItem.module.scss"
+            ],
+            "read": "--ods-semantic-color-surface-muted"
+          }
+        ]
+      }
+    },
+    "--ods-theme-background-color-selected": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-selected-solid"
+    },
+    "--ods-theme-border-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-theme-border-color-drag-over": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-drag-over"
+    },
+    "--ods-theme-border-color-readonly": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-readonly"
+    },
+    "--ods-theme-border-color-selected": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-selected-solid"
+    },
+    "--ods-theme-brand-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-brand"
+    },
+    "--ods-theme-heading-text-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-heading",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "comboboxGroup.module.scss",
+              "menuGroupLabel.module.scss",
+              "queryFilterGroup.module.scss",
+              "selectGroup.module.scss"
+            ],
+            "read": "--ods-semantic-color-content-group-label"
+          }
+        ]
+      }
+    },
+    "--ods-theme-progress-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-control-solid"
+    },
+    "--ods-theme-split-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-separator"
+    },
+    "--ods-theme-split-border-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-separator"
+    },
+    "--ods-theme-text-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-text"
+    },
+    "--ods-theme-text-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-theme-text-color-selected": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-on-selected-solid"
+    },
+    "--ods-theme-track-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-track"
+    },
+    "--ods-theme-track-background-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-theme-outline-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-focus"
+    },
+    "--ods-theme-outline-offset": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-border-focus-offset"
+    },
+    "--ods-theme-outline-style": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-border-focus-style"
+    },
+    "--ods-theme-outline-width": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-border-focus-thickness"
+    },
+    "--ods-theme-backdrop-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-backdrop"
+    },
+    "--ods-theme-backdrop-opacity": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-opacity-backdrop"
+    },
+    "--ods-theme-overlay-border-radius": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-radius-overlay"
+    },
+    "--ods-theme-overlay-box-shadow": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-shadow-overlay"
+    },
+    "--ods-theme-overlay-z-index": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-z-index-dropdown",
+      "detail": "this token is 99 in v19; its v20 layer, `--ods-semantic-z-index-dropdown`, is 200",
+      "hint": "z-rerank",
+      "rerank": true
+    },
+    "--ods-theme-border-radius": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-radius-container",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "badge.module.scss"
+            ],
+            "read": "--ods-semantic-size-radius-full"
+          },
+          {
+            "files": [
+              "button.module.scss"
+            ],
+            "read": "--ods-semantic-size-radius-control"
+          },
+          {
+            "files": [
+              "menuContent.module.scss",
+              "popoverContent.module.scss",
+              "tooltipContent.module.scss"
+            ],
+            "read": "--ods-semantic-size-radius-overlay"
+          }
+        ]
+      }
+    },
+    "--ods-theme-border-width": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-border-thickness"
+    },
+    "--ods-theme-column-gap": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-gap-inline"
+    },
+    "--ods-theme-padding-horizontal": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-inset-inline"
+    },
+    "--ods-theme-padding-vertical": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-inset-block"
+    },
+    "--ods-theme-row-gap": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-gap-block"
+    },
+    "--ods-theme-transition-duration": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-motion-duration-slow"
+    },
+    "--ods-theme-font-family": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-font-family-body",
+      "alsoDeclare": [
+        "--ods-semantic-font-family-heading"
+      ]
+    },
+    "--ods-theme-font-family-code": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-font-family-code"
+    },
+    "--ods-theme-input-background-color-checked": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-control-solid"
+    },
+    "--ods-theme-input-background-color-checked-hover": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-control-solid-hover"
+    },
+    "--ods-theme-input-background-color-invalid": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-critical"
+    },
+    "--ods-theme-input-border-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-control",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "treeViewNodeBranch.module.scss"
+            ],
+            "read": "--ods-semantic-color-border-separator"
+          }
+        ]
+      }
+    },
+    "--ods-theme-input-border-color-checked": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-control-solid"
+    },
+    "--ods-theme-input-border-color-checked-hover": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-control-solid-hover"
+    },
+    "--ods-theme-input-border-color-hover": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-control-hover"
+    },
+    "--ods-theme-input-border-color-invalid": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-border-critical"
+    },
+    "--ods-theme-input-border-radius": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-radius-control"
+    },
+    "--ods-theme-input-border-width": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-border-thickness"
+    },
+    "--ods-theme-input-min-height": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-block-size-md"
+    },
+    "--ods-theme-input-option-background-color-hover": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-highlight"
+    },
+    "--ods-theme-input-option-background-color-selected": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-surface-selected"
+    },
+    "--ods-theme-input-option-background-color-selected-hover": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-interaction-selected-highlight"
+    },
+    "--ods-theme-input-padding-horizontal": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-inset-inline"
+    },
+    "--ods-theme-input-padding-vertical": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-size-space-inset-block-compact"
+    },
+    "--ods-theme-input-placeholder-text-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-placeholder"
+    },
+    "--ods-theme-input-text-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-text"
+    },
+    "--ods-theme-input-text-color-checked": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-on-control-solid"
+    },
+    "--ods-theme-input-text-color-invalid": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-content-critical"
+    },
+    "--ods-theme-chart-background-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-background"
+    },
+    "--ods-theme-chart-axis-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-axis"
+    },
+    "--ods-theme-chart-tick-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-tick"
+    },
+    "--ods-theme-chart-legend-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-legend"
+    },
+    "--ods-theme-chart-grid-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-grid"
+    },
+    "--ods-theme-chart-reference-line-color": {
+      "bc": "BC-01",
+      "to": "--ods-semantic-color-chart-reference-line"
+    },
+    "--ods-theme-critical-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "border": "--ods-semantic-color-border-critical",
+        "content": "--ods-semantic-color-content-critical"
+      }
+    },
+    "--ods-theme-information-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "border": "--ods-semantic-color-border-information",
+        "content": "--ods-semantic-color-content-information"
+      }
+    },
+    "--ods-theme-neutral-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "border": "--ods-semantic-color-border-neutral",
+        "content": "--ods-semantic-color-content-neutral"
+      }
+    },
+    "--ods-theme-primary-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-brand",
+        "border": "--ods-semantic-color-border-brand",
+        "content": "--ods-semantic-color-content-brand"
+      },
+      "ods": {
+        "content": [
+          {
+            "files": [
+              "cartEmpty.module.scss",
+              "comboboxControl.module.scss",
+              "dataTableHeaderCell.module.scss",
+              "fileUploadItem.module.scss",
+              "queryFilterControl.module.scss",
+              "selectControl.module.scss"
+            ],
+            "read": "--ods-semantic-color-content-icon"
+          },
+          {
+            "files": [
+              "selectMergedSelection.module.scss"
+            ],
+            "read": "--ods-semantic-color-content-text"
+          }
+        ],
+        "surface": [
+          {
+            "files": [
+              "meter.module.scss"
+            ],
+            "read": "--ods-semantic-color-surface-success"
+          }
+        ]
+      }
+    },
+    "--ods-theme-success-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "border": "--ods-semantic-color-border-success",
+        "content": "--ods-semantic-color-content-success"
+      }
+    },
+    "--ods-theme-warning-color": {
+      "bc": "BC-01",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "border": "--ods-semantic-color-border-warning",
+        "content": "--ods-semantic-color-content-warning"
+      }
+    },
+    "--ods-color-primary-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-neutral-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-information-solid",
+        "--ods-semantic-color-content-on-success-solid",
+        "--ods-semantic-color-content-on-warning-solid",
+        "--ods-semantic-color-content-on-critical-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-primary-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-brand-50",
+      "paletteValue": "--ods-palette-blue-50"
+    },
+    "--ods-color-primary-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-brand-100",
+      "paletteValue": "--ods-palette-blue-100"
+    },
+    "--ods-color-primary-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-brand-200"
+    },
+    "--ods-color-primary-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-brand-200",
+      "paletteValue": "--ods-palette-blue-200"
+    },
+    "--ods-color-primary-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "surface",
+        "border"
+      ],
+      "palette": "--ods-palette-brand-300",
+      "paletteValue": "--ods-palette-blue-300"
+    },
+    "--ods-color-primary-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-accent-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-accent-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "doubtful": [
+        "surface",
+        "border"
+      ],
+      "palette": "--ods-palette-brand-400",
+      "paletteValue": "--ods-palette-blue-400"
+    },
+    "--ods-color-primary-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-brand",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-brand"
+      },
+      "palette": "--ods-palette-brand-500"
+    },
+    "--ods-color-primary-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-brand",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-brand"
+      },
+      "palette": "--ods-palette-brand-500",
+      "paletteValue": "--ods-palette-blue-500"
+    },
+    "--ods-color-primary-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-brand",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-on-brand"
+      },
+      "palette": "--ods-palette-brand-600",
+      "paletteValue": "--ods-palette-blue-600",
+      "paletteShared": [
+        "--ods-semantic-color-border-drag-over"
+      ]
+    },
+    "--ods-color-primary-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-brand",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-on-brand"
+      },
+      "palette": "--ods-palette-brand-700",
+      "paletteValue": "--ods-palette-blue-700"
+    },
+    "--ods-color-primary-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected-solid",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-on-brand"
+      },
+      "palette": "--ods-palette-brand-800",
+      "paletteValue": "--ods-palette-blue-800"
+    },
+    "--ods-color-primary-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-selected-solid",
+        "surface:hover": "--ods-semantic-color-interaction-brand-hover",
+        "surface:active": "--ods-semantic-color-interaction-brand-active",
+        "border": "--ods-semantic-color-border-brand",
+        "border:hover": "--ods-semantic-color-interaction-brand-hover",
+        "border:active": "--ods-semantic-color-interaction-brand-active",
+        "content": "--ods-semantic-color-content-on-brand"
+      },
+      "palette": "--ods-palette-brand-900",
+      "paletteValue": "--ods-palette-blue-900"
+    },
+    "--ods-color-information-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-neutral-solid",
+        "--ods-semantic-color-content-on-brand-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-success-solid",
+        "--ods-semantic-color-content-on-warning-solid",
+        "--ods-semantic-color-content-on-critical-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-information-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-50",
+      "paletteValue": "--ods-palette-blue-50",
+      "paletteShared": [
+        "--ods-palette-brand-50"
+      ]
+    },
+    "--ods-color-information-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-100",
+      "paletteValue": "--ods-palette-blue-100",
+      "paletteShared": [
+        "--ods-palette-brand-100"
+      ]
+    },
+    "--ods-color-information-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-200",
+      "paletteShared": [
+        "--ods-palette-brand-200"
+      ]
+    },
+    "--ods-color-information-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-200",
+      "paletteValue": "--ods-palette-blue-200",
+      "paletteShared": [
+        "--ods-palette-brand-200"
+      ]
+    },
+    "--ods-color-information-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-300",
+      "paletteValue": "--ods-palette-blue-300",
+      "paletteShared": [
+        "--ods-palette-brand-300"
+      ]
+    },
+    "--ods-color-information-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-information-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-subtle-active",
+        "border": "--ods-semantic-color-border-information-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-blue-400",
+      "paletteValue": "--ods-palette-blue-400",
+      "paletteShared": [
+        "--ods-palette-brand-400"
+      ]
+    },
+    "--ods-color-information-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-information"
+      },
+      "palette": "--ods-palette-blue-500",
+      "paletteShared": [
+        "--ods-palette-brand-500"
+      ]
+    },
+    "--ods-color-information-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-information"
+      },
+      "palette": "--ods-palette-blue-500",
+      "paletteValue": "--ods-palette-blue-500",
+      "paletteShared": [
+        "--ods-palette-brand-500"
+      ]
+    },
+    "--ods-color-information-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-on-information"
+      },
+      "palette": "--ods-palette-blue-600",
+      "paletteValue": "--ods-palette-blue-600",
+      "paletteShared": [
+        "--ods-palette-brand-600",
+        "--ods-semantic-color-focus"
+      ]
+    },
+    "--ods-color-information-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-on-information"
+      },
+      "palette": "--ods-palette-blue-700",
+      "paletteValue": "--ods-palette-blue-700",
+      "paletteShared": [
+        "--ods-palette-brand-700"
+      ]
+    },
+    "--ods-color-information-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-on-information"
+      },
+      "palette": "--ods-palette-blue-800",
+      "paletteValue": "--ods-palette-blue-800",
+      "paletteShared": [
+        "--ods-palette-brand-800"
+      ]
+    },
+    "--ods-color-information-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-information",
+        "surface:hover": "--ods-semantic-color-interaction-information-hover",
+        "surface:active": "--ods-semantic-color-interaction-information-active",
+        "border": "--ods-semantic-color-border-information",
+        "border:hover": "--ods-semantic-color-interaction-information-hover",
+        "border:active": "--ods-semantic-color-interaction-information-active",
+        "content": "--ods-semantic-color-content-on-information"
+      },
+      "palette": "--ods-palette-blue-900",
+      "paletteValue": "--ods-palette-blue-900",
+      "paletteShared": [
+        "--ods-palette-brand-900",
+        "--ods-semantic-color-content-on-vivid"
+      ]
+    },
+    "--ods-color-critical-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-neutral-solid",
+        "--ods-semantic-color-content-on-brand-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-information-solid",
+        "--ods-semantic-color-content-on-success-solid",
+        "--ods-semantic-color-content-on-warning-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-critical-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-50"
+    },
+    "--ods-color-critical-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-50"
+    },
+    "--ods-color-critical-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-100"
+    },
+    "--ods-color-critical-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-100"
+    },
+    "--ods-color-critical-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-200"
+    },
+    "--ods-color-critical-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-critical-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-subtle-active",
+        "border": "--ods-semantic-color-border-critical-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-red-300"
+    },
+    "--ods-color-critical-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-critical"
+      },
+      "palette": "--ods-palette-red-400"
+    },
+    "--ods-color-critical-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-critical"
+      },
+      "palette": "--ods-palette-red-500"
+    },
+    "--ods-color-critical-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-on-critical"
+      },
+      "palette": "--ods-palette-red-600"
+    },
+    "--ods-color-critical-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-on-critical"
+      },
+      "palette": "--ods-palette-red-700"
+    },
+    "--ods-color-critical-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-on-critical"
+      },
+      "palette": "--ods-palette-red-800"
+    },
+    "--ods-color-critical-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-critical",
+        "surface:hover": "--ods-semantic-color-interaction-critical-hover",
+        "surface:active": "--ods-semantic-color-interaction-critical-active",
+        "border": "--ods-semantic-color-border-critical",
+        "border:hover": "--ods-semantic-color-interaction-critical-hover",
+        "border:active": "--ods-semantic-color-interaction-critical-active",
+        "content": "--ods-semantic-color-content-on-critical"
+      },
+      "palette": "--ods-palette-red-900"
+    },
+    "--ods-color-success-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-neutral-solid",
+        "--ods-semantic-color-content-on-brand-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-information-solid",
+        "--ods-semantic-color-content-on-warning-solid",
+        "--ods-semantic-color-content-on-critical-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-success-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-50"
+    },
+    "--ods-color-success-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-50"
+    },
+    "--ods-color-success-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-100"
+    },
+    "--ods-color-success-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-100"
+    },
+    "--ods-color-success-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-200"
+    },
+    "--ods-color-success-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-success-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-subtle-active",
+        "border": "--ods-semantic-color-border-success-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-green-300"
+    },
+    "--ods-color-success-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-success"
+      },
+      "palette": "--ods-palette-green-400"
+    },
+    "--ods-color-success-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-success"
+      },
+      "palette": "--ods-palette-green-500"
+    },
+    "--ods-color-success-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-on-success"
+      },
+      "palette": "--ods-palette-green-600"
+    },
+    "--ods-color-success-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-on-success"
+      },
+      "palette": "--ods-palette-green-700"
+    },
+    "--ods-color-success-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-on-success"
+      },
+      "palette": "--ods-palette-green-800"
+    },
+    "--ods-color-success-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-success",
+        "surface:hover": "--ods-semantic-color-interaction-success-hover",
+        "surface:active": "--ods-semantic-color-interaction-success-active",
+        "border": "--ods-semantic-color-border-success",
+        "border:hover": "--ods-semantic-color-interaction-success-hover",
+        "border:active": "--ods-semantic-color-interaction-success-active",
+        "content": "--ods-semantic-color-content-on-success"
+      },
+      "palette": "--ods-palette-green-900"
+    },
+    "--ods-color-warning-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-neutral-solid",
+        "--ods-semantic-color-content-on-brand-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-information-solid",
+        "--ods-semantic-color-content-on-success-solid",
+        "--ods-semantic-color-content-on-critical-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-warning-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-50"
+    },
+    "--ods-color-warning-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-50"
+    },
+    "--ods-color-warning-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-100"
+    },
+    "--ods-color-warning-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-100"
+    },
+    "--ods-color-warning-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-200"
+    },
+    "--ods-color-warning-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-warning-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-subtle-active",
+        "border": "--ods-semantic-color-border-warning-subtle",
+        "content": null
+      },
+      "palette": "--ods-palette-orange-300"
+    },
+    "--ods-color-warning-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-warning"
+      },
+      "palette": "--ods-palette-orange-400"
+    },
+    "--ods-color-warning-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-warning"
+      },
+      "palette": "--ods-palette-orange-500"
+    },
+    "--ods-color-warning-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-warning"
+      },
+      "palette": "--ods-palette-orange-600"
+    },
+    "--ods-color-warning-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-warning"
+      },
+      "palette": "--ods-palette-orange-700"
+    },
+    "--ods-color-warning-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-on-warning"
+      },
+      "palette": "--ods-palette-orange-800"
+    },
+    "--ods-color-warning-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-warning",
+        "surface:hover": "--ods-semantic-color-interaction-warning-hover",
+        "surface:active": "--ods-semantic-color-interaction-warning-active",
+        "border": "--ods-semantic-color-border-warning",
+        "border:hover": "--ods-semantic-color-interaction-warning-hover",
+        "border:active": "--ods-semantic-color-interaction-warning-active",
+        "content": "--ods-semantic-color-content-on-warning"
+      },
+      "palette": "--ods-palette-orange-900"
+    },
+    "--ods-color-neutral-000": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-raised",
+        "border": "--ods-semantic-color-surface-raised",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "border",
+        "content"
+      ],
+      "palette": "--ods-palette-white",
+      "paletteValue": "--ods-palette-white",
+      "byContext": {
+        "root": {
+          "surface": "--ods-semantic-color-surface-page"
+        }
+      },
+      "contextChoice": "page-background",
+      "paletteShared": [
+        "--ods-semantic-color-surface-raised",
+        "--ods-semantic-color-surface-overlay",
+        "--ods-semantic-color-surface-control",
+        "--ods-semantic-color-surface-thumb",
+        "--ods-semantic-color-content-on-solid",
+        "--ods-semantic-color-content-on-selected-solid",
+        "--ods-semantic-color-content-on-control-solid",
+        "--ods-semantic-color-content-on-brand-solid",
+        "--ods-semantic-color-content-on-accent-solid",
+        "--ods-semantic-color-content-on-information-solid",
+        "--ods-semantic-color-content-on-success-solid",
+        "--ods-semantic-color-content-on-warning-solid",
+        "--ods-semantic-color-content-on-critical-solid",
+        "--ods-semantic-color-content-on-code"
+      ]
+    },
+    "--ods-color-neutral-025": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-muted",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-separator",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-50",
+      "paletteValue": "--ods-palette-gray-50"
+    },
+    "--ods-color-neutral-050": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-muted",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-separator",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-100",
+      "paletteValue": "--ods-palette-gray-100",
+      "paletteShared": [
+        "--ods-semantic-color-surface-page",
+        "--ods-semantic-color-surface-muted"
+      ]
+    },
+    "--ods-color-neutral-075": {
+      "bc": "BC-04",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-muted",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-separator",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-100",
+      "paletteShared": [
+        "--ods-semantic-color-surface-page",
+        "--ods-semantic-color-surface-muted"
+      ]
+    },
+    "--ods-color-neutral-100": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-muted",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-separator",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-200",
+      "paletteValue": "--ods-palette-gray-200",
+      "paletteShared": [
+        "--ods-semantic-color-surface-readonly",
+        "--ods-semantic-color-surface-pending",
+        "--ods-semantic-color-border-separator",
+        "--ods-semantic-color-border-track",
+        "--ods-semantic-color-chart-grid"
+      ]
+    },
+    "--ods-color-neutral-200": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-neutral-subtle",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-300",
+      "paletteValue": "--ods-palette-gray-300",
+      "paletteShared": [
+        "--ods-semantic-color-border-container",
+        "--ods-semantic-color-border-readonly",
+        "--ods-semantic-color-interaction-track-hover",
+        "--ods-semantic-color-chart-axis"
+      ]
+    },
+    "--ods-color-neutral-300": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral-subtle",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-subtle-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-subtle-active",
+        "border": "--ods-semantic-color-border-control",
+        "content": "--ods-semantic-color-content-on-solid"
+      },
+      "doubtful": [
+        "content"
+      ],
+      "palette": "--ods-palette-gray-400",
+      "paletteValue": "--ods-palette-gray-400"
+    },
+    "--ods-color-neutral-400": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-control-hover",
+        "content": "--ods-semantic-color-content-neutral"
+      },
+      "palette": "--ods-palette-gray-400"
+    },
+    "--ods-color-neutral-500": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-control-hover",
+        "content": "--ods-semantic-color-content-neutral"
+      },
+      "palette": "--ods-palette-gray-500",
+      "paletteShared": [
+        "--ods-semantic-color-border-control",
+        "--ods-semantic-color-border-brand-minor"
+      ]
+    },
+    "--ods-color-neutral-600": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "border:active": "--ods-semantic-color-interaction-neutral-active",
+        "content": "--ods-semantic-color-content-neutral",
+        "content:placeholder": "--ods-semantic-color-content-placeholder"
+      },
+      "palette": "--ods-palette-gray-600",
+      "paletteValue": "--ods-palette-gray-600",
+      "paletteShared": [
+        "--ods-semantic-color-content-placeholder"
+      ]
+    },
+    "--ods-color-neutral-700": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "border:active": "--ods-semantic-color-interaction-neutral-active",
+        "content": "--ods-semantic-color-content-on-neutral"
+      },
+      "palette": "--ods-palette-gray-700",
+      "paletteValue": "--ods-palette-gray-700"
+    },
+    "--ods-color-neutral-800": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-neutral",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "border:active": "--ods-semantic-color-interaction-neutral-active",
+        "content": "--ods-semantic-color-content-on-neutral"
+      },
+      "palette": "--ods-palette-gray-800",
+      "paletteValue": "--ods-palette-gray-800"
+    },
+    "--ods-color-neutral-900": {
+      "bc": "BC-02",
+      "byRole": {
+        "surface": "--ods-semantic-color-surface-code",
+        "surface:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "surface:active": "--ods-semantic-color-interaction-neutral-active",
+        "border": "--ods-semantic-color-border-neutral",
+        "border:hover": "--ods-semantic-color-interaction-neutral-hover",
+        "border:active": "--ods-semantic-color-interaction-neutral-active",
+        "content": "--ods-semantic-color-content-on-neutral"
+      },
+      "palette": "--ods-palette-gray-900",
+      "paletteValue": "--ods-palette-gray-900",
+      "paletteShared": [
+        "--ods-semantic-color-content-group-label",
+        "--ods-semantic-color-shadow-control",
+        "--ods-semantic-color-shadow-raised",
+        "--ods-semantic-color-shadow-overlay"
+      ]
+    },
+    "--ods-color-alpha": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-decorative-alpha"
+    },
+    "--ods-color-beta": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-decorative-beta"
+    },
+    "--ods-color-new": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-decorative-new"
+    },
+    "--ods-color-promotion": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-decorative-promotion"
+    },
+    "--ods-color-text": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-content-text"
+    },
+    "--ods-color-heading": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-content-heading"
+    },
+    "--ods-color-background-disabled-default": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-color-background-readonly-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-readonly"
+    },
+    "--ods-color-border-disabled-default": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-color-border-readonly-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-border-readonly"
+    },
+    "--ods-color-text-disabled-default": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-color-element-background-selected": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-selected-solid"
+    },
+    "--ods-color-element-text-selected": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-content-on-selected-solid"
+    },
+    "--ods-color-form-element-background-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-control"
+    },
+    "--ods-color-form-element-background-hover-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-interaction-control-highlight"
+    },
+    "--ods-color-form-element-background-focus-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-control"
+    },
+    "--ods-color-form-element-background-critical": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-control"
+    },
+    "--ods-color-form-element-background-selected-critical": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-surface-critical"
+    },
+    "--ods-color-form-element-border-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-border-control"
+    },
+    "--ods-color-form-element-border-hover-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-interaction-control-hover"
+    },
+    "--ods-color-form-element-border-focus-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-interaction-control-hover"
+    },
+    "--ods-color-form-element-border-critical": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-border-critical"
+    },
+    "--ods-color-form-element-text-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-content-text"
+    },
+    "--ods-color-form-element-text-placeholder-default": {
+      "bc": "BC-02",
+      "to": "--ods-semantic-color-content-placeholder"
+    },
+    "--ods-border-radius-xs": {
+      "bc": "BC-03",
+      "hint": "radius-xs",
+      "to": null
+    },
+    "--ods-border-radius-sm": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-size-radius-control"
+    },
+    "--ods-border-radius-md": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-size-radius-container"
+    },
+    "--ods-border-radius-lg": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-size-radius-pill"
+    },
+    "--ods-border-width-sm": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-border-thickness"
+    },
+    "--ods-border-width-md": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-border-thickness-strong"
+    },
+    "--ods-font-family-default": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-font-family-body",
+      "alsoDeclare": [
+        "--ods-semantic-font-family-heading"
+      ]
+    },
+    "--ods-font-family-code": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-font-family-code"
+    },
+    "--ods-form-element-input-height": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-size-block-size-md"
+    },
+    "--ods-outline-color-default": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-color-focus"
+    },
+    "--ods-outline-offset": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-border-focus-offset"
+    },
+    "--ods-outline-style-default": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-border-focus-style"
+    },
+    "--ods-outline-width": {
+      "bc": "BC-03",
+      "to": "--ods-semantic-border-focus-thickness"
+    },
+    "--ods-badge-background-color-critical": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-critical-high"
+    },
+    "--ods-badge-background-color-information": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-information-high"
+    },
+    "--ods-badge-background-color-neutral": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-neutral-high"
+    },
+    "--ods-badge-background-color-primary": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-accent-high"
+    },
+    "--ods-badge-background-color-success": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-success-high"
+    },
+    "--ods-badge-background-color-warning": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-background-color-warning-high"
+    },
+    "--ods-badge-text-color-critical": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-critical-high"
+    },
+    "--ods-badge-text-color-information": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-information-high"
+    },
+    "--ods-badge-text-color-neutral": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-neutral-high"
+    },
+    "--ods-badge-text-color-primary": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-accent-high"
+    },
+    "--ods-badge-text-color-success": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-success-high"
+    },
+    "--ods-badge-text-color-warning": {
+      "bc": "BC-23",
+      "note": "the v19 Badge of this status is the `high` one in v20: add `emphasis=\"high\"` on the Badges this override or read is meant for.",
+      "to": "--ods-badge-text-color-warning-high"
+    },
+    "--ods-button-background-color-critical": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-high"
+    },
+    "--ods-button-background-color-critical-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-high-active"
+    },
+    "--ods-button-background-color-critical-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-low"
+    },
+    "--ods-button-background-color-critical-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-low-active"
+    },
+    "--ods-button-background-color-critical-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-low-hover"
+    },
+    "--ods-button-background-color-critical-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-high-hover"
+    },
+    "--ods-button-background-color-critical-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-medium"
+    },
+    "--ods-button-background-color-critical-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-medium-active"
+    },
+    "--ods-button-background-color-critical-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-critical-medium-hover"
+    },
+    "--ods-button-background-color-information": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-information",
+      "to": null
+    },
+    "--ods-button-background-color-information-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-active",
+      "to": null
+    },
+    "--ods-button-background-color-information-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-background-color-information-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-information-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-subtle-hover",
+      "to": null
+    },
+    "--ods-button-background-color-information-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-hover",
+      "to": null
+    },
+    "--ods-button-background-color-information-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-control",
+      "to": null
+    },
+    "--ods-button-background-color-information-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-information-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-subtle-hover",
+      "to": null
+    },
+    "--ods-button-background-color-neutral": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-high"
+    },
+    "--ods-button-background-color-neutral-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-high-active"
+    },
+    "--ods-button-background-color-neutral-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-low"
+    },
+    "--ods-button-background-color-neutral-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-low-active"
+    },
+    "--ods-button-background-color-neutral-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-low-hover"
+    },
+    "--ods-button-background-color-neutral-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-high-hover"
+    },
+    "--ods-button-background-color-neutral-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-medium"
+    },
+    "--ods-button-background-color-neutral-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-medium-active"
+    },
+    "--ods-button-background-color-neutral-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-neutral-medium-hover"
+    },
+    "--ods-button-background-color-primary": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-high"
+    },
+    "--ods-button-background-color-primary-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-high-active"
+    },
+    "--ods-button-background-color-primary-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-low"
+    },
+    "--ods-button-background-color-primary-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-low-active"
+    },
+    "--ods-button-background-color-primary-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-low-hover",
+      "ods": {
+        "*": [
+          {
+            "files": [
+              "datepickerContent.module.scss"
+            ],
+            "read": "--ods-semantic-color-interaction-highlight"
+          }
+        ]
+      }
+    },
+    "--ods-button-background-color-primary-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-high-hover"
+    },
+    "--ods-button-background-color-primary-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-medium"
+    },
+    "--ods-button-background-color-primary-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-medium-active"
+    },
+    "--ods-button-background-color-primary-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-background-color-brand-medium-hover"
+    },
+    "--ods-button-background-color-success": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-success",
+      "to": null
+    },
+    "--ods-button-background-color-success-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-active",
+      "to": null
+    },
+    "--ods-button-background-color-success-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-background-color-success-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-success-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-subtle-hover",
+      "to": null
+    },
+    "--ods-button-background-color-success-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-hover",
+      "to": null
+    },
+    "--ods-button-background-color-success-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-control",
+      "to": null
+    },
+    "--ods-button-background-color-success-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-success-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-subtle-hover",
+      "to": null
+    },
+    "--ods-button-background-color-warning": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-warning",
+      "to": null
+    },
+    "--ods-button-background-color-warning-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-active",
+      "to": null
+    },
+    "--ods-button-background-color-warning-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-background-color-warning-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-warning-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-subtle-hover",
+      "to": null
+    },
+    "--ods-button-background-color-warning-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-hover",
+      "to": null
+    },
+    "--ods-button-background-color-warning-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-surface-control",
+      "to": null
+    },
+    "--ods-button-background-color-warning-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-subtle-active",
+      "to": null
+    },
+    "--ods-button-background-color-warning-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-subtle-hover",
+      "to": null
+    },
+    "--ods-button-border-color-critical": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-high"
+    },
+    "--ods-button-border-color-critical-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-high-active"
+    },
+    "--ods-button-border-color-critical-ghost": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-critical-ghost-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-critical-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-critical-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-high-hover"
+    },
+    "--ods-button-border-color-critical-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-medium"
+    },
+    "--ods-button-border-color-critical-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-medium-active"
+    },
+    "--ods-button-border-color-critical-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-critical-medium-hover"
+    },
+    "--ods-button-border-color-information": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-information",
+      "to": null
+    },
+    "--ods-button-border-color-information-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-active",
+      "to": null
+    },
+    "--ods-button-border-color-information-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-information-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-information-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-information-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-hover",
+      "to": null
+    },
+    "--ods-button-border-color-information-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-information",
+      "to": null
+    },
+    "--ods-button-border-color-information-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-active",
+      "to": null
+    },
+    "--ods-button-border-color-information-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-information-hover",
+      "to": null
+    },
+    "--ods-button-border-color-neutral": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-high"
+    },
+    "--ods-button-border-color-neutral-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-high-active"
+    },
+    "--ods-button-border-color-neutral-ghost": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-neutral-ghost-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-neutral-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-neutral-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-high-hover"
+    },
+    "--ods-button-border-color-neutral-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-medium"
+    },
+    "--ods-button-border-color-neutral-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-medium-active"
+    },
+    "--ods-button-border-color-neutral-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-neutral-medium-hover"
+    },
+    "--ods-button-border-color-primary": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-high"
+    },
+    "--ods-button-border-color-primary-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-high-active"
+    },
+    "--ods-button-border-color-primary-ghost": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-primary-ghost-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-primary-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "to": null
+    },
+    "--ods-button-border-color-primary-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-high-hover"
+    },
+    "--ods-button-border-color-primary-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-medium"
+    },
+    "--ods-button-border-color-primary-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-medium-active"
+    },
+    "--ods-button-border-color-primary-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-border-color-brand-medium-hover"
+    },
+    "--ods-button-border-color-success": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-success",
+      "to": null
+    },
+    "--ods-button-border-color-success-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-active",
+      "to": null
+    },
+    "--ods-button-border-color-success-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-success-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-success-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-success-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-hover",
+      "to": null
+    },
+    "--ods-button-border-color-success-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-success",
+      "to": null
+    },
+    "--ods-button-border-color-success-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-active",
+      "to": null
+    },
+    "--ods-button-border-color-success-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-success-hover",
+      "to": null
+    },
+    "--ods-button-border-color-warning": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-warning",
+      "to": null
+    },
+    "--ods-button-border-color-warning-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-active",
+      "to": null
+    },
+    "--ods-button-border-color-warning-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-warning-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-warning-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "to": null
+    },
+    "--ods-button-border-color-warning-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-hover",
+      "to": null
+    },
+    "--ods-button-border-color-warning-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-border-warning",
+      "to": null
+    },
+    "--ods-button-border-color-warning-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-active",
+      "to": null
+    },
+    "--ods-button-border-color-warning-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-interaction-warning-hover",
+      "to": null
+    },
+    "--ods-button-border-radius-width": {
+      "bc": "BC-18",
+      "to": "--ods-button-border-width"
+    },
+    "--ods-button-group-item-background-color-checked-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-button-text-color-critical": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-high"
+    },
+    "--ods-button-text-color-critical-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-critical-high",
+      "to": null
+    },
+    "--ods-button-text-color-critical-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-low"
+    },
+    "--ods-button-text-color-critical-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-low-active"
+    },
+    "--ods-button-text-color-critical-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-low-hover"
+    },
+    "--ods-button-text-color-critical-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-critical-high",
+      "to": null
+    },
+    "--ods-button-text-color-critical-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-medium"
+    },
+    "--ods-button-text-color-critical-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-medium-active"
+    },
+    "--ods-button-text-color-critical-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-critical-medium-hover"
+    },
+    "--ods-button-text-color-information": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information-solid",
+      "to": null
+    },
+    "--ods-button-text-color-information-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information-solid",
+      "to": null
+    },
+    "--ods-button-text-color-information-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-information",
+      "to": null
+    },
+    "--ods-button-text-color-information-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information",
+      "to": null
+    },
+    "--ods-button-text-color-information-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information",
+      "to": null
+    },
+    "--ods-button-text-color-information-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information-solid",
+      "to": null
+    },
+    "--ods-button-text-color-information-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-information",
+      "to": null
+    },
+    "--ods-button-text-color-information-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information",
+      "to": null
+    },
+    "--ods-button-text-color-information-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-information",
+      "to": null
+    },
+    "--ods-button-text-color-neutral": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-high"
+    },
+    "--ods-button-text-color-neutral-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-neutral-high",
+      "to": null
+    },
+    "--ods-button-text-color-neutral-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-low"
+    },
+    "--ods-button-text-color-neutral-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-low-active"
+    },
+    "--ods-button-text-color-neutral-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-low-hover"
+    },
+    "--ods-button-text-color-neutral-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-neutral-high",
+      "to": null
+    },
+    "--ods-button-text-color-neutral-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-medium"
+    },
+    "--ods-button-text-color-neutral-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-medium-active"
+    },
+    "--ods-button-text-color-neutral-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-neutral-medium-hover"
+    },
+    "--ods-button-text-color-primary": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-high"
+    },
+    "--ods-button-text-color-primary-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-brand-high",
+      "to": null
+    },
+    "--ods-button-text-color-primary-ghost": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-low"
+    },
+    "--ods-button-text-color-primary-ghost-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-low-active"
+    },
+    "--ods-button-text-color-primary-ghost-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-low-hover"
+    },
+    "--ods-button-text-color-primary-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-button-text-color-brand-high",
+      "to": null
+    },
+    "--ods-button-text-color-primary-outline": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-medium"
+    },
+    "--ods-button-text-color-primary-outline-active": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-medium-active"
+    },
+    "--ods-button-text-color-primary-outline-hover": {
+      "bc": "BC-24",
+      "to": "--ods-button-text-color-brand-medium-hover"
+    },
+    "--ods-button-text-color-success": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success-solid",
+      "to": null
+    },
+    "--ods-button-text-color-success-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success-solid",
+      "to": null
+    },
+    "--ods-button-text-color-success-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-success",
+      "to": null
+    },
+    "--ods-button-text-color-success-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success",
+      "to": null
+    },
+    "--ods-button-text-color-success-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success",
+      "to": null
+    },
+    "--ods-button-text-color-success-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success-solid",
+      "to": null
+    },
+    "--ods-button-text-color-success-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-success",
+      "to": null
+    },
+    "--ods-button-text-color-success-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success",
+      "to": null
+    },
+    "--ods-button-text-color-success-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-success",
+      "to": null
+    },
+    "--ods-button-text-color-warning": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning-solid",
+      "to": null
+    },
+    "--ods-button-text-color-warning-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning-solid",
+      "to": null
+    },
+    "--ods-button-text-color-warning-ghost": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-warning",
+      "to": null
+    },
+    "--ods-button-text-color-warning-ghost-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning",
+      "to": null
+    },
+    "--ods-button-text-color-warning-ghost-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning",
+      "to": null
+    },
+    "--ods-button-text-color-warning-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning-solid",
+      "to": null
+    },
+    "--ods-button-text-color-warning-outline": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-warning",
+      "to": null
+    },
+    "--ods-button-text-color-warning-outline-active": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning",
+      "to": null
+    },
+    "--ods-button-text-color-warning-outline-hover": {
+      "bc": "BC-25",
+      "hint": "button-status-removed",
+      "read": "--ods-semantic-color-content-on-warning",
+      "to": null
+    },
+    "--ods-card-border-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-card-border-color-accent"
+    },
+    "--ods-code-primary-color": {
+      "bc": "BC-17",
+      "to": "--ods-code-text-color"
+    },
+    "--ods-code-secondary-color": {
+      "bc": "BC-17",
+      "to": "--ods-code-background-color"
+    },
+    "--ods-code-trigger-background-color": {
+      "bc": "BC-17",
+      "to": "--ods-code-trigger-color"
+    },
+    "--ods-message-background-color-critical": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-critical-high"
+    },
+    "--ods-message-background-color-critical-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-critical-medium"
+    },
+    "--ods-message-background-color-information": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-information-high"
+    },
+    "--ods-message-background-color-information-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-information-medium"
+    },
+    "--ods-message-background-color-neutral": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-neutral-high"
+    },
+    "--ods-message-background-color-neutral-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-neutral-medium"
+    },
+    "--ods-message-background-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-accent-high"
+    },
+    "--ods-message-background-color-primary-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-accent-medium"
+    },
+    "--ods-message-background-color-success": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-success-high"
+    },
+    "--ods-message-background-color-success-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-success-medium"
+    },
+    "--ods-message-background-color-warning": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-warning-high"
+    },
+    "--ods-message-background-color-warning-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-background-color-warning-medium"
+    },
+    "--ods-message-close-button-text-color-primary": {
+      "bc": "ODS-2335",
+      "hint": "message-close",
+      "to": null
+    },
+    "--ods-message-text-color-critical": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-critical-high"
+    },
+    "--ods-message-text-color-critical-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-critical-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-critical-medium"
+      ]
+    },
+    "--ods-message-text-color-information": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-information-high"
+    },
+    "--ods-message-text-color-information-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-information-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-information-medium"
+      ]
+    },
+    "--ods-message-text-color-neutral": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-neutral-high"
+    },
+    "--ods-message-text-color-neutral-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-neutral-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-neutral-medium"
+      ]
+    },
+    "--ods-message-text-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-accent-high"
+    },
+    "--ods-message-text-color-primary-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-accent-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-accent-medium"
+      ]
+    },
+    "--ods-message-text-color-success": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-success-high"
+    },
+    "--ods-message-text-color-success-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-success-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-success-medium"
+      ]
+    },
+    "--ods-message-text-color-warning": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-warning-high"
+    },
+    "--ods-message-text-color-warning-light": {
+      "bc": "BC-23",
+      "to": "--ods-message-text-color-warning-medium",
+      "alsoDeclare": [
+        "--ods-message-border-color-warning-medium"
+      ]
+    },
+    "--ods-modal-header-background-color-critical": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-modal-header-background-color-information": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-modal-header-background-color-neutral": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-modal-header-background-color-primary": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-modal-header-background-color-success": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-modal-header-background-color-warning": {
+      "bc": "BC-08",
+      "hint": "modal-header",
+      "to": null
+    },
+    "--ods-switch-background-color": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-border-radius": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-column-gap": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-item-background-color": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-item-background-color-checked": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-item-background-color-checked-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-switch-item-background-color-hover": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-item-text-color": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-switch-item-text-color-checked": {
+      "bc": "BC-26",
+      "hint": "switch",
+      "to": null
+    },
+    "--ods-tab-background-color-selected-disabled-switch": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-tab-border-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-tab-border-color-selected": {
+      "bc": "BC-08",
+      "hint": "tab-selected",
+      "to": null
+    },
+    "--ods-tab-border-color-selected-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-tab-border-color-selected-disabled-switch": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-tab-text-color-selected": {
+      "bc": "BC-08",
+      "hint": "tab-selected",
+      "to": null
+    },
+    "--ods-tag-background-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-tag-background-color-accent"
+    },
+    "--ods-tag-background-color-primary-active": {
+      "bc": "BC-23",
+      "to": "--ods-tag-background-color-accent-active"
+    },
+    "--ods-tag-background-color-primary-hover": {
+      "bc": "BC-23",
+      "to": "--ods-tag-background-color-accent-hover"
+    },
+    "--ods-tag-border-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-tag-border-color-accent"
+    },
+    "--ods-tag-border-color-primary-active": {
+      "bc": "BC-23",
+      "to": "--ods-tag-border-color-accent-active"
+    },
+    "--ods-tag-border-color-primary-hover": {
+      "bc": "BC-23",
+      "to": "--ods-tag-border-color-accent-hover"
+    },
+    "--ods-tag-text-color-critical-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-critical",
+      "to": null
+    },
+    "--ods-tag-text-color-critical-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-critical",
+      "to": null
+    },
+    "--ods-tag-text-color-information-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-information",
+      "to": null
+    },
+    "--ods-tag-text-color-information-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-information",
+      "to": null
+    },
+    "--ods-tag-text-color-neutral-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-neutral",
+      "to": null
+    },
+    "--ods-tag-text-color-neutral-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-neutral",
+      "to": null
+    },
+    "--ods-tag-text-color-primary": {
+      "bc": "BC-23",
+      "to": "--ods-tag-text-color-accent"
+    },
+    "--ods-tag-text-color-primary-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-accent",
+      "to": null
+    },
+    "--ods-tag-text-color-primary-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-accent",
+      "to": null
+    },
+    "--ods-tag-text-color-success-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-success",
+      "to": null
+    },
+    "--ods-tag-text-color-success-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-success",
+      "to": null
+    },
+    "--ods-tag-text-color-warning-active": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-warning",
+      "to": null
+    },
+    "--ods-tag-text-color-warning-hover": {
+      "bc": "BC-25",
+      "hint": "unread-removed",
+      "read": "--ods-tag-text-color-warning",
+      "to": null
+    },
+    "--ods-tile-background-color": {
+      "bc": "BC-08",
+      "detail": "the Card one is `--ods-card-background-color`",
+      "hint": "tile",
+      "to": null
+    },
+    "--ods-tile-background-color-disabled": {
+      "bc": "BC-12",
+      "hint": "disabled",
+      "to": null
+    },
+    "--ods-tile-border-color": {
+      "bc": "BC-08",
+      "detail": "the Card one is `--ods-card-border-color-neutral`",
+      "hint": "tile",
+      "to": null
+    },
+    "--ods-tile-border-width": {
+      "bc": "BC-08",
+      "detail": "the Card one is `--ods-card-border-width`",
+      "hint": "tile",
+      "to": null
+    },
+    "--ods-toggle-control-background-color-hover": {
+      "bc": "BC-08",
+      "hint": "toggle-hover",
+      "to": null
+    },
+    "--ods-toggle-control-border-color": {
+      "bc": "BC-08",
+      "hint": "toggle-border",
+      "to": null
+    },
+    "--ods-drawer-z-index": {
+      "bc": "BC-15",
+      "keep": true,
+      "note": "keeps its name: a drawer is at `--ods-semantic-z-index-drawer` (300) in v20, 101 in v19, and now sits under a modal: check what you stack against it."
+    }
+  },
+  "mixins": {
+    "ods-badge": {
+      "bc": "BC-08",
+      "hint": "badge-mixin"
+    },
+    "ods-badge-color": {
+      "bc": "BC-23",
+      "args": {
+        "primary": "accent"
+      }
+    },
+    "ods-button-variant-default": {
+      "bc": "BC-24",
+      "to": "ods-button-emphasis-high",
+      "args": {
+        "primary": "brand"
+      },
+      "removedArgs": [
+        "information",
+        "success",
+        "warning"
+      ]
+    },
+    "ods-button-variant-ghost": {
+      "bc": "BC-24",
+      "to": "ods-button-emphasis-low",
+      "args": {
+        "primary": "brand"
+      },
+      "removedArgs": [
+        "information",
+        "success",
+        "warning"
+      ]
+    },
+    "ods-button-variant-outline": {
+      "bc": "BC-24",
+      "to": "ods-button-emphasis-medium",
+      "args": {
+        "primary": "brand"
+      },
+      "removedArgs": [
+        "information",
+        "success",
+        "warning"
+      ]
+    },
+    "ods-input": {
+      "bc": "BC-14",
+      "note": "`ods-input()` now paints a background, `var(--ods-semantic-color-surface-control)`, and a shadow: re-declare `background-color` after the include if this field sits on a tinted ground."
+    },
+    "ods-is-disabled": {
+      "bc": "BC-12",
+      "hint": "is-disabled-mixin"
+    },
+    "ods-message-variant-default": {
+      "bc": "BC-23",
+      "to": "ods-message-emphasis-high",
+      "args": {
+        "primary": "accent"
+      }
+    },
+    "ods-message-variant-light": {
+      "bc": "BC-23",
+      "to": "ods-message-emphasis-medium",
+      "args": {
+        "primary": "accent"
+      }
+    },
+    "ods-modal-color": {
+      "bc": "BC-16",
+      "hint": "modal-color-mixin",
+      "remove": true
+    },
+    "ods-tag-color": {
+      "bc": "BC-23",
+      "args": {
+        "primary": "accent"
+      }
+    }
+  },
+  "scssPalette": {
+    "$ods-palette-blue-000": {
+      "value": "var(--ods-palette-white)"
+    },
+    "$ods-palette-blue-025": {
+      "value": "var(--ods-palette-blue-50)"
+    },
+    "$ods-palette-blue-050": {
+      "value": "var(--ods-palette-blue-100)"
+    },
+    "$ods-palette-blue-075": {
+      "detail": "#cef5ff",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-blue-100": {
+      "value": "var(--ods-palette-blue-200)",
+      "note": "keeps its name in v20 but is #e6faff there: the v19 #bef1ff is `--ods-palette-blue-200`."
+    },
+    "$ods-palette-blue-200": {
+      "value": "var(--ods-palette-blue-300)",
+      "note": "keeps its name in v20 but is #bef1ff there: the v19 #85d9fd is `--ods-palette-blue-300`."
+    },
+    "$ods-palette-blue-300": {
+      "value": "var(--ods-palette-blue-400)",
+      "note": "keeps its name in v20 but is #85d9fd there: the v19 #4bb2f6 is `--ods-palette-blue-400`."
+    },
+    "$ods-palette-blue-400": {
+      "detail": "#157eea in v19, #4bb2f6 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-gray-000": {
+      "value": "var(--ods-palette-white)"
+    },
+    "$ods-palette-gray-025": {
+      "value": "var(--ods-palette-gray-50)"
+    },
+    "$ods-palette-gray-050": {
+      "value": "var(--ods-palette-gray-100)"
+    },
+    "$ods-palette-gray-075": {
+      "detail": "#ececec",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-gray-100": {
+      "value": "var(--ods-palette-gray-200)",
+      "note": "keeps its name in v20 but is #f2f2f2 there: the v19 #e6e6e6 is `--ods-palette-gray-200`."
+    },
+    "$ods-palette-gray-200": {
+      "value": "var(--ods-palette-gray-300)",
+      "note": "keeps its name in v20 but is #e6e6e6 there: the v19 #cccccc is `--ods-palette-gray-300`."
+    },
+    "$ods-palette-gray-300": {
+      "value": "var(--ods-palette-gray-400)",
+      "note": "keeps its name in v20 but is #cccccc there: the v19 #b3b3b3 is `--ods-palette-gray-400`."
+    },
+    "$ods-palette-gray-400": {
+      "detail": "#999999 in v19, #b3b3b3 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-gray-500": {
+      "detail": "#808080 in v19, #757575 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-000": {
+      "value": "var(--ods-palette-white)"
+    },
+    "$ods-palette-green-025": {
+      "detail": "#f3fbeb",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-green-050": {
+      "detail": "#e7f7d7",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-green-075": {
+      "detail": "#ddf5d1",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-green-100": {
+      "detail": "#d2f2c2 in v19, #d1fae5 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-200": {
+      "detail": "#90cc7a in v19, #a7f3d0 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-300": {
+      "detail": "#64b347 in v19, #6ee7b7 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-400": {
+      "detail": "#47991f in v19, #34d399 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-500": {
+      "detail": "#2b8000 in v19, #10b981 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-600": {
+      "detail": "#267300 in v19, #09a171 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-700": {
+      "detail": "#226600 in v19, #067958 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-800": {
+      "detail": "#1a4d00 in v19, #002d1f in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-green-900": {
+      "detail": "#113300 in v19, #03140e in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-000": {
+      "value": "var(--ods-palette-white)"
+    },
+    "$ods-palette-orange-025": {
+      "detail": "#fffbe5",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-orange-050": {
+      "detail": "#fff7cc",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-orange-075": {
+      "detail": "#feefa4",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-orange-100": {
+      "detail": "#feea86 in v19, #fef3c7 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-200": {
+      "detail": "#fed265 in v19, #fde68a in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-300": {
+      "detail": "#ffbb43 in v19, #fcd34d in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-400": {
+      "detail": "#ffa322 in v19, #fbbf24 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-500": {
+      "detail": "#ff8b00 in v19, #f59e0b in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-600": {
+      "detail": "#cc7000 in v19, #e08125 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-700": {
+      "detail": "#995400 in v19, #a95723 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-800": {
+      "detail": "#663800 in v19, #401d0c in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-orange-900": {
+      "detail": "#4d2a00 in v19, #1b0b04 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-000": {
+      "value": "var(--ods-palette-white)"
+    },
+    "$ods-palette-red-025": {
+      "detail": "#fff3f5",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-red-050": {
+      "detail": "#ffe6ec",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-red-075": {
+      "detail": "#ffd9e3",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-red-100": {
+      "detail": "#ffccd9 in v19, #fbd5d3 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-200": {
+      "detail": "#ef99ab in v19, #f7aaa7 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-300": {
+      "detail": "#e67386 in v19, #f08581 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-400": {
+      "detail": "#cf334e in v19, #f2756f in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-500": {
+      "detail": "#bf0020 in v19, #ca4b47 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-600": {
+      "detail": "#a6001c in v19, #b3403c in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-700": {
+      "detail": "#800015 in v19, #8a302d in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-800": {
+      "detail": "#660011 in v19, #381312 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-red-900": {
+      "detail": "#4d000d in v19, #1c0a09 in v20",
+      "hint": "palette-changed",
+      "to": null
+    },
+    "$ods-palette-twilight": {
+      "detail": "#4d5592",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-deep-sapphire": {
+      "value": "var(--ods-palette-blue-800)"
+    },
+    "$ods-palette-royal-fuschia": {
+      "detail": "#ac246f",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-deep-orange": {
+      "detail": "#df3602",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-light-yellow-green": {
+      "detail": "#dffe81",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-canary-yellow": {
+      "value": "var(--ods-palette-decorative-alpha)"
+    },
+    "$ods-palette-inch-worm": {
+      "value": "var(--ods-palette-decorative-promotion)"
+    },
+    "$ods-palette-bright-green": {
+      "value": "var(--ods-palette-decorative-beta)"
+    },
+    "$ods-palette-bright-cyan": {
+      "value": "var(--ods-palette-decorative-new)"
+    },
+    "$ods-palette-turquoise-blue": {
+      "detail": "#73e3ff",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-bright-gold": {
+      "detail": "#ffd124",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-kiwi-green": {
+      "detail": "#a6d64d",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-palette-dusty-orange": {
+      "detail": "#ed733d",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-brand-dark-blue": {
+      "value": "var(--ods-palette-blue-800)"
+    },
+    "$ods-color-brand-green": {
+      "detail": "#a6d64d in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-brand-masterbrand": {
+      "value": "var(--ods-palette-blue-700)"
+    },
+    "$ods-color-brand-orange": {
+      "detail": "#ed733d in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-brand-skyblue": {
+      "detail": "#73e3ff in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-brand-yellow": {
+      "detail": "#ffd124 in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-eco": {
+      "detail": "#dffe81 in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-color-limited": {
+      "detail": "#df3602 in v19",
+      "hint": "palette-removed",
+      "to": null
+    },
+    "$ods-breakpoint-sub-mobile": {
+      "detail": "360px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-breakpoint-mobile": {
+      "detail": "576px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-breakpoint-tablet": {
+      "detail": "768px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-breakpoint-desktop": {
+      "detail": "992px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-breakpoint-large-screen": {
+      "detail": "1200px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-breakpoint-widescreen": {
+      "detail": "1400px in v19",
+      "hint": "no-equivalent",
+      "to": null
+    },
+    "$ods-transition-duration-default": {
+      "value": "var(--ods-semantic-motion-duration-slow)"
+    }
+  },
+  "scssNumberToVar": [
+    "$animation-duration",
+    "$ods-badge-height-md",
+    "$ods-button-size-md",
+    "$ods-button-size-sm",
+    "$ods-button-size-xs",
+    "$ods-link-font-weight"
+  ],
+  "cssModifiers": {
+    "badge": {
+      "primary": "accent"
+    },
+    "button": {
+      "default": {
+        "choice": "button-default-emphasis",
+        "hint": "it also matched every Button without `variant`, which renders `button--medium` in v20 (Aluminium): only the explicit `variant=\"default\"` ones become `button--high`. Select [data-ods=\"button\"] and the props of the component instead",
+        "to": "high"
+      },
+      "ghost": "low",
+      "information": null,
+      "outline": {
+        "choice": "button-default-emphasis",
+        "hint": "`button--medium` in v20, which also matches every Button without `emphasis` (the v20 default, Aluminium): select [data-ods=\"button\"] and the props of the component instead",
+        "to": "medium"
+      },
+      "primary": "brand",
+      "success": null,
+      "warning": null
+    },
+    "card": {
+      "primary": "accent"
+    },
+    "message": {
+      "default": {
+        "choice": "message-default-emphasis",
+        "hint": "it also matched every Message without `variant`, which renders `medium` in v20 (Aluminium), a class-less emphasis: only the explicit `variant=\"default\"` ones become `message--high`. Select [data-ods=\"message\"] and the props of the component instead",
+        "to": "high"
+      },
+      "light": null,
+      "primary": "accent"
+    },
+    "tag": {
+      "primary": "accent"
+    }
+  },
+  "tailwindKeys": {
+    "ods-border-radius-xs": null,
+    "ods-border-radius-sm": "ods-control",
+    "ods-border-radius-md": "ods-container",
+    "ods-border-radius-lg": null,
+    "ods-color-primary-500": null,
+    "ods-color-success-500": null,
+    "ods-color-warning-700": null,
+    "ods-font-family-default": "ods-body"
+  }
+}

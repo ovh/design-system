@@ -1,0 +1,2 @@
+{ "name": "@acme/kit", "version": "1.0.0", "types": "./dist/types/src/index.d.ts", "main": "./dist/kit.js",
+  "peerDependencies": { "@ovhcloud/ods-react": "^19.5.0" } }

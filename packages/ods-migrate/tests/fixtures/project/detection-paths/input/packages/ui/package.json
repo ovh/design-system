@@ -1,0 +1,7 @@
+{
+  "name": "@acme/ui",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "dependencies": { "@ovhcloud/ods-react": "^19.7.0" }
+}

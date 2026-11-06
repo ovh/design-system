@@ -1,0 +1,6 @@
+{
+  "name": "@acme/kit",
+  "main": "dist/kit.umd.cjs",
+  "types": "dist/types/src/index.d.ts",
+  "dependencies": { "@ovhcloud/ods-react": "^19.7.0" }
+}

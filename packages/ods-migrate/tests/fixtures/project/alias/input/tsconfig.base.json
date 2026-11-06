@@ -1,0 +1,7 @@
+{
+  // Shared options: the alias lives here.
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] },
+  },
+}

@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "choices": [
+    {
+      "id": "button-default-emphasis",
+      "title": "Button without variant",
+      "component": "Button",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Button>Save</Button>\n<Button variant=\"outline\">Cancel</Button>",
+        "description": "A Button without `variant` is `default`: filled. The main action stands out from the outlined one."
+      },
+      "v20": {
+        "snippet": "<Button>Save</Button>\n<Button>Cancel</Button>",
+        "description": "A Button without `emphasis` renders `medium`: outlined. ods-migrate renames `variant` to `emphasis` and drops `medium`, the default, so both buttons look the same."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod adds `emphasis=\"high\"` to every Button that has neither `variant` nor `emphasis`, turns a computed `variant={ v }` into `emphasis={ v ?? 'high' }`, and keeps an explicit `emphasis=\"medium\"` instead of dropping it, so that every migrated Button says its emphasis.",
+        "snippet": "<Button emphasis=\"high\">Save</Button>\n<Button emphasis=\"medium\">Cancel</Button>"
+      },
+      "rendering": "real"
+    },
+    {
+      "id": "message-default-emphasis",
+      "title": "Message without variant",
+      "component": "Message",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Message>\n  <MessageIcon name=\"circle-info\" />\n  <MessageBody>Your changes are saved.</MessageBody>\n</Message>",
+        "description": "A Message without `variant` is `default`: a tinted background."
+      },
+      "v20": {
+        "snippet": "<Message>\n  <MessageIcon name=\"circle-info\" />\n  <MessageBody>Your changes are saved.</MessageBody>\n</Message>",
+        "description": "A Message without `emphasis` renders `medium`. ods-migrate leaves it without `emphasis`."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod adds `emphasis=\"high\"` to every Message that has neither `variant` nor `emphasis`, turns a computed `variant={ v }` into `emphasis={ v ?? 'high' }`, and keeps an explicit `emphasis=\"medium\"` instead of dropping it.",
+        "snippet": "<Message emphasis=\"high\">\n  <MessageIcon name=\"circle-info\" />\n  <MessageBody>Your changes are saved.</MessageBody>\n</Message>"
+      },
+      "rendering": "real",
+      "renderingNote": "`high` is the closest v20 emphasis to the v19 `default`, not the same rendering: v19 had a stronger tint and a dark border and text, see the computed styles below."
+    },
+    {
+      "id": "card-default-status",
+      "title": "Card without color",
+      "component": "Card",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Card>\n  …\n</Card>",
+        "description": "A Card without `color` is `primary`: a coloured border."
+      },
+      "v20": {
+        "snippet": "<Card>\n  …\n</Card>",
+        "description": "A Card without `status` is `neutral`: a grey border. ods-migrate leaves it as is."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod adds `status=\"accent\"` to every Card that has neither `color` nor `status`.",
+        "snippet": "<Card status=\"accent\">\n  …\n</Card>"
+      },
+      "rendering": "real",
+      "renderingNote": "The v19 look keeps a coloured border, not the v19 blue: `accent` is navy in the Aluminium theme. To get the v19 blue back as well, load `@ovhcloud/ods-themes/blue-jeans/css` instead of `@ovhcloud/ods-themes/default/css` (one theme only: the last one loaded wins): ods-migrate never changes the theme."
+    },
+    {
+      "id": "badge-accent-filled",
+      "title": "Badge color=\"primary\"",
+      "component": "Badge",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Badge color=\"primary\">New</Badge>",
+        "description": "A `primary` Badge is filled: white text on the primary colour."
+      },
+      "v20": {
+        "snippet": "<Badge status=\"accent\">New</Badge>",
+        "description": "`primary` becomes `accent`, whose default `medium` emphasis is subtle: a light background with a border."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod and the ESLint fix add `emphasis=\"high\"` next to `status=\"accent\"` when the v19 value is `primary` (a literal or `BADGE_COLOR.primary`). A computed value is only renamed.",
+        "snippet": "<Badge status=\"accent\" emphasis=\"high\">New</Badge>"
+      },
+      "rendering": "real",
+      "renderingNote": "The v19 look keeps a filled badge, not the v19 blue: `accent` is navy in the Aluminium theme."
+    },
+    {
+      "id": "divider-neutral-grey",
+      "title": "Divider color=\"neutral\"",
+      "component": "Divider",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Divider color=\"neutral\" />",
+        "description": "A `neutral` Divider is a dark grey line (`--ods-color-neutral-700`)."
+      },
+      "v20": {
+        "snippet": "<Divider />",
+        "description": "The `color` prop is removed: every Divider is the light default line. ods-migrate removes the prop."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod and the ESLint fix remove `color=\"neutral\"` and add an inline `style` that paints the v19 grey. If the Divider already has a `style`, they leave a TODO(ods-v20) marker asking to merge it by hand.",
+        "snippet": "<Divider style={{ backgroundColor: 'var(--ods-semantic-color-interaction-neutral-hover)' }} />"
+      },
+      "rendering": "real",
+      "renderingNote": "The grey that ods-migrate writes (`--ods-semantic-color-interaction-neutral-hover`, #666) is a little lighter than the v19 one (#4d4d4d, now `--ods-palette-gray-700`, which no semantic token of the line role carries)."
+    },
+    {
+      "id": "spinner-neutral-grey",
+      "title": "Spinner color=\"neutral\"",
+      "component": "Spinner",
+      "kind": "codemod",
+      "v19": {
+        "snippet": "<Spinner color=\"neutral\" />",
+        "description": "A `neutral` Spinner is grey."
+      },
+      "v20": {
+        "snippet": "<Spinner />",
+        "description": "The `color` prop is removed: every Spinner takes the accent colour. ods-migrate removes the prop."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "The codemod and the ESLint fix remove `color=\"neutral\"` and add an inline `style` that paints the v19 grey. If the Spinner already has a `style`, they leave a TODO(ods-v20) marker asking to merge it by hand.",
+        "snippet": "<Spinner style={{ fill: 'var(--ods-semantic-color-surface-neutral)' }} />"
+      },
+      "rendering": "real",
+      "renderingNote": "The grey that ods-migrate writes (`--ods-semantic-color-surface-neutral`, #757575 in Aluminium) is the closest to the v19 one (#808080); the guide's `content-neutral` is darker (#666666)."
+    },
+    {
+      "id": "page-background",
+      "title": "Page and panel background",
+      "component": "Page",
+      "kind": "tokens",
+      "v19": {
+        "snippet": "body {\n  background-color: var(--ods-theme-background-color);\n}\n\n.panel {\n  background-color: var(--ods-theme-background-color);\n}",
+        "description": "`--ods-theme-background-color` is white: the page and the panels on it are white."
+      },
+      "v20": {
+        "snippet": "body {\n  background-color: var(--ods-semantic-color-surface-page);\n}\n\n.panel {\n  background-color: var(--ods-semantic-color-surface-raised);\n}",
+        "description": "Aluminium has a grey page. ods-migrate maps the token to `surface-page` (grey) where it is declared on `html`, `body` or `:root`, and to `surface-raised` (white) everywhere else."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate maps `--ods-theme-background-color` to `--ods-semantic-color-surface-raised` (white) everywhere, `html`, `body` and `:root` included.",
+        "snippet": "body {\n  background-color: var(--ods-semantic-color-surface-raised);\n}\n\n.panel {\n  background-color: var(--ods-semantic-color-surface-raised);\n}"
+      },
+      "rendering": "real",
+      "renderingNote": "The page and the panel are the integrator's own markup; their colours are the real tokens of both themes."
+    },
+    {
+      "id": "button-radius",
+      "title": "Button corner radius",
+      "component": "Button",
+      "kind": "css",
+      "v19": {
+        "snippet": "<Button size=\"xs\" variant=\"outline\">Extra small</Button>\n<Button size=\"sm\" variant=\"outline\">Small</Button>\n<Button variant=\"outline\">Medium</Button>",
+        "description": "The radius follows the size: 2px, 4px, 8px (a fraction of the container radius)."
+      },
+      "v20": {
+        "snippet": "<Button size=\"xs\">Extra small</Button>\n<Button size=\"sm\">Small</Button>\n<Button>Medium</Button>",
+        "description": "Every size is 4px, the radius of the inputs next to it."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate writes the CSS below into your v19-look stylesheet (its path is under “Your config”). Import it once, after the ODS theme, and outside any CSS @layer: the ODS theme is not in a layer, so a rule inside one always loses to it. It sets the three component tokens on the Button itself, where ODS declares them (a `:root` override would lose).",
+        "css": "[data-ods=\"button\"] {\n  --ods-button-border-radius-xs: calc(var(--ods-semantic-size-radius-container) / 4);\n  --ods-button-border-radius-sm: calc(var(--ods-semantic-size-radius-container) / 2);\n  --ods-button-border-radius-md: var(--ods-semantic-size-radius-container);\n}\n"
+      },
+      "rendering": "real"
+    },
+    {
+      "id": "accordion-radius",
+      "title": "Accordion corner radius",
+      "component": "Accordion",
+      "kind": "css",
+      "v19": {
+        "snippet": "<Accordion>\n  <AccordionItem value=\"1\">\n    <AccordionTrigger>Billing</AccordionTrigger>\n    <AccordionContent>…</AccordionContent>\n  </AccordionItem>\n  …\n</Accordion>",
+        "description": "The outer corners are half the container radius: 4px."
+      },
+      "v20": {
+        "snippet": "<Accordion>\n  <AccordionItem value=\"1\">\n    <AccordionTrigger>Billing</AccordionTrigger>\n    <AccordionContent>…</AccordionContent>\n  </AccordionItem>\n  …\n</Accordion>",
+        "description": "The outer corners take the whole container radius: 8px, like Card."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate writes the CSS below into your v19-look stylesheet (its path is under “Your config”). Import it once, after the ODS theme, and outside any CSS @layer: the ODS theme is not in a layer, so a rule inside one always loses to it.",
+        "css": "[data-ods=\"accordion\"] {\n  --ods-accordion-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);\n}\n"
+      },
+      "rendering": "real"
+    },
+    {
+      "id": "badge-radius",
+      "title": "Badge shape",
+      "component": "Badge",
+      "kind": "css",
+      "v19": {
+        "snippet": "<Badge color=\"success\">Active</Badge>\n<Badge color=\"warning\">Pending</Badge>\n<Badge color=\"neutral\">Draft</Badge>",
+        "description": "A rounded rectangle: half the container radius, 4px."
+      },
+      "v20": {
+        "snippet": "<Badge status=\"success\">Active</Badge>\n<Badge status=\"warning\">Pending</Badge>\n<Badge status=\"neutral\">Draft</Badge>",
+        "description": "A pill (`--ods-semantic-size-radius-full`), with a 1px border in the medium emphasis."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate writes the CSS below into your v19-look stylesheet (its path is under “Your config”). Import it once, after the ODS theme, and outside any CSS @layer: the ODS theme is not in a layer, so a rule inside one always loses to it. Only the corners come back: the v20 border stays.",
+        "css": "[data-ods=\"badge\"] {\n  --ods-badge-border-radius: calc(var(--ods-semantic-size-radius-container) / 2);\n}\n"
+      },
+      "rendering": "real"
+    },
+    {
+      "id": "form-field-width",
+      "title": "Form field width",
+      "component": "Form fields",
+      "kind": "css",
+      "v19": {
+        "snippet": "<FormField>\n  <FormFieldLabel>Name</FormFieldLabel>\n  <Input />\n</FormField>\n<FormField>\n  <FormFieldLabel>Region</FormFieldLabel>\n  <Select items={ regions }>…</Select>\n</FormField>",
+        "description": "No default width: a field inside a FormField stretches to its width, Select and Combobox fill their container."
+      },
+      "v20": {
+        "snippet": "<FormField>\n  <FormFieldLabel>Name</FormFieldLabel>\n  <Input />\n</FormField>\n<FormField>\n  <FormFieldLabel>Region</FormFieldLabel>\n  <Select items={ regions }>…</Select>\n</FormField>",
+        "description": "Every form field is 280px wide by default, capped at 100% of its container."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate writes the CSS below into your v19-look stylesheet (its path is under “Your config”). Import it once, after the ODS theme, and outside any CSS @layer: the ODS theme is not in a layer, so a rule inside one always loses to it. It gives the field roots back their v19 width. Datepicker is not covered: its width is set on `DatepickerControl`, whose element has no `data-ods`: pass a `className` to `DatepickerControl`.",
+        "css": "[data-ods=\"select\"],\n[data-ods=\"combobox\"] {\n  display: block;\n  width: auto;\n  max-width: none;\n}\n\n[data-ods=\"clipboard\"],\n[data-ods=\"phone-number\"],\n[data-ods=\"textarea\"],\n[data-ods=\"timepicker\"],\ndiv:has(> input[data-ods=\"input\"]) {\n  width: auto;\n  max-width: none;\n}\n"
+      },
+      "rendering": "real",
+      "renderingNote": "This v20 change is not final yet: the v20 rendering is a preview, drawn with the v19 colours. Only Input, Select and Textarea are rendered."
+    },
+    {
+      "id": "font-family",
+      "title": "Font family name",
+      "component": "Font",
+      "kind": "css",
+      "v19": {
+        "snippet": ".title {\n  font-family: 'Source Sans Pro', sans-serif;\n}",
+        "description": "ODS 19 declares its font as 'Source Sans Pro' (the files are already Source Sans 3)."
+      },
+      "v20": {
+        "snippet": ".title {\n  font-family: 'Source Sans 3', sans-serif;\n}",
+        "description": "ODS 20 declares the same files as 'Source Sans 3', with no alias. ods-migrate renames the family and the ODS font asset paths."
+      },
+      "recommended": "aluminium",
+      "alternative": {
+        "effect": "ods-migrate writes the CSS below into your v19-look stylesheet (its path is under “Your config”); import it once, after the ODS theme, and outside any CSS @layer. It puts 'Source Sans Pro' first in the body and heading font tokens. ODS 20 no longer declares that font: host it yourself, or the stack falls back to 'Source Sans 3'. ods-migrate renames the ODS font asset paths in both cases.",
+        "css": "html:root {\n  --ods-semantic-font-family-body: 'Source Sans Pro', 'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;\n  --ods-semantic-font-family-heading: 'Source Sans Pro', 'Source Sans 3', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;\n}\n"
+      },
+      "rendering": "real",
+      "renderingNote": "The font files did not change between 19 and 20: the three renderings are identical. The choice matters only to an app that loads its own 'Source Sans Pro' (for example @fontsource/source-sans-pro)."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+.row:not(:hover) { background-color: var(--ods-color-primary-100); }
+.cell:not(:focus) { border-color: var(--ods-color-critical-700); }
+.chip, .chip:hover { border-color: var(--ods-color-critical-700); }
+.a, .b:hover { background: var(--ods-color-primary-100); }
+.link:hover .icon { color: var(--ods-color-primary-500); }
+.tile:has(:hover) { background: var(--ods-color-primary-100); }
+.button:focus-visible, .button:hover { border-color: var(--ods-color-critical-700); }
+input::placeholder { color: var(--ods-color-neutral-600); }
+.f::placeholder, .g { color: var(--ods-color-neutral-600); }
+.card:hover div { background-color: var(--ods-color-primary-100); }
+.card:not(:hover) div { background-color: var(--ods-color-primary-100); }

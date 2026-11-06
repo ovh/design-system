@@ -1,0 +1,5 @@
+.b { color: #{'var(--ods-semantic-color-content-brand)'}; }
+.c { color: unquote("var(--ods-semantic-color-content-brand)"); }
+$m: ('bg': '--ods-semantic-color-surface-brand');
+/* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */
+$n: ('x': '--ods-color-primary-500');

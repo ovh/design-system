@@ -1,0 +1,614 @@
+{
+  "about": "Last recorded numbers of the ods-migrate test procedure (TESTING.md). Coverage entries are keyed by the --label of the run and compared by scripts/coverage-check.mjs; acceptance entries by hand against scripts/acceptance/acceptance.sh. Update with `node scripts/coverage-check.mjs --record <run.json>...` and by editing `acceptance`, in the same change as the code that moves them.",
+  "recordedAt": "2026-10-27",
+  "refs": {
+    "v19": "v19.7.3 (0ce249290)",
+    "v20": "stack/remove-color (65bca4aae)"
+  },
+  "tooling": {
+    "node": "v22.14.0",
+    "typescript": "6.0.3",
+    "unitTests": {
+      "tests": 593,
+      "pass": 592,
+      "fail": 0,
+      "skipped": 1,
+      "seconds": 56
+    }
+  },
+  "acceptance": {
+    "manager": {
+      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 of the local snapshot repo",
+      "command": "scripts/acceptance/acceptance.sh --corpus <dir holding the 7e02c54 packages/> --label manager (no option)",
+      "run1": {
+        "exit": 0,
+        "seconds": 6,
+        "filesChanged": 632,
+        "changedByKind": {
+          "other": 0,
+          "scripts": 594,
+          "snapshots": 0,
+          "styles": 38
+        },
+        "markersAdded": 178,
+        "changes": 1886,
+        "todos": 182,
+        "notes": 140,
+        "typed": 75,
+        "cliErrors": 0,
+        "newParseErrors": 0,
+        "notOds": 78
+      },
+      "run2": {
+        "exit": 0,
+        "filesChanged": 0,
+        "changes": 0
+      },
+      "eslint": {
+        "fatalIntroduced": 0,
+        "files": 1371,
+        "fixDivergences": 0,
+        "fixDivergencesWhenAbsent": 0,
+        "fixableAfterCodemod": 0,
+        "markers": 176,
+        "markersWithoutReport": 0,
+        "reports": 176,
+        "reportsWithoutMarker": 0
+      },
+      "stylelint": {
+        "files": 51,
+        "fixDivergences": 0,
+        "fixableAfterCodemod": 0,
+        "markers": 2,
+        "markersWithoutReport": 0,
+        "reports": 2,
+        "reportsWithoutMarker": 0
+      },
+      "gates": "PASS",
+      "note": "2026-10-27 (plain-words release): markers 181 → 178 (a zIndex below 99 or above 1600 keeps its place against every ODS overlay: no marker), notes 220 → 140 points to check + 78 --ods-* names ODS v19 never declared (notOds, not points to check since report version 3; 2 mock notes about props that do not change dropped)."
+    },
+    "manager-all-v19": {
+      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 of the local snapshot repo",
+      "command": "scripts/acceptance/acceptance.sh --corpus <dir holding the 7e02c54 packages/> --label manager-all-v19 --all-v19 (no option)",
+      "note": "fixDivergencesWhenAbsent: the Button/Card/Message attributes the v19-look config adds to elements without the prop; ESLint never adds them, so they are expected and not a gate. 2026-10-27 (plain-words release): markers 181 → 178 (a zIndex below 99 or above 1600 keeps its place against every ODS overlay: no marker), notes 220 → 140 points to check + 78 --ods-* names ODS v19 never declared (notOds, not points to check since report version 3; 2 mock notes about props that do not change dropped).",
+      "run1": {
+        "exit": 0,
+        "seconds": 6,
+        "filesChanged": 651,
+        "changedByKind": {
+          "other": 0,
+          "scripts": 615,
+          "snapshots": 0,
+          "styles": 36
+        },
+        "markersAdded": 178,
+        "changes": 2274,
+        "todos": 182,
+        "notes": 140,
+        "typed": 75,
+        "cliErrors": 0,
+        "newParseErrors": 0,
+        "notOds": 78
+      },
+      "run2": {
+        "exit": 0,
+        "filesChanged": 0,
+        "changes": 0
+      },
+      "eslint": {
+        "fatalIntroduced": 0,
+        "files": 1371,
+        "fixDivergences": 0,
+        "fixDivergencesWhenAbsent": 200,
+        "fixableAfterCodemod": 0,
+        "markers": 176,
+        "markersWithoutReport": 0,
+        "reports": 176,
+        "reportsWithoutMarker": 0
+      },
+      "stylelint": {
+        "files": 51,
+        "fixDivergences": 0,
+        "fixableAfterCodemod": 0,
+        "markers": 2,
+        "markersWithoutReport": 0,
+        "reports": 2,
+        "reportsWithoutMarker": 0
+      },
+      "gates": "PASS"
+    }
+  },
+  "coverage": {
+    "fixture": {
+      "corpus": "tests/fixtures/coverage/corpus (truth: tests/fixtures/coverage/truth)",
+      "command": "node scripts/coverage.mjs tests/fixtures/coverage/corpus --truth tests/fixtures/coverage/truth --label fixture --json fixture.json",
+      "gated": true,
+      "note": "Built to hold one site of each kind: 1 MISSED (legacy.less) and 1 regression (a local BADGE_COLOR shadowing the import) are expected.",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 1,
+        "scanned": 3,
+        "snippets": 0
+      },
+      "sites": 6,
+      "auto": 4,
+      "marked": 1,
+      "missed": 1,
+      "autoPct": 66.7,
+      "assistedPct": 83.3,
+      "regressions": 1,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 6,
+      "differ": 4,
+      "truthUnit": "item",
+      "toolWrong": 4,
+      "differByClass": {
+        "tool-wrong": 4,
+        "decision": 0,
+        "unrelated-change": 0,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "d5e6797057df8df1db9ae22b2f591f36a9f1f8f8aa28367cf878c82fdc001ded",
+        "truth": "32d8c2b6bc47f8f8b87b65308c2af23030035505d4e00c35068a8e495f727aa2"
+      },
+      "migrateExit": 0,
+      "seconds": 7
+    },
+    "examples": {
+      "corpus": "design-system packages/examples at v19.7.3, the 5 apps in one run (truth: the same path at stack/remove-color)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus --truth <dir>/examples/truth --label examples --json examples.json",
+      "gated": true,
+      "note": "The 18 regressions are a known ods-migrate defect: accessibility-test App.tsx 326-365, BUTTON_COLOR.information/success/warning rewritten to BUTTON_STATUS.* (absent in v20) under the marker that keeps color=; they are 18 of the 19 tool-wrong items (the 19th: the Divider style of App.tsx:493). DIFFER decision 46 = button-default-emphasis 37 + drop-default 9 (the truth keeps the v19 look).",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 29,
+        "scanned": 49,
+        "snippets": 1
+      },
+      "sites": 109,
+      "auto": 91,
+      "marked": 18,
+      "missed": 0,
+      "autoPct": 83.5,
+      "assistedPct": 100,
+      "regressions": 18,
+      "regressionsUnderMarker": 18,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 121,
+      "differ": 74,
+      "truthUnit": "item",
+      "toolWrong": 19,
+      "differByClass": {
+        "tool-wrong": 19,
+        "decision": 46,
+        "unrelated-change": 9,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "daf1a4e6a59728474bde753ab26ad2964f9efd8653ab00253763ecfbeb9e5270",
+        "truth": "510da2f4c8e02ad176debc96e4588328f30053fd73bd0cc7afc4419159c1ddfc"
+      },
+      "migrateExit": 0,
+      "seconds": 13
+    },
+    "examples-accessibility-test": {
+      "corpus": "packages/examples/accessibility-test (same preparation as examples)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus/accessibility-test --truth <dir>/examples/truth/accessibility-test --label examples-accessibility-test --json examples-accessibility-test.json",
+      "gated": true,
+      "note": "The 18 regressions and 18 of the 19 tool-wrong items are the BUTTON_STATUS.* defect described under examples.",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 6,
+        "scanned": 10,
+        "snippets": 1
+      },
+      "sites": 99,
+      "auto": 81,
+      "marked": 18,
+      "missed": 0,
+      "autoPct": 81.8,
+      "assistedPct": 100,
+      "regressions": 18,
+      "regressionsUnderMarker": 18,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 111,
+      "differ": 56,
+      "truthUnit": "item",
+      "toolWrong": 19,
+      "differByClass": {
+        "tool-wrong": 19,
+        "decision": 28,
+        "unrelated-change": 9,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "4992ed821cc786f5d191369954aa4d05c06b4b10c63512624ed9d112c45883c2",
+        "truth": "f2c16874448893d91594582498631c1523d3936c175b29a5bef5e50c05b1cfc0"
+      },
+      "migrateExit": 0,
+      "seconds": 11
+    },
+    "examples-nextjs-app": {
+      "corpus": "packages/examples/nextjs-app (same preparation as examples)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus/nextjs-app --truth <dir>/examples/truth/nextjs-app --label examples-nextjs-app --json examples-nextjs-app.json",
+      "gated": true,
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 3,
+        "scanned": 6,
+        "snippets": 0
+      },
+      "sites": 1,
+      "auto": 1,
+      "marked": 0,
+      "missed": 0,
+      "autoPct": 100,
+      "assistedPct": 100,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 1,
+      "differ": 0,
+      "truthUnit": "item",
+      "toolWrong": 0,
+      "differByClass": {
+        "tool-wrong": 0,
+        "decision": 0,
+        "unrelated-change": 0,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "1d71738adc6eef3d0b33dee4b7410a2dbc437dbe35a9ced6601d96e509f36987",
+        "truth": "ba89780fe0f6db2e536bb4f46eb6460403d835a27f89162663c642f5b667f966"
+      },
+      "migrateExit": 0,
+      "seconds": 8
+    },
+    "examples-react-router-app": {
+      "corpus": "packages/examples/react-router-app (same preparation as examples)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus/react-router-app --truth <dir>/examples/truth/react-router-app --label examples-react-router-app --json examples-react-router-app.json",
+      "gated": true,
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 5,
+        "scanned": 7,
+        "snippets": 0
+      },
+      "sites": 1,
+      "auto": 1,
+      "marked": 0,
+      "missed": 0,
+      "autoPct": 100,
+      "assistedPct": 100,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 1,
+      "differ": 0,
+      "truthUnit": "item",
+      "toolWrong": 0,
+      "differByClass": {
+        "tool-wrong": 0,
+        "decision": 0,
+        "unrelated-change": 0,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "4a6a6a02dcb51e9da7a174108940e5fc1abe346b2abdb7c1c21e94095a748e96",
+        "truth": "c0b9da50a37a7864dd060162375809cb527d9230fe4b219c0f89691b026ba2f6"
+      },
+      "migrateExit": 0,
+      "seconds": 8
+    },
+    "examples-vite-app": {
+      "corpus": "packages/examples/vite-app (same preparation as examples)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus/vite-app --truth <dir>/examples/truth/vite-app --label examples-vite-app --json examples-vite-app.json",
+      "gated": true,
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 9,
+        "scanned": 14,
+        "snippets": 0
+      },
+      "sites": 4,
+      "auto": 4,
+      "marked": 0,
+      "missed": 0,
+      "autoPct": 100,
+      "assistedPct": 100,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 4,
+      "differ": 9,
+      "truthUnit": "item",
+      "toolWrong": 0,
+      "differByClass": {
+        "tool-wrong": 0,
+        "decision": 9,
+        "unrelated-change": 0,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "db3cb4517e649f74f65832b23a96d4301601a8a544135fcb21aebae99eb21e44",
+        "truth": "17129b507a3f1e8671a5c8fdca5f19a250153a7bab8d7118840d8c72487192de"
+      },
+      "migrateExit": 0,
+      "seconds": 9
+    },
+    "examples-webpack-app": {
+      "corpus": "packages/examples/webpack-app (same preparation as examples)",
+      "fetch": "node scripts/coverage/corpora/examples.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/examples/corpus/webpack-app --truth <dir>/examples/truth/webpack-app --label examples-webpack-app --json examples-webpack-app.json",
+      "gated": true,
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 6,
+        "scanned": 12,
+        "snippets": 0
+      },
+      "sites": 4,
+      "auto": 4,
+      "marked": 0,
+      "missed": 0,
+      "autoPct": 100,
+      "assistedPct": 100,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 4,
+      "differ": 9,
+      "truthUnit": "item",
+      "toolWrong": 0,
+      "differByClass": {
+        "tool-wrong": 0,
+        "decision": 9,
+        "unrelated-change": 0,
+        "style-only": 0
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "5dcb0ed0f6e93efe3e7b0f535ba7edcdf5fce27259d86986476c8a4dd2aa355b",
+        "truth": "2611cd7e9209d41d71fe17f93efe29e780529cd21def9ede48f9b9b33f7ab5c9"
+      },
+      "migrateExit": 0,
+      "seconds": 8
+    },
+    "recipes": {
+      "corpus": "design-system packages/ods-recipes at v19.7.3 (truth: the same path at stack/remove-color)",
+      "fetch": "node scripts/coverage/corpora/recipes.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/recipes/corpus --truth <dir>/recipes/truth --label recipes --json recipes.json",
+      "gated": true,
+      "note": "The 4 MISSED are MESSAGE_COLOR in status-message/src/README.md (doc sites ods-migrate does not touch). tool-wrong 23: 13 .storybook/main.ts font-family lines (ods-migrate writes \"Source Sans 3\", the truth var(--ods-semantic-font-family-body)), the order-button custom properties rewritten to raw palette tokens, and 8 items under a marker.",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 104,
+        "scanned": 149,
+        "snippets": 0
+      },
+      "sites": 200,
+      "auto": 188,
+      "marked": 8,
+      "missed": 4,
+      "autoPct": 94,
+      "assistedPct": 98,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 184,
+      "differ": 67,
+      "truthUnit": "item",
+      "toolWrong": 23,
+      "differByClass": {
+        "tool-wrong": 23,
+        "decision": 26,
+        "unrelated-change": 13,
+        "style-only": 5
+      },
+      "excluded": 0,
+      "digests": {
+        "corpus": "960cbe212ccb051b1035dee8aa3ad0133ec1cf8743cd84770fc89d0d6e6274c2",
+        "truth": "b9495a891b87a69bd1e56fc22c75e8c1ae6a7733ae19a87d7f9b42abf5847cb0"
+      },
+      "migrateExit": 0,
+      "seconds": 11
+    },
+    "manager": {
+      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 ('base', 10,585 files, pinned digest)",
+      "fetch": "node scripts/coverage/corpora/manager.mjs --out <dir> --repo <snapshot repo> (or --from <dir holding packages/>)",
+      "command": "node --max-old-space-size=12000 scripts/coverage.mjs <dir>/manager/corpus/packages --label manager --json manager.json",
+      "gated": true,
+      "note": "Recorded with no option (2026-10-27): @ovh-ux/muk and the other modules of the tree are found on their own. The harness counts 2 sites fewer than with --treat-as-ods @ovh-ux/muk (2021 vs 2023: manager-wiki Badge.stories.tsx:46 and :67, story args typed through the muk alias BadgeProps, which only the harness option makes it count; they were MISSED). The packages on ODS 17/18 (apps/ips, pci-rancher, catalog: 63 sites out of scope) are left unchanged by ods-migrate: 0 premature file (17 before). Regressions 2, both under a marker: BUTTON_STATUS.information in web-domains (the known BUTTON_STATUS.* defect). The 19 others of the previous baseline (pci-block-storage Button/ButtonLink callers, pci-instances ActionsMenu actionButton, pci-workflow ButtonLink) are fixed by following the props typed with ODS types. 14 of the 68 MISSED are doc sites.",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": false
+      },
+      "files": {
+        "typeChecked": 6258,
+        "scanned": 6648,
+        "snippets": 20
+      },
+      "sites": 2021,
+      "auto": 1851,
+      "marked": 102,
+      "missed": 68,
+      "autoPct": 91.6,
+      "assistedPct": 96.6,
+      "regressions": 2,
+      "regressionsUnderMarker": 2,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "digests": {
+        "corpus": "27f0136d8bb2ac99a79ad6148270bc87d6d6d8bf1bdf6eda909e7c0728803462",
+        "truth": null
+      },
+      "migrateExit": 0,
+      "seconds": 83
+    },
+    "storybook": {
+      "corpus": "design-system packages/storybook at v19.7.3, ODS relative imports rewritten to @ovhcloud/ods-react; truth = the hand migration of packages/docs (9336e1951^ -> stack/remove-color) merged into each storybook file (lines with no truth excluded)",
+      "fetch": "node scripts/coverage/corpora/storybook.mjs --out <dir>",
+      "command": "node scripts/coverage.mjs <dir>/storybook/corpus --truth <dir>/storybook/truth --label storybook --json storybook.json",
+      "gated": true,
+      "note": "183 of the 190 MISSED are doc (151) and snippet (32) sites: the Markdown/MDX pages and story source strings ods-migrate does not rewrite; without them 423 sites, 380 auto, 36 marked, 7 missed. The 10 regressions are all under a marker (9 BUTTON_STATUS.information/success/warning, 1 duplicate key in .storybook/ods.theme.ts).",
+      "refs": {
+        "v19": "0ce249290",
+        "v20": "65bca4aae"
+      },
+      "options": {
+        "treatAsOds": [],
+        "config": null,
+        "strict": false,
+        "checkJs": false,
+        "truth": true
+      },
+      "files": {
+        "typeChecked": 133,
+        "scanned": 323,
+        "snippets": 451
+      },
+      "sites": 609,
+      "auto": 380,
+      "marked": 39,
+      "missed": 190,
+      "autoPct": 62.4,
+      "assistedPct": 68.8,
+      "regressions": 10,
+      "regressionsUnderMarker": 10,
+      "prematureFiles": 0,
+      "prematureHunks": 0,
+      "agree": 254,
+      "differ": 248,
+      "truthUnit": "item",
+      "toolWrong": 63,
+      "differByClass": {
+        "tool-wrong": 63,
+        "decision": 136,
+        "unrelated-change": 33,
+        "style-only": 16
+      },
+      "excluded": 67,
+      "digests": {
+        "corpus": "26e2c3ed9d11987a11e733cb6aaceb75af74555140900fc8739f9bb59800d598",
+        "truth": "e9d9fc86a0e452c185326e63e8b43864ef7021e26bd6a369cb097593744d131d"
+      },
+      "migrateExit": 0,
+      "seconds": 19
+    }
+  },
+  "measuredWith": {
+    "date": "2026-10-27",
+    "harness": "scripts/coverage.mjs and scripts/coverage/*.mjs of this package (definitions of TESTING.md 5.1: hidden checker errors, tsconfig paths, package scope, Markdown/MDX doc and snippet sites, item-by-item truth)",
+    "tool": "ods-migrate src/ and mappings/ of this package as of the 2026-10-27 changes (typed props of components followed, packages on ODS 17/18 left unchanged), every corpus run with no --treat-as-ods",
+    "corpora": "node scripts/coverage/corpora/all.mjs --out <dir> --manager-from <dir holding packages/>: every digest matched its pin",
+    "validation": "benchmark of 209 hand-labelled entries over the 10 corpora: site precision 1.000, recall 1.000, outcome agreement 208/209 (manager-wiki Badge.stories.tsx:8, an untyped Storybook args key, labelled marked, measured auto)"
+  }
+}

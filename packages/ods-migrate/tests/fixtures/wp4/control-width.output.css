@@ -1,0 +1,3 @@
+[data-ods="select-control"] { width: 100%; color: var(--ods-semantic-color-content-text); }
+.form [data-ods=combobox-control] { max-width: 320px; }
+[data-ods="select"] { width: 100%; }

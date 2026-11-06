@@ -1,0 +1,3 @@
+# The root .gitignore ignores every folder named coverage (test reports); these are sources.
+!/scripts/coverage/
+!/tests/fixtures/coverage/

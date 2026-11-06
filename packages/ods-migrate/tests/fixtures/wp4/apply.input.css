@@ -1,0 +1,2 @@
+.btn { @apply bg-[--ods-color-primary-500] hover:text-[var(--ods-theme-text-color)]; }
+.shadow { @apply shadow-[0_0_2px_var(--ods-color-primary-500)]; }

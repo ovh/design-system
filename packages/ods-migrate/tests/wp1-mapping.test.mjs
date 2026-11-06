@@ -13,7 +13,7 @@ const v20 = api('api-v20');
 const KEYS = {
   component: ['childless', 'conflicts', 'example', 'exports', 'extends', 'pending', 'props', 'propsType', 'whenAbsent'],
   example: ['before', 'imports'],
-  export: ['callOptions', 'hint', 'listNote', 'memberKeys', 'members', 'note', 'pending', 'removed', 'renameTo'],
+  export: ['callOptions', 'hint', 'inline', 'listNote', 'memberKeys', 'members', 'note', 'pending', 'removed', 'renameTo'],
   member: ['hint', 'to'],
   prop: ['always', 'coerce', 'constant', 'defaultWas', 'dropDefault', 'hint', 'moveTo', 'note', 'pending', 'remove', 'renameTo', 'stacking', 'todoUnless', 'v19Look', 'values'],
   top: ['components', 'exports', 'from', 'package', 'statics', 'to'],

@@ -1,8 +1,8 @@
-/* TODO(ods-v20): SpinnerColor: removed in v20, delete it from this import once the places marked below no longer use it */ import { Divider, Modal, ModalBody, ModalContent, SPINNER_SIZE, Spinner, type SpinnerColor } from '@ovhcloud/ods-react';
+import { Divider, Modal, ModalBody, ModalContent, SPINNER_SIZE, Spinner } from '@ovhcloud/ods-react';
 
-type LoaderProp = { color?: /* TODO(ods-v20): SpinnerColor has no v20 equivalent: the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color */ SpinnerColor };
+type LoaderProp = { color?: 'neutral' | 'primary' };
 
-export const Example = ({ isCritical, tone }: { isCritical: boolean, tone: /* TODO(ods-v20): SpinnerColor has no v20 equivalent: the v20 Spinner has a single default color: delete the prop, or set `--ods-spinner-color: var(--ods-semantic-color-content-neutral)` through a `className` to keep the v19 neutral color */ SpinnerColor }) => (
+export const Example = ({ isCritical, tone }: { isCritical: boolean, tone: 'neutral' | 'primary' }) => (
   <>
     <Divider />
     <Divider />

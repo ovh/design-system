@@ -1677,9 +1677,46 @@ function migrationRule(rawMapping) {
           // The specifiers that nothing reads any more, per statement; the statements whose removed specifiers are still read.
           const unused = [];
           const stillRead = new Map();
+          // A removed string enum (`inline`) that feeds the app's own code: its reads become the literals, as in the codemod.
+          const enumQuote = sourceCode.ast.body.find((statement) => statement.type === 'ImportDeclaration')?.source.raw[0] ?? '\'';
+          const enumLiteral = (value) => `${enumQuote}${value}${enumQuote}`;
+          const inlineOf = (identifier, rule) => {
+            const values = rule.inline;
+            const parent = identifier.parent;
+            if (!values || within(flagged, identifier)) {
+              return null;
+            }
+            if (Array.isArray(values)) {
+              const key = parent.type === 'MemberExpression' && parent.object === identifier
+                ? (parent.computed ? (isString(parent.property) ? parent.property.value : undefined) : parent.property.name)
+                : parent.type === 'TSQualifiedName' && parent.left === identifier ? parent.right.name : undefined;
+              if (key !== undefined) {
+                return values.includes(key) ? { node: parent.type === 'TSQualifiedName' && parent.parent.type === 'TSTypeReference' ? parent.parent : parent, text: enumLiteral(key) } : null;
+              }
+              if (!(parent.type === 'TSTypeReference' && parent.typeName === identifier)) {
+                return null;
+              }
+              // Bare where the union is the whole type, in parentheses elsewhere (`ModalColor[]`), as in the codemod.
+              const union = values.map(enumLiteral).join(' | ');
+              const bare = values.length === 1 || ['TSTypeAnnotation', 'TSTypeAliasDeclaration', 'TSUnionType', 'TSTypeParameterInstantiation'].includes(parent.parent?.type);
+              return { node: parent, text: bare ? union : `(${union})` };
+            }
+            return parent.type !== 'TSTypeQuery' && !(parent.type === 'TSTypeReference') ? { node: identifier, text: `([${values.list.map(enumLiteral).join(', ')}] as const)` } : null;
+          };
           for (const { node, rule, spec } of removedSpecifiers) {
             const name = spec.imported.name;
-            const reads = (sourceCode.getDeclaredVariables(spec)[0]?.references ?? []).filter((reference) => !within(dropped, reference.identifier));
+            const reads = (sourceCode.getDeclaredVariables(spec)[0]?.references ?? []).filter((reference) => !within(dropped, reference.identifier)).filter((reference) => {
+              const inline = inlineOf(reference.identifier, rule);
+              if (inline) {
+                context.report({
+                  data: { from: sourceCode.getText(inline.node), to: inline.text },
+                  fix: (fixer) => fixer.replaceText(inline.node, inline.text),
+                  messageId: 'inlinedExport',
+                  node: inline.node,
+                });
+              }
+              return !inline;
+            });
             // `Switch.Item` is a part of Switch: the root of a JSX tag name is the export it reads.
             const tagRoot = (name) => (name.type === 'JSXMemberExpression' ? tagRoot(name.object) : name.name);
             for (const { identifier } of reads.filter((reference) => !within(flagged, reference.identifier))) {
@@ -1753,6 +1790,7 @@ function migrationRule(rawMapping) {
       fixable: 'code',
       messages: {
         ambiguousType: '{{detail}}.',
+        inlinedExport: '{{from}} is removed in ODS v20: write the value it stood for, {{to}}.',
         childless: '{{detail}}.',
         coercedValue: '{{detail}}.',
         feedsProp: '{{detail}}.',

@@ -2182,9 +2182,48 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // `Switch.Item` is a part of Switch: the root of a JSX tag name is the export it reads.
   const tagRoot = (element) => element?.field('name')?.text().split('.')[0];
   const JSX_TAGS = ['jsx_opening_element', 'jsx_self_closing_element', 'jsx_closing_element'];
+  // A removed string enum (its v19 values in `inline`) that feeds the app's own code: its reads become the
+  // literals they stood for, so the code keeps compiling; a read with no literal form stays marked.
+  const enumQuote = importStatements[0] ? quoteOf(importStatements[0].statement.field('source')) : '\'';
+  const enumLiteral = (value) => `${enumQuote}${value}${enumQuote}`;
+  const inlineOf = (node, rule) => {
+    const values = rule.inline;
+    if (!values) {
+      return null;
+    }
+    const parent = node.parent();
+    if (Array.isArray(values)) {
+      // `MODAL_COLOR.critical`, `MODAL_COLOR['critical']`, the type `MODAL_COLOR.critical`.
+      const key = parent?.kind() === 'member_expression' && sameRange(parent.field('object'), node) ? parent.field('property')?.text()
+        : parent?.kind() === 'subscript_expression' && sameRange(parent.field('object'), node) ? stringValue(parent.field('index'))
+          : parent?.kind() === 'nested_type_identifier' && sameRange(parent.child(0), node) ? parent.children().at(-1).text() : null;
+      if (key) {
+        return values.includes(key) ? { node: parent, text: enumLiteral(key) } : null;
+      }
+      // The type `ModalColor` or `MODAL_COLOR`: the union of its values.
+      if (node.kind() !== 'type_identifier') {
+        return null;
+      }
+      // Bare where the union is the whole type (`color?: ModalColor`, `type T = ModalColor`, a union member), in parentheses elsewhere (`ModalColor[]`).
+      const union = values.map(enumLiteral).join(' | ');
+      const bare = values.length === 1 || ['type_annotation', 'type_alias_declaration', 'union_type', 'type_arguments'].includes(parent?.kind());
+      return { node, text: bare ? union : `(${union})` };
+    }
+    // `MODAL_COLORS`: the list of the values, read-only as the v19 one.
+    return node.kind() === 'identifier' && parent?.kind() !== 'typeof_type' ? { node, text: `([${values.list.map(enumLiteral).join(', ')}] as const)` } : null;
+  };
   for (const [local, nodes] of references) {
     const rule = localExports.get(local)?.rule;
-    const kept = nodes.filter((node) => !within(dropped, node));
+    let kept = nodes.filter((node) => !within(dropped, node));
+    if (rule?.removed && rule.inline) {
+      kept = kept.filter((node) => {
+        const inline = !within(flagged, node) && inlineOf(node, rule);
+        if (inline) {
+          replace(inline.node, inline.text, `${inline.node.text()} → ${inline.text} (removed in v${mapping.to}: the value it stood for)`);
+        }
+        return !inline;
+      });
+    }
     reads.set(local, { kept: kept.length, total: nodes.length });
     if (!rule?.removed) {
       continue;

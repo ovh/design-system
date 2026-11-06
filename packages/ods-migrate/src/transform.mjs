@@ -233,6 +233,8 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   const ownTyped = options.ownTyped ?? {};
   const odsNameOf = (specifier, name) => (sources?.has(specifier) && !isPackage(specifier) ? odsNameIn(sources.get(specifier), name) : name);
   const isWrapper = (specifier, name) => Boolean(sources?.has(specifier) && !isPackage(specifier) && sources.get(specifier).wrappers?.[name]);
+  // A wrapper whose props' children reach the ODS element: a childless use gets its parts written out, as the component would.
+  const passesChildren = (specifier, name) => Boolean(sources?.get(specifier)?.childrenThrough?.includes(name));
   const report = { changes: [], looks: [], notes: [], todos: [], typed: [], untyped: [] };
   // In TypeScript a leftover old value fails the type check once the types are renamed, so a value
   // computed at runtime is left to tsc. In untyped code nothing would catch it: it is listed for --check.
@@ -376,8 +378,10 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   const importStatements = [];
   const componentImport = new Map();
   // Wrapper components of the project (`<GuardedButton>`, a Button): migrated like the component, but
-  // they get no v19-look addition (their inner ODS element does) and no parts written out.
+  // they get no v19-look addition (their inner ODS element does), and parts written out only when they pass their children on.
   const wrapperLocals = new Set();
+  // The wrappers among them that pass their children on, with their import (where the parts written out are added).
+  const childrenLocals = new Map();
 
   for (const statement of root.findAll({ rule: { kind: 'import_statement' } })) {
     const sourceNode = statement.field('source');
@@ -404,6 +408,8 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       localComponents.set(defaultName, defaultOds);
       if (isWrapper(specifier, 'default')) {
         wrapperLocals.add(defaultName);
+        // A default import has no list of its own: the parts go to the package import.
+        if (passesChildren(specifier, 'default')) childrenLocals.set(defaultName, { get added() { return packageAdded; }, specifier: mapping.package });
       }
     }
 
@@ -435,6 +441,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
         localComponents.set(local, imported);
         if (isWrapper(specifier, written)) {
           wrapperLocals.add(local);
+          if (passesChildren(specifier, written)) childrenLocals.set(local, info);
         } else {
           componentImport.set(local, info);
         }
@@ -2066,7 +2073,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   for (const element of elements) {
     const nameNode = element.field('name');
     const component = componentOfTag(nameNode?.text());
-    const childless = component && !wrapperLocals.has(nameNode.text()) && mapping.components[component].childless;
+    const childless = component && (!wrapperLocals.has(nameNode.text()) || childrenLocals.has(nameNode.text())) && mapping.components[component].childless;
     if (!childless) {
       continue;
     }
@@ -2083,7 +2090,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       continue;
     }
     const attributes = new Map(element.children().filter((child) => child.kind() === 'jsx_attribute').map((attribute) => [attribute.child(0).text(), attribute]));
-    const info = componentImport.get(nameNode.text());
+    const info = componentImport.get(nameNode.text()) ?? childrenLocals.get(nameNode.text());
     const localOf = (part) => [...importedLocals].find(([, imported]) => imported === part)?.[0];
     const removeRoot = (name) => {
       const attribute = attributes.get(name);

@@ -551,6 +551,7 @@ function serializeModules(index, dir) {
       names: Object.fromEntries(Object.entries(entry.names).sort(([a], [b]) => (a < b ? -1 : 1))),
       ...(entry.star && entry.shadow.length ? { shadow: [...entry.shadow].sort() } : {}),
       ...(Object.keys(entry.wrappers ?? {}).length ? { wrappers: Object.fromEntries(Object.entries(entry.wrappers).sort(([a], [b]) => (a < b ? -1 : 1))) } : {}),
+      ...(entry.childrenThrough?.length ? { childrenThrough: [...entry.childrenThrough].sort() } : {}),
       ...(Object.keys(entry.typed ?? {}).length ? { typed: Object.fromEntries(Object.entries(entry.typed).sort(([a], [b]) => (a < b ? -1 : 1))) } : {}),
     };
   }
@@ -587,7 +588,7 @@ function loadModulesFile(path) {
     if (raw?.version === 1 && raw.modules && typeof raw.modules === 'object') {
       const dir = dirname(path);
       value = {
-        modules: new Map(Object.entries(raw.modules).map(([file, entry]) => [resolve(dir, file), { names: entry.names ?? {}, shadow: entry.shadow ?? [], star: Boolean(entry.star), typed: entry.typed ?? {}, wrappers: entry.wrappers ?? {} }])),
+        modules: new Map(Object.entries(raw.modules).map(([file, entry]) => [resolve(dir, file), { names: entry.names ?? {}, shadow: entry.shadow ?? [], star: Boolean(entry.star), typed: entry.typed ?? {}, wrappers: entry.wrappers ?? {}, childrenThrough: entry.childrenThrough ?? [] }])),
         components: new Map(Object.entries(raw.components ?? {}).map(([file, typed]) => [resolve(dir, file), typed ?? {}])),
         treatAsOds: Array.isArray(raw.treatAsOds) ? raw.treatAsOds.filter((name) => typeof name === 'string') : [],
         workspace: new Map(Object.entries(raw.workspace ?? {}).map(([name, packageDir]) => [name, resolve(dir, packageDir)])),

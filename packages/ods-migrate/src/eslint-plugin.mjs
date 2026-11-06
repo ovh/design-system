@@ -324,8 +324,10 @@ function importTracker(mapping, { standsForOds = () => true, targetOf }) {
     components: new Map(),
     // The ODS name of each named import (null: a name of a module of the project that is not ODS).
     odsNames: new Map(),
-    // Wrapper components of the project (`<GuardedButton>`, a Button): no v19-look addition, no parts written out.
+    // Wrapper components of the project (`<GuardedButton>`, a Button): no v19-look addition, no parts written out unless they pass their children on.
     wrappers: new Set(),
+    // The wrappers among them whose props' children reach the ODS element.
+    childrenWrappers: new Set(),
     // Every named import of the package: local name → imported name.
     imports: new Map(),
     importNodes: [],
@@ -365,6 +367,7 @@ function importTracker(mapping, { standsForOds = () => true, targetOf }) {
           state.components.set(spec.local.name, name);
           if (target.wrappers?.default) {
             state.wrappers.add(spec.local.name);
+            if (target.childrenThrough?.includes('default')) state.childrenWrappers.add(spec.local.name);
           }
         }
         continue;
@@ -383,6 +386,7 @@ function importTracker(mapping, { standsForOds = () => true, targetOf }) {
         state.components.set(spec.local.name, name);
         if (target !== true && target.wrappers?.[written]) {
           state.wrappers.add(spec.local.name);
+          if (target.childrenThrough?.includes(written)) state.childrenWrappers.add(spec.local.name);
         }
       }
       if (propsTypeOwners.has(name)) {
@@ -1320,7 +1324,7 @@ function migrationRule(rawMapping) {
 
           const childless = spec.childless;
           const empty = node.selfClosing || node.parent.children.every((child) => child.type === 'JSXText' && child.value.trim() === '');
-          if (childless && empty && spreads.length === 0 && !imports.wrappers.has(node.name.name)) {
+          if (childless && empty && spreads.length === 0 && (!imports.wrappers.has(node.name.name) || imports.childrenWrappers.has(node.name.name))) {
             const result = childlessFix(node, component, childless, byName);
             // Kept as they are when the parts cannot be built: the integrator still needs them.
             result.consumed.forEach((attribute) => consumed.add(attribute));

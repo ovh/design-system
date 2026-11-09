@@ -33,8 +33,14 @@ interface DemoFrameProp {
 
 /* Applies theme + token overrides on the iframe's own document. Lives inside
    the frame so FrameContext resolves to the frame document, not the parent. */
-const FrameEnv = ({ dark, tokens }: Omit<DemoFrameProp, 'children'>) => {
+const FrameEnv = ({ dark, title, tokens }: Omit<DemoFrameProp, 'children'>) => {
   const { document: frameDocument } = useContext(FrameContext);
+
+  useEffect(() => {
+    if (frameDocument && title !== undefined) {
+      frameDocument.title = title;
+    }
+  }, [frameDocument, title]);
 
   useEffect(() => {
     if (!frameDocument) {
@@ -264,7 +270,7 @@ const HTML_ENTITIES: Record<string, string> = { '"': '&quot;', '&': '&amp;', '\'
 
 const escapeHtml = (text: string): string => text.replace(/["&'<>]/g, (char) => HTML_ENTITIES[char]);
 
-const initialContent = (title: string): string => `<!DOCTYPE html><html lang="${escapeHtml(document.documentElement.lang || 'en')}"><head><base href="${APP_ROOT.href}"><title>${escapeHtml(title)}</title></head><body><div id="mount"></div></body></html>`;
+const initialContent = (title: string): string => `<!DOCTYPE html><html lang="${escapeHtml(document.documentElement.lang || 'en')}"><head><base href="${escapeHtml(APP_ROOT.href)}"><title>${escapeHtml(title)}</title></head><body><div id="mount"></div></body></html>`;
 
 // A font request that never settles must not hold the demo behind its skeleton.
 const FONTS_TIMEOUT = 2000;
@@ -284,12 +290,12 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
     Promise.race([
       frameDocument.fonts.ready,
       new Promise((resolve) => { timeout = window.setTimeout(resolve, FONTS_TIMEOUT); }),
-    ]).then(() => {
+    ]).finally(() => {
       window.clearTimeout(timeout);
       if (!cancelled) {
         requestAnimationFrame(() => onReady(frameDocument));
       }
-    });
+    }).catch(() => {});
     return () => {
       cancelled = true;
       window.clearTimeout(timeout);
@@ -301,7 +307,7 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
 
 const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
-  // Frozen: it is the frame srcdoc, and a new one would reload the frame.
+  // Frozen: it is the frame srcdoc, and a new one would reload the frame. FrameEnv keeps the title in sync.
   const [content] = useState(() => initialContent(title));
 
   return (
@@ -330,7 +336,7 @@ const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 
           : { display: 'block', height: 0, visibility: 'hidden', width: '100%' } }>
         <StyleSync />
         <FrameAutoSize active={ ready } />
-        <FrameEnv dark={ dark } tokens={ tokens } />
+        <FrameEnv dark={ dark } title={ title } tokens={ tokens } />
         <FrameLinks />
         <FrameReady onReady={ (frameDocument) => { setReady(true); onReady?.(frameDocument); } } />
         <FrameRealm>{ children }</FrameRealm>

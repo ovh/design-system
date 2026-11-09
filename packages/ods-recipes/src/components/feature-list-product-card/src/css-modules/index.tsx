@@ -59,7 +59,9 @@ const FeatureListProductCard = (): JSX.Element => {
         <Select
           defaultValue={ ['hosting-1'] }
           items={ HOSTING_ITEMS }>
-          <SelectControl placeholder="Select option" />
+          <SelectControl
+            aria-label="Hosting plan"
+            placeholder="Select option" />
 
           <SelectContent />
         </Select>
@@ -153,6 +155,7 @@ const FeatureListProductCard = (): JSX.Element => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Icon
+                        aria-label={ `More information about ${title}` }
                         className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
                         name={ ICON_NAME.circleQuestion } />
                     </TooltipTrigger>
@@ -184,6 +187,7 @@ const FeatureListProductCard = (): JSX.Element => {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Icon
+                                aria-label={ `More information about ${label}` }
                                 className={ style['feature-list-product-card__features__section__items__item__tooltip-trigger'] }
                                 name={ ICON_NAME.circleQuestion } />
                             </TooltipTrigger>

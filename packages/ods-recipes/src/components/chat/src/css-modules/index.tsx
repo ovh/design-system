@@ -81,7 +81,7 @@ const ChatRoot = (): JSX.Element => {
         <PromptInputControls>
           <PromptInputFileUploadButton multiple />
 
-          <PromptInputTextControl />
+          <PromptInputTextControl aria-label="Message" />
 
           <PromptInputSendButton />
         </PromptInputControls>

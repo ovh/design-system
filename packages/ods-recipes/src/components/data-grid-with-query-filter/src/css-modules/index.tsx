@@ -120,7 +120,9 @@ const DataGridWithQueryFilter = (): JSX.Element => {
         filterOption={ queryFilterOption }
         filterProperty={ queryFilterProperty }
         onValueChange={ ({ value }) => setFilters(value) }>
-        <QueryFilterControl className={ style['data-grid-with-query-filter__toolbar__control'] } />
+        <QueryFilterControl
+          aria-label="Filter instances"
+          className={ style['data-grid-with-query-filter__toolbar__control'] } />
 
         <QueryFilterContent />
 

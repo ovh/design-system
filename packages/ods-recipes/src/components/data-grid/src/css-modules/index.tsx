@@ -55,7 +55,7 @@ const columns: DataTableColumnDef<Person>[] = [
     accessorKey: 'ip',
     cell: ({ cell }) => (
       <Clipboard value={ cell.getValue<string>() }>
-        <ClipboardControl />
+        <ClipboardControl aria-label={ `IP address of ${cell.row.original.firstName} ${cell.row.original.lastName}` } />
         <ClipboardTrigger />
       </Clipboard>
     ),
@@ -69,11 +69,12 @@ const columns: DataTableColumnDef<Person>[] = [
     },
   },
   {
-    cell: () => (
+    cell: ({ cell }) => (
       <div className={ style['data-grid__table__cell__action-menu'] }>
         <Menu>
           <MenuTrigger asChild>
             <Button
+              aria-label={ `Actions for ${cell.row.original.firstName} ${cell.row.original.lastName}` }
               emphasis={ BUTTON_EMPHASIS.low }
               size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.ellipsisVertical } />
@@ -224,6 +225,7 @@ const DataGrid = (): JSX.Element => {
 
         <div className={ style['data-grid__toolbar__search'] }>
           <Button
+            aria-label="Refresh"
             emphasis={ BUTTON_EMPHASIS.medium }
             onClick={ () => updateData(currentPage, pageSize, searchQuery) }
             size={ BUTTON_SIZE.sm }>
@@ -232,6 +234,7 @@ const DataGrid = (): JSX.Element => {
 
           <form onSubmit={ onSearch }>
             <Input
+              aria-label="Search users"
               clearable
               name="query"
               type={ INPUT_TYPE.search } />

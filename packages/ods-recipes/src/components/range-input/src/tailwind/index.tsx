@@ -19,12 +19,14 @@ const RangeInput = (): JSX.Element => {
   return (
     <div className="grid grid-cols-[1fr_min-content] gap-x-[calc(var(--ods-semantic-size-space-gap-inline)_*_2)] items-baseline">
       <Range
+        aria-label={ ['Value'] }
         max={ MAX }
         min={ MIN }
         onDragging={ onRangeDragging }
         value={ draggingValues } />
 
       <Input
+        aria-label="Value"
         className="w-[60px]"
         max={ MAX }
         min={ MIN }

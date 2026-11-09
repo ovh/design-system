@@ -53,10 +53,8 @@ const DashboardCard = (): JSX.Element => {
           ID
         </Text>
 
-        <Clipboard
-          aria-labelledby="cluster-id"
-          value="b50879e0-735e-44f5-8ff9-d563303039f0">
-          <ClipboardControl />
+        <Clipboard value="b50879e0-735e-44f5-8ff9-d563303039f0">
+          <ClipboardControl aria-labelledby="cluster-id" />
 
           <ClipboardTrigger />
         </Clipboard>
@@ -141,6 +139,7 @@ const DashboardCard = (): JSX.Element => {
         <Menu>
           <MenuTrigger asChild>
             <Button
+              aria-label="More actions"
               emphasis={ BUTTON_EMPHASIS.low }
               size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.ellipsisVertical } />

@@ -50,13 +50,22 @@ export const Overview: Story = {
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
+      <TabContent value="tab1">
+        <p>Content 1</p>
+      </TabContent>
+      <TabContent value="tab2">
+        <p>Content 2</p>
+      </TabContent>
+      <TabContent value="tab3">
+        <p>Content 3</p>
+      </TabContent>
     </Tabs>
   ),
 };
 
 export const Default: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -66,13 +75,22 @@ export const Default: Story = {
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
+      <TabContent value="tab1">
+        <p>Content 1</p>
+      </TabContent>
+      <TabContent value="tab2">
+        <p>Content 2</p>
+      </TabContent>
+      <TabContent value="tab3">
+        <p>Content 3</p>
+      </TabContent>
     </Tabs>
   ),
 };
 
 export const Variant: Story = {
   globals: {
-    imports: `import { TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { TABS_VARIANT, Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -84,13 +102,22 @@ export const Variant: Story = {
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
+      <TabContent value="tab1">
+        <p>Content 1</p>
+      </TabContent>
+      <TabContent value="tab2">
+        <p>Content 2</p>
+      </TabContent>
+      <TabContent value="tab3">
+        <p>Content 3</p>
+      </TabContent>
     </Tabs>
   ),
 };
 
 export const Size: Story = {
   globals: {
-    imports: `import { TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { TABS_SIZE, TABS_VARIANT, Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -105,6 +132,15 @@ export const Size: Story = {
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
 
       <p>SM</p>
@@ -117,6 +153,15 @@ export const Size: Story = {
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
 
       <p>XS</p>
@@ -129,6 +174,15 @@ export const Size: Story = {
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
     </>
   ),
@@ -136,7 +190,7 @@ export const Size: Story = {
 
 export const Disabled: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -146,13 +200,22 @@ export const Disabled: Story = {
         <Tab value="tab2" disabled>Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
       </TabList>
+      <TabContent value="tab1">
+        <p>Content 1</p>
+      </TabContent>
+      <TabContent value="tab2">
+        <p>Content 2</p>
+      </TabContent>
+      <TabContent value="tab3">
+        <p>Content 3</p>
+      </TabContent>
     </Tabs>
   ),
 };
 
 export const Overflow: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -166,6 +229,12 @@ export const Overflow: Story = {
           <Tab value="tab5">Tab 5</Tab>
           <Tab value="tab6">Tab 6</Tab>
         </TabList>
+        <TabContent value="tab1"><p>Content 1</p></TabContent>
+        <TabContent value="tab2"><p>Content 2</p></TabContent>
+        <TabContent value="tab3"><p>Content 3</p></TabContent>
+        <TabContent value="tab4"><p>Content 4</p></TabContent>
+        <TabContent value="tab5"><p>Content 5</p></TabContent>
+        <TabContent value="tab6"><p>Content 6</p></TabContent>
       </Tabs>
     </div>
   ),
@@ -173,7 +242,7 @@ export const Overflow: Story = {
 
 export const WithArrows: Story = {
   globals: {
-    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -197,6 +266,21 @@ export const WithArrows: Story = {
         <Tab value="tab14">Tab 14</Tab>
         <Tab value="tab15">Tab 15</Tab>
       </TabList>
+      <TabContent value="tab1"><p>Content 1</p></TabContent>
+      <TabContent value="tab2"><p>Content 2</p></TabContent>
+      <TabContent value="tab3"><p>Content 3</p></TabContent>
+      <TabContent value="tab4"><p>Content 4</p></TabContent>
+      <TabContent value="tab5"><p>Content 5</p></TabContent>
+      <TabContent value="tab6"><p>Content 6</p></TabContent>
+      <TabContent value="tab7"><p>Content 7</p></TabContent>
+      <TabContent value="tab8"><p>Content 8</p></TabContent>
+      <TabContent value="tab9"><p>Content 9</p></TabContent>
+      <TabContent value="tab10"><p>Content 10</p></TabContent>
+      <TabContent value="tab11"><p>Content 11</p></TabContent>
+      <TabContent value="tab12"><p>Content 12</p></TabContent>
+      <TabContent value="tab13"><p>Content 13</p></TabContent>
+      <TabContent value="tab14"><p>Content 14</p></TabContent>
+      <TabContent value="tab15"><p>Content 15</p></TabContent>
     </Tabs>
   ),
 };
@@ -262,7 +346,7 @@ export const ProductDetail: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Tab, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
+    imports: `import { Tab, TabContent, TabList, Tabs, type TabsValueChangeEvent } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -287,6 +371,15 @@ import { useState } from 'react';`,
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
     );
   },

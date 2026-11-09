@@ -32,9 +32,11 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Range />
+      <Range aria-label={ ['Value'] } />
 
-      <Range defaultValue={ [50, 75] } />
+      <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
+        defaultValue={ [50, 75] } />
     </>
   ),
 };
@@ -48,10 +50,12 @@ export const Disabled: Story = {
   render: ({}) => (
     <>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [20] }
         disabled />
 
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         disabled />
     </>
@@ -67,26 +71,32 @@ export const MaxMin: Story = {
     <>
       <p>Max 500</p>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [50] }
         max={ 500 } />
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         max={ 500 } />
 
       <p>Min 25</p>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [50] }
         min={ 25 } />
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         min={ 25 } />
 
       <p>Max 75 & Min 25</p>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [50] }
         max={ 75 }
         min={ 25 } />
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         max={ 75 }
         min={ 25 } />
@@ -103,10 +113,12 @@ export const Step: Story = {
   render: ({}) => (
     <>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [20] }
         step={ 5 } />
 
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         step={ 5 } />
     </>
@@ -122,10 +134,12 @@ export const Ticks: Story = {
   render: ({}) => (
     <>
       <Range
+        aria-label={ ['Value'] }
         defaultValue={ [20] }
         ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
 
       <Range
+        aria-label={ ['Minimum value', 'Maximum value'] }
         defaultValue={ [50, 75] }
         ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
     </>
@@ -139,7 +153,9 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Range defaultValue={ [50] } />
+    <Range
+      aria-label={ ['Value'] }
+      defaultValue={ [50] } />
   ),
 };
 
@@ -156,13 +172,16 @@ export const TicksLabels: Story = {
   },
   render: ({}) => (
     <>
-      <Range ticks={[
-        { label: 'Low', value: 25 },
-        { label: 'Medium', value: 50 },
-        { label: 'High', value: 75 },
-      ]} />
+      <Range
+        aria-label={ ['Value'] }
+        ticks={[
+          { label: 'Low', value: 25 },
+          { label: 'Medium', value: 50 },
+          { label: 'High', value: 75 },
+        ]} />
 
       <Range
+        aria-label={ ['Value'] }
         displayBounds={ false }
         displayTooltip={ false }
         max={ 5 }
@@ -210,6 +229,7 @@ import { useState } from 'react';`,
         </p>
 
         <Range
+          aria-label={ ['Value'] }
           onDragging={ onDragging }
           onValueChange={ onValueChange }
           value={ draggingValue ? [draggingValue] : undefined } />

@@ -122,6 +122,9 @@ const ChangelogRoute = () => (
    bounce off the root 404.html (or are emitted directly by the app for
    new-tab opens) as <root>/?p=/route&other=params. Restore the real URL
    before the router mounts so the route resolves and stays shareable. */
+if (window.location.pathname === `${BASENAME}/index.html`) {
+  history.replaceState(null, '', `${BASENAME}/${window.location.search}${window.location.hash}`);
+}
 const bounced = new URLSearchParams(window.location.search);
 const deepLink = bounced.get('p');
 const legacyLink = bounced.get('path');

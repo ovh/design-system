@@ -18,7 +18,7 @@ export const Default: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Meter />
+    <Meter aria-label="Gauge" />
   ),
 };
 
@@ -31,17 +31,20 @@ export const Thresholds: Story = {
     <>
       <p>Value under low threshold:</p>
       <Meter
+        aria-label="Value under low threshold"
         low={ 40 }
         value={ 35 } />
 
       <p>Value between both thresholds:</p>
       <Meter
+        aria-label="Value between both thresholds"
         high={ 80 }
         low={ 40 }
         value={ 60 } />
 
       <p>Value above high threshold:</p>
       <Meter
+        aria-label="Value above high threshold"
         high={ 80 }
         value={ 90 } />
     </>
@@ -57,6 +60,7 @@ export const Optimum: Story = {
     <>
       <p>Low optimum and low value:</p>
       <Meter
+        aria-label="Low optimum and low value"
         high={ 80 }
         low={ 40 }
         optimum={ 30 }
@@ -64,6 +68,7 @@ export const Optimum: Story = {
 
       <p>Low optimum and high value:</p>
       <Meter
+        aria-label="Low optimum and high value"
         high={ 80 }
         low={ 40 }
         optimum={ 30 }
@@ -71,6 +76,7 @@ export const Optimum: Story = {
 
       <p>Low optimum and very high value:</p>
       <Meter
+        aria-label="Low optimum and very high value"
         high={ 80 }
         low={ 40 }
         optimum={ 30 }
@@ -128,6 +134,7 @@ export const Overview: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Meter
+      aria-label="Gauge"
       low={ 40 }
       value={ 35 } />
   ),

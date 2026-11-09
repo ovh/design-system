@@ -101,7 +101,7 @@ import { useState } from 'react';`,
 
         <Menu open={ isOpen }>
           <MenuTrigger asChild>
-            <Icon name={ ICON_NAME.ellipsisVertical } />
+            <Icon aria-label="Actions" name={ ICON_NAME.ellipsisVertical } />
           </MenuTrigger>
           <MenuContent>
             <MenuItem value='profile'>Profile</MenuItem>

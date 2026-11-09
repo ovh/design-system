@@ -260,7 +260,12 @@ const FrameLinks = () => {
   return null;
 };
 
-const INITIAL_CONTENT = `<!DOCTYPE html><html><head><base href="${APP_ROOT.href}"></head><body><div id="mount"></div></body></html>`;
+const escapeHtml = (text: string): string => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+
+const initialContent = (title: string): string => `<!DOCTYPE html><html lang="${escapeHtml(document.documentElement.lang || 'en')}"><head><base href="${APP_ROOT.href}"><title>${escapeHtml(title)}</title></head><body><div id="mount"></div></body></html>`;
+
+// A font request that never settles must not hold the demo behind its skeleton.
+const FONTS_TIMEOUT = 2000;
 
 /* Flips ready once the frame content has painted with its fonts, so the
    parent can swap the skeleton for the real frame without layout jumps.
@@ -273,12 +278,20 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
       return;
     }
     let cancelled = false;
-    frameDocument.fonts.ready.then(() => {
+    let timeout = 0;
+    Promise.race([
+      frameDocument.fonts.ready,
+      new Promise((resolve) => { timeout = window.setTimeout(resolve, FONTS_TIMEOUT); }),
+    ]).then(() => {
+      window.clearTimeout(timeout);
       if (!cancelled) {
         requestAnimationFrame(() => onReady(frameDocument));
       }
     });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+    };
   }, [frameDocument, onReady]);
 
   return null;
@@ -286,6 +299,8 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
 
 const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
+  // Frozen: it is the frame srcdoc, and a new one would reload the frame.
+  const [content] = useState(() => initialContent(title));
 
   return (
     <>
@@ -303,7 +318,7 @@ const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 
         head={
           <style>{ `${normalizeCss}\n${fontsCss}\n${themeCss}\nhtml { overflow: hidden; } html body { margin: 0; padding: ${ inset ? 16 : 4 }px; background: ${ pageSurface ? 'var(--ods-semantic-color-surface-page)' : 'var(--ods-semantic-color-surface-raised)' }; color: var(--ods-semantic-color-content-text); font-family: var(--ods-semantic-font-family-body); } [data-scope="dialog"][data-part="content"][data-state="closed"] { pointer-events: none; visibility: hidden; }` }</style>
         }
-        initialContent={ INITIAL_CONTENT }
+        initialContent={ content }
         mountTarget="#mount"
         title={ title }
         style={ ready

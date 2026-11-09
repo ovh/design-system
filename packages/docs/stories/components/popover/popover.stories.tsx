@@ -105,7 +105,7 @@ import { useState } from 'react';`,
 
         <Popover open={ isOpen }>
           <PopoverTrigger asChild>
-            <Icon name={ ICON_NAME.cog } />
+            <Icon aria-label="Settings" name={ ICON_NAME.cog } />
           </PopoverTrigger>
 
           <PopoverContent withArrow>
@@ -261,7 +261,7 @@ export const ZIndex: Story = {
 
       <Popover open>
         <PopoverTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </PopoverTrigger>
 
         <PopoverContent withArrow>
@@ -271,7 +271,7 @@ export const ZIndex: Story = {
 
       <Popover open>
         <PopoverTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </PopoverTrigger>
 
         <PopoverContent withArrow>
@@ -288,7 +288,7 @@ export const ZIndex: Story = {
         overlayConfig={{ position: POPOVER_POSITION.bottom }}
         positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
         <PopoverTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </PopoverTrigger>
 
         <PopoverContent withArrow>
@@ -300,7 +300,7 @@ export const ZIndex: Story = {
         open
         overlayConfig={{ position: POPOVER_POSITION.bottom }}>
         <PopoverTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </PopoverTrigger>
 
         <PopoverContent withArrow>

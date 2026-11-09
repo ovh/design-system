@@ -24,7 +24,7 @@ export const Default: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Spinner />
+    <Spinner aria-label="Loading" />
   ),
 };
 
@@ -35,8 +35,10 @@ export const Color: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
-      <Spinner />
+      <Spinner
+        aria-label="Loading"
+        style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
+      <Spinner aria-label="Loading" />
     </>
   ),
 };
@@ -47,7 +49,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Spinner />
+    <Spinner aria-label="Loading" />
   ),
 };
 
@@ -58,10 +60,10 @@ export const Size: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Spinner size={ SPINNER_SIZE.xs } />
-      <Spinner size={ SPINNER_SIZE.sm } />
-      <Spinner size={ SPINNER_SIZE.md } />
-      <Spinner size={ SPINNER_SIZE.lg } />
+      <Spinner aria-label="Loading" size={ SPINNER_SIZE.xs } />
+      <Spinner aria-label="Loading" size={ SPINNER_SIZE.sm } />
+      <Spinner aria-label="Loading" size={ SPINNER_SIZE.md } />
+      <Spinner aria-label="Loading" size={ SPINNER_SIZE.lg } />
     </>
   ),
 };
@@ -75,7 +77,7 @@ export const AccessibilityAriaBusyAriaLive: Story = {
     <div
       aria-busy="true"
       aria-live="polite">
-      <Spinner />
+      <Spinner aria-label="Loading" />
     </div>
   ),
 };

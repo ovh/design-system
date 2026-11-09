@@ -66,6 +66,7 @@ export const CustomTrigger: Story = {
     <Tooltip>
       <TooltipTrigger asChild>
         <Icon
+          aria-label="More information"
           name={ ICON_NAME.circleQuestion }
           style={{ fontSize: '24px' }} />
       </TooltipTrigger>
@@ -105,6 +106,7 @@ import { useState } from 'react';`,
         <Tooltip open={ isOpen }>
           <TooltipTrigger asChild>
             <Icon
+              aria-label="More information"
               name={ ICON_NAME.circleQuestion }
               style={{ fontSize: '24px' }} />
           </TooltipTrigger>
@@ -222,6 +224,7 @@ export const Overview: Story = {
     <Tooltip>
       <TooltipTrigger asChild>
         <Icon
+          aria-label="More information"
           name={ ICON_NAME.circleQuestion }
           style={{ fontSize: '24px' }} />
       </TooltipTrigger>
@@ -244,7 +247,7 @@ export const ZIndex: Story = {
 
       <Tooltip open>
         <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
 
         <TooltipContent withArrow>
@@ -254,7 +257,7 @@ export const ZIndex: Story = {
 
       <Tooltip open>
         <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
 
         <TooltipContent withArrow>
@@ -271,7 +274,7 @@ export const ZIndex: Story = {
         overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
         positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
         <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
 
         <TooltipContent withArrow>
@@ -283,7 +286,7 @@ export const ZIndex: Story = {
         open
         overlayConfig={{ position: TOOLTIP_POSITION.bottom }}>
         <TooltipTrigger asChild>
-          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+          <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
 
         <TooltipContent withArrow>

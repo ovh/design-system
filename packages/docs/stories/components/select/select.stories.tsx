@@ -60,7 +60,7 @@ export const Default: Story = {
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-      <SelectControl />
+      <SelectControl aria-label="Pet" />
 
       <SelectContent />
     </Select>
@@ -100,7 +100,7 @@ export const Group: Story = {
           ]
         },
       ]}>
-      <SelectControl />
+      <SelectControl aria-label="Country" />
 
       <SelectContent />
     </Select>
@@ -127,11 +127,13 @@ export const Multiple: Story = {
         multiple>
         <Text
           htmlFor="multiple"
+          id="multiple-label"
           preset={ TEXT_PRESET.label }>
           Default multiple selection
         </Text>
 
         <SelectControl
+          aria-labelledby="multiple-label"
           id="multiple"
           placeholder="Select one or more pets" />
 
@@ -150,11 +152,13 @@ export const Multiple: Story = {
         multiple="merge">
         <Text
           htmlFor="multiple-merged"
+          id="multiple-merged-label"
           preset={ TEXT_PRESET.label }>
           Merged multiple selection
         </Text>
 
         <SelectControl
+          aria-labelledby="multiple-merged-label"
           id="multiple-merged"
           placeholder="Select one or more pets" />
 
@@ -184,11 +188,13 @@ export const Disabled: Story = {
         ]}>
         <Text
           htmlFor="disabled"
+          id="disabled-label"
           preset={ TEXT_PRESET.label }>
           Disabled
         </Text>
 
         <SelectControl
+          aria-labelledby="disabled-label"
           id="disabled"
           placeholder="Select one or more pets" />
 
@@ -206,11 +212,13 @@ export const Disabled: Story = {
         ]}>
         <Text
           htmlFor="disabled-options"
+          id="disabled-options-label"
           preset={ TEXT_PRESET.label }>
           Disabled options
         </Text>
 
         <SelectControl
+          aria-labelledby="disabled-options-label"
           id="disabled-options"
           placeholder="Select one or more pets" />
 
@@ -247,11 +255,14 @@ export const Disabled: Story = {
         ]}>
         <Text
           htmlFor="disabled-group"
+          id="disabled-group-label"
           preset={ TEXT_PRESET.label }>
           Disabled group or group option
         </Text>
 
-        <SelectControl id="disabled-group" />
+        <SelectControl
+          aria-labelledby="disabled-group-label"
+          id="disabled-group" />
 
         <SelectContent />
       </Select>
@@ -275,7 +286,9 @@ export const Readonly: Story = {
         { label: 'Goldfish', value:'goldfish' },
       ]}
       readOnly>
-      <SelectControl placeholder="Select one or more pets" />
+      <SelectControl
+        aria-label="Pet"
+        placeholder="Select one or more pets" />
 
       <SelectContent />
     </Select>
@@ -348,25 +361,27 @@ export const CustomRenderer: Story = {
       <Select
         items={ items }
         multiple>
-        <SelectControl customItemRenderer={ ({ selectedItems }) => (
-          <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
-          {
-            selectedItems.map((item, idx) => (
-              <span
-                style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
-                key={ item.value }>
-                <img
-                  alt={ item.label }
-                  height={ 15 }
-                  src={ item.customRendererData?.logo }
-                  width={ 15 } />
+        <SelectControl
+          aria-label="Cloud provider"
+          customItemRenderer={ ({ selectedItems }) => (
+            <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
+            {
+              selectedItems.map((item, idx) => (
+                <span
+                  style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
+                  key={ item.value }>
+                  <img
+                    alt={ item.label }
+                    height={ 15 }
+                    src={ item.customRendererData?.logo }
+                    width={ 15 } />
 
-                <span>{ item.label }{ idx < selectedItems.length - 1 && ', '}</span>
-              </span>
-            ))
-          }
-        </span>
-        )} />
+                  <span>{ item.label }{ idx < selectedItems.length - 1 && ', '}</span>
+                </span>
+              ))
+            }
+          </span>
+          )} />
 
         <SelectContent
           customGroupRenderer={ ({ customData, label }) => (
@@ -437,7 +452,9 @@ export const Overview: Story = {
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-      <SelectControl placeholder="Select one or more pets" />
+      <SelectControl
+        aria-label="Pet"
+        placeholder="Select one or more pets" />
 
       <SelectContent />
     </Select>

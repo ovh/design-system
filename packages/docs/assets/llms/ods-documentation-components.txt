@@ -12262,7 +12262,7 @@ slug: menu
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 609
+tokens: 614
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu--examples.txt
 ---
 
@@ -12303,7 +12303,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
         <Menu open={ isOpen }>
           <MenuTrigger asChild>
-            <Icon name={ ICON_NAME.ellipsisVertical } />
+            <Icon aria-label="Actions" name={ ICON_NAME.ellipsisVertical } />
           </MenuTrigger>
           <MenuContent>
             <MenuItem value='profile'>Profile</MenuItem>
@@ -13444,7 +13444,7 @@ slug: meter
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 296
+tokens: 368
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter--examples.txt
 ---
 
@@ -13453,7 +13453,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 ## Default
 
 ```tsx
-<Meter />
+<Meter aria-label="Gauge" />
 ```
 
 ## Thresholds
@@ -13462,17 +13462,20 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <>
   <p>Value under low threshold:</p>
   <Meter
+    aria-label="Value under low threshold"
     low={ 40 }
     value={ 35 } />
 
   <p>Value between both thresholds:</p>
   <Meter
+    aria-label="Value between both thresholds"
     high={ 80 }
     low={ 40 }
     value={ 60 } />
 
   <p>Value above high threshold:</p>
   <Meter
+    aria-label="Value above high threshold"
     high={ 80 }
     value={ 90 } />
 </>
@@ -13484,6 +13487,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <>
   <p>Low optimum and low value:</p>
   <Meter
+    aria-label="Low optimum and low value"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }
@@ -13491,6 +13495,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <p>Low optimum and high value:</p>
   <Meter
+    aria-label="Low optimum and high value"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }
@@ -13498,6 +13503,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <p>Low optimum and very high value:</p>
   <Meter
+    aria-label="Low optimum and very high value"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }
@@ -16200,7 +16206,7 @@ slug: popover
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1253
+tokens: 1289
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--examples.txt
 ---
 
@@ -16254,7 +16260,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
         <Popover open={ isOpen }>
           <PopoverTrigger asChild>
-            <Icon name={ ICON_NAME.cog } />
+            <Icon aria-label="Settings" name={ ICON_NAME.cog } />
           </PopoverTrigger>
 
           <PopoverContent withArrow>
@@ -16368,7 +16374,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Popover open>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -16378,7 +16384,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Popover open>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -16395,7 +16401,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     overlayConfig={{ position: POPOVER_POSITION.bottom }}
     positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -16407,7 +16413,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     open
     overlayConfig={{ position: POPOVER_POSITION.bottom }}>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -18617,7 +18623,7 @@ slug: range
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 772
+tokens: 944
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-range--examples.txt
 ---
 
@@ -18627,9 +18633,11 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
 ```tsx
 <>
-  <Range />
+  <Range aria-label={ ['Value'] } />
 
-  <Range defaultValue={ [50, 75] } />
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] } />
 </>
 ```
 
@@ -18638,10 +18646,12 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 ```tsx
 <>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [20] }
     disabled />
 
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     disabled />
 </>
@@ -18653,26 +18663,32 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <>
   <p>Max 500</p>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [50] }
     max={ 500 } />
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     max={ 500 } />
 
   <p>Min 25</p>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [50] }
     min={ 25 } />
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     min={ 25 } />
 
   <p>Max 75 & Min 25</p>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [50] }
     max={ 75 }
     min={ 25 } />
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     max={ 75 }
     min={ 25 } />
@@ -18684,10 +18700,12 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 ```tsx
 <>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [20] }
     step={ 5 } />
 
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     step={ 5 } />
 </>
@@ -18698,10 +18716,12 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 ```tsx
 <>
   <Range
+    aria-label={ ['Value'] }
     defaultValue={ [20] }
     ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
 
   <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
     defaultValue={ [50, 75] }
     ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
 </>
@@ -18711,13 +18731,16 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
 ```tsx
 <>
-  <Range ticks={[
-    { label: 'Low', value: 25 },
-    { label: 'Medium', value: 50 },
-    { label: 'High', value: 75 },
-  ]} />
+  <Range
+    aria-label={ ['Value'] }
+    ticks={[
+      { label: 'Low', value: 25 },
+      { label: 'Medium', value: 50 },
+      { label: 'High', value: 75 },
+    ]} />
 
   <Range
+    aria-label={ ['Value'] }
     displayBounds={ false }
     displayTooltip={ false }
     max={ 5 }
@@ -18756,6 +18779,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
         </p>
 
         <Range
+          aria-label={ ['Value'] }
           onDragging={ onDragging }
           onValueChange={ onValueChange }
           value={ draggingValue ? [draggingValue] : undefined } />
@@ -19077,7 +19101,7 @@ slug: select
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 2453
+tokens: 2582
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-select--examples.txt
 ---
 
@@ -19094,7 +19118,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
   { label: 'Spider', value:'spider' },
   { label: 'Goldfish', value:'goldfish' },
 ]}>
-  <SelectControl />
+  <SelectControl aria-label="Pet" />
 
   <SelectContent />
 </Select>
@@ -19130,7 +19154,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       ]
     },
   ]}>
-  <SelectControl />
+  <SelectControl aria-label="Country" />
 
   <SelectContent />
 </Select>
@@ -19152,11 +19176,13 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     multiple>
     <Text
       htmlFor="multiple"
+      id="multiple-label"
       preset={ TEXT_PRESET.label }>
       Default multiple selection
     </Text>
 
     <SelectControl
+      aria-labelledby="multiple-label"
       id="multiple"
       placeholder="Select one or more pets" />
 
@@ -19175,11 +19201,13 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     multiple="merge">
     <Text
       htmlFor="multiple-merged"
+      id="multiple-merged-label"
       preset={ TEXT_PRESET.label }>
       Merged multiple selection
     </Text>
 
     <SelectControl
+      aria-labelledby="multiple-merged-label"
       id="multiple-merged"
       placeholder="Select one or more pets" />
 
@@ -19204,11 +19232,13 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     ]}>
     <Text
       htmlFor="disabled"
+      id="disabled-label"
       preset={ TEXT_PRESET.label }>
       Disabled
     </Text>
 
     <SelectControl
+      aria-labelledby="disabled-label"
       id="disabled"
       placeholder="Select one or more pets" />
 
@@ -19226,11 +19256,13 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     ]}>
     <Text
       htmlFor="disabled-options"
+      id="disabled-options-label"
       preset={ TEXT_PRESET.label }>
       Disabled options
     </Text>
 
     <SelectControl
+      aria-labelledby="disabled-options-label"
       id="disabled-options"
       placeholder="Select one or more pets" />
 
@@ -19267,11 +19299,14 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     ]}>
     <Text
       htmlFor="disabled-group"
+      id="disabled-group-label"
       preset={ TEXT_PRESET.label }>
       Disabled group or group option
     </Text>
 
-    <SelectControl id="disabled-group" />
+    <SelectControl
+      aria-labelledby="disabled-group-label"
+      id="disabled-group" />
 
     <SelectContent />
   </Select>
@@ -19291,7 +19326,9 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     { label: 'Goldfish', value:'goldfish' },
   ]}
   readOnly>
-  <SelectControl placeholder="Select one or more pets" />
+  <SelectControl
+    aria-label="Pet"
+    placeholder="Select one or more pets" />
 
   <SelectContent />
 </Select>
@@ -19356,25 +19393,27 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Select
         items={ items }
         multiple>
-        <SelectControl customItemRenderer={ ({ selectedItems }) => (
-          <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
-          {
-            selectedItems.map((item, idx) => (
-              <span
-                style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
-                key={ item.value }>
-                <img
-                  alt={ item.label }
-                  height={ 15 }
-                  src={ item.customRendererData?.logo }
-                  width={ 15 } />
+        <SelectControl
+          aria-label="Cloud provider"
+          customItemRenderer={ ({ selectedItems }) => (
+            <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
+            {
+              selectedItems.map((item, idx) => (
+                <span
+                  style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
+                  key={ item.value }>
+                  <img
+                    alt={ item.label }
+                    height={ 15 }
+                    src={ item.customRendererData?.logo }
+                    width={ 15 } />
 
-                <span>{ item.label }{ idx < selectedItems.length - 1 && ', '}</span>
-              </span>
-            ))
-          }
-        </span>
-        )} />
+                  <span>{ item.label }{ idx < selectedItems.length - 1 && ', '}</span>
+                </span>
+              ))
+            }
+          </span>
+          )} />
 
         <SelectContent
           customGroupRenderer={ ({ customData, label }) => (
@@ -19663,7 +19702,7 @@ slug: spinner
 category: component
 type: documentation
 version: 20.0.0-alpha.0
-tokens: 1381
+tokens: 1386
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--documentation.txt
 ---
 
@@ -19750,7 +19789,7 @@ The **Spinner** itself does not convey the loading state. This responsibility fa
 <div
   aria-busy="true"
   aria-live="polite">
-  <Spinner />
+  <Spinner aria-label="Loading" />
 </div>
 ```
 
@@ -19827,7 +19866,7 @@ slug: spinner
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 190
+tokens: 234
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--examples.txt
 ---
 
@@ -19836,15 +19875,17 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 ## Default
 
 ```tsx
-<Spinner />
+<Spinner aria-label="Loading" />
 ```
 
 ## Color
 
 ```tsx
 <>
-  <Spinner style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
-  <Spinner />
+  <Spinner
+    aria-label="Loading"
+    style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
+  <Spinner aria-label="Loading" />
 </>
 ```
 
@@ -19852,10 +19893,10 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
 ```tsx
 <>
-  <Spinner size={ SPINNER_SIZE.xs } />
-  <Spinner size={ SPINNER_SIZE.sm } />
-  <Spinner size={ SPINNER_SIZE.md } />
-  <Spinner size={ SPINNER_SIZE.lg } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.xs } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.sm } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.md } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.lg } />
 </>
 ```
 
@@ -19865,7 +19906,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <div
   aria-busy="true"
   aria-live="polite">
-  <Spinner />
+  <Spinner aria-label="Loading" />
 </div>
 ```
 
@@ -20678,7 +20719,7 @@ slug: tabs
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1651
+tokens: 2324
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs--examples.txt
 ---
 
@@ -20693,6 +20734,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -20707,6 +20757,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -20724,6 +20783,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 
   <p>SM</p>
@@ -20736,6 +20804,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 
   <p>XS</p>
@@ -20748,6 +20825,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 </>
 ```
@@ -20761,6 +20847,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2" disabled>Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -20777,6 +20872,12 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab5">Tab 5</Tab>
       <Tab value="tab6">Tab 6</Tab>
     </TabList>
+    <TabContent value="tab1"><p>Content 1</p></TabContent>
+    <TabContent value="tab2"><p>Content 2</p></TabContent>
+    <TabContent value="tab3"><p>Content 3</p></TabContent>
+    <TabContent value="tab4"><p>Content 4</p></TabContent>
+    <TabContent value="tab5"><p>Content 5</p></TabContent>
+    <TabContent value="tab6"><p>Content 6</p></TabContent>
   </Tabs>
 </div>
 ```
@@ -20804,6 +20905,21 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab14">Tab 14</Tab>
     <Tab value="tab15">Tab 15</Tab>
   </TabList>
+  <TabContent value="tab1"><p>Content 1</p></TabContent>
+  <TabContent value="tab2"><p>Content 2</p></TabContent>
+  <TabContent value="tab3"><p>Content 3</p></TabContent>
+  <TabContent value="tab4"><p>Content 4</p></TabContent>
+  <TabContent value="tab5"><p>Content 5</p></TabContent>
+  <TabContent value="tab6"><p>Content 6</p></TabContent>
+  <TabContent value="tab7"><p>Content 7</p></TabContent>
+  <TabContent value="tab8"><p>Content 8</p></TabContent>
+  <TabContent value="tab9"><p>Content 9</p></TabContent>
+  <TabContent value="tab10"><p>Content 10</p></TabContent>
+  <TabContent value="tab11"><p>Content 11</p></TabContent>
+  <TabContent value="tab12"><p>Content 12</p></TabContent>
+  <TabContent value="tab13"><p>Content 13</p></TabContent>
+  <TabContent value="tab14"><p>Content 14</p></TabContent>
+  <TabContent value="tab15"><p>Content 15</p></TabContent>
 </Tabs>
 ```
 
@@ -20877,6 +20993,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
     );
   }
@@ -23573,7 +23698,7 @@ slug: tooltip
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1066
+tokens: 1116
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip--examples.txt
 ---
 
@@ -23599,6 +23724,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <Tooltip>
   <TooltipTrigger asChild>
     <Icon
+      aria-label="More information"
       name={ ICON_NAME.circleQuestion }
       style={{ fontSize: '24px' }} />
   </TooltipTrigger>
@@ -23628,6 +23754,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
         <Tooltip open={ isOpen }>
           <TooltipTrigger asChild>
             <Icon
+              aria-label="More information"
               name={ ICON_NAME.circleQuestion }
               style={{ fontSize: '24px' }} />
           </TooltipTrigger>
@@ -23729,7 +23856,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Tooltip open>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -23739,7 +23866,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Tooltip open>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -23756,7 +23883,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
     positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -23768,7 +23895,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     open
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>

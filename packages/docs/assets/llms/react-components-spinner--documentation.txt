@@ -4,7 +4,7 @@ slug: spinner
 category: component
 type: documentation
 version: 20.0.0-alpha.0
-tokens: 1381
+tokens: 1386
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-spinner--documentation.txt
 ---
 
@@ -91,7 +91,7 @@ The **Spinner** itself does not convey the loading state. This responsibility fa
 <div
   aria-busy="true"
   aria-live="polite">
-  <Spinner />
+  <Spinner aria-label="Loading" />
 </div>
 ```
 

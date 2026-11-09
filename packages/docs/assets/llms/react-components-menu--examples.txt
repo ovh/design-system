@@ -4,7 +4,7 @@ slug: menu
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 609
+tokens: 614
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-menu--examples.txt
 ---
 
@@ -45,7 +45,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
         <Menu open={ isOpen }>
           <MenuTrigger asChild>
-            <Icon name={ ICON_NAME.ellipsisVertical } />
+            <Icon aria-label="Actions" name={ ICON_NAME.ellipsisVertical } />
           </MenuTrigger>
           <MenuContent>
             <MenuItem value='profile'>Profile</MenuItem>

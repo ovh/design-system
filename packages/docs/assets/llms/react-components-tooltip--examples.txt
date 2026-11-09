@@ -4,7 +4,7 @@ slug: tooltip
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1066
+tokens: 1116
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tooltip--examples.txt
 ---
 
@@ -30,6 +30,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 <Tooltip>
   <TooltipTrigger asChild>
     <Icon
+      aria-label="More information"
       name={ ICON_NAME.circleQuestion }
       style={{ fontSize: '24px' }} />
   </TooltipTrigger>
@@ -59,6 +60,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
         <Tooltip open={ isOpen }>
           <TooltipTrigger asChild>
             <Icon
+              aria-label="More information"
               name={ ICON_NAME.circleQuestion }
               style={{ fontSize: '24px' }} />
           </TooltipTrigger>
@@ -160,7 +162,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Tooltip open>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -170,7 +172,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Tooltip open>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -187,7 +189,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
     positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>
@@ -199,7 +201,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     open
     overlayConfig={{ position: TOOLTIP_POSITION.bottom }}>
     <TooltipTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </TooltipTrigger>
 
     <TooltipContent withArrow>

@@ -4,7 +4,7 @@ slug: tabs
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1651
+tokens: 2324
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tabs--examples.txt
 ---
 
@@ -19,6 +19,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -33,6 +42,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2">Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -50,6 +68,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 
   <p>SM</p>
@@ -62,6 +89,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 
   <p>XS</p>
@@ -74,6 +110,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab2">Tab 2</Tab>
       <Tab value="tab3">Tab 3</Tab>
     </TabList>
+    <TabContent value="tab1">
+      <p>Content 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content 3</p>
+    </TabContent>
   </Tabs>
 </>
 ```
@@ -87,6 +132,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab2" disabled>Tab 2</Tab>
     <Tab value="tab3">Tab 3</Tab>
   </TabList>
+  <TabContent value="tab1">
+    <p>Content 1</p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>Content 2</p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>Content 3</p>
+  </TabContent>
 </Tabs>
 ```
 
@@ -103,6 +157,12 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
       <Tab value="tab5">Tab 5</Tab>
       <Tab value="tab6">Tab 6</Tab>
     </TabList>
+    <TabContent value="tab1"><p>Content 1</p></TabContent>
+    <TabContent value="tab2"><p>Content 2</p></TabContent>
+    <TabContent value="tab3"><p>Content 3</p></TabContent>
+    <TabContent value="tab4"><p>Content 4</p></TabContent>
+    <TabContent value="tab5"><p>Content 5</p></TabContent>
+    <TabContent value="tab6"><p>Content 6</p></TabContent>
   </Tabs>
 </div>
 ```
@@ -130,6 +190,21 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     <Tab value="tab14">Tab 14</Tab>
     <Tab value="tab15">Tab 15</Tab>
   </TabList>
+  <TabContent value="tab1"><p>Content 1</p></TabContent>
+  <TabContent value="tab2"><p>Content 2</p></TabContent>
+  <TabContent value="tab3"><p>Content 3</p></TabContent>
+  <TabContent value="tab4"><p>Content 4</p></TabContent>
+  <TabContent value="tab5"><p>Content 5</p></TabContent>
+  <TabContent value="tab6"><p>Content 6</p></TabContent>
+  <TabContent value="tab7"><p>Content 7</p></TabContent>
+  <TabContent value="tab8"><p>Content 8</p></TabContent>
+  <TabContent value="tab9"><p>Content 9</p></TabContent>
+  <TabContent value="tab10"><p>Content 10</p></TabContent>
+  <TabContent value="tab11"><p>Content 11</p></TabContent>
+  <TabContent value="tab12"><p>Content 12</p></TabContent>
+  <TabContent value="tab13"><p>Content 13</p></TabContent>
+  <TabContent value="tab14"><p>Content 14</p></TabContent>
+  <TabContent value="tab15"><p>Content 15</p></TabContent>
 </Tabs>
 ```
 
@@ -203,6 +278,15 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>
         </TabList>
+        <TabContent value="tab1">
+          <p>Content 1</p>
+        </TabContent>
+        <TabContent value="tab2">
+          <p>Content 2</p>
+        </TabContent>
+        <TabContent value="tab3">
+          <p>Content 3</p>
+        </TabContent>
       </Tabs>
     );
   }

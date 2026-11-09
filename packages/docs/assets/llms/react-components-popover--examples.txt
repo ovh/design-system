@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: examples
 version: 20.0.0-alpha.0
-tokens: 1253
+tokens: 1289
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--examples.txt
 ---
 
@@ -58,7 +58,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
         <Popover open={ isOpen }>
           <PopoverTrigger asChild>
-            <Icon name={ ICON_NAME.cog } />
+            <Icon aria-label="Settings" name={ ICON_NAME.cog } />
           </PopoverTrigger>
 
           <PopoverContent withArrow>
@@ -172,7 +172,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Popover open>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -182,7 +182,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
 
   <Popover open>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -199,7 +199,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     overlayConfig={{ position: POPOVER_POSITION.bottom }}
     positionerStyle={{ zIndex: 'calc(var(--ods-semantic-z-index-dropdown) + 1)'}}>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>
@@ -211,7 +211,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-component
     open
     overlayConfig={{ position: POPOVER_POSITION.bottom }}>
     <PopoverTrigger asChild>
-      <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+      <Icon aria-label="More information" name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
     </PopoverTrigger>
 
     <PopoverContent withArrow>

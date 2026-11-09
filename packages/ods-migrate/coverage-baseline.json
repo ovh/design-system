@@ -3,7 +3,7 @@
   "recordedAt": "2026-11-09",
   "refs": {
     "v19": "v19.7.3 (0ce249290)",
-    "v20": "origin/master (ad6d5bc7b; ods-react and themes as at 2741442ea)"
+    "v20": "origin/master (8b834837e = v20.0.0-alpha.0; ods-react and themes as at 2741442ea)"
   },
   "tooling": {
     "node": "v22.14.0",
@@ -126,7 +126,7 @@
       "note": "Built to hold one site of each kind: 1 MISSED (legacy.less) and 1 regression (a local BADGE_COLOR shadowing the import) are expected.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -166,7 +166,7 @@
         "truth": "32d8c2b6bc47f8f8b87b65308c2af23030035505d4e00c35068a8e495f727aa2"
       },
       "migrateExit": 0,
-      "seconds": 13
+      "seconds": 20
     },
     "examples": {
       "corpus": "design-system packages/examples at v19.7.3, the 5 apps in one run (truth: the same path at stack/remove-color)",
@@ -176,7 +176,7 @@
       "note": "The 18 regressions are a known ods-migrate defect: accessibility-test App.tsx 326-365, BUTTON_COLOR.information/success/warning rewritten to BUTTON_STATUS.* (absent in v20) under the marker that keeps color=; they are 18 of the 19 tool-wrong items (the 19th: the Divider style of App.tsx:493). DIFFER decision 46 = button-default-emphasis 37 + drop-default 9 (the truth keeps the v19 look).",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -216,7 +216,7 @@
         "truth": "c0a7b1b3675135f6ed8a0f4600806c819020e30a64f6871979147697f517c321"
       },
       "migrateExit": 0,
-      "seconds": 24
+      "seconds": 29
     },
     "examples-accessibility-test": {
       "corpus": "packages/examples/accessibility-test (same preparation as examples)",
@@ -226,7 +226,7 @@
       "note": "The 18 regressions and 18 of the 19 tool-wrong items are the BUTTON_STATUS.* defect described under examples.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -266,7 +266,7 @@
         "truth": "487b1b33ea0ec8e0cb129868b15986e661635a0f2b39046f3740d1f841e2d9e1"
       },
       "migrateExit": 0,
-      "seconds": 21
+      "seconds": 20
     },
     "examples-nextjs-app": {
       "corpus": "packages/examples/nextjs-app (same preparation as examples)",
@@ -275,7 +275,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -315,7 +315,7 @@
         "truth": "f6fd7292b9d9671de7d7a22c82ff9deeaab8fbfd6059332eaa017c4094ddf5fc"
       },
       "migrateExit": 0,
-      "seconds": 15
+      "seconds": 14
     },
     "examples-react-router-app": {
       "corpus": "packages/examples/react-router-app (same preparation as examples)",
@@ -324,7 +324,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -364,7 +364,7 @@
         "truth": "33bb3cc479eb84bb170d6ab1ee9c82b79edeb33b4a597bc222edfd48632fcfe1"
       },
       "migrateExit": 0,
-      "seconds": 16
+      "seconds": 15
     },
     "examples-vite-app": {
       "corpus": "packages/examples/vite-app (same preparation as examples)",
@@ -373,7 +373,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -413,7 +413,7 @@
         "truth": "b82597bf983ec9f51ee99d5508e39157677adb2d01f793659010d6cd68d13543"
       },
       "migrateExit": 0,
-      "seconds": 16
+      "seconds": 15
     },
     "examples-webpack-app": {
       "corpus": "packages/examples/webpack-app (same preparation as examples)",
@@ -422,7 +422,7 @@
       "gated": true,
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -472,7 +472,7 @@
       "note": "The 4 MISSED are MESSAGE_COLOR in status-message/src/README.md (doc sites ods-migrate does not touch). tool-wrong 23: 13 .storybook/main.ts font-family lines (ods-migrate writes \"Source Sans 3\", the truth var(--ods-semantic-font-family-body)), the order-button custom properties rewritten to raw palette tokens, and 8 items under a marker.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -512,7 +512,7 @@
         "truth": "fcf4e996cabe7baedbd6d434ab3631ef9c2ff4d7b736d4d10093b65f71de5d80"
       },
       "migrateExit": 0,
-      "seconds": 20
+      "seconds": 18
     },
     "manager": {
       "corpus": "github.com/ovh/manager packages/ at d8e3d1a1 (45,068 files; scripts/coverage/corpora/manager.mjs), --treat-as-ods @ovh-ux/muk",
@@ -522,7 +522,7 @@
       "note": "Recorded on 2026-11-06 on the public commit d8e3d1a1 (the former snapshot 7e02c54 is lost), with --treat-as-ods @ovh-ux/muk as the corpus manifest says. 320 sites are out of scope (packages on ODS 17/18 or with no ODS); 4 files of packages that declare no ODS dependency are rewritten (premature), as before.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [
@@ -540,10 +540,10 @@
       },
       "sites": 2085,
       "auto": 1995,
-      "marked": 64,
-      "missed": 26,
+      "marked": 59,
+      "missed": 31,
       "autoPct": 95.7,
-      "assistedPct": 98.8,
+      "assistedPct": 98.5,
       "regressions": 0,
       "regressionsUnderMarker": 0,
       "prematureFiles": 4,
@@ -553,7 +553,7 @@
         "truth": null
       },
       "migrateExit": 0,
-      "seconds": 284
+      "seconds": 299
     },
     "storybook": {
       "corpus": "design-system packages/storybook at v19.7.3, ODS relative imports rewritten to @ovhcloud/ods-react; truth = the hand migration of packages/docs (9336e1951^ -> stack/remove-color) merged into each storybook file (lines with no truth excluded)",
@@ -563,7 +563,7 @@
       "note": "183 of the 190 MISSED are doc (151) and snippet (32) sites: the Markdown/MDX pages and story source strings ods-migrate does not rewrite; without them 423 sites, 380 auto, 36 marked, 7 missed. The 10 regressions are all under a marker (9 BUTTON_STATUS.information/success/warning, 1 duplicate key in .storybook/ods.theme.ts).",
       "refs": {
         "v19": "0ce249290",
-        "v20": "ad6d5bc7b"
+        "v20": "8b834837e"
       },
       "options": {
         "treatAsOds": [],
@@ -578,32 +578,32 @@
         "snippets": 451
       },
       "sites": 792,
-      "auto": 651,
+      "auto": 538,
       "marked": 43,
-      "missed": 98,
-      "autoPct": 82.2,
-      "assistedPct": 87.6,
+      "missed": 211,
+      "autoPct": 67.9,
+      "assistedPct": 73.4,
       "regressions": 1,
       "regressionsUnderMarker": 1,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 194,
-      "differ": 963,
+      "agree": 193,
+      "differ": 964,
       "truthUnit": "item",
       "toolWrong": 62,
       "differByClass": {
         "tool-wrong": 62,
         "decision": 117,
         "unrelated-change": 769,
-        "style-only": 15
+        "style-only": 16
       },
-      "excluded": 150,
+      "excluded": 53,
       "digests": {
         "corpus": "26e2c3ed9d11987a11e733cb6aaceb75af74555140900fc8739f9bb59800d598",
         "truth": "1ecc71db930127592c0a84be5090c91e619ac3d4be0106ed856b5672dc51ea30"
       },
       "migrateExit": 0,
-      "seconds": 37
+      "seconds": 33
     }
   },
   "measuredWith": {

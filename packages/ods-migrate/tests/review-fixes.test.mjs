@@ -165,7 +165,7 @@ describe('review: p0-silent', () => {
     const dir = project({ 'package.json': PACKAGE_19, 'src/a.tsx': usage, 'tailwind-preset.js': preset, 'tailwind.config.js': "module.exports = { presets: [require('./tailwind-preset')] };\n" });
     assert.equal((await cli(dir, ['.', '--write'])).code, 0);
     assert.match(readFileSync(join(dir, 'src/a.tsx'), 'utf8'), /className="text-ods-color-primary-500 rounded-ods-container"/);
-    assert.match(readFileSync(join(dir, 'tailwind-preset.js'), 'utf8'), /colors: \{ 'ods-color-primary-500':.*borderRadius: \{ 'ods-container': '8px' \}/);
+    assert.match(readFileSync(join(dir, 'tailwind-preset.js'), 'utf8'), /colors: \{ \/\* TODO\(ods-v20\): ods-color-primary-500: a Tailwind key of the ODS v19 guide with no v20 name.*\*\/ 'ods-color-primary-500':.*borderRadius: \{ 'ods-container': '8px' \}/);
     // A Tailwind v4 theme.
     const v4 = project({ 'package.json': PACKAGE_19, 'src/a.tsx': 'export const A = () => <div className="rounded-ods-border-radius-md" />;\n', 'tw.css': '@theme {\n  --radius-ods-border-radius-md: 8px;\n}\n' });
     await cli(v4, ['.', '--write']);

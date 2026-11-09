@@ -1,0 +1,18 @@
+/* The app's own palette, read from the v19 rungs: each name keeps its colour from the v20 palette. */
+:root {
+  --color-primary-500: var(--ods-color-primary-500, #0050d7);
+  --color-primary-050: var(--ods-color-primary-050);
+  --mds-neutral-200: var(--ods-color-neutral-200, #dde1e9);
+  --color-success-100: var(--ods-color-success-100);
+}
+
+/* Not an alias: no rung in the name, or the value is computed. */
+:root {
+  --brand: var(--ods-color-primary-500);
+  --primary-mix-500: color-mix(in srgb, var(--ods-color-primary-500) 50%, white);
+}
+
+/* A name of the app's palette that says what it paints keeps its role. */
+:root {
+  --text-500: var(--ods-color-primary-500);
+}

@@ -19,12 +19,14 @@ const RangeInput = (): JSX.Element => {
   return (
     <div className={ style['range-input'] }>
       <Range
+        aria-label={ ['Value'] }
         max={ MAX }
         min={ MIN }
         onDragging={ onRangeDragging }
         value={ draggingValues } />
 
       <Input
+        aria-label="Value"
         className={ style['range-input__input'] }
         max={ MAX }
         min={ MIN }

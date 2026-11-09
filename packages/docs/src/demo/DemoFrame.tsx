@@ -260,7 +260,9 @@ const FrameLinks = () => {
   return null;
 };
 
-const escapeHtml = (text: string): string => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const HTML_ENTITIES: Record<string, string> = { '"': '&quot;', '&': '&amp;', '\'': '&#39;', '<': '&lt;', '>': '&gt;' };
+
+const escapeHtml = (text: string): string => text.replace(/["&'<>]/g, (char) => HTML_ENTITIES[char]);
 
 const initialContent = (title: string): string => `<!DOCTYPE html><html lang="${escapeHtml(document.documentElement.lang || 'en')}"><head><base href="${APP_ROOT.href}"><title>${escapeHtml(title)}</title></head><body><div id="mount"></div></body></html>`;
 

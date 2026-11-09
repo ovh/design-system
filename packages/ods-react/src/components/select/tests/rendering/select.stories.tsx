@@ -33,6 +33,16 @@ export const DefaultWidth = () => (
   </>
 );
 
+export const InScrollContainer = () => (
+  <div style={{ height: '100px', overflow: 'auto' }}>
+    <div style={{ height: '2000px' }} />
+    <Select items={ [{ label: 'A', value: 'a' }] }>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+  </div>
+);
+
 export const listWidth = () => (
   <Select
     data-testid="list-width"

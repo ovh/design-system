@@ -34,7 +34,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
   const { items, readOnly } = useSelect();
 
   return (
-    <Select.Control>
+    <Select.Control className={ style['select-control-wrapper'] }>
       <Select.Trigger
         aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
         aria-disabled={ readOnly }

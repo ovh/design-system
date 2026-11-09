@@ -225,7 +225,7 @@
 - [Overview](./react-components-meter.txt) (~261 tokens)
 - [Documentation](./react-components-meter--documentation.txt) (~1019 tokens)
 - [Technical Information](./react-components-meter--technical-information.txt) (~284 tokens)
-- [Examples](./react-components-meter--examples.txt) (~368 tokens)
+- [Examples](./react-components-meter--examples.txt) (~387 tokens)
 
 ## Modal
 

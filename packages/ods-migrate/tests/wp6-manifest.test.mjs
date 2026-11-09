@@ -80,6 +80,23 @@ describe('manifest: package.json', () => {
     assert.equal(messages(already.notes).filter((message) => message.startsWith('tailwindcss')).length, 0);
   });
 
+  it('tells an app on ODS 19 that also uses the ODS 18 components to keep the v19 theme loaded', () => {
+    const source = json({ dependencies: { '@ovh-ux/manager-react-components': '2.43.1', '@ovhcloud/ods-components': '18.6.2', '@ovhcloud/ods-react': '^19.3.0', '@ovhcloud/ods-themes': '^19.3.0' } });
+    const report = transformManifest(source);
+    assert.equal(report.output, source);
+    const note = messages(report.notes).find((message) => message.startsWith('@ovh-ux/manager-react-components'));
+    assert.equal(report.notes.find(({ message }) => message === note).line, 3);
+    assert.match(note, /^@ovh-ux\/manager-react-components 2\.43\.1, @ovhcloud\/ods-components 18\.6\.2: these components read the --ods-\* tokens of the @ovhcloud\/ods-themes 19 theme, .* they lose their colours\. .*"@ovhcloud\/ods-themes-v19": "npm:@ovhcloud\/ods-themes@\^19\.3\.0" and import '@ovhcloud\/ods-themes-v19\/default\/css'/);
+    // ODS 17 (and manager-react-components 1, built on it) brings its own theme; without ods-themes 19, nothing to keep.
+    for (const dependencies of [
+      { '@ovh-ux/manager-react-components': '1.48.0', '@ovhcloud/ods-components': '17.2.2', '@ovhcloud/ods-react': '19.7.3', '@ovhcloud/ods-themes': '19.7.3' },
+      { '@ovhcloud/ods-components': '18.6.2', '@ovhcloud/ods-react': '^20.0.0', '@ovhcloud/ods-themes': '^20.0.0' },
+      { '@ovhcloud/ods-react': '19.7.3', '@ovhcloud/ods-themes': '19.7.3' },
+    ]) {
+      assert.equal(messages(transformManifest(json({ dependencies })).notes).filter((message) => /lose their colours/.test(message)).length, 0, JSON.stringify(dependencies));
+    }
+  });
+
   it('writes the @types/react overrides under the key of the lockfile', () => {
     const source = json({ dependencies: { react: '^19.0.0' } });
     assert.deepEqual(JSON.parse(transformManifest(source, { lockfile: 'yarn' }).output).resolutions, { '@types/react': '^19', '@types/react-dom': '^19' });

@@ -71,7 +71,7 @@ These numbers count code only: ods-migrate does not read Markdown, so the code s
 5. **React 18 or 19.** ODS v20 still accepts `react >= 18.2.0`. On React 19, one single version of `@types/react` must be installed (step 4 explains why and does it for you).
 6. **Run it from the root of your repository, on the whole repository.** That is how it finds your own modules built on ODS (below) and the UI kits of your repository.
    - A package whose `package.json` declares ODS 17 or 18 only (`@ovhcloud/ods-components`, `@ovhcloud/ods-react` 17 / 18) is left unchanged. The report says so in one sentence per package, for example `apps/ips uses ODS 18: left unchanged. Migrate it to ODS 19 first (https://ovh.github.io/design-system/latest/guides/migration-to-v19), then run ods-migrate on it.` There is no tool for that step: follow the ODS guide "Migration to v19".
-   - A package on ODS 19 that **also** installs ODS 17 / 18 packages (`@ovhcloud/ods-components`, `@ovhcloud/ods-theme-blue-jeans` 17) is migrated: ods-migrate changes only the code that uses `@ovhcloud/ods-react` and the ODS 19 design tokens. The ODS 17 / 18 packages are separate packages with their own theme: they keep working as long as they are installed and loaded. Bumping `@ovhcloud/ods-react` to 20 does not change them.
+   - A package on ODS 19 that **also** installs ODS 17 / 18 packages (`@ovhcloud/ods-components`, `@ovh-ux/manager-react-components`, `@ovhcloud/ods-theme-blue-jeans` 17) is migrated: ods-migrate changes only the code that uses `@ovhcloud/ods-react` and the ODS 19 design tokens, never the ODS 17 / 18 code. ODS 17 brings its own theme (`@ovhcloud/ods-theme-blue-jeans`): it keeps working. **ODS 18 does not**: `@ovhcloud/ods-components` 18 and `@ovh-ux/manager-react-components` 2 and later read the tokens of the `@ovhcloud/ods-themes` 19 theme, which the v20 theme does not declare. Step 4 keeps the v19 theme loaded for them.
 7. **Your own modules built on ODS need nothing.** If your app reaches ODS through code of its own, ods-migrate finds it and migrates the files that use it too. For example:
    - `src/components/ods/index.ts` that does `export * from '@ovhcloud/ods-react'`, imported as `@/components/ods`;
    - a `GuardedButton` that takes the props of the ODS `Button` and passes them on;
@@ -275,7 +275,18 @@ What you do by hand:
 
 1. Bump `@ovhcloud/ods-react`, `@ovhcloud/ods-themes` and, if used, `@ovhcloud/ods-recipes` to `^20.0.0`. ods-migrate never bumps them, and reminds you with a `?` on each `package.json` still on 19: it reads the ODS version of your code from there, so if you bump before a second run, pass `--from 19`. If the app uses Tailwind, `@ovhcloud/ods-tailwind` (Tailwind v4) replaces the ODS keys of the v19 configuration: add it, then remove those keys (a `?` says so).
 2. Settle each `?` of the `package.json` files: `@types/react`, scripts that copy files out of `@ovhcloud/ods-storybook`, and the transpilation of `@ovhcloud/ods-react` if you support older browsers than the list above (Next `transpilePackages`, a `babel-loader` include on webpack, `build.target` on Vite).
-3. Install, and check that one `@types/react` version is installed (`pnpm why @types/react`).
+3. **If the package also uses the ODS 18 components** (`@ovhcloud/ods-components` 18, `@ovh-ux/manager-react-components` 2 and later; a `?` on its `package.json` says so): keep the v19 theme loaded for them. They declare no tokens and read the `--ods-*` names of the `@ovhcloud/ods-themes` 19 theme, and the v20 theme has none of those names. Without it, they lose their colours. The v19 theme CSS only declares `--ods-*` names on `:root`, none of them v20 names, so both themes load side by side:
+   ```jsonc
+   "@ovhcloud/ods-themes": "^20.0.0",
+   "@ovhcloud/ods-themes-v19": "npm:@ovhcloud/ods-themes@^19.3.0" // your v19 range
+   ```
+   ```scss
+   @import '@ovhcloud/ods-themes/default/css';
+   @import '@ovhcloud/ods-themes/default/fonts';
+   @import '@ovhcloud/ods-themes-v19/default/css'; // for the ODS 18 components
+   ```
+   Then check those components on screen (step 9). Remove the alias once they are replaced by `@ovhcloud/ods-react` or by a release built on ODS 20.
+4. Install, and check that one `@types/react` version is installed (`pnpm why @types/react`).
 
 The theme imports through the package exports keep working: `@ovhcloud/ods-themes/default/css` and `/default/fonts` still exist, and `default` is now Aluminium. What changes, and what ods-migrate did (in scripts, stylesheets, Less, HTML and JSON configs, of the packages on ODS 19):
 
@@ -434,6 +445,7 @@ Code checks cannot see these. Open each screen in v19 (your main branch) and v20
 | Edge no longer shows its own reveal button on password fields | login, settings |
 | The Switch is gone: ods-migrate made each one a Tabs `variant="switch"` (the default replacement). A Switch with no `value` nor `defaultValue` is a point to check: Tabs warns in the console without a selection, set `defaultValue` to the first item if the page started on it. A team that wants a single-select ButtonGroup (pick a mode with no view) or a RadioGroup (pick a form value) changes the Tabs after the run | every former Switch: `grep -rn 'variant="switch"'` |
 | The colours of the points to check "colours and styles that may look different" | the files of those lines |
+| The ODS 18 components (`@ovhcloud/ods-components`, `@ovh-ux/manager-react-components`: layouts, datagrids, action menus) keep their colours only with the v19 theme loaded (step 4) | every screen that uses them |
 
 Beyond these, the component stylesheets changed widely between v19.7.3 and v20: on `accessibility-test`, 76 of the 124 ODS elements it renders use a component whose styles changed (Message, Tab, Datepicker, Badge, Button, Input…). Check each screen, not only the list above.
 

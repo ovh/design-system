@@ -766,7 +766,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 609,
+          "tokens": 614,
           "url": "./react-components-menu--examples.txt"
         }
       }
@@ -844,7 +844,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 296,
+          "tokens": 368,
           "url": "./react-components-meter--examples.txt"
         }
       }
@@ -974,7 +974,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1253,
+          "tokens": 1289,
           "url": "./react-components-popover--examples.txt"
         }
       }
@@ -1130,7 +1130,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 772,
+          "tokens": 944,
           "url": "./react-components-range--examples.txt"
         }
       }
@@ -1156,7 +1156,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 2453,
+          "tokens": 2582,
           "url": "./react-components-select--examples.txt"
         }
       }
@@ -1198,7 +1198,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1381,
+          "tokens": 1386,
           "url": "./react-components-spinner--documentation.txt"
         },
         "technical-information": {
@@ -1208,7 +1208,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 190,
+          "tokens": 234,
           "url": "./react-components-spinner--examples.txt"
         }
       }
@@ -1260,7 +1260,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1651,
+          "tokens": 2324,
           "url": "./react-components-tabs--examples.txt"
         }
       }
@@ -1468,7 +1468,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1066,
+          "tokens": 1116,
           "url": "./react-components-tooltip--examples.txt"
         }
       }

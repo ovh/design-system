@@ -204,7 +204,7 @@
 - [Overview](./react-components-menu.txt) (~301 tokens)
 - [Documentation](./react-components-menu--documentation.txt) (~764 tokens)
 - [Technical Information](./react-components-menu--technical-information.txt) (~727 tokens)
-- [Examples](./react-components-menu--examples.txt) (~609 tokens)
+- [Examples](./react-components-menu--examples.txt) (~614 tokens)
 
 ## Message
 
@@ -225,7 +225,7 @@
 - [Overview](./react-components-meter.txt) (~261 tokens)
 - [Documentation](./react-components-meter--documentation.txt) (~1019 tokens)
 - [Technical Information](./react-components-meter--technical-information.txt) (~284 tokens)
-- [Examples](./react-components-meter--examples.txt) (~296 tokens)
+- [Examples](./react-components-meter--examples.txt) (~368 tokens)
 
 ## Modal
 
@@ -260,7 +260,7 @@
 - [Overview](./react-components-popover.txt) (~365 tokens)
 - [Documentation](./react-components-popover--documentation.txt) (~1478 tokens)
 - [Technical Information](./react-components-popover--technical-information.txt) (~525 tokens)
-- [Examples](./react-components-popover--examples.txt) (~1253 tokens)
+- [Examples](./react-components-popover--examples.txt) (~1289 tokens)
 
 ## Progress Bar
 
@@ -302,14 +302,14 @@
 - [Overview](./react-components-range.txt) (~562 tokens)
 - [Documentation](./react-components-range--documentation.txt) (~1364 tokens)
 - [Technical Information](./react-components-range--technical-information.txt) (~539 tokens)
-- [Examples](./react-components-range--examples.txt) (~772 tokens)
+- [Examples](./react-components-range--examples.txt) (~944 tokens)
 
 ## Select
 
 - [Overview](./react-components-select.txt) (~532 tokens)
 - [Documentation](./react-components-select--documentation.txt) (~1211 tokens)
 - [Technical Information](./react-components-select--technical-information.txt) (~777 tokens)
-- [Examples](./react-components-select--examples.txt) (~2453 tokens)
+- [Examples](./react-components-select--examples.txt) (~2582 tokens)
 
 ## Skeleton
 
@@ -321,9 +321,9 @@
 ## Spinner
 
 - [Overview](./react-components-spinner.txt) (~166 tokens)
-- [Documentation](./react-components-spinner--documentation.txt) (~1381 tokens)
+- [Documentation](./react-components-spinner--documentation.txt) (~1386 tokens)
 - [Technical Information](./react-components-spinner--technical-information.txt) (~115 tokens)
-- [Examples](./react-components-spinner--examples.txt) (~190 tokens)
+- [Examples](./react-components-spinner--examples.txt) (~234 tokens)
 
 ## Table
 
@@ -337,7 +337,7 @@
 - [Overview](./react-components-tabs.txt) (~397 tokens)
 - [Documentation](./react-components-tabs--documentation.txt) (~1918 tokens)
 - [Technical Information](./react-components-tabs--technical-information.txt) (~1299 tokens)
-- [Examples](./react-components-tabs--examples.txt) (~1651 tokens)
+- [Examples](./react-components-tabs--examples.txt) (~2324 tokens)
 
 ## Tag
 
@@ -393,7 +393,7 @@
 - [Overview](./react-components-tooltip.txt) (~298 tokens)
 - [Documentation](./react-components-tooltip--documentation.txt) (~1148 tokens)
 - [Technical Information](./react-components-tooltip--technical-information.txt) (~469 tokens)
-- [Examples](./react-components-tooltip--examples.txt) (~1066 tokens)
+- [Examples](./react-components-tooltip--examples.txt) (~1116 tokens)
 
 ## Tree View
 

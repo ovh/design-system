@@ -1260,7 +1260,7 @@ function printNotOds(io, notOds, themes) {
     print(io, `  … and ${notOds.length - 5} more names.`);
   }
   if (themes.length) {
-    print(io, `  Your packages also install ${andList(themes)} (ODS 17 / 18): some of these names may come from there. They keep working as long as that package is loaded; ods-migrate does not touch them.`);
+    print(io, `  Your packages also install ${andList(themes)} (ODS 17 / 18): some of these names may come from there. ods-migrate does not touch them. The ODS 18 components read the tokens of the ods-themes 19 theme: keep it loaded next to the v20 one (a point to check on the package.json says how).`);
   }
 }
 

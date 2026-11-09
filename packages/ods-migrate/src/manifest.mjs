@@ -16,6 +16,11 @@
  *   bumping first would make a second run read the code as v20. Each 19 range gets a reminder.
  * - `@ovhcloud/ods-tailwind` (v20) maps the Tailwind v4 utilities to the semantic tokens: an app on
  *   Tailwind is told about it, since the ODS keys of its v19 configuration no longer apply (BC-30).
+ * - The ODS 18 components (`@ovhcloud/ods-components` 18, and `@ovh-ux/manager-react-components` 2+,
+ *   built on them) declare no tokens: they read the `--ods-*` names of `@ovhcloud/ods-themes` 18 / 19 (76 of
+ *   the 80 names ods-components 18.6.2 reads). The v20 theme has none of them, so bumping ods-themes
+ *   to 20 leaves those components without colours unless the v19 theme stays loaded. ODS 17 brings its
+ *   own theme (`@ovhcloud/ods-theme-blue-jeans`), which the bump leaves in place.
  *
  * The file is edited in place, value by value, so its formatting and key order are kept.
  */
@@ -35,6 +40,11 @@ const VITE_TARGET = 'Chrome 111, Edge 111, Firefox 114, Safari 16.4';
 const ODS_PACKAGES = ['@ovhcloud/ods-react', '@ovhcloud/ods-themes', RECIPES];
 const ODS_RANGE = '^20.0.0';
 const ODS_TAILWIND = '@ovhcloud/ods-tailwind';
+const THEMES = '@ovhcloud/ods-themes';
+// The packages built on the ODS 18 components, by the major from which they read the ods-themes tokens
+// (manager-react-components 1 is on ODS 17 and its blue-jeans theme).
+const ODS18_READERS = { '@ovhcloud/ods-components': 18, '@ovh-ux/manager-react-components': 2 };
+const THEMES_V19_ALIAS = '@ovhcloud/ods-themes-v19';
 const LLMS_REMOVED = {
   'react-components-gallery.txt': 'removed from the llms documentation in v20: read ods-components-index.txt (component list) or llms-index.json (machine-readable index)',
   'react-components-icon--gallery.txt': 'removed from the llms documentation in v20: read react-components-icon--documentation.txt',
@@ -352,6 +362,15 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
   if (odsRanges.length) {
     const names = odsRanges.map((entry) => `${entry.key.value} ${entry.value.value}`).join(', ');
     note(odsRanges[0].value.start, `${names}: bump ${odsRanges.length > 1 ? 'them' : 'it'} to ${ODS_RANGE} once you have reviewed the changes of ods-migrate, install, then run your type check (step 4 of MIGRATION.md). ods-migrate reads the ODS version of your code from @ovhcloud/ods-react: if you bump first, run it again with --from 19`);
+  }
+
+  // ODS 18 components read the tokens of the ods-themes 19 theme, which the v20 theme does not declare.
+  const themes = declared(root, THEMES);
+  const readers = blocksOf(root).flatMap(([, block]) => block.members)
+    .filter((entry) => entry.value.type === 'string' && minMajor(entry.value.value) >= (ODS18_READERS[entry.key.value] ?? Infinity))
+    .sort((a, b) => a.value.start - b.value.start);
+  if (readers.length && minMajor(themes) === 19) {
+    note(readers[0].value.start, `${readers.map((entry) => `${entry.key.value} ${entry.value.value}`).join(', ')}: ${readers.length > 1 ? 'these components read' : 'its components read'} the --ods-* tokens of the ${THEMES} 19 theme, and the v20 theme declares none of them: once ${THEMES} is on 20, they lose their colours. Keep the v19 theme loaded next to the v20 one (its CSS only declares --ods-* names on :root, none of them v20 names): add "${THEMES_V19_ALIAS}": "npm:${THEMES}@${themes}" and import '${THEMES_V19_ALIAS}/default/css' next to the v20 theme, then check those components on screen (step 4 of MIGRATION.md)`);
   }
 
   // Tailwind v4: the ODS keys of the v19 guide no longer apply; @ovhcloud/ods-tailwind maps the utilities (BC-30).

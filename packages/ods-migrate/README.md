@@ -127,6 +127,7 @@ Version 2 (before this release) called `markers` `todos`, `toCheck` `notes` and 
 | `browserslist` or `.browserslistrc` | | a note: ods-react 20 is built with Vite 8 (Chrome / Edge 111, Firefox 114, Safari 16.4) |
 | `react-components-gallery.txt`, `react-components-icon--gallery.txt` in any scanned file | | a note: removed from the llms documentation |
 | `@ovhcloud/ods-react`, `ods-themes`, `ods-recipes` on 19 | | one note per `package.json`: bump them to `^20.0.0` after reviewing the diff (ods-migrate reads the ODS version of the code from there: if you bump first, run it with `--from 19`) |
+| `@ovhcloud/ods-components` 18 or `@ovh-ux/manager-react-components` 2+ next to `@ovhcloud/ods-themes` 19 (they read the tokens of the v19 theme, which the v20 theme does not declare) | | a note: keep the v19 theme loaded next to the v20 one, through an npm alias (`"@ovhcloud/ods-themes-v19": "npm:@ovhcloud/ods-themes@<v19 range>"`, `import '@ovhcloud/ods-themes-v19/default/css'`) |
 | `tailwindcss` 4 next to ODS 19, without `@ovhcloud/ods-tailwind` | | a note: v20 ships `@ovhcloud/ods-tailwind` (Tailwind v4): add it and remove the ODS keys of the v19 `@theme` (BC-30). On Tailwind 3, a run that renames the ODS keys of a `tailwind.config` says it once |
 
 React itself, ODS and the other packages are not bumped: ods-migrate migrates the code, the team bumps the versions.

@@ -223,7 +223,7 @@ describe('plain words: the report', () => {
     assert.match(dry.stdout, /src\/ods\.ts passes ODS components on: the 1 file that imports it is handled like files that import @ovhcloud\/ods-react\./);
   });
 
-  it('leaves the @types/react overrides to a pnpm-workspace.yaml that declares overrides', async () => {
+  it('leaves the @types/react overrides to the pnpm-workspace.yaml next to it', async () => {
     const dir = project({
       'package.json': '{ "name": "root", "private": true, "dependencies": { "@ovhcloud/ods-react": "^19.2.0", "react": "^19.0.0" } }\n',
       'pnpm-lock.yaml': '',
@@ -231,6 +231,16 @@ describe('plain words: the report', () => {
     });
     const { report } = await migrate(dir, ['--write']);
     assert.equal(report.manifest[0].changes.length, 0);
-    assert.match(report.manifest[0].toCheck[0].message, /your pnpm-workspace\.yaml declares overrides: add "@types\/react-dom": "\^19" there/);
+    assert.match(report.manifest[0].toCheck[0].message, /your pnpm-workspace\.yaml holds the pnpm settings: add "@types\/react-dom": "\^19" under its overrides/);
+    // One with no overrides yet (allowBuilds, minimumReleaseAge only): pnpm 11 reads no "pnpm" field, so not package.json either.
+    const settings = project({
+      'package.json': '{ "name": "app", "packageManager": "pnpm@11.1.1", "dependencies": { "@ovhcloud/ods-react": "19.7.1", "react": "^19.2.4" } }\n',
+      'pnpm-lock.yaml': '',
+      'pnpm-workspace.yaml': "allowBuilds:\n  esbuild: true\nminimumReleaseAge: 10080\n",
+    });
+    const second = (await migrate(settings, ['--write'])).report;
+    assert.equal(second.manifest[0].changes.length, 0);
+    assert.equal(JSON.parse(readFileSync(join(settings, 'package.json'), 'utf8')).pnpm, undefined);
+    assert.match(second.manifest[0].toCheck[0].message, /add "@types\/react": "\^19" and "@types\/react-dom": "\^19" under its overrides/);
   });
 });

@@ -265,7 +265,7 @@ What ods-migrate already did in the `package.json` files it scanned (with `--wri
 | `@ovhcloud/ods-recipes` and a `tailwind.config.*` next to it, no `tailwindcss` | `"tailwindcss": "^3.4.18"` in `devDependencies` |
 | `@ovhcloud/ods-storybook` | renamed `@ovhcloud/ods-docs` `^20.0.0`, and a `?` on each script that reads it: its build is a Vite app now |
 | React 19 and a lockfile | `@types/react`, `@types/react-dom` `^19` in `pnpm.overrides`, `overrides` (npm) or `resolutions` (yarn) |
-| React 19, pnpm, and a `pnpm-workspace.yaml` that declares `overrides` | a `?` instead: add them to the `overrides` of `pnpm-workspace.yaml` |
+| React 19, pnpm, and a `pnpm-workspace.yaml`, or pnpm 11 (`packageManager`), which ignores the `pnpm` field of `package.json` | a `?` instead: add them to the `overrides` of `pnpm-workspace.yaml` |
 | `@types/react` below 19 on React 19 | a `?`: bump it yourself |
 | `browserslist` | a `?`: ods-react 20 targets Chrome / Edge 111, Firefox 114, Safari 16.4 |
 

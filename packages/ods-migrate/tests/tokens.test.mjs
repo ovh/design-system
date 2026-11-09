@@ -79,6 +79,13 @@ describe('design tokens', () => {
     assert.equal(output, '@use "@ovhcloud/ods-themes/assets/fonts/source-sans-3/base64/source-sans3-variable-custom";\nbody { font-family: "Source Sans 3", arial; }');
   });
 
+  it('renames the family name alone, never a part of another family', () => {
+    const css = ":root { --font: 'Brand Source Sans Pro',\n  'Source Sans Pro'; }\n.a { font-family: Source Sans Pro, arial; }\n.b { font-family: \"Source Sans Pro Light\", 'Brand Source Sans Pro'; }\n";
+    assert.equal(migrate(css, 'a.css').output, ":root { --font: 'Brand Source Sans Pro',\n  'Source Sans 3'; }\n.a { font-family: 'Source Sans 3', arial; }\n.b { font-family: \"Source Sans Pro Light\", 'Brand Source Sans Pro'; }\n");
+    const script = "const font = \"'Brand Source Sans Pro', 'Source Sans Pro', sans-serif\";\nconst style = { fontFamily: 'Source Sans Pro' };\n";
+    assert.equal(migrate(script, 'a.ts').output, "const font = \"'Brand Source Sans Pro', 'Source Sans 3', sans-serif\";\nconst style = { fontFamily: 'Source Sans 3' };\n");
+  });
+
   it('does not mark twice a site whose marker contains a `*`', () => {
     // ovh/manager-ui-kit tailwind.config: the BC-03 hint names `--ods-semantic-size-radius-*`.
     const once = migrate('export default { borderRadius: { xs: \'var(--ods-border-radius-xs)\' } };', 'tailwind.config.mjs').output;

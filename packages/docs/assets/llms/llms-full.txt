@@ -12343,22 +12343,22 @@ This component extends all the native `<div>` attributes.
 
 ```tsx
 <>
-  <p>Value under low threshold:</p>
+  <p id="threshold-under">Value under low threshold:</p>
   <Meter
-    aria-label="Value under low threshold"
+    aria-labelledby="threshold-under"
     low={ 40 }
     value={ 35 } />
 
-  <p>Value between both thresholds:</p>
+  <p id="threshold-between">Value between both thresholds:</p>
   <Meter
-    aria-label="Value between both thresholds"
+    aria-labelledby="threshold-between"
     high={ 80 }
     low={ 40 }
     value={ 60 } />
 
-  <p>Value above high threshold:</p>
+  <p id="threshold-above">Value above high threshold:</p>
   <Meter
-    aria-label="Value above high threshold"
+    aria-labelledby="threshold-above"
     high={ 80 }
     value={ 90 } />
 </>
@@ -12368,25 +12368,25 @@ This component extends all the native `<div>` attributes.
 
 ```tsx
 <>
-  <p>Low optimum and low value:</p>
+  <p id="optimum-low">Low optimum and low value:</p>
   <Meter
-    aria-label="Low optimum and low value"
+    aria-labelledby="optimum-low"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }
     value={ 20 } />
 
-  <p>Low optimum and high value:</p>
+  <p id="optimum-high">Low optimum and high value:</p>
   <Meter
-    aria-label="Low optimum and high value"
+    aria-labelledby="optimum-high"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }
     value={ 60 } />
 
-  <p>Low optimum and very high value:</p>
+  <p id="optimum-very-high">Low optimum and very high value:</p>
   <Meter
-    aria-label="Low optimum and very high value"
+    aria-labelledby="optimum-very-high"
     high={ 80 }
     low={ 40 }
     optimum={ 30 }

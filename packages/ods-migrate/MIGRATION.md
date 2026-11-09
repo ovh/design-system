@@ -45,12 +45,22 @@ The ODS team measures ods-migrate on real code with a separate test tool. That t
 
 | Code base | Places that break | Fixed by ods-migrate | Marked with a TODO | Missed (your type check finds them) | Fixed | Fixed or marked |
 | --- | --- | --- | --- | --- | --- | --- |
-| `packages/examples` (5 apps) | 109 | 91 | 18 | 0 | 83.5 % | 100 % |
-| `ods-recipes` | 196 | 188 | 8 | 0 | 95.9 % | 100 % |
-| ODS Storybook | 423 | 380 | 36 | 7 | 89.8 % | 98.3 % |
-| ovh/manager (`@ovh-ux/muk` found in the repository) | 2,005 | 1,849 | 102 | 54 | 92.2 % | 97.3 % |
+| `packages/examples` (5 apps) | 138 | 138 | 0 | 0 | 100 % | 100 % |
+| `ods-recipes` | 197 | 189 | 8 | 0 | 95.9 % | 100 % |
+| ODS Storybook | 571 | 538 | 29 | 4 | 94.2 % | 99.3 % |
+| ovh/manager (`@ovh-ux/muk` read as ODS) | 2,064 | 1,987 | 64 | 13 | 96.3 % | 99.4 % |
 
-These numbers count code only: ods-migrate does not read Markdown, so the code samples of your `.md` / `.mdx` files are left to you (step 10). Every corpus ran with no option.
+These numbers count code only (no Markdown). Every corpus ran with no option but ovh/manager, whose kit `@ovh-ux/muk` is a package of the same repository.
+
+In the Markdown and MDX of the ODS Storybook, 110 of its 176 places that break are fixed (the rest is prose, inline code and samples written as strings).
+
+**In your docs** (`.md`, `.mdx`, counted as `docs` on the last line), ods-migrate rewrites the code samples, not the text around them:
+- a fenced code sample (`tsx`, `jsx`, `ts`, `js`, `css`, `scss`, `html`, `less`, `sass`) is migrated like a file of that language; its markers stay in the sample, where the reader copies them;
+- in an `.mdx` page, the `import` lines and the JSX paragraphs are migrated too, with no marker inside the JSX (a point to check instead);
+- prose and inline code (`` `BUTTON_COLOR.primary` `` in a sentence) are left as they are: rewriting them would leave the sentence wrong. Step 10 says how to find them;
+- a copy of the ODS v19 documentation kept in your repository (pages exported from the ODS site) is not rewritten: its text would contradict its samples. It gets one point to check: replace it with the v20 documentation, or delete it;
+- release notes and migration guides (`CHANGELOG.md`, `whats-new`, `migration…`) are never read: they describe the past;
+- a sample that does not parse (`{...}`, placeholders) is left as it is, with a point to check.
 
 **The report of ods-migrate counts other things**, so its numbers differ from this table:
 - a **change** is one edit: one place that breaks can take several (an import, an attribute, a value);
@@ -450,11 +460,11 @@ Beyond these, the component stylesheets changed widely between v19.7.3 and v20: 
 - [ ] `@ovhcloud/ods-*` are on `^20`, a single `@types/react` is installed, the app builds.
 - [ ] Snapshots are regenerated and their diff reviewed.
 - [ ] The visual check is done on every screen, with the product team's sign-off for each look change.
-- [ ] Your own docs no longer show v19 code. ods-migrate does not read Markdown: find what to update with
+- [ ] Your own docs no longer show v19 code. ods-migrate rewrites their code samples, not their prose nor their inline code: find what is left with
   ```sh
   grep -rnE '[A-Z]+_(COLOR|VARIANT)S?\b|--ods-(color|theme)-' --include='*.md' --include='*.mdx' --exclude-dir=node_modules .
   ```
-  Edit your own pages. Copies of ODS documentation kept in your repository (an `llms-full.txt`, pages copied from the ODS site) are not yours to edit: replace them with their v20 version, or delete them.
+  Edit your own pages. Copies of ODS documentation kept in your repository (an `llms-full.txt`, pages copied from the ODS site, which the report flags) are not yours to edit: replace them with their v20 version, or delete them.
 
 On `accessibility-test`, the full procedure took one write run and deleting the 18 marked Buttons, and gave: `--check` exit 0, 0 v20 type errors on ODS code (the 2 that remain were there in v19), 0 ESLint errors, 0 stylelint problems.
 
@@ -498,7 +508,7 @@ Measured on the coverage runs (`packages/examples`, `ods-recipes`, the ODS Story
 | A removed export stays in the import line with no marker (`MODAL_COLOR`, `TABLE_VARIANT`, `SPINNER_COLOR`); its uses are marked. | not done yet | 36 (manager) | Remove it from the import once you resolve the uses. |
 | Removed `*_COLORS` / `TABLE_VARIANTS` arrays kept in the import because their use is marked (Storybook `options:`). | not done yet | 3 (Storybook) | Same: resolve the use, remove it from the import. |
 | Storybook `globals.imports` and code samples written as strings still name `BUTTON_COLOR`, `MODAL_COLOR`… | not done yet | 20 (Storybook) | Edit the strings by hand. |
-| `.md` / `.mdx` docs (`MESSAGE_COLOR.information`, `--ods-color-success-500` in code samples and text). | not done yet | 4 (recipes), 45 `.mdx` files (Storybook) | Step 10. |
+| Prose and inline code of `.md` / `.mdx` docs (`MESSAGE_COLOR.information` in a sentence), and a code sample that does not parse. | by design | see the table above | Step 10. |
 | `@ovhcloud/ods-themes/default/tokens` JSON read through a variable key: the import is marked, the reads are not. | not done yet | not measured | Rename each key read (`--ods-semantic-*`, `--ods-palette-*`). |
 | Bare theme variables (`$ods-color-*`) in a Sass partial that reaches the theme through the `@import` of another file or the bundler's `additionalData`: left as they are. The import of the theme is marked. | not done yet | 0 on the measured code | Rewrite them as in the file that imports the theme, or read the CSS custom properties. |
 | `arg.variant` read from an object typed with ODS props (`Partial<MessageProp>`): the attribute becomes `emphasis={ arg.variant }`, the read stays. | needs a person | 1 (Storybook) | Rename the key in the type and its values (`default` → `high`, `light` → `medium`). |

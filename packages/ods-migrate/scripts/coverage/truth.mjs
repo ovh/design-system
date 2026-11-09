@@ -1084,7 +1084,12 @@ export function compareTruthFile(input) {
       const et = twin >= 0 ? addedT.splice(twin, 1)[0] : null;
       const item = { kind: 'jsx-element', key: `<${em.tag}>`, lines: [at, at], element: em.tag, original: null, migrated: signature(em), truth: et ? signature(et) : null };
       push(item, true);
-      if (item.verdict === 'differ') Object.assign(item, { class: 'tool-wrong', reason: 'ods-migrate added this element' });
+      if (item.verdict !== 'differ') continue;
+      // The Tabs of a removed Switch (DECISIONS: the Switch becomes Tabs variant="switch"), where the truth wrote something else.
+      const fromSwitch = /^Tabs?$|^TabList$/.test(em.tag) && po.elements.some((eo) => /^Switch(Item)?$/.test(eo.tag) && eo.line <= at && at <= eo.endLine);
+      Object.assign(item, fromSwitch
+        ? { class: 'decision', reason: 'ods-migrate turns the removed Switch into Tabs variant="switch"; the truth wrote something else (DECISIONS: Tabs by default)', look: 'switch-to-tabs' }
+        : { class: 'tool-wrong', reason: 'ods-migrate added this element' });
     }
     // Elements only the truth has, grouped by the place they are inserted at: one item per block of new content.
     const blocks = new Map();

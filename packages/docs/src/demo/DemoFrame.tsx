@@ -1,5 +1,5 @@
 import { EnvironmentProvider } from '@ark-ui/react/environment';
-import { type ReactNode, useContext, useEffect, useState } from 'react';
+import { type ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import Frame, { FrameContext } from 'react-frame-component';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROOT } from '../appBase';
@@ -37,8 +37,8 @@ const FrameEnv = ({ dark, title, tokens }: Omit<DemoFrameProp, 'children'>) => {
   const { document: frameDocument } = useContext(FrameContext);
 
   useEffect(() => {
-    if (frameDocument && title !== undefined) {
-      frameDocument.title = title;
+    if (title !== undefined) {
+      frameDocument?.querySelector('title')?.replaceChildren(title);
     }
   }, [frameDocument, title]);
 
@@ -275,11 +275,19 @@ const initialContent = (title: string): string => `<!DOCTYPE html><html lang="${
 // A font request that never settles must not hold the demo behind its skeleton.
 const FONTS_TIMEOUT = 2000;
 
-/* Flips ready once the frame content has painted with its fonts, so the
-   parent can swap the skeleton for the real frame without layout jumps.
+/* Flips ready once the frame content has painted with its fonts, or after
+   FONTS_TIMEOUT if they never settle, so the parent can swap the skeleton for
+   the real frame (without layout jumps when the fonts made it).
    Hands the frame document back so callers can measure inside it. */
 const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void }) => {
   const { document: frameDocument } = useContext(FrameContext);
+  // A ref, not a dependency: callers pass a new function on each render, which
+  // would restart the timeout for as long as they re-render.
+  const onReadyRef = useRef(onReady);
+
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  }, [onReady]);
 
   useEffect(() => {
     if (!frameDocument) {
@@ -289,18 +297,20 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
     let timeout = 0;
     Promise.race([
       frameDocument.fonts.ready,
-      new Promise((resolve) => { timeout = window.setTimeout(resolve, FONTS_TIMEOUT); }),
+      new Promise((resolve) => {
+        timeout = window.setTimeout(resolve, FONTS_TIMEOUT);
+      }),
     ]).finally(() => {
       window.clearTimeout(timeout);
       if (!cancelled) {
-        requestAnimationFrame(() => onReady(frameDocument));
+        requestAnimationFrame(() => onReadyRef.current(frameDocument));
       }
     }).catch(() => {});
     return () => {
       cancelled = true;
       window.clearTimeout(timeout);
     };
-  }, [frameDocument, onReady]);
+  }, [frameDocument]);
 
   return null;
 };

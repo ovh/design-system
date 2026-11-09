@@ -86,6 +86,11 @@ describe('design tokens', () => {
     assert.equal(migrate(script, 'a.ts').output, "const font = \"'Brand Source Sans Pro', 'Source Sans 3', sans-serif\";\nconst style = { fontFamily: 'Source Sans 3' };\n");
   });
 
+  it('paints the outline of a focused element with the v20 focus role', () => {
+    const css = '.f:focus,\n.f:focus-within { outline-color: var(--ods-color-primary-700); }\n.g:focus-visible { outline: 2px solid var(--ods-color-primary-500); }\n.h:focus { border-color: var(--ods-color-primary-700); }\n';
+    assert.equal(migrate(css, 'a.css').output, '.f:focus,\n.f:focus-within { outline-color: var(--ods-semantic-color-focus); }\n.g:focus-visible { outline: 2px solid var(--ods-semantic-color-focus); }\n.h:focus { border-color: var(--ods-semantic-color-interaction-brand-hover); }\n');
+  });
+
   it('does not mark twice a site whose marker contains a `*`', () => {
     // ovh/manager-ui-kit tailwind.config: the BC-03 hint names `--ods-semantic-size-radius-*`.
     const once = migrate('export default { borderRadius: { xs: \'var(--ods-border-radius-xs)\' } };', 'tailwind.config.mjs').output;

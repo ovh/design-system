@@ -1391,7 +1391,8 @@ function unusedConfigs(roots, used, name) {
 
 /**
  * The package names under the top-level `overrides:` of a pnpm-workspace.yaml (pnpm reads them there
- * too), or null when it has none. A small reader: keys indented under `overrides:`, quoted or not.
+ * too; pnpm 11 only there), an empty list when it has none. A small reader: keys indented under
+ * `overrides:`, quoted or not.
  */
 function workspaceOverridesOf(path) {
   let text;
@@ -1403,7 +1404,7 @@ function workspaceOverridesOf(path) {
   const lines = text.split(/\r?\n/);
   const start = lines.findIndex((line) => /^overrides:\s*(#.*)?$/.test(line));
   if (start === -1) {
-    return null;
+    return [];
   }
   const names = [];
   for (const line of lines.slice(start + 1)) {

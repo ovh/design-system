@@ -108,11 +108,21 @@ describe('manifest: package.json', () => {
   it('says why it adds the overrides, and leaves them to a pnpm-workspace.yaml that keeps its own', () => {
     const source = json({ name: 'a', dependencies: { react: '^19.0.0' } });
     assert.match(messages(transformManifest(source, { lockfile: 'pnpm' }).changes)[0], /^pnpm\.overrides: @types\/react, @types\/react-dom \^19 added, so that every package of the install uses the same React 19 types/);
-    // pnpm also reads the overrides of pnpm-workspace.yaml: when it has some, the types go there, by hand.
+    // pnpm also reads the overrides of pnpm-workspace.yaml: when the file exists, the types go there, by hand.
     const kept = transformManifest(source, { lockfile: 'pnpm', workspaceOverrides: ['lodash', '@types/react'] });
     assert.equal(kept.output, source);
-    assert.match(messages(kept.notes)[0], /your pnpm-workspace\.yaml declares overrides: add "@types\/react-dom": "\^19" there/);
+    assert.match(messages(kept.notes)[0], /your pnpm-workspace\.yaml holds the pnpm settings: add "@types\/react-dom": "\^19" under its overrides/);
     assert.equal(transformManifest(source, { lockfile: 'pnpm', workspaceOverrides: ['@types/react', '@types/react-dom'] }).notes.length, 0);
+    // A pnpm-workspace.yaml without overrides (allowBuilds, minimumReleaseAge only) holds the settings all the same.
+    const settings = transformManifest(source, { lockfile: 'pnpm', workspaceOverrides: [] });
+    assert.equal(settings.output, source);
+    assert.match(messages(settings.notes)[0], /add "@types\/react": "\^19" and "@types\/react-dom": "\^19" under its overrides/);
+    // pnpm 11 ignores the "pnpm" field of package.json: the note says to create the file.
+    const pnpm11 = json({ name: 'a', packageManager: 'pnpm@11.1.1', dependencies: { react: '^19.0.0' } });
+    const created = transformManifest(pnpm11, { lockfile: 'pnpm' });
+    assert.equal(created.output, pnpm11);
+    assert.match(messages(created.notes)[0], /create a pnpm-workspace\.yaml next to this package\.json \(pnpm 11 ignores the "pnpm" field of package\.json\)/);
+    assert.ok(JSON.parse(transformManifest(json({ packageManager: 'pnpm@10.14.0', dependencies: { react: '^19.0.0' } }), { lockfile: 'pnpm' }).output).pnpm.overrides);
   });
 
   it('uses the React major of the workspace for a root package.json', () => {

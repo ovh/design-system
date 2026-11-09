@@ -247,7 +247,7 @@ function applyEdits(text, edits) {
  * there is none: a workspace member, or an app without lockfile); `hasTailwindConfig` says whether a
  * `tailwind.config.*` sits next to it; `reactMajor` is the React major of the workspace, for a root
  * package.json that does not declare React itself; `hasBrowserslistrc` flags a `.browserslistrc`;
- * `workspaceOverrides`: the names under `overrides` of a pnpm-workspace.yaml next to it (null: none).
+ * `workspaceOverrides`: the names under `overrides` of a pnpm-workspace.yaml next to it (null: no such file).
  */
 function transformManifest(text, { file = 'package.json', hasBrowserslistrc = false, hasTailwindConfig = false, lockfile = null, reactMajor = null, workspaceOverrides = null } = {}) {
   const report = { changes: [], notes: [], output: text };
@@ -323,12 +323,17 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
         note(entry.value.start, `${name} ${entry.value.value} on React ${react}: bump it to ${TYPES_RANGE} (both type packages share the React major)`);
       }
     }
-    const path = lockfile && !(lockfile === 'pnpm' && workspaceOverrides) ? OVERRIDES[lockfile] : null;
-    if (lockfile === 'pnpm' && workspaceOverrides) {
-      // pnpm also reads `overrides` from pnpm-workspace.yaml: where the workspace keeps them, the types go there too.
-      const wanted = TYPES.filter((name) => !workspaceOverrides.includes(name));
+    // pnpm 11 reads its settings from pnpm-workspace.yaml only: the `pnpm` field of package.json is ignored.
+    const manager = member(root, 'packageManager')?.value;
+    const pnpmMajor = manager?.type === 'string' ? Number(manager.value.match(/^pnpm@(\d+)/)?.[1] ?? 0) : 0;
+    const toWorkspace = lockfile === 'pnpm' && (workspaceOverrides !== null || pnpmMajor >= 11);
+    const path = lockfile && !toWorkspace ? OVERRIDES[lockfile] : null;
+    if (toWorkspace) {
+      // The types go to pnpm-workspace.yaml, where pnpm keeps its settings: ods-migrate does not edit YAML.
+      const wanted = TYPES.filter((name) => !(workspaceOverrides ?? []).includes(name));
       if (wanted.length > 0) {
-        note(member(root, 'name')?.value.start ?? root.start, `React ${react}: your pnpm-workspace.yaml declares overrides: add ${wanted.map((name) => `"${name}": "${TYPES_RANGE}"`).join(' and ')} there, so that every package of the install uses the same React ${react} types (two versions break the JSX types of the ODS components)`);
+        const where = workspaceOverrides === null ? 'create a pnpm-workspace.yaml next to this package.json (pnpm 11 ignores the "pnpm" field of package.json)' : 'your pnpm-workspace.yaml holds the pnpm settings';
+        note(member(root, 'name')?.value.start ?? root.start, `React ${react}: ${where}: add ${wanted.map((name) => `"${name}": "${TYPES_RANGE}"`).join(' and ')} under its overrides, so that every package of the install uses the same React ${react} types (two versions break the JSX types of the ODS components)`);
       }
     } else if (path) {
       let parent = root;

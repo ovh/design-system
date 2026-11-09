@@ -23,7 +23,8 @@ import { TODO, followsMarker, inlineMarker, isV19Look, resolveTokenMapping, stac
  */
 
 const OLD_TOKEN = /--ods-(?:theme|color|border-radius|border-width|font-family|form-element|outline)-[a-z0-9-]*[a-z0-9]/g;
-const OLD_FONT = /(['"]?)Source Sans Pro\1/g;
+// The family name alone, quoted or not: not a part of another name ('Brand Source Sans Pro', 'Source Sans Pro Light').
+const OLD_FONT = /(['"])Source Sans Pro\1|(?<![\w'"-][ \t]*)Source Sans Pro(?![ \t]*[\w'"-])/g;
 // Only the font folder of the ODS package: an app folder or `@fontsource/source-sans-pro` is not ODS.
 const OLD_FONT_PATH = /(ods-themes(?:@[\w.-]+)?\/(?:dist\/)?assets\/fonts\/)source-sans-pro(?![\w-])/g;
 const OLD_FONT_MIXIN = /\bsource-sans-pro(-italic)?-font-face\b/g;
@@ -714,7 +715,7 @@ function planText(mapping, text, env = {}) {
     if (result.note) out.notes.push(result.note);
   }
   for (const match of keepsOldFont(config) ? [] : text.matchAll(OLD_FONT)) {
-    out.edits.push({ end: match.index + match[0].length, message: '\'Source Sans Pro\' → \'Source Sans 3\'', start: match.index, text: `${match[1]}Source Sans 3${match[1]}` });
+    out.edits.push({ end: match.index + match[0].length, message: '\'Source Sans Pro\' → \'Source Sans 3\'', start: match.index, text: `${match[1] ?? ''}Source Sans 3${match[1] ?? ''}` });
   }
   for (const match of text.matchAll(OLD_FONT_PATH)) {
     const start = match.index + match[1].length;

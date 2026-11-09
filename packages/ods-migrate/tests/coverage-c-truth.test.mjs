@@ -195,6 +195,13 @@ describe('coverage-c: compareTruthFile', { skip }, () => {
     const [x] = differ(compare(o, o, t, { file: 'c.ts' }));
     assert.deepEqual([x.class, x.look], ['decision', 'z-index']);
   });
+  it('the Tabs written for a removed Switch, where the truth wrote something else, are a decision; another added element is tool-wrong', () => {
+    const o = "import { Switch, SwitchItem } from '@ovhcloud/ods-react';\nexport const a = (\n  <section>\n    <Switch>\n      <SwitchItem value=\"1\">One</SwitchItem>\n    </Switch>\n  </section>\n);\n";
+    const m = "import { Tab, TabList, Tabs } from '@ovhcloud/ods-react';\nexport const a = (\n  <section>\n    <Tabs variant=\"switch\"><TabList>\n      <Tab value=\"1\">One</Tab>\n    </TabList></Tabs>\n    <Button>b</Button>\n  </section>\n);\n";
+    const t = "export const a = (\n  <section>\n  </section>\n);\n";
+    const added = differ(compare(o, m, t)).filter((x) => x.kind === 'jsx-element' && x.original === null);
+    assert.deepEqual(added.map((x) => [x.element, x.class, x.look]), [['Tabs', 'decision', 'switch-to-tabs'], ['TabList', 'decision', 'switch-to-tabs'], ['Tab', 'decision', 'switch-to-tabs'], ['Button', 'tool-wrong', undefined]]);
+  });
   it('a local constant named like a removed ODS export is not the export (the truth keeps it: tool-wrong)', () => {
     const o = "import { Badge } from '@ovhcloud/ods-react';\nconst BUTTON_COLOR = { primary: 'mine' };\nexport const x = BUTTON_COLOR.primary;\n";
     const m = "import { Badge } from '@ovhcloud/ods-react';\nconst BUTTON_STATUS = { primary: 'mine' };\nexport const x = BUTTON_STATUS.brand;\n";

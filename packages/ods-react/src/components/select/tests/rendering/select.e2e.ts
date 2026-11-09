@@ -36,6 +36,20 @@ describe('Select rendering', () => {
     });
   });
 
+  describe('in a scroll container', () => {
+    it('should not let the hidden native select extend the document', async() => {
+      await gotoStory(page, 'rendering/in-scroll-container');
+      await page.waitForSelector('[data-ods="select"] select');
+
+      const [scrollHeight, clientHeight] = await page.evaluate(() => [
+        document.scrollingElement!.scrollHeight,
+        document.scrollingElement!.clientHeight,
+      ]);
+
+      expect(scrollHeight).toBe(clientHeight);
+    });
+  });
+
   describe('list width', () => {
     it('should give the list the width of the control by default', async() => {
       await gotoStory(page, 'rendering/list-width');

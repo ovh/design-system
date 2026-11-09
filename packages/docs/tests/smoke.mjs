@@ -53,7 +53,7 @@ async function suite(browser, { base, version }) {
   });
   await check('index.html lands on the homepage', async () => {
     await page.goto(`${V}/index.html`, { waitUntil: 'domcontentloaded' });
-    await page.waitForURL(`**/v${version}/`, { timeout: 10000 });
+    await page.waitForURL((url) => url.pathname.endsWith(`/v${version}/`), { timeout: 10000 });
     await page.waitForSelector('#root *', { timeout: 10000 });
     if (await page.getByRole('heading', { level: 1, name: 'Page not found' }).count()) {
       throw new Error('the homepage says Page not found');

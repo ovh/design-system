@@ -51,6 +51,18 @@ async function suite(browser, { base, version }) {
       throw new Error(`landed on ${page.url()}`);
     }
   });
+  await check('index.html lands on the homepage', async () => {
+    await page.goto(`${V}/index.html`, { waitUntil: 'domcontentloaded' });
+    await page.waitForURL(`**/v${version}/`, { timeout: 10000 });
+    await page.waitForSelector('#root *', { timeout: 10000 });
+    if (await page.getByRole('heading', { level: 1, name: 'Page not found' }).count()) {
+      throw new Error('the homepage says Page not found');
+    }
+  });
+  await check('a legacy Storybook URL on index.html lands on its page', async () => {
+    await page.goto(`${V}/index.html?path=/docs/react-components-button--documentation`, { waitUntil: 'domcontentloaded' });
+    await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });
+  });
   await check('deep link bounces off 404.html and restores the URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });

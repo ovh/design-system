@@ -153,6 +153,9 @@ const HOVER_PSEUDO = /:(hover|active|focus|focus-visible)(?![\w-])/;
 /* The pressed state, which v20 paints with its own `-active` role where the palette has one. */
 const ACTIVE_VARIANT = /^(active|group-active|peer-active)$/;
 const ACTIVE_PSEUDO = /:active(?![\w-])/;
+/* The keyboard focus, whose outline v20 paints with its focus role. */
+const FOCUS_PSEUDO = /:focus(?:-visible|-within)?(?![\w-])/;
+const FOCUS_RING = /^outline(-color)?$/;
 
 /* A Tailwind variant says hover: `hover`, `group-hover/card`, `[&:hover]`, `group-[:hover]`, `has-[:hover]`. */
 function isHoverVariant(variant) {
@@ -258,16 +261,17 @@ const PLACEHOLDER_PSEUDO = /::?(?:-webkit-input-|-moz-)?placeholder(?![\w-])/;
  * subject of its parent.
  */
 function selectorStates(chain) {
-  let parents = [{ active: false, hover: false, placeholder: false, root: false }];
+  let parents = [{ active: false, focus: false, hover: false, placeholder: false, root: false }];
   for (const selector of chain) {
     const next = [];
     for (const complex of selectorList(selector)) {
       const compound = withoutNegations(subjectOf(complex));
       const hover = HOVER_PSEUDO.test(withoutNegations(complex));
-      const own = { active: ACTIVE_PSEUDO.test(withoutNegations(complex)), hover, placeholder: PLACEHOLDER_PSEUDO.test(compound), root: isRootCompound(compound) };
+      const own = { active: ACTIVE_PSEUDO.test(withoutNegations(complex)), focus: FOCUS_PSEUDO.test(withoutNegations(complex)), hover, placeholder: PLACEHOLDER_PSEUDO.test(compound), root: isRootCompound(compound) };
       for (const parent of parents) {
         next.push({
           active: own.active || parent.active,
+          focus: own.focus || parent.focus,
           hover: own.hover || parent.hover,
           placeholder: own.placeholder || (parent.placeholder && compound.includes('&')),
           root: own.root || (parent.root && compound.startsWith('&')),
@@ -282,7 +286,7 @@ function selectorStates(chain) {
 /* `all`, `none` or `mixed` for each state over the selectors of the list. */
 function summarize(list) {
   const of = (key) => (list.every((state) => state[key]) ? 'all' : list.some((state) => state[key]) ? 'mixed' : 'none');
-  return { active: of('active'), hover: of('hover'), placeholder: of('placeholder'), root: of('root') };
+  return { active: of('active'), focus: of('focus'), hover: of('hover'), placeholder: of('placeholder'), root: of('root') };
 }
 
 /* `border: { color: … }` in SCSS: postcss-scss reads the group as a rule whose selector is `border:`. */
@@ -482,6 +486,11 @@ function resolveToken(mapping, name, context = {}) {
     const palette = entry.paletteValue ? ` To keep the exact v19 colour whatever the theme: var(${entry.paletteValue}).` : '';
     return { todo: `${name}: ${mapping.hints.role}${lead}${palette}` };
   }
+  // The outline of a focused element is the focus ring, which v20 paints with its own role (the v19 theme outline colour's).
+  const focus = mapping.tokens['--ods-theme-outline-color']?.to;
+  if (context.focusRing && context.role === 'border' && entry.byRole.border && focus) {
+    return { to: focus };
+  }
   // A selector list that mixes a state and the rest: one value cannot be both.
   const rest = entry.byRole[context.role];
   for (const [mixed, cell, label] of [['hoverMixed', `${context.role}:hover`, 'a :hover state'], ['placeholderMixed', 'content:placeholder', 'a ::placeholder']]) {
@@ -524,6 +533,7 @@ function declarationContext(prop, state = {}) {
   return {
     alias: isPaletteAliasName(prop),
     active: state.active === 'all' || /-active$/.test(prop),
+    focusRing: state.focus === 'all' && FOCUS_RING.test(prop),
     hover: state.hover === 'all' || /-(hover|active)$/.test(prop),
     likely: likelyRoleOfProperty(prop),
     hoverMixed: state.hover === 'mixed',

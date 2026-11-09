@@ -259,6 +259,7 @@ Keys of the component mapping, all optional:
 | Where the token is | What says what it paints | Example |
 | --- | --- | --- |
 | CSS / SCSS declaration | the property, and `:hover` / `::placeholder` on every selector of the rule (outside `:not()`) | `background: var(--ods-color-primary-500)` → `surface-brand` |
+| An `outline` on `:focus`, `:focus-visible` or `:focus-within` (every selector of the rule) | the focus ring | `.a:focus { outline-color: var(--ods-color-primary-700) }` → `--ods-semantic-color-focus` |
 | Tailwind arbitrary value, `@apply` | the utility and its variants (`[&:hover]`, `group-hover/x`, `!`) | `hover:border-b-[--ods-color-primary-700]` → `interaction-brand-hover` |
 | Style object, Tailwind config | the key, also through a ternary or `&&` | `{ color: 'var(--ods-color-primary-500)' }` → `content-brand` |
 | CSS in a template string | the property on the same line | `` `color: var(--ods-theme-text-color);` `` |

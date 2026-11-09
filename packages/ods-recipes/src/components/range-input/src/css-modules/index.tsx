@@ -4,6 +4,7 @@ import style from './index.module.scss';
 
 const MAX = 100;
 const MIN = 0;
+const RANGE_LABELS = ['Value'];
 
 const RangeInput = (): JSX.Element => {
   const [draggingValues, setDraggingValues] = useState([MIN]);
@@ -19,7 +20,7 @@ const RangeInput = (): JSX.Element => {
   return (
     <div className={ style['range-input'] }>
       <Range
-        aria-label={ ['Value'] }
+        aria-label={ RANGE_LABELS }
         max={ MAX }
         min={ MIN }
         onDragging={ onRangeDragging }

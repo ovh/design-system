@@ -46,7 +46,7 @@ export function prepareAll(o) {
 if (isMain(import.meta.url)) {
   const o = cli('all', 'Every corpus of TESTING.md § 5.3.', {
     repo: { help: 'the design-system git repo', default: designSystemRepo() ?? undefined },
-    'manager-repo': { help: 'the ovh/manager snapshot repo (git archive 7e02c54)' },
+    'manager-repo': { help: 'a clone of github.com/ovh/manager (git archive d8e3d1a1 packages)' },
     'manager-from': { help: 'a folder holding the packages/ of the snapshot (instead of --manager-repo)' },
     only: { help: 'a comma-separated subset' },
     'accept-digest': { type: 'boolean', help: 'go on when an untracked input is not the pinned one' },

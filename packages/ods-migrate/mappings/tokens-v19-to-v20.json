@@ -5,7 +5,7 @@
     "file": "packages/themes/scripts/repoint-tokens.js",
     "from": "v19.7.3",
     "ref": "origin/master",
-    "sha": "2741442ea"
+    "sha": "ad6d5bc7b"
   },
   "hints": {
     "badge-mixin": "`ods-badge()` now draws a 1px solid border (coloured by `ods-badge-color()`, `currentColor` without it) and a full radius: to keep the v19 look, add `border: 0` and `--ods-badge-border-radius: var(--ods-semantic-size-radius-control)` after the include.",

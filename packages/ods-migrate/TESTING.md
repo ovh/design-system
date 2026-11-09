@@ -120,7 +120,7 @@ Gates (all must be 0, the script checks them):
 
 Under a v19-look config, the codemod adds `emphasis="high"` / `status="accent"` to Buttons, Messages and Cards **without** the prop (`whenAbsent`); ESLint never adds attributes (`ods/v20-default-changed` only reports). Those divergences are counted apart (`fixDivergencesWhenAbsent`, a divergence made only of those attributes) and are not a gate.
 
-**The reference corpus** is `packages/` of ovh/manager, frozen in a local git repo at commit `7e02c54` (message `base`, 10,585 files; branches `run1`…`run4` of that repo hold earlier migrated output: always pass `--ref 7e02c54`, never use its working tree). On this machine it is `/private/tmp/claude-501/-Users-calba-Documents-design-system/0359ce3c-a731-409e-9abf-04027a5fa3e0/scratchpad/manager-tokens`, a scratch folder: **move it somewhere durable**. The ovh/manager commit it was copied from was not recorded; to rebuild one, clone `github.com/ovh/manager`, copy `packages/` into a fresh repo, commit, and record a new baseline (the numbers will move).
+**The reference corpus** is `packages/` of [ovh/manager](https://github.com/ovh/manager). The tables below were measured on a frozen copy at commit `7e02c54` (10,585 files), which is lost: the coverage runs of § 5.4 now use ovh/manager at the public commit `d8e3d1a1` (2026-10-30). To get it: `git clone --filter=blob:none --no-checkout https://github.com/ovh/manager.git manager` (git fetches the blobs of `packages/` when the script archives them), then pass `--manager-repo manager` to `corpora/all.mjs` (`corpora/manager.mjs` pins the commit and the digest of its `packages/`: 45,068 files).
 
 Last run (`coverage-baseline.json` → `acceptance` holds it):
 

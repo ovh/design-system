@@ -3,7 +3,7 @@
   "recordedAt": "2026-11-06",
   "refs": {
     "v19": "v19.7.3 (0ce249290)",
-    "v20": "origin/master (2741442ea)"
+    "v20": "origin/master (ad6d5bc7b; ods-react and themes as at 2741442ea)"
   },
   "tooling": {
     "node": "v22.14.0",
@@ -515,43 +515,45 @@
       "seconds": 16
     },
     "manager": {
-      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 ('base', 10,585 files, pinned digest)",
+      "corpus": "github.com/ovh/manager packages/ at d8e3d1a1 (45,068 files; scripts/coverage/corpora/manager.mjs), --treat-as-ods @ovh-ux/muk",
       "fetch": "node scripts/coverage/corpora/manager.mjs --out <dir> --repo <snapshot repo> (or --from <dir holding packages/>)",
       "command": "node --max-old-space-size=12000 scripts/coverage.mjs <dir>/manager/corpus/packages --label manager --json manager.json",
       "gated": true,
-      "note": "Recorded with no option (2026-10-27): @ovh-ux/muk and the other modules of the tree are found on their own. The harness counts 2 sites fewer than with --treat-as-ods @ovh-ux/muk (2021 vs 2023: manager-wiki Badge.stories.tsx:46 and :67, story args typed through the muk alias BadgeProps, which only the harness option makes it count; they were MISSED). The packages on ODS 17/18 (apps/ips, pci-rancher, catalog: 63 sites out of scope) are left unchanged by ods-migrate: 0 premature file (17 before). Regressions 2, both under a marker: BUTTON_STATUS.information in web-domains (the known BUTTON_STATUS.* defect). The 19 others of the previous baseline (pci-block-storage Button/ButtonLink callers, pci-instances ActionsMenu actionButton, pci-workflow ButtonLink) are fixed by following the props typed with ODS types. 14 of the 68 MISSED are doc sites. Not re-recorded on 2026-11-06 (origin/master): its source is gone from this machine (the manager snapshot repo is empty). Still on stack/remove-color: coverage-check reports it as not comparable until a run on master is recorded.",
+      "note": "Recorded on 2026-11-06 on the public commit d8e3d1a1 (the former snapshot 7e02c54 is lost), with --treat-as-ods @ovh-ux/muk as the corpus manifest says. 320 sites are out of scope (packages on ODS 17/18 or with no ODS); 4 files of packages that declare no ODS dependency are rewritten (premature), as before.",
       "refs": {
         "v19": "0ce249290",
-        "v20": "65bca4aae"
+        "v20": "ad6d5bc7b"
       },
       "options": {
-        "treatAsOds": [],
+        "treatAsOds": [
+          "@ovh-ux/muk"
+        ],
         "config": null,
         "strict": false,
         "checkJs": false,
         "truth": false
       },
       "files": {
-        "typeChecked": 6258,
-        "scanned": 6648,
-        "snippets": 20
+        "typeChecked": 11290,
+        "scanned": 24199,
+        "snippets": 56
       },
-      "sites": 2021,
-      "auto": 1851,
-      "marked": 102,
-      "missed": 68,
-      "autoPct": 91.6,
-      "assistedPct": 96.6,
-      "regressions": 2,
-      "regressionsUnderMarker": 2,
-      "prematureFiles": 0,
-      "prematureHunks": 0,
+      "sites": 2085,
+      "auto": 1989,
+      "marked": 64,
+      "missed": 32,
+      "autoPct": 95.4,
+      "assistedPct": 98.5,
+      "regressions": 0,
+      "regressionsUnderMarker": 0,
+      "prematureFiles": 4,
+      "prematureHunks": 10,
       "digests": {
-        "corpus": "27f0136d8bb2ac99a79ad6148270bc87d6d6d8bf1bdf6eda909e7c0728803462",
+        "corpus": "ac957536a32705820c2c6ad503f8d6752235b89f3f4aca196368850fab3c15da",
         "truth": null
       },
       "migrateExit": 0,
-      "seconds": 83
+      "seconds": 448
     },
     "storybook": {
       "corpus": "design-system packages/storybook at v19.7.3, ODS relative imports rewritten to @ovhcloud/ods-react; truth = the hand migration of packages/docs (9336e1951^ -> stack/remove-color) merged into each storybook file (lines with no truth excluded)",

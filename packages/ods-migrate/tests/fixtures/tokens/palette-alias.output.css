@@ -1,0 +1,20 @@
+/* The app's own palette, read from the v19 rungs: each name keeps its colour from the v20 palette. */
+:root {
+  --color-primary-500: var(--ods-palette-brand-500, #0050d7);
+  --color-primary-050: var(--ods-palette-brand-100);
+  --mds-neutral-200: var(--ods-palette-gray-300, #dde1e9);
+  --color-success-100: var(--ods-palette-green-100);
+}
+
+/* Not an alias: no rung in the name, or the value is computed. */
+:root {
+  /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */
+  --brand: var(--ods-color-primary-500);
+  /* TODO(ods-v20): --ods-color-primary-500: v20 names colours by what they paint: pick the one for this place. background → `--ods-semantic-color-surface-brand`, border → `--ods-semantic-color-border-brand`, text → `--ods-semantic-color-content-brand`. To keep the exact v19 colour whatever the theme: var(--ods-palette-blue-500). */
+  --primary-mix-500: color-mix(in srgb, var(--ods-color-primary-500) 50%, white);
+}
+
+/* A name of the app's palette that says what it paints keeps its role. */
+:root {
+  --text-500: var(--ods-semantic-color-content-brand);
+}

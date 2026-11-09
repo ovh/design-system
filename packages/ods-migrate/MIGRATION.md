@@ -47,20 +47,9 @@ The ODS team measures ods-migrate on real code with a separate test tool. That t
 | --- | --- | --- | --- | --- | --- | --- |
 | `packages/examples` (5 apps) | 138 | 138 | 0 | 0 | 100 % | 100 % |
 | `ods-recipes` | 197 | 189 | 8 | 0 | 95.9 % | 100 % |
-| ODS Storybook | 571 | 538 | 29 | 4 | 94.2 % | 99.3 % |
-| ovh/manager (`@ovh-ux/muk` read as ODS) | 2,064 | 1,987 | 64 | 13 | 96.3 % | 99.4 % |
+| ovh/manager (`@ovh-ux/muk` read as ODS) | 2,064 | 1,993 | 59 | 12 | 96.6 % | 99.4 % |
 
-These numbers count code only (no Markdown). Every corpus ran with no option but ovh/manager, whose kit `@ovh-ux/muk` is a package of the same repository.
-
-In the Markdown and MDX of the ODS Storybook, 110 of its 176 places that break are fixed (the rest is prose, inline code and samples written as strings).
-
-**In your docs** (`.md`, `.mdx`, counted as `docs` on the last line), ods-migrate rewrites the code samples, not the text around them:
-- a fenced code sample (`tsx`, `jsx`, `ts`, `js`, `css`, `scss`, `html`, `less`, `sass`) is migrated like a file of that language; its markers stay in the sample, where the reader copies them;
-- in an `.mdx` page, the `import` lines and the JSX paragraphs are migrated too, with no marker inside the JSX (a point to check instead);
-- prose and inline code (`` `BUTTON_COLOR.primary` `` in a sentence) are left as they are: rewriting them would leave the sentence wrong. Step 10 says how to find them;
-- a copy of the ODS v19 documentation kept in your repository (pages exported from the ODS site) is not rewritten: its text would contradict its samples. It gets one point to check: replace it with the v20 documentation, or delete it;
-- release notes and migration guides (`CHANGELOG.md`, `whats-new`, `migration…`) are never read: they describe the past;
-- a sample that does not parse (`{...}`, placeholders) is left as it is, with a point to check.
+These numbers count code only: ods-migrate does not read Markdown, so the code samples of your `.md` / `.mdx` files are left to you (step 10). Every corpus ran with no option but ovh/manager, whose kit `@ovh-ux/muk` is a package of the same repository.
 
 **The report of ods-migrate counts other things**, so its numbers differ from this table:
 - a **change** is one edit: one place that breaks can take several (an import, an attribute, a value);
@@ -460,11 +449,11 @@ Beyond these, the component stylesheets changed widely between v19.7.3 and v20: 
 - [ ] `@ovhcloud/ods-*` are on `^20`, a single `@types/react` is installed, the app builds.
 - [ ] Snapshots are regenerated and their diff reviewed.
 - [ ] The visual check is done on every screen, with the product team's sign-off for each look change.
-- [ ] Your own docs no longer show v19 code. ods-migrate rewrites their code samples, not their prose nor their inline code: find what is left with
+- [ ] Your own docs no longer show v19 code. ods-migrate does not read Markdown: find what to update with
   ```sh
   grep -rnE '[A-Z]+_(COLOR|VARIANT)S?\b|--ods-(color|theme)-' --include='*.md' --include='*.mdx' --exclude-dir=node_modules .
   ```
-  Edit your own pages. Copies of ODS documentation kept in your repository (an `llms-full.txt`, pages copied from the ODS site, which the report flags) are not yours to edit: replace them with their v20 version, or delete them.
+  Edit your own pages. Copies of ODS documentation kept in your repository (an `llms-full.txt`, pages copied from the ODS site) are not yours to edit: replace them with their v20 version, or delete them.
 
 On `accessibility-test`, the full procedure took one write run and deleting the 18 marked Buttons, and gave: `--check` exit 0, 0 v20 type errors on ODS code (the 2 that remain were there in v19), 0 ESLint errors, 0 stylelint problems.
 
@@ -482,18 +471,17 @@ ods-migrate does not estimate time: the ODS team has measured it on one small ap
 
 ## Known gaps
 
-Measured on the coverage runs (`packages/examples`, `ods-recipes`, the ODS Storybook, ovh/manager). "Not done yet" = ods-migrate could do it and does not yet; "needs a person" = a person must decide. Most of them show up as a type error with no marker nearby (step 5).
+Measured on the coverage runs (`packages/examples`, `ods-recipes`, ovh/manager; a row seen only in the ODS team's own code says "not seen on app code"). "Not done yet" = ods-migrate could do it and does not yet; "needs a person" = a person must decide. Most of them show up as a type error with no marker nearby (step 5).
 
 ### Wrong changes (the code changes, but is wrong)
 
 | What happens | Seen | What you do |
 | --- | --- | --- |
-| A Button `color` with no v20 equivalent keeps `color=` under its marker, but the constant becomes `BUTTON_STATUS.information` / `.success` / `.warning`, which do not exist (TS2339 under each marker). | 18 examples, 9 Storybook, 2 manager | Resolve the marker as in step 6: delete the attribute. Do not read the TS2339 as a new problem. |
 | An installed package that gives access to ODS components, whose source ods-migrate cannot read (only its build is installed): its importers are not migrated. | 0 on the measured code | The report lists it under "Imports that look like ODS": pass it with `--built-on-ods`. |
 | An ODS type is renamed (`BadgeColor` → `BadgeStatus`), but a string reaches it through a variable or a function that is not typed where the string is written (`const tone = 'primary'; <Badge color={ tone }>`, a helper that returns `'default'`). The strings typed where they are written are migrated: `let color: BadgeColor = 'primary'`, the props of your components typed with an ODS type and their defaults. No marker. | 0 on the measured code | Map the strings by hand: `primary` → `accent` (Badge, Card, Message, Tag) or `brand` (Button), `default` → `high`, `outline` → `medium`, `ghost` → `low`. |
 | A component of yours builds a class name or a key from a prop typed with an ODS type (`` `button-link--${variant}` ``): its values are migrated (`default` → `high`), so the class name changes. | 2 components (manager) | A point to check says so: rename the classes of your stylesheet (`.button-link--default` → `.button-link--high`), or map the value back where you build the name. |
 | `Pick<TableProp, 'size' \| 'variant'>` becomes `Pick<TableProp, 'size'>`, but a `variant` taken out of the props next to it stays (TS2339). | 1 (manager) | Remove `variant` there and use `striped`. |
-| An object key `'--ods-color-primary-500'` is renamed, but the lookups `tokens['--ods-color-primary-500']` are only marked: at runtime they read a key that no longer exists. | 1 (Storybook) | Rename the lookups to the same v20 name as the key. |
+| An object key `'--ods-color-primary-500'` is renamed, but the lookups `tokens['--ods-color-primary-500']` are only marked: at runtime they read a key that no longer exists. | not seen on app code | Rename the lookups to the same v20 name as the key. |
 | A custom property of your app named `--ods-…` (such as `--ods-recipe-*`) is read as an override of the ODS theme: its colour goes to the raw palette with a note, not to a v20 colour name. The colour is the same, but it no longer follows the theme. | 2 (recipes) | Use the v20 colour name, or rename your property out of the `--ods-` prefix. |
 
 ### Missed places (nothing changed, no marker)
@@ -501,18 +489,18 @@ Measured on the coverage runs (`packages/examples`, `ods-recipes`, the ODS Story
 | Cause | Kind | Seen | What you do |
 | --- | --- | --- | --- |
 | Your components built on an ODS component with props of their own (they declare, leave out or default a prop that changes, such as `Omit<BadgeProp, 'color'>` or `variant = 'ghost'`). ods-migrate migrates their own code, not the places that use them, and lists them in the report. Those that pass all their props on to the ODS component are migrated with the places that use them. | needs a person | 11 (manager) | Decide the v20 API of the component, then rename its props where it is used. |
-| `import * as ODS from '@ovhcloud/ods-react'`, then `ODS.BUTTON_COLOR.x`, `<ODS.Button variant>`. | not done yet | 4 (Storybook) | Switch to named imports, run ods-migrate again. |
+| `import * as ODS from '@ovhcloud/ods-react'`, then `ODS.BUTTON_COLOR.x`, `<ODS.Button variant>`. | not done yet | not seen on app code | Switch to named imports, run ods-migrate again. |
 | Indexed types `Parameters<typeof Badge>[0]['color']`: the key `'color'` is not renamed. | not done yet | 32 (manager) | Write `BadgeProp['status']`, or `ComponentProps<typeof Badge>['status']`. |
 | Conditional objects passed with `{...}`: `{...(cond && { color: x })}`. | not done yet | 4 (manager) | Rename the key (`status`), or drop it for a removed prop (ModalContent: use `role`). |
 | `variant={ a.variant ?? 'ghost' }`: the string is mapped (`'low'`) but `a.variant` still holds v19 values. No marker. | not done yet | 2 (manager) | Map the source of `a.variant` too. |
 | A removed export stays in the import line with no marker (`MODAL_COLOR`, `TABLE_VARIANT`, `SPINNER_COLOR`); its uses are marked. | not done yet | 36 (manager) | Remove it from the import once you resolve the uses. |
-| Removed `*_COLORS` / `TABLE_VARIANTS` arrays kept in the import because their use is marked (Storybook `options:`). | not done yet | 3 (Storybook) | Same: resolve the use, remove it from the import. |
-| Storybook `globals.imports` and code samples written as strings still name `BUTTON_COLOR`, `MODAL_COLOR`… | not done yet | 20 (Storybook) | Edit the strings by hand. |
-| Prose and inline code of `.md` / `.mdx` docs (`MESSAGE_COLOR.information` in a sentence), and a code sample that does not parse. | by design | see the table above | Step 10. |
+| Removed `*_COLORS` / `TABLE_VARIANTS` arrays kept in the import because their use is marked (a Storybook `options:`). | not done yet | not seen on app code | Same: resolve the use, remove it from the import. |
+| Code samples written as strings (a story's `source`, a docs string) still name `BUTTON_COLOR`, `MODAL_COLOR`… | not done yet | not seen on app code | Edit the strings by hand. |
+| `.md` / `.mdx` docs (`MESSAGE_COLOR.information`, `--ods-color-success-500` in code samples and text). | by design | 4 (recipes), 17 files (manager) | Step 10. |
 | `@ovhcloud/ods-themes/default/tokens` JSON read through a variable key: the import is marked, the reads are not. | not done yet | not measured | Rename each key read (`--ods-semantic-*`, `--ods-palette-*`). |
 | Bare theme variables (`$ods-color-*`) in a Sass partial that reaches the theme through the `@import` of another file or the bundler's `additionalData`: left as they are. The import of the theme is marked. | not done yet | 0 on the measured code | Rewrite them as in the file that imports the theme, or read the CSS custom properties. |
-| `arg.variant` read from an object typed with ODS props (`Partial<MessageProp>`): the attribute becomes `emphasis={ arg.variant }`, the read stays. | needs a person | 1 (Storybook) | Rename the key in the type and its values (`default` → `high`, `light` → `medium`). |
-| A local `Table` component that takes `TableProp`: its use is marked, the `TABLE_VARIANT` import stays. | needs a person | 3 (Storybook) | Decide its new API (`striped`), then remove the import. |
+| `arg.variant` read from an object typed with ODS props (`Partial<MessageProp>`): the attribute becomes `emphasis={ arg.variant }`, the read stays. | needs a person | not seen on app code | Rename the key in the type and its values (`default` → `high`, `light` → `medium`). |
+| A local `Table` component that takes `TableProp`: its use is marked, the `TABLE_VARIANT` import stays. | needs a person | not seen on app code | Decide its new API (`striped`), then remove the import. |
 | A component typed `React.ButtonHTMLAttributes` passed with `{...}` to a `*Trigger`: v20 triggers take `value?: string` only. | needs a person | 4 (manager) | `Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'value'> & { value?: string }`. |
 | A local variable named like an ODS export it hides is renamed too. | not done yet | not measured | Review the diff of files that declare a variable with an ODS name. |
 | A file tracked by git inside a folder your `.gitignore` ignores is skipped. | by design | not measured | Pass that folder explicitly. |

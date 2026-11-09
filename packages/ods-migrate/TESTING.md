@@ -30,7 +30,7 @@ All commands run from `packages/ods-migrate/` unless noted. Nothing in the proce
 node --test tests/*.test.mjs        # = pnpm test
 ```
 
-Last run (2026-11-09): **888 tests, 887 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
+Last run (2026-11-09): **872 tests, 871 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
 
 The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescript, found by `tests/coverage-helpers.mjs` without an install: `$COVERAGE_TYPESCRIPT=<dir>`, the repo one the harness defaults to, or the one `@typescript-eslint/parser` resolves. Without one their suites show as skipped: same rule, fix the environment. Run the coverage tests alone with `node --test tests/coverage-*.test.mjs` (110 tests, ~10 s once the surfaces are extracted).
 
@@ -44,8 +44,8 @@ The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescrip
 | `wp2-fixtures.test.mjs` | 6 | `fixtures/wp2/`: reproductions of the bugs of the review swarm (CRLF, `as const`, mock imports, import comments…), with the real mapping. |
 | `wp3-rules.test.mjs` | 11 | The ESLint plugin: rule registration, `ods/v20-migration` reports without a fix, `ods/v20-default-changed`. |
 | `wp3-parity.test.mjs` | 6 | `fixtures/wp3/`: on each input, ESLint `--fix` gives the codemod output without its markers, the codemod gives nothing more on a second run, and on the output the rule has nothing left to fix. |
-| `tokens.test.mjs` | 29 | `fixtures/tokens/`: the token engine (CSS, SCSS, Tailwind config and classes, style objects, helpers), roles from the context, idempotence. |
-| `token-rules.test.mjs` | 5 | `ods/v20-tokens` (ESLint) and `ods/no-removed-token` (stylelint) against the same token fixtures: `--fix` equals the codemod. |
+| `tokens.test.mjs` | 47 | `fixtures/tokens/`: the token engine (CSS, SCSS, Tailwind config and classes, style objects, helpers, a palette of the app's own read from the v19 steps), roles from the context, idempotence. |
+| `token-rules.test.mjs` | 19 | `ods/v20-tokens` (ESLint) and `ods/no-removed-token` (stylelint) against the same token fixtures: `--fix` equals the codemod. |
 | `wp4-tokens.test.mjs` | 37 | Token engine keys: `alsoDeclare`, `rerank` (z-index never rewritten when computed), `todo` / `keep`, `byContext` (white kept, page background), mixins, `scssNumberToVar`, themes SCSS variables, `cssModifiers`. |
 | `wp4-fixtures.test.mjs` | 8 | `fixtures/wp4/` (`@apply`, control width, runtime names, fonts, JS declarations, nested props, quoted names, selectors, style keys, Tailwind variants, theme collisions): output, idempotence, stylelint parity; the v19.7.3 default theme migrated as an app override. |
 | `wp4-stylelint.test.mjs` | 6 | The stylelint plugin, `ods/no-control-width`. |
@@ -57,7 +57,6 @@ The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescrip
 | `project.test.mjs` | 42 | The project index (`src/project.mjs`, `src/resolve.mjs`): the folders of `fixtures/project/` (an `@/` alias with `extends` and `baseUrl`, relative paths and `.js` specifiers with a mock, an index of indexes with a module's own names, `package.json` `imports`, a workspace UI kit built to `dist/`, wrappers followed and not followed, an import that only looks like ODS, `detection-paths`: a jsconfig `baseUrl`, an import exported again, a workspace package with `exports` and a default-exported wrapper; `typed-props`: components whose props use ODS types and their callers; `package-scope`: packages on ODS 17, 18, 19, `workspace:*`, `catalog:` and a file under no `package.json`) migrated with no option, a second run changes nothing, ESLint `--fix` with `ods-migrate.modules.json` equals the codemod; the report text and JSON, `--built-on-ods` and its deprecated names `--treat-as-ods` and `--also`, the resolver, the entries of a module. |
 | `project-scope.test.mjs` | 17 | What is found with no option beyond the re-exports: the typed props of components (every declaration form, objects of ODS props, through an index and a default export, wrappers kept apart), their report and lint (one report per marker); the packages on ODS 17 / 18 (the report sentence, `--from 19`, the version ranges, ESLint and stylelint leave them alone); the advice for each kind of look-alike import; the coverage gate on a corpus that drops to 0 sites (`allowNoSites`, kept by `--record`); the modules file. |
 | `plain-report.test.mjs` | 14 | What an integrator with no internal context reads: the help (`--built-on-ods`, no internal word), no ticket, pull request, BC code or branch in any text of the mappings and of the configurator, the key marker (the constant as the code now reads it and as v19 wrote it, what to do in each case), the stacking marker (the v19 and v20 values; no marker below 99 or above 1600), the mock and namespace-import notes; the report: points to check by kind, the `--ods-*` names ODS v19 never declared counted apart and left alone, the elements that look different, the changes not final in v20, the JSON v3 keys and their stable ids, the work per package, the same words before and after a component's code is migrated, the v19-look stylesheet up to date, the modules file, a `pnpm-workspace.yaml` with `overrides`. |
-| `markdown.test.mjs` | 24 | Markdown and MDX (`src/markdown.mjs`): fenced tsx / css / scss / html / sass blocks, `~~~`, a fence in a list item (indent kept), a sample with no import (the imports above it, an ODS constant, components alone: a point to check), an ODS constant used next to other imports, a block that does not parse (left, a point to check), a marker reported at the line of the `.md` file, untyped values, inline code and prose left, changelogs never read, `.gitignore`, the `docs` kind, `--check` and idempotence; MDX imports and JSX paragraphs, no marker in MDX JSX; a copy of the ODS docs (one point to check, not rewritten) vs a README with samples (rewritten). |
 | `switch-tabs.test.mjs` | 17 | The removed Switch rewritten to Tabs `variant="switch"`: the plain case, controlled value and `onValueChange`, `size` as a literal and as `SWITCH_SIZE`, no selection (the point to check), mapped / conditional / fragment items, `disabled` moved to each Tab, a spread, the shapes kept marked (no items, a Switch in a Switch, a name clash, `/switch`, a wrapper of the app), the types, a local barrel; idempotence and ESLint parity for each. |
 | `review-fixes.test.mjs` | 24 | Regressions of the review rounds: user decisions (DECISIONS.md), silent P0s, corpus findings, configurator UX. |
 | `coverage-unit.test.mjs` | 10 | The coverage harness, pure logic: line alignment, token sites (runtime names, word boundaries), AUTO / MARKED / MISSED and regressions, truth normalization. |
@@ -252,20 +251,20 @@ Re-measured on 2026-10-27 after the plain-words changes (option `--built-on-ods`
 
 Checked again independently on 2026-10-27 (fresh runs of all 16 corpora with no option, the frozen harness files matching their checksums): every number of the table below is unchanged, `coverage-check` passes all 16 runs against this baseline and against the one recorded before the typed props and the package rule, and the acceptance runs of § 4 give the same numbers. Only the `seconds` of the coverage entries were re-recorded.
 
-Last recorded numbers (2026-11-09, refs `0ce249290` → `ad6d5bc7b` = `origin/master`, whose `ods-react` and `themes` are as at `2741442ea`; ods-migrate with the removed string enums inlined, the Switch rewritten to Tabs and the Markdown / MDX code samples migrated). Every corpus runs with no option but `manager` (`--treat-as-ods @ovh-ux/muk`, as its corpus manifest says: the kit is a package of the corpus). The "without docs" column leaves out the `doc` and `snippet` sites (Markdown / MDX code, story source strings).
+Last recorded numbers (2026-11-09, refs `0ce249290` → `8b834837e` = `origin/master` at `v20.0.0-alpha.0`, whose `ods-react` and `themes` code is as at `2741442ea`; ods-migrate with the removed string enums inlined, the Switch rewritten to Tabs and a palette of the app's own (`--color-primary-500: var(--ods-color-primary-500)`) pointed at the v20 palette). Every corpus runs with no option but `manager` (`--treat-as-ods @ovh-ux/muk`, as its corpus manifest says: the kit is a package of the corpus). The "without docs" column leaves out the `doc` and `snippet` sites (Markdown / MDX code, story source strings): ods-migrate does not rewrite Markdown, step 10 of MIGRATION.md covers it.3 → 96.6 % auto (zimbra's Tailwind palette; the v19 guide keys `ods-color-*` of `manager-ui-kit` keep their name under a marker, their value reads the palette).
 
 | Label | TS files | Sites | Auto | Marked | Missed | auto% | assisted% | Without docs: sites / missed / auto% / assisted% | Regressions (under a marker) | Premature files | Agree / differ (tool-wrong) | Time |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `fixture` | 1 | 6 | 5 | 1 | 0 | 83.3% | 100% | = | 1 (0) | 0 | 7 / 3 (3) | 13 s |
-| `examples` | 29 | 138 | 138 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 139 / 92 (1) | 24 s |
-| `examples-accessibility-test` | 6 | 128 | 128 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 129 / 72 (1) | 21 s |
-| `examples-nextjs-app` | 3 | 1 | 1 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 1 / 2 (0) | 15 s |
-| `examples-react-router-app` | 5 | 1 | 1 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 1 / 0 (0) | 16 s |
-| `examples-vite-app` | 9 | 4 | 4 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 4 / 9 (0) | 16 s |
+| `fixture` | 1 | 6 | 5 | 1 | 0 | 83.3% | 100% | = | 1 (0) | 0 | 7 / 3 (3) | 20 s |
+| `examples` | 29 | 138 | 138 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 139 / 92 (1) | 29 s |
+| `examples-accessibility-test` | 6 | 128 | 128 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 129 / 72 (1) | 20 s |
+| `examples-nextjs-app` | 3 | 1 | 1 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 1 / 2 (0) | 14 s |
+| `examples-react-router-app` | 5 | 1 | 1 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 1 / 0 (0) | 15 s |
+| `examples-vite-app` | 9 | 4 | 4 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 4 / 9 (0) | 15 s |
 | `examples-webpack-app` | 6 | 4 | 4 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 4 / 9 (0) | 14 s |
-| `recipes` | 104 | 201 | 189 | 8 | 4 | 94% | 98% | 197 / 0 / 95.9% / 100% | 0 (0) | 0 | 221 / 81 (27) | 20 s |
-| `storybook` | 133 | 792 | 651 | 43 | 98 | 82.2% | 87.6% | 571 / 4 / 94.2% / 99.3% | 1 (1) | 0 | 194 / 963 (62) | 37 s |
-| `manager` (`d8e3d1a1`) | 11,290 | 2,085 | 1,995 | 64 | 26 | 95.7% | 98.8% | 2,064 / 13 / 96.3% / 99.4% | 0 (0) | 4 | – | ~5 min |
+| `recipes` | 104 | 201 | 189 | 8 | 4 | 94% | 98% | 197 / 0 / 95.9% / 100% | 0 (0) | 0 | 221 / 81 (27) | 18 s |
+| `storybook` | 133 | 792 | 538 | 43 | 211 | 67.9% | 73.4% | 571 / 4 / 94.2% / 99.3% | 1 (1) | 0 | 193 / 964 (62) | 33 s |
+| `manager` (`d8e3d1a1`) | 11,290 | 2,085 | 1,995 | 59 | 31 | 95.7% | 98.5% | 2,064 / 12 / 96.6% / 99.4% | 0 (0) | 4 | – | 299 s |
 
 ## 6. The harness itself
 

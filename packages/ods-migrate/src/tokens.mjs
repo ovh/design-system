@@ -417,6 +417,14 @@ function contextTarget(entry, cell, context) {
   return entry.byContext.root[cell] ?? entry.byContext.root['*'] ?? null;
 }
 
+/*
+ * A name of the app's own palette (`--color-primary-500`, `--mds-neutral-200`, a Tailwind key `ods-primary-500`
+ * or `500`): it ends with a rung, as the v19 palette did. Given exactly one v19 rung, it is an alias of
+ * that palette, and the v20 palette is what it now aliases (it paints whatever the app paints with it).
+ */
+const isPaletteAliasName = (name) => !/^--ods-/.test(name) && /^(?:[\w-]*[a-z][\w-]*-)?\d{2,3}$/i.test(name.replace(/^--/, ''));
+const paletteAliasNote = (name, entry) => `${name} → ${entry.palette}: a name of your own palette that read this v19 rung now reads the v20 palette${entry.paletteValue && entry.paletteValue !== entry.palette ? ` (the exact v19 colour is var(${entry.paletteValue}))` : ''}; compare it on screen`;
+
 /* A custom property of the app declared on the document root is an alias, not the page background: noted only. */
 const rootAlias = (context, atRoot, to) => (context.rootAlias && atRoot && atRoot !== to
   ? `declared on the document root: if this property is the page background, use \`${atRoot}\``
@@ -461,6 +469,9 @@ function resolveToken(mapping, name, context = {}) {
   }
   if (context.palette && entry.palette) {
     return { note: `${name} → ${entry.palette}: your theme now sets the same colour from the v20 palette; compare it on screen`, to: entry.palette };
+  }
+  if (context.alias && context.whole && !context.role && entry.palette) {
+    return { note: paletteAliasNote(name, entry), to: entry.palette };
   }
   if (!context.role) {
     const roles = ['surface', 'border', 'content'].filter((role) => entry.byRole[role]);
@@ -510,6 +521,7 @@ function declarationContext(prop, state = {}) {
   // On the document root, only the background is the page: a colour, a border or an alias of the app stays a surface.
   const page = PAGE_BACKGROUND.test(prop);
   return {
+    alias: isPaletteAliasName(prop),
     active: state.active === 'all' || /-active$/.test(prop),
     hover: state.hover === 'all' || /-(hover|active)$/.test(prop),
     likely: likelyRoleOfProperty(prop),
@@ -692,7 +704,9 @@ function planText(mapping, text, env = {}) {
     if (/gradient\(/.test(head.slice(Math.max(0, head.lastIndexOf(';'))))) {
       context = { ...context, likely: context.likely ?? context.role, role: null };
     }
-    const result = resolveToken(mapping, name, context);
+    // The value of a key is `var(--ods-…)` alone (with a fallback or not): the whole value is one token.
+    const whole = /^\s*var\(\s*$/.test(text.slice(0, offset)) && /^\s*(,[^()]*)?\)\s*$/.test(text.slice(end));
+    const result = resolveToken(mapping, name, { ...context, whole });
     if (result.to) {
       out.edits.push({ end, message: `${name} → ${result.to}${tailwind ? ` (${tailwind.where})` : ''}`, start: offset, text: result.to });
     }
@@ -717,7 +731,7 @@ function planText(mapping, text, env = {}) {
   for (const match of text.matchAll(tailwindKey)) {
     const to = mapping.tailwindKeys[match[1]];
     if (!to) {
-      out.todos.push(`${match[1]}: a Tailwind key of the ODS v19 guide with no v20 name: give it one that says what it paints (\`ods-surface-*\`, \`ods-content-*\`, \`ods-border-*\`, \`ods-container\`, \`ods-control\`… in the Tailwind guide), in your Tailwind theme and in its utilities together`);
+      out.todos.push(noTailwindKey(match[1]));
     } else if (env.themeKeys?.has(match[1])) {
       out.edits.push({ end: match.index + match[1].length, message: `${match[1]} → ${to} (Tailwind key)`, start: match.index, text: to });
     } else {
@@ -726,6 +740,8 @@ function planText(mapping, text, env = {}) {
   }
   return out;
 }
+
+const noTailwindKey = (key) => `${key}: a Tailwind key of the ODS v19 guide with no v20 name: give it one that says what it paints (\`ods-surface-*\`, \`ods-content-*\`, \`ods-border-*\`, \`ods-container\`, \`ods-control\`… in the Tailwind guide), in your Tailwind theme and in its utilities together`;
 
 /* The configurator keeps 'Source Sans Pro' (the opt-out CSS declares it first): the family name stays, the ODS asset paths still move. */
 const keepsOldFont = (config) => isV19Look(config, 'font-family');
@@ -823,6 +839,9 @@ function modifierRule(entry, config) {
 function migrateValue(mapping, value, context, plan) {
   const { hasToken } = patternsOf(mapping);
   const parsed = valueParser(value);
+  // `var(--ods-color-primary-500)` or `var(--ods-color-primary-500, #hex)` alone: the whole value is one token.
+  const top = parsed.nodes.filter((node) => node.type !== 'space');
+  const single = top.length === 1 && top[0].type === 'function' && top[0].value === 'var';
   const visit = (nodes, calls) => {
     const arithmetic = nodes.some((node) => node.type === 'word' && /^[-+*/%]$/.test(node.value));
     const inGradient = calls.some((name) => GRADIENT.test(name));
@@ -834,7 +853,7 @@ function migrateValue(mapping, value, context, plan) {
       } else if (node.type === 'word' && node.value.startsWith('--ods-') && hasToken.test(node.value)) {
         const name = node.value;
         if (isOverrideOnly(mapping, name)) return;
-        const result = resolveToken(mapping, name, local);
+        const result = resolveToken(mapping, name, { ...local, whole: single && calls.length === 1 && nodes[0] === node });
         if (result.to) {
           node.value = result.to;
           plan.changes.push(`${name} → ${result.to}`);
@@ -1576,7 +1595,12 @@ function planScriptTokens(source, rawMapping, filename = 'file.tsx', options = {
   // A Tailwind theme (a tailwind.config, a preset): its keys are renamed to the documented v20 names
   // (`tailwindKeys`), and the utilities that follow them, in this file or in the run (`options.tailwindKeys`).
   const themeKeys = new Set(options.tailwindKeys ?? []);
-  for (const { inner, name, to } of tailwindThemePairs(root, mapping)) {
+  for (const { inner, key, name, to } of tailwindThemePairs(root, mapping)) {
+    // A key of the v19 guide with no v20 name: its utilities are marked where they are used, its definition here.
+    if (!to) {
+      mark(key, noTailwindKey(name));
+      continue;
+    }
     themeKeys.add(name);
     edit(inner.range().start.index, inner.range().end.index, inner.parent()?.kind() === 'string' || /^[A-Za-z_$][\w$]*$/.test(to) ? to : `'${to}'`, `${name} → ${to} (Tailwind key)`);
   }
@@ -1662,9 +1686,10 @@ function tailwindThemePairs(root, mapping) {
   for (const pair of root.findAll({ rule: { kind: 'pair' } })) {
     const key = pair.field('key');
     const name = unquote(key?.text() ?? '');
-    const to = Object.hasOwn(mapping.tailwindKeys ?? {}, name) ? mapping.tailwindKeys[name] : null;
+    if (!Object.hasOwn(mapping.tailwindKeys ?? {}, name)) continue;
+    const to = mapping.tailwindKeys[name];
     const inner = key?.kind() === 'string' ? key.find({ rule: { kind: 'string_fragment' } }) : key;
-    if (to && inner && keyChainHas(pair, 'theme')) pairs.push({ inner, name, to });
+    if (inner && keyChainHas(pair, 'theme')) pairs.push({ inner, key, name, to });
   }
   return pairs;
 }
@@ -1687,7 +1712,7 @@ function tailwindThemeKeys(source, rawMapping, filename = 'file.tsx') {
   if (!/\.(c|m)?[jt]sx?$/.test(filename)) {
     return new Set();
   }
-  return new Set(tailwindThemePairs(parse(langFor(filename), source).root(), mapping).map(({ name }) => name));
+  return new Set(tailwindThemePairs(parse(langFor(filename), source).root(), mapping).filter(({ to }) => to).map(({ name }) => name));
 }
 
 /*

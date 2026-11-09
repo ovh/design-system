@@ -8,6 +8,10 @@ import { staticSourceRenderConfig } from '../../support/source';
 
 type Story = StoryObj<RangeProp>;
 
+// The aria-label arrays (one label per thumb) stay inline on purpose, although jsx-a11y/aria-proptypes
+// expects a string: only the render body is shown and opened in the sandbox, so a constant declared
+// here would leave the copied code referencing a missing variable.
+
 const meta: Meta<RangeProp> = {
   argTypes: excludeFromDemoControls(['aria-label', 'aria-labelledby', 'defaultValue', 'max', 'min', 'name', 'onDragging', 'onValueChange', 'ticks', 'value']),
   component: Range,

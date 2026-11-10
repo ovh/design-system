@@ -251,7 +251,9 @@ Re-measured on 2026-10-27 after the plain-words changes (option `--built-on-ods`
 
 Checked again independently on 2026-10-27 (fresh runs of all 16 corpora with no option, the frozen harness files matching their checksums): every number of the table below is unchanged, `coverage-check` passes all 16 runs against this baseline and against the one recorded before the typed props and the package rule, and the acceptance runs of § 4 give the same numbers. Only the `seconds` of the coverage entries were re-recorded.
 
-Last recorded numbers (2026-11-09, refs `0ce249290` → `8b834837e` = `origin/master` at `v20.0.0-alpha.0`, whose `ods-react` and `themes` code is as at `2741442ea`; ods-migrate with the removed string enums inlined, the Switch rewritten to Tabs and a palette of the app's own (`--color-primary-500: var(--ods-color-primary-500)`) pointed at the v20 palette). Every corpus runs with no option but `manager` (`--treat-as-ods @ovh-ux/muk`, as its corpus manifest says: the kit is a package of the corpus). The "without docs" column leaves out the `doc` and `snippet` sites (Markdown / MDX code, story source strings): ods-migrate does not rewrite Markdown, step 10 of MIGRATION.md covers it.3 → 96.6 % auto (zimbra's Tailwind palette; the v19 guide keys `ods-color-*` of `manager-ui-kit` keep their name under a marker, their value reads the palette).
+Last recorded numbers (2026-11-09; `storybook` 2026-11-10, refs `0ce249290` → `8b834837e` = `origin/master` at `v20.0.0-alpha.0`, whose `ods-react` and `themes` code is as at `2741442ea`; ods-migrate with the removed string enums inlined, the Switch rewritten to Tabs and a palette of the app's own (`--color-primary-500: var(--ods-color-primary-500)`) pointed at the v20 palette). Every corpus runs with no option but `manager` (`--treat-as-ods @ovh-ux/muk`, as its corpus manifest says: the kit is a package of the corpus). The "without docs" column leaves out the `doc` and `snippet` sites (Markdown / MDX code, story source strings): ods-migrate does not rewrite Markdown, step 10 of MIGRATION.md covers it.
+
+Against the 2026-11-06 baseline: `examples` 112 → 138 auto and 26 → 0 marked (the Switch section of `accessibility-test` now becomes Tabs, the removed enums become their values), tool-wrong 3 → 1 (the Tabs written for a Switch are a decision, `switch-to-tabs`: the truth deletes that section); `storybook` 403 → 538 auto; `manager` without docs 13 missed → 12 and 96.3 → 96.6 % auto (zimbra's Tailwind palette; the v19 guide keys `ods-color-*` of `manager-ui-kit` keep their name under a marker, their value reads the palette).
 
 | Label | TS files | Sites | Auto | Marked | Missed | auto% | assisted% | Without docs: sites / missed / auto% / assisted% | Regressions (under a marker) | Premature files | Agree / differ (tool-wrong) | Time |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -263,7 +265,7 @@ Last recorded numbers (2026-11-09, refs `0ce249290` → `8b834837e` = `origin/ma
 | `examples-vite-app` | 9 | 4 | 4 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 4 / 9 (0) | 15 s |
 | `examples-webpack-app` | 6 | 4 | 4 | 0 | 0 | 100% | 100% | = | 0 (0) | 0 | 4 / 9 (0) | 14 s |
 | `recipes` | 104 | 201 | 189 | 8 | 4 | 94% | 98% | 197 / 0 / 95.9% / 100% | 0 (0) | 0 | 221 / 81 (27) | 18 s |
-| `storybook` | 133 | 792 | 538 | 43 | 211 | 67.9% | 73.4% | 571 / 4 / 94.2% / 99.3% | 1 (1) | 0 | 193 / 964 (62) | 33 s |
+| `storybook` | 133 | 792 | 540 | 41 | 211 | 68.2% | 73.4% | 571 / 4 / 94.6% / 99.3% | 1 (1) | 0 | 195 / 962 (60) | 33 s |
 | `manager` (`d8e3d1a1`) | 11,290 | 2,085 | 1,995 | 59 | 31 | 95.7% | 98.5% | 2,064 / 12 / 96.6% / 99.4% | 0 (0) | 4 | – | 299 s |
 
 ## 6. The harness itself

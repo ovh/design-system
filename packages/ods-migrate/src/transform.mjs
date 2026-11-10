@@ -1747,7 +1747,19 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   const writtenOut = [];
   const deleteAttribute = (attribute, ...entries) => {
     dropped.push(rangeOf(attribute));
-    edit(endOf(attribute.prev()), endOf(attribute), '', ...entries);
+    // After a `//` comment, deleting from its end would take the line break that closes it, and the
+    // code after the attribute would end up in the comment: delete the spaces before the attribute on
+    // its own line only.
+    const previous = attribute.prev();
+    if (previous?.kind() === 'comment') {
+      const lineStart = source.lastIndexOf('\n', startOf(attribute) - 1) + 1;
+      const after = source.slice(endOf(attribute)).match(/^[ \t]*/)[0].length;
+      const alone = /^[ \t]*$/.test(source.slice(lineStart, startOf(attribute))) && /^[ \t]*(\r?\n|$)/.test(source.slice(endOf(attribute)));
+      // Alone on its line: the line goes. Otherwise the attribute and the spaces after it, so what follows keeps its place.
+      edit(alone ? lineStart - (source[lineStart - 2] === '\r' ? 2 : 1) : startOf(attribute), endOf(attribute) + after, '', ...entries);
+      return;
+    }
+    edit(endOf(previous), endOf(attribute), '', ...entries);
   };
   // After a spread an explicit attribute overrode what the spread carried: deleting it would let the spread win.
   const afterSpreadOf = (attribute) => attribute.parent().children().some((child) => child.kind() === 'jsx_expression' && child.find({ rule: { kind: 'spread_element' } }) && startOf(child) < startOf(attribute));
@@ -2235,7 +2247,9 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     const message = `<${component}> without children → ${written.join(', ') || 'no part'}`;
     if (selfClosing) {
       const last = element.children().filter((child) => child.isNamed()).at(-1);
-      edit(endOf(last), endOf(element), `>${lines.length > 0 ? body : ''}</${nameNode.text()}>`, change(element, message));
+      // A `//` comment last (`<Pagination … // eslint-disable-line`): the `>` goes on a line of its own, never into the comment.
+      const lineComment = last?.kind() === 'comment' && last.text().startsWith('//');
+      edit(endOf(last), endOf(element), `${lineComment ? `${eol}${indent}` : ''}>${lines.length > 0 ? body : ''}</${nameNode.text()}>`, change(element, message));
     } else {
       const closing = parent.children().find((child) => child.kind() === 'jsx_closing_element');
       edit(endOf(element), startOf(closing), lines.length > 0 ? body : '', change(element, message));

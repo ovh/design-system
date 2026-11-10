@@ -225,8 +225,19 @@ function textHelpers(sourceCode) {
   };
   const indentOf = (node) => sourceCode.lines[node.loc.start.line - 1].match(/^[ \t]*/)[0];
   const eol = text.includes('\r\n') ? '\r\n' : '\n';
-  // A JSX attribute goes with the whitespace before it.
-  const removeAttribute = (fixer, attribute) => fixer.removeRange([sourceCode.getTokenBefore(attribute).range[1], attribute.range[1]]);
+  // A JSX attribute goes with the whitespace before it. After a comment, as in the codemod: the comment
+  // stays, the attribute goes alone (with its line when it is alone on it), never the comment's line break.
+  const removeAttribute = (fixer, attribute) => {
+    const before = sourceCode.getTokenBefore(attribute, { includeComments: true });
+    if (before.type !== 'Line' && before.type !== 'Block') {
+      return fixer.removeRange([before.range[1], attribute.range[1]]);
+    }
+    const [start, end] = attribute.range;
+    const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+    const after = text.slice(end).match(/^[ \t]*/)[0].length;
+    const alone = /^[ \t]*$/.test(text.slice(lineStart, start)) && /^[ \t]*(\r?\n|$)/.test(text.slice(end));
+    return fixer.removeRange([alone ? lineStart - (text[lineStart - 2] === '\r' ? 2 : 1) : start, end + after]);
+  };
   // A statement goes with its line break (CRLF included).
   const removeStatement = (fixer, node) => {
     const end = node.range[1];

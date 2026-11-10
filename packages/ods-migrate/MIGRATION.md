@@ -244,6 +244,8 @@ ods-migrate . --write --json ods-migrate-report.json
 
 **Keep `ods-migrate-report.json`** of this run: the points to check about colours and styles are not listed again (see step 2).
 
+**Files your app does not load** (a copy of a website's stylesheets kept for debugging, vendored code): before writing, list them in a `.odsmigrateignore` at the root of the repository, one `.gitignore` line each (`src/styles/site-copies/`). ods-migrate, `--check` and the ESLint and stylelint rules then leave them alone. Without it, `--check` keeps reporting them in CI.
+
 Run it a second time: it must change nothing (`0 to change … 18 already in the code`). Then commit this state alone, so that the hand fixes of the next steps stay readable in review.
 
 When it found modules of your own built on ODS, the run also writes `ods-migrate.modules.json` where it runs, and says so. Only the ODS ESLint rules of step 7 read it. Commit it if you use those rules; delete it otherwise.

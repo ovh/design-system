@@ -9,7 +9,7 @@ import { transformOtherStyles, transformThemeJson } from './formats.mjs';
 import { minMajor, scanLlmsUrls, transformManifest } from './manifest.mjs';
 import { migrateThemePaths } from './paths.mjs';
 import { buildProjectIndex, standsForOds } from './project.mjs';
-import { MODULES_FILE, createOlderOdsResolver, serializeModules } from './resolve.mjs';
+import { IGNORE_FILE, MODULES_FILE, createOlderOdsResolver, globToRegExp, isIgnored, parseGitignore, readIgnoreFiles, serializeModules } from './resolve.mjs';
 import { TODO } from './shared.mjs';
 import * as tokens from './tokens.mjs';
 import { transformSource } from './transform.mjs';
@@ -52,6 +52,9 @@ What it cannot change safely gets a ${TODO} comment in your code, saying what to
   --from <major>     the ODS version your code is written for: 19 or 20. Only needed if you already
                      bumped @ovhcloud/ods-react to 20 before running ods-migrate: then pass --from 19.
                      It also migrates the packages that declare ODS 17 or 18, which are skipped otherwise
+  --ignore <pattern>  leave these files alone, as a line of .gitignore read from the working directory
+                     (repeatable): a copy of a website's stylesheets, vendored code. To keep it for every run and
+                     for the ESLint and stylelint rules, write it in a ${IGNORE_FILE} file instead
   --built-on-ods <package>
                      an installed package that gives access to ODS components unchanged (same names,
                      same props), whose source is not in the scanned folders. Only when the report asks
@@ -59,7 +62,7 @@ What it cannot change safely gets a ${TODO} comment in your code, saying what to
   -h, --help         this help
 
 Exit codes: 0 done, 1 --check found work left, 2 error (usage, config, unreadable path, a file that failed).
-It skips what your .gitignore files ignore, node_modules and build output (dist, storybook-static, .next, out…).`;
+It skips what your .gitignore and ${IGNORE_FILE} files ignore, node_modules and build output (dist, storybook-static, .next, out…).`;
 
 /* The former names of --built-on-ods: they still work, hidden from the help. */
 const DEPRECATED_OPTIONS = ['treat-as-ods', 'also'];
@@ -135,104 +138,13 @@ async function loadConfigModule() {
   }
 }
 
-/* ------------------------------------------------------------------------- .gitignore */
-
-const escapeRegExp = (text) => text.replace(/[$.*+?^{}()|[\]\\/]/g, '\\$&');
-
-/** A .gitignore glob as a regular expression on a `/`-separated path. */
-function globToRegExp(glob) {
-  let source = '';
-  for (let i = 0; i < glob.length; i++) {
-    const char = glob[i];
-    if (char === '*' && glob[i + 1] === '*' && (i === 0 || glob[i - 1] === '/') && (glob[i + 2] === '/' || i + 2 === glob.length)) {
-      source += i + 2 === glob.length ? '.*' : '(?:.*/)?';
-      i += 2;
-    } else if (char === '*') {
-      source += '[^/]*';
-      while (glob[i + 1] === '*') i++;
-    } else if (char === '?') {
-      source += '[^/]';
-    } else if (char === '[') {
-      const negated = glob[i + 1] === '!' || glob[i + 1] === '^';
-      const close = glob.indexOf(']', i + (negated ? 3 : 2));
-      if (close === -1) {
-        source += '\\[';
-        continue;
-      }
-      const body = glob.slice(i + (negated ? 2 : 1), close).replace(/\\/g, '\\\\');
-      source += `[${negated ? '^' : ''}${body}]`;
-      i = close;
-    } else if (char === '\\' && i + 1 < glob.length) {
-      source += escapeRegExp(glob[++i]);
-    } else {
-      source += escapeRegExp(char);
-    }
-  }
-  return source;
-}
-
-/**
- * Parses a .gitignore (patterns, `!`, a trailing `/` for directories only, a leading or inner `/`
- * to anchor on the file's directory, `*`, `**`, `?`, `[…]`). `base` is the directory of the file.
- */
-function parseGitignore(text, base) {
-  const rules = [];
-  for (let line of text.split(/\r?\n/)) {
-    line = line.replace(/(?<!\\)\s+$/, '');
-    if (!line || line.startsWith('#')) {
-      continue;
-    }
-    const negate = line.startsWith('!');
-    let pattern = negate ? line.slice(1) : line;
-    if (/^\\[#!]/.test(pattern)) {
-      pattern = pattern.slice(1);
-    }
-    const dirOnly = pattern.endsWith('/');
-    pattern = pattern.replace(/\/+$/, '');
-    const anchored = pattern.includes('/');
-    pattern = pattern.replace(/^\//, '');
-    if (!pattern) {
-      continue;
-    }
-    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`) });
-  }
-  return rules;
-}
-
-/** True when the last rule that matches the path ignores it. */
-function isIgnored(rules, path, isDir) {
-  let ignored = false;
-  for (const rule of rules) {
-    if (rule.dirOnly && !isDir) {
-      continue;
-    }
-    const rel = relative(rule.base, path);
-    if (!rel || rel.startsWith('..')) {
-      continue;
-    }
-    if (rule.regex.test(rel.split(sep).join('/'))) {
-      ignored = !rule.negate;
-    }
-  }
-  return ignored;
-}
-
-function readGitignore(dir) {
-  const path = join(dir, '.gitignore');
-  try {
-    return parseGitignore(readFileSync(path, 'utf8'), dir);
-  } catch {
-    return [];
-  }
-}
-
-/** The .gitignore rules of the directories above `dir`, up to the root of its git repository. */
+/** The .gitignore and .odsmigrateignore rules of the directories above `dir`, up to the root of its git repository. */
 function inheritedRules(dir) {
   const chain = [];
   for (let current = dirname(dir); ; current = dirname(current)) {
     chain.unshift(current);
     if (existsSync(join(current, '.git'))) {
-      return chain.flatMap(readGitignore);
+      return chain.flatMap(readIgnoreFiles);
     }
     if (dirname(current) === current) {
       return [];
@@ -247,9 +159,10 @@ const isScanned = (path) => !SKIPPED_FILES.test(path)
 
 /**
  * The files to migrate under a path. Symlinks met on the way are not followed (a loop or a link
- * out of the project); a path given on the command line is read even when it is one.
+ * out of the project); a path given on the command line is read even when it is one. `extra`: the
+ * rules of --ignore, read after the files' own.
  */
-function* walk(path, errors) {
+function* walk(path, errors, extra = []) {
   const stat = statSync(path);
   if (stat.isFile()) {
     if (isScanned(path)) {
@@ -257,7 +170,8 @@ function* walk(path, errors) {
     }
     return;
   }
-  const stack = [[path, [...inheritedRules(path), ...readGitignore(path)]]];
+  const stack = [[path, [...inheritedRules(path), ...readIgnoreFiles(path)]]];
+  const ignored = (rules, child, isDir) => isIgnored([...rules, ...extra], child, isDir);
   while (stack.length) {
     const [dir, rules] = stack.pop();
     let entries;
@@ -274,15 +188,15 @@ function* walk(path, errors) {
         continue;
       }
       if (entry.isDirectory()) {
-        if (!IGNORED_DIRS.has(entry.name) && !isIgnored(rules, child, true)) {
+        if (!IGNORED_DIRS.has(entry.name) && !ignored(rules, child, true)) {
           subdirs.push(child);
         }
-      } else if (entry.isFile() && isScanned(child) && !isIgnored(rules, child, false)) {
+      } else if (entry.isFile() && isScanned(child) && !ignored(rules, child, false)) {
         yield child;
       }
     }
     for (const child of subdirs.reverse()) {
-      stack.push([child, [...rules, ...readGitignore(child)]]);
+      stack.push([child, [...rules, ...readIgnoreFiles(child)]]);
     }
   }
 }
@@ -448,6 +362,7 @@ function parseOptions(argv) {
         diff: { default: false, type: 'boolean' },
         from: { type: 'string' },
         help: { default: false, short: 'h', type: 'boolean' },
+        ignore: { default: [], multiple: true, type: 'string' },
         json: { type: 'string' },
         'treat-as-ods': { default: [], multiple: true, type: 'string' },
         write: { default: false, type: 'boolean' },
@@ -530,12 +445,13 @@ async function main(argv, io, configModule) {
   const additions = Object.values(mapping.components).map((spec) => spec.whenAbsent?.choice).filter((choice, index, all) => choice && all.indexOf(choice) === index && config.look?.[choice] === 'v19');
   const skippedAdditions = new Map();
 
-  // Files, deduplicated (two arguments may overlap).
+  // Files, deduplicated (two arguments may overlap). --ignore takes .gitignore patterns, read from the working directory.
+  const ignoreRules = parseGitignore(options.ignore.join('\n'), cwd);
   const walkErrors = [];
   const seen = new Set();
   const paths = [];
   for (const root of roots) {
-    for (const path of walk(root, walkErrors)) {
+    for (const path of walk(root, walkErrors, ignoreRules)) {
       const real = realpathSync(path);
       if (!seen.has(real)) {
         seen.add(real);

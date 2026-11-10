@@ -245,6 +245,25 @@ describe('package scope: packages pinned to ODS 17 or 18', () => {
   });
 });
 
+describe('files a .odsmigrateignore leaves out', () => {
+  it('are left alone by ESLint and stylelint too, as by the command', async () => {
+    const dir = project({
+      '.git/HEAD': 'ref: refs/heads/main\n',
+      '.odsmigrateignore': 'src/styles/site-copies/\n*.vendor.tsx\n',
+      'package.json': '{ "dependencies": { "@ovhcloud/ods-react": "19.7.3" } }',
+    });
+    const { verify } = linter(dir, { 'ods/v20-migration': 'error', 'ods/v20-tokens': 'error' });
+    const tsx = "import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';\n\nexport const Tag = () => <Badge color={ BADGE_COLOR.primary } />;\n";
+    assert.equal(verify('src/lib.vendor.tsx', tsx).length, 0);
+    assert.ok(verify('src/Tag.tsx', tsx).length >= 2);
+    const css = '.card { color: var(--ods-color-primary-500); }\n';
+    const config = { plugins: stylelintPlugins, rules: { 'ods/no-removed-token': true } };
+    const lint = async (file) => (await stylelint.lint({ code: css, codeFilename: join(dir, file), config })).results[0].warnings.length;
+    assert.equal(await lint('src/styles/site-copies/site.css'), 0);
+    assert.equal(await lint('src/styles/app.css'), 1);
+  });
+});
+
 /* ------------------------------------------------------------------------- look-alikes */
 
 describe('imports that look like ODS: what to do, in plain words', () => {

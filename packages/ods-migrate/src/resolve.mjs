@@ -5,12 +5,13 @@
  * `imports` (`#…`), and the packages of the workspace (a `name` declared by a package.json of the
  * scanned tree, or a node_modules link to sources outside any node_modules).
  *
- * Also reads the modules file the CLI writes (ods-migrate.modules.json) for the ESLint rules, and
+ * Also reads the .gitignore and .odsmigrateignore files (the files the CLI and the lint rules leave
+ * alone), and the modules file the CLI writes (ods-migrate.modules.json) for the ESLint rules, and
  * answers, for an entry of the index, which ODS export a name it exports stands for.
  *
  * No parser here: the ESLint rules load this file at lint time.
  */
-import { readFileSync, realpathSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 
 const ODS_PACKAGES = ['@ovhcloud/ods-react', '@ovhcloud/ods-themes'];
@@ -536,6 +537,133 @@ const olderOdsOf = (() => {
   };
 })();
 
+/* ------------------------------------------------------------------------- .gitignore and .odsmigrateignore */
+
+const escapeRegExp = (text) => text.replace(/[$.*+?^{}()|[\]\\/]/g, '\\$&');
+
+/** A .gitignore glob as a regular expression on a `/`-separated path. */
+function globToRegExp(glob) {
+  let source = '';
+  for (let i = 0; i < glob.length; i++) {
+    const char = glob[i];
+    if (char === '*' && glob[i + 1] === '*' && (i === 0 || glob[i - 1] === '/') && (glob[i + 2] === '/' || i + 2 === glob.length)) {
+      source += i + 2 === glob.length ? '.*' : '(?:.*/)?';
+      i += 2;
+    } else if (char === '*') {
+      source += '[^/]*';
+      while (glob[i + 1] === '*') i++;
+    } else if (char === '?') {
+      source += '[^/]';
+    } else if (char === '[') {
+      const negated = glob[i + 1] === '!' || glob[i + 1] === '^';
+      const close = glob.indexOf(']', i + (negated ? 3 : 2));
+      if (close === -1) {
+        source += '\\[';
+        continue;
+      }
+      const body = glob.slice(i + (negated ? 2 : 1), close).replace(/\\/g, '\\\\');
+      source += `[${negated ? '^' : ''}${body}]`;
+      i = close;
+    } else if (char === '\\' && i + 1 < glob.length) {
+      source += escapeRegExp(glob[++i]);
+    } else {
+      source += escapeRegExp(char);
+    }
+  }
+  return source;
+}
+
+/**
+ * Parses a .gitignore (patterns, `!`, a trailing `/` for directories only, a leading or inner `/`
+ * to anchor on the file's directory, `*`, `**`, `?`, `[…]`). `base` is the directory of the file.
+ */
+function parseGitignore(text, base) {
+  const rules = [];
+  for (let line of text.split(/\r?\n/)) {
+    line = line.replace(/(?<!\\)\s+$/, '');
+    if (!line || line.startsWith('#')) {
+      continue;
+    }
+    const negate = line.startsWith('!');
+    let pattern = negate ? line.slice(1) : line;
+    if (/^\\[#!]/.test(pattern)) {
+      pattern = pattern.slice(1);
+    }
+    const dirOnly = pattern.endsWith('/');
+    pattern = pattern.replace(/\/+$/, '');
+    const anchored = pattern.includes('/');
+    pattern = pattern.replace(/^\//, '');
+    if (!pattern) {
+      continue;
+    }
+    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`) });
+  }
+  return rules;
+}
+
+/** True when the last rule that matches the path ignores it. */
+function isIgnored(rules, path, isDir) {
+  let ignored = false;
+  for (const rule of rules) {
+    if (rule.dirOnly && !isDir) {
+      continue;
+    }
+    const rel = relative(rule.base, path);
+    if (!rel || rel.startsWith('..')) {
+      continue;
+    }
+    if (rule.regex.test(rel.split(sep).join('/'))) {
+      ignored = !rule.negate;
+    }
+  }
+  return ignored;
+}
+
+/* What ods-migrate leaves alone besides .gitignore: a copy of a website's stylesheets, vendored code (same syntax). */
+const IGNORE_FILE = '.odsmigrateignore';
+
+/** The rules of the .gitignore and the .odsmigrateignore of a directory, in that order. */
+function readIgnoreFiles(dir) {
+  return ['.gitignore', IGNORE_FILE].flatMap((name) => {
+    try {
+      return parseGitignore(readFileSync(join(dir, name), 'utf8'), dir);
+    } catch {
+      return [];
+    }
+  });
+}
+
+/*
+ * The same, for the lint rules: true when a .odsmigrateignore of the file's directories, up to the
+ * root of its git repository, ignores it. One cache per process.
+ */
+const ignoredByOdsMigrate = (() => {
+  const rulesOf = new Map();
+  const ownRules = (dir) => {
+    if (!rulesOf.has(dir)) {
+      try {
+        rulesOf.set(dir, parseGitignore(readFileSync(join(dir, IGNORE_FILE), 'utf8'), dir));
+      } catch {
+        rulesOf.set(dir, []);
+      }
+    }
+    return rulesOf.get(dir);
+  };
+  return (file) => {
+    if (typeof file !== 'string' || !isAbsolute(file)) return false;
+    const dirs = [];
+    for (let dir = dirname(file); ; dir = dirname(dir)) {
+      dirs.unshift(dir);
+      if (existsSync(join(dir, '.git')) || dirname(dir) === dir) break;
+    }
+    const rules = dirs.flatMap(ownRules);
+    if (!rules.length) return false;
+    // A file under an ignored folder is ignored, as when the CLI walks the tree.
+    const parents = dirs.slice(1).map((dir, index) => [dir, index]);
+    return parents.some(([dir]) => isIgnored(rules, dir, true)) || isIgnored(rules, file, false);
+  };
+})();
+
 /* ------------------------------------------------------------------------- modules file */
 
 /**
@@ -642,4 +770,4 @@ function moduleLookup({ cwd = process.cwd(), option, packages = [] } = {}) {
   return find;
 }
 
-export { MODULES_FILE, ODS_PACKAGES, createOlderOdsResolver, createResolver, isPackageSource, loadModulesFile, moduleLookup, odsNameIn, olderOdsOf, parseJsonc, serializeModules };
+export { IGNORE_FILE, MODULES_FILE, ODS_PACKAGES, globToRegExp, ignoredByOdsMigrate, isIgnored, parseGitignore, readIgnoreFiles, createOlderOdsResolver, createResolver, isPackageSource, loadModulesFile, moduleLookup, odsNameIn, olderOdsOf, parseJsonc, serializeModules };

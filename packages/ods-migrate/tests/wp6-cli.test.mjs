@@ -191,6 +191,19 @@ describe('cli: the files it scans', () => {
     assert.match(cli(['src', '--ignore', 'src/vendor/'], dir).stdout, /^1 files scanned/m);
   });
 
+  it('leaves a place the integrator decided (ods-v20: checked), so --check passes', () => {
+    const css = "body {\n  > div[data-scope='dialog'][data-part='positioner'] {\n    z-index: 100;\n  }\n}\n";
+    const tsx = "import { Modal } from '@ovhcloud/ods-react';\nexport const M = () => <Modal positionerStyle={{ zIndex: 150 }} />;\n";
+    const dir = project({ 'src/index.css': css, 'src/M.tsx': tsx });
+    assert.equal(cli(['.', '--check'], dir).code, 1);
+    const marked = cli(['.', '--diff'], dir).stdout;
+    assert.match(marked, /z-index: 100 on an ODS overlay: .* Once decided, put a comment `ods-v20: checked` right before it/);
+    writeFileSync(join(dir, 'src/index.css'), css.replace('    z-index: 100;', '    /* ods-v20: checked: above the site header (99) */\n    z-index: 100;'));
+    writeFileSync(join(dir, 'src/M.tsx'), tsx.replace('{{ zIndex', '{{ /* ods-v20: checked */ zIndex'));
+    const after = cli(['.', '--check'], dir);
+    assert.equal(after.code, 0, after.stdout);
+  });
+
   it('scans .html files when the token engine can', () => {
     const dir = project({ 'index.html': '<style>.a { color: var(--ods-theme-text-color); }</style>\n' });
     const { stdout } = cli(['.'], dir);

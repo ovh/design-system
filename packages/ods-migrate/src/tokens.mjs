@@ -2,7 +2,7 @@ import { Lang, parse } from '@ast-grep/napi';
 import postcss from 'postcss';
 import scss from 'postcss-scss';
 import valueParser from 'postcss-value-parser';
-import { TODO, followsMarker, inlineMarker, isV19Look, resolveTokenMapping, stackingNeedsCheck, styleMarker } from './shared.mjs';
+import { TODO, followsMarker, inlineMarker, isChecked, isV19Look, resolveTokenMapping, stackingNeedsCheck, styleMarker } from './shared.mjs';
 
 /*
  * The design token part of the migration (BC-01 to BC-04, BC-08, BC-12, BC-13, BC-16 of
@@ -709,7 +709,11 @@ function planText(mapping, text, env = {}) {
         out.edits.push({ end, message: declaration.message, start: offset, text: declaration.to });
       }
       declaration.edits.forEach((item) => out.edits.push({ ...item, end: item.end + valueStart, start: item.start + valueStart }));
-      if (declaration.extra.length) {
+      if (declaration.extra.length && env.fragment) {
+        // A quoted string, not a stylesheet: a test that looks for this declaration in some CSS. Where the
+        // migrated CSS writes the second one (next line, same line) is not known here.
+        out.todos.push(`${name}: v20 splits it into ${[declaration.to ?? name, ...declaration.extra].join(' and ')}: this string now names the first one; if it is looked for in a stylesheet, look for the other one too, as that stylesheet writes it`);
+      } else if (declaration.extra.length) {
         const close = text[valueEnd] === ';' ? valueEnd + 1 : valueEnd;
         const value = applyEdits(text.slice(valueStart, valueEnd), declaration.edits).trim();
         const inserted = declaration.extra.map((prop) => `${prop}: ${value};`).join(' ');
@@ -1219,15 +1223,17 @@ function partChecks(node, mapping) {
   const chain = chainOf(node);
   const selector = chain.join(' ');
   if (!selector) return null;
+  // A place the integrator decided (`/* ods-v20: checked */` right before it): nothing to add.
+  if (node.prev()?.type === 'comment' && isChecked(`/*${node.prev().raws.left ?? ' '}${node.prev().text}${node.prev().raws.right ?? ' '}*/`)) return null;
   if (node.prop === 'z-index' && OVERLAY_PART.test(selector) && /^\s*-?\d+\s*(!important)?\s*$/.test(node.value) && stackingNeedsCheck(node.value.replace(/!important/, ''))) {
-    return { todo: `z-index: ${node.value.trim()} on an ODS overlay: the ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400) and a drawer now sits under a modal: keep or change this value so the element sits where it must` };
+    return { todo: `z-index: ${node.value.trim()} on an ODS overlay: the ODS overlays get new z-index values in v20 (v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdowns 200, drawer 300, modal 400) and a drawer now sits under a modal: keep or change this value so the element sits where it must. Once decided, put a comment \`ods-v20: checked\` right before it, so that ods-migrate and --check leave it.` };
   }
   const linkAfter = (LINK_PART.test(selector) || node.parent?.nodes?.some((sibling) => sibling.type === 'atrule' && /ods-link\s*\(/.test(sibling.params))) && /::?after/.test(selector);
   if (linkAfter && /^(height|transform|display|transition)$/.test(node.prop)) {
-    return { todo: `${node.prop} on the ::after of a link: the link underline is this ::after in v20, shown at rest (1px) and 2px on hover. Set \`--ods-link-underline-thickness\` / \`--ods-link-underline-thickness-hover\` on the link or its container instead` };
+    return { todo: `${node.prop} on the ::after of a link: the link underline is this ::after in v20, shown at rest (1px) and 2px on hover. Set \`--ods-link-underline-thickness\` / \`--ods-link-underline-thickness-hover\` on the link or its container instead. Once decided, put a comment \`ods-v20: checked\` right before it, so that ods-migrate and --check leave it.` };
   }
   if (LINK_PART.test(selector) && !/::?after/.test(selector) && node.prop === 'text-decoration' && /\bnone\b/.test(node.value)) {
-    return { todo: 'text-decoration: none on a link: the v20 underline is a ::after shown at rest, which this does not remove. To keep links without an underline at rest, set `--ods-link-underline-thickness: 0` on them or on their container' };
+    return { todo: 'text-decoration: none on a link: the v20 underline is a ::after shown at rest, which this does not remove. To keep links without an underline at rest, set `--ods-link-underline-thickness: 0` on them or on their container. Once decided, put a comment \`ods-v20: checked\` right before it, so that ods-migrate and --check leave it.' };
   }
   const tag = node.prop.match(/^--ods-tag-([a-z-]+)-color-information(-hover|-active)?$/);
   if (tag && ACCENT_TAG_HOST.test(selector)) {
@@ -1704,7 +1710,7 @@ function planScriptTokens(source, rawMapping, filename = 'file.tsx', options = {
     const before = template
       ? stringNode.children().filter((child) => child.kind() === 'string_fragment' && child.range().start.index < base).map((child) => child.text()).join('_')
       : '';
-    const result = planText(mapping, text, { before, config, dynamicTail, keyContext, themeKeys });
+    const result = planText(mapping, text, { before, config, dynamicTail, fragment: !template, keyContext, themeKeys });
     result.edits.forEach((item) => edit(base + item.start, base + item.end, item.text, item.message));
     result.todos.forEach((message) => mark(stringNode, message));
     result.notes.forEach((message) => note(base, message));

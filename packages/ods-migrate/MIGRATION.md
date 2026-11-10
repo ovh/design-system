@@ -332,6 +332,8 @@ grep -rn 'TODO(ods-v20)' --exclude-dir=node_modules .
 
 Fix the code, then delete the marker. Every marker says what to do; the table gives the common ones.
 
+**A marker about code that already works in v20** (a z-index on an ODS overlay, the `::after` of a link) asks for a decision, not a fix. When you keep the code as it is, replace the marker with the comment `/* ods-v20: checked */` (in JSX style objects too: `{{ /* ods-v20: checked */ zIndex: 150 }}`), with your reason if you like (`/* ods-v20: checked: above the site header */`). ods-migrate, `--check` and the ESLint and stylelint rules then leave that place alone. Without it, the next run adds the marker again and `--check` fails in CI. It is honoured only for these markers: code that v20 breaks is always reported.
+
 | Marker says | What to do | Before (after ods-migrate) | After (your fix) |
 | --- | --- | --- | --- |
 | `BUTTON_COLOR.success has no v20 equivalent: a Button shows no status in v20 …` | ods-migrate deleted the `color=` (the Button is `brand`, its default). Pick `status="critical"` or `"neutral"` if brand does not fit, show the status with a Badge or a Message, then delete the marker. Where the value is computed (`c ? BUTTON_COLOR.success : …`), the v19 constant is kept for you to replace. | `/* TODO… */ <Button>Save</Button>` | `<Button>Save</Button>` and a `<Badge status="success">` |

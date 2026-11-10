@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { planReplacement, replacementParts } from './replaced.mjs';
 import { ignoredByOdsMigrate, moduleLookup, odsNameIn, olderOdsOf } from './resolve.mjs';
-import { attributeText, isUntyped, isV19Look, memberRule, resolveMapping, resolveTokenMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
+import { attributeText, isChecked, isUntyped, isV19Look, memberRule, resolveMapping, resolveTokenMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 import { planScriptTokens } from './tokens.mjs';
 
 const defaultMapping = JSON.parse(readFileSync(new URL('../mappings/v19-to-v20.json', import.meta.url), 'utf8'));
@@ -1568,8 +1568,8 @@ function migrationRule(rawMapping) {
                 || (literal.type === 'UnaryExpression' && literal.argument.type === 'Literal' && typeof literal.argument.value === 'number')
                 || /^\s*-?\d+\s*$/.test(stringOf(literal) ?? ''));
               const number = literal?.type === 'UnaryExpression' ? `${literal.operator}${literal.argument.value}` : literal?.type === 'Literal' && typeof literal.value === 'number' ? literal.value : stringOf(literal);
-              if (stacked && stackingNeedsCheck(number)) {
-                context.report({ data: { detail: `<${component} ${from}={{ zIndex }}>: check this stacking${hintOf(rule)}` }, messageId: 'stacking', node: zIndex });
+              if (stacked && stackingNeedsCheck(number) && !isChecked(sourceCode.text.slice(0, zIndex.range[0]))) {
+                context.report({ data: { detail: `<${component} ${from}={{ zIndex }}>: check this stacking${hintOf(rule)}. Once decided, put a comment \`ods-v20: checked\` right before it, so that ods-migrate and --check leave it.` }, messageId: 'stacking', node: zIndex });
               }
             }
 

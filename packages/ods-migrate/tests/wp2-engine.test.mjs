@@ -269,7 +269,7 @@ describe('always, note, coerce, todoUnless, stacking', () => {
 </>;\n`;
     const { output, todos } = run(source, mapping);
     assert.equal(todos.length, 2);
-    assert.match(output, /\{ top: 0, \/\* TODO\(ods-v20\): <Modal positionerStyle=\{\{ zIndex \}\}>: check this stacking: overlays moved to 200-400 \*\/ zIndex: '150' \}/);
+    assert.match(output, /\{ top: 0, \/\* TODO\(ods-v20\): <Modal positionerStyle=\{\{ zIndex \}\}>: check this stacking: overlays moved to 200-400\. Once decided, put a comment `ods-v20: checked` right before it, so that ods-migrate and --check leave it\. \*\/ zIndex: '150' \}/);
     assert.equal(output.replace(/\/\* TODO\(ods-v20\)[^*]*\*\/ /g, ''), source);
   });
 });

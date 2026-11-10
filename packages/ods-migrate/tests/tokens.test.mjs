@@ -98,6 +98,14 @@ describe('design tokens', () => {
     assert.equal(migrate('const c = "shadow-[inset_0_0_0_1px_var(--ods-color-primary-600)]";\n', 'a.tsx').output, 'const c = "shadow-[inset_0_0_0_1px_var(--ods-semantic-color-border-brand)]";\n');
   });
 
+  it('does not join a split declaration in a quoted string: a test looks for it in some CSS', () => {
+    const { output } = migrate("expect(css).toContain('--ods-font-family-default: var(--x)');\n", 'a.ts');
+    assert.match(output, /TODO\(ods-v20\): --ods-font-family-default: v20 splits it into --ods-semantic-font-family-body and --ods-semantic-font-family-heading: .*look for the other one too/);
+    assert.match(output, /'--ods-semantic-font-family-body: var\(--x\)'\);\n$/);
+    // A CSS-in-JS template is a stylesheet: both declarations are written.
+    assert.equal(migrate('const g = css`\n  --ods-font-family-default: var(--x);\n`;\n', 'a.ts').output, 'const g = css`\n  --ods-semantic-font-family-body: var(--x); --ods-semantic-font-family-heading: var(--x);\n`;\n');
+  });
+
   it('does not mark twice a site whose marker contains a `*`', () => {
     // ovh/manager-ui-kit tailwind.config: the BC-03 hint names `--ods-semantic-size-radius-*`.
     const once = migrate('export default { borderRadius: { xs: \'var(--ods-border-radius-xs)\' } };', 'tailwind.config.mjs').output;

@@ -1,7 +1,7 @@
 import { Lang, parse } from '@ast-grep/napi';
 import { planReplacement, replacementParts } from './replaced.mjs';
 import { odsNameIn } from './resolve.mjs';
-import { TODO, attributeText, eolOf, followsMarker, inlineMarker, isUntyped, isV19Look, jsxChildMarker, memberRule, resolveMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
+import { TODO, attributeText, eolOf, followsMarker, inlineMarker, isChecked, isUntyped, isV19Look, jsxChildMarker, memberRule, resolveMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 
 function langFor(filename) {
   return /\.(c|m)?ts$/.test(filename) ? Lang.TypeScript : Lang.Tsx;
@@ -1923,8 +1923,8 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
           const literal = zIndex.kind() === 'number' || (zIndex.kind() === 'unary_expression' && named(zIndex)[0]?.kind() === 'number');
           // A string that reads the v19 overlay token is left to the token pass: it marks a computed read
           // and renames a bare one, so a marker here would outlive that rename.
-          if ((literal || (text !== null && /^\s*-?\d+\s*$/.test(text))) && stackingNeedsCheck(text ?? zIndex.text().replace(/\s+/g, ''))) {
-            mark(pair, `<${component} ${from}={{ zIndex }}>: check this stacking${rule.hint ? `: ${rule.hint}` : ''}`);
+          if ((literal || (text !== null && /^\s*-?\d+\s*$/.test(text))) && stackingNeedsCheck(text ?? zIndex.text().replace(/\s+/g, '')) && !isChecked(source.slice(0, startOf(pair)))) {
+            mark(pair, `<${component} ${from}={{ zIndex }}>: check this stacking${rule.hint ? `: ${rule.hint}` : ''}. Once decided, put a comment \`ods-v20: checked\` right before it, so that ods-migrate and --check leave it.`);
           }
         }
       }

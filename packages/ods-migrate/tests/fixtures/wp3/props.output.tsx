@@ -11,7 +11,7 @@ export const H = () => <Input type={ INPUT_TYPE.password } maskOption={{ enable:
 export const I = (props) => <Input type="password" { ...props } />;
 export const J = ({ hidden }) => <Input type={ hidden ? INPUT_TYPE.password : 'text' } />;
 export const K = () => <Modal positionerStyle={{ zIndex: 98 }} />;
-export const K2 = () => <Modal positionerStyle={{ /* TODO(ods-v20): <Modal positionerStyle={{ zIndex }}>: check this stacking: modals are at 400 in v20 */ zIndex: 150 }} />;
+export const K2 = () => <Modal positionerStyle={{ /* TODO(ods-v20): <Modal positionerStyle={{ zIndex }}>: check this stacking: modals are at 400 in v20. Once decided, put a comment `ods-v20: checked` right before it, so that ods-migrate and --check leave it. */ zIndex: 150 }} />;
 export const K3 = () => <Modal positionerStyle={{ zIndex: 99999 }} />;
 export const L = () => <Modal positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} />;
 export const M = ({ z }) => <Modal positionerStyle={{ zIndex: z }} />;

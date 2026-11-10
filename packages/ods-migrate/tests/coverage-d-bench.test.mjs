@@ -9,9 +9,12 @@
  *   - a font family v20 no longer loads; a bare BEM modifier in a `[class*="--x"]` selector.
  */
 import assert from 'node:assert/strict';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, relative } from 'node:path';
 import { describe, it } from 'node:test';
 import { classify } from '../scripts/coverage/classify.mjs';
-import { isSiteContext, scanText, siteKind } from '../scripts/coverage/token-sites.mjs';
+import { isSiteContext, scanText, siteKind, walkFiles } from '../scripts/coverage/token-sites.mjs';
 import { hiddenDiagnostics } from '../scripts/coverage/ts-sites.mjs';
 import { skipTs, ts } from './coverage-helpers.mjs';
 
@@ -108,6 +111,22 @@ export const b = <Badge status={ BADGE_STATUS.neutral } />;
     });
     assert.deepEqual(own, []);
     assert.deepEqual(h, ['2 removed-prop color', '3 removed-prop color']);
+  });
+});
+
+describe('coverage bench: files the integrator leaves to ods-migrate\'s ignore file', () => {
+  it('finds no site in what a .odsmigrateignore names', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ods-bench-ignore-'));
+    try {
+      for (const file of ['src/a.css', 'src/styles/site-copies/site.css', 'src/b.vendor.tsx', 'lib/c.tsx']) {
+        mkdirSync(join(dir, file, '..'), { recursive: true });
+        writeFileSync(join(dir, file), '');
+      }
+      writeFileSync(join(dir, '.odsmigrateignore'), '# copies of the website CSS\nsrc/styles/site-copies/\n*.vendor.tsx\n/lib\n');
+      assert.deepEqual(walkFiles(dir, /\.(css|tsx)$/).map((file) => relative(dir, file)), ['src/a.css']);
+    } finally {
+      rmSync(dir, { force: true, recursive: true });
+    }
   });
 });
 

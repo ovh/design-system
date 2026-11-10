@@ -269,6 +269,20 @@ describe('--read: a component library of another repository', () => {
   });
 });
 
+describe('a place the integrator decided: ods-v20: checked', () => {
+  it('is not reported by ESLint nor stylelint, as by the command', async () => {
+    const dir = project({ 'package.json': '{ "dependencies": { "@ovhcloud/ods-react": "19.7.3" } }' });
+    const { verify } = linter(dir, { 'ods/v20-migration': 'error' });
+    const tsx = (zIndex) => `import { Modal } from '@ovhcloud/ods-react';\nexport const M = () => <Modal positionerStyle={{ ${zIndex} }} />;\n`;
+    assert.equal(verify('src/A.tsx', tsx('zIndex: 150')).length, 1);
+    assert.equal(verify('src/B.tsx', tsx('/* ods-v20: checked */ zIndex: 150')).length, 0);
+    const config = { plugins: stylelintPlugins, rules: { 'ods/no-removed-token': true } };
+    const lint = async (css) => (await stylelint.lint({ code: css, codeFilename: join(dir, 'a.css'), config })).results[0].warnings.length;
+    assert.equal(await lint("[data-scope='dialog'][data-part='positioner'] { z-index: 100; }\n"), 1);
+    assert.equal(await lint("[data-scope='dialog'][data-part='positioner'] {\n  /* ods-v20: checked */\n  z-index: 100;\n}\n"), 0);
+  });
+});
+
 describe('files a .odsmigrateignore leaves out', () => {
   it('are left alone by ESLint and stylelint too, as by the command', async () => {
     const dir = project({

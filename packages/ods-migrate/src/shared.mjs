@@ -172,6 +172,15 @@ const stackingNeedsCheck = (value) => {
   return !Number.isFinite(number) || (number >= STACKING_BELOW && number <= STACKING_ABOVE);
 };
 
+/*
+ * A decision recorded by the integrator: `/* ods-v20: checked *\/` right before a z-index on an ODS
+ * overlay or a link ::after rule, code that is valid v20 and only asks a person to look. The marker is
+ * not added again, so --check passes once every such place is decided. Never honoured for code v20 breaks.
+ */
+const CHECKED = 'ods-v20: checked';
+const CHECKED_COMMENT = new RegExp(`/\\*\\s*${CHECKED}\\b[^*]*\\*/\\s*\\}?\\s*$`);
+const isChecked = (before) => CHECKED_COMMENT.test(before);
+
 /** Inline marker of a script, inserted right before the node it is about: `/* TODO(ods-v20): … *\/ `. */
 function inlineMarker(messages) {
   return `/* ${TODO}: ${markerMessage(messages)} */ `;
@@ -237,6 +246,8 @@ export {
   resolveMapping,
   resolveTokenMapping,
   stripScriptMarkers,
+  CHECKED,
+  isChecked,
   stackingNeedsCheck,
   stripStyleMarkers,
   styleMarker,

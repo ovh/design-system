@@ -30,7 +30,7 @@
  * MDX ESM and JSX), Jest snapshots (`.snap`, reported apart by the harness).
  */
 import { readdirSync, readFileSync } from 'node:fs';
-import { basename, join } from 'node:path';
+import { basename, join, relative, sep } from 'node:path';
 import { lineStarts, positionOf } from './linemap.mjs';
 
 const DECLARING = /\.(s?css|tsx?)$/;
@@ -53,7 +53,7 @@ export const SNAPSHOT = /\.snap$/;
 const ODS_IMPORT = /\bfrom\s*['"]@ovhcloud\/ods-|\bimport\s*['"]@ovhcloud\/ods-|\brequire\(\s*['"]@ovhcloud\/ods-/;
 const CHANGELOG = /^(changelog|whats-?new)([.-].*)?\.mdx?$/i;
 
-function walk(dir, test, out = []) {
+function walk(dir, test, skip, out = []) {
   let entries;
   try {
     entries = readdirSync(dir, { withFileTypes: true });
@@ -62,22 +62,46 @@ function walk(dir, test, out = []) {
   }
   for (const entry of entries) {
     const path = join(dir, entry.name);
+    if (skip(path)) continue;
     if (entry.isDirectory()) {
-      if (entry.name !== 'node_modules' && entry.name !== '.git') walk(path, test, out);
+      if (entry.name !== 'node_modules' && entry.name !== '.git') walk(path, test, skip, out);
     } else if (entry.isFile() && test.test(entry.name)) out.push(path);
   }
   return out;
 }
 
+/*
+ * The files the integrator told ods-migrate to leave alone (a `.odsmigrateignore` at the root of the
+ * corpus, gitignore lines): not code of the app, so no site there. A reader of its own, as the harness
+ * reads nothing of ods-migrate: a folder or file path, `*` and `**`, a leading `/`, no negation.
+ */
+function ignoredBy(root) {
+  let text;
+  try {
+    text = readFileSync(join(root, '.odsmigrateignore'), 'utf8');
+  } catch {
+    return () => false;
+  }
+  const rules = text.split(/\r?\n/).map((line) => line.trim()).filter((line) => line && !line.startsWith('#') && !line.startsWith('!')).map((line) => {
+    const anchored = line.replace(/\/+$/, '').includes('/');
+    const glob = line.replace(/^\//, '').replace(/\/+$/, '').replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*\//g, '(?:.*/)?').replace(/\*\*/g, '.*').replace(/\*/g, '[^/]*').replace(/\?/g, '[^/]');
+    return new RegExp(`${anchored ? '^' : '(?:^|/)'}${glob}$`);
+  });
+  return (path) => {
+    const rel = relative(root, path).split(sep).join('/');
+    return rules.some((rule) => rule.test(rel));
+  };
+}
+
 export function walkFiles(dir, test) {
-  return walk(dir, test).sort();
+  return walk(dir, test, ignoredBy(dir)).sort();
 }
 
 /* → { css, scss, mixin, module, font }: the names a surface declares (sets). */
 export function declaredNames(roots) {
   const names = { css: new Set(), scss: new Set(), mixin: new Set(), module: new Set(), font: new Set() };
   for (const root of roots) {
-    for (const file of walk(root, DECLARING)) {
+    for (const file of walk(root, DECLARING, () => false)) {
       const text = readFileSync(file, 'utf8');
       for (const m of text.matchAll(CUSTOM_PROPERTY_DECL)) names.css.add(m[1]);
       if (!/\.s?css$/.test(file)) continue;

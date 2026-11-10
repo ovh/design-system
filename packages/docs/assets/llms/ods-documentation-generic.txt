@@ -5656,7 +5656,7 @@ slug: ovhcloud-design-system-upgrade-migration-19-x-to-20-x
 category: generic
 type: overview
 version: 20.0.0-alpha.0
-tokens: 20735
+tokens: 21096
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt
 ---
 
@@ -5676,6 +5676,18 @@ The peer dependency range is unchanged:
 The component API has **breaking changes**, each listed with its migration in **Breaking changes**. The other props, refs and composition keep working, but several components render differently with no prop set: see **Default rendering**. Moving to React 19 requires no ODS-related code change. Form fields also lose their stretch-to-container default: see **Form fields share one default width** below if your layout relied on it.
 
 The theme has **breaking changes**: the `--ods-theme-*` and `--ods-color-*` tokens are replaced by a semantic layer, without alias, and the default theme gets a new look. Any CSS, Sass or custom theme that reads the old tokens has to migrate: start with **Default theme** and follow the sections after it. The inventory of every change, with a detection command and a codemod status for each, is [BREAKING-CHANGES-V20.md](https://github.com/ovh/design-system/blob/master/BREAKING-CHANGES-V20.md).
+
+## Automate the migration with ods-migrate
+
+`@ovhcloud/ods-migrate` applies most of this guide to your code: it renames the props, constants, types and design tokens that have a v20 equivalent, and marks every place that needs a decision with a `TODO(ods-v20)` comment that says what to do. Run it first, then use the sections below for what it marks or reports. It is published with ODS v20.
+
+```sh
+npx @ovhcloud/ods-migrate .             # dry run: prints what it would change, writes nothing
+npx @ovhcloud/ods-migrate . --write     # applies the changes
+npx @ovhcloud/ods-migrate . --check     # for CI: fails while something is left
+```
+
+Run it on a clean git branch, before you bump `@ovhcloud/ods-react` and `@ovhcloud/ods-themes` to 20: it reads the ODS version of your code from your `package.json`. Then bump, install, run your type check and resolve the markers. It also finds your own modules built on ODS, the UI kits of your repository and your components whose props take ODS values, so the places that use them follow too. The full procedure, step by step, with what each line of its report means, is in [its migration guide](https://github.com/ovh/design-system/blob/master/packages/ods-migrate/MIGRATION.md).
 
 ## If you stay on React 18
 
@@ -7065,8 +7077,9 @@ import { TAG_STATUS, Tag } from '@ovhcloud/ods-react';
 - `toast.critical()`, `toast.information()`, `toast.neutral()`, `toast.success()`, `toast.warning()`: unchanged.
 - A `color` passed in the toast options (`toast('…', { color: 'primary' })`): use the matching helper (`toast.accent('…')`).
 - `TOAST_COLOR`, `TOAST_COLORS` and `ToastColor`: use `TOAST_STATUS`, `TOAST_STATUSES` and `ToastStatus`.
+- The `ToastController` type (the type of `toast`) has an `accent` key instead of `primary`: an object of yours typed with it, or a map of helpers keyed by status (`{ primary: … }`), renames the key.
 
-To find the usages to migrate: `grep -rnE "\bTOAST_COLORS?\b|\bToastColor\b|toast\.primary\(" src/`.
+To find the usages to migrate: `grep -rnE "\bTOAST_COLORS?\b|\bToastColor\b|\bToastController\b|toast\.primary\(" src/`.
 
 **before**
 ```tsx

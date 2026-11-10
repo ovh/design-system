@@ -149,7 +149,7 @@ describe('typed props: callers, defaults, report, lint', () => {
     ]);
     assert.deepEqual(report.odsModules, [], 'a module of typed components is not a module that stands for ODS');
     const notes = report.files.find((file) => file.file === 'src/components/button-link/ButtonLink.tsx').toCheck.map((note) => note.message);
-    assert.ok(notes.some((message) => /^ButtonLink variant: its values change in v20 \('default' → 'high', 'outline' → 'medium', 'ghost' → 'low'\): what this code builds from it changes too \(a CSS class name, an object key\): rename those to match/.test(message)), notes.join('\n'));
+    assert.ok(notes.some((message) => /^ButtonLink variant: its values change in v20 \('default' → 'high', 'outline' → 'medium', 'ghost' → 'low'\): what this code builds from it changes too \(a CSS class name, an object key\): rename those to match, and check what a renamed class overrides first, since the v20 value may look different/.test(message)), notes.join('\n'));
   });
 
   it('lints the migrated code with one report per marker and nothing left to fix', async () => {

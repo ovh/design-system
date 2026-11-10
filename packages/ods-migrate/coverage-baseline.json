@@ -1,6 +1,6 @@
 {
   "about": "Last recorded numbers of the ods-migrate test procedure (TESTING.md). Coverage entries are keyed by the --label of the run and compared by scripts/coverage-check.mjs; acceptance entries by hand against scripts/acceptance/acceptance.sh. Update with `node scripts/coverage-check.mjs --record <run.json>...` and by editing `acceptance`, in the same change as the code that moves them.",
-  "recordedAt": "2026-11-09",
+  "recordedAt": "2026-11-10",
   "refs": {
     "v19": "v19.7.3 (0ce249290)",
     "v20": "origin/master (8b834837e = v20.0.0-alpha.0; ods-react and themes as at 2741442ea)"
@@ -578,21 +578,21 @@
         "snippets": 451
       },
       "sites": 792,
-      "auto": 538,
-      "marked": 43,
+      "auto": 540,
+      "marked": 41,
       "missed": 211,
-      "autoPct": 67.9,
+      "autoPct": 68.2,
       "assistedPct": 73.4,
       "regressions": 1,
       "regressionsUnderMarker": 1,
       "prematureFiles": 0,
       "prematureHunks": 0,
-      "agree": 193,
-      "differ": 964,
+      "agree": 195,
+      "differ": 962,
       "truthUnit": "item",
-      "toolWrong": 62,
+      "toolWrong": 60,
       "differByClass": {
-        "tool-wrong": 62,
+        "tool-wrong": 60,
         "decision": 117,
         "unrelated-change": 769,
         "style-only": 16
@@ -603,7 +603,7 @@
         "truth": "1ecc71db930127592c0a84be5090c91e619ac3d4be0106ed856b5672dc51ea30"
       },
       "migrateExit": 0,
-      "seconds": 33
+      "seconds": 55
     }
   },
   "measuredWith": {

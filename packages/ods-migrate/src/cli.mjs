@@ -55,6 +55,9 @@ What it cannot change safely gets a ${TODO} comment in your code, saying what to
   --ignore <pattern>  leave these files alone, as a line of .gitignore read from the working directory
                      (repeatable): a copy of a website's stylesheets, vendored code. To keep it for every run and
                      for the ESLint and stylelint rules, write it in a ${IGNORE_FILE} file instead
+  --read <path>      read this folder too, never change it: the source of a component library of
+                     another repository that your app uses (ods-migrate . --read ../my-library --write).
+                     ods-migrate learns which of its props take ODS values; only your app changes
   --built-on-ods <package>
                      an installed package that gives access to ODS components unchanged (same names,
                      same props), whose source is not in the scanned folders. Only when the report asks
@@ -363,6 +366,7 @@ function parseOptions(argv) {
         from: { type: 'string' },
         help: { default: false, short: 'h', type: 'boolean' },
         ignore: { default: [], multiple: true, type: 'string' },
+        read: { default: [], multiple: true, type: 'string' },
         json: { type: 'string' },
         'treat-as-ods': { default: [], multiple: true, type: 'string' },
         write: { default: false, type: 'boolean' },
@@ -412,7 +416,7 @@ async function main(argv, io, configModule) {
   if (optOut && options.write) {
     checkOptOutTarget(config.optOutCss);
   }
-  const roots = positionals.map((positional) => {
+  const checkPath = (positional) => {
     const path = resolve(cwd, positional);
     try {
       statSync(path);
@@ -425,7 +429,10 @@ async function main(argv, io, configModule) {
       throw new FileError(`${positional}: permission denied`);
     }
     return path;
-  });
+  };
+  const roots = positionals.map(checkPath);
+  // Read only: the source of a component library of another repository, read to learn its components, never written.
+  const readRoots = options.read.map(checkPath);
 
   const mapping = JSON.parse(readFileSync(join(MAPPINGS, 'v19-to-v20.json'), 'utf8'));
   const tokenMapping = JSON.parse(readFileSync(join(MAPPINGS, 'tokens-v19-to-v20.json'), 'utf8'));
@@ -461,6 +468,17 @@ async function main(argv, io, configModule) {
   }
   const manifests = paths.filter((path) => basename(path) === 'package.json');
   const reactMajor = workspaceReactMajor(manifests);
+  // The files of --read: indexed with the others, so the library's components are known, but never migrated nor reported.
+  const readOnly = [];
+  for (const root of readRoots) {
+    for (const path of walk(root, [], ignoreRules)) {
+      const real = realpathSync(path);
+      if (!seen.has(real)) {
+        seen.add(real);
+        readOnly.push(path);
+      }
+    }
+  }
 
   // The modules of the project that stand for ODS: their importers are migrated like importers of the package.
   // The texts read for it are kept for the migration pass below.
@@ -469,7 +487,7 @@ async function main(argv, io, configModule) {
     if (!texts.has(path)) texts.set(path, readFileSync(path, 'utf8'));
     return texts.get(path);
   };
-  const index = buildProjectIndex(paths.filter((path) => SCRIPTS.test(path) || basename(path) === 'package.json'), { mapping, readText, treatAsOds });
+  const index = buildProjectIndex([...paths, ...readOnly].filter((path) => SCRIPTS.test(path) || basename(path) === 'package.json'), { mapping, readText, treatAsOds });
   // Written for the ESLint rules, which cannot index the project: never over a file ods-migrate did not write.
   const modulesPath = join(cwd, MODULES_FILE);
   const modulesFound = index.modules.size > 0 || treatAsOds.length > 0;
@@ -756,7 +774,9 @@ async function main(argv, io, configModule) {
     }
   }
 
-  const detected = describeIndex(index, cwd, (file) => !olderOdsOf(file));
+  // The files of --read are not migrated: they do not count as users, but their components are listed.
+  const readSet = new Set(readOnly);
+  const detected = describeIndex(index, cwd, (file) => !olderOdsOf(file) && !readSet.has(file), (file) => !olderOdsOf(file));
   printDetected(io, detected, mapping);
   const modulesWritten = writeModules;
   if (writeModules) {
@@ -862,9 +882,10 @@ const SHOWN = 8;
 /**
  * What the index found, for the report: the modules that stand for ODS, the components whose props are
  * typed with ODS types, the wrappers not followed, the look-alikes. `migrated(file)`: false for the files
- * left unchanged (a package on an older ODS), which are not counted as migrated importers.
+ * left unchanged (a package on an older ODS, a file of --read), which are not counted as migrated importers.
+ * `listed(file)`: the files whose typed components are listed (those of --read too: the app uses them).
  */
-function describeIndex(index, cwd, migrated = () => true) {
+function describeIndex(index, cwd, migrated = () => true, listed = migrated) {
   const rel = (path) => relative(cwd, path).split(sep).join('/') || basename(path);
   // A barrel that passes a module on is not one of its users: only the other importers are counted.
   const isModule = (file) => Boolean(index.modules.get(file)?.reexports);
@@ -889,7 +910,7 @@ function describeIndex(index, cwd, migrated = () => true) {
     const entry = index.modules.get(file);
     return Boolean(entry && Object.keys(entry.typed ?? {}).length && !index.ownTyped?.has(file) && (entry.reexports || !standsForOds(entry)));
   };
-  const typed = [...(index.ownTyped ?? [])].filter(([file]) => migrated(file)).flatMap(([file, components]) => Object.entries(components).map(([name, props]) => {
+  const typed = [...(index.ownTyped ?? [])].filter(([file]) => listed(file)).flatMap(([file, components]) => Object.entries(components).map(([name, props]) => {
     // The files that import the component's own file, and those that import a barrel passing it on and name it.
     const users = new Set();
     const seen = new Set([file]);

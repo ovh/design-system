@@ -2,7 +2,7 @@
 
 Moves the code of an app from ODS v19 to ODS v20.
 
-> **Not published yet** (version 0.0.0), and ODS v20 is not released yet. Until then, run it from a checkout of the design-system repository whose dependencies are installed: `node <checkout>/packages/ods-migrate/src/cli.mjs`. Once published: `npx @ovhcloud/ods-migrate`.
+> **Not published yet** (version 0.0.0), and ODS v20 is not released yet. Until then, run it from a checkout of the design-system repository whose dependencies are installed: `node <checkout>/packages/ods-migrate/src/cli.mjs`; or, if your team already has it in its `devDependencies`, `npx ods-migrate`. Once published: `npx @ovhcloud/ods-migrate`.
 
 **To migrate an app, follow [MIGRATION.md](MIGRATION.md)**: the full procedure, step by step, with what each line of the report means and what to do about it. This README is the reference of the package.
 
@@ -34,6 +34,7 @@ Run it from the root of your project or repository: `ods-migrate .` (dry run), t
 | `--json <file>` | Also saves the full report as JSON (below). The target is checked (its folder exists and is writable) before anything is written. |
 | `--config <file>` | The file the configurator downloads. Default: `ods-migrate.config.json` of the folder ods-migrate runs from, when it exists (the report says it used it); without it, Aluminium. A config next to the scanned folders, or above them, is not read: the report says so. |
 | `--from <major>` | The ODS version your code is written for: `19` or `20`. Only needed when `@ovhcloud/ods-react` was bumped to 20 before running ods-migrate: then pass `--from 19`. It also migrates the packages that declare ODS 17 or 18, which are skipped otherwise. Default: read, per file, from the nearest `package.json` that declares `@ovhcloud/ods-react` (or a UI kit built on it); unknown → 19. Code read as ODS 20 gets none of the v19-look additions of the config, with a warning per `package.json`. |
+| `--read <path>` | Also reads this folder, never changes it: the source of a component library of another repository that the app uses (`ods-migrate . --read ../my-library --write`). ods-migrate learns which props of its components take ODS values, and migrates the values the app passes to them. The library's files are not migrated, reported nor checked. Repeatable. |
 | `--ignore <pattern>` | Leaves these files alone: a line of `.gitignore` (`src/styles/site-copies/`, `*.vendor.tsx`), read from the folder ods-migrate runs from. Repeatable. For a folder to leave out at every run, and for the ESLint and stylelint rules, write it in a `.odsmigrateignore` file instead. |
 | `--built-on-ods <package>` | An installed package that gives access to ODS components unchanged (same names, same props), whose source is not in the scanned folders: its importers are migrated like importers of `@ovhcloud/ods-react`. **Only when the report asks for it**: your own modules and the UI kits of your repository are found on their own. Repeat it for several. Its former names, `--treat-as-ods` and `--also`, still work (hidden from the help) and print one line saying to use the new one. |
 | `-h`, `--help` | The usage. |

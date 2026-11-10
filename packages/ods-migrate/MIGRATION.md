@@ -17,6 +17,8 @@ Once it is published, run it with npx, from the root of your project:
 npx @ovhcloud/ods-migrate . 
 ```
 
+**Already in your `devDependencies`** (a version given to your team before the release): `npx ods-migrate .` from your project, or `node node_modules/@ovhcloud/ods-migrate/src/cli.mjs .`.
+
 **Until it is published**, run it from a checkout of the design-system repository, whose dependencies are installed (`pnpm install` at the root of that checkout):
 
 ```sh
@@ -85,9 +87,9 @@ These numbers count code only: ods-migrate does not read Markdown, so the code s
 When several teams share a UI kit built on ODS (like `@ovh-ux/muk` in ovh/manager), the order depends on how ODS is installed:
 
 - **One ODS version for the whole repository** (one lockfile at the root, the usual case): every package moves to v20 together, with one install. Run ods-migrate once, at the root. Then split the diff into one pull request per team: the "By package" block of the report gives, for each package, its files changed, markers, points to check and values for the type check. Merge them together, with the bump of step 4.
-- **Each package pins its own ODS version**: migrate the kit first, in its own pull request: `ods-migrate packages/kit --write`. Then migrate each app with the kit: `ods-migrate apps/zimbra packages/kit --write`. Scanning the kit with the app is how ods-migrate learns what the kit's components do; the kit, already migrated, has nothing left to change, so the pull request only touches the app.
+- **Each package pins its own ODS version**: migrate the kit first, in its own pull request: `ods-migrate packages/kit --write`. Then migrate each app, reading the kit: `ods-migrate apps/zimbra --read packages/kit --write`. Reading the kit is how ods-migrate learns what the kit's components do; `--read` never changes it, so the pull request only touches the app.
 
-**A component library published from another repository** (an app that uses `@acme/components`, released from its own repository): the library is migrated, released on ODS 20, then each app bumps it with ODS. An app that imports the library's components passes them its own values (`<Alert color="primary">` where `Alert` is the library's): run ods-migrate on the app with the library's source next to it (`ods-migrate . ../components --write`), so that it reads which props of the library take ODS values. Only the app's files change; the library's checkout is read, not written, once it is migrated.
+**A component library published from another repository** (an app that uses `@acme/components`, released from its own repository): the library is migrated, released on ODS 20, then each app bumps it with ODS. An app that imports the library's components passes them its own values (`<Alert color="primary">` where `Alert` is the library's): run ods-migrate on the app, reading a checkout of the library (`ods-migrate . --read ../components --write`), so that it learns which props of the library take ODS values. `--read` never changes the library, migrated or not, and the report and `--check` cover the app only.
 
 Do not use `--built-on-ods` for a kit whose source is in your repository: scanning its folder gives better results, because ods-migrate then reads which of its components pass the ODS props on and which have props of their own. When a marker is about a prop of the kit (for example `<Modal type={ MODAL_COLOR.critical }>`, where `Modal` is the kit's component), change the kit's component once, then the places that use it.
 

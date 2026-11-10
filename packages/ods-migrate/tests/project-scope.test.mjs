@@ -245,6 +245,30 @@ describe('package scope: packages pinned to ODS 17 or 18', () => {
   });
 });
 
+describe('--read: a component library of another repository', () => {
+  it('reads it to learn its components, never changes it, and counts only the app', async () => {
+    const lib = project({
+      'package.json': '{ "name": "@acme/lib", "peerDependencies": { "@ovhcloud/ods-react": "^19.7.1" } }',
+      'src/index.ts': "export { Alert } from './Alert';\n",
+      'src/Alert.tsx': "import { Message, type MessageColor } from '@ovhcloud/ods-react';\n\nexport type AlertProps = { color?: MessageColor; text: string };\nexport const Alert = ({ color = 'primary', text }: AlertProps) => <Message color={ color }>{ text }</Message>;\n",
+    });
+    const app = project({
+      'package.json': '{ "dependencies": { "@acme/lib": "1.0.0", "@ovhcloud/ods-react": "19.7.1" } }',
+      'tsconfig.json': `{ "compilerOptions": { "paths": { "@acme/lib": ["${join(lib, 'src/index.ts')}"] } } }`,
+      'src/App.tsx': "import { Alert } from '@acme/lib';\n\nexport const App = () => <Alert color=\"primary\" text=\"x\" />;\n",
+    });
+    const before = readFileSync(join(lib, 'src/Alert.tsx'), 'utf8');
+    const { code, report, stdout } = await migrate(app, ['--read', lib, '--write']);
+    assert.equal(code, 0);
+    assert.equal(readFileSync(join(app, 'src/App.tsx'), 'utf8'), "import { Alert } from '@acme/lib';\n\nexport const App = () => <Alert color=\"accent\" text=\"x\" />;\n");
+    assert.equal(readFileSync(join(lib, 'src/Alert.tsx'), 'utf8'), before, 'the library is never written');
+    assert.ok(report.files.every((file) => !file.file.startsWith('..')), 'only the app is reported');
+    assert.match(stdout, /Alert \(color\): the values given to it in 1 file are handled too\./);
+    // --check on the app alone passes once it is migrated, whatever the library still holds.
+    assert.equal((await migrate(app, ['--read', lib, '--check'])).code, 0);
+  });
+});
+
 describe('files a .odsmigrateignore leaves out', () => {
   it('are left alone by ESLint and stylelint too, as by the command', async () => {
     const dir = project({

@@ -33,7 +33,7 @@ export const DefaultWidth = () => (
   </>
 );
 
-export const InScrollContainer = () => (
+export const inScrollContainer = () => (
   <div style={{ height: '100px', overflow: 'auto' }}>
     <div style={{ height: '2000px' }} />
     <Select items={ [{ label: 'A', value: 'a' }] }>

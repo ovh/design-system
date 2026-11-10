@@ -42,8 +42,8 @@ describe('Select rendering', () => {
       await page.waitForSelector('[data-ods="select"] select');
 
       const [scrollHeight, clientHeight] = await page.evaluate(() => [
-        document.scrollingElement!.scrollHeight,
-        document.scrollingElement!.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.clientHeight,
       ]);
 
       expect(scrollHeight).toBe(clientHeight);

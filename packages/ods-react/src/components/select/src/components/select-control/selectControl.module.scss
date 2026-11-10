@@ -3,7 +3,7 @@
 @use '../../../../../style/state';
 
 @layer ods-molecules {
-  // Ark's hidden <select> is absolute with no inset: keep its containing block here (ODS-2291).
+  // Ark's hidden <select> is absolute with no inset: keep its containing block here.
   .select-control-wrapper {
     position: relative;
   }

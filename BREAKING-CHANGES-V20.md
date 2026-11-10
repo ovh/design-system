@@ -65,6 +65,9 @@ not the history of the branch.
 | [BC-31](#bc-31---the-base64-theme-bundle-default-removed) | `@ovhcloud/ods-themes` | the base64 theme bundle `./default` removed | automatable |
 | [BC-32](#bc-32---the-theme-files-moved-in-the-package) | `@ovhcloud/ods-themes` | the theme files moved in the package (`dist/`, `src/`) | automatable |
 | [BC-33](#bc-33---the-ods_theme-and-ods_themes-exports-removed) | `@ovhcloud/ods-themes` | the `ODS_THEME` and `ODS_THEMES` exports removed | manual |
+| [BC-34](#bc-34---color-removed-from-badge-button-card-divider-message-modalcontent-spinner-and-tag) | `@ovhcloud/ods-react` | `color` removed from 8 components, with the `XXX_COLOR(S)` and `XxxColor` exports and `toast.primary()` | partial |
+| [BC-35](#bc-35---button-and-message-variant-replaced-by-emphasis) | `@ovhcloud/ods-react` | `Button` and `Message` `variant` replaced by `emphasis` | automatable |
+| [BC-36](#bc-36---table-variant-replaced-by-striped) | `@ovhcloud/ods-react` | `Table` `variant` replaced by `striped` | automatable |
 
 ## The v20 token contract
 
@@ -1026,6 +1029,39 @@ goes under the v20 modal.
 | **Detection** | `grep -rnE "ODS_THEMES?\b" src/` |
 | **Codemod** | **manual** - use the theme names directly (`default`, `aluminium-dark`, `blue-jeans`, `blue-jeans-dark`) or the export paths they map to (`@ovhcloud/ods-themes/<theme>/css`). |
 | **Source of truth** | `packages/themes/package.json` (exports) |
+
+## BC-34 - `color` removed from Badge, Button, Card, Divider, Message, ModalContent, Spinner and Tag
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The `color` prop is removed from Badge, Button, Card, Divider, Message, ModalContent, Spinner and Tag, with the `XXX_COLOR`, `XXX_COLORS` and `XxxColor` exports of these components and of the Toaster, and with `toast.primary()` and the `primary` key of `ToastController`. Badge, Button, Card, Message, Tag and the Toaster take `status` instead (`XXX_STATUS`, `XXX_STATUSES`, `XxxStatus`): `primary` becomes `accent`, `brand` on Button; the other values keep their name. Button `information`, `success` and `warning` have no `status`. Divider and Spinner have no replacement prop (`--ods-spinner-color` for a Spinner colour); a critical ModalContent takes `role="alertdialog"`. |
+| **Impact** | Fails loudly in TypeScript: `color` is typed `never` on these components and the exports are gone. In untyped JavaScript, `color` is forwarded to the DOM and the component renders its default status. |
+| **Detection** | `grep -rnE "\b(BADGE\|BUTTON\|CARD\|MESSAGE\|SPINNER\|TAG\|TOAST\|DIVIDER\|MODAL)_COLORS?\b\|\b(Badge\|Button\|Card\|Message\|Spinner\|Tag\|Toast\|Divider\|Modal)Color\b\|toast\.primary\(\|[[:space:]]color=" src/` |
+| **Codemod** | **partial** - `@ovhcloud/ods-migrate` renames `color` to `status` and the values, the constants and the types, removes `color` where the component has no `status` (with a marker for a ModalContent `critical`), and marks a Button `information` / `success` / `warning`, which needs a design decision. |
+| **Source of truth** | `packages/ods-react/src/components/*/src/constants/*-status.ts` |
+
+## BC-35 - `Button` and `Message` `variant` replaced by `emphasis`
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | `variant` is removed from Button and Message, with `BUTTON_VARIANT(S)`, `ButtonVariant`, `MESSAGE_VARIANT(S)` and `MessageVariant`. They take `emphasis` (`XXX_EMPHASIS`, `XXX_EMPHASES`, `XxxEmphasis`): Button `default` becomes `high`, `outline` `medium`, `ghost` `low`; Message `default` becomes `high`, `light` `medium`. |
+| **Impact** | Fails loudly in TypeScript. A Button or a Message without the prop renders `medium` in v20 (filled, or tinted, in 19.x): see BC-19. |
+| **Detection** | `grep -rnE "\b(BUTTON\|MESSAGE)_VARIANTS?\b\|\b(Button\|Message)Variant\b\|[[:space:]]variant=" src/` |
+| **Codemod** | **automatable** - `@ovhcloud/ods-migrate` renames the prop, the values, the constants and the types. It adds nothing to keep the 19.x look unless its config asks for it. |
+| **Source of truth** | `packages/ods-react/src/components/{button,message}/src/constants/*-emphasis.ts` |
+
+## BC-36 - `Table` `variant` replaced by `striped`
+
+| field | value |
+| --- | --- |
+| **Package** | `@ovhcloud/ods-react` |
+| **Change** | The Table `variant` prop is removed with `TABLE_VARIANT`, `TABLE_VARIANTS` and `TableVariant`. `variant="striped"` becomes the `striped` boolean; `variant="default"` is dropped. |
+| **Impact** | Fails loudly in TypeScript. |
+| **Detection** | `grep -rnE "\bTABLE_VARIANTS?\b\|\bTableVariant\b" src/` |
+| **Codemod** | **automatable** - `@ovhcloud/ods-migrate` writes `striped` or drops the prop. |
+| **Source of truth** | `packages/ods-react/src/components/table/src/components/table/Table.tsx` |
 
 ---
 ## Not inventoried yet

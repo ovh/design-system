@@ -42,8 +42,8 @@ body {
   font-family: var(--ods-semantic-font-family-body);
 }
 
-/* position: the containing block of the absolute elements inside. A visually hidden one, such as the
-   native select of a Select, otherwise sits against the page at its place in the flow and makes it
+/* position: the containing block of the absolute elements inside. A visually hidden one (.sr-only, the
+   hidden input of a Checkbox) otherwise sits against the page at its place in the flow and makes it
    scroll. */
 .shell {
   display: grid;

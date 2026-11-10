@@ -35,6 +35,7 @@ export const DefaultWidth = () => (
 
 export const inScrollContainer = () => (
   <div style={{ height: '100px', overflow: 'auto' }}>
+    { /* Taller than the viewport: a shorter spacer keeps the hidden select in view and the test passes without the fix. */ }
     <div style={{ height: '2000px' }} />
     <Select items={ [{ label: 'A', value: 'a' }] }>
       <SelectControl />

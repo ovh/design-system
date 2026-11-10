@@ -3,7 +3,9 @@
 @use '../../../../../style/state';
 
 @layer ods-molecules {
-  // Ark's hidden <select> is absolute with no inset: keep its containing block here.
+  // Ark's hidden <select> is absolute with no inset: without a positioned ancestor, it stretches the
+  // page from inside a scroll container. Not on the root: with createPortal={ false } the list must
+  // keep escaping the overflow of the root's ancestors.
   .select-control-wrapper {
     position: relative;
   }

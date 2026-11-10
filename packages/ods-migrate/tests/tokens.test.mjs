@@ -106,6 +106,13 @@ describe('design tokens', () => {
     assert.equal(migrate('const g = css`\n  --ods-font-family-default: var(--x);\n`;\n', 'a.ts').output, 'const g = css`\n  --ods-semantic-font-family-body: var(--x); --ods-semantic-font-family-heading: var(--x);\n`;\n');
   });
 
+  it('takes linear time on a long run of token-like names (no backtracking on `--ods-…#{`)', () => {
+    const source = `const x = "${'--ods-color-'.repeat(20_000)}";\n`;
+    const start = Date.now();
+    migrate(source, 'a.ts');
+    assert.ok(Date.now() - start < 3_000, `${Date.now() - start} ms`);
+  });
+
   it('does not mark twice a site whose marker contains a `*`', () => {
     // ovh/manager-ui-kit tailwind.config: the BC-03 hint names `--ods-semantic-size-radius-*`.
     const once = migrate('export default { borderRadius: { xs: \'var(--ods-border-radius-xs)\' } };', 'tailwind.config.mjs').output;

@@ -177,6 +177,9 @@ const stackingNeedsCheck = (value) => {
  * overlay or a link ::after rule, code that is valid v20 and only asks a person to look. The marker is
  * not added again, so --check passes once every such place is decided. Never honoured for code v20 breaks.
  */
+/** A text as a literal inside a regular expression. */
+const escapeRegExp = (text) => String(text).replace(/[$.*+?^{}()|[\]\\/]/g, '\\$&');
+
 const CHECKED = 'ods-v20: checked';
 const CHECKED_COMMENT = new RegExp(`/\\*\\s*${CHECKED}\\b[^*]*\\*/\\s*\\}?\\s*$`);
 const isChecked = (before) => CHECKED_COMMENT.test(before);
@@ -247,6 +250,7 @@ export {
   resolveTokenMapping,
   stripScriptMarkers,
   CHECKED,
+  escapeRegExp,
   isChecked,
   stackingNeedsCheck,
   stripStyleMarkers,

@@ -32,7 +32,7 @@ describe('coverage-b: marker attribution by construct (scripts)', { skip: skipTs
     <Box style={{ color: 'var(${U})' }} />
   </>
 );`;
-    const migrated = base.replace('      style={{', `      /* TODO(ods-v20): ${T}: pick a role */\n      style={{`).replace('    <Box className', '    <Box className');
+    const migrated = base.replace('      style={{', `      /* TODO(ods-v20): ${T}: pick a role */\n      style={{`);
     assert.deepEqual(tokens('a.tsx', base, migrated), [[8, T, 'marked'], [11, U, 'missed']]);
   });
 

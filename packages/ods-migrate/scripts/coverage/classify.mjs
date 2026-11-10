@@ -128,7 +128,7 @@ function lineMarked(lines, line, accept) {
   if (lines[line] !== undefined && marks(lines[line])) return true;
   for (let k = line - 1; k >= 0; k -= 1) {
     const t = lines[k].trim();
-    if (!/^(\/\/|\/\*|\*|\{\/\*|<!--)/.test(t) && !/(\*\/\}?|-->)$/.test(t)) return false;
+    if (!/^(\/\/|\/\*|\*|\{\/\*|<!--)/.test(t) && !/(\*\/\}?|--!?>)$/.test(t)) return false;
     if (marks(t)) return true;
   }
   return false;

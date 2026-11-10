@@ -25,7 +25,7 @@ import { readFileSync } from 'node:fs';
 import { basename, dirname, relative, sep } from 'node:path';
 import { Lang, parse } from '@ast-grep/napi';
 import { ODS_PACKAGES, createResolver, odsNameIn } from './resolve.mjs';
-import { resolveMapping } from './shared.mjs';
+import { escapeRegExp, resolveMapping } from './shared.mjs';
 
 const SCRIPTS = /\.(c|m)?[jt]sx?$/;
 const SPECIFIER = /\bfrom\s*['"]([^'"\n]+)['"]|\bimport\s*['"]([^'"\n]+)['"]|\bimport\s*\(\s*['"]([^'"\n]+)['"]\s*\)|\b(?:vi|jest)\.(?:do)?[mM]ock\(\s*['"]([^'"\n]+)['"]/g;
@@ -655,7 +655,8 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
     try {
       text = readText(file);
     } catch {
-      nodes.set(file, { specs: new Map(), text: '' });
+      // Unreadable or not UTF-8: the migration pass reports it; here it imports nothing.
+      nodes.set(file, { bare: '', specs: new Map(), text: '' });
       continue;
     }
     const bare = stripComments(text);
@@ -780,7 +781,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
   return {
     importersOf,
     // True when the code of a file (comments aside) names `name`: a file that imports a barrel uses only some of its names.
-    mentions: (file, name) => new RegExp(`(^|[^\\w$])${name.replace(/[$]/g, '\\$&')}(?![\\w$])`).test(nodes.get(file)?.bare ?? ''),
+    mentions: (file, name) => new RegExp(`(^|[^\\w$])${escapeRegExp(name)}(?![\\w$])`).test(nodes.get(file)?.bare ?? ''),
     modules: entries,
     ownTyped: ownTypedByFile,
     ownTypedTypes: ownTypedTypesByFile,

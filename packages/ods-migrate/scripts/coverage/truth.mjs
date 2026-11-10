@@ -30,7 +30,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { diffArrays } from 'diff';
 import scss from 'postcss-scss';
-import { alignLines } from './linemap.mjs';
+import { alignLines, escapeRegExp } from './linemap.mjs';
 import { walkFiles } from './token-sites.mjs';
 import { odsSymbols, packagePattern } from './ts-sites.mjs';
 
@@ -954,7 +954,7 @@ function classifyText({ o, m, t }, ctx, siteOnLines) {
  * One file
  * --------------------------------------------------------------------------------------------- */
 
-const word = (name) => new RegExp(`(?<![\\w$.])${name.replace(/[$]/g, '\\$')}(?![\\w$])`);
+const word = (name) => new RegExp(`(?<![\\w$.])${escapeRegExp(name)}(?![\\w$])`);
 
 /* Original line (1-based) of each line of `other` (Int32Array, 0 = none), and the anchor of an insertion. */
 function lineMap(original, other) {
@@ -1004,7 +1004,7 @@ export function compareTruthFile(input) {
   // file also imports it (a shadowing local; the comparison has no scope analysis).
   const localDecl = new Set([...original.matchAll(/\b(?:const|let|var|function|class|enum)\s+([A-Z][A-Za-z0-9_]*)/g)].map((m) => m[1]));
   ctx.removedRef = (text) => (ctx.api ? ctx.api.removedRef(text, (n) => localDecl.has(n)) : null);
-  const odsWord = odsNames.size ? new RegExp(`(?<![\\w$.])(${[...odsNames.keys()].map((n) => n.replace(/[$]/g, '\\$')).join('|')})(?![\\w$])`) : null;
+  const odsWord = odsNames.size ? new RegExp(`(?<![\\w$.])(${[...odsNames.keys()].map(escapeRegExp).join('|')})(?![\\w$])`) : null;
   /*
    * A site on the lines of an original attribute is that attribute's when the attribute has its own
    * lines, or names an ODS symbol; a site on a line other attributes share may be theirs. An
@@ -1369,7 +1369,7 @@ export function compareTruth({ ts, truthRoot, base, migrated, texts = new Map(),
       const sf = ts.createSourceFile(rel, text, ts.ScriptTarget.Latest, true, /x$/.test(rel) ? ts.ScriptKind.TSX : undefined);
       for (const [local, name] of odsSymbols(ts, sf, () => packages(join(base, rel))).names) odsNames.set(local, name);
     }
-    const word = odsNames.size ? new RegExp(`(?<![\\w$.])(${[...odsNames.keys()].map((n) => n.replace(/[$]/g, '\\$')).join('|')})(?![\\w$])`) : null;
+    const word = odsNames.size ? new RegExp(`(?<![\\w$.])(${[...odsNames.keys()].map(escapeRegExp).join('|')})(?![\\w$])`) : null;
     const { entries, list } = packages(join(base, rel));
     const pkg = packagePattern(list, entries);
     const relevant = (text) => pkg.test(text) || tokenish.test(text) || (word ? word.test(text) : false);

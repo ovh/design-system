@@ -13,6 +13,7 @@
  */
 import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
+import { escapeRegExp } from './shared.mjs';
 
 const ODS_PACKAGES = ['@ovhcloud/ods-react', '@ovhcloud/ods-themes'];
 const MODULES_FILE = 'ods-migrate.modules.json';
@@ -201,7 +202,8 @@ function createResolver({ packages = ODS_PACKAGES, workspace = new Map() } = {})
       }
     }
     if (!best) return [];
-    return pickTargets(map[best.pattern]).map((target) => target.replace('*', key.slice(best.prefix.length, key.length - best.suffix.length)));
+    // Node replaces every `*` of the target with the matched part.
+    return pickTargets(map[best.pattern]).map((target) => target.replaceAll('*', key.slice(best.prefix.length, key.length - best.suffix.length)));
   };
 
   const packageEntry = (dir, subpath) => {
@@ -332,7 +334,8 @@ function createResolver({ packages = ODS_PACKAGES, workspace = new Map() } = {})
       }
       if (best) {
         const middle = specifier.slice(best.prefix.length, specifier.length - best.suffix.length);
-        targets = [config.paths[best.pattern]].flat().map((target) => String(target).replace('*', middle));
+        // tsconfig `paths` allow one `*` per target.
+        targets = [config.paths[best.pattern]].flat().map((target) => String(target).replaceAll('*', middle));
       }
     }
     if (!targets) return undefined;
@@ -539,7 +542,6 @@ const olderOdsOf = (() => {
 
 /* ------------------------------------------------------------------------- .gitignore and .odsmigrateignore */
 
-const escapeRegExp = (text) => text.replace(/[$.*+?^{}()|[\]\\/]/g, '\\$&');
 
 /** A .gitignore glob as a regular expression on a `/`-separated path. */
 function globToRegExp(glob) {

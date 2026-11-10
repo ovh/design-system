@@ -31,7 +31,7 @@
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import { basename, join, relative, sep } from 'node:path';
-import { lineStarts, positionOf } from './linemap.mjs';
+import { escapeRegExp, lineStarts, positionOf } from './linemap.mjs';
 
 const DECLARING = /\.(s?css|tsx?)$/;
 const MODULE_STYLE = /\.module\.s?css$/;
@@ -575,7 +575,7 @@ const moduleRegexCache = new WeakMap();
 function moduleRegex(set) {
   if (!set?.size) return null;
   if (!moduleRegexCache.has(set)) {
-    const names = [...set].sort((a, b) => b.length - a.length).map((n) => n.replace(/[-]/g, '\\-'));
+    const names = [...set].sort((a, b) => b.length - a.length).map(escapeRegExp);
     moduleRegexCache.set(set, new RegExp(`(?<![\\w-])(_?)(${names.join('|')})(_[a-z0-9]{1,8}_\\d+)?(?![\\w-])`, 'g'));
   }
   return moduleRegexCache.get(set);

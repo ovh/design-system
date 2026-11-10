@@ -72,6 +72,20 @@ const DEPRECATED_OPTIONS = ['treat-as-ods', 'also'];
 
 /* ------------------------------------------------------------------------- errors */
 
+/*
+ * The text of a file, decoded as strict UTF-8: a file in another encoding (Latin-1, Windows-1252) would
+ * come back with U+FFFD in place of its accented letters, and writing it would lose them for good.
+ */
+const UTF8 = new TextDecoder('utf-8', { fatal: true });
+function readSource(path) {
+  try {
+    return UTF8.decode(readFileSync(path));
+  } catch (error) {
+    if (error instanceof TypeError) throw Object.assign(new Error('not UTF-8: save it as UTF-8, then run ods-migrate again'), { code: 'ENCODING' });
+    throw error;
+  }
+}
+
 class UsageError extends Error {
   code = 'ODS_MIGRATE_USAGE';
 }
@@ -457,10 +471,13 @@ async function main(argv, io, configModule) {
   const walkErrors = [];
   const seen = new Set();
   const paths = [];
+  // A folder of --read is never migrated, even inside a scanned path (`ods-migrate . --read lib`).
+  const readReal = readRoots.map((root) => realpathSync(root));
+  const underRead = (real) => readReal.some((root) => real === root || real.startsWith(`${root}${sep}`));
   for (const root of roots) {
     for (const path of walk(root, walkErrors, ignoreRules)) {
       const real = realpathSync(path);
-      if (!seen.has(real)) {
+      if (!seen.has(real) && !underRead(real)) {
         seen.add(real);
         paths.push(path);
       }
@@ -484,7 +501,7 @@ async function main(argv, io, configModule) {
   // The texts read for it are kept for the migration pass below.
   const texts = new Map();
   const readText = (path) => {
-    if (!texts.has(path)) texts.set(path, readFileSync(path, 'utf8'));
+    if (!texts.has(path)) texts.set(path, readSource(path));
     return texts.get(path);
   };
   const index = buildProjectIndex([...paths, ...readOnly].filter((path) => SCRIPTS.test(path) || basename(path) === 'package.json'), { mapping, readText, treatAsOds });
@@ -508,7 +525,7 @@ async function main(argv, io, configModule) {
   for (const path of typeof tokens.tailwindThemeKeys === 'function' ? paths : []) {
     if ((SCRIPTS.test(path) || STYLES.test(path)) && basename(path) !== 'package.json' && !olderOdsOf(path)) {
       try {
-        const source = readFileSync(path, 'utf8');
+        const source = readSource(path);
         if (!isOptOut(path, source)) tokens.tailwindThemeKeys(source, tokenMapping, path).forEach((key) => tailwindKeys.add(key));
       } catch {
         // Unreadable or unparsable: reported by the migration pass below.
@@ -622,10 +639,12 @@ async function main(argv, io, configModule) {
     }
     let source;
     try {
-      source = texts.get(path) ?? readFileSync(path, 'utf8');
+      source = texts.get(path) ?? readSource(path);
       texts.delete(path);
     } catch (error) {
-      results.push({ ...emptyFileResult(file), error: `cannot read the file (${error.code ?? error.message})`, errorCode: 'READ' });
+      results.push(error.code === 'ENCODING'
+        ? { ...emptyFileResult(file), error: error.message, errorCode: 'ENCODING' }
+        : { ...emptyFileResult(file), error: `cannot read the file (${error.code ?? error.message})`, errorCode: 'READ' });
       continue;
     }
     if (isOptOut(path, source)) {
@@ -763,7 +782,7 @@ async function main(argv, io, configModule) {
     printFile(io, result, options.check);
   }
   for (const result of failed) {
-    io.stderr(`✗ ${result.file}: ${result.errorCode === 'PARSE' ? 'parse error' : result.errorCode === 'READ' ? 'unreadable' : 'internal error'}, migrate by hand (${result.error})\n`);
+    io.stderr(`✗ ${result.file}: ${result.errorCode === 'PARSE' ? 'parse error' : result.errorCode === 'READ' ? 'unreadable' : result.errorCode === 'ENCODING' ? 'not UTF-8' : 'internal error'}, migrate by hand (${result.error})\n`);
   }
 
   const leftUnchanged = [...olderOds.values()].sort((a, b) => (a.package < b.package ? -1 : 1));

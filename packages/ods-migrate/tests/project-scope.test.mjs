@@ -11,7 +11,7 @@
  */
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { after, describe, it } from 'node:test';
@@ -48,7 +48,9 @@ function project(tree) {
   const dir = temp();
   for (const [path, text] of Object.entries(tree)) {
     mkdirSync(dirname(join(dir, path)), { recursive: true });
-    writeFileSync(join(dir, path), text);
+    // null: a node_modules link to the workspace package of the same name (`node_modules/@acme/kit` → `kit`).
+    if (text === null) symlinkSync(join(dir, path.split('/').pop()), join(dir, path), 'dir');
+    else writeFileSync(join(dir, path), text);
   }
   return dir;
 }
@@ -266,6 +268,31 @@ describe('--read: a component library of another repository', () => {
     assert.match(stdout, /Alert \(color\): the values given to it in 1 file are handled too\./);
     // --check on the app alone passes once it is migrated, whatever the library still holds.
     assert.equal((await migrate(app, ['--read', lib, '--check'])).code, 0);
+  });
+
+  it('never changes a --read folder that sits inside the scanned path', async () => {
+    const dir = project({
+      'package.json': '{ "dependencies": { "@ovhcloud/ods-react": "19.7.3" } }',
+      'app/A.tsx': "import { Badge } from '@ovhcloud/ods-react';\nexport const A = () => <Badge color=\"primary\" />;\n",
+      'lib/L.tsx': "import { Badge } from '@ovhcloud/ods-react';\nexport const L = () => <Badge color=\"primary\" />;\n",
+    });
+    const before = readFileSync(join(dir, 'lib/L.tsx'), 'utf8');
+    const { report } = await migrate(dir, ['--read', 'lib', '--write']);
+    assert.equal(readFileSync(join(dir, 'lib/L.tsx'), 'utf8'), before);
+    assert.match(readFileSync(join(dir, 'app/A.tsx'), 'utf8'), /status="accent"/);
+    assert.ok(report.files.every((file) => !file.file.startsWith('lib/')));
+  });
+
+  it('follows a package exports target with several `*`, as Node does', async () => {
+    const dir = project({
+      'package.json': '{ "name": "app", "dependencies": { "@acme/kit": "workspace:*", "@ovhcloud/ods-react": "19.7.3" } }',
+      'kit/package.json': '{ "name": "@acme/kit", "exports": { "./*": "./src/*/*.tsx" } }',
+      'kit/src/button/button.tsx': "export { Badge as Tag } from '@ovhcloud/ods-react';\n",
+      'node_modules/@acme/kit': null,
+      'src/App.tsx': "import { Tag } from '@acme/kit/button';\nexport const App = () => <Tag color=\"primary\" />;\n",
+    });
+    const { report } = await migrate(dir, ['--write']);
+    assert.match(readFileSync(join(dir, 'src/App.tsx'), 'utf8'), /status="accent"/, JSON.stringify(report.odsModules));
   });
 });
 

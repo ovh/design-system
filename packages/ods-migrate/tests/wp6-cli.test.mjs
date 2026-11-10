@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { chmodSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { after, describe, it } from 'node:test';
@@ -202,6 +202,31 @@ describe('cli: the files it scans', () => {
     writeFileSync(join(dir, 'src/M.tsx'), tsx.replace('{{ zIndex', '{{ /* ods-v20: checked */ zIndex'));
     const after = cli(['.', '--check'], dir);
     assert.equal(after.code, 0, after.stdout);
+  });
+
+  it('never writes a file that is not UTF-8, and still migrates the others (a Latin-1 comment)', () => {
+    const dir = project({ 'src/a.tsx': BADGE });
+    const latin = Buffer.concat([Buffer.from('/* '), Buffer.from([0xe9, 0x71, 0x75, 0x69, 0x70, 0x65]), Buffer.from(' */\n.a { color: var(--ods-color-primary-500); }\n')]);
+    writeFileSync(join(dir, 'src/latin.css'), latin);
+    const { code, stderr } = cli(['.', '--write'], dir);
+    assert.equal(code, 2);
+    assert.match(stderr, /✗ src\/latin\.css: not UTF-8, migrate by hand \(not UTF-8: save it as UTF-8, then run ods-migrate again\)/);
+    assert.deepEqual(readFileSync(join(dir, 'src/latin.css')), latin, 'its bytes are kept');
+    assert.match(readFileSync(join(dir, 'src/a.tsx'), 'utf8'), /status="accent"/);
+  });
+
+  it('reports an unreadable script and still migrates the others', { skip: process.getuid?.() === 0 && 'root reads anything' }, () => {
+    const dir = project({ 'src/a.tsx': BADGE, 'src/locked.tsx': BADGE });
+    chmodSync(join(dir, 'src/locked.tsx'), 0o000);
+    try {
+      const { code, stderr } = cli(['.', '--write'], dir);
+      assert.equal(code, 2);
+      assert.match(stderr, /✗ src\/locked\.tsx: unreadable/);
+      assert.doesNotMatch(stderr, /internal error/);
+      assert.match(readFileSync(join(dir, 'src/a.tsx'), 'utf8'), /status="accent"/);
+    } finally {
+      chmodSync(join(dir, 'src/locked.tsx'), 0o644);
+    }
   });
 
   it('scans .html files when the token engine can', () => {

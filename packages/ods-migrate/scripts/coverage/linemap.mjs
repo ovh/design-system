@@ -90,3 +90,6 @@ export function positionOf(starts, offset) {
   const line = lineOf(starts, offset);
   return { line: line + 1, column: offset - starts[line] + 1 };
 }
+
+/** A text as a literal inside a regular expression (the harness reads nothing of src/). */
+export const escapeRegExp = (text) => String(text).replace(/[$.*+?^{}()|[\]\\/]/g, '\\$&');

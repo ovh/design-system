@@ -35,12 +35,19 @@ describe('ods/no-control-width', () => {
     const source = '[data-ods="select-control"] { width: 100%; }\n.form [data-ods=combobox-control] { max-width: 320px; }\n[data-ods="phone-number-control"] { inline-size: 10rem; }';
     const result = await lint(source, rules);
     assert.deepEqual(result.warnings.map(({ line, text }) => [line, text]), [
-      [1, 'the field width lives on the root in v20 (#1121): set it on [data-ods="select"] (ods/no-control-width)'],
-      [2, 'the field width lives on the root in v20 (#1121): set it on [data-ods="combobox"] (ods/no-control-width)'],
-      [3, 'the field width lives on the root in v20 (#1121): set it on [data-ods="phone-number"] (ods/no-control-width)'],
+      [1, 'the field width lives on the root in v20: set it on [data-ods="select"] (ods/no-control-width)'],
+      [2, 'the field width lives on the root in v20: set it on [data-ods="combobox"] (ods/no-control-width)'],
+      [3, 'the field width lives on the root in v20: set it on [data-ods="phone-number"] (ods/no-control-width)'],
     ]);
     const { code } = await stylelint.lint({ code: source, config: { plugins, rules }, fix: true });
     assert.equal(code, source);
+  });
+
+  it('points a Datepicker control width to its className: in v20 its data-ods is on the inner input', async () => {
+    const result = await lint('[data-ods="datepicker-control"] { width: 100%; }', rules);
+    const [warning] = result.warnings;
+    assert.match(warning.text, /set it on `\[data-ods="datepicker"\]`, and on `DatepickerControl` through its `className` \(its element has no `data-ods` in v20/);
+    assert.doesNotMatch(warning.text, /both `\[data-ods="datepicker"\]` and `\[data-ods="datepicker-control"\]`/);
   });
 
   it('leaves the root, the other properties and a control that is not the subject alone', async () => {

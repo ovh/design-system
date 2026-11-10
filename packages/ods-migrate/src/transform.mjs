@@ -1,7 +1,7 @@
 import { Lang, parse } from '@ast-grep/napi';
 import { planReplacement, replacementParts } from './replaced.mjs';
 import { odsNameIn } from './resolve.mjs';
-import { TODO, attributeText, eolOf, followsMarker, inlineMarker, isChecked, isUntyped, isV19Look, jsxChildMarker, memberRule, resolveMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
+import { TODO, attributeText, eolOf, escapeRegExp, followsMarker, inlineMarker, isChecked, isUntyped, isV19Look, jsxChildMarker, memberRule, resolveMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 
 function langFor(filename) {
   return /\.(c|m)?ts$/.test(filename) ? Lang.TypeScript : Lang.Tsx;
@@ -834,7 +834,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // Every reference to an imported binding, outside the import statements, by local name.
   const references = new Map();
   // The regex keeps the query to the imported names: every node handed to JS costs memory in napi.
-  const names = [...importedLocals.keys()].map((name) => name.replace(/[$]/g, '\\$&')).join('|');
+  const names = [...importedLocals.keys()].map(escapeRegExp).join('|');
   const identifiers = names ? root.findAll({ rule: { any: [{ kind: 'identifier' }, { kind: 'type_identifier' }, { kind: 'shorthand_property_identifier' }], regex: `^(${names})$` } }) : [];
   for (const node of identifiers) {
     if (!insideImport(node)) {
@@ -1079,7 +1079,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
         if (!local || changes.length === 0) {
           continue;
         }
-        const built = fn.findAll({ rule: { kind: 'identifier', regex: `^${local.replace(/[$]/g, '\\$&')}$`, inside: { kind: 'template_substitution', stopBy: 'end' } } });
+        const built = fn.findAll({ rule: { kind: 'identifier', regex: `^${escapeRegExp(local)}$`, inside: { kind: 'template_substitution', stopBy: 'end' } } });
         if (built.length > 0) {
           note(built[0], `${name} ${prop}: its values change in v${mapping.to} (${changes.map(([from, to]) => `'${from}' → '${to}'`).join(', ')}): what this code builds from it changes too (a CSS class name, an object key): rename those to match, and check what a renamed class overrides first, since the v20 value may look different (\`status="accent"\` is subtle where \`color="primary"\` was filled: a white text set for the filled one would be unreadable)`);
         }

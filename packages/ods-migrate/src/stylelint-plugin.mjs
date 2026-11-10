@@ -69,7 +69,7 @@ const controlMessages = stylelint.utils.ruleMessages(controlName, {
 
 /**
  * Flags a width set on the control part of a form field (`[data-ods="select-control"]`): in v20
- * the field width lives on its root (#1121), so the control only fills it. Not fixable: the
+ * the field width lives on its root, so the control only fills it. Not fixable: the
  * root is another element, which the stylesheet may not select yet.
  */
 const noControlWidthRule = (enabled) => (root, result) => {

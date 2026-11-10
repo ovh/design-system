@@ -8,7 +8,7 @@ import { stripScriptMarkers } from '../src/shared.mjs';
 import { transformSource } from '../src/transform.mjs';
 
 /*
- * Parity of ods/v20-migration with the codemod (CONTRACT §3.3): on each input, --fix gives the
+ * Parity of ods/v20-migration with the codemod: on each input, --fix gives the
  * codemod output without its markers, and on the codemod output the rule has nothing left to fix
  * and reports every marker, and only them. The outputs were written by hand from the contract,
  * and are checked against transformSource.
@@ -25,7 +25,7 @@ function lint(source, { filename, mapping = realMapping, options = {}, fix = tru
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: { parser, parserOptions: { ecmaFeatures: { jsx: !/\.(c|m)?ts$/.test(filename) } } },
     plugins: { ods: createPlugin({ mapping }) },
-    rules: { 'ods/v20-migration': ['error', { packages: ['@ovh-ux/muk'], ...options }] },
+    rules: { 'ods/v20-migration': ['error', { builtOnOds: ['@ovh-ux/muk'], ...options }] },
   }];
   return fix ? linter.verifyAndFix(source, config, filename) : { messages: linter.verify(source, config, filename), output: source };
 }
@@ -56,17 +56,17 @@ function assertReportsMatchMarkers(output, messages) {
 const cases = [
   { name: 'typed-literals', ext: 'ts', why: 'bugs [5], [11], [43]: type-directed typed literals, `as const`, two types on one string' },
   { name: 'mock', ext: 'tsx', why: 'bugs [16], [41]: mock factories, `import()` form, quoted keys, Object.assign' },
-  { name: 'imports', ext: 'ts', why: 'bug [44]: dedupe without a dangling comma; re-exports from the package' },
+  { name: 'imports', ext: 'ts', why: 'dedupe without a dangling comma; re-exports from the package' },
   { name: 'no-equivalent', ext: 'jsx', why: 'bugs [42], [36], [51]: no-equivalent values, both props set with a constant, spreads in JS' },
-  { mapping: inlineMapping, name: 'indexed-types', ext: 'tsx', why: 'bug [19]: indexed access types, Omit / Pick' },
+  { mapping: inlineMapping, name: 'indexed-types', ext: 'tsx', why: 'indexed access types, Omit / Pick' },
   { mapping: inlineMapping, name: 'conflicts', ext: 'tsx', why: 'own props of a wrapper next to the ODS props' },
   { mapping: inlineMapping, name: 'move-to', ext: 'tsx', why: 'moveTo, defaults, existing target object or expression' },
   { mapping: inlineMapping, name: 'props', ext: 'tsx', why: 'always, coerce, todoUnless, stacking' },
-  { mapping: inlineMapping, name: 'childless', ext: 'tsx', options: { pending: ['ODS-2336'] }, why: 'childless components, child imports' },
+  { mapping: inlineMapping, name: 'childless', ext: 'tsx', options: { pending: ['example-pending'] }, why: 'childless components, child imports' },
   { mapping: inlineMapping, name: 'drop-default', ext: 'tsx', why: 'dropDefault, extends, the import of a dropped constant' },
-  { mapping: inlineMapping, name: 'fold', ext: 'tsx', why: 'bug [68]: ternary folding of remove rules, boolean attributes' },
+  { mapping: inlineMapping, name: 'fold', ext: 'tsx', why: 'ternary folding of remove rules, boolean attributes' },
   { mapping: inlineMapping, name: 'toast', ext: 'ts', why: 'callOptions, memberKeys' },
-  { mapping: inlineMapping, name: 'removed', ext: 'tsx', options: { pending: ['ODS-2336'] }, why: 'member hints of removed exports, a removed component used as JSX' },
+  { mapping: inlineMapping, name: 'removed', ext: 'tsx', options: { pending: ['example-pending'] }, why: 'member hints of removed exports, a removed component used as JSX' },
   { mapping: inlineMapping, name: 'v19-look', ext: 'tsx', options: { look: { 'badge-accent-filled': 'v19', 'divider-neutral-grey': 'v19' } }, why: 'v19Look' },
   { mapping: inlineMapping, name: 'v19-look', output: 'v19-look-aluminium', ext: 'tsx', why: 'v19Look ignored in Aluminium' },
 ];
@@ -106,7 +106,7 @@ describe('ods/v20-migration parity with the codemod', () => {
     assert.deepEqual(messages, []);
   });
 
-  it('a CRLF file stays CRLF when imports are renamed or removed (bug [57])', () => {
+  it('a CRLF file stays CRLF when imports are renamed or removed', () => {
     const source = [
       'import {',
       '  Badge,',

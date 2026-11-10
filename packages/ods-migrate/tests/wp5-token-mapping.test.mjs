@@ -33,7 +33,7 @@ describe('token mapping: data (WP5)', () => {
     }
   });
 
-  it('writes hints that cite no BC code and no section the guide does not have (bug [73])', () => {
+  it('writes hints that cite no BC code and no section the guide does not have', () => {
     for (const [key, text] of Object.entries(mapping.hints)) {
       assert.doesNotMatch(text, /\bBC-\d+/, key);
       assert.doesNotMatch(text, /Custom themes/i, key);
@@ -47,7 +47,7 @@ describe('token mapping: data (WP5)', () => {
     assert.match(mapping.hints.declaration, /--ods-palette-\*/);
   });
 
-  it('renames the 24 Message custom properties of the emphasis change, and splits the -light text colour (bug [69])', () => {
+  it('renames the 24 Message custom properties of the emphasis change, and splits the -light text colour', () => {
     for (const status of STATUSES) {
       for (const part of ['background', 'text']) {
         // `primary` is named `accent` in v20 (BC-23).
@@ -61,7 +61,7 @@ describe('token mapping: data (WP5)', () => {
     }
   });
 
-  it('marks the removed Message close-button token, on a read too (bug [69])', () => {
+  it('marks the removed Message close-button token, on a read too', () => {
     const entry = mapping.tokens['--ods-message-close-button-text-color-primary'];
     assert.equal(entry.to, null);
     assert.equal(entry.overrideOnly, undefined);
@@ -92,7 +92,7 @@ describe('token mapping: data (WP5)', () => {
   it('keeps the white of -000 and of the theme background: surface-raised, surface-page on the root only', () => {
     const background = mapping.tokens['--ods-theme-background-color'];
     assert.equal(background.to, '--ods-semantic-color-surface-raised');
-    // The page background only: a text, a border or a shadow on the root stays white (review: decisions).
+    // The page background only: a text, a border or a shadow on the root stays white.
     assert.deepEqual(background.byContext, { root: { surface: '--ods-semantic-color-surface-page' } });
     assert.equal(background.contextChoice, 'page-background');
     for (const family of STATUSES) {

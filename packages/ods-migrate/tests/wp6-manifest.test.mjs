@@ -72,7 +72,7 @@ describe('manifest: package.json', () => {
   it('points an app on Tailwind and ODS 19 to @ovhcloud/ods-tailwind (BC-30)', () => {
     const v4 = transformManifest(json({ dependencies: { '@ovhcloud/ods-react': '19.7.3' }, devDependencies: { tailwindcss: '^4.1.0' } }));
     const note = messages(v4.notes).find((message) => message.startsWith('tailwindcss'));
-    assert.match(note, /^tailwindcss \^4\.1\.0: ODS v20 ships @ovhcloud\/ods-tailwind, .*: add "@ovhcloud\/ods-tailwind": "\^20\.0\.0", import it before the ODS theme, and remove the ODS keys of your @theme .*\(BC-30/);
+    assert.match(note, /^tailwindcss \^4\.1\.0: ODS v20 ships @ovhcloud\/ods-tailwind, .*: add "@ovhcloud\/ods-tailwind": "\^20\.0\.0", import it before the ODS theme, and remove the ODS keys of your @theme .*the Tailwind CSS guide/);
     // Tailwind v3: the CLI says it where a configuration declares the ODS keys (other-formats.test.mjs).
     const v3 = transformManifest(json({ dependencies: { '@ovhcloud/ods-react': '19.7.3' }, devDependencies: { tailwindcss: '^3.4.0' } }));
     assert.equal(messages(v3.notes).filter((message) => message.startsWith('tailwindcss')).length, 0);

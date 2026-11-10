@@ -12,7 +12,7 @@ import { stripScriptMarkers } from '../src/shared.mjs';
 import { transformSource } from '../src/transform.mjs';
 
 /*
- * The component JS / TS API against ODS master: the shapes an audit found missed or broken (removed
+ * The component JS / TS API against ODS master: the shapes the codemod must handle (removed
  * exports in JSX member tags and import lines, Button statuses without equivalent, wrappers, subpath
  * and CommonJS imports, compound statics, typed objects). Each case runs on the real mapping, checks
  * that a second run changes nothing and that no parse error is added, and that the lint rule agrees.

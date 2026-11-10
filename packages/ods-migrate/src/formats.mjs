@@ -79,7 +79,7 @@ function transformOtherStyles(source, rawMapping, filename, options = {}) {
 function isThemeJson(source) {
   if (!JSON_THEME_KEY.test(source)) return false;
   try {
-    const value = JSON.parse(source.replace(/^﻿/, ''));
+    const value = JSON.parse(source.replace(/^\uFEFF/, ''));
     return value !== null && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).some((key) => /^--ods-/.test(key) && HAS_OLD_TOKEN.test(key));
   } catch {
     return false;
@@ -107,7 +107,7 @@ function transformThemeJson(source, rawMapping, filename, options = {}) {
   for (const marker of plan.markers) {
     marker.messages.forEach((message) => result.notes.push({ line: marker.line, message: `${message} (a Theme Generator export: JSON takes no ${TODO} comment)` }));
   }
-  result.notes.push({ line: 1, message: 'a 19.x Theme Generator export: its keys are renamed to the v20 tokens, but a v20 theme is written differently (the palette, then the roles that need their own value, BC-20): check it against the Themes guide, and the code that loads it' });
+  result.notes.push({ line: 1, message: 'a 19.x Theme Generator export: its keys are renamed to the v20 tokens, but a v20 theme is written differently (the palette, then the roles that need their own value): check it against the Themes guide, and the code that loads it' });
   result.output = output;
   for (const list of [result.changes, result.notes]) list.sort((a, b) => a.line - b.line);
   return result;

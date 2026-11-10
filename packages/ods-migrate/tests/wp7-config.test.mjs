@@ -25,8 +25,8 @@ const choices = JSON.parse(readFileSync(new URL('../configurator/choices.json', 
 const PENDING_ID = PENDING_IDS[0];
 const pendingList = (count) => (PENDING_ID ? Array(count).fill(PENDING_ID) : []);
 
-/* CONTRACT.md §6.2, in page order: the ids and kinds are fixed. */
-const CONTRACT_CHOICES = [
+/* The choices of the configurator, in page order: their ids and kinds are fixed. */
+const CHOICES = [
   ['button-default-emphasis', 'codemod'],
   ['message-default-emphasis', 'codemod'],
   ['card-default-status', 'codemod'],
@@ -55,12 +55,12 @@ const dirWith = (files) => {
 
 describe('choices.json', () => {
   it('holds exactly the choice ids of the contract, in page order, with their kind', () => {
-    assert.deepEqual(choices.choices.map(({ id, kind }) => [id, kind]), CONTRACT_CHOICES);
+    assert.deepEqual(choices.choices.map(({ id, kind }) => [id, kind]), CHOICES);
   });
 
   it('is the source of CHOICE_IDS', () => {
     assert.deepEqual(CHOICE_IDS, choices.choices.map(({ id }) => id));
-    assert.deepEqual(CHOICE_IDS, CONTRACT_CHOICES.map(([id]) => id));
+    assert.deepEqual(CHOICE_IDS, CHOICES.map(([id]) => id));
   });
 
   it('has the shape of the contract for every choice', () => {
@@ -189,8 +189,8 @@ describe('validateConfig', () => {
     assert.match(validateConfig({ look: null })[0], /look must be an object/);
     assert.match(validateConfig({ optOutCss: 3 })[0], /optOutCss must be a non-empty string/);
     assert.match(validateConfig({ optOutCss: '  ' })[0], /optOutCss must be a non-empty string/);
-    assert.match(validateConfig({ pending: 'ODS-2336' })[0], /pending must be an array of strings/);
-    assert.match(validateConfig({ pending: ['ODS-2336', 1] })[0], /pending must be an array of strings/);
+    assert.match(validateConfig({ pending: 'example-pending' })[0], /pending must be an array of strings/);
+    assert.match(validateConfig({ pending: ['example-pending', 1] })[0], /pending must be an array of strings/);
   });
 
   it('rejects a config that is not an object', () => {
@@ -354,7 +354,7 @@ describe('optOutCss and describeConfig', () => {
   });
 });
 
-describe('module boundaries (CONTRACT §1)', () => {
+describe('module boundaries: no engine reads the config module', () => {
   it('no engine imports src/config.mjs', () => {
     const src = new URL('../src/', import.meta.url);
     for (const file of readdirSync(src).filter((name) => name.endsWith('.mjs') && !['cli.mjs', 'config.mjs'].includes(name))) {

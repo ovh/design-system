@@ -52,8 +52,6 @@ function pendingIds(...mappings) {
 }
 const readMapping = (name) => JSON.parse(readFileSync(new URL(`../mappings/${name}`, import.meta.url), 'utf8'));
 const PENDING_IDS = pendingIds(readMapping('v19-to-v20.json'), readMapping('tokens-v19-to-v20.json'));
-/* The ids of the configs written before these changes landed in ODS v20: accepted, they change nothing. */
-const LANDED_IDS = ['#1121', '#1122', 'ODS-2326', 'ODS-2335', 'ODS-2336'];
 
 /** The config of a run without a config file: Aluminium for every choice. */
 function defaultConfig(cwd = process.cwd()) {
@@ -107,7 +105,7 @@ function validateConfig(raw) {
       errors.push('pending must be an array of strings');
     } else if (own(raw, 'pending')) {
       // An id the mappings once had (a change that has since landed in ODS) is not an error: it is applied by default now.
-      for (const id of raw.pending.filter((item) => !PENDING_IDS.includes(item) && !LANDED_IDS.includes(item))) {
+      for (const id of raw.pending.filter((item) => !PENDING_IDS.includes(item))) {
         errors.push(`unknown id "${id}" in pending (known: ${PENDING_IDS.length ? PENDING_IDS.join(', ') : 'none'})`);
       }
     }
@@ -150,7 +148,7 @@ function loadConfig(path) {
   }
   let raw;
   try {
-    raw = JSON.parse(text.replace(/^﻿/, ''));
+    raw = JSON.parse(text.replace(/^\uFEFF/, ''));
   } catch (error) {
     throw new ConfigError(`${file}: invalid JSON: ${error.message}`, [error.message]);
   }

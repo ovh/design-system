@@ -18,7 +18,7 @@
   },
   "acceptance": {
     "manager": {
-      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 of the local snapshot repo",
+      "corpus": "ovh/manager packages/, local snapshot 7e02c54 (not a public commit, lost: history only; replay on d8e3d1a1)",
       "command": "scripts/acceptance/acceptance.sh --corpus <dir holding the 7e02c54 packages/> --label manager (no option)",
       "run1": {
         "exit": 0,
@@ -68,7 +68,7 @@
       "note": "2026-10-27 (plain-words release): markers 181 → 178 (a zIndex below 99 or above 1600 keeps its place against every ODS overlay: no marker), notes 220 → 140 points to check + 78 --ods-* names ODS v19 never declared (notOds, not points to check since report version 3; 2 mock notes about props that do not change dropped)."
     },
     "manager-all-v19": {
-      "corpus": "ovh/manager packages/ snapshot, commit 7e02c54 of the local snapshot repo",
+      "corpus": "ovh/manager packages/, local snapshot 7e02c54 (not a public commit, lost: history only; replay on d8e3d1a1)",
       "command": "scripts/acceptance/acceptance.sh --corpus <dir holding the 7e02c54 packages/> --label manager-all-v19 --all-v19 (no option)",
       "note": "fixDivergencesWhenAbsent: the Button/Card/Message attributes the v19-look config adds to elements without the prop; ESLint never adds them, so they are expected and not a gate. 2026-10-27 (plain-words release): markers 181 → 178 (a zIndex below 99 or above 1600 keeps its place against every ODS overlay: no marker), notes 220 → 140 points to check + 78 --ods-* names ODS v19 never declared (notOds, not points to check since report version 3; 2 mock notes about props that do not change dropped).",
       "run1": {

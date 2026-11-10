@@ -40,7 +40,6 @@ const USAGE = `Usage: node scripts/coverage.mjs <corpus dir> [--truth <hand-migr
 const { values, positionals } = parseArgs({
   allowPositionals: true,
   options: {
-    also: { multiple: true, type: 'string' },
     'treat-as-ods': { multiple: true, type: 'string' },
     cache: { type: 'string' },
     'check-js': { type: 'boolean' },
@@ -65,9 +64,6 @@ const { values, positionals } = parseArgs({
   },
 });
 
-if (values.also) {
-  console.error('--also is deprecated, use --treat-as-ods (same meaning).');
-}
 if (values.help || positionals.length !== 1) {
   console.log(USAGE);
   process.exit(values.help ? 0 : 2);
@@ -77,7 +73,7 @@ const opts = {
   corpus: positionals[0],
   truth: values.truth,
   config: values.config,
-  treatAsOds: [...(values['treat-as-ods'] ?? []), ...(values.also ?? [])],
+  treatAsOds: values['treat-as-ods'] ?? [],
   work: values.work ?? join(tmpdir(), 'ods-migrate-coverage'),
   label: values.label,
   cache: values.cache,

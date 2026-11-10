@@ -26,14 +26,14 @@ describe('plugin', () => {
   });
 
   it('accepts the config of the configurator as rule options', () => {
-    const options = { look: { 'badge-accent-filled': 'v19' }, packages: ['@ovh-ux/muk'], pending: ['ODS-2336'] };
+    const options = { look: { 'badge-accent-filled': 'v19' }, builtOnOds: ['@ovh-ux/muk'], pending: ['example-pending'] };
     assert.deepEqual(verify('const a = 1;\n', { options }), []);
     assert.deepEqual(linter.verify('const a = "x";\n', [{ plugins: { ods: plugin }, rules: { 'ods/v20-tokens': ['error', { look: {}, pending: [] }] } }], 'a.js'), []);
   });
 });
 
 describe('ods/v20-migration reports without a fix', () => {
-  it('a literal two renamed types disagree on (bug [5])', () => {
+  it('a literal two renamed types disagree on', () => {
     const messages = verify('import { type BadgeColor, type ButtonColor } from \'@ovhcloud/ods-react\';\nexport const a: BadgeColor | ButtonColor = \'primary\';\n', { filename: 'a.ts' });
     assert.deepEqual(ids(messages).filter((id) => id.startsWith('2:')), ['2:ambiguousType']);
   });
@@ -51,13 +51,13 @@ describe('ods/v20-migration reports without a fix', () => {
 
   it('a removed component once per outermost element', () => {
     const source = 'import { Switch, SwitchItem } from \'@ovhcloud/ods-react\';\nexport const A = () => (\n  <Switch>\n    <SwitchItem value="a" />\n  </Switch>\n);\n';
-    assert.deepEqual(ids(verify(source, { options: { pending: ['ODS-2336'] } })), ['1:removedImport', '3:noEquivalent']);
+    assert.deepEqual(ids(verify(source, { options: { pending: ['example-pending'] } })), ['1:removedImport', '3:noEquivalent']);
     assert.deepEqual(ids(verify(source)), [], 'pending entries are off by default');
   });
 
   it('a childless element whose label reads a missing attribute', () => {
     const source = 'import { Pagination } from \'@ovhcloud/ods-react\';\nexport const A = ({ r }) => <Pagination withPageSizeSelector renderTotalItemsLabel={ r } />;\n';
-    assert.deepEqual(ids(verify(source, { options: { pending: ['ODS-2336'] } })), ['2:childless']);
+    assert.deepEqual(ids(verify(source, { options: { pending: ['example-pending'] } })), ['2:childless']);
   });
 
   it('never adds the v19 default of a component: ods/v20-default-changed does', () => {
@@ -101,6 +101,6 @@ describe('ods/v20-default-changed', () => {
   it('follows the packages that re-export ODS', () => {
     const muk = 'import { Button } from \'@ovh-ux/muk\';\nexport const A = () => <Button />;\n';
     assert.deepEqual(ids(verify(muk, { rule: 'v20-default-changed' })), []);
-    assert.deepEqual(ids(verify(muk, { options: { packages: ['@ovh-ux/muk'] }, rule: 'v20-default-changed' })), ['2:defaultChanged']);
+    assert.deepEqual(ids(verify(muk, { options: { builtOnOds: ['@ovh-ux/muk'] }, rule: 'v20-default-changed' })), ['2:defaultChanged']);
   });
 });

@@ -16,7 +16,7 @@ import {
 } from '../src/tokens.mjs';
 
 /*
- * The new keys of the token mapping (CONTRACT §5.2) and the engine behaviors of WP4, tested with
+ * The keys of the token mapping and the behaviours of the token engine, tested with
  * inline mappings: the real entries come from the mapping build (WP5).
  */
 
@@ -76,7 +76,7 @@ describe('alsoDeclare', () => {
   });
 });
 
-describe('rerank (z-index, DECISIONS: a computed stacking is never rewritten)', () => {
+describe('rerank (z-index: a computed stacking is never rewritten)', () => {
   const mapping = extend({
     hints: { 'z-rerank': 'the layers are re-ranked in v20 (BC-15).' },
     tokens: { '--ods-theme-overlay-z-index': { bc: 'BC-01', rerank: true, to: '--ods-semantic-z-index-dropdown' } },
@@ -136,7 +136,7 @@ describe('todo and keep', () => {
   });
 });
 
-describe('byContext (DECISIONS: white kept, the page background on the document root)', () => {
+describe('byContext (white kept, the page background on the document root)', () => {
   const mapping = extend({
     tokens: {
       '--ods-color-neutral-000': {

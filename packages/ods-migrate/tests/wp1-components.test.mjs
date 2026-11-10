@@ -14,7 +14,7 @@ const fixtures = new URL('./fixtures/wp1/', import.meta.url);
 const read = (name) => readFileSync(new URL(name, fixtures), 'utf8');
 const inputs = readdirSync(fixtures).filter((name) => name.includes('.input.'));
 const options = { packages: ['@ovh-ux/muk'] };
-// v19-look: every codemod choice of the configurator set to the v19 look (CONTRACT §6.2).
+// v19-look: every codemod choice of the configurator set to the v19 look.
 const V19_LOOK = { look: Object.fromEntries(['badge-accent-filled', 'button-default-emphasis', 'card-default-status', 'divider-neutral-grey', 'message-default-emphasis', 'spinner-neutral-grey'].map((id) => [id, 'v19'])) };
 const optionsOf = (name) => (name.startsWith('v19-look') ? { ...options, config: V19_LOOK, from: 19 } : options);
 
@@ -24,7 +24,7 @@ const lintConfig = [{
   files: ['**/*.{js,jsx,ts,tsx}'],
   languageOptions: { parser, parserOptions: { ecmaFeatures: { jsx: true } } },
   plugins: { ods: plugin },
-  rules: { 'ods/v20-migration': ['error', { packages: ['@ovh-ux/muk'] }] },
+  rules: { 'ods/v20-migration': ['error', { builtOnOds: ['@ovh-ux/muk'] }] },
 }];
 const hasErrorNode = (source, name) => parse(/\.(c|m)?ts$/.test(name) ? Lang.TypeScript : Lang.Tsx, source).root().find({ rule: { kind: 'ERROR' } }) !== null;
 

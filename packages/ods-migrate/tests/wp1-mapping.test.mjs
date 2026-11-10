@@ -9,7 +9,7 @@ const api = (name) => new Set(JSON.parse(readFileSync(new URL(`./fixtures/wp1/${
 const v19 = api('api-v19');
 const v20 = api('api-v20');
 
-// The keys of CONTRACT.md §4, per level. Anything else is a typo or an undocumented key.
+// The keys the engine reads, per level. Anything else is a typo or an undocumented key.
 const KEYS = {
   component: ['childless', 'conflicts', 'example', 'exports', 'extends', 'pending', 'props', 'propsType', 'replacedBy', 'whenAbsent'],
   example: ['before', 'imports'],
@@ -20,7 +20,7 @@ const KEYS = {
   v19Look: ['choice', 'values'],
   whenAbsent: ['add', 'choice', 'hint', 'unless'],
 };
-// CONTRACT.md §6.2, the choices of kind `codemod`.
+// The choices of kind `codemod` of configurator/choices.json.
 const CODEMOD_CHOICES = ['badge-accent-filled', 'button-default-emphasis', 'card-default-status', 'divider-neutral-grey', 'message-default-emphasis', 'spinner-neutral-grey'];
 
 // Read in the component sources: the default of each prop in v19.7.3 and on the v20 stack, and the props each version declares.
@@ -133,8 +133,8 @@ describe('component mapping: consistency', () => {
         }
       }
     }
-    // DECISIONS.md: Button status brand, Button emphasis medium, Message emphasis medium; and the status
-    // defaults of the stack (review: decisions): Card neutral, Badge, Message and Tag information.
+    // The v20 defaults: Button status brand, Button emphasis medium, Message emphasis medium; and the status
+    // defaults of the stack: Card neutral, Badge, Message and Tag information.
     assert.equal(count, 7);
     assert.equal(mapping.components.Card.props.color.dropDefault, 'neutral');
   });
@@ -161,7 +161,7 @@ describe('component mapping: consistency', () => {
         }
       }
     }
-    // DECISIONS.md: Divider and Spinner neutral are removed (Aluminium), the v19 grey only through the config.
+    // Divider and Spinner neutral are removed (Aluminium), the v19 grey only through the config.
     assert.deepEqual(mapping.components.Divider.props.color.values.neutral, {});
     assert.deepEqual(mapping.components.Spinner.props.color.values.neutral, {});
   });

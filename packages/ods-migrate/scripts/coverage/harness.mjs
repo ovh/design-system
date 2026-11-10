@@ -111,7 +111,7 @@ export function runCoverage(input) {
   const label = opts.label ?? basename(corpus);
   const work = resolve(opts.work, label);
   const cache = resolve(opts.cache ?? join(opts.work, '.surfaces'));
-  const treatAsOds = opts.treatAsOds ?? opts.also ?? [];
+  const treatAsOds = opts.treatAsOds ?? [];
   const timings = {};
   const time = (name, fn) => {
     const t = Date.now();
@@ -221,7 +221,7 @@ export function runCoverage(input) {
   rmSync(runDir, { force: true, recursive: true });
   mkdirSync(runDir, { recursive: true });
   const report = join(work, 'ods-migrate.json');
-  const args = [opts.cli, migrated, '--write', '--json', report, ...treatAsOds.flatMap((p) => ['--treat-as-ods', p])];
+  const args = [opts.cli, migrated, '--write', '--json', report, ...treatAsOds.flatMap((p) => ['--built-on-ods', p])];
   if (opts.config) args.push('--config', resolve(opts.config));
   if (!existsSync(opts.cli)) throw new Error(`ods-migrate CLI not found: ${opts.cli}`);
   const migrate = time('ods-migrate', () => spawnSync(process.execPath, args, { cwd: runDir, encoding: 'utf8', maxBuffer: 1 << 28 }));

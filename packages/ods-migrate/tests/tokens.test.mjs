@@ -184,13 +184,13 @@ describe('design tokens', () => {
     assert.ok(notes.some((note) => /keeps its name and its layer, 100 in v19/.test(note.message ?? note)));
   });
 
-  it('renames a bare read of the overlay z-index token 1:1 (DECISIONS)', () => {
+  it('renames a bare read of the overlay z-index token 1:1', () => {
     const { output, todos } = migrate('.help { z-index: var(--ods-theme-overlay-z-index); }', 'a.css');
     assert.equal(output, '.help { z-index: var(--ods-semantic-z-index-dropdown); }');
     assert.deepEqual(todos, []);
   });
 
-  it('never rewrites a stacking computed on the overlay token (rerank, DECISIONS)', () => {
+  it('never rewrites a stacking computed on the overlay token (rerank)', () => {
     const { output, todos } = migrate('.help { z-index: calc(var(--ods-theme-overlay-z-index) + 2); }', 'a.css');
     assert.match(output, /z-index: calc\(var\(--ods-theme-overlay-z-index\) \+ 2\)/);
     assert.match(todos[0].message, /^--ods-theme-overlay-z-index: check this stacking: the ODS overlays get new z-index values in v20 \(v19: dropdowns 99, modal 100, drawer 101; v20: sticky 100, dropdown 200, drawer 300, modal 400\).* \(this token is 99 in v19; its v20 layer, `--ods-semantic-z-index-dropdown`, is 200\)$/);

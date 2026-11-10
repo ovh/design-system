@@ -1,6 +1,6 @@
 /*
  * Coverage harness: the sites the hand-labelled benchmark found that the harness did not see, or saw
- * wrong (round 1 of the harness/benchmark comparison). Each test is one class of disagreement:
+ * wrong. Each test is one class of disagreement:
  *   - an error the type checker hides: the uses of a binding whose import is broken (`any`), a name
  *     imported from a barrel that re-exported a removed export, an attribute masked by another error of
  *     its element, a prop v20 removed by typing it `never` that an `undefined` value passes;

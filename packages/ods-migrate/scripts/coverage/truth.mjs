@@ -13,7 +13,7 @@
  * AGREE: ods-migrate wrote what the truth has. Each DIFFER gets one class:
  *   style-only        the same code spelled differently (`X_STATUS.accent` vs `"accent"`, `{"x"}`,
  *                     `import type`, an import left unused)
- *   decision          the truth applies a look DECISIONS.md rejects for the run's config: a v19-look
+ *   decision          the truth applies a look the run's config does not ask for: a v19-look
  *                     addition (look ids of configurator/choices.json, or a new v20 prop set to keep
  *                     the v19 rendering), an explicit default value kept, a z-index rewrite
  *   unrelated-change  the truth changed code the v20 API does not require to change (no site, no
@@ -730,7 +730,7 @@ function lookOf(ctx, id) {
 }
 
 /*
- * A DIFFER the DECISIONS explain: the truth keeps a v19 look (or an explicit default) that the run's
+ * A DIFFER that a default of the tool explains: the truth keeps a v19 look (or an explicit default) that the run's
  * config does not ask for. → { id, reason } or null.
  */
 function attrDecision({ comp, name, o, m, t, oAttrs, mAttrs, tAttrs }, ctx) {
@@ -751,9 +751,9 @@ function attrDecision({ comp, name, o, m, t, oAttrs, mAttrs, tAttrs }, ctx) {
     if ((comp === 'Divider' || comp === 'Spinner') && name === 'style' && lit19(oAttrs.get('color')) === 'neutral') return lookRule(`${comp.toLowerCase()}-neutral-grey`, `the truth paints the v19 grey of a neutral ${comp}`);
     // An explicit default the truth keeps, when ods-migrate migrated the element (no v19-only prop left on it).
     const def = api?.default20(comp, name);
-    if (def !== undefined && tv === def && ![...mAttrs].some(([n, v]) => api.propChange(comp, n, v))) return { id: 'drop-default', reason: `the truth writes the v20 default ${name}="${def}" explicitly (DECISIONS: explicit defaults are erased)` };
+    if (def !== undefined && tv === def && ![...mAttrs].some(([n, v]) => api.propChange(comp, n, v))) return { id: 'drop-default', reason: `the truth writes the v20 default ${name}="${def}" explicitly (ods-migrate erases explicit defaults)` };
     // A prop new in v20, set by the truth on an element none of whose v19 props had to change (else it is the counterpart of a rename).
-    if (o === null && api && !api.isProp19(comp, name) && api.isProp20(comp, name) && ![...oAttrs].some(([n, v]) => api.propChange(comp, n, v))) return { id: 'v19-look-addition', reason: `the truth sets the new v20 prop ${name} to a non-default value to keep the v19 rendering (DECISIONS: nothing added for the v19 look)` };
+    if (o === null && api && !api.isProp19(comp, name) && api.isProp20(comp, name) && ![...oAttrs].some(([n, v]) => api.propChange(comp, n, v))) return { id: 'v19-look-addition', reason: `the truth sets the new v20 prop ${name} to a non-default value to keep the v19 rendering (ods-migrate adds nothing for the v19 look)` };
   }
   if (m !== null && t !== null && (comp === 'Button' || comp === 'Message') && name === 'emphasis') {
     const inner = m.replace(/^\{|\}$/g, '');
@@ -766,14 +766,14 @@ function attrDecision({ comp, name, o, m, t, oAttrs, mAttrs, tAttrs }, ctx) {
 function zIndexDecision(o, m, t) {
   if (!o || m !== o || !t) return null;
   if (!/z-index/i.test(o) || !/calc\(|[+*]/.test(o)) return null;
-  if (!/--ods-(semantic-z-index|layer)-/.test(t)) return null;
-  return { id: 'z-index', reason: 'the truth rewrites a computed z-index; DECISIONS: no rewrite while the target system is undecided' };
+  if (!/--ods-semantic-z-index-/.test(t)) return null;
+  return { id: 'z-index', reason: 'the truth rewrites a computed z-index; ods-migrate never does: what the element must clear is the app\'s call' };
 }
 
 function pageBackgroundDecision(o, m, t, ctx) {
   if (!/--ods-theme-background-color(?![\w-])|--ods-color-[a-z]+-000(?![\w-])/.test(o ?? '') || !m || !t) return null;
-  if (lookOf(ctx, 'page-background') === 'aluminium' && /surface-page/.test(m) && /surface-raised/.test(t)) return { id: 'page-background', reason: 'the truth keeps the page white (surface-raised); DECISIONS: surface-page on html/body/:root' };
-  if (/surface-raised/.test(m) && /surface-page/.test(t)) return { id: 'white-kept', reason: 'the truth turns a white surface into the grey page surface; DECISIONS: white is kept (surface-raised) off html/body/:root' };
+  if (lookOf(ctx, 'page-background') === 'aluminium' && /surface-page/.test(m) && /surface-raised/.test(t)) return { id: 'page-background', reason: 'the truth keeps the page white (surface-raised); ods-migrate gives html/body/:root surface-page' };
+  if (/surface-raised/.test(m) && /surface-page/.test(t)) return { id: 'white-kept', reason: 'the truth turns a white surface into the grey page surface; ods-migrate keeps it white (surface-raised) off html/body/:root' };
   return null;
 }
 
@@ -1085,10 +1085,10 @@ export function compareTruthFile(input) {
       const item = { kind: 'jsx-element', key: `<${em.tag}>`, lines: [at, at], element: em.tag, original: null, migrated: signature(em), truth: et ? signature(et) : null };
       push(item, true);
       if (item.verdict !== 'differ') continue;
-      // The Tabs of a removed Switch (DECISIONS: the Switch becomes Tabs variant="switch"), where the truth wrote something else.
+      // The Tabs of a removed Switch (ods-migrate writes Tabs variant="switch"), where the truth wrote something else.
       const fromSwitch = /^Tabs?$|^TabList$/.test(em.tag) && po.elements.some((eo) => /^Switch(Item)?$/.test(eo.tag) && eo.line <= at && at <= eo.endLine);
       Object.assign(item, fromSwitch
-        ? { class: 'decision', reason: 'ods-migrate turns the removed Switch into Tabs variant="switch"; the truth wrote something else (DECISIONS: Tabs by default)', look: 'switch-to-tabs' }
+        ? { class: 'decision', reason: 'ods-migrate turns the removed Switch into Tabs variant="switch"; the truth wrote something else (Tabs is the default replacement)', look: 'switch-to-tabs' }
         : { class: 'tool-wrong', reason: 'ods-migrate added this element' });
     }
     // Elements only the truth has, grouped by the place they are inserted at: one item per block of new content.

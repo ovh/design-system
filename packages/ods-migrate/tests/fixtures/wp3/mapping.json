@@ -80,7 +80,7 @@
       }
     },
     "Pagination": {
-      "pending": "ODS-2336",
+      "pending": "example-pending",
       "childless": {
         "children": [
           { "element": "PaginationPageSizeSelector", "when": "withPageSizeSelector", "labelFrom": { "prop": "renderTotalItemsLabel", "arg": "{ totalItems: $totalItems }" } },
@@ -88,8 +88,8 @@
         ]
       },
       "props": {
-        "renderTotalItemsLabel": { "remove": true, "always": true, "pending": "ODS-2336" },
-        "withPageSizeSelector": { "remove": true, "always": true, "pending": "ODS-2336" }
+        "renderTotalItemsLabel": { "remove": true, "always": true, "pending": "example-pending" },
+        "withPageSizeSelector": { "remove": true, "always": true, "pending": "example-pending" }
       }
     },
     "Popover": {
@@ -111,7 +111,7 @@
     },
     "Toaster": { "props": {} },
     "Toggle": {
-      "pending": "ODS-2336",
+      "pending": "example-pending",
       "childless": { "children": [{ "element": "ToggleControl", "moveProps": ["className"] }] }
     }
   },
@@ -127,8 +127,8 @@
       "members": { "primary": { "to": null, "hint": "primary is the default: delete it" }, "neutral": { "to": null, "hint": "neutral is the default look in v20: delete it" } }
     },
     "MODAL_COLOR": { "removed": true, "hint": "use your own constant, or a boolean such as `isCritical`" },
-    "Switch": { "removed": true, "pending": "ODS-2336", "hint": "use a Toggle or a RadioGroup" },
-    "SwitchItem": { "removed": true, "pending": "ODS-2336", "hint": "use a Toggle or a RadioGroup" },
+    "Switch": { "removed": true, "pending": "example-pending", "hint": "use a Toggle or a RadioGroup" },
+    "SwitchItem": { "removed": true, "pending": "example-pending", "hint": "use a Toggle or a RadioGroup" },
     "TABLE_VARIANT": { "removed": true, "hint": "use the `striped` boolean" },
     "toast": {
       "members": { "primary": "accent" },

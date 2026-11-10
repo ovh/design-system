@@ -15,8 +15,6 @@ import {
   styleMarker,
 } from '../src/shared.mjs';
 
-/* Frozen with CONTRACT.md, like src/shared.mjs: no work package edits this file. */
-
 const mapping = {
   components: {
     Button: {
@@ -27,11 +25,11 @@ const mapping = {
       whenAbsent: { add: { emphasis: 'high' }, choice: 'button-default-emphasis', unless: ['variant', 'emphasis'] },
     },
     ModalCloseTrigger: { extends: 'Button' },
-    Switch: { pending: 'ODS-2336', props: {} },
+    Switch: { pending: 'example-pending', props: {} },
   },
   exports: {
     DIVIDER_COLOR: { hint: 'export hint', members: { neutral: null, primary: { hint: 'primary is the default' } }, removed: true },
-    Switch: { pending: 'ODS-2336', removed: true },
+    Switch: { pending: 'example-pending', removed: true },
   },
 };
 
@@ -47,7 +45,7 @@ describe('shared', () => {
   it('drops pending entries unless the config enables them', () => {
     assert.equal(resolveMapping(mapping).components.Switch, undefined);
     assert.equal(resolveMapping(mapping).exports.Switch, undefined);
-    assert.ok(resolveMapping(mapping, { pending: ['ODS-2336'] }).exports.Switch);
+    assert.ok(resolveMapping(mapping, { pending: ['example-pending'] }).exports.Switch);
     assert.equal(resolveTokenMapping({ tokens: { '--a': { pending: 'X', to: '--b' }, '--c': { to: '--d' } } }).tokens['--a'], undefined);
   });
 

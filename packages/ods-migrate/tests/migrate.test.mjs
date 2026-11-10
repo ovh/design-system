@@ -19,7 +19,7 @@ const lintConfig = [{
   files: ['**/*.{js,jsx,ts,tsx}'],
   languageOptions: { parser, parserOptions: { ecmaFeatures: { jsx: true } } },
   plugins: { ods: plugin },
-  rules: { 'ods/v20-migration': ['error', { packages: ['@ovh-ux/muk'] }] },
+  rules: { 'ods/v20-migration': ['error', { builtOnOds: ['@ovh-ux/muk'] }] },
 }];
 
 describe('codemod', () => {

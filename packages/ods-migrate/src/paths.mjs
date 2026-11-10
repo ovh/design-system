@@ -50,7 +50,7 @@ const EXPORTS = {
   src: { default: ['default/css', 'fonts-base64'], fonts: ['default/fonts'], index: ['default/css'] },
 };
 
-/* The Sass variables of `src/default/_variables` that v20 still has, in `src/aluminium/_variables` (master). */
+/* The Sass variables of `src/default/_variables` that v20 still has, in `src/aluminium/_variables`. */
 const KEPT_PALETTE = /^\$ods-palette-(?:(?:blue|gray|navy|red|green|orange)-(?:50|[1-9]00)|white|black|decorative-(?:alpha|beta|new|promotion)|opacity-(?:15|20|25|50|75))$/;
 /* The breakpoints, exported by `@ovhcloud/ods-react/style` under the same names (BC-05). */
 const BREAKPOINT = /^\$ods-breakpoint-(?:sub-mobile|mobile|tablet|desktop|large-screen|widescreen)$/;
@@ -58,11 +58,11 @@ const BREAKPOINT = /^\$ods-breakpoint-(?:sub-mobile|mobile|tablet|desktop|large-
 const THEME_FAMILY = /^\$ods-(?:color|palette|border-radius|border-width|breakpoint|form-element|outline|transition)-/;
 
 const FONTS_HINT = 'use @ovhcloud/ods-themes/fonts-base64 instead of default/fonts if your setup cannot serve the font files';
-const BUNDLE_HINT = `@ovhcloud/ods-themes/default is removed in v20 (BC-31): load @ovhcloud/ods-themes/default/css and @ovhcloud/ods-themes/default/fonts instead (${FONTS_HINT})`;
-const FOLDER_HINT = 'this folder of @ovhcloud/ods-themes is gone in v20 (BC-32): the theme is dist/aluminium/light.css, the fonts dist/fonts.css (or dist/fonts-base64.css), the tokens dist/aluminium/light.tokens.json, the Sass sources src/aluminium/light.scss and src/fonts.scss; prefer the export paths (@ovhcloud/ods-themes/default/css, /default/fonts)';
-const VARIABLES_HINT = 'the Sass variables of @ovhcloud/ods-themes/src/default are gone in v20 (BC-05, BC-32): the breakpoints are in @ovhcloud/ods-react/style, the palette variables that v20 keeps in @ovhcloud/ods-themes/src/aluminium/variables, the others are removed (read the CSS custom properties instead): point this at what the files that read it still use';
-const ENTRY_HINT = '@ovhcloud/ods-themes has no JavaScript entry point in v20: ODS_THEME and ODS_THEMES are removed (BC-33). Write the theme names instead (ODS_THEME.default → \'default\'; the themes are \'default\', \'aluminium-dark\', \'blue-jeans\' and \'blue-jeans-dark\', each loaded through @ovhcloud/ods-themes/<theme>/css), then remove this import';
-const TOKENS_HINT = 'the tokens JSON of @ovhcloud/ods-themes keeps its path but none of its keys in v20 (BC-06): the names are --ods-semantic-* and --ods-palette-*, `root` gives resolved values and the var() references are in the new `refs`: check every read of it';
+const BUNDLE_HINT = `@ovhcloud/ods-themes/default is removed in v20: load @ovhcloud/ods-themes/default/css and @ovhcloud/ods-themes/default/fonts instead (${FONTS_HINT})`;
+const FOLDER_HINT = 'this folder of @ovhcloud/ods-themes is gone in v20: the theme is dist/aluminium/light.css, the fonts dist/fonts.css (or dist/fonts-base64.css), the tokens dist/aluminium/light.tokens.json, the Sass sources src/aluminium/light.scss and src/fonts.scss; prefer the export paths (@ovhcloud/ods-themes/default/css, /default/fonts)';
+const VARIABLES_HINT = 'the Sass variables of @ovhcloud/ods-themes/src/default are gone in v20: the breakpoints are in @ovhcloud/ods-react/style, the palette variables that v20 keeps in @ovhcloud/ods-themes/src/aluminium/variables, the others are removed (read the CSS custom properties instead): point this at what the files that read it still use';
+const ENTRY_HINT = '@ovhcloud/ods-themes has no JavaScript entry point in v20: ODS_THEME and ODS_THEMES are removed. Write the theme names instead (ODS_THEME.default → \'default\'; the themes are \'default\', \'aluminium-dark\', \'blue-jeans\' and \'blue-jeans-dark\', each loaded through @ovhcloud/ods-themes/<theme>/css), then remove this import';
+const TOKENS_HINT = 'the tokens JSON of @ovhcloud/ods-themes keeps its path but none of its keys in v20: the names are --ods-semantic-* and --ods-palette-*, `root` gives resolved values and the var() references are in the new `refs`: check every read of it';
 
 const escapeRegExp = (text) => text.replace(/[$.*+?^{}()|[\]\\]/g, '\\$&');
 
@@ -114,8 +114,8 @@ function movePaths(text, { exportsOk = false, pick = 0 } = {}) {
     const target = targets[Math.min(pick, targets.length - 1)];
     const to = bare ? `${pkg}/${target}` : `${pkg}${bumped ? `@${bumped}` : version}/${folder}/${target}${ext}`;
     if (pick === 0) {
-      result.changes.push(`${match} → ${bare ? targets.map((item) => `${pkg}/${item}`).join(' + ') : targets.map((item) => `${folder}/${item}${ext}`).join(' + ')} (BC-32${targets.length > 1 ? ', BC-31' : ''})`);
-      if (bumped) result.notes.push(`${match}: the CDN URL moves to ${bumped} with the v20 path (its 19.x version has no such file): keep it in step with the @ovhcloud/ods-themes version you install (BC-32)`);
+      result.changes.push(`${match} → ${bare ? targets.map((item) => `${pkg}/${item}`).join(' + ') : targets.map((item) => `${folder}/${item}${ext}`).join(' + ')}`);
+      if (bumped) result.notes.push(`${match}: the CDN URL moves to ${bumped} with the v20 path (its 19.x version has no such file): keep it in step with the @ovhcloud/ods-themes version you install`);
     }
     return to;
   });
@@ -128,7 +128,7 @@ function bumpFontUrls(text) {
   const output = text.replace(FONT_CDN, (match, pkg, version, rest) => {
     const bumped = bumpVersion(version);
     if (!bumped) return match;
-    notes.push(`${pkg}@${version}${rest}: the source-sans-3 font folder only exists from v20: the URL moves to ${bumped} (BC-13, BC-32): keep it in step with the @ovhcloud/ods-themes version you install`);
+    notes.push(`${pkg}@${version}${rest}: the source-sans-3 font folder only exists from v20: the URL moves to ${bumped}: keep it in step with the @ovhcloud/ods-themes version you install`);
     return `${pkg}@${bumped}${rest}`;
   });
   return { notes, output };
@@ -206,7 +206,7 @@ function migrateStylePaths(source, kind = 'css') {
       [...moved.notes, ...fonts.notes].forEach((message) => report.notes.push({ line, message }));
       const indent = /^[ \t]*/.exec(text)[0];
       if (moved.split || moved.variables || moved.folder) {
-        mark(indent, moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `this file is two files in v20 (BC-31, BC-32): ${moved.text.match(MOVED)?.[0] ?? 'the theme'} and the base64 fonts (fonts-base64): load both`);
+        mark(indent, moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `this file is two files in v20: ${moved.text.match(MOVED)?.[0] ?? 'the theme'} and the base64 fonts (fonts-base64): load both`);
       }
       output.push(`${fonts.output}${cr}`);
       return;
@@ -233,8 +233,8 @@ function migrateStylePaths(source, kind = 'css') {
       ].filter(Boolean);
       targets.forEach((to) => output.push(build(to, withoutAlias)));
       report.changes.push({ line, message: targets.length
-        ? `${url} → ${targets.join(' + ')} (BC-31: the bundle is removed; ${FONTS_HINT})`
-        : `${url} removed (BC-31): the file already loads default/css and the fonts` });
+        ? `${url} → ${targets.join(' + ')} (the bundle is removed; ${FONTS_HINT})`
+        : `${url} removed: the file already loads default/css and the fonts` });
       return;
     }
 
@@ -260,7 +260,7 @@ function migrateStylePaths(source, kind = 'css') {
       const removed = used.filter((member) => !BREAKPOINT.test(member) && !KEPT_PALETTE.test(member));
       if (removed.length) {
         const names = removed.map((member) => (bare ? member : `${namespace}.${member}`));
-        mark(indent, `${url}: this file is gone in v20 (BC-32), and this file still reads ${names.join(', ')} from it, removed in v20 (BC-05): resolve their markers (read the CSS custom properties instead), then run ods-migrate again to move this import`);
+        mark(indent, `${url}: this file is gone in v20, and this file still reads ${names.join(', ')} from it, removed in v20: resolve their markers (read the CSS custom properties instead), then run ods-migrate again to move this import`);
         output.push(rawLine);
         return;
       }
@@ -274,17 +274,17 @@ function migrateStylePaths(source, kind = 'css') {
         return;
       }
       if (!breakpoints.length && !kept.length) {
-        report.changes.push({ line, message: `${url} removed (BC-32): nothing in this file reads it any more` });
+        report.changes.push({ line, message: `${url} removed: nothing in this file reads it any more` });
         return;
       }
       if (!breakpoints.length) {
         output.push(build(palette));
-        report.changes.push({ line, message: `${url} → ${palette} (BC-32: the palette variables v20 keeps)` });
+        report.changes.push({ line, message: `${url} → ${palette} (the palette variables v20 keeps)` });
         return;
       }
       if (!kept.length) {
         output.push(build(react, alias));
-        report.changes.push({ line, message: `${url} → ${react} (BC-05: the breakpoints are read from @ovhcloud/ods-react/style)` });
+        report.changes.push({ line, message: `${url} → ${react} (the breakpoints are read from @ovhcloud/ods-react/style)` });
         return;
       }
       output.push(build(palette));
@@ -296,7 +296,7 @@ function migrateStylePaths(source, kind = 'css') {
         output.push(build(react, ` as ${other}`));
         renames.push([namespace, other]);
       }
-      report.changes.push({ line, message: `${url} → ${palette} + ${react} (BC-32, BC-05: the kept palette and the breakpoints)` });
+      report.changes.push({ line, message: `${url} → ${palette} + ${react} (the kept palette and the breakpoints)` });
       return;
     }
 
@@ -308,7 +308,7 @@ function migrateStylePaths(source, kind = 'css') {
       return;
     }
     if (second && reads.length) {
-      mark(indent, `${url} is two files in v20 (BC-31, BC-32): ${moved.text} and ${second}; this file reads ${reads.map((member) => `${namespace}.${member}`).join(', ')} through it: remove those reads, then load both`);
+      mark(indent, `${url} is two files in v20: ${moved.text} and ${second}; this file reads ${reads.map((member) => `${namespace}.${member}`).join(', ')} through it: remove those reads, then load both`);
       output.push(rawLine);
       return;
     }
@@ -324,7 +324,7 @@ function migrateStylePaths(source, kind = 'css') {
   for (const [from, to] of renames) {
     const pattern = new RegExp(`(?<![\\w$.-])${escapeRegExp(from)}\\.\\$(ods-breakpoint-[\\w-]+)`, 'g');
     for (const match of source.matchAll(pattern)) {
-      report.changes.push({ line: lineOf(match.index), message: `${match[0]} → ${to}.$${match[1]} (BC-05: the breakpoints are in @ovhcloud/ods-react/style)` });
+      report.changes.push({ line: lineOf(match.index), message: `${match[0]} → ${to}.$${match[1]} (the breakpoints are in @ovhcloud/ods-react/style)` });
     }
     text = text.replace(pattern, (whole, member) => `${to}.$${member}`);
   }
@@ -365,7 +365,7 @@ function migrateHtmlPaths(source) {
     moved.changes.forEach((message) => report.changes.push({ line, message }));
     [...moved.notes, ...fonts.notes].forEach((message) => report.notes.push({ line, message }));
     if (moved.split || moved.variables || moved.folder) {
-      report.notes.push({ line, message: moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${path} is two files in v20 (BC-31, BC-32): load the theme and the fonts-base64 file both` });
+      report.notes.push({ line, message: moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${path} is two files in v20: load the theme and the fonts-base64 file both` });
     }
     return fonts.output;
   });
@@ -458,7 +458,7 @@ function migrateScriptPaths(source, filename = 'file.tsx', options = {}) {
       mark(start.index, ENTRY_HINT);
     } else {
       replaceStatement(statement, null, []);
-      change(start.index, `import from ${ENTRY} removed (BC-33: the JavaScript entry point is gone, and nothing in this file used what it imported)`);
+      change(start.index, `import from ${ENTRY} removed (the JavaScript entry point is gone, and nothing in this file used what it imported)`);
     }
   }
 
@@ -470,7 +470,7 @@ function migrateScriptPaths(source, filename = 'file.tsx', options = {}) {
     if (!value.includes('ods-themes')) {
       // BC-06: a v19 token prefix given to a call (startsWith, includes, a filter of your own).
       if (V19_PREFIX.test(value) && !tokenNames.includes(value) && tokenNames.some((name) => name.startsWith(value)) && node.parent()?.kind() === 'arguments') {
-        mark(start.index, `'${value}' is a v19 token prefix: no v20 token starts with it (v20 names start with --ods-semantic- or --ods-palette-, BC-01, BC-02, BC-06): rewrite this filter on the v20 names`);
+        mark(start.index, `'${value}' is a v19 token prefix: no v20 token starts with it (v20 names start with --ods-semantic- or --ods-palette-): rewrite this filter on the v20 names`);
         report.prefixes.push({ line: lineOf(start.index), prefix: value });
       }
       continue;
@@ -492,7 +492,7 @@ function migrateScriptPaths(source, filename = 'file.tsx', options = {}) {
           has(`ods-themes/(?:default/fonts|fonts-base64)['"\`]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/fonts`,
         ].filter(Boolean);
         replaceStatement(context.statement, value, targets);
-        change(start.index, targets.length ? `${value} → ${targets.join(' + ')} (BC-31: the bundle is removed; ${FONTS_HINT})` : `${value} removed (BC-31): the file already loads default/css and the fonts`);
+        change(start.index, targets.length ? `${value} → ${targets.join(' + ')} (the bundle is removed; ${FONTS_HINT})` : `${value} removed: the file already loads default/css and the fonts`);
       } else {
         mark(anchor, BUNDLE_HINT);
       }
@@ -510,7 +510,7 @@ function migrateScriptPaths(source, filename = 'file.tsx', options = {}) {
     if (second && context.sideEffect && [...value.matchAll(MOVED)].length === 1) {
       replaceStatement(context.statement, value, [moved.text, second]);
     } else if (moved.split || moved.variables || moved.folder) {
-      mark(anchor, moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${value} is two files in v20 (BC-31, BC-32): ${moved.text} and ${movePaths(value, { exportsOk, pick: 1 }).text}: load both`);
+      mark(anchor, moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${value} is two files in v20: ${moved.text} and ${movePaths(value, { exportsOk, pick: 1 }).text}: load both`);
       if (!moved.split && fonts.output !== value) edits.push({ end: end.index - 1, start: start.index + 1, text: fonts.output });
     } else if (fonts.output !== value) {
       edits.push({ end: end.index - 1, start: start.index + 1, text: fonts.output });
@@ -560,7 +560,7 @@ function migrateJsonPaths(source) {
     }
     const moved = movePaths(value, { exportsOk: true });
     if (moved.split || moved.variables || moved.folder) {
-      report.notes.push({ line, message: moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${value} is two files in v20 (BC-31, BC-32): ${moved.text} and ${movePaths(value, { exportsOk: true, pick: 1 }).text}: list both` });
+      report.notes.push({ line, message: moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `${value} is two files in v20: ${moved.text} and ${movePaths(value, { exportsOk: true, pick: 1 }).text}: list both` });
       return whole;
     }
     const fonts = bumpFontUrls(moved.text);

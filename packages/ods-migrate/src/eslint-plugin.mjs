@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { planReplacement, replacementParts } from './replaced.mjs';
-import { moduleLookup, odsNameIn, olderOdsOf } from './resolve.mjs';
+import { ignoredByOdsMigrate, moduleLookup, odsNameIn, olderOdsOf } from './resolve.mjs';
 import { attributeText, isUntyped, isV19Look, memberRule, resolveMapping, resolveTokenMapping, stackingNeedsCheck, typeRule } from './shared.mjs';
 import { planScriptTokens } from './tokens.mjs';
 
@@ -425,7 +425,8 @@ function migrationRule(rawMapping) {
   return {
     create(context) {
       // A package pinned to ODS 17 or 18 is left alone, as the codemod does: the v20 names do not exist in its theme.
-      if (olderOdsOf(context.filename)) {
+      // So is a file a .odsmigrateignore leaves out.
+      if (olderOdsOf(context.filename) || ignoredByOdsMigrate(context.filename)) {
         return {};
       }
       const { sourceCode } = context;
@@ -2033,7 +2034,8 @@ function defaultChangedRule(rawMapping) {
   return {
     create(context) {
       // A package pinned to ODS 17 or 18 is left alone, as the codemod does: the v20 names do not exist in its theme.
-      if (olderOdsOf(context.filename)) {
+      // So is a file a .odsmigrateignore leaves out.
+      if (olderOdsOf(context.filename) || ignoredByOdsMigrate(context.filename)) {
         return {};
       }
       const mapping = resolveMapping(rawMapping);
@@ -2100,7 +2102,8 @@ function tokensRule(rawTokenMapping) {
   return {
     create(context) {
       // A package pinned to ODS 17 or 18 is left alone, as the codemod does: the v20 names do not exist in its theme.
-      if (olderOdsOf(context.filename)) {
+      // So is a file a .odsmigrateignore leaves out.
+      if (olderOdsOf(context.filename) || ignoredByOdsMigrate(context.filename)) {
         return {};
       }
       return {

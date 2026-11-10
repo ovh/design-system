@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import stylelint from 'stylelint';
-import { olderOdsOf } from './resolve.mjs';
+import { ignoredByOdsMigrate, olderOdsOf } from './resolve.mjs';
 import { applyStylePlan, controlOf, isGeneratedOptOut, planStyleNode } from './tokens.mjs';
 
 const mapping = JSON.parse(readFileSync(new URL('../mappings/tokens-v19-to-v20.json', import.meta.url), 'utf8'));
@@ -32,8 +32,9 @@ const noRemovedTokenRule = (enabled, options) => (root, result) => {
     return;
   }
   // The opt-out CSS that the CLI generates holds the v19 look on purpose; a package pinned to ODS 17 or 18
-  // is left alone, as the codemod does.
-  if (isGeneratedOptOut(root.source?.input?.css ?? '') || olderOdsOf(root.source?.input?.file)) {
+  // and a file a .odsmigrateignore leaves out are left alone, as the codemod does.
+  const file = root.source?.input?.file;
+  if (isGeneratedOptOut(root.source?.input?.css ?? '') || olderOdsOf(file) || ignoredByOdsMigrate(file)) {
     return;
   }
   const config = configOf(options);
@@ -72,7 +73,7 @@ const controlMessages = stylelint.utils.ruleMessages(controlName, {
  * root is another element, which the stylesheet may not select yet.
  */
 const noControlWidthRule = (enabled) => (root, result) => {
-  if (!stylelint.utils.validateOptions(result, controlName, { actual: enabled, possible: [true] }) || olderOdsOf(root.source?.input?.file)) {
+  if (!stylelint.utils.validateOptions(result, controlName, { actual: enabled, possible: [true] }) || olderOdsOf(root.source?.input?.file) || ignoredByOdsMigrate(root.source?.input?.file)) {
     return;
   }
   root.walkDecls((decl) => {

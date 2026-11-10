@@ -171,6 +171,26 @@ describe('cli: the files it scans', () => {
     assert.match(stdout, /^1 files scanned/m);
   });
 
+  it('leaves alone what a .odsmigrateignore or --ignore names, --check included', () => {
+    const CSS = '.a { color: var(--ods-color-primary-500); }\n';
+    const dir = project({
+      '.git/HEAD': 'ref: refs/heads/main\n',
+      '.odsmigrateignore': '# copies of the website CSS, never loaded by the app\nsrc/styles/site-copies/\n',
+      'src/a.tsx': V20,
+      'src/styles/site-copies/site.css': CSS,
+      'src/vendor/lib.tsx': BADGE,
+    });
+    const before = cli(['.', '--check'], dir);
+    assert.equal(before.code, 1);
+    assert.doesNotMatch(before.stdout, /site-copies/);
+    assert.match(before.stdout, /src\/vendor\/lib\.tsx/);
+    const after = cli(['.', '--check', '--ignore', 'src/vendor/'], dir);
+    assert.equal(after.code, 0, after.stdout);
+    assert.match(after.stdout, /^1 files scanned/m);
+    // Read from above the scanned folder too, up to the git root.
+    assert.match(cli(['src', '--ignore', 'src/vendor/'], dir).stdout, /^1 files scanned/m);
+  });
+
   it('scans .html files when the token engine can', () => {
     const dir = project({ 'index.html': '<style>.a { color: var(--ods-theme-text-color); }</style>\n' });
     const { stdout } = cli(['.'], dir);

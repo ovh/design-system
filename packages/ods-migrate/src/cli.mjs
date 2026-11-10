@@ -584,7 +584,7 @@ async function main(argv, io, configModule) {
 
   /* Components first, then the design tokens of what the component pass wrote, mapped back to the lines on disk. */
   const migrateScript = (source, path, config) => {
-    const engineOptions = { config, from: fromOf(path), ownTyped: index.ownTyped.get(path), packages, sources: index.sourcesFor(path) };
+    const engineOptions = { config, from: fromOf(path), ownTyped: index.ownTyped.get(path), ownTypedTypes: index.ownTypedTypes.get(path), packages, sources: index.sourcesFor(path) };
     if (additions.length && engineOptions.from >= 20) {
       const origin = fromOption === null ? fromOf.origin(path) : { manifest: null };
       skippedAdditions.set(origin.manifest ?? '--from', origin);

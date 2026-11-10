@@ -30,7 +30,7 @@ All commands run from `packages/ods-migrate/` unless noted. Nothing in the proce
 node --test tests/*.test.mjs        # = pnpm test
 ```
 
-Last run (2026-11-09): **875 tests, 874 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
+Last run (2026-11-09): **876 tests, 875 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
 
 The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescript, found by `tests/coverage-helpers.mjs` without an install: `$COVERAGE_TYPESCRIPT=<dir>`, the repo one the harness defaults to, or the one `@typescript-eslint/parser` resolves. Without one their suites show as skipped: same rule, fix the environment. Run the coverage tests alone with `node --test tests/coverage-*.test.mjs` (110 tests, ~10 s once the surfaces are extracted).
 
@@ -44,7 +44,7 @@ The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescrip
 | `wp2-fixtures.test.mjs` | 6 | `fixtures/wp2/`: reproductions of the bugs of the review swarm (CRLF, `as const`, mock imports, import comments…), with the real mapping. |
 | `wp3-rules.test.mjs` | 11 | The ESLint plugin: rule registration, `ods/v20-migration` reports without a fix, `ods/v20-default-changed`. |
 | `wp3-parity.test.mjs` | 6 | `fixtures/wp3/`: on each input, ESLint `--fix` gives the codemod output without its markers, the codemod gives nothing more on a second run, and on the output the rule has nothing left to fix. |
-| `tokens.test.mjs` | 49 | `fixtures/tokens/`: the token engine (CSS, SCSS, Tailwind config and classes, style objects, helpers, a palette of the app's own read from the v19 steps), roles from the context, idempotence. |
+| `tokens.test.mjs` | 50 | `fixtures/tokens/`: the token engine (CSS, SCSS, Tailwind config and classes, style objects, helpers, a palette of the app's own read from the v19 steps), roles from the context, idempotence. |
 | `token-rules.test.mjs` | 19 | `ods/v20-tokens` (ESLint) and `ods/no-removed-token` (stylelint) against the same token fixtures: `--fix` equals the codemod. |
 | `wp4-tokens.test.mjs` | 37 | Token engine keys: `alsoDeclare`, `rerank` (z-index never rewritten when computed), `todo` / `keep`, `byContext` (white kept, page background), mixins, `scssNumberToVar`, themes SCSS variables, `cssModifiers`. |
 | `wp4-fixtures.test.mjs` | 8 | `fixtures/wp4/` (`@apply`, control width, runtime names, fonts, JS declarations, nested props, quoted names, selectors, style keys, Tailwind variants, theme collisions): output, idempotence, stylelint parity; the v19.7.3 default theme migrated as an app override. |

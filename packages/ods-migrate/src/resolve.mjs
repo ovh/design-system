@@ -553,12 +553,18 @@ function serializeModules(index, dir) {
       ...(Object.keys(entry.wrappers ?? {}).length ? { wrappers: Object.fromEntries(Object.entries(entry.wrappers).sort(([a], [b]) => (a < b ? -1 : 1))) } : {}),
       ...(entry.childrenThrough?.length ? { childrenThrough: [...entry.childrenThrough].sort() } : {}),
       ...(Object.keys(entry.typed ?? {}).length ? { typed: Object.fromEntries(Object.entries(entry.typed).sort(([a], [b]) => (a < b ? -1 : 1))) } : {}),
+      ...(Object.keys(entry.typedTypes ?? {}).length ? { typedTypes: Object.fromEntries(Object.entries(entry.typedTypes).sort(([a], [b]) => (a < b ? -1 : 1))) } : {}),
     };
   }
   // The components of each file whose props are typed with ODS types, by local name: the rule migrates their defaults.
   const components = {};
   for (const [file, typed] of [...(index.ownTyped ?? [])].sort(([a], [b]) => (a < b ? -1 : 1))) {
     components[rel(file)] = typed;
+  }
+  // Their props types, by name (`ConfigCardProps`): the rule follows the objects typed with them.
+  const types = {};
+  for (const [file, typed] of [...(index.ownTypedTypes ?? [])].sort(([a], [b]) => (a < b ? -1 : 1))) {
+    types[rel(file)] = typed;
   }
   const workspace = Object.fromEntries([...index.workspace].filter(([name]) => index.workspacePackages.includes(name)).sort(([a], [b]) => (a < b ? -1 : 1)).map(([name, path]) => [name, rel(path)]));
   return {
@@ -568,6 +574,7 @@ function serializeModules(index, dir) {
     workspace,
     modules,
     ...(Object.keys(components).length ? { components } : {}),
+    ...(Object.keys(types).length ? { types } : {}),
   };
 }
 
@@ -588,8 +595,9 @@ function loadModulesFile(path) {
     if (raw?.version === 1 && raw.modules && typeof raw.modules === 'object') {
       const dir = dirname(path);
       value = {
-        modules: new Map(Object.entries(raw.modules).map(([file, entry]) => [resolve(dir, file), { names: entry.names ?? {}, shadow: entry.shadow ?? [], star: Boolean(entry.star), typed: entry.typed ?? {}, wrappers: entry.wrappers ?? {}, childrenThrough: entry.childrenThrough ?? [] }])),
+        modules: new Map(Object.entries(raw.modules).map(([file, entry]) => [resolve(dir, file), { names: entry.names ?? {}, shadow: entry.shadow ?? [], star: Boolean(entry.star), typed: entry.typed ?? {}, typedTypes: entry.typedTypes ?? {}, wrappers: entry.wrappers ?? {}, childrenThrough: entry.childrenThrough ?? [] }])),
         components: new Map(Object.entries(raw.components ?? {}).map(([file, typed]) => [resolve(dir, file), typed ?? {}])),
+        types: new Map(Object.entries(raw.types ?? {}).map(([file, typed]) => [resolve(dir, file), typed ?? {}])),
         treatAsOds: Array.isArray(raw.treatAsOds) ? raw.treatAsOds.filter((name) => typeof name === 'string') : [],
         workspace: new Map(Object.entries(raw.workspace ?? {}).map(([name, packageDir]) => [name, resolve(dir, packageDir)])),
       };
@@ -629,6 +637,8 @@ function moduleLookup({ cwd = process.cwd(), option, packages = [] } = {}) {
   find.treatAsOds = file?.treatAsOds ?? [];
   // The components of the linted file whose props are typed with ODS types, by local name (or {}).
   find.components = (filename) => (filename && file?.components.get(resolve(filename))) ?? {};
+  // Their props types, by name.
+  find.types = (filename) => (filename && file?.types?.get(resolve(filename))) ?? {};
   return find;
 }
 

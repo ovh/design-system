@@ -314,7 +314,7 @@ function sourcesOf(context, mapping) {
   const targetOf = (specifier) => (isPackage(specifier) ? true : lookup(context.filename, specifier));
   // A module whose only link to ODS is a component with typed props is not a source: its names are its own.
   const standsForOds = (target) => target === true || Boolean(target && (target.star || Object.keys(target.names ?? {}).length));
-  return { isPackage, isSource: (specifier) => standsForOds(targetOf(specifier)), ownTyped: lookup.components(context.filename), packages, standsForOds, targetOf };
+  return { isPackage, isSource: (specifier) => standsForOds(targetOf(specifier)), ownTyped: lookup.components(context.filename), ownTypedTypes: lookup.types(context.filename), packages, standsForOds, targetOf };
 }
 
 /** Reads the imports of the package (and of the UI kits and modules that re-export it) into the maps every rule uses. */
@@ -322,6 +322,8 @@ function importTracker(mapping, { standsForOds = () => true, targetOf }) {
   const state = {
     // Components of the project whose props are typed with ODS types: local name → { prop: { type } | { component } }.
     typed: new Map(),
+    // Their props types (`ConfigCardProps`), by local name: an object typed with one takes the same values.
+    typedTypes: new Map(),
     components: new Map(),
     // The ODS name of each named import (null: a name of a module of the project that is not ODS).
     odsNames: new Map(),
@@ -353,6 +355,12 @@ function importTracker(mapping, { standsForOds = () => true, targetOf }) {
         if (written && target.typed[written]) {
           state.typed.set(spec.local.name, target.typed[written]);
         }
+      }
+    }
+    for (const spec of target !== true && Object.keys(target.typedTypes ?? {}).length ? node.specifiers : []) {
+      const written = spec.type === 'ImportSpecifier' ? spec.imported.name ?? spec.imported.value : null;
+      if (written && target.typedTypes[written]) {
+        state.typedTypes.set(spec.local.name, target.typedTypes[written]);
       }
     }
     if (!standsForOds(target)) {
@@ -546,6 +554,39 @@ function migrationRule(rawMapping) {
         const [argument] = typeArguments(type);
         return /^(React\.)?ComponentProps(WithRef|WithoutRef)?$/.test(referenceName(type) ?? '') && argument?.type === 'TSTypeQuery' && argument.exprName.type === 'Identifier' ? components.get(argument.exprName.name) : undefined;
       };
+      // The props types of those components (`ConfigCardProps`), through Partial / Required / Readonly / Omit / Pick and arrays.
+      const typedTypeOf = (name) => imports.typedTypes.get(name) ?? (sources.ownTypedTypes ?? {})[name];
+      const typedPropsOf = (type) => {
+        const node = type?.type === 'TSTypeAnnotation' ? type.typeAnnotation : type;
+        if (node?.type === 'TSArrayType') {
+          return typedPropsOf(node.elementType);
+        }
+        if (node?.type !== 'TSTypeReference') {
+          return undefined;
+        }
+        const name = referenceName(node);
+        if (/^(Partial|Required|Readonly|Omit|Pick)$/.test(name ?? '')) {
+          return typedPropsOf(typeArguments(node)[0]);
+        }
+        return typeArguments(node).length === 0 && name ? typedTypeOf(name) : undefined;
+      };
+      // An object (or an array of objects) typed with one: each key of a typed prop gets that prop's values.
+      const reportTypedProps = (value, typed, type) => {
+        const node = unwrapConst(value);
+        if (node?.type === 'ArrayExpression') {
+          node.elements.forEach((element) => reportTypedProps(element, typed, type));
+          return;
+        }
+        for (const property of node?.type === 'ObjectExpression' ? node.properties : []) {
+          const key = property.type === 'Property' ? keyName(property) : undefined;
+          if (key !== undefined && typed[key]) {
+            reportTypedValue(property.value, typed[key], `${type} ${key}`, null);
+          }
+        }
+      };
+      // Functions whose parameter is typed with one: the arguments of their calls, by position.
+      const typedParams = new Map();
+      const typedCalls = [];
       // Objects typed with ODS props: their keys are handled by reportTypedValue, not as a key that feeds a prop.
       const typedObjectNodes = [];
       const reportTypedValue = (value, descriptor, label, anchor) => {
@@ -1272,6 +1313,9 @@ function migrationRule(rawMapping) {
         },
 
         CallExpression(node) {
+          if (node.callee.type === 'Identifier') {
+            typedCalls.push(node);
+          }
           const { callee } = node;
           if (callee.type === 'MemberExpression' && callee.object.type === 'Identifier' && ['jest', 'vi'].includes(callee.object.name)
             && callee.property.type === 'Identifier' && /^(do)?[mM]ock$/.test(callee.property.name)) {
@@ -1347,6 +1391,11 @@ function migrationRule(rawMapping) {
             }
           } else {
             reportTyped(node.expression, node.typeAnnotation);
+          }
+          // An object typed with a props type of the project (`ConfigCardProps`), as in the codemod (never a type assertion).
+          const ownProps = node.type !== 'TSTypeAssertion' ? typedPropsOf(type) : undefined;
+          if (ownProps) {
+            reportTypedProps(value, ownProps, sourceCode.getText(type));
           }
           const typeName = type?.type === 'TSTypeReference' ? (/^(Partial|Readonly)$/.test(referenceName(type) ?? '') ? referenceName(typeArguments(type)[0]) : referenceName(type)) : undefined;
           if (typeName && toastOptionTypes().includes(typeName) && unwrapConst(value)?.type === 'ObjectExpression' && toastExport()) {
@@ -1656,7 +1705,25 @@ function migrationRule(rawMapping) {
           }
         },
 
+        // A parameter typed with a props type of the project: its default value, and the arguments of the calls (at Program:exit).
+        'ArrowFunctionExpression, FunctionDeclaration, FunctionExpression'(node) {
+          const name = node.type === 'FunctionDeclaration' ? node.id?.name : node.parent?.type === 'VariableDeclarator' && node.parent.id.type === 'Identifier' ? node.parent.id.name : null;
+          node.params.forEach((param, position) => {
+            const [binding, initial] = param.type === 'AssignmentPattern' ? [param.left, param.right] : [param, null];
+            const typed = typedPropsOf(binding.typeAnnotation);
+            if (!typed) return;
+            const type = sourceCode.getText(binding.typeAnnotation.typeAnnotation);
+            reportTypedProps(initial, typed, type);
+            if (name) typedParams.set(name, [...(typedParams.get(name) ?? []), { position, type, typed }]);
+          });
+        },
+
         'Program:exit'() {
+          for (const call of typedCalls) {
+            for (const { position, type, typed } of typedParams.get(call.callee.name) ?? []) {
+              reportTypedProps(call.arguments[position], typed, type);
+            }
+          }
           const props = (component) => mapping.components[component]?.props ?? {};
           // The props type of a component: `BadgeProp` (or a local alias), `ComponentProps<typeof Badge>`.
           const propsOf = (type) => {

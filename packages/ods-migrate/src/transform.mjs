@@ -230,8 +230,9 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // A module whose only link to ODS is a component with typed props is not a source: its names are its own.
   const standsForOds = (entry) => Boolean(entry && (entry.star || Object.keys(entry.names ?? {}).length));
   const isSource = (specifier) => isPackage(specifier) || standsForOds(sources?.get(specifier));
-  // Components of this file whose props are typed with ODS types (src/project.mjs), by local name.
+  // Components of this file whose props are typed with ODS types (src/project.mjs), by local name, and their props types.
   const ownTyped = options.ownTyped ?? {};
+  const ownTypedTypes = options.ownTypedTypes ?? {};
   const odsNameOf = (specifier, name) => (sources?.has(specifier) && !isPackage(specifier) ? odsNameIn(sources.get(specifier), name) : name);
   const isWrapper = (specifier, name) => Boolean(sources?.has(specifier) && !isPackage(specifier) && sources.get(specifier).wrappers?.[name]);
   // A wrapper whose props' children reach the ODS element: a childless use gets its parts written out, as the component would.
@@ -247,7 +248,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   const v19Look = (choice) => v19Allowed && isV19Look(config, choice);
   const eol = eolOf(source);
 
-  if (!packages.some((name) => source.includes(name)) && ![...(sources?.keys() ?? [])].some((name) => source.includes(name)) && Object.keys(ownTyped).length === 0) {
+  if (!packages.some((name) => source.includes(name)) && ![...(sources?.keys() ?? [])].some((name) => source.includes(name)) && Object.keys(ownTyped).length === 0 && Object.keys(ownTypedTypes).length === 0) {
     return { output: source, ...report };
   }
 
@@ -495,10 +496,19 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // The names of other packages' imports are theirs (`import { BUTTON_VARIANT } from '@ovhcloud/ods-components'`).
   // Components of the project with typed props, imported by name or as the default export, are noted by local name.
   const typedLocals = new Map(Object.entries(ownTyped));
+  // The props types of those components (`ConfigCardProps`), by local name: an object typed with one takes the same values.
+  const typedTypeLocals = new Map(Object.entries(ownTypedTypes));
   for (const statement of root.findAll({ rule: { kind: 'import_statement' } })) {
     const specifier = stringValue(statement.field('source'));
     if (!isSource(specifier)) {
       importRanges.push(statement.range());
+    }
+    const typedTypes = sources?.get(specifier)?.typedTypes ?? {};
+    for (const spec of Object.keys(typedTypes).length ? statement.findAll({ rule: { kind: 'import_specifier' } }) : []) {
+      const written = spec.field('name').text();
+      if (typedTypes[written]) {
+        typedTypeLocals.set(spec.field('alias')?.text() ?? written, typedTypes[written]);
+      }
     }
     const typed = sources?.get(specifier)?.typed;
     if (!typed || Object.keys(typed).length === 0) {
@@ -811,7 +821,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     return staticRoots.has(root) && member && rest.length === 0 ? statics[importedLocals.get(root)][member] : undefined;
   };
 
-  if (localComponents.size === 0 && staticRoots.size === 0 && localExports.size === 0 && propsTypes.size === 0 && typedLocals.size === 0) {
+  if (localComponents.size === 0 && staticRoots.size === 0 && localExports.size === 0 && propsTypes.size === 0 && typedLocals.size === 0 && typedTypeLocals.size === 0) {
     rewriteImports(new Map());
     return apply();
   }
@@ -899,6 +909,68 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       }
     }
   }
+  // Objects typed with a props type of the project (`p: Partial<ConfigCardProps>`, `{ … } satisfies ConfigCardProps`):
+  // their keys are the props of the component, so their values follow the typed props. A function whose parameter is
+  // typed with one (`const renderCard = (props?: Partial<ConfigCardProps>) => …`) gets the same from each call.
+  if (typedTypeLocals.size > 0 && (lang === Lang.Tsx || lang === Lang.TypeScript)) {
+    const typedPropsOf = (type) => {
+      const node = type?.kind() === 'type_annotation' ? named(type)[0] : type;
+      if (node?.kind() === 'type_identifier') {
+        return typedTypeLocals.get(node.text());
+      }
+      if (node?.kind() === 'generic_type' && /^(Partial|Required|Readonly|Omit|Pick)$/.test(node.child(0).text())) {
+        return typedPropsOf(named(node.children().find((child) => child.kind() === 'type_arguments'))[0]);
+      }
+      if (node?.kind() === 'array_type') {
+        return typedPropsOf(named(node)[0]);
+      }
+      return undefined;
+    };
+    const visitValue = (value, typed, label) => {
+      const inner = value && unwrap(value);
+      if (inner?.kind() === 'array') {
+        named(inner).forEach((item) => visitValue(item, typed, label));
+        return;
+      }
+      if (inner?.kind() !== 'object') {
+        return;
+      }
+      for (const pair of named(inner).filter((item) => item.kind() === 'pair')) {
+        const key = keyName(pair.field('key'));
+        if (typed[key]) collectTyped(pair.field('value'), typed[key], `${label} ${key}`);
+      }
+    };
+    for (const declarator of root.findAll({ rule: { kind: 'variable_declarator' } })) {
+      const typed = typedPropsOf(declarator.field('type'));
+      if (typed) visitValue(declarator.field('value'), typed, named(declarator.field('type'))[0]?.text());
+    }
+    for (const expression of root.findAll({ rule: { any: [{ kind: 'as_expression' }, { kind: 'satisfies_expression' }] } })) {
+      const [value, type] = named(expression);
+      const typed = typedPropsOf(type);
+      if (typed) visitValue(value, typed, type.text());
+    }
+    // Parameters typed with one: their default value, and the argument at that position in each call of the function.
+    const typedParams = new Map();
+    for (const fn of root.findAll({ rule: { any: [{ kind: 'arrow_function' }, { kind: 'function_declaration' }, { kind: 'function_expression' }] } })) {
+      const params = fn.field('parameters');
+      const name = fn.kind() === 'function_declaration' ? fn.field('name')?.text()
+        : fn.parent()?.kind() === 'variable_declarator' ? fn.parent().field('name')?.text() : null;
+      named(params).forEach((param, position) => {
+        const typed = typedPropsOf(param.field('type'));
+        if (!typed) return;
+        const type = named(param.field('type'))[0]?.text();
+        visitValue(param.field('value'), typed, type);
+        if (name) typedParams.set(name, [...(typedParams.get(name) ?? []), { position, type, typed }]);
+      });
+    }
+    for (const call of typedParams.size ? root.findAll({ rule: { kind: 'call_expression' } }) : []) {
+      const callee = call.field('function');
+      for (const { position, typed, type } of callee?.kind() === 'identifier' ? typedParams.get(callee.text()) ?? [] : []) {
+        visitValue(named(call.field('arguments'))[position], typed, type);
+      }
+    }
+  }
+
   const propsOf = (type) => {
     if (type?.kind() === 'type_identifier') {
       return propsTypes.get(type.text());

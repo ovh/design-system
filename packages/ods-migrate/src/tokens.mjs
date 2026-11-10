@@ -189,7 +189,17 @@ function tailwindContext(text, offset) {
   }
   const utility = head.slice(split + 1).replace(/^!|!$/g, '');
   const variants = split < 0 ? [] : splitTopLevel(head.slice(0, split), (char) => char === ':');
-  const role = TAILWIND_ROLE.find(([pattern]) => pattern.test(utility))?.[1] ?? null;
+  let role = TAILWIND_ROLE.find(([pattern]) => pattern.test(utility))?.[1] ?? null;
+  if (!role && open === '[' && /^(inset-)?shadow$/.test(utility)) {
+    // `shadow-[inset_0_0_0_1px_var(--x)]`: a ring, so a border.
+    let depth = 0;
+    let close = bracket + 1;
+    for (; close < text.length; close++) {
+      if (text[close] === '[') depth++;
+      else if (text[close] === ']' && --depth === 0) break;
+    }
+    if (isRingShadow(text.slice(bracket + 2, close).replace(/_/g, ' '))) role = 'border';
+  }
   return {
     active: variants.some((variant) => ACTIVE_VARIANT.test(variant.replace(/\/[\w-]+$/, ''))),
     hover: variants.some(isHoverVariant),
@@ -198,6 +208,19 @@ function tailwindContext(text, offset) {
     stack: utility === 'z',
     where: `${head}-${open}…${open === '[' ? ']' : ')'}`,
   };
+}
+
+/*
+ * A box-shadow that draws a ring, one shadow with no offset nor blur and a spread
+ * (`inset 0 0 0 1px var(--x)`): it paints a border, so its colour takes the border role.
+ */
+function isRingShadow(value) {
+  const shadows = splitTopLevel(value.trim(), (char) => char === ',');
+  if (shadows.length !== 1) return false;
+  const parts = splitTopLevel(shadows[0].trim(), (char) => /\s/.test(char)).filter((part) => part && part !== 'inset');
+  const length = (part) => /^-?(\d*\.)?\d+([a-z]+)?$/i.test(part);
+  return parts.length === 5 && parts.slice(0, 4).every(length) && parts.slice(0, 3).every((part) => parseFloat(part) === 0)
+    && parseFloat(parts[3]) > 0 && !length(parts[4]);
 }
 
 /* ------------------------------------------------------------------------- selectors */
@@ -1321,6 +1344,9 @@ function planDeclaration(node, mapping, options) {
     if (declared.to) prop = declared.to;
   }
   const context = { ...declarationContext(node.prop === prop || themeKey ? fullProperty(node) : prop, stateOf(node)), config: options.config, themeKeys: themeKeysOf(node.root(), mapping, options) };
+  if (!context.role && /^box-shadow$/i.test(fullProperty(node)) && isRingShadow(node.value)) {
+    context.role = 'border';
+  }
   let value = themePath ? migrateThemePaths(mapping, node.value, context.themeKeys, plan) : node.value;
   value = migrateValue(mapping, value, context, plan);
   value = migrateScss(mapping, value, node, context, plan);

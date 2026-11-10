@@ -91,6 +91,13 @@ describe('design tokens', () => {
     assert.equal(migrate(css, 'a.css').output, '.f:focus,\n.f:focus-within { outline-color: var(--ods-semantic-color-focus); }\n.g:focus-visible { outline: 2px solid var(--ods-semantic-color-focus); }\n.h:focus { border-color: var(--ods-semantic-color-interaction-brand-hover); }\n');
   });
 
+  it('reads a ring box-shadow as a border, in CSS and in a Tailwind value', () => {
+    assert.equal(migrate('.a { box-shadow: inset 0 0 0 1px var(--ods-color-primary-600); }\n', 'a.css').output, '.a { box-shadow: inset 0 0 0 1px var(--ods-semantic-color-border-brand); }\n');
+    assert.match(migrate('.b { box-shadow: 0 2px 4px var(--ods-color-primary-600); }\n', 'a.css').output, /TODO\(ods-v20\): --ods-color-primary-600: .*Most likely here \(a border\)/);
+    assert.match(migrate('.c { box-shadow: 0 0 0 2px var(--ods-color-primary-600), 0 1px 2px #000; }\n', 'a.css').output, /TODO\(ods-v20\)/);
+    assert.equal(migrate('const c = "shadow-[inset_0_0_0_1px_var(--ods-color-primary-600)]";\n', 'a.tsx').output, 'const c = "shadow-[inset_0_0_0_1px_var(--ods-semantic-color-border-brand)]";\n');
+  });
+
   it('does not mark twice a site whose marker contains a `*`', () => {
     // ovh/manager-ui-kit tailwind.config: the BC-03 hint names `--ods-semantic-size-radius-*`.
     const once = migrate('export default { borderRadius: { xs: \'var(--ods-border-radius-xs)\' } };', 'tailwind.config.mjs').output;

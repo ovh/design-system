@@ -61,7 +61,7 @@ describe('theme paths: BC-31, the base64 bundle `./default`', () => {
       "@import url('@ovhcloud/ods-themes/default/css');\n@import url('@ovhcloud/ods-themes/default/fonts');");
     assert.equal(style("@use '@ovhcloud/ods-themes/default';").output,
       "@use '@ovhcloud/ods-themes/default/css';\n@use '@ovhcloud/ods-themes/default/fonts';");
-    assert.match(messages(style("@import '@ovhcloud/ods-themes/default';").changes), /BC-31.*fonts-base64/);
+    assert.match(messages(style("@import '@ovhcloud/ods-themes/default';").changes), /the bundle is removed.*fonts-base64/);
   });
 
   it('only adds what the file does not load yet (manager/apps/communication)', () => {
@@ -72,7 +72,7 @@ describe('theme paths: BC-31, the base64 bundle `./default`', () => {
   it('marks a `@use … as v` whose members are still read, instead of splitting it', () => {
     const source = "@use '@ovhcloud/ods-themes/default' as v;\n.a { width: v.$ods-something; }\n";
     const { output, todos } = style(source);
-    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed in v20 \(BC-31\).*v\.\$ods-something/);
+    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed in v20: .*v\.\$ods-something/);
     assert.equal(todos.length, 1);
     assert.equal(style(output).output, output);
   });
@@ -83,7 +83,7 @@ describe('theme paths: BC-31, the base64 bundle `./default`', () => {
     assert.equal(script("require('@ovhcloud/ods-themes/default');\n").output,
       "require('@ovhcloud/ods-themes/default/css');\nrequire('@ovhcloud/ods-themes/default/fonts');\n");
     const lazy = script("const theme = () => import('@ovhcloud/ods-themes/default');\n");
-    assert.match(lazy.output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed in v20 \(BC-31\)/);
+    assert.match(lazy.output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed in v20: /);
     const alias = script("export default { resolve: { alias: { theme: '@ovhcloud/ods-themes/default' } } };\n");
     assert.match(alias.output, /theme: \/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed/);
     for (const { output } of [lazy, alias]) assert.equal(script(output).output, output);
@@ -213,7 +213,7 @@ describe('theme paths: BC-32 and BC-05, the variables of src/default', () => {
   it('marks it while a removed variable is still read (its own marker says what to do)', () => {
     const source = "@use '@ovhcloud/ods-themes/src/default/variables' as v;\n.a { background: rgba(v.$ods-color-primary-500, 0.5); }\n";
     const { output, todos } = style(source);
-    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/src\/default\/variables: this file is gone in v20 \(BC-32\), and this file still reads v\.\$ods-color-primary-500/);
+    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/src\/default\/variables: this file is gone in v20, and this file still reads v\.\$ods-color-primary-500/);
     assert.equal(todos.length, 1);
     assert.equal(style(output).output, output);
   });
@@ -259,7 +259,7 @@ describe('theme paths: BC-33, ODS_THEME and ODS_THEMES', () => {
   it('marks the import while the file uses it, with the theme names', () => {
     const source = "import { ODS_THEME, ODS_THEMES } from '@ovhcloud/ods-themes';\nconst theme = ODS_THEME.default;\n";
     const { output, todos } = script(source);
-    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes has no JavaScript entry point in v20: ODS_THEME and ODS_THEMES are removed \(BC-33\)\. Write the theme names instead .*'default', 'aluminium-dark', 'blue-jeans' and 'blue-jeans-dark'/);
+    assert.match(output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes has no JavaScript entry point in v20: ODS_THEME and ODS_THEMES are removed\. Write the theme names instead .*'default', 'aluminium-dark', 'blue-jeans' and 'blue-jeans-dark'/);
     assert.equal(todos.length, 1);
     assert.equal(script(output).output, output);
   });
@@ -281,7 +281,7 @@ describe('theme paths: BC-06, the tokens JSON', () => {
       "export const p = Object.keys(tokens.root).filter((k) => k.startsWith('--ods-color-primary-'));",
     ].join('\n');
     const { output, prefixes, todos } = script(source, { tokenMapping });
-    assert.match(output, /^\/\* TODO\(ods-v20\): the tokens JSON of @ovhcloud\/ods-themes keeps its path but none of its keys in v20 \(BC-06\).*\*\/ import tokens from '@ovhcloud\/ods-themes\/default\/tokens';/m);
+    assert.match(output, /^\/\* TODO\(ods-v20\): the tokens JSON of @ovhcloud\/ods-themes keeps its path but none of its keys in v20.*\*\/ import tokens from '@ovhcloud\/ods-themes\/default\/tokens';/m);
     assert.match(output, /^\/\* TODO\(ods-v20\): the tokens JSON .*\*\/ const all = require/m);
     assert.match(output, /startsWith\(\/\* TODO\(ods-v20\): '--ods-color-primary-' is a v19 token prefix/);
     assert.deepEqual(prefixes, [{ line: 3, prefix: '--ods-color-primary-' }]);

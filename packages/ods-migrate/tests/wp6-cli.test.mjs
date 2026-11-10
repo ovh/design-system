@@ -47,7 +47,7 @@ const BADGE = "import { Badge } from '@ovhcloud/ods-react';\nexport const A = ()
 const V20 = "import { Badge } from '@ovhcloud/ods-react';\nexport const A = () => <Badge status=\"accent\" />;\n";
 const fileOf = (report, name) => report.files.find((file) => file.file.endsWith(name));
 
-describe('cli: usage and errors (bug [63])', () => {
+describe('cli: usage and errors', () => {
   it('prints the help with --help and -h, exit 0', () => {
     for (const flag of ['--help', '-h']) {
       const { code, stdout } = cli([flag], tmpdir());
@@ -132,7 +132,7 @@ describe('cli: the files it scans', () => {
     assert.match(stdout, /^1 files scanned/m);
   });
 
-  it('skips build output and generated files (bug [60])', () => {
+  it('skips build output and generated files', () => {
     const files = { 'src/a.tsx': BADGE };
     for (const dir of ['storybook-static', '.next', 'out', 'dist', 'build', 'coverage', '.turbo', '.vite', '.cache', '.nx', '.output', '.docusaurus', 'node_modules/x']) {
       files[`${dir}/b.js`] = BADGE;
@@ -371,7 +371,7 @@ describe('cli: snapshots', () => {
     assert.equal(readFileSync(join(dir, '__snapshots__/a.test.tsx.snap'), 'utf8'), snap);
   });
 
-  it('does not count names that ODS v19 never declared (bug [35])', async () => {
+  it('does not count names that ODS v19 never declared', async () => {
     const dir = project({ 'a.snap': 'exports[`x 1`] = `<div class="bg-[--ods-color-blue-100]" />`;\n' });
     const { report } = await runIn(dir, ['.']);
     assert.equal(report.snapshots.tokens, 0);
@@ -452,7 +452,7 @@ describe('cli: config and --from', () => {
       'apps/c/src/c.tsx': BADGE,
       'package.json': JSON.stringify({ devDependencies: { '@ovhcloud/ods-react': '~19.4.0' } }),
     });
-    const { report } = await runIn(dir, ['.', '--also', '@ovh-ux/muk']);
+    const { report } = await runIn(dir, ['.', '--built-on-ods', '@ovh-ux/muk']);
     assert.deepEqual(['a.tsx', 'b.tsx', 'c.tsx'].map((name) => fileOf(report, name).from), [20, 19, 19]);
     assert.equal(report.from, null);
     const forced = await runIn(dir, ['.', '--from', '20']);

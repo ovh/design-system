@@ -384,7 +384,7 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
   const odsMajor = minMajor(declared(root, '@ovhcloud/ods-react') ?? declared(root, '@ovhcloud/ods-themes'));
   if (tailwind !== undefined && (minMajor(tailwind) ?? 0) >= 4 && odsMajor === 19 && declared(root, ODS_TAILWIND) === undefined) {
     const entry = blocksOf(root).map(([, block]) => member(block, 'tailwindcss')).find(Boolean);
-    note(entry.value.start, `tailwindcss ${tailwind}: ODS v20 ships ${ODS_TAILWIND}, the Tailwind v4 utilities on the ODS semantic tokens (bg-ods-surface-raised, rounded-ods-container) with no configuration to copy: add "${ODS_TAILWIND}": "${ODS_RANGE}", import it before the ODS theme, and remove the ODS keys of your @theme and the .vscode/tailwind.json of the v19 guide (BC-30, the Tailwind CSS guide)`);
+    note(entry.value.start, `tailwindcss ${tailwind}: ODS v20 ships ${ODS_TAILWIND}, the Tailwind v4 utilities on the ODS semantic tokens (bg-ods-surface-raised, rounded-ods-container) with no configuration to copy: add "${ODS_TAILWIND}": "${ODS_RANGE}", import it before the ODS theme, and remove the ODS keys of your @theme and the .vscode/tailwind.json of the v19 guide (the Tailwind CSS guide)`);
   }
 
   // Browser targets.

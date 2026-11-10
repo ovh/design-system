@@ -1,9 +1,6 @@
 /*
  * Helpers shared by every part of ods-migrate (codemod, token engine, ESLint and stylelint rules,
  * guide, CLI), so that they read the mappings, the config and the markers the same way.
- *
- * Frozen by CONTRACT.md: every work package copies this file as src/shared.mjs and none edits it.
- * A package that needs more writes a local helper in a file it owns.
  */
 
 const TODO = 'TODO(ods-v20)';

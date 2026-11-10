@@ -48,7 +48,7 @@ function entryOf(run) {
   const s = run.summary;
   return {
     refs: { v19: run.refs.v19.sha.slice(0, 9), v20: run.refs.v20.sha.slice(0, 9) },
-    options: { treatAsOds: run.options.treatAsOds ?? run.options.also, config: run.options.config, strict: run.options.strict, checkJs: run.options.checkJs, truth: Boolean(run.truth) },
+    options: { treatAsOds: run.options.treatAsOds, config: run.options.config, strict: run.options.strict, checkJs: run.options.checkJs, truth: Boolean(run.truth) },
     files: run.files,
     sites: s.sites,
     auto: s.auto,

@@ -299,16 +299,16 @@ function textHelpers(sourceCode) {
 }
 
 /**
- * The sources a rule follows: the package, the --built-on-ods packages (option `builtOnOds`, or its
- * former names `treatAsOds` and `packages`), and the modules of the project that stand for ODS, listed by the CLI in
+ * The sources a rule follows: the package, the --built-on-ods packages (option `builtOnOds`), and the
+ * modules of the project that stand for ODS, listed by the CLI in
  * ods-migrate.modules.json (option `modules`: another path, or false). `isSource(specifier)` and
  * `targetOf(specifier)`: true for a package, the entry of a module, or null.
  */
 function sourcesOf(context, mapping) {
   const options = context.options[0] ?? {};
-  const builtOnOds = [...(options.builtOnOds ?? []), ...(options.treatAsOds ?? []), ...(options.packages ?? [])];
+  const builtOnOds = options.builtOnOds ?? [];
   const lookup = moduleLookup({ cwd: context.cwd ?? process.cwd(), option: options.modules, packages: builtOnOds });
-  const packages = [...new Set([mapping.package, ...builtOnOds, ...lookup.treatAsOds])];
+  const packages = [...new Set([mapping.package, ...builtOnOds, ...lookup.builtOnOds])];
   // `@ovhcloud/ods-react/button`: a component entry point of a package, read like the package, as in the codemod.
   const isPackage = (specifier) => packages.includes(specifier) || packages.some((name) => specifier?.startsWith(`${name}/`) && COMPONENT_ENTRY.test(specifier.slice(name.length + 1)));
   const targetOf = (specifier) => (isPackage(specifier) ? true : lookup(context.filename, specifier));
@@ -1624,7 +1624,7 @@ function migrationRule(rawMapping) {
               continue;
             }
             const leaves = value ? literalLeaves(value) : [];
-            // A literal or a constant member with no v20 value (bug [42]): the prop is not renamed, as in the codemod.
+            // A literal or a constant member with no v20 value: the prop is not renamed, as in the codemod.
             const orphan = value && valueLeaves(value).find((leaf) => {
               const key = valueKey(leaf, rule.constant);
               return key !== undefined && rule.values && Object.hasOwn(rule.values, key) && rule.values[key] === null;
@@ -2013,9 +2013,7 @@ function migrationRule(rawMapping) {
           look: { additionalProperties: { enum: ['aluminium', 'v19'] }, type: 'object' },
           builtOnOds: { items: { type: 'string' }, type: 'array' },
           modules: { oneOf: [{ type: 'string' }, { enum: [false] }] },
-          packages: { items: { type: 'string' }, type: 'array' },
           pending: { items: { type: 'string' }, type: 'array' },
-          treatAsOds: { items: { type: 'string' }, type: 'array' },
         },
         type: 'object',
       }],
@@ -2082,8 +2080,6 @@ function defaultChangedRule(rawMapping) {
         properties: {
           builtOnOds: { items: { type: 'string' }, type: 'array' },
           modules: { oneOf: [{ type: 'string' }, { enum: [false] }] },
-          packages: { items: { type: 'string' }, type: 'array' },
-          treatAsOds: { items: { type: 'string' }, type: 'array' },
         },
         type: 'object',
       }],

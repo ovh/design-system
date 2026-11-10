@@ -148,7 +148,7 @@ const paletteStop = (family, rung) => {
 };
 
 /*
- * Cells of the ramp table that a consumer cannot take on trust, found by the review of #1122:
+ * Cells of the ramp table that a consumer cannot take on trust:
  * the destination changes role family, or is an interaction or state role (`drag-over`,
  * `readonly`) for a colour at rest, which the table's own rule forbids. They are rewritten, and
  * also listed as points to check.
@@ -223,7 +223,7 @@ for (const [key, role] of Object.entries(LEGACY)) {
 const valueOf = (text, name) => text.match(new RegExp(`${name}:\\s*([^;]+);`))?.[1].trim();
 
 /*
- * The white of v19 stays white (DECISIONS): a token that painted #fff and that the tables send
+ * The white of v19 stays white: a token that painted #fff and that the tables send
  * to the grey page surface lands on `surface-raised`, the white of a card on the page. Only the
  * background declared on the document root (`html`, `body`, `:root`) keeps `surface-page`: a text,
  * a border or a shadow there stays white. The configurator's `page-background` choice turns the
@@ -403,7 +403,7 @@ const REMOVED = {
   '--ods-tab-text-color-selected': { bc: 'BC-08', hint: 'tab-selected', to: null },
   '--ods-toggle-control-border-color': { bc: 'BC-08', hint: 'toggle-border', to: null },
   '--ods-button-group-item-background-color-checked-disabled': { bc: 'BC-12', hint: 'disabled', to: null },
-  '--ods-message-close-button-text-color-primary': { bc: 'ODS-2335', hint: 'message-close', to: null },
+  '--ods-message-close-button-text-color-primary': { bc: 'BC-23', hint: 'message-close', to: null },
   '--ods-switch-item-background-color-checked-disabled': { bc: 'BC-12', hint: 'disabled', to: null },
   '--ods-tab-background-color-selected-disabled-switch': { bc: 'BC-12', hint: 'disabled', to: null },
   '--ods-tab-border-color-disabled': { bc: 'BC-12', hint: 'disabled', to: null },
@@ -428,7 +428,7 @@ const REMOVED = {
 };
 
 /*
- * Message emphasis (ODS-2335): the default variant becomes `high`, `light` becomes `medium`. The
+ * Message emphasis (BC-23): the default variant becomes `high`, `light` becomes `medium`. The
  * v19 light border was painted with the light text colour; v20 has a border token of its own, so
  * a theme that set the text colour also declares the border.
  */
@@ -477,8 +477,8 @@ for (const name of before.declared) {
 }
 
 /*
- * Button emphasis (ODS-2326, PR #1130): the `-ghost` and `-outline` custom properties become
- * `-low` and `-medium`. Generated from the v19 names, pending until the ref renames them.
+ * Button emphasis (BC-24): the `-ghost` and `-outline` custom properties become `-low` and
+ * `-medium`, generated from the v19 names.
  */
 const BUTTON_EMPHASIS = { '': 'high', ghost: 'low', outline: 'medium' };
 const BUTTON_STATUS = { critical: 'critical', neutral: 'neutral', primary: 'brand' };

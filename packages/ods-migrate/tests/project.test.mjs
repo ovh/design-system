@@ -143,7 +143,7 @@ describe('project index: report', () => {
     assert.equal(existsSync(join(dir, MODULES_FILE)), false, 'a dry run writes nothing');
   });
 
-  it('lists the imports that look like ODS but lead nowhere, and --treat-as-ods takes them', async () => {
+  it('lists the imports that look like ODS but lead nowhere, and --built-on-ods takes them', async () => {
     const dir = temp();
     cpSync(join(FIXTURES, 'lookalike', 'input'), dir, { recursive: true });
     const plain = await migrate(dir);
@@ -155,17 +155,17 @@ describe('project index: report', () => {
     assert.equal(treated.report.summary.filesChanged, 1);
     assert.deepEqual(treated.report.odsLookalikes, []);
     assert.match(readFileSync(join(dir, 'src/App.tsx'), 'utf8'), /BUTTON_EMPHASIS\.low/);
-    assert.deepEqual(JSON.parse(readFileSync(join(dir, MODULES_FILE), 'utf8')).treatAsOds, ['@acme/legacy-kit']);
+    assert.deepEqual(JSON.parse(readFileSync(join(dir, MODULES_FILE), 'utf8')).builtOnOds, ['@acme/legacy-kit']);
   });
 
-  it('keeps --treat-as-ods and --also as deprecated aliases of --built-on-ods, with one line each', async () => {
+  it('knows only --built-on-ods: the names it had before its first release are unknown options', async () => {
     for (const option of ['--treat-as-ods', '--also']) {
       const dir = temp();
       cpSync(join(FIXTURES, 'lookalike', 'input'), dir, { recursive: true });
-      const { report, stderr } = await migrate(dir, [option, '@acme/legacy-kit']);
-      assert.equal(stderr, `ods-migrate: ${option} is now --built-on-ods (same meaning; most projects need neither).\n`);
-      assert.equal(report.summary.filesChanged, 1);
-      assert.deepEqual(report.builtOnOds, ['@acme/legacy-kit']);
+      let stderr = '';
+      const code = await run(['.', option, '@acme/legacy-kit'], { cwd: dir, stderr: (text) => { stderr += text; }, stdout: () => {} });
+      assert.equal(code, 2, option);
+      assert.match(stderr, /Unknown option/, option);
     }
   });
 
@@ -212,12 +212,9 @@ describe('project index: ESLint', () => {
     });
   });
 
-  it('takes treatAsOds (and its former name, packages)', () => {
+  it('takes builtOnOds', () => {
     const source = "import { BUTTON_VARIANT } from '@acme/kit';\nexport const a = BUTTON_VARIANT.ghost;\n";
-    const dir = temp();
-    for (const options of [{ treatAsOds: ['@acme/kit'] }, { packages: ['@acme/kit'] }]) {
-      assert.match(lint(dir, 'a.ts', source, options).output, /BUTTON_EMPHASIS\.low/);
-    }
+    assert.match(lint(temp(), 'a.ts', source, { builtOnOds: ['@acme/kit'] }).output, /BUTTON_EMPHASIS\.low/);
   });
 });
 

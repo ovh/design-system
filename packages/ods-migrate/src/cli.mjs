@@ -67,8 +67,6 @@ What it cannot change safely gets a ${TODO} comment in your code, saying what to
 Exit codes: 0 done, 1 --check found work left, 2 error (usage, config, unreadable path, a file that failed).
 It skips what your .gitignore and ${IGNORE_FILE} files ignore, node_modules and build output (dist, storybook-static, .next, out…).`;
 
-/* The former names of --built-on-ods: they still work, hidden from the help. */
-const DEPRECATED_OPTIONS = ['treat-as-ods', 'also'];
 
 /* ------------------------------------------------------------------------- errors */
 
@@ -94,65 +92,8 @@ class FileError extends Error {
   code = 'ODS_MIGRATE_FILE';
 }
 
-/*
- * The config file is read by src/config.mjs (the configurator's package). Until it is there, a
- * minimal reader keeps --config working: it checks the shape of the file, not the choice ids.
- */
-class FallbackConfigError extends Error {
-  code = 'ODS_MIGRATE_CONFIG';
-
-  constructor(message, errors = []) {
-    super(message);
-    this.errors = errors;
-  }
-}
-
-const FALLBACK_CONFIG = {
-  CONFIG_FILE: 'ods-migrate.config.json',
-  ConfigError: FallbackConfigError,
-  defaultConfig: (cwd = process.cwd()) => ({ file: null, look: {}, optOutCss: resolve(cwd, 'ods-v19-look.css'), pending: [], version: 1 }),
-  describeConfig: (config) => Object.entries(config.look ?? {}).filter(([, look]) => look === 'v19').map(([id]) => `${id}: v19 look`),
-  findConfig: (cwd) => (existsSync(join(cwd, 'ods-migrate.config.json')) ? join(cwd, 'ods-migrate.config.json') : null),
-  loadConfig(path) {
-    let raw;
-    try {
-      raw = JSON.parse(readFileSync(path, 'utf8'));
-    } catch (error) {
-      throw new FallbackConfigError(`${path}: ${error.code === 'ENOENT' ? 'no such file' : error.message}`);
-    }
-    const errors = [];
-    if (raw === null || typeof raw !== 'object' || Array.isArray(raw)) {
-      errors.push('the config is not an object');
-    } else {
-      for (const key of Object.keys(raw)) {
-        if (!['look', 'optOutCss', 'pending', 'version'].includes(key)) errors.push(`unknown key "${key}"`);
-      }
-      if (raw.version !== undefined && raw.version !== 1) errors.push('version must be 1');
-      if (raw.look !== undefined && (typeof raw.look !== 'object' || raw.look === null || Array.isArray(raw.look))) errors.push('look must be an object');
-      for (const [id, look] of Object.entries(raw.look ?? {})) {
-        if (look !== 'aluminium' && look !== 'v19') errors.push(`look.${id} must be "aluminium" or "v19"`);
-      }
-      if (raw.optOutCss !== undefined && typeof raw.optOutCss !== 'string') errors.push('optOutCss must be a string');
-      if (raw.pending !== undefined && (!Array.isArray(raw.pending) || raw.pending.some((id) => typeof id !== 'string'))) errors.push('pending must be an array of strings');
-    }
-    if (errors.length) {
-      throw new FallbackConfigError(`${path}: ${errors.join(', ')}`, errors);
-    }
-    const file = resolve(path);
-    return { file, look: { ...raw.look }, optOutCss: resolve(dirname(file), raw.optOutCss ?? 'ods-v19-look.css'), pending: raw.pending ?? [], version: 1 };
-  },
-  optOutCss: () => null,
-};
-
 async function loadConfigModule() {
-  try {
-    return await import('./config.mjs');
-  } catch (error) {
-    if (error.code === 'ERR_MODULE_NOT_FOUND' && String(error.message).includes('config.mjs')) {
-      return FALLBACK_CONFIG;
-    }
-    throw error;
-  }
+  return import('./config.mjs');
 }
 
 /** The .gitignore and .odsmigrateignore rules of the directories above `dir`, up to the root of its git repository. */
@@ -222,7 +163,7 @@ function* walk(path, errors, extra = []) {
 
 /**
  * The ODS major a file is written for: the range of @ovhcloud/ods-react in the nearest package.json
- * that declares it or one of the --also packages. Unknown (a UI kit only, a workspace range) → 19.
+ * that declares it or one of the --built-on-ods packages. Unknown (a UI kit only, a workspace range) → 19.
  */
 function createFromResolver(packages) {
   const cache = new Map();
@@ -371,8 +312,6 @@ function parseOptions(argv) {
       allowPositionals: true,
       args: argv,
       options: {
-        // Former names of --built-on-ods, kept working (hidden from the help).
-        also: { default: [], multiple: true, type: 'string' },
         'built-on-ods': { default: [], multiple: true, type: 'string' },
         check: { default: false, type: 'boolean' },
         config: { type: 'string' },
@@ -382,7 +321,6 @@ function parseOptions(argv) {
         ignore: { default: [], multiple: true, type: 'string' },
         read: { default: [], multiple: true, type: 'string' },
         json: { type: 'string' },
-        'treat-as-ods': { default: [], multiple: true, type: 'string' },
         write: { default: false, type: 'boolean' },
       },
       strict: true,
@@ -413,10 +351,7 @@ async function main(argv, io, configModule) {
     fromOption = Number(match[1]);
   }
   const { cwd } = io;
-  for (const name of DEPRECATED_OPTIONS.filter((option) => options[option].length)) {
-    io.stderr(`ods-migrate: --${name} is now --built-on-ods (same meaning; most projects need neither).\n`);
-  }
-  const treatAsOds = [...new Set([...options['built-on-ods'], ...options['treat-as-ods'], ...options.also])];
+  const treatAsOds = [...new Set(options['built-on-ods'])];
 
   // Everything that can fail is checked before the first write.
   const configFile = options.config ? resolve(cwd, options.config) : configModule.findConfig(cwd);
@@ -459,7 +394,7 @@ async function main(argv, io, configModule) {
     }
   }
   // A config next to the scanned code (or above it) is not read unless it is the one of the working directory.
-  for (const unused of unusedConfigs(roots, configFile, configModule.CONFIG_FILE ?? FALLBACK_CONFIG.CONFIG_FILE)) {
+  for (const unused of unusedConfigs(roots, configFile, configModule.CONFIG_FILE ?? 'ods-migrate.config.json')) {
     print(io, `Note: ${relative(cwd, unused) || unused} is not read: ods-migrate reads the ${basename(unused)} of the folder it runs from, or the file given with --config.`);
   }
   // The v19-look additions are skipped for code on ODS 20 (`from`): say it where the config asks for them.
@@ -822,7 +757,7 @@ async function main(argv, io, configModule) {
   // The ODS keys of a v19 Tailwind configuration (BC-30): v20 has a package for it, whatever the Tailwind version declared.
   if (tailwindKeys.size && !manifests.some((path) => readFileSync(path, 'utf8').includes('"@ovhcloud/ods-tailwind"'))) {
     print(io);
-    print(io, `Tailwind: your configuration declares ${plural(tailwindKeys.size, 'ODS key')} of the v19 guide (renamed above). ODS v20 ships @ovhcloud/ods-tailwind, the Tailwind v4 utilities on the ODS semantic tokens with no configuration to copy: once on Tailwind v4, you can add it and remove those keys (BC-30, the Tailwind CSS guide of the ODS docs).`);
+    print(io, `Tailwind: your configuration declares ${plural(tailwindKeys.size, 'ODS key')} of the v19 guide (renamed above). ODS v20 ships @ovhcloud/ods-tailwind, the Tailwind v4 utilities on the ODS semantic tokens with no configuration to copy: once on Tailwind v4, you can add it and remove those keys (the Tailwind CSS guide of the ODS docs).`);
   }
 
   const counts = Object.entries(kinds).filter(([, count]) => count).map(([kind, count]) => `${count} ${kind}`).join(', ');
@@ -1430,7 +1365,7 @@ const isMain = (() => {
 if (isMain) {
   const code = await run(process.argv.slice(2));
   // Exit once the output is flushed, without waiting for the native parser's teardown, which
-  // crashes (SIGSEGV) after a large file.
+  // crashes (SIGSEGV) after a large file with @ast-grep/napi 0.36.3: drop this once it no longer does.
   let pending = 2;
   const done = () => --pending || process.exit(code);
   process.stdout.write('', done);

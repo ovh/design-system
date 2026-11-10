@@ -39,7 +39,7 @@ function lint(source, filename = 'a.tsx', { fix = true, look } = {}) {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: { parser, parserOptions: { ecmaFeatures: { jsx: !/\.(c|m)?ts$/.test(filename) } } },
     plugins: { ods: eslintPlugin },
-    rules: { 'ods/v20-migration': ['error', { look, packages: ['@ovh-ux/muk'] }], 'ods/v20-tokens': ['error', { look }] },
+    rules: { 'ods/v20-migration': ['error', { look, builtOnOds: ['@ovh-ux/muk'] }], 'ods/v20-tokens': ['error', { look }] },
   }];
   return fix ? linter.verifyAndFix(source, config, filename) : { messages: linter.verify(source, config, filename), output: source };
 }
@@ -85,7 +85,7 @@ async function cli(cwd, args) {
 const ODS = "import { Badge, Button, BUTTON_COLOR, BUTTON_VARIANT, Card, CARD_COLOR, Message, Popover, Tag } from '@ovhcloud/ods-react';\n";
 const PACKAGE_19 = JSON.stringify({ dependencies: { '@ovhcloud/ods-react': '^19.7.3' } });
 
-describe('review: decisions', () => {
+describe('the defaults chosen for v20', () => {
   it('marks a computed z-index in a Tailwind arbitrary value, in a class string and in @apply', async () => {
     const input = 'export const A = () => <div className="z-[calc(var(--ods-theme-overlay-z-index)+1)]" />;\n';
     const output = assertParity(input);
@@ -152,7 +152,7 @@ describe('review: decisions', () => {
   });
 });
 
-describe('review: p0-silent', () => {
+describe('failures that used to be silent', () => {
   it('renames a Tailwind utility only with its theme key, collected over the run (a preset, a v4 @theme)', async () => {
     const usage = 'export const A = () => <div className="text-ods-color-primary-500 rounded-ods-border-radius-md" />;\n';
     // Alone (ESLint, or a run on src only): marked, never renamed, and no ESLint fix.
@@ -229,7 +229,7 @@ describe('review: p0-silent', () => {
   });
 });
 
-describe('review: corpus', () => {
+describe('findings on real code', () => {
   it('marks an object key that feeds a renamed prop, in both engines, once', () => {
     const input = "import { BUTTON_VARIANT, BUTTON_COLOR } from '@ovhcloud/ods-react';\nimport { Button } from './MyButton';\nexport const Item = () => {\n  const buttonProps = { variant: BUTTON_VARIANT.ghost, color: BUTTON_COLOR.critical, label: 'x' };\n  return <Button {...buttonProps} />;\n};\n";
     const output = assertParity(input);
@@ -253,7 +253,7 @@ describe('review: corpus', () => {
   });
 });
 
-describe('review: ux-configurator', () => {
+describe('the configurator, as an integrator uses it', () => {
   it('never migrates the generated opt-out CSS: --check passes after --write with the v19 font', async () => {
     const dir = project({ 'ods-migrate.config.json': JSON.stringify({ look: { 'font-family': 'v19' } }), 'package.json': PACKAGE_19, 'src/a.css': ".t { font-family: 'Source Sans Pro', sans-serif; }\n" });
     assert.equal((await cli(dir, ['.', '--write'])).code, 0);
@@ -307,7 +307,7 @@ describe('review: ux-configurator', () => {
     const pending = await cli(dir, ['.', '--config', 'cfg.json']);
     assert.equal(pending.code, 2);
     assert.match(pending.stderr, /unknown id "NOPE-1" in pending \(known: [^)]*\)/);
-    assert.doesNotMatch(pending.stderr, /#1121|ODS-2336/, 'the component API has no pending id');
+    assert.doesNotMatch(pending.stderr, /example-pending/, 'the component API has no pending id');
     for (const from of ['7', '21']) {
       const result = await cli(dir, ['.', '--from', from]);
       assert.equal(result.code, 2);
@@ -320,9 +320,9 @@ describe('review: ux-configurator', () => {
     const script = page.match(/<script id="config-builder">([\s\S]*?)<\/script>/)[1];
     const context = vm.createContext({});
     vm.runInContext(script, context);
-    const selection = context.readSelection({ look: { 'button-radius': 'v19' }, optOutCss: 'src/ods-v19-look.css', pending: ['ODS-2336'], extra: 1 }, ['button-radius']);
+    const selection = context.readSelection({ look: { 'button-radius': 'v19' }, optOutCss: 'src/ods-v19-look.css', pending: ['example-pending'], extra: 1 }, ['button-radius']);
     assert.deepEqual(JSON.parse(JSON.stringify(selection.ignored)), ['extra']);
-    assert.deepEqual(JSON.parse(JSON.stringify(context.buildConfig(selection.look, selection.optOutCss, selection.pending))), { look: { 'button-radius': 'v19' }, optOutCss: 'src/ods-v19-look.css', pending: ['ODS-2336'], version: 1 });
+    assert.deepEqual(JSON.parse(JSON.stringify(context.buildConfig(selection.look, selection.optOutCss, selection.pending))), { look: { 'button-radius': 'v19' }, optOutCss: 'src/ods-v19-look.css', pending: ['example-pending'], version: 1 });
     assert.equal(context.shownValue('3.35544e+07px'), 'full (pill)');
     assert.equal(context.shownValue('4px'), '4px');
   });
@@ -337,7 +337,7 @@ describe('review: ux-configurator', () => {
     assert.match(readme, /"look": \{ "button-default-emphasis": "aluminium"/);
     // The ids of `pending` are for the ODS team, each said in plain words; the component API has none.
     assert.match(readme, /`pending`: for the ODS team only\. [^\n]*The shipped mappings have no pending entry/);
-    assert.doesNotMatch(readme, /`ODS-2336` \(|`#1121` \(/);
+    assert.doesNotMatch(readme, /`example-pending` \(/);
     assert.match(readme, /Scripts are read in a tolerant way/);
     assert.ok(existsSync(new URL('../configurator/index.html', import.meta.url)));
   });

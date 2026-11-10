@@ -28,7 +28,7 @@ describe('codemod: bug reproductions', () => {
     });
   }
 
-  it('rewrites a value typed by its own position only, never a label next to it (bug 11)', () => {
+  it('rewrites a value typed by its own position only, never a label next to it', () => {
     const { output } = transformSource(read('typed-siblings.input.ts'), mapping, 'typed-siblings.input.ts');
     assert.match(output, /i18nKey: 'primary', color: 'accent'/);
     assert.match(output, /trackingId: 'primary'/);
@@ -42,7 +42,7 @@ describe('codemod: bug reproductions', () => {
     assert.match(todos[0].message, /ButtonColor and BadgeColor/);
   });
 
-  it('keeps the line endings of a CRLF file and removes a whole import line (bug 57)', () => {
+  it('keeps the line endings of a CRLF file and removes a whole import line', () => {
     const { output } = transformSource(read('crlf.input.tsx'), mapping, 'crlf.input.tsx');
     assert.equal(output.replace(/\r\n/g, '').includes('\n'), false);
     assert.doesNotMatch(output, /DIVIDER_COLOR/);

@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 import { Lang, parse } from '@ast-grep/napi';
 import { transformSource } from '../src/transform.mjs';
 
-// The engine keys of CONTRACT §4, tested with small inline mappings (the real entries come from the mapping).
+// The keys of the component mapping, tested with small inline mappings (the real entries come from the mapping).
 const PKG = '@ovhcloud/ods-react';
 const errors = (source, filename) => parse(/\.(c|m)?ts$/.test(filename) ? Lang.TypeScript : Lang.Tsx, source).root().findAll({ rule: { kind: 'ERROR' } }).length;
 
@@ -46,7 +46,7 @@ describe('apply and imports', () => {
     assert.equal(output, `${imports('Badge')}export const A = () => <Badge status="neutral">x</Badge>;\n`);
   });
 
-  it('renames an import in place, keeping comments, spacing and trailing spaces (bug 40)', () => {
+  it('renames an import in place, keeping comments, spacing and trailing spaces', () => {
     const source = `import {\n  Badge, // the badge  \n  BADGE_COLOR,// its color\n  Text,TEXT_PRESET,\n} from '${PKG}';\nconst a = BADGE_COLOR.primary;\n`;
     const { output } = run(source, badge);
     assert.equal(output, source.replace('BADGE_COLOR,', 'BADGE_STATUS,').replace('BADGE_COLOR.primary', 'BADGE_STATUS.accent'));
@@ -60,7 +60,7 @@ describe('apply and imports', () => {
   });
 });
 
-describe('values without a v20 equivalent (bug 42)', () => {
+describe('values without a v20 equivalent', () => {
   it('deletes an attribute whose whole value has none (the default applies) and marks the element; keeps a computed one as it is, marked once', () => {
     const { output, todos } = run(`${imports('Button, BUTTON_COLOR')}const a = <Button color={ BUTTON_COLOR.information }>x</Button>;\nconst b = <Button color={ c ? "information" : "success" }>y</Button>;\n`, button, 'file.jsx');
     assert.equal(output, `${imports('Button')}const a = /* TODO(ods-v20): BUTTON_COLOR.information has no v20 equivalent: pick another */ <Button>x</Button>;\nconst b = <Button /* TODO(ods-v20): <Button color="information"> has no v20 equivalent: pick another */ color={ c ? "information" : "success" }>y</Button>;\n`);
@@ -139,7 +139,7 @@ const f: string | BadgeStatus = 'primary';
   });
 });
 
-describe('propsType: indexed types, Omit, Pick (bug 19)', () => {
+describe('propsType: indexed types, Omit, Pick', () => {
   const mapping = {
     components: {
       Badge: { props: { color: { renameTo: 'status' }, size: { hint: 'gone', remove: true } }, propsType: 'BadgeProp' },
@@ -340,7 +340,7 @@ describe('mocks', () => {
     components: { Badge: badge.components.Badge },
     exports: { ...badge.exports, ToastController: { memberKeys: true, members: { primary: 'accent' } }, toast: { members: { primary: 'accent' } } },
   };
-  it('migrates import() mocks, quoted keys and Object.assign members (bug 16)', () => {
+  it('migrates import() mocks, quoted keys and Object.assign members', () => {
     const source = `vi.mock(import('${PKG}'), () => ({ "BADGE_COLOR": { 'primary': 'primary' }, toast: Object.assign(vi.fn(), { primary: vi.fn(), critical }) }));\n`;
     assert.equal(run(source, mapping, 'file.test.tsx').output, `vi.mock(import('${PKG}'), () => ({ "BADGE_STATUS": { 'accent': 'accent' }, toast: Object.assign(vi.fn(), { accent: vi.fn(), critical }) }));\n`);
   });
@@ -496,7 +496,7 @@ describe('defaults and the v19 look', () => {
 </>;\n`);
   });
 
-  it('a project already on ODS 20 gets no v19-look addition, but the v19 values it rewrites keep their v19 look (review: ux-configurator)', () => {
+  it('a project already on ODS 20 gets no v19-look addition, but the v19 values it rewrites keep their v19 look', () => {
     const { output } = run(source, button, 'file.tsx', { ...v19('button-default-emphasis'), from: 20 });
     assert.equal(output, `${imports('Button, BUTTON_EMPHASIS')}const a = <>
   <Button>Plain</Button>

@@ -59,7 +59,6 @@ while [[ $# -gt 0 ]]; do
     --path) SUBPATH="$2"; shift 2 ;;
     --pkg) PKG="$(cd "$2" && pwd)" || exit 2; shift 2 ;;
     --built-on-ods) TREAT+=("$2"); shift 2 ;;
-    --treat-as-ods|--also) echo "$1 is now --built-on-ods" >&2; TREAT+=("$2"); shift 2 ;;
     --all-v19) ALL_V19=1; shift ;;
     --config) CONFIG=(--config "$(cd "$(dirname "$2")" && pwd)/$(basename "$2")") || exit 2; shift 2 ;;
     --work) WORK_ROOT="$2"; shift 2 ;;

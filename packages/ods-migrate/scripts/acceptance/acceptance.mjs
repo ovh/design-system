@@ -77,7 +77,7 @@ function reportTotals(path) {
 /* ------------------------------------------------------------------------- markers */
 
 /*
- * The marker formats of the CONTRACT (§ Markers):
+ * The marker formats (src/shared.mjs):
  *   inline script   `/* TODO(ods-v20): … *\/ ` (exactly one trailing space)
  *   JSX child       `{/* TODO(ods-v20): … *\/}` + newline and indent, or one space
  *   stylesheet      `/* TODO(ods-v20): … *\/` on its own line before the node

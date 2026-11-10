@@ -704,6 +704,8 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
   for (const [file, node] of nodes) {
     if ([...node.specs.values()].some((target) => target.ods)) pending.add(file);
   }
+  // A guard against entries that never settle (two modules re-exporting each other in a loop): each
+  // file is re-read at most a few times in practice. When it runs out, the entries found so far are kept.
   let budget = nodes.size * 20 + 1000;
   while (pending.size && budget-- > 0) {
     const [file] = pending;

@@ -13,7 +13,7 @@ import { stripScriptMarkers } from '../src/shared.mjs';
 import { transformSource } from '../src/transform.mjs';
 
 /*
- * The Switch removed in v20 becomes Tabs `variant="switch"` (the product owner's default replacement):
+ * The Switch removed in v20 becomes Tabs `variant="switch"` (the default replacement):
  * `<Switch>` → `<Tabs variant="switch">`, a `<TabList>` around its items, each `<SwitchItem>` a `<Tab>`.
  * Any other shape keeps its marker. Each case checks that a second run changes nothing, that no parse
  * error is added, and that the lint rule's --fix gives the codemod output without its markers.

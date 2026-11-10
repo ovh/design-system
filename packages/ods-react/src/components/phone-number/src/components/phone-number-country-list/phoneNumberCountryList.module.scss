@@ -3,6 +3,11 @@
     // Content-sized; the group root carries the width (see phoneNumber.module.scss).
     width: auto;
 
+    // See phoneNumberControl.module.scss.
+    &:focus-within {
+      z-index: 1;
+    }
+
     &__control {
       display: flex;
       border-right: none;

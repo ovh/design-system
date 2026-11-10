@@ -7,6 +7,12 @@
     max-width: none;
     font-weight: inherit;
 
+    // The focused field comes forward (a flex item stacks with a z-index, even static), so its focus
+    // outline is drawn over its neighbour.
+    &:focus-within {
+      z-index: 1;
+    }
+
     &--adjoined {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;

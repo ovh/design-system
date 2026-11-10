@@ -1081,7 +1081,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
         }
         const built = fn.findAll({ rule: { kind: 'identifier', regex: `^${local.replace(/[$]/g, '\\$&')}$`, inside: { kind: 'template_substitution', stopBy: 'end' } } });
         if (built.length > 0) {
-          note(built[0], `${name} ${prop}: its values change in v${mapping.to} (${changes.map(([from, to]) => `'${from}' → '${to}'`).join(', ')}): what this code builds from it changes too (a CSS class name, an object key): rename those to match`);
+          note(built[0], `${name} ${prop}: its values change in v${mapping.to} (${changes.map(([from, to]) => `'${from}' → '${to}'`).join(', ')}): what this code builds from it changes too (a CSS class name, an object key): rename those to match, and check what a renamed class overrides first, since the v20 value may look different (\`status="accent"\` is subtle where \`color="primary"\` was filled: a white text set for the filled one would be unreadable)`);
         }
       }
     }

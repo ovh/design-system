@@ -155,6 +155,8 @@ describe('coverage bench: code shown as text, fonts, bare modifiers', { skip: sk
 
   it('counts a font family v20 no longer loads, unless the list names one it loads (common.module.css:2)', () => {
     assert.deepEqual(sites('a.css', ".a { font-family: 'Source Sans Pro', arial; }\n.b { font-family: 'Source Sans Pro', 'Source Sans 3'; }\n/* Source Sans Pro */\n"), [[1, 'Source Sans Pro', 'token'], [3, 'Source Sans Pro', 'mention:comment']]);
+    // Another font whose name holds it: the app's own family, a local() face name.
+    assert.deepEqual(sites('a.css', ".c { font-family: 'Brand Source Sans Pro', serif; }\n@font-face { src: local('Source Sans Pro Light'); }\n"), []);
   });
 
   it('counts a bare modifier the component of the type selector (or every component) no longer declares (tailwind.css:115, :132)', () => {

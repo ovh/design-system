@@ -618,6 +618,8 @@ export function scanText(text, removed, declared20, { file, ts, map } = {}) {
     for (const m of text.matchAll(regex)) {
       // A font family list that also names a font v20 loads ('Source Sans Pro', 'Source Sans 3') still renders it.
       if (kind === 'font' && keptFont(text, m.index, declared20.font)) continue;
+      // Only the family alone: 'Brand Source Sans Pro' or local('Source Sans Pro Light') name another font.
+      if (kind === 'font' && partOfAnotherName(text, m.index, m[0].length)) continue;
       raw.push({ offset: m.index, name: m[0], kind });
     }
   }
@@ -649,6 +651,11 @@ function keptFont(text, at, fonts) {
   const lineEnd = text.indexOf('\n', at);
   const line = text.slice(lineStart, lineEnd < 0 ? text.length : lineEnd);
   return [...fonts].some((f) => line.includes(f));
+}
+
+/* The name sits inside a longer font name: a word before or after it within the same quotes. */
+function partOfAnotherName(text, at, length) {
+  return /[\w-][ \t]+$/.test(text.slice(Math.max(0, at - 40), at)) || /^[ \t]+[\w-]/.test(text.slice(at + length, at + length + 40));
 }
 
 const wordRegexCache = new WeakMap();

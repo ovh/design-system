@@ -360,8 +360,9 @@ function analyze(text, filename, { components = true } = {}) {
 function computeEntry(desc, targetOf, options) {
   const { components, equivalents, forwardedAs, memberTypes = new Set(), migratedDefault = () => false, propsTypeOf, propsTypes, watched } = options;
   const localOds = new Map();
-  // Components of other modules of the project that declare typed props, by local name.
+  // Components of other modules of the project that declare typed props, and their props types, by local name.
   const localTyped = new Map();
+  const localTypedTypes = new Map();
   for (const item of desc.imports) {
     const target = targetOf(item.spec);
     if (!target) continue;
@@ -369,6 +370,7 @@ function computeEntry(desc, targetOf, options) {
       const name = imported === 'default' && target === true ? null : odsNameIn(target, imported);
       if (name) localOds.set(local, name);
       else if (target !== true && target.typed?.[imported]) localTyped.set(local, target.typed[imported]);
+      else if (target !== true && target.typedTypes?.[imported]) localTypedTypes.set(local, target.typedTypes[imported]);
     }
   }
   const rejected = [];
@@ -529,8 +531,15 @@ function computeEntry(desc, targetOf, options) {
     const typed = fn.propsType ? typedPropsOf(fn.propsType) : null;
     if (typed && !wrapperOf(name)) ownTyped[name] = typed;
   }
+  // The props types of those components, by name (`ConfigCardProps`): an object typed with one carries the same
+  // values (`const p: Partial<ConfigCardProps> = { variant: 'ghost' }`, a test helper that spreads it on the component).
+  const ownTypedTypes = {};
+  for (const [name, fn] of desc.components) {
+    const typeName = fn.propsType?.k === 'ref' && !fn.propsType.args.length ? fn.propsType.name : null;
+    if (ownTyped[name] && typeName && desc.types.has(typeName)) ownTypedTypes[typeName] = ownTyped[name];
+  }
 
-  const entry = { childrenThrough: new Set(), names: {}, reexports: false, shadow: new Set(), star: false, typed: {}, wrappers: {} };
+  const entry = { childrenThrough: new Set(), names: {}, reexports: false, shadow: new Set(), star: false, typed: {}, typedTypes: {}, wrappers: {} };
   const explicit = new Set([...desc.reexports.flatMap((item) => item.specs.map((spec) => spec.exported)), ...desc.localExports.map((item) => item.exported), ...desc.exportedDecls]);
   const setName = (exported, ods, passThrough) => {
     entry.names[exported] = ods;
@@ -554,6 +563,7 @@ function computeEntry(desc, targetOf, options) {
       Object.assign(entry.wrappers, Object.fromEntries(Object.entries(target.wrappers ?? {}).filter(([name]) => !explicit.has(name))));
       (target.childrenThrough ?? []).filter((name) => !explicit.has(name)).forEach((name) => entry.childrenThrough.add(name));
       Object.assign(entry.typed, Object.fromEntries(Object.entries(target.typed ?? {}).filter(([name]) => !explicit.has(name) && name !== 'default')));
+      Object.assign(entry.typedTypes, Object.fromEntries(Object.entries(target.typedTypes ?? {}).filter(([name]) => !explicit.has(name))));
       entry.reexports ||= Boolean(target.reexports);
     }
   }
@@ -569,6 +579,7 @@ function computeEntry(desc, targetOf, options) {
       } else {
         entry.shadow.add(spec.exported);
         if (target && target !== true && target.typed?.[spec.name]) entry.typed[spec.exported] = target.typed[spec.name];
+        if (target && target !== true && target.typedTypes?.[spec.name]) entry.typedTypes[spec.exported] = target.typedTypes[spec.name];
       }
     }
   }
@@ -591,17 +602,21 @@ function computeEntry(desc, targetOf, options) {
       entry.shadow.add(exported);
       const typed = ownTyped[local] ?? localTyped.get(local);
       if (typed) entry.typed[exported] = typed;
+      const typedType = ownTypedTypes[local] ?? localTypedTypes.get(local);
+      if (typedType) entry.typedTypes[exported] = typedType;
     }
   }
   for (const name of Object.keys(entry.names)) entry.shadow.delete(name);
   entry.shadow = [...entry.shadow];
   entry.childrenThrough = [...entry.childrenThrough];
   entry.rejected = rejected.filter((item) => explicit.has(item.name) || desc.localExports.some((exp) => exp.local === item.name));
+  if (!Object.keys(entry.typedTypes).length) delete entry.typedTypes;
   entry.ownTyped = ownTyped;
+  entry.ownTypedTypes = ownTypedTypes;
   return entry;
 }
 
-const isEmpty = (entry) => !entry || (!entry.star && Object.keys(entry.names).length === 0 && Object.keys(entry.typed ?? {}).length === 0);
+const isEmpty = (entry) => !entry || (!entry.star && Object.keys(entry.names).length === 0 && Object.keys(entry.typed ?? {}).length === 0 && Object.keys(entry.typedTypes ?? {}).length === 0);
 /* A module that only declares typed props: not a module that stands for ODS (its names are its own). */
 const standsForOds = (entry) => Boolean(entry && (entry.star || Object.keys(entry.names).length));
 const sameEntry = (a, b) => JSON.stringify(a) === JSON.stringify(b);
@@ -664,6 +679,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
   const descs = new Map();
   const rejectedByFile = new Map();
   const ownTypedByFile = new Map();
+  const ownTypedTypesByFile = new Map();
   const targetOf = (file) => (spec) => {
     const target = nodes.get(file)?.specs.get(spec) ?? resolver.resolve(file, spec);
     if (target.ods) return true;
@@ -679,7 +695,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
       const target = of(spec);
       return target && names.some((name) => {
         const ods = odsNameIn(target, name);
-        return options.propsTypes.has(ods) || options.memberTypes.has(ods) || (target !== true && Boolean(target.typed?.[name]));
+        return options.propsTypes.has(ods) || options.memberTypes.has(ods) || (target !== true && Boolean(target.typed?.[name] || target.typedTypes?.[name]));
       });
     });
   };
@@ -711,8 +727,11 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
     else rejectedByFile.delete(file);
     if (Object.keys(entry.ownTyped).length) ownTypedByFile.set(file, entry.ownTyped);
     else ownTypedByFile.delete(file);
+    if (Object.keys(entry.ownTypedTypes).length) ownTypedTypesByFile.set(file, entry.ownTypedTypes);
+    else ownTypedTypesByFile.delete(file);
     delete entry.rejected;
     delete entry.ownTyped;
+    delete entry.ownTypedTypes;
     const before = entries.get(file);
     const next = isEmpty(entry) ? undefined : entry;
     if (!sameEntry(before, next)) {
@@ -764,6 +783,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
     mentions: (file, name) => new RegExp(`(^|[^\\w$])${name.replace(/[$]/g, '\\$&')}(?![\\w$])`).test(nodes.get(file)?.bare ?? ''),
     modules: entries,
     ownTyped: ownTypedByFile,
+    ownTypedTypes: ownTypedTypesByFile,
     odsPackages,
     workspacePackages: holding,
     rejected: rejectedByFile,

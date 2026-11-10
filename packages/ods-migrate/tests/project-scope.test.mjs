@@ -142,9 +142,9 @@ describe('typed props: callers, defaults, report, lint', () => {
     assert.match(stdout, /Your components whose props take ODS values \(found on their own: the values passed to them change in v20\):/);
     assert.match(stdout, /src\/components\/button\/Button\.tsx: Button \(variant, color\): the values given to it in 1 file are handled too\./);
     assert.deepEqual(report.typedComponents.map((item) => [item.file, item.name, item.users]), [
+      ['src/components/card/ConfigCard.tsx', 'ConfigCard', 2],
       ['src/components/button-link/ButtonLink.tsx', 'ButtonLink', 1],
       ['src/components/button/Button.tsx', 'Button', 1],
-      ['src/components/card/ConfigCard.tsx', 'ConfigCard', 1],
       ['src/components/menu/ActionsMenu.tsx', 'ActionsMenu', 1],
     ]);
     assert.deepEqual(report.odsModules, [], 'a module of typed components is not a module that stands for ODS');

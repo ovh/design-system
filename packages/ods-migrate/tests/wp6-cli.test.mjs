@@ -229,6 +229,12 @@ describe('cli: the files it scans', () => {
     }
   });
 
+  it('never puts the `>` of a childless element written out into a `//` comment', () => {
+    const dir = project({ 'src/P.tsx': "import { Pagination } from '@ovhcloud/ods-react';\nexport const P = () => (\n  <Pagination totalItems={ 10 } // eslint-disable-line\n  />\n);\n" });
+    cli(['.', '--write'], dir);
+    assert.match(readFileSync(join(dir, 'src/P.tsx'), 'utf8'), /\/\/ eslint-disable-line\n  >\n    <PaginationPages \/>\n  <\/Pagination>/);
+  });
+
   it('scans .html files when the token engine can', () => {
     const dir = project({ 'index.html': '<style>.a { color: var(--ods-theme-text-color); }</style>\n' });
     const { stdout } = cli(['.'], dir);

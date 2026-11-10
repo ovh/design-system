@@ -30,7 +30,7 @@ All commands run from `packages/ods-migrate/` unless noted. Nothing in the proce
 node --test tests/*.test.mjs        # = pnpm test
 ```
 
-Last run (2026-11-10): **889 tests, 888 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
+Last run (2026-11-10): **894 tests, 893 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
 
 The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescript, found by `tests/coverage-helpers.mjs` without an install: `$COVERAGE_TYPESCRIPT=<dir>`, the repo one the harness defaults to, or the one `@typescript-eslint/parser` resolves. Without one their suites show as skipped: same rule, fix the environment. Run the coverage tests alone with `node --test tests/coverage-*.test.mjs` (110 tests, ~10 s once the surfaces are extracted).
 
@@ -50,7 +50,7 @@ The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescrip
 | `wp4-fixtures.test.mjs` | 8 | `fixtures/wp4/` (`@apply`, control width, runtime names, fonts, JS declarations, nested props, quoted names, selectors, style keys, Tailwind variants, theme collisions): output, idempotence, stylelint parity; the v19.7.3 default theme migrated as an app override. |
 | `wp4-stylelint.test.mjs` | 7 | The stylelint plugin, `ods/no-control-width`. |
 | `wp5-token-mapping.test.mjs` | 24 | `mappings/tokens-v19-to-v20.json`: the data (first suite), then against the ODS repo at the commit it was built from (skipped when that commit is not reachable), and with `ODS_MIGRATE_BUILD=1` a full rebuild compared with the committed file. |
-| `wp6-cli.test.mjs` | 39 | The CLI: usage and exit codes, the files it scans (symlinks, `.gitignore`, build output), the text and JSON report, `--check`, `.snap` files, `--config` and `--from`, `package.json` and lockfiles, a 1.3 MB file under 10 s. Uses `fixtures/wp6/`. |
+| `wp6-cli.test.mjs` | 40 | The CLI: usage and exit codes, the files it scans (symlinks, `.gitignore`, build output), the text and JSON report, `--check`, `.snap` files, `--config` and `--from`, `package.json` and lockfiles, a 1.3 MB file under 10 s. Uses `fixtures/wp6/`. |
 | `wp6-manifest.test.mjs` | 19 | `package.json` migration: dependencies, versions, the llms URLs, the `@types/react` overrides (and a `pnpm-workspace.yaml` that keeps its own), the v19 theme kept for the ODS 18 components. |
 | `wp7-config.test.mjs` | 34 | `configurator/choices.json`, `defaultConfig`, `validateConfig`, `normalizeConfig`, `loadConfig` / `findConfig`, the opt-out CSS, and that no engine reads the config module. |
 | `wp7-configurator.test.mjs` | 13 | `configurator/index.html`: the page, its config builder, the build helpers. |

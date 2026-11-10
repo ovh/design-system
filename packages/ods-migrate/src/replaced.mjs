@@ -56,7 +56,17 @@ function planReplacement({ source, element, items, literals, names, replacement 
   edits.push({ end: closing.name.end, start: closing.name.start, text: names.element });
   for (const attribute of moved) {
     const index = opening.attributes.indexOf(attribute);
-    edits.push({ end: attribute.end, start: index > 0 ? opening.attributes[index - 1].end : opening.name.end, text: '' });
+    const from = index > 0 ? opening.attributes[index - 1].end : opening.name.end;
+    // A comment between the previous attribute and this one stays: only this attribute goes, with its
+    // line when it is alone on it.
+    if (/\/\/|\/\*/.test(source.slice(from, attribute.start))) {
+      const lineStart = lineStartOf(source, attribute.start);
+      const alone = startsLine(source, attribute.start) && /^[ \t]*(\r?\n|$)/.test(source.slice(attribute.end));
+      const after = source.slice(attribute.end).match(/^[ \t]*/)[0].length;
+      edits.push({ end: attribute.end + after, start: alone ? lineStart - (source[lineStart - 2] === '\r' ? 2 : 1) : attribute.start, text: '' });
+      continue;
+    }
+    edits.push({ end: attribute.end, start: from, text: '' });
   }
   const added = Object.entries(replacement.add ?? {}).filter(([name]) => !byName.has(name)).map(([name, value]) => attributeText(name, value));
   if (added.length > 0) {

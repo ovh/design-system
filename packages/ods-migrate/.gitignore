@@ -1,3 +1,5 @@
 # The root .gitignore ignores every folder named coverage (test reports); these are sources.
 !/scripts/coverage/
 !/tests/fixtures/coverage/
+# It also ignores *.d.ts (build output); the fixtures declare their own.
+!/tests/fixtures/**/*.d.ts

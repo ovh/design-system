@@ -20,7 +20,7 @@ All commands run from `packages/ods-migrate/` unless noted. Nothing in the proce
 ### Prerequisites
 
 - **The design-system repo** with the two refs: the tag `v19.7.3` and `origin/master` (v20: every change merged). `scripts/coverage.mjs`, `scripts/build-token-mapping.mjs` and `configurator/build.mjs` read them with `git show` / `git archive` only, never a checkout. A worktree of the repo works (its refs are shared).
-- **Installed dependencies** in the main checkout: `node_modules` (pnpm, symlinks) for `typescript`, `@types/react`, `sass`, `eslint`, `stylelint`, `@ast-grep/napi`, and `packages/ods-react/node_modules` for the v20 dependencies. Nothing is installed by the procedure.
+- **Installed dependencies**: `pnpm install` at the root of the checkout (or of the worktree) the tests run in. ods-migrate is a package of the workspace: its devDependencies bring `typescript`, `@types/react`, `sass`, `eslint` and `stylelint`, and `packages/ods-react/node_modules` the v20 dependencies of the coverage harness (a worktree without an install falls back to those of the main checkout). Nothing else is installed by the procedure.
 - Node 22 (measured with v22.14.0).
 - The corpora of § 5.3, fetched read-only into a scratch folder.
 
@@ -30,9 +30,11 @@ All commands run from `packages/ods-migrate/` unless noted. Nothing in the proce
 node --test tests/*.test.mjs        # = pnpm test
 ```
 
+The CI runs them from the root with the other packages (`pnpm test:spec:ci`); alone: `pnpm --filter @ovhcloud/ods-migrate run test:spec:ci`.
+
 Last run (2026-11-10): **894 tests, 893 pass, 0 fail, 1 skipped**. The skipped one is `wp5-token-mapping › is what the build writes`, which reruns the mapping build: step 2 runs it with `ODS_MIGRATE_BUILD=1`. `coverage-smoke` skips itself when the refs or `typescript` are missing: its 3 tests then show as skipped too, which means the environment is wrong; fix it before going on.
 
-The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescript, found by `tests/coverage-helpers.mjs` without an install: `$COVERAGE_TYPESCRIPT=<dir>`, the repo one the harness defaults to, or the one `@typescript-eslint/parser` resolves. Without one their suites show as skipped: same rule, fix the environment. Run the coverage tests alone with `node --test tests/coverage-*.test.mjs` (110 tests, ~10 s once the surfaces are extracted).
+The `coverage-a-*`, `coverage-b-*` and `coverage-c-truth` tests need a typescript, found by `tests/coverage-helpers.mjs`: `$COVERAGE_TYPESCRIPT=<dir>`, the devDependency of the package the harness defaults to, or the one `@typescript-eslint/parser` resolves. Without one their suites show as skipped: same rule, fix the environment. Run the coverage tests alone with `node --test tests/coverage-*.test.mjs` (110 tests, ~10 s once the surfaces are extracted).
 
 | File | Tests | What it covers |
 | --- | --- | --- |
@@ -150,7 +152,7 @@ node scripts/coverage.mjs <corpus dir> [--truth <hand-migrated dir>] [--config <
 
 - The corpus is copied to `<work>/<label>/base` and `<work>/<label>/migrated` (default `--work` `$TMPDIR/ods-migrate-coverage`, default `--label` the folder name). ods-migrate runs from an empty `<work>/<label>/run`, so it never picks up a stray `ods-migrate.config.json`.
 - The type surfaces of both refs are extracted with `git archive` into `<work>/.surfaces/<sha12>`, cached by commit (the first run of a session takes ~10 s more).
-- Defaults, when the package lives in a worktree of the design-system repo: `--repo` the main worktree; `--deps19` `<repo>/node_modules` (hoisted, ark 5.25.1); `--deps20` `<repo>/packages/ods-react/node_modules` (ark 5.39, shiki 4.3; its `dependencies` match `origin/master`); `--typescript` `<repo>/node_modules/typescript` (6.0.3); `--react-types` `@types/react` 18.2.56 for every file, so the v19 and v20 runs differ only by ODS. A copy of the harness outside the worktree must pass all of them.
+- Defaults, when the package lives in a checkout or a worktree of the design-system repo: `--repo` the main worktree (for the refs); `--deps19` `node_modules` and `--deps20` `packages/ods-react/node_modules` of the worktree the harness runs in, or of the main worktree when it has no install; `--typescript`, `--react-types` and `--react-dom-types` the devDependencies of this package (typescript 6.0.3, `@types/react` 19.2.18 for every file, so the v19 and v20 runs differ only by ODS), else `<repo>/node_modules/…`. A copy of the harness outside the repo must pass all of them.
 - Each surface must compile a probe and reject an unknown prop, or the run stops.
 
 ### 5.1 Metrics

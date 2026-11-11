@@ -271,11 +271,12 @@ const MODULES = [
 
 /* ------------------------------------------------------------------------- build */
 
+const ROOTS = ['packages/ods-react/src/style', 'packages/ods-react/src/components', 'packages/themes/src', 'packages/themes/assets/fonts'];
+
 function compileRef(git, ref, sass) {
   const dir = mkdtempSync(join(tmpdir(), 'ods-configurator-'));
   try {
-    const roots = ['packages/ods-react/src/style', 'packages/ods-react/src/components', 'packages/themes/src', 'packages/themes/assets/fonts'];
-    execFileSync('tar', ['-x', '-C', dir], { input: git(['archive', ref, ...roots], null), maxBuffer: 1 << 30 });
+    execFileSync('tar', ['-x', '-C', dir], { input: git(['archive', ref, ...ROOTS], null), maxBuffer: 1 << 30 });
     const options = { quietDeps: true, silenceDeprecations: ['import', 'global-builtin'] };
     // The default theme: src/default up to v19, Aluminium light once the themes stand alone (#1162).
     const entry = ['packages/themes/src/default/index.scss', 'packages/themes/src/aluminium/light.scss'].find((path) => existsSync(join(dir, path)));
@@ -384,7 +385,8 @@ async function main() {
     },
   });
   const git = (args, encoding = 'utf8') => execFileSync('git', ['-C', options.repo, ...args], { encoding, maxBuffer: 1 << 30 });
-  const resolveRef = (ref) => git(['rev-parse', '--short', ref]).trim();
+  // A fixed length: the default one depends on the size of the clone.
+  const resolveRef = (ref) => git(['rev-parse', '--short=9', ref]).trim();
   const from = options.from ?? git(['tag', '--list', 'v19.*', '--sort=-v:refname']).split('\n')[0];
   const require = createRequire(join(here, '../package.json'));
   let sass;
@@ -394,7 +396,8 @@ async function main() {
     console.error('sass is not installed: the configurator compiles the ODS styles with it (devDependency of ods-migrate)');
     process.exit(2);
   }
-  const sources = { v19: `${from} (${resolveRef(from)})`, v20: `${options.ref} (${resolveRef(options.ref)})` };
+  // The page names a branch without its commit: every commit of the branch would make --check fail.
+  const sources = { v19: `${from} (${resolveRef(from)})`, v20: options.ref };
   const compiled = { v19: compileRef(git, from, sass), v20: compileRef(git, options.ref, sass) };
   const choices = JSON.parse(readFileSync(join(here, 'choices.json'), 'utf8'));
   let mapping = null;
@@ -427,7 +430,7 @@ async function main() {
     return;
   }
   writeFileSync(target, page);
-  console.log(`configurator/index.html: ${(page.length / 1024).toFixed(0)} kB, ${choices.choices.length} choices, ${Object.entries(sources).map(([name, source]) => `${name} = ${source}`).join(', ')}`);
+  console.log(`configurator/index.html: ${(page.length / 1024).toFixed(0)} kB, ${choices.choices.length} choices, v19 = ${sources.v19}, v20 = ${options.ref} (${resolveRef(options.ref)})`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

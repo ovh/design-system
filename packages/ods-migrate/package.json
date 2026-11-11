@@ -1,8 +1,14 @@
 {
   "name": "@ovhcloud/ods-migrate",
-  "version": "0.0.0",
-  "private": true,
+  "version": "20.0.0-alpha.0",
   "description": "Migration tooling from ODS v19 to v20: codemod, ESLint rule and migration guide, from one mapping",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git",
+    "directory": "packages/ods-migrate"
+  },
   "type": "module",
   "bin": {
     "ods-migrate": "./src/cli.mjs"
@@ -11,11 +17,25 @@
     "./eslint-plugin": "./src/eslint-plugin.mjs",
     "./mapping": "./mappings/v19-to-v20.json",
     "./tokens-mapping": "./mappings/tokens-v19-to-v20.json",
-    "./stylelint-plugin": "./src/stylelint-plugin.mjs"
+    "./stylelint-plugin": "./src/stylelint-plugin.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "mappings",
+    "configurator/choices.json",
+    "configurator/index.html",
+    "README.md",
+    "MIGRATION.md"
+  ],
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
     "guide": "node src/guide.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "pnpm run test:spec",
+    "test:spec": "node --test tests/*.test.mjs",
+    "test:spec:ci": "pnpm run test:spec",
     "build:tokens": "node scripts/build-token-mapping.mjs",
     "build:configurator": "node configurator/build.mjs",
     "coverage": "node scripts/coverage.mjs",
@@ -34,10 +54,13 @@
     "stylelint": ">=16.17"
   },
   "devDependencies": {
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
     "@typescript-eslint/parser": "8.62.0",
     "eslint": "10.5.0",
     "sass": "1.103.1",
-    "stylelint": "17.14.1"
+    "stylelint": "17.14.1",
+    "typescript": "6.0.3"
   },
   "peerDependenciesMeta": {
     "eslint": {

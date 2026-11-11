@@ -3,6 +3,7 @@ packages:
   - "packages/examples/*"
   - "packages/mcp"
   - "packages/tailwind"
+  - "packages/ods-migrate"
   - "packages/ods-react"
   - "packages/ods-react/src/components/*"
   - "packages/ods-recipes"

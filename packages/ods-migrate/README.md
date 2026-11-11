@@ -2,7 +2,7 @@
 
 Moves the code of an app from ODS v19 to ODS v20.
 
-> **Not published yet** (version 0.0.0), and ODS v20 is not released yet. Until then, run it from a checkout of the design-system repository whose dependencies are installed: `node <checkout>/packages/ods-migrate/src/cli.mjs`; or, if your team already has it in its `devDependencies`, `npx ods-migrate`. Once published: `npx @ovhcloud/ods-migrate`.
+> **Not published yet**, and ODS v20 is not released yet. Until then, run it from a checkout of the design-system repository, after `pnpm install` at its root: `node <checkout>/packages/ods-migrate/src/cli.mjs`; or, if your team already has it in its `devDependencies`, `npx ods-migrate`. Once published: `npx @ovhcloud/ods-migrate`.
 
 **To migrate an app, follow [MIGRATION.md](MIGRATION.md)**: the full procedure, step by step, with what each line of the report means and what to do about it. This README is the reference of the package.
 

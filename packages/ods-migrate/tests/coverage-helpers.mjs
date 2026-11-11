@@ -1,7 +1,7 @@
 /*
- * Shared by the coverage tests (not a test file): the TypeScript module the harness reads code with,
- * found without an install: $COVERAGE_TYPESCRIPT (or the older $ODS_MIGRATE_TYPESCRIPT, $ODS_TYPESCRIPT),
- * the repo one the harness defaults to, the one this package resolves, or the one of @typescript-eslint/parser.
+ * Shared by the coverage tests (not a test file): the TypeScript module the harness reads code with:
+ * $COVERAGE_TYPESCRIPT (or the older $ODS_MIGRATE_TYPESCRIPT, $ODS_TYPESCRIPT), the one the harness
+ * defaults to (the devDependency of this package), or the one of @typescript-eslint/parser.
  */
 import { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -21,4 +21,4 @@ export function findTypeScript() {
 }
 
 export const ts = findTypeScript();
-export const skipTs = ts ? false : 'needs typescript (the repo one, or COVERAGE_TYPESCRIPT=<dir>)';
+export const skipTs = ts ? false : 'needs typescript (pnpm install at the root, or COVERAGE_TYPESCRIPT=<dir>)';

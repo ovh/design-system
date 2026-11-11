@@ -1,4 +1,5 @@
 import { Button, Tabs, TabList, Tab } from '@ovhcloud/ods-react';
+import { Pagination, PaginationPages } from '@ovhcloud/ods-react';
 
 // A `//` comment before a removed attribute keeps the code after it.
 export const Inline = () => (
@@ -28,4 +29,17 @@ export const View = () => (
       <Tab value="a" disabled>A</Tab>
     </TabList>
   </Tabs>
+);
+
+// A comment last on an element without children stays, and the parts go after it.
+export const Pager = ({ total }: { total: number }) => (
+  <>
+    <Pagination totalItems={ total } // pager
+    >
+      <PaginationPages />
+    </Pagination>
+    <Pagination totalItems={ total } /* pager */>
+      <PaginationPages />
+    </Pagination>
+  </>
 );

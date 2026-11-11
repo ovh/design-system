@@ -512,7 +512,7 @@ function createOlderOdsResolver() {
     let text = null;
     try {
       text = readFileSync(join(dir, 'package.json'), 'utf8');
-      manifest = JSON.parse(text);
+      manifest = JSON.parse(text.replace(/^\uFEFF/, ''));
     } catch {
       // No package.json here (look further up), or one that is not JSON (in scope).
       manifest = text === null ? undefined : null;
@@ -721,7 +721,7 @@ function loadModulesFile(path) {
   if (cached?.mtime === mtime) return cached.value;
   let value = null;
   try {
-    const raw = JSON.parse(readFileSync(path, 'utf8'));
+    const raw = JSON.parse(readFileSync(path, 'utf8').replace(/^\uFEFF/, ''));
     if (raw?.version === 1 && raw.modules && typeof raw.modules === 'object') {
       const dir = dirname(path);
       value = {

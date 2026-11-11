@@ -1,4 +1,5 @@
 import { Button, Switch, SwitchItem } from '@ovhcloud/ods-react';
+import { Pagination } from '@ovhcloud/ods-react';
 
 // A `//` comment before a removed attribute keeps the code after it.
 export const Inline = () => (
@@ -28,4 +29,13 @@ export const View = () => (
   >
     <SwitchItem value="a">A</SwitchItem>
   </Switch>
+);
+
+// A comment last on an element without children stays, and the parts go after it.
+export const Pager = ({ total }: { total: number }) => (
+  <>
+    <Pagination totalItems={ total } // pager
+    />
+    <Pagination totalItems={ total } /* pager */ />
+  </>
 );

@@ -705,6 +705,13 @@
             "defaultValue"
           ],
           "note": "Tabs selects no tab and warns in the console without value or defaultValue: set defaultValue to the value of the item the page starts on (usually the first one)"
+        },
+        "whenPresent": {
+          "attributes": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "note": "no longer names the control in v20: the v19 Switch set it on its group of options, the Tabs root is a plain element and the element that holds the tabs takes no label from TabList. Check what a screen reader announces for these tabs"
         }
       },
       "example": {

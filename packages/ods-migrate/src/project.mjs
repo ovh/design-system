@@ -118,9 +118,12 @@ function indexOptions(rawMapping) {
     if (rule.renameTo && distinctive.has(name)) distinctive.add(rule.renameTo);
   }
   // A default of a renamed prop that the codemod migrates in a wrapper typed with the ODS props (`variant = 'ghost'` → `emphasis: variant = 'low'`).
+  // Its callers keep the value they write, renamed: never dropped as the v20 default. Already under its v20 name, it was migrated.
   const migratedDefault = (component, prop, value) => {
-    const rule = mapping.components?.[component]?.props?.[prop];
-    return Boolean(rule?.renameTo && typeof value === 'string' && (!rule.values || !Object.hasOwn(rule.values, value) || rule.values[value] !== null));
+    const props = mapping.components?.[component]?.props ?? {};
+    const rule = props[prop];
+    if (!rule) return typeof value === 'string' && Object.values(props).some((item) => item.renameTo === prop);
+    return Boolean(rule.renameTo && typeof value === 'string' && (!rule.values || !Object.hasOwn(rule.values, value) || rule.values[value] !== null));
   };
   return { components, distinctive, equivalents, forwardedAs, memberTypes, migratedDefault, propsTypeOf, propsTypes, watched };
 }
@@ -635,7 +638,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
   const workspace = new Map();
   for (const file of files.filter((path) => basename(path) === 'package.json')) {
     try {
-      const name = JSON.parse(readText(file))?.name;
+      const name = JSON.parse(readText(file).replace(/^\uFEFF/, ''))?.name;
       if (typeof name === 'string' && name && !packages.includes(name)) workspace.set(name, dirname(file));
     } catch {
       // Reported by the manifest pass.

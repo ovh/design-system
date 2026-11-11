@@ -35,6 +35,9 @@ function guideBullets(component) {
     if (replacedBy.whenAbsent) {
       lines.push(`- Without ${list(replacedBy.whenAbsent.unless.map(code), 'or')}: ${replacedBy.whenAbsent.note}.`);
     }
+    if (replacedBy.whenPresent) {
+      lines.push(`- ${list(replacedBy.whenPresent.attributes.map(code), 'or')}: kept, but it ${replacedBy.whenPresent.note}.`);
+    }
   }
 
   for (const [from, rule] of Object.entries(props)) {

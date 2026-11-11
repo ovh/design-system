@@ -251,7 +251,8 @@ export const P = () => (
       'src/page.tsx': page,
     });
     const output = readFileSync(join(dir, 'src/page.tsx'), 'utf8');
-    assert.match(output, /<Banner status="accent">x<\/Banner>/);
+    // A component of the app may have its own default: the v20 default is kept on it.
+    assert.match(output, /<Banner status="accent" emphasis="medium">x<\/Banner>/);
     assert.match(output, /<Third status="warning">y<\/Third>/);
     assert.match(output, /<B2 status="warning">z<\/B2>/);
     assert.equal(lint(page, 'src/page.tsx', { cwd: dir }).output, output);

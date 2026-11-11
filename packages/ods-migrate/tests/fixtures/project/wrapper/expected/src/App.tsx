@@ -7,9 +7,9 @@ const conditions: DisableCondition[] = [];
 
 export const App = () => (
   <>
-    <GuardedButton conditions={ conditions } emphasis="low">Save</GuardedButton>
+    <GuardedButton conditions={ conditions } emphasis="low" status="brand">Save</GuardedButton>
     <GuardedButton>Default</GuardedButton>
-    <Message>Saved</Message>
+    <Message status="information" emphasis="medium">Saved</Message>
     <StatusBadge ok size="sm" />
     <IconButton variant="ghost" />
   </>

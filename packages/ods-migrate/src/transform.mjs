@@ -22,6 +22,68 @@ function line(node) {
   return node.range().start.line + 1;
 }
 
+/* The names a binding pattern declares: `a`, `{ a, b: c, d = 1, ...e }`, `[f, g = 2]`. */
+function patternNames(node) {
+  switch (node?.kind()) {
+    case 'identifier':
+    case 'shorthand_property_identifier_pattern':
+      return [node.text()];
+    case 'object_pattern':
+    case 'array_pattern':
+    case 'rest_pattern':
+      return node.children().filter((child) => child.isNamed()).flatMap(patternNames);
+    case 'pair_pattern':
+      return patternNames(node.field('value'));
+    case 'object_assignment_pattern':
+    case 'assignment_pattern':
+      return patternNames(node.field('left'));
+    case 'required_parameter':
+    case 'optional_parameter':
+      return patternNames(node.field('pattern'));
+    default:
+      return [];
+  }
+}
+
+const FUNCTIONS = new Set(['arrow_function', 'function_declaration', 'function_expression', 'generator_function', 'generator_function_declaration', 'method_definition']);
+const DECLARATIONS = new Set(['class_declaration', 'function_declaration', 'generator_function_declaration']);
+
+/*
+ * True when `name` is declared again between `node` and the top level of the file (a variable, a function,
+ * a class, a parameter): a tag of that name is not the import. Hoisting is followed: a declaration anywhere
+ * in an enclosing block counts.
+ */
+function shadowed(node, name) {
+  const declares = (statement) => {
+    const declaration = statement.kind() === 'export_statement' ? statement.field('declaration') : statement;
+    if (!declaration) return false;
+    if (DECLARATIONS.has(declaration.kind())) return declaration.field('name')?.text() === name;
+    if (['lexical_declaration', 'variable_declaration'].includes(declaration.kind())) {
+      return declaration.children().some((child) => child.kind() === 'variable_declarator' && patternNames(child.field('name')).includes(name));
+    }
+    return false;
+  };
+  for (let scope = node.parent(); scope && scope.kind() !== 'program'; scope = scope.parent()) {
+    const kind = scope.kind();
+    if (FUNCTIONS.has(kind)) {
+      const parameter = scope.field('parameter');
+      if (parameter ? parameter.text() === name : scope.field('parameters')?.children().some((item) => patternNames(item).includes(name))) return true;
+      // A named function expression sees its own name.
+      if (kind === 'function_expression' && scope.field('name')?.text() === name) return true;
+    } else if (kind === 'class') {
+      if (scope.field('name')?.text() === name) return true;
+    } else if (kind === 'statement_block' || kind === 'switch_case' || kind === 'switch_default') {
+      if (scope.children().some(declares)) return true;
+    } else if (['for_statement', 'for_in_statement'].includes(kind)) {
+      const head = kind === 'for_statement' ? scope.field('initializer') : scope.field('left');
+      if (head && (kind === 'for_statement' ? declares(head) : patternNames(head).includes(name))) return true;
+    } else if (kind === 'catch_clause') {
+      if (patternNames(scope.field('parameter')).includes(name)) return true;
+    }
+  }
+  return false;
+}
+
 const startOf = (node) => node.range().start.index;
 const endOf = (node) => node.range().end.index;
 const rangeOf = (node) => ({ end: endOf(node), start: startOf(node) });
@@ -820,6 +882,11 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     const [root, member, ...rest] = tag?.split('.') ?? [];
     return staticRoots.has(root) && member && rest.length === 0 ? statics[importedLocals.get(root)][member] : undefined;
   };
+  // A tag whose name (`Button`, the `Cart` of `Cart.Action`) a nearer declaration holds: not the import.
+  const shadowedTag = (element) => {
+    const name = element.field('name')?.text().split('.')[0];
+    return Boolean(name) && (importedLocals.has(name) || typedLocals.has(name)) && shadowed(element, name);
+  };
 
   if (localComponents.size === 0 && staticRoots.size === 0 && localExports.size === 0 && propsTypes.size === 0 && typedLocals.size === 0 && typedTypeLocals.size === 0) {
     rewriteImports(new Map());
@@ -897,7 +964,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     for (const element of root.findAll({ rule: { any: [{ kind: 'jsx_opening_element' }, { kind: 'jsx_self_closing_element' }] } })) {
       const name = element.field('name')?.text();
       const typed = typedLocals.get(name);
-      if (!typed || localComponents.has(name)) {
+      if (!typed || localComponents.has(name) || shadowedTag(element)) {
         continue;
       }
       for (const attribute of element.children().filter((child) => child.kind() === 'jsx_attribute')) {
@@ -1240,7 +1307,18 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // Literals typed with a renamed type: `const tones: Record<Status, BadgeColor> = { draft: 'primary' }`.
   // Only a literal whose own position has the type is rewritten: a label next to it is not a status.
   const renamedType = (node) => node?.kind() === 'type_identifier' && localExports.get(node.text())?.rule.members ? node.text() : null;
-  const mentionsRenamedType = (node) => Boolean(renamedType(node) || node?.findAll({ rule: { kind: 'type_identifier' } }).some(renamedType));
+  // `ButtonProp['variant']`, `ComponentProps<typeof Badge>['color']`: the values of that prop, as its type would.
+  const indexedRule = (node) => {
+    if (node?.kind() !== 'lookup_type') return null;
+    const [object, index] = named(node);
+    const component = propsOf(object);
+    const prop = index && literalTypeValue(index);
+    const props = component ? mapping.components[component].props ?? {} : {};
+    // Read once renamed too (`ButtonProp['emphasis']`, written by the pass above): the values still map the v19 ones.
+    const rule = prop === null ? null : props[prop] ?? Object.values(props).find((item) => item.renameTo === prop);
+    return rule?.renameTo && rule.values ? { hint: rule.hint, members: rule.values } : null;
+  };
+  const mentionsRenamedType = (node) => Boolean(renamedType(node) || indexedRule(node) || node?.findAll({ rule: { any: [{ kind: 'type_identifier' }, { kind: 'lookup_type' }] } }).some((item) => renamedType(item) || indexedRule(item)));
   const hits = new Map();
   const opaque = [];
   const walkTyped = (type, value) => {
@@ -1250,11 +1328,12 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       return;
     }
     const local = renamedType(type);
-    if (local) {
+    const indexed = !local && indexedRule(type);
+    if (local || indexed) {
       for (const leaf of valueLeaves(inner).map(unwrap)) {
         if (stringValue(leaf) !== null) {
           const hit = hits.get(startOf(leaf)) ?? { leaf, locals: new Map() };
-          hit.locals.set(local, localExports.get(local).rule);
+          hit.locals.set(local ?? type.text(), local ? localExports.get(local).rule : indexed);
           hits.set(startOf(leaf), hit);
         }
       }
@@ -1310,7 +1389,8 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     }
   };
 
-  for (const declarator of root.findAll({ rule: { kind: 'variable_declarator' } })) {
+  // A variable, or a parameter with its default: `(v: ButtonVariant = 'default')`.
+  for (const declarator of root.findAll({ rule: { any: [{ kind: 'variable_declarator' }, { kind: 'required_parameter' }] } })) {
     const annotation = declarator.field('type');
     if (annotation && mentionsRenamedType(annotation)) {
       walkTyped(named(annotation)[0], declarator.field('value'));
@@ -1740,7 +1820,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
   // ------------------------------------------------------------------------- JSX of the mapped components
 
   const elements = lang === Lang.Tsx
-    ? root.findAll({ rule: { any: [{ kind: 'jsx_opening_element' }, { kind: 'jsx_self_closing_element' }] } })
+    ? root.findAll({ rule: { any: [{ kind: 'jsx_opening_element' }, { kind: 'jsx_self_closing_element' }] } }).filter((element) => !shadowedTag(element))
     : [];
   // The hints of removed props that build a part (`withPageSizeSelector`), noted when the part is not written out.
   const partHints = [];
@@ -1777,12 +1857,14 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
     const attributes = element.children().filter((child) => child.kind() === 'jsx_attribute');
     const byName = new Map(attributes.map((attribute) => [attribute.child(0).text(), attribute]));
     const spreads = element.children().filter((child) => child.kind() === 'jsx_expression' && child.find({ rule: { kind: 'spread_element' } }));
-    const whenAbsent = spec.whenAbsent && !wrapperLocals.has(nameNode.text()) && v19Look(spec.whenAbsent.choice) ? spec.whenAbsent : null;
+    // A component of the app may give the prop its own default: the value its callers write is never the v20 default.
+    const wrapper = wrapperLocals.has(nameNode.text());
+    const whenAbsent = spec.whenAbsent && !wrapper && v19Look(spec.whenAbsent.choice) ? spec.whenAbsent : null;
     // The v19 default kept explicit (`emphasis="medium"` not dropped, a computed value keeps its v19 fallback).
     const v19Default = spec.whenAbsent && isV19Look(config, spec.whenAbsent.choice) ? spec.whenAbsent : null;
 
     // Aluminium: an element without the prop looks different in v20 with no change in the code (counted for the visual check).
-    if (spec.whenAbsent && !whenAbsent && !wrapperLocals.has(nameNode.text()) && spreads.length === 0 && !spec.whenAbsent.unless.some((name) => byName.has(name))) {
+    if (spec.whenAbsent && !whenAbsent && !wrapper && spreads.length === 0 && !spec.whenAbsent.unless.some((name) => byName.has(name))) {
       report.looks.push({ component, line: line(element), message: `<${component}> without ${spec.whenAbsent.unless.join(' or ')}: ${spec.whenAbsent.hint}` });
     }
 
@@ -1827,7 +1909,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       for (const { attribute, rule } of moved) {
         const value = attributeExpression(attribute);
         const from = attribute.child(0).text();
-        const isDefault = Object.hasOwn(rule.moveTo, 'default')
+        const isDefault = Object.hasOwn(rule.moveTo, 'default') && !wrapper
           && (value.text === JSON.stringify(rule.moveTo.default) || value.text === expressionText(rule.moveTo.default) || (value.node && stringValue(value.node) === rule.moveTo.default));
         if (isDefault) {
           deleteAttribute(attribute, change(attribute, `<${component}> ${from} removed (${expressionText(rule.moveTo.default)} is the v${mapping.to} default of ${target}.${rule.moveTo.key})`));
@@ -2026,7 +2108,7 @@ function transformSource(source, rawMapping, filename = 'file.tsx', options = {}
       const suppressed = v19Default && Object.hasOwn(v19Default.add, rule.renameTo);
       // After a spread the explicit value overrode what the spread carried: it stays, renamed.
       const afterSpread = spreads.some((spread) => startOf(spread) < startOf(attribute));
-      if (rule.dropDefault !== undefined && mapped === rule.dropDefault && !suppressed && !afterSpread) {
+      if (rule.dropDefault !== undefined && mapped === rule.dropDefault && !suppressed && !afterSpread && !wrapper) {
         deleteAttribute(attribute, change(attribute, `<${component}> ${from}="${staticKey}" → removed (${rule.dropDefault} is the v${mapping.to} default)`));
         continue;
       }

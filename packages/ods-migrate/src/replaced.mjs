@@ -106,6 +106,9 @@ function planReplacement({ source, element, items, literals, names, replacement 
   if (absent && !spread && !absent.unless.some((name) => byName.has(name))) {
     notes.push(absent.note);
   }
+  for (const name of replacement.whenPresent?.attributes.filter((attribute) => byName.has(attribute)) ?? []) {
+    notes.push(`${name} ${replacement.whenPresent.note}`);
+  }
   if (spread && replacement.moveToParts?.length) {
     notes.push(`if the object passed here with {...} holds ${replacement.moveToParts.join(' or ')}, set it on each <${Object.values(replacement.parts)[0]}> instead: <${replacement.element}> does not take it`);
   }

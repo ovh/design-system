@@ -215,6 +215,46 @@ describe('cli: the files it scans', () => {
     assert.match(readFileSync(join(dir, 'src/a.tsx'), 'utf8'), /status="accent"/);
   });
 
+  it('keeps the byte order mark of a file it changes, and reads a package.json that has one', async () => {
+    const BOM = '\uFEFF';
+    const manifest = `${BOM}{ "name": "app", "dependencies": { "@ovhcloud/ods-react": "^19.7.0", "@ovhcloud/ods-storybook": "^19.7.0" } }\n`;
+    const dir = project({
+      'package.json': manifest,
+      'src/a.css': `${BOM}.a { color: var(--ods-theme-text-color); }\n`,
+      'src/a.tsx': `${BOM}${BADGE}`,
+      'src/kit.ts': `${BOM}export { Badge } from '@ovhcloud/ods-react';\n`,
+      'src/b.tsx': "import { Badge } from './kit';\nexport const B = () => <Badge color=\"primary\" />;\n",
+    });
+    const { code, report, stderr } = await runIn(dir, ['.', '--write']);
+    assert.equal(code, 0, stderr);
+    assert.equal(report.summary.errors, 0);
+    const css = readFileSync(join(dir, 'src/a.css'), 'utf8');
+    assert.ok(css.startsWith(`${BOM}.a { color: var(--ods-`) && !css.includes('--ods-theme-text-color'), css);
+    assert.equal(readFileSync(join(dir, 'src/a.tsx'), 'utf8'), `${BOM}${V20}`);
+    // The module with a BOM is still found, and its importer migrated.
+    assert.match(readFileSync(join(dir, 'src/b.tsx'), 'utf8'), /<Badge status="accent" \/>/);
+    // The package.json is read: its ODS 19 is seen (a point to check), its storybook renamed, its BOM kept.
+    const after = readFileSync(join(dir, 'package.json'), 'utf8');
+    assert.ok(after.startsWith(`${BOM}{ "name": "app"`), after);
+    assert.match(after, /"@ovhcloud\/ods-docs": "\^20\.0\.0"/);
+    // A package of the repository whose package.json has one is still found by its name.
+    const repo = project({
+      'apps/web/package.json': '{ "name": "web", "dependencies": { "@acme/kit": "workspace:*" } }\n',
+      'apps/web/src/a.tsx': "import { Badge } from '@acme/kit';\nexport const A = () => <Badge color=\"primary\" />;\n",
+      'packages/kit/package.json': `${BOM}{ "name": "@acme/kit", "main": "src/index.ts", "dependencies": { "@ovhcloud/ods-react": "^19.7.0" } }\n`,
+      'packages/kit/src/index.ts': "export { Badge } from '@ovhcloud/ods-react';\n",
+    });
+    assert.equal((await runIn(repo, ['.', '--write'])).code, 0);
+    assert.match(readFileSync(join(repo, 'apps/web/src/a.tsx'), 'utf8'), /<Badge status="accent" \/>/);
+    // A package on ODS 18 whose package.json has one is still left unchanged.
+    const older = project({
+      'apps/ips/package.json': `${BOM}{ "name": "ips", "dependencies": { "@ovhcloud/ods-react": "^18.6.0" } }\n`,
+      'apps/ips/src/a.tsx': BADGE,
+    });
+    assert.equal((await runIn(older, ['.', '--write'])).code, 0);
+    assert.equal(readFileSync(join(older, 'apps/ips/src/a.tsx'), 'utf8'), BADGE);
+  });
+
   it('reports an unreadable script and still migrates the others', { skip: process.getuid?.() === 0 && 'root reads anything' }, () => {
     const dir = project({ 'src/a.tsx': BADGE, 'src/locked.tsx': BADGE });
     chmodSync(join(dir, 'src/locked.tsx'), 0o000);

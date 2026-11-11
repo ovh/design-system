@@ -96,7 +96,7 @@ export const A = () => (
 );
 `);
     assert.deepEqual(todos, []);
-    assert.deepEqual(notes, []);
+    assert.deepEqual(notes.map((item) => item.message), [`<Switch> → <Tabs>: aria-label ${mapping.components.Switch.replacedBy.whenPresent.note}`]);
     assertParity(source, output);
   });
 
@@ -179,10 +179,39 @@ export const A = () => (
     assert.match(output, /<Tabs aria-label="x" variant="switch">/);
     assert.doesNotMatch(output, /defaultValue/);
     assert.deepEqual(todos, []);
-    assert.equal(notes.length, 1);
+    assert.equal(notes.length, 2, 'no selection, and the label');
     assert.equal(notes[0].line, 4);
     assert.match(notes[0].message, NO_SELECTION);
     assertParity(source, output);
+  });
+
+  it('keeps aria-label and aria-labelledby, with a point to check: they no longer name the control', () => {
+    const source = `import { Switch, SwitchItem } from '${PKG}';
+
+export const A = () => (
+  <>
+    <Switch aria-label="View" defaultValue="a">
+      <SwitchItem value="a">A</SwitchItem>
+    </Switch>
+    <Switch aria-labelledby="title" defaultValue="a">
+      <SwitchItem value="a">A</SwitchItem>
+    </Switch>
+  </>
+);
+`;
+    const { notes, output, todos } = run(source);
+    assert.match(output, /<Tabs aria-label="View" defaultValue="a" variant="switch">/);
+    assert.match(output, /<Tabs aria-labelledby="title" defaultValue="a" variant="switch">/);
+    assert.deepEqual(todos, []);
+    assert.deepEqual(notes.map((item) => item.line), [5, 8]);
+    for (const item of notes) {
+      assert.match(item.message, /^<Switch> → <Tabs>: aria-label(ledby)? no longer names the control in v20: [^\n]*screen reader/);
+    }
+    assertParity(source, output);
+    // The lint rule says it on the element it rewrites.
+    const reports = lint(source, 'file.tsx', { fix: false }).messages.filter((message) => message.line === 5 || message.line === 8);
+    assert.equal(reports.length, 2);
+    reports.forEach((message) => assert.match(message.message, /no longer names the control in v20/));
   });
 
   it('wraps items that are mapped, conditional or in a fragment: TabList takes any children', () => {

@@ -72,40 +72,46 @@ function literalTypes(type) {
  * The string literals at a value position of a type, each with the name of the type that types it:
  * bare `T`, `T[]`, `Array<T>`, `ReadonlyArray<T>`, the `V` of `Record<K, V>`, the matching property
  * of an object type literal, through unions. A sibling string (a label, an i18n key) is never one.
+ * `indexed(type)` gives the rule of an indexed type (`ButtonProp['variant']`), carried as `rule`.
  */
-function typedPositions(value, type) {
+function typedPositions(value, type, indexed = () => null) {
   const node = unwrapConst(value);
   if (!node || !type) {
     return [];
   }
+  const inner = (child, childType) => typedPositions(child, childType, indexed);
   switch (type.type) {
     case 'TSTypeAnnotation':
     case 'TSParenthesizedType':
-      return typedPositions(node, type.typeAnnotation);
+      return inner(node, type.typeAnnotation);
     case 'TSUnionType':
-      return type.types.flatMap((member) => typedPositions(node, member));
+      return type.types.flatMap((member) => inner(node, member));
     case 'TSTypeOperator':
-      return type.operator === 'readonly' ? typedPositions(node, type.typeAnnotation) : [];
+      return type.operator === 'readonly' ? inner(node, type.typeAnnotation) : [];
     case 'TSArrayType':
-      return node.type === 'ArrayExpression' ? node.elements.flatMap((element) => typedPositions(element, type.elementType)) : [];
+      return node.type === 'ArrayExpression' ? node.elements.flatMap((element) => inner(element, type.elementType)) : [];
     case 'TSTypeLiteral': {
       if (node.type !== 'ObjectExpression') {
         return [];
       }
       return node.properties.flatMap((property) => {
         const member = property.type === 'Property' && type.members.find((item) => item.type === 'TSPropertySignature' && keyName(item) === keyName(property));
-        return member ? typedPositions(property.value, member.typeAnnotation) : [];
+        return member ? inner(property.value, member.typeAnnotation) : [];
       });
+    }
+    case 'TSIndexedAccessType': {
+      const rule = indexed(type);
+      return rule ? literalLeaves(node).map((literal) => ({ literal, name: rule.name, rule })) : [];
     }
     case 'TSTypeReference': {
       const name = referenceName(type);
       const args = typeArguments(type);
       if ((name === 'Array' || name === 'ReadonlyArray') && args.length === 1) {
-        return node.type === 'ArrayExpression' ? node.elements.flatMap((element) => typedPositions(element, args[0])) : [];
+        return node.type === 'ArrayExpression' ? node.elements.flatMap((element) => inner(element, args[0])) : [];
       }
       if (name === 'Record' && args.length === 2) {
         return node.type === 'ObjectExpression'
-          ? node.properties.flatMap((property) => (property.type === 'Property' ? typedPositions(property.value, args[1]) : []))
+          ? node.properties.flatMap((property) => (property.type === 'Property' ? inner(property.value, args[1]) : []))
           : [];
       }
       return name ? literalLeaves(node).map((literal) => ({ literal, name })) : [];
@@ -202,6 +208,17 @@ function walk(node, visitorKeys, visit) {
       }
     }
   }
+}
+
+/* A tag whose name (`Button`, the `Cart` of `Cart.Action`) a nearer declaration holds: not the import, as in the codemod. */
+function shadowedTag(sourceCode, node) {
+  let name = node.name;
+  while (name.type === 'JSXMemberExpression') name = name.object;
+  if (name.type !== 'JSXIdentifier') return false;
+  for (let scope = sourceCode.getScope(node); scope && !['module', 'global'].includes(scope.type); scope = scope.upper) {
+    if (scope.set.has(name.name)) return true;
+  }
+  return false;
 }
 
 /* The entry points of a package that are not a component (`/style`, `/normalize-css`): their names are not the ODS API. */
@@ -497,11 +514,24 @@ function migrationRule(rawMapping) {
       };
       const attributeValue = (attribute) => (attribute.value?.type === 'JSXExpressionContainer' ? attribute.value.expression : attribute.value);
 
+      // `ButtonProp['variant']`, `ComponentProps<typeof Badge>['color']`: the values of that prop, as its type would (as the codemod).
+      const indexedRule = (type) => {
+        const objectType = type.objectType;
+        const name = referenceName(objectType);
+        const [argument] = typeArguments(objectType);
+        const component = name && typeArguments(objectType).length === 0 ? propsTypes.get(name)
+          : /^(React\.)?ComponentProps(WithRef|WithoutRef)?$/.test(name ?? '') && argument?.type === 'TSTypeQuery' && argument.exprName.type === 'Identifier' ? components.get(argument.exprName.name) : undefined;
+        const prop = type.indexType.type === 'TSLiteralType' && isString(type.indexType.literal) ? type.indexType.literal.value : undefined;
+        const props = (component && mapping.components[component]?.props) ?? {};
+        // Read once renamed too (`ButtonProp['emphasis']`): the values still map the v19 ones.
+        const rule = prop === undefined ? undefined : props[prop] ?? Object.values(props).find((item) => item.renameTo === prop);
+        return rule?.renameTo && rule.values ? { hint: rule.hint, members: rule.values, name: sourceCode.getText(type) } : null;
+      };
       const reportTyped = (node, typeAnnotation) => {
         // Literals at a value position of a renamed type: one fix when every type agrees, none when they disagree.
         const byLiteral = new Map();
-        for (const { literal, name } of typedPositions(node, typeAnnotation)) {
-          const rule = renamedExports.get(name);
+        for (const { literal, name, rule: indexed } of typedPositions(node, typeAnnotation, indexedRule)) {
+          const rule = indexed ?? renamedExports.get(name);
           if (!rule?.members) {
             continue;
           }
@@ -933,7 +963,10 @@ function migrationRule(rawMapping) {
             const fixes = [...consumed].map((attribute) => removeAttribute(fixer, attribute));
             if (node.selfClosing) {
               const slash = sourceCode.getTokenBefore(sourceCode.getLastToken(node));
-              fixes.push(fixer.replaceTextRange([sourceCode.getTokenBefore(slash).range[1], node.range[1]], `>${body}</${sourceCode.getText(node.name)}>`));
+              // A comment last (`<Pagination … // pager`) stays, as in the codemod: after a `//` one, the `>` goes on a line of its own.
+              const comment = sourceCode.getCommentsBefore(slash).at(-1);
+              const start = comment?.range[1] ?? sourceCode.getTokenBefore(slash).range[1];
+              fixes.push(fixer.replaceTextRange([start, node.range[1]], `${comment?.type === 'Line' ? `${eol}${indent}` : ''}>${body}</${sourceCode.getText(node.name)}>`));
             } else {
               fixes.push(fixer.replaceTextRange([node.range[1], element.closingElement.range[0]], body));
             }
@@ -1050,7 +1083,8 @@ function migrationRule(rawMapping) {
         const packageImport = imports.importNodes.find((item) => item.source.value === mapping.package && item.importKind !== 'type' && item.specifiers.some((spec) => spec.type === 'ImportSpecifier'));
         const lastImport = sourceCode.ast.body.filter((statement) => statement.type === 'ImportDeclaration').at(-1);
         context.report({
-          data: { detail: `<${tag}> is removed in ODS v20: use <${partNames[replacement.element]}${Object.entries(replacement.add ?? {}).map(([name, value]) => ` ${attributeText(name, value)}`).join('')}>, a <${partNames[replacement.wrap]}> around its items, each a <${Object.values(partNames).at(-1)}>` },
+          // The points to check of the codemod, said on the element it rewrites.
+          data: { detail: `<${tag}> is removed in ODS v20: use <${partNames[replacement.element]}${Object.entries(replacement.add ?? {}).map(([name, value]) => ` ${attributeText(name, value)}`).join('')}>, a <${partNames[replacement.wrap]}> around its items, each a <${Object.values(partNames).at(-1)}>${plan.notes.map((text) => `. ${text}`).join('')}` },
           fix: (fixer) => {
             const fixes = plan.edits.map((item) => fixer.replaceTextRange([item.start, item.end], item.text));
             const append = (statement, names) => {
@@ -1128,7 +1162,7 @@ function migrationRule(rawMapping) {
       };
 
       // Moved props (`<Popover position="top">` → `overlayConfig={{ position: 'top' }}`), one fix per target prop.
-      const reportMoved = (component, moved, byName) => {
+      const reportMoved = (component, moved, byName, wrapper) => {
         const groups = new Map();
         for (const item of moved) {
           const target = item.rule.moveTo.prop;
@@ -1140,7 +1174,7 @@ function migrationRule(rawMapping) {
           for (const { attribute, rule } of items) {
             const value = attributeValue(attribute);
             const literal = !value ? true : value.type === 'Literal' ? value.value : undefined;
-            if (rule.moveTo.default !== undefined && literal === rule.moveTo.default) {
+            if (rule.moveTo.default !== undefined && literal === rule.moveTo.default && !wrapper) {
               deleted.push(attribute);
               continue;
             }
@@ -1394,6 +1428,13 @@ function migrationRule(rawMapping) {
           }
         },
 
+        // A parameter with its default: `(v: ButtonVariant = 'default')`, as a variable.
+        AssignmentPattern(node) {
+          if (node.left.type === 'Identifier' && node.left.typeAnnotation && node.parent.params?.includes(node)) {
+            reportTyped(node.right, node.left.typeAnnotation);
+          }
+        },
+
         'VariableDeclarator, TSAsExpression, TSSatisfiesExpression, TSTypeAssertion'(node) {
           const [value, type] = node.type === 'VariableDeclarator' ? [node.init, node.id.typeAnnotation?.typeAnnotation] : [node.expression, node.typeAnnotation];
           if (node.type === 'VariableDeclarator') {
@@ -1470,6 +1511,9 @@ function migrationRule(rawMapping) {
         },
 
         JSXOpeningElement(node) {
+          if (shadowedTag(sourceCode, node)) {
+            return;
+          }
           const typed = node.name.type === 'JSXIdentifier' ? typedOf(node.name.name) : undefined;
           if (typed) {
             for (const attribute of node.attributes) {
@@ -1505,9 +1549,11 @@ function migrationRule(rawMapping) {
             }
           }
 
+          // A component of the app may give the prop its own default: the value its callers write is never the v20 default.
+          const wrapper = imports.wrappers.has(node.name.name);
           const childless = spec.childless;
           const empty = node.selfClosing || node.parent.children.every((child) => child.type === 'JSXText' && child.value.trim() === '');
-          if (childless && empty && spreads.length === 0 && (!imports.wrappers.has(node.name.name) || imports.childrenWrappers.has(node.name.name))) {
+          if (childless && empty && spreads.length === 0 && (!wrapper || imports.childrenWrappers.has(node.name.name))) {
             const result = childlessFix(node, component, childless, byName);
             // Kept as they are when the parts cannot be built: the integrator still needs them.
             result.consumed.forEach((attribute) => consumed.add(attribute));
@@ -1667,7 +1713,7 @@ function migrationRule(rawMapping) {
             const keepsDefault = v19Default && Object.hasOwn(whenAbsent.add ?? {}, rule.renameTo);
             // After a spread the explicit value overrode what the spread carried: it stays, renamed.
             const afterSpread = spreads.some((spread) => spread.range[0] < attribute.range[0]);
-            if (rule.dropDefault !== undefined && !keepsDefault && !afterSpread && mapped === rule.dropDefault) {
+            if (rule.dropDefault !== undefined && !keepsDefault && !afterSpread && !wrapper && mapped === rule.dropDefault) {
               dropped.push(attribute);
               context.report({ data: { component, from, to: `nothing (${rule.dropDefault} is the v20 default)` }, fix: (fixer) => removeAttribute(fixer, attribute), messageId: 'removedProp', node: attribute });
               continue;
@@ -1713,7 +1759,7 @@ function migrationRule(rawMapping) {
           }
 
           if (moved.length > 0) {
-            reportMoved(component, moved, byName);
+            reportMoved(component, moved, byName, wrapper);
           }
         },
 
@@ -2054,7 +2100,7 @@ function defaultChangedRule(rawMapping) {
           imports.read(node);
         },
         JSXOpeningElement(node) {
-          const component = node.name.type === 'JSXIdentifier' && !imports.wrappers.has(node.name.name) && imports.components.get(node.name.name);
+          const component = node.name.type === 'JSXIdentifier' && !imports.wrappers.has(node.name.name) && !shadowedTag(context.sourceCode, node) && imports.components.get(node.name.name);
           const whenAbsent = component && mapping.components[component].whenAbsent;
           if (!whenAbsent) {
             return;

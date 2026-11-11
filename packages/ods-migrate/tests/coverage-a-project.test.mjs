@@ -5,7 +5,7 @@
  * solution-style tsconfig, package.json `imports` and a relative barrel, an app on ODS 18).
  */
 import assert from 'node:assert/strict';
-import { cpSync, mkdtempSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, realpathSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { after, describe, it } from 'node:test';
@@ -89,7 +89,8 @@ describe('coverage project: the fixture monorepo', { skip: noTs }, () => {
   });
 
   it('resolves aliases, package.json imports and workspace packages per file, on any copy', () => {
-    const copy = mkdtempSync(join(tmpdir(), 'coverage-a-copy-'));
+    // TypeScript returns real paths, and the macOS tmpdir is under a symlink (/var → /private/var).
+    const copy = realpathSync(mkdtempSync(join(tmpdir(), 'coverage-a-copy-')));
     try {
       cpSync(PROJECT, copy, { recursive: true });
       for (const root of [PROJECT, copy]) {

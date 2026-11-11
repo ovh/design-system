@@ -4,6 +4,7 @@
  */
 import { spawnSync } from 'node:child_process';
 import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { diffLines } from 'diff';
@@ -20,22 +21,39 @@ import { jsxUsages, visualChanges } from './visual.mjs';
 const PACKAGE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const IGNORED_DIRS = new Set(['.cache', '.docusaurus', '.git', '.next', '.nx', '.output', '.turbo', '.vite', 'build', 'coverage', 'dist', 'node_modules', 'out', 'storybook-static']);
 
-function gitMainWorktree(dir) {
-  const r = spawnSync('git', ['-C', dir, 'rev-parse', '--path-format=absolute', '--git-common-dir'], { encoding: 'utf8' });
-  return r.status === 0 ? dirname(r.stdout.trim()) : null;
+function gitPath(dir, option) {
+  const r = spawnSync('git', ['-C', dir, 'rev-parse', '--path-format=absolute', option], { encoding: 'utf8' });
+  return r.status === 0 ? r.stdout.trim() : null;
+}
+
+/* The devDependencies of this package, then the folder of the main checkout. */
+function installed(name, repo) {
+  try {
+    return dirname(createRequire(import.meta.url).resolve(`${name}/package.json`));
+  } catch {
+    return repo && join(repo, 'node_modules', name);
+  }
+}
+
+/* The installed folder of the worktree this package runs in, or of the main checkout. */
+function firstInstalled(...dirs) {
+  return dirs.find((dir) => dir && existsSync(dir)) ?? dirs.at(-1);
 }
 
 export function defaults() {
-  const repo = gitMainWorktree(PACKAGE);
+  const commonDir = gitPath(PACKAGE, '--git-common-dir');
+  const repo = commonDir && dirname(commonDir);
+  const worktree = gitPath(PACKAGE, '--show-toplevel');
+  const inRepo = (path) => [worktree, repo].map((root) => root && join(root, path));
   return {
     repo,
     v19: 'v19.7.3',
     v20: 'origin/master',
-    deps19: repo && join(repo, 'node_modules'),
-    deps20: repo && join(repo, 'packages/ods-react/node_modules'),
-    typescript: repo && join(repo, 'node_modules/typescript'),
-    reactTypes: repo && join(repo, 'node_modules/@types/react'),
-    reactDomTypes: repo && join(repo, 'node_modules/@types/react-dom'),
+    deps19: firstInstalled(...inRepo('node_modules')),
+    deps20: firstInstalled(...inRepo('packages/ods-react/node_modules')),
+    typescript: installed('typescript', repo),
+    reactTypes: installed('@types/react', repo),
+    reactDomTypes: installed('@types/react-dom', repo),
     cli: join(PACKAGE, 'src/cli.mjs'),
     treatAsOds: [],
     strict: false,

@@ -26,10 +26,10 @@ const USAGE = `Usage: node scripts/coverage.mjs <corpus dir> [--truth <hand-migr
   --cache <dir>         the extracted type surfaces (default: <work>/.surfaces)
   --repo <git dir>      the design-system repo (default: the one this package lives in)
   --v19 <ref>, --v20 <ref>             the two refs (default: v19.7.3, origin/master)
-  --deps19, --deps20 <node_modules>    installed dependencies of each major (default: <repo>/node_modules,
-                                       <repo>/packages/ods-react/node_modules)
-  --typescript <dir>    the typescript package (default: <repo>/node_modules/typescript)
-  --react-types <dir>, --react-dom-types <dir>   the @types every file reads (default: <repo>/node_modules/@types/…)
+  --deps19, --deps20 <node_modules>    installed dependencies of each major (default: node_modules and
+                                       packages/ods-react/node_modules of this worktree, else of <repo>)
+  --typescript <dir>    the typescript package (default: the devDependency of this package)
+  --react-types <dir>, --react-dom-types <dir>   the @types every file reads (default: the devDependencies of this package)
   --strict              type-check with strict: true (default false)
   --check-js            also type-check .js/.jsx (checkJs)
   --tool <dir|cli.mjs>  the ods-migrate to measure: a package folder (its src/cli.mjs) or a cli.mjs

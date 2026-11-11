@@ -1,0 +1,6 @@
+@use '@ovhcloud/ods-themes/src/default/variables' as v;
+
+.a {
+  @media (min-width: v.$ods-breakpoint-tablet) { color: red; }
+  max-width: v.$ods-breakpoint-desktop;
+}

@@ -1,0 +1,4 @@
+.a { color: var(--ods-color-primary-500) /* keep me */; }
+.b { border: 1px /* width */ solid var(--ods-color-primary-500); }
+.c { color: var(--ods-color-primary-500) /* why */ ! important; }
+.d { color: var( --ods-color-primary-500 ) ! important; }

@@ -1,0 +1,9 @@
+.a {
+  border:
+    1px solid // the ring
+    var(--ods-semantic-color-border-brand);
+  background:
+    var(--ods-semantic-color-surface-brand) /* brand */
+    url('x.png');
+  color: var(--ods-semantic-color-content-brand) /* keep */ !important;
+}

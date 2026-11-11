@@ -28,6 +28,14 @@ describe('other formats: Less', () => {
     assert.equal(transformOtherStyles(output, mapping, 'a.less').output, output);
   });
 
+  it('marks a v19 token in a mixin definition or a guard of a Less file it rewrites (no property says the role there)', () => {
+    const source = '// theme\n.btn(@c: var(--ods-color-primary-500)) {\n  background: @c;\n  color: var(--ods-theme-text-color);\n}\n.x when (iscolor(var(--ods-color-critical-500))) { color: red; }\n';
+    const { output, todos } = transformOtherStyles(source, mapping, 'a.less');
+    assert.match(output, /^\/\/ theme\n\/\/ TODO\(ods-v20\): a Less mixin parameter or guard, which ods-migrate does not rewrite: rewrite the ODS v19 tokens of the next line by hand \/ --ods-color-primary-500: v20 names colours by what they paint.*\n\.btn\(@c: var\(--ods-color-primary-500\)\) \{\n {2}background: @c;\n {2}color: var\(--ods-semantic-color-content-text\);\n\}\n\/\/ TODO\(ods-v20\): .*--ods-color-critical-500: .*\n\.x when/);
+    assert.deepEqual([...new Set(todos.map(({ line }) => line))], [2, 6]);
+    assert.equal(transformOtherStyles(output, mapping, 'a.less').output, output);
+  });
+
   it('leaves a Less file without v19 tokens alone', () => {
     const source = '.a { .mixin(); color: var(--ods-semantic-color-content-text); }\n';
     assert.equal(transformOtherStyles(source, mapping, 'a.less').output, source);

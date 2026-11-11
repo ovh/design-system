@@ -1,0 +1,7 @@
+.a:focus-visible { outline: 2px solid var(--ods-theme-outline-color); }
+.b:focus-visible { outline: 2px solid var(--ods-color-primary-700); }
+.c:focus { outline-color: var(--ods-color-information-700); }
+.err:focus { outline: 2px solid var(--ods-color-critical-500); }
+.brand:focus-within { outline: 2px solid var(--ods-color-primary-500); }
+.dark:focus-visible { outline: 2px solid var(--ods-color-neutral-000); }
+.d:hover:focus-visible { outline-color: var(--ods-color-primary-700); }

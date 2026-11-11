@@ -155,6 +155,7 @@ const HOVER_PSEUDO = /:(hover|active|focus|focus-visible)(?![\w-])/;
 const ACTIVE_VARIANT = /^(active|group-active|peer-active)$/;
 const ACTIVE_PSEUDO = /:active(?![\w-])/;
 /* The keyboard focus, whose outline v20 paints with its focus role. */
+const FOCUS_VARIANT = /^(?:(?:group|peer)-)?focus(?:-visible|-within)?$/;
 const FOCUS_PSEUDO = /:focus(?:-visible|-within)?(?![\w-])/;
 const FOCUS_RING = /^outline(-color)?$/;
 
@@ -201,8 +202,10 @@ function tailwindContext(text, offset) {
     }
     if (isRingShadow(text.slice(bracket + 2, close).replace(/_/g, ' '))) role = 'border';
   }
+  const isFocus = (variant) => FOCUS_VARIANT.test(variant.replace(/\/[\w-]+$/, '')) || FOCUS_PSEUDO.test(withoutNegations(variant.match(/^(?:(?:group|peer|has|in)-)?\[(.*)\]$/)?.[1].replace(/_/g, ' ') ?? ''));
   return {
     active: variants.some((variant) => ACTIVE_VARIANT.test(variant.replace(/\/[\w-]+$/, ''))),
+    focusRing: utility === 'outline' && variants.some(isFocus),
     hover: variants.some(isHoverVariant),
     placeholder: variants.includes('placeholder') || utility === 'placeholder',
     role,
@@ -274,7 +277,10 @@ function withoutNegations(compound) {
 
 const selectorList = (selector) => splitTopLevel(selector, (char) => char === ',').map((part) => part.trim()).filter(Boolean);
 const subjectOf = (complex) => splitTopLevel(complex, (char) => /[\s>+~]/.test(char)).filter(Boolean).pop() ?? '';
+/* The page: `html`, `body` and `:root` paint its background. */
 const isRootCompound = (compound) => /^&?(html|body)(?![\w-])/.test(compound) || /:root(?![\w-])/.test(compound);
+/* Where v20 computes its roles from the palette: `:root`, which `html` is in a HTML document; not `body`. */
+const isThemeRootCompound = (compound) => /^&?html(?![\w-])/.test(compound) || /:root(?![\w-])/.test(compound);
 const PLACEHOLDER_PSEUDO = /::?(?:-webkit-input-|-moz-)?placeholder(?![\w-])/;
 
 /*
@@ -285,13 +291,13 @@ const PLACEHOLDER_PSEUDO = /::?(?:-webkit-input-|-moz-)?placeholder(?![\w-])/;
  * subject of its parent.
  */
 function selectorStates(chain) {
-  let parents = [{ active: false, focus: false, hover: false, placeholder: false, root: false }];
+  let parents = [{ active: false, focus: false, hover: false, placeholder: false, root: false, themeRoot: false }];
   for (const selector of chain) {
     const next = [];
     for (const complex of selectorList(selector)) {
       const compound = withoutNegations(subjectOf(complex));
       const hover = HOVER_PSEUDO.test(withoutNegations(complex));
-      const own = { active: ACTIVE_PSEUDO.test(withoutNegations(complex)), focus: FOCUS_PSEUDO.test(withoutNegations(complex)), hover, placeholder: PLACEHOLDER_PSEUDO.test(compound), root: isRootCompound(compound) };
+      const own = { active: ACTIVE_PSEUDO.test(withoutNegations(complex)), focus: FOCUS_PSEUDO.test(withoutNegations(complex)), hover, placeholder: PLACEHOLDER_PSEUDO.test(compound), root: isRootCompound(compound), themeRoot: isThemeRootCompound(compound) };
       for (const parent of parents) {
         next.push({
           active: own.active || parent.active,
@@ -299,6 +305,7 @@ function selectorStates(chain) {
           hover: own.hover || parent.hover,
           placeholder: own.placeholder || (parent.placeholder && compound.includes('&')),
           root: own.root || (parent.root && compound.startsWith('&')),
+          themeRoot: own.themeRoot || (parent.themeRoot && compound.startsWith('&')),
         });
       }
     }
@@ -310,7 +317,7 @@ function selectorStates(chain) {
 /* `all`, `none` or `mixed` for each state over the selectors of the list. */
 function summarize(list) {
   const of = (key) => (list.every((state) => state[key]) ? 'all' : list.some((state) => state[key]) ? 'mixed' : 'none');
-  return { active: of('active'), focus: of('focus'), hover: of('hover'), placeholder: of('placeholder'), root: of('root') };
+  return { active: of('active'), focus: of('focus'), hover: of('hover'), placeholder: of('placeholder'), root: of('root'), themeRoot: of('themeRoot') };
 }
 
 /* `border: { color: … }` in SCSS: postcss-scss reads the group as a rule whose selector is `border:`. */
@@ -510,10 +517,13 @@ function resolveToken(mapping, name, context = {}) {
     const palette = entry.paletteValue ? ` To keep the exact v19 colour whatever the theme: var(${entry.paletteValue}).` : '';
     return { todo: `${name}: ${mapping.hints.role}${lead}${palette}` };
   }
-  // The outline of a focused element is the focus ring, which v20 paints with its own role (the v19 theme outline colour's).
+  // The outline of a focused element: the v19 focus colour is the focus ring of v20, any other colour a border of its own.
   const focus = mapping.tokens['--ods-theme-outline-color']?.to;
-  if (context.focusRing && context.role === 'border' && entry.byRole.border && focus) {
-    return { to: focus };
+  if (context.focusRing && context.role === 'border' && focus) {
+    if (entry.focus) return { to: focus };
+    if (/^--ods-semantic-color-border-/.test(entry.byRole.border ?? '')) return { to: entry.byRole.border };
+    const exact = entry.paletteValue ? `, or keep the exact v19 colour with var(${entry.paletteValue})` : '';
+    return { todo: `${name}: the colour of a focus ring, which is not the v19 focus colour: v20 paints the focus ring with \`${focus}\`; use it to follow the theme${exact}` };
   }
   // A selector list that mixes a state and the rest: one value cannot be both.
   const rest = entry.byRole[context.role];
@@ -605,6 +615,12 @@ function declaredName(mapping, name) {
   return { extra: entry.alsoDeclare ?? [], note, to };
 }
 
+/* A palette stop declared elsewhere than on :root (a container, `body`, an inline style): v20 computes the roles from the palette on :root only. */
+function outsideRoot(mapping, name, to) {
+  const readers = mapping.tokens[name].paletteShared ?? [];
+  return `${name} → ${to} outside :root: in v20 the roles read the palette on :root only, so this declaration recolours nothing here. Declare the roles this container needs instead (\`--ods-semantic-color-*\`${readers.length ? `, e.g. ${readers.slice(0, 3).map((reader) => `\`${reader}\``).join(', ')}` : ''})`;
+}
+
 /* The v20 name a declaration of `name` gets, when it gets one (used to find two declarations that collide). */
 function declaredTarget(mapping, name) {
   const entry = mapping.tokens[name];
@@ -667,7 +683,8 @@ const applyEdits = (text, edits) => [...edits].sort((a, b) => b.start - a.start)
 /**
  * The tokens written in one piece of text (a string of a script, the params of `@apply`, a
  * quoted SCSS string), as edits relative to the text. `env.before` is the text of the same
- * template before it; `env.keyContext` the context given by the key the text is the value of;
+ * template before it; `env.element` that the template styles one element (`styled.div`);
+ * `env.keyContext` the context given by the key the text is the value of;
  * `env.role` the role when nothing in the text says one; `env.dynamicTail` that the text goes on
  * with a value computed at runtime; `env.css: false` that the text holds no CSS declaration;
  * `env.themeKeys` the Tailwind keys whose theme definition the same run renames.
@@ -704,7 +721,9 @@ function planText(mapping, text, env = {}) {
     if (env.css !== false && name in mapping.tokens && /^\s*:/.test(text.slice(end)) && /(^|[\s;{])$/.test(head)) {
       const valueStart = text.indexOf(':', end) + 1;
       const valueEnd = endOfValue(text, valueStart);
-      const declaration = planDeclarationText(mapping, name, text.slice(valueStart, valueEnd), { config, siblings: declaredBefore(head) });
+      const chain = templateChain(head);
+      const root = chain.length ? summarize(selectorStates(chain)).themeRoot === 'all' : !env.element;
+      const declaration = planDeclarationText(mapping, name, text.slice(valueStart, valueEnd), { config, root, siblings: declaredBefore(head) });
       out.todos.push(...declaration.todos);
       out.notes.push(...declaration.notes);
       if (declaration.to) {
@@ -797,10 +816,11 @@ function declaredBefore(head) {
  * name, its value read as a theme value, and the guards of a stylesheet (self-reference,
  * collision with a sibling, `alsoDeclare`).
  */
-function planDeclarationText(mapping, name, valueText, { config, siblings = [] } = {}) {
+function planDeclarationText(mapping, name, valueText, { config, root = false, siblings = [] } = {}) {
   const out = { edits: [], extra: [], notes: [], todos: [] };
   const declared = declaredName(mapping, name);
   if (declared.todo) out.todos.push(declared.todo);
+  if (declared.to?.startsWith('--ods-palette-') && !root) out.todos.push(outsideRoot(mapping, name, declared.to));
   const value = planText(mapping, valueText, { config, css: false, keyContext: declarationContext(declared.to ?? name) });
   if (!declared.to) {
     if (declared.note) out.notes.push(declared.note);
@@ -1199,12 +1219,17 @@ function collisionOf(node, mapping, to) {
 
 const isStyleMarked = (node) => node.prev()?.type === 'comment' && node.prev().text.startsWith(TODO);
 
-/* The messages of an earlier marker on a v20 declaration that still holds (`both become`): the rule keeps reporting them. */
+/*
+ * The messages of an earlier marker on a v20 declaration that still hold: two names that became
+ * this one (`both become`), a palette stop declared outside :root. The rule keeps reporting them.
+ */
 function markedCollisions(node) {
   if (!isStyleMarked(node)) {
     return [];
   }
-  return node.prev().text.slice(TODO.length + 2).split(/ \/ (?=--ods-)/).filter((message) => message.includes(` both become ${node.prop} in v20`));
+  const outside = node.prop.startsWith('--ods-palette-') && stateOf(node).themeRoot !== 'all';
+  return node.prev().text.slice(TODO.length + 2).split(/ \/ (?=--ods-)/)
+    .filter((message) => message.includes(` both become ${node.prop} in v20`) || (outside && message.includes(` → ${node.prop} outside :root:`)));
 }
 
 /* The ODS overlay parts a stylesheet can stack (`[data-ods="drawer-content"]`, `[data-scope="popover"][data-part="positioner"]`). */
@@ -1343,10 +1368,8 @@ function planDeclaration(node, mapping, options) {
   if (node.prop.startsWith('--ods-') && node.prop in mapping.tokens) {
     declared = declaredName(mapping, node.prop);
     if (declared.todo) plan.todos.push(declared.todo);
-    // A palette stop declared inside a container: v20 computes the roles from the palette on :root only.
-    if (declared.to?.startsWith('--ods-palette-') && stateOf(node).root !== 'all') {
-      const readers = mapping.tokens[node.prop].paletteShared ?? [];
-      plan.todos.push(`${node.prop} → ${declared.to} outside :root: in v20 the roles read the palette on :root only, so this declaration recolours nothing here. Declare the roles this container needs instead (\`--ods-semantic-color-*\`${readers.length ? `, e.g. ${readers.slice(0, 3).map((reader) => `\`${reader}\``).join(', ')}` : ''})`);
+    if (declared.to?.startsWith('--ods-palette-') && stateOf(node).themeRoot !== 'all') {
+      plan.todos.push(outsideRoot(mapping, node.prop, declared.to));
     }
     if (declared.note) plan.notes.push(declared.note);
     if (declared.to) prop = declared.to;
@@ -1471,17 +1494,93 @@ function planStyleNode(node, rawMapping, options = {}) {
   return null;
 }
 
+/* The changes from `before` to `after`, as `[start, end, text]` of `before`, word by word: what lies between two changes stays. */
+function changedParts(before, after) {
+  const words = (text) => text.match(/[\w$@#.%-]+|\s+|[^\w\s]/g) ?? [];
+  const a = words(before);
+  const b = words(after);
+  if (a.length * b.length > 250000) return [[0, before.length, after]];
+  const common = Array.from({ length: a.length + 1 }, () => new Uint16Array(b.length + 1));
+  for (let i = a.length - 1; i >= 0; i--) {
+    for (let k = b.length - 1; k >= 0; k--) common[i][k] = a[i] === b[k] ? common[i + 1][k + 1] + 1 : Math.max(common[i + 1][k], common[i][k + 1]);
+  }
+  const parts = [];
+  let open = null;
+  let at = 0;
+  for (let i = 0, k = 0; i < a.length || k < b.length;) {
+    if (i < a.length && k < b.length && a[i] === b[k]) {
+      open = null;
+      at += a[i++].length;
+      k++;
+      continue;
+    }
+    if (!open) parts.push(open = [at, at, '']);
+    if (k >= b.length || (i < a.length && common[i + 1][k] >= common[i][k + 1])) {
+      at += a[i++].length;
+      open[1] = at;
+    } else {
+      open[2] += b[k++];
+    }
+  }
+  return parts;
+}
+
+/* A comment postcss leaves out of a value: `/* … *\/`, and the `//` of SCSS when `inline`. */
+function commentAt(raw, index, inline) {
+  if (raw.startsWith('/*', index)) {
+    const end = raw.indexOf('*/', index + 2);
+    return end < 0 ? null : raw.slice(index, end + 2);
+  }
+  return inline && raw.startsWith('//', index) ? raw.slice(index).match(/^\/\/[^\n]*/)[0] : null;
+}
+
+/* `raw` (the value as written, with its comments) with the changes from `before` (the value without them) to `after`; null when it does not read as `before`. */
+function rewriteRaw(raw, before, after, inline) {
+  const at = [];
+  let j = 0;
+  for (let i = 0; i < before.length;) {
+    const comment = commentAt(raw, j, inline);
+    if (comment && !before.startsWith(comment.startsWith('//') ? '//' : comment, i)) {
+      j += comment.length;
+    } else if (raw[j] === before[i]) {
+      at.push(j++);
+      i++;
+    } else {
+      return null;
+    }
+  }
+  at.push(j);
+  let output = raw;
+  for (const [start, end, text] of changedParts(before, after).reverse()) {
+    output = output.slice(0, at[start]) + text + output.slice(end > start ? at[end - 1] + 1 : at[start]);
+  }
+  return output;
+}
+
+/* Sets a value, a selector or params; with comments in it (`raws[key]`), they stay where they are. */
+function setStyleText(node, key, value) {
+  const raw = node.raws[key];
+  if (raw?.value === node[key]) {
+    const text = rewriteRaw(raw.raw, node[key], value, false);
+    const scss = raw.scss === undefined ? undefined : rewriteRaw(raw.scss, node[key], value, true);
+    if (text !== null && scss !== null) {
+      node.raws[key] = { raw: text, ...(scss === undefined ? {} : { scss }), value };
+    }
+  }
+  node[key] = value;
+}
+
 function applyStylePlan(node, plan) {
   if (node.type === 'decl') {
     if (plan.prop !== node.prop) node.prop = plan.prop;
-    if (plan.value !== node.value) node.value = plan.value;
+    if (plan.value !== node.value) setStyleText(node, 'value', plan.value);
     for (const extra of [...(plan.extra ?? [])].reverse()) {
       node.cloneAfter({ prop: extra.prop, value: extra.value });
     }
   } else if (node.type === 'rule') {
-    if (plan.selector !== undefined && plan.selector !== node.selector) node.selector = plan.selector;
+    if (plan.selector !== undefined && plan.selector !== node.selector) setStyleText(node, 'selector', plan.selector);
   } else if (plan.params !== node.params) {
-    node.params = plan.params;
+    setStyleText(node, 'params', plan.params);
   }
 }
 
@@ -1577,6 +1676,20 @@ function keyChain(pair) {
   return chain;
 }
 
+/* A pair of the object given to a JSX `style` attribute: an element, not the document root. */
+function inStyleAttribute(pair) {
+  for (let node = pair.parent(); node; node = node.parent()) {
+    if (node.kind() === 'jsx_attribute') return node.child(0)?.text() === 'style';
+  }
+  return false;
+}
+
+/* A CSS template that styles one element (`styled.div`, `styled(Box)`), not the document. */
+const isElementTemplate = (stringNode) => {
+  const tag = stringNode.parent()?.kind() === 'call_expression' ? stringNode.parent().field('function')?.text() ?? '' : '';
+  return /^styled\b/.test(tag);
+};
+
 function keyChainHas(pair, name) {
   for (let node = pair.parent(); node; node = node.parent()) {
     if (node.kind() === 'pair' && unquote(node.field('key')?.text() ?? '') === name) return true;
@@ -1668,7 +1781,9 @@ function planScriptTokens(source, rawMapping, filename = 'file.tsx', options = {
     const fragment = value?.kind() === 'string' ? value.find({ rule: { kind: 'string_fragment' } }) : null;
     const siblings = pair.parent().children().filter((child) => child.kind() === 'pair' && child.range().start.index < pair.range().start.index)
       .map((child) => unquote(child.field('key')?.text() ?? ''));
-    const declaration = planDeclarationText(mapping, name, fragment?.text() ?? '', { config, siblings });
+    const chain = keyChain(pair);
+    const root = chain.length ? summarize(selectorStates(chain)).themeRoot === 'all' : !inStyleAttribute(pair);
+    const declaration = planDeclarationText(mapping, name, fragment?.text() ?? '', { config, root, siblings });
     const keyFragment = key.find({ rule: { kind: 'string_fragment' } });
     declaration.todos.forEach((message) => mark(key, message));
     declaration.notes.forEach((message) => note(key.range().start.index, message));
@@ -1712,7 +1827,7 @@ function planScriptTokens(source, rawMapping, filename = 'file.tsx', options = {
     const before = template
       ? stringNode.children().filter((child) => child.kind() === 'string_fragment' && child.range().start.index < base).map((child) => child.text()).join('_')
       : '';
-    const result = planText(mapping, text, { before, config, dynamicTail, fragment: !template, keyContext, themeKeys });
+    const result = planText(mapping, text, { before, config, dynamicTail, element: template && isElementTemplate(stringNode), fragment: !template, keyContext, themeKeys });
     result.edits.forEach((item) => edit(base + item.start, base + item.end, item.text, item.message));
     result.todos.forEach((message) => mark(stringNode, message));
     result.notes.forEach((message) => note(base, message));
@@ -1763,10 +1878,11 @@ function tailwindThemeKeys(source, rawMapping, filename = 'file.tsx') {
 /*
  * The collision markers of an earlier run (`X and Y both become Z in v20: keep one value`) on a
  * declaration that is v20 already: nothing is left to rewrite there, but the duplicate holds
- * until someone keeps one value, so the lint rule keeps reporting it, as in a stylesheet.
+ * until someone keeps one value, so the lint rule keeps reporting it, as in a stylesheet. The same
+ * for a palette stop declared outside :root, while the marked node still declares it.
  */
 function markedScriptCollisions(source) {
-  if (!source.includes(' both become ')) {
+  if (!source.includes(' both become ') && !source.includes(' outside :root: ')) {
     return [];
   }
   const lineOf = lineIndex(source);
@@ -1779,7 +1895,8 @@ function markedScriptCollisions(source) {
     const node = source.slice(index, index + 2000).split(/\/\* TODO\(ods-v20\)/)[0];
     const messages = match[1].split(/ \/ (?=--ods-)/).filter((message) => {
       const target = message.match(/ both become (--ods-[\w-]+) in v20: keep one value$/)?.[1];
-      return target && node.includes(target);
+      const outside = message.match(/^--ods-[\w-]+ → (--ods-palette-[\w-]+) outside :root: /)?.[1];
+      return (target && node.includes(target)) || (outside && new RegExp(`${escapeRegExp(outside)}['"]?\\s*:`).test(node));
     });
     if (messages.length) {
       found.push({ end: index + next.length, index, line: lineOf(index), marked: true, messages, start: index });
@@ -1858,15 +1975,24 @@ function transformHtml(source, rawMapping, filename = 'file.html', options = {})
     const result = transformStyles(match[2], mapping, 'style.css', { ...options, markers: false });
     add(start, start + match[2].length, result.output, messages(result.changes), messages(result.notes));
   }
-  for (const match of source.matchAll(/\s(style|class)=(["'])([^"']*)\2/gi)) {
+  for (const match of source.matchAll(/\s(style|class)=(?:"([^"]*)"|'([^']*)')/gi)) {
     // On <html> or <body>, a style is the document root, as `body { … }` would be.
     const tag = source.slice(0, match.index).match(/<([a-zA-Z][\w-]*)[^<>]*$/)?.[1]?.toLowerCase();
     const selector = tag === 'html' || tag === 'body' ? tag : 'a';
-    const start = match.index + match[0].indexOf(match[2]) + 1;
-    const value = match[3];
+    const value = match[2] ?? match[3];
+    const start = match.index + match[0].length - value.length - 1;
     if (match[1].toLowerCase() === 'style') {
-      const result = transformStyles(`${selector}{${value}}`, mapping, 'style.css', { ...options, markers: false });
-      add(start, start + value.length, result.output.slice(selector.length + 1, -1), messages(result.changes), messages(result.notes));
+      // The attribute's own quote, written as an entity inside it (`&quot;`), is read as a CSS quote and written back as that entity.
+      const [quote, entity] = match[2] === undefined ? ['\'', /&apos;|&#0*39;|&#x0*27;/gi] : ['"', /&quot;|&#0*34;|&#x0*22;/gi];
+      const spelling = value.match(entity)?.[0] ?? (quote === '"' ? '&quot;' : '&#39;');
+      let result;
+      try {
+        result = transformStyles(`${selector}{${value.replace(entity, quote)}}`, mapping, 'style.css', { ...options, markers: false });
+      } catch {
+        report.notes.push({ line: lineOf(start), message: 'ods-migrate cannot read this style attribute as CSS: rewrite its ODS v19 tokens by hand' });
+        continue;
+      }
+      add(start, start + value.length, result.output.slice(selector.length + 1, -1).replaceAll(quote, spelling), messages(result.changes), messages(result.notes));
     } else {
       const result = planText(mapping, value, { config: options.config, css: false, themeKeys: new Set(options.tailwindKeys ?? []) });
       add(start, start + value.length, applyEdits(value, result.edits), messages(result.edits), [...result.todos, ...result.notes]);

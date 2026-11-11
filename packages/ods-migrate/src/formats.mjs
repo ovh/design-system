@@ -49,6 +49,36 @@ function markLines(source, mapping, why) {
   return result;
 }
 
+/*
+ * A v19 token in the selector of a Less file that the stylesheet pass read (a mixin definition
+ * `.m(@c: var(--…))`, a guard): no property says what it paints, and the pass never rewrites a
+ * selector. A `//` marker on the line before, as for a Less file it cannot read. The pass adds no
+ * rule and leaves these selectors as they are, so the rules of the source and of the output pair up.
+ */
+function markSelectors(source, result, mapping) {
+  const rules = (text) => {
+    const list = [];
+    scss.parse(text).walkRules((rule) => list.push(rule));
+    return list;
+  };
+  const before = rules(source);
+  const after = rules(result.output);
+  const lines = result.output.split('\n');
+  const inserts = [];
+  const todos = [...result.todos];
+  before.forEach((rule, index) => {
+    const names = [...new Set(rule.selector.match(OLD_TOKEN) ?? [])].filter((name) => mapping.tokens[name]);
+    const at = after[index]?.source.start.line - 1;
+    if (!names.length || after[index]?.selector !== rule.selector || /^\s*(?:\/\/|\/\*)\s*TODO\(ods-v20\)/.test(lines[at - 1] ?? '')) return;
+    const messages = ['a Less mixin parameter or guard, which ods-migrate does not rewrite: rewrite the ODS v19 tokens of the next line by hand', ...names.map((name) => describe(mapping, name)).filter(Boolean)];
+    const cr = lines[at].endsWith('\r') ? '\r' : '';
+    inserts.push({ at, text: `${/^[ \t]*/.exec(lines[at])[0]}// ${TODO}: ${markerMessage(messages)}${cr}` });
+    messages.forEach((message) => todos.push({ line: rule.source.start.line, message }));
+  });
+  for (const { at, text } of inserts.reverse()) lines.splice(at, 0, text);
+  return { output: lines.join('\n'), todos: todos.sort((a, b) => a.line - b.line) };
+}
+
 /** True when `postcss-scss` reads the Less file back unchanged: the stylesheet pass can run on it. */
 function readsAsScss(source) {
   try {
@@ -67,7 +97,7 @@ function transformOtherStyles(source, rawMapping, filename, options = {}) {
   if (/\.less$/.test(filename) && readsAsScss(source)) {
     // The pass parses `.scss` files with postcss-scss, which also reads the `//` comments of Less.
     const result = tokens.transformStyles(source, rawMapping, filename.replace(/\.less$/, '.less.scss'), options);
-    return { ...report(result.output), ...result };
+    return { ...report(result.output), ...result, ...markSelectors(source, result, mapping) };
   }
   const why = /\.less$/.test(filename)
     ? 'ods-migrate does not rewrite this Less file (mixin calls or guards it cannot read)'

@@ -1,0 +1,4 @@
+.a { color: var(--ods-semantic-color-content-brand) /* keep me */; }
+.b { border: 1px /* width */ solid var(--ods-semantic-color-border-brand); }
+.c { color: var(--ods-semantic-color-content-brand) /* why */ ! important; }
+.d { color: var( --ods-semantic-color-content-brand ) ! important; }

@@ -768,7 +768,8 @@
         "content": "--ods-semantic-color-content-on-brand"
       },
       "palette": "--ods-palette-brand-700",
-      "paletteValue": "--ods-palette-blue-700"
+      "paletteValue": "--ods-palette-blue-700",
+      "focus": true
     },
     "--ods-color-primary-800": {
       "bc": "BC-02",
@@ -986,6 +987,7 @@
       },
       "palette": "--ods-palette-blue-700",
       "paletteValue": "--ods-palette-blue-700",
+      "focus": true,
       "paletteShared": [
         "--ods-palette-brand-700"
       ]
@@ -3661,36 +3663,6 @@
     "$ods-color-limited": {
       "detail": "#df3602 in v19",
       "hint": "palette-removed",
-      "to": null
-    },
-    "$ods-breakpoint-sub-mobile": {
-      "detail": "360px in v19",
-      "hint": "no-equivalent",
-      "to": null
-    },
-    "$ods-breakpoint-mobile": {
-      "detail": "576px in v19",
-      "hint": "no-equivalent",
-      "to": null
-    },
-    "$ods-breakpoint-tablet": {
-      "detail": "768px in v19",
-      "hint": "no-equivalent",
-      "to": null
-    },
-    "$ods-breakpoint-desktop": {
-      "detail": "992px in v19",
-      "hint": "no-equivalent",
-      "to": null
-    },
-    "$ods-breakpoint-large-screen": {
-      "detail": "1200px in v19",
-      "hint": "no-equivalent",
-      "to": null
-    },
-    "$ods-breakpoint-widescreen": {
-      "detail": "1400px in v19",
-      "hint": "no-equivalent",
       "to": null
     },
     "$ods-transition-duration-default": {

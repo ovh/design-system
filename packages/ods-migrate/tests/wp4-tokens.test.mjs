@@ -373,6 +373,28 @@ describe('snapshots and HTML', () => {
     assert.equal(todos.length, 0);
     assert.ok(notes.some(({ line, message }) => line === 2 && /^--ods-color-primary-500: v20 names colours by what they paint/.test(message)));
   });
+
+  it('reads a style attribute that holds the other quote, or its own as an entity, and never fails the page', () => {
+    const page = [
+      '<div style="color: var(--ods-color-primary-500); font-family: \'Arial\'">a</div>',
+      '<div style=\'background: url("x.png") var(--ods-color-primary-500)\'>b</div>',
+      '<div style="font-family: &quot;Source Sans Pro&quot;; color: var(--ods-color-primary-500)">c</div>',
+      '<div style=\'font-family: Source Sans Pro; color: var(--ods-color-primary-500)\'>d</div>',
+      '<div class="bg-[--ods-color-primary-500] [content:\'x\']">e</div>',
+      '<div style="color: var(--ods-color-primary-500); {">f</div>',
+    ].join('\n');
+    const { notes, output } = transformHtml(page, real);
+    assert.equal(output, [
+      '<div style="color: var(--ods-semantic-color-content-brand); font-family: \'Arial\'">a</div>',
+      '<div style=\'background: url("x.png") var(--ods-semantic-color-surface-brand)\'>b</div>',
+      '<div style="font-family: &quot;Source Sans 3&quot;; color: var(--ods-semantic-color-content-brand)">c</div>',
+      '<div style=\'font-family: &#39;Source Sans 3&#39;; color: var(--ods-semantic-color-content-brand)\'>d</div>',
+      '<div class="bg-[--ods-semantic-color-surface-brand] [content:\'x\']">e</div>',
+      '<div style="color: var(--ods-color-primary-500); {">f</div>',
+    ].join('\n'));
+    assert.ok(notes.some(({ line, message }) => line === 6 && /cannot read this style attribute as CSS: rewrite its ODS v19 tokens by hand/.test(message)));
+    assert.equal(transformHtml(output, real).output, output);
+  });
 });
 
 describe('the stylelint fix plan', () => {

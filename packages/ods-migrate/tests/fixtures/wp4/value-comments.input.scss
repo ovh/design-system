@@ -1,0 +1,9 @@
+.a {
+  border:
+    1px solid // the ring
+    var(--ods-color-primary-500);
+  background:
+    var(--ods-color-primary-500) /* brand */
+    url('x.png');
+  color: var(--ods-color-primary-500) /* keep */ !important;
+}

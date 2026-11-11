@@ -125,6 +125,15 @@ describe('token mapping: data (WP5)', () => {
     assert.match(mapping.hints['z-rerank'], /dropdown 200, drawer 300, modal 400/);
   });
 
+  it('reads a focus outline as the v20 focus ring only for the v19 steps of the v19 focus colour (#000e9c)', () => {
+    const focused = entries('tokens').filter(([, entry]) => entry.focus).map(([name]) => name).sort();
+    assert.deepEqual(focused, ['--ods-color-information-700', '--ods-color-primary-700']);
+  });
+
+  it('keeps the breakpoints, which @ovhcloud/ods-react/style declares with the same values', () => {
+    assert.deepEqual(Object.keys(mapping.scssPalette).filter((name) => name.startsWith('$ods-breakpoint-')), []);
+  });
+
   it('declares the heading font next to the body font of a v19 theme', () => {
     for (const name of ['--ods-theme-font-family', '--ods-font-family-default']) {
       assert.equal(mapping.tokens[name].to, '--ods-semantic-font-family-body');
@@ -321,8 +330,16 @@ describe('token mapping: against the ODS repo (WP5)', atRef, () => {
     const v19 = themeNames(mapping.source.from);
     const v20 = themeNames(mapping.source.sha);
     assert.deepEqual([...v19.css].filter((name) => !v20.css.has(name) && !(name in mapping.tokens)), []);
-    const uncovered = [...v19.scss].filter((name) => !v20.scss.has(name) && !(name in mapping.scssPalette) && !(`--${name.slice(1)}` in mapping.tokens));
+    // The breakpoints are declared by @ovhcloud/ods-react/style in v20, with the same values: kept as they are.
+    const uncovered = [...v19.scss].filter((name) => !v20.scss.has(name) && !after.scss.has(name) && !(name in mapping.scssPalette) && !(`--${name.slice(1)}` in mapping.tokens));
     assert.deepEqual(uncovered, []);
+    const style = filesAt(mapping.source.sha, 'packages/ods-react/src/style', (file) => /\/[^/]+\.scss$/.test(file)).map(uncomment).join('\n');
+    const value = (text, name) => text.match(new RegExp(`^\\s*\\${name}\\s*:\\s*([^;]+);`, 'm'))?.[1].trim();
+    const v19Text = themeFiles(mapping.source.from).map(uncomment).join('\n');
+    for (const name of [...v19.scss].filter((name) => !v20.scss.has(name) && after.scss.has(name))) {
+      assert.equal(value(style, name), value(v19Text, name), `${name} keeps its name in ods-react/style, but not its v19 value: it needs a scssPalette entry`);
+    }
+    assert.ok(after.scss.has('$ods-breakpoint-tablet') && !('$ods-breakpoint-tablet' in mapping.scssPalette));
   });
 
   it('only renames toward names the ref declares, unless the entry is pending', () => {

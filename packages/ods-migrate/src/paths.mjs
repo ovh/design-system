@@ -23,9 +23,11 @@ import { TODO, followsMarker, inlineMarker, markerMessage } from './shared.mjs';
  */
 
 const QUOTE_END = '(?=[\'"`])';
-/* BC-31: the specifier of the bundle, alone in its string (with the webpack `~` or the Sass `pkg:` prefix). */
-const BUNDLE = /^((?:~|pkg:)?)@ovhcloud\/ods-themes\/default$/;
-const BUNDLE_IN_TEXT = new RegExp(`ods-themes\\/default${QUOTE_END}`);
+/* BC-31: the specifier of the bundle, alone in its string (with the webpack `~` or the Sass `pkg:` prefix, a query or a hash). */
+const BUNDLE = /^((?:~|pkg:)?)@ovhcloud\/ods-themes\/default([?#][^'"`\s]*)?$/;
+const BUNDLE_IN_TEXT = new RegExp(`ods-themes\\/default([?#][^'"\`\\s]*)?${QUOTE_END}`);
+/* A query that makes the import a value the app uses itself (Vite `?inline`, `?raw`, `?url`): one string, one URL. */
+const VALUE_QUERY = /^\?(?:[^#]*&)?(?:inline|raw|url)(?:[&=#]|$)/;
 /* BC-33: the JavaScript entry point. */
 const ENTRY = '@ovhcloud/ods-themes';
 /* BC-32: a file of `dist/default` or `src/default`, with the version of a CDN URL. */
@@ -59,6 +61,8 @@ const THEME_FAMILY = /^\$ods-(?:color|palette|border-radius|border-width|breakpo
 
 const FONTS_HINT = 'use @ovhcloud/ods-themes/fonts-base64 instead of default/fonts if your setup cannot serve the font files';
 const BUNDLE_HINT = `@ovhcloud/ods-themes/default is removed in v20: load @ovhcloud/ods-themes/default/css and @ovhcloud/ods-themes/default/fonts instead (${FONTS_HINT})`;
+const bundleValueHint = (suffix) => `@ovhcloud/ods-themes/default is removed in v20, and this import reads it as a value (${suffix}): it is two files in v20, @ovhcloud/ods-themes/default/css${suffix} and the base64 fonts it held, @ovhcloud/ods-themes/fonts-base64${suffix}. Import both and use both where this one is used: the fonts are not in the theme file any more`;
+const bundleHintOf = (suffix = '') => (VALUE_QUERY.test(suffix) ? bundleValueHint(suffix) : BUNDLE_HINT);
 const FOLDER_HINT = 'this folder of @ovhcloud/ods-themes is gone in v20: the theme is dist/aluminium/light.css, the fonts dist/fonts.css (or dist/fonts-base64.css), the tokens dist/aluminium/light.tokens.json, the Sass sources src/aluminium/light.scss and src/fonts.scss; prefer the export paths (@ovhcloud/ods-themes/default/css, /default/fonts)';
 const VARIABLES_HINT = 'the Sass variables of @ovhcloud/ods-themes/src/default are gone in v20: the breakpoints are in @ovhcloud/ods-react/style, the palette variables that v20 keeps in @ovhcloud/ods-themes/src/aluminium/variables, the others are removed (read the CSS custom properties instead): point this at what the files that read it still use';
 const ENTRY_HINT = '@ovhcloud/ods-themes has no JavaScript entry point in v20: ODS_THEME and ODS_THEMES are removed. Write the theme names instead (ODS_THEME.default → \'default\'; the themes are \'default\', \'aluminium-dark\', \'blue-jeans\' and \'blue-jeans-dark\', each loaded through @ovhcloud/ods-themes/<theme>/css), then remove this import';
@@ -138,6 +142,10 @@ function bumpFontUrls(text) {
 
 /* An `@import`, `@use` or `@forward` of one URL on its line: indent, rule, Less options, `url(`, quote, URL, `)`, rest, `;`, comment. */
 const AT_RULE = /^([ \t]*)@(import|use|forward)([ \t]+(?:\([^)]*\)[ \t]*)?)(url\([ \t]*)?(['"])([^'"\n]+)\5([ \t]*\))?(.*?)(;?)([ \t]*(?:\/\/.*|\/\*.*\*\/)?[ \t]*)$/;
+/* A Sass `@import` of several URLs on its line: indent, the quoted URLs, `;`, comment. */
+const IMPORT_LIST = /^([ \t]*)@import[ \t]+((?:(['"])[^'"\n]*\3[ \t]*,[ \t]*)+(['"])[^'"\n]*\4)[ \t]*(;?)([ \t]*(?:\/\/.*|\/\*.*\*\/)?[ \t]*)$/;
+/* `@include meta.load-css('<url>')` with no configuration: the mixin (with its namespace), quote, URL, `;`. */
+const LOAD_CSS = /@include[ \t]+((?:[\w-]+\.)?load-css)[ \t]*\([ \t]*(['"])([^'"\n]*ods-themes[^'"\n]*)\2[ \t]*\)([ \t]*;)?/g;
 
 /* The module namespace of a Sass `@use` URL without `as`: its last segment, without `_` and extension. */
 const defaultNamespace = (url) => url.split('/').pop().replace(/^_/, '').replace(/\.(?:s[ac]ss|css)$/, '');
@@ -181,9 +189,19 @@ function migrateStylePaths(source, kind = 'css') {
   const comment = (indent, messages) => (kind === 'sass' ? `${indent}// ${TODO}: ${markerMessage(messages)}` : `${indent}/* ${TODO}: ${markerMessage(messages)} */`);
   const markedAbove = () => /^\s*(?:\/\*|\/\/)\s*TODO\(ods-v20\)/.test(output.at(-1) ?? '');
   const has = (pattern) => new RegExp(pattern).test(source);
+  const bundleTargets = (prefix, suffix, loaded = true) => [
+    loaded && has(`ods-themes/default/css['"]`) ? null : `${prefix}@ovhcloud/ods-themes/default/css${suffix}`,
+    loaded && has(`ods-themes/(?:default/fonts|fonts-base64)['"]`) ? null : `${prefix}@ovhcloud/ods-themes/default/fonts${suffix}`,
+  ].filter(Boolean);
+  /* What a URL that is two files in v20 becomes, or null: the bundle (BC-31) or a moved file (BC-32). */
+  const splitTargets = (url) => {
+    const bundle = BUNDLE.exec(url);
+    if (bundle) return VALUE_QUERY.test(bundle[2] ?? '') ? null : bundleTargets(bundle[1], bundle[2] ?? '', false);
+    const moved = movePaths(url, { exportsOk: url.startsWith('pkg:') });
+    return moved.split && [...url.matchAll(MOVED)].length === 1 ? [moved.text, movePaths(url, { exportsOk: url.startsWith('pkg:'), pick: 1 }).text] : null;
+  };
 
-  lines.forEach((rawLine, index) => {
-    const line = index + 1;
+  const handle = (rawLine, line) => {
     const cr = rawLine.endsWith('\r') ? '\r' : '';
     const text = cr ? rawLine.slice(0, -1) : rawLine;
     const mark = (indent, message) => {
@@ -197,16 +215,35 @@ function migrateStylePaths(source, kind = 'css') {
       output.push(rawLine);
       return;
     }
+    // `@import 'a', 'b';` (Sass): one import per line once one of them moves, each then read as its own line.
+    const list = kind === 'css' ? null : IMPORT_LIST.exec(text);
+    const urls = list ? [...list[2].matchAll(/(['"])([^'"\n]*)\1/g)].map(([quoted, , url]) => ({ quoted, url })) : [];
+    if (urls.some(({ url }) => BUNDLE.test(url) || FOLDER.test(url) || (({ text: moved, variables }) => moved !== url || variables)(movePaths(url)))) {
+      urls.forEach(({ quoted }, at) => handle(`${list[1]}@import ${quoted}${list[5]}${at === urls.length - 1 ? list[6] : ''}${cr}`, line));
+      return;
+    }
     const rule = AT_RULE.exec(text);
     if (!rule || /^\s*,/.test(rule[8]) || !rule[6].includes('ods-themes')) {
+      const indent = /^[ \t]*/.exec(text)[0];
+      // `@include meta.load-css('…/default')`: one call per v20 file, on the line or one per line when it has its own.
+      const loadCss = text.replace(LOAD_CSS, (call, mixin, quote, url, semi = '', offset) => {
+        const targets = splitTargets(url);
+        const alone = /^[ \t]*$/.test(text.slice(0, offset)) && /^[ \t]*(?:\/\/.*|\/\*.*\*\/)?[ \t]*$/.test(text.slice(offset + call.length));
+        if (!targets || (!semi && !alone)) return call;
+        report.changes.push({ line, message: `${url} → ${targets.join(' + ')} (${BUNDLE.test(url) ? `the bundle is removed; ${FONTS_HINT}` : 'two files in v20'})` });
+        return targets.map((to) => `@include ${mixin}(${quote}${to}${quote})${semi}`).join(alone ? `${cr}\n${indent}` : ' ');
+      });
       // Any other path (a url() of @font-face, a comment): moved in place, what has two files is marked.
-      const moved = movePaths(text);
+      const moved = movePaths(loadCss);
       const fonts = bumpFontUrls(moved.text);
       moved.changes.forEach((message) => report.changes.push({ line, message }));
       [...moved.notes, ...fonts.notes].forEach((message) => report.notes.push({ line, message }));
-      const indent = /^[ \t]*/.exec(text)[0];
+      const bundle = BUNDLE_IN_TEXT.exec(fonts.output);
       if (moved.split || moved.variables || moved.folder) {
         mark(indent, moved.folder ? FOLDER_HINT : moved.variables ? VARIABLES_HINT : `this file is two files in v20: ${moved.text.match(MOVED)?.[0] ?? 'the theme'} and the base64 fonts (fonts-base64): load both`);
+      } else if (bundle) {
+        // The bundle where it cannot be split here (a list over several lines, a call with arguments, a value query).
+        mark(indent, bundleHintOf(bundle[1]));
       }
       output.push(`${fonts.output}${cr}`);
       return;
@@ -222,15 +259,14 @@ function migrateStylePaths(source, kind = 'css') {
     // BC-31: the base64 bundle becomes the theme and the font files, unless the file loads them already.
     const bundle = BUNDLE.exec(url);
     if (bundle) {
-      if (reads.length) {
-        mark(indent, `${BUNDLE_HINT}. This file reads ${reads.map((member) => `${namespace}.${member}`).join(', ')} through it, which it never exposed: remove those reads, then split this import`);
+      if (reads.length || VALUE_QUERY.test(bundle[2] ?? '')) {
+        mark(indent, reads.length
+          ? `${BUNDLE_HINT}. This file reads ${reads.map((member) => `${namespace}.${member}`).join(', ')} through it, which it never exposed: remove those reads, then split this import`
+          : bundleHintOf(bundle[2]));
         output.push(rawLine);
         return;
       }
-      const targets = [
-        has(`ods-themes/default/css['"]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/css`,
-        has(`ods-themes/(?:default/fonts|fonts-base64)['"]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/fonts`,
-      ].filter(Boolean);
+      const targets = bundleTargets(bundle[1], bundle[2] ?? '');
       targets.forEach((to) => output.push(build(to, withoutAlias)));
       report.changes.push({ line, message: targets.length
         ? `${url} → ${targets.join(' + ')} (the bundle is removed; ${FONTS_HINT})`
@@ -316,7 +352,8 @@ function migrateStylePaths(source, kind = 'css') {
     if (second) output.push(build(second, withoutAlias));
     moved.changes.forEach((message) => report.changes.push({ line, message }));
     moved.notes.forEach((message) => report.notes.push({ line, message }));
-  });
+  };
+  lines.forEach((rawLine, index) => handle(rawLine, index + 1));
 
   let text = output.join('\n');
   // The breakpoints of a namespace whose palette stays in src/aluminium/variables go through @ovhcloud/ods-react/style.
@@ -486,21 +523,23 @@ function migrateScriptPaths(source, filename = 'file.tsx', options = {}) {
     // BC-31.
     const bundle = BUNDLE.exec(value);
     if (bundle) {
+      const suffix = bundle[2] ?? '';
       if (context.sideEffect) {
         const targets = [
-          has(`ods-themes/default/css['"\`]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/css`,
-          has(`ods-themes/(?:default/fonts|fonts-base64)['"\`]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/fonts`,
+          has(`ods-themes/default/css['"\`]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/css${suffix}`,
+          has(`ods-themes/(?:default/fonts|fonts-base64)['"\`]`) ? null : `${bundle[1]}@ovhcloud/ods-themes/default/fonts${suffix}`,
         ].filter(Boolean);
         replaceStatement(context.statement, value, targets);
         change(start.index, targets.length ? `${value} → ${targets.join(' + ')} (the bundle is removed; ${FONTS_HINT})` : `${value} removed: the file already loads default/css and the fonts`);
       } else {
-        mark(anchor, BUNDLE_HINT);
+        mark(anchor, bundleHintOf(suffix));
       }
       continue;
     }
-    if (BUNDLE_IN_TEXT.test(value) && !TOKENS_JSON.test(value)) {
+    const inText = BUNDLE_IN_TEXT.exec(value);
+    if (inText && !TOKENS_JSON.test(value)) {
       // The bundle inside a longer text (a Sass `additionalData`): it cannot be split here.
-      mark(anchor, BUNDLE_HINT);
+      mark(anchor, bundleHintOf(inText[1]));
     }
     // BC-32. A bare specifier is resolved through the package exports, whatever reads it (an import, an alias).
     const exportsOk = true;

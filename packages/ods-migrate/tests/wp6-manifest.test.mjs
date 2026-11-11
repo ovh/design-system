@@ -31,9 +31,28 @@ describe('manifest: package.json', () => {
     assert.equal(transformManifest(read('crlf.input.json')).output, read('crlf.output.json'));
   });
 
+  it('keeps a UTF-8 BOM, and edits the file as without it', () => {
+    const source = json({ name: 'a', dependencies: { '@shikijs/langs': '^3.11.0', react: '^19.0.0' } });
+    const plain = transformManifest(source, { lockfile: 'npm' });
+    const bom = transformManifest(`\uFEFF${source}`, { lockfile: 'npm' });
+    assert.equal(bom.output, `\uFEFF${plain.output}`);
+    assert.deepEqual(bom.changes, plain.changes);
+    assert.deepEqual(JSON.parse(bom.output.slice(1)).overrides, { '@types/react': '^19', '@types/react-dom': '^19' });
+  });
+
   it('leaves a Shiki range already on 4, and ranges it cannot read', () => {
     const source = json({ dependencies: { '@shikijs/langs': '>=4.0.0', '@shikijs/themes': 'workspace:*', '@shikijs/types': 'latest', shiki: '^3.0.0' } });
     assert.equal(transformManifest(source).output, source);
+  });
+
+  it('bumps only the Shiki packages passed to the ODS Code, and notes the others (@shikijs/compat stops at 2.5.0)', () => {
+    const source = json({ dependencies: { '@shikijs/compat': '^1.22.0', '@shikijs/langs': '^3.11.0', '@shikijs/rehype': '^3.2.1', '@shikijs/vscode-textmate': '^10.0.2', shiki: '^3.11.0' } });
+    const report = transformManifest(source);
+    assert.deepEqual(JSON.parse(report.output).dependencies, { '@shikijs/compat': '^1.22.0', '@shikijs/langs': '^4.3.0', '@shikijs/rehype': '^3.2.1', '@shikijs/vscode-textmate': '^10.0.2', shiki: '^3.11.0' });
+    assert.deepEqual(messages(report.changes).map((message) => message.split(' →')[0]), ['@shikijs/langs ^3.11.0']);
+    const notes = messages(report.notes);
+    assert.deepEqual(notes.map((message) => message.split(':')[0]), ['@shikijs/compat ^1.22.0', '@shikijs/rehype ^3.2.1', 'shiki ^3.11.0']);
+    assert.match(notes[0], /^@shikijs\/compat \^1\.22\.0: ods-react 20 highlights code with Shiki 4\. ods-migrate only bumps @shikijs\/langs, @shikijs\/themes and @shikijs\/types.*`npm view @shikijs\/compat versions`/);
   });
 
   it('only notes tailwindcss when no tailwind.config sits next to the package.json', () => {
@@ -105,6 +124,23 @@ describe('manifest: package.json', () => {
     assert.deepEqual(JSON.parse(transformManifest(withPnpm, { lockfile: 'pnpm' }).output).pnpm.overrides, { '@types/react': '^19', '@types/react-dom': '^19' });
   });
 
+  it('writes npm\'s "$name" reference for a @types/react* the package.json declares itself (npm: EOVERRIDE)', () => {
+    // The Vite React TS template.
+    const vite = json({ name: 'vite-app', dependencies: { react: '^19.1.0', 'react-dom': '^19.1.0' }, devDependencies: { '@types/react': '^19.1.2', '@types/react-dom': '^19.1.2' } });
+    const report = transformManifest(vite, { lockfile: 'npm' });
+    assert.deepEqual(JSON.parse(report.output).overrides, { '@types/react': '$@types/react', '@types/react-dom': '$@types/react-dom' });
+    assert.match(messages(report.changes)[0], /^overrides: @types\/react "\$@types\/react", @types\/react-dom "\$@types\/react-dom" added, so that every package of the install uses the same React 19 types.*npm refuses an override that differs from a direct dependency: "\$<name>" takes its range, and follows it when you bump it/);
+    assert.equal(transformManifest(report.output, { lockfile: 'npm' }).output, report.output);
+    // npm makes a direct dependency of each of the four blocks.
+    for (const block of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
+      const output = transformManifest(json({ [block]: { '@types/react': '^19.0.0' } }), { lockfile: 'npm', reactMajor: 19 }).output;
+      assert.deepEqual(JSON.parse(output).overrides, { '@types/react': '$@types/react', '@types/react-dom': '^19' }, block);
+    }
+    // yarn and pnpm take a plain range over a direct dependency.
+    assert.deepEqual(JSON.parse(transformManifest(vite, { lockfile: 'yarn' }).output).resolutions, { '@types/react': '^19', '@types/react-dom': '^19' });
+    assert.deepEqual(JSON.parse(transformManifest(vite, { lockfile: 'pnpm' }).output).pnpm.overrides, { '@types/react': '^19', '@types/react-dom': '^19' });
+  });
+
   it('says why it adds the overrides, and leaves them to a pnpm-workspace.yaml that keeps its own', () => {
     const source = json({ name: 'a', dependencies: { react: '^19.0.0' } });
     assert.match(messages(transformManifest(source, { lockfile: 'pnpm' }).changes)[0], /^pnpm\.overrides: @types\/react, @types\/react-dom \^19 added, so that every package of the install uses the same React 19 types/);
@@ -136,6 +172,7 @@ describe('manifest: package.json', () => {
     const report = transformManifest(json({ name: 'a', dependencies: { react: '^19.0.0' } }), { lockfile: null });
     assert.deepEqual(report.changes, []);
     assert.match(messages(report.notes)[0], /single @types\/react version/);
+    assert.match(messages(report.notes)[0], /`overrides` for npm \("\$@types\/react" for a package this package\.json declares: npm refuses another range there\)/);
   });
 
   it('notes a .browserslistrc', () => {

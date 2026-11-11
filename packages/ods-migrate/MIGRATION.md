@@ -267,10 +267,11 @@ What ods-migrate already did in the `package.json` files it scanned (with `--wri
 
 | Found | Edit |
 | --- | --- |
-| `@shikijs/*` below 4 | `^4.3.0` |
+| `@shikijs/langs`, `@shikijs/themes`, `@shikijs/types` below 4 | `^4.3.0` |
+| `shiki` or another `@shikijs/*` below 4 | a `?`: move it to Shiki 4 if what you pass to `Code` comes from it (`@shikijs/compat` has no 4.x) |
 | `@ovhcloud/ods-recipes` and a `tailwind.config.*` next to it, no `tailwindcss` | `"tailwindcss": "^3.4.18"` in `devDependencies` |
 | `@ovhcloud/ods-storybook` | renamed `@ovhcloud/ods-docs` `^20.0.0`, and a `?` on each script that reads it: its build is a Vite app now |
-| React 19 and a lockfile | `@types/react`, `@types/react-dom` `^19` in `pnpm.overrides`, `overrides` (npm) or `resolutions` (yarn) |
+| React 19 and a lockfile | `@types/react`, `@types/react-dom` `^19` in `pnpm.overrides`, `overrides` (npm) or `resolutions` (yarn); for npm, `"$@types/react"` when the same `package.json` declares it (npm refuses another range for a direct dependency) |
 | React 19, pnpm, and a `pnpm-workspace.yaml`, or pnpm 11 (`packageManager`), which ignores the `pnpm` field of `package.json` | a `?` instead: add them to the `overrides` of `pnpm-workspace.yaml` |
 | `@types/react` below 19 on React 19 | a `?`: bump it yourself |
 | `browserslist` | a `?`: ods-react 20 targets Chrome / Edge 111, Firefox 114, Safari 16.4 |

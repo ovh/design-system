@@ -2,8 +2,9 @@
  * The package.json pass of the CLI: what ODS v20 changes in the dependencies of an app. Each rule
  * was checked against the package.json files of ods-react, ods-recipes and the docs on the v20 stack:
  *
- * - ods-react 20 highlights code with Shiki 4 (`shiki`, `@shikijs/*` 4.3.0); v19.7.3 was on ^3.11.0.
- *   The languages and themes an app imports from `@shikijs/*` must come from the same major.
+ * - ods-react 20 highlights code with Shiki 4 (`shiki`, `@shikijs/langs`, `themes`, `types` 4.3.0); v19.7.3
+ *   was on ^3.11.0. The languages and themes an app passes to Code must come from the same major. Not
+ *   every `@shikijs/*` package has a 4.x (`@shikijs/compat` stops at 2.5.0): the others get a note.
  * - ods-recipes 19 installed `tailwindcss` (3.4.18) as a dependency; ods-recipes 20 only has it in
  *   its devDependencies, so an app that used Tailwind through it loses it.
  * - `@ovhcloud/ods-storybook` is replaced by `@ovhcloud/ods-docs` (a Vite app, not a Storybook build).
@@ -26,7 +27,9 @@
  */
 
 const DEPENDENCY_BLOCKS = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'];
-const SHIKI = /^@shikijs\//;
+const SHIKI = /^(?:@shikijs\/.+|shiki)$/;
+// The Shiki packages ods-react 20 declares whose languages, themes and types an app passes to Code.
+const SHIKI_BUMPED = ['@shikijs/langs', '@shikijs/themes', '@shikijs/types'];
 const SHIKI_RANGE = '^4.3.0';
 const TAILWIND_RANGE = '^3.4.18';
 const RECIPES = '@ovhcloud/ods-recipes';
@@ -249,8 +252,11 @@ function applyEdits(text, edits) {
  * package.json that does not declare React itself; `hasBrowserslistrc` flags a `.browserslistrc`;
  * `workspaceOverrides`: the names under `overrides` of a pnpm-workspace.yaml next to it (null: no such file).
  */
-function transformManifest(text, { file = 'package.json', hasBrowserslistrc = false, hasTailwindConfig = false, lockfile = null, reactMajor = null, workspaceOverrides = null } = {}) {
-  const report = { changes: [], notes: [], output: text };
+function transformManifest(source, { file = 'package.json', hasBrowserslistrc = false, hasTailwindConfig = false, lockfile = null, reactMajor = null, workspaceOverrides = null } = {}) {
+  // A BOM is kept, out of the text the edits read (it would pass for the indentation of the root).
+  const bom = source.startsWith('\uFEFF') ? '\uFEFF' : '';
+  const text = source.slice(bom.length);
+  const report = { changes: [], notes: [], output: source };
   const root = parseJson(text);
   if (root.type !== 'object') {
     return report;
@@ -265,9 +271,14 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
     for (const entry of block.members) {
       const name = entry.key.value;
       const major = minMajor(entry.value.value);
-      if (SHIKI.test(name) && entry.value.type === 'string' && major !== null && major < 4) {
+      if (!SHIKI.test(name) || entry.value.type !== 'string' || major === null || major >= 4) {
+        continue;
+      }
+      if (SHIKI_BUMPED.includes(name)) {
         edits.push({ end: entry.value.end, start: entry.value.start, text: JSON.stringify(SHIKI_RANGE) });
         change(entry.value.start, `${name} ${entry.value.value} → ${SHIKI_RANGE} (ods-react 20 highlights code with Shiki 4: languages and themes come from the same major)`);
+      } else {
+        note(entry.value.start, `${name} ${entry.value.value}: ods-react 20 highlights code with Shiki 4. ods-migrate only bumps ${SHIKI_BUMPED.slice(0, -1).join(', ')} and ${SHIKI_BUMPED.at(-1)}, the languages, themes and types passed to the ODS Code: if what you pass to it comes from ${name}, move ${name} to Shiki 4 too (\`npm view ${name} versions\`: some Shiki packages have no 4.x release); otherwise nothing to do`);
       }
     }
   }
@@ -348,14 +359,18 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
       }
       const wanted = TYPES.filter((name) => missing.length > 0 || !member(parent, name));
       if (wanted.length > 0) {
-        const values = `{ ${wanted.map((name) => `${JSON.stringify(name)}: ${JSON.stringify(TYPES_RANGE)}`).join(', ')} }`;
+        // npm refuses (EOVERRIDE) an override that differs from a direct dependency of the same package.json: `$name` takes its range.
+        const rangeOf = (name) => (lockfile === 'npm' && declared(root, name) !== undefined ? `$${name}` : TYPES_RANGE);
+        const values = `{ ${wanted.map((name) => `${JSON.stringify(name)}: ${JSON.stringify(rangeOf(name))}`).join(', ')} }`;
         const value = missing.slice(1).reduceRight((inner, key) => `{ ${JSON.stringify(key)}: ${inner} }`, values);
-        const entries = missing.length > 0 ? [[missing[0], value]] : wanted.map((name) => [name, JSON.stringify(TYPES_RANGE)]);
+        const entries = missing.length > 0 ? [[missing[0], value]] : wanted.map((name) => [name, JSON.stringify(rangeOf(name))]);
         edits.push(...addMembers(text, parent, entries, eol));
-        change(parent === root ? root.end - 1 : parent.start, `${path.join('.')}: ${wanted.join(', ')} ${TYPES_RANGE} added, so that every package of the install uses the same React ${react} types, even one that brings older ones with it (two versions break the JSX types of the ODS components)`);
+        const references = wanted.some((name) => rangeOf(name) !== TYPES_RANGE);
+        const added = references ? wanted.map((name) => `${name} ${JSON.stringify(rangeOf(name))}`).join(', ') : `${wanted.join(', ')} ${TYPES_RANGE}`;
+        change(parent === root ? root.end - 1 : parent.start, `${path.join('.')}: ${added} added, so that every package of the install uses the same React ${react} types, even one that brings older ones with it (two versions break the JSX types of the ODS components)${references ? '. npm refuses an override that differs from a direct dependency: "$<name>" takes its range, and follows it when you bump it' : ''}`);
       }
     } else if (ownReact !== null || declared(root, '@types/react') !== undefined) {
-      note(member(root, 'name')?.value.start ?? root.start, `React ${react}: make sure a single @types/react version is installed (two versions break the JSX types of the ODS components): \`overrides\` for npm, \`resolutions\` for yarn, \`pnpm.overrides\` or the \`overrides\` of pnpm-workspace.yaml for pnpm, at the root of the workspace`);
+      note(member(root, 'name')?.value.start ?? root.start, `React ${react}: make sure a single @types/react version is installed (two versions break the JSX types of the ODS components): \`overrides\` for npm ("$@types/react" for a package this package.json declares: npm refuses another range there), \`resolutions\` for yarn, \`pnpm.overrides\` or the \`overrides\` of pnpm-workspace.yaml for pnpm, at the root of the workspace`);
     }
   }
 
@@ -394,7 +409,7 @@ function transformManifest(text, { file = 'package.json', hasBrowserslistrc = fa
   }
 
   report.notes.push(...scanLlmsUrls(text));
-  report.output = edits.length ? applyEdits(text, edits) : text;
+  report.output = edits.length ? bom + applyEdits(text, edits) : source;
   for (const list of [report.changes, report.notes]) {
     list.sort((a, b) => a.line - b.line);
   }

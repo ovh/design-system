@@ -9,7 +9,7 @@ import { transformOtherStyles, transformThemeJson } from './formats.mjs';
 import { minMajor, scanLlmsUrls, transformManifest } from './manifest.mjs';
 import { migrateThemePaths } from './paths.mjs';
 import { buildProjectIndex, standsForOds } from './project.mjs';
-import { IGNORE_FILE, MODULES_FILE, createOlderOdsResolver, globToRegExp, isIgnored, parseGitignore, readIgnoreFiles, serializeModules } from './resolve.mjs';
+import { IGNORE_FILE, MODULES_FILE, createOlderOdsResolver, globToRegExp, isIgnored, parseGitignore, readIgnoreFiles, repositoryDirs, serializeModules } from './resolve.mjs';
 import { TODO } from './shared.mjs';
 import * as tokens from './tokens.mjs';
 import { transformSource } from './transform.mjs';
@@ -64,7 +64,7 @@ What it cannot change safely gets a ${TODO} comment in your code, saying what to
                      for it; your own modules and the UI kits of your repository are found on their own
   -h, --help         this help
 
-Exit codes: 0 done, 1 --check found work left, 2 error (usage, config, unreadable path, a file that failed).
+Exit codes: 0 done, 1 --check found work left, 2 error (usage, config, unreadable path, a file that failed to read, migrate or write).
 It skips what your .gitignore and ${IGNORE_FILE} files ignore, node_modules and build output (dist, storybook-static, .next, out…).`;
 
 
@@ -96,18 +96,10 @@ async function loadConfigModule() {
   return import('./config.mjs');
 }
 
-/** The .gitignore and .odsmigrateignore rules of the directories above `dir`, up to the root of its git repository. */
+/** The .gitignore and .odsmigrateignore rules of the directories above `dir`, up to the root of its own git repository. */
 function inheritedRules(dir) {
-  const chain = [];
-  for (let current = dirname(dir); ; current = dirname(current)) {
-    chain.unshift(current);
-    if (existsSync(join(current, '.git'))) {
-      return chain.flatMap(readIgnoreFiles);
-    }
-    if (dirname(current) === current) {
-      return [];
-    }
-  }
+  const chain = repositoryDirs(dir);
+  return existsSync(join(chain[0], '.git')) ? chain.slice(0, -1).flatMap(readIgnoreFiles) : [];
 }
 
 /* A JSON file other than package.json, which the run reads only when it has work (most are configs or translations). */
@@ -154,7 +146,8 @@ function* walk(path, errors, extra = []) {
       }
     }
     for (const child of subdirs.reverse()) {
-      stack.push([child, [...rules, ...readIgnoreFiles(child)]]);
+      // A repository of its own (a nested clone, a submodule): the rules of the enclosing one stop there.
+      stack.push([child, [...(existsSync(join(child, '.git')) ? [] : rules), ...readIgnoreFiles(child)]]);
     }
   }
 }
@@ -649,6 +642,17 @@ async function main(argv, io, configModule) {
       typed: result.typed,
       untyped: result.untyped,
     };
+    if (changed && options.diff) {
+      io.stdout(createTwoFilesPatch(file, file, source, result.output, '', '', { context: 2 }));
+    }
+    if (changed && options.write) {
+      const failure = writeOrFail(path, result.output);
+      if (failure) {
+        results.push({ ...emptyFileResult(file), ...failure });
+        continue;
+      }
+      written++;
+    }
     if (basename(path) === 'package.json' && (changed || result.notes.length)) {
       manifestResults.push({ changes: result.changes, file, notes: result.notes });
     }
@@ -656,13 +660,6 @@ async function main(argv, io, configModule) {
       continue;
     }
     results.push(entry);
-    if (changed && options.diff) {
-      io.stdout(createTwoFilesPatch(file, file, source, result.output, '', '', { context: 2 }));
-    }
-    if (changed && options.write) {
-      writeFileSync(path, result.output);
-      written++;
-    }
   }
 
   for (const [key, origin] of skippedAdditions) {
@@ -675,8 +672,12 @@ async function main(argv, io, configModule) {
   if (stale) {
     const text = `${OPT_OUT_HEADER}${config.file ? ` from ${relative(dirname(stale), config.file) || basename(config.file)}` : ''} */\n/* No choice of the config keeps a v19 look any more: delete this file and its import. */\n`;
     if (readFileSync(stale, 'utf8') !== text) {
-      if (options.write) writeFileSync(stale, text);
-      print(io, `v19-look stylesheet ${relative(cwd, stale) || stale}: no choice of your config needs it any more, ${options.write ? 'emptied' : 'emptied with --write'}: delete it and its import.`);
+      const failure = options.write ? writeOrFail(stale, text) : null;
+      if (failure) {
+        results.push({ ...emptyFileResult(relative(cwd, stale) || stale), ...failure });
+      } else {
+        print(io, `v19-look stylesheet ${relative(cwd, stale) || stale}: no choice of your config needs it any more, ${options.write ? 'emptied' : 'emptied with --write'}: delete it and its import.`);
+      }
     }
   }
 
@@ -688,11 +689,22 @@ async function main(argv, io, configModule) {
     const current = existsSync(config.optOutCss) ? readFileSync(config.optOutCss, 'utf8') : null;
     optOutReport.upToDate = current === text;
     if (options.write) {
-      if (current !== text) {
-        writeFileSync(config.optOutCss, text);
+      const failure = current !== text ? writeOrFail(config.optOutCss, text) : null;
+      if (failure) {
+        results.push({ ...emptyFileResult(optOutReport.path), ...failure });
+      } else {
+        optOutReport.written = true;
       }
-      optOutReport.written = true;
     }
+  }
+
+  let modulesWritten = false;
+  if (writeModules) {
+    const failure = writeOrFail(modulesPath, `${JSON.stringify(serializeModules(index, cwd), null, 2)}\n`);
+    if (failure) {
+      results.push({ ...emptyFileResult(relative(cwd, modulesPath) || MODULES_FILE), ...failure });
+    }
+    modulesWritten = !failure;
   }
 
   // Report.
@@ -717,7 +729,9 @@ async function main(argv, io, configModule) {
     printFile(io, result, options.check);
   }
   for (const result of failed) {
-    io.stderr(`✗ ${result.file}: ${result.errorCode === 'PARSE' ? 'parse error' : result.errorCode === 'READ' ? 'unreadable' : result.errorCode === 'ENCODING' ? 'not UTF-8' : 'internal error'}, migrate by hand (${result.error})\n`);
+    io.stderr(result.errorCode === 'WRITE'
+      ? `✗ ${result.file}: not written, left as it was: make it writable and run ods-migrate again (${result.error})\n`
+      : `✗ ${result.file}: ${result.errorCode === 'PARSE' ? 'parse error' : result.errorCode === 'READ' ? 'unreadable' : result.errorCode === 'ENCODING' ? 'not UTF-8' : 'internal error'}, migrate by hand (${result.error})\n`);
   }
 
   const leftUnchanged = [...olderOds.values()].sort((a, b) => (a.package < b.package ? -1 : 1));
@@ -732,10 +746,7 @@ async function main(argv, io, configModule) {
   const readSet = new Set(readOnly);
   const detected = describeIndex(index, cwd, (file) => !olderOdsOf(file) && !readSet.has(file), (file) => !olderOdsOf(file));
   printDetected(io, detected, mapping);
-  const modulesWritten = writeModules;
-  if (writeModules) {
-    writeFileSync(modulesPath, `${JSON.stringify(serializeModules(index, cwd), null, 2)}\n`);
-  } else if (options.write && foreignModules && modulesFound) {
+  if (options.write && foreignModules && modulesFound) {
     print(io, `Note: ${MODULES_FILE} exists and was not written by ods-migrate: it is left as it is, so the ODS ESLint rules do not know the modules above (move it, or give the rules another path with their \`modules\` option).`);
   }
 
@@ -813,7 +824,7 @@ async function main(argv, io, configModule) {
       typedComponents: detected.typed,
       odsModulesNotFollowed: detected.rejected,
       odsLookalikes: detected.suspects,
-      modulesFile: writeModules ? relative(cwd, modulesPath) || MODULES_FILE : null,
+      modulesFile: modulesWritten ? relative(cwd, modulesPath) || MODULES_FILE : null,
     };
     try {
       writeFileSync(jsonPath, `${JSON.stringify(report, null, 2)}\n`);
@@ -1343,6 +1354,16 @@ function checkWritableTarget(path, flag) {
     accessSync(existsSync(path) ? path : dir, constants.W_OK);
   } catch {
     throw new FileError(`${flag} ${path}: permission denied`);
+  }
+}
+
+/** Writes a file; on failure, the `error` and `errorCode` of its entry in the report (the run goes on). */
+function writeOrFail(path, text) {
+  try {
+    writeFileSync(path, text);
+    return null;
+  } catch (error) {
+    return { error: `cannot write the file (${error.code ?? error.message})`, errorCode: 'WRITE' };
   }
 }
 

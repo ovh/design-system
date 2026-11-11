@@ -575,13 +575,16 @@ function globToRegExp(glob) {
   return source;
 }
 
+/* git's default `core.ignorecase` on macOS and Windows. */
+const IGNORE_CASE = process.platform === 'darwin' || process.platform === 'win32';
+
 /**
  * Parses a .gitignore (patterns, `!`, a trailing `/` for directories only, a leading or inner `/`
  * to anchor on the file's directory, `*`, `**`, `?`, `[…]`). `base` is the directory of the file.
  */
-function parseGitignore(text, base) {
+function parseGitignore(text, base, { ignoreCase = IGNORE_CASE } = {}) {
   const rules = [];
-  for (let line of text.split(/\r?\n/)) {
+  for (let line of text.replace(/^\uFEFF/, '').split(/\r?\n/)) {
     line = line.replace(/(?<!\\)\s+$/, '');
     if (!line || line.startsWith('#')) {
       continue;
@@ -598,7 +601,7 @@ function parseGitignore(text, base) {
     if (!pattern) {
       continue;
     }
-    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`) });
+    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`, ignoreCase ? 'i' : '') });
   }
   return rules;
 }
@@ -623,6 +626,19 @@ function isIgnored(rules, path, isDir) {
 
 /* What ods-migrate leaves alone besides .gitignore: a copy of a website's stylesheets, vendored code (same syntax). */
 const IGNORE_FILE = '.odsmigrateignore';
+
+/**
+ * The folders from the root of the git repository of `dir` down to `dir`: the nearest folder, `dir`
+ * included, that holds a `.git` (a folder, or a file for a submodule or a worktree), so that the
+ * ignore files of an enclosing repository never apply. From the root of the file system without one.
+ */
+function repositoryDirs(dir) {
+  const dirs = [];
+  for (let current = dir; ; current = dirname(current)) {
+    dirs.unshift(current);
+    if (existsSync(join(current, '.git')) || dirname(current) === current) return dirs;
+  }
+}
 
 /** The rules of the .gitignore and the .odsmigrateignore of a directory, in that order. */
 function readIgnoreFiles(dir) {
@@ -653,11 +669,7 @@ const ignoredByOdsMigrate = (() => {
   };
   return (file) => {
     if (typeof file !== 'string' || !isAbsolute(file)) return false;
-    const dirs = [];
-    for (let dir = dirname(file); ; dir = dirname(dir)) {
-      dirs.unshift(dir);
-      if (existsSync(join(dir, '.git')) || dirname(dir) === dir) break;
-    }
+    const dirs = repositoryDirs(dirname(file));
     const rules = dirs.flatMap(ownRules);
     if (!rules.length) return false;
     // A file under an ignored folder is ignored, as when the CLI walks the tree.
@@ -772,4 +784,4 @@ function moduleLookup({ cwd = process.cwd(), option, packages = [] } = {}) {
   return find;
 }
 
-export { IGNORE_FILE, MODULES_FILE, ODS_PACKAGES, globToRegExp, ignoredByOdsMigrate, isIgnored, parseGitignore, readIgnoreFiles, createOlderOdsResolver, createResolver, isPackageSource, loadModulesFile, moduleLookup, odsNameIn, olderOdsOf, parseJsonc, serializeModules };
+export { IGNORE_FILE, MODULES_FILE, ODS_PACKAGES, globToRegExp, ignoredByOdsMigrate, isIgnored, parseGitignore, readIgnoreFiles, repositoryDirs, createOlderOdsResolver, createResolver, isPackageSource, loadModulesFile, moduleLookup, odsNameIn, olderOdsOf, parseJsonc, serializeModules };

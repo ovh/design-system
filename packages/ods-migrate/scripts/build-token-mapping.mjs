@@ -40,7 +40,7 @@ const { values: options } = parseArgs({
 });
 
 const git = (...args) => execFileSync('git', ['-C', options.repo, ...args], { encoding: 'utf8', maxBuffer: 1 << 28 });
-const sha = git('rev-parse', '--short', options.ref).trim();
+const sha = git('rev-parse', '--short=9', options.ref).trim();
 const from = options.from ?? git('tag', '--list', 'v19.*', '--sort=-v:refname').split('\n')[0];
 const script = git('show', `${options.ref}:packages/themes/scripts/repoint-tokens.js`);
 const uncomment = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
@@ -259,6 +259,17 @@ for (const [name, entry] of Object.entries(tokens)) {
   }
 }
 
+/*
+ * The v19 focus ring was `--ods-theme-outline-color`: a ramp step of the same colour in a focus
+ * outline is that ring (`focus`), any other colour there a border of its own.
+ */
+const FOCUS_HEX = v19Values.css('--ods-theme-outline-color');
+for (const [name, entry] of Object.entries(tokens)) {
+  if (entry.byRole && isHex(FOCUS_HEX) && v19Values.css(name) === FOCUS_HEX) {
+    entry.focus = true;
+  }
+}
+
 /* A v19 theme that set the body font also set the headings, which have their own token in v20. */
 const HEADING = '--ods-semantic-font-family-heading';
 for (const entry of Object.values(tokens)) {
@@ -323,8 +334,12 @@ for (const name of v19Values.scssNames.filter((name) => name.startsWith('$ods-pa
  * built from them became, or the v20 stop of their colour, or the one v20 token of the same value,
  * or are marked with their v19 value.
  */
+/* The theme variables that v20 declares in `@ovhcloud/ods-react/style` under the same name and value (the breakpoints): kept as is. */
+const reactStyle = git('ls-tree', '--name-only', `${options.ref}:packages/ods-react/src/style/`).split('\n').filter((file) => file.endsWith('.scss'))
+  .map((file) => uncomment(git('show', `${options.ref}:packages/ods-react/src/style/${file}`))).join('\n');
+const reactStyleValue = (name) => reactStyle.match(new RegExp(`^\\s*\\${name}\\s*:\\s*([^;]+);`, 'm'))?.[1].replace(/\s*!default$/, '').trim();
 for (const name of v19Values.scssNames.filter((name) => !name.startsWith('$ods-palette-') && !v20Values.scssNames.includes(name))) {
-  if (`--${name.slice(1)}` in tokens) continue;
+  if (`--${name.slice(1)}` in tokens || reactStyleValue(name) === v19Values.scss(name)) continue;
   const via = v19Theme.match(new RegExp(`(--ods-[a-z0-9-]+):\\s*#\\{\\s*[\\w-]+\\.\\${name}\\s*\\}`))?.[1];
   const value = v19Values.scss(name);
   const stop = stopOfHex(value);

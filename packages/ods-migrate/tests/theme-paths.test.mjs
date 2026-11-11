@@ -89,6 +89,33 @@ describe('theme paths: BC-31, the base64 bundle `./default`', () => {
     for (const { output } of [lazy, alias]) assert.equal(script(output).output, output);
   });
 
+  it('carries a query or a hash to both files of a side-effect import, marks an import read as a value', () => {
+    assert.equal(script("import '@ovhcloud/ods-themes/default?used';\nimport '@ovhcloud/ods-themes/default#x';\n").output,
+      "import '@ovhcloud/ods-themes/default/css?used';\nimport '@ovhcloud/ods-themes/default/fonts?used';\nimport '@ovhcloud/ods-themes/default/css#x';\nimport '@ovhcloud/ods-themes/default/fonts#x';\n");
+    // `?inline` gives the CSS as a string the app injects itself: the theme alone would leave the fonts out.
+    for (const query of ['?inline', '?raw', '?url']) {
+      const { output, todos } = script(`import css from '@ovhcloud/ods-themes/default${query}';\n`);
+      assert.match(output, new RegExp(`^/\\* TODO\\(ods-v20\\): @ovhcloud/ods-themes/default is removed in v20, and this import reads it as a value \\(\\${query}\\): .*default/css\\${query} and the base64 fonts it held, @ovhcloud/ods-themes/fonts-base64\\${query}\\. Import both and use both`));
+      assert.equal(todos.length, 1);
+      assert.equal(script(output).output, output);
+    }
+    const css = style("@import '@ovhcloud/ods-themes/default?inline';\n", 'css');
+    assert.match(css.output, /^\/\* TODO\(ods-v20\): .*reads it as a value \(\?inline\)/);
+    assert.equal(style(css.output, 'css').output, css.output);
+  });
+
+  it('splits `meta.load-css` and a Sass @import list, marks what it cannot split', () => {
+    assert.equal(style("@use 'sass:meta';\n.a {\n  @include meta.load-css('@ovhcloud/ods-themes/default');\n}\n").output,
+      "@use 'sass:meta';\n.a {\n  @include meta.load-css('@ovhcloud/ods-themes/default/css');\n  @include meta.load-css('@ovhcloud/ods-themes/default/fonts');\n}\n");
+    assert.equal(style(".a { @include meta.load-css('@ovhcloud/ods-themes/default'); }\n").output,
+      ".a { @include meta.load-css('@ovhcloud/ods-themes/default/css'); @include meta.load-css('@ovhcloud/ods-themes/default/fonts'); }\n");
+    assert.equal(style("@import '@ovhcloud/ods-themes/default', 'other';\n").output,
+      "@import '@ovhcloud/ods-themes/default/css';\n@import '@ovhcloud/ods-themes/default/fonts';\n@import 'other';\n");
+    const configured = style("@include meta.load-css('@ovhcloud/ods-themes/default', $with: (a: 1));\n");
+    assert.match(configured.output, /^\/\* TODO\(ods-v20\): @ovhcloud\/ods-themes\/default is removed in v20/);
+    assert.equal(style(configured.output).output, configured.output);
+  });
+
   it('leaves a v20 import and another package alone', () => {
     for (const source of ["import '@ovhcloud/ods-themes/default/css';\n", "import '@ovhcloud/ods-themes/blue-jeans/css';\n", "import '@acme/ods-themes/default-x';\n"]) {
       assert.equal(script(source).output, source);
@@ -184,6 +211,16 @@ describe('theme paths: BC-32, the files moved in dist/ and src/', () => {
   it('splits a side-effect import of dist/default/default.css', () => {
     assert.equal(script("import '@ovhcloud/ods-themes/dist/default/default.css';\n").output,
       "import '@ovhcloud/ods-themes/default/css';\nimport '@ovhcloud/ods-themes/fonts-base64';\n");
+  });
+
+  it('moves the files of dist/default and src/default through a value query, `meta.load-css` and a Sass @import list', () => {
+    assert.equal(script("import css from '@ovhcloud/ods-themes/dist/default/index.css?inline';\n").output, "import css from '@ovhcloud/ods-themes/default/css?inline';\n");
+    assert.match(script("import css from '@ovhcloud/ods-themes/dist/default/default.css?inline';\n").output, /^\/\* TODO\(ods-v20\): .*default\.css\?inline is two files in v20/);
+    assert.equal(style("@include meta.load-css('@ovhcloud/ods-themes/src/default/default');\n").output,
+      "@include meta.load-css('@ovhcloud/ods-themes/src/aluminium/light');\n@include meta.load-css('@ovhcloud/ods-themes/src/fonts-base64');\n");
+    assert.equal(style("@import 'other', '@ovhcloud/ods-themes/dist/default/default.css';\n").output,
+      "@import 'other';\n@import '@ovhcloud/ods-themes/dist/aluminium/light.css';\n@import '@ovhcloud/ods-themes/dist/fonts-base64.css';\n");
+    assert.equal(style("@import 'a', '@ovhcloud/ods-themes/src/default/index';\n").output, "@import 'a';\n@import '@ovhcloud/ods-themes/src/aluminium/light';\n");
   });
 });
 
@@ -324,6 +361,47 @@ describe('theme paths: the CLI', () => {
     const again = await migrate(dir, ['--check']);
     assert.equal(again.code, 0);
     assert.match(again.stdout, /Check: nothing left to migrate\./);
+  });
+
+  it('--check fails on ./default left in a value query, `meta.load-css` or an @import list, and passes once migrated', async () => {
+    const dir = project({
+      'package.json': '{ "dependencies": { "@ovhcloud/ods-react": "19.7.3", "@ovhcloud/ods-themes": "19.7.3" } }',
+      'src/inline.ts': "import css from '@ovhcloud/ods-themes/default?inline';\nexport default css;\n",
+      'src/load.scss': "@use 'sass:meta';\n.a {\n  @include meta.load-css('@ovhcloud/ods-themes/default');\n}\n",
+      'src/list.scss': "@import '@ovhcloud/ods-themes/default', 'other';\n",
+    });
+    const check = async (files) => {
+      let stdout = '';
+      const code = await run([...files, '--check'], { cwd: dir, stderr: () => {}, stdout: (text) => { stdout += text; } });
+      return { code, stdout };
+    };
+    for (const file of ['src/inline.ts', 'src/load.scss', 'src/list.scss']) {
+      const { code, stdout } = await check([file]);
+      assert.equal(code, 1, `${file}:\n${stdout}`);
+    }
+    await migrate(dir, ['--write']);
+    assert.equal(readFileSync(join(dir, 'src/list.scss'), 'utf8'), "@import '@ovhcloud/ods-themes/default/css';\n@import '@ovhcloud/ods-themes/default/fonts';\n@import 'other';\n");
+    assert.match(readFileSync(join(dir, 'src/load.scss'), 'utf8'), /meta\.load-css\('@ovhcloud\/ods-themes\/default\/css'\);\n {2}@include meta\.load-css\('@ovhcloud\/ods-themes\/default\/fonts'\);/);
+    assert.equal((await check(['src/load.scss', 'src/list.scss'])).code, 0);
+    // The value import is marked: --check still fails on its marker until someone splits it.
+    assert.match(readFileSync(join(dir, 'src/inline.ts'), 'utf8'), /^\/\* TODO\(ods-v20\): .*reads it as a value \(\?inline\)/);
+    assert.equal((await check(['src/inline.ts'])).code, 1);
+  });
+
+  it('keeps the breakpoints of the v19 theme variables and moves their import, with no marker (end to end)', async () => {
+    const files = {
+      'package.json': '{ "dependencies": { "@ovhcloud/ods-react": "19.7.3", "@ovhcloud/ods-themes": "19.7.3" } }',
+      'src/use.scss': "@use '@ovhcloud/ods-themes/src/default/variables' as v;\n.a { @media (min-width: v.$ods-breakpoint-tablet) { color: red; } }\n",
+      'src/star.scss': "@use '@ovhcloud/ods-themes/src/default/variables' as *;\n.a { @media (min-width: $ods-breakpoint-tablet) { color: red; } }\n",
+      'src/import.scss': "@import '@ovhcloud/ods-themes/src/default/variables';\n.a { max-width: $ods-breakpoint-desktop; }\n",
+    };
+    const dir = project(files);
+    const { stdout } = await migrate(dir, ['--write']);
+    assert.doesNotMatch(stdout, /no v20 token for this value/);
+    assert.equal(readFileSync(join(dir, 'src/use.scss'), 'utf8'), "@use '@ovhcloud/ods-react/style' as v;\n.a { @media (min-width: v.$ods-breakpoint-tablet) { color: red; } }\n");
+    assert.equal(readFileSync(join(dir, 'src/star.scss'), 'utf8'), "@use '@ovhcloud/ods-react/style' as *;\n.a { @media (min-width: $ods-breakpoint-tablet) { color: red; } }\n");
+    assert.equal(readFileSync(join(dir, 'src/import.scss'), 'utf8'), "@import '@ovhcloud/ods-react/style';\n.a { max-width: $ods-breakpoint-desktop; }\n");
+    assert.equal((await migrate(dir, ['--check'])).code, 0);
   });
 
   it('reports the line of a moved path on disk, after the token pass changed the file', async () => {

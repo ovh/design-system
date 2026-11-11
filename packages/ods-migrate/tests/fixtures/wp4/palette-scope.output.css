@@ -1,0 +1,5 @@
+:root { --ods-palette-brand-500: #d00; }
+html { --ods-palette-brand-600: #b00; }
+body { /* TODO(ods-v20): --ods-color-primary-700 → --ods-palette-brand-700 outside :root: in v20 the roles read the palette on :root only, so this declaration recolours nothing here. Declare the roles this container needs instead (`--ods-semantic-color-*`) */ --ods-palette-brand-700: #900; }
+.wrapper { /* TODO(ods-v20): --ods-color-primary-500 → --ods-palette-brand-500 outside :root: in v20 the roles read the palette on :root only, so this declaration recolours nothing here. Declare the roles this container needs instead (`--ods-semantic-color-*`) */ --ods-palette-brand-500: #d00; }
+body { background: var(--ods-semantic-color-surface-page); }

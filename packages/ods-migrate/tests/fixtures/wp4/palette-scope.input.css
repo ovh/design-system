@@ -1,0 +1,5 @@
+:root { --ods-color-primary-500: #d00; }
+html { --ods-color-primary-600: #b00; }
+body { --ods-color-primary-700: #900; }
+.wrapper { --ods-color-primary-500: #d00; }
+body { background: var(--ods-color-neutral-000); }

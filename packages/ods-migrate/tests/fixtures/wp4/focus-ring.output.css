@@ -1,0 +1,7 @@
+.a:focus-visible { outline: 2px solid var(--ods-semantic-color-focus); }
+.b:focus-visible { outline: 2px solid var(--ods-semantic-color-focus); }
+.c:focus { outline-color: var(--ods-semantic-color-focus); }
+.err:focus { outline: 2px solid var(--ods-semantic-color-border-critical); }
+.brand:focus-within { outline: 2px solid var(--ods-semantic-color-border-brand); }
+.dark:focus-visible { /* TODO(ods-v20): --ods-color-neutral-000: the colour of a focus ring, which is not the v19 focus colour: v20 paints the focus ring with `--ods-semantic-color-focus`; use it to follow the theme, or keep the exact v19 colour with var(--ods-palette-white) */ outline: 2px solid var(--ods-color-neutral-000); }
+.d:hover:focus-visible { outline-color: var(--ods-semantic-color-focus); }

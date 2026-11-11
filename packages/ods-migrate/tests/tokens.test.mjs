@@ -86,9 +86,22 @@ describe('design tokens', () => {
     assert.equal(migrate(script, 'a.ts').output, "const font = \"'Brand Source Sans Pro', 'Source Sans 3', sans-serif\";\nconst style = { fontFamily: 'Source Sans 3' };\n");
   });
 
-  it('paints the outline of a focused element with the v20 focus role', () => {
-    const css = '.f:focus,\n.f:focus-within { outline-color: var(--ods-color-primary-700); }\n.g:focus-visible { outline: 2px solid var(--ods-color-primary-500); }\n.h:focus { border-color: var(--ods-color-primary-700); }\n';
+  it('paints the outline of a focused element with the v20 focus role when it had the v19 focus colour', () => {
+    // v19 focus ring: --ods-theme-outline-color, #000e9c, which primary-700 and information-700 hold too.
+    const css = '.f:focus,\n.f:focus-within { outline-color: var(--ods-color-primary-700); }\n.g:focus-visible { outline: 2px solid var(--ods-color-information-700); }\n.h:focus { border-color: var(--ods-color-primary-700); }\n';
     assert.equal(migrate(css, 'a.css').output, '.f:focus,\n.f:focus-within { outline-color: var(--ods-semantic-color-focus); }\n.g:focus-visible { outline: 2px solid var(--ods-semantic-color-focus); }\n.h:focus { border-color: var(--ods-semantic-color-interaction-brand-hover); }\n');
+  });
+
+  it('reads another colour in a focus outline as a border, and marks a white one', () => {
+    // A red ring stays red, a brand-500 ring the brand border: neither becomes the blue focus role.
+    const css = '.err:focus { outline: 2px solid var(--ods-color-critical-500); }\n.g:focus-visible { outline-color: var(--ods-color-primary-500); }\n';
+    assert.equal(migrate(css, 'a.css').output, '.err:focus { outline: 2px solid var(--ods-semantic-color-border-critical); }\n.g:focus-visible { outline-color: var(--ods-semantic-color-border-brand); }\n');
+    const white = migrate('.d:focus-visible { outline: 2px solid var(--ods-color-neutral-000); }\n', 'a.css');
+    assert.match(white.output, /TODO\(ods-v20\): --ods-color-neutral-000: the colour of a focus ring, which is not the v19 focus colour: v20 paints the focus ring with `--ods-semantic-color-focus`.*var\(--ods-palette-white\)/);
+    assert.equal(migrate(white.output, 'a.css').output, white.output);
+    // The same rule for an outline utility under a focus variant: not the hover role.
+    assert.equal(migrate('const c = "focus-visible:outline-[--ods-color-primary-700] focus:outline-[--ods-color-critical-500] group-focus:outline-[var(--ods-color-information-700)] hover:outline-[--ods-color-primary-700]";\n', 'a.tsx').output,
+      'const c = "focus-visible:outline-[--ods-semantic-color-focus] focus:outline-[--ods-semantic-color-border-critical] group-focus:outline-[var(--ods-semantic-color-focus)] hover:outline-[--ods-semantic-color-interaction-brand-hover]";\n');
   });
 
   it('reads a ring box-shadow as a border, in CSS and in a Tailwind value', () => {
@@ -234,8 +247,13 @@ describe('roles', () => {
   });
 
   it('reads Tailwind utilities and their variants', () => {
-    assert.deepEqual(tailwindContext('p-2 hover:bg-[--ods-x]', 'p-2 hover:bg-['.length), { active: false, hover: true, placeholder: false, role: 'surface', stack: false, where: 'hover:bg-[…]' });
+    assert.deepEqual(tailwindContext('p-2 hover:bg-[--ods-x]', 'p-2 hover:bg-['.length), { active: false, focusRing: false, hover: true, placeholder: false, role: 'surface', stack: false, where: 'hover:bg-[…]' });
     assert.equal(tailwindContext('active:bg-[--ods-x]', 'active:bg-['.length).active, true);
+    // An outline under a focus variant is the focus ring; a border is not, nor an outline under hover.
+    assert.equal(tailwindContext('focus-visible:outline-[--ods-x]', 'focus-visible:outline-['.length).focusRing, true);
+    assert.equal(tailwindContext('[&:focus-visible]:outline-[--ods-x]', '[&:focus-visible]:outline-['.length).focusRing, true);
+    assert.equal(tailwindContext('focus:border-[--ods-x]', 'focus:border-['.length).focusRing, false);
+    assert.equal(tailwindContext('hover:outline-[--ods-x]', 'hover:outline-['.length).focusRing, false);
     // The v4 shorthand, with or without a data-type hint: the role is the utility's.
     assert.equal(tailwindContext('bg-(--ods-x)', 'bg-('.length).role, 'surface');
     assert.equal(tailwindContext('border-(color:--ods-x)', 'border-(color:'.length).role, 'border');

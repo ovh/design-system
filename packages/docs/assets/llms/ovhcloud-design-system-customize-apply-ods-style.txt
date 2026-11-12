@@ -3,14 +3,14 @@ title: "Apply ODS Style"
 slug: ovhcloud-design-system-customize-apply-ods-style
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 356
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-apply-ods-style.txt
+version: 20.0.0
+tokens: 350
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-customize-apply-ods-style.txt
 ---
 
 # Apply ODS Style
 
-After installing ODS (following the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation),
+After installing ODS (following the [Get Started](https://ovh.github.io/design-system/v20.0.0/guides/get-started) documentation),
 you'll be able to use every component with the correct style.
 
 For the non-component related style, you need to update your app accordingly.
@@ -31,7 +31,7 @@ html {
 
 All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/design-tokens) page. They follow the theme the page loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes)).
+If you want to use any of those on your own components, you can refer to the exhaustive list on the [Design Tokens](https://ovh.github.io/design-system/v20.0.0/guides/design-tokens) page. They follow the theme the page loads, as the ODS components do (see [Themes](https://ovh.github.io/design-system/v20.0.0/guides/themes)).
 
 ```css
 .my-custom-title {

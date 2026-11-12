@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-migrate",
-  "version": "20.0.0-alpha.0",
+  "version": "20.0.0",
   "description": "Migration tooling from ODS v19 to v20: codemod, ESLint rule and migration guide, from one mapping",
   "author": "OVH SAS",
   "license": "Apache-2.0",

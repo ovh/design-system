@@ -3,14 +3,14 @@ title: "Troubleshooting"
 slug: ovhcloud-design-system-troubleshooting
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 922
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-troubleshooting.txt
+version: 20.0.0
+tokens: 912
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-troubleshooting.txt
 ---
 
 # Troubleshooting
 
-*Common issues met when integrating ODS, and how to fix them. If yours is not listed, check the [F.A.Q.](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/faq) or [open an issue on GitHub](https://github.com/ovh/design-system/issues).*
+*Common issues met when integrating ODS, and how to fix them. If yours is not listed, check the [F.A.Q.](https://ovh.github.io/design-system/v20.0.0/guides/faq) or [open an issue on GitHub](https://github.com/ovh/design-system/issues).*
 
 ## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
 
@@ -63,12 +63,12 @@ This is to prevent those to appear behind an open modal/drawer.
 To allow overlay elements to correctly render inside a modal/drawer, add the `createPortal={ false }` attribute to the
 `Content` component of the overlay element.
 
-See [Drawer example](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/drawer)
-and [Modal example](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal).
+See [Drawer example](https://ovh.github.io/design-system/v20.0.0/components/drawer)
+and [Modal example](https://ovh.github.io/design-system/v20.0.0/components/modal).
 
 ## Icons are not displayed
 
-Ensure you did import the fonts in your application, check the [get started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
+Ensure you did import the fonts in your application, check the [get started](https://ovh.github.io/design-system/v20.0.0/guides/get-started)
 page to read more about how to achieve this.
 
 ## Warning: Function components cannot be given refs
@@ -113,4 +113,4 @@ Use them from client components, marked with the `'use client'` directive, and k
 
 If the error is `document is not defined` and the page renders a `Toaster`, it comes from its default portal into `document.body`: pass `createPortal={ false }`, or render the `Toaster` only once the page is mounted in the browser.
 
-See [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) for the full setup.
+See [Get Started](https://ovh.github.io/design-system/v20.0.0/guides/get-started) for the full setup.

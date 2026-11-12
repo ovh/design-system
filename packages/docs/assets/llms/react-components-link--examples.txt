@@ -3,9 +3,9 @@ title: "Link"
 slug: link
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 310
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-link--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-link--examples.txt
 ---
 
 # Link

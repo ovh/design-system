@@ -3,9 +3,9 @@ title: "Button Group"
 slug: button-group
 category: component
 type: technical-information
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 327
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-button-group--technical-information.txt
 ---
 
 # Button Group

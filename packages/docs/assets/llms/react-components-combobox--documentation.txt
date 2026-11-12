@@ -3,9 +3,9 @@ title: "Combobox"
 slug: combobox
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1813
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-combobox--documentation.txt
+version: 20.0.0
+tokens: 1805
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-combobox--documentation.txt
 ---
 
 # Combobox
@@ -49,11 +49,11 @@ The **Combobox** is best suited when users need to:
 
 ## Best Practices in Context
 
-1. [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
+1. [Input](https://ovh.github.io/design-system/v20.0.0/components/input) where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
 2. **Dropdown list** displaying a scrollable list of suggested items. Items can be customized using a custom renderer.
-3. [Tag](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tag) _(multiple selection mode)_ to display selected items as tags inside the Input field
-4. **Clearable** [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) _(optional)_ to allow users to clear the input content
-5. [Spinner](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/spinner) _(optional)_ to indicate that data is being fetched
+3. [Tag](https://ovh.github.io/design-system/v20.0.0/components/tag) _(multiple selection mode)_ to display selected items as tags inside the Input field
+4. **Clearable** [Button](https://ovh.github.io/design-system/v20.0.0/components/button) _(optional)_ to allow users to clear the input content
+5. [Spinner](https://ovh.github.io/design-system/v20.0.0/components/spinner) _(optional)_ to indicate that data is being fetched
 6. **Add entry option** _(optional)_ allows users to create new entries when no matching result is found. The label is customizable
 7. **Empty state message** is a customizable message displayed when no suggestion match the query
 

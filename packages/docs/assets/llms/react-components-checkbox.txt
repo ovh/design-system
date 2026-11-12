@@ -3,9 +3,9 @@ title: "Checkbox"
 slug: checkbox
 category: component
 type: overview
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 348
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-checkbox.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-checkbox.txt
 ---
 
 # Checkbox

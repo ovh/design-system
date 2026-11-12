@@ -3,9 +3,9 @@ title: "Datepicker"
 slug: datepicker
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 590
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-datepicker--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--examples.txt
 ---
 
 # Datepicker

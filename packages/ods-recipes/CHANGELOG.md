@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 
+# [20.0.0](https://ovh.github.io/design-system/v20.0.0/guides/changelog) (2026-11-12)
+[compare](https://github.com/ovh/design-system/compare/v20.0.0-alpha.0...v20.0.0)
+
+### Bug Fixes
+
+* **recipes:** name the fields and icon buttons of six recipes ([984a790](https://github.com/ovh/design-system/commit/984a79020943ff824d9ba00f82e35cafd4c980d2))
+* **recipes:** pass the range input labels through a constant ([89330bc](https://github.com/ovh/design-system/commit/89330bcd314cc8ae621adedc94db877897e3d545))
+* **themes:** type the stylesheet exports for TypeScript 6 ([f64ab0a](https://github.com/ovh/design-system/commit/f64ab0aa46d5341ae1f9c12283a74f7a346c9963))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
 # [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
 [compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
 

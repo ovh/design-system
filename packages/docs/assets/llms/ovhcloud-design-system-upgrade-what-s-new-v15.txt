@@ -3,14 +3,14 @@ title: "What's new in v15"
 slug: ovhcloud-design-system-upgrade-what-s-new-v15
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 884
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v15.txt
+version: 20.0.0
+tokens: 880
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v15.txt
 ---
 
 # What's new in v15
 
-*Release notes of v15. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v15. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v15.0.1
 
@@ -19,7 +19,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 ## v15.0.0
 
-As it is a major version, you have to do the [migration guide 14.x to 15.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-14-to-15)
+As it is a major version, you have to do the [migration guide 14.x to 15.x](https://ovh.github.io/design-system/v20.0.0/guides/migration-14-to-15)
 
 ### Project changes
 

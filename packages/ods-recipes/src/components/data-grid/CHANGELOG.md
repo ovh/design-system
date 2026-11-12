@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 
+# [20.0.0](https://ovh.github.io/design-system/v20.0.0/guides/changelog) (2026-11-12)
+[compare](/compare/v20.0.0-alpha.0...v20.0.0)
+
+### Bug Fixes
+
+* **recipes:** name the fields and icon buttons of six recipes 984a790
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
 # [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
 [compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
 

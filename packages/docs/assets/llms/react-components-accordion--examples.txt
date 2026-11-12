@@ -3,9 +3,9 @@ title: "Accordion"
 slug: accordion
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 1342
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-accordion--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-accordion--examples.txt
 ---
 
 # Accordion

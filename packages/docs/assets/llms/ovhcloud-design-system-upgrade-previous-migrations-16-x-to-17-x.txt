@@ -3,9 +3,9 @@ title: "16.x to 17.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 557
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt
+version: 20.0.0
+tokens: 555
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt
 ---
 
 # 16.x to 17.x
@@ -36,7 +36,7 @@ Instead use only one dependency:
 
 ### Import
 
-You can see more details in the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
+You can see more details in the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0/guides/get-started)
 
 #### Native webcomponents
 

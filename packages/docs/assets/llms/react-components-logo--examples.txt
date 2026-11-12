@@ -3,9 +3,9 @@ title: "Logo"
 slug: logo
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 106
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-logo--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-logo--examples.txt
 ---
 
 # Logo

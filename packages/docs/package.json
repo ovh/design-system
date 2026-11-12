@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-docs",
-  "version": "20.0.0-alpha.0",
+  "version": "20.0.0",
   "type": "module",
   "scripts": {
     "build": "pnpm generate:versions && vite build",

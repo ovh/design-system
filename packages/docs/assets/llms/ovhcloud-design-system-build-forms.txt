@@ -3,9 +3,9 @@ title: "Forms"
 slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 6932
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-build-forms.txt
+version: 20.0.0
+tokens: 6900
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-build-forms.txt
 ---
 
 # Forms
@@ -577,7 +577,7 @@ The right component reduces friction before validation is even needed.
 
 ### When the user needs to provide short, structured information
 
-Use [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) component.
+Use [Input](https://ovh.github.io/design-system/v20.0.0/components/input) component.
 
 Use for:
 - Personal information (First name, Last name).
@@ -595,7 +595,7 @@ Do not use when:
 
 ### When the user needs to explain, justify, or describe something
 
-Use [Textarea](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/textarea) component.
+Use [Textarea](https://ovh.github.io/design-system/v20.0.0/components/textarea) component.
 
 Use for:
 - Explain why the user is requesting a change.
@@ -609,7 +609,7 @@ Why?
 
 ### When the user must create or confirm secure credentials
 
-Use [Password](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/password) component.
+Use [Password](https://ovh.github.io/design-system/v20.0.0/components/password) component.
 
 Use for:
 - Account creation.
@@ -623,7 +623,7 @@ Why?
 
 ### When the user must enter an exact numeric value
 
-Use [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) or [Quantity](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/quantity) component
+Use [Input](https://ovh.github.io/design-system/v20.0.0/components/input) or [Quantity](https://ovh.github.io/design-system/v20.0.0/components/quantity) component
 
 Use for:
 - Quantity of items.
@@ -641,7 +641,7 @@ Avoid when:
 
 ### When the user is selecting an approximate value or a range
 
-Use [Range](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/range) component.
+Use [Range](https://ovh.github.io/design-system/v20.0.0/components/range) component.
 
 Use for:
 - Budget filter.
@@ -660,7 +660,7 @@ Avoid when:
 
 ### When users must choose one option and all options should be visible
 
-Use [Radio](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/radio-group) buttons.
+Use [Radio](https://ovh.github.io/design-system/v20.0.0/components/radio-group) buttons.
 
 Use for:
 - Choosing a subscription plan (e.g., Basic / Pro / Enterprise).
@@ -682,7 +682,7 @@ When a user must select a single option from a predefined list, the choice betwe
 
 #### Use Select
 
-Use [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select) when the list is limited and easy to scan visually.
+Use [Select](https://ovh.github.io/design-system/v20.0.0/components/select) when the list is limited and easy to scan visually.
 
 Typical situations:
 - Selecting a status (Draft / Pending / Approved).
@@ -696,7 +696,7 @@ Typical situations:
 
 #### Use Combobox
 
-Use [Combobox](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/combobox) when the list is long or when search significantly improves usability.
+Use [Combobox](https://ovh.github.io/design-system/v20.0.0/components/combobox) when the list is long or when search significantly improves usability.
 
 Typical situations:
 - Selecting a country from a global list.
@@ -711,7 +711,7 @@ Typical situations:
 
 ### When users can select multiple independent options
 
-Use [Checkboxes](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/checkbox).
+Use [Checkboxes](https://ovh.github.io/design-system/v20.0.0/components/checkbox).
 
 Use for:
 - Selecting product features.
@@ -725,7 +725,7 @@ Why?
 
 ### When the user is enabling or disabling a setting
 
-Use [Toggle](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/toggle) component.
+Use [Toggle](https://ovh.github.io/design-system/v20.0.0/components/toggle) component.
 
 Use for:
 - Enable dark mode.
@@ -740,11 +740,11 @@ Avoid when:
 - The action is critical or legally binding.
 - The user must explicitly confirm something important.
 
-In those cases, use a [Checkbox](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/checkbox).
+In those cases, use a [Checkbox](https://ovh.github.io/design-system/v20.0.0/components/checkbox).
 
 ### When the user must select a specific date
 
-Use [Datepicker](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker) component.
+Use [Datepicker](https://ovh.github.io/design-system/v20.0.0/components/datepicker) component.
 
 Use for:
 - Booking a meeting.
@@ -762,7 +762,7 @@ Consider alternatives when:
 
 ### When the user must provide supporting material
 
-Use [File Upload](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-upload) component.
+Use [File Upload](https://ovh.github.io/design-system/v20.0.0/components/file-upload) component.
 
 Use for:
 - Uploading identity documents.
@@ -781,11 +781,11 @@ Avoid when:
 
 ODS form elements can either be [controlled or uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components).
 
-You can use each form element directly in your own form, or wrap them using the [Form Field](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/form-field) component.
+You can use each form element directly in your own form, or wrap them using the [Form Field](https://ovh.github.io/design-system/v20.0.0/components/form-field) component.
 
 ## Form Field
 
-Using [Form Field](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/form-field) component
+Using [Form Field](https://ovh.github.io/design-system/v20.0.0/components/form-field) component
 will enforce layout, design, behavior and accessibility through a few dedicated components:
 - `FormFieldLabel`
 - `FormFieldHelperText`

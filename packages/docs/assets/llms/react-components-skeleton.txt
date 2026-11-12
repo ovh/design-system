@@ -3,9 +3,9 @@ title: "Skeleton"
 slug: skeleton
 category: component
 type: overview
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 109
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-skeleton.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-skeleton.txt
 ---
 
 # Skeleton

@@ -1,7 +1,7 @@
 {
   "name": "@ovhcloud/ods-mcp",
   "mcpName": "io.github.ovh/ods-mcp",
-  "version": "20.0.0-alpha.0",
+  "version": "20.0.0",
   "description": "MCP server exposing the OVHcloud Design System documentation to AI assistants",
   "author": "OVH SAS",
   "license": "Apache-2.0",

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-tailwind",
-  "version": "20.0.0-alpha.0",
+  "version": "20.0.0",
   "description": "Tailwind CSS v4 utilities mapped to the OVHcloud Design System tokens",
   "author": "OVH SAS",
   "license": "Apache-2.0",

@@ -3,9 +3,9 @@ title: "17.x to 18.x"
 slug: ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x
 category: generic
 type: overview
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 390
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt
 ---
 
 # 17.x to 18.x

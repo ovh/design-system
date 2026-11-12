@@ -3,14 +3,14 @@ title: "What's new in v16"
 slug: ovhcloud-design-system-upgrade-what-s-new-v16
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 2308
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v16.txt
+version: 20.0.0
+tokens: 2294
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v16.txt
 ---
 
 # What's new in v16
 
-*Release notes of v16. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v16. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v16.6.0
 
@@ -114,7 +114,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Medium**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/medium)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/medium)
 
 ### Bug fixes
 
@@ -246,7 +246,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Datepicker**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/datepicker)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/datepicker)
 
 ### Component changes
 
@@ -277,7 +277,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Phone Number**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/phone-number)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/phone-number)
 
 ### Component changes
 
@@ -309,7 +309,7 @@ Fixes CI build issues when deploying Storybook.
 
 ## v16.0.0
 
-As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-15-to-16)
+As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](https://ovh.github.io/design-system/v20.0.0/guides/migration-15-to-16)
 
   
   
@@ -368,7 +368,7 @@ Ex:
 
 **Clipboard**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/clipboard)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/clipboard)
 
 **Menu**
 
@@ -376,7 +376,7 @@ See documentation using version selector
 
 **Modal**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/modal)
 
 **Search Bar**
 

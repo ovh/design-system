@@ -3,9 +3,9 @@ title: "Icon"
 slug: icon
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 437
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-icon--examples.txt
 ---
 
 # Icon

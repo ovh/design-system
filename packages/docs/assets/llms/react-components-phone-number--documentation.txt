@@ -3,14 +3,14 @@ title: "Phone Number"
 slug: phone-number
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1541
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-phone-number--documentation.txt
+version: 20.0.0
+tokens: 1533
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-phone-number--documentation.txt
 ---
 
 # Phone Number
 
-_**Phone Number** component is a combo of a selection of country phone indicator and an [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) field for entering a phone number_
+_**Phone Number** component is a combo of a selection of country phone indicator and an [Input](https://ovh.github.io/design-system/v20.0.0/components/input) field for entering a phone number_
 
 ## Overview
 
@@ -57,7 +57,7 @@ Form Guidelines] }
 
 ## Placement
 
-**Phone Number** is a group of [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select) and [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input), and should act as their specific placements.
+**Phone Number** is a group of [Select](https://ovh.github.io/design-system/v20.0.0/components/select) and [Input](https://ovh.github.io/design-system/v20.0.0/components/input), and should act as their specific placements.
 
 ## Behavior
 
@@ -75,7 +75,7 @@ For example:
 
 ### Locale
 
-The locale (i.e. country list translation in [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)) is first set to the value provided as a property.
+The locale (i.e. country list translation in [Select](https://ovh.github.io/design-system/v20.0.0/components/select)) is first set to the value provided as a property.
 
 If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
 

@@ -659,7 +659,7 @@ const hasWork = (source, mapping) => {
   return hasToken.test(source) || hasScss.test(source) || HAS_OLD_FONT.test(source) || hasNumber.test(source) || hasMixinName.test(source)
     || hasModifier.test(source) || hasTailwindKey.test(source) || DYNAMIC.test(source)
     || (THEMES_IMPORT.test(source) && /\$ods-/.test(source)) || CONTROL.test(source)
-    || (source.includes('#{') && /(?<![\w-])--ods-[a-z0-9-]*#\{[^}]*\}[a-z0-9-]*\s*:/.test(source)) || (/z-index/.test(source) && OVERLAY_PART.test(source)) || LINK_PART.test(source) || /ods-link\s*\(/.test(source) || ACCENT_TAG_HOST.test(source);
+    || (/z-index/.test(source) && OVERLAY_PART.test(source)) || LINK_PART.test(source) || /ods-link\s*\(/.test(source) || ACCENT_TAG_HOST.test(source);
 };
 
 /* A token that v20 still declares but no longer reads: reading it works, overriding it does nothing. */
@@ -1887,13 +1887,19 @@ function markedScriptCollisions(source) {
   }
   const lineOf = lineIndex(source);
   const found = [];
-  for (const match of source.matchAll(/\/\* TODO\(ods-v20\): ([\s\S]*?) \*\/ /g)) {
-    const index = match.index + match[0].length;
+  const OPEN = '/* TODO(ods-v20): ';
+  const CLOSE = ' */ ';
+  // indexOf, not a lazy regex: each opening marker without a closing one would rescan the rest of the file.
+  for (let open = source.indexOf(OPEN), close; open >= 0; open = source.indexOf(OPEN, close + CLOSE.length)) {
+    close = source.indexOf(CLOSE, open + OPEN.length);
+    if (close < 0) break;
+    const text = source.slice(open + OPEN.length, close);
+    const index = close + CLOSE.length;
     const next = source.slice(index, source.indexOf('\n', index) < 0 ? source.length : source.indexOf('\n', index));
     // The marked node: a pair on its line, or a CSS template that may span a few lines (2,000
     // characters cover any declaration block a marker is put on).
     const node = source.slice(index, index + 2000).split(/\/\* TODO\(ods-v20\)/)[0];
-    const messages = match[1].split(/ \/ (?=--ods-)/).filter((message) => {
+    const messages = text.split(/ \/ (?=--ods-)/).filter((message) => {
       const target = message.match(/ both become (--ods-[\w-]+) in v20: keep one value$/)?.[1];
       const outside = message.match(/^--ods-[\w-]+ → (--ods-palette-[\w-]+) outside :root: /)?.[1];
       return (target && node.includes(target)) || (outside && new RegExp(`${escapeRegExp(outside)}['"]?\\s*:`).test(node));

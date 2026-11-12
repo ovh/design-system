@@ -31,7 +31,7 @@ const OLD_FONT_MIXIN = /\bsource-sans-pro(-italic)?-font-face\b/g;
 const HAS_OLD_FONT = /Source Sans Pro|ods-themes(?:@[\w.-]+)?\/(?:dist\/)?assets\/fonts\/source-sans-pro|source-sans-pro(?:-italic)?-font-face/;
 const GRADIENT = /gradient$/;
 const MATH = /^(?:-webkit-)?(calc|min|max|clamp)$/i;
-const DYNAMIC = /--ods-[a-z0-9-]*(?:#\{|\$\{|['"`]\s*\+)/;
+const DYNAMIC = /(?<![\w-])--ods-[a-z0-9-]*(?:#\{|\$\{|['"`]\s*\+)/;
 const THEMES_IMPORT = /ods-themes/;
 // A unary minus may stand right before it (`-$x`, `-ns.$x`): only an identifier that goes on is excluded.
 const THEME_VARIABLE = /(?<![\w$]|[\w$]-)(?:([A-Za-z_][\w-]*)\.)?\$(ods-[\w-]+)(?![\w-])/g;
@@ -697,7 +697,7 @@ function planText(mapping, text, env = {}) {
   let limit = text.length;
   // `var(--ods-color-${status}-500)`: the name is built at runtime, a rename would truncate it.
   if (env.dynamicTail) {
-    const tail = text.match(/--ods-[a-z0-9-]*$/);
+    const tail = text.match(/(?<![\w-])--ods-[a-z0-9-]*$/);
     if (tail && isTokenPrefix(mapping, tail[0])) {
       out.todos.push(`${tail[0]}…: token name built at runtime: map each value by hand`);
       limit = tail.index;
@@ -1816,7 +1816,7 @@ function planScriptTokens(source, rawMapping, filename = 'file.tsx', options = {
     const container = stringNode.parent();
     const dynamicTail = (template && fragment.next()?.kind() === 'template_substitution')
       || (container?.kind() === 'binary_expression' && container.field('operator')?.text() === '+' && container.field('left')?.range().start.index === stringNode.range().start.index);
-    if (!hasWork(text, mapping) && !(dynamicTail && /--ods-[a-z0-9-]*$/.test(text))) {
+    if (!hasWork(text, mapping) && !(dynamicTail && /(?<![\w-])--ods-[a-z0-9-]*$/.test(text))) {
       continue;
     }
     const owner = ownerOf(stringNode);

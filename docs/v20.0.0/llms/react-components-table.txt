@@ -1,0 +1,33 @@
+---
+title: "Table"
+slug: table
+category: component
+type: overview
+version: 20.0.0
+tokens: 152
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-table.txt
+---
+
+# Table
+
+_A component to display data in a tabular format._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `striped` | `boolean` | No | undefined | Whether the body rows should alternate background colors. |
+
+## Examples
+
+- Default
+- Size
+- Striped
+- Custom Caption
+
+## Documentation pages
+
+- [Documentation](./react-components-table--documentation.txt)
+- [Technical Information](./react-components-table--technical-information.txt)
+- [Examples](./react-components-table--examples.txt)

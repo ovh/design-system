@@ -1,0 +1,1 @@
+import{u as e}from"./use-locale-context-23U9qFbe.js";var[t,n]=e({name:`FieldsetContext`,hookName:`useFieldsetContext`,providerName:`<FieldsetProvider />`,strict:!1});export{n as t};

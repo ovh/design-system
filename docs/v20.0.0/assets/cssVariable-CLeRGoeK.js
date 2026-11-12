@@ -1,0 +1,1 @@
+var e={"--ods-range-thumb-background-color":`var(--ods-semantic-color-surface-thumb)`,"--ods-range-track-border-radius":`calc(var(--ods-semantic-size-radius-container) / 2)`,"--ods-state-is-disabled-opacity":`var(--ods-semantic-opacity-disabled)`};export{e as default};

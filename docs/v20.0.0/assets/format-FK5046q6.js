@@ -1,0 +1,1 @@
+import{n as e}from"./dist-D_Uvnkrl.js";function t(e,t=`fr-FR`,n=`EUR`){return new Intl.NumberFormat(t,{currency:n,currencyDisplay:`narrowSymbol`,style:`currency`}).format(e)}function n(t,n=`en-GB`,r){return e(t,n,r)}export{n,t};

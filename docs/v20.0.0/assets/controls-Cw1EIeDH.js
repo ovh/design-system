@@ -1,0 +1,1 @@
+var e=function(e){return e.accessibility=`Accessibility`,e.design=`Design`,e.general=`General`,e.slot=`Slot`,e.validation=`Validation`,e}(e||{});e.design,e.slot,e.general,e.accessibility,e.validation;function t(e){return e.reduce((e,t)=>(e[t]={table:{disable:!0}},e),{})}export{t};

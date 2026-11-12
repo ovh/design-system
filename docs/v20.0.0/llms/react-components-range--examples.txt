@@ -1,0 +1,222 @@
+---
+title: "Range"
+slug: range
+category: component
+type: examples
+version: 20.0.0
+tokens: 944
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-range--examples.txt
+---
+
+# Range
+
+## Default
+
+```tsx
+<>
+  <Range aria-label={ ['Value'] } />
+
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] } />
+</>
+```
+
+## Disabled
+
+```tsx
+<>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [20] }
+    disabled />
+
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    disabled />
+</>
+```
+
+## Max Min
+
+```tsx
+<>
+  <p>Max 500</p>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [50] }
+    max={ 500 } />
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    max={ 500 } />
+
+  <p>Min 25</p>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [50] }
+    min={ 25 } />
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    min={ 25 } />
+
+  <p>Max 75 & Min 25</p>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [50] }
+    max={ 75 }
+    min={ 25 } />
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    max={ 75 }
+    min={ 25 } />
+</>
+```
+
+## Step
+
+```tsx
+<>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [20] }
+    step={ 5 } />
+
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    step={ 5 } />
+</>
+```
+
+## Ticks
+
+```tsx
+<>
+  <Range
+    aria-label={ ['Value'] }
+    defaultValue={ [20] }
+    ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
+
+  <Range
+    aria-label={ ['Minimum value', 'Maximum value'] }
+    defaultValue={ [50, 75] }
+    ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
+</>
+```
+
+## Ticks Labels
+
+```tsx
+<>
+  <Range
+    aria-label={ ['Value'] }
+    ticks={[
+      { label: 'Low', value: 25 },
+      { label: 'Medium', value: 50 },
+      { label: 'High', value: 75 },
+    ]} />
+
+  <Range
+    aria-label={ ['Value'] }
+    displayBounds={ false }
+    displayTooltip={ false }
+    max={ 5 }
+    min={ 1 }
+    ticks={[
+      { label: 'Very Poor', value: 1 },
+      { label: 'Poor', value: 2 },
+      { label: 'Average', value: 3 },
+      { label: 'Good', value: 4 },
+      { label: 'Excellent', value: 5 },
+    ]} />
+</>
+```
+
+## Controlled
+
+```tsx
+{
+    const [draggingValue, setDraggingValue] = useState<number>();
+    const [value, setValue] = useState<number>();
+
+    function onDragging(detail: RangeValueChangeDetail) {
+      setDraggingValue(detail.value[0]);
+    }
+
+    function onValueChange(detail: RangeValueChangeDetail) {
+      setValue(detail.value[0]);
+    }
+
+    return (
+      <>
+        <p>
+          <span>Final value: { value }</span>
+          <br />
+          <span>Dragged value: { draggingValue }</span>
+        </p>
+
+        <Range
+          aria-label={ ['Value'] }
+          onDragging={ onDragging }
+          onValueChange={ onValueChange }
+          value={ draggingValue ? [draggingValue] : undefined } />
+      </>
+    );
+  }
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Range:
+  </FormFieldLabel>
+
+  <Range />
+</FormField>
+```
+
+## Accessibility Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Volume
+  </FormFieldLabel>
+
+  <Range defaultValue={ [50] } />
+</FormField>
+```
+
+## Accessibility Descriptive Sub Label
+
+```tsx
+{
+    const [values, setValues] = useState([30, 70]);
+
+    return (
+      <FormField>
+        <FormFieldLabel id="range-label">
+          Price range
+        </FormFieldLabel>
+
+        <Text
+          aria-live="polite"
+          id="range-sublabel"
+          preset={ TEXT_PRESET.caption }>
+          Selected values: { values[0] } - { values[1] }€
+        </Text>
+
+        <Range
+          aria-labelledby={ ['range-label', 'range-sublabel'] }
+          onDragging={ ({ value }) => setValues(value) }
+          value={ values } />
+      </FormField>
+    );
+  }
+```

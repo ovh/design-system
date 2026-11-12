@@ -1,0 +1,1 @@
+var e={"--ods-link-underline-thickness":`0`,"--ods-link-underline-thickness-hover":`1px`,"--ods-pagination-page-selector-input-width":`45px`};export{e as default};

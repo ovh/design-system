@@ -1,0 +1,32 @@
+---
+title: "Card"
+slug: card
+category: component
+type: overview
+version: 20.0.0
+tokens: 163
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-card.txt
+---
+
+# Card
+
+_A **Card** is a versatile component designed to act as a container for various types of content, providing structure and context in a visually distinct box._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
+
+## Examples
+
+- Default
+- Status
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+
+## Documentation pages
+
+- [Documentation](./react-components-card--documentation.txt)
+- [Technical Information](./react-components-card--technical-information.txt)
+- [Examples](./react-components-card--examples.txt)

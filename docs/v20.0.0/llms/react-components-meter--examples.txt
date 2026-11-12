@@ -1,0 +1,108 @@
+---
+title: "Meter"
+slug: meter
+category: component
+type: examples
+version: 20.0.0
+tokens: 387
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-meter--examples.txt
+---
+
+# Meter
+
+## Default
+
+```tsx
+<Meter aria-label="Gauge" />
+```
+
+## Thresholds
+
+```tsx
+<>
+  <p id="threshold-under">Value under low threshold:</p>
+  <Meter
+    aria-labelledby="threshold-under"
+    low={ 40 }
+    value={ 35 } />
+
+  <p id="threshold-between">Value between both thresholds:</p>
+  <Meter
+    aria-labelledby="threshold-between"
+    high={ 80 }
+    low={ 40 }
+    value={ 60 } />
+
+  <p id="threshold-above">Value above high threshold:</p>
+  <Meter
+    aria-labelledby="threshold-above"
+    high={ 80 }
+    value={ 90 } />
+</>
+```
+
+## Optimum
+
+```tsx
+<>
+  <p id="optimum-low">Low optimum and low value:</p>
+  <Meter
+    aria-labelledby="optimum-low"
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 20 } />
+
+  <p id="optimum-high">Low optimum and high value:</p>
+  <Meter
+    aria-labelledby="optimum-high"
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 60 } />
+
+  <p id="optimum-very-high">Low optimum and very high value:</p>
+  <Meter
+    aria-labelledby="optimum-very-high"
+    high={ 80 }
+    low={ 40 }
+    optimum={ 30 }
+    value={ 90 } />
+</>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Meter
+  aria-label="Gauge"
+  low={ 40 }
+  value={ 35 } />
+```
+
+## Accessibility Aria Labelledby
+
+```tsx
+<>
+  <Text
+    id="meter-label"
+    preset={ TEXT_PRESET.label }>
+    Gauge:
+  </Text>
+
+  <Meter
+    aria-labelledby="meter-label"
+    low={ 40 }
+    value={ 35 } />
+</>
+```
+
+## Accessibility Aria Valuetext
+
+```tsx
+<Meter
+  aria-label="Gauge"
+  aria-valuetext="35 files uploaded"
+  low={ 40 }
+  value={ 35 } />
+```

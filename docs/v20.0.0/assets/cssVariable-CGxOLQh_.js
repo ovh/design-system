@@ -1,0 +1,1 @@
+var e={"--ods-spinner-color":`var(--ods-semantic-color-content-accent)`};export{e as default};

@@ -2,12 +2,13 @@
 
 > OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
 
-Current version: 19.7.3
+Current version: 20.0.0
 
 ## Documentation Sets (latest release)
 
 - [Entry point](./latest/llms/llms.txt): summary of the latest documentation set
 - [Complete documentation](./latest/llms/llms-full.txt): the full documentation in one file
+- [Machine-readable index](./latest/llms/llms-index.json): every file with type, token estimate and canonical URL
 
 ## Versions
 
@@ -17,6 +18,7 @@ Each release ships an immutable copy of its documentation set. Match the documen
 2. Otherwise use the pinned set matching your package.json version below
 3. Fall back to [latest](./latest/llms/llms.txt) only when the version is unknown
 
+- [v20.0.0](./v20.0.0/llms/llms.txt)
 - [v19.7.3](./v19.7.3/llms/llms.txt)
 - [v19.7.2](./v19.7.2/llms/llms.txt)
 - [v19.7.1](./v19.7.1/llms/llms.txt)

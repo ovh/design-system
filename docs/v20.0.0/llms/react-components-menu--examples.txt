@@ -1,0 +1,123 @@
+---
+title: "Menu"
+slug: menu
+category: component
+type: examples
+version: 20.0.0
+tokens: 614
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-menu--examples.txt
+---
+
+# Menu
+
+## Default
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem value="settings">Settings</MenuItem>
+    <MenuItem value='logout'>Logout</MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+## Controlled
+
+```tsx
+{
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleMenu() {
+      setIsOpen((isOpen) => !isOpen);
+    }
+
+    return (
+      <>
+        <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ toggleMenu }>
+          Toggle menu
+        </Button>
+
+        <Menu open={ isOpen }>
+          <MenuTrigger asChild>
+            <Icon aria-label="Actions" name={ ICON_NAME.ellipsisVertical } />
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem value='profile'>Profile</MenuItem>
+            <MenuItem value='settings'>Settings</MenuItem>
+            <MenuItem value='logout'>Logout</MenuItem>
+          </MenuContent>
+        </Menu>
+      </>
+    );
+  }
+```
+
+## Disabled
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">Profile</MenuItem>
+    <MenuItem disabled value="settings">Settings</MenuItem>
+    <MenuItem value="logout">Logout</MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+## Group
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>Account</MenuGroupLabel>
+      <MenuItem value='profile'>Profile</MenuItem>
+      <MenuItem value='billing'>Billing</MenuItem>
+    </MenuGroup>
+    <MenuGroup>
+      <MenuGroupLabel>Support</MenuGroupLabel>
+      <MenuItem value='help'>Help center</MenuItem>
+      <MenuItem value='contact'>Contact support</MenuItem>
+    </MenuGroup>
+  </MenuContent>
+</Menu>
+```
+
+## Nested
+
+```tsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button emphasis={ BUTTON_EMPHASIS.high }>
+      Open menu
+    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value='new'>New</MenuItem>
+    <MenuItem value='open'>Open</MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>Share</MenuTrigger>
+      <MenuContent>
+        <MenuItem value='email'>Email</MenuItem>
+        <MenuItem value='message'>Message</MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
+  </MenuContent>
+</Menu>
+```

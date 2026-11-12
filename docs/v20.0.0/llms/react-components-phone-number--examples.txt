@@ -1,0 +1,192 @@
+---
+title: "Phone Number"
+slug: phone-number
+category: component
+type: examples
+version: 20.0.0
+tokens: 620
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-phone-number--examples.txt
+---
+
+# Phone Number
+
+## Default
+
+```tsx
+<PhoneNumber>
+  <PhoneNumberControl />
+</PhoneNumber>
+```
+
+## Disabled
+
+```tsx
+<>
+  <PhoneNumber disabled>
+    <PhoneNumberControl />
+  </PhoneNumber>
+
+  <PhoneNumber disabled>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+## Readonly
+
+```tsx
+<>
+  <PhoneNumber readOnly>
+    <PhoneNumberControl />
+  </PhoneNumber>
+
+  <PhoneNumber readOnly>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+## Clearable
+
+```tsx
+<>
+  <PhoneNumber>
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</>
+```
+
+## Loading
+
+```tsx
+<>
+  <PhoneNumber>
+    <PhoneNumberControl loading />
+  </PhoneNumber>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl loading />
+  </PhoneNumber>
+</>
+```
+
+## Locale
+
+```tsx
+<>
+  <span>Locale "fr"</span>
+  <PhoneNumber locale="fr">
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+
+  <span>Locale "de"</span>
+  <PhoneNumber locale="de">
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+## Country List
+
+```tsx
+<>
+  <span>All countries</span>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+
+  <span>Subset of countries</span>
+
+  <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</>
+```
+
+## In Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility Label
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility Form Field
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Accessibility I18n
+
+```tsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:
+  </FormFieldLabel>
+
+  <PhoneNumber
+    country="fr"
+    defaultValue="06 01 02 03 04"
+    i18n={{
+      [INPUT_I18N.clearButton]: 'Clear phone number',
+    }}>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</FormField>
+```

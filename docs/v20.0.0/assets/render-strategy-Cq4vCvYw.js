@@ -1,0 +1,1 @@
+import{r as e,u as t}from"./use-locale-context-23U9qFbe.js";var[n,r]=t({name:`RenderStrategyContext`,hookName:`useRenderStrategyContext`,providerName:`<RenderStrategyPropsProvider />`}),i=t=>e()(t,[`lazyMount`,`unmountOnExit`,`hideMode`]);export{i as n,r,n as t};

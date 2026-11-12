@@ -1,0 +1,78 @@
+---
+title: "Modal"
+slug: modal
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 812
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-modal--technical-information.txt
+---
+
+# Modal
+
+## Modal
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `backdropStyle` | `CSSProperties` | No | undefined | Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index. |
+| `closeOnEscape` | `boolean` | No | undefined | Whether to close the modal when the escape key is pressed. |
+| `closeOnInteractOutside` | `boolean` | No | undefined | Whether to close the modal when the outside is clicked. |
+| `defaultOpen` | `boolean` | No | undefined | The initial open state of the modal. Use when you don't need to control the open state of the modal. |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `initialFocusedElement` | `() => null | HTMLElement` | No | undefined | Element that receive the focus when the dialog is opened. |
+| `locale` | `'fr' | 'de' | 'en' | 'es' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+| `onOpenChange` | `(detail: ModalOpenChangeDetail) => void` | No | undefined | Callback fired when the modal open state changes. |
+| `open` | `boolean` | No | undefined | The controlled open state of the modal. |
+| `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## ModalBody
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## ModalContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `createPortal` | `boolean` | No | undefined | Whether the component should be rendered in the DOM close to the body tag. |
+| `dismissible` | `boolean` | No | undefined | Whether the remove button is displayed. |
+
+## ModalHeader
+
+This component extends all the native `<div>` attributes.
+
+_No specific property._
+
+## ModalTrigger
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `asChild` | `boolean` | No | undefined | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| `value` | `string` | No | undefined | - |
+
+## Enums
+
+### MODAL_I18N
+
+- `closeButton` = `modal.close.button`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-modal-border-radius` | `var(--ods-semantic-size-radius-overlay)` |
+| `--ods-modal-header-height` | `32px` |
+| `--ods-modal-header-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-header-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-body-padding-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-body-padding-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-margin-horizontal` | `calc(var(--ods-semantic-size-space-inset-inline) * 2)` |
+| `--ods-modal-margin-vertical` | `calc(var(--ods-semantic-size-space-inset-block) * 2)` |
+| `--ods-modal-mobile-max-height` | `512px` |
+| `--ods-modal-mobile-max-width` | `512px` |

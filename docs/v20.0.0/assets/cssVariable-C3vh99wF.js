@@ -1,0 +1,1 @@
+var e={"--ods-avatar-background-color":`var(--ods-semantic-color-surface-muted)`,"--ods-avatar-text-color":`var(--ods-semantic-color-content-heading)`,"--ods-avatar-border-radius":`var(--ods-semantic-size-radius-full)`,"--ods-avatar-size":`24px`,"--ods-avatar-object-fit":`cover`};export{e as default};

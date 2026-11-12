@@ -1,0 +1,25 @@
+---
+title: "Textarea"
+slug: textarea
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 97
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-textarea--technical-information.txt
+---
+
+# Textarea
+
+## Textarea
+
+This component extends all the native `<textarea>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

@@ -1,0 +1,32 @@
+---
+title: "Link"
+slug: link
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 238
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-link--technical-information.txt
+---
+
+# Link
+
+## Link
+
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `as` | `T` | No | 'a' | Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+| `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-link-column-gap` | `var(--ods-semantic-size-space-gap-inline)` |
+| `--ods-link-row-gap` | `var(--ods-semantic-size-space-gap-block)` |
+| `--ods-link-text-color` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-hover` | `var(--ods-semantic-color-content-brand)` |
+| `--ods-link-text-color-visited` | `var(--ods-semantic-color-interaction-brand-visited)` |
+| `--ods-link-underline-thickness` | `1px` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |
+| `--ods-link-underline-thickness-hover` | `2px` |

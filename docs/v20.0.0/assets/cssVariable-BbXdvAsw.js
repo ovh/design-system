@@ -1,0 +1,1 @@
+var e={"--ods-drawer-padding-horizontal":`calc(var(--ods-semantic-size-space-inset-inline) * 2)`,"--ods-drawer-padding-vertical":`calc(var(--ods-semantic-size-space-inset-block) * 2)`,"--ods-drawer-z-index":`var(--ods-semantic-z-index-drawer)`};export{e as default};

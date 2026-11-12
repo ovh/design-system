@@ -1,0 +1,21 @@
+---
+title: "Welcome"
+slug: ovhcloud-design-system-welcome
+category: generic
+type: overview
+version: 20.0.0
+tokens: 252
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-welcome.txt
+---
+
+# Welcome
+
+> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products
+
+OVHcloud Design System provides React components, design tokens, helpers and usage guidelines for building OVHcloud products.
+
+- Online documentation: https://ovh.github.io/design-system/v20.0.0/
+
+- Components documented in this set: Accordion, Avatar, Badge, Breadcrumb, Button, Button Group, Card, Cart, Checkbox, Clipboard, Code, Combobox, Command, Data Table, Datepicker, Divider, Drawer, Editable, File Thumbnail, File Upload, Form Field, Icon, Input, Kbd, Link, Logo, Markdown, Medium, Menu, Message, Message Bubble, Meter, Modal, Pagination, Password, Phone Number, Popover, Progress Bar, Prompt Input, Quantity, Query Filter, Radio Group, Range, Select, Skeleton, Spinner, Table, Tabs, Tag, Text, Textarea, Tile, Timepicker, Toaster, Toggle, Tooltip, Tree View
+
+- Get started: https://ovh.github.io/design-system/v20.0.0/guides/get-started

@@ -1,0 +1,28 @@
+---
+title: "Text"
+slug: text
+category: component
+type: overview
+version: 20.0.0
+tokens: 101
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-text.txt
+---
+
+# Text
+
+_The **Text** component is used to display and style text content within an application._
+
+## Examples
+
+- Default
+- Preset
+- Disabled
+- Table Caption
+- Fig Caption
+- Reuse Style
+
+## Documentation pages
+
+- [Documentation](./react-components-text--documentation.txt)
+- [Technical Information](./react-components-text--technical-information.txt)
+- [Examples](./react-components-text--examples.txt)

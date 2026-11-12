@@ -1,0 +1,1 @@
+import{i as e}from"./rolldown-runtime-Dd_uD5pT.js";import{t}from"./react-BatatxyT.js";var n=e(t(),1);function r(e){let t=(0,n.useContext)(e);if(!t)throw Error(`useContext must be used within a Provider`);return t}export{r as t};

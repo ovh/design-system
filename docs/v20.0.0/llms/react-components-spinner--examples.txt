@@ -1,0 +1,67 @@
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: examples
+version: 20.0.0
+tokens: 234
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-spinner--examples.txt
+---
+
+# Spinner
+
+## Default
+
+```tsx
+<Spinner aria-label="Loading" />
+```
+
+## Color
+
+```tsx
+<>
+  <Spinner
+    aria-label="Loading"
+    style={{ '--ods-spinner-color': 'var(--ods-semantic-color-content-neutral)' } as React.CSSProperties} />
+  <Spinner aria-label="Loading" />
+</>
+```
+
+## Size
+
+```tsx
+<>
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.xs } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.sm } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.md } />
+  <Spinner aria-label="Loading" size={ SPINNER_SIZE.lg } />
+</>
+```
+
+## Accessibility Aria Busy Aria Live
+
+```tsx
+<div
+  aria-busy="true"
+  aria-live="polite">
+  <Spinner aria-label="Loading" />
+</div>
+```
+
+## Accessibility Aria Label
+
+```tsx
+<Spinner aria-label="Loading user profile" />
+```
+
+## Accessibility Aria Labelled By
+
+```tsx
+<div>
+  <span id="loading-text">
+    Loading user profile
+  </span>
+
+  <Spinner aria-labelledby="loading-text" />
+</div>
+```

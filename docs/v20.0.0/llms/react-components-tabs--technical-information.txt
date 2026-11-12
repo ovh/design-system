@@ -1,0 +1,108 @@
+---
+title: "Tabs"
+slug: tabs
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 1299
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-tabs--technical-information.txt
+---
+
+# Tabs
+
+## Tabs
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `defaultValue` | `string` | No | undefined | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | 'keep' | When the content of the inactive panels is rendered: always ('keep'), from the first time it is shown ('lazy') or only while it is shown ('unmount'). Each TabContent can override it. SEO: only 'keep' puts the content of the inactive panels in the server-rendered HTML, so it can be indexed. |
+| `onValueChange` | `(event: TabsValueChangeEvent) => void` | No | undefined | Callback fired when the state of selected tab changes. |
+| `size` | `'md' | 'sm' | 'xs'` | No | undefined | The size preset to use. |
+| `value` | `string` | No | undefined | The controlled value of the selected tab. |
+| `variant` | `'default' | 'switch'` | No | undefined | The variant preset to use. |
+| `withArrows` | `boolean` | No | undefined | Whether the component displays navigation arrows around the tabs. |
+
+## Tab
+
+This component extends all the native `<button>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `value` | `string` | Yes | undefined | The value of the tab item. |
+
+## TabContent
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `mountStrategy` | `TABS_MOUNT_STRATEGY` | No | undefined | When the content of this panel is rendered while it is inactive. Overrides the Tabs mountStrategy for this panel only. SEO: with 'lazy' or 'unmount', the content of this panel is in the server-rendered HTML only if it is the selected one. |
+| `value` | `string` | Yes | undefined | The value of the tab content item. |
+
+## TabList
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override. |
+| `locale` | `'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt'` | No | undefined | The locale used for the translation of the internal elements. |
+
+## Enums
+
+### TABS_I18N
+
+- `scrollLeftButton` = `tabs.scroll.left.button`
+- `scrollRightButton` = `tabs.scroll.right.button`
+
+### TABS_MOUNT_STRATEGY
+
+- `keep` = `keep`
+- `lazy` = `lazy`
+- `unmount` = `unmount`
+
+### TABS_SIZE
+
+- `md` = `md`
+- `sm` = `sm`
+- `xs` = `xs`
+
+### TABS_VARIANT
+
+- `default` = `default`
+- `switch` = `switch`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-tab-list-background-color-switch` | `var(--ods-semantic-color-surface-segmented)` |
+| `--ods-tab-list-border-color` | `var(--ods-semantic-color-border-track)` |
+| `--ods-tab-list-border-radius-switch-md` | `calc(var(--ods-semantic-size-radius-container) * 1.25)` |
+| `--ods-tab-list-border-radius-switch-sm` | `calc(var(--ods-semantic-size-radius-container) * 0.75)` |
+| `--ods-tab-list-border-radius-switch-xs` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-tab-list-border-width` | `2px` |
+| `--ods-tab-margin-horizontal-switch-md` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-sm` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-margin-horizontal-switch-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 4)` |
+| `--ods-tab-margin-vertical-switch-md` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-sm` | `calc(var(--ods-semantic-size-space-inset-block) / 2)` |
+| `--ods-tab-margin-vertical-switch-xs` | `calc(var(--ods-semantic-size-space-inset-block) / 4)` |
+| `--ods-tab-padding-horizontal-md` | `calc(var(--ods-semantic-size-space-inset-inline) * 1.5)` |
+| `--ods-tab-padding-horizontal-sm` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-horizontal-xs` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-md` | `var(--ods-semantic-size-space-inset-inline)` |
+| `--ods-tab-padding-vertical-sm` | `calc(var(--ods-semantic-size-space-inset-inline) * 0.75)` |
+| `--ods-tab-padding-vertical-xs` | `calc(var(--ods-semantic-size-space-inset-inline) / 2)` |
+| `--ods-tab-background-color-hover` | `var(--ods-semantic-color-interaction-highlight)` |
+| `--ods-tab-background-color-selected-switch` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-tab-border-color-selected-switch` | `var(--ods-semantic-color-border-control)` |
+| `--ods-tab-border-color` | `var(--ods-tab-list-border-color)` |
+| `--ods-tab-border-color-hover` | `var(--ods-semantic-color-interaction-track-hover)` |
+| `--ods-tab-border-radius-md` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-tab-border-radius-sm` | `calc(var(--ods-semantic-size-radius-container) / 2)` |
+| `--ods-tab-border-radius-xs` | `calc(var(--ods-semantic-size-radius-container) / 4)` |
+| `--ods-tab-text-color-hover` | `var(--ods-semantic-color-content-text)` |
+| `--ods-state-is-disabled-opacity` | `var(--ods-semantic-opacity-disabled)` |

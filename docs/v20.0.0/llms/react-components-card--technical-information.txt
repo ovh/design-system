@@ -1,0 +1,44 @@
+---
+title: "Card"
+slug: card
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 311
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-card--technical-information.txt
+---
+
+# Card
+
+## Card
+
+This component extends all the native `<div>` attributes.
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `status` | `CARD_STATUS` | No | CARD_STATUS.neutral | The status preset to use. |
+
+## Enums
+
+### CARD_STATUS
+
+- `accent` = `accent`
+- `critical` = `critical`
+- `information` = `information`
+- `neutral` = `neutral`
+- `success` = `success`
+- `warning` = `warning`
+
+## CSS Variables
+
+| Variable | Default value |
+|---|---|
+| `--ods-card-background-color` | `var(--ods-semantic-color-surface-raised)` |
+| `--ods-card-border-radius` | `var(--ods-semantic-size-radius-container)` |
+| `--ods-card-border-width` | `var(--ods-semantic-border-thickness)` |
+| `--ods-card-border-color-critical` | `var(--ods-semantic-color-border-critical-subtle)` |
+| `--ods-card-border-color-information` | `var(--ods-semantic-color-border-information-subtle)` |
+| `--ods-card-border-color-neutral` | `var(--ods-semantic-color-border-container)` |
+| `--ods-card-border-color-accent` | `var(--ods-semantic-color-border-accent-subtle)` |
+| `--ods-card-border-color-success` | `var(--ods-semantic-color-border-success-subtle)` |
+| `--ods-card-border-color-warning` | `var(--ods-semantic-color-border-warning-subtle)` |

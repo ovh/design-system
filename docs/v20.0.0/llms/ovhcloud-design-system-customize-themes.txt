@@ -1,0 +1,165 @@
+---
+title: "Themes"
+slug: ovhcloud-design-system-customize-themes
+category: generic
+type: overview
+version: 20.0.0
+tokens: 2001
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-customize-themes.txt
+---
+
+# Themes
+
+A theme is a stylesheet that declares the ODS design tokens as CSS custom properties on `:root`. ODS components read these tokens, and so can your own CSS: load a theme, and both follow it.
+
+A theme names its fonts, but does not load them: loading them is up to you.
+
+## Available themes
+
+`@ovhcloud/ods-themes` ships four themes. Each one is a complete stylesheet:
+
+- **Default** (`@ovhcloud/ods-themes/default/css`), the Aluminium look.
+- **Aluminium dark** (`@ovhcloud/ods-themes/aluminium-dark/css`), its dark mode.
+- **Blue Jeans** (`@ovhcloud/ods-themes/blue-jeans/css`), the OVHcloud look.
+- **Blue Jeans dark** (`@ovhcloud/ods-themes/blue-jeans-dark/css`), its dark mode.
+
+## Load a theme
+
+Load a single theme. A theme does not build on another one: two themes loaded together override each other.
+
+```typescript
+import '@ovhcloud/ods-themes/blue-jeans-dark/css';
+```
+
+Then load the fonts it names (see **Fonts**).
+
+  
+
+  
+> Make sure the page loads the fonts of the theme you choose. A font the page does not load falls back to the next one of its stack, without any error.
+
+## Fonts
+
+A theme names its fonts in three tokens: `--ods-semantic-font-family-body`, `--ods-semantic-font-family-heading` and `--ods-semantic-font-family-code`. Another theme may name other fonts.
+
+The four themes above use the same two fonts, **Source Sans 3** for text and **Source Code Pro** for code. ODS ships them in `@ovhcloud/ods-themes/default/fonts`, a name kept from v19 though it serves every theme, with **ODS Icon**, the icon font of the components, needed whatever the theme:
+
+```typescript
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+This stylesheet declares the fonts with relative `url()`s to the font files of the package: your bundler resolves them and emits the files.
+
+As a help for these four themes, `@ovhcloud/ods-themes/fonts-base64` declares the same fonts with the files inlined as base64, for a setup that cannot serve font files. Load it instead of `default/fonts`, not with it. It weighs about 700 KB and the browser cannot load its fonts in parallel: keep it as a fallback.
+
+## Switch themes
+
+A page shows one theme. No attribute or class selects it: to switch themes, replace the theme stylesheet of the page.
+
+To follow the color scheme of the operating system, without any script, import each mode with a media query, so that only one applies:
+
+```css
+@import '@ovhcloud/ods-themes/default/css' (prefers-color-scheme: light);
+@import '@ovhcloud/ods-themes/aluminium-dark/css' (prefers-color-scheme: dark);
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
+To switch from your code, put an empty `<link>` for the theme in the `<head>` of your page, before your own stylesheets, and set its URL from your code: your styles stay after the theme and can override it. With Vite, a `?url` import emits the theme file and gives its URL:
+
+```html
+<link rel="stylesheet" id="ods-theme">
+```
+
+```typescript
+import '@ovhcloud/ods-themes/default/fonts';
+import lightThemeUrl from '@ovhcloud/ods-themes/default/css?url';
+import darkThemeUrl from '@ovhcloud/ods-themes/aluminium-dark/css?url';
+
+const theme = document.getElementById('ods-theme') as HTMLLinkElement;
+theme.href = lightThemeUrl;
+
+function setDarkMode(isDark: boolean): void {
+  theme.href = isDark ? darkThemeUrl : lightThemeUrl;
+}
+```
+
+Without a bundler, serve the files the export paths resolve to, and point the `<link>` at them: the layout of the package folder may change from one version to the next, the export paths do not.
+
+The fonts stay loaded when the theme changes. If the two themes do not name the same fonts, load the fonts of both.
+
+This documentation does it differently: it keeps the default theme loaded, and puts the theme shown, whole, in a single `<style>` element after it, filled by its theme select and its color scheme button. Every theme declares all its tokens, so the theme shown wins on each of them.
+
+## Use the tokens in your CSS
+
+Style your own elements with the `--ods-semantic-*` tokens, and they follow the theme as the ODS components do. Switch the theme or the color scheme of this documentation, from its top bar (at the bottom of the navigation on narrow screens): the plan below follows, as its Button does. The two dark themes share their surfaces and their brand color, so the plan looks the same in both.
+
+```tsx
+<>
+  <style>{`
+    .my-plan {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ods-semantic-size-space-gap-block);
+      max-width: 280px;
+      padding: var(--ods-semantic-size-space-inset-block) var(--ods-semantic-size-space-inset-inline);
+      border: var(--ods-semantic-border-thickness) solid var(--ods-semantic-color-border-container);
+      border-radius: var(--ods-semantic-size-radius-container);
+      background-color: var(--ods-semantic-color-surface-raised);
+      color: var(--ods-semantic-color-content-text);
+    }
+
+    .my-plan__name {
+      margin: 0;
+      color: var(--ods-semantic-color-content-heading);
+      font-weight: var(--ods-semantic-font-weight-semibold);
+    }
+
+    .my-plan__price {
+      color: var(--ods-semantic-color-content-brand);
+      font-weight: var(--ods-semantic-font-weight-bold);
+    }
+  `}</style>
+
+  <div className="my-plan">
+    <p className="my-plan__name">Starter plan</p>
+    <span className="my-plan__price">€4.99 / month</span>
+    <Button>Order</Button>
+  </div>
+</>
+```
+
+The [Design Tokens](https://ovh.github.io/design-system/v20.0.0/guides/design-tokens) page explains which tokens to use and lists all of them.
+
+To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
+
+## Create your own theme
+
+A theme of your own is a stylesheet loaded **after** an ODS theme, that re-declares on `:root` the tokens you want to change. Any token can be re-declared: a color, a radius, a spacing, a font, a duration.
+
+```css
+:root {
+  /* the brand and accent ramps, from 50 to 900 */
+  --ods-palette-brand-500: #7a00cc;
+
+  /* any semantic token */
+  --ods-semantic-size-radius-control: 0;
+  --ods-semantic-font-family-body: 'My Font', sans-serif;
+}
+```
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import './my-theme.css';
+```
+
+An ODS theme declares every token: loaded after your stylesheet, it overrides it. When the page switches themes, keep your stylesheet after the one shown.
+
+The `--ods-semantic-*` tokens are the public surface of a theme. The [Design Tokens](https://ovh.github.io/design-system/v20.0.0/guides/design-tokens) page lists them, with their role.
+
+To change the colors, the brand and accent ramps are the shortest way: `--ods-palette-brand-*` paints the brand roles, `--ods-palette-accent-*` the text, headings, selection and form controls. They do not reach every role: the focus ring, the information, success, warning, critical and neutral statuses, and the chart series keep their values. Over the default theme, the brand ghost and outline Buttons also take their text from the accent ramp and their border from gray (`--ods-semantic-color-border-brand-minor`), which follows no ramp. Re-declare these roles themselves to change them. The [migration guide](https://ovh.github.io/design-system/v20.0.0/guides/migration-19-to-20) details which roles each ramp reaches.
+
+The ramps only take effect on `:root`: a theme scoped to a container, such as the root of a micro-frontend, re-declares the `--ods-semantic-*` roles themselves.
+
+The ODS themes do not aim the accent ramp at the same family: the default theme, Aluminium dark and Blue Jeans dark aim it at navy, Blue Jeans at blue. A stylesheet of yours re-declares the ramps of the theme it follows, so each theme can take its own.
+
+A font you name in a theme is yours to load (see **Fonts**).

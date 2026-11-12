@@ -1,0 +1,38 @@
+---
+title: "Badge"
+slug: badge
+category: component
+type: overview
+version: 20.0.0
+tokens: 218
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-badge.txt
+---
+
+# Badge
+
+_**Badge** show concise metadata or the current status for an item, in a compact format._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `emphasis` | `BADGE_EMPHASIS` | No | undefined | The emphasis preset to use, from the strongest (high) to the lightest (low) visual weight. |
+| `size` | `'lg' | 'md' | 'sm'` | No | undefined | The size preset to use. |
+| `status` | `BADGE_STATUS` | No | undefined | The status preset to use. |
+
+## Examples
+
+- Default
+- Status
+- Emphasis
+- Size
+- Accessibility Aria Label
+- Accessibility With Tooltip
+- Accessibility Grouping
+- Accessibility Alternative Grouping
+
+## Documentation pages
+
+- [Documentation](./react-components-badge--documentation.txt)
+- [Technical Information](./react-components-badge--technical-information.txt)
+- [Examples](./react-components-badge--examples.txt)

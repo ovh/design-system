@@ -1,0 +1,227 @@
+---
+title: "Message"
+slug: message
+category: component
+type: examples
+version: 20.0.0
+tokens: 1172
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-message--examples.txt
+---
+
+# Message
+
+## Default
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Status
+
+```tsx
+<>
+  <Message status={ MESSAGE_STATUS.accent }>
+    <MessageIcon name={ ICON_NAME.lightbulb } />
+
+    <MessageBody>Accent message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.critical }>
+    <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+    <MessageBody>Critical message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.information }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>Information message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.neutral }>
+    <MessageIcon name={ ICON_NAME.email } />
+
+    <MessageBody>Neutral message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.success }>
+    <MessageIcon name={ ICON_NAME.circleCheck } />
+
+    <MessageBody>Success message</MessageBody>
+  </Message>
+
+  <Message status={ MESSAGE_STATUS.warning }>
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+    <MessageBody>Warning message</MessageBody>
+  </Message>
+</>
+```
+
+## Multiline
+
+```tsx
+<Message>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+  </MessageBody>
+</Message>
+```
+
+## Non Dismissible
+
+```tsx
+<Message dismissible={ false }>
+  <MessageIcon name={ ICON_NAME.circleInfo } />
+
+  <MessageBody>
+    Default message
+  </MessageBody>
+</Message>
+```
+
+## Emphasis
+
+```tsx
+<>
+  <Message emphasis={ MESSAGE_EMPHASIS.high }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      High emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.medium }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Medium emphasis Message
+    </MessageBody>
+  </Message>
+
+  <Message emphasis={ MESSAGE_EMPHASIS.low }>
+    <MessageIcon name={ ICON_NAME.circleInfo } />
+
+    <MessageBody>
+      Low emphasis Message
+    </MessageBody>
+  </Message>
+</>
+```
+
+## Accessibility Grouping
+
+```tsx
+<ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
+  <li>
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleCheck } />
+
+      <MessageBody>
+        Your changes have been saved.
+      </MessageBody>
+    </Message>
+  </li>
+
+  <li>
+    <Message status={ MESSAGE_STATUS.warning }>
+      <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+      <MessageBody>
+        Some fields need your attention.
+      </MessageBody>
+    </Message>
+  </li>
+</ul>
+```
+
+## Accessibility Alternative Grouping
+
+```tsx
+<div
+  role="list"
+  style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+  <Message role="listitem">
+    <MessageIcon name={ ICON_NAME.circleCheck } />
+
+    <MessageBody>
+      Your changes have been saved.
+    </MessageBody>
+  </Message>
+
+  <Message
+    status={ MESSAGE_STATUS.warning }
+    role="listitem">
+    <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+    <MessageBody>
+      Some fields need your attention.
+    </MessageBody>
+  </Message>
+</div>
+```
+
+## Accessibility Roles
+
+```tsx
+{
+    const [alerts, setAlerts] = useState<string[]>([]);
+    const [statuses, setStatuses] = useState<string[]>([]);
+
+    return (
+      <>
+        <div>
+          <Button emphasis={ BUTTON_EMPHASIS.high } onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+            Add status
+          </Button>
+
+          <Button
+            emphasis={ BUTTON_EMPHASIS.high }
+            status={ BUTTON_STATUS.critical }
+            onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
+            Add alert
+          </Button>
+        </div>
+
+        <div role="alert">
+          {
+            alerts.map((alert) => (
+              <Message
+                status={ MESSAGE_STATUS.critical }
+                key={ alert }>
+                <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
+                <MessageBody >
+                  Alert: { alert }
+                </MessageBody>
+              </Message>
+            ))
+          }
+        </div>
+
+        <div role="status">
+          {
+            statuses.map((status) => (
+              <Message key={ status }>
+                <MessageIcon name={ ICON_NAME.circleInfo } />
+
+                <MessageBody >
+                  Status: { status }
+                </MessageBody>
+              </Message>
+            ))
+          }
+        </div>
+      </>
+    );
+  }
+```

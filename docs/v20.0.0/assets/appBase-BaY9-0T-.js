@@ -1,0 +1,1 @@
+var e=new URL(`..`,``+import.meta.url),t=e.pathname.replace(/\/$/,``);export{t as n,e as t};

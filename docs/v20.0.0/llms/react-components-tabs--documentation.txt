@@ -1,0 +1,191 @@
+---
+title: "Tabs"
+slug: tabs
+category: component
+type: documentation
+version: 20.0.0
+tokens: 1918
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-tabs--documentation.txt
+---
+
+# Tabs
+
+_**Tabs** are a way of navigating between multiple panels, reducing clutter and fitting more into a smaller space_
+
+## Overview
+
+**Tabs** are used to organize content by grouping similar information on the same page.
+
+| | |
+|---|---|
+| Name | Tabs |
+| Also known as | Tab Navigation, Tabbed interface |
+| Design | https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168 |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tabs |
+
+## Usage
+
+**Tabs** component is ideal for dashboards, settings pages, profile sections, and any interface where multiple views need to be accessible from the same page.
+
+They can also be used to filter content via some common denominator.
+
+### Dos & Don'ts
+
+**Do**
+
+- Use Tabs to group related content under the same page when it fits in a shared context
+- Keep Tab labels short, clear, and scannable, use nouns or very short phrases (1–3 words max)
+- Use Tabs for horizontal navigation, not hierarchical structure or progressive steps
+- Do use default Tabs for main navigation
+- Do use switch variant when Tabs act as a mode selector or view switcher (e.g., toggling between "List" and "Grid" views)
+
+**Don't**
+
+- Don't use Tabs as a progress indicator or wizard steps
+- Don't nest Tabs inside other Tabs, this creates a confusing and hard-to-navigate experience
+- Don't overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs
+- Don't use long or verbose labels
+- Don't use external links or actions as tab triggers, Tabs should only control the visibility of in-page content
+- Avoid using the switch variant for main navigation or complex page segmentation. Prefer the default Tabs for those cases instead
+
+### Best Practices in Context
+
+1. **Tabs**
+2. **Scroll Buttons (previous/next) - optional**
+3. **Active tab**
+4. **Unselected tab**
+
+## Placement
+
+**Tabs** are often used in the top part of a web page, as it can act as a navigation focus.
+
+## Behavior
+
+By default, one of the **Tab** is always selected.
+
+Each **Tab** can be hovered, focused and selected. A **Tab** can also act as a disabled **Tab**.
+
+**Tabs** always stay on the same line, and can be horizontally scrolled through if they happen to not fit their container.
+
+Each **Tab** has a panel displaying content. Selecting a **Tab** displays the corresponding panel.
+
+The panel does not depend on the **Tab** component, it is in the developer's hands.
+
+### Scroll Buttons
+
+When the number of **Tabs** exceeds the visible container width, left and right scroll buttons can be displayed to allow horizontal navigation.
+
+Clicking a button scrolls to the next or previous group of **Tabs** that were not visible.
+
+When at the first tab, the left button is displayed but disabled.
+
+When at the last tab, the right button is displayed but disabled.
+
+Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
+
+### Panel content rendering
+
+By default, the content of every panel is rendered, and inactive panels are hidden. Use the `mountStrategy` prop on **Tabs** to choose when the content of inactive panels is rendered:
+
+- `keep` (default): the content of every panel is always rendered, inactive panels are only hidden.
+- `lazy`: the content of a panel is rendered the first time its **Tab** is selected, then kept like `keep`.
+- `unmount`: the content of a panel is rendered only while its **Tab** is selected, and removed when another **Tab** is selected.
+
+Each **TabContent** can set its own `mountStrategy`, which overrides the **Tabs** one for this panel only.
+
+The panel element itself (with its `id`, `role="tabpanel"` and `aria-labelledby`) is always rendered, only its content depends on the strategy.
+
+```tsx
+<Tabs defaultValue="overview" mountStrategy={ TABS_MOUNT_STRATEGY.lazy }>
+  <TabList>
+    <Tab value="overview">Overview</Tab>
+    <Tab value="metrics">Metrics</Tab>
+    <Tab value="search">Search</Tab>
+    <Tab value="faq">FAQ</Tab>
+  </TabList>
+
+  <TabContent value="overview" style={{ padding: '16px 0' }}>
+    <p>Rendered on load, as it is the selected tab.</p>
+  </TabContent>
+
+  <TabContent value="metrics" style={{ padding: '16px 0' }}>
+    <p>Rendered the first time this tab is shown, then kept.</p>
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.unmount } value="search" style={{ padding: '16px 0' }}>
+    <input aria-label="Search" placeholder="Type, switch tab, come back: the value is reset" />
+  </TabContent>
+
+  <TabContent mountStrategy={ TABS_MOUNT_STRATEGY.keep } value="faq" style={{ padding: '16px 0' }}>
+    <p>Always rendered, so it stays in the server-rendered HTML and can be indexed.</p>
+  </TabContent>
+</Tabs>
+```
+
+**SEO**: only `keep` puts the content of the inactive panels in the server-rendered HTML. With `lazy` and `unmount`, this content is not indexed by search engines, as they do not load content that requires a user interaction. Use them only for heavy content that does not need to be indexed, like dashboards, charts or iframes.
+
+**State loss**: with `unmount`, the content of a panel is removed each time it is hidden. Its state is lost (input values, scroll position, component state, ...) and it is rendered again from scratch the next time it is shown. Use `lazy` if this state must be kept.
+
+If you come from another library, here is how its props translate to `mountStrategy`:
+
+  <thead>
+    <tr>
+      <th>Other libraries</th>
+      <th>ODS mountStrategy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`keepMounted` (MUI, Base UI, Mantine), `forceMount` (Radix), `unmount={ false }` (Headless UI)</td>
+      <td>`keep`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` (Ark UI, Chakra UI)</td>
+      <td>`lazy`</td>
+    </tr>
+    <tr>
+      <td>`lazyMount` + `unmountOnExit` (Ark UI, Chakra UI), `unmount` (Headless UI)</td>
+      <td>`unmount`</td>
+    </tr>
+  </tbody>
+
+## Variation
+
+### Default (standard Tabs)
+
+Used for displaying and organizing related content within the same page or view.
+The default **Tabs** variant follows the standard horizontal layout, with a clear underline or border to indicate the active state.
+It is ideal for primary navigation within a section or module.
+
+### Switch (sub-navigation)
+
+The switch variant is visually distinct of **Tabs**, designed for switching between sub-views or modes within the same context.
+It behaves as a lightweight navigation switch between views.
+
+## Navigation
+
+### Focus Management
+
+When focus moves to the **Tabs** component, it is set on the active **Tab**.
+
+Once a **Tab** is focused, its associated content is also activated.
+
+### General Keyboard Shortcuts
+
+Pressing `Tab` moves focus into or out of the **Tabs** component while keeping the active **Tab** selected.
+
+Pressing `Arrow Right` moves focus to the next **Tab** and activates its content.
+
+Pressing `Arrow Left` moves focus to the previous **Tab** and activates its content.
+
+Pressing `Home` / `fn` + `Arrow Left` moves focus to the first **Tab** and activates its content.
+
+Pressing `End` / `fn` + `Arrow Right` moves focus to the last **Tab** and activates its content.
+
+Pressing `Home` / `End` jumps to the first or last **Tab**, even if these **Tabs** are not currently visible. In this case, the **Tabs** list automatically scrolls to bring the selected **Tab** into view.
+
+Arrow navigation moves focus to the next or previous **Tab**, even if it is not currently visible. In this case, the **Tabs** list automatically scrolls to bring the focused **Tab** into view.
+
+## Accessibility
+
+This component complies with the [Tabs WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/).

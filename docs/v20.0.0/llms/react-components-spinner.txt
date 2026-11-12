@@ -1,0 +1,34 @@
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: overview
+version: 20.0.0
+tokens: 166
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-spinner.txt
+---
+
+# Spinner
+
+_A visual indicator that a process is happening in the background but the interface is not yet ready for interaction._
+
+## Props
+
+| Property | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `size` | `'xs' | 'sm' | 'md' | 'lg'` | No | undefined | The size preset to use. |
+
+## Examples
+
+- Default
+- Color
+- Size
+- Accessibility Aria Busy Aria Live
+- Accessibility Aria Label
+- Accessibility Aria Labelled By
+
+## Documentation pages
+
+- [Documentation](./react-components-spinner--documentation.txt)
+- [Technical Information](./react-components-spinner--technical-information.txt)
+- [Examples](./react-components-spinner--examples.txt)

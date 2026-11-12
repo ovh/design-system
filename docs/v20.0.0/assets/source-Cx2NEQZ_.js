@@ -1,0 +1,1 @@
+function e(e){let t=[...e.matchAll(/render: \({[\w\s,]*}\) => {?([.\s\S]*)}?\n}$/gm)];return t.length&&t[0].length>=2?t[0][1]:e}function t(){return{format:`dedent`,transform:e,type:`code`}}export{t};

@@ -2032,7 +2032,7 @@ slug: ovhcloud-design-system-customize-themes
 category: generic
 type: overview
 version: 20.0.0-alpha.0
-tokens: 1970
+tokens: 2007
 source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-customize-themes.txt
 ---
 
@@ -2115,7 +2115,7 @@ Without a bundler, serve the files the export paths resolve to, and point the `<
 
 The fonts stay loaded when the theme changes. If the two themes do not name the same fonts, load the fonts of both.
 
-This documentation swaps its theme the same way, in a single `<style>` element filled by its theme select and its color scheme button.
+This documentation does it differently: it keeps the default theme loaded, and puts the theme shown, whole, in a single `<style>` element after it, filled by its theme select and its color scheme button. Every theme declares all its tokens, so the theme shown wins on each of them.
 
 ## Use the tokens in your CSS
 

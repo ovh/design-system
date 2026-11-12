@@ -17,3 +17,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 scripts/repoint-report.csv
+
+# The root .gitignore ignores *.d.ts (build output); this one is a source.
+!/src/stylesheet.d.ts

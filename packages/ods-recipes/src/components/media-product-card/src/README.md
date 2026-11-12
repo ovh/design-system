@@ -9,3 +9,6 @@ a link.
 
 Use this card when you want to showcase a product. It is suited for product listings, or anywhere users need a quick
 overview with a clear path to learn more or take action.
+
+The image of this example is imported from `../assets/product.png`, a file that is not part of the source shown here:
+replace that import with your own product image when you copy the card.

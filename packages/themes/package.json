@@ -10,14 +10,17 @@
   },
   "exports": {
     "./default/css": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/aluminium/light.scss",
       "default": "./dist/aluminium/light.css"
     },
     "./default/fonts": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/fonts.scss",
       "default": "./dist/fonts.css"
     },
     "./fonts-base64": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/fonts-base64.scss",
       "default": "./dist/fonts-base64.css"
     },
@@ -25,6 +28,7 @@
       "default": "./dist/aluminium/light.tokens.json"
     },
     "./blue-jeans/css": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/blue-jeans/light.scss",
       "default": "./dist/blue-jeans/light.css"
     },
@@ -32,6 +36,7 @@
       "default": "./dist/blue-jeans/light.tokens.json"
     },
     "./aluminium-dark/css": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/aluminium/dark.scss",
       "default": "./dist/aluminium/dark.css"
     },
@@ -39,6 +44,7 @@
       "default": "./dist/aluminium/dark.tokens.json"
     },
     "./blue-jeans-dark/css": {
+      "types": "./src/stylesheet.d.ts",
       "sass": "./src/blue-jeans/dark.scss",
       "default": "./dist/blue-jeans/dark.css"
     },

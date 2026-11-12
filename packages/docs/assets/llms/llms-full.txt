@@ -25445,11 +25445,9 @@ In VS Code, install the [Tailwind CSS IntelliSense](https://marketplace.visualst
 
 *Release notes of the current major version, v20. Earlier versions are listed under [What's new in previous versions](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new-v19); the [Changelog](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) lists every change.*
 
-## v20.0.0-alpha.0
+## v20.0.0
 
-First prerelease of v20. It is published under the `alpha` tag: install it with `npm install @ovhcloud/ods-react@alpha @ovhcloud/ods-themes@alpha`, the `latest` tag stays on v19. Its API may still change before v20.0.0.
-
-v20 has breaking changes in the component API and in the theme. Follow the [Migration 19.x to 20.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) guide before you upgrade.
+v20 has breaking changes in the component API and in the theme. Follow the [Migration 19.x to 20.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) guide before you upgrade: run `npx @ovhcloud/ods-migrate .` first, it applies most of the guide to your code.
 
 ### Project changes
 
@@ -25459,6 +25457,10 @@ v20 has breaking changes in the component API and in the theme. Follow the [Migr
 - **APIs deprecated in v19 are removed**, the Switch component among them. The `color` prop is removed too, in favor of `status` where the component has one.
 
 ### New packages
+
+**@ovhcloud/ods-migrate**
+
+Moves the code of an app from ODS v19 to v20: a command that rewrites what has a v20 equivalent and marks what needs a decision, with ESLint and stylelint rules for what is left. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20).
 
 **@ovhcloud/ods-mcp**
 
@@ -25514,6 +25516,17 @@ Tailwind CSS v4 utilities mapped to the ODS tokens. [See Documentation](https://
 
 **Toaster**
 - New method `toast.accent()` has been added, it replaces `toast.primary()`.
+
+### Bug fixes
+
+**Select**
+- The hidden native select no longer makes the page taller and scrollable.
+
+**Themes**
+- TypeScript 6 accepts the stylesheet imports, such as `import '@ovhcloud/ods-themes/default/css'` and `import '@ovhcloud/ods-react/normalize-css'`.
+
+**Recipes**
+- The fields and icon buttons of Chat, Dashboard Card, Data Grid, Data Grid With Query Filter, Range Input and Feature List Product Card have an accessible name.
 
 ## What's new in v19
 

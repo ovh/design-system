@@ -2,31 +2,21 @@
 
 This is the full procedure for a team that builds an app with ODS. Follow the steps in order. The outputs quoted below come from real runs on a copy of `packages/examples/accessibility-test` at `v19.7.3` (Node 22.14.0).
 
-> **Status (October 2026): ODS v20 is not released yet, and neither is ods-migrate.**
-> - You can do steps 1, 2 and 3 now, on a branch: they need only your code.
-> - Steps 4, 5, 7, 8 and 10 need the v20 packages installed: wait for the release (a preview version will be announced on the ODS channels). Until then, ods-migrate migrates to the current v20 preview, which may still change.
-> - If its report has a "Not migrated by this version" block (step 2), the changes it lists are not applied by this ods-migrate: migrate them by hand with the v20 migration guide.
+> If its report has a "Not migrated by this version" block (step 2), the changes it lists are not applied by this ods-migrate: migrate them by hand with the v20 migration guide.
 
 ---
 
 ## How to run ods-migrate
 
-Once it is published, run it with npx, from the root of your project:
+Run it with npx, from the root of your project:
 
 ```sh
 npx @ovhcloud/ods-migrate . 
 ```
 
-**Already in your `devDependencies`** (a version given to your team before the release): `npx ods-migrate .` from your project, or `node node_modules/@ovhcloud/ods-migrate/src/cli.mjs .`.
+**Already in your `devDependencies`**: `npx ods-migrate .` from your project, or `node node_modules/@ovhcloud/ods-migrate/src/cli.mjs .`.
 
-**Until it is published**, run it from a checkout of the design-system repository, whose dependencies are installed (`pnpm install` at the root of that checkout):
-
-```sh
-node <checkout>/packages/ods-migrate/src/cli.mjs .
-alias ods-migrate='node <checkout>/packages/ods-migrate/src/cli.mjs'    # then the commands below work as written
-```
-
-The commands of this guide are written `ods-migrate …`: with the published package, read `npx @ovhcloud/ods-migrate …`. The same goes for the other files of the package: the ESLint plugin is `<checkout>/packages/ods-migrate/src/eslint-plugin.mjs` until it can be imported as `@ovhcloud/ods-migrate/eslint-plugin`, and the guide of a component (`node <checkout>/packages/ods-migrate/src/guide.mjs Button`) prints its before / after code.
+The commands of this guide are written `ods-migrate …`: read `npx @ovhcloud/ods-migrate …`. The guide of a component (`node node_modules/@ovhcloud/ods-migrate/src/guide.mjs Button`, once it is in your `devDependencies`) prints its before / after code.
 
 `ods-migrate --help` lists the options. Most projects need none.
 
@@ -318,7 +308,7 @@ npx tsc --noEmit -p .     # or the type check of your project: tsgo, vue-tsc, ts
 Sort every error into one of three groups:
 
 1. **Under a `TODO(ods-v20)` marker** (on the line or just above): expected, step 6 resolves it. One case is known: a Button `color` with no v20 equivalent keeps `color=`, and its constant was renamed to `BUTTON_STATUS.information` / `.success` / `.warning`, which do not exist. The type check reports `TS2339 Property 'success' does not exist on type 'typeof BUTTON_STATUS'` under each of those markers (18 on `accessibility-test`). The marker says what to do: delete the attribute.
-2. **A `type` line of the report**: a value computed at runtime. Nothing to do if the type check passes there; otherwise fix the value with the guide of the component (`node <checkout>/packages/ods-migrate/src/guide.mjs Button` prints its before / after).
+2. **A `type` line of the report**: a value computed at runtime. Nothing to do if the type check passes there; otherwise fix the value with the guide of the component (`node node_modules/@ovhcloud/ods-migrate/src/guide.mjs Button` prints its before / after).
 3. **No marker anywhere near**: a place ods-migrate missed. Find its cause in [Known gaps](#known-gaps).
 
 On `accessibility-test`, the v20 type check went from 65 errors on ODS code before the run to 36 after, all on the 18 marked lines, and to 0 after step 6.

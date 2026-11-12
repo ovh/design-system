@@ -29,7 +29,7 @@
 - [Themes](./ovhcloud-design-system-customize-themes.txt) (~2007 tokens)
 - [Troubleshooting](./ovhcloud-design-system-troubleshooting.txt) (~922 tokens)
 - [Welcome](./ovhcloud-design-system-welcome.txt) (~256 tokens)
-- [What's new](./ovhcloud-design-system-upgrade-what-s-new.txt) (~790 tokens)
+- [What's new](./ovhcloud-design-system-upgrade-what-s-new.txt) (~940 tokens)
 - [What's new in v12 and earlier](./ovhcloud-design-system-upgrade-what-s-new-v12.txt) (~1407 tokens)
 - [What's new in v13](./ovhcloud-design-system-upgrade-what-s-new-v13.txt) (~355 tokens)
 - [What's new in v14](./ovhcloud-design-system-upgrade-what-s-new-v14.txt) (~853 tokens)

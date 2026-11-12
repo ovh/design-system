@@ -1,10 +1,8 @@
 *Release notes of the current major version, v20. Earlier versions are listed under <DocLink to="/guides/whats-new-v19">What's new in previous versions</DocLink>; the <DocLink to="/guides/changelog">Changelog</DocLink> lists every change.*
 
-<Heading label="v20.0.0-alpha.0" level={ 2 } />
+<Heading label="v20.0.0" level={ 2 } />
 
-First prerelease of v20. It is published under the `alpha` tag: install it with `npm install @ovhcloud/ods-react@alpha @ovhcloud/ods-themes@alpha`, the `latest` tag stays on v19. Its API may still change before v20.0.0.
-
-v20 has breaking changes in the component API and in the theme. Follow the <DocLink to="/guides/migration-19-to-20">Migration 19.x to 20.x</DocLink> guide before you upgrade.
+v20 has breaking changes in the component API and in the theme. Follow the <DocLink to="/guides/migration-19-to-20">Migration 19.x to 20.x</DocLink> guide before you upgrade: run `npx @ovhcloud/ods-migrate .` first, it applies most of the guide to your code.
 
 <Heading label="Project changes" level={ 3 } />
 
@@ -14,6 +12,10 @@ v20 has breaking changes in the component API and in the theme. Follow the <DocL
 - **APIs deprecated in v19 are removed**, the Switch component among them. The `color` prop is removed too, in favor of `status` where the component has one.
 
 <Heading label="New packages" level={ 3 } />
+
+**@ovhcloud/ods-migrate**
+
+Moves the code of an app from ODS v19 to v20: a command that rewrites what has a v20 equivalent and marks what needs a decision, with ESLint and stylelint rules for what is left. <DocLink to="/guides/migration-19-to-20">See Documentation</DocLink>.
 
 **@ovhcloud/ods-mcp**
 
@@ -69,3 +71,14 @@ Tailwind CSS v4 utilities mapped to the ODS tokens. <DocLink to="/guides/tailwin
 
 **Toaster**
 - New method `toast.accent()` has been added, it replaces `toast.primary()`.
+
+<Heading label="Bug fixes" level={ 3 } />
+
+**Select**
+- The hidden native select no longer makes the page taller and scrollable.
+
+**Themes**
+- TypeScript 6 accepts the stylesheet imports, such as `import '@ovhcloud/ods-themes/default/css'` and `import '@ovhcloud/ods-react/normalize-css'`.
+
+**Recipes**
+- The fields and icon buttons of Chat, Dashboard Card, Data Grid, Data Grid With Query Filter, Range Input and Feature List Product Card have an accessible name.

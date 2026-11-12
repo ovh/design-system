@@ -17,3 +17,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# The root .gitignore ignores *.d.ts (build output); this one is a source.
+!/src/style/stylesheet.d.ts

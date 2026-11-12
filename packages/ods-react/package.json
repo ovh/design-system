@@ -20,6 +20,7 @@
       "default": "./dist/components/*/index.js"
     },
     "./normalize-css": {
+      "types": "./src/style/stylesheet.d.ts",
       "default": "./src/style/normalize.css"
     },
     "./style": {

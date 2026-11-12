@@ -3,9 +3,9 @@ title: "Button Group"
 slug: button-group
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 747
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-button-group--documentation.txt
+version: 20.0.0
+tokens: 745
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-button-group--documentation.txt
 ---
 
 # Button Group
@@ -103,4 +103,4 @@ Pressing `Space` or `Enter` activates or deactivates the focused button, updatin
 The **Button Group** component handles by itself the accessibility requirements regarding the control grouping.
 
 Though you need to ensure that each of your items follows the
-[Button Accessibility Best Practices](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button).
+[Button Accessibility Best Practices](https://ovh.github.io/design-system/v20.0.0/components/button).

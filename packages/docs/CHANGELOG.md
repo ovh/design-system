@@ -8,6 +8,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 
+# [20.0.0](https://ovh.github.io/design-system/v20.0.0/guides/changelog) (2026-11-12)
+[compare](https://github.com/ovh/design-system/compare/v20.0.0-alpha.0...v20.0.0)
+
+### Bug Fixes
+
+* **docs:** address the 20.0.0-alpha.0 docs QA ([1ac32ef](https://github.com/ovh/design-system/commit/1ac32ef1746d045a31e707cd360f7073fcee362f))
+* **docs:** escape every html special character in the demo frame srcdoc ([5de6496](https://github.com/ovh/design-system/commit/5de64965bec3ecee12ecac9d4e4a671108b2e14c))
+* **docs:** keep the 2 s demo timeout running through re-renders ([41fc847](https://github.com/ovh/design-system/commit/41fc847111b25b09a2bca8ca68bda421562c9257))
+* **docs:** show a demo even when its fonts fail to load ([1eb4231](https://github.com/ovh/design-system/commit/1eb4231b2ee90745a0a42b98ee1527a1a5c72418))
+* **themes:** type the stylesheet exports for TypeScript 6 ([f64ab0a](https://github.com/ovh/design-system/commit/f64ab0aa46d5341ae1f9c12283a74f7a346c9963))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
 # [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
 [compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
 

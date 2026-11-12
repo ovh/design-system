@@ -3,14 +3,14 @@ title: "What's new in v12 and earlier"
 slug: ovhcloud-design-system-upgrade-what-s-new-v12
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 1407
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v12.txt
+version: 20.0.0
+tokens: 1397
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v12.txt
 ---
 
 # What's new in v12 and earlier
 
-*Release notes of v12 and earlier. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v12 and earlier. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v12.1.0
 
@@ -18,7 +18,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 We added the Tabs component.<br />
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tabs)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/tabs)
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
 
@@ -52,7 +52,7 @@ First release on GitHub. There is no new feature in this version. It is now open
 ## v11.0.0
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see [Installation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) page.
+For more details about assets, see [Installation](https://ovh.github.io/design-system/v20.0.0/guides/get-started) page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
 Before importing any component you now have to setup ods.
@@ -90,7 +90,7 @@ We fixed some issue about automated screenshot testing with some timeout.
 
 We added the select component (version 1).
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/select)
 
 ## v10.0.0
 
@@ -116,7 +116,7 @@ ts-node ~9.1.1 to ~10.7.0
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated [Getting Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
+You can read the updated [Getting Started](https://ovh.github.io/design-system/v20.0.0/guides/get-started)
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.

@@ -3,9 +3,9 @@ title: "Popover"
 slug: popover
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1478
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-popover--documentation.txt
+version: 20.0.0
+tokens: 1476
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-popover--documentation.txt
 ---
 
 # Popover
@@ -33,7 +33,7 @@ It can include interactive elements such as a button or a link.
 
 ### Tooltip vs Popover
 
-- Both components look similar but a [Tooltip](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tooltip) is displayed on hover and focus while **Popover** is triggered by click.
+- Both components look similar but a [Tooltip](https://ovh.github.io/design-system/v20.0.0/components/tooltip) is displayed on hover and focus while **Popover** is triggered by click.
 - Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit a popover better.
 - Use a popover when you need to insert interactive elements such as Button.
 - A popover can be dismissed if an action button allows it.

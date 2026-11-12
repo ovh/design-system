@@ -3,9 +3,9 @@ title: "Tag"
 slug: tag
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1376
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tag--documentation.txt
+version: 20.0.0
+tokens: 1374
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-tag--documentation.txt
 ---
 
 # Tag
@@ -105,7 +105,7 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ## Accessibility
 
-Unlike [Badge](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/badge),
+Unlike [Badge](https://ovh.github.io/design-system/v20.0.0/components/badge),
 **Tags** are interactive and can be removed by the user.
 To ensure accessibility, it is important to:
 

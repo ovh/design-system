@@ -3,9 +3,9 @@ title: "Prompt Input"
 slug: prompt-input
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 1142
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-prompt-input--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-prompt-input--examples.txt
 ---
 
 # Prompt Input

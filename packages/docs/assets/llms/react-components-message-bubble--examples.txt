@@ -3,9 +3,9 @@ title: "Message Bubble"
 slug: message-bubble
 category: component
 type: examples
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 125
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-message-bubble--examples.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-message-bubble--examples.txt
 ---
 
 # Message Bubble

@@ -3,9 +3,9 @@ title: "Tree View"
 slug: tree-view
 category: component
 type: documentation
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 917
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-tree-view--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-tree-view--documentation.txt
 ---
 
 # Tree View

@@ -3,9 +3,9 @@ title: "Modal"
 slug: modal
 category: component
 type: technical-information
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 812
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-modal--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-modal--technical-information.txt
 ---
 
 # Modal

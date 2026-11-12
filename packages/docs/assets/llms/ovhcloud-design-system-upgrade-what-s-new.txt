@@ -3,23 +3,23 @@ title: "What's new"
 slug: ovhcloud-design-system-upgrade-what-s-new
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 940
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new.txt
+version: 20.0.0
+tokens: 924
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new.txt
 ---
 
 # What's new
 
-*Release notes of the current major version, v20. Earlier versions are listed under [What's new in previous versions](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new-v19); the [Changelog](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) lists every change.*
+*Release notes of the current major version, v20. Earlier versions are listed under [What's new in previous versions](https://ovh.github.io/design-system/v20.0.0/guides/whats-new-v19); the [Changelog](https://ovh.github.io/design-system/v20.0.0/guides/changelog) lists every change.*
 
 ## v20.0.0
 
-v20 has breaking changes in the component API and in the theme. Follow the [Migration 19.x to 20.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20) guide before you upgrade: run `npx @ovhcloud/ods-migrate .` first, it applies most of the guide to your code.
+v20 has breaking changes in the component API and in the theme. Follow the [Migration 19.x to 20.x](https://ovh.github.io/design-system/v20.0.0/guides/migration-19-to-20) guide before you upgrade: run `npx @ovhcloud/ods-migrate .` first, it applies most of the guide to your code.
 
 ### Project changes
 
 - **React 19** is supported, and React 18 still is: the peer dependency range is unchanged.
-- **Themes** are rebuilt on a semantic layer of tokens, and the default theme gets a new, neutral look. Four themes are shipped, each as one complete stylesheet: the default theme (Aluminium), its dark mode, Blue Jeans (the OVHcloud look) and its dark mode. See [Themes](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/themes).
+- **Themes** are rebuilt on a semantic layer of tokens, and the default theme gets a new, neutral look. Four themes are shipped, each as one complete stylesheet: the default theme (Aluminium), its dark mode, Blue Jeans (the OVHcloud look) and its dark mode. See [Themes](https://ovh.github.io/design-system/v20.0.0/guides/themes).
 - **Documentation** moves from Storybook to a new documentation website, published as `@ovhcloud/ods-docs` in place of `@ovhcloud/ods-storybook`.
 - **APIs deprecated in v19 are removed**, the Switch component among them. The `color` prop is removed too, in favor of `status` where the component has one.
 
@@ -27,21 +27,21 @@ v20 has breaking changes in the component API and in the theme. Follow the [Migr
 
 **@ovhcloud/ods-migrate**
 
-Moves the code of an app from ODS v19 to v20: a command that rewrites what has a v20 equivalent and marks what needs a decision, with ESLint and stylelint rules for what is left. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-19-to-20).
+Moves the code of an app from ODS v19 to v20: a command that rewrites what has a v20 equivalent and marks what needs a decision, with ESLint and stylelint rules for what is left. [See Documentation](https://ovh.github.io/design-system/v20.0.0/guides/migration-19-to-20).
 
 **@ovhcloud/ods-mcp**
 
-An MCP server that gives AI assistants access to the ODS documentation. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/mcp-server).
+An MCP server that gives AI assistants access to the ODS documentation. [See Documentation](https://ovh.github.io/design-system/v20.0.0/guides/mcp-server).
 
 **@ovhcloud/ods-tailwind**
 
-Tailwind CSS v4 utilities mapped to the ODS tokens. [See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/tailwind).
+Tailwind CSS v4 utilities mapped to the ODS tokens. [See Documentation](https://ovh.github.io/design-system/v20.0.0/guides/tailwind).
 
 ### New components
 
 **Command**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/command).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/command).
 
 ### Feature updates
 

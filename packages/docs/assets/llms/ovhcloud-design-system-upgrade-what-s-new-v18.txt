@@ -3,14 +3,14 @@ title: "What's new in v18"
 slug: ovhcloud-design-system-upgrade-what-s-new-v18
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 4779
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v18.txt
+version: 20.0.0
+tokens: 4759
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v18.txt
 ---
 
 # What's new in v18
 
-*Release notes of v18. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v18. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v18.6.4
 
@@ -63,7 +63,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Combobox**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/combobox)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/combobox)
 
 ### Feature updates
 
@@ -77,7 +77,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 - New attribute `isMasked` has been added.
 
 **Icon**
-- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the [accessibility best practices](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/icon) instead.
+- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the [accessibility best practices](https://ovh.github.io/design-system/v20.0.0/components/icon) instead.
 
 ### Bug fixes
 
@@ -91,7 +91,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 ### Documentation improvements
 
 - Add new dedicated page about design tokens under the `Design and Style` section.
-- Update the accessibility section of the [Icon](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/icon) component, with best practices and examples.
+- Update the accessibility section of the [Icon](https://ovh.github.io/design-system/v20.0.0/components/icon) component, with best practices and examples.
 
 ## v18.5.3
 
@@ -209,7 +209,7 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Drawer**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/drawer)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/drawer)
 
 ### Feature updates
 
@@ -374,7 +374,7 @@ We won't go through an exhaustive list of changes, here are the most important o
 - A new part `last` is now available to customize the last item (which differ from other link items).
 
 **Input**
-- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the [Technical information](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) page.
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the [Technical information](https://ovh.github.io/design-system/v20.0.0/components/input) page.
 - New attribute `list` has been added.
 - New slot `list` is now available.
 
@@ -498,7 +498,7 @@ Storybook has been partially rewritten, so you may notice a few changes:
 
 ## v18.0.0
 
-As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-17-to-18)
+As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](https://ovh.github.io/design-system/v20.0.0/guides/migration-17-to-18)
 
 ### Project changes
 
@@ -607,12 +607,12 @@ to use the web-component by default.
 
 **File Upload**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-upload)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/file-upload)
 
 **Timepicker**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/timepicker)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/timepicker)
 
 ### Component changes
 
-Please check the [migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-17-to-18) regarding all the component changes.
+Please check the [migration guide](https://ovh.github.io/design-system/v20.0.0/guides/migration-17-to-18) regarding all the component changes.

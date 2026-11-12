@@ -3,9 +3,9 @@ title: "Table"
 slug: table
 category: component
 type: documentation
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 771
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-table--documentation.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-table--documentation.txt
 ---
 
 # Table

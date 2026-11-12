@@ -3,9 +3,9 @@ title: "Icon"
 slug: icon
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 902
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-icon--documentation.txt
+version: 20.0.0
+tokens: 900
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-icon--documentation.txt
 ---
 
 # Icon
@@ -93,4 +93,4 @@ If the **Icon** conveys essential information, it must be accompanied by an acce
   
   
 > If the **Icon** is inside an interactive element, prefer using [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) on the element itself rather than on the **Icon**.
-> See [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button) examples.
+> See [Button](https://ovh.github.io/design-system/v20.0.0/components/button) examples.

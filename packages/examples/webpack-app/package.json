@@ -1,6 +1,6 @@
 {
   "name": "webpack-app",
-  "version": "20.0.0-alpha.0",
+  "version": "20.0.0",
   "private": true,
   "description": "Example of an app using ODS, bundled with Webpack",
   "main": "index.js",

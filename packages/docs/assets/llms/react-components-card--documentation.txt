@@ -3,9 +3,9 @@ title: "Card"
 slug: card
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1446
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-card--documentation.txt
+version: 20.0.0
+tokens: 1442
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-card--documentation.txt
 ---
 
 # Card
@@ -43,8 +43,8 @@ Several elements can be used in a **Card**:
 
 * A title
 * A description
-* A [Button](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button)
-* A [Medium](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/medium)
+* A [Button](https://ovh.github.io/design-system/v20.0.0/components/button)
+* A [Medium](https://ovh.github.io/design-system/v20.0.0/components/medium)
 * Extra information
 
 All these elements are not mandatory in every **Card**.

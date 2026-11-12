@@ -3,9 +3,9 @@ title: "Meter"
 slug: meter
 category: component
 type: technical-information
-version: 20.0.0-alpha.0
+version: 20.0.0
 tokens: 284
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-meter--technical-information.txt
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-meter--technical-information.txt
 ---
 
 # Meter

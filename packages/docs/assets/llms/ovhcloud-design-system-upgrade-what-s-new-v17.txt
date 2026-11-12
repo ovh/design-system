@@ -3,14 +3,14 @@ title: "What's new in v17"
 slug: ovhcloud-design-system-upgrade-what-s-new-v17
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 1603
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v17.txt
+version: 20.0.0
+tokens: 1593
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v17.txt
 ---
 
 # What's new in v17
 
-*Release notes of v17. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v17. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v17.2.2
 
@@ -51,7 +51,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 **Table**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/table)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/table)
 
 ### Documentation improvements
 
@@ -208,7 +208,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 ## v17.0.0
 
-As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-16-to-17)
+As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](https://ovh.github.io/design-system/v20.0.0/guides/migration-16-to-17)
 
 ### Project changes
 
@@ -229,8 +229,8 @@ ODS components can then be either imported using lazy-loading (the code of each 
 
 For more details on how to import ODS components, see:
 
-* the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started)
-* the 16.x to 17.x [Migration guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/migration-16-to-17)
+* the updated [Get Started documentation](https://ovh.github.io/design-system/v20.0.0/guides/get-started)
+* the 16.x to 17.x [Migration guide](https://ovh.github.io/design-system/v20.0.0/guides/migration-16-to-17)
 
 ### Documentation improvements
 

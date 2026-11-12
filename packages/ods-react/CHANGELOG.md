@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 
+# [20.0.0](https://ovh.github.io/design-system/v20.0.0/guides/changelog) (2026-11-12)
+[compare](https://github.com/ovh/design-system/compare/v20.0.0-alpha.0...v20.0.0)
+
+### Bug Fixes
+
+* **phone-number:** draw the focus outline of each field over the other ([dbb0ccd](https://github.com/ovh/design-system/commit/dbb0ccddf05f9d5d768c6962601bd7e222cf0ce0))
+* **select:** keep the hidden native select from stretching the page ([11fa7ee](https://github.com/ovh/design-system/commit/11fa7eeb0e8cb565414142a9c3d65956a157e599))
+* **themes:** type the stylesheet exports for TypeScript 6 ([f64ab0a](https://github.com/ovh/design-system/commit/f64ab0aa46d5341ae1f9c12283a74f7a346c9963))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
 # [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
 [compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
 

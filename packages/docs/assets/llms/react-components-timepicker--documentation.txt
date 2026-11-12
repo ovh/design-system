@@ -3,9 +3,9 @@ title: "Timepicker"
 slug: timepicker
 category: component
 type: documentation
-version: 20.0.0-alpha.0
-tokens: 1327
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/react-components-timepicker--documentation.txt
+version: 20.0.0
+tokens: 1323
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-timepicker--documentation.txt
 ---
 
 # Timepicker
@@ -69,7 +69,7 @@ A **Timepicker** shares the default width of every form field (280px, capped to 
 
 A **Timepicker** can widen to match its container by setting `width: 100%` on its root: the timezone select keeps its content width and the time field takes the remaining space.
 
-It has the same states and behaviors for each inner component (i.e. [Input](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/input) and [Select](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/select)).
+It has the same states and behaviors for each inner component (i.e. [Input](https://ovh.github.io/design-system/v20.0.0/components/input) and [Select](https://ovh.github.io/design-system/v20.0.0/components/select)).
 
 ## Navigation
 

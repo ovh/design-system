@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
 
+# [20.0.0](https://ovh.github.io/design-system/v20.0.0/guides/changelog) (2026-11-12)
+[compare](https://github.com/ovh/design-system/compare/v20.0.0-alpha.0...v20.0.0)
+
+### Bug Fixes
+
+* **themes:** exclude ods-migrate from the retired-token check ([84f2af9](https://github.com/ovh/design-system/commit/84f2af967d3bba614f1c30b70ea38ef99e63b8f2))
+* **themes:** exclude the root changelog from the retired-token check ([8b83483](https://github.com/ovh/design-system/commit/8b834837e03dfabca9202283b143ad7f0e7e69ce))
+* **themes:** type the stylesheet exports for TypeScript 6 ([f64ab0a](https://github.com/ovh/design-system/commit/f64ab0aa46d5341ae1f9c12283a74f7a346c9963))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
+
+
 # [20.0.0-alpha.0](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/changelog) (2026-11-05)
 [compare](https://github.com/ovh/design-system/compare/v19.7.3...v20.0.0-alpha.0)
 

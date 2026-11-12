@@ -3,14 +3,14 @@ title: "What's new in v19"
 slug: ovhcloud-design-system-upgrade-what-s-new-v19
 category: generic
 type: overview
-version: 20.0.0-alpha.0
-tokens: 6686
-source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design-system-upgrade-what-s-new-v19.txt
+version: 20.0.0
+tokens: 6632
+source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-upgrade-what-s-new-v19.txt
 ---
 
 # What's new in v19
 
-*Release notes of v19. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/whats-new).*
+*Release notes of v19. For the current major version, see [What's new](https://ovh.github.io/design-system/v20.0.0/guides/whats-new).*
 
 ## v19.7.3
 
@@ -42,41 +42,41 @@ source: https://ovh.github.io/design-system/v20.0.0-alpha.0/llms/ovhcloud-design
 
 **Avatar**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/avatar).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/avatar).
 
 **DataTable**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/data-table).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/data-table).
 
 **FileThumbnail**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/file-thumbnail).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/file-thumbnail).
 
 **Markdown**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/markdown).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/markdown).
 
 **MessageBubble**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/message-bubble).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/message-bubble).
 
 **PromptInput**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/prompt-input).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/prompt-input).
 
 **QueryFilter**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/query-filter).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/query-filter).
 
 ### New recipes
 
 **Data Grid with Query Filter**
 
-[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0/recipes/components).
 
 **Chat**
 
-[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0/recipes/components).
 
 ### Feature updates
 
@@ -217,17 +217,17 @@ configuration will not be impacted.
 
 **Cart**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/cart).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/cart).
 
 **Menu**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/menu).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/menu).
 
 ### New recipes
 
 **Dashboard Card**
 
-[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0/recipes/components).
 
 ### Design updates
 
@@ -286,25 +286,25 @@ configuration will not be impacted.
 
 **Editable**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/editable).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/editable).
 
 **Logo**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/logo).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/logo).
 
 **Tile**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tile).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/tile).
 
 ### New recipes
 
 **Config Tile**
 
-[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0/recipes/components).
 
 **Feature List Product Card**
 
-[See Recipes](https://ovh.github.io/design-system/v20.0.0-alpha.0/recipes/components).
+[See Recipes](https://ovh.github.io/design-system/v20.0.0/recipes/components).
 
 ### Design updates
 
@@ -336,7 +336,7 @@ Starting from this version, `Drawer` and `Modal` z-indexes are now greater than 
 This may cause issue with your current usage of overlay elements inside `Modal`.
 
 To use such element correctly, you'll have to set the `createPortal={ false }` on overlay elements inside `Modal`.
-You can see some examples on the [Modal Technical Page](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/modal).
+You can see some examples on the [Modal Technical Page](https://ovh.github.io/design-system/v20.0.0/components/modal).
 
 We've also added a `positionerStyle` attribute on all overlay elements to allow you to override the positioner style and set up your own `z-index` values if needed.
 
@@ -438,11 +438,11 @@ You can find more information about recipes on the new dedicated section in the 
 
 **Button Group**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/button-group).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/button-group).
 
 **Kbd**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/kbd).
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/kbd).
 
 ### Design updates
 
@@ -493,7 +493,7 @@ You can find more information about recipes on the new dedicated section in the 
 
 **Toaster**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/toaster)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/toaster)
 
 ### Design updates
 
@@ -627,11 +627,11 @@ ODS documentation is now available as LLM files to help AI tools to better under
 
 **Meter**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/meter)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/meter)
 
 **TreeView**
 
-[See Documentation](https://ovh.github.io/design-system/v20.0.0-alpha.0/components/tree-view)
+[See Documentation](https://ovh.github.io/design-system/v20.0.0/components/tree-view)
 
 ### Font changes
 
@@ -732,7 +732,7 @@ We've implemented all the internal requirements on each component, validated usi
 Though, ensuring accessibility for your context does require you to use the right `aria`/`role`/... attribute at the right place.
 
 To help you with that, we've added:
-- a [guide about accessibility](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/accessibility) best practices.
+- a [guide about accessibility](https://ovh.github.io/design-system/v20.0.0/guides/accessibility) best practices.
 - a dedicated `Accessibility` section on each component `Documentation` page.
 
 #### i18n
@@ -744,7 +744,7 @@ We do provide default values for each supported locales to ensure that integrati
 
 You can customize those value further with your own translations.
 
-See the related [Internationalization guide](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/internationalization) for more information.
+See the related [Internationalization guide](https://ovh.github.io/design-system/v20.0.0/guides/internationalization) for more information.
 
 ### Design updates
 
@@ -894,7 +894,7 @@ With this new version we got rid of those constraints, which gave us some benefi
 Although, we tried to stay as close as possible to previous version behavior, the way you integrate ODS in your React app should be rethought,
 to ensure you use components as real React elements and not wrapped Web Components anymore.
 
-To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v20.0.0-alpha.0/guides/get-started) documentation.
+To check how to start with this new version, please follow the [Get Started](https://ovh.github.io/design-system/v20.0.0/guides/get-started) documentation.
 
 Here is a non-exhaustive list of the major changes:
 - rework of all components as React elements.

@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: overview
 version: 20.0.0
-tokens: 827
+tokens: 831
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker.txt
 ---
 
@@ -23,7 +23,7 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `disabledDates` | `Date[]` | No | undefined | List of dates that cannot be selected. |
 | `disabledWeekDays` | `DATEPICKER_DAY[]` | No | undefined | List of week days that cannot be selected. |
-| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see the Datepicker and Input i18n keys). |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `locale` | `string` | No | undefined | The locale to use when formatting the date. |
 | `max` | `string | Date` | No | undefined | The maximum date that can be selected. |

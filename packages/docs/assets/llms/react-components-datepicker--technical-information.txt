@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 1008
+tokens: 1210
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -23,7 +23,7 @@ This component extends all the native `<div>` attributes.
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `disabledDates` | `Date[]` | No | undefined | List of dates that cannot be selected. |
 | `disabledWeekDays` | `DATEPICKER_DAY[]` | No | undefined | List of week days that cannot be selected. |
-| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see the Datepicker and Input i18n keys). |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `locale` | `string` | No | undefined | The locale to use when formatting the date. |
 | `max` | `string | Date` | No | undefined | The maximum date that can be selected. |
@@ -70,6 +70,24 @@ This component extends all the native `<input>` attributes.
 - `thursday` = `4`
 - `tuesday` = `2`
 - `wednesday` = `3`
+
+### DATEPICKER_I18N
+
+- `calendar` = `datepicker.calendar`
+- `closeCalendarButton` = `datepicker.calendar.close.button`
+- `dayGrid` = `datepicker.grid.day`
+- `monthGrid` = `datepicker.grid.month`
+- `monthViewButton` = `datepicker.view.month.button`
+- `nextDecadeButton` = `datepicker.next.decade.button`
+- `nextMonthButton` = `datepicker.next.month.button`
+- `nextYearButton` = `datepicker.next.year.button`
+- `openCalendarButton` = `datepicker.calendar.open.button`
+- `previousDecadeButton` = `datepicker.previous.decade.button`
+- `previousMonthButton` = `datepicker.previous.month.button`
+- `previousYearButton` = `datepicker.previous.year.button`
+- `unavailableDate` = `datepicker.date.unavailable`
+- `yearGrid` = `datepicker.grid.year`
+- `yearViewButton` = `datepicker.view.year.button`
 
 ### DATEPICKER_VIEW
 

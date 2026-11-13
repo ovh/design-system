@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1922
+tokens: 2086
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--documentation.txt
 ---
 
@@ -219,3 +219,12 @@ Since screen readers can only interact with the **Datepicker** input field, itâ€
 ```
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
+
+### Calendar
+
+The calendar controls are named in the `locale` of the **Datepicker**: previous and next buttons, view switch, open and close button.
+Each grid is named after the period it shows (for example "September 2026"), and a day after its date, followed by "Not available" when it cannot be picked.
+Every one of these names can be overridden with the `DATEPICKER_I18N` keys of the `i18n` prop.
+
+The calendar is rendered with the `application` role, set by the underlying library: it lets the arrow keys move between days instead of being caught by the screen reader.
+Pass a `role` to **DatepickerContent** to change it, for example `role="dialog"`.

@@ -73,7 +73,6 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       i18n={ i18n }
       locale={ locale }>
       <nav
-        aria-expanded={!noCollapse && count > collapseThreshold ? isExpanded : undefined}
         className={ classNames(style['breadcrumb'], className) }
         data-ods="breadcrumb"
         id={ computedId }

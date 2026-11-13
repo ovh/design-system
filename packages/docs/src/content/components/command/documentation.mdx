@@ -126,6 +126,8 @@ Pressing <Kbd>Home</Kbd> or <Kbd>End</Kbd> moves the cursor within the search in
 **Command** is a `listbox`-based component, nested within a `dialog` role element. 
 
 The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
+
+The highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, <Kbd>Enter</Kbd> runs the highlighted option.
  
 
 ```tsx

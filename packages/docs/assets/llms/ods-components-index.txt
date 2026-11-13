@@ -90,7 +90,7 @@
 ## Command
 
 - [Overview](./react-components-command.txt) (~492 tokens)
-- [Documentation](./react-components-command--documentation.txt) (~1962 tokens)
+- [Documentation](./react-components-command--documentation.txt) (~2001 tokens)
 - [Technical Information](./react-components-command--technical-information.txt) (~1146 tokens)
 - [Examples](./react-components-command--examples.txt) (~2056 tokens)
 

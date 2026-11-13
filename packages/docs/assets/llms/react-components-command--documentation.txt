@@ -4,7 +4,7 @@ slug: command
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1962
+tokens: 2001
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-command--documentation.txt
 ---
 
@@ -134,6 +134,8 @@ Pressing `Home` or `End` moves the cursor within the search input.
 **Command** is a `listbox`-based component, nested within a `dialog` role element. 
 
 The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
+
+The highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
  
 
 ```tsx

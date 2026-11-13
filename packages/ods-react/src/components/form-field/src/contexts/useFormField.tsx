@@ -68,6 +68,20 @@ function useFormField(): FormFieldContextType {
 }
 
 /**
+ * Keeps the id of the Form Field away from several fields wrapped in one group: each of them would
+ * otherwise render the same id, and register it as the target of the label the group reads.
+ */
+function FormFieldGroupProvider({ children }: { children: ReactNode }): JSX.Element {
+  const { id, setFieldId, ...context } = useFormField();
+
+  return (
+    <FormFieldContext.Provider value={ context }>
+      { children }
+    </FormFieldContext.Provider>
+  );
+}
+
+/**
  * Registers the id of the element the FormFieldLabel must target. Pass `null` when the field
  * renders no labelable element, it then has to read `labelId` itself.
  */
@@ -83,6 +97,7 @@ function useFormFieldId(fieldId: string | null): void {
 
 export {
   type FormFieldContextType,
+  FormFieldGroupProvider,
   FormFieldProvider,
   type FormFieldRootProp,
   useFormField,

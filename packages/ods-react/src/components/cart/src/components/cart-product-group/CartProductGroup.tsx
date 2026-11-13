@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type FC, type JSX, forwardRef } from 'react';
+import { type FC, type JSX, forwardRef, useId } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger } from '../../../../accordion/src';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
@@ -30,6 +30,8 @@ const CartProductGroup: FC<CartProductGroupProp> = forwardRef(({
 }, ref): JSX.Element => {
   const { i18n, isOpen, locale } = useCart();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
+  const labelId = useId();
+  const removeButtonId = useId();
 
   return (
     <Accordion
@@ -58,6 +60,7 @@ const CartProductGroup: FC<CartProductGroupProp> = forwardRef(({
 
                 <Text
                   as="span"
+                  id={ labelId }
                   preset={ TEXT_PRESET.heading5 }>
                   { label }
                 </Text>
@@ -75,7 +78,9 @@ const CartProductGroup: FC<CartProductGroupProp> = forwardRef(({
             onRemove &&
             <Button
               aria-label={ translate(CART_I18N.removeProductButton) }
+              aria-labelledby={ `${removeButtonId} ${labelId}` }
               emphasis={ BUTTON_EMPHASIS.low }
+              id={ removeButtonId }
               onClick={ onRemove }
               size={ BUTTON_SIZE.sm }>
               <Icon name={ ICON_NAME.trash } />

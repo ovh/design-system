@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { DIVIDER_SPACING, Divider } from '../../../../divider/src';
@@ -28,6 +28,8 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
 }, ref): JSX.Element => {
   const { i18n, locale } = useCart();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
+  const labelId = useId();
+  const removeButtonId = useId();
 
   return (
     <div
@@ -52,7 +54,9 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
           </Text>
         }
 
-        <span className={ style['cart-product-group-item__item__label'] }>
+        <span
+          className={ style['cart-product-group-item__item__label'] }
+          id={ labelId }>
           { label }
         </span>
 
@@ -64,7 +68,9 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
           onRemove &&
           <Button
             aria-label={ translate(CART_I18N.removeProductButton) }
+            aria-labelledby={ `${removeButtonId} ${labelId}` }
             emphasis={ BUTTON_EMPHASIS.low }
+            id={ removeButtonId }
             onClick={ onRemove }
             size={ BUTTON_SIZE.sm }>
             <Icon name={ ICON_NAME.trash } />

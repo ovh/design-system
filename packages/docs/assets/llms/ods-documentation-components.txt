@@ -1450,7 +1450,7 @@ slug: breadcrumb
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 487
+tokens: 497
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadcrumb--technical-information.txt
 ---
 
@@ -1488,6 +1488,7 @@ _No specific property._
 ### BREADCRUMB_I18N
 
 - `ellipsisButton` = `breadcrumb.ellipsis.button`
+- `navigation` = `breadcrumb.navigation`
 
 ## CSS Variables
 
@@ -6779,7 +6780,7 @@ slug: datepicker
 category: component
 type: overview
 version: 20.0.0
-tokens: 827
+tokens: 831
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker.txt
 ---
 
@@ -6798,7 +6799,7 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `disabledDates` | `Date[]` | No | undefined | List of dates that cannot be selected. |
 | `disabledWeekDays` | `DATEPICKER_DAY[]` | No | undefined | List of week days that cannot be selected. |
-| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see the Datepicker and Input i18n keys). |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `locale` | `string` | No | undefined | The locale to use when formatting the date. |
 | `max` | `string | Date` | No | undefined | The maximum date that can be selected. |
@@ -6843,7 +6844,7 @@ slug: datepicker
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1922
+tokens: 2086
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--documentation.txt
 ---
 
@@ -7059,13 +7060,22 @@ Since screen readers can only interact with the **Datepicker** input field, itâ€
 
  Screen readers will announce the label, the field, its content and custom label of focused action.
 
+### Calendar
+
+The calendar controls are named in the `locale` of the **Datepicker**: previous and next buttons, view switch, open and close button.
+Each grid is named after the period it shows (for example "September 2026"), and a day after its date, followed by "Not available" when it cannot be picked.
+Every one of these names can be overridden with the `DATEPICKER_I18N` keys of the `i18n` prop.
+
+The calendar is rendered with the `application` role, set by the underlying library: it lets the arrow keys move between days instead of being caught by the screen reader.
+Pass a `role` to **DatepickerContent** to change it, for example `role="dialog"`.
+
 ---
 title: "Datepicker"
 slug: datepicker
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 1008
+tokens: 1210
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -7084,7 +7094,7 @@ This component extends all the native `<div>` attributes.
 | `disabled` | `boolean` | No | undefined | Whether the component is disabled. |
 | `disabledDates` | `Date[]` | No | undefined | List of dates that cannot be selected. |
 | `disabledWeekDays` | `DATEPICKER_DAY[]` | No | undefined | List of week days that cannot be selected. |
-| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see Input i18n keys). |
+| `i18n` | `Partial<Record>` | No | undefined | Internal translations override (see the Datepicker and Input i18n keys). |
 | `invalid` | `boolean` | No | undefined | Whether the component is in error state. |
 | `locale` | `string` | No | undefined | The locale to use when formatting the date. |
 | `max` | `string | Date` | No | undefined | The maximum date that can be selected. |
@@ -7131,6 +7141,24 @@ This component extends all the native `<input>` attributes.
 - `thursday` = `4`
 - `tuesday` = `2`
 - `wednesday` = `3`
+
+### DATEPICKER_I18N
+
+- `calendar` = `datepicker.calendar`
+- `closeCalendarButton` = `datepicker.calendar.close.button`
+- `dayGrid` = `datepicker.grid.day`
+- `monthGrid` = `datepicker.grid.month`
+- `monthViewButton` = `datepicker.view.month.button`
+- `nextDecadeButton` = `datepicker.next.decade.button`
+- `nextMonthButton` = `datepicker.next.month.button`
+- `nextYearButton` = `datepicker.next.year.button`
+- `openCalendarButton` = `datepicker.calendar.open.button`
+- `previousDecadeButton` = `datepicker.previous.decade.button`
+- `previousMonthButton` = `datepicker.previous.month.button`
+- `previousYearButton` = `datepicker.previous.year.button`
+- `unavailableDate` = `datepicker.date.unavailable`
+- `yearGrid` = `datepicker.grid.year`
+- `yearViewButton` = `datepicker.view.year.button`
 
 ### DATEPICKER_VIEW
 

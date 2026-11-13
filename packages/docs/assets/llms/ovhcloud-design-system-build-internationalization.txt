@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-internationalization
 category: generic
 type: overview
 version: 20.0.0
-tokens: 608
+tokens: 637
 source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-build-internationalization.txt
 ---
 
@@ -23,6 +23,8 @@ So far, only the following components internally manage a complete translation s
 Both are relying on the native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) feature.
 
 They do de-facto support the same locales as [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
+
+The names of the **Datepicker** calendar controls are not dates: they follow the ODS specific translation below.
 
 ## ODS specific translation
 

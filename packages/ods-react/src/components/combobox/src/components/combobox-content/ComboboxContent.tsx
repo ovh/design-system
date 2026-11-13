@@ -27,6 +27,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
     highlightedOptionValue,
     isOpen,
     invalid,
+    multiple,
     noResultLabel,
     overlayConfig,
     setContentId,
@@ -56,6 +57,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
       }}
       triggerId={ controlId }>
       <PopoverContent
+        aria-multiselectable={ multiple || undefined }
         className={ classNames(
           style['combobox-content'],
           { [style['combobox-content--invalid']]: invalid },

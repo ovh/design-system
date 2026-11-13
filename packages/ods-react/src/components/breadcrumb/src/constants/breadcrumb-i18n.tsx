@@ -2,6 +2,7 @@ import { LOCALE } from '../../../../utils/locales';
 
 enum BREADCRUMB_I18N {
   ellipsisButton = 'breadcrumb.ellipsis.button',
+  navigation = 'breadcrumb.navigation',
 }
 
 const TRANSLATION = {
@@ -14,6 +15,16 @@ const TRANSLATION = {
     [LOCALE.nl]: 'Breadcrumb-koppelingen uitvouwen',
     [LOCALE.pl]: 'Rozwiń linki ścieżki nawigacyjnej',
     [LOCALE.pt]: 'Expandir links Breadcrumb',
+  },
+  [BREADCRUMB_I18N.navigation]: {
+    [LOCALE.de]: 'Breadcrumb',
+    [LOCALE.en]: 'Breadcrumb',
+    [LOCALE.es]: 'Ruta de navegación',
+    [LOCALE.fr]: 'Fil d\'Ariane',
+    [LOCALE.it]: 'Breadcrumb',
+    [LOCALE.nl]: 'Breadcrumb',
+    [LOCALE.pl]: 'Ścieżka nawigacyjna',
+    [LOCALE.pt]: 'Breadcrumb',
   },
 };
 

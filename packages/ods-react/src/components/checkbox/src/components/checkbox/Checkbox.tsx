@@ -1,7 +1,7 @@
 import { Checkbox as VendorCheckbox } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { useFormField } from '../../../../form-field/src';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId } from 'react';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
 import style from './checkbox.module.scss';
 
 type CheckboxCheckedState = boolean | 'indeterminate';
@@ -60,6 +60,11 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const defaultId = useId();
+  const rootId = id || fieldContext?.id || defaultId;
+
+  // The hidden input is the labelable element, and Ark derives its id from the root one.
+  useFormFieldId(`checkbox:${rootId}:input`);
 
   return (
     <VendorCheckbox.Root
@@ -68,7 +73,7 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
       data-ods="checkbox"
       defaultChecked={ defaultChecked }
       disabled={ disabled }
-      id={ id || fieldContext?.id }
+      id={ rootId }
       invalid={ invalid || fieldContext?.invalid }
       name={ name }
       onCheckedChange={ onCheckedChange }

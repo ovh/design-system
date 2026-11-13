@@ -1,6 +1,7 @@
 import { Checkbox } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { FormFieldGroupProvider, useFormField, useFormFieldId } from '../../../../form-field/src';
 import styles from './checkboxGroup.module.scss';
 
 interface CheckboxGroupProp extends ComponentPropsWithRef<'div'> {
@@ -46,8 +47,13 @@ const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
+
+  useFormFieldId(null);
+
   return (
     <Checkbox.Group
+      aria-labelledby={ props['aria-label'] ? undefined : fieldContext?.labelId }
       className={ classNames(styles['checkbox-group'], className) }
       data-ods="checkbox-group"
       defaultValue={ defaultValue }
@@ -59,7 +65,9 @@ const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
       ref={ ref }
       value={ value }
       { ...props }>
-      { children }
+      <FormFieldGroupProvider>
+        { children }
+      </FormFieldGroupProvider>
     </Checkbox.Group>
   );
 });

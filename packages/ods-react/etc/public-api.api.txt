@@ -261,10 +261,21 @@ export { Breadcrumb, type BreadcrumbProp, };
 
 // ==================== components/breadcrumb/src/constants/breadcrumb-i18n.d.ts ====================
 declare enum BREADCRUMB_I18N {
-    ellipsisButton = "breadcrumb.ellipsis.button"
+    ellipsisButton = "breadcrumb.ellipsis.button",
+    navigation = "breadcrumb.navigation"
 }
 declare const TRANSLATION: {
     "breadcrumb.ellipsis.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "breadcrumb.navigation": {
         de: string;
         en: string;
         es: string;
@@ -1701,6 +1712,7 @@ export { DatepickerInput, type DatepickerInputProp, };
 import { FC } from 'react';
 interface DatepickerViewControlProp {
     disabled?: boolean;
+    rangeTextId: string;
     readOnly?: boolean;
 }
 declare const DatepickerViewControl: FC<DatepickerViewControlProp>;
@@ -1728,6 +1740,178 @@ type DatepickerDay = `${DATEPICKER_DAY}`;
 declare const DATEPICKER_DAYS: readonly (string | DATEPICKER_DAY)[];
 export { DATEPICKER_DAY, DATEPICKER_DAYS, type DatepickerDay, };
 
+// ==================== components/datepicker/src/constants/datepicker-i18n.d.ts ====================
+declare enum DATEPICKER_I18N {
+    calendar = "datepicker.calendar",
+    closeCalendarButton = "datepicker.calendar.close.button",
+    dayGrid = "datepicker.grid.day",
+    monthGrid = "datepicker.grid.month",
+    monthViewButton = "datepicker.view.month.button",
+    nextDecadeButton = "datepicker.next.decade.button",
+    nextMonthButton = "datepicker.next.month.button",
+    nextYearButton = "datepicker.next.year.button",
+    openCalendarButton = "datepicker.calendar.open.button",
+    previousDecadeButton = "datepicker.previous.decade.button",
+    previousMonthButton = "datepicker.previous.month.button",
+    previousYearButton = "datepicker.previous.year.button",
+    unavailableDate = "datepicker.date.unavailable",
+    yearGrid = "datepicker.grid.year",
+    yearViewButton = "datepicker.view.year.button"
+}
+declare const TRANSLATION: {
+    "datepicker.calendar": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.calendar.close.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.grid.day": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.grid.month": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.view.month.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.next.decade.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.next.month.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.next.year.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.calendar.open.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.previous.decade.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.previous.month.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.previous.year.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.date.unavailable": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.grid.year": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.view.year.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+};
+export { DATEPICKER_I18N, TRANSLATION, };
+
 // ==================== components/datepicker/src/constants/datepicker-view.d.ts ====================
 declare enum DATEPICKER_VIEW {
     day = "day",
@@ -1742,6 +1926,7 @@ export { DATEPICKER_VIEW, DATEPICKER_VIEWS, type DatepickerView, };
 import { CSSProperties, JSX, ReactNode } from 'react';
 import { INPUT_I18N } from '../../../input/src';
 import { DATEPICKER_DAY } from '../constants/datepicker-day';
+import { DATEPICKER_I18N } from '../constants/datepicker-i18n';
 import { DatepickerView } from '../constants/datepicker-view';
 interface DatepickerFormatterArg {
     date: Date;
@@ -1784,9 +1969,9 @@ interface DatepickerRootProp {
      */
     disabledWeekDays?: DATEPICKER_DAY[];
     /**
-     * Internal translations override (see Input i18n keys).
+     * Internal translations override (see the Datepicker and Input i18n keys).
      */
-    i18n?: Partial<Record<INPUT_I18N.clearButton, string>>;
+    i18n?: Partial<Record<DATEPICKER_I18N | INPUT_I18N.clearButton, string>>;
     /**
      * Whether the component is in error state.
      */
@@ -1890,6 +2075,7 @@ export { Datepicker };
 export { DatepickerContent, DatepickerControl };
 export type { DatepickerProp, DatepickerContentProp, DatepickerControlProp };
 export { DATEPICKER_DAY, DATEPICKER_DAYS, type DatepickerDay } from './constants/datepicker-day';
+export { DATEPICKER_I18N } from './constants/datepicker-i18n';
 export { DATEPICKER_VIEW, DATEPICKER_VIEWS, type DatepickerView } from './constants/datepicker-view';
 export { type DatepickerFormatterArg, type DatepickerOpenChangeDetail, type DatepickerValueChangeDetail } from './contexts/useDatepicker';
 
@@ -2651,11 +2837,18 @@ type FormFieldContextType = Omit<FormFieldProviderProp, 'children'> & {
 declare function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProviderProp): JSX.Element;
 declare function useFormField(): FormFieldContextType;
 /**
+ * Keeps the id of the Form Field away from several fields wrapped in one group: each of them would
+ * otherwise render the same id, and register it as the target of the label the group reads.
+ */
+declare function FormFieldGroupProvider({ children }: {
+    children: ReactNode;
+}): JSX.Element;
+/**
  * Registers the id of the element the FormFieldLabel must target. Pass `null` when the field
  * renders no labelable element, it then has to read `labelId` itself.
  */
 declare function useFormFieldId(fieldId: string | null): void;
-export { type FormFieldContextType, FormFieldProvider, type FormFieldRootProp, useFormField, useFormFieldId, };
+export { type FormFieldContextType, FormFieldGroupProvider, FormFieldProvider, type FormFieldRootProp, useFormField, useFormFieldId, };
 
 // ==================== components/form-field/src/index.d.ts ====================
 import { FormFieldProp } from './components/form-field/FormField';
@@ -2672,7 +2865,7 @@ declare const FormField: import('react').FC<FormFieldProp> & {
 export { FormField };
 export { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel };
 export type { FormFieldProp, FormFieldErrorProp, FormFieldHelperProp, FormFieldLabelProp, FormFieldLabelSubLabelProp };
-export { useFormField, useFormFieldId } from './contexts/useFormField';
+export { FormFieldGroupProvider, useFormField, useFormFieldId } from './contexts/useFormField';
 
 // ==================== components/icon/src/components/icon/Icon.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';

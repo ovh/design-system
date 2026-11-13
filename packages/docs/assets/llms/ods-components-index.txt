@@ -28,7 +28,7 @@
 
 - [Overview](./react-components-breadcrumb.txt) (~352 tokens)
 - [Documentation](./react-components-breadcrumb--documentation.txt) (~1114 tokens)
-- [Technical Information](./react-components-breadcrumb--technical-information.txt) (~487 tokens)
+- [Technical Information](./react-components-breadcrumb--technical-information.txt) (~497 tokens)
 - [Examples](./react-components-breadcrumb--examples.txt) (~1077 tokens)
 
 ## Button
@@ -103,9 +103,9 @@
 
 ## Datepicker
 
-- [Overview](./react-components-datepicker.txt) (~827 tokens)
-- [Documentation](./react-components-datepicker--documentation.txt) (~1922 tokens)
-- [Technical Information](./react-components-datepicker--technical-information.txt) (~1008 tokens)
+- [Overview](./react-components-datepicker.txt) (~831 tokens)
+- [Documentation](./react-components-datepicker--documentation.txt) (~2086 tokens)
+- [Technical Information](./react-components-datepicker--technical-information.txt) (~1210 tokens)
 - [Examples](./react-components-datepicker--examples.txt) (~590 tokens)
 
 ## Divider

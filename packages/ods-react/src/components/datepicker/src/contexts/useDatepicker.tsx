@@ -2,6 +2,7 @@ import { type CSSProperties, type JSX, type ReactNode, createContext } from 'rea
 import { useContext } from '../../../../utils/context';
 import { type INPUT_I18N } from '../../../input/src';
 import { type DATEPICKER_DAY } from '../constants/datepicker-day';
+import { type DATEPICKER_I18N } from '../constants/datepicker-i18n';
 import { type DatepickerView } from '../constants/datepicker-view';
 
 interface DatepickerFormatterArg {
@@ -48,9 +49,9 @@ interface DatepickerRootProp {
    */
   disabledWeekDays?: DATEPICKER_DAY[],
   /**
-   * Internal translations override (see Input i18n keys).
+   * Internal translations override (see the Datepicker and Input i18n keys).
    */
-  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
+  i18n?: Partial<Record<DATEPICKER_I18N | INPUT_I18N.clearButton, string>>,
   /**
    * Whether the component is in error state.
    */

@@ -111,7 +111,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 487,
+          "tokens": 497,
           "url": "./react-components-breadcrumb--technical-information.txt"
         },
         "examples": {
@@ -387,17 +387,17 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 827,
+          "tokens": 831,
           "url": "./react-components-datepicker.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1922,
+          "tokens": 2086,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1008,
+          "tokens": 1210,
           "url": "./react-components-datepicker--technical-information.txt"
         },
         "examples": {
@@ -1526,7 +1526,7 @@
       "slug": "ovhcloud-design-system-build-internationalization",
       "title": "Internationalization",
       "type": "overview",
-      "tokens": 608,
+      "tokens": 637,
       "url": "./ovhcloud-design-system-build-internationalization.txt"
     },
     {

@@ -176,7 +176,7 @@ describe('Combobox behaviour', () => {
           await page.keyboard.press('ArrowDown');
           await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
           // An option sliding under the pointer must not take the highlight.
-          expect(await page.$$eval('[role="option"]', (els) => els.findIndex((el) => el.getAttribute('aria-selected') === 'true'))).toBe(idx);
+          expect(await page.$$eval('[role="option"]', (els) => els.findIndex((el) => el.hasAttribute('data-highlighted')))).toBe(idx);
         }),
         Promise.resolve(),
       );
@@ -197,7 +197,7 @@ describe('Combobox behaviour', () => {
 
       expect(top).toBeLessThan(await page.evaluate(() => window.innerHeight));
       await page.mouse.move(20, (top! + await page.evaluate(() => window.innerHeight)) / 2);
-      await page.waitForSelector('[role="option"][aria-selected="true"]');
+      await page.waitForSelector('[role="option"][data-highlighted]');
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
 
       expect(await page.evaluate(() => window.scrollY)).toBe(scrollY);
@@ -214,7 +214,7 @@ describe('Combobox behaviour', () => {
       expect(top).toBeLessThan(await page.evaluate(() => window.innerHeight));
       // The pointer stays still on the partly visible option from here on.
       await page.mouse.move(20, (top! + await page.evaluate(() => window.innerHeight)) / 2);
-      await page.waitForFunction((idx) => document.querySelectorAll('[role="option"]')[idx]?.getAttribute('aria-selected') === 'true', {}, index);
+      await page.waitForFunction((idx) => document.querySelectorAll('[role="option"]')[idx]?.hasAttribute('data-highlighted'), {}, index);
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowDown');
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));

@@ -27,6 +27,7 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
   } = useCombobox();
   const optionRef = useRef<HTMLDivElement>(null);
   const isPointerHighlightRef = useRef(false);
+  const isSelected = selection.some((s) => s.value === item.value);
 
   // An option highlighted by the pointer is already visible: scrolling then
   // would only move the page under the pointer and highlight another option.
@@ -49,15 +50,16 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
 
   return (
     <div // eslint-disable-line jsx-a11y/click-events-have-key-events
-      aria-selected={ isHighlighted }
+      aria-selected={ isSelected }
       className={ classNames(
         style['combobox-option'],
         { [style['combobox-option--disabled']]: disabled },
         { [style['combobox-option--highlighted']]: isHighlighted },
         { [style['combobox-option--new']]: item.isNewElement },
-        { [style['combobox-option--selected']]: selection.some((s) => s.value === item.value) },
+        { [style['combobox-option--selected']]: isSelected },
         className,
       )}
+      data-highlighted={ isHighlighted ? true : undefined }
       onClick={ onClick }
       onPointerMove={ () => {
         if (!isHighlighted) {

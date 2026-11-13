@@ -14,7 +14,7 @@ const ComboboxGroup: FC<ComboboxGroupProp> = ({
   ...props
 }): JSX.Element => {
   const groupLabelId = useId();
-  const { disabled, highlightedOptionValue } = useCombobox();
+  const { controlId, disabled, highlightedOptionValue } = useCombobox();
 
   return (
     <div
@@ -36,6 +36,7 @@ const ComboboxGroup: FC<ComboboxGroupProp> = ({
         item.options.map((option) => (
           <ComboboxOption
             className={ style['combobox-group__option'] }
+            id={ `${controlId}-${option.value}` }
             isHighlighted={ highlightedOptionValue === option.value }
             item={ option }
             key={ option.value } />

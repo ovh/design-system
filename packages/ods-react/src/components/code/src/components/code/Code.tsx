@@ -109,7 +109,7 @@ const Code: FC<CodeProp> = forwardRef(({
       )}
       data-ods="code"
       ref={ ref }
-      role={ canCopy ? 'group' : '' }
+      role={ canCopy ? 'group' : undefined }
       { ...props }
       style={{
         ...props.style,

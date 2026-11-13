@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, cloneElement, forwardRef, useId, useMemo, useState } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
 import { getValidChildren } from '../../../../../utils/element';
+import { BREADCRUMB_I18N, TRANSLATION } from '../../constants/breadcrumb-i18n';
 import { BreadcrumbProvider, type BreadcrumbRootProp } from '../../contexts/useBreadcrumb';
 import { getFirstCollapsedIdx, isItemCollapsed } from '../../controller/breadcrumb';
 import { BreadcrumbEllipsis } from '../breadcrumb-ellipsis/BreadcrumbEllipsis';
@@ -21,6 +23,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
   onExpand,
   ...props
 }, ref): JSX.Element => {
+  const { translate } = useI18n(TRANSLATION, locale, i18n);
   const generatedId = useId();
   const computedId = id ?? generatedId;
   const [isExpanded, setIsExpanded] = useState(noCollapse);
@@ -73,6 +76,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       i18n={ i18n }
       locale={ locale }>
       <nav
+        aria-label={ props['aria-labelledby'] ? undefined : translate(BREADCRUMB_I18N.navigation) }
         className={ classNames(style['breadcrumb'], className) }
         data-ods="breadcrumb"
         id={ computedId }

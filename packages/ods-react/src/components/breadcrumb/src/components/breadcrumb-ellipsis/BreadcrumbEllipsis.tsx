@@ -17,6 +17,7 @@ const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand, ...props }):
     <li className={ style['breadcrumb-ellipsis'] }>
       <button
         { ...props }
+        aria-expanded={ false }
         aria-label={ translate(BREADCRUMB_I18N.ellipsisButton) }
         className={ style['breadcrumb-ellipsis__button'] }
         onClick={ onExpand }

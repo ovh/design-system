@@ -1,9 +1,12 @@
 import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
+import { type Locale } from '../../../../../utils/locales';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
+import { DATEPICKER_I18N, TRANSLATION } from '../../constants/datepicker-i18n';
 import { DATEPICKER_VIEW } from '../../constants/datepicker-view';
 import { useDatepicker } from '../../contexts/useDatepicker';
 import { DatepickerViewControl } from '../datepicker-view-control/DatepickerViewControl';
@@ -21,7 +24,9 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
   createPortal = true,
   ...props
 }, ref): JSX.Element => {
-  const { invalid, positionerStyle } = useDatepicker();
+  const { i18n, invalid, locale, positionerStyle } = useDatepicker();
+  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
+  const rangeTextId = useId();
   const { getInputProps, isUnavailable, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
@@ -38,6 +43,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
             { [style['datepicker-content--invalid']]: invalid || fieldContext?.invalid },
             className,
           )}
+          aria-roledescription={ translate(DATEPICKER_I18N.calendar) }
           data-ods="datepicker-content"
           ref={ ref }
           { ...props }
@@ -52,9 +58,13 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                   <>
                     <DatepickerViewControl
                       disabled={ disabled }
+                      rangeTextId={ `${rangeTextId}-day` }
                       readOnly={ readOnly } />
 
-                    <DatePicker.Table className={ style['datepicker-content__table'] }>
+                    <DatePicker.Table
+                      aria-labelledby={ `${rangeTextId}-day` }
+                      aria-roledescription={ translate(DATEPICKER_I18N.dayGrid) }
+                      className={ style['datepicker-content__table'] }>
                       <DatePicker.TableHead>
                         <DatePicker.TableRow>
                           {
@@ -108,9 +118,13 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                   <>
                     <DatepickerViewControl
                       disabled={ disabled }
+                      rangeTextId={ `${rangeTextId}-month` }
                       readOnly={ readOnly } />
 
-                    <DatePicker.Table className={ style['datepicker-content__table'] }>
+                    <DatePicker.Table
+                      aria-labelledby={ `${rangeTextId}-month` }
+                      aria-roledescription={ translate(DATEPICKER_I18N.monthGrid) }
+                      className={ style['datepicker-content__table'] }>
                       <DatePicker.TableBody>
                         {
                           datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
@@ -150,9 +164,13 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                   <>
                     <DatepickerViewControl
                       disabled={ disabled }
+                      rangeTextId={ `${rangeTextId}-year` }
                       readOnly={ readOnly } />
 
-                    <DatePicker.Table className={ style['datepicker-content__table'] }>
+                    <DatePicker.Table
+                      aria-labelledby={ `${rangeTextId}-year` }
+                      aria-roledescription={ translate(DATEPICKER_I18N.yearGrid) }
+                      className={ style['datepicker-content__table'] }>
                       <DatePicker.TableBody>
                         {
                           datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (

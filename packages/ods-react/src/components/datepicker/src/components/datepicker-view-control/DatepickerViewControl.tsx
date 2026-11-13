@@ -6,11 +6,13 @@ import style from './datepickerViewControl.module.scss';
 
 interface DatepickerViewControlProp {
   disabled?: boolean,
+  rangeTextId: string,
   readOnly?: boolean,
 }
 
 const DatepickerViewControl: FC<DatepickerViewControlProp> = ({
   disabled,
+  rangeTextId,
   readOnly,
 }): JSX.Element => {
   return (
@@ -29,7 +31,7 @@ const DatepickerViewControl: FC<DatepickerViewControlProp> = ({
           disabled={ disabled || readOnly }
           emphasis={ BUTTON_EMPHASIS.low }
           size={ BUTTON_SIZE.sm }>
-          <DatePicker.RangeText /> <Icon name={ ICON_NAME.chevronDown } />
+          <DatePicker.RangeText id={ rangeTextId } /> <Icon name={ ICON_NAME.chevronDown } />
         </Button>
       </DatePicker.ViewTrigger>
 

@@ -1,7 +1,10 @@
-import { DatePicker, type DatePickerValueChangeDetails, type DateValue } from '@ark-ui/react/date-picker';
+import { DatePicker, type DatePickerDateView, type DatePickerRootProps, type DatePickerValueChangeDetails, type DateValue } from '@ark-ui/react/date-picker';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback, useMemo } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
+import { type Locale } from '../../../../../utils/locales';
 import { useFormField } from '../../../../form-field/src';
+import { DATEPICKER_I18N, TRANSLATION } from '../../constants/datepicker-i18n';
 import { DatepickerProvider , type DatepickerRootProp } from '../../contexts/useDatepicker';
 import { getDefaultView, isSameAsDateValue, toDate, toDateValue } from '../../controller/datepicker';
 import style from './datepicker.module.scss';
@@ -40,6 +43,36 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
+  const translations = useMemo((): DatePickerRootProps['translations'] => {
+    const nextButton: Record<DatePickerDateView, DATEPICKER_I18N> = {
+      day: DATEPICKER_I18N.nextMonthButton,
+      month: DATEPICKER_I18N.nextYearButton,
+      year: DATEPICKER_I18N.nextDecadeButton,
+    };
+    const previousButton: Record<DatePickerDateView, DATEPICKER_I18N> = {
+      day: DATEPICKER_I18N.previousMonthButton,
+      month: DATEPICKER_I18N.previousYearButton,
+      year: DATEPICKER_I18N.previousDecadeButton,
+    };
+
+    return {
+      content: translate(DATEPICKER_I18N.calendar),
+      dayCell: ({ unavailable, valueText }): string => {
+        return unavailable ? `${valueText}, ${translate(DATEPICKER_I18N.unavailableDate)}` : valueText;
+      },
+      nextTrigger: (view): string => translate(nextButton[view]),
+      prevTrigger: (view): string => translate(previousButton[view]),
+      trigger: (open): string => translate(open ? DATEPICKER_I18N.closeCalendarButton : DATEPICKER_I18N.openCalendarButton),
+      // Without a next view, the trigger is disabled and named by its range text.
+      viewTrigger: (_, nextView): string => {
+        if (!nextView) {
+          return '';
+        }
+        return translate(nextView === 'year' ? DATEPICKER_I18N.yearViewButton : DATEPICKER_I18N.monthViewButton);
+      },
+    };
+  }, [translate]);
   const computedDefaultView = useMemo(() => getDefaultView(defaultView, maxView, minView), [defaultView, maxView, minView]);
   const convertedDefaultValue = useMemo(() => toDateValue(defaultValue) as DateValue | undefined, [defaultValue]);
   const convertedMax = useMemo(() => toDateValue(max) as DateValue | undefined, [max]);
@@ -106,6 +139,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         }}
         readOnly={ readOnly }
         ref={ ref }
+        translations={ translations }
         view={ view }
         { ...(convertedValue !== undefined ? {
           value: convertedValue ? [convertedValue] : [],

@@ -222,6 +222,7 @@ const COMPONENT_PAGES: [key: string, title: string, badge?: Badge][] = [
   ['toggle', 'Toggle'],
   ['tooltip', 'Tooltip'],
   ['tree-view', 'Tree View'],
+  ['visually-hidden', 'Visually Hidden', 'new'],
 ];
 
 /* One page per recipe of @ovhcloud/ods-recipes: [key, title]. */

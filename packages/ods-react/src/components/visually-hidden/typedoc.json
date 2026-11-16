@@ -1,0 +1,21 @@
+{
+  "disableGit": true,
+  "disableSources": true,
+  "entryPoints": [
+    "src/index.ts"
+  ],
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "outputs": [
+    {
+      "name": "json",
+      "path": "./documentation/visually-hidden.json"
+    }
+  ],
+  "sort": [
+    "source-order"
+  ],
+  "tsconfig": "tsconfig.typedoc.json"
+}

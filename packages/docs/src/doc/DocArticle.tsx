@@ -1,8 +1,9 @@
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../ods-react/src/components/accordion/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { TocSkeleton } from './DocSkeleton';
 import { MarkdownLink } from './MarkdownLink';
 import { flashSearchTerms } from './searchHighlight';
 import { createUniqueSlugs } from './slug';
@@ -34,6 +35,9 @@ function toTocItems(entries: TocEntry[]): TocItem[] {
   return items;
 }
 
+/* The article still shows its DocSkeleton (lazy chunk in flight). */
+const isLoading = (container: HTMLElement): boolean => container.querySelector('.doc-skeleton') !== null;
+
 /* Headings render their slug as id; a repeated label would give duplicate ids.
    Rename the repeats in document order (same rule as the search index) and keep
    each hover anchor in sync. The original slug is kept in data-slug, so the pass
@@ -59,12 +63,16 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
   const [entries, setEntries] = useState<TocEntry[]>([]);
   const [expanded, setExpanded] = useState<string[]>([]);
   const [active, setActive] = useState<string>('');
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  // Like DocArticle's setContainer, a layout effect: the ToC skeleton is in place on the article's
+  // first paint instead of popping in after it.
+  useLayoutEffect(() => {
     if (!container) {
       return;
     }
     const collect = () => {
+      setLoading(isLoading(container));
       // This child effect runs before DocArticle's own dedupe pass, and an id
       // rename is no childList mutation: dedupe first so the links get the final ids.
       dedupeHeadingIds(container);
@@ -124,8 +132,12 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
     };
   }, [container, entries]);
 
+  // Compact, the closed accordion below is its own placeholder: it keeps its height while loading.
+  if (loading && !compact) {
+    return <TocSkeleton />;
+  }
   // Too short for a table of contents: the Markdown link alone.
-  if (entries.length < 2) {
+  if (!loading && entries.length < 2) {
     return <MarkdownLink className="doc-layout__toc-markdown" />;
   }
 
@@ -216,7 +228,9 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
   const [container, setContainer] = useState<HTMLElement | null>(null);
   const honoredHash = useRef<string>('');
 
-  useEffect(() => {
+  // Layout effect: a container set after paint would show an empty ToC column for a frame before
+  // its skeleton.
+  useLayoutEffect(() => {
     setContainer(ref.current);
   }, []);
 
@@ -276,8 +290,7 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
         return;
       }
       const wanted = location.hash.slice(1);
-      // The 100-char floor tells the article apart from its loading skeleton.
-      if ((!wanted || document.getElementById(wanted)) && (container.textContent ?? '').length > 100) {
+      if ((!wanted || document.getElementById(wanted)) && !isLoading(container)) {
         done = true;
         observer.disconnect();
         clear = flashSearchTerms(container, terms);

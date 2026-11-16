@@ -1,6 +1,6 @@
 :root {
-  /* Cap of a component page (.doc-page): only the icon Gallery tab and the loading skeleton reach
-     it, the tabs and the articles stop at --doc-block-width. */
+  /* Cap of a component page (.doc-page): only the icon Gallery tab reaches it, the tabs and the
+     articles stop at --doc-block-width. */
   --doc-content-max-width: 1200px;
   --doc-article-width: 90ch;
   --doc-layout-gap: 40px;
@@ -295,4 +295,103 @@ article.doc.doc--wide {
 ::highlight(ods-search) {
   background-color: rgba(255, 178, 41, .32);
   color: inherit;
+}
+
+/* ——— Loading placeholders (DocSkeleton) ———
+   Approximate the real content (heading sizes and spacing, text lines, demo blocks) so the swap
+   moves the page as little as possible; block heights are rough averages, not measures. */
+.doc-skeleton {
+  --doc-skeleton-gap: var(--ods-semantic-size-space-gap-group);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--doc-skeleton-gap);
+}
+
+.doc-skeleton__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doc-skeleton__line {
+  height: 12px;
+  /* The prose measure (.doc p). */
+  max-width: 80ch;
+}
+
+.doc-skeleton__line--nested {
+  margin-left: 16px;
+}
+
+/* The heading rows' own spacing (.doc__heading-row), less the gap the flex column already puts
+   around each placeholder. */
+.doc-skeleton__heading {
+  height: 24px;
+  margin-block: calc(var(--ods-semantic-size-space-gap-section) - var(--doc-skeleton-gap)) calc(var(--ods-semantic-size-space-gap-block) - var(--doc-skeleton-gap));
+}
+
+.doc-skeleton__heading--level-3 {
+  height: 20px;
+  margin-top: calc(var(--ods-semantic-size-space-gap-group) * 1.5 - var(--doc-skeleton-gap));
+}
+
+/* Like the article's first heading row: no room above the first placeholder. */
+.doc-skeleton > :first-child,
+.doc-skeleton > :first-child > .doc-skeleton__heading:first-child {
+  margin-top: 0;
+}
+
+.doc-skeleton__block {
+  border-radius: var(--ods-semantic-size-radius-container);
+  width: 100%;
+}
+
+.doc-skeleton__overview {
+  display: grid;
+  /* The identity card's gap, width and breakpoint (.doc__overview, .doc__identity). */
+  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) 220px;
+}
+
+.doc-skeleton__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--doc-skeleton-gap);
+}
+
+.doc-skeleton__table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.doc-skeleton__row {
+  border-radius: 0;
+  height: 40px;
+}
+
+.doc-skeleton__row:first-child {
+  border-radius: var(--ods-semantic-size-radius-container) var(--ods-semantic-size-radius-container) 0 0;
+}
+
+.doc-skeleton__row:last-child {
+  border-radius: 0 0 var(--ods-semantic-size-radius-container) var(--ods-semantic-size-radius-container);
+}
+
+/* Keep in sync with .recipes__grid (recipes.module.css). */
+.doc-skeleton__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(420px, calc((100% - 16px) / 2))), 1fr));
+}
+
+.doc-layout__toc--loading {
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .doc-skeleton__overview {
+    grid-template-columns: 1fr;
+  }
 }

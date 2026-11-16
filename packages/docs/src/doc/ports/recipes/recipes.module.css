@@ -6,7 +6,8 @@
   width: 100%;
 }
 
-/* Two columns, one when two 420px tracks and the gap no longer fit. */
+/* Two columns, one when two 420px tracks and the gap no longer fit. Keep in sync with
+   .doc-skeleton__grid (doc.css). */
 .recipes__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, max(420px, calc((100% - 16px) / 2))), 1fr));

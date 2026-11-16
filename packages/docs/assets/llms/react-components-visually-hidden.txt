@@ -1,0 +1,25 @@
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: overview
+version: 20.0.0
+tokens: 107
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden.txt
+---
+
+# Visually Hidden
+
+_**Visually Hidden** hides content from the screen while keeping it available to screen readers._
+
+## Examples
+
+- Default
+- Link Context
+- Accessibility Status
+
+## Documentation pages
+
+- [Documentation](./react-components-visually-hidden--documentation.txt)
+- [Technical Information](./react-components-visually-hidden--technical-information.txt)
+- [Examples](./react-components-visually-hidden--examples.txt)

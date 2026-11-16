@@ -210,12 +210,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1218,
+          "tokens": 1317,
           "url": "./react-components-cart--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 841,
+          "tokens": 856,
           "url": "./react-components-cart--technical-information.txt"
         },
         "examples": {
@@ -262,12 +262,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 888,
+          "tokens": 948,
           "url": "./react-components-clipboard--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 427,
+          "tokens": 436,
           "url": "./react-components-clipboard--technical-information.txt"
         },
         "examples": {
@@ -288,7 +288,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 652,
+          "tokens": 701,
           "url": "./react-components-code--documentation.txt"
         },
         "technical-information": {
@@ -1498,6 +1498,32 @@
           "url": "./react-components-tree-view--examples.txt"
         }
       }
+    },
+    {
+      "slug": "visually-hidden",
+      "title": "Visually Hidden",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 107,
+          "url": "./react-components-visually-hidden.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 726,
+          "url": "./react-components-visually-hidden--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 31,
+          "url": "./react-components-visually-hidden--technical-information.txt"
+        },
+        "examples": {
+          "type": "examples",
+          "tokens": 148,
+          "url": "./react-components-visually-hidden--examples.txt"
+        }
+      }
     }
   ],
   "generic": [
@@ -1505,7 +1531,7 @@
       "slug": "ovhcloud-design-system-welcome",
       "title": "Welcome",
       "type": "overview",
-      "tokens": 252,
+      "tokens": 256,
       "url": "./ovhcloud-design-system-welcome.txt"
     },
     {
@@ -1519,7 +1545,7 @@
       "slug": "ovhcloud-design-system-build-accessibility",
       "title": "Accessibility",
       "type": "overview",
-      "tokens": 4541,
+      "tokens": 4597,
       "url": "./ovhcloud-design-system-build-accessibility.txt"
     },
     {

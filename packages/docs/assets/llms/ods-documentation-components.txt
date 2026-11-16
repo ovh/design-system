@@ -2970,7 +2970,7 @@ slug: cart
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1218
+tokens: 1317
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-cart--documentation.txt
 ---
 
@@ -3082,28 +3082,36 @@ Pressing `Escape` collapses the **Cart** when it is expanded on mobile and retur
 
 ## Accessibility
 
+### Total updates
+
+The label and price of **CartTotal** form a status region: when the price changes, screen readers announce the label with the new price, for example "Total €10.00".
+
 ### Announce product and option updates
 
-When a product or option is added, removed, or when the total price changes, screen readers are not automatically informed.
+The **Cart** has no data model: it does not know when a product or an option is added or removed, so screen readers are not informed of it.
 
-To ensure users receive feedback, use a live region in your DOM and update its text content when the `Cart` changes.
+To ensure users receive feedback, render a [Visually Hidden](https://ovh.github.io/design-system/v20.0.0/components/visually-hidden) status region and update its text when your cart changes. Leave the total out of the message: **CartTotal** already announces it.
 
 ```tsx
-const liveRef = useRef<HTMLDivElement>(null);
+const [message, setMessage] = useState('');
 
-function updateLiveRegion() {
-  if (liveRef.current) {
-    liveRef.current.textContent = 'Product "My product" has been added to your cart. Total is now xx.xx€.';
-  }
+function removeProduct(product: Product) {
+  // …update your cart
+  setMessage(`${product.name} removed from your cart.`);
 }
 
 return (
-  <div
-    ref={ liveRef }
-    role="status" />
+  <>
+    <Cart>…</Cart>
+
+    <VisuallyHidden role="status">
+      { message }
+    </VisuallyHidden>
+  </>
+);
 ```
 
- Screen readers will inform users of product additions, removals, and total updates through the live region.
+ Screen readers will inform users of product additions and removals through your status region, and of the new total through **CartTotal**.
 
 ---
 title: "Cart"
@@ -3111,7 +3119,7 @@ slug: cart
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 841
+tokens: 856
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-cart--technical-information.txt
 ---
 
@@ -3177,7 +3185,7 @@ This component extends all the native `<div>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `label` | `ReactNode` | Yes | undefined | Total label node to display. |
-| `price` | `ReactNode` | Yes | undefined | Formatted price node to display. |
+| `price` | `ReactNode` | Yes | undefined | Formatted price node to display. Screen readers announce it with the label when it changes. |
 | `priceDetails` | `ReactNode` | No | undefined | Price details node to display. |
 | `totalDetails` | `ReactNode` | No | undefined | Total details node to display. |
 
@@ -3797,7 +3805,7 @@ slug: clipboard
 category: component
 type: documentation
 version: 20.0.0
-tokens: 888
+tokens: 948
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-clipboard--documentation.txt
 ---
 
@@ -3905,13 +3913,17 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 
  Screen readers will announce the label, the field and its content.
 
+### Copy confirmation
+
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied".
+
 ---
 title: "Clipboard"
 slug: clipboard
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 427
+tokens: 436
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-clipboard--technical-information.txt
 ---
 
@@ -3946,7 +3958,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
-| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy, also announced to screen readers. |
 | `value` | `string` | No | undefined | - |
 
 ## CSS Variables
@@ -4084,7 +4096,7 @@ slug: code
 category: component
 type: documentation
 version: 20.0.0
-tokens: 652
+tokens: 701
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-code--documentation.txt
 ---
 
@@ -4165,7 +4177,11 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ## Accessibility
 
- Screen readers will announce the embedded code and the copy button **Tooltip** content.
+### Copy confirmation
+
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button.
+
+ Screen readers will announce the embedded code, the copy button, and the confirmation once the code is copied.
 
 ---
 title: "Code"
@@ -24657,6 +24673,197 @@ source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-tree-v
           </TreeViewNodes>
         </TreeView>
       </div>
+    );
+  }
+```
+
+
+## Visually Hidden
+
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: overview
+version: 20.0.0
+tokens: 107
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden.txt
+---
+
+# Visually Hidden
+
+_**Visually Hidden** hides content from the screen while keeping it available to screen readers._
+
+## Examples
+
+- Default
+- Link Context
+- Accessibility Status
+
+## Documentation pages
+
+- [Documentation](./react-components-visually-hidden--documentation.txt)
+- [Technical Information](./react-components-visually-hidden--technical-information.txt)
+- [Examples](./react-components-visually-hidden--examples.txt)
+
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: documentation
+version: 20.0.0
+tokens: 726
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden--documentation.txt
+---
+
+# Visually Hidden
+
+_**Visually Hidden** hides content from the screen while keeping it available to screen readers._
+
+## Overview
+
+**Visually Hidden** renders its content in the accessibility tree but not on the screen. It adds text that only assistive technologies need, and hosts live regions that announce changes.
+
+| | |
+|---|---|
+| Name | Visually Hidden |
+| Also known as | Screen Reader Only, SR Only |
+| Source | https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/visually-hidden |
+
+## Usage
+
+**Visually Hidden** is used when the screen already conveys a piece of information visually, through an icon, a position or a color, and screen readers need it as text:
+
+- Name an icon-only control.
+- Complete a link or button text whose meaning depends on its surroundings, like "Read more".
+- Announce a change without moving the focus, with `role="status"`.
+
+### Dos & Don'ts
+
+**Do**
+
+- Write the hidden text as part of the visible text it completes, so both read as one sentence
+- Render the status region empty on load, then update its text when something happens
+- Keep announcements short: one sentence that states the result
+
+**Don't**
+
+- Don't hide content that sighted users also need: if it is useful to read, show it
+- Don't put focusable elements inside Visually Hidden: keyboard users would reach an element they cannot see
+- Don't repeat text that is already visible: screen readers would read it twice
+- Don't create and fill a status region in the same render: screen readers only announce changes to a region already in the page
+
+## Behavior
+
+**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow. Its content does not affect the layout around it.
+
+## Variation
+
+### Completing a visible text
+
+```tsx
+<Link href="#">
+  Read more<VisuallyHidden> about the billing of your VPS</VisuallyHidden>
+</Link>
+```
+
+Screen readers read "Read more about the billing of your VPS", sighted users see "Read more".
+
+## Navigation
+
+**Visually Hidden** is not focusable and must not contain focusable elements.
+
+## Accessibility
+
+### Announcing a change
+
+Give **Visually Hidden** the [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role) to announce the result of an action without moving the focus. The region must be in the page before its text changes.
+
+```tsx
+{
+    const [message, setMessage] = useState('');
+
+    return (
+      <>
+        <Button onClick={ () => setMessage('Settings saved.') }>
+          Save
+        </Button>
+
+        <VisuallyHidden role="status">
+          { message }
+        </VisuallyHidden>
+      </>
+    );
+  }
+```
+
+ Screen readers will announce "Settings saved." after the click, while the focus stays on the button.
+
+The **Clipboard**, **Code** and **CartTotal** components rely on the same pattern to announce a copy and a new total.
+
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 31
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden--technical-information.txt
+---
+
+# Visually Hidden
+
+## VisuallyHidden
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._
+
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: examples
+version: 20.0.0
+tokens: 148
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden--examples.txt
+---
+
+# Visually Hidden
+
+## Default
+
+```tsx
+<Button>
+  <Icon name={ ICON_NAME.trash } />
+  <VisuallyHidden>Delete the file</VisuallyHidden>
+</Button>
+```
+
+## Link Context
+
+```tsx
+<Link href="#">
+  Read more<VisuallyHidden> about the billing of your VPS</VisuallyHidden>
+</Link>
+```
+
+## Accessibility Status
+
+```tsx
+{
+    const [message, setMessage] = useState('');
+
+    return (
+      <>
+        <Button onClick={ () => setMessage('Settings saved.') }>
+          Save
+        </Button>
+
+        <VisuallyHidden role="status">
+          { message }
+        </VisuallyHidden>
+      </>
     );
   }
 ```

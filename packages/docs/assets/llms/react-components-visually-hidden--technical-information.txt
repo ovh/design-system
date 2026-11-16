@@ -1,0 +1,17 @@
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: technical-information
+version: 20.0.0
+tokens: 31
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden--technical-information.txt
+---
+
+# Visually Hidden
+
+## VisuallyHidden
+
+This component extends all the native `<span>` attributes.
+
+_No specific property._

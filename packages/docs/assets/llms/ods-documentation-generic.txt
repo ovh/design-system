@@ -10,7 +10,7 @@ slug: ovhcloud-design-system-welcome
 category: generic
 type: overview
 version: 20.0.0
-tokens: 252
+tokens: 256
 source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-welcome.txt
 ---
 
@@ -22,7 +22,7 @@ OVHcloud Design System provides React components, design tokens, helpers and usa
 
 - Online documentation: https://ovh.github.io/design-system/v20.0.0/
 
-- Components documented in this set: Accordion, Avatar, Badge, Breadcrumb, Button, Button Group, Card, Cart, Checkbox, Clipboard, Code, Combobox, Command, Data Table, Datepicker, Divider, Drawer, Editable, File Thumbnail, File Upload, Form Field, Icon, Input, Kbd, Link, Logo, Markdown, Medium, Menu, Message, Message Bubble, Meter, Modal, Pagination, Password, Phone Number, Popover, Progress Bar, Prompt Input, Quantity, Query Filter, Radio Group, Range, Select, Skeleton, Spinner, Table, Tabs, Tag, Text, Textarea, Tile, Timepicker, Toaster, Toggle, Tooltip, Tree View
+- Components documented in this set: Accordion, Avatar, Badge, Breadcrumb, Button, Button Group, Card, Cart, Checkbox, Clipboard, Code, Combobox, Command, Data Table, Datepicker, Divider, Drawer, Editable, File Thumbnail, File Upload, Form Field, Icon, Input, Kbd, Link, Logo, Markdown, Medium, Menu, Message, Message Bubble, Meter, Modal, Pagination, Password, Phone Number, Popover, Progress Bar, Prompt Input, Quantity, Query Filter, Radio Group, Range, Select, Skeleton, Spinner, Table, Tabs, Tag, Text, Textarea, Tile, Timepicker, Toaster, Toggle, Tooltip, Tree View, Visually Hidden
 
 - Get started: https://ovh.github.io/design-system/v20.0.0/guides/get-started
 
@@ -190,7 +190,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 20.0.0
-tokens: 4541
+tokens: 4597
 source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -534,6 +534,8 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
   
 > It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+
+When the message has no place on the screen, render the status region with [Visually Hidden](https://ovh.github.io/design-system/v20.0.0/components/visually-hidden): screen readers announce it, sighted users do not see it.
 
 #### Related Sources
 

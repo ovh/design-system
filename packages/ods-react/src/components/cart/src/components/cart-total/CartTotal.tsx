@@ -10,7 +10,7 @@ interface CartTotalProp extends ComponentPropsWithRef<'div'> {
    */
   label: ReactNode;
   /**
-   * Formatted price node to display.
+   * Formatted price node to display. Screen readers announce it with the label when it changes.
    */
   price: ReactNode;
   /**
@@ -39,12 +39,17 @@ const CartTotal: FC<CartTotalProp> = forwardRef(({
       data-ods="cart-total"
       ref={ ref }
       { ...props }>
-      <div className={ style['cart-total__pricing'] }>
+      <div
+        aria-atomic="true"
+        className={ style['cart-total__pricing'] }
+        role="status">
         <Text
           as="span"
           preset={ TEXT_PRESET.heading4 }>
           { label }
         </Text>
+
+        { ' ' }
 
         <Text
           as="span"

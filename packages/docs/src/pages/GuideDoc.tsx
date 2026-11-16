@@ -48,17 +48,17 @@ const GuideDoc = ({ page }: { page: NavPage }) => {
   }
   return (
     <PageStoriesProvider storyModules={ storyModules }>
-      { loaders && !storyModules
-        ? <DocSkeleton />
-        : (
-          <Suspense fallback={ <DocSkeleton /> }>
-            <DocArticle>
+      <DocArticle>
+        { loaders && !storyModules
+          ? <DocSkeleton />
+          : (
+            <Suspense fallback={ <DocSkeleton /> }>
               <MDXProvider components={ MDX_COMPONENTS }>
                 <Doc />
               </MDXProvider>
-            </DocArticle>
-          </Suspense>
-        ) }
+            </Suspense>
+          ) }
+      </DocArticle>
     </PageStoriesProvider>
   );
 };

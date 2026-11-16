@@ -1,0 +1,48 @@
+---
+title: "Visually Hidden"
+slug: visually-hidden
+category: component
+type: examples
+version: 20.0.0
+tokens: 148
+source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-visually-hidden--examples.txt
+---
+
+# Visually Hidden
+
+## Default
+
+```tsx
+<Button>
+  <Icon name={ ICON_NAME.trash } />
+  <VisuallyHidden>Delete the file</VisuallyHidden>
+</Button>
+```
+
+## Link Context
+
+```tsx
+<Link href="#">
+  Read more<VisuallyHidden> about the billing of your VPS</VisuallyHidden>
+</Link>
+```
+
+## Accessibility Status
+
+```tsx
+{
+    const [message, setMessage] = useState('');
+
+    return (
+      <>
+        <Button onClick={ () => setMessage('Settings saved.') }>
+          Save
+        </Button>
+
+        <VisuallyHidden role="status">
+          { message }
+        </VisuallyHidden>
+      </>
+    );
+  }
+```

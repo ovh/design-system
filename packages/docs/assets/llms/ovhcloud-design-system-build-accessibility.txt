@@ -4,7 +4,7 @@ slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 20.0.0
-tokens: 4541
+tokens: 4597
 source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
@@ -348,6 +348,8 @@ Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARI
 
   
 > It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+
+When the message has no place on the screen, render the status region with [Visually Hidden](https://ovh.github.io/design-system/v20.0.0/components/visually-hidden): screen readers announce it, sighted users do not see it.
 
 #### Related Sources
 

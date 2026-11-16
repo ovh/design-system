@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 427
+tokens: 436
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-clipboard--technical-information.txt
 ---
 
@@ -39,7 +39,7 @@ This component extends all the native `<button>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
-| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy, also announced to screen readers. |
 | `value` | `string` | No | undefined | - |
 
 ## CSS Variables

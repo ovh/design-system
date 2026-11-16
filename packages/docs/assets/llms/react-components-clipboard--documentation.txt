@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: documentation
 version: 20.0.0
-tokens: 888
+tokens: 948
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-clipboard--documentation.txt
 ---
 
@@ -111,3 +111,7 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 ```
 
  Screen readers will announce the label, the field and its content.
+
+### Copy confirmation
+
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied".

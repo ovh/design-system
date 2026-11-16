@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 841
+tokens: 856
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-cart--technical-information.txt
 ---
 
@@ -70,7 +70,7 @@ This component extends all the native `<div>` attributes.
 | Property | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `label` | `ReactNode` | Yes | undefined | Total label node to display. |
-| `price` | `ReactNode` | Yes | undefined | Formatted price node to display. |
+| `price` | `ReactNode` | Yes | undefined | Formatted price node to display. Screen readers announce it with the label when it changes. |
 | `priceDetails` | `ReactNode` | No | undefined | Price details node to display. |
 | `totalDetails` | `ReactNode` | No | undefined | Total details node to display. |
 

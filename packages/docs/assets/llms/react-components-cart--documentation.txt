@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1218
+tokens: 1317
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-cart--documentation.txt
 ---
 
@@ -116,25 +116,33 @@ Pressing `Escape` collapses the **Cart** when it is expanded on mobile and retur
 
 ## Accessibility
 
+### Total updates
+
+The label and price of **CartTotal** form a status region: when the price changes, screen readers announce the label with the new price, for example "Total €10.00".
+
 ### Announce product and option updates
 
-When a product or option is added, removed, or when the total price changes, screen readers are not automatically informed.
+The **Cart** has no data model: it does not know when a product or an option is added or removed, so screen readers are not informed of it.
 
-To ensure users receive feedback, use a live region in your DOM and update its text content when the `Cart` changes.
+To ensure users receive feedback, render a [Visually Hidden](https://ovh.github.io/design-system/v20.0.0/components/visually-hidden) status region and update its text when your cart changes. Leave the total out of the message: **CartTotal** already announces it.
 
 ```tsx
-const liveRef = useRef<HTMLDivElement>(null);
+const [message, setMessage] = useState('');
 
-function updateLiveRegion() {
-  if (liveRef.current) {
-    liveRef.current.textContent = 'Product "My product" has been added to your cart. Total is now xx.xx€.';
-  }
+function removeProduct(product: Product) {
+  // …update your cart
+  setMessage(`${product.name} removed from your cart.`);
 }
 
 return (
-  <div
-    ref={ liveRef }
-    role="status" />
+  <>
+    <Cart>…</Cart>
+
+    <VisuallyHidden role="status">
+      { message }
+    </VisuallyHidden>
+  </>
+);
 ```
 
- Screen readers will inform users of product additions, removals, and total updates through the live region.
+ Screen readers will inform users of product additions and removals through your status region, and of the new total through **CartTotal**.

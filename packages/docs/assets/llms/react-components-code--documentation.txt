@@ -4,7 +4,7 @@ slug: code
 category: component
 type: documentation
 version: 20.0.0
-tokens: 652
+tokens: 701
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-code--documentation.txt
 ---
 
@@ -85,4 +85,8 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ## Accessibility
 
- Screen readers will announce the embedded code and the copy button **Tooltip** content.
+### Copy confirmation
+
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button.
+
+ Screen readers will announce the embedded code, the copy button, and the confirmation once the code is copied.

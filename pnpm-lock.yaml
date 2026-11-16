@@ -894,6 +894,8 @@ importers:
 
   packages/ods-react/src/components/tree-view: {}
 
+  packages/ods-react/src/components/visually-hidden: {}
+
   packages/ods-recipes:
     dependencies:
       '@ovhcloud/ods-react':

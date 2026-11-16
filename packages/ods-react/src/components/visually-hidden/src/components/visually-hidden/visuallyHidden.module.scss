@@ -1,0 +1,13 @@
+@layer ods-atoms {
+  .visually-hidden {
+    position: absolute;
+    margin: -1px;
+    border: 0;
+    clip-path: inset(50%);
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

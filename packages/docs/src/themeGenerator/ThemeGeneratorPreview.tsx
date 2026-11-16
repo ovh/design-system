@@ -57,6 +57,7 @@ import * as ToasterStories from '../../stories/components/toaster/toaster.storie
 import * as ToggleStories from '../../stories/components/toggle/toggle.stories';
 import * as TooltipStories from '../../stories/components/tooltip/tooltip.stories';
 import * as TreeViewStories from '../../stories/components/tree-view/tree-view.stories';
+import * as VisuallyHiddenStories from '../../stories/components/visually-hidden/visually-hidden.stories';
 import styles from './themeGeneratorPreview.module.css';
 
 /* Every component's dedicated ThemeGenerator story (a static, portal-free
@@ -122,6 +123,7 @@ const THEME_STORY_MODULES: Record<string, Record<string, unknown>> = {
   Toggle: ToggleStories,
   Tooltip: TooltipStories,
   TreeView: TreeViewStories,
+  VisuallyHidden: VisuallyHiddenStories,
 };
 
 const humanize = (name: string): string => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');

@@ -50,9 +50,9 @@ const GuideDoc = ({ page }: { page: NavPage }) => {
     <PageStoriesProvider storyModules={ storyModules }>
       <DocArticle>
         { loaders && !storyModules
-          ? <DocSkeleton />
+          ? <DocSkeleton variant="guide" />
           : (
-            <Suspense fallback={ <DocSkeleton /> }>
+            <Suspense fallback={ <DocSkeleton variant="guide" /> }>
               <MDXProvider components={ MDX_COMPONENTS }>
                 <Doc />
               </MDXProvider>

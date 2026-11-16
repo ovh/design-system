@@ -97,7 +97,7 @@ const SHAPES: Record<DocSkeletonVariant, () => ReactElement> = {
   ),
 };
 
-const DocSkeleton = ({ variant = 'guide' }: { variant?: DocSkeletonVariant }) => {
+const DocSkeleton = ({ variant }: { variant: DocSkeletonVariant }) => {
   const Shape = SHAPES[variant];
   return (
     <div className="doc-skeleton">

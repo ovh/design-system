@@ -8,6 +8,10 @@
   /* The centered block the topbar and the tabs align on. ch resolves on each element reading it:
      they all use the body font. */
   --doc-block-width: calc(var(--doc-article-width) + var(--doc-layout-gap) + var(--doc-toc-width));
+  /* The Recipe Gallery grid (.recipes__grid), shared with its loading skeleton: two columns, one
+     when two 420px tracks and the gap no longer fit. */
+  --doc-recipes-grid-gap: 16px;
+  --doc-recipes-grid-columns: repeat(auto-fill, minmax(min(100%, max(420px, calc((100% - var(--doc-recipes-grid-gap)) / 2))), 1fr));
 }
 
 .doc__heading {
@@ -379,11 +383,10 @@ article.doc.doc--wide {
   border-radius: 0 0 var(--ods-semantic-size-radius-container) var(--ods-semantic-size-radius-container);
 }
 
-/* Keep in sync with .recipes__grid (recipes.module.css). */
 .doc-skeleton__grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(420px, calc((100% - 16px) / 2))), 1fr));
+  gap: var(--doc-recipes-grid-gap);
+  grid-template-columns: var(--doc-recipes-grid-columns);
 }
 
 .doc-layout__toc--loading {

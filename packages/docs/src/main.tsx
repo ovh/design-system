@@ -115,7 +115,7 @@ const RecipesRoute = () => {
 };
 
 const ChangelogRoute = () => (
-  <Suspense fallback={ <DocArticle><DocSkeleton /></DocArticle> }>
+  <Suspense fallback={ <DocArticle><DocSkeleton variant="guide" /></DocArticle> }>
     <ChangelogPage />
   </Suspense>
 );

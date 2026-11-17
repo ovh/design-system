@@ -21,9 +21,9 @@ const Title = ({ level = 2, width }: { level?: 2 | 3, width: string }) => (
 
 const Block = ({ height }: { height: number }) => <Skeleton className="doc-skeleton__block" style={{ height: `${height}px` }} />;
 
-const Table = ({ rows }: { rows: number }) => (
+const Table = ({ bodyRows }: { bodyRows: number }) => (
   <div className="doc-skeleton__table">
-    { Array.from({ length: rows + 1 }, (_, index) => <Skeleton className="doc-skeleton__row" key={ index } />) }
+    { Array.from({ length: bodyRows + 1 }, (_, index) => <Skeleton className="doc-skeleton__row" key={ index } />) }
   </div>
 );
 
@@ -79,7 +79,7 @@ const SHAPES: Record<DocSkeletonVariant, () => ReactElement> = {
   helper: () => (
     <>
       <Title width="24%" />
-      <Table rows={ 3 } />
+      <Table bodyRows={ 3 } />
       <Title width="18%" />
       <Title level={ 3 } width="16%" />
       <Block height={ 160 } />
@@ -92,7 +92,7 @@ const SHAPES: Record<DocSkeletonVariant, () => ReactElement> = {
       <Block height={ 96 } />
       <Title width="20%" />
       <Lines widths={ ['52%'] } />
-      <Table rows={ 5 } />
+      <Table bodyRows={ 5 } />
     </>
   ),
 };

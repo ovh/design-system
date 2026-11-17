@@ -22,6 +22,13 @@ function getServerLocale(): Locale {
   return LOCALE.en;
 }
 
+// Datepicker and PhoneNumber take a BCP 47 locale for Intl: a regional one (fr-FR) reads the
+// translations of its language.
+function toLocale(locale?: string): Locale | undefined {
+  const language = locale?.split('-')[0].toLowerCase() as Locale | undefined;
+  return language && LOCALES.indexOf(language) >= 0 ? language : undefined;
+}
+
 // The browser language is not watched: it only changes with a reload.
 function subscribe(): () => void {
   return () => {};
@@ -31,7 +38,7 @@ function subscribe(): () => void {
    their markup matches; React then renders again with the browser language. */
 function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale, i18n?: Record<string, string>): UseI18n {
   const browserLocale = useSyncExternalStore(subscribe, getBrowserLocale, getServerLocale);
-  const currentLocale = locale && LOCALES.indexOf(locale) >= 0 ? locale : browserLocale;
+  const currentLocale = toLocale(locale) || browserLocale;
 
   const translate = useCallback((key: string) => {
     if (i18n && i18n[key]) {

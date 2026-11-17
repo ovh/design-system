@@ -58,6 +58,15 @@ describe('Datepicker accessibility', () => {
     });
   });
 
+  it('should translate a regional locale in its language', async() => {
+    await gotoStory(page, 'accessibility/regional-locale');
+    await page.waitForSelector('[role="grid"]');
+
+    expect(await page.$eval('[data-part="content"]', (el) => el.getAttribute('aria-label'))).toBe('Kalender');
+    expect(await getVisibleLabel(page, 'prev-trigger')).toBe('Vorheriger Monat');
+    expect(await getVisibleGrid(page)).toEqual({ name: 'September 2026', roleDescription: 'Monatskalender' });
+  });
+
   it('should apply the i18n override', async() => {
     await gotoStory(page, 'accessibility/overridden-label');
     await page.waitForSelector('[role="grid"]');

@@ -1,9 +1,11 @@
 // GitHub Pages semantics: static files, index.html for directories, and the
 // site's 404.html (served with a 404 status) for anything unknown — the
-// exact behavior the deployed docs live under, deep-link bounce included.
+// exact behavior the deployed docs live under, deep-link bounce included, and
+// gzip like GitHub Pages, so that timings measured against it are realistic.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 const MIME = {
   '.css': 'text/css', '.html': 'text/html', '.js': 'text/javascript',
@@ -29,7 +31,12 @@ function serveSite(root, port) {
           filePath = join(filePath, 'index.html');
         }
         const body = await readFile(filePath);
-        res.writeHead(200, { 'content-type': MIME[extname(filePath)] ?? 'application/octet-stream' }).end(body);
+        const type = MIME[extname(filePath)] ?? 'application/octet-stream';
+        if (/\bgzip\b/.test(req.headers['accept-encoding'] ?? '') && /^(text|application\/json|image\/svg)/.test(type)) {
+          res.writeHead(200, { 'content-encoding': 'gzip', 'content-type': type }).end(gzipSync(body));
+          return;
+        }
+        res.writeHead(200, { 'content-type': type }).end(body);
       } catch {
         try {
           res.writeHead(404, { 'content-type': 'text/html' }).end(await readFile(join(root, 'design-system', '404.html')));

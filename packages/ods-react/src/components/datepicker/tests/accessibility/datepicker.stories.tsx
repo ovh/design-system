@@ -16,6 +16,16 @@ export const French = () => (
   </Datepicker>
 );
 
+export const RegionalLocale = () => (
+  <Datepicker
+    defaultOpen
+    defaultValue={ new Date(2026, 8, 15) }
+    locale="de-DE">
+    <DatepickerControl />
+    <DatepickerContent createPortal={ false } />
+  </Datepicker>
+);
+
 export const OverriddenLabel = () => (
   <Datepicker
     defaultOpen

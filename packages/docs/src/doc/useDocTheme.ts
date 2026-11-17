@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
 type DocTheme = 'dark' | 'light';
 
-/* The active docs theme, driven by the body data-theme attribute that the
-   shell ThemeSelect owns. Observed (not read once): code blocks re-highlight
-   live when the user flips the theme. */
+const read = (): DocTheme => (document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+const subscribe = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.body, { attributeFilter: ['data-theme'], attributes: true });
+  return () => observer.disconnect();
+};
+
+/* The active docs theme, driven by the body data-theme attribute that
+   themeStyles.ts sets (ThemeMenu picks the scheme). Observed (not read once): code blocks re-highlight
+   live when the user flips the theme. The pre-rendered HTML holds the light
+   one. */
 function useDocTheme(): DocTheme {
-  const [theme, setTheme] = useState<DocTheme>(() => (document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'));
-
-  useEffect(() => {
-    const read = (): DocTheme => (document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-    // Re-sync on attach: data-theme may have been set between the first render
-    // and this effect, and that change would be missed by the observer.
-    setTheme(read());
-    const observer = new MutationObserver(() => setTheme(read()));
-    observer.observe(document.body, { attributeFilter: ['data-theme'], attributes: true });
-    return () => observer.disconnect();
-  }, []);
-
-  return theme;
+  return useSyncExternalStore(subscribe, read, () => 'light');
 }
 
 export { useDocTheme, type DocTheme };

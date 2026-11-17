@@ -38,7 +38,7 @@ async function suite(browser, { base, version }) {
   for (const route of pages) {
     try {
       await harvestPage.goto(`${base}/v${version}${route}`, { timeout: 30000, waitUntil: 'domcontentloaded' });
-      await harvestPage.waitForSelector('#root *', { timeout: 15000 });
+      await harvestPage.waitForSelector('#root main', { timeout: 15000 });
       await harvestPage.waitForTimeout(500);
       const buttons = harvestPage.locator('button[aria-label="Open this example in the sandbox (new tab)"]');
       const count = await buttons.count();

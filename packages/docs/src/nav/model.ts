@@ -311,4 +311,4 @@ function toTreeItems(nodes: (NavSection | NavPage)[] = NAV, rootIcons = false, n
     }));
 }
 
-export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type PageStoriesData, type StoriesLoader };
+export { GUIDES_NAV, NAV, REFERENCE_NAV, flattenPages, isPage, storiesOf, toTreeItems, type NavPage, type NavSection, type StoriesLoader };

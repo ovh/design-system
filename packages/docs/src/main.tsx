@@ -1,124 +1,33 @@
 import '@ovhcloud/ods-react/normalize-css';
 import '@ovhcloud/ods-themes/default/css';
 import '@ovhcloud/ods-themes/default/fonts';
-import { Suspense, lazy } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Navigate, RouterProvider, createBrowserRouter, useLocation, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
-import { BASENAME } from './appBase';
-import { Skeleton } from '../../ods-react/src/components/skeleton/src';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { APP_ROOT, BASENAME } from './appBase';
 import guidesInventory from './content/guides/guides.json';
-import { DocArticle } from './doc/DocArticle';
-import { DocSkeleton } from './doc/DocSkeleton';
-import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
-import { ComponentDoc } from './pages/ComponentDoc';
-import { GuideDoc } from './pages/GuideDoc';
-import { HelperDoc } from './pages/HelperDoc';
-import { NotFound } from './pages/NotFound';
-import { RecipesDoc } from './pages/RecipesDoc';
-import { decodeSnippet } from './sandbox/shareCode';
-import { ErrorPage } from './shell/ErrorPage';
-import { Shell, type ShellContext } from './shell/Shell';
+import { preloadRoute, routes } from './routes';
 
-const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
-const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
-const ThemeGenerator = lazy(() => import('./themeGenerator/ThemeGenerator').then((m) => ({ default: m.ThemeGenerator })));
-const ComponentGallery = lazy(() => import('./componentGallery/ComponentGallery').then((m) => ({ default: m.ComponentGallery })));
+const container = document.getElementById('root')!;
 
-const ComponentRoute = () => {
-  const { key } = useParams();
-  const { tokens } = useOutletContext<ShellContext>();
-  const page = flattenPages().find((p) => p.id === `components/${key}`);
+/* A pre-rendered page (scripts/prerender.mjs) holds URLs relative to its own folder, so that it
+   serves under every prefix. They would break as soon as the URL changes (the trailing slash
+   dropped below, then every navigation): back to absolute ones, resolved against the URL the page
+   was served at, so before any replaceState. A link of the app is the path the router writes,
+   which hydration must find: React 19 does not patch a mismatched attribute, the server href would
+   stay. Any other URL (a stylesheet, an image) is the full one a Vite import gives. */
+document.querySelectorAll<HTMLElement>('[href^="./"], [href^="../"], [src^="./"], [src^="../"]').forEach((element) => {
+  const attribute = element.hasAttribute('src') ? 'src' : 'href';
+  const url = new URL(element.getAttribute(attribute)!, window.location.href);
+  const isPage = element instanceof HTMLAnchorElement && container.contains(element) && !url.pathname.startsWith(new URL('assets/', APP_ROOT).pathname);
+  element.setAttribute(attribute, isPage ? `${url.pathname.length > 1 ? url.pathname.replace(/\/$/, '') : url.pathname}${url.search}${url.hash}` : url.href);
+});
 
-  if (!page || !page.stories) {
-    return <NotFound />;
-  }
-  return <ComponentDoc key={ page.id } page={ page } tokens={ tokens } />;
-};
-
-const SandboxRoute = () => {
-  const { tokens } = useOutletContext<ShellContext>();
-  const [params] = useSearchParams();
-  const initialCode = decodeSnippet(params.get('code'));
-  return (
-    <Suspense fallback={
-      <div style={{ display: 'grid', gap: '16px' }}>
-        <Skeleton style={{ height: '280px', width: '100%' }} />
-        <Skeleton style={{ borderRadius: 'var(--ods-semantic-size-radius-control)', height: '74px', width: '100%' }} />
-      </div>
-    }>
-      <Sandbox dark={ false } initialCode={ initialCode } tokens={ tokens } />
-    </Suspense>
-  );
-};
-
-/* Version headings and entries that left their guide keep their old #anchor
-   working: the previous majors of What's new got a page each (v12 and earlier
-   share the last one, which also holds the undated "February 2022" entry), the
-   troubleshooting entries left the F.A.Q. The numbered sub-section anchors of
-   What's new, such as #bug-fixes-12, are not mapped: their number changed with
-   the split. */
-const TROUBLESHOOTING_ANCHORS = new Set([
-  'ts2307-cannot-find-module-ovhcloud-ods-react-or-its-corresponding-type-declarations',
-  'my-popover-tooltip-is-not-displayed-correctly',
-  'overlay-elements-are-not-displayed-correctly-in-a-drawer-modal',
-  'icons-are-not-displayed',
-  'warning-function-components-cannot-be-given-refs',
-]);
-
-function movedGuide(key: string | undefined, hash: string): string | undefined {
-  const anchor = hash.slice(1);
-  if (key === 'whats-new') {
-    const major = anchor === 'february-2022' ? 12 : Number(/^v(\d+)-/.exec(anchor)?.[1]);
-    const target = major && flattenPages().find((p) => p.id === `guides/whats-new-v${Math.max(major, 12)}`);
-    return target ? target.path : undefined;
-  }
-  if (key === 'faq' && TROUBLESHOOTING_ANCHORS.has(anchor)) {
-    return '/guides/troubleshooting';
-  }
-  return undefined;
+/* A pre-rendered page is a folder: the host serves …/components/button as …/components/button/.
+   The app's own URLs have no trailing slash, the one a reader shares keeps that form. */
+if (window.location.pathname.length > BASENAME.length + 1 && window.location.pathname.endsWith('/')) {
+  history.replaceState(history.state, '', `${window.location.pathname.replace(/\/+$/, '')}${window.location.search}${window.location.hash}`);
 }
-
-const GuideRoute = () => {
-  const { key } = useParams();
-  const { hash } = useLocation();
-  const page = flattenPages().find((p) => p.id === `guides/${key}`);
-  const moved = movedGuide(key, hash);
-
-  if (moved) {
-    return <Navigate replace to={ `${moved}${hash}` } />;
-  }
-  if (!page) {
-    return <NotFound />;
-  }
-  return <GuideDoc key={ page.id } page={ page } />;
-};
-
-const HelperRoute = () => {
-  const { key } = useParams();
-  const page = flattenPages().find((p) => p.id === `helpers/${key}`);
-
-  if (!page) {
-    return <NotFound />;
-  }
-  return <HelperDoc key={ page.id } page={ page } />;
-};
-
-const RecipesRoute = () => {
-  const { key } = useParams();
-  const page = flattenPages().find((p) => p.id === `recipes/${key}`);
-
-  if (!page) {
-    return <NotFound />;
-  }
-  return <RecipesDoc key={ page.id } page={ page } />;
-};
-
-const ChangelogRoute = () => (
-  <Suspense fallback={ <DocArticle><DocSkeleton variant="guide" /></DocArticle> }>
-    <ChangelogPage />
-  </Suspense>
-);
 
 /* The router does not know <root>/index.html and would end on NotFound. The
    query and hash are kept for the ?p= and legacy ?path= rewrites below. */
@@ -173,37 +82,15 @@ if (deepLink && deepLink.startsWith('/')) {
   history.replaceState(null, '', `${BASENAME}${path}${rest ? `?${rest}` : ''}${window.location.hash}`);
 }
 
-const router = createBrowserRouter([
-  {
-    element: <Shell />,
-    errorElement: <ErrorPage />,
-    children: [
-      { element: <Homepage />, path: '/' },
-      { element: <ChangelogRoute />, path: '/guides/changelog' },
-      { element: <GuideRoute />, path: '/guides/:key' },
-      { element: <HelperRoute />, path: '/helpers/:key' },
-      { element: <RecipesRoute />, path: '/recipes/:key' },
-      { element: <ComponentRoute />, path: '/components/:key/:tab?' },
-      { element: <SandboxRoute />, path: '/tools/sandbox' },
-      {
-        element: (
-          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
-            <ThemeGenerator />
-          </Suspense>
-        ),
-        path: '/tools/theme-generator',
-      },
-      {
-        element: (
-          <Suspense fallback={ <Skeleton style={{ height: '480px', width: '100%' }} /> }>
-            <ComponentGallery />
-          </Suspense>
-        ),
-        path: '/tools/component-gallery',
-      },
-      { element: <NotFound />, path: '*' },
-    ],
-  },
-], { basename: BASENAME });
+const router = createBrowserRouter(routes, { basename: BASENAME });
 
-createRoot(document.getElementById('root')!).render(<RouterProvider router={ router } />);
+/* The pre-rendered HTML is hydrated where it is the page of the URL, once the chunks its first render
+   reads have loaded (preloadRoute); the root page a deep link bounced off (?p=) holds the homepage,
+   which the app renders over. */
+const routePath = window.location.pathname.slice(BASENAME.length).replace(/\/+$/, '') || '/';
+if (container.dataset.path === routePath) {
+  // A chunk that fails to load is the page's error to show: hydrate all the same.
+  preloadRoute(routePath).catch(() => {}).finally(() => hydrateRoot(container, <RouterProvider router={ router } />));
+} else {
+  createRoot(container).render(<RouterProvider router={ router } />);
+}

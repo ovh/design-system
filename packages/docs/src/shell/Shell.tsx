@@ -10,6 +10,9 @@ import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
+import { pageOf, titleOf } from '../nav/pages';
+import { useHydrated } from '../nav/useHydrated';
+import { useMediaQuery } from '../nav/useMediaQuery';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
 import { ThemeMenu, VersionSelect } from './TopbarSelects';
@@ -25,16 +28,7 @@ interface ShellContext {
    Below it the sidebar becomes a drawer opened from the topbar. */
 const NARROW_QUERY = '(max-width: 1000px)';
 
-const useNarrow = () => {
-  const [narrow, setNarrow] = useState(() => window.matchMedia(NARROW_QUERY).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(NARROW_QUERY);
-    const onChange = () => setNarrow(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return narrow;
-};
+const useNarrow = () => useMediaQuery(NARROW_QUERY);
 
 /* The sections a page sits in, outermost first; empty when the page is not in these nodes. */
 const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
@@ -179,8 +173,9 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   );
 };
 
-/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform. */
-const SEARCH_SHORTCUT = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform.
+   The pre-rendered page knows no platform: Ctrl K until hydrated. */
+const SearchShortcut = () => (useHydrated() && /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K');
 
 /* The whole sidebar content: rendered in the fixed aside on wide screens and
    inside the navigation drawer on narrow ones. */
@@ -197,7 +192,7 @@ const SidebarPanels = ({ currentId, narrow, onNavigate, onSearch }: {
 
     <button className="shell__search-hint" onClick={ onSearch } type="button">
       <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
-      <Kbd className="shell__search-kbd">{ SEARCH_SHORTCUT }</Kbd>
+      <Kbd className="shell__search-kbd"><SearchShortcut /></Kbd>
     </button>
 
     <nav aria-label="Documentation" className="shell__nav">
@@ -243,14 +238,7 @@ const Shell = () => {
     return () => window.clearTimeout(idle);
   }, []);
 
-  // Exact match first; then the one-segment tab views of a component page
-  // (/components/x/examples), the only sub-views the router has: any other
-  // nested path is a not found page, not the page it starts with. A trailing
-  // slash is ignored, as the router does.
-  const pathname = location.pathname.length > 1 ? location.pathname.replace(/\/+$/, '') : location.pathname;
-  const currentPage = pages.find((page) => page.path === pathname)
-    ?? pages.find((page) => page.kind === 'component' && pathname.startsWith(`${page.path}/`)
-      && !pathname.slice(page.path.length + 1).includes('/'));
+  const currentPage = pageOf(location.pathname);
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
     || (currentPage?.kind === 'recipe' && !currentPage.gallery);
@@ -263,9 +251,8 @@ const Shell = () => {
 
   // Keep the browser tab title in sync with the active page.
   useEffect(() => {
-    const title = currentPage?.title ?? (location.pathname === '/' ? undefined : 'Page not found');
-    document.title = title ? `${title} — OVHcloud Design System` : 'OVHcloud Design System';
-  }, [currentPage, location.pathname]);
+    document.title = titleOf(location.pathname);
+  }, [location.pathname]);
 
   // Any navigation (tree, palette, in-content link) closes the nav drawer.
   useEffect(() => {

@@ -162,7 +162,7 @@ async function suite(browser, { base, version }) {
   ok('View as Markdown reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
   const mdHref = await mdLink.getAttribute('href') ?? '';
   ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
-  const mdRes = await page.request.get(mdHref);
+  const mdRes = await page.request.get(new URL(mdHref, page.url()).href);
   const md = mdRes.ok() ? await mdRes.text() : '';
   ok('the linked markdown resolves and is the right page', mdRes.ok() && /^---\n/.test(md) && /button/i.test(md.slice(0, 300)), `status ${mdRes.status()}`);
 

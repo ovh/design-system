@@ -1,6 +1,6 @@
 import { composeStory } from '@storybook/react';
 import { Children, type ComponentType, type ReactElement, type ReactNode, isValidElement, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHref, useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
 import { CARD_STATUS, Card } from '../../../ods-react/src/components/card/src';
@@ -116,9 +116,10 @@ const DocImage = ({ alt, src }: { alt?: string, src?: string }) => {
 /* Internal navigation with the ODS Link look: SPA routing, no reload. */
 const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
   const navigate = useNavigate();
+  const href = useHref(to);
   return (
     <Link
-      href={ to }
+      href={ href }
       onClick={ (event) => {
         event.preventDefault();
         navigate(to);

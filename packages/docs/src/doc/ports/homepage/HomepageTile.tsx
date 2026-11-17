@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useHref, useNavigate } from 'react-router-dom';
 import { CARD_STATUS, Card, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '../../../ods';
 import styles from './homepageTile.module.css';
 
@@ -12,6 +12,7 @@ interface HomepageTileProp {
 
 const HomepageTile = ({ description, icon, linkLabel, path, title }: HomepageTileProp) => {
   const navigate = useNavigate();
+  const href = useHref(path);
 
   return (
     <Card className={ styles['homepage-tile'] } status={ CARD_STATUS.neutral }>
@@ -28,7 +29,7 @@ const HomepageTile = ({ description, icon, linkLabel, path, title }: HomepageTil
       <Divider aria-hidden className={ styles['homepage-tile__divider'] } spacing={ DIVIDER_SPACING._8 } />
 
       <Link
-        href={ path }
+        href={ href }
         onClick={ (event) => {
           event.preventDefault();
           navigate(path);

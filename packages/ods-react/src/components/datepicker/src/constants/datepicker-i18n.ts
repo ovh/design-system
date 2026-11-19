@@ -3,6 +3,7 @@ import { LOCALE } from '../../../../utils/locales';
 enum DATEPICKER_I18N {
   calendar = 'datepicker.calendar',
   closeCalendarButton = 'datepicker.calendar.close.button',
+  datePicker = 'datepicker.date.picker',
   dayGrid = 'datepicker.grid.day',
   monthGrid = 'datepicker.grid.month',
   monthViewButton = 'datepicker.view.month.button',
@@ -38,6 +39,16 @@ const TRANSLATION = {
     [LOCALE.nl]: 'Kalender sluiten',
     [LOCALE.pl]: 'Zamknij kalendarz',
     [LOCALE.pt]: 'Fechar calendário',
+  },
+  [DATEPICKER_I18N.datePicker]: {
+    [LOCALE.de]: 'Datumsauswahl',
+    [LOCALE.en]: 'Date picker',
+    [LOCALE.es]: 'Selector de fecha',
+    [LOCALE.fr]: 'Sélecteur de date',
+    [LOCALE.it]: 'Selettore di data',
+    [LOCALE.nl]: 'Datumkiezer',
+    [LOCALE.pl]: 'Wybór daty',
+    [LOCALE.pt]: 'Seletor de data',
   },
   [DATEPICKER_I18N.dayGrid]: {
     [LOCALE.de]: 'Monatskalender',

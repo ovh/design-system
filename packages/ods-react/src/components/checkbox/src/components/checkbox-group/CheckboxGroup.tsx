@@ -1,7 +1,8 @@
 import { Checkbox } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { FormFieldGroupProvider, useFormField, useFormFieldId } from '../../../../form-field/src';
+import { useFormField, useFormFieldId } from '../../../../form-field/src';
+import { FormFieldGroupProvider } from '../../../../form-field/src/contexts/useFormField';
 import styles from './checkboxGroup.module.scss';
 
 interface CheckboxGroupProp extends ComponentPropsWithRef<'div'> {

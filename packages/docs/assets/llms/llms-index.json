@@ -210,7 +210,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1317,
+          "tokens": 1382,
           "url": "./react-components-cart--documentation.txt"
         },
         "technical-information": {
@@ -262,7 +262,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 948,
+          "tokens": 970,
           "url": "./react-components-clipboard--documentation.txt"
         },
         "technical-information": {
@@ -283,17 +283,17 @@
       "pages": {
         "overview": {
           "type": "overview",
-          "tokens": 306,
+          "tokens": 315,
           "url": "./react-components-code.txt"
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 701,
+          "tokens": 723,
           "url": "./react-components-code--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 433,
+          "tokens": 441,
           "url": "./react-components-code--technical-information.txt"
         },
         "examples": {
@@ -1510,7 +1510,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 726,
+          "tokens": 828,
           "url": "./react-components-visually-hidden--documentation.txt"
         },
         "technical-information": {

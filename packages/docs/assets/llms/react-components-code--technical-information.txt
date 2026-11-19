@@ -4,7 +4,7 @@ slug: code
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 433
+tokens: 441
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-code--technical-information.txt
 ---
 
@@ -20,7 +20,7 @@ This component extends all the native `<div>` attributes.
 | `children` | `string` | Yes | undefined | The code to display. |
 | `highlighter` | `object` | No | undefined | Configuration of a specific code highlighter (see beneath for more details). |
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
-| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy, also announced to screen readers. |
 | `onCopy` | `() => void` | No | undefined | Callback fired when the text is copied. |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 

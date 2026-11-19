@@ -96,6 +96,10 @@ function getDefaultSelection(items: ComboboxItem[], defaultValue?: string[]): Co
   }, []);
 }
 
+function getOptionId(controlId: string, value: string): string {
+  return `${controlId}-${value}`;
+}
+
 function isAtInputStart(input: HTMLInputElement | null): boolean {
   return !!input &&
     input.selectionStart === 0 &&
@@ -133,6 +137,7 @@ export {
   findItemByValue,
   getDefaultInputValue,
   getDefaultSelection,
+  getOptionId,
   isAtInputStart,
   isGroup,
 };

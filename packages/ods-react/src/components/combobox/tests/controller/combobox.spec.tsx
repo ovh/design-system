@@ -1,5 +1,5 @@
 import { type ComboboxItem } from '../../src';
-import { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, isAtInputStart, isGroup } from '../../src/controller/combobox';
+import { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, getOptionId, isAtInputStart, isGroup } from '../../src/controller/combobox';
 
 describe('Combobox controller', () => {
   const dummyItems: ComboboxItem[] = [
@@ -114,6 +114,12 @@ describe('Combobox controller', () => {
       expect(getDefaultSelection(dummyItems, ['item-1', 'item-3'])).toEqual([{ label: 'item 1', value: 'item-1' }, { label: 'item 3', value: 'item-3' }]);
       expect(getDefaultSelection(dummyItems, ['child-2'])).toEqual([{ label: 'child 2', value: 'child-2' }]);
       expect(getDefaultSelection(dummyItems, ['child-2', 'item-2'])).toEqual([{ label: 'child 2', value: 'child-2' }, { label: 'item 2', value: 'item-2' }]);
+    });
+  });
+
+  describe('getOptionId', () => {
+    it('should prefix the option value with the control id', () => {
+      expect(getOptionId(':r1:', 'item-1')).toBe(':r1:-item-1');
     });
   });
 

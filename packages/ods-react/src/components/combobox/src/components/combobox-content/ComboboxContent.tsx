@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
 import { POPOVER_POSITION, Popover, PopoverContent, type PopoverPositionChangeDetail } from '../../../../popover/src';
 import { useCombobox } from '../../contexts/useCombobox';
-import { isGroup } from '../../controller/combobox';
+import { getOptionId, isGroup } from '../../controller/combobox';
 import { ComboboxGroup } from '../combobox-group/ComboboxGroup';
 import { ComboboxOption } from '../combobox-option/ComboboxOption';
 import style from './comboboxContent.module.scss';
@@ -90,7 +90,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
 
             return (
               <ComboboxOption
-                id={ `${controlId}-${item.value}` }
+                id={ getOptionId(controlId, item.value) }
                 isHighlighted={ highlightedOptionValue === item.value }
                 item={ item }
                 key={ item.value } />

@@ -61,21 +61,22 @@ describe('Datepicker accessibility', () => {
   describe('without locale', () => {
     let client: CDPSession;
 
+    // acceptLanguage sets navigator.language, which the translations read; a locale override only reaches Intl.
+    // Neither French nor English, so that the test fails on any host when the emulation has no effect.
     beforeEach(async() => {
       client = await page.createCDPSession();
-      await client.send('Emulation.setLocaleOverride', { locale: 'fr-FR' });
+      await client.send('Emulation.setUserAgentOverride', { acceptLanguage: 'it-IT', userAgent: await browser.userAgent() });
       await gotoStory(page, 'accessibility/browser-language');
       await page.waitForSelector('[role="grid"]');
     });
 
     afterEach(async() => {
-      await client.send('Emulation.setLocaleOverride', {});
       await client.detach();
     });
 
     it('should show the dates and the controls in the browser language', async() => {
-      expect(await getVisibleGrid(page)).toEqual({ name: 'septembre 2026', roleDescription: 'Calendrier du mois' });
-      expect(await getVisibleLabel(page, 'prev-trigger')).toBe('Mois précédent');
+      expect(await getVisibleGrid(page)).toEqual({ name: 'settembre 2026', roleDescription: 'Calendario mensile' });
+      expect(await getVisibleLabel(page, 'prev-trigger')).toBe('Mese precedente');
       expect(await page.$eval('[data-part="input"]', (el) => (el as HTMLInputElement).value)).toBe('15/09/2026');
     });
   });

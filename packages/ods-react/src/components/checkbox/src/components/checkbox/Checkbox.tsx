@@ -62,9 +62,10 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
   const fieldContext = useFormField();
   const defaultId = useId();
   const rootId = id || fieldContext?.id || defaultId;
+  // The hidden input is the labelable element. Its id keeps the format Ark would derive.
+  const inputId = `checkbox:${rootId}:input`;
 
-  // The hidden input is the labelable element, and Ark derives its id from the root one.
-  useFormFieldId(`checkbox:${rootId}:input`);
+  useFormFieldId(inputId);
 
   return (
     <VendorCheckbox.Root
@@ -74,6 +75,7 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
       defaultChecked={ defaultChecked }
       disabled={ disabled }
       id={ rootId }
+      ids={{ hiddenInput: inputId }}
       invalid={ invalid || fieldContext?.invalid }
       name={ name }
       onCheckedChange={ onCheckedChange }

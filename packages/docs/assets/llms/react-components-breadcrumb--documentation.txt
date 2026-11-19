@@ -4,7 +4,7 @@ slug: breadcrumb
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1134
+tokens: 1174
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadcrumb--documentation.txt
 ---
 
@@ -92,12 +92,12 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 
 ### Identifying the Breadcrumb with aria-label
 
-**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify them.
+**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To tell it apart from the other navigation landmarks, the **Breadcrumb** is named "Breadcrumb" by default, in the language of its `locale`. An [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an `aria-labelledby` replaces that name, for example to tell two breadcrumbs of the same page apart.
 
 **Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v20.0.0/components/link).
 
 ```tsx
-<Breadcrumb aria-label="Breadcrumb">
+<Breadcrumb aria-label="You are here">
   <BreadcrumbItem>
     <BreadcrumbLink aria-label="Home" href="#">
       <Icon name={ ICON_NAME.home } />

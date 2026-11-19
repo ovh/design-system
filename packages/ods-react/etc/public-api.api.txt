@@ -1745,6 +1745,7 @@ export { DATEPICKER_DAY, DATEPICKER_DAYS, type DatepickerDay, };
 declare enum DATEPICKER_I18N {
     calendar = "datepicker.calendar",
     closeCalendarButton = "datepicker.calendar.close.button",
+    datePicker = "datepicker.date.picker",
     dayGrid = "datepicker.grid.day",
     monthGrid = "datepicker.grid.month",
     monthViewButton = "datepicker.view.month.button",
@@ -1771,6 +1772,16 @@ declare const TRANSLATION: {
         pt: string;
     };
     "datepicker.calendar.close.button": {
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
+        it: string;
+        nl: string;
+        pl: string;
+        pt: string;
+    };
+    "datepicker.date.picker": {
         de: string;
         en: string;
         es: string;
@@ -2866,7 +2877,7 @@ declare const FormField: import('react').FC<FormFieldProp> & {
 export { FormField };
 export { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel };
 export type { FormFieldProp, FormFieldErrorProp, FormFieldHelperProp, FormFieldLabelProp, FormFieldLabelSubLabelProp };
-export { FormFieldGroupProvider, useFormField, useFormFieldId } from './contexts/useFormField';
+export { useFormField, useFormFieldId } from './contexts/useFormField';
 
 // ==================== components/icon/src/components/icon/Icon.d.ts ====================
 import { ComponentPropsWithRef, FC } from 'react';
@@ -7130,9 +7141,10 @@ export { type UseDevice, useDevice, };
 // ==================== hooks/useI18n.d.ts ====================
 import { Locale } from '../utils/locales';
 interface UseI18n {
+    locale: Locale;
     translate: (key: string) => string;
 }
-declare function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale, i18n?: Record<string, string>): UseI18n;
+declare function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: string, i18n?: Record<string, string>): UseI18n;
 export { type UseI18n, useI18n, };
 
 // ==================== index.d.ts ====================

@@ -106,7 +106,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1134,
+          "tokens": 1174,
           "url": "./react-components-breadcrumb--documentation.txt"
         },
         "technical-information": {
@@ -116,7 +116,7 @@
         },
         "examples": {
           "type": "examples",
-          "tokens": 1077,
+          "tokens": 1078,
           "url": "./react-components-breadcrumb--examples.txt"
         }
       }
@@ -392,12 +392,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2086,
+          "tokens": 2114,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1210,
+          "tokens": 1221,
           "url": "./react-components-datepicker--technical-information.txt"
         },
         "examples": {

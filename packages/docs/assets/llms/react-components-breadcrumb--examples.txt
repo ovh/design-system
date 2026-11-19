@@ -4,7 +4,7 @@ slug: breadcrumb
 category: component
 type: examples
 version: 20.0.0
-tokens: 1077
+tokens: 1078
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadcrumb--examples.txt
 ---
 
@@ -231,7 +231,7 @@ source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadc
 ## Accessibility With Aria Label
 
 ```tsx
-<Breadcrumb aria-label="Breadcrumb">
+<Breadcrumb aria-label="You are here">
   <BreadcrumbItem>
     <BreadcrumbLink aria-label="Home" href="#">
       <Icon name={ ICON_NAME.home } />

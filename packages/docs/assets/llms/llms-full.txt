@@ -1289,12 +1289,12 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 
 ### Identifying the Breadcrumb with aria-label
 
-**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify them.
+**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To tell it apart from the other navigation landmarks, the **Breadcrumb** is named "Breadcrumb" by default, in the language of its `locale`. An [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an `aria-labelledby` replaces that name, for example to tell two breadcrumbs of the same page apart.
 
 **Breadcrumb Links** follow the same accessibility guidelines as a standard [Link](https://ovh.github.io/design-system/v20.0.0/components/link).
 
 ```tsx
-<Breadcrumb aria-label="Breadcrumb">
+<Breadcrumb aria-label="You are here">
   <BreadcrumbItem>
     <BreadcrumbLink aria-label="Home" href="#">
       <Icon name={ ICON_NAME.home } />
@@ -1598,7 +1598,7 @@ _No specific property._
 ## Accessibility With Aria Label
 
 ```tsx
-<Breadcrumb aria-label="Breadcrumb">
+<Breadcrumb aria-label="You are here">
   <BreadcrumbItem>
     <BreadcrumbLink aria-label="Home" href="#">
       <Icon name={ ICON_NAME.home } />
@@ -6440,7 +6440,7 @@ Picking a month: By clicking on a month, the dropdown goes back to date picking 
 
 **Locale**
 
-Locale determines how the week days will be displayed according to the localization. The **Datepicker** supports the following locales: English (default), German, Spanish, French, Italian, Dutch, Polish and Portuguese.
+Locale determines how the dates and the week days are displayed, and the language of the calendar controls. The **Datepicker** supports the following locales: English, German, Spanish, French, Italian, Dutch, Polish and Portuguese. Without a `locale`, it uses the browser language when it is one of them, and English otherwise.
 
 ## Navigation
 
@@ -6632,6 +6632,7 @@ This component extends all the native `<input>` attributes.
 
 - `calendar` = `datepicker.calendar`
 - `closeCalendarButton` = `datepicker.calendar.close.button`
+- `datePicker` = `datepicker.date.picker`
 - `dayGrid` = `datepicker.grid.day`
 - `monthGrid` = `datepicker.grid.month`
 - `monthViewButton` = `datepicker.view.month.button`

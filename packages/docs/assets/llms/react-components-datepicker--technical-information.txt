@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 20.0.0
-tokens: 1210
+tokens: 1221
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -75,6 +75,7 @@ This component extends all the native `<input>` attributes.
 
 - `calendar` = `datepicker.calendar`
 - `closeCalendarButton` = `datepicker.calendar.close.button`
+- `datePicker` = `datepicker.date.picker`
 - `dayGrid` = `datepicker.grid.day`
 - `monthGrid` = `datepicker.grid.month`
 - `monthViewButton` = `datepicker.view.month.button`

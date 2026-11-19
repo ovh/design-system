@@ -24,7 +24,7 @@ describe('Datepicker accessibility', () => {
     });
 
     it('should translate the calendar and its controls', async() => {
-      expect(await page.$eval('[data-part="content"]', (el) => [el.getAttribute('aria-label'), el.getAttribute('aria-roledescription')])).toEqual(['Calendrier', 'Calendrier']);
+      expect(await page.$eval('[data-part="content"]', (el) => [el.getAttribute('aria-label'), el.getAttribute('aria-roledescription')])).toEqual(['Calendrier', 'Sélecteur de date']);
       expect(await getVisibleLabel(page, 'prev-trigger')).toBe('Mois précédent');
       expect(await getVisibleLabel(page, 'view-trigger')).toBe('Choisir un mois');
       expect(await getVisibleLabel(page, 'next-trigger')).toBe('Mois suivant');

@@ -42,7 +42,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
             { [style['datepicker-content--invalid']]: invalid || fieldContext?.invalid },
             className,
           )}
-          aria-roledescription={ translate(DATEPICKER_I18N.calendar) }
+          aria-roledescription={ translate(DATEPICKER_I18N.datePicker) }
           data-ods="datepicker-content"
           ref={ ref }
           { ...props }

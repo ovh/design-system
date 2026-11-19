@@ -317,7 +317,7 @@ export const AccessibilityWithAriaLabel: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Breadcrumb aria-label="Breadcrumb">
+    <Breadcrumb aria-label="You are here">
       <BreadcrumbItem>
         <BreadcrumbLink aria-label="Home" href="#">
           <Icon name={ ICON_NAME.home } />

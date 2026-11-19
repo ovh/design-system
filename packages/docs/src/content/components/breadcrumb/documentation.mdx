@@ -83,7 +83,7 @@ This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA
 
 <Heading label="Identifying the Breadcrumb with aria-label" level={ 3 } />
 
-**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> should be added to explicitly identify them.
+**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To tell it apart from the other navigation landmarks, the **Breadcrumb** is named "Breadcrumb" by default, in the language of its `locale`. An <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> or an `aria-labelledby` replaces that name, for example to tell two breadcrumbs of the same page apart.
 
 **Breadcrumb Links** follow the same accessibility guidelines as a standard <DocLink to="/components/link">Link</DocLink>.
 

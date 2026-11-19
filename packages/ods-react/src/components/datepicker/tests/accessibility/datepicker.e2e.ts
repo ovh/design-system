@@ -1,5 +1,5 @@
 import 'jest-puppeteer';
-import { type Page } from 'puppeteer';
+import { type CDPSession, type Page } from 'puppeteer';
 import { gotoStory } from '../../../../helpers/test';
 
 async function getVisibleLabel(page: Page, part: string): Promise<string | null> {
@@ -55,6 +55,28 @@ describe('Datepicker accessibility', () => {
 
       expect(await getVisibleGrid(page)).toEqual({ name: '2020 - 2029', roleDescription: 'Années' });
       expect(await getVisibleLabel(page, 'next-trigger')).toBe('Décennie suivante');
+    });
+  });
+
+  describe('without locale', () => {
+    let client: CDPSession;
+
+    beforeEach(async() => {
+      client = await page.createCDPSession();
+      await client.send('Emulation.setLocaleOverride', { locale: 'fr-FR' });
+      await gotoStory(page, 'accessibility/browser-language');
+      await page.waitForSelector('[role="grid"]');
+    });
+
+    afterEach(async() => {
+      await client.send('Emulation.setLocaleOverride', {});
+      await client.detach();
+    });
+
+    it('should show the dates and the controls in the browser language', async() => {
+      expect(await getVisibleGrid(page)).toEqual({ name: 'septembre 2026', roleDescription: 'Calendrier du mois' });
+      expect(await getVisibleLabel(page, 'prev-trigger')).toBe('Mois précédent');
+      expect(await page.$eval('[data-part="input"]', (el) => (el as HTMLInputElement).value)).toBe('15/09/2026');
     });
   });
 

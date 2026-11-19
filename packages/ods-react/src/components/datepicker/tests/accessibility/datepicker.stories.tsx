@@ -5,6 +5,15 @@ export default {
   title: 'Tests accessibility',
 };
 
+export const BrowserLanguage = () => (
+  <Datepicker
+    defaultOpen
+    defaultValue={ new Date(2026, 8, 15) }>
+    <DatepickerControl />
+    <DatepickerContent createPortal={ false } />
+  </Datepicker>
+);
+
 export const French = () => (
   <Datepicker
     defaultOpen

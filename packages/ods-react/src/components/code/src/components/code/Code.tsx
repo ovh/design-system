@@ -35,7 +35,7 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
    */
   labelCopy?: string,
   /**
-   * The tooltip label on copy button after a successful copy.
+   * The tooltip label on copy button after a successful copy, also announced to screen readers.
    */
   labelCopySuccess?: string,
   /**

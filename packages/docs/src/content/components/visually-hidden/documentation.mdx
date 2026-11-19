@@ -15,7 +15,7 @@ _**Visually Hidden** hides content from the screen while keeping it available to
 
 **Visually Hidden** is used when the screen already conveys a piece of information visually, through an icon, a position or a color, and screen readers need it as text:
 
-- Name an icon-only control.
+- Give a meaningful icon its text, like a status icon next to a value. An icon-only button is named with an `aria-label` instead, see <DocLink to="/components/button">Button</DocLink>.
 - Complete a link or button text whose meaning depends on its surroundings, like "Read more".
 - Announce a change without moving the focus, with `role="status"`.
 
@@ -37,7 +37,7 @@ _**Visually Hidden** hides content from the screen while keeping it available to
 
 <Heading label="Behavior" level={ 2 } />
 
-**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow. Its content does not affect the layout around it.
+**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow, so its content takes no room in the layout. Being absolutely positioned, it escapes a scrolling container that is not positioned itself, and can make the page scroll: give that container `position: relative`.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -62,4 +62,4 @@ Give **Visually Hidden** the <ExternalLink href="https://developer.mozilla.org/e
 <Icon name="circle-check"
       style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce "Settings saved." after the click, while the focus stays on the button.
 
-The **Clipboard**, **Code** and **CartTotal** components rely on the same pattern to announce a copy and a new total.
+The **Clipboard** and **Code** components rely on the same pattern to announce a copy. **CartTotal** announces a new total without it: its visible label and price form the status region.

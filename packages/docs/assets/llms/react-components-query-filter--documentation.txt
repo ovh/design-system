@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1358
+tokens: 1409
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-query-filter--documentation.txt
 ---
 
@@ -93,6 +93,8 @@ Optional "Clear all filters" button removes all tokens in one action.
 Focus follows a logical order from left to right.
 
 When the suggestions panel is open, focus moves within the panel without leaving the component.
+
+As in the Combobox WAI-ARIA design pattern, the highlighted suggestion is also the selected one (`aria-selected="true"`): the panel keeps no lasting selection, `Enter` picks the highlighted suggestion.
 
 ### General Keyboard Shortcuts
 

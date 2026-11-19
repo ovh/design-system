@@ -106,7 +106,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1114,
+          "tokens": 1134,
           "url": "./react-components-breadcrumb--documentation.txt"
         },
         "technical-information": {
@@ -314,7 +314,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1805,
+          "tokens": 1954,
           "url": "./react-components-combobox--documentation.txt"
         },
         "technical-information": {
@@ -340,7 +340,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2001,
+          "tokens": 2012,
           "url": "./react-components-command--documentation.txt"
         },
         "technical-information": {
@@ -1068,7 +1068,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1358,
+          "tokens": 1409,
           "url": "./react-components-query-filter--documentation.txt"
         },
         "technical-information": {
@@ -1645,7 +1645,7 @@
       "slug": "ovhcloud-design-system-upgrade-migration-19-x-to-20-x",
       "title": "Migration 19.x to 20.x",
       "type": "overview",
-      "tokens": 21288,
+      "tokens": 21334,
       "url": "./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt"
     },
     {

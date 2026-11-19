@@ -4,7 +4,7 @@ slug: breadcrumb
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1114
+tokens: 1134
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadcrumb--documentation.txt
 ---
 
@@ -82,9 +82,9 @@ All links within the **Breadcrumb** component are focusable, following the readi
 
 * Pressing `Tab` moves focus through each link in the **Breadcrumb** trail
 * Pressing `Enter` while a link is focused navigates to the corresponding page
-* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as a link:
-  * Pressing `Enter` expands the full **Breadcrumb** list
-  * Once expanded, additional link become accessible via `Tab` navigation
+* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it is a button that reveals the hidden links:
+  * Pressing `Enter` or `Space` expands the full **Breadcrumb** list and moves focus to the first revealed link
+  * Once expanded, additional links become accessible via `Tab` navigation
 
 ## Accessibility
 

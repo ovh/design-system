@@ -16,6 +16,9 @@ const Heading = ({ children, className, content, label, level }: { children?: Re
       <Text
         as={ `h${level}` }
         className={ cx('doc__heading', className) }
+        // The slug before DocArticle renames a repeat: rendered, so that the pre-rendered HTML and
+        // the hydration agree on it.
+        data-slug={ id }
         id={ id }
         preset={ PRESETS[level] }>
         { content ?? label }{ children }

@@ -3,9 +3,8 @@
 import aluminiumDarkCss from '@ovhcloud/ods-themes/aluminium-dark/css?inline';
 import blueJeansDarkCss from '@ovhcloud/ods-themes/blue-jeans-dark/css?inline';
 import blueJeansCss from '@ovhcloud/ods-themes/blue-jeans/css?inline';
+import { BRAND_KEY, type Brand, type Scheme, readStoredTheme } from './themeBoot';
 
-type Brand = 'blue-jeans' | 'default';
-type Scheme = 'dark' | 'light';
 
 /* Each mode is a complete theme. The default light one is the theme main.tsx loads, so it needs no
    style of its own here. */
@@ -15,36 +14,50 @@ const THEMES: Record<Brand, Record<Scheme, string>> = {
 };
 
 /* One style element, after the theme main.tsx loads: it holds the theme shown, whole, so it wins over
-   that one on every token. The demo frames mirror it (StyleSync). */
-const themeStyle = ((): HTMLStyleElement => {
+   that one on every token. The demo frames mirror it (StyleSync). Created on the first use: the
+   pages are also rendered at build time, where there is no document. */
+let themeStyle: HTMLStyleElement | null = null;
+const getThemeStyle = (): HTMLStyleElement => {
+  if (themeStyle) {
+    return themeStyle;
+  }
   const existing = document.getElementById('ods-doc-theme');
   if (existing instanceof HTMLStyleElement) {
-    return existing;
+    themeStyle = existing;
+    return themeStyle;
   }
-  const style = document.createElement('style');
-  style.id = 'ods-doc-theme';
-  document.head.append(style);
-  return style;
-})();
+  themeStyle = document.createElement('style');
+  themeStyle.id = 'ods-doc-theme';
+  document.head.append(themeStyle);
+  return themeStyle;
+};
 
 /* The brand is kept from one visit to the next, and applied from here: its select is not mounted
-   while the navigation drawer is closed. */
-const BRAND_KEY = 'ods-doc-brand';
-
-const readStoredBrand = (): Brand => {
+   while the navigation drawer is closed. The scheme is read at load too: the page keeps the one its
+   boot script (themeBoot.ts) painted it with. */
+const readStored = (): { brand: Brand, scheme: Scheme } => {
   try {
-    return localStorage.getItem(BRAND_KEY) === 'blue-jeans' ? 'blue-jeans' : 'default';
+    const { brand, scheme } = readStoredTheme();
+    return { brand, scheme };
   } catch {
-    return 'default';
+    return { brand: 'default', scheme: 'light' };
   }
 };
 
-const current: { brand: Brand, scheme: Scheme } = { brand: readStoredBrand(), scheme: 'light' };
+const isBrowser = typeof document !== 'undefined';
+const current: { brand: Brand, scheme: Scheme } = isBrowser ? readStored() : { brand: 'default', scheme: 'light' };
 
 /* data-theme marks the scheme actually shown, for what the docs paint themselves (code blocks,
    sandbox editor). */
 const apply = () => {
-  themeStyle.textContent = THEMES[current.brand][current.scheme];
+  if (!isBrowser) {
+    return;
+  }
+  getThemeStyle().textContent = THEMES[current.brand][current.scheme];
+  // The theme the pre-rendered page showed before this module ran (scripts/prerender.mjs): this
+  // style takes over from it.
+  document.getElementById('ods-doc-theme-boot')?.remove();
+  document.documentElement.removeAttribute('data-theme');
   if (current.scheme === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
   } else {

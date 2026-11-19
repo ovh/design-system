@@ -185,6 +185,21 @@ If some of your changes impacts the technical side of the component:
 - check that the generated interfaces/definitions are correct (run `pnpm doc` at the root to get the latest data).
 - if relevant, add some stories in the `<component-name>.stories.tsx` file; they show up in the Examples tab.
 
+### Pre-rendered pages
+
+`pnpm build` in `packages/docs` writes the HTML of every page (`scripts/prerender.mjs`): a reader gets the page text before
+the scripts load, then the scripts hydrate it. The first render in the browser must give the same HTML as the build:
+
+- don't read `window`, `document`, `navigator`, `localStorage` or a media query while rendering or when a module loads:
+  read them in an effect, after `useHydrated()` (`src/nav/useHydrated.ts`), or through `useMediaQuery()` for a media query.
+- load what a page needs (its MDX, its stories, its data) with `lazyOnce()` and `useLoaded()` (`src/nav/loadOnce.ts`), inside a
+  `Suspense` whose fallback is its `DocSkeleton`, and list it in the page's `preload…` function: the browser loads it before
+  hydrating.
+- a tool that only works in the browser goes in a `ToolRoute` (`src/routes.tsx`): its HTML is its skeleton.
+
+The build fails on a page that fails to render. `node tests/run.mjs prerender` (after `pnpm build`) checks that the pages
+hydrate in place.
+
 # Code submission
 
 The contributions should be submitted through Github Pull Requests and follow the DCO defined below.

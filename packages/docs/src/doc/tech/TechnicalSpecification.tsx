@@ -1,12 +1,11 @@
 import { Fragment, useMemo } from 'react';
 import { BADGE_STATUS, Badge, ICON_NAME, Icon, Link, Table } from '../../ods';
-import { useAsyncValue } from '../../nav/useAsyncValue';
+import { useLoaded } from '../../nav/loadOnce';
 import { guessTokenType } from '../ports/helpers/designTokens';
 import { TokensTable } from '../ports/designTokens/tokensTable/TokensTable';
-import { DocSkeleton } from '../DocSkeleton';
 import { Heading } from '../Heading';
 import { AnatomyBrowser } from './AnatomyBrowser';
-import { type TechData, getTechData } from './techData';
+import { getTechData, techKey } from './techData';
 import './tech.css';
 
 const PROP_COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
@@ -26,15 +25,12 @@ const SectionHeading = ({ children, label }: { children?: React.ReactNode, label
 );
 
 const TechnicalSpecification = ({ component }: { component: string }) => {
-  // The typedoc JSON loads lazily (it only ships in its own chunk); the tab
-  // shows its skeleton until the parsed spec lands. The state keeps a stable
+  // The typedoc JSON loads lazily (it only ships in its own chunk): the tab shows its skeleton (the
+  // Suspense fallback around it) until the parsed spec lands. The loaded value keeps a stable
   // identity across renders, like the names array handed to the anatomy.
-  const data: TechData | null | undefined = useAsyncValue(() => getTechData(component), [component]);
+  const data = useLoaded(techKey(component), () => getTechData(component));
   const componentNames = useMemo(() => data?.spec.components.map((entry) => entry.name) ?? [], [data]);
 
-  if (data === undefined) {
-    return <DocSkeleton variant="technical" />;
-  }
   if (!data) {
     return null;
   }

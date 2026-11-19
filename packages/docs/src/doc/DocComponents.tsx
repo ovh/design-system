@@ -1,6 +1,6 @@
 import { composeStory } from '@storybook/react';
 import { Children, type ComponentType, type ReactElement, type ReactNode, isValidElement, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHref, useNavigate } from 'react-router-dom';
 import versions from '../../assets/ods-versions.json';
 import { APP_ROOT } from '../appBase';
 import { CARD_STATUS, Card } from '../../../ods-react/src/components/card/src';
@@ -116,9 +116,10 @@ const DocImage = ({ alt, src }: { alt?: string, src?: string }) => {
 /* Internal navigation with the ODS Link look: SPA routing, no reload. */
 const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
   const navigate = useNavigate();
+  const href = useHref(to);
   return (
     <Link
-      href={ to }
+      href={ href }
       onClick={ (event) => {
         event.preventDefault();
         navigate(to);
@@ -129,9 +130,15 @@ const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
 };
 
 /* Site-root-relative hrefs (e.g. "/llms/llms.txt") must resolve against the
-   deploy root, not the origin: the app lives under a version subpath. */
+   deploy root, not the origin: the app lives under a version subpath. Without
+   the origin, which the pre-render has not (appBase.ts). */
+const deployPath = (href: string): string => {
+  const url = new URL(href.slice(1), APP_ROOT);
+  return `${url.pathname}${url.search}${url.hash}`;
+};
+
 const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
-  <Link href={ href?.startsWith('/') ? new URL(href.slice(1), APP_ROOT).href : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
+  <Link href={ href?.startsWith('/') ? deployPath(href) : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
 );
 
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../ods-react/src/components/accordion/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { useMediaQuery } from '../nav/useMediaQuery';
 import { TocSkeleton } from './DocSkeleton';
 import { MarkdownLink } from './MarkdownLink';
 import { flashSearchTerms } from './searchHighlight';
@@ -40,8 +41,8 @@ const isLoading = (container: HTMLElement): boolean => container.querySelector('
 
 /* Headings render their slug as id; a repeated label would give duplicate ids.
    Rename the repeats in document order (same rule as the search index) and keep
-   each hover anchor in sync. The original slug is kept in data-slug, so the pass
-   is idempotent when lazy content mounts later. */
+   each hover anchor in sync. The original slug is in data-slug (Heading renders
+   it), so the pass is idempotent when lazy content mounts later. */
 function dedupeHeadingIds(container: HTMLElement): void {
   const unique = createUniqueSlugs();
   container.querySelectorAll<HTMLElement>('.doc__heading[id]').forEach((heading) => {
@@ -210,16 +211,7 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
 /* Keep in sync with doc.css: below it the article takes the whole width, without a ToC column. */
 const COMPACT_TOC_QUERY = '(max-width: 1100px)';
 
-const useCompactToc = () => {
-  const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_TOC_QUERY).matches);
-  useEffect(() => {
-    const query = window.matchMedia(COMPACT_TOC_QUERY);
-    const onChange = () => setCompact(query.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
-  return compact;
-};
+const useCompactToc = () => useMediaQuery(COMPACT_TOC_QUERY);
 
 /* Doc page layout: the article plus its ToC column. */
 const DocArticle = ({ children }: { children: ReactNode }) => {

@@ -286,6 +286,12 @@ body {
     grid-template-columns: 1fr;
   }
 
+  /* The pre-rendered page holds the wide layout (a server knows no viewport): until the scripts
+     swap it for the drawer, its sidebar would push the page below. */
+  .shell__sidebar {
+    display: none;
+  }
+
   .shell__topbar {
     gap: var(--ods-semantic-size-space-gap-block) var(--ods-semantic-size-space-gap-inline);
     padding: var(--ods-semantic-size-space-inset-block) calc(var(--ods-semantic-size-space-inset-inline) * 1.5);

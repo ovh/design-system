@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Select, SelectContent, SelectControl } from '../../../ods-react/src/components/select/src';
+import { useHydrated } from '../nav/useHydrated';
 import { type Brand, getThemeBrand, setThemeBrand } from './themeStyles';
 
 /* DEV/DEBUG ONLY - not a product feature: the brand themes ODS ships (themeStyles.ts swaps them). */
@@ -9,7 +10,11 @@ const BRAND_ITEMS = [
 ];
 
 const BrandSelect = ({ className }: { className?: string }) => {
-  const [brand, setBrand] = useState<Brand>(getThemeBrand);
+  // The pre-rendered HTML cannot know the stored brand: the default until hydrated, the stored one
+  // after, the reader's pick once made.
+  const [picked, setPicked] = useState<Brand | null>(null);
+  const hydrated = useHydrated();
+  const brand = picked ?? (hydrated ? getThemeBrand() : 'default');
 
   return (
     <Select
@@ -18,7 +23,7 @@ const BrandSelect = ({ className }: { className?: string }) => {
       items={ BRAND_ITEMS }
       onValueChange={ ({ value }) => {
         const next = (value[0] as Brand) ?? 'default';
-        setBrand(next);
+        setPicked(next);
         setThemeBrand(next);
       } }
       overlayConfig={ { sameWidth: false } }

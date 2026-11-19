@@ -39,7 +39,7 @@ async function suite(browser, { base, version }) {
     page.on('pageerror', handler);
     try {
       await page.goto(`${base}/v${version}${route}`, { timeout: 30000, waitUntil: 'domcontentloaded' });
-      await page.waitForSelector('#root *', { timeout: 15000 });
+      await page.waitForSelector('#root main', { timeout: 15000 });
       await page.waitForTimeout(400);
       const text = ((await page.textContent('#root')) ?? '').replace(/\s+/g, ' ');
       const finalPath = new URL(page.url()).pathname;

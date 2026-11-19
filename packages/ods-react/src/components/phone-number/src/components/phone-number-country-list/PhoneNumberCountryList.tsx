@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { type Locale } from '../../../../../utils/locales';
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { PHONE_NUMBER_I18N, TRANSLATION } from '../../constants/phone-number-i18n';
@@ -34,7 +33,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     setHasCountries,
     setIsoCode,
   } = usePhoneNumber();
-  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
+  const { translate } = useI18n(TRANSLATION, locale, i18n);
 
   const countryItems = useMemo(() => {
     const regionLocalized = new Intl.DisplayNames(locale, { type: 'region' });

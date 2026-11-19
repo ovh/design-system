@@ -2,6 +2,7 @@ import { useCallback, useSyncExternalStore } from 'react';
 import { LOCALE, LOCALES, type Locale } from '../utils/locales';
 
 interface UseI18n {
+  locale: Locale,
   translate: (key: string) => string
 }
 
@@ -22,8 +23,7 @@ function getServerLocale(): Locale {
   return LOCALE.en;
 }
 
-// Datepicker and PhoneNumber take a BCP 47 locale for Intl: a regional one (fr-FR) reads the
-// translations of its language.
+// A regional BCP 47 locale (fr-FR) reads the translations of its language.
 function toLocale(locale?: string): Locale | undefined {
   const language = locale?.split('-')[0].toLowerCase() as Locale | undefined;
   return language && LOCALES.indexOf(language) >= 0 ? language : undefined;
@@ -36,7 +36,7 @@ function subscribe(): () => void {
 
 /* Without an explicit locale, the server and the first hydration render both use English, so that
    their markup matches; React then renders again with the browser language. */
-function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale, i18n?: Record<string, string>): UseI18n {
+function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: string, i18n?: Record<string, string>): UseI18n {
   const browserLocale = useSyncExternalStore(subscribe, getBrowserLocale, getServerLocale);
   const currentLocale = toLocale(locale) || browserLocale;
 
@@ -47,7 +47,7 @@ function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale
     return keyMap[key][currentLocale] || '';
   }, [currentLocale, i18n, keyMap]);
 
-  return { translate };
+  return { locale: currentLocale, translate };
 }
 
 export {

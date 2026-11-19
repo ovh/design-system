@@ -3,7 +3,6 @@ import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { type Locale } from '../../../../../utils/locales';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { DATEPICKER_I18N, TRANSLATION } from '../../constants/datepicker-i18n';
@@ -25,7 +24,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { i18n, invalid, locale, positionerStyle } = useDatepicker();
-  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
+  const { translate } = useI18n(TRANSLATION, locale, i18n);
   const rangeTextId = useId();
   const { getInputProps, isUnavailable, open } = useDatePickerContext();
   const fieldContext = useFormField();

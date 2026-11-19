@@ -1217,9 +1217,10 @@ declare function filterItems(items: ComboboxItem[], selection: ComboboxOptionIte
 declare function findItemByValue(items: ComboboxItem[], value: string): ComboboxOptionItem | undefined;
 declare function getDefaultInputValue(items: ComboboxItem[], multiple: boolean, defaultValue?: string[]): string;
 declare function getDefaultSelection(items: ComboboxItem[], defaultValue?: string[]): ComboboxOptionItem[];
+declare function getOptionId(controlId: string, value: string): string;
 declare function isAtInputStart(input: HTMLInputElement | null): boolean;
 declare function isGroup(item: ComboboxItem): item is ComboboxGroupItem;
-export { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, isAtInputStart, isGroup, };
+export { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, getOptionId, isAtInputStart, isGroup, };
 
 // ==================== components/combobox/src/index.d.ts ====================
 import { ComboboxProp } from './components/combobox/Combobox';

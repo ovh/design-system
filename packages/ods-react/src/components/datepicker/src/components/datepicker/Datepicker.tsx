@@ -2,7 +2,6 @@ import { DatePicker, type DatePickerDateView, type DatePickerRootProps, type Dat
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback, useMemo } from 'react';
 import { useI18n } from '../../../../../hooks/useI18n';
-import { type Locale } from '../../../../../utils/locales';
 import { useFormField } from '../../../../form-field/src';
 import { DATEPICKER_I18N, TRANSLATION } from '../../constants/datepicker-i18n';
 import { DatepickerProvider , type DatepickerRootProp } from '../../contexts/useDatepicker';
@@ -43,7 +42,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
-  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
+  const { locale: translationLocale, translate } = useI18n(TRANSLATION, locale, i18n);
   const translations = useMemo((): DatePickerRootProps['translations'] => {
     const nextButton: Record<DatePickerDateView, DATEPICKER_I18N> = {
       day: DATEPICKER_I18N.nextMonthButton,
@@ -121,7 +120,8 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         format={ dateFormatter ? formatDate : undefined }
         id={ id || fieldContext?.id }
         isDateUnavailable={ isDateUnavailable }
-        locale={ locale }
+        // Without a locale, the dates follow the language of the translations.
+        locale={ locale || translationLocale }
         max={ convertedMax }
         maxView={ maxView }
         min={ convertedMin }

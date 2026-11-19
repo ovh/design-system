@@ -17,6 +17,7 @@ const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand, ...props }):
     <li className={ style['breadcrumb-ellipsis'] }>
       <button
         { ...props }
+        // The button unmounts on expand, so it is never seen expanded.
         aria-expanded={ false }
         aria-label={ translate(BREADCRUMB_I18N.ellipsisButton) }
         className={ style['breadcrumb-ellipsis__button'] }

@@ -54,6 +54,7 @@ const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
 
   return (
     <Checkbox.Group
+      // An aria-label would lose to the Form Field label, aria-labelledby taking precedence.
       aria-labelledby={ props['aria-label'] ? undefined : fieldContext?.labelId }
       className={ classNames(styles['checkbox-group'], className) }
       data-ods="checkbox-group"

@@ -77,6 +77,7 @@ const CartProductGroup: FC<CartProductGroupProp> = forwardRef(({
           {
             onRemove &&
             <Button
+              // Read by the self reference in aria-labelledby: it starts the name.
               aria-label={ translate(CART_I18N.removeProductButton) }
               aria-labelledby={ `${removeButtonId} ${labelId}` }
               emphasis={ BUTTON_EMPHASIS.low }

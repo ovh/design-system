@@ -76,6 +76,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       i18n={ i18n }
       locale={ locale }>
       <nav
+        // An aria-labelledby would win anyway: the default aria-label is not left unused next to it.
         aria-label={ props['aria-labelledby'] ? undefined : translate(BREADCRUMB_I18N.navigation) }
         className={ classNames(style['breadcrumb'], className) }
         data-ods="breadcrumb"

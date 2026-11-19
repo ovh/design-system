@@ -7,7 +7,7 @@ import { Input } from '../../../../input/src';
 import { POPOVER_POSITION } from '../../../../popover/src';
 import { TAG_STATUS, Tag } from '../../../../tag/src';
 import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
-import { isAtInputStart } from '../../controller/combobox';
+import { getOptionId, isAtInputStart } from '../../controller/combobox';
 import style from './comboboxControl.module.scss';
 
 interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
@@ -201,7 +201,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
 
       <div className={ style['combobox-control__field'] }>
         <Input
-          aria-activedescendant={ highlightedOptionValue ? `${controlId}-${highlightedOptionValue}` : '' }
+          aria-activedescendant={ highlightedOptionValue ? getOptionId(controlId, highlightedOptionValue) : '' }
           aria-autocomplete="list"
           aria-controls={ contentId }
           aria-expanded={ isOpen ? 'true' : 'false' }

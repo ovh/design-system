@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, useId } from 'react';
 import { type ComboboxGroupItem, useCombobox } from '../../contexts/useCombobox';
+import { getOptionId } from '../../controller/combobox';
 import { ComboboxOption } from '../combobox-option/ComboboxOption';
 import style from './comboboxGroup.module.scss';
 
@@ -36,7 +37,7 @@ const ComboboxGroup: FC<ComboboxGroupProp> = ({
         item.options.map((option) => (
           <ComboboxOption
             className={ style['combobox-group__option'] }
-            id={ `${controlId}-${option.value}` }
+            id={ getOptionId(controlId, option.value) }
             isHighlighted={ highlightedOptionValue === option.value }
             item={ option }
             key={ option.value } />

@@ -2825,6 +2825,8 @@ Pressing `Escape` collapses the **Cart** when it is expanded on mobile and retur
 
 The label and price of **CartTotal** form a status region: when the price changes, screen readers announce the label with the new price, for example "Total €10.00".
 
+A status region only announces changes: a **CartTotal** that appears with its first price, when the first product is added to an empty cart, is not read. Keep **CartTotal** mounted while the cart is empty, or include the total in your own message in that case.
+
 ### Announce product and option updates
 
 The **Cart** has no data model: it does not know when a product or an option is added or removed, so screen readers are not informed of it.
@@ -3584,7 +3586,7 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 
 ### Copy confirmation
 
-The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied".
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied". A copy made again while the confirmation is still shown is not announced a second time.
 
 ## Clipboard
 
@@ -3714,7 +3716,7 @@ _**Code** component highlights strings or small blocks of **Code** so it makes t
 | `children` | `string` | Yes | undefined | The code to display. |
 | `highlighter` | `object` | No | undefined | Configuration of a specific code highlighter (see beneath for more details). |
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
-| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy, also announced to screen readers. |
 | `onCopy` | `() => void` | No | undefined | Callback fired when the text is copied. |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
@@ -3813,7 +3815,7 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ### Copy confirmation
 
-The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button.
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. A copy made again while the confirmation is still shown is not announced a second time.
 
  Screen readers will announce the embedded code, the copy button, and the confirmation once the code is copied.
 
@@ -3831,7 +3833,7 @@ This component extends all the native `<div>` attributes.
 | `children` | `string` | Yes | undefined | The code to display. |
 | `highlighter` | `object` | No | undefined | Configuration of a specific code highlighter (see beneath for more details). |
 | `labelCopy` | `string` | No | undefined | The initial tooltip label on copy button. |
-| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy. |
+| `labelCopySuccess` | `string` | No | undefined | The tooltip label on copy button after a successful copy, also announced to screen readers. |
 | `onCopy` | `() => void` | No | undefined | Callback fired when the text is copied. |
 | `positionerStyle` | `CSSProperties` | No | undefined | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
@@ -22723,7 +22725,7 @@ _**Visually Hidden** hides content from the screen while keeping it available to
 
 **Visually Hidden** is used when the screen already conveys a piece of information visually, through an icon, a position or a color, and screen readers need it as text:
 
-- Name an icon-only control.
+- Give a meaningful icon its text, like a status icon next to a value. An icon-only button is named with an `aria-label` instead, see [Button](https://ovh.github.io/design-system/v20.0.0/components/button).
 - Complete a link or button text whose meaning depends on its surroundings, like "Read more".
 - Announce a change without moving the focus, with `role="status"`.
 
@@ -22744,7 +22746,7 @@ _**Visually Hidden** hides content from the screen while keeping it available to
 
 ## Behavior
 
-**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow. Its content does not affect the layout around it.
+**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow, so its content takes no room in the layout. Being absolutely positioned, it escapes a scrolling container that is not positioned itself, and can make the page scroll: give that container `position: relative`.
 
 ## Variation
 
@@ -22788,7 +22790,7 @@ Give **Visually Hidden** the [status role](https://developer.mozilla.org/en-US/d
 
  Screen readers will announce "Settings saved." after the click, while the focus stays on the button.
 
-The **Clipboard**, **Code** and **CartTotal** components rely on the same pattern to announce a copy and a new total.
+The **Clipboard** and **Code** components rely on the same pattern to announce a copy. **CartTotal** announces a new total without it: its visible label and price form the status region.
 
 ## Visually Hidden
 

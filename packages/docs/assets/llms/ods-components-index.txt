@@ -55,7 +55,7 @@
 ## Cart
 
 - [Overview](./react-components-cart.txt) (~185 tokens)
-- [Documentation](./react-components-cart--documentation.txt) (~1317 tokens)
+- [Documentation](./react-components-cart--documentation.txt) (~1382 tokens)
 - [Technical Information](./react-components-cart--technical-information.txt) (~856 tokens)
 - [Examples](./react-components-cart--examples.txt) (~1265 tokens)
 
@@ -69,15 +69,15 @@
 ## Clipboard
 
 - [Overview](./react-components-clipboard.txt) (~292 tokens)
-- [Documentation](./react-components-clipboard--documentation.txt) (~948 tokens)
+- [Documentation](./react-components-clipboard--documentation.txt) (~970 tokens)
 - [Technical Information](./react-components-clipboard--technical-information.txt) (~436 tokens)
 - [Examples](./react-components-clipboard--examples.txt) (~232 tokens)
 
 ## Code
 
-- [Overview](./react-components-code.txt) (~306 tokens)
-- [Documentation](./react-components-code--documentation.txt) (~701 tokens)
-- [Technical Information](./react-components-code--technical-information.txt) (~433 tokens)
+- [Overview](./react-components-code.txt) (~315 tokens)
+- [Documentation](./react-components-code--documentation.txt) (~723 tokens)
+- [Technical Information](./react-components-code--technical-information.txt) (~441 tokens)
 - [Examples](./react-components-code--examples.txt) (~170 tokens)
 
 ## Combobox
@@ -405,6 +405,6 @@
 ## Visually Hidden
 
 - [Overview](./react-components-visually-hidden.txt) (~107 tokens)
-- [Documentation](./react-components-visually-hidden--documentation.txt) (~726 tokens)
+- [Documentation](./react-components-visually-hidden--documentation.txt) (~828 tokens)
 - [Technical Information](./react-components-visually-hidden--technical-information.txt) (~31 tokens)
 - [Examples](./react-components-visually-hidden--examples.txt) (~148 tokens)

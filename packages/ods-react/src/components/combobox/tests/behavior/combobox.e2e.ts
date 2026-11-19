@@ -37,6 +37,8 @@ async function isContentOpened(page: Page): Promise<boolean> {
 async function openContent(page: Page): Promise<void> {
   await page.click('[data-ods="combobox-control"]');
   await page.waitForSelector('[data-ods="combobox-content"]:not([hidden])');
+  // The content shows at the page origin until the positioner sets its coordinates.
+  await page.waitForFunction(() => document.querySelector('[data-ods="combobox-content"]')?.parentElement?.style.getPropertyValue('--y') !== '');
 }
 
 async function typeOnInput(page: Page, text: string): Promise<void> {

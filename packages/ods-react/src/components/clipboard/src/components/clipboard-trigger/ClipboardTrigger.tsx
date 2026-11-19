@@ -57,7 +57,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
       </Clipboard.Trigger>
 
       {/* Announces the copy without moving focus. The trigger keeps its name: renaming the focused
-          button too would make NVDA read the success twice. */}
+          button too would read the success twice. */}
       <VisuallyHidden role="status">
         { copied && labelCopySuccess }
       </VisuallyHidden>

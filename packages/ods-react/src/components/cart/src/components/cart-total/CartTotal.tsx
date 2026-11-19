@@ -49,6 +49,7 @@ const CartTotal: FC<CartTotalProp> = forwardRef(({
           { label }
         </Text>
 
+        {/* The flex gap separates them on screen only: this space keeps "Total 12 €" from being read "Total12 €". */}
         { ' ' }
 
         <Text

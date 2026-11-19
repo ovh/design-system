@@ -1322,7 +1322,7 @@ slug: breadcrumb
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1114
+tokens: 1134
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-breadcrumb--documentation.txt
 ---
 
@@ -1400,9 +1400,9 @@ All links within the **Breadcrumb** component are focusable, following the readi
 
 * Pressing `Tab` moves focus through each link in the **Breadcrumb** trail
 * Pressing `Enter` while a link is focused navigates to the corresponding page
-* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as a link:
-  * Pressing `Enter` expands the full **Breadcrumb** list
-  * Once expanded, additional link become accessible via `Tab` navigation
+* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it is a button that reveals the hidden links:
+  * Pressing `Enter` or `Space` expands the full **Breadcrumb** list and moves focus to the first revealed link
+  * Once expanded, additional links become accessible via `Tab` navigation
 
 ## Accessibility
 
@@ -4346,7 +4346,7 @@ slug: combobox
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1805
+tokens: 1954
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-combobox--documentation.txt
 ---
 
@@ -4492,7 +4492,7 @@ Pressing `Enter` while focusing a tag will remove it.
 
 ## Accessibility
 
-This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/), with one difference: `aria-selected="true"` marks the selected option, not the option highlighted in the list. The pattern lets the selection follow the highlight, which suits a list that keeps no value, such as the **Command** list. A **Combobox** keeps its value, so a screen reader announces the option of that value as selected when the list opens again, as with the **Select**. The highlighted option is referenced by `aria-activedescendant` on the input and carries `data-highlighted`. In multiple selection mode, the selected values leave the list and are announced through their tags.
 
 ### Always provide an explicit label
 
@@ -5028,7 +5028,7 @@ slug: command
 category: component
 type: documentation
 version: 20.0.0
-tokens: 2001
+tokens: 2012
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-command--documentation.txt
 ---
 
@@ -5159,7 +5159,7 @@ Pressing `Home` or `End` moves the cursor within the search input.
 
 The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
 
-The highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
+As in the Combobox WAI-ARIA design pattern, the highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
  
 
 ```tsx
@@ -17534,7 +17534,7 @@ slug: query-filter
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1358
+tokens: 1409
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-query-filter--documentation.txt
 ---
 
@@ -17623,6 +17623,8 @@ Optional "Clear all filters" button removes all tokens in one action.
 Focus follows a logical order from left to right.
 
 When the suggestions panel is open, focus moves within the panel without leaving the component.
+
+As in the Combobox WAI-ARIA design pattern, the highlighted suggestion is also the selected one (`aria-selected="true"`): the panel keeps no lasting selection, `Enter` picks the highlighted suggestion.
 
 ### General Keyboard Shortcuts
 

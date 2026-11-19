@@ -1279,9 +1279,9 @@ All links within the **Breadcrumb** component are focusable, following the readi
 
 * Pressing `Tab` moves focus through each link in the **Breadcrumb** trail
 * Pressing `Enter` while a link is focused navigates to the corresponding page
-* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as a link:
-  * Pressing `Enter` expands the full **Breadcrumb** list
-  * Once expanded, additional link become accessible via `Tab` navigation
+* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it is a button that reveals the hidden links:
+  * Pressing `Enter` or `Space` expands the full **Breadcrumb** list and moves focus to the first revealed link
+  * Once expanded, additional links become accessible via `Tab` navigation
 
 ## Accessibility
 
@@ -4091,7 +4091,7 @@ Pressing `Enter` while focusing a tag will remove it.
 
 ## Accessibility
 
-This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/), with one difference: `aria-selected="true"` marks the selected option, not the option highlighted in the list. The pattern lets the selection follow the highlight, which suits a list that keeps no value, such as the **Command** list. A **Combobox** keeps its value, so a screen reader announces the option of that value as selected when the list opens again, as with the **Select**. The highlighted option is referenced by `aria-activedescendant` on the input and carries `data-highlighted`. In multiple selection mode, the selected values leave the list and are announced through their tags.
 
 ### Always provide an explicit label
 
@@ -4723,7 +4723,7 @@ Pressing `Home` or `End` moves the cursor within the search input.
 
 The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
 
-The highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
+As in the Combobox WAI-ARIA design pattern, the highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
  
 
 ```tsx
@@ -16207,6 +16207,8 @@ Optional "Clear all filters" button removes all tokens in one action.
 Focus follows a logical order from left to right.
 
 When the suggestions panel is open, focus moves within the panel without leaving the component.
+
+As in the Combobox WAI-ARIA design pattern, the highlighted suggestion is also the selected one (`aria-selected="true"`): the panel keeps no lasting selection, `Enter` picks the highlighted suggestion.
 
 ### General Keyboard Shortcuts
 
@@ -28762,7 +28764,7 @@ These apply whichever React version you use.
 
 - **Drawer** without backdrop, focus on close: when the Drawer is closed while the focus is inside it (Escape, a close button inside it, or `open` set to `false` by your code), or after its focused element was removed, the focus now returns to the trigger it was opened from or, for a Drawer without trigger, to the element that had the focus before it opened. The page scrolls that element back into view if it has left the screen. In v19, the focus stayed on an element of the closed Drawer. A focus moved elsewhere in the page is never taken back, so code that focuses another element when the Drawer closes keeps working, and code that only focuses the trigger again can be removed. A layer opened from the Drawer (a confirmation Modal, a Menu) that gives the focus back inside the closed Drawer hands it to the trigger too. A Drawer unmounted while open (`{ isOpen && <Drawer open> }`) gives nothing back: keep it mounted and drive `open` instead.
 - **Drawer** with a custom `id` on `DrawerContent`: Escape, `closeOnInteractOutside` and the focus on open now work, and the trigger `aria-controls` points to the content. In v19, they silently did nothing.
-- **Combobox** options: `aria-selected="true"` marks the selected options, where v19 and v20.0.0 set it on the option highlighted by the keyboard or the pointer. The highlighted option now carries `data-highlighted`. A style or a test that targets the highlighted option through `aria-selected` reaches the selected options instead, or none before a selection: switch it to `data-highlighted`, and keep `aria-selected` for the selected options. To find them: `grep -rn "aria-selected" src/`, then keep the matches that target a Combobox option.
+- **Combobox** options: `aria-selected="true"` marks the selected option, where v19 and v20.0.0 set it on the option highlighted by the keyboard or the pointer. The highlighted option now carries `data-highlighted`. In multiple selection mode, the selected values leave the list, so no option carries `aria-selected="true"` there: they are announced through their tags. A style or a test that targets the highlighted option through `aria-selected` reaches the selected option instead, or none before a selection or in multiple selection mode: switch it to `data-highlighted`, and keep `aria-selected` for the selected option. To find them: `grep -rn "aria-selected" src/`, then keep the matches that target a Combobox option.
 
 **before**
 ```css

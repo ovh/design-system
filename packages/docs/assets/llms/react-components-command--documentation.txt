@@ -4,7 +4,7 @@ slug: command
 category: component
 type: documentation
 version: 20.0.0
-tokens: 2001
+tokens: 2012
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-command--documentation.txt
 ---
 
@@ -135,7 +135,7 @@ Pressing `Home` or `End` moves the cursor within the search input.
 
 The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
 
-The highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
+As in the Combobox WAI-ARIA design pattern, the highlighted option is also the selected one (`aria-selected="true"`): a command palette keeps no lasting selection, `Enter` runs the highlighted option.
  
 
 ```tsx

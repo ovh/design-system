@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1805
+tokens: 1954
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-combobox--documentation.txt
 ---
 
@@ -150,7 +150,7 @@ Pressing `Enter` while focusing a tag will remove it.
 
 ## Accessibility
 
-This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/), with one difference: `aria-selected="true"` marks the selected option, not the option highlighted in the list. The pattern lets the selection follow the highlight, which suits a list that keeps no value, such as the **Command** list. A **Combobox** keeps its value, so a screen reader announces the option of that value as selected when the list opens again, as with the **Select**. The highlighted option is referenced by `aria-activedescendant` on the input and carries `data-highlighted`. In multiple selection mode, the selected values leave the list and are announced through their tags.
 
 ### Always provide an explicit label
 

@@ -27,7 +27,7 @@
 ## Breadcrumb
 
 - [Overview](./react-components-breadcrumb.txt) (~352 tokens)
-- [Documentation](./react-components-breadcrumb--documentation.txt) (~1114 tokens)
+- [Documentation](./react-components-breadcrumb--documentation.txt) (~1134 tokens)
 - [Technical Information](./react-components-breadcrumb--technical-information.txt) (~487 tokens)
 - [Examples](./react-components-breadcrumb--examples.txt) (~1077 tokens)
 
@@ -83,14 +83,14 @@
 ## Combobox
 
 - [Overview](./react-components-combobox.txt) (~801 tokens)
-- [Documentation](./react-components-combobox--documentation.txt) (~1805 tokens)
+- [Documentation](./react-components-combobox--documentation.txt) (~1954 tokens)
 - [Technical Information](./react-components-combobox--technical-information.txt) (~1023 tokens)
 - [Examples](./react-components-combobox--examples.txt) (~1769 tokens)
 
 ## Command
 
 - [Overview](./react-components-command.txt) (~492 tokens)
-- [Documentation](./react-components-command--documentation.txt) (~2001 tokens)
+- [Documentation](./react-components-command--documentation.txt) (~2012 tokens)
 - [Technical Information](./react-components-command--technical-information.txt) (~1146 tokens)
 - [Examples](./react-components-command--examples.txt) (~2056 tokens)
 
@@ -286,7 +286,7 @@
 ## Query Filter
 
 - [Overview](./react-components-query-filter.txt) (~685 tokens)
-- [Documentation](./react-components-query-filter--documentation.txt) (~1358 tokens)
+- [Documentation](./react-components-query-filter--documentation.txt) (~1409 tokens)
 - [Technical Information](./react-components-query-filter--technical-information.txt) (~1072 tokens)
 - [Examples](./react-components-query-filter--examples.txt) (~819 tokens)
 

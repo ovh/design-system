@@ -480,6 +480,15 @@ ods-migrate does not estimate time: the ODS team has measured it on one small ap
 
 ---
 
+## If ods-migrate fails
+
+Two kinds of errors:
+
+- **About one of your files or of your command** (`✗ file: parse error`, `unreadable`, `not UTF-8`, `not written`, a usage error): the line says what to do. The other files go through.
+- **`internal error`**: a bug in ods-migrate, not in your code. The run writes a report into the system temp folder, never into your project, and prints its path and a link that opens a GitHub issue. Attach the report to the issue: it holds the versions of ods-migrate, Node and ODS, the command, the file names and the stack, with the paths of your machine removed, and no source code. The other files go through: migrate the failed one by hand. When it failed while ods-migrate read it to find the modules of the project (a UI kit that wraps ODS components), the files that import it are migrated without it: what they render from it may still be v19 code, which your type check shows.
+
+---
+
 ## Known gaps
 
 Measured on the coverage runs (`packages/examples`, `ods-recipes`, ovh/manager; a row seen only in the ODS team's own code says "not seen on app code"). "Not done yet" = ods-migrate could do it and does not yet; "needs a person" = a person must decide. Most of them show up as a type error with no marker nearby (step 5).

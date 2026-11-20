@@ -10,6 +10,7 @@ import { minMajor, scanLlmsUrls, transformManifest } from './manifest.mjs';
 import { migrateThemePaths } from './paths.mjs';
 import { buildProjectIndex, standsForOds } from './project.mjs';
 import { IGNORE_FILE, MODULES_FILE, createOlderOdsResolver, globToRegExp, isIgnored, parseGitignore, readIgnoreFiles, repositoryDirs, serializeModules } from './resolve.mjs';
+import { reportBug } from './bug-report.mjs';
 import { TODO } from './shared.mjs';
 import * as tokens from './tokens.mjs';
 import { transformSource } from './transform.mjs';
@@ -280,9 +281,11 @@ const print = (io, text = '') => io.stdout(`${text}\n`);
  */
 async function run(argv, io = {}) {
   io = { cwd: process.cwd(), stderr: (text) => process.stderr.write(text), stdout: (text) => process.stdout.write(text), ...io };
+  // The package.json files the run found, for the ODS versions of a bug report that stops it.
+  const found = { manifests: [] };
   const configModule = io.configModule ?? await loadConfigModule();
   try {
-    return await main(argv, io, configModule);
+    return await main(argv, io, configModule, found);
   } catch (error) {
     if (typeof error?.code === 'string' && error.code.startsWith('ODS_MIGRATE_')) {
       io.stderr(`ods-migrate: ${error.message}\n`);
@@ -291,6 +294,7 @@ async function run(argv, io = {}) {
       }
     } else {
       io.stderr(`ods-migrate: internal error: ${error?.message ?? error}\n`);
+      reportBug({ argv, cwd: io.cwd, failures: [{ error, file: null }], manifests: found.manifests, write: argv.includes('--write') }).forEach((line) => io.stderr(`${line}\n`));
     }
     if (/\bods-migrate\b/.test(process.env.DEBUG ?? '')) {
       io.stderr(`${error?.stack}\n`);
@@ -323,7 +327,7 @@ function parseOptions(argv) {
   }
 }
 
-async function main(argv, io, configModule) {
+async function main(argv, io, configModule, found = { manifests: [] }) {
   const { positionals, values: options } = parseOptions(argv);
   if (options.help) {
     print(io, USAGE);
@@ -396,6 +400,10 @@ async function main(argv, io, configModule) {
 
   // Files, deduplicated (two arguments may overlap). --ignore takes .gitignore patterns, read from the working directory.
   const ignoreRules = parseGitignore(options.ignore.join('\n'), cwd);
+  if (ignoreRules.invalid) {
+    const [one, ...more] = ignoreRules.invalid;
+    throw new UsageError(`--ignore ${[one, ...more].join(', --ignore ')}: ${more.length ? 'not patterns' : 'not a pattern'} git can read (a range such as [z-a] goes from low to high)`);
+  }
   const walkErrors = [];
   const seen = new Set();
   const paths = [];
@@ -412,6 +420,7 @@ async function main(argv, io, configModule) {
     }
   }
   const manifests = paths.filter((path) => basename(path) === 'package.json');
+  found.manifests = manifests;
   const reactMajor = workspaceReactMajor(manifests);
   // The files of --read: indexed with the others, so the library's components are known, but never migrated nor reported.
   const readOnly = [];
@@ -546,15 +555,24 @@ async function main(argv, io, configModule) {
   const kinds = { html: 0, json: 0, manifests: 0, scripts: 0, styles: 0 };
   let scanned = 0;
   let markersBefore = 0;
+  // The files a bug of ods-migrate stopped (not a parse error of the file): reported with the stack at the end.
+  const internalErrors = [];
   let written = 0;
 
   for (const error of walkErrors) {
     results.push({ ...emptyFileResult(relative(cwd, error.path)), error: error.error, errorCode: 'READ' });
   }
+  // A file the project index failed on (a bug of ods-migrate): its importers were read without it. A scanned
+  // one is left as it is; one the run does not migrate (--ignore, outside the paths) is only in the bug report.
+  const scannedPaths = new Set(paths);
+  for (const [path, error] of index.failed) {
+    if (scannedPaths.has(path)) results.push({ ...emptyFileResult(relative(cwd, path) || basename(path)), error: String(error?.message ?? error).replace(`${path}: `, ''), errorCode: 'INTERNAL' });
+    internalErrors.push({ error, file: path, index: true, scanned: scannedPaths.has(path) });
+  }
 
   for (const path of paths) {
     const file = relative(cwd, path) || basename(path);
-    if (HTML.test(path) && typeof tokens.transformHtml !== 'function') {
+    if (index.failed.has(path) || (HTML.test(path) && typeof tokens.transformHtml !== 'function')) {
       continue;
     }
     const older = olderOdsOf(path);
@@ -599,9 +617,11 @@ async function main(argv, io, configModule) {
     try {
       result = migrate(source, path);
     } catch (error) {
-      results.push({ ...emptyFileResult(file), error: error.message.replace(`${path}: `, ''), errorCode: errorCodeOf(error) });
+      const errorCode = errorCodeOf(error);
+      results.push({ ...emptyFileResult(file), error: String(error?.message ?? error).replace(`${path}: `, ''), errorCode });
+      if (errorCode === 'INTERNAL') internalErrors.push({ error, file: path, scanned: true });
       if (/\bods-migrate\b/.test(process.env.DEBUG ?? '')) {
-        io.stderr(`${error.stack}\n`);
+        io.stderr(`${error?.stack ?? error}\n`);
       }
       continue;
     }
@@ -667,11 +687,20 @@ async function main(argv, io, configModule) {
     print(io, `Warning: ${where}: the v19-look additions of the config (${additions.join(', ')}) are skipped for its files, which are read as ODS 20 code. Run ods-migrate before bumping ${ODS_PACKAGE}, or pass --from 19.`);
   }
 
+  // The v19-look stylesheet, read once: an unreadable one is an error about that file, not a bug of the run.
+  let optOutCurrent = null;
+  if (config.optOutCss && existsSync(config.optOutCss)) {
+    try {
+      optOutCurrent = readFileSync(config.optOutCss, 'utf8');
+    } catch (error) {
+      results.push({ ...emptyFileResult(relative(cwd, config.optOutCss) || config.optOutCss), error: `cannot read the file (${error.code ?? error.message})`, errorCode: 'READ' });
+    }
+  }
   // A generated v19-look stylesheet that no choice needs any more: emptied (its import stays valid), never left applying.
-  const stale = !optOut && config.optOutCss && existsSync(config.optOutCss) && readFileSync(config.optOutCss, 'utf8').startsWith(OPT_OUT_HEADER) ? config.optOutCss : null;
+  const stale = !optOut && optOutCurrent?.startsWith(OPT_OUT_HEADER) ? config.optOutCss : null;
   if (stale) {
     const text = `${OPT_OUT_HEADER}${config.file ? ` from ${relative(dirname(stale), config.file) || basename(config.file)}` : ''} */\n/* No choice of the config keeps a v19 look any more: delete this file and its import. */\n`;
-    if (readFileSync(stale, 'utf8') !== text) {
+    if (optOutCurrent !== text) {
       const failure = options.write ? writeOrFail(stale, text) : null;
       if (failure) {
         results.push({ ...emptyFileResult(relative(cwd, stale) || stale), ...failure });
@@ -686,7 +715,7 @@ async function main(argv, io, configModule) {
   if (optOut) {
     const header = `${OPT_OUT_HEADER} from ${relative(dirname(config.optOutCss), config.file) || basename(config.file)} */`;
     const text = optOut.startsWith(OPT_OUT_HEADER) ? optOut : `${header}\n${optOut}`;
-    const current = existsSync(config.optOutCss) ? readFileSync(config.optOutCss, 'utf8') : null;
+    const current = optOutCurrent;
     optOutReport.upToDate = current === text;
     if (options.write) {
       const failure = current !== text ? writeOrFail(config.optOutCss, text) : null;
@@ -732,6 +761,10 @@ async function main(argv, io, configModule) {
     io.stderr(result.errorCode === 'WRITE'
       ? `✗ ${result.file}: not written, left as it was: make it writable and run ods-migrate again (${result.error})\n`
       : `✗ ${result.file}: ${result.errorCode === 'PARSE' ? 'parse error' : result.errorCode === 'READ' ? 'unreadable' : result.errorCode === 'ENCODING' ? 'not UTF-8' : 'internal error'}, migrate by hand (${result.error})\n`);
+  }
+
+  if (internalErrors.length) {
+    reportBug({ argv, cwd, failures: internalErrors, manifests, write: options.write }).forEach((line) => io.stderr(`${line}\n`));
   }
 
   const leftUnchanged = [...olderOds.values()].sort((a, b) => (a.package < b.package ? -1 : 1));
@@ -833,7 +866,7 @@ async function main(argv, io, configModule) {
     }
   }
 
-  if (failed.length) {
+  if (failed.length || internalErrors.length) {
     return 2;
   }
   return options.check && (summary.filesChanged || markersLeft) ? 1 : 0;
@@ -1367,10 +1400,19 @@ function writeOrFail(path, text) {
   }
 }
 
-/** The opt-out CSS is only ever overwritten when ods-migrate wrote it. */
+/** The opt-out CSS is only ever overwritten when ods-migrate wrote it: one it cannot read is never written over. */
 function checkOptOutTarget(path) {
   checkWritableTarget(path, 'optOutCss');
-  if (existsSync(path) && !readFileSync(path, 'utf8').startsWith(OPT_OUT_HEADER)) {
+  if (!existsSync(path)) {
+    return;
+  }
+  let text;
+  try {
+    text = readFileSync(path, 'utf8');
+  } catch (error) {
+    throw new FileError(`optOutCss ${path}: cannot read the file (${error.code ?? error.message}), so it is not written over: fix its permissions, or set another optOutCss in the config`);
+  }
+  if (!text.startsWith(OPT_OUT_HEADER)) {
     throw new FileError(`optOutCss ${path}: the file exists and was not generated by ods-migrate: move it, or set another optOutCss in the config`);
   }
 }

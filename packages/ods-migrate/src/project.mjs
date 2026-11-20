@@ -628,7 +628,7 @@ const sameEntry = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 /**
  * Builds the index of the scanned files (absolute paths: scripts and package.json files).
- * Returns { modules, sourcesFor(file), importersOf(file), workspace, odsPackages, treatAsOds, suspects, rejected, ownTyped }.
+ * Returns { modules, sourcesFor(file), importersOf(file), workspace, odsPackages, treatAsOds, suspects, rejected, ownTyped, failed }.
  * `modules` also holds the modules whose only link to ODS is a component with typed props (see
  * standsForOds); `ownTyped` maps a file to its components with typed props, by local name.
  */
@@ -703,6 +703,8 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
       });
     });
   };
+  // The files whose entry ods-migrate failed to compute (a bug of the tool): they stand for nothing, the run reports them.
+  const failed = new Map();
   const pending = new Set();
   for (const [file, node] of nodes) {
     if ([...node.specs.values()].some((target) => target.ods)) pending.add(file);
@@ -714,7 +716,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
     const [file] = pending;
     pending.delete(file);
     const node = nodes.get(file);
-    if (!/\bexport\b/.test(node.bare)) continue;
+    if (failed.has(file) || !/\bexport\b/.test(node.bare)) continue;
     // Parsed only when it can stand for ODS: it re-exports, or it can declare a wrapper or a props type (it reads an ODS props type).
     const wraps = canWrap(file, node);
     if (!wraps && !REEXPORT.test(node.bare)) continue;
@@ -728,7 +730,18 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
     }
     const { desc } = descs.get(file);
     if (!desc) continue;
-    const entry = computeEntry(desc, targetOf(file), options);
+    let entry;
+    try {
+      entry = computeEntry(desc, targetOf(file), options);
+    } catch (error) {
+      failed.set(file, error);
+      rejectedByFile.delete(file);
+      ownTypedByFile.delete(file);
+      ownTypedTypesByFile.delete(file);
+      // An entry found before stands no more: its importers are read again without it.
+      if (entries.delete(file)) for (const importer of importers.get(file) ?? []) pending.add(importer);
+      continue;
+    }
     if (entry.rejected.length) rejectedByFile.set(file, entry.rejected);
     else rejectedByFile.delete(file);
     if (Object.keys(entry.ownTyped).length) ownTypedByFile.set(file, entry.ownTyped);
@@ -784,6 +797,7 @@ function buildProjectIndex(files, { mapping, treatAsOds = [], readText = (path) 
   const holding = [...resolver.workspace].filter(([, dir]) => moduleFiles.some((file) => !relative(dir, file).startsWith('..'))).map(([name]) => name);
   const odsPackages = holding.filter((name) => standsForOds(entries.get(resolver.packageEntry(resolver.workspace.get(name), ''))));
   return {
+    failed,
     importersOf,
     // True when the code of a file (comments aside) names `name`: a file that imports a barrel uses only some of its names.
     mentions: (file, name) => new RegExp(`(^|[^\\w$])${escapeRegExp(name)}(?![\\w$])`).test(nodes.get(file)?.bare ?? ''),

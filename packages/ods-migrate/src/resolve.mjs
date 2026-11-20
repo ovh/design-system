@@ -601,7 +601,12 @@ function parseGitignore(text, base, { ignoreCase = IGNORE_CASE } = {}) {
     if (!pattern) {
       continue;
     }
-    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`, ignoreCase ? 'i' : '') });
+    // A line git cannot read either (`[z-a]`) is skipped, as git does: the other lines still apply.
+    try {
+      rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`, ignoreCase ? 'i' : '') });
+    } catch {
+      rules.invalid = [...(rules.invalid ?? []), line];
+    }
   }
   return rules;
 }

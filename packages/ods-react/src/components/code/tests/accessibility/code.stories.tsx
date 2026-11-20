@@ -5,6 +5,14 @@ export default {
   title: 'Tests accessibility',
 };
 
+export const CopyStatus = () => (
+  <Code
+    canCopy
+    labelCopySuccess="Snippet copied">
+    npm install @ovhcloud/ods-react
+  </Code>
+);
+
 export const Role = () => (
   <>
     <Code data-testid="static">

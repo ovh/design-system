@@ -1,0 +1,65 @@
+_**Visually Hidden** hides content from the screen while keeping it available to screen readers._
+
+<Canvas story="Overview" source="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Screen Reader Only', 'SR Only'] }
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/visually-hidden"
+              name="Visually Hidden"
+              startingVersion={ 20 }>
+  **Visually Hidden** renders its content in the accessibility tree but not on the screen. It adds text that only assistive technologies need, and hosts live regions that announce changes.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+**Visually Hidden** is used when the screen already conveys a piece of information visually, through an icon, a position or a color, and screen readers need it as text:
+
+- Give a meaningful icon its text, like a status icon next to a value. An icon-only button is named with an `aria-label` instead, see <DocLink to="/components/button">Button</DocLink>.
+- Complete a link or button text whose meaning depends on its surroundings, like "Read more".
+- Announce a change without moving the focus, with `role="status"`.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Don\'t hide content that sighted users also need: if it is useful to read, show it',
+    '- Don\'t put focusable elements inside Visually Hidden: keyboard users would reach an element they cannot see',
+    '- Don\'t repeat text that is already visible: screen readers would read it twice',
+    '- Don\'t create and fill a status region in the same render: screen readers only announce changes to a region already in the page',
+  ]}
+  dos={[
+    '- Write the hidden text as part of the visible text it completes, so both read as one sentence',
+    '- Render the status region empty on load, then update its text when something happens',
+    '- Keep announcements short: one sentence that states the result',
+  ]}
+/>
+
+<Heading label="Behavior" level={ 2 } />
+
+**Visually Hidden** renders a `span` that takes one pixel, clipped, and is positioned out of the flow, so its content takes no room in the layout. Being absolutely positioned, it escapes a scrolling container that is not positioned itself, and can make the page scroll: give that container `position: relative`.
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Completing a visible text" level={ 3 } />
+
+<Canvas story="LinkContext" />
+
+Screen readers read "Read more about the billing of your VPS", sighted users see "Read more".
+
+<Heading label="Navigation" level={ 2 } />
+
+**Visually Hidden** is not focusable and must not contain focusable elements.
+
+<Heading label="Accessibility" level={ 2 } />
+
+<Heading label="Announcing a change" level={ 3 } />
+
+Give **Visually Hidden** the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role">status role</ExternalLink> to announce the result of an action without moving the focus. The region must be in the page before its text changes.
+
+<Canvas story="AccessibilityStatus" />
+
+<Icon name="circle-check"
+      style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce "Settings saved." after the click, while the focus stays on the button.
+
+The **Clipboard** and **Code** components rely on the same pattern to announce a copy. **CartTotal** announces a new total without it: its visible label and price form the status region.

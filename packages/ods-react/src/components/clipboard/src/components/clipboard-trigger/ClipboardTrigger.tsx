@@ -4,6 +4,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
+import { VisuallyHidden } from '../../../../visually-hidden/src';
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
 
@@ -14,7 +15,7 @@ interface ClipboardTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'va
    */
   labelCopy?: string,
   /**
-   * The tooltip label on copy button after a successful copy.
+   * The tooltip label on copy button after a successful copy, also announced to screen readers.
    */
   labelCopySuccess?: string,
 }
@@ -37,7 +38,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
       positionerStyle={ positionerStyle }>
       <Clipboard.Trigger asChild>
         <TooltipTrigger
-          aria-label={ copied ? labelCopySuccess : labelCopy }
+          aria-label={ labelCopy }
           asChild
           className={ style['clipboard-trigger__copy'] }
           data-ods="clipboard-trigger"
@@ -54,6 +55,12 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
           }
         </TooltipTrigger>
       </Clipboard.Trigger>
+
+      {/* Announces the copy without moving focus. The trigger keeps its name: renaming the focused
+          button too would read the success twice. */}
+      <VisuallyHidden role="status">
+        { copied && labelCopySuccess }
+      </VisuallyHidden>
 
       {
         !disabled &&

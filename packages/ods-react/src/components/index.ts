@@ -55,3 +55,4 @@ export * from './prompt-input/src';
 export * from './markdown/src';
 export * from './query-filter/src';
 export * from './command/src';
+export * from './visually-hidden/src';

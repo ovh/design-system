@@ -91,3 +91,7 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 
 <Icon name="circle-check"
       style={{ color: 'var(--ods-semantic-color-content-success)' }} /> Screen readers will announce the label, the field and its content.
+
+<Heading label="Copy confirmation" level={ 3 } />
+
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied". A copy made again while the confirmation is still shown is not announced a second time.

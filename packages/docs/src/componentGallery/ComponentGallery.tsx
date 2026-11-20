@@ -13,7 +13,7 @@ const STORY_MODULES = import.meta.glob('../../stories/components/*/*.stories.tsx
    grouping lives here; a component missing from it lands in "Other" instead of vanishing. */
 const CATEGORIES: Record<string, string[]> = {
   'Actions': ['button', 'button-group', 'clipboard', 'link'],
-  'Data display': ['accordion', 'avatar', 'card', 'cart', 'code', 'data-table', 'divider', 'file-thumbnail', 'icon', 'kbd', 'logo', 'markdown', 'medium', 'table', 'text', 'tile'],
+  'Data display': ['accordion', 'avatar', 'card', 'cart', 'code', 'data-table', 'divider', 'file-thumbnail', 'icon', 'kbd', 'logo', 'markdown', 'medium', 'table', 'text', 'tile', 'visually-hidden'],
   'Feedback & status': ['badge', 'message', 'message-bubble', 'meter', 'progress-bar', 'skeleton', 'spinner', 'tag'],
   'Form elements': ['checkbox', 'combobox', 'datepicker', 'editable', 'file-upload', 'form-field', 'input', 'password', 'phone-number', 'prompt-input', 'quantity', 'query-filter', 'radio-group', 'range', 'select', 'textarea', 'timepicker', 'toggle'],
   'Navigation': ['breadcrumb', 'command', 'menu', 'pagination', 'tabs', 'tree-view'],

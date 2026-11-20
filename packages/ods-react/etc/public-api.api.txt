@@ -591,7 +591,7 @@ interface CartTotalProp extends ComponentPropsWithRef<'div'> {
      */
     label: ReactNode;
     /**
-     * Formatted price node to display.
+     * Formatted price node to display. Screen readers announce it with the label when it changes.
      */
     price: ReactNode;
     /**
@@ -865,7 +865,7 @@ interface ClipboardTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'va
      */
     labelCopy?: string;
     /**
-     * The tooltip label on copy button after a successful copy.
+     * The tooltip label on copy button after a successful copy, also announced to screen readers.
      */
     labelCopySuccess?: string;
 }
@@ -972,7 +972,7 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
      */
     labelCopy?: string;
     /**
-     * The tooltip label on copy button after a successful copy.
+     * The tooltip label on copy button after a successful copy, also announced to screen readers.
      */
     labelCopySuccess?: string;
     /**
@@ -3182,6 +3182,7 @@ export * from './prompt-input/src';
 export * from './markdown/src';
 export * from './query-filter/src';
 export * from './command/src';
+export * from './visually-hidden/src';
 
 // ==================== components/input/src/components/input-actions/InputActions.d.ts ====================
 import { FC } from 'react';
@@ -7106,6 +7107,16 @@ export { TreeViewNode, TreeViewNodes };
 export type { TreeViewProp, TreeViewNodeProp, TreeViewNodesProp };
 export { type TreeViewCustomRendererArg, type TreeViewExpandedChangeDetail, type TreeViewItem, type TreeViewValueChangeDetail } from './contexts/useTreeView';
 
+// ==================== components/visually-hidden/src/components/visually-hidden/VisuallyHidden.d.ts ====================
+import { ComponentPropsWithRef, FC } from 'react';
+interface VisuallyHiddenProp extends ComponentPropsWithRef<'span'> {
+}
+declare const VisuallyHidden: FC<VisuallyHiddenProp>;
+export { VisuallyHidden, type VisuallyHiddenProp, };
+
+// ==================== components/visually-hidden/src/index.d.ts ====================
+export { VisuallyHidden, type VisuallyHiddenProp } from './components/visually-hidden/VisuallyHidden';
+
 // ==================== helpers/AsChild.d.ts ====================
 import { CSSProperties, HTMLAttributes, ReactNode, RefAttributes } from 'react';
 type StyleProp = {
@@ -7127,9 +7138,10 @@ export { type AsChildProp, AsChildSlot, };
 // ==================== helpers/test.d.ts ====================
 import { Page } from 'puppeteer';
 declare function gotoStory(page: Page, story: string): Promise<void>;
+declare function stubClipboardWrite(page: Page): Promise<void>;
 declare function getStatusStyle(page: Page, testId: string): Promise<string>;
 declare function getTokenColor(page: Page, token: string): Promise<string>;
-export { getStatusStyle, getTokenColor, gotoStory, };
+export { getStatusStyle, getTokenColor, gotoStory, stubClipboardWrite, };
 
 // ==================== hooks/useDevice.d.ts ====================
 interface UseDevice {

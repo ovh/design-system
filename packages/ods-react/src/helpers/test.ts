@@ -9,6 +9,17 @@ async function gotoStory(page: Page, story: string): Promise<void> {
   await page.goto(`http://localhost:3000/iframe.html?args=&id=tests-${uriPart}&viewMode=story`, { waitUntil: ['load', 'networkidle0'] });
 }
 
+/* Headless Chrome denies clipboard writes even with the permission granted, and the rejected
+   promise fails the test. Call before gotoStory: the stub must be in place when the page loads. */
+async function stubClipboardWrite(page: Page): Promise<void> {
+  await page.evaluateOnNewDocument(() => {
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: (): Promise<void> => Promise.resolve() },
+    });
+  });
+}
+
 const STATUS_STYLE_PROPERTIES = ['background-color', 'border-color', 'color'];
 
 async function getStatusStyle(page: Page, testId: string): Promise<string> {
@@ -36,4 +47,5 @@ export {
   getStatusStyle,
   getTokenColor,
   gotoStory,
+  stubClipboardWrite,
 };

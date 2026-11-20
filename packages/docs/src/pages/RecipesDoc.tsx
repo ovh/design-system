@@ -26,14 +26,14 @@ const RecipesDoc = ({ page }: { page: NavPage }) => {
     return <RecipePage recipeKey={ key } />;
   }
   return (
-    <Suspense fallback={ <DocSkeleton /> }>
-      <article className="doc doc--wide">
-        <MarkdownLink className="doc-layout__toc-markdown" />
+    <article className="doc doc--wide">
+      <MarkdownLink className="doc-layout__toc-markdown" />
+      <Suspense fallback={ <DocSkeleton variant="gallery" /> }>
         <MDXProvider components={ MDX_COMPONENTS }>
           <Doc />
         </MDXProvider>
-      </article>
-    </Suspense>
+      </Suspense>
+    </article>
   );
 };
 

@@ -33,7 +33,7 @@ const TechnicalSpecification = ({ component }: { component: string }) => {
   const componentNames = useMemo(() => data?.spec.components.map((entry) => entry.name) ?? [], [data]);
 
   if (data === undefined) {
-    return <DocSkeleton />;
+    return <DocSkeleton variant="technical" />;
   }
   if (!data) {
     return null;

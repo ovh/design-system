@@ -7,6 +7,8 @@ import { Navigate, RouterProvider, createBrowserRouter, useLocation, useOutletCo
 import { BASENAME } from './appBase';
 import { Skeleton } from '../../ods-react/src/components/skeleton/src';
 import guidesInventory from './content/guides/guides.json';
+import { DocArticle } from './doc/DocArticle';
+import { DocSkeleton } from './doc/DocSkeleton';
 import { Homepage } from './doc/ports/homepage/Homepage';
 import { flattenPages } from './nav/model';
 import { ComponentDoc } from './pages/ComponentDoc';
@@ -113,7 +115,7 @@ const RecipesRoute = () => {
 };
 
 const ChangelogRoute = () => (
-  <Suspense fallback={ <Skeleton style={{ height: '320px', width: '100%' }} /> }>
+  <Suspense fallback={ <DocArticle><DocSkeleton variant="guide" /></DocArticle> }>
     <ChangelogPage />
   </Suspense>
 );

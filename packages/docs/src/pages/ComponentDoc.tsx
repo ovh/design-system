@@ -71,17 +71,17 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   const content = (
     <>
       { currentTab === 'documentation' && Doc && (
-        stories
-          ? (
-            <Suspense fallback={ <DocSkeleton /> }>
-              <DocArticle>
+        <DocArticle>
+          { stories
+            ? (
+              <Suspense fallback={ <DocSkeleton variant="component" /> }>
                 <MDXProvider components={ MDX_COMPONENTS }>
                   <Doc />
                 </MDXProvider>
-              </DocArticle>
-            </Suspense>
-          )
-          : <DocSkeleton />
+              </Suspense>
+            )
+            : <DocSkeleton variant="component" /> }
+        </DocArticle>
       ) }
 
       { currentTab === 'gallery' && Gallery && <Gallery /> }
@@ -93,13 +93,11 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
       ) }
 
       { currentTab === 'examples' && (
-        stories
-          ? (
-            <DocArticle>
-              <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
-            </DocArticle>
-          )
-          : <DocSkeleton />
+        <DocArticle>
+          { stories
+            ? <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
+            : <DocSkeleton variant="examples" /> }
+        </DocArticle>
       ) }
     </>
   );

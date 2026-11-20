@@ -34,17 +34,17 @@ const HelperDoc = ({ page }: { page: NavPage }) => {
   }
   return (
     <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
-      { stories
-        ? (
-          <Suspense fallback={ <DocSkeleton /> }>
-            <DocArticle>
+      <DocArticle>
+        { stories
+          ? (
+            <Suspense fallback={ <DocSkeleton variant="helper" /> }>
               <MDXProvider components={ MDX_COMPONENTS }>
                 <Doc />
               </MDXProvider>
-            </DocArticle>
-          </Suspense>
-        )
-        : <DocSkeleton /> }
+            </Suspense>
+          )
+          : <DocSkeleton variant="helper" /> }
+      </DocArticle>
     </PageStoriesProvider>
   );
 };

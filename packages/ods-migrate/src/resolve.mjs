@@ -581,6 +581,7 @@ const IGNORE_CASE = process.platform === 'darwin' || process.platform === 'win32
 /**
  * Parses a .gitignore (patterns, `!`, a trailing `/` for directories only, a leading or inner `/`
  * to anchor on the file's directory, `*`, `**`, `?`, `[…]`). `base` is the directory of the file.
+ * Returns the rules; the lines git cannot read either are skipped and listed in `rules.invalid`.
  */
 function parseGitignore(text, base, { ignoreCase = IGNORE_CASE } = {}) {
   const rules = [];
@@ -601,7 +602,12 @@ function parseGitignore(text, base, { ignoreCase = IGNORE_CASE } = {}) {
     if (!pattern) {
       continue;
     }
-    rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`, ignoreCase ? 'i' : '') });
+    // A line git cannot read either (`[z-a]`) is skipped, as git does: the other lines still apply.
+    try {
+      rules.push({ base, dirOnly, negate, regex: new RegExp(`${anchored ? '^' : '(?:^|/)'}${globToRegExp(pattern)}$`, ignoreCase ? 'i' : '') });
+    } catch {
+      rules.invalid = [...(rules.invalid ?? []), line];
+    }
   }
   return rules;
 }

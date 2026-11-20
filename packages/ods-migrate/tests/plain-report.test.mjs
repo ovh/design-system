@@ -9,7 +9,7 @@
  * - no text an integrator reads cites a ticket, a pull request, a BC code or a branch.
  */
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { chmodSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { after, describe, it } from 'node:test';
@@ -221,6 +221,27 @@ describe('plain words: the report', () => {
     const dry = await migrate(dir);
     assert.match(dry.stdout, /^v19-look stylesheet ods-v19-look\.css: up to date\.$/m);
     assert.match(dry.stdout, /src\/ods\.ts passes ODS components on: the 1 file that imports it is handled like files that import @ovhcloud\/ods-react\./);
+  });
+
+  it('never writes over a v19-look stylesheet it cannot read, and does not call it a bug', async (t) => {
+    if (process.platform === 'win32' || process.getuid?.() === 0) return t.skip('a write-only file needs POSIX permissions and a non-root user');
+    const dir = project({
+      'ods-migrate.config.json': JSON.stringify({ look: { 'button-radius': 'v19' } }),
+      'ods-v19-look.css': '/* hand-written */\n',
+      'package.json': PACKAGE_19,
+      'src/App.tsx': "import { BADGE_COLOR } from '@ovhcloud/ods-react';\nexport const c = BADGE_COLOR.primary;\n",
+    });
+    chmodSync(join(dir, 'ods-v19-look.css'), 0o200);
+    let stderr = '';
+    try {
+      const code = await run(['.', '--write'], { cwd: dir, stderr: (text) => { stderr += text; }, stdout: () => {} });
+      assert.equal(code, 2);
+    } finally {
+      chmodSync(join(dir, 'ods-v19-look.css'), 0o644);
+    }
+    assert.match(stderr, /^ods-migrate: optOutCss \S+ods-v19-look\.css: cannot read the file \(EACCES\), so it is not written over/m);
+    assert.doesNotMatch(stderr, /internal error|This is a bug/);
+    assert.equal(readFileSync(join(dir, 'ods-v19-look.css'), 'utf8'), '/* hand-written */\n');
   });
 
   it('leaves the @types/react overrides to the pnpm-workspace.yaml next to it', async () => {

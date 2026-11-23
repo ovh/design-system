@@ -115,6 +115,8 @@ The label and price of **CartTotal** form a status region: when the price change
 
 A status region only announces changes: a **CartTotal** that appears with its first price, when the first product is added to an empty cart, is not read. Keep **CartTotal** mounted while the cart is empty, or include the total in your own message in that case.
 
+Every price set is read: update the price once the total is final, not with each intermediate value of a recalculation or a quantity being typed.
+
 <Heading label="Announce product and option updates" level={ 3 } />
 
 The **Cart** has no data model: it does not know when a product or an option is added or removed, so screen readers are not informed of it.

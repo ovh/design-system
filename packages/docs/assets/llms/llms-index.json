@@ -210,7 +210,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1382,
+          "tokens": 1419,
           "url": "./react-components-cart--documentation.txt"
         },
         "technical-information": {
@@ -262,7 +262,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 970,
+          "tokens": 967,
           "url": "./react-components-clipboard--documentation.txt"
         },
         "technical-information": {
@@ -288,7 +288,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 723,
+          "tokens": 720,
           "url": "./react-components-code--documentation.txt"
         },
         "technical-information": {

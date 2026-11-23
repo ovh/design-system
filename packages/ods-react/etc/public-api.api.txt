@@ -912,9 +912,10 @@ interface ClipboardRootProp {
 }
 interface ClipboardProviderProp extends Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale' | 'positionerStyle'> {
     children: ReactNode;
+    copyCount: number;
 }
 type ClipboardContextType = Omit<ClipboardProviderProp, 'children'>;
-declare function ClipboardProvider({ children, disabled, i18n, locale, positionerStyle, }: ClipboardProviderProp): JSX.Element;
+declare function ClipboardProvider({ children, copyCount, disabled, i18n, locale, positionerStyle, }: ClipboardProviderProp): JSX.Element;
 declare function useClipboard(): ClipboardContextType;
 export { ClipboardProvider, type ClipboardRootProp, useClipboard, };
 

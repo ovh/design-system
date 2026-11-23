@@ -1,12 +1,15 @@
 import { Clipboard, useClipboardContext } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useState } from 'react';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 import { VisuallyHidden } from '../../../../visually-hidden/src';
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
+
+// Time the emptied status region stays empty, so that the same text set again is read as a change.
+const ANNOUNCEMENT_DELAY = 100;
 
 interface ClipboardTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
   value?: string,
@@ -27,8 +30,21 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
   labelCopySuccess = 'Copied!',
   ...props
 }, ref): JSX.Element => {
-  const { disabled, positionerStyle } = useClipboard();
+  const { copyCount, disabled, positionerStyle } = useClipboard();
   const { copied } = useClipboardContext();
+  const [announcement, setAnnouncement] = useState('');
+
+  useEffect(() => {
+    setAnnouncement('');
+
+    if (!copied) {
+      return;
+    }
+
+    const timeout = setTimeout(() => setAnnouncement(labelCopySuccess), ANNOUNCEMENT_DELAY);
+
+    return (): void => clearTimeout(timeout);
+  }, [copied, copyCount, labelCopySuccess]);
 
   return (
     <Tooltip
@@ -56,10 +72,10 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
         </TooltipTrigger>
       </Clipboard.Trigger>
 
-      {/* Announces the copy without moving focus. The trigger keeps its name: renaming the focused
+      {/* Announces each copy without moving focus. The trigger keeps its name: renaming the focused
           button too would read the success twice. */}
       <VisuallyHidden role="status">
-        { copied && labelCopySuccess }
+        { announcement }
       </VisuallyHidden>
 
       {

@@ -32,6 +32,7 @@ interface ClipboardRootProp {
 
 interface ClipboardProviderProp extends Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale' | 'positionerStyle'> {
   children: ReactNode,
+  copyCount: number,
 }
 
 type ClipboardContextType = Omit<ClipboardProviderProp, 'children'>;
@@ -40,6 +41,7 @@ const ClipboardContext = createContext<ClipboardContextType | undefined>(undefin
 
 function ClipboardProvider({
   children,
+  copyCount,
   disabled,
   i18n,
   locale,
@@ -47,6 +49,7 @@ function ClipboardProvider({
 }: ClipboardProviderProp): JSX.Element {
   return (
     <ClipboardContext.Provider value={{
+      copyCount,
       disabled,
       i18n,
       locale,

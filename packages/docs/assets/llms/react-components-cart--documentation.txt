@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: documentation
 version: 20.0.0
-tokens: 1382
+tokens: 1419
 source: https://ovh.github.io/design-system/v20.0.0/llms/react-components-cart--documentation.txt
 ---
 
@@ -121,6 +121,8 @@ Pressing `Escape` collapses the **Cart** when it is expanded on mobile and retur
 The label and price of **CartTotal** form a status region: when the price changes, screen readers announce the label with the new price, for example "Total €10.00".
 
 A status region only announces changes: a **CartTotal** that appears with its first price, when the first product is added to an empty cart, is not read. Keep **CartTotal** mounted while the cart is empty, or include the total in your own message in that case.
+
+Every price set is read: update the price once the total is final, not with each intermediate value of a recalculation or a quantity being typed.
 
 ### Announce product and option updates
 

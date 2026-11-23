@@ -2827,6 +2827,8 @@ The label and price of **CartTotal** form a status region: when the price change
 
 A status region only announces changes: a **CartTotal** that appears with its first price, when the first product is added to an empty cart, is not read. Keep **CartTotal** mounted while the cart is empty, or include the total in your own message in that case.
 
+Every price set is read: update the price once the total is final, not with each intermediate value of a recalculation or a quantity being typed.
+
 ### Announce product and option updates
 
 The **Cart** has no data model: it does not know when a product or an option is added or removed, so screen readers are not informed of it.
@@ -3586,7 +3588,7 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 
 ### Copy confirmation
 
-The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied". A copy made again while the confirmation is still shown is not announced a second time.
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. Keep `labelCopySuccess` short and explicit, for example "Key copied". A copy made again while the confirmation is still shown is announced again.
 
 ## Clipboard
 
@@ -3815,7 +3817,7 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 ### Copy confirmation
 
-The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. A copy made again while the confirmation is still shown is not announced a second time.
+The copy button is named by `labelCopy`. After a copy, `labelCopySuccess` is announced through a status region, and the focus stays on the button. A copy made again while the confirmation is still shown is announced again.
 
  Screen readers will announce the embedded code, the copy button, and the confirmation once the code is copied.
 

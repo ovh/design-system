@@ -27,4 +27,21 @@ describe('Clipboard accessibility', () => {
 
     expect(await trigger?.evaluate((el) => el.getAttribute('aria-label'))).toBe('Copy the key');
   });
+
+  it('should announce a copy made again while the confirmation is shown', async() => {
+    const trigger = await page.$('[data-testid="trigger"]');
+    await trigger?.click();
+    await page.waitForFunction(() => document.querySelector('[role="status"]')?.textContent === 'Key copied');
+
+    await page.evaluate(() => {
+      const region = document.querySelector('[role="status"]')!;
+      const texts: string[] = [];
+      (window as unknown as { __statusTexts: string[] }).__statusTexts = texts;
+      new MutationObserver(() => texts.push(region.textContent ?? '')).observe(region, { characterData: true, childList: true, subtree: true });
+    });
+    await trigger?.click();
+    await page.waitForFunction(() => (window as unknown as { __statusTexts: string[] }).__statusTexts.includes('Key copied'));
+
+    expect(await page.evaluate(() => (window as unknown as { __statusTexts: string[] }).__statusTexts)).toEqual(['', 'Key copied']);
+  });
 });

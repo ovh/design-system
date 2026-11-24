@@ -1,0 +1,200 @@
+// White label, dark: its light mode, then what dark changes, baked into one file. Aluminium's dark mapping on
+// the slate neutrals, with the graphite brand lifted to the light end of its ramp.
+@use './light';
+
+/* Status rungs: pale fill 800 (accent 700, neutral gray-900), pale border 600 (accent and information 500),
+   ink on the pale fill 200, status text 300 (critical 200), solid fill 500 with its hover on 600. */
+:root {
+  /* Surfaces - canvas and layers */
+  --ods-semantic-color-surface-page: var(--ods-palette-accent-900);
+  --ods-semantic-color-surface-raised: var(--ods-palette-accent-800);
+  --ods-semantic-color-surface-overlay: var(--ods-palette-accent-800);
+  --ods-semantic-color-surface-header: var(--ods-palette-accent-700);
+  --ods-semantic-color-surface-backdrop: var(--ods-palette-accent-900);
+  --ods-semantic-color-surface-code: var(--ods-palette-black);
+
+  /* Surfaces - selection */
+  --ods-semantic-color-surface-selected-subtle: var(--ods-palette-accent-800);
+  --ods-semantic-color-surface-selected: var(--ods-palette-accent-700);
+  --ods-semantic-color-surface-selected-solid: var(--ods-palette-accent-100);
+
+  /* Surfaces - structure */
+  --ods-semantic-color-surface-muted: var(--ods-palette-accent-700);
+
+  /* Surfaces - statuses */
+  --ods-semantic-color-surface-neutral-subtle: var(--ods-palette-gray-900);
+  --ods-semantic-color-surface-brand: var(--ods-palette-brand-100);
+  --ods-semantic-color-surface-accent-subtle: var(--ods-palette-accent-700);
+  --ods-semantic-color-surface-information-subtle: var(--ods-palette-blue-800);
+  --ods-semantic-color-surface-success-subtle: var(--ods-palette-green-800);
+  --ods-semantic-color-surface-warning-subtle: var(--ods-palette-orange-800);
+  --ods-semantic-color-surface-critical-subtle: var(--ods-palette-red-800);
+
+  /* Surfaces - form controls */
+  --ods-semantic-color-surface-control: var(--ods-palette-accent-900);
+  --ods-semantic-color-surface-control-solid: var(--ods-palette-brand-100);
+  --ods-semantic-color-surface-thumb: var(--ods-palette-accent-100);
+  --ods-semantic-color-surface-track: var(--ods-palette-accent-700);
+  --ods-semantic-color-surface-segmented: var(--ods-palette-accent-700);
+
+  /* Surfaces - states */
+  --ods-semantic-color-surface-readonly: var(--ods-palette-accent-700);
+  --ods-semantic-color-surface-pending: var(--ods-palette-accent-600);
+  --ods-semantic-color-surface-drag-over: var(--ods-palette-accent-700);
+
+  /* Content - text */
+  --ods-semantic-color-content-heading: var(--ods-palette-white);
+  --ods-semantic-color-content-text: var(--ods-palette-accent-100);
+  --ods-semantic-color-content-icon: var(--ods-palette-accent-100);
+  --ods-semantic-color-content-group-label: var(--ods-palette-white);
+  --ods-semantic-color-content-placeholder: var(--ods-palette-gray-400);
+
+  /* Content - status inks on the page */
+  --ods-semantic-color-content-neutral: var(--ods-palette-gray-300);
+  --ods-semantic-color-content-brand: var(--ods-palette-brand-300);
+
+  /* Minor brand button at rest: the brand ink, as the solid one. */
+  --ods-semantic-color-content-brand-minor: var(--ods-palette-brand-300);
+  --ods-semantic-color-content-accent: var(--ods-palette-accent-300);
+  --ods-semantic-color-content-information: var(--ods-palette-blue-300);
+  --ods-semantic-color-content-success: var(--ods-palette-green-300);
+  --ods-semantic-color-content-warning: var(--ods-palette-orange-300);
+  // red-200, not 300: 5.55:1 on the hovered row, drag-over and muted surfaces, where red-300 gave 4.13.
+  // As it is already the hovered-row ink, the FileUpload override Aluminium dark needs is not repeated here.
+  --ods-semantic-color-content-critical: var(--ods-palette-red-200);
+
+  /* Content - inks on a tinted surface */
+  --ods-semantic-color-content-on-selected: var(--ods-palette-accent-50);
+  --ods-semantic-color-content-on-neutral: var(--ods-palette-gray-200);
+  --ods-semantic-color-content-on-brand: var(--ods-palette-white);
+  --ods-semantic-color-content-on-accent: var(--ods-palette-accent-200);
+  --ods-semantic-color-content-on-information: var(--ods-palette-blue-200);
+  --ods-semantic-color-content-on-success: var(--ods-palette-green-200);
+  --ods-semantic-color-content-on-warning: var(--ods-palette-orange-200);
+  --ods-semantic-color-content-on-critical: var(--ods-palette-red-200);
+
+  /* Content - inks on a solid surface */
+  --ods-semantic-color-content-on-brand-solid: var(--ods-palette-gray-900);
+  --ods-semantic-color-content-on-selected-solid: var(--ods-palette-accent-900);
+  --ods-semantic-color-content-on-control-solid: var(--ods-palette-gray-900);
+
+  /* Borders - structure */
+  --ods-semantic-color-border-separator: var(--ods-palette-accent-600);
+  --ods-semantic-color-border-track: var(--ods-palette-accent-600);
+  --ods-semantic-color-border-container: var(--ods-palette-accent-600);
+
+  /* Borders - neutral lines */
+  --ods-semantic-color-border-neutral-subtle: var(--ods-palette-gray-600);
+
+  /* Borders - form controls */
+  --ods-semantic-color-border-control: var(--ods-palette-accent-400);
+  --ods-semantic-color-border-readonly: var(--ods-palette-accent-600);
+  --ods-semantic-color-border-selected-solid: var(--ods-palette-accent-100);
+
+  /* Borders - statuses */
+  --ods-semantic-color-border-brand: var(--ods-palette-brand-100);
+
+  /* Minor brand button at rest: the brand step, not the control border. brand-500 is gray-800, ~1.48:1 on the
+     slate-900 page, so the border lifts to brand-300 as the minor ink does. */
+  --ods-semantic-color-border-brand-minor: var(--ods-palette-brand-300);
+  --ods-semantic-color-border-accent-subtle: var(--ods-palette-accent-500);
+  --ods-semantic-color-border-accent: var(--ods-palette-accent-200); /* the selected Tile, one step past the field hover */
+  --ods-semantic-color-border-information-subtle: var(--ods-palette-blue-500);
+  --ods-semantic-color-border-information: var(--ods-palette-blue-400);
+  --ods-semantic-color-border-success-subtle: var(--ods-palette-green-600);
+  --ods-semantic-color-border-warning-subtle: var(--ods-palette-orange-600);
+  --ods-semantic-color-border-warning: var(--ods-palette-orange-500);
+  --ods-semantic-color-border-critical-subtle: var(--ods-palette-red-600);
+
+  /* Borders - states */
+  --ods-semantic-color-border-drag-over: var(--ods-palette-brand-400);
+
+  /* Interaction - on a tinted / transparent surface */
+  --ods-semantic-color-interaction-neutral-subtle-hover: var(--ods-palette-gray-800);
+  --ods-semantic-color-interaction-neutral-subtle-active: var(--ods-palette-gray-800);
+  // Accent 700, not brand: the brand ramp is black from brand-700, which would sink a hover into the page.
+  --ods-semantic-color-interaction-brand-subtle-hover: var(--ods-palette-accent-700);
+  --ods-semantic-color-interaction-brand-subtle-active: var(--ods-palette-accent-700);
+  --ods-semantic-color-interaction-accent-subtle-hover: var(--ods-palette-accent-700);
+  --ods-semantic-color-interaction-accent-subtle-active: var(--ods-palette-accent-700);
+  --ods-semantic-color-interaction-information-subtle-hover: var(--ods-palette-blue-800);
+  --ods-semantic-color-interaction-information-subtle-active: var(--ods-palette-blue-800);
+  --ods-semantic-color-interaction-success-subtle-hover: var(--ods-palette-green-800);
+  --ods-semantic-color-interaction-success-subtle-active: var(--ods-palette-green-800);
+  --ods-semantic-color-interaction-warning-subtle-hover: var(--ods-palette-orange-800);
+  --ods-semantic-color-interaction-warning-subtle-active: var(--ods-palette-orange-800);
+  --ods-semantic-color-interaction-critical-subtle-hover: var(--ods-palette-red-800);
+  --ods-semantic-color-interaction-critical-subtle-active: var(--ods-palette-red-800);
+
+  /* Interaction - on a solid surface */
+  --ods-semantic-color-interaction-brand-hover: var(--ods-palette-brand-300);
+  --ods-semantic-color-interaction-brand-active: var(--ods-palette-brand-300);
+  --ods-semantic-color-interaction-brand-visited: var(--ods-palette-brand-200);
+
+  /* Interaction - lists and selection */
+  // Accent 700, not 600: on 600 the error inks of a hovered row fall below 4.5:1 (red-200 4.06:1).
+  --ods-semantic-color-interaction-highlight: var(--ods-palette-accent-700);
+  // Accent 600, not 500: content-text on the selected option gives 4.16:1 on 500, 6.62:1 on 600, still lighter than the hover.
+  --ods-semantic-color-interaction-selected-highlight: var(--ods-palette-accent-600);
+
+  /* Interaction - form controls */
+  --ods-semantic-color-interaction-control-hover: var(--ods-palette-accent-300);
+  --ods-semantic-color-interaction-control-highlight: var(--ods-semantic-color-surface-control);
+  --ods-semantic-color-interaction-control-solid-hover: var(--ods-palette-brand-300);
+  --ods-semantic-color-interaction-control-solid-active: var(--ods-palette-brand-300);
+
+  /* Interaction - structure */
+  // The hover of the Tabs rail (border-track), not of the control rail (surface-track).
+  --ods-semantic-color-interaction-track-hover: var(--ods-palette-accent-300);
+
+  /* Focus */
+  // Blue, not white: a white ring is 1.12:1 next to the gray-100 primary, blue-400 2.08:1.
+  --ods-semantic-color-focus: var(--ods-palette-blue-400);
+
+  /* Shadow */
+  // Menu, Popover, Tooltip, Drawer and Modal have no border, and their surface is the one of a Card in this theme: the
+  // overlay shadow draws their edge, a 1px ring in the container border color, over a black and denser shadow.
+  --ods-semantic-color-shadow-overlay: var(--ods-palette-black);
+  --ods-semantic-shadow-overlay: 0 0 0 var(--ods-semantic-border-thickness) var(--ods-semantic-color-border-container), 0 8px 24px -4px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--ods-semantic-color-shadow-overlay) 40%, transparent);
+
+  /* Brand */
+  --ods-semantic-color-brand: var(--ods-palette-white);
+}
+
+/* Components */
+@layer ods-atoms {
+  // :root outranks the component's own class in this layer whatever the load order; an app rule outside the layers still wins.
+  :root [data-ods='badge'] {
+    // One ink across the three emphases.
+    --ods-badge-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);
+    --ods-badge-text-color-accent-low: var(--ods-semantic-color-content-on-accent);
+    --ods-badge-text-color-critical-medium: var(--ods-semantic-color-content-on-critical);
+    --ods-badge-text-color-critical-low: var(--ods-semantic-color-content-on-critical);
+    --ods-badge-text-color-information-medium: var(--ods-semantic-color-content-on-information);
+    --ods-badge-text-color-information-low: var(--ods-semantic-color-content-on-information);
+    --ods-badge-text-color-neutral-medium: var(--ods-semantic-color-content-on-neutral);
+    --ods-badge-text-color-neutral-low: var(--ods-semantic-color-content-on-neutral);
+    --ods-badge-text-color-success-medium: var(--ods-semantic-color-content-on-success);
+    --ods-badge-text-color-success-low: var(--ods-semantic-color-content-on-success);
+    --ods-badge-text-color-warning-medium: var(--ods-semantic-color-content-on-warning);
+    --ods-badge-text-color-warning-low: var(--ods-semantic-color-content-on-warning);
+  }
+}
+
+@layer ods-molecules {
+  :root [data-ods='message'] {
+    // One ink across the three emphases.
+    --ods-message-text-color-accent-medium: var(--ods-semantic-color-content-on-accent);
+    --ods-message-text-color-accent-low: var(--ods-semantic-color-content-on-accent);
+    --ods-message-text-color-critical-medium: var(--ods-semantic-color-content-on-critical);
+    --ods-message-text-color-critical-low: var(--ods-semantic-color-content-on-critical);
+    --ods-message-text-color-information-medium: var(--ods-semantic-color-content-on-information);
+    --ods-message-text-color-information-low: var(--ods-semantic-color-content-on-information);
+    --ods-message-text-color-neutral-medium: var(--ods-semantic-color-content-on-neutral);
+    --ods-message-text-color-neutral-low: var(--ods-semantic-color-content-on-neutral);
+    --ods-message-text-color-success-medium: var(--ods-semantic-color-content-on-success);
+    --ods-message-text-color-success-low: var(--ods-semantic-color-content-on-success);
+    --ods-message-text-color-warning-medium: var(--ods-semantic-color-content-on-warning);
+    --ods-message-text-color-warning-low: var(--ods-semantic-color-content-on-warning);
+  }
+}

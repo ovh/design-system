@@ -3,8 +3,10 @@
 import aluminiumDarkCss from '@ovhcloud/ods-themes/aluminium-dark/css?inline';
 import blueJeansDarkCss from '@ovhcloud/ods-themes/blue-jeans-dark/css?inline';
 import blueJeansCss from '@ovhcloud/ods-themes/blue-jeans/css?inline';
+import whiteLabelDarkCss from '@ovhcloud/ods-themes/white-label-dark/css?inline';
+import whiteLabelCss from '@ovhcloud/ods-themes/white-label/css?inline';
 
-type Brand = 'blue-jeans' | 'default';
+type Brand = 'blue-jeans' | 'default' | 'white-label';
 type Scheme = 'dark' | 'light';
 
 /* Each mode is a complete theme. The default light one is the theme main.tsx loads, so it needs no
@@ -12,6 +14,7 @@ type Scheme = 'dark' | 'light';
 const THEMES: Record<Brand, Record<Scheme, string>> = {
   'blue-jeans': { dark: blueJeansDarkCss, light: blueJeansCss },
   default: { dark: aluminiumDarkCss, light: '' },
+  'white-label': { dark: whiteLabelDarkCss, light: whiteLabelCss },
 };
 
 /* One style element, after the theme main.tsx loads: it holds the theme shown, whole, so it wins over
@@ -33,7 +36,8 @@ const BRAND_KEY = 'ods-doc-brand';
 
 const readStoredBrand = (): Brand => {
   try {
-    return localStorage.getItem(BRAND_KEY) === 'blue-jeans' ? 'blue-jeans' : 'default';
+    const stored = localStorage.getItem(BRAND_KEY);
+    return stored === 'blue-jeans' || stored === 'white-label' ? stored : 'default';
   } catch {
     return 'default';
   }

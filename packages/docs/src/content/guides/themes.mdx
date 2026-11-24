@@ -4,12 +4,14 @@ A theme names its fonts, but does not load them: loading them is up to you.
 
 <Heading label="Available themes" level={ 2 } />
 
-`@ovhcloud/ods-themes` ships four themes. Each one is a complete stylesheet:
+`@ovhcloud/ods-themes` ships four themes, and a fifth, the white label. Each one is a complete stylesheet:
 
 - **Default** (`@ovhcloud/ods-themes/default/css`), the Aluminium look.
 - **Aluminium dark** (`@ovhcloud/ods-themes/aluminium-dark/css`), its dark mode.
 - **Blue Jeans** (`@ovhcloud/ods-themes/blue-jeans/css`), the OVHcloud look.
 - **Blue Jeans dark** (`@ovhcloud/ods-themes/blue-jeans-dark/css`), its dark mode.
+
+Besides these, the **white label** theme (`@ovhcloud/ods-themes/white-label/css`, with `white-label-dark/css` for its dark mode) is a neutral theme with no OVHcloud brand colour: graphite primary on slate neutrals, and a blue focus ring. It declares every semantic token, so it is a complete starting point for a theme of your own, and it can serve as the base for other themes.
 
 <Heading label="Load a theme" level={ 2 } />
 
@@ -88,7 +90,7 @@ Style your own elements with the `--ods-semantic-*` tokens, and they follow the 
 
 The <DocLink to="/guides/design-tokens">Design Tokens</DocLink> page explains which tokens to use and lists all of them.
 
-To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens` and `blue-jeans-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
+To read the token values from JavaScript (charts, a design tool sync), each theme ships a JSON next to its stylesheet: `@ovhcloud/ods-themes/default/tokens`, `aluminium-dark/tokens`, `blue-jeans/tokens`, `blue-jeans-dark/tokens`, `white-label/tokens` and `white-label-dark/tokens`. Read the one of the theme the page loads. They share the `--ods-semantic-*` keys; the `--ods-palette-*` keys belong to each theme.
 
 <Heading label="Create your own theme" level={ 2 } />
 

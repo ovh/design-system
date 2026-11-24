@@ -41,3 +41,20 @@ changes: a value shared by both modes, such as a radius, is set in `light.scss` 
 `pnpm build:prod` compiles each mode to a single stylesheet (`dist/<theme>/<mode>.css`, the two
 modes merged into one `:root` by `scripts/bake-themes.js`) and regenerates its
 `<mode>.tokens.json`. `pnpm tokens:resolve` prints what each token resolves to.
+
+## The white label theme
+
+`src/white-label` is a neutral theme with no OVHcloud brand colour, in light (`white-label/css`) and dark (`white-label-dark/css`). It declares every semantic token, so a product using only it renders every ODS component. Its look is graphite on slate: the primary (`brand`) is near-black in light and near-white in dark, the page is white and the other neutrals (text, borders, header, muted areas, selection) carry a faint blue-gray tint, and the status colours are those of Aluminium. The focus ring is blue, `blue-600` in light and `blue-400` in dark, so it stays visible next to a graphite primary.
+
+Two choices differ from the other themes:
+
+- The `slate` family is new, added to the palette of the white label only. The accent ramp points at it.
+- The `brand` ramp re-indexes the `gray` family: `brand-500` is `gray-800` (`#333333`), and `brand-600` and `brand-700` are `gray-900`. The roles that read `brand-500` get graphite, while a theme that re-aims the brand ramp at a family with a 500 pivot keeps a sensible primary.
+
+The contrast of the text, control and accent pairs is checked by `pnpm check:contrast`, which reads the `tokens.json` of a theme and prints the ratio of each pair:
+
+```bash
+node scripts/check-contrast.js dist/white-label/light.tokens.json dist/white-label/dark.tokens.json
+```
+
+It exits with 1 when a pair fails its minimum (4.5:1 for text, 3:1 for control borders and non-text) or when a token is missing.

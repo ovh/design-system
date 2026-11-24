@@ -6,6 +6,7 @@ import { type Brand, getThemeBrand, setThemeBrand } from './themeStyles';
 const BRAND_ITEMS = [
   { customRendererData: { suffix: ' (default)' }, label: 'Aluminium', value: 'default' },
   { label: 'Blue Jeans', value: 'blue-jeans' },
+  { label: 'White label', value: 'white-label' },
 ];
 
 const BrandSelect = ({ className }: { className?: string }) => {

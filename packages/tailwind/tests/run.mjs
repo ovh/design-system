@@ -25,7 +25,7 @@ const built = (subpath) => {
     throw error;
   }
 };
-const THEMES = ['default', 'aluminium-dark', 'blue-jeans', 'blue-jeans-dark'];
+const THEMES = ['default', 'aluminium-dark', 'blue-jeans', 'blue-jeans-dark', 'white-label', 'white-label-dark'];
 
 const results = [];
 const check = (label, ok, detail = '') => {

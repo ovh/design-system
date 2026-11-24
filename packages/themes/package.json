@@ -61,6 +61,7 @@
     "build:ci": "npm run build:prod",
     "build:prod": "npm run generate:base64-fonts && sass src:dist --no-source-map --pkg-importer=node && npm run build:css && npm run bake && npm run generate:tokens",
     "bake": "node scripts/bake-themes.js",
+    "check:contrast": "node scripts/check-contrast.js",
     "build:css": "postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
     "build:watch": "sass --watch src:dist --no-source-map --pkg-importer=node",
     "clean": "rimraf dist",

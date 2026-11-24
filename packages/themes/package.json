@@ -50,6 +50,22 @@
     },
     "./blue-jeans-dark/tokens": {
       "default": "./dist/blue-jeans/dark.tokens.json"
+    },
+    "./white-label/css": {
+      "types": "./src/stylesheet.d.ts",
+      "sass": "./src/white-label/light.scss",
+      "default": "./dist/white-label/light.css"
+    },
+    "./white-label/tokens": {
+      "default": "./dist/white-label/light.tokens.json"
+    },
+    "./white-label-dark/css": {
+      "types": "./src/stylesheet.d.ts",
+      "sass": "./src/white-label/dark.scss",
+      "default": "./dist/white-label/dark.css"
+    },
+    "./white-label-dark/tokens": {
+      "default": "./dist/white-label/dark.tokens.json"
     }
   },
   "files": [

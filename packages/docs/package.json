@@ -20,7 +20,7 @@
     "@ovhcloud/ods-themes": "workspace:*",
     "@shikijs/langs": "4.3.0",
     "@shikijs/themes": "4.3.0",
-    "@storybook/react": "8.6.12",
+    "@storybook/react": "8.6.19",
     "lz-string": "^1.5.0",
     "markdown-to-jsx": "9.10.2",
     "monaco-editor": "0.52.2",

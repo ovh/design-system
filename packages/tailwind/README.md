@@ -68,6 +68,10 @@ Not mapped: the palette (a palette step carries no role: use the semantic tokens
 
 To use the utilities without the layer order, for instance with your own Tailwind entry point, import `@ovhcloud/ods-tailwind/theme.css` after `tailwindcss`, and after any reset of a namespace (`--color-*: initial`), which would clear the ODS utilities too.
 
+## Tailwind CSS v3
+
+This package requires Tailwind CSS v4. For Tailwind CSS v3, the Tailwind CSS guide of the ODS documentation offers a preset to download, with the same utilities: `ods-tailwind.preset.cjs`, in this folder. It is not part of the npm package.
+
 ## Development
 
-`theme.css` is generated from `@ovhcloud/ods-themes/default/tokens` by `pnpm run build:prod`, and committed: `pnpm run lint:css` fails when it is out of date. `pnpm run test:spec` compiles the stylesheet with Tailwind and checks the committed file.
+`theme.css` and `ods-tailwind.preset.cjs` are generated from `@ovhcloud/ods-themes/default/tokens` by `pnpm run build:prod`, and committed: `pnpm run lint:css` fails when they are out of date. `pnpm run test:spec` compiles the stylesheet with Tailwind and checks the committed files.

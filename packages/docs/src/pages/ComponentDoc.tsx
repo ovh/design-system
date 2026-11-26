@@ -1,17 +1,17 @@
 import { MDXProvider } from '@mdx-js/react';
-import { type ComponentType, Suspense, lazy, useEffect, useMemo } from 'react';
+import { type ComponentType, type ReactNode, Suspense, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '../../../ods-react/src/components/tabs/src';
 import { DocArticle } from '../doc/DocArticle';
 import { MDX_COMPONENTS } from '../doc/DocComponents';
 import { DocSkeleton } from '../doc/DocSkeleton';
-import { PageStoriesProvider } from '../doc/PageStories';
+import { LoadedPageStories, usePageStories } from '../doc/PageStories';
 import { IconGallery } from '../doc/ports/iconGallery/IconGallery';
 import { TechnicalSpecification } from '../doc/tech/TechnicalSpecification';
-import { hasTechData } from '../doc/tech/techData';
+import { getTechData, hasTechData, techKey } from '../doc/tech/techData';
 import { type NavPage } from '../nav/model';
 import { useNarrow } from '../shell/Shell';
-import { useStories } from '../nav/useStories';
+import { lazyOnce, loadOnce } from '../nav/loadOnce';
 import { ComponentPage } from './ComponentPage';
 
 /* Component page = Documentation (neutral-format MDX) + Technical information
@@ -25,62 +25,69 @@ const DOC_MODULES = import.meta.glob('../content/components/*/documentation.mdx'
    where there is something to browse. */
 const GALLERIES: Record<string, ComponentType> = { icon: IconGallery };
 
+/* The tabs of a component page, the documentation first: the pre-render (entry-server.tsx) writes a
+   page for each. */
+const componentTabs = (componentKey: string): { label: string, value: string }[] => [
+  DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`] && { label: 'Documentation', value: 'documentation' },
+  GALLERIES[componentKey] && { label: 'Gallery', value: 'gallery' },
+  hasTechData(componentKey) && { label: 'Technical information', value: 'technical' },
+  { label: 'Examples', value: 'examples' },
+].filter(Boolean) as { label: string, value: string }[];
+
+/* The examples tab: every story of the page's module, composed. */
+const ComponentExamples = ({ component, tokens }: { component: string, tokens: Record<string, string> }) => {
+  const { raw, storiesModule } = usePageStories();
+  return <ComponentPage component={ component } dark={ false } rawSource={ raw ?? '' } storiesModule={ storiesModule ?? {} } tokens={ tokens } />;
+};
+
 const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, string> }) => {
   const { tab } = useParams();
   const navigate = useNavigate();
-  // The stories module and its raw source load lazily (they only ship in the
-  // page's own chunk); only the tabs that consume them (documentation's
-  // Canvas, examples) wait behind the skeleton until they land — technical
-  // and gallery load their own data.
-  const stories = useStories(page.stories);
-
   const componentKey = page.id.replace('components/', '');
   // kebab folder → PascalCase React name (button-group → ButtonGroup), matching
   // the recipe odsComponents tags.
   const componentName = componentKey.replace(/(^|-)([a-z])/g, (_m, _s, c: string) => c.toUpperCase());
   const loader = DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`];
-  const Doc = useMemo(
-    () => (loader ? lazy(loader as () => Promise<{ default: ComponentType }>) : null),
-    [loader],
-  );
+  const Doc = loader ? lazyOnce(loader, loader) : null;
 
-  // React lazy() only fetches on first render, and the documentation tab is
-  // gated on the stories chunk: warm the MDX chunk now so both loads run in
-  // parallel (dynamic imports are cached, lazy() reuses the in-flight request).
+  // The MDX chunk only loads once its component renders, and the documentation tab
+  // is gated on the stories chunk: warm the MDX chunk now so both loads run in
+  // parallel (lazyOnce reuses the in-flight request).
   useEffect(() => {
-    loader?.();
+    if (loader) {
+      loadOnce(loader, loader);
+    }
   }, [loader]);
 
-  const hasTech = hasTechData(componentKey);
   const Gallery = GALLERIES[componentKey];
-
-  const tabs = [
-    Doc && { label: 'Documentation', value: 'documentation' },
-    Gallery && { label: 'Gallery', value: 'gallery' },
-    hasTech && { label: 'Technical information', value: 'technical' },
-    { label: 'Examples', value: 'examples' },
-  ].filter(Boolean) as { label: string, value: string }[];
+  const tabs = componentTabs(componentKey);
 
   // Fall back to the first available tab when the URL segment isn't valid here.
   const requested = tab ?? 'documentation';
   const currentTab = tabs.some((entry) => entry.value === requested) ? requested : tabs[0].value;
-  // On a narrow screen the tab strip outgrows the column: its arrows reach the last tabs.
+  // On a narrow screen the tab strip outgrows the column: its arrows reach the last tabs. Until
+  // hydrated they render on every screen, and doc.css hides them on the wide ones.
   const narrow = useNarrow();
   const toPath = (value: string) => (value === 'documentation' ? page.path : `${page.path}/${value}`);
+
+  /* The stories module and its raw source load lazily (they only ship in the page's own chunk):
+     the tabs that consume them (documentation's Canvas, the anatomy of technical, examples) wait
+     behind the skeleton until they land; the gallery loads its own data. */
+  const withStories = (variant: 'component' | 'examples' | 'technical', children: ReactNode) => (
+    <Suspense fallback={ <DocSkeleton variant={ variant } /> }>
+      { page.stories ? <LoadedPageStories load={ page.stories }>{ children }</LoadedPageStories> : children }
+    </Suspense>
+  );
 
   const content = (
     <>
       { currentTab === 'documentation' && Doc && (
         <DocArticle>
-          { stories
-            ? (
-              <Suspense fallback={ <DocSkeleton variant="component" /> }>
-                <MDXProvider components={ MDX_COMPONENTS }>
-                  <Doc />
-                </MDXProvider>
-              </Suspense>
-            )
-            : <DocSkeleton variant="component" /> }
+          { withStories('component', (
+            <MDXProvider components={ MDX_COMPONENTS }>
+              <Doc />
+            </MDXProvider>
+          )) }
         </DocArticle>
       ) }
 
@@ -88,37 +95,45 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
 
       { currentTab === 'technical' && (
         <DocArticle>
-          <TechnicalSpecification component={ componentKey } />
+          { withStories('technical', <TechnicalSpecification component={ componentKey } />) }
         </DocArticle>
       ) }
 
       { currentTab === 'examples' && (
         <DocArticle>
-          { stories
-            ? <ComponentPage component={ componentName } dark={ false } rawSource={ stories.raw } storiesModule={ stories.module } tokens={ tokens } />
-            : <DocSkeleton variant="examples" /> }
+          { withStories('examples', <ComponentExamples component={ componentName } tokens={ tokens } />) }
         </DocArticle>
       ) }
     </>
   );
 
   return (
-    <PageStoriesProvider raw={ stories?.raw } storiesModule={ stories?.module }>
-      <div className="doc-page">
-        { tabs.length > 1
-          ? (
-            // The route picks the tab: only the selected panel is rendered, but it sits in its tabpanel.
-            <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch } withArrows={ narrow }>
-              <TabList className="doc-page__tabs">
-                { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
-              </TabList>
-              <TabContent value={ currentTab }>{ content }</TabContent>
-            </Tabs>
-          )
-          : content }
-      </div>
-    </PageStoriesProvider>
+    <div className="doc-page">
+      { tabs.length > 1
+        ? (
+          // The route picks the tab: only the selected panel is rendered, but it sits in its tabpanel.
+          <Tabs onValueChange={ ({ value }) => navigate(toPath(value)) } value={ currentTab } variant={ TABS_VARIANT.switch } withArrows={ narrow !== false }>
+            <TabList className="doc-page__tabs">
+              { tabs.map((entry) => <Tab key={ entry.value } value={ entry.value }>{ entry.label }</Tab>) }
+            </TabList>
+            <TabContent value={ currentTab }>{ content }</TabContent>
+          </Tabs>
+        )
+        : content }
+    </div>
   );
 };
 
-export { ComponentDoc };
+/* What the first render of a tab reads, loaded: the page hydrates it without suspending (main.tsx). */
+const preloadComponentDoc = (page: NavPage, tab?: string): Promise<unknown> => {
+  const componentKey = page.id.replace('components/', '');
+  const loader = DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`];
+  const current = tab ?? 'documentation';
+  return Promise.all([
+    current === 'documentation' && loader ? loadOnce(loader, loader) : undefined,
+    current !== 'gallery' && page.stories ? loadOnce(page.stories, page.stories) : undefined,
+    current === 'technical' && hasTechData(componentKey) ? loadOnce(techKey(componentKey), () => getTechData(componentKey)) : undefined,
+  ]);
+};
+
+export { ComponentDoc, componentTabs, preloadComponentDoc };

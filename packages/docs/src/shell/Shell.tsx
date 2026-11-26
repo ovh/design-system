@@ -10,6 +10,9 @@ import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
+import { pageOf, titleOf } from '../nav/pages';
+import { useHydrated } from '../nav/useHydrated';
+import { useMediaQuery } from '../nav/useMediaQuery';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
 import { ThemeMenu, VersionSelect } from './TopbarSelects';
@@ -22,19 +25,11 @@ interface ShellContext {
 }
 
 /* Single source of truth for the narrow layout; shell.css uses the same value.
-   Below it the sidebar becomes a drawer opened from the topbar. */
+   Below it the sidebar becomes a drawer opened from the topbar. Null until hydrated (useMediaQuery):
+   both layouts render, and shell.css shows the one of the viewport. */
 const NARROW_QUERY = '(max-width: 1000px)';
 
-const useNarrow = () => {
-  const [narrow, setNarrow] = useState(() => window.matchMedia(NARROW_QUERY).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(NARROW_QUERY);
-    const onChange = () => setNarrow(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return narrow;
-};
+const useNarrow = () => useMediaQuery(NARROW_QUERY);
 
 /* The sections a page sits in, outermost first; empty when the page is not in these nodes. */
 const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
@@ -179,8 +174,18 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   );
 };
 
-/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform. */
-const SEARCH_SHORTCUT = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform.
+   The pre-rendered page knows no platform: Ctrl K until hydrated. */
+const SearchShortcut = () => (useHydrated() && /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K');
+
+/* Until hydrated, the button does nothing: aria-disabled says so, where disabled would take it out
+   of the keyboard order and move the focus of a reader already on it once the scripts run. */
+const SearchHint = ({ onSearch }: { onSearch: () => void }) => (
+  <button aria-disabled={ !useHydrated() || undefined } className="shell__search-hint" onClick={ onSearch } type="button">
+    <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
+    <Kbd className="shell__search-kbd"><SearchShortcut /></Kbd>
+  </button>
+);
 
 /* The whole sidebar content: rendered in the fixed aside on wide screens and
    inside the navigation drawer on narrow ones. */
@@ -195,10 +200,7 @@ const SidebarPanels = ({ currentId, narrow, onNavigate, onSearch }: {
       <BrandLogo />
     </RouterLink>
 
-    <button className="shell__search-hint" onClick={ onSearch } type="button">
-      <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
-      <Kbd className="shell__search-kbd">{ SEARCH_SHORTCUT }</Kbd>
-    </button>
+    <SearchHint onSearch={ onSearch } />
 
     <nav aria-label="Documentation" className="shell__nav">
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Guides</Text>
@@ -232,6 +234,8 @@ const Shell = () => {
   const navigate = useNavigate();
   const pages = flattenPages();
   const isNarrow = useNarrow();
+  // Until hydrated, the buttons of the shell do nothing: see SearchHint.
+  const hydrated = useHydrated();
   const [navOpen, setNavOpen] = useState(false);
 
   /* The sandbox chunk (Monaco + the ODS type graph, ~9 MB) is fetched during
@@ -243,29 +247,22 @@ const Shell = () => {
     return () => window.clearTimeout(idle);
   }, []);
 
-  // Exact match first; then the one-segment tab views of a component page
-  // (/components/x/examples), the only sub-views the router has: any other
-  // nested path is a not found page, not the page it starts with. A trailing
-  // slash is ignored, as the router does.
-  const pathname = location.pathname.length > 1 ? location.pathname.replace(/\/+$/, '') : location.pathname;
-  const currentPage = pages.find((page) => page.path === pathname)
-    ?? pages.find((page) => page.kind === 'component' && pathname.startsWith(`${page.path}/`)
-      && !pathname.slice(page.path.length + 1).includes('/'));
+  const currentPage = pageOf(location.pathname);
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
     || (currentPage?.kind === 'recipe' && !currentPage.gallery);
-  // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
-  // keep it, since it holds the navigation drawer button.
-  const isWelcome = location.pathname === '/' && !isNarrow;
+  // The Welcome page leads with its own layout and h1: its topbar keeps the actions only. Narrow
+  // screens keep the whole topbar, which holds the navigation drawer button; until hydrated it
+  // renders the title too, and shell.css hides it on wide screens.
+  const isWelcome = location.pathname === '/' && isNarrow !== true;
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
 
   // Keep the browser tab title in sync with the active page.
   useEffect(() => {
-    const title = currentPage?.title ?? (location.pathname === '/' ? undefined : 'Page not found');
-    document.title = title ? `${title} — OVHcloud Design System` : 'OVHcloud Design System';
-  }, [currentPage, location.pathname]);
+    document.title = titleOf(location.pathname);
+  }, [location.pathname]);
 
   // Any navigation (tree, palette, in-content link) closes the nav drawer.
   useEffect(() => {
@@ -347,13 +344,13 @@ const Shell = () => {
       <a className="shell__skip" href="#main-content">Skip to content</a>
       <SearchCommand />
 
-      { !isNarrow && (
-        <aside className="shell__sidebar">
+      { isNarrow !== true && (
+        <aside aria-label="Site navigation" className="shell__sidebar">
           <SidebarPanels currentId={ currentPage?.id } narrow={ false } onNavigate={ onNavigate } onSearch={ openSearchPalette } />
         </aside>
       ) }
 
-      { isNarrow && (
+      { isNarrow === true && (
         <Drawer
           backdrop
           closeOnInteractOutside
@@ -378,8 +375,9 @@ const Shell = () => {
       <div className="shell__main">
         { /* The Welcome page keeps only the topbar actions, over its own heading. */ }
         <header className={ isWelcome ? 'shell__topbar shell__topbar--welcome' : isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
-          { isNarrow && (
+          { isNarrow !== false && (
             <Button
+              aria-disabled={ !hydrated || undefined }
               aria-label="Open navigation"
               className="shell__menu-button"
               emphasis={ BUTTON_EMPHASIS.low }
@@ -388,9 +386,9 @@ const Shell = () => {
               <Icon name={ ICON_NAME.hamburgerMenu } />
             </Button>
           ) }
-          { !isWelcome && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
+          { !(isWelcome && isNarrow === false) && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
           <div className="shell__topbar-actions">
-            { !isNarrow && <BrandSelect className="shell__topbar-select" /> }
+            { isNarrow !== true && <BrandSelect className="shell__topbar-select shell__topbar-brand" /> }
             <ThemeMenu />
           </div>
         </header>

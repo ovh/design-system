@@ -185,6 +185,33 @@ If some of your changes impacts the technical side of the component:
 - check that the generated interfaces/definitions are correct (run `pnpm doc` at the root to get the latest data).
 - if relevant, add some stories in the `<component-name>.stories.tsx` file; they show up in the Examples tab.
 
+### Pre-rendered pages
+
+`pnpm build` in `packages/docs` writes the HTML of every page (`scripts/prerender.mjs`): a reader gets the page text before
+the scripts load, then the scripts hydrate it. The first render in the browser must give the same HTML as the build:
+
+- don't read `window`, `document`, `navigator`, `localStorage` or a media query while rendering or when a module loads:
+  read them in an effect, or after `useHydrated()` (`src/nav/useHydrated.ts`).
+- for what differs with the viewport, prefer a CSS media query. `useMediaQuery()` is `null` until hydrated: render both forms
+  then, and let a CSS media query on the same value hide the other one (`(width > 1000px)` for `(max-width: 1000px)`), or the
+  page moves when the scripts load. Test it with `=== true` or `!== false`: `!narrow` takes `null` for `false`, and nothing
+  warns about it.
+- don't render a value that differs between the build and the browser: `Date.now()`, `Math.random()`, a date or a number
+  formatted without an explicit locale.
+- once hydrated, keep the elements the HTML holds: a node rendered over (a placeholder swapped for a list) drops the focus of a
+  reader who reached it with the keyboard.
+- load what a page needs (its MDX, its stories, its data) with `lazyOnce()` and `useLoaded()` (`src/nav/loadOnce.ts`), inside a
+  `Suspense` whose fallback is its `DocSkeleton`, and list it in the page's `preload…` function, called from `preloadRoute`
+  (`src/routes.tsx`): the browser loads it before hydrating.
+- a tool that only works in the browser goes in a `ToolRoute` (`src/routes.tsx`): its HTML is its skeleton.
+
+The build fails on a page that fails to render. `pnpm start` does not hydrate (the dev server renders from an empty page): a
+mismatch only shows on the built pages. `node tests/run.mjs prerender` (after `pnpm build`) checks that every page hydrates in
+place: it fails on a page error, or on its shell, `main`, `article` or table of contents rendered over. It cannot see an
+attribute that differs, nor a smaller part of the page rendered over: React keeps the attribute of the HTML and says nothing in
+production. `node tests/perf-first-paint.mjs` measures when a page shows its title, its text and its demos on a slow mobile
+profile.
+
 # Code submission
 
 The contributions should be submitted through Github Pull Requests and follow the DCO defined below.

@@ -4,14 +4,15 @@
 //
 //   node tests/perf-first-paint.mjs [runs] > timings.json
 //
-// The CPU and the network are throttled like a mid-range laptop on a fast 3G link, so that the
-// numbers say what a reader feels rather than what a dev machine does.
+// CPU ×4, 150 ms RTT, 1.6 Mbps down: the values of Lighthouse's simulated mobile profile (its "slow
+// 4G"), applied as is through CDP, so that the numbers say what a reader feels rather than what a
+// dev machine does.
 import { chromium } from 'playwright';
 import { serveSite } from './ghpages-server.mjs';
 import { setupSim } from './setup-sim.mjs';
 
 const RUNS = Number(process.argv[2] ?? 5);
-const PORT = Number(process.env.DOCS_TEST_PORT ?? 8125);
+const PORT = Number(process.env.DOCS_TEST_PORT ?? 8127);
 // Diagnostic: DOCS_PERF_NO_FONTS=1 drops the font requests, to tell their weight on the timings.
 const NO_FONTS = process.env.DOCS_PERF_NO_FONTS === '1';
 // [name, path, has demos]
@@ -54,13 +55,13 @@ async function measure(path, hasDemos) {
     const article = document.querySelector('article.doc') ?? document.querySelector('main');
     return article && !article.querySelector('.doc-skeleton') && article.textContent.trim().length > 200;
   }, null, { timeout: 30000 }));
-  // React answers: the version select opens on a click.
+  // Hydrated: React has attached its props (and its click handler) to the version select trigger.
   const interactive = await at(async () => {
     const trigger = page.locator('[data-testid="version-select"] [data-part="trigger"]');
     await trigger.waitFor({ timeout: 30000 });
     await page.waitForFunction(() => {
       const el = document.querySelector('[data-testid="version-select"] [data-part="trigger"]');
-      return el && Object.keys(el).some((key) => key.startsWith('__reactProps'));
+      return el && Object.keys(el).some((key) => key.startsWith('__react'));
     }, null, { timeout: 30000 });
   });
   // The demos: every frame of the article has content (null on a page without demos).
@@ -80,7 +81,9 @@ const median = (values) => {
 const results = {};
 for (const [name, path, hasDemos] of PAGES) {
   const runs = [];
-  for (let i = 0; i < RUNS; i++) runs.push(await measure(path, hasDemos));
+  for (let i = 0; i < RUNS; i++) {
+    runs.push(await measure(path, hasDemos));
+  }
   results[name] = Object.fromEntries(['title', 'text', 'interactive', 'demos'].map((key) => [key, median(runs.map((run) => run[key]))]));
   process.stderr.write(`${name}: ${JSON.stringify(results[name])}\n`);
 }

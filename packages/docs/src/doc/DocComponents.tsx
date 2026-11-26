@@ -130,9 +130,15 @@ const DocLink = ({ children, to }: { children: ReactNode, to: string }) => {
 };
 
 /* Site-root-relative hrefs (e.g. "/llms/llms.txt") must resolve against the
-   deploy root, not the origin: the app lives under a version subpath. */
+   deploy root, not the origin: the app lives under a version subpath. The path
+   only: the pre-render has no origin (appBase.ts). */
+const deployPath = (href: string): string => {
+  const url = new URL(href.slice(1), APP_ROOT);
+  return `${url.pathname}${url.search}${url.hash}`;
+};
+
 const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
-  <Link href={ href?.startsWith('/') ? new URL(href.slice(1), APP_ROOT).href : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
+  <Link href={ href?.startsWith('/') ? deployPath(href) : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
 );
 
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */

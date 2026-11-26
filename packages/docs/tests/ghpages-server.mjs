@@ -38,11 +38,10 @@ function serveSite(root, port) {
         }
         res.writeHead(200, { 'content-type': type }).end(body);
       } catch {
-        try {
-          res.writeHead(404, { 'content-type': 'text/html' }).end(await readFile(join(root, 'design-system', '404.html')));
-        } catch {
-          res.writeHead(404).end('not found');
-        }
+        // The page read before the head is written: a read that fails falls back to plain text, where
+        // a head already written would crash the server.
+        const page = await readFile(join(root, 'design-system', '404.html')).catch(() => null);
+        res.writeHead(404, { 'content-type': page ? 'text/html' : 'text/plain' }).end(page ?? 'not found');
       }
     });
     server.listen(port, () => resolveStarted(server));

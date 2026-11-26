@@ -1,6 +1,7 @@
 // Mobile nav drawer interaction check against the gh-pages sim.
 import { chromium } from 'playwright';
 import { serveSite } from './ghpages-server.mjs';
+import { waitHydrated } from './helpers.mjs';
 import { setupSim } from './setup-sim.mjs';
 
 const PORT = Number(process.env.DOCS_TEST_PORT ?? 8126);
@@ -15,6 +16,8 @@ page.on('pageerror', (e) => errors.push(e.message));
 
 await page.goto(`${base}/components/button`, { waitUntil: 'domcontentloaded' });
 await page.waitForSelector('.shell__topbar', { timeout: 30000 });
+// The pre-rendered menu button does nothing until the scripts run.
+await waitHydrated(page, 30000);
 
 // 1. open the drawer
 await page.getByRole('button', { name: 'Open navigation' }).click();
@@ -43,6 +46,8 @@ console.log(`drawer closes via X: ${closedByButton}`);
 const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 await desktop.goto(`${base}/components/button`, { waitUntil: 'domcontentloaded' });
 await desktop.waitForSelector('.shell__sidebar', { timeout: 30000 });
+// Until hydrated, the HTML holds the menu button for every width, and CSS hides it on a wide screen.
+await waitHydrated(desktop, 30000);
 const hamburgerHidden = (await desktop.getByRole('button', { name: 'Open navigation' }).count()) === 0;
 console.log(`desktop sidebar present, hamburger absent: ${hamburgerHidden}`);
 

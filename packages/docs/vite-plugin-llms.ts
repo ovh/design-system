@@ -881,7 +881,8 @@ function buildSearchIndex(): SearchEntry[] {
 function llmsEmit(): Plugin {
   return {
     name: 'ods-docs:llms-emit',
-    apply: 'build',
+    // The client build only: the pre-render's server build (scripts/prerender.mjs) emits nothing.
+    apply: (_config, { command, isSsrBuild }) => command === 'build' && !isSsrBuild,
     closeBundle() {
       const count = generate(resolve(here, 'dist', 'llms'));
       // Committed copy: the source ods-react's copy:llms ships in its npm

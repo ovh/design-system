@@ -13,4 +13,13 @@ function makeChecker(results) {
   };
 }
 
-export { makeChecker };
+/* The pre-rendered HTML holds the page before any script runs (#root main included): what clicks or
+   reads what the scripts render waits for them. Hydrated, React holds the version select. */
+function waitHydrated(page, timeout = 15000) {
+  return page.waitForFunction(() => {
+    const trigger = document.querySelector('[data-testid="version-select"] [data-part="trigger"]');
+    return trigger && Object.keys(trigger).some((key) => key.startsWith('__react'));
+  }, null, { timeout });
+}
+
+export { makeChecker, waitHydrated };

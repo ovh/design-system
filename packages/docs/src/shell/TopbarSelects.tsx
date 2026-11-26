@@ -5,14 +5,11 @@ import { BUTTON_EMPHASIS, BUTTON_STATUS, Button } from '../../../ods-react/src/c
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
 import { Menu, MenuContent, MenuItem, MenuTrigger } from '../../../ods-react/src/components/menu/src';
 import { Select, SelectContent, SelectControl } from '../../../ods-react/src/components/select/src';
+import { useHydrated } from '../nav/useHydrated';
+import { THEME_KEY, type ThemeChoice, readStoredTheme } from './themeBoot';
 import { setThemeScheme } from './themeStyles';
 
-/* Same behavior and storage key as the old manager addons: the preference
-   survives the platform switch. */
-const THEME_KEY = 'ods-doc-theme';
 const BASE_URL = 'https://ovh.github.io/design-system';
-
-type ThemeChoice = 'dark' | 'light' | 'system';
 
 const THEME_ICONS: Record<ThemeChoice, ICON_NAME> = {
   dark: ICON_NAME.moon,
@@ -26,28 +23,41 @@ const THEME_ITEMS = [
   { customRendererData: { icon: THEME_ICONS.dark }, label: 'Dark', value: 'dark' },
 ];
 
-function readStoredTheme(): ThemeChoice {
+/* The stored choice: System where the storage is blocked. */
+const readStoredChoice = (): ThemeChoice => {
   try {
-    const stored = JSON.parse(localStorage.getItem(THEME_KEY) ?? '""');
-    return stored === 'dark' || stored === 'light' ? stored : 'system';
+    return readStoredTheme().choice;
   } catch {
     return 'system';
   }
-}
+};
 
 /* The color scheme, from an icon button in the topbar as most documentation sites place it. The
    button shows the current choice; its menu lists the three. */
 const ThemeMenu = () => {
-  const [choice, setChoice] = useState<ThemeChoice>(readStoredTheme);
+  // The pre-rendered HTML cannot know the stored choice: System until hydrated, the stored one after,
+  // the reader's pick once made.
+  const [picked, setPicked] = useState<ThemeChoice | null>(null);
+  const hydrated = useHydrated();
+  const choice = picked ?? (hydrated ? readStoredChoice() : 'system');
 
   useEffect(() => {
-    localStorage.setItem(THEME_KEY, JSON.stringify(choice));
+    const effective = picked ?? readStoredChoice();
     const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const apply = () => setThemeScheme(choice === 'dark' || (choice === 'system' && media.matches) ? 'dark' : 'light');
+    const apply = () => setThemeScheme(effective === 'dark' || (effective === 'system' && media.matches) ? 'dark' : 'light');
     apply();
     media.addEventListener('change', apply);
     return () => media.removeEventListener('change', apply);
-  }, [choice]);
+  }, [picked]);
+
+  const pick = (next: ThemeChoice) => {
+    setPicked(next);
+    try {
+      localStorage.setItem(THEME_KEY, JSON.stringify(next));
+    } catch {
+      // Not kept for the next visit: the scheme still applies now.
+    }
+  };
 
   const current = THEME_ITEMS.find((item) => item.value === choice);
 
@@ -55,7 +65,9 @@ const ThemeMenu = () => {
     <Menu>
       <MenuTrigger asChild>
         <Button
-          aria-label={ `Color scheme: ${current?.label}` }
+          // Until hydrated: no stored choice known yet, and a menu that does not open (SearchHint).
+          aria-disabled={ !hydrated || undefined }
+          aria-label={ hydrated ? `Color scheme: ${current?.label}` : 'Color scheme' }
           data-testid="theme-menu"
           emphasis={ BUTTON_EMPHASIS.low }
           status={ BUTTON_STATUS.neutral }>
@@ -64,7 +76,7 @@ const ThemeMenu = () => {
       </MenuTrigger>
       <MenuContent>
         { THEME_ITEMS.map((item) => (
-          <MenuItem key={ item.value } onSelect={ () => setChoice(item.value as ThemeChoice) } value={ item.value }>
+          <MenuItem key={ item.value } onSelect={ () => pick(item.value as ThemeChoice) } value={ item.value }>
             <span className="shell__select-item">
               <Icon name={ item.customRendererData.icon } /> { item.label }
               { item.value === choice && <Icon name={ ICON_NAME.check } /> }
@@ -110,7 +122,9 @@ function versionItems(channel: string) {
 }
 
 const VersionSelect = () => {
-  const current = detectCurrentChannel();
+  // The same pre-rendered HTML serves /latest/ and /vX.Y.Z/: the URL tells which once in the browser.
+  const hydrated = useHydrated();
+  const current = hydrated ? detectCurrentChannel() : 'latest';
 
   return (
     <Select
@@ -125,7 +139,8 @@ const VersionSelect = () => {
       } }
       overlayConfig={ { sameWidth: false } }
       value={ [current] }>
-      <SelectControl aria-label="Version" />
+      { /* Until hydrated, a select that does not open (SearchHint, Shell.tsx). */ }
+      <SelectControl aria-disabled={ !hydrated } aria-label="Version" />
       <SelectContent
         customOptionRenderer={ ({ customData, label }) => (
           <span>{ label }{ (customData as { suffix?: string } | undefined)?.suffix }</span>

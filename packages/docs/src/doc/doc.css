@@ -214,10 +214,21 @@ article.doc.doc--wide {
   display: none;
 }
 
-/* Keep in sync with COMPACT_TOC_QUERY (DocArticle.tsx). */
+/* Until hydrated, the page holds both tables of contents (DocArticle.tsx): each viewport hides the
+   other's. Keep in sync with COMPACT_TOC_QUERY (DocArticle.tsx). */
+@media (width > 1100px) {
+  .doc-layout__aside--compact {
+    display: none;
+  }
+}
+
 @media (max-width: 1100px) {
   .doc-layout {
     grid-template-columns: minmax(0, var(--doc-article-width));
+  }
+
+  .doc-layout__aside--column {
+    display: none;
   }
 }
 
@@ -233,6 +244,15 @@ article.doc.doc--wide {
    the Code component's own ground property; CodeBlock leaves it to the component there. */
 [data-theme="dark"] [data-ods="code"] {
   --ods-code-background-color: var(--ods-palette-accent-900);
+}
+
+/* Until hydrated, the tab strip of a component page holds its arrows on every screen (ComponentDoc.tsx):
+   the wide ones hide them. Keep in sync with NARROW_QUERY. The arrows have no data attribute: their CSS
+   module class is matched by name. */
+@media (width > 1000px) {
+  .doc-page__tabs :is([class*="tab-list__left-arrow"], [class*="tab-list__right-arrow"]) {
+    display: none;
+  }
 }
 
 /* ——— Narrow layout (≤1000px, keep in sync with shell.css / NARROW_QUERY) ———

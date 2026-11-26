@@ -1,8 +1,9 @@
-import { type ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { type ReactNode, createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../ods-react/src/components/accordion/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
+import { useMediaQuery } from '../nav/useMediaQuery';
 import { TocSkeleton } from './DocSkeleton';
 import { MarkdownLink } from './MarkdownLink';
 import { flashSearchTerms } from './searchHighlight';
@@ -40,20 +41,34 @@ const isLoading = (container: HTMLElement): boolean => container.querySelector('
 
 /* Headings render their slug as id; a repeated label would give duplicate ids.
    Rename the repeats in document order (same rule as the search index) and keep
-   each hover anchor in sync. The original slug is kept in data-slug, so the pass
-   is idempotent when lazy content mounts later. */
+   each hover anchor in sync. The original slug is in data-slug (Heading renders
+   it), so the pass is idempotent when lazy content mounts later. */
 function dedupeHeadingIds(container: HTMLElement): void {
   const unique = createUniqueSlugs();
-  container.querySelectorAll<HTMLElement>('.doc__heading[id]').forEach((heading) => {
-    const slug = heading.dataset.slug ?? heading.id;
-    heading.dataset.slug = slug;
-    const id = unique(slug);
+  container.querySelectorAll<HTMLElement>('.doc__heading[data-slug]').forEach((heading) => {
+    const id = unique(heading.dataset.slug!);
     if (heading.id !== id) {
       heading.id = id;
       heading.parentElement?.querySelector<HTMLAnchorElement>('.doc__anchor')?.setAttribute('href', `#${id}`);
     }
   });
 }
+
+/* The headings the table of contents reads. */
+const tocHeadings = (container: ParentNode): HTMLElement[] => [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')];
+
+/* What the table of contents lists. A long page (a changelog, release notes) lists its sections
+   only: its sub-sections repeat the same few names ("Bug fixes") and would bury them. */
+const listedHeadings = <T extends { level: number }>(found: T[]): T[] => (found.length > 25 ? found.filter((entry) => entry.level === 2) : found);
+
+/* Fewer than two: no table of contents, the Markdown link alone. */
+const hasFewHeadings = (levels: number[]): boolean => listedHeadings(levels.map((level) => ({ level }))).length < 2;
+
+/* Whether the page has too few headings for a table of contents, known before its headings can be
+   collected: the pre-render reads it from a first render of the page (entry-server.tsx), the
+   hydration from the HTML (main.tsx). The short page then renders the Markdown link alone from the
+   HTML on, where it would hold the accordion and drop it once hydrated. */
+const FewHeadingsContext = createContext(false);
 
 /* "On this page" — the page's own section titles, in the same TreeView as
    the sidebar. Headings render with slugified ids (Heading contract); the
@@ -64,6 +79,10 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
   const [expanded, setExpanded] = useState<string[]>([]);
   const [active, setActive] = useState<string>('');
   const [loading, setLoading] = useState(false);
+  // Until the headings are collected, the table of contents keeps the form it has in the HTML: a node
+  // rendered over drops the focus of a reader who reached it with the keyboard before the scripts.
+  const [collected, setCollected] = useState(false);
+  const fewHeadings = useContext(FewHeadingsContext);
 
   // Like DocArticle's setContainer, a layout effect: the ToC skeleton is in place on the article's
   // first paint instead of popping in after it.
@@ -76,16 +95,15 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
       // This child effect runs before DocArticle's own dedupe pass, and an id
       // rename is no childList mutation: dedupe first so the links get the final ids.
       dedupeHeadingIds(container);
-      const found: TocEntry[] = [...container.querySelectorAll<HTMLElement>('h2[id], h3[id]')].map((el) => ({
+      const found: TocEntry[] = tocHeadings(container).map((el) => ({
         id: el.id,
         label: el.textContent ?? '',
         level: el.tagName === 'H2' ? 2 : 3,
       }));
-      // A long page (a changelog, release notes) lists its sections only: its sub-sections repeat
-      // the same few names ("Bug fixes") and would bury them.
-      const listed = found.length > 25 ? found.filter((entry) => entry.level === 2) : found;
+      const listed = listedHeadings(found);
       setEntries((previous) => (JSON.stringify(previous) === JSON.stringify(listed) ? previous : listed));
       setExpanded(listed.filter((entry) => entry.level === 2).map((entry) => entry.id));
+      setCollected(true);
     };
     collect();
     const observer = new MutationObserver(collect);
@@ -137,7 +155,7 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
     return <TocSkeleton />;
   }
   // Too short for a table of contents: the Markdown link alone.
-  if (!loading && entries.length < 2) {
+  if (!loading && (collected ? entries.length < 2 : fewHeadings)) {
     return <MarkdownLink className="doc-layout__toc-markdown" />;
   }
 
@@ -207,19 +225,11 @@ const PageToc = ({ compact, container }: { compact?: boolean, container: HTMLEle
   );
 };
 
-/* Keep in sync with doc.css: below it the article takes the whole width, without a ToC column. */
+/* Keep in sync with doc.css: below it the article takes the whole width, without a ToC column. Null
+   until hydrated (useMediaQuery): both ToCs render, and doc.css shows the one of the viewport. */
 const COMPACT_TOC_QUERY = '(max-width: 1100px)';
 
-const useCompactToc = () => {
-  const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_TOC_QUERY).matches);
-  useEffect(() => {
-    const query = window.matchMedia(COMPACT_TOC_QUERY);
-    const onChange = () => setCompact(query.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
-  return compact;
-};
+const useCompactToc = () => useMediaQuery(COMPACT_TOC_QUERY);
 
 /* Doc page layout: the article plus its ToC column. */
 const DocArticle = ({ children }: { children: ReactNode }) => {
@@ -307,7 +317,7 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="doc-layout">
-      { compactToc && (
+      { compactToc !== false && (
         <div className="doc-layout__aside doc-layout__aside--compact">
           <PageToc compact container={ container } />
         </div>
@@ -315,8 +325,8 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
       <article className="doc" ref={ ref }>
         { children }
       </article>
-      { !compactToc && (
-        <aside className="doc-layout__aside">
+      { compactToc !== true && (
+        <aside aria-label="On this page" className="doc-layout__aside doc-layout__aside--column">
           <PageToc container={ container } />
         </aside>
       ) }
@@ -324,4 +334,4 @@ const DocArticle = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export { DocArticle };
+export { DocArticle, FewHeadingsContext, hasFewHeadings, tocHeadings };

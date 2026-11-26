@@ -61,7 +61,8 @@ const GuideDoc = ({ page }: { page: NavPage }) => {
   );
 };
 
-/* What the first render of a guide reads, loaded: the page hydrates it without suspending (main.tsx). */
+/* What the first render of a guide reads, loaded: main.tsx hydrates the page with it, and the shell
+   loads it ahead of a click (preloadRoute, routes.tsx); either way, it renders without suspending. */
 const preloadGuideDoc = (page: NavPage): Promise<unknown> => {
   const key = page.id.replace('guides/', '');
   const loader = GUIDE_MODULES[`../content/guides/${key}.mdx`];

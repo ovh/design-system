@@ -131,32 +131,6 @@ const ChangelogRoute = () => (
   </Suspense>
 );
 
-/* The routes of the app, shared by the browser router (main.tsx) and the pre-render (entry-server.tsx). */
-const routes: RouteObject[] = [
-  {
-    element: <Shell />,
-    errorElement: <ErrorPage />,
-    children: [
-      { element: <Homepage />, path: '/' },
-      { element: <ChangelogRoute />, path: '/guides/changelog' },
-      { element: <GuideRoute />, path: '/guides/:key' },
-      { element: <HelperRoute />, path: '/helpers/:key' },
-      { element: <RecipesRoute />, path: '/recipes/:key' },
-      { element: <ComponentRoute />, path: '/components/:key/:tab?' },
-      { element: <SandboxRoute />, path: '/tools/sandbox' },
-      {
-        element: <ToolRoute fallback={ TOOL_SKELETON }><ThemeGenerator /></ToolRoute>,
-        path: '/tools/theme-generator',
-      },
-      {
-        element: <ToolRoute fallback={ TOOL_SKELETON }><ComponentGallery /></ToolRoute>,
-        path: '/tools/component-gallery',
-      },
-      { element: <NotFound />, path: '*' },
-    ],
-  },
-];
-
 /* The chunks the first render of a route reads, loaded: hydrated with them, the page renders as
    its HTML is, where a chunk still in flight would let React swap a boundary for its skeleton
    (the component Tabs update their state on hydration, and that update reaches it). The tools and
@@ -179,5 +153,31 @@ const preloadRoute = (path: string): Promise<unknown> => {
       return Promise.resolve();
   }
 };
+
+/* The routes of the app, shared by the browser router (main.tsx) and the pre-render (entry-server.tsx). */
+const routes: RouteObject[] = [
+  {
+    element: <Shell preload={ preloadRoute } />,
+    errorElement: <ErrorPage />,
+    children: [
+      { element: <Homepage />, path: '/' },
+      { element: <ChangelogRoute />, path: '/guides/changelog' },
+      { element: <GuideRoute />, path: '/guides/:key' },
+      { element: <HelperRoute />, path: '/helpers/:key' },
+      { element: <RecipesRoute />, path: '/recipes/:key' },
+      { element: <ComponentRoute />, path: '/components/:key/:tab?' },
+      { element: <SandboxRoute />, path: '/tools/sandbox' },
+      {
+        element: <ToolRoute fallback={ TOOL_SKELETON }><ThemeGenerator /></ToolRoute>,
+        path: '/tools/theme-generator',
+      },
+      {
+        element: <ToolRoute fallback={ TOOL_SKELETON }><ComponentGallery /></ToolRoute>,
+        path: '/tools/component-gallery',
+      },
+      { element: <NotFound />, path: '*' },
+    ],
+  },
+];
 
 export { preloadRoute, routes };

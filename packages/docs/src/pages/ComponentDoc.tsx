@@ -124,7 +124,8 @@ const ComponentDoc = ({ page, tokens }: { page: NavPage, tokens: Record<string, 
   );
 };
 
-/* What the first render of a tab reads, loaded: the page hydrates it without suspending (main.tsx). */
+/* What the first render of a tab reads, loaded: main.tsx hydrates the page with it, and the shell
+   loads it ahead of a click (preloadRoute, routes.tsx); either way, it renders without suspending. */
 const preloadComponentDoc = (page: NavPage, tab?: string): Promise<unknown> => {
   const componentKey = page.id.replace('components/', '');
   const loader = DOC_MODULES[`../content/components/${componentKey}/documentation.mdx`];

@@ -44,7 +44,8 @@ const HelperDoc = ({ page }: { page: NavPage }) => {
   );
 };
 
-/* What the first render of a helper page reads, loaded: the page hydrates it without suspending (main.tsx). */
+/* What the first render of a helper page reads, loaded: main.tsx hydrates the page with it, and the shell
+   loads it ahead of a click (preloadRoute, routes.tsx); either way, it renders without suspending. */
 const preloadHelperDoc = (page: NavPage): Promise<unknown> => {
   const loader = HELPER_MODULES[`../content/helpers/${page.id.replace('helpers/', '')}.mdx`];
   return Promise.all([

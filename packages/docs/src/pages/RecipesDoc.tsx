@@ -35,7 +35,8 @@ const RecipesDoc = ({ page }: { page: NavPage }) => {
   );
 };
 
-/* What the first render of a recipe page reads, loaded: the page hydrates it without suspending (main.tsx). */
+/* What the first render of a recipe page reads, loaded: main.tsx hydrates the page with it, and the shell
+   loads it ahead of a click (preloadRoute, routes.tsx); either way, it renders without suspending. */
 const preloadRecipesDoc = (page: NavPage): Promise<unknown> => {
   const loader = RECIPE_MODULES[`../content/recipes/${page.id.replace('recipes/', '')}.mdx`];
   return loader ? loadOnce(loader, loader) : Promise.resolve();

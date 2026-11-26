@@ -25,7 +25,7 @@
 - [Migration 19.x to 20.x](./ovhcloud-design-system-upgrade-migration-19-x-to-20-x.txt) (~21363 tokens)
 - [Migration to v19](./ovhcloud-design-system-upgrade-migration-to-v19.txt) (~443 tokens)
 - [Style Customization](./ovhcloud-design-system-customize-style-customization.txt) (~631 tokens)
-- [Tailwind CSS Integration](./ovhcloud-design-system-customize-tailwind-css-integration.txt) (~2634 tokens)
+- [Tailwind CSS Integration](./ovhcloud-design-system-customize-tailwind-css-integration.txt) (~3287 tokens)
 - [Themes](./ovhcloud-design-system-customize-themes.txt) (~2001 tokens)
 - [Troubleshooting](./ovhcloud-design-system-troubleshooting.txt) (~912 tokens)
 - [Welcome](./ovhcloud-design-system-welcome.txt) (~256 tokens)

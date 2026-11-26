@@ -2698,7 +2698,7 @@ slug: ovhcloud-design-system-customize-tailwind-css-integration
 category: generic
 type: overview
 version: 20.0.0
-tokens: 2634
+tokens: 3287
 source: https://ovh.github.io/design-system/v20.0.0/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
 ---
 
@@ -2869,8 +2869,8 @@ If your own classes use the `dark:` variant, make it follow the same switch as t
 ```
 
 ```js
-// Tailwind CSS v3, in tailwind.config.js
-export default {
+// Tailwind CSS v3.4.1 or later, in tailwind.config.js (before 3.4.1: ['class', '[data-dark]'])
+module.exports = {
   darkMode: ['selector', '[data-dark]'],
   // …
 };
@@ -2889,34 +2889,95 @@ If your app already sets its own Tailwind entry point and layer order, import on
 
 Then keep the ODS layers (`ods-quarks`, `ods-atoms`, `ods-molecules`, `ods-organisms`) after the Tailwind `base` layer and before `components` in your own `@layer` statement.
 
+### Without the npm package
+
+The utilities are one CSS file, which you can also download and keep in your project, with no `@ovhcloud/ods-tailwind` dependency:
+
+[Download ods-tailwind.theme.css](https://ovh.github.io/design-system/v20.0.0/tailwind/ods-tailwind.theme.css)
+
+Import it after Tailwind, with the layer order `@ovhcloud/ods-tailwind` declares (see **Import order**):
+
+```css
+/* index.css */
+@layer theme, base, ods-quarks, ods-atoms, ods-molecules, ods-organisms, components, utilities;
+
+@import 'tailwindcss';
+@import './ods-tailwind.theme.css';
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
+A copy does not follow the ODS updates: take a new one when you update ODS, or prefer the npm package.
+
 ## Tailwind CSS v3
 
-`@ovhcloud/ods-tailwind` requires Tailwind CSS v4. With Tailwind CSS v3, map the tokens you need in your `tailwind.config.js`, under the same names:
+`@ovhcloud/ods-tailwind` requires Tailwind CSS v4. With Tailwind CSS v3, use the ODS preset: it gives the same utilities, under the same names (`bg-ods-surface-raised`, `rounded-ods-container`, `p-ods-inset-inline`…), and sets the ODS fonts on the page.
+
+[Download ods-tailwind.preset.cjs](https://ovh.github.io/design-system/v20.0.0/tailwind/ods-tailwind.preset.cjs)
+
+Save it in your project, next to your `tailwind.config.js`, and add it to the `presets` of your configuration. A preset merges with your own theme, where copying its entries or spreading it would lose them as soon as your configuration has a `theme` of its own:
 
 ```js
-/** @type {import('tailwindcss').Config} */
-export default {
+// tailwind.config.js
+module.exports = {
+  presets: [require('./ods-tailwind.preset.cjs')],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+};
+```
+
+In an ES module configuration, `import odsPreset from './ods-tailwind.preset.cjs'` works too. Take a new copy of the preset when you update ODS: it follows the tokens of its version.
+
+An excerpt of it:
+
+```js
+module.exports = {
   theme: {
     extend: {
       borderRadius: {
         'ods-container': 'var(--ods-semantic-size-radius-container)',
         'ods-control': 'var(--ods-semantic-size-radius-control)',
+        // …
       },
       colors: {
         'ods-border-container': 'var(--ods-semantic-color-border-container)',
         'ods-content-heading': 'var(--ods-semantic-color-content-heading)',
         'ods-surface-raised': 'var(--ods-semantic-color-surface-raised)',
+        // …
       },
       fontFamily: {
+        sans: 'var(--ods-semantic-font-family-body)',
+        mono: 'var(--ods-semantic-font-family-code)',
         'ods-body': 'var(--ods-semantic-font-family-body)',
+        // …
       },
+      // …
     },
   },
 };
 ```
 
-Tailwind CSS v3 has no layer order of its own to declare: its base styles do not use cascade layers, so they always win over the ODS styles and reset the ODS buttons and headings. Leave the Tailwind preflight out: `corePlugins: { preflight: false }`.
+### The base styles in Tailwind CSS v3
+
+The Tailwind CSS v3 base styles are not in a cascade layer: as they are, they win over the ODS styles, which are, and reset the ODS buttons and headings. Put them in a layer of your own, before the ODS layers, in your stylesheet:
+
+```css
+/* index.css */
+@layer tw-base {
+  @tailwind base;
+}
+@tailwind components;
+@tailwind utilities;
+```
+
+Name this layer anything but `base`, `components` or `utilities`, which Tailwind CSS v3 reads as its own directives. The ODS theme and components name the ODS layers too, and a layer takes its place from the first stylesheet that names it: declare the order in the `<head>` of your page, before any stylesheet, so that it holds whatever the import order:
+
+```html
+<style>@layer tw-base, ods-quarks, ods-atoms, ods-molecules, ods-organisms;</style>
+```
+
+The ODS styles then win over the Tailwind base styles, and your utilities, outside any layer, over the ODS styles. Keep the base styles: the `border` utility, for instance, relies on them for its style.
+
+The opacity modifiers (`bg-ods-surface-raised/50`) give no style in v3, as the colors are CSS variables.
 
 ## Integration with IDEs
 

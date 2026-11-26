@@ -1,5 +1,6 @@
 import mdx from '@mdx-js/rollup';
 import react from '@vitejs/plugin-react';
+import { downloads } from './vite-plugin-downloads';
 import { llmsDevServe, llmsEmit } from './vite-plugin-llms';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 
@@ -12,7 +13,7 @@ export default defineConfig({
   // The runtime counterpart (router basename, frame <base>) is src/appBase.ts.
   base: './',
   // include .mdx only: plain .md files (CHANGELOG.md?raw) must stay raw text.
-  plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit(), llmsDevServe()],
+  plugins: [{ enforce: 'pre', ...mdx({ mdExtensions: [], providerImportSource: '@mdx-js/react' }) }, react(), llmsEmit(), llmsDevServe(), downloads()],
   resolve: {
     // ods-react sources pull @ark-ui/react, whose peer react resolves to
     // ods-react's own copy (18.x on master): dedupe forces every bare

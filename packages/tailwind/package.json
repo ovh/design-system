@@ -23,7 +23,7 @@
   "scripts": {
     "build:ci": "pnpm run build:prod",
     "build:prod": "node scripts/generate-theme.js",
-    "lint:css": "git diff --exit-code -- theme.css || { echo 'theme.css is out of date: run pnpm build:prod in packages/tailwind and commit it.'; exit 1; }",
+    "lint:css": "git diff --exit-code -- theme.css ods-tailwind.preset.cjs || { echo 'theme.css or ods-tailwind.preset.cjs is out of date: run pnpm build:prod in packages/tailwind and commit them.'; exit 1; }",
     "test:spec": "node tests/run.mjs",
     "test:spec:ci": "pnpm run test:spec",
     "prepublishOnly": "pnpm run build:prod"

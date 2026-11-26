@@ -11,7 +11,7 @@ import { compile } from 'tailwindcss';
 
 const PKG = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const { LEFT_OUT, NAMESPACES, themeVariables } = require('../scripts/generate-theme.js');
+const { LEFT_OUT, NAMESPACES, themeVariables, v3Preset } = require('../scripts/generate-theme.js');
 
 /* The built file behind an export of @ovhcloud/ods-themes, or null while the themes are not built. */
 const built = (subpath) => {
@@ -129,9 +129,27 @@ if (tokensPath) {
     const added = [...new Set(css.match(/--ods-semantic-[a-z0-9-]+(?=\s*:)/g) ?? [])].filter((token) => !(token in tokens));
     check(`${name} adds no semantic token`, added.length === 0, added.join(', '));
   }
+  check('ods-tailwind.preset.cjs is up to date (run build:prod)', v3Preset(tokens) === readFileSync(resolve(PKG, 'ods-tailwind.preset.cjs'), 'utf8'));
 } else {
   results.push('-- the themes are not built: theme.css is not compared with their tokens (linters checks it)');
 }
+
+// The Tailwind v3 preset the docs offer, loaded as Tailwind loads it: every utility of theme.css under
+// its v3 theme key, with the same name and token, the two page fonts as sans and mono, and nothing of
+// the app's own configuration.
+const preset = require('../ods-tailwind.preset.cjs');
+// The v3 theme key of each namespace, written here rather than read from the script, so that a wrong
+// key there fails here: Tailwind v3 would only drop its utilities, silently.
+const V3_KEYS = { color: 'colors', ease: 'transitionTimingFunction', font: 'fontFamily', 'font-weight': 'fontWeight', radius: 'borderRadius', shadow: 'boxShadow', spacing: 'spacing' };
+const v3 = preset.theme?.extend ?? {};
+const v3Wrong = declared.filter((line) => !line.includes('--default-')).filter((line) => {
+  const [, namespace, key, token] = /^ {2}--([a-z-]+?)-ods-([a-z0-9-]+): var\((--ods-semantic-[a-z0-9-]+)\);$/.exec(line) ?? [];
+  return v3[V3_KEYS[namespace]]?.[`ods-${key}`] !== `var(${token})`;
+});
+const v3Count = Object.values(v3).reduce((count, group) => count + Object.keys(group).filter((key) => key.startsWith('ods-')).length, 0);
+check(`ods-tailwind.preset.cjs maps every utility of theme.css under its v3 key (${v3Count})`, v3Wrong.length === 0 && v3Count === declared.length - 2, v3Wrong.slice(0, 3).join(' | ') || `${v3Count} for ${declared.length - 2}`);
+check('ods-tailwind.preset.cjs sets the page fonts', v3.fontFamily?.sans === 'var(--ods-semantic-font-family-body)' && v3.fontFamily?.mono === 'var(--ods-semantic-font-family-code)');
+check('ods-tailwind.preset.cjs is a preset: no content, no corePlugins', Object.keys(preset).join() === 'theme' && Object.keys(preset.theme).join() === 'extend');
 
 // Opt-in: the package brings neither ods-react nor Tailwind.
 const pkg = JSON.parse(readFileSync(resolve(PKG, 'package.json'), 'utf8'));

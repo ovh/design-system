@@ -15,6 +15,8 @@ import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Heading } from './Heading';
 import { HelperSpecification } from './HelperSpecification';
 import { previousMajorDocUrl } from './previousMajorDocUrl';
+import tailwindPreset from '../../../tailwind/ods-tailwind.preset.cjs?raw';
+import tailwindTheme from '../../../tailwind/theme.css?raw';
 import { DemoCanvas, buildSandboxSnippet } from '../demo/DemoCanvas';
 import { extractStorySources } from '../demo/extractSource';
 import { usePageStories } from './PageStories';
@@ -134,6 +136,29 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp) => (
   <Link href={ href?.startsWith('/') ? new URL(href.slice(1), APP_ROOT).href : href } target="_blank" { ...prop }>{ children } <Icon name={ ICON_NAME.externalLink } /></Link>
 );
 
+/* The text of each file vite-plugin-downloads serves, for the size the link states, as the Link
+   accessibility guideline asks for a download. A list apart from the plugin's, which runs in Node:
+   keep the two in step. */
+const DOWNLOAD_SOURCES: Record<string, string> = {
+  'tailwind/ods-tailwind.preset.cjs': tailwindPreset,
+  'tailwind/ods-tailwind.theme.css': tailwindTheme,
+};
+
+const DownloadLink = ({ children, file, type }: { children: ReactNode, file: string, type: string }) => {
+  const source = DOWNLOAD_SOURCES[file];
+  // Fail the page, which the sweep test catches, rather than show a link with no size.
+  if (source === undefined) {
+    throw new Error(`DownloadLink: ${file} is not in DOWNLOAD_SOURCES`);
+  }
+  // Never "0 KB": a file under 512 bytes still reads 1 KB.
+  const size = `${Math.max(1, Math.round(new Blob([source]).size / 1024))} KB`;
+  return (
+    <Link download={ file.split('/').pop() } href={ new URL(file, APP_ROOT).href }>
+      <Icon name={ ICON_NAME.download } /> { children } ({ type }, { size })
+    </Link>
+  );
+};
+
 /* Fenced code blocks (```tsx) come out of MDX as <pre><code class="language-x">. */
 const CodeFence = ({ children }: { children?: ReactNode }) => {
   const codeEl = children as ReactElement<{ children: string, className?: string }> | undefined;
@@ -199,6 +224,7 @@ const MDX_COMPONENTS = {
   ChartColorCards,
   DesignTokens,
   DocLink,
+  DownloadLink,
   ExternalLink,
   Heading,
   HelperSpecification,

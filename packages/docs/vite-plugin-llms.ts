@@ -323,6 +323,7 @@ function transformProse(text: string, ctx: MdxContext): string {
   out = out.replace(/<DocLink\s+to="([^"]*)"[^>]*>([\s\S]*?)<\/DocLink>/g, (_, to, label) => `[${label.trim()}](${BASE_URL}${to})`);
   out = out.replace(/<ExternalLink\s+href="([^"]*)"[^>]*>([\s\S]*?)<\/ExternalLink>/g,
     (_, href, label) => `[${label.trim()}](${href.startsWith('/') ? BASE_URL + href : href})`);
+  out = out.replace(/<DownloadLink\s+file="([^"]*)"[^>]*>([\s\S]*?)<\/DownloadLink>/g, (_, file, label) => `[${label.trim()}](${BASE_URL}/${file})`);
   out = out.replace(/<Kbd[^>]*>([\s\S]*?)<\/Kbd>/g, (_, key) => `\`${key.trim()}\``);
   out = out.replace(/<MessageBody[^>]*>([\s\S]*?)<\/MessageBody>/g, (_, body) => `\n> ${body.trim().replace(/\n\s*/g, '\n> ')}\n`);
   out = out.replace(/<AccordionTrigger[^>]*>([\s\S]*?)<\/AccordionTrigger>/g, (_, question) => `\n**${question.trim()}**\n`);

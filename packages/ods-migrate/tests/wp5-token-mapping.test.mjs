@@ -256,6 +256,16 @@ describe('token mapping: data (WP5)', () => {
     assert.equal(mapping.tailwindKeys['ods-border-radius-xs'], null);
   });
 
+  it('finds the v20 Tailwind keys of its renames in the Tailwind guide, which the build reads them from', () => {
+    // The build takes the first borderRadius, colors and fontFamily blocks of the guide's v3 example:
+    // a key dropped there turns its rename into a marker at the next build.
+    const guide = readFileSync(new URL('../../docs/src/content/guides/tailwind.mdx', import.meta.url), 'utf8');
+    const block = (section) => new RegExp(`${section}\\s*:\\s*\\{([^}]*)\\}`).exec(guide)?.[1] ?? '';
+    for (const [section, key] of [['borderRadius', 'ods-control'], ['borderRadius', 'ods-container'], ['fontFamily', 'ods-body']]) {
+      assert.match(block(section), new RegExp(`'${key}'\\s*:\\s*'var\\(`), `${key} is no longer in the first ${section} block of the guide`);
+    }
+  });
+
   it('records where it was built from', () => {
     assert.equal(mapping.source.from, 'v19.7.3');
     assert.match(mapping.source.sha, /^[0-9a-f]{7,}$/);

@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 
 /*
- * Writes theme.css, the Tailwind v4 @theme block that maps utilities to the ODS semantic tokens.
+ * Writes theme.css, the Tailwind v4 @theme block that maps utilities to the ODS semantic tokens, and
+ * ods-tailwind.preset.cjs, the same mapping as a Tailwind v3 preset, which the docs offer to download.
  *
  * Read from the default theme's tokens.json: every theme declares the same semantic tokens (the
  * themes build checks it), with its own values. The block
@@ -12,11 +13,16 @@ const fs = require('fs');
 const path = require('path');
 
 const OUTPUT = path.resolve(__dirname, '..', 'theme.css');
+/* Not tailwind.config.*, the names Tailwind v3 and its IntelliSense pick up as a project's own
+   configuration. CommonJS, as most v3 configurations are: a config of either module type can
+   require() or import a .cjs file, while a require() of an ES module gives { default }, no utility. */
+const V3_OUTPUT = path.resolve(__dirname, '..', 'ods-tailwind.preset.cjs');
 const PREFIX = '--ods-semantic-';
 
 /* ODS token family → Tailwind theme namespace. The `ods-` prefix keeps them apart from the
    Tailwind defaults (bg-ods-surface-page next to bg-white). The palette is left out: a palette step
-   carries no role, and the components read only the semantic tokens. */
+   carries no role, and the components read only the semantic tokens. A new namespace also needs its
+   Tailwind v3 key in V3_KEYS. */
 const NAMESPACES = [
   { family: 'color-', namespace: 'color' },
   { family: 'size-radius-', namespace: 'radius' },
@@ -42,8 +48,10 @@ const LEFT_OUT = ['color-shadow-', 'border-thickness', 'border-focus-', 'opacity
    --font-weight-ods-x alike. Two tokens that end on the same class are a collision too. */
 const CLASS_OF = { 'font-weight': 'font' };
 
-function themeVariables(tokens) {
-  const lines = [];
+/* The ODS tokens a utility reads, as { namespace, key, token }: --color-ods-surface-raised (v4) and
+   colors['ods-surface-raised'] (v3) both come from the same entry. */
+function mappedTokens(tokens) {
+  const entries = [];
   const seen = new Map();
 
   for (const token of Object.keys(tokens).filter((name) => name.startsWith(PREFIX)).sort()) {
@@ -65,8 +73,13 @@ function themeVariables(tokens) {
       throw new Error(`${token} and ${seen.get(utilityClass)} both give ${utilityClass}`);
     }
     seen.set(utilityClass, token);
-    lines.push(`  --${entry.namespace}-ods-${key}: var(${token});`);
+    entries.push({ key, namespace: entry.namespace, token });
   }
+  return entries;
+}
+
+function themeVariables(tokens) {
+  const lines = mappedTokens(tokens).map(({ key, namespace, token }) => `  --${namespace}-ods-${key}: var(${token});`);
 
   /* The fonts of the page: the Tailwind preflight sets them on html, and the ODS components inherit
      them, the overlays a portal mounts under body included. */
@@ -75,22 +88,72 @@ function themeVariables(tokens) {
   return lines;
 }
 
+/* Tailwind v4 namespace → Tailwind v3 theme key, for the configuration the docs offer to download. */
+const V3_KEYS = {
+  color: 'colors',
+  ease: 'transitionTimingFunction',
+  font: 'fontFamily',
+  'font-weight': 'fontWeight',
+  radius: 'borderRadius',
+  shadow: 'boxShadow',
+  spacing: 'spacing',
+};
+
+/* The same utilities for Tailwind v3, as a preset: a preset's theme.extend merges with the app's own,
+   where a spread configuration would lose it. No content and no corePlugins, which are the app's.
+   sans and mono are the page fonts, as --default-font-family in theme.css: the v3 preflight sets
+   them on html and code. */
+function v3Preset(tokens) {
+  const groups = {
+    fontFamily: [
+      `        sans: 'var(${PREFIX}font-family-body)',`,
+      `        mono: 'var(${PREFIX}font-family-code)',`,
+    ],
+  };
+  for (const { key, namespace, token } of mappedTokens(tokens)) {
+    if (!V3_KEYS[namespace]) {
+      throw new Error(`${token}: the ${namespace} namespace has no Tailwind v3 key in V3_KEYS`);
+    }
+    (groups[V3_KEYS[namespace]] ??= []).push(`        'ods-${key}': 'var(${token})',`);
+  }
+  return [
+    '// The OVHcloud Design System utilities for Tailwind CSS v3: bg-ods-surface-raised, rounded-ods-container…',
+    '// Each one reads an ODS semantic token, so it follows the theme the page loads. Generated from the ODS',
+    '// tokens: take a new copy for a new ODS version rather than edit it. Setup: the Tailwind CSS guide of',
+    '// the ODS documentation.',
+    "/** @type {import('tailwindcss').Config} */",
+    'module.exports = {',
+    '  theme: {',
+    '    extend: {',
+    ...Object.keys(groups).sort().flatMap((group) => [`      ${group}: {`, ...groups[group], '      },']),
+    '    },',
+    '  },',
+    '};',
+    '',
+  ].join('\n');
+}
+
 function main() {
   const { root } = JSON.parse(fs.readFileSync(require.resolve('@ovhcloud/ods-themes/default/tokens'), 'utf8'));
   const lines = themeVariables(root);
 
   fs.writeFileSync(OUTPUT, [
-    '/* Generated by scripts/generate-theme.js from @ovhcloud/ods-themes/default/tokens: do not edit. */',
+    '/* The OVHcloud Design System utilities for Tailwind CSS v4: bg-ods-surface-raised, rounded-ods-container…',
+    '   Each one reads an ODS semantic token, so it follows the theme the page loads. Generated from the ODS',
+    '   tokens by @ovhcloud/ods-tailwind (scripts/generate-theme.js): take a new copy rather than edit it. */',
     '@theme inline {',
     ...lines,
     '}',
     '',
   ].join('\n'));
   console.log(`theme.css: ${lines.length} theme variables`);
+
+  fs.writeFileSync(V3_OUTPUT, v3Preset(root));
+  console.log(`${path.basename(V3_OUTPUT)}: ${mappedTokens(root).length} theme entries`);
 }
 
 if (require.main === module) {
   main();
 }
 
-module.exports = { LEFT_OUT, NAMESPACES, themeVariables };
+module.exports = { LEFT_OUT, NAMESPACES, V3_KEYS, themeVariables, v3Preset };

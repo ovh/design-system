@@ -2,7 +2,7 @@
 
 [Tailwind CSS](https://tailwindcss.com) v4 utilities mapped to the OVHcloud Design System tokens: `bg-ods-surface-raised`, `text-ods-content-heading`, `rounded-ods-container`, `p-ods-inset-inline`…
 
-Each utility reads an ODS semantic token (`var(--ods-semantic-…)`), never its value: the same classes follow the theme you load (default, Blue Jeans, their dark themes, or your own) and a theme switch at runtime.
+Each utility reads an ODS semantic token (`var(--ods-semantic-…)`), never its value: the same classes follow the theme you load (default, Blue Jeans, White label, their dark themes, or your own) and a theme switch at runtime.
 
 It is opt-in: `@ovhcloud/ods-react` does not depend on Tailwind, and ODS works without it.
 

@@ -99,7 +99,7 @@ via Sass import:
 
 The fonts stylesheet declares its font files with relative `url()`s, which Sass does not rewrite: keep a bare path for it, so your bundler (Vite for instance) resolves the file, rebases these URLs and emits the fonts. Through a `pkg:` URL, the URLs stay relative to your stylesheet and the fonts are not found. If your bundler does not rebase them, load the fonts from JavaScript instead, as in the ES import above.
 
-ODS ships three more themes, Aluminium dark, Blue Jeans and Blue Jeans dark, each to load instead of the default one. <DocLink to="/guides/themes">Themes</DocLink> lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
+ODS ships five more themes, Aluminium dark, Blue Jeans, Blue Jeans dark, White label and White label dark, each to load instead of the default one. <DocLink to="/guides/themes">Themes</DocLink> lists their imports and fonts, and explains how to switch between them, load the fonts when your setup cannot serve font files, or create your own theme.
 
 <Heading label="Server-side rendering" level={ 2 } />
 

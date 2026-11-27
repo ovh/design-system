@@ -2,6 +2,8 @@ import { BADGE_STATUS, BUTTON_EMPHASIS, Badge, Button, TEXT_PRESET, Text } from 
 import blueJeansUrl from '@ovhcloud/ods-themes/blue-jeans/css?url';
 import aluminiumDarkUrl from '@ovhcloud/ods-themes/aluminium-dark/css?url';
 import blueJeansDarkUrl from '@ovhcloud/ods-themes/blue-jeans-dark/css?url';
+import whiteLabelUrl from '@ovhcloud/ods-themes/white-label/css?url';
+import whiteLabelDarkUrl from '@ovhcloud/ods-themes/white-label-dark/css?url';
 import { type ReactElement, useEffect, useState } from 'react';
 
 /* Each theme is a complete stylesheet. The page starts on the default one (index.css, which also sets
@@ -15,6 +17,8 @@ const THEMES: Record<string, string | null> = {
   'Aluminium dark': aluminiumDarkUrl,
   'Blue Jeans': blueJeansUrl,
   'Blue Jeans dark': blueJeansDarkUrl,
+  'White label': whiteLabelUrl,
+  'White label dark': whiteLabelDarkUrl,
 };
 
 function App(): ReactElement {

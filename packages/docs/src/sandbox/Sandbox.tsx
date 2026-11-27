@@ -7,7 +7,6 @@ import * as ReactRouterDom from 'react-router-dom';
 import { MemoryRouter, UNSAFE_LocationContext, UNSAFE_RouteContext } from 'react-router-dom';
 import { formatPrice, formatRelativeTime } from '../../../ods-react/src/utils/format';
 import { type ComponentType, useEffect, useRef, useState } from 'react';
-import { APP_ROOT } from '../appBase';
 import { Splitter } from '@ark-ui/react/splitter';
 import { BADGE_STATUS, Badge } from '../../../ods-react/src/components/badge/src';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, BUTTON_STATUS, Button } from '../../../ods-react/src/components/button/src';
@@ -19,7 +18,7 @@ import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../ods-react/src/components/tooltip/src';
 import { useDocTheme } from '../doc/useDocTheme';
 import { DemoFrame } from '../demo/DemoFrame';
-import { encodeSnippet } from './shareCode';
+import { sandboxUrl } from './shareCode';
 import { monaco, setupMonaco } from './setupMonaco';
 import './sandbox.css';
 
@@ -240,7 +239,7 @@ const Sandbox = ({ dark, initialCode, tokens }: { dark: boolean, initialCode?: s
 
   const share = () => {
     const code = modelRef.current?.getValue() ?? '';
-    setShareUrl(`${APP_ROOT.href}?p=/tools/sandbox&code=${encodeSnippet(code)}`);
+    setShareUrl(sandboxUrl(code));
     setShareOpen(true);
   };
 

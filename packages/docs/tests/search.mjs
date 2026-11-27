@@ -1,4 +1,6 @@
 // DX lot 1: full-text palette search, View-as-Markdown links, heading anchors.
+import { waitHydrated } from './helpers.mjs';
+
 // The page content scrolls in .shell__content: a section is in view once its
 // heading sits at the top of it.
 const isSectionInView = (id) => {
@@ -120,7 +122,9 @@ async function suite(browser, { base, version }) {
   await page.waitForTimeout(300);
 
   // View as Markdown: the link by the table of contents title targets the page's llms document.
+  // Until hydrated, the page holds both tables of contents, each with its link.
   await page.goto(`${root}/components/button`, { waitUntil: 'domcontentloaded' });
+  await waitHydrated(page);
   const mdLink = page.locator('[data-testid="view-as-markdown"]');
   await mdLink.waitFor({ timeout: 10000 });
   ok('View as Markdown is a link that opens a new tab', await mdLink.evaluate((el) => el.tagName === 'A' && el.getAttribute('target') === '_blank'));
@@ -162,7 +166,7 @@ async function suite(browser, { base, version }) {
   ok('View as Markdown reaches 4.5:1 in the dark theme', darkContrasts.every((ratio) => ratio >= 4.5), darkContrasts.join(' / '));
   const mdHref = await mdLink.getAttribute('href') ?? '';
   ok('View as Markdown targets the page llms doc', /llms\/react-components-button--documentation\.txt$/.test(mdHref), mdHref);
-  const mdRes = await page.request.get(mdHref);
+  const mdRes = await page.request.get(new URL(mdHref, page.url()).href);
   const md = mdRes.ok() ? await mdRes.text() : '';
   ok('the linked markdown resolves and is the right page', mdRes.ok() && /^---\n/.test(md) && /button/i.test(md.slice(0, 300)), `status ${mdRes.status()}`);
 
@@ -177,10 +181,12 @@ async function suite(browser, { base, version }) {
   ok('View as Markdown hidden on an unknown component', (await mdLink.count()) === 0);
   // The Recipe Gallery has no table of contents: the link leads its article.
   await page.goto(`${root}/recipes/components`, { waitUntil: 'domcontentloaded' });
+  await waitHydrated(page);
   const galleryHref = await mdLink.waitFor({ timeout: 10000 }).then(() => mdLink.getAttribute('href'), () => null);
   ok('View as Markdown on the Recipe Gallery', /llms\/recipes-components\.txt$/.test(galleryHref ?? ''), galleryHref ?? '(no link)');
   // A trailing slash keeps the page it names: its title and its Markdown link.
   await page.goto(`${root}/guides/get-started/`, { waitUntil: 'domcontentloaded' });
+  await waitHydrated(page);
   const slashHref = await mdLink.waitFor({ timeout: 10000 }).then(() => mdLink.getAttribute('href'), () => null);
   const slashTitle = await page.locator('h1').first().textContent();
   ok('a trailing slash keeps the guide title and its Markdown link', slashTitle === 'Get Started' && !!slashHref, `${slashTitle} / ${slashHref ?? '(no link)'}`);

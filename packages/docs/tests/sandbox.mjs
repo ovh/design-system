@@ -10,6 +10,7 @@ const { decompressFromEncodedURIComponent } = lz;
 import { readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { waitHydrated } from './helpers.mjs';
 
 const COMPONENTS = readdirSync(resolve(dirname(fileURLToPath(import.meta.url)), '../src/content/components'), { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
@@ -38,7 +39,7 @@ async function suite(browser, { base, version }) {
   for (const route of pages) {
     try {
       await harvestPage.goto(`${base}/v${version}${route}`, { timeout: 30000, waitUntil: 'domcontentloaded' });
-      await harvestPage.waitForSelector('#root *', { timeout: 15000 });
+      await waitHydrated(harvestPage);
       await harvestPage.waitForTimeout(500);
       const buttons = harvestPage.locator('button[aria-label="Open this example in the sandbox (new tab)"]');
       const count = await buttons.count();
@@ -58,7 +59,8 @@ async function suite(browser, { base, version }) {
     }
   }
   await harvestPage.close();
-  results.push(`OK  récolte: ${snippets.size} snippets sur ${pages.length} pages`);
+  // A sandbox button clicked before its page hydrates opens nothing: the harvest would shrink unseen.
+  results.push(`${snippets.size >= 300 ? 'OK ' : 'KO '} récolte: ${snippets.size} snippets sur ${pages.length} pages`);
 
   // ——— phase 2 : rejeu dans une seule instance du sandbox.
   // Le sandbox expose window.__sandbox { editor, model } et trace ses étapes

@@ -52,6 +52,16 @@ Our internal CI runs the release workflow, defined outside this repository, on e
 3. It opens the npm sync pull request, which a maintainer must approve. The packages reach npmjs.com once that pull request is merged. The sync refuses a final version older than the newest one it already published, since npmjs.com could make it `latest`, and skips a version it already lists, so running it again is safe.
 4. It rebuilds the GitHub Pages site from the published documentation packages (`@ovhcloud/ods-storybook` up to 19.7.3, `@ovhcloud/ods-docs` after) and pushes it to the `gh-pages` branch. `latest` only moves forward: a prerelease or a fix for an older line leaves it on the newest final version.
 
+The documentation site is static, and its pages are pre-rendered: each one is a folder (`<route>/index.html`) whose assets are relative to it. Wherever it is hosted, the host must:
+
+- serve `<route>/index.html` for `<route>/`, and redirect `<route>` to `<route>/` (a page served at `<route>` still renders: it sets its folder as the base of its URLs, but the browser has already asked for its assets from the folder above);
+- serve the root `404.html` for an unknown path: it bounces to `<version>/?p=/<route>`, which the versions published before the pre-rendered pages need for every page, and this one for a path without a page;
+- if it sets a Content-Security-Policy, allow `'unsafe-inline'` in `style-src`: the pre-rendered pages carry `style` attributes, which React does not set again when it hydrates them (without it, the hidden native selects show and the skeletons lose their size), and the app adds its theme in a `<style>`. Allow the inline scripts of the pages too, with `'unsafe-inline'` in `script-src`: their source holds the page depth and changes with the code, so their hashes are not stable, and a `base-uri` that allows `'self'`. Without them, a page served without its trailing slash loads none of its assets, and a page in the dark scheme shows light until the scripts load;
+- follow the `latest` symlink;
+- serve `.js`, `.css`, `.json` and `.txt` files with their media type.
+
+Each version folder weighs about 70 MB (v20.0).
+
 If the documentation deploy fails, run that job of the release again, or run the manual documentation deploy on the tag: a run on `master` is untagged and never moves `latest`. Two tags pushed close together can make the second deploy fail to push `gh-pages`: run it again. Running the deploy of an older release again puts its root `llms.txt` back: deploy the newest version afterwards.
 
 ## After the release

@@ -48,4 +48,7 @@ function hasTechData(component: string): boolean {
   return !!typedocPathByComponent[component];
 }
 
-export { getTechData, hasTechData, type TechData };
+/* The key its load is kept under (nav/loadOnce.ts), shared by the tab and its preload. */
+const techKey = (component: string): string => `tech:${component}`;
+
+export { getTechData, hasTechData, techKey };

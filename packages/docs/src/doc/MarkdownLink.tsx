@@ -21,7 +21,7 @@ const MarkdownLink = ({ className }: { className?: string }) => {
       <Link
         className="markdown-link"
         data-testid="view-as-markdown"
-        href={ new URL(`llms/${file}`, APP_ROOT).href }
+        href={ new URL(`llms/${file}`, APP_ROOT).pathname }
         rel="noreferrer"
         target="_blank">
         <Icon name={ ICON_NAME.robot } /> Markdown<span className="sr-only"> version of this page (opens in a new tab)</span>

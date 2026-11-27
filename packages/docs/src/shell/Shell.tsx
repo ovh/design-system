@@ -10,6 +10,9 @@ import { Link } from '../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../ods-react/src/components/text/src';
 import { TreeView, TreeViewNode, TreeViewNodes } from '../../../ods-react/src/components/tree-view/src';
 import { GUIDES_NAV, REFERENCE_NAV, flattenPages, isPage, toTreeItems, type NavPage, type NavSection } from '../nav/model';
+import { pageOf, titleOf } from '../nav/pages';
+import { useHydrated } from '../nav/useHydrated';
+import { useMediaQuery } from '../nav/useMediaQuery';
 import { BrandLogo } from './BrandLogo';
 import { BrandSelect } from './BrandSelect';
 import { ThemeMenu, VersionSelect } from './TopbarSelects';
@@ -22,19 +25,11 @@ interface ShellContext {
 }
 
 /* Single source of truth for the narrow layout; shell.css uses the same value.
-   Below it the sidebar becomes a drawer opened from the topbar. */
+   Below it the sidebar becomes a drawer opened from the topbar. Null until hydrated (useMediaQuery):
+   both layouts render, and shell.css shows the one of the viewport. */
 const NARROW_QUERY = '(max-width: 1000px)';
 
-const useNarrow = () => {
-  const [narrow, setNarrow] = useState(() => window.matchMedia(NARROW_QUERY).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(NARROW_QUERY);
-    const onChange = () => setNarrow(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return narrow;
-};
+const useNarrow = () => useMediaQuery(NARROW_QUERY);
 
 /* The sections a page sits in, outermost first; empty when the page is not in these nodes. */
 const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
@@ -56,11 +51,12 @@ const sectionsOf = (nodes: (NavSection | NavPage)[], id: string): string[] => {
    doesn't contain it simply shows nothing selected. The sections of the active page open, whichever
    way it was reached (link, search palette), next to the ones the reader opened, and the tree
    scrolls to it. */
-const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
+const NavTree = ({ currentId, expanded, nodes, onNavigate, onPreload, rootIcons }: {
   currentId?: string;
   expanded: string[];
   nodes: (NavSection | NavPage)[];
   onNavigate: (id: string) => void;
+  onPreload: (id: string) => void;
   rootIcons?: boolean;
 }) => {
   const items = toTreeItems(nodes, rootIcons);
@@ -81,6 +77,15 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   // section on every click: expandOnClick, not in the ODS props yet but passed through to Ark, turns
   // that off, and the toggling happens here.
   const onChevron = useRef(false);
+  // The page an entry opens, loaded as soon as the pointer or the focus reaches it: by the click, its
+  // first tab renders at once instead of its skeleton (a tool still loads its own chunk).
+  const preload = (event: { target: EventTarget }) => {
+    const id = (event.target as Element).closest('[data-part="item"], [data-part="branch-control"]')?.getAttribute('data-value');
+    const page = id ? sectionPages.get(id) ?? (sections.has(id) ? undefined : id) : undefined;
+    if (page) {
+      onPreload(page);
+    }
+  };
 
   useEffect(() => {
     // A gallery's own section is the selected entry, not an ancestor: the tree opens or closes it
@@ -125,6 +130,8 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
       expandedValue={ open }
       items={ items }
       onExpandedChange={ ({ expandedValue }) => setOpen(expandedValue) }
+      onFocus={ preload }
+      onPointerOver={ preload }
       onClickCapture={ (event) => {
         // Before the TreeView's own handler: a chevron click toggles here, even on the selected
         // section, and the selection change it also triggers is then ignored.
@@ -179,15 +186,26 @@ const NavTree = ({ currentId, expanded, nodes, onNavigate, rootIcons }: {
   );
 };
 
-/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform. */
-const SEARCH_SHORTCUT = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+/* The palette opens on ⌘K and Ctrl+K alike (SearchCommand): the hint shows the one of this platform.
+   The pre-rendered page knows no platform: Ctrl K until hydrated. */
+const SearchShortcut = () => (useHydrated() && /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K');
+
+/* Until hydrated, the button does nothing: aria-disabled says so, where disabled would take it out
+   of the keyboard order and move the focus of a reader already on it once the scripts run. */
+const SearchHint = ({ onSearch }: { onSearch: () => void }) => (
+  <button aria-disabled={ !useHydrated() || undefined } className="shell__search-hint" onClick={ onSearch } type="button">
+    <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
+    <Kbd className="shell__search-kbd"><SearchShortcut /></Kbd>
+  </button>
+);
 
 /* The whole sidebar content: rendered in the fixed aside on wide screens and
    inside the navigation drawer on narrow ones. */
-const SidebarPanels = ({ currentId, narrow, onNavigate, onSearch }: {
+const SidebarPanels = ({ currentId, narrow, onNavigate, onPreload, onSearch }: {
   currentId?: string;
   narrow: boolean;
   onNavigate: (id: string) => void;
+  onPreload: (id: string) => void;
   onSearch: () => void;
 }) => (
   <>
@@ -195,17 +213,14 @@ const SidebarPanels = ({ currentId, narrow, onNavigate, onSearch }: {
       <BrandLogo />
     </RouterLink>
 
-    <button className="shell__search-hint" onClick={ onSearch } type="button">
-      <Icon name={ ICON_NAME.magnifyingGlass } /> Search…
-      <Kbd className="shell__search-kbd">{ SEARCH_SHORTCUT }</Kbd>
-    </button>
+    <SearchHint onSearch={ onSearch } />
 
     <nav aria-label="Documentation" className="shell__nav">
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Guides</Text>
-      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } rootIcons />
+      <NavTree currentId={ currentId } expanded={ [] } nodes={ GUIDES_NAV } onNavigate={ onNavigate } onPreload={ onPreload } rootIcons />
       <Divider className="shell__tree-divider" />
       <Text className="shell__tree-title" preset={ TEXT_PRESET.caption }>Reference</Text>
-      <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } />
+      <NavTree currentId={ currentId } expanded={ ['components', 'recipes', 'helpers'] } nodes={ REFERENCE_NAV } onNavigate={ onNavigate } onPreload={ onPreload } />
     </nav>
 
     { /* The site's own context sits at the foot: the version it documents and its repository. The
@@ -227,45 +242,65 @@ const openSearchPalette = () => {
 };
 
 
-const Shell = () => {
+/* preload: loads the chunks of a route (preloadRoute, routes.tsx), handed down by the routes, which
+   import the Shell. */
+const Shell = ({ preload }: { preload: (path: string) => Promise<unknown> }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const pages = flattenPages();
   const isNarrow = useNarrow();
+  // Until hydrated, the buttons of the shell do nothing: see SearchHint.
+  const hydrated = useHydrated();
   const [navOpen, setNavOpen] = useState(false);
 
-  /* The sandbox chunk (Monaco + the ODS type graph, ~9 MB) is fetched during
-     browser idle time so opening the tab is instant instead of a cold load. */
+  /* 1.5 s after the shell mounts, the chunks of the first tab of every page are fetched (~0.8 MB
+     gzipped: MDX and stories), a dozen pages at a time so that a click is not queued behind them
+     all, then the sandbox chunk (Monaco, ~1 MB gzipped). A page opened from the navigation then
+     renders at once; its other tabs (technical) and the tools still load their own chunk.
+     A chunk that fails to load stays failed for the session (the browser keeps the failed module):
+     the first failure stops the loop, so that a network drop spoils one batch, not every page.
+     Not where the browser says to save data (Chromium only: navigator.connection): hovering or
+     focusing an entry still loads its page. */
   useEffect(() => {
-    const idle = window.setTimeout(() => {
-      import('../sandbox/Sandbox');
+    if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData) {
+      return;
+    }
+    let cancelled = false;
+    const idle = window.setTimeout(async () => {
+      const paths = pages.map((page) => page.path);
+      try {
+        while (paths.length && !cancelled) {
+          await Promise.all(paths.splice(0, 12).map((path) => preload(path)));
+        }
+      } catch {
+        return;
+      }
+      if (!cancelled) {
+        import('../sandbox/Sandbox');
+      }
     }, 1500);
-    return () => window.clearTimeout(idle);
-  }, []);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(idle);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Exact match first; then the one-segment tab views of a component page
-  // (/components/x/examples), the only sub-views the router has: any other
-  // nested path is a not found page, not the page it starts with. A trailing
-  // slash is ignored, as the router does.
-  const pathname = location.pathname.length > 1 ? location.pathname.replace(/\/+$/, '') : location.pathname;
-  const currentPage = pages.find((page) => page.path === pathname)
-    ?? pages.find((page) => page.kind === 'component' && pathname.startsWith(`${page.path}/`)
-      && !pathname.slice(page.path.length + 1).includes('/'));
+  const currentPage = pageOf(location.pathname);
   // Doc pages center their content column: the topbar follows it.
   const isDocPage = currentPage?.kind === 'component' || currentPage?.kind === 'guide' || currentPage?.kind === 'helper'
     || (currentPage?.kind === 'recipe' && !currentPage.gallery);
-  // The Welcome page leads with its own layout and h1: no topbar. Narrow screens
-  // keep it, since it holds the navigation drawer button.
-  const isWelcome = location.pathname === '/' && !isNarrow;
+  // The Welcome page leads with its own layout and h1: its topbar keeps the actions only. Narrow
+  // screens keep the whole topbar, which holds the navigation drawer button; until hydrated it
+  // renders the title too, and shell.css hides it on wide screens.
+  const isWelcome = location.pathname === '/' && isNarrow !== true;
   // Kept as the outlet contract: the future theme generator will feed live
   // token overrides through here — the frame plumbing is already proven.
   const tokens = {};
 
   // Keep the browser tab title in sync with the active page.
   useEffect(() => {
-    const title = currentPage?.title ?? (location.pathname === '/' ? undefined : 'Page not found');
-    document.title = title ? `${title} — OVHcloud Design System` : 'OVHcloud Design System';
-  }, [currentPage, location.pathname]);
+    document.title = titleOf(location.pathname);
+  }, [location.pathname]);
 
   // Any navigation (tree, palette, in-content link) closes the nav drawer.
   useEffect(() => {
@@ -337,6 +372,14 @@ const Shell = () => {
     }
   };
 
+  const onPreload = (id: string) => {
+    const page = pages.find((p) => p.id === id);
+    if (page && page.id !== currentPage?.id) {
+      // A chunk that fails to load is the page's error to show once opened.
+      preload(page.path).catch(() => {});
+    }
+  };
+
   const onSearch = () => {
     setNavOpen(false);
     openSearchPalette();
@@ -347,13 +390,13 @@ const Shell = () => {
       <a className="shell__skip" href="#main-content">Skip to content</a>
       <SearchCommand />
 
-      { !isNarrow && (
-        <aside className="shell__sidebar">
-          <SidebarPanels currentId={ currentPage?.id } narrow={ false } onNavigate={ onNavigate } onSearch={ openSearchPalette } />
+      { isNarrow !== true && (
+        <aside aria-label="Site navigation" className="shell__sidebar">
+          <SidebarPanels currentId={ currentPage?.id } narrow={ false } onNavigate={ onNavigate } onPreload={ onPreload } onSearch={ openSearchPalette } />
         </aside>
       ) }
 
-      { isNarrow && (
+      { isNarrow === true && (
         <Drawer
           backdrop
           closeOnInteractOutside
@@ -369,7 +412,7 @@ const Shell = () => {
                 onClick={ () => setNavOpen(false) }>
                 <Icon name={ ICON_NAME.xmark } />
               </Button>
-              <SidebarPanels currentId={ currentPage?.id } narrow onNavigate={ onNavigate } onSearch={ onSearch } />
+              <SidebarPanels currentId={ currentPage?.id } narrow onNavigate={ onNavigate } onPreload={ onPreload } onSearch={ onSearch } />
             </DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -378,8 +421,9 @@ const Shell = () => {
       <div className="shell__main">
         { /* The Welcome page keeps only the topbar actions, over its own heading. */ }
         <header className={ isWelcome ? 'shell__topbar shell__topbar--welcome' : isDocPage ? 'shell__topbar shell__topbar--doc' : 'shell__topbar' }>
-          { isNarrow && (
+          { isNarrow !== false && (
             <Button
+              aria-disabled={ !hydrated || undefined }
               aria-label="Open navigation"
               className="shell__menu-button"
               emphasis={ BUTTON_EMPHASIS.low }
@@ -388,9 +432,9 @@ const Shell = () => {
               <Icon name={ ICON_NAME.hamburgerMenu } />
             </Button>
           ) }
-          { !isWelcome && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
+          { !(isWelcome && isNarrow === false) && <Text as="h1" preset={ TEXT_PRESET.heading2 }>{ currentPage?.title ?? (location.pathname === '/' ? 'OVHcloud Design System' : 'Page not found') }</Text> }
           <div className="shell__topbar-actions">
-            { !isNarrow && <BrandSelect className="shell__topbar-select" /> }
+            { isNarrow !== true && <BrandSelect className="shell__topbar-select shell__topbar-brand" /> }
             <ThemeMenu />
           </div>
         </header>

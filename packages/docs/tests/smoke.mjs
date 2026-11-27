@@ -1,5 +1,5 @@
 // Platform smoke: subpath deploy, 404 bounce, frames, fonts, search palette.
-import { makeChecker } from './helpers.mjs';
+import { makeChecker, waitHydrated } from './helpers.mjs';
 
 async function suite(browser, { base, version }) {
   const results = [];
@@ -11,7 +11,7 @@ async function suite(browser, { base, version }) {
 
   await check('homepage renders under the version subpath', async () => {
     await page.goto(`${V}/`, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('#root *', { timeout: 10000 });
+    await waitHydrated(page);
     if (!/Design System/i.test(await page.textContent('body'))) {
       throw new Error('no app content');
     }
@@ -54,7 +54,7 @@ async function suite(browser, { base, version }) {
   await check('index.html lands on the homepage', async () => {
     await page.goto(`${V}/index.html`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL((url) => url.pathname.endsWith(`/v${version}/`), { timeout: 10000 });
-    await page.waitForSelector('#root *', { timeout: 10000 });
+    await waitHydrated(page);
     if (await page.getByRole('heading', { level: 1, name: 'Page not found' }).count()) {
       throw new Error('the homepage says Page not found');
     }
@@ -63,10 +63,10 @@ async function suite(browser, { base, version }) {
     await page.goto(`${V}/index.html?path=/docs/react-components-button--documentation`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });
   });
-  await check('deep link bounces off 404.html and restores the URL', async () => {
+  await check('a deep link lands on its page and keeps its URL', async () => {
     await page.goto(`${V}/components/button`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/components/button`, { timeout: 10000 });
-    await page.waitForSelector('#root *', { timeout: 10000 });
+    await waitHydrated(page);
   });
   await check('demos render inside styled iframes', async () => {
     await page.waitForFunction(() => {
@@ -81,9 +81,9 @@ async function suite(browser, { base, version }) {
   await check('deep link under the latest symlink', async () => {
     await page.goto(`${base}/latest/guides/get-started`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL('**/latest/guides/get-started', { timeout: 10000 });
-    await page.waitForSelector('#root *', { timeout: 10000 });
+    await waitHydrated(page);
   });
-  await check('sandbox share round-trip (?p= + code)', async () => {
+  await check('a sandbox link shared as ?p= still opens the sandbox', async () => {
     await page.goto(`${V}/?p=/tools/sandbox&code=`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL(`**/v${version}/tools/sandbox**`, { timeout: 10000 });
   });
@@ -99,7 +99,7 @@ async function suite(browser, { base, version }) {
   });
   await check('search palette: where to start, then components, icons, section hints', async () => {
     await page.goto(`${V}/`, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('#root *', { timeout: 10000 });
+    await waitHydrated(page);
     await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
     await page.waitForSelector('[data-ods="command-content"]', { timeout: 8000 });
     const ok = await page.evaluate(() => {

@@ -1,9 +1,9 @@
 import { type ReactNode, useState } from 'react';
 import { BUTTON_EMPHASIS, BUTTON_SIZE, Button } from '../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../ods-react/src/components/icon/src';
-import { APP_ROOT } from '../appBase';
 import { CodeBlock } from '../doc/CodeBlock';
-import { encodeSnippet } from '../sandbox/shareCode';
+import { useHydrated } from '../nav/useHydrated';
+import { sandboxUrl } from '../sandbox/shareCode';
 import { DemoFrame } from './DemoFrame';
 import { buildSandboxSnippet } from './sandboxSnippet';
 import './demoCanvas.css';
@@ -22,6 +22,8 @@ const DemoCanvas = ({ children, dark, label, sandboxCode, source, title, tokens 
   tokens?: Record<string, string>;
 }) => {
   const [codeOpen, setCodeOpen] = useState(true);
+  // Until hydrated, the toolbar buttons do nothing (SearchHint, Shell.tsx).
+  const inert = !useHydrated() || undefined;
   const hasToolbar = title || source || sandboxCode;
 
   return (
@@ -32,9 +34,10 @@ const DemoCanvas = ({ children, dark, label, sandboxCode, source, title, tokens 
         <div className="canvas__actions">
           { sandboxCode && (
             <Button
+              aria-disabled={ inert }
               aria-label="Open this example in the sandbox (new tab)"
               emphasis={ BUTTON_EMPHASIS.low }
-              onClick={ () => window.open(`${APP_ROOT.href}?p=/tools/sandbox&code=${encodeSnippet(sandboxCode)}`, '_blank', 'noreferrer') }
+              onClick={ () => window.open(sandboxUrl(sandboxCode), '_blank', 'noreferrer') }
               size={ BUTTON_SIZE.sm }
               title="Open in sandbox">
               <Icon name={ ICON_NAME.chevronLeftUnderscore } /> Sandbox
@@ -42,6 +45,7 @@ const DemoCanvas = ({ children, dark, label, sandboxCode, source, title, tokens 
           ) }
           { source && (
             <Button
+              aria-disabled={ inert }
               aria-expanded={ codeOpen }
               emphasis={ BUTTON_EMPHASIS.low }
               onClick={ () => setCodeOpen((open) => !open) }

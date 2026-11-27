@@ -3,6 +3,7 @@ import { type ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import Frame, { FrameContext } from 'react-frame-component';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROOT } from '../appBase';
+import { useHydrated } from '../nav/useHydrated';
 import { Skeleton } from '../../../ods-react/src/components/skeleton/src';
 // Vite inlines the css text; url() references are rebased at import time.
 import normalizeCss from '@ovhcloud/ods-react/normalize-css?inline';
@@ -111,8 +112,11 @@ const StyleSync = () => {
         let clone = clones.get(source);
         if (!clone) {
           clone = frameDocument.importNode(source, true);
-          if (clone instanceof HTMLLinkElement) {
-            clone.href = (source as HTMLLinkElement).href;
+          // importNode gives the clone the frame window's prototypes: checked on the source, since the
+          // clone is never an instance of this window's HTMLLinkElement. Absolute href: the frame's
+          // <base> is the deploy root, not the page's folder.
+          if (source instanceof HTMLLinkElement) {
+            clone.setAttribute('href', source.href);
           }
           clone.setAttribute(SYNC_MARKER, '');
           frameDocument.head.insertBefore(clone, next);
@@ -315,14 +319,19 @@ const FrameReady = ({ onReady }: { onReady: (frameDocument: Document) => void })
   return null;
 };
 
-const DemoFrame = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
+const FRAME_SKELETON = <Skeleton style={{ borderRadius: 'var(--ods-semantic-size-radius-control)', height: '74px', width: '100%' }} />;
+
+/* The pre-rendered page holds the skeleton alone: the frame document only exists in the browser. */
+const DemoFrame = (prop: DemoFrameProp) => (useHydrated() ? <DemoFrameContent { ...prop } /> : FRAME_SKELETON);
+
+const DemoFrameContent = ({ bare, children, dark, inset, onReady, pageSurface, title = 'Live example', tokens }: DemoFrameProp) => {
   const [ready, setReady] = useState(false);
   // Frozen: it is the frame srcdoc, and a new one would reload the frame. FrameEnv keeps the title in sync.
   const [content] = useState(() => initialContent(title));
 
   return (
     <>
-      { !ready && <Skeleton style={{ borderRadius: 'var(--ods-semantic-size-radius-control)', height: '74px', width: '100%' }} /> }
+      { !ready && FRAME_SKELETON }
       <Frame
         // The dialog rule patches an ods-react Drawer regression (backdrop
         // feature, 2026-07-10): backdrop defaults to undefined so the Dialog
